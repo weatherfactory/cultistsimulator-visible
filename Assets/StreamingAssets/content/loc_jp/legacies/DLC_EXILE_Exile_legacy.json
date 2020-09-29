@@ -1,0 +1,268 @@
+{
+	"legacies": [
+		{
+			"id": "exile",
+			"label": "追放",
+			"description": "精算人の領主から盗もうとするものはいない。それでも私には理由があった。",
+			"startdescription": "日没だ。そろそろ行かないと。",
+			"image": "exile",
+			"effects": {
+				"trace": 7,
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1
+			},
+			"fromEnding": "wintersacrifice",
+			"availableWithoutEndingMatch": true,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictorya",
+			"label": "追放",
+			"description": "違うことが起こっていたら？もしも、あの時違う道を進んでいたら、大きな報いを得ていたのだろうか。",
+			"startdescription": "日没だ。そろそろ行かないと。",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictorya",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictoryb",
+			"label": "追放",
+			"description": "違うことが起こっていたら？もしも、あの時違う道を進んでいたら、さらに大きな報いを得ていたのだろうか。",
+			"startdescription": "日没だ。そろそろ行かないと。",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictoryb",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictoryc",
+			"label": "追放",
+			"description": "違うことが起こっていたら？もしも、あの時違う道を進んでいたら、高みに昇っていたのだろうか。",
+			"startdescription": "日没だ。そろそろ行かないと。",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictoryc",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictoryafoeslain",
+			"label": "追放",
+			"description": "違うことが起こっていたら？もしも、あの時違う道を進んでいたら、大きな報いを得ていたのだろうか。",
+			"startdescription": "日没だ。そろそろ行かないと。",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictoryafoeslain",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictorybfoeslain",
+			"label": "追放",
+			"description": "違うことが起こっていたら？もしも、あの時違う道を進んでいたら、さらに大きな報いを得ていたのだろうか。",
+			"startdescription": "日没だ。そろそろ行かないと。",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictorybfoeslain",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictorycfoeslain",
+			"label": "追放",
+			"description": "違うことが起こっていたら？もしも、あの時違う道を進んでいたら、高みに昇っていたのだろうか。",
+			"startdescription": "日没だ。そろそろ行かないと。",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictorycfoeslain",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.foecaughtup",
+			"label": "追放",
+			"description": "違うことが起こっていたら？もしも、あの時違う道を進んでいたら、私は生き残っていたのだろうか。",
+			"startdescription": "日没だ。そろそろ行かないと。",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "foecaughtup",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.ascensioncolonel",
+			"label": "追放",
+			"description": "違うことが起こっていたら？もしも、あの時違う道を進んでいたら、もっと自由に近いものを見つけられていたのだろうか。",
+			"startdescription": "日没だ。そろそろ行かないと。",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "ascensioncolonel",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.ascensionlionsmith",
+			"label": "追放",
+			"description": "違うことが起こっていたら？もしも、あの時違う道を進んでいたら、もっと平和に近いものを見つけられていたのだろうか。",
+			"startdescription": "日没だ。そろそろ行かないと。",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "ascensionlionsmith",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.ascensionwolf",
+			"label": "追放",
+			"description": "違うことが起こっていたら？もしも、あの時違う道を進んでいたら、私は破壊者にもなっていたのだろうか。",
+			"startdescription": "日没だ。そろそろ行かないと。",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "ascensionwolf",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.victoryvelvet",
+			"label": "追放",
+			"description": "違うことが起こっていたら？もしも、あの時違う道を進んでいたら、創造者に出会えていたのだろうか。",
+			"startdescription": "日没だ。そろそろ行かないと。",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "victoryvelvet",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		}
+	]
+}

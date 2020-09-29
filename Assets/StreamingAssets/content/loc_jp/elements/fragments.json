@@ -1,0 +1,1801 @@
+{
+	"elements": [
+		{
+			"id": "fragmentedge",
+			"label": "ナイフの秘密",
+			"aspects": {
+				"edge": 2,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.practical": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの刃の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの冬の伝承を使って学び、転覆させると、冬の伝承を手に入れることができる。",
+					"required": {
+						"fragmentedge": 1,
+						"fragmentwinter": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "祖先は剣を鍛え、武術を教え、戦いの前夜に呪いを唱えた。これらの行動はすべて同じパターンを取っている。[儀式で、これを死体と冬の力と合わせて使用すると死体が蘇る。]",
+			"xtriggers": {
+				"epiphany": "fragmentedgeb"
+			}
+		},
+		{
+			"id": "fragmentedgeb",
+			"label": "キリアークの教訓",
+			"aspects": {
+				"edge": 4,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.practical": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの刃の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの冬の伝承を使って学び、それを転覆させると、冬の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentedgeb": 1,
+						"fragmentwinterb": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "千人長がはるか昔に、この血と出口を語る印象的な物語と出会った。声を大にして語れば、剣の音を聞くことになるだろう。[儀式で、これを死体と冬の力と合わせて使用すると死体が蘇る。]",
+			"xtriggers": {
+				"epiphany": "fragmentedgec"
+			}
+		},
+		{
+			"id": "fragmentedgec",
+			"label": "ラビト作戦",
+			"aspects": {
+				"edge": 6,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.practical": 1,
+				"challenge.grim": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの刃の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの冬の伝承を使って学び、それを転覆させると、冬の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentedgec": 1,
+						"fragmentwinterc": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "献身と恐怖の両方を必要とする神秘的な儀式。[儀式で、これを死体と冬の力と合わせて使用すると死体が蘇る。]",
+			"xtriggers": {
+				"epiphany": "fragmentedged"
+			}
+		},
+		{
+			"id": "fragmentedged",
+			"label": "大佐の名を持つ者たち",
+			"aspects": {
+				"edge": 8,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.practical": 1,
+				"challenge.grim": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの刃の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの冬の伝承を使って学び、それを転覆させると、冬の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentedged": 1,
+						"fragmentwinterd": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "大佐はいつの時代にも様々なものになってきた。彼は目が見えなく、耳も聞こえないが、怪我をすることはなく、否定されることはない。彼の名を持つ者は、非常に年をとった者にしかできないような狡猾さを持つ。",
+			"xtriggers": {
+				"epiphany": "fragmentedgee"
+			}
+		},
+		{
+			"id": "fragmentedgee",
+			"label": "ライオンスミスの名を持つ者",
+			"aspects": {
+				"edge": 10,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.practical": 1,
+				"challenge.grim": 1,
+				"challenge.knowledge": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの刃の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの冬の伝承を使って学び、それを転覆させると、冬の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentedgee": 1,
+						"fragmentwintere": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "ライオンスミスは時の神々の基準では若いが、戦争の基準では年老いている。彼の名を持つ者たちは新米だが、彼らの朗読には猛どうな力が宿っている。",
+			"xtriggers": {
+				"epiphany": "fragmentedgef"
+			}
+		},
+		{
+			"id": "fragmentedgef",
+			"label": "殺人の心合わせ",
+			"aspects": {
+				"edge": 12,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.practical": 1,
+				"challenge.grim": 1,
+				"challenge.knowledge": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの刃の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの冬の伝承を使って学び、それを転覆させると、冬の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentedgef": 1,
+						"fragmentwinterf": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "これは終わりを確実にする術。",
+			"xtriggers": {
+				"epiphany": "fragmentedgeg"
+			}
+		},
+		{
+			"id": "fragmentedgeg",
+			"label": "力の神秘",
+			"aspects": {
+				"edge": 14,
+				"lore": 1,
+				"subvertable_lore": 1
+			},
+			"description": "大佐とライオンスミスは、人間だった神であるが、分裂した狼は血であった神だ。狡猾さ、強さ、苦悩は勝利の3つの根源であり、それが彼らの秘密教義である......",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "理性を使って学び、伝承を低レベルの断片に分解する。",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"unique": true
+		},
+		{
+			"id": "fragmentforge",
+			"label": "鍛冶屋の秘密",
+			"aspects": {
+				"forge": 2,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1
+			},
+			"description": "鍛冶屋たちは、五大陸で、鉄に同じ言葉を囁いてきた。殺人者もこの言葉を囁くことで知られている。そして、もちろん高僧たちもだ。これらの言葉は、無慈悲な変化を招く儀式で使われる。",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの鍛造の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの刃の伝承を使って学び、それを転覆させると、刃の伝承を手に入れることができる。",
+					"required": {
+						"fragmentforge": 1,
+						"fragmentedge": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentforgeb"
+			}
+		},
+		{
+			"id": "fragmentforgeb",
+			"label": "熱烈な祈祷",
+			"aspects": {
+				"forge": 4,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1
+			},
+			"description": "火の中を覗き込むと、何が見えてくるのだろう。探していた物が見つかったとき、ある言葉が語られる。それは、焦げた皮膚が剥がれ落ちるときに起こる変化を聖化する言葉だ。",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの鍛造の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの刃の伝承を使って勉強し、それを転覆させると、刃の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentforgeb": 1,
+						"fragmentedgeb": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentforgec"
+			}
+		},
+		{
+			"id": "fragmentforgec",
+			"label": "形作る詠唱",
+			"aspects": {
+				"forge": 6,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.practical": 1
+			},
+			"description": "変化が起こるときには、適切な言葉を使わなければならない。[儀式でこれを開錠の影響力と骨笛（または同等の力を持つ資源）を使うと、煙霧を召喚できる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの鍛造の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの刃の伝承を使って勉強し、それを転覆させると、刃の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentforgec": 1,
+						"fragmentedgec": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentforged"
+			}
+		},
+		{
+			"id": "fragmentforged",
+			"label": "カリデートの召喚文",
+			"aspects": {
+				"forge": 8,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.practical": 1
+			},
+			"description": "鍛造の名を持つ者たちが口にしてきた言葉[儀式でこれを開錠の影響力と骨笛（または同等の力を持つ資源）を使うと、煙霧を召喚できる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの鍛造の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの刃の伝承を使って勉強し、それを転覆させると、刃の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentforged": 1,
+						"fragmentedged": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentforgee"
+			}
+		},
+		{
+			"id": "fragmentforgee",
+			"label": "亀裂の公式",
+			"aspects": {
+				"forge": 10,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.practical": 1,
+				"challenge.illumination": 1
+			},
+			"description": "物を壊せば、断片となる。その断片を壊せば、塵が生まれる。塵を壊して、残った物を壊せば、炎が生まれる。[儀式でこれを聖なるまぐさ石と少しばかりのリフルジン（または同等の力を持つ資源）を使うと、坩堝の王を召喚できる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの鍛造の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの刃の伝承を使って勉強し、それを転覆させると、刃の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentforgee": 1,
+						"fragmentedgee": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentforgef"
+			}
+		},
+		{
+			"id": "fragmentforgef",
+			"label": "炉の歌",
+			"aspects": {
+				"forge": 12,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.practical": 1,
+				"challenge.illumination": 1
+			},
+			"description": "これは熱が鉄に歌う賛美歌だ。忠実に真似をすれば、唇は焦げ、舌は焼けるだろうが、ああ、その苦労は報われる。[儀式でこれを聖なるまぐさ石と少しばかりのリフルジン（または同等の力を持つ資源）を使うと、坩堝の王を召喚できる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの鍛造の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの刃の伝承を使って勉強し、それを転覆させると、刃の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentforgef": 1,
+						"fragmentedgef": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentforgeg"
+			}
+		},
+		{
+			"id": "fragmentforgeg",
+			"label": "創造の神秘",
+			"aspects": {
+				"forge": 14,
+				"lore": 1,
+				"subvertable_lore": 1
+			},
+			"description": "日々の鍛造、メニスカーテ、マドゥルガーダは、光の神である。水銀、銀、金は功徳の種であり、これはその秘密教義である......[儀式でこれを聖なるまぐさ石と少しばかりのリフルジン（または同等の力を持つ資源）を使うと、坩堝の王を召喚できる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "理性を使って学び、伝承を低レベルの断片に分解する。",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"unique": true
+		},
+		{
+			"id": "fragmentgrail",
+			"label": "赤い秘密",
+			"aspects": {
+				"grail": 2,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1
+			},
+			"description": "正しいインクを使わなければ、綴れない言葉もある。",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの聖杯の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの蛾の伝承を使って勉強し、それを転覆させると、蛾の伝承を手に入れることができる。",
+					"required": {
+						"fragmentgrail": 1,
+						"fragmentmoth": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentgrailb"
+			}
+		},
+		{
+			"id": "fragmentgrailb",
+			"label": "メガレシアの呪文",
+			"aspects": {
+				"grail": 4,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1
+			},
+			"description": "偉大なる母は覚えている。",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの聖杯の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの蛾の伝承を使って学び、それを転覆させると、蛾の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentgrailb": 1,
+						"fragmentmothb": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentgrailc"
+			}
+		},
+		{
+			"id": "fragmentgrailc",
+			"label": "喜ばしい秘跡",
+			"aspects": {
+				"grail": 6,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.practical": 1
+			},
+			"description": "耳に心地よく、何度も何度も聞いても苦にならない。これは犠牲を甘くする言葉だ。[儀式でこれをビザンティンの塗料と蛾の影響力（または同等の力を持つ資源）と合わせて使うと、未熟な預言者を召喚できる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの聖杯の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの蛾の伝承を使って学び、それを転覆させると、蛾の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentgrailc": 1,
+						"fragmentmothc": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentgraild"
+			}
+		},
+		{
+			"id": "fragmentgraild",
+			"label": "シアティックの召喚文",
+			"aspects": {
+				"grail": 8,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.practical": 1
+			},
+			"description": "聖杯の名を持つ者の召喚文には、耳障りな音が伴う。その脈打つ力を求めて、できる限り音を再現しよう。[儀式でこれをビザンティンの塗料と蛾の影響力（または同等の力を持つ資源）を使うと、未熟な預言者を召喚できる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの聖杯の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの蛾の伝承を使って学び、それを転覆させると、蛾の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentgraild": 1,
+						"fragmentmothd": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentgraile"
+			}
+		},
+		{
+			"id": "fragmentgraile",
+			"label": "肉欲の公式",
+			"aspects": {
+				"grail": 10,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.practical": 1,
+				"challenge.paradox": 1
+			},
+			"description": "物理的な世界の法則を破壊するほどの強烈な快楽が存在する。[儀式でこれを苦黒の塩と小さな裂け目（または、それに類する力の源）を使うと、未熟な預言者を召喚できる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの聖杯の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの蛾の伝承を使って学び、それを転覆させると、蛾の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentgraile": 1,
+						"fragmentmothe": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentgrailf"
+			}
+		},
+		{
+			"id": "fragmentgrailf",
+			"label": "開花の研究",
+			"aspects": {
+				"grail": 12,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.practical": 1,
+				"challenge.paradox": 1
+			},
+			"description": "フラワーメーカーはあなたに触れることも、見つけることもできないが、常にあなたが望むものを持っている。彼の創造物の特性を調べるだけでも、時の神々の注目を集めてしまう。[この公式は、苦黒の塩と小さな裂け目（または、それに類する力の源））を使った儀式で合わせて使い、エジーム自身を召喚するために使用できる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの聖杯の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの蛾の伝承を使って学び、それを転覆させると、蛾の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentgrailf": 1,
+						"fragmentmothf": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentgrailg"
+			}
+		},
+		{
+			"id": "fragmentgrailg",
+			"label": "貪り食う謎",
+			"aspects": {
+				"grail": 14,
+				"lore": 1,
+				"subvertable_lore": 1
+			},
+			"description": "聖杯は初代の血であった神だ。フラワーメーカーは光の中からやってきた。浜辺の鴉はかつて肉であった。空腹、欲、憧れは欲望の基盤であり、これが彼らの秘密教義である......[この公式を、苦黒の塩と小さな裂け目（または、それに類する力の源）を使う儀式で使うと、エジーム自身を召喚できる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "理性を使って学び、伝承を低レベルの断片に分解する。",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"unique": true
+		},
+		{
+			"id": "fragmentheart",
+			"label": "雷の秘密",
+			"aspects": {
+				"heart": 2,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1
+			},
+			"description": "雷の音には必ず似たようなモチーフがある。それに耳を傾けてみよう。",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの心臓の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの聖杯の伝承を使って学び、それを転覆させると、聖杯の伝承を手に入れることができる。",
+					"required": {
+						"fragmentheart": 1,
+						"fragmentgrail": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentheartb"
+			}
+		},
+		{
+			"id": "fragmentheartb",
+			"label": "歩む言葉",
+			"aspects": {
+				"heart": 4,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1
+			},
+			"description": "この公式の音節には説得力がある。自分がリズムに合わせて指を鳴らしていることに気づいた。それは止まらないことを望んでいるようだ。",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの心臓の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの聖杯の伝承を使って学び、それを転覆させると、聖杯の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentheartb": 1,
+						"fragmentgrailb": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentheartc"
+			}
+		},
+		{
+			"id": "fragmentheartc",
+			"label": "覚醒の聖歌",
+			"aspects": {
+				"heart": 6,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.practical": 1
+			},
+			"description": "これを聞いて動じないのは誰だ？眠っている者？死者？大地と空？[儀式でこれをビザンティンの塗料と流星の弾丸（または同等の力を持つ資源）と合わせて使うと、パーカッシガントを召喚できる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの心臓の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの聖杯の伝承を使って学び、それを転覆させると、聖杯の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentheartc": 1,
+						"fragmentgrailc": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentheartd"
+			}
+		},
+		{
+			"id": "fragmentheartd",
+			"label": "二重の召喚文",
+			"aspects": {
+				"heart": 8,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.practical": 1
+			},
+			"description": "双子の片割れと魔女は、十字路や月の出の時、陸が海をかばう場所では、常に保護のために呼び出されてきた。[儀式でこれをビザンティンの塗料と流星の弾丸（または同等の力を持つ資源）と合わせて使うと、パーカッシガントを召喚できる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの心臓の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの聖杯の伝承を使って学び、それを転覆させると、聖杯の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentheartd": 1,
+						"fragmentgraild": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmenthearte"
+			}
+		},
+		{
+			"id": "fragmenthearte",
+			"label": "警戒の公式",
+			"aspects": {
+				"heart": 10,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.practical": 1,
+				"challenge.obsessive": 1
+			},
+			"description": "見る者は眠らず、眠る者は見ず。見る者は眠らず、眠る者は見ず。<b>見ている者は眠らず、眠っている者は見ていない。</b>[儀式でこれをビザンティンの塗料と流星の弾丸（または同等の力を持つ資源）と合わせて使うと、パーカッシガントを召喚できる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの心臓の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの聖杯の伝承を使って学び、それを転覆させると、聖杯の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmenthearte": 1,
+						"fragmentgraile": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentheartf"
+			}
+		},
+		{
+			"id": "fragmentheartf",
+			"label": "ベルベットの魅力",
+			"aspects": {
+				"heart": 12,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.practical": 1,
+				"challenge.obsessive": 1
+			},
+			"description": "ベルベットの答えはいつでも否定的だが、野獣が木の陰に隠れるように、我々はその答えに身を寄せることができる。[儀式でこれをビザンティンの塗料と流星の弾丸（または同等の力を持つ資源）と合わせて使うと、パーカッシガントを召喚できる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの心臓の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの聖杯の伝承を使って学び、それを転覆させると、聖杯の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentheartf": 1,
+						"fragmentgrailf": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentheartg"
+			}
+		},
+		{
+			"id": "fragmentheartg",
+			"label": "止まらない謎",
+			"aspects": {
+				"heart": 14,
+				"lore": 1,
+				"subvertable_lore": 1
+			},
+			"description": "聖杯はサンダースキンを肉体から剥ぎ取り、双子の片割れと魔女は2つの至急から生まれた。ベルベットは森の根が血を味わった時に目を覚まし、心臓は血のドラムである。そしてこれがその秘密教義だ......[儀式でこれをビザンティンの塗料と流星の弾丸（または同等の力を持つ資源）と合わせて使うと、パーカッシガントを召喚できる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "理性を使って学び、伝承を低レベルの断片に分解する。",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"unique": true
+		},
+		{
+			"id": "fragmentknock",
+			"label": "鍵屋の秘密",
+			"aspects": {
+				"knock": 2,
+				"lore": 1,
+				"challenge.knowledge": 1
+			},
+			"description": "遅かれ早かれ、どの鍵屋も夢を見る。では、その7つの段階を暗唱してみよう......[ほぼすべての召喚儀式には、開錠の影響力が必要だ。この伝承がはそれを提供してくれる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの伝承の断片を使って学ぶと（秘史を除く）、高レベルの開錠の伝承にアップグレードできる。",
+					"required": {
+						"fragmentedge": 1,
+						"fragmentforge": 1,
+						"fragmentgrail": 1,
+						"fragmentheart": 1,
+						"fragmentknock": 1,
+						"fragmentlantern": 1,
+						"fragmentmoth": 1,
+						"fragmentwinter": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentknockb"
+			}
+		},
+		{
+			"id": "fragmentknockb",
+			"label": "イグウィウムの儀式",
+			"aspects": {
+				"knock": 4,
+				"lore": 1,
+				"challenge.knowledge": 1
+			},
+			"description": "マンサスの扉を開けるには、例外なく、まず生贄を捧げなければいけない。イグウィウムの儀式には、生贄の捧げ方が定められている。[ほぼすべての召喚儀式には、開錠の影響力が必要だ。この伝承がはそれを提供してくれる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの伝承の断片を使って学ぶと（秘史を除く）、高レベルの開錠の伝承にアップグレードできる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentedgeb": 1,
+						"fragmentforgeb": 1,
+						"fragmentgrailb": 1,
+						"fragmentheartb": 1,
+						"fragmentknockb": 1,
+						"fragmentlanternb": 1,
+						"fragmentmothb": 1,
+						"fragmentwinterb": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentknockc"
+			}
+		},
+		{
+			"id": "fragmentknockc",
+			"label": "傷口の同意",
+			"aspects": {
+				"knock": 6,
+				"lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.grim": 1
+			},
+			"description": "道を開くなら、まずは自分自身を開かなくてはいけない。これには、蟻の母の名の下に開く方法が書かれている。[ほぼすべての召喚儀式には、開錠の影響力が必要だ。この伝承がはそれを提供してくれる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの伝承の断片を使って学ぶと（秘史を除く）、高レベルの開錠の伝承にアップグレードできる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentedgec": 1,
+						"fragmentforgec": 1,
+						"fragmentgrailc": 1,
+						"fragmentheartc": 1,
+						"fragmentknockc": 1,
+						"fragmentlanternc": 1,
+						"fragmentmothc": 1,
+						"fragmentwinterc": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentknockd"
+			}
+		},
+		{
+			"id": "fragmentknockd",
+			"label": "メニスカーテの召喚文",
+			"aspects": {
+				"knock": 8,
+				"lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.grim": 1
+			},
+			"description": "月の顔が傷ついた時、この言葉が現われた。[ほぼすべての召喚儀式には、開錠の影響力が必要だ。この伝承がはそれを提供してくれる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの伝承の断片を使って学ぶと（秘史を除く）、高レベルの開錠の伝承にアップグレードできる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentedged": 1,
+						"fragmentforged": 1,
+						"fragmentgraild": 1,
+						"fragmentheartd": 1,
+						"fragmentknockd": 1,
+						"fragmentlanternd": 1,
+						"fragmentmothd": 1,
+						"fragmentwinterd": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentknocke"
+			}
+		},
+		{
+			"id": "fragmentknocke",
+			"label": "蛇の公式",
+			"aspects": {
+				"knock": 10,
+				"lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.grim": 1,
+				"challenge.paradox": 1
+			},
+			"description": "蛇は拒否できない訪問者だ。[ほぼすべての召喚儀式には、開錠の影響力が必要だ。この伝承がはそれを提供してくれる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの伝承の断片を使って学ぶと（秘史を除く）、高レベルの開錠の伝承にアップグレードできる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentedgee": 1,
+						"fragmentforgee": 1,
+						"fragmentgraile": 1,
+						"fragmenthearte": 1,
+						"fragmentknocke": 1,
+						"fragmentlanterne": 1,
+						"fragmentmothe": 1,
+						"fragmentwintere": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentknockf"
+			}
+		},
+		{
+			"id": "fragmentknockf",
+			"label": "閾の召喚魔術",
+			"aspects": {
+				"knock": 12,
+				"lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.grim": 1,
+				"challenge.paradox": 1
+			},
+			"description": "石であった神が1人残り、すべての入り口を見守っている。[ほぼすべての召喚儀式には、開錠の影響力が必要だ。この伝承がはそれを提供してくれる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの伝承の断片を使って学ぶと（秘史を除く）、高レベルの開錠の伝承にアップグレードできる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentedgef": 1,
+						"fragmentforgef": 1,
+						"fragmentgrailf": 1,
+						"fragmentheartf": 1,
+						"fragmentknockf": 1,
+						"fragmentlanternf": 1,
+						"fragmentmothf": 1,
+						"fragmentwinterf": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentknockg"
+			}
+		},
+		{
+			"id": "fragmentknockg",
+			"label": "開放の謎",
+			"aspects": {
+				"knock": 14,
+				"lore": 1
+			},
+			"description": "蟻の母は2つの川の子供だ。角斧は最後の石の神である。メニスカーテは光から月に生まれた。傷と入り口と啓示は扉の属性であり、これが彼らの秘密教義である......[ほぼすべての召喚儀式には、開錠の影響力が必要だ。この伝承がはそれを提供してくれる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "理性を使って学び、伝承を低レベルの断片に分解する。",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"unique": true
+		},
+		{
+			"id": "fragmentlantern",
+			"label": "見張り番の秘密",
+			"aspects": {
+				"lantern": 2,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1
+			},
+			"description": "「時の神々にはそれぞれの色があるが、色は光があるところにしか存在しない」と、表現されている。",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの灯りの伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの鍛造の伝承を使って学び、それを転覆させると、鍛造の伝承を手に入れることができる。",
+					"required": {
+						"fragmentlantern": 1,
+						"fragmentforge": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentlanternb"
+			}
+		},
+		{
+			"id": "fragmentlanternb",
+			"label": "マンサスの様子",
+			"aspects": {
+				"lantern": 4,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1
+			},
+			"description": "詩の断片、誰もが人生の中で少なくとも2度は訪れるある家の記憶。初めてマンサスを訪れるなら、この伝承は必要不可欠だ。",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの灯りの伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの鍛造の伝承を使って学び、それを転覆させると、鍛造の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentlanternb": 1,
+						"fragmentforgeb": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentlanternc"
+			}
+		},
+		{
+			"id": "fragmentlanternc",
+			"label": "無慈悲なマントラ",
+			"aspects": {
+				"lantern": 6,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.illumination": 1
+			},
+			"description": "「慈悲は影の中にしかない」と見張り番は言った。",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの灯りの伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの鍛造の伝承を使って学び、それを転覆させると、鍛造の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentlanternc": 1,
+						"fragmentforgec": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentlanternd"
+			}
+		},
+		{
+			"id": "fragmentlanternd",
+			"label": "ファネアの召喚文",
+			"aspects": {
+				"lantern": 8,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.illumination": 1
+			},
+			"description": "瞳の扉は案内をする。慈悲深いわけではないが、何よりも先に彼は照らしてくれる。[儀式でこれを開錠の道具と刺激的な空気（または同等の力を持つ資源）と合わせて使うと、鏡の裏からヒントを召喚できる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの灯りの伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの鍛造の伝承を使って学び、それを転覆させると、鍛造の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentlanternd": 1,
+						"fragmentforged": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentlanterne"
+			}
+		},
+		{
+			"id": "fragmentlanterne",
+			"label": "啓示の公式",
+			"aspects": {
+				"lantern": 10,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.illumination": 1,
+				"challenge.paradox": 1
+			},
+			"description": "啓示の間はマンサスの灯りで待っている。それは「道の部屋」や、「結末の部屋」とも呼ばれる場所だ。その複雑さは人間の理解力を超えるものだが、これらの公式は理解するための第一歩である。[儀式でこれを開錠の道具と刺激的な空気（または同等の力を持つ資源）と合わせて使うと、鏡の裏からヒントを召喚できる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの灯りの伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの鍛造の伝承を使って学び、それを転覆させると、鍛造の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentlanterne": 1,
+						"fragmentforgee": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentlanternf"
+			}
+		},
+		{
+			"id": "fragmentlanternf",
+			"label": "上昇の真言",
+			"aspects": {
+				"lantern": 12,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.illumination": 1,
+				"challenge.paradox": 1
+			},
+			"description": "刃物の階段は、見張り番の試練の中で最も血なまぐさいもの。これをくぐり抜けて、命を失ったものは、ボロボロの太陽に迎えられる。生きて乗り越えてきた者は、少しだけ栄光に近づける。[儀式でこれを開錠の道具と刺激的な空気（または同等の力を持つ資源）と合わせて使うと、鏡の裏からヒントを召喚できる。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの灯りの伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの鍛造の伝承を使って学び、それを転覆させると、鍛造の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentlanternf": 1,
+						"fragmentforgef": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentlanterng"
+			}
+		},
+		{
+			"id": "fragmentlanterng",
+			"label": "照らされる謎",
+			"aspects": {
+				"lantern": 14,
+				"lore": 1,
+				"subvertable_lore": 1
+			},
+			"description": "メニスカーテ、マドゥルガーダ、フラワーメーカー、日々の鍛造は、光の神々だ。第5の神がいるが見張り番ではないことがわかった。それでも、見張り番は、5体の神々と秘密教義を共有している。これがその教義だ......[儀式でこれを小さな裂け目と奇妙な骨董品と合わせて使えば、誰かがやってくる。ハンターに言えばその場で発狂させることができるかもしれない。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "理性を使って学び、伝承を低レベルの断片に分解する。",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"unique": true
+		},
+		{
+			"id": "fragmentmoth",
+			"label": "床屋の戒め",
+			"aspects": {
+				"moth": 2,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1
+			},
+			"description": "頭皮から髪が分けられると、森の力は歓喜する。注目を集めたければ燃やし、機会を求めるためには、それを埋める。[冬の影響力がある儀式中に、死体にこれを話すと蘇る。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの蛾の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの灯りの伝承を使って学び、それを転覆させると、灯りの伝承を手に入れることができる。",
+					"required": {
+						"fragmentmoth": 1,
+						"fragmentlantern": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentmothb"
+			}
+		},
+		{
+			"id": "fragmentmothb",
+			"label": "森のささやき",
+			"aspects": {
+				"moth": 4,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1
+			},
+			"description": "眠れずに横たわったまま、見もを傾ける。風が木の間を伝い、ささやく。家は夢を見ながら、声をあげて泣く。この道は混沌としている。 [冬の影響力がある儀式中に、死体にこれを話すと蘇る。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの蛾の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの灯りの伝承を使って学び、それを転覆させると、灯りの伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentmothb": 1,
+						"fragmentlanternb": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentmothc"
+			}
+		},
+		{
+			"id": "fragmentmothc",
+			"label": "ストリッパーの寓話",
+			"aspects": {
+				"moth": 6,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.illumination": 1
+			},
+			"description": "「失われたものは何？」が、ストリッパーのなぞなぞだ。ストリッパーの寓話はすべて、なぞなぞの答えを出そうとしているのだ。",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの蛾の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの灯りの伝承を使って学び、それを転覆させると、灯りの伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentmothc": 1,
+						"fragmentlanternc": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentmothd"
+			}
+		},
+		{
+			"id": "fragmentmothd",
+			"label": "モグラの忠告",
+			"aspects": {
+				"moth": 8,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.illumination": 1
+			},
+			"description": "モグラは、自分の王冠を苔の中に隠し、泥の中に隠れた足は木々でしっかりと固定されていた。モグラはこのように忠告している。",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの蛾の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの灯りの伝承を使って学び、それを転覆させると、灯りの伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentmothd": 1,
+						"fragmentlanternd": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentmothe"
+			}
+		},
+		{
+			"id": "fragmentmothe",
+			"label": "ムカデの証",
+			"aspects": {
+				"moth": 10,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.illumination": 1,
+				"challenge.obsessive": 1
+			},
+			"description": "ムカデは砂地から出てきて、根っこの下に入っていった。新しい家を見つけた彼女だったが、今は家に帰ることはできない。彼女は鍵穴や歴史、誕生や視覚、聴覚に関わる穴など、あらゆる場所に忍び込んでいる。これが彼女の言い分だ。",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの蛾の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの灯りの伝承を使って学び、それを転覆させると、灯りの伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentmothe": 1,
+						"fragmentlanterne": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentmothf"
+			}
+		},
+		{
+			"id": "fragmentmothf",
+			"label": "太もも生まれ、甘い腹部の持ち主",
+			"aspects": {
+				"moth": 12,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.illumination": 1,
+				"challenge.obsessive": 1
+			},
+			"description": "死んだ雷王の太ももから、つるの冠をかぶった蛾の王が生まれた。腹部のリンパを飲み干せ。このような光景が見えるはずだ。",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの蛾の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの灯りの伝承を使って学び、それを転覆させると、灯りの伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentmothf": 1,
+						"fragmentlanternf": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentmothg"
+			}
+		},
+		{
+			"id": "fragmentmothg",
+			"label": "イチイの牝馬",
+			"aspects": {
+				"moth": 14,
+				"lore": 1,
+				"subvertable_lore": 1
+			},
+			"description": "本物の時の神々が名もなき場所の神々に出会うことはないが、ワノイチイは木が青々と茂る場所で木の牝馬に出会う。彼らの交合は禁じられており、禁じられたものには力がある。これは彼らの交合の話だ。",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "理性を使って学び、伝承を低レベルの断片に分解する。",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"unique": true
+		},
+		{
+			"id": "fragmentsecrethistories",
+			"label": "オカルトの断片",
+			"aspects": {
+				"secrethistories": 2,
+				"lore": 1,
+				"challenge.knowledge": 1
+			},
+			"description": "秘史は、貴重な赤ワインの香りのように、我々が知っている歴史の下に隠されている。これは、その歴史の1つの断片だ。[この知識の欠片を頼って探索を続けると、、首都の秘密の場所にたどり着くかもしれない。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの秘史の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。",
+					"required": {
+						"fragmentsecrethistories": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentsecrethistoriesb"
+			}
+		},
+		{
+			"id": "fragmentsecrethistoriesb",
+			"label": "密かな真実",
+			"aspects": {
+				"secrethistories": 4,
+				"lore": 1,
+				"challenge.knowledge": 1
+			},
+			"description": "関係のある話から流れてきた話。盗み聞きされそうな場所では話さないようにしよう。[この知識の欠片を頼って探索を続けると、、州の秘密の場所にたどり着くかもしれない。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの秘史の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentsecrethistoriesb": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentsecrethistoriesc"
+			}
+		},
+		{
+			"id": "fragmentsecrethistoriesc",
+			"label": "忘れ去られた歴史",
+			"aspects": {
+				"secrethistories": 6,
+				"lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.intuition": 1
+			},
+			"description": "門のない街の話、生まれなかった女王の話、戦われなかった戦争の話。[この知識の欠片を頼って探索を続けると、、大陸の秘密の場所にたどり着くかもしれない。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの秘史の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentsecrethistoriesc": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentsecrethistoriesd"
+			}
+		},
+		{
+			"id": "fragmentsecrethistoriesd",
+			"label": "禁断の叙事詩",
+			"aspects": {
+				"secrethistories": 8,
+				"lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.intuition": 1
+			},
+			"description": "時の神々の注目は、血みどろの戦争に集まる。その後、歴史は髪のように編み込まれていく。[この知識の欠片を頼って探索を続けると、、森の向こうの大地に隠れている秘密の場所にたどり着くかもしれない。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの秘史の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentsecrethistoriesd": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentsecrethistoriese"
+			}
+		},
+		{
+			"id": "fragmentsecrethistoriese",
+			"label": "未解決な曖昧さ",
+			"aspects": {
+				"secrethistories": 10,
+				"lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.intuition": 1,
+				"challenge.illumination": 1
+			},
+			"description": "マンサスでは、時の神々が戦い合うこともある。闘争が解決されると、不可能なことを解決し、可能性を高め、ほつれた過去を黄金のリボンのように織り込んでいる。すべてが解決される運命にあり、歴史は過去となる。しかし、その中には、例外もある。[この知識の欠片を頼って探索すると、3000マイル先にある最古の帝国の遺跡に囲まれた、裂け目の山の秘密の場所にたどり着けるかもしれない。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの秘史の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentsecrethistoriese": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentsecrethistoriesf"
+			}
+		},
+		{
+			"id": "fragmentsecrethistoriesf",
+			"label": "ならず者の地図",
+			"aspects": {
+				"secrethistories": 12,
+				"lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.intuition": 1,
+				"challenge.illumination": 1
+			},
+			"description": "ならず者はマンサスには絶対に入れない時の神だが、彼女は他の場所なら<i>どこにでも</i>行ける......そして彼女の自慢を信じるならば、全ての歴史を知っている者は彼女以外にいない。彼女は時々、誰かに旅の記録を取らせている。[この知識の欠片を頼って探索を続けると、閑散とした平坦な砂地にある秘密の場所にたどり着くかもしれない。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの秘史の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentsecrethistoriesf": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentsecrethistoriesg"
+			}
+		},
+		{
+			"id": "fragmentsecrethistoriesg",
+			"label": "正午の港の逸話",
+			"aspects": {
+				"secrethistories": 14,
+				"lore": 1
+			},
+			"description": "正午の港は、長生者たちが海と太陽を楽しみ、飲めば世界から忘れ去られる泉から飲み、（ほとんどの）厄介事から逃れられる場所だ。ホテル・シエルヴォで聞ける話は、ストレートで出される、5回蒸留された黄金色の思い出の酒のようだ。[この知識の欠片を頼って探索を続けると、大海の向こう側の正午の港がある夕方の島の中で秘密の場所が見つかるかもしれない。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "理性を使って学び、伝承を低レベルの断片に分解する。",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"unique": true
+		},
+		{
+			"id": "fragmentwinter",
+			"label": "墓守の秘密",
+			"aspects": {
+				"winter": 2,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1
+			},
+			"description": "ある知識は、特殊な性質の沈黙によってしか伝わらないらしい。そのような知識は、目を閉じないと読めないが、それを読めるのはいたずらな解説者たちだけであるとも言われている。[儀式で、これを死体と刃の属性と合わせて使用すると死体が蘇る]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの冬の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの心臓の伝承を使って学び、それを転覆させると、心臓の伝承を手に入れることができる。",
+					"required": {
+						"fragmentwinter": 1,
+						"fragmentheart": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentwinterb"
+			}
+		},
+		{
+			"id": "fragmentwinterb",
+			"label": "白い儀式",
+			"aspects": {
+				"winter": 4,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1
+			},
+			"description": "それを口にするば、唇が霜で固まらなくない。毎回、これには驚かされる。[儀式で、心臓の影響力とビザンティンの塗料と合わせて使用すると、声なき死者を召喚する。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの冬の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの心臓の伝承を使って学び、それを転覆させると、心臓の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentwinterb": 1,
+						"fragmentheartb": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentwinterc"
+			}
+		},
+		{
+			"id": "fragmentwinterc",
+			"label": "衰退する太陽の作戦",
+			"aspects": {
+				"winter": 6,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.grim": 1
+			},
+			"description": "静寂への道を呼び起こし、認め、受け入れる。[儀式で、心臓の影響力とビザンティンの塗料と合わせて使用すると、声なき死者を召喚する。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの冬の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの心臓の伝承を使って学び、それを転覆させると、心臓の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentwinterc": 1,
+						"fragmentheartc": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentwinterd"
+			}
+		},
+		{
+			"id": "fragmentwinterd",
+			"label": "骨の鳩の召喚文",
+			"aspects": {
+				"winter": 8,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.grim": 1
+			},
+			"description": "奪われることはなく、惑わされることのない、記念と悲しみの力がある。彼を片手でつぶして、鳥の骨の欠片にすることができるかもしれない。[儀式で、マルテンサイトのペーストと開錠の助手（または同等の力を持つ資源）と合わせて使うと、鏡の少女を召喚する。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの冬の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの心臓の伝承を使って学び、それを転覆させると、心臓の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentwinterd": 1,
+						"fragmentheartd": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentwintere"
+			}
+		},
+		{
+			"id": "fragmentwintere",
+			"label": "失われた時の神々の暗唱",
+			"aspects": {
+				"winter": 10,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.grim": 1,
+				"challenge.obsessive": 1
+			},
+			"description": "6人がいなくなった。5人は石から、1人は光から来た。6人とも名もなき場所へと向かってしまった。未だに力を宿す彼らの記憶を召喚しよう。[儀式で、マルテンサイトのペーストと開錠の助手（または同等の力を持つ資源）と合わせて使うと、鏡の少女を召喚する。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの冬の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの心臓の伝承を使って学び、それを転覆させると、心臓の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentwintere": 1,
+						"fragmenthearte": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentwinterf"
+			}
+		},
+		{
+			"id": "fragmentwinterf",
+			"label": "名を持つ者たちの分裂",
+			"aspects": {
+				"winter": 12,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.grim": 1,
+				"challenge.obsessive": 1
+			},
+			"description": "栄光の太陽が分裂すると、その名を持つ者たちも分裂した。ここにあるのは、かつて無傷であった彼らの名前の破片だ。[儀式で、マルテンサイトのペーストと開錠の助手（または同等の力を持つ資源）と合わせて使うと、鏡の少女を召喚する。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同じレベルの冬の伝承の断片を使って学ぶと、次のレベルにアップグレードできる。同じレベルの心臓の伝承を使って学び、それを転覆させると、心臓の伝承を手に入れることができる。または、理性を使って学ぶと、伝承を低レベルの断片に分解することができる。",
+					"required": {
+						"fragmentwinterf": 1,
+						"fragmentheartf": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentwinterg"
+			}
+		},
+		{
+			"id": "fragmentwinterg",
+			"label": "狼の言葉",
+			"aspects": {
+				"winter": 14,
+				"lore": 1,
+				"subvertable_lore": 1
+			},
+			"description": "鍛造が冷たく、栄光が暗闇に包まれ、森が塵となれば、分裂した狼は休むだろう。だがそれも、自らを食い尽くし始めるまでの話だ。この言葉は分断された者の憎しみを語る。[ハンターに言えば、その場で発狂するかもしれない。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "理性を使って学び、伝承を低レベルの断片に分解する。",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"unique": true
+		},
+		{
+			"id": "fragmentglory",
+			"label": "栄光の記憶",
+			"aspects": {
+				"lantern": 6,
+				"forge": 6,
+				"lore": 1
+			},
+			"description": "――",
+			"comments": "Hello, Seeker. If you're here to decipher enigmas, familiarise yourself with the eidesis in which were presented the Lion, the Boar and the Bull. - AK.",
+			"xtriggers": {
+				"epiphany": "bequestintro"
+			},
+			"noartneeded": true
+		},
+		{
+			"id": "prealzabo",
+			"label": "公式：ゼボイムの霊薬？",
+			"description": "私は、蜂蜜、アスフォデル、粉末の象牙、死者が埋まっている場所にしか生えないまだら模様のキノコを使った秘密のレシピを持っている。",
+			"aspects": {
+				"lore": 1
+			},
+			"slots": [
+				{
+					"id": "desire",
+					"label": "誘惑",
+					"description": "古い記憶は地面に埋もれてしまうため、見つけることはできないが、埋もれすぎてしまう前に、別の場所に宿る。",
+					"actionId": "study",
+					"required": {
+						"remembrancemarks": 1
+					}
+				},
+				{
+					"id": "taste",
+					"label": "味わい",
+					"description": "後戻りはできない。",
+					"actionId": "study",
+					"required": {
+						"remnant": 1
+					}
+				},
+				{
+					"id": "materials",
+					"label": "材料",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "study"
+				}
+			]
+		},
+		{
+			"id": "alzabo",
+			"label": "公式：ゼボイムの霊薬",
+			"description": "生者の腹の中の腐った肉の記憶を蘇らせる公式。フラワーメーカーと哀歌詩人の承諾と、もう1人の時の神の支援があったからこそ......このようなものが存在している。",
+			"comments": "RIP Gene Wolfe, 1931-2019. 'Some are haunted by ghosts. I am haunted by stories.'",
+			"aspects": {
+				"lore": 1
+			},
+			"slots": [
+				{
+					"id": "desire",
+					"label": "欲望",
+					"description": "古い記憶は地面に埋もれてしまうため、見つけることはできないが、埋もれすぎてしまう前に、別の場所に宿る。",
+					"actionId": "study",
+					"required": {
+						"remembrancemarks": 1
+					}
+				},
+				{
+					"id": "feast",
+					"label": "ご馳走",
+					"description": "霊薬を飲めば、消化酵素が復活の使者となる。死者が生き返った――私の記憶の中だけで。",
+					"actionId": "study",
+					"required": {
+						"remnant": 1
+					}
+				}
+			]
+		}
+	]
+}

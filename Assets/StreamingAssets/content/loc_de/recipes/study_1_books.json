@@ -1,0 +1,1933 @@
+{
+	"recipes": [
+		{
+			"id": "studydehoris1",
+			"label": "De Horis, Band 1 lesen",
+			"actionId": "study",
+			"requirements": {
+				"dehoris1": 1
+			},
+			"effects": {
+				"dehoris1": -1,
+				"fragmentmoth": 1,
+				"erudition": 1
+			},
+			"startdescription": "Dieser Band befasst sich vor allem mit den Stunden im Forst: die Motte, der Schwarzflachs, die Ringeibe, um nur einige zu nennen.",
+			"description": "'Der Ruhm ist eine Frage, welche die Motte stets bejaht. Der Schwarzflachs verneint, und dies ist stets seine Antwort.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydehoris2",
+			"label": "De Horis, Band 2 lesen",
+			"actionId": "study",
+			"requirements": {
+				"dehoris2": 1
+			},
+			"effects": {
+				"dehoris2": -1,
+				"fragmentedge": 1,
+				"erudition": 1
+			},
+			"startdescription": "Dieser Band befasst sich vorwiegend mit dem Löwenschmied, dem Tribun der Narben und deren Feindschaft.",
+			"description": "'Der Löwenschmied erschafft Monster, um den Tribun zu bezwingen, doch die Narben des Tribuns sind jede für sich eine Waffe.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytravellingatnight1",
+			"label": "Diesen Band von 'Nächtliche Reisen' lesen",
+			"actionId": "study",
+			"requirements": {
+				"travellingatnight1": 1
+			},
+			"effects": {
+				"travellingatnight1": -1,
+				"fragmentmoth": 1,
+				"erudition": 1
+			},
+			"startdescription": "'Der Forst liegt jenseits der Mauern des Mansus. Wie jeder Student der Historien weiß, hat der Mansus keine Mauern.'",
+			"description": "Illopoly beschreibt, wie es dazu kam, dass er mehrmals einen Traumforst aufsuchte, vermittels Silberträumen, wie er sie zu nennen pflegt. 'Zu versuchen, sich aus dem Forst zu denken,' erläutert er, 'ist wie zu versuchen, sich verliebt zu denken. Doch ich habe ein Geheimnis entdeckt, das mir hilfreich war.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytravellingatnight2",
+			"label": "Diesen Band von 'Nächtliche Reisen' lesen",
+			"actionId": "study",
+			"requirements": {
+				"travellingatnight2": 1
+			},
+			"effects": {
+				"travellingatnight2": -1,
+				"fragmentwinter": 1,
+				"erudition": 1
+			},
+			"startdescription": "Es gibt einen umfangreichen Diskurs über die Ähnlichkeiten von Illopolys eigenen Träumen und denen von Kaiser Elagabalus, den Illopoly als Strohmann oder Inkarnation der Sonne in Lumpen betrachtet. 'Das Weiß ist westlich der Welt,' merkt Illopoly an, 'und der Winter wartet nicht ewig.'",
+			"description": "'Elagabalus ist dankenswerterweise endlich bis zur Weißen Tür gelangt. Das gesprochene Wort kann die Weiße Tür nicht passieren, und ehrlich gesagt hatte Elagabalus noch nie etwas zu sagen, was sonderlich interessant gewesen wäre. Ich habe versucht, in seine Fußstapfen zu treten, konnte jedoch nie genug über das Weiß erfahren. Vermutlich bin ich dafür sogar ganz dankbar. Doch hier ist das, was ich weiß ...'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytravellingatnight3",
+			"label": "Diesen Band von 'Nächtliche Reisen' lesen",
+			"actionId": "study",
+			"requirements": {
+				"travellingatnight3": 1
+			},
+			"effects": {
+				"travellingatnight3": -1,
+				"fragmentforge": 1,
+				"erudition": 1
+			},
+			"startdescription": "Illopolys Abhandlungen zu Feuer und dem Unverbrannten Gott werden unterbrochen von Passagen irritierend erotischer Poesie, die an 'Baldomera' gerichtet sind.'",
+			"description": "'Um die Tür des Hirschen zu erreichen, muss man, glaube ich, nur etwas genug wollen. Doch so sehr habe ich noch nie etwas gewollt, außer natürlich Baldomera, und ich fürchte sehr, dass der Clou dieser Geschichte folgender ist: was Baldomera will, ist die Tür des Hirschen. Doch hier nun etwas, das ich in Persien gelernt habe. Vielleicht kann ich dich ja lehren, was <i>du</i> willst.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studysixlettersonnecessity",
+			"label": "'Sechs Briefe über Notwendigkeiten' lesen",
+			"actionId": "study",
+			"requirements": {
+				"sixlettersonnecessity": 1
+			},
+			"effects": {
+				"sixlettersonnecessity": -1,
+				"fragmentforge": 1,
+				"erudition": 1
+			},
+			"startdescription": "Coseleys Anliegen klingt dringend – als hätte er so eine Ahnung, dass ihm nicht mehr viel Zeit bleibt.",
+			"description": "'Selbst das Tagesgestirn lässt sich teilen, wobei eine solche Teilung jedoch der Schmiede der Tage bedarf.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studylocksmithsdream1",
+			"label": "Diesen Band von 'Der Traum des Kleinschmieds' lesen",
+			"actionId": "study",
+			"requirements": {
+				"locksmithsdream1": 1
+			},
+			"effects": {
+				"locksmithsdream1": -1,
+				"fragmentlantern": 1,
+				"erudition": 1
+			},
+			"startdescription": "Die Parallelen der mystischen Träume, wie sie Zimmerleute, Steinmetze und andere Handwerker erlebt haben, und was sie über die Architektur der Welt offenbaren. Manchmal beißend sarkastisch, manchmal heiter. Niemand hat jemals erklärt, warum Galmier sich dieser donquichottischen Erkundung der Träume von Handwerkern widmete.",
+			"description": "'Wieder und wieder hören wir vom Forst, der sich aus den Grundfesten der Welt erhebt. Alle Bäume streben nach dem Licht. Wonach strebt der Forst? Gibt es einen Unterschied zwischen licht und Licht? Ich denke, der Schlüssel zu den Träumen des Forstes könnte einer von diesen sein – derjenige, der nicht wirklich real ist.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studylocksmithsdream2",
+			"label": "Diesen Band von 'Der Traum des Kleinschmieds' lesen",
+			"actionId": "study",
+			"requirements": {
+				"locksmithsdream2": 1
+			},
+			"effects": {
+				"locksmithsdream2": -1,
+				"fragmentknock": 1,
+				"erudition": 1
+			},
+			"startdescription": "In diesem Band hat Galmier weniger Träume festgehalten und geht dafür noch ausführlicher auf ihre eigenen ausgefeilten Theorien ein. 'Wir sehen dies wieder und wieder: was unten ist, kann dem nicht entrinnen, was oben ist.'",
+			"description": "'Die besten Handwerker träumen am Ende alle von der Weißen Tür. Ich bin kein Handwerker, nur ein Gelehrter. Ich denke, es gibt da ein Geheimnis, das all diese Handwerker kennen, doch ich denke auch, das jenes Geheimnis nur die eine Hälfte der Geschichte ist.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studylocksmithsdream3",
+			"label": "Diesen Band von 'Der Traum des Kleinschmieds' lesen",
+			"actionId": "study",
+			"requirements": {
+				"locksmithsdream3": 1
+			},
+			"effects": {
+				"locksmithsdream3": -1,
+				"fragmentmothb": 1,
+				"glimmering": 1
+			},
+			"startdescription": "Dieser Band ist dafür berüchtigt, dass sich Galmiers Prosa aufzulösen beginnt, und es ist nicht klar, welche Träume nun eigentlich ihre eigenen sind.",
+			"description": "'Die Frau in der sandfarbenen Robe hat mir gesagt: die Treppen des Mansus führen stets nach oben. Der Tod ist unten. Die Mutter der Ameisen bewacht beide Richtungen mit jeweils einem ihrer Köpfe, weshalb die Passage immer durch eine Wunde führen muss. Ich denke, die Weiße Tür könnte eine Wunde sein. Das ist einer der Gründe, warum die Toten sie manchmal passieren. Ich denke, ich kenne nun die andere Hälfte des Geheimnisses, und ich hoffe, mein Leser kann beide Hälften miteinander vereinen.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studylocksmithsdream4",
+			"label": "Diesen Band von 'Der Traum des Kleinschmieds' lesen",
+			"actionId": "study",
+			"requirements": {
+				"locksmithsdream4": 1
+			},
+			"effects": {
+				"locksmithsdream4": -1,
+				"fragmentmothc": 1,
+				"fragmentlanternc": 1,
+				"fascination": 1
+			},
+			"startdescription": "'Janus ist der Torwächter, der Zwillingsgott, der Gott, der verwundet, der Prophet des Wandels, die Sonne, der Mond. Also verbinden wir ihn mit dem Wächter, den Zwillingen, der Mutter, der Schmiede, der Meniskate und der Madrugada. Er kann nicht all das sein. Oder doch? Die <i>Flaminen</i> kannten die Kirche, kannten das Trockene Land, kannten Elagabalus. Ist er dann Synthese? Oder etwas anderes? In Gallaecia nannte man ihn Ianus Lamius, doch die Obliviaten sind bekannt für ihre Verunglimpfungen.'",
+			"description": "'Janus habe, so sagen sie, nicht eines, sondern zwei Gesichter. Worauf ich entgegne: Warum nur eins? Warum nur zwei? Hersault und Coseley waren sich – laut Thomas Love Denman – einst einig, dass Janus 'alle Götter und keiner' sei. Doch später beharrte Hersault darauf, er sei 'alle Götter', wohingegen Coseley 'keiner' bevorzugte. Denman war ein sinistrer Dilettant, doch dies scheint den beiden ähnlich zu sein.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyorchidtransfigurations1",
+			"label": "Diesen Band der 'Orchideentransfigurationen' lesen",
+			"actionId": "study",
+			"requirements": {
+				"orchidtransfigurations1": 1
+			},
+			"effects": {
+				"orchidtransfigurations1": -1,
+				"fragmentgrail": 1,
+				"glimmering": 1
+			},
+			"startdescription": "Die Illustrationen sind zweifellos beeindruckend. Sie machen Gänsehaut und leuchten unter den Lidern, wenn das Buch geschlossen ist.",
+			"description": "'Wir müssen verzehren um verzehrt zu werden. Wir können ebensowenig unverzehrt sein wie wir ungeboren sein können.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyorchidtransfigurations2",
+			"label": "Diesen Band der 'Orchideentransfigurationen' lesen",
+			"actionId": "study",
+			"requirements": {
+				"orchidtransfigurations2": 1
+			},
+			"effects": {
+				"orchidtransfigurations2": -1,
+				"fragmentgrailb": 1
+			},
+			"startdescription": "Fludd, oder Pseudo-Fludd, sieht Hinweise dafür, dass die alchemische Tradition des Rubedo und die ältere Traditionen des Grals durch die Suche des Pinien-Ritters nach dem Zinnoberkelch miteinander verknüpft sind.",
+			"description": "'Suche den Kelch im Bett der Niederkunft', wird dem Pinien-Ritter gesagt. Die Hebamme am Bett der Niederkunft ist, zu seinem Erstaunen, die Berg-Mutter. In einem Anfall von Ehrfurcht kastriert und kasteit er sich. Der Wachsame Sturm birst fröhlich aus den Überresten.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyorchidtransfigurations3",
+			"label": "Diesen Band der 'Orchideentransfigurationen' lesen",
+			"actionId": "study",
+			"requirements": {
+				"orchidtransfigurations3": 1
+			},
+			"effects": {
+				"orchidtransfigurations3": -1,
+				"fragmentheart": 1
+			},
+			"startdescription": "Ein langer Dialog zwischen der Berg-Mutter und dem Wachsamen Sturm beschreibt, wie sowohl Berge als auch Stürme ihr Ende finden, und wie sie sich dagegen wappnen.",
+			"description": "'Doch wir müssen das Messer benutzen', sprach der Eine auf dem Löwenthron, 'die Schlinge, die Flamme, das Wachende Wort, gegen solche, welche die Tür mit den Drei Ventilen passiert haben. Und so darf niemand passieren: So lautet unser Gesetz und das Gesetz der Sonne.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyhumoursofagentleman",
+			"label": "Savages 'Launen eines Herrn' studieren",
+			"actionId": "study",
+			"requirements": {
+				"humoursofagentleman": 1
+			},
+			"effects": {
+				"humoursofagentleman": -1,
+				"fragmentlantern": 1
+			},
+			"startdescription": "Am Ende des 1. Akts hat Maevelin eine Geheimtür in den Mauern des Hauses des Löwen entdeckt und Corvino hat angefangen Würmer zu verzehren.",
+			"description": "Das Stück ist schlüpfrig und zuweilen urkomisch. Die Figuren sind konträr und kapriziös. Viele der prägnanteren Textstellen könnten genau so gut Formeln der Macht sein, verborgen, und doch so offensichtlich.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyvictoryofcrowns",
+			"label": "Den 'Sieg der Kronen' von 'Arun' studieren",
+			"actionId": "study",
+			"requirements": {
+				"victoryofcrowns": 1
+			},
+			"effects": {
+				"victoryofcrowns": -1,
+				"fragmentedge": 1
+			},
+			"startdescription": "Die Meuchelmörder sind, wenn man 'Arun' Glauben schenkt, die Agenten einer Macht namens Coronel, eines 'Soldaten der Geheimen Meister'. Die Zeugnisse gehen zurück bis ins Alte Rom.",
+			"description": " Aruns Bildung ist zweifelhaft, doch er (sie?) schreibt prägnant. Schilderungen ebenso plötzlicher wie gewaltsamer Tode werden durch Aphorismen aufgelockert: 'Stunden träumen nicht. Die Langen können dies nur versuchen.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyintroductiontohistories",
+			"label": "Hersaults 'Einführung in die Historien' studieren",
+			"actionId": "study",
+			"requirements": {
+				"introductiontohistories": 1
+			},
+			"effects": {
+				"introductiontohistories": -1,
+				"fragmentsecrethistories": 1
+			},
+			"startdescription": "Der Prolog warnt wortreich vor den Ungerechtigkeiten eines gewissen Julian Coseley, eines früheren Kollegen, den Hersault nun düster als 'einen Wurm der Würmer' beschreibt. Offenbar stand Coseley Hersault anfangs beim Verfassen des Buches mit seinem Rat zur Seite, doch später schöpfte Hersault dann Verdacht.",
+			"description": "Hersault nennt Blut, Silber, Gestaltung und die Würmer als zentrale Achsen jeder der Historien und behauptet, die so genannte Zweite Historie sei die wahre. ",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytreatiseonunderplaces",
+			"label": "Hersaults 'Traktat zu Unterorten' studieren",
+			"actionId": "study",
+			"requirements": {
+				"treatiseonunderplaces": 1
+			},
+			"effects": {
+				"treatiseonunderplaces": -1,
+				"fragmentknockb": 1
+			},
+			"startdescription": "'Die Mauern des Mansus', beginnt Hersault, 'haben die Größe von Sternenlicht.' Viele seiner Hinweise sind ähnlich nutzlos, doch es zeichnen sich durchaus gemeinsame Beziehungen ab.",
+			"description": "Eine pikareske Schilderung einer Reise durch einen Alptraum, aufgelockert durch, wie es scheint, Teile von Ritualen. 'Auf dem 18. Aufstieg ist die Knospe. Auf dem 36. Aufstieg ist die Blüte.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyonthewhite",
+			"label": "'Über das Weiß' studieren",
+			"actionId": "study",
+			"requirements": {
+				"onthewhite": 1
+			},
+			"effects": {
+				"onthewhite": -1,
+				"fragmentwinter": 1
+			},
+			"startdescription": "Bei näherem Hinsehen scheint das Werk eine Theorie der Ästhetik zu sein, oder vielleicht eine Reihe von Warnungen vor den Risiken des Malens.",
+			"description": "Husher schreibt zerstreut über seinen Hass auf Farben und seine Todessehnsucht. Er deutet ein Großes Werk an, das er im Sinne oder bereits begonnen hat – das 'blasseste aller Gemälde' solle die Welt bezaubern. Wieder und wieder kommt er auf gewisse fesselnde Formulierungen zurück, von denen er behauptet, sie seien die 'geheimen Worte des Winters'.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studywaroftheroadscensored",
+			"label": "Eine zensierte Ausgabe von 'Der Krieg auf den Straßen, 1450 – 1580' studieren",
+			"actionId": "study",
+			"requirements": {
+				"waroftheroadscensored": 1
+			},
+			"effects": {
+				"waroftheroadscensored": -1,
+				"fragmentsecrethistoriesb": 1
+			},
+			"startdescription": "'In dieser Vergangenheit wurde eine Stiege Longs oder sogar noch mehr gemacht. Sie handelten einen Frieden mit der Schmiede der Tage aus, lange genug um England den Weg zu anfänglichen Eroberungen und seiner letztendlichen Vernichtung zu ebnen. Die Schmiede selbst verzehrte die Größten unter ihnen.'",
+			"description": "Die Angehörigen des englischen Königshauses wurden, laut Willis-Ford, zu den Souveränen der Gezügelten Flamme, vernichteten oder verwandelten ihre Feinde, eroberten Europa, und errichteten St. Funke grandiose Dome. Die Allianz mit der Schmiede beginnt ihre Opfer zu fordern. Die letzten paar Kapitel fehlen vollständig.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyqueensoftherivers",
+			"label": "'Die Königinnen der Flüsse' studieren",
+			"actionId": "study",
+			"requirements": {
+				"queensoftherivers": 1
+			},
+			"effects": {
+				"queensoftherivers": -1,
+				"fragmentsecrethistories": 1
+			},
+			"startdescription": "Die Königin der Weichsel ist vergiftet. Die Königin des Dnjepr erstickt an einem Angelhaken. Die Königin des Tajo verbrennt bei lebendigem Leibe ...",
+			"description": "Der Schuldige, stellt sich heraus, ist das Publikum. Die überlebenden Königinnen bekommen Anweisung, alle im Publikum hinzurichten, denen die Flucht nicht gelungen ist. Ein verblüffend klarer Epilog legt den Schluss nahe, dass der Zusammenhang von Flussnamen und historischen Ereignissen darauf schließen lässt, dass sich hinter unserer eigenen Geschichte geheime Historien verbergen.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyapolloandmarsyas",
+			"label": "'Apoll und Marsyas' studieren",
+			"actionId": "study",
+			"requirements": {
+				"apolloandmarsyas": 1
+			},
+			"effects": {
+				"apolloandmarsyas": -1,
+				"fragmentheart": 1
+			},
+			"startdescription": "Im ursprünglichen Mythos verlor Marsyas einen musikalischen Wettstreit. Apoll ließ ihm bei lebendigem Leibe die Haut abziehen, was er später jedoch bereuen sollte. In dieser Fassung hat die Haut des Marsyas eine weitere Geschichte ...",
+			"description": "Die Haut des Marsyas tut Orakelsprüche kund und wird später nach Phrygien geschmuggelt, wo die Priesterinnen der Kybele sie als Trommelfell benutzen. Auf dem Höhepunkt der Oper treibt das Schlagen der Trommel alle, die sich anschicken, die Priesterinnen zu schänden, in selbstmörderischen Wahnsinn. Die Oper endet mit einer wehmutsvollen Hymne der jüngsten Priesterin an die Schönheit der Pinien des Gebirges.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyskeletonsongs",
+			"label": "Die 'Skelettlieder' studieren",
+			"actionId": "study",
+			"requirements": {
+				"skeletonsongs": 1
+			},
+			"effects": {
+				"skeletonsongs": -1,
+				"fragmentgrail": 1
+			},
+			"startdescription": "In ihrer Einleitung erklärt Arabella, dass das Buch illustriert werden sollte, das Büro für Unterdrückung dies aber untersagt habe. Sie deutet an, dass es die Illustrationen irgendwo immer noch gebe. Das Buch ist 'Herrn Parzival vom Roten Kelche' gewidmet.",
+			"description": "Die Sechsundzwanzig Köstlichen Früchte, die Sieben Kasteiungen, die Neun Gärten, die Vier Bereuungen.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyburningofunburntgod",
+			"label": "Tasmanes 'Die Verbrennung der Unverbrannten Gottes' studieren",
+			"actionId": "study",
+			"requirements": {
+				"burningofunburntgod": 1
+			},
+			"effects": {
+				"burningofunburntgod": -1,
+				"fragmentforgeb": 1,
+				"ritetoolconsumefollower": 1
+			},
+			"startdescription": "Tasmane spekuliert über eine Feuergottheit aus vorzoroastrischen Zeiten, deren Riten die Riten der Schmiede waren.",
+			"description": "Tasmane kommt, mit offenkundigem Widerwillen, zu dem Schluss, dass es sich bei der Gottheit um eine Göttin gehandelt haben muss. Er vermutet, dass das Geschlecht der Grund für die Unterdrückung gewesen sein könnte. Die beschriebenen Riten sind häufig unheimlich, manchmal grausig.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydebellismurorum",
+			"label": "'De Bellis Murorum' von 'Solipsistos' studieren",
+			"actionId": "study",
+			"requirements": {
+				"debellismurorum": 1
+			},
+			"effects": {
+				"debellismurorum": -1,
+				"fragmentedgeb": 1
+			},
+			"startdescription": "Das Gedicht beschreibt in Form einer Ellipse einen Krieg unter Bestien, Wetterphänomenen und arkanen Konzepten. Die Taktiken werden Dabei im Detail beschrieben.",
+			"description": "'Die Zwei-Eine vereint, die Gehörnte ausgezeichnet. Konsequenz: Blut.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyonwhatiscontainedbysilver",
+			"label": "Poemanders 'Was sich im Silber verbirgt' lesen",
+			"actionId": "study",
+			"requirements": {
+				"onwhatiscontainedbysilver": 1
+			},
+			"effects": {
+				"onwhatiscontainedbysilver": -1,
+				"fragmentlanternb": 1,
+				"ritetoolfollowerconsumelore": 1
+			},
+			"startdescription": "Ein finsteres Bestiarium all der Schrecken, die in Spiegeln zu finden sind. Dies ist eine neuere Ausgabe eines Texts von 'Poemander' aus dem 3. Jahrhundert.",
+			"description": "'Die Jungfrauen/Maiden des Spiegels bevorzugen Orchideen. Die [Verstecker?] bevorzugen Rhododendron. Schnittblumen beider Art sollten nicht vor polierte Bronze gestellt werden.' Im Anhang ist ein Ritus zu finden, der verwendet werden kann, um einige dieser Wesen zu beschwören, wobei keine Details zur Verwendung angegeben werden.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytruecompleteasclepian",
+			"label": "Greses 'Eine wahre und vollständige Abhandlung über die Asklepischen Mysterien der Wurzeln des Hauses' lesen",
+			"actionId": "study",
+			"requirements": {
+				"truecompleteasclepian": 1
+			},
+			"effects": {
+				"truecompleteasclepian": -1,
+				"fragmentheartb": 1,
+				"ritetoolconsumeinfluence": 1
+			},
+			"startdescription": "Dies ist ganz offensichtlich kein Text aus der Antike. Er wurde in jedem Falle grob verstümmelt. Und doch enthält er eine substanzielle Menge faszinierenden Materials, vor allem einen überzeugenden Vergleich des Hauses ohne Mauern mit dem menschlichen Leib.",
+			"description": "'Die Richtung des Todes ist nach unten', erläutert das Buch. 'Die Pfauentür galt als Riss oder Abrasion, doch in mancherlei Hinsicht ist sie eher wie ein Mund – wenn nicht gar ein noch mehr geschätzter Zugangspunkt.' Zu den Abhandlungen über die Tür zählen ein Ritus, mit dem Kreaturen durch solche Türen beschworen werden können, wobei wichtige Beschwörungen fehlen.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studywainscothistories",
+			"label": "Gores 'Täfelungshistorien' lesen",
+			"actionId": "study",
+			"requirements": {
+				"wainscothistories": 1
+			},
+			"effects": {
+				"wainscothistories": -1,
+				"fragmentsecrethistoriesb": 1
+			},
+			"startdescription": "Gore erwähnt den Mansus nicht direkt, aber ständige kokette metaphorische Verweise auf 'Das Hinaufgehen im Treppenhaus der Jahre', die 'Türen des Schlafs'  und das 'Blaue Licht der Dämmerung' deuten darauf hin, dass er sich im Austausch mit der ungesehenen Welt befand.",
+			"description": "'Es war damals normal, von der Teilung der Sonne zu sprechen, worunter Zeitgenossen das Eindringen barbarischer Horden und deren primitiver Götter verstanden.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studygeminiad",
+			"label": "Die Geminiade lesen",
+			"actionId": "study",
+			"requirements": {
+				"geminiad": 1
+			},
+			"effects": {
+				"geminiad": -1,
+				"geminiadread": 1,
+				"fragmentgraild": 1,
+				"fragmentheartd": 1,
+				"fragmentmothd": 1,
+				"riteinfluenceconsumeingredient": 1
+			},
+			"startdescription": "Auf diesen Seiten werden die Natur und die Doktrinen einer Stunde umrissen, welche die Einheit des Ruhenden verlangt, einer Stunde, die am Ufer und unter dem Mond zu suchen ist: die Hexe-und-Schwester. Die Sprache ist verzwickt, poetisch und eigensinnig. Es wird einige Zeit dauern, einen Zugang zu ihr zu finden.",
+			"description": "Die Geminiade erinnert uns daran, dass die Hexe-und-Schwester dafür bekannt ist, sich als Schwester-und-Hexe zu manifestieren – und dass dieses Gesicht heilen mag, während das andere Gesicht stets hungrig ist. Sie impliziert Verbindungen zwischen der Hexe-und-Schwester und den Stunden des Forstes – vor allem zu dem Geheimnishüter namens Samt –, doch sie ist nicht eindeutig, ob die Hexe-und-Schwester eine wahre Forst-Stunde ist. Und sie geht ausführlich auf die Traurigkeit der Zwei-die-eins-sind ein, die Traurigkeit, die von ihrer Zeit als Fleisch geblieben ist.",
+			"warmup": 90,
+			"craftable": true
+		},
+		{
+			"id": "studychioneatabydos",
+			"label": "'Chione in Abydos' lesen",
+			"actionId": "study",
+			"requirements": {
+				"chioneatabydos": 1
+			},
+			"effects": {
+				"chioneatabydos": -1,
+				"fragmentwinterb": 1
+			},
+			"warmup": 60,
+			"startdescription": "Das Wesen namens 'Chione' taucht in einem Schneesturm auf und verlangt, dass die Tore der Stadt verriegelt werden. Als Abydos in ihren Bann gerät, kehren die Toten zurück, bleiben aber stumm ...",
+			"description": "Acht Jahre ist die Stadt ein Ort des langsames Todes, frostiger Ekstase und stiller Schönheit, doch im neunten Jahre erhebt sich eine Verschwörung des Schreiens gegen die Stille, die Chione verlangt. Die Verschwörer öffnen die Tore der Stadt und ein narbiger Mann kommt, um Chione an den Haaren hinaus zu schleifen. Der Sommer kehrt zurück, doch die Verschwörer sterben an Reue.",
+			"craftable": true
+		},
+		{
+			"id": "studyirreproachabletraditionssocietynobleendeavour",
+			"label": "'Die untadeligen Traditionen der Gesellschaft des Hehren Unterfangens' lesen",
+			"actionId": "study",
+			"requirements": {
+				"irreproachabletraditionssocietynobleendeavour": 1
+			},
+			"effects": {
+				"irreproachabletraditionssocietynobleendeavour": -1,
+				"fragmentforgeb": 1
+			},
+			"warmup": 60,
+			"startdescription": "Ihr 'Unterfangen' was nicht weniger hehr – eine wilde arkane Feuersbrunst, die sieht zu etwas Höherem als Menschen formen sollte.  Doch solche Verwandlungen sind selten, und nur allzu oft blieb am Ende nichts als Asche.",
+			"description": "Partridge behauptet, bei allen Aufgefahrenen die gleichen Eigenschaften erkannt zu haben. Alle hatten die Tür des Hirsches passiert und galten als Wissende. Alle sagten zu Beginn ihres Auffahrens das Callidate-Bittgebet auf oder führten einen noch höheren Ritus durch. Und alle waren reich.",
+			"craftable": true
+		},
+		{
+			"id": "studyroseofnuriel",
+			"label": "'Die Rose von Nuriel' lesen",
+			"actionId": "study",
+			"requirements": {
+				"roseofnuriel": 1
+			},
+			"effects": {
+				"roseofnuriel": -1,
+				"fragmentgrailb": 1,
+				"fragmentknockb": 1
+			},
+			"warmup": 60,
+			"startdescription": "St. Tryphon, so Nuriel, wirkte geheime Wunder im Namen von der 'Blutenden und Tragenden' und der 'Öffnenden'. Und so machte St. Tryphon den Weg zum Hause der Sonne frei. Und so unterzog sich St. Tryphon der Großen Geburt und fuhr auf zur Unsterblichkeit.",
+			"description": "St. Tryphon begann seinen Auffahren durch das Passieren der 'Gehörnten Tür'. Er setzte sie fort, indem er die 'Anrufung Thiatiks' erlernte – die Nuriel hier aufgrund ihrer extremen Heiligkeit nicht festhält. Und um, wie Nuriel düster erklärt, die Sieben Zeichen der Großen Geburt zu erlangen, verzehrte St. Tryphon 'sowohl jene, deren Seele sie verlassen hatte, als auch jene, in denen die Seele noch verweilte.'",
+			"craftable": true
+		},
+		{
+			"id": "studyroseofhypatia",
+			"label": "'Die Rose von Hypatia' lesen",
+			"actionId": "study",
+			"requirements": {
+				"roseofhypatia": 1
+			},
+			"effects": {
+				"roseofhypatia": -1,
+				"fragmentheartb": 1,
+				"fragmentmothb": 1
+			},
+			"warmup": 60,
+			"startdescription": "St. Nympha wird als 'nicht geboren, aber kultiviert' beschrieben. Das Bewusstsein, das zur Heiligen wurde, fuhr, so 'Hypatia', in den Leichnam eines Sünders, um dessen Erlösung zu bewirken.",
+			"description": "'Nicht alle Toten betreten den Mansus durch die Wintertür. Nicht alle Toten gelangen überhaupt in den Mansus.",
+			"craftable": true
+		},
+		{
+			"id": "studyroseofwaznei",
+			"label": "'Die Rose von Waznei' lesen",
+			"actionId": "study",
+			"requirements": {
+				"roseofwaznei": 1
+			},
+			"effects": {
+				"roseofwaznei": -1,
+				"fragmentlanternb": 1,
+				"fragmentedgeb": 1
+			},
+			"warmup": 60,
+			"startdescription": "Der von Waznei bevorzugte Ableger – 'die Wahre Schwesternschaft' – folgte St. Respicius bei dessen Streben nach dem Auffahren im Namen der Tür-im-Auge, der gnadenlosen Stunde des Lichts. St. Respicius scheiterte, vielleicht weil die größere Schwesternschaft ihm auf die Spur kam und rituell erdrosselte, doch Waznei stellt Schritte für alle jene dar, die sich Hoffnung auf Erfolg machen.",
+			"description": "'Suche in Träumen. Suche den Mansus. Das Dritte Zeichen kann nur erlangen, wer die Tür des Hirsches passiert hat. Er muss den Forst passieren. Er muss sich zur Weißen Tür erheben. Die Tür des Hirsches erwartet den Lichtbringer, am Angesichte Ghirbis.'",
+			"craftable": true
+		},
+		{
+			"id": "studysunsetpassages",
+			"label": "'Sonnenuntergangspassagen' lesen",
+			"actionId": "study",
+			"requirements": {
+				"sunsetpassages": 1
+			},
+			"effects": {
+				"sunsetpassages": -1,
+				"fragmentwinterb": 1
+			},
+			"warmup": 60,
+			"startdescription": "Die Kirche verehrte die Sonne-in-Glorie vor deren Teilung – doch selbst als sie noch eins war, wurden ihre späteren Inkarnationen als ihre Namen anerkannt. Die Madrugada, natürlich, wachte über den Tod und die Passage in das Haus.",
+			"description": "Die Weiße Zeremonie wurde zu Ehren der Madrugada abgehalten, bei Bestattungen in der Kühle vor der Dämmerung. Der Text warnt, dass alle Klingen während der Zeremonie in ihrer Scheide zu bleiben haben, 'für den Fall, dass der Leichnam nicht nicht still ist.'",
+			"craftable": true
+		},
+		{
+			"id": "studygospelzacchaeus",
+			"label": "'Das Evangelium des Zachäus' lesen",
+			"actionId": "study",
+			"requirements": {
+				"gospelzacchaeus": 1
+			},
+			"effects": {
+				"gospelzacchaeus": -1,
+				"fragmentknockc": 1,
+				"ritefollowerconsumeingredient": 1
+			},
+			"warmup": 60,
+			"startdescription": "'Sieben war die Zahl der Wunden in seinem Leibe, sieben die Zahl der Türen des Hauses. Sieben war die Zahl der niederen Aspekte der Stunden, und das Klopfen der Aspekt über allen, denn die Mutter der Ameisen ist die Mutter der Erlösung.'",
+			"description": "Das Buch enthält die Beschreibung eines Ritus, der dazu dienen kann, einen Leichnam zum Halbleben zu erwecken, 'zum Gedenken an Ihn, der für den Forst geblutet hat'. Dazu braucht es einen Leichnam und genügend Macht – der Autor schlägt eine Anrufung von Winter-Wissen sowie einen Assistenten vor, der von den Mächten des Forstes berührt wurde.",
+			"craftable": true
+		},
+		{
+			"id": "studymatthiasamethystloss",
+			"label": "'Über Matthias und das Amethyst-Imago: Verlust' lesen",
+			"actionId": "study",
+			"requirements": {
+				"matthiasamethystloss": 1
+			},
+			"effects": {
+				"matthiasamethystloss": -1,
+				"fragmentmothc": 1,
+				"ritetoolconsumeinfluence": 1
+			},
+			"warmup": 60,
+			"startdescription": "'Die Gesetze des Hauses verbaten Matthias die Liebe. Die Bräuche des Forsts verboten dem Imago das Verweilen. Also beschwor er sie ein letztes Mal, als sie die Schere von Alakapura entdeckt hatte. Und sie ließ ihn ihr die Schwingen vom Rücken schneiden, auf dass sie würde bleiben mögen. Und er ließ sie das abschneiden, was die Saat des Mannes in sich birgt, um ihn vor dem Schändlichen Akte zu bewahren. Dies war Liebe in all ihrem Blut und all ihrer Freude. Wir haben Matthias aus dem Hause verstoßen.'",
+			"description": "'Der Ritus des Kartenrandes wurde uns vom Vagabunden überlassen. Es ist dieser Ritus, den Matthias einsetzte, um das Amethyst-Imago zu beschwören, doch wie so viele Beschwörungsriten konnte es zur Beschwörung fast jeder Art von Wesen benutzt werden – das entsprechende Werkzeug und der entsprechende Einfluss vorausgesetzt. Nutze es mit Umsicht, im Gedenken an den Namen und die Langen, die diese Marter erduldeten, um sich zu vereinen.'",
+			"craftable": true
+		},
+		{
+			"id": "studymatthiasamethysttransformation",
+			"label": "'Über Matthias und das Amethyst-Imago: Verwandlung' lesen",
+			"actionId": "study",
+			"requirements": {
+				"matthiasamethysttransformation": 1
+			},
+			"effects": {
+				"matthiasamethysttransformation": -1,
+				"fragmentforgec": 1
+			},
+			"warmup": 60,
+			"startdescription": "'Wir verstießen Matthias und belegten das Amethyst-Imago mit einem Fluch, doch wir schauten sie uns in Träumen an. Wir sahen, wie sie sich der Schmiede angelobten, um sich zu verwandeln und erneut aufzufahren. In das Feuer fliegen sie.'",
+			"description": "Dies ist die erste der Praktiken, derer sich das Imago und Matthias bedienten, um mit ihrem Aufstieg an die Macht zu beginnen. Sie haben sich jenseits unseres Sichtkreises erhoben, doch ihre Flammen könnten noch immer brennen im Mallearium.'",
+			"craftable": true
+		},
+		{
+			"id": "studymatthiasamethystpursuit",
+			"label": "'Über Matthias und das Amethyst-Imago: Verfolgung' lesen",
+			"actionId": "study",
+			"requirements": {
+				"matthiasamethystpursuit": 1
+			},
+			"effects": {
+				"matthiasamethystpursuit": -1,
+				"fragmentgrailc": 1
+			},
+			"warmup": 60,
+			"startdescription": "'Matthias trotzte uns, um die Namen der Motte im Forst zu jagen und seine aufgespießte Sammlung zu erweitern. Das Amethyst-Imago hat mit der Hexe-und-Schwester geliebäugelt, kehrte dann jedoch in den Forst zurück, um die Motte um Vergebung zu bitten. Die Motte, aus einer Laune heraus oder zur Strafe, entsandte sie, um die Langen in einen Tümpel voller Alpträume zu locken.'",
+			"description": "'Matthias liebt das Imago. (Wirklich? Können Lange lieben oder ist jenes Organ ihrer Seele unwiederbringlich ausgetrocknet?) Das Imago liebte Matthias. (Wirklich? Oder folgte sie nur einer Laune?) Er verfolgte sie durch den Wald, doch im letzten Moment wich sie dem Alptraumtümpel aus, und sie ließen sich zusammen dorthin sinken, wo die Grenzen hell werden. So lernten sie die Freuden des Grals kennen, und dies ist das Wissen, das sie gewannen.'",
+			"craftable": true
+		},
+		{
+			"id": "studyfranklinbancroftdiaries",
+			"label": "'Lord Franklin Bancroft: Tagebücher, 1750-1790' lesen",
+			"actionId": "study",
+			"requirements": {
+				"franklinbancroftdiaries": 1
+			},
+			"effects": {
+				"franklinbancroftdiaries": -1,
+				"fragmentlanternc": 1
+			},
+			"warmup": 60,
+			"startdescription": "Bancroft schien ein begabter Schüler gewesen zu sein, doch er steckte seine Energie in frustrierend skurrile Projekte: er organisierte 'Traubenrennen' für Mansus-Geister, lehrte Percussiganten das Jonglieren und beschwor Stürme imaginärer Blüten für die Rosenhexe Ayrshire herbei, die sich standhaft weigerte, jemals mit ihm anzubandeln. Bancroft verbringt 20 Seiten damit, Letzteres zu bedauern.",
+			"description": "Das hier festgehaltene Mantra ist hohe und präzise Magie, die sich dazu verwenden lässt, den eigenen Geist dem Wächter anzugeloben. Es beginnt mit einem Aufstieg zum Haus. Bancroft prahlt damit, es rezitieren zu können, wenn er dem Alkohol zugesprochen hat. Er ließ zudem Musik dafür komponieren, um es zu Feuerwerk in Vauxhall Gardens aufzuführen.",
+			"craftable": true
+		},
+		{
+			"id": "studyindignitiesobliviate",
+			"label": "'Jene Würdelosigkeiten der Betrügerischen Bruderschaft der Obliviaten' lesen",
+			"actionId": "study",
+			"requirements": {
+				"indignitiesobliviate": 1
+			},
+			"effects": {
+				"indignitiesobliviate": -1,
+				"fragmentwinterc": 1,
+				"ritetoolfollowerconsumelore": 1
+			},
+			"warmup": 60,
+			"startdescription": "'ACHTUNDFÜNFZIG. Dass sie behauptet haben, die Traditionen des Hauses von Lethe geerbt zu haben, obwohl sie dessen heiligste und schönste Zeremonien IGNORIERTEN, wo sie ihnen nicht ANGENEHM erschienen. NEUNUNDFÜNFZIG ...'",
+			"description": "'Nun teile ich den Ritus mit, mit dem der Orden einen Caligine-Geist beschwor. In KLAREM WIDERSPRUCH zur Lethischen Tradition brachten sie kein Klopfen-Wissen mit einem Winter-Initiierten und einem Malleus-Imperativ dar, SONDERN Winter-Wissen mit einem Klopfen-Initiierten und dem Malleus! Es ziemt sich nicht...'",
+			"craftable": true
+		},
+		{
+			"id": "studyfurioustantra",
+			"label": "'Das Zornige Tantra'",
+			"actionId": "study",
+			"requirements": {
+				"furioustantra": 1
+			},
+			"effects": {
+				"furioustantra": -1,
+				"fragmentedgec": 1,
+				"ritefollowerconsumetool": 1
+			},
+			"warmup": 60,
+			"startdescription": "Dieses Tantra beschreibt den Nutzen und die Gefahren des Zorns. Es warnt, dass Zorn nicht immer Verwandlungen überlebt.",
+			"description": "'Ein Vollmond erscheint, Kreaturen werde neu geboren und selbst eine Echse sollte nicht getötet werden, denn du könntest es ja sein.'",
+			"craftable": true
+		},
+		{
+			"id": "studydevouredtantra",
+			"label": "'Das Verzehrte Tantra' lesen",
+			"actionId": "study",
+			"requirements": {
+				"devouredtantra": 1
+			},
+			"effects": {
+				"devouredtantra": -1,
+				"fragmentgrailc": 1
+			},
+			"warmup": 60,
+			"startdescription": "Das Verzehrte Tantra warnt vor dem Nutzen und den Gefahren des Appetits, widmet jedoch eine ganze Passage den 'sterngliedrigen Hungerbringern', die es mit offenkundiger Sympathie beschreibt.",
+			"description": "'Eine Million lodernde Feuer im Bauch verzehren, was von den mannigfaltigen Münder verschlungen wurde.'",
+			"craftable": true
+		},
+		{
+			"id": "studyceaselesstantra",
+			"label": "'Das Pausenlose Tantra' lesen",
+			"actionId": "study",
+			"requirements": {
+				"ceaselesstantra": 1
+			},
+			"effects": {
+				"ceaselesstantra": -1,
+				"fragmentheartc": 1
+			},
+			"warmup": 60,
+			"startdescription": "Das Rastlose Tantra besteht vor allem aus Warnungen vor jenen lebhaften Kreaturen namens Percussiganten, schließt aber mit einem Gesang, der dazu dient, eben jene zu beschwören. Es erklärt, dass man Percussiganten jeden Tanz lehren könne, sie jedoch nur einen bevorzugten.",
+			"description": "'Was keine Pause macht, wird nicht pausiert.'",
+			"craftable": true
+		},
+		{
+			"id": "studyknownunknowntantra",
+			"label": "'Das Bekannte-Unbekannte Tantra' lesen",
+			"actionId": "study",
+			"requirements": {
+				"knownunknowntantra": 1
+			},
+			"effects": {
+				"knownunknowntantra": -1,
+				"fragmentlanternc": 1
+			},
+			"warmup": 60,
+			"startdescription": "Das Bekannte-Unbekannte Tantra beschreibt eine Reise zur Weißen Tür des Mansus, hinter der jedes Wort verstummt. Es beschreibt ein Mantra, das, am richtigen Ort und zur richtigen Zeit, dazu benutzt werden kann, zu dieser Tür zu gelangen.",
+			"description": "'Das Licht einer Laterne kann immer nur den Raum zwischen den Schatten des Forstes enthüllen.'",
+			"craftable": true
+		},
+		{
+			"id": "studyencirclingtantra",
+			"label": "'Das Umkreisende Tantra' lesen",
+			"actionId": "study",
+			"requirements": {
+				"encirclingtantra": 1
+			},
+			"effects": {
+				"encirclingtantra": -1,
+				"fragmentknockc": 1
+			},
+			"warmup": 60,
+			"startdescription": "Das Umkreisende Tantra handelt vom Schlangentor, jenem hungrigen Portal, das manchmal auch als Spinnentür bekannt ist und der Mutter der Ameisen heilig ist. Die Großen Vermummten Prinzen schreiten hindurch. ",
+			"description": "Zum Tantra gehört eine Anrufung, aber, freundlicherweise, wird gewarnt, dass die Anrufung nicht mächtig genug ist, um das Schlangentor vom Jägertor aus zu erreichen. 'Eine Straße, die kein Ziel hat, ist selbst das Ziel', wird praktischerweise noch angemerkt.",
+			"craftable": true
+		},
+		{
+			"id": "studyshavenlocktantra",
+			"label": "'Das Tantra des Schlosses des Geschorenen'/ 'Der Geschorene'",
+			"actionId": "study",
+			"requirements": {
+				"shavenlocktantra": 1
+			},
+			"effects": {
+				"shavenlocktantra": -1,
+				"fragmentmothc": 1
+			},
+			"warmup": 60,
+			"startdescription": "Das Tantra schwärmt von all jenen, die bereit sind, ihr altes Selbst hinter sich zu lassen, um nach einem neuen und höheren Selbst zu streben. Es warnt, dass sobald der Wandel wirklich begonnen hat – 'jenseits des Dritten Mals' – eine Rückkehr zum alten Selbst gefährlich und schmerzhaft sei.",
+			"description": "'Flüstere deine Geheimnisse in die Erde, verbrenne sie im Feuer, verstreue sie ins Meer. Und dennoch werden sie dir in den Haaren kleben', warnt das Tantra. Es enthält ein okkultes Rätsel, das, so wird behauptet, manchmal die Antwort auf das Rätsel des Jägertors sei.",
+			"craftable": true
+		},
+		{
+			"id": "studytantraworms",
+			"label": "'Das Tantra der Würmer' lesen",
+			"actionId": "study",
+			"requirements": {
+				"tantraworms": 1
+			},
+			"effects": {
+				"tantraworms": -1,
+				"fragmentwinterc": 1
+			},
+			"warmup": 60,
+			"startdescription": "Das Tantra erläutert verschiedene weniger praktikable Maßnahmen gegen die Würmer, die 'Schlangen, die keine Schlangen sind'. Motte und Winter sind ihnen am nächsten und wissen um ihre Schwächen, doch beide haben ihre eigenen. Der Löwenschmied zerquetscht sie, doch das ist für Sterbliche nicht ratsam.",
+			"description": "Die Würmer haben immer darauf gebrannt, in uns zu hausen. Hier sind die Praktiken, die uns unbewohnbar für sie machen.' Da sind Diagramme. Die Diagramme sind nicht schön anzusehen und bei keiner der Praktiken, die sie darstellen, würde das jeweiligen Individuum überleben.",
+			"craftable": true
+		},
+		{
+			"id": "studybookofcentipede",
+			"label": "'Das Buch der Tausendfüßlerin' lesen",
+			"actionId": "study",
+			"requirements": {
+				"bookofcentipede": 1
+			},
+			"effects": {
+				"bookofcentipede": -1,
+				"fragmentsecrethistoriesc": 1
+			},
+			"warmup": 60,
+			"startdescription": "'Die Tausendfüßlerin ist schon immer an dunkle Orte gelangt. Als sie dafür bestraft wurde, reagierte sie ungehalten, sowohl im Mansus als auch in Miah.'",
+			"description": "'Der Fluss fließt durch die Sande hinaus aus dem Mythos in die Legende. Der Gemalte Fluss fließt in die andere Richtung. Einer ist nur für die Tausendfüßlerin gesperrt, doch sie findet wieder einen Weg hinein, zuweilen.'",
+			"craftable": true
+		},
+		{
+			"id": "studyaccountkanishkspidersdoor",
+			"label": "'Der Bericht von Kanishk an der Spinnentür'",
+			"actionId": "study",
+			"requirements": {
+				"accountkanishkspidersdoor": 1
+			},
+			"effects": {
+				"accountkanishkspidersdoor": -1,
+				"fragmentedgec": 1
+			},
+			"warmup": 60,
+			"startdescription": "Kanishk strebte danach ein Name zu werden. Zu diesem Zwecke machte er Lok Kahuli zum Werkzeug seines Strebens und versprach Lok, dass sie zusammen aufsteigen würden. An der Spinnentür verriet er seinen Schatz ...",
+			"description": "Der Chiliarch hörte sich alles über jenen Verrat an und zwang darauf Kanishk in seine Dienste. Dem Chiliarchen kann man nichts abschlagen. Lok Kahuli verfasste dieses Werk und beschrieb die äußere Magie des Kampfes und des Wettbewerbs.",
+			"craftable": true
+		},
+		{
+			"id": "studystumm",
+			"label": "'STUMM' ansehen",
+			"actionId": "study",
+			"requirements": {
+				"stumm": 1,
+				"funds": 1
+			},
+			"effects": {
+				"stumm": -1,
+				"fragmentwinterc": 1,
+				"dread": 1,
+				"ritefollowerconsumeinfluence": 1,
+				"funds": -1
+			},
+			"warmup": 60,
+			"startdescription": "Der Film rattert durch den Projektor und erglimmt wortlos an der Wand. Dies ist die Geschichte eines törichten Schülers verbotener Wissenschaften, der eine Tänzerin anheuert, um den Toten mithilfe eines Makels seiner Haut wieder zurück in die Welt zu bringen. Es ist Fiktion, aber hier auf einer Titelkarte wird die Operation der Sinkenden Sonne dargestellt ...",
+			"description": "Der Ritus wird in schaurigem Detail gezeigt. Hier ist der Makel der Welt, ein Einfluss, der in leuchtender Farbe schimmert. Hier ist die Tänzerin in einem unwiderstehlichen Rhythmus. Hier rezitiert der Gelehrte die Operation. Und nun wirbelt der Tote durch den Makel, um ihn zu verzehren! Der Film endet mit den wachsamen Augen der Tänzerin. War dies von Anfang an ihr Plan?",
+			"craftable": true
+		},
+		{
+			"id": "studyvinzantinscriptions",
+			"label": "'Die Vinzant-Inschriften' lesen",
+			"actionId": "study",
+			"requirements": {
+				"vinzantinscriptions": 1
+			},
+			"effects": {
+				"vinzantinscriptions": -1,
+				"fragmentforgec": 1
+			},
+			"warmup": 60,
+			"startdescription": "Vor langer Zeit, so erzählt es die Schwesternschaft des Knotens, liebte die Schmiede die Stunde namens Sonne-in-Glorie. Der Rote Gral hatte schon lange ihre Vereinigung erwartet, und die Gral-Priesterinnen prophezeiten sie ...",
+			"description": "Der Rest des Textes besteht aus spöttischen Bemerkungen der Gral-Priesterinnen der kommenden Gestaltwerdung, unterbrochen von Warnungen und Wehklagen jener in der Schwesternschaft, die der Ringeibe und vor allem der Hornaxt dienen, Trotzdem ist eine Anrufung der Schmiede als Teil eines Versuches enthalten, sie weiter vorwärts zu treiben.",
+			"craftable": true
+		},
+		{
+			"id": "studylarquebinecodex",
+			"label": "'Der Larquebinen-Kodex' lesen",
+			"actionId": "study",
+			"requirements": {
+				"larquebinecodex": 1
+			},
+			"effects": {
+				"larquebinecodex": -1,
+				"fragmentheartc": 1
+			},
+			"warmup": 60,
+			"startdescription": "Die Schwester-und-Hexe kam aus dem Westen, wo sie in zwei Mutterleibern geboren wurde: Prinzessin und Monster. Trotzdem liebten sie sich von Geburt an und trafen sich im Geheimen, um 'eine Vereinigung anzustreben'.",
+			"description": "Als die große Dürre kam, versuchten die Könige jener Lande, die Prinzessin und die Hexe zu opfern und segelten über das Meer. Als die Verzweiflung sie übermannte, stürzten sie sich selbst ins ersäufende Wasser ... und fanden so den Gemalten Fluss, wo sie den Mansus durch die Offizien des Roten Grals betraten. Dennoch endet der Kodex mit einer Verdammung des Grals.",
+			"craftable": true
+		},
+		{
+			"id": "studyagainstsisterhoodknot",
+			"label": "'Gegen die Schwesternschaft des Knotens und die Verderbtheit ihrer Verkommenen Bräuche'",
+			"actionId": "study",
+			"requirements": {
+				"againstsisterhoodknot": 1
+			},
+			"effects": {
+				"againstsisterhoodknot": -1,
+				"fragmentsecrethistoriesd": 1
+			},
+			"warmup": 60,
+			"startdescription": "Hieronymus behauptet, dass die Mächte, denen die Schwesternschaft des Knotens dient, ein Arrangement getroffen habe: die Donnerhaut liebte die Eibe, und der Gral vernichtete ihn als Wiedergutmachung für die Vernichtung der Liebsten der Axt. Hieronymus fängt an dieser Stelle an, vor lauter Wut nur noch unzusammenhängend zu schreiben.",
+			"description": "Hieronymus gewinnt schließlich wieder seine Fassung zurück und beschreibt, wie die Donnerhaut den Mansus durch die Pfauentür betrat. Dies, beharrt Hieronymus, sei 'Frevel über Frevel: doch jene frevelhafteste aller Türen war schon immer ein Frevel.'",
+			"craftable": true
+		},
+		{
+			"id": "studymorphycodex",
+			"label": "'Der Morphy-Kodex'",
+			"actionId": "study",
+			"requirements": {
+				"morphycodex": 1
+			},
+			"effects": {
+				"morphycodex": -1,
+				"fragmentsecrethistoriesd": 1
+			},
+			"warmup": 60,
+			"startdescription": "Der Autor erwähnt, dass der Rote Gral, die Ringeibe und die Hornaxt – die von der Schwesternschaft verehrten Mächte – einem abschließenden Vertrag zwischen den Stunden des Hauses und den Stunden zustimmten, die sie vertrieben hatten: die Donnerhaut liebte die Eibe, und der Gral vernichtete ihn als Wiedergutmachung für die Vernichtung der Schwestern und Brüder der Hornaxt.",
+			"description": "Die Donnerhaut betrat den Mansus durch die Pfauentür, 'ein Privileg, das der Hexe-und-Schwester nie gewährt wurde: allerdings waren ihre Verdienste auch weitaus geringer.' Der Autor gibt zu, dass der Zutritt durch die Pfauentür unziemlich sei, beharrt aber darauf, dass es unter den gegebenen Umständen keinen anderen Weg gegeben habe.",
+			"craftable": true
+		},
+		{
+			"id": "studyleoninetantra",
+			"label": "'Das Leoninen-Tantra' lesen",
+			"actionId": "study",
+			"requirements": {
+				"leoninetantra": 1
+			},
+			"effects": {
+				"leoninetantra": -1,
+				"fragmentedged": 1
+			},
+			"warmup": 60,
+			"startdescription": "Das Tantra beschreibt elliptisch die Großen Vermummten Prinzen und die mannigfaltigen Arten und Weisen, in denen sie auf Kriege gegen fremde Invasoren des Lands am Großen Fluss Einfluss nahmen, 'obwohl sie in gewisser Hinsicht selbst Invasoren waren'.",
+			"description": "'Löwen können erschaffen werden, weder wie Kinder noch wie Worte erschaffen werden, sondern wie Waffen erschaffen werden. Die Großen Vermummten Prinzen lernten durch das Ausspionieren der Stunden das Erschaffen von Löwen, und nun dienen nicht alle Löwen dem Goldenen General.'",
+			"craftable": true
+		},
+		{
+			"id": "studyincandescenttantra",
+			"label": "'Das Strahlende Tantra' lesen",
+			"actionId": "study",
+			"requirements": {
+				"incandescenttantra": 1
+			},
+			"effects": {
+				"incandescenttantra": -1,
+				"fragmentforged": 1
+			},
+			"warmup": 60,
+			"startdescription": "Dialoge mit einem Wesen namens Tiegel-Prinz. Der Prinz warnt vor den Gelüsten seiner Herrin, der Lodernden Königin, und den Gefahren des nackten Verlangens, das sie mit der Sonne teile, erklärt sich aber dennoch loyal zu ihr.",
+			"description": "'Ein Ritus des Wandels ist zwingend ein Ritus der Zerstörung. Doch großer Wandel verlangt nach Zerstörung in verheerendem Ausmaße.'",
+			"craftable": true
+		},
+		{
+			"id": "studythirstingtantra",
+			"label": "'Das Dürstende Tantra' lesen",
+			"actionId": "study",
+			"requirements": {
+				"thirstingtantra": 1
+			},
+			"effects": {
+				"thirstingtantra": -1,
+				"fragmentgraild": 1,
+				"ritetoolconsumeingredient": 1
+			},
+			"warmup": 60,
+			"startdescription": "Eine Abhandlung über die vielen Gesichter des Durstes, ihren Nutzen und ihre Wirkung.",
+			"description": "Das Tantra beschreibt, wie ein Sterblicher durch die Befriedigung des Durstes sich in die Dienste der Dürstenden Macht erheben könne, warnt aber gleichzeitig vor den Folgen der Zurückweisung seltener Dürste zugunsten der gängigeren. 'Ein Mann, den es dürstet, O Mächtiger, dessen Geist sich an die Taten in dieser Welt klammert, kehrt zu dieser Welt der Taten von jenem anderen Orte zurück.'",
+			"craftable": true
+		},
+		{
+			"id": "studyflayedtantra",
+			"label": "'Das Gegeißelte Tantra' lesen",
+			"actionId": "study",
+			"requirements": {
+				"flayedtantra": 1
+			},
+			"effects": {
+				"flayedtantra": -1,
+				"fragmentheartd": 1
+			},
+			"warmup": 60,
+			"startdescription": "'Pelle' gehörte zu den Großen Vermummten Prinzen, bricht jedoch mit seinesgleichen und folgt der Donnerhaut im endlosen Tanze.",
+			"description": "Als Pelle sich selbst abgeschält hatte, hatte er die Tinte, um das Tantra zu schreiben. Er musste sich dem Zorn seiner Genossen stellen. Hier ist die Anrufung, die er benutzte, um sie abzuwehren.",
+			"craftable": true
+		},
+		{
+			"id": "studywatchfultantra",
+			"label": "'Das Wachsame Tantra' lesen",
+			"actionId": "study",
+			"requirements": {
+				"watchfultantra": 1
+			},
+			"effects": {
+				"watchfultantra": -1,
+				"fragmentlanternd": 1,
+				"ritetoolfollowerconsumelore": 1
+			},
+			"warmup": 60,
+			"startdescription": "Das Tantra beschreibt die Abläufe okkulte Illumination, darunter eine Formel, die den Weg vom 'Jägertor' zum 'Schlangentor' weisen könnte – welches im Westen üblicherweise Spinnentür genannt wird.",
+			"description": "'Die Sonne wandert zur bestimmten Zeit durch das Haus. Seit der Teilung der Sonne ist die Zeit ungewiss.'",
+			"craftable": true
+		},
+		{
+			"id": "studytwinserpenttantra",
+			"label": "'Das Zwillingsschlangen-Tantra' lesen",
+			"actionId": "study",
+			"requirements": {
+				"twinserpenttantra": 1
+			},
+			"effects": {
+				"twinserpenttantra": -1,
+				"fragmentknockd": 1,
+				"ritefollowerconsumeingredient": 1
+			},
+			"warmup": 60,
+			"startdescription": "Das Tantra beschreibt die Großen Vermummten Prinzen – eine Dynastie von Prinzen ungewisser Herkunft –, wie sie sich Gedichten, Opfern und der Dichtkunst zu Ehren der Schlüsselschlange, der Scheideweg-Zwillinge und der Spiegelkönigin widmen. 'Nagi umzingelt, Nagi erhebt sich aus Wunden, Nagi verschont alle, die bereits verwundet sind.'",
+			"description": "Von den Großen Vermummten Prinzen heißt es, sie seien 'vor der Geschichte ihres Todes zu einer Geschichte geflohen, in der sie noch am Leben sind'. Der Text behauptet, es gebe nun einhundertundacht von ihnen, doch – einer der zahllosen Widersprüche – vor ihrem Übertritt aus der Chronik ihres Todes, waren es nur vierundfünfzig an der Zahl.",
+			"craftable": true
+		},
+		{
+			"id": "studyfirecircletantra",
+			"label": "'Das Feuerkreis-Tantra' lesen",
+			"actionId": "study",
+			"requirements": {
+				"firecircletantra": 1
+			},
+			"effects": {
+				"firecircletantra": -1,
+				"fragmentmothd": 1
+			},
+			"warmup": 60,
+			"startdescription": "Hier wird dargestellt, wie die Großen Vermummten Prinzen den Forst anflehen, sich zu erheben und eine Invasionsarmee der Timuriden zu verschlingen. Der 'Tüpfel-König', der 'Honig-Baum' und die 'Meereszwillinge' weisen alle dieses Ansinnen zurück, bis sie einen buddelnden Geheimniskrämer anheuern ...",
+			"description": "Bewaffnet mit erpresserischem Material vom 'buddelnden Geheimniskrämer' wenden sich die Großen Vermummten Prinzen erneut an die Mächte des Forstes, diesmal mit Erfolg. Ein Viertel der Timuriden-Armee wird von Bienen vertilgt, ein Viertel ersäuft sich selbst und ein Viertel 'entkleidet sich, bis nichts mehr übrig ist.'",
+			"craftable": true
+		},
+		{
+			"id": "studyasthesunhiscourse",
+			"label": "'Wie der Sonne ihre Bahn' lesen",
+			"actionId": "study",
+			"requirements": {
+				"asthesunhiscourse": 1
+			},
+			"effects": {
+				"asthesunhiscourse": -1,
+				"fragmentedged": 1,
+				"ritefollowerconsumetool": 1
+			},
+			"warmup": 60,
+			"startdescription": "Alexander trifft sich in Issos für drei Tage und drei Nächte mit Darius, dem König der Könige. Am ersten Tage tauschen die beiden Männer Drohungen aus, am zweiten Versprechungen, am dritten Geheimnisse. Darius erzählt Alexander etwas so Erschütterndes, dass dieser sich in sein Zelt zurückzieht, um über 'Angelegenheiten der Kraft und Angelegenheiten der Meisterschaft' nachzudenken.",
+			"description": "Beim Anbruch des 4. Tages verkündet Alexander: 'Die Sonne hat ihren Lauf und kehrt zurück. Und ich will es ihr gleichtun.' Er kehrt nach Makedonien zurück, wobei er zwei seiner Hauptleute hinrichtet, als sie sich mit seiner Entscheidung unzufrieden zeigen. Mit sich nimmt er die 'Namen eines blinden Gottes' und einen 'Ritus heiligen Verrats', denn, so Joel, ohne Verrat hätte der Krieg kein Ende.",
+			"craftable": true
+		},
+		{
+			"id": "studyconcursumdiaries",
+			"label": "'Die Concursum-Tagebücher' lesen",
+			"actionId": "study",
+			"requirements": {
+				"concursumdiaries": 1
+			},
+			"effects": {
+				"concursumdiaries": -1,
+				"fragmentlanternd": 1
+			},
+			"warmup": 60,
+			"startdescription": "'Es gibt Karten-Legenden, es gibt Karten von Legenden und es gibt Legenden von Karten. Aspekte des Mansus bestehen in all dem, so wie Wasser gleichermaßen in einem Sumpf, einer Tasse und im Himmel zu finden ist.'",
+			"description": "Westergren beschreibt eine Reihe von Expeditionen in den Mansus. Er konzentriert sich auf die Details – die Farben, die Aussichten, die Texturen – und nicht so sehr auf die eigentliche Durchführung. Er warnt, der Mansus ändere sich jedes Jahr, wobei er dem Leser versichert, dass die Türen die gleichen seien. 'Türen mögen sich schließen, doch sie verschwinden nie. Zumindest nicht solange Sterbliche im Mansus sind. Wir sind wie Mäuse.'",
+			"craftable": true
+		},
+		{
+			"id": "studyironbook",
+			"label": "'Das Eiserne Buch' lesen",
+			"actionId": "study",
+			"requirements": {
+				"ironbook": 1
+			},
+			"effects": {
+				"ironbook": -1,
+				"fragmentforged": 1
+			},
+			"warmup": 60,
+			"startdescription": "Mitglieder des Ordo schworen einen Eid, die Eiserne Kette, der verlangte, dass sie sich vor der Welt verbargen. In diesem Handbuch finden sich vermutlich längst veraltete Adressen und Parolen, die einst hätten verwendet werden können, um den Kontakt des Ordo in der Stadt Iria zu finden.",
+			"description": "In seinem letzten Teil beschreibt das Handbuch die Strafen für Mitglieder des Ordo, die den Schwur der Geheimhaltung brechen. Dazu zählt eine Anrufung, die dazu diente, einen Geist namens König Tiegel als Werkzeug der Rache zu beschwören. Yivni erklärt dazu aber, dies müsse ein letztes Mittel gewesen sein, wenn der Eidbrecher ansonsten straffrei ausgegangen wäre: König Tiegel zu beschwören, könnte die Schmiede der Tage persönlich auf den Plan rufen.",
+			"craftable": true
+		},
+		{
+			"id": "studysilverbook",
+			"label": "'Das Silberne Buch' lesen",
+			"actionId": "study",
+			"requirements": {
+				"silverbook": 1
+			},
+			"effects": {
+				"silverbook": -1,
+				"fragmentknockd": 1
+			},
+			"warmup": 60,
+			"startdescription": "Mitglieder des Ordo schworen einen Eid, die Silberne Kette, der verbot, dass Männer Frauen bewohnen, oder Frauen Männern: 'denn was folgt ist nicht immer das Verbrechen des Himmels, doch ist dies ein schreckliches Risiko.' Es war offenbar gestattet, dass Männer Männern beiwohnen, und Frauen Frauen – Burzghash sagt sogar, dies solle angeregt werden, um von anderen Versuchungen abzulenken.",
+			"description": "Das Handbuch sieht mächtige Gegenmaßnahmen vor, um all jene zu schützen, die der Versuchung erliegen könnten, ihren Eid zu brechen: Masken, Entstellung, schwere poetische Züchtigungen. Wer seinen Eid bricht, soll mit dem Tode bestraft werden, wobei es geringere Strafen für verschiedene Taten gibt, die nicht direkt den Coitus einschließen. Eine Anrufung ist enthalten, die dazu diente, solche Strafen in Beschwörungsriten zu integrieren.",
+			"craftable": true
+		},
+		{
+			"id": "studyivorybook",
+			"label": "'Das Elfenbein-Buch' lesen",
+			"actionId": "study",
+			"requirements": {
+				"ivorybook": 1
+			},
+			"effects": {
+				"ivorybook": -1,
+				"fragmentwinterd": 1,
+				"ritefollowerconsumeinfluence": 1
+			},
+			"warmup": 60,
+			"startdescription": "Mitglieder des Ordo schworen einen Eid, die Elfenbein-Kette, der verbot, Umgang mit den Stunden zu haben. Eine strikte Befolgung wäre für einen Adepten nahezu unmöglich, weshalb das Handbuch zahlreiche Klarstellungen, Ausnahmen und Fälle von Duldungen enthält.",
+			"description": "Kurenai beschreibt die Bestattungsriten des Ordens, wozu Zauber gehören, die – theoretisch – dafür sorgen, dass die Seelen der toten Langen nicht an die Stunden übergeben werden. Die Stunde sagte, der Elfenbeintäuber, der sich erinnert und gedenkt, solle insgeheim bei diesen Riten angerufen werden, 'denn mit dieser Stunde haben wir eine Übereinkunft'.",
+			"craftable": true
+		},
+		{
+			"id": "studyworlddoesnotweep",
+			"label": "'Die Welt weinet nicht' lesen",
+			"actionId": "study",
+			"requirements": {
+				"worlddoesnotweep": 1
+			},
+			"effects": {
+				"worlddoesnotweep": -1,
+				"fragmentwinterd": 1,
+				"riteinfluenceconsumefollower": 1
+			},
+			"warmup": 60,
+			"startdescription": "Der unbekannte Adept, der dies schrieb, verkündet: die Welt vergisst, nicht aber der Elfenbeintäuber. Der Text enthält eine Reihe von Vorkehrungen, die dafür sorgen sollen, dass bestimmte Handlungen nicht vergessen werden, darunter ein Ritus, der ein Opfer auf besonders monströse Art und Weise verlangt ...",
+			"description": "Die Stunden versuchten, die Erinnerungen an das zu unterdrücken, was einst dem Rad, dem Feuerstein, der Tide und der Siebenspuligen widerfuhr, doch der Täuber lässt dies nicht zu. Und er wird auch nicht zulassen, dass das vergessen wird, was einst dem Ersten Ei widerfuhr, wobei es vielleicht sogar das Einzige ist, was der Wächter je vergeben könnte ...",
+			"craftable": true
+		},
+		{
+			"id": "studydeedsofthescarredcaptain",
+			"label": "'Die Taten des Narbigen Kapitäns' lesen",
+			"actionId": "study",
+			"requirements": {
+				"deedsofthescarredcaptain": 1
+			},
+			"effects": {
+				"deedsofthescarredcaptain": -1,
+				"fragmentedged": 1
+			},
+			"warmup": 60,
+			"startdescription": "Eine Schilderung der Gründung von Mykene durch einen 'Narbigen Kapitän', der erst sieben Monster töten musste, um sicher an Land zu kommen.",
+			"description": "Während der Kapitän jedes der Monster vernichtet, steigt eine blutige Flut immer höher, bis schließlich eine Priesterin ertrinkt und als Schlangengöttin neu geboren wird. Sie segnet den Kapitän und er bricht auf zu dem \"Haus über dem Wald\". Er verlässt Mykene, um nach dem Versiegen der Flut zum obersten Herrscher aufzusteigen.",
+			"craftable": true
+		},
+		{
+			"id": "studybookofdissolution",
+			"label": "'Das Buch der Auflösung' lesen",
+			"actionId": "study",
+			"requirements": {
+				"bookofdissolution": 1
+			},
+			"effects": {
+				"bookofdissolution": -1,
+				"fragmentforgee": 1,
+				"ritetoolconsumefollower": 1
+			},
+			"warmup": 60,
+			"startdescription": "Das Buch besteht vor allem aus Gebeten zum Unverbrannten Gott, der Schmiede der Tage, die verzehrt und verwandelt. Es ist darin zu lesen, dass die Macht der Schmiede zum Teil ihrem Wesen entspringt, zum Teil ihren Werkzeugen.",
+			"description": "Das Buch beschreibt ein früheres Haus der Sonne, dessen Türen und Wesen anders waren. Es preist die Schmiede der Tage dafür, die Wege in das Haus geöffnet und das, was war, in das, was ist, verwandelt zu haben, trotz der steinernen Schreie ...",
+			"craftable": true
+		},
+		{
+			"id": "studycatalogueofunchartedpleasures",
+			"label": "'Ein Katalog unerkundeter Freuden' lesen",
+			"actionId": "study",
+			"requirements": {
+				"catalogueofunchartedpleasures": 1
+			},
+			"effects": {
+				"catalogueofunchartedpleasures": -1,
+				"fragmentgraile": 1
+			},
+			"warmup": 60,
+			"startdescription": "'Manche Freuden', so die Verlockende Formel, 'sind so intensiv, dass sie die Gesetzte der physischen Welt verderben können'. Dieser Text katalogisiert einige solcher Fälle.",
+			"description": "Die Geburt findet am Schnittpunkt von Lust und Pein statt. So gebaren die ersten Verbotenen Akte der Schmiede Funken des Entzückens, die im Ruhme oder im Nichts endeten: wer vermag das schon zu sagen? So wurde die Saat der Blumenmachers ausgebracht, doch lange Jahre war er nichts als ein unerfülltes Sehnen.",
+			"craftable": true
+		},
+		{
+			"id": "studythosewhodonotsleep",
+			"label": "'Jene, die nicht schlafen' lesen",
+			"actionId": "study",
+			"requirements": {
+				"thosewhodonotsleep": 1
+			},
+			"effects": {
+				"thosewhodonotsleep": -1,
+				"fragmenthearte": 1,
+				"ritetoolconsumeingredient": 1
+			},
+			"warmup": 60,
+			"startdescription": "'Die Schwester-und-Hexe wurde in zwei Mutterleibern geboren, einer reich, einer arm, jenseits des Meeres. Die Schwester war stärker im Aspekt des Herzens, und so war ihr Überleben gesichert. Die Hexe war stärker im Aspekt des Grals, und so waren sie nicht befriedigt ...'",
+			"description": "'Als Schwester und Hexe aus dem Westen kamen, gestattete der Rote Gral ihren Aufstieg, wurde dann jedoch neidisch auf ihre Macht. Er lockte einen großen Musiker unter seine Namen und sorgte dafür, dass er aus dem Blute als Herzstunde wiedergeboren wurde, damit der Gral auch dort weiter herrschen konnte. Doch sein Sieg steht nicht fest.'",
+			"craftable": true
+		},
+		{
+			"id": "studytheskythesoul",
+			"label": "'Der Himmel, die Seele' lesen",
+			"actionId": "study",
+			"requirements": {
+				"theskythesoul": 1
+			},
+			"effects": {
+				"theskythesoul": -1,
+				"fragmentlanterne": 1,
+				"fascination": 1
+			},
+			"warmup": 60,
+			"startdescription": "Kalles Verse sind kurz, düster und oft von Bildern der Gewalt beherrscht. 'Ein Stern ist ein Nadelstich, doch die Sonne ist eine Wunde.'",
+			"description": "'Es ist stets möglich, noch toter zu sein', sagt Kalle. 'Der Wächter geht voran. Niemand außer sieben mag ihm folgen.' 'Doch gewiss sind wird dem Ruhme geboren, denn Funken fliegen nach oben.'",
+			"craftable": true
+		},
+		{
+			"id": "studyonthematterandthedeedsofserpents",
+			"label": "'Zum Thema und Werk der Schlangen' lesen",
+			"actionId": "study",
+			"requirements": {
+				"onthematterandthedeedsofserpents": 1
+			},
+			"effects": {
+				"onthematterandthedeedsofserpents": -1,
+				"fragmentknocke": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "Das Schlangenvolk, das sich die Großen Vermummten Prinzen nennt, erfuhr von einem Orden namens 'Hause von Lethe' und führte über Meilen hinweg Krieg gegen ihn. Sie schlossen ein Bündnis mit der Mutter der Ameisen, 'deren Kinder sie einst waren' ...",
+			"description": "Der Text beschriebt, wie die Großen Vermummten Prinzen aus der Fünften Historie entkommen (oder entkommen werden), wo sie einst starben (oder zum Sterben verdammt waren). Sie machten sich an die geheime Eroberung des 'Landes des Großen Flusses', in manchen Historien auch Indien genannt, und sorgten dafür, dass alle anderen Eroberungen jener Lande falsche Eroberungen waren.",
+			"craftable": true
+		},
+		{
+			"id": "studyserenityofblackwood",
+			"label": "'Die Gleichmut des Schwarzen Forstes' lesen",
+			"actionId": "study",
+			"requirements": {
+				"serenityofblackwood": 1
+			},
+			"effects": {
+				"serenityofblackwood": -1,
+				"fragmentmothe": 1,
+				"fascination": 1
+			},
+			"warmup": 60,
+			"startdescription": "Die 'Sprichwörtliche Ungebundenheit' versammelt Reisende in einem Forst und führt sie hindurch, nur um sie mitten auf dem Weg zu verlassen. Sie werden mit 'glorreichen Monstern' konfrontiert.",
+			"description": "Die Reisenden finden heraus, dass sie überleben können, wenn sie die Augen schließen (sie wählen ein geschlossenes Auge zu ihrem Zeichen), und dass sie unbemerkt bleiben, wenn sie aus den klaren kalten Strömen trinken. Sie vergessen nie 'jene Sprichwörtliche Ungebundenheit, die Tausendfüßlerin', doch sie vergeben ihr auch nie.",
+			"craftable": true
+		},
+		{
+			"id": "studybookofthrones",
+			"label": "'Das Buch der Throne' lesen",
+			"actionId": "study",
+			"requirements": {
+				"bookofthrones": 1
+			},
+			"effects": {
+				"bookofthrones": -1,
+				"fragmentsecrethistoriese": 1,
+				"fragmentedgee": 1
+			},
+			"warmup": 60,
+			"startdescription": "In 'der ersten und größten Historie' reist ein Untertan des Schattenlosen Imperiums von Persien nach Westen zum Königreich der Perseiden. Dort wird er Protégé des Schutzgottes der Perseiden, des Narbigen Mannes, der in der Finsternis haust. Er kehrt nach sieben Jahren zurück, um sein Können in die Dienste des Schattenlosen Imperiums zu stellen, und wird so dessen Goldener General ...        ",
+			"description": "Nach vielen Jahren des Friedens erheben sich die Erben der Perseiden gegen den König der Könige und das Schattenlose Imperium. Der Goldene General erhebt nicht die Waffe gegen das Blut seines Mentors bis der König der Könige ihm 'ein großes Geheimnis des Verrats' ins Ohr flüstert. Er zerbricht sein Schwert, schwört seinen Eiden auf das Imperium und den Narbigen Mann ab und tritt ein in den 'Tempel hinter der Welt', wobei er sein Leben hinter sich lässt.",
+			"craftable": true
+		},
+		{
+			"id": "studysecondglory",
+			"label": "'Ein Zweiter Ruhm' lesen",
+			"actionId": "study",
+			"requirements": {
+				"secondglory": 1
+			},
+			"effects": {
+				"secondglory": -1,
+				"fragmentwintere": 1,
+				"dread": 1,
+				"riteinfluenceconsumefollower": 1
+			},
+			"warmup": 60,
+			"startdescription": "Juceh entschuldigt sich für die Zerstörung der Stunden: sie waren alt, sie waren feige, sie waren widerwärtig, ihre Zeit war abgelaufen und es war das leuchtende Schicksal der Menschheit, das Haus in einer glorreichen Schlacht zu erobern.",
+			"description": "Juceh erzählt, wie die Stunde namens Sieben-Spulen in der Schlacht vom Oberst getötet wurde, wie der Gral die Stunde namens Tide verschlang und wie das Ei Unschlüpfen 'wie ein Feigling floh'. Er ist recht scharfzüngig, wenn es um das Ei Unschlüpfen geht. Er warnt düster vor dessen Rückkehr.",
+			"craftable": true
+		},
+		{
+			"id": "studybookoftrueblood",
+			"label": "'Buch des Wahren Blutes' lesen",
+			"actionId": "study",
+			"requirements": {
+				"bookoftrueblood": 1
+			},
+			"effects": {
+				"bookoftrueblood": -1,
+				"fragmentedgee": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "Der Legionslegat unterstand direkt der Stunde, die sich Tribun der Narben nannte, und ihm wurde die Unsterblichkeit für den Fall versprochen, dass er im Kampfe fiel ...",
+			"description": "Im letzten Teil gesteht Cassius, früher ein Legat gewesen zu sein. Er erinnert sich daran, wie es ihm vor dem Tribun graute, und enthüllt das geheime Wissen des Goldenen Generals, des Helden des Schattenlosen Imperiums, des Feindes des Tribuns, in der Hoffnung, dass der Tribun eines Tages in sein Verderben stürzen werde.",
+			"craftable": true
+		},
+		{
+			"id": "studyburningwoman",
+			"label": "'Die Lodernde Frau' lesen",
+			"actionId": "study",
+			"requirements": {
+				"burningwoman": 1
+			},
+			"effects": {
+				"burningwoman": -1,
+				"fragmentforgee": 1,
+				"fascination": 1
+			},
+			"warmup": 60,
+			"startdescription": "Das Stück beschreibt eine Pilgerfahrt von Schmieden und Adepten auf den Spuren der Lodernden Frau, die ihnen allen im Traum erschien und jedem eine Wunde und ein Wort gab.",
+			"description": "Die Schmiede und Adepten geben es auf, die Lodernde Frau finden zu wollen, und beschließen, ihr eigenes Königreich zu errichten, 'wo unsere Kraft reichen wird, die Welt zu zerschmettern.'",
+			"craftable": true
+		},
+		{
+			"id": "studytwentysixenticementsseventorments",
+			"label": "'Sechsundzwanzig Verlockungen, Sieben Martern' lesen",
+			"actionId": "study",
+			"requirements": {
+				"twentysixenticementsseventorments": 1
+			},
+			"effects": {
+				"twentysixenticementsseventorments": -1,
+				"fragmentgraile": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "'Die Verlockungen des Grals sind zahlreicher als seine Martern, doch seine Martern sind sein endgültiges Wesen. Die Geburt ist die Erste Marter, Durst die Siebte'.",
+			"description": "Durch die Nummerierung der Verlockungen und Martern des Grals zieht sich die sorgenvolle Historie der Hexen des Trockenlandes: die Marter der Geburts aus zwei Mutterleibern, der Kampf gegen den Gral und dessen Anflehung, die Sehnsucht nach der Einheit, die sie alle umtreibt.",
+			"craftable": true
+		},
+		{
+			"id": "studyhistoryofshadowlesskings",
+			"label": "'Eine Wahre und Akkurate Geschichte der Schattenlosen Könige'",
+			"actionId": "study",
+			"requirements": {
+				"historyofshadowlesskings": 1
+			},
+			"effects": {
+				"historyofshadowlesskings": -1,
+				"fragmentsecrethistoriese": 1,
+				"fragmenthearte": 1
+			},
+			"warmup": 60,
+			"startdescription": " 'Die erste und größte Geschichte' wird hier beschrieben. Das Reich der Perser – 'die Söhne des Achaimenes', 'die Schattenlosen Könige', 'das Glorreichste Imperium' – überlebt den Angriff Alexanders des Großen und blüht bis Ende des 5. Jahrhunderts. ",
+			"description": "Nach dem Untergang Roms nimmt das Schattenlose Imperium Byzanz unter seine Fittiche und strebt gen Osten gegen das Land des Großen Flusses. Isaac beginnt, von der Invasion gegen 'die hautlosen Horden der vermummten Schlangen' zu berichten, endet aber abrupt mit einer Reihe von Anrufungen, die, so behauptet er, es dem Schattenlosen Imperium ermöglichten, sich durchzusetzen.",
+			"craftable": true
+		},
+		{
+			"id": "studyhighmysterieschurchsolar",
+			"label": "'Die Hohen Mysterien der Innersten Kammer unserer Sonnenkirche'",
+			"actionId": "study",
+			"requirements": {
+				"highmysterieschurchsolar": 1
+			},
+			"effects": {
+				"highmysterieschurchsolar": -1,
+				"fragmentlanterne": 1,
+				"fascination": 1
+			},
+			"warmup": 60,
+			"startdescription": "Die Kirche verehrte vor allem die Sonne-in-Glorie, die ursprüngliche ungeteilte Sonne. Doch in diesem Text finden sich auch die Andachten für ihre Aspekte wie die kühle Winterdämmerung und den Abschied nehmenden Sonnenuntergang sowie die Meniskate, das 'Nacht-Ich' der Sonne. Die Priester der Kirche waren allesamt Männer, doch es finden sich auch Riten, die es Frauen gestatteten, zeremoniell zur Männlichkeit überzutreten.",
+			"description": "Die höchsten Riten der Kirche wurden im Concursum vollzogen, der Kammer im Herzen des Mansus, wo bekanntermaßen die Stunden vorbeiziehen. Zu diesen Riten zählen Grüße an nicht-solare Stunden: den Gral, die Ringeibe, die Hornaxt und die Donnerhaut.",
+			"craftable": true
+		},
+		{
+			"id": "studymedusaslament",
+			"label": "'Medusas Klagelied' lesen",
+			"actionId": "study",
+			"requirements": {
+				"medusaslament": 1
+			},
+			"effects": {
+				"medusaslament": -1,
+				"fragmentknocke": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "Der erste Teil des Gedichts beschreibt den Überfall auf die Sieben-Spulen durch einen Krieger, der 'überall durch die Verrätergötter vernarbt war, selbst seine Augen waren vernarbt, sodass der Anblick der großen Spulen ihn nicht vernichten konnte'.",
+			"description": "Die Schlacht tobt weiter bis die Sieben-Spulen in ihrem eigenen Blut ertrinken. Von da an driftet die Erzählung ins Mystische und Metaphorische ab. Eine Göttin mit sieben Titeln erhebt sich aus dem Schaum des Blutes: sie ist eine gepanzerte Königin, eine Schlangentochter, ein Schlüssel, ein Heiler, eine Mörderin, ein Orakel, doch ihr siebter Titel wird nicht enthüllt.",
+			"craftable": true
+		},
+		{
+			"id": "studybookofmasks",
+			"label": "'Das Buch der Masken' lesen",
+			"actionId": "study",
+			"requirements": {
+				"bookofmasks": 1
+			},
+			"effects": {
+				"bookofmasks": -1,
+				"fragmentmothe": 1
+			},
+			"warmup": 60,
+			"startdescription": "Die Maske der Lachdrossel, so Athena Vana, war eng mit der Sonne-in-Glorie befreundet, der höchsten Stunde des Mansus (nun geteilt und fort). Die Maske des Sichtdiebs malte den Fluss im Mansus. Die Maske des Vagabunden war verboten im Mansus, nicht für ihre Taten, sondern für das, was noch geschehen sollte ...",
+			"description": "Die Maske des Tausendfüßlers erinnerte sich an ihren Geburtsort Miah, der sie dafür bestraft hatte, sich in den Tempelbezirk zu schleichen. Diese Maske verdammte Miah dazu, nur Staub zu trinken und nur dem Winde in Erinnerung zu sein – 'denn unter keiner Maske vergibt sie und der Hunger des Tausendfüßlers ist nicht zu vergessen.'",
+			"craftable": true
+		},
+		{
+			"id": "studyinthemountainsasupontheplain",
+			"label": "'In den Bergen, denn in der Ebene mag es keinen Pfad geben, auf dem noch niemand gewandelt ist' lesen",
+			"actionId": "study",
+			"requirements": {
+				"inthemountainsasupontheplain": 1
+			},
+			"effects": {
+				"inthemountainsasupontheplain": -1,
+				"fragmentsecrethistoriese": 1,
+				"fragmentmothe": 1
+			},
+			"warmup": 60,
+			"startdescription": "Ninegala erzählt einige lebhafte Geschichten über Oger und deren Rätsel und die Kriege zwischen den Bergstämmen, wird dann aber ganz versonnen bei der Geschichte vom Jäger mit den leeren Händen: ein Liebhaber des Grals, der ihr Verlangen stillen und sich als Stunde zu ihr gesellen wollte, sich aber am Ende selbst zerfleischte und verschlang. Seinen Namen tragen die Berge, durch die er einst zog.",
+			"description": "Ninegala behauptet, dass die Stunden, die sich manchmal als Vögel manifestieren – die Lachdrossel, der Elfenbeintäuber, die Strandkrähe und die Hexe-und-Schwester – sich an einem geheimen Ort auf dem Gipfel eines Berges treffen, um von ihresgleichen unbemerkt zu tratschen. Ab und zu bekommt ein Sterblicher etwas davon mit. Der Sterbliche wird stets vertilgt und der Ort des Treffens ist stets woanders.",
+			"craftable": true
+		},
+		{
+			"id": "studymemoryofgods",
+			"label": "'Im Gedenken an Götter' lesen",
+			"actionId": "study",
+			"requirements": {
+				"memoryofgods": 1
+			},
+			"effects": {
+				"memoryofgods": -1,
+				"fragmentwintere": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "Das Hügelkind verdammt vor allem den Narbigen Tribun, den Roten Gral, Schmiede und die Motte als Mörder der ersten Götter. 'Wir leben im Schatten ihres Verbrechens', schreibt sie, 'und wir müssen es vermeiden oder wiederholen.'",
+			"description": "Das Hügelkind beschreibt, wie der Gral die Stunde namens Tide austrocknete, wie die Motte 'das Rad von innen eroberte' und dessen Haut stahl und wie die Schmiede den Feuerstein erst in den Schatten stellte und dann zerschmetterte. 'Vielleicht sind dies Ruhmestaten', sagt sie, 'aber dann kann der Ruhm nicht gnädig sein.'",
+			"craftable": true
+		},
+		{
+			"id": "studysevenfoldslayingsevencoiled",
+			"label": "'Das Siebenfache Erschlagen der Siebenspuligen' lesen",
+			"actionId": "study",
+			"requirements": {
+				"sevenfoldslayingsevencoiled": 1
+			},
+			"effects": {
+				"sevenfoldslayingsevencoiled": -1,
+				"fragmentedgef": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "Es gibt zwölf Verse. Im ersten zählt eine aszendente Stunde, die als der Narbige vorgestellt wird, ihre Gründe für die Vernichtung der Siebenspuligen auf: ihr Verlangen, ihr Wachstum, ihre Feindschaft zu den Menschen. Im zweiten sticht ihm eine Priesterin die Augen aus und vernarbt seine Haut, um ihn vor der Magie der Siebenspuligen zu schützen. In jedem der nächsten sieben Verse vernichtet er einen Aspekt der Siebenspuligen ...",
+			"description": "Im zehnten Vers badet der Narbige seineSchutzpriesterin im Blute der Siebenspuligen, um ihr Kraft zu verleihen. Im elften greifen sie den 'Tempel hinter der Welt an' und dringen dort gewaltsam ein. Im zwölften schwören sie einen dreiteiligen Eid zum Schutze ihrer Ahnen, ihrer Nachkommen und ihrer selbst.",
+			"craftable": true
+		},
+		{
+			"id": "studybighuff",
+			"label": "'Meine Werke, meine Kräfte, meine Erfolge und das Unrecht, das mir widerfuhr' lesen",
+			"actionId": "study",
+			"requirements": {
+				"bighuff": 1
+			},
+			"effects": {
+				"bighuff": -1,
+				"fragmentforgef": 1
+			},
+			"warmup": 60,
+			"startdescription": "Hokobald prahlt mit seiner königlichen Abstammung und beharrt darauf, dass die Magie der Schmiede effektiver sei, wenn sie von solchen mit blauem Blute gewirkt werde.",
+			"description": "Pocsind beklagt sich über seine Verdammnis durch den Ordo Limiae. Er bestätigt, dass er sich nach 'dem Vollzug jenes besonderen Enzückens' 'verändert habe', beharrt aber darauf, dass diese Veränderungen sowohl elegant als auch unausweichlich seien. 'Wer ist das Feuer, und wer ist der Brennstoff?' fragt er rhetorisch.",
+			"craftable": true
+		},
+		{
+			"id": "studydreamconspiracyskies",
+			"label": "'Der Traum von der Verschwörung der Niederen Himmel' lesen",
+			"actionId": "study",
+			"requirements": {
+				"dreamconspiracyskies": 1
+			},
+			"effects": {
+				"dreamconspiracyskies": -1,
+				"fragmentgrailf": 1,
+				"fascination": 1
+			},
+			"warmup": 60,
+			"startdescription": "Damaon beharrt darauf, dass die Stunden, weit mehr als Sterbliche, ihren Leidenschaften unterliegen – dem Hass und sogar der Liebe. 'Die Jahreszeiten des Hungers und der Fülle, die Rotation der Erde, die Verwandlungen des Ofens – dies sind alles nur Manifestationen der niederen Leidenschaften der Stunden.'",
+			"description": "Damaon sagt, die Stunden haben ihre Rivalität gezügelt, um einen Krieg innerhalb des Hauses der Sonne zu vermeiden. Er nennt die 'Angst vor dem Verbrechen des Himmels' den Grund dafür, dass die Stunden nicht ihre anderen Leidenschaften befriedigen. Er spekuliert über die schauerliche Möglichkeit, dass sich die Stunden in Alukiten verwandeln könnten. 'Was würden sie dann verschlingen?'",
+			"craftable": true
+		},
+		{
+			"id": "studybookwhitecat",
+			"label": "'Das Buch der Weißen Katze' lesen",
+			"actionId": "study",
+			"requirements": {
+				"bookwhitecat": 1
+			},
+			"effects": {
+				"bookwhitecat": -1,
+				"fragmentheartf": 1
+			},
+			"warmup": 60,
+			"startdescription": "Die Stunden in Vogelgestalt – die Krähe, die Lachdrossel, der Täuber und die Zwillingsmilane – sind dafür bekannt, sich in den Bergen nördlich von Gordion an einem Ort namens 'der Horst' zum Tratschen zu treffen. Penelope sagt, dass Sterbliche, die ihre Worte direkt vernehmen, vertilgt werden, behauptet aber, dass ihre Katze unbemerkt bleibt und mit Gerüchten von den Treffen der Stunden zu ihr zurückkehrt.",
+			"description": "Die Geschichten, die Penelope als Tratsch der Stunden anführt, sind fragmentarisch und verwirrend: Berichte über Wettkämpfe, bei denen Hoffnung, Furcht und das Schattenlose Imperium als Spielfiguren dienen, Chroniken des Niedergangs und Erinnerungen an eine unbekannte Geschichte. Das interessanteste Element ist die Schutzbeschwörung, die sie im Ende des Buches festhält, nachdem sie sich Sorgen macht, die Stunden könnten von ihrer Spionage erfahren.",
+			"craftable": true
+		},
+		{
+			"id": "studyfocusamber",
+			"label": "'Der Fokus des Bernsteins' lesen",
+			"actionId": "study",
+			"requirements": {
+				"focusamber": 1
+			},
+			"effects": {
+				"focusamber": -1,
+				"fragmentlanternf": 1,
+				"fascination": 1
+			},
+			"warmup": 60,
+			"startdescription": "Omar behauptet, die Stunde namens Wächter sei sowohl ein Gott-der-Fleisch-war – eine sterbliche Stunde – als auch ein Gott-aus-Licht – eine Stunde, die dem Ruhme entstammt –, fügt aber am Ende hinzu, dass der Wächter dreierlei Ursprungs und im Grunde Bernstein ist.'",
+			"description": "Der Wächter war, laut Omar, einst eine vollkommen andere Stunde, die in den Ruhm auffuhr, um den Anstrengungen anderer Stunden zu entrinnen, ihn nach Nirgendwo zu schicken. Vielleicht schleicht sich hier Omars Verfolgungswahn in seine Erzählung ein: zweifellos wird sie weniger zusammenhängend, und der letzte Teil ist Versuchen gewidmet, den Beweis zu führen, dass Augen, Eier und die Sonne alle in einem gewissen Sinne miteinander verbunden sind.",
+			"craftable": true
+		},
+		{
+			"id": "studysongscarapacecross",
+			"label": "'Die Lieder vom Carapax-Kreuz' lesen",
+			"actionId": "study",
+			"requirements": {
+				"songscarapacecross": 1
+			},
+			"effects": {
+				"songscarapacecross": -1,
+				"fragmentknockf": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "Xi beschreibt die Riten der Götter-die Stein-waren, der ersten Stunden, wie sie vom 'Carapax-Kreuz' vor der Existenz menschlicher Zivilisation durchgeführt wurden. Er behauptet, ein letzter Überlebender des Kreuzes habe dieses Wissen mit ihm geteilt.",
+			"description": "Die Riten sind nun größtenteils obsolet. Wenige scheinen, zumindest in den letzten 1000 Jahren, überhaupt irgendeine Wirkung zu haben. Dennoch erwähnt Xi mindestens eine Beschwörung von besonderer Macht. Er warnt, dass sie mit Vorsicht einzusetzen sei, damit die Götter-die-Stein-waren nicht den Weg zurück aus dem Nirgendwo finden.",
+			"craftable": true
+		},
+		{
+			"id": "studyoriginsofhours",
+			"label": "'Der Ursprung der Stunden' lesen",
+			"actionId": "study",
+			"requirements": {
+				"originsofhours": 1
+			},
+			"effects": {
+				"originsofhours": -1,
+				"fragmentmothf": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "Soham kommt von der Poesie zum Geständnis. Er nennt Götter des Fleisches (die sterblich waren), des Blutes (die durch Opfer entstanden), des Lichts (die aus dem Ruhme kommen) und des Steins (die sich vor seiner Erkenntnis erhoben.) Er beharrt darauf, dass die Motte der erste Gott-der-Blut-war gewesen sei, widerspricht sich jedoch später selbst und behauptet, es sei der Rote Gral gewesen.",
+			"description": "'Der Mansus war anders bevor der erste Gott aus dem Lichte kam, doch zweifle nie daran, dass es ihn gab, schon damals.'",
+			"craftable": true
+		},
+		{
+			"id": "studywherehasshegone",
+			"label": "'Wo ist sie hin?' lesen",
+			"actionId": "study",
+			"requirements": {
+				"wherehasshegone": 1
+			},
+			"effects": {
+				"wherehasshegone": -1,
+				"fragmentsecrethistoriesf": 1
+			},
+			"warmup": 60,
+			"startdescription": "Die Vagabundin soll nicht nur zum Mansus und zum Forst gereist sein, nicht nur zu allen neun Kontinenten, sondern auch an Orte, die den Stunden verboten sind ...",
+			"description": "Aus dem Tratsch der Stunden und unsichtbarem Wissen leitet Speeth ab, dass die Vagabundin das Nirgendwo besucht hat, aber nicht zurückkehren wird. Er stellt auch fest, dass sie noch nicht den Ruhm besucht habe, dies aber zwingend ihr Ziel sein müsse.",
+			"craftable": true
+		},
+		{
+			"id": "studybookextinguishedheart",
+			"label": "'Das Buch des Erloschenen Herzens' lesen",
+			"actionId": "study",
+			"requirements": {
+				"bookextinguishedheart": 1
+			},
+			"effects": {
+				"bookextinguishedheart": -1,
+				"fragmentwinterf": 1,
+				"dread": 1,
+				"riteconsumetoolingredientfollowerinfluence": 1
+			},
+			"warmup": 60,
+			"startdescription": "Lazali sagt, die Sonne werde im Mallearium von der Schmiede der Tage geteilt, bewaffnet mit der Liebe in ihrem Herzen.",
+			"description": "'Liebe wird nicht der Grund für den Tod der Sonne sein, sondern Neid. Neid wird nicht der Grund für den Tod der Sonne sein, sondern Durst. Durst wird nicht der Grund für den Tod der Sonne sein, sondern Neugier. Neugier wird nicht ihr Ende sein, sondern Liebe.'",
+			"craftable": true
+		},
+		{
+			"id": "studyhowendwillbegin",
+			"label": "'Der Anfang vom Ende' lesen",
+			"actionId": "study",
+			"requirements": {
+				"howendwillbegin": 1
+			},
+			"effects": {
+				"howendwillbegin": -1,
+				"fragmentedgeg": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "Im prophezeiten Kriege marschieren die Kinder der Gefesselten Flamme gegen die Städte des Kontinents, doch die 'Vollstrecker des Solaren Rechts' und die 'Dreifache Schwesternschaft' verbünden sich, um sie in Schach zu halten ... und zahlen einen horrenden Preis dafür.",
+			"description": "'In jener Schlacht zwischen den Unbezwingbaren Legionen und der Gefesselten Flamme werden die Legionen untergehen und die Flamme wird entfesselt sein.'",
+			"craftable": true
+		},
+		{
+			"id": "studymanneralchemistspared",
+			"label": "'Wie der Alchemist verschont wurde' lesen",
+			"actionId": "study",
+			"requirements": {
+				"manneralchemistspared": 1
+			},
+			"effects": {
+				"manneralchemistspared": -1,
+				"fragmentforgeg": 1,
+				"fascination": 1
+			},
+			"warmup": 60,
+			"startdescription": "In den Tagen des Carapax-Kreuzes, als die Menschheit in der Finsternis lebte und auf den Knien aß, konnten die Menschen wie Ungeziefer in den Mansus gelangen. Einer erlernte die Kunst des Feuersteins, die Kunst des Formens und Änderns ...",
+			"description": "'Durch das Schwarze, das Gelbe, das Rote stieg der Törichte Sterbliche zum Schatten des Unschlüpfenden Eis auf und blieb in dessen Diensten. Mag sein, dass er immer noch dort weilt.'",
+			"craftable": true
+		},
+		{
+			"id": "studyfivecreations",
+			"label": "'Fünf Schöpfungen' lesen",
+			"actionId": "study",
+			"requirements": {
+				"fivecreations": 1
+			},
+			"effects": {
+				"fivecreations": -1,
+				"fragmentgrailg": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "'DER URSPRUNG DES CARAPAX: Wir kommen aus einer Schale, wie die Kinder der Wespe aus der Spinne. DER RUHMREICHE URSPRUNG: Wir Stäubchen stammen vom Lichte ab. DER BESUDELTE URSPRUNG: Wir wurden nackt und mit Dreck beschmiert in den Wurzeln des Forstes gefunden ...'",
+			"description": "Shoheis bevorzugte Theorie ist, dass wir die Kinder von Affen sind, die aufrecht gingen, wobei sein Ton hier satirisch ist. Oder dass wir nicht nur unsere Eltern verzehrten, 'was nicht das Verbrechen im Himmel ist', sondern auch unseren Ursprung, sodass wir aus dem Nirgendwo stammen.",
+			"craftable": true
+		},
+		{
+			"id": "studycommandspreservationallexists",
+			"label": "'Gebote zur Bewahrung alles, was existiert' lesen",
+			"actionId": "study",
+			"requirements": {
+				"commandspreservationallexists": 1
+			},
+			"effects": {
+				"commandspreservationallexists": -1,
+				"fragmentheartg": 1
+			},
+			"warmup": 60,
+			"startdescription": "Elie beschreibt mächtige Beschwörungen, die sich in einer Vielzahl von Umständen einsetzen lassen.",
+			"description": "'Es ist unerlässlich, dass diese Schutzzauber jedes vierte Jahr gewirkt werden, um vor dem Eindringen der Würmer und der Gier der Welle und der Wunde zu schützen.' Zumindest in der aktuellen Geschichte gibt es kein Anzeichen dafür, dass zumindest in den letzten 1000 Jahren regelmäßig Schutzzauber gewirkt wurden.",
+			"craftable": true
+		},
+		{
+			"id": "studytimedivision",
+			"label": "'Die Zeit der Teilung' lesen",
+			"actionId": "study",
+			"requirements": {
+				"timedivision": 1
+			},
+			"effects": {
+				"timedivision": -1,
+				"fragmentlanterng": 1,
+				"fascination": 1,
+				"dread": 1,
+				"riteconsumetoolingredientfollowerinfluence": 1
+			},
+			"warmup": 60,
+			"startdescription": "Die Sonne wird geteilt werden, auf dass sie keine Kinder zeugen möge. Doch ihre Kinder sollen Vier an der Zahl sein und ihre Kinder sollen Sieben an der Zahl sein und ihre Kinder sollen Zahlenlos sein. Die Zahlenlosen sollen den Sieben den Weg bahnen, und die Sieben sollen die Vier verzehren ...'",
+			"description": "Amira prophezeit vier große Kriege vor der Zweiten Dämmerung, wenn die Sonne-in-Glorie sich wieder erheben wird. Sie warnt: 'Der Sonnenaufgang ist Blut, und ich sage jetzt voraus, dass die Sonne sich aus dem Blute erheben wird, jedoch weder die Farbe des Blutes noch die Stunde der Nacht.' Sie fügt einen Ritus bei, von dem sie glaubt, dass er für die Zweite Dämmerung nötig sei.",
+			"craftable": true
+		},
+		{
+			"id": "studymanualdeparture",
+			"label": "'Ein Handbuch für die Abreise' lesen",
+			"actionId": "study",
+			"requirements": {
+				"manualdeparture": 1
+			},
+			"effects": {
+				"manualdeparture": -1,
+				"fragmentknockg": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "Nein, diese Türen sollten nicht festgehalten werden, doch hätten wir nur Dinge festgehalten bevor wir die Fünfte Historie verlassen mussten, wären wir in weitaus besserer Verfassung. Also schreibe ich es hier nieder, und wenn es Euch nicht gefällt, könnt Ihr mich ja sanktionieren.'",
+			"description": "Das 'Handbuch für die Abreise' führt eine Reihe von Strategien – okkult, kriegerisch und politische – für eine schnelle Flucht auf. Viele sind irrelevant, obsolet oder unergründlich, doch das Handbuch enthält einige mächtige Techniken zum Öffnen von Portalen.",
+			"craftable": true
+		},
+		{
+			"id": "studybirdsong",
+			"label": "'Vogelgesang' lesen",
+			"actionId": "study",
+			"requirements": {
+				"birdsong": 1
+			},
+			"effects": {
+				"birdsong": -1,
+				"fragmentmothg": 1,
+				"fascination": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "INAAM: Hat die Strandkrähe nicht ihre Schätze geteilt? GARKIE: Nicht die seltensten. Sie nimmt sich, was am kostbarsten ist, wovon sie behauptet, es sei gefunden, nicht gestohlen.",
+			"description": "Die Strandkrähe, so Kapigiginlupir, ist nicht nur ein Dieb, sondern auch ein Spion und sogar ein Voyeur. Er hat die Erinnerungen an geheime Kuppeleien unter den Stunden und ihren Namen in den Ecken des Hauses verborgen, als Schätze, mit denen man sich brüsten kann. Es gibt da besonders hitzige Spekulationen über eine Liaison zwischen der Ringeibe, jener eifrigen Stunde des Forstes, und der Stute-im-Baum, die zuweilen die Schwester der Hexe war.",
+			"craftable": true
+		},
+		{
+			"id": "studyvoyagesfo",
+			"label": "'Der Reisen des Ferninshun von Oreol' lesen",
+			"actionId": "study",
+			"requirements": {
+				"voyagesfo": 1
+			},
+			"effects": {
+				"voyagesfo": -1,
+				"fragmentsecrethistoriesg": 1
+			},
+			"warmup": 60,
+			"startdescription": "Ferninshun hat offensichtlich den Mansus besucht. Er segelte über den Gemalten Fluss. Er behauptet auch, ein Meer aus feinstem Sande überquert zu haben, den gleißenden Wellen an der Oberfläche der Sonne getrotzt zu haben und zu einem Ozean der Unterwelt hinabgestiegen zu sein, der von Lampen aus schwarzem Nephrit erleuchtet sei ...",
+			"description": "Ferninshuns letzte Reise ist die in den Ruhestand auf einer beschaulichen Insel im abendlichen Meer, wo er von einer Quelle spricht, die für seine Sicherheit sorgen wird. 'Ich werde in Vergessenheit geraten', erklärt er, 'und dieses Werk wird meine einzige Spur bleiben.'",
+			"craftable": true
+		},
+		{
+			"id": "studyscarsky",
+			"label": "'Die Narbe am Himmel' lesen",
+			"actionId": "study",
+			"requirements": {
+				"scarsky": 1
+			},
+			"effects": {
+				"scarsky": -1,
+				"fragmentwinterg": 1,
+				"dread": 1,
+				"riteconsumetoolingredientfollowerinfluence": 1
+			},
+			"warmup": 60,
+			"startdescription": "Auf jeder Seite dieses Buchs steht nur ein einziges Wort, doch mit dem Umblättern jeder Seite erschließt sich das Wissen.",
+			"description": "Die letzte Seite ist überfüllt. Jeder Leser des Buches notiert das gleiche Wort. Nun bin ich an der Reihe.",
+			"craftable": true
+		},
+		{
+			"id": "studykitlingripe",
+			"label": "'Kätzling Reif und Muffis Grab (und andere Geschichten)' lesen",
+			"actionId": "study",
+			"requirements": {
+				"kitlingripe": 1
+			},
+			"effects": {
+				"kitlingripe": -1,
+				"fragmentmothb": 1,
+				"glimmering": 1
+			},
+			"warmup": 60,
+			"startdescription": "Der Protagonist, ein stummes Katzen-Ding namens Kätzling Reif, führte eine Reihe umständlicher Rites durch, um Mitglieder ihrer erweiterten Familie zu retten, was in der Wiederbelebung ihrer 'anderen Großmutter' Muffi gipfelt.",
+			"description": "'Als die Schlangen-Hexe den Hirsch tötete, schnappte sich Kätzling eines seiner Augen. Als die Trocken-Hexe die Sau stahl, holte sich Kätzling einen Becher ihres Blutes. Dann brachte sie beides dorthin, wo Muffi begraben lag, schüttelte ihr Haar aus und begann zu tanzen ...'",
+			"craftable": true
+		},
+		{
+			"id": "studyraptintheking",
+			"label": "'Versunken im König' lesen",
+			"actionId": "study",
+			"requirements": {
+				"raptintheking": 1
+			},
+			"effects": {
+				"raptintheking": -1,
+				"fragmentheartc": 1,
+				"vitality": 1
+			},
+			"warmup": 60,
+			"startdescription": "Die Tänze nach den Traditionen der Mysterien, der Kulte des Isis und der Kybele, aber inklusive Symbolik und buchstäblicher Häutungen, und das menschliche Herz ist stets im Mittelpunkt der Rites. Der Autor würzt seinen Bericht mit pikanten Beschreibungen seiner eigenen unterbrochenen Gelage.",
+			"description": "'Bei diesen größeren Gelagen wurde stets ein Schwarzes Schwein zum Könige gekrönt, um dann geschlachtet zu werden. Bei diesem Anlass wurde das Herz mit einem Knoten aus Federn aufgewogen, und die Haut wurde zum Umhang des Offizianten. Sein Fleisch wurde den Krähen überlassen, doch ich muss gestehen, mein Interesse galt nicht dem Kadaver, sondern dem parfümierten Fleisch der Modistin, die noch frisch in der Erde lag.'",
+			"craftable": true
+		},
+		{
+			"id": "studyvienneseconundra",
+			"label": "'Die Wiener Rätsel'",
+			"actionId": "study",
+			"requirements": {
+				"vienneseconundra": 1
+			},
+			"effects": {
+				"vienneseconundra": -1,
+				"fragmentmothc": 1,
+				"glimmering": 1
+			},
+			"warmup": 60,
+			"startdescription": "'Wenn das Individuum K. den Treffen beiwohnt, werden schwarze Hunde geopfert und gevierteilt. Ist das Individuum M. anwesend, werden schwarze Stuten mit aufgeschlitztem Halse gefunden. Ich denke, diese Opfer sind nicht nötig, doch unsere ligeianischen Freunde könnten sie als 'angemessen' erachten. Hier Diagramme der Verstümmelungen –'",
+			"description": "'Medusas Rätsel, dann, möchte ich als 'Was wird nicht gesehen?' stellen. Es gibt noch ein weiteres Rätsel, das ich als 'Was kann verloren gehen?' gehört habe. Ich werde einige historische Versuche umreißen, sie zu beantworten – dsie sind, für sich genommen, in mancherlei Hinsicht Opfer – '",
+			"craftable": true
+		},
+		{
+			"id": "studytextbooklatin",
+			"label": "Mein Latein verbessern",
+			"actionId": "study",
+			"requirements": {
+				"textbooklatin": 1
+			},
+			"effects": {
+				"textbooklatin": -1,
+				"scholarlatin": 1
+			},
+			"startdescription": "Ich erinnere mich an einiges aus meiner Schulzeit, aber ich muss wieder reinkommen.",
+			"description": "Die Türen des Palastes der Erinnerungen werden geöffnet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytextbookgreek",
+			"label": "Mein Griechisch verbessern",
+			"actionId": "study",
+			"requirements": {
+				"textbookgreek": 1
+			},
+			"effects": {
+				"textbookgreek": -1,
+				"scholargreek": 1
+			},
+			"startdescription": "Gewiss kann ich schon etwas Griechisch. Aber ich brauche mehr als nur etwas.",
+			"description": "Eine entschlossene und markante Sprache. Aber ich habe sie gemeistert.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytextbookaramaic",
+			"label": "Mein Aramäisch verbessern",
+			"actionId": "study",
+			"requirements": {
+				"textbookaramaic": 1
+			},
+			"effects": {
+				"textbookaramaic": -1,
+				"scholararamaic": 1
+			},
+			"startdescription": "Natürlich gibt es nicht das eine 'Aramäisch', doch ich werde lernen, was ich kann.",
+			"description": "Ich habe ein Grundwissen.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytextbooksanskrit",
+			"label": "Mein Sanskrit verbessern",
+			"actionId": "study",
+			"requirements": {
+				"textbooksanskrit": 1
+			},
+			"effects": {
+				"textbooksanskrit": -1,
+				"scholarsanskrit": 1
+			},
+			"startdescription": "Der Name wurde übersetzt als 'die raffinierte Sprache'.",
+			"description": "So viele Wörter, so wenig Zeit. Ich werde meine Nachschlagewerke griffbereit halten.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytextbookfucine",
+			"label": "Ein Verständnis für die längst ausgestorbene Sprache des Fucinischen entwickeln",
+			"actionId": "study",
+			"requirements": {
+				"textbookfucine": 1
+			},
+			"effects": {
+				"textbookfucine": -1,
+				"scholarfucine": 1
+			},
+			"startdescription": "Es hat etwas mit dem Lateinischen gemein und etwas mit dem Scharren verrückt gewordener Ratten.",
+			"description": "Manchmal gibt es Überschneidungen zu Sprachen, die ich kenne. Manchmal ... nun, ich kann verstehen, warum man sie die 'Sprache der Hexen' nennt. Doch nun kann ich sie gut genug verstehen.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytextbookphrygian",
+			"label": "Grundlagen des Phrygischen erlernen",
+			"actionId": "study",
+			"requirements": {
+				"textbookphrygian": 1
+			},
+			"effects": {
+				"textbookphrygian": -1,
+				"scholarphrygian": 1
+			},
+			"startdescription": "Phrygisch, die Sprache des Midas, der Tekmessa, der Priester der Kybele.",
+			"description": "Etwas an dieser Sprache bringt das Blut in Wallung. Vielleicht ist es ein Glück, dass sich niemand mehr an ihre verloren gegangenen Laute erinnert.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytextbookmandaic",
+			"label": "Etwas Alt-Mandäisch lernen",
+			"actionId": "study",
+			"requirements": {
+				"textbookmandaic": 1
+			},
+			"effects": {
+				"textbookmandaic": -1,
+				"scholarmandaic": 1
+			},
+			"startdescription": "Mandäisch ist die Sprache einer Gnostiker-Sekte im abgelegensten Teile Persiens. Alt-Mandäisch ist noch immer die Sprache einer Sekte innerhalb jener Sekte, doch einst wurde sie von Adepten gesprochen.",
+			"description": "Diese Sprache hat gerade so viel mit dem Aramäischen gemein, dass meine Studien überhaupt möglich werden – leicht werden sie dadurch aber noch lange nicht.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytextbookvak",
+			"label": "Ein wenig Vak lernen",
+			"actionId": "study",
+			"requirements": {
+				"textbookvak": 1
+			},
+			"effects": {
+				"textbookvak": -1,
+				"scholarvak": 1
+			},
+			"startdescription": "Sprechen die Stunden? Falls ja, könnte dies die Sprache sein, derer sie sich bedienen.",
+			"description": "Es heißt, niemand lerne Vak, sondern lerne sie kennen. Nun, jetzt haben wir uns ein wenig näher bekannt gemacht.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytextbookreason",
+			"label": "Meinen Verstand verbessern",
+			"actionId": "study",
+			"requirements": {
+				"textbookreason": 1
+			},
+			"effects": {
+				"textbookreason": -1,
+				"eruditionplus": 1
+			},
+			"startdescription": "Übung für den Intellekt.",
+			"description": "Möglichkeiten – ",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytextbookpassion",
+			"label": "Dichtung lesen",
+			"actionId": "study",
+			"requirements": {
+				"textbookpassion": 1
+			},
+			"effects": {
+				"textbookpassion": -1,
+				"glimmeringplus": 1
+			},
+			"startdescription": "Ich schüre die Flammen meiner Vorstellungskraft.",
+			"description": "Eindrücke –",
+			"warmup": 60,
+			"craftable": true
+		}
+	]
+}

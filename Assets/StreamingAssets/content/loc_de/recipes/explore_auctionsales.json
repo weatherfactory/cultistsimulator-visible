@@ -1,0 +1,249 @@
+{
+	"recipes": [
+		{
+			"id": "auctionentry6",
+			"label": "Etwas von großem Wert verkaufen",
+			"actionId": "explore",
+			"requirements": {
+				"locationauctionhouse": 1,
+				"auctionable": 6
+			},
+			"effects": {
+				"funds": 20
+			},
+			"linked": [
+				{
+					"id": "auctionsell_increasegrand",
+					"chance": 30
+				},
+				{
+					"id": "auctioncleanup",
+					"chance": 100
+				}
+			],
+			"startdescription": "Wenige der Kunden von Oriflamme sind Studenten der Unsichtbaren Künste. Doch selbst ein Laie dürfte sehen, dass es sich hierbei um etwas Außergewöhnliches handelt. [Überlege dir gut, ob du dieses Stück wirklich verkaufen möchtest. Du kannst es nicht wieder zurückbekommen.]",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "auctionentry5",
+			"label": "Etwas Seltenes verkaufen",
+			"actionId": "explore",
+			"requirements": {
+				"locationauctionhouse": 1,
+				"auctionable": 5
+			},
+			"effects": {
+				"funds": 16
+			},
+			"linked": [
+				{
+					"id": "auctionsell_increasemajor",
+					"chance": 30
+				},
+				{
+					"id": "auctioncleanup",
+					"chance": 100
+				}
+			],
+			"startdescription": "Wenige der Kunden von Oriflamme sind Studenten der Unsichtbaren Künste. Sie kaufen Werkzeuge der Macht als Trophäen oder Kuriositäten, ohne sich über deren wahren Wert im Klaren zu sein. Doch das hier ist offensichtlich ein seltenes Stück. [Überlege dir gut, ob du dieses Stück wirklich verkaufen möchtest. Du kannst es nicht wieder zurückbekommen.]",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "auctionentry4",
+			"label": "Etwas von erheblichem Wert verkaufen",
+			"actionId": "explore",
+			"requirements": {
+				"locationauctionhouse": 1,
+				"auctionable": 4
+			},
+			"effects": {
+				"funds": 8
+			},
+			"linked": [
+				{
+					"id": "auctionsell_increasemajor",
+					"chance": 30
+				},
+				{
+					"id": "auctioncleanup",
+					"chance": 100
+				}
+			],
+			"startdescription": "Wenige der Kunden von Oriflamme sind Studenten der Unsichtbaren Künste. Sie kaufen Werkzeuge der Macht als Trophäen oder Kuriositäten, ohne sich über deren wahren Wert im Klaren zu sein. Doch dies wird ihre Neugier wecken. [Überlege dir gut, ob du dieses Stück wirklich verkaufen möchtest. Du kannst es nicht wieder zurückbekommen.]",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "auctionentry3",
+			"label": "Etwas von echtem Wert verkaufen",
+			"actionId": "explore",
+			"requirements": {
+				"locationauctionhouse": 1,
+				"auctionable": 3
+			},
+			"effects": {
+				"funds": 4
+			},
+			"linked": [
+				{
+					"id": "auctionsell_increaseminor",
+					"chance": 30
+				},
+				{
+					"id": "auctioncleanup",
+					"chance": 100
+				}
+			],
+			"startdescription": "Dieses ungewöhnliche Stück wird dir definitiv einiges an Geld einbringen. [Überlege dir gut, ob du dieses Stück wirklich verkaufen möchtest. Du kannst es nicht wieder zurückbekommen.]",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "auctionentry2",
+			"label": "Etwas von einigem Wert verkaufen",
+			"actionId": "explore",
+			"requirements": {
+				"locationauctionhouse": 1,
+				"auctionable": 2
+			},
+			"effects": {
+				"funds": 2
+			},
+			"linked": [
+				{
+					"id": "auctionsell_increaseminor",
+					"chance": 30
+				},
+				{
+					"id": "auctioncleanup",
+					"chance": 100
+				}
+			],
+			"startdescription": "Diese Kuriosität wird dir etwas Geld einbringen. [Überlege dir gut, ob du dieses Stück wirklich verkaufen möchtest. Du kannst es nicht wieder zurückbekommen.]",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "auctionentry1",
+			"label": "Etwas von minimalem Wert verkaufen",
+			"actionId": "explore",
+			"requirements": {
+				"locationauctionhouse": 1,
+				"auctionable": 1
+			},
+			"effects": {
+				"funds": 1
+			},
+			"linked": [
+				{
+					"id": "auctionsell_increasepetty",
+					"chance": 30
+				},
+				{
+					"id": "auctionsell_worthless",
+					"chance": 30
+				},
+				{
+					"id": "auctioncleanup",
+					"chance": 100
+				}
+			],
+			"startdescription": "Diese Kuriosität mag vielleicht etwas wert sein, doch das ist schwer zu sagen.",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "auctionsell_worthless",
+			"label": "Auktion: Ein totaler Mangel an Interesse",
+			"actionId": "explore",
+			"startdescription": "Niemand zeigt sich beeindruckt. Der Hammer des Auktionators knallt. Mein Gegenstand wurde verkauft, aber zu einem so geringen Preis, dass er gar nicht der Rede wert ist.",
+			"linked": [
+				{
+					"id": "auctioncleanup",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"funds": -99,
+				"auctionable": -99
+			},
+			"warmup": 30
+		},
+		{
+			"id": "auctionsell_increasepetty",
+			"label": "Auktion: Murmeln im Publikum",
+			"actionId": "explore",
+			"startdescription": "Aus welchem unwahrscheinlichen Grunde auch immer, mein gutes Stück hat das Interesse des Publikums geweckt.",
+			"linked": [
+				{
+					"id": "auctioncleanup",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"funds": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "auctionsell_increaseminor",
+			"label": "Auktion: Eifriges Bieten",
+			"actionId": "explore",
+			"startdescription": "Einige im Publikum sind jetzt aufgesprungen. Die Emotionen schlagen hohe Wellen.",
+			"linked": [
+				{
+					"id": "auctioncleanup",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"funds": 2
+			},
+			"warmup": 30
+		},
+		{
+			"id": "auctionsell_increasemajor",
+			"label": "Auktion: Ausrufe der Begeisterung",
+			"actionId": "explore",
+			"startdescription": "Der Auktionator muss seine Stimme erheben, um sich im Stimmengewirr des Publikums noch verständlich zu machen.",
+			"linked": [
+				{
+					"id": "auctioncleanup",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"funds": 4
+			},
+			"warmup": 30
+		},
+		{
+			"id": "auctionsell_increasegrand",
+			"label": "Auktion: Bieter-Duell",
+			"actionId": "explore",
+			"startdescription": "Zwei reiche Sammler fixieren den Auktionator und bieten mit einem fast unmerklichen Nicken. Bis auf die ernste Stimme des Auktionators ist der Saal totenstill.",
+			"effects": {
+				"funds": 8
+			},
+			"linked": [
+				{
+					"id": "auctioncleanup",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "auctioncleanup",
+			"label": "Die Auktion ist abgeschlossen.",
+			"actionId": "explore",
+			"description": "Der Hammer des Auktionators knallt. Mein Gegenstand wurde verkauft.",
+			"effects": {
+				"auctionable": -99
+			},
+			"warmup": 0
+		}
+	]
+}

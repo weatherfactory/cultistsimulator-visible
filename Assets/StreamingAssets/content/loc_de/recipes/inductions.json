@@ -1,0 +1,180 @@
+{
+	"recipes": [
+		{
+			"id": "heartinduction",
+			"label": "Der Weg des Herzens",
+			"actionId": "heartinduction",
+			"effects": {
+				"previtality": 1
+			},
+			"startdescription": "Immer wenn der Prinzip des Herzens involviert ist, kann ich an Vitalität gewinnen.",
+			"description": "Mein eigenes Herz schlägt heute viel kräftiger.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "lanterninduction",
+			"label": "Ein Licht im Schädel",
+			"actionId": "lanterninduction",
+			"effects": {
+				"preerudition": 1
+			},
+			"startdescription": "Immer wenn das Prinzip der Laterne sein Licht verbreitet, kann ich mich an weiteres Wissen erinnern.",
+			"description": "Verstaubte Fakten haben sich in meinem Hirn entstaubt. Zumindest für den Augenblick.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "mothinduction",
+			"label": "Alte, unglückliche, weit entfernte Sachen",
+			"actionId": "mothinduction",
+			"effects": {
+				"prerestlessness": 1
+			},
+			"startdescription": "Die Motte findet das Licht in der Finsternis, und ich auch.",
+			"description": "Eine nur halb bewusste Wehmut hat mich angerührt.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "mothglimmeringinduction",
+			"label": "Die Finsternis, das Licht",
+			"actionId": "mothinduction",
+			"effects": {
+				"preglimmering": 1
+			},
+			"startdescription": "Die Motte findet das Licht in der Finsternis, und ich auch.",
+			"description": "Was könnte ich sein, wenn ich dies nicht sein könnte?",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "grailinduction",
+			"label": "Der Ort hinter dem Verlangen",
+			"actionId": "grailinduction",
+			"effects": {
+				"preglimmering": 1
+			},
+			"startdescription": "Lässt sich etwas aus der Befriedigung des Verlangens lernen?",
+			"description": "Dies ist so etwas wie eine Erleuchtung.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "dreadinduction",
+			"label": "Nächtliche Schrecken",
+			"actionId": "dreadinduction",
+			"effects": {
+				"predread": 1
+			},
+			"startdescription": "Ich wache in der Nacht auf. Meine Handflächen, mein Gesicht, beides schweißnass.",
+			"description": "Langsam entspannen sich meine geballten Fäuste. Ich sinke wieder in den Schlaf. Doch etwas wird bleiben, wie Spinnweben in den Winkeln des Raums.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "dreadinduction_ifdread",
+			"label": "Nächtliche Schrecken",
+			"actionId": "dreadinduction",
+			"requirements": {
+				"dread": 1
+			},
+			"effects": {
+				"predread": 1
+			},
+			"comments": "Only triggers if there's already Dread in whatever called this.",
+			"startdescription": "Ich wache in der Nacht auf. Meine Handflächen, mein Gesicht, beides schweißnass.",
+			"description": "Langsam entspannen sich meine geballten Fäuste. Ich sinke wieder in den Schlaf. Doch etwas wird bleiben, wie Spinnweben in den Winkeln des Raums.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "fascinationinduction",
+			"label": "Neue Farben",
+			"actionId": "fascinationinduction",
+			"effects": {
+				"prefascination": 1
+			},
+			"startdescription": "Mir sind Farben in der Welt aufgefallen, für die ich keinen Namen habe.",
+			"description": "Ich sehe Dinge, die ich nicht sehen sollte. Ich weiß, das ist gefährlich. Doch es fällt schwer, sich nicht danach zu sehnen.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "fascinationinduction_iffascination",
+			"label": "Neue Farben",
+			"actionId": "fascinationinduction",
+			"requirements": {
+				"fascination": 1
+			},
+			"effects": {
+				"prefascination": 1
+			},
+			"startdescription": "Mir sind Farben in der Welt aufgefallen, für die ich keinen Namen habe.",
+			"description": "Ich sehe Dinge, die ich nicht sehen sollte. Ich weiß, das ist gefährlich. Doch es fällt schwer, sich nicht danach zu sehnen.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "poison.notoriety.induction",
+			"actionId": "poison.notoriety.induction",
+			"label": "Im Auge der Öffentlichkeit",
+			"startdescription": "Ich habe einen Anhänger benutzt, der zu bekannt ist. Das Dezernat für Unterdrückung könnte davon erfahren.",
+			"effects": {
+				"notoriety": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "poison.passion.dread.induction",
+			"actionId": "poison.passion.dread.induction",
+			"label": "Die schleichende Farbe",
+			"startdescription": "Meine Leidenschaften sind vergiftet. Jedes Gefühl wird von einem wilden Grau begleitet.",
+			"effects": {
+				"dread": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "poison.reason.fascination.induction",
+			"actionId": "poison.reason.fascination.induction",
+			"label": "Erbarmungsloses Licht",
+			"startdescription": "Eine Kerze, die brennt, schenkt Licht. Wenn meine Gedanken sich entzünden, was dann?",
+			"effects": {
+				"fascination": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "poison.health.dread.induction",
+			"actionId": "poison.health.dread.induction",
+			"label": "Die Gastfreundschaft der Agonie",
+			"startdescription": "Ich habe einen alten Freund eingeladen, noch einen Tag in meinen Muskeln zu weilen.",
+			"effects": {
+				"dread": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "secret.induction",
+			"actionId": "unsuspicion",
+			"label": "Die Vorzüge des Privaten",
+			"startdescription": "Wir haben uns Mühe gegeben, unser Hauptquartier irgendwo abseits einzurichten ...",
+			"description": "... vielleicht hat es das Dezernat für Unterdrückung so schwerer, uns bis an unsere Tür zu verfolgen. Es könnte auch schwerer werden, ein bestimmtes Ansehen zu behalten.",
+			"slots": [
+				{
+					"id": "reputation",
+					"label": "Ansehen",
+					"required": {
+						"reputation": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 180,
+			"effects": {
+				"reputation": -1
+			}
+		}
+	]
+}

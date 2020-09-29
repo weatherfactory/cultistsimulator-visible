@@ -1,0 +1,758 @@
+{
+	"recipes": [
+		{
+			"id": "legacydancer_openstudy",
+			"label": "Ein verworfenes Mysterium",
+			"actionId": "study",
+			"startdescription": "Hunderte von Tänzern sind durch diese Garderobe gekommen. Ab und zu findet man ihre Spuren wie fallengelassene Blütenblätter: einen verlorenen Handschuh, ein verblichenes Foto, eine Karte von einem Verehrer ...",
+			"description": "Ein zerknülltes Gedicht – ein Dutzend Seiten lang – wurde in einen zurückgelassenen Schuh gestopft. Kein Liebesgedicht. Ich bin mir fast sicher, dass das kein Liebesgedicht ist. Doch als ich es lese, beschleunigt sich mein Atem, und ich frage mich, ob ich mich an etwas erinnere, was ich einst verlor.",
+			"effects": {
+				"dancerlegacy_plotitem_a": 1
+			},
+			"warmup": 60,
+			"comments": "Opened from initial work"
+		},
+		{
+			"id": "legacydancer_study_plotitema_heart",
+			"actionId": "study",
+			"label": "Das zerknüllte Gedicht als physische Herausforderung betrachten",
+			"requirements": {
+				"dancerlegacy_plotitem_a": 1,
+				"heart": 1
+			},
+			"startdescription": "Ist das irgendeine Art von Code? Sind das Hinweise auf eine Reihe ungewöhnlicher Tanzschritte?",
+			"effects": {
+				"vitality": 2,
+				"dancerlegacy_plotitem_a": -1
+			},
+			"description": "Die Anweisungen werden immer deutlicher. Das sind Schritte, keine Frage – Schritte, die ich zu spüren beginne – und die Schritte enden irgendwo – irgendwo unter dem wachenden Leben. Irgendwo bin ich anders. Ich bewege meine Schultern: Warum scheint es mit so, als würde mir meine Haut nicht richtig passen?",
+			"alternativerecipes": [
+				{
+					"id": "legacydancer_opendream_heart",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "legacydancer_study_plotitema_moth",
+			"actionId": "study",
+			"label": "Das zerknüllte Gedicht als Traum-Herausforderung betrachten",
+			"requirements": {
+				"dancerlegacy_plotitem_a": 1,
+				"moth": 1
+			},
+			"startdescription": "Ich glaube, ich habe so etwas mal geträumt, einmal, in einer Nacht, als der Mond mein Bett sprenkelte – als mir träumte, meine Hände seien nicht wirklich Hände, dass etwas mehr als nur Blut unter meiner Haut pulsiere – und dass die Haut, die ich trage, nicht die meine sei. Was wäre, wenn ich etwas aus jenem Traume wiederfinden könnte?",
+			"description": "Die halbe Nacht liege ich wach, überzeugt, dass da etwas in meinem Zimmer ist. Kurz nach Mitternacht dämmert es mir, dass ich jenes etwas bin. Und dankbar schlafe ich ein.",
+			"effects": {
+				"glimmering": 2,
+				"dancerlegacy_plotitem_a": -1
+			},
+			"alternativerecipes": [
+				{
+					"id": "legacydancer_opendream_moth",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "legacydancer_opendream_heart",
+			"actionId": "dream",
+			"label": "Ein Traum von einem anderen Ich",
+			"startdescription": "In meinen Träumen wird alles klar. Dies ist ein Tanz, den man weder allein tanzen kann noch mit einem Partner. Dies ist ein Tanz, den man mit einer Puppe tanzt.",
+			"description": "Ich habe die Schritte gemacht, mit einer Flickenpuppe, aber das war nicht ganz richtig. Als ich den Stoff der Puppe wie Haut abschälte, fühlte ich mich erleichtert, doch da fiel sie natürlich auseinander ... Etwas stimmt nicht – mit der Puppe, der Welt oder mit mir.",
+			"effects": {
+				"ascensionchangea": 1,
+				"dancerlegacy_plotitem_a": -1
+			},
+			"comments": "opened from studying about first plot object with health",
+			"alternativerecipes": [
+				{
+					"id": "legacydancer_openexplore_heart",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "L_desire_addhearttrack",
+					"chance": 100
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "L_desire_addhearttrack",
+			"actionId": "dream",
+			"label": "Ein Traum von einem anderen Ich",
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desireheart_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "legacydancer_opendream_moth",
+			"label": "Ein Traum von einem älteren Ich",
+			"actionId": "dream",
+			"startdescription": "Heute Nacht schneide ich mir vor dem Schlafen eine Haarlocke ab. Das habe ich in dem Gedicht gelesen. Schnipp, schnapp.",
+			"effects": {
+				"ascensionchangea": 1,
+				"dancerlegacy_plotitem_a": -1
+			},
+			"description": "Ich habe von einem großen Forst im Herzen des 1. Kontinents geträumt, wo wir uns inmitten der Bäume bewegten, dunkel, hell, und wieder dunkel, hoch und runter und hinein ins Feuer. Mir träumte, wir seien einst etwas anderes gewesen – oder etwas anderes sei wir gewesen. Vielleicht waren wir Wesen mit Flügeln. Nun jucken mir manchmal die Schulterblätter.",
+			"comments": "opened from studying about first plot object with passion",
+			"alternativerecipes": [
+				{
+					"id": "legacydancer_openexplore_moth",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "L_desire_addmothtrack",
+					"chance": 100
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "L_desire_addmothtrack",
+			"actionId": "dream",
+			"label": "Ein Traum von einem älteren Ich",
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desiremoth_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "legacydancer_openexplore_heart",
+			"actionId": "explore",
+			"label": "Ein neuer Partner",
+			"startdescription": "Manchmal, am Nachmittag, streife ich über die Straßenmärkte. Ich habe den Tanz des Gedichts getanzt und meine Flickenpuppe ruiniert. Es muss da draußen eine bessere Puppe geben, mit der ich wieder diese Schritte herausstampfen kann.",
+			"description": "Ich habe sie gefunden! Als Lumpen verkauft, für einen halben Shilling. Nicht ganz richtig, aber nahe dran. Ihre Oberfläche, ihre Narben, die Form ihrer Glieder.",
+			"effects": {
+				"reason": 1,
+				"toolheartb": 1
+			},
+			"warmup": 60,
+			"comments": "opened from dreaming"
+		},
+		{
+			"id": "legacydancer_openexplore_moth",
+			"actionId": "explore",
+			"label": "Ein alter Partner",
+			"startdescription": "Wenn der Mond scheint, kletterte ich über den Zaun in den abgesperrten Park und schaue unter Äste an den Hohlräumen. Ich weiß noch nicht, warum.",
+			"description": "Ich habe ein Paket gefunden, das im Schlamm lag. Ich wusste sofort, dass es das ist, wonach ich suche. Vielleicht war es für mich bestimmt, vielleicht habe ich es gestohlen, wie man ein verlassenes Baby stiehlt. Im geflügelten Traum des Forstes habe ich mit etwas getanzt, das ein wenig so war.",
+			"effects": {
+				"reason": 1,
+				"toolmothb": 1
+			},
+			"warmup": 60,
+			"comments": "opened from dreaming"
+		},
+		{
+			"id": "legacydancer_opentalk",
+			"actionId": "talk",
+			"label": "Was wir sagen und wann wir es sagen",
+			"comments": "opened from first audience interaction",
+			"startdescription": "Habe ich etwas gemein mit einigen von denen, die mich beobachten?",
+			"effects": {
+				"fleeting": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "worklegacydancerjob_pleadforreinstatement",
+			"label": "Um Wiedereinstellung beim Varietee betteln",
+			"actionId": "work",
+			"requirements": {
+				"legacydancerjob_suspended": 1,
+				"passion": 1
+			},
+			"aspects": {
+				"plead": 1
+			},
+			"startdescription": "Ich brauche den Job zurück. Ich werde denen sagen, dass das diesmal anders sein wird. Vielleicht verstehen die mich ja.",
+			"description": "Ich hab nicht gebettelt, nicht ganz.",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "worklegacydancerjob",
+			"label": "Beim Varietee auftreten",
+			"actionId": "work",
+			"requirements": {
+				"legacydancerjob": 1,
+				"health": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "legacydancer_openstudy",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "worklegacydancerjob_more",
+					"chance": 70
+				}
+			],
+			"startdescription": "Die Bühne wartet, heiß und sauber und kahl und hell. Wenn ich die Bewegungen und die Schritte und das mache, was ich machen soll, bezahlen die mich.",
+			"description": ".",
+			"effects": {
+				"funds": 1
+			},
+			"warmup": 45,
+			"craftable": true
+		},
+		{
+			"id": "worklegacydancerjob_more",
+			"actionId": "work",
+			"label": "Eine Gelegenheit beim Varietee",
+			"startdescription": "Heute Abend spüre ich eine Gelegenheit. Heute könnte ich für Aufmerksamkeit sorgen, wenn ich mich nicht mehr zurückhalte, wenn ich mich wirklich hingebe.",
+			"description": "Ich bin auf Distanz geblieben. Ich habe die Bewegungen und die Schritte und das gemacht, was ich machen sollte, und jetzt bezahlen die mich.",
+			"comments": "the better outcomes require heart or moth 2: enough for abilities or for restlessness, too much for fatigue",
+			"slots": [
+				{
+					"id": "more",
+					"label": "Extra-Einsatz",
+					"required": {
+						"ability": 1,
+						"restlessness": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "A_worklegacydancerjob_more_benefactorm",
+					"chance": 50
+				},
+				{
+					"id": "A_worklegacydancerjob_more_benefactorf",
+					"chance": 70
+				},
+				{
+					"id": "A_worklegacydancerjob_more_ecdysiast",
+					"chance": 70
+				},
+				{
+					"id": "A_worklegacydancerjob_more_heart",
+					"chance": 100
+				},
+				{
+					"id": "A_worklegacydancerjob_more_moth",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "A_worklegacydancerjob_more_benefactorm",
+			"actionId": "work",
+			"requirements": {
+				"potentialbenefactorm": 1,
+				"heart": 2
+			},
+			"label": "Möglicher Wohltäter",
+			"startdescription": ".",
+			"description": "Ein Herr hat den Inspizienten bedrängt, ein Treffen mit mir hinter der Bühne zu arrangieren. Er ist galant, sagt alles Richtige zu meiner Arbeit und hat ein Geschenk mitgebracht. Er hofft, dass wir Freunde sein können.",
+			"effects": {
+				"benefactorm": 1,
+				"funds": 2,
+				"influence": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "job",
+					"mutateAspectId": "potentialbenefactorm",
+					"mutationLevel": -1
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "legacydancer_opentalk",
+					"chance": 100,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "A_worklegacydancerjob_more_benefactorf",
+			"actionId": "work",
+			"requirements": {
+				"potentialbenefactorf": 1,
+				"heart": 2
+			},
+			"label": "Eine mögliche Wohltäterin",
+			"startdescription": "",
+			"description": "Eine Dame hat arrangiert, dass wir in einem glitzernden Café gegenüber einander vorgestellt werden. Sie macht mit viele Komplimente, hört mir aufmerksam zu und hat mir ein Geschenk mitgebracht. Sie hofft, dass wir Freunde sein können.",
+			"effects": {
+				"benefactorf": 1,
+				"funds": 2,
+				"influence": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "job",
+					"mutateAspectId": "potentialbenefactorf",
+					"mutationLevel": -1
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "legacydancer_opentalk",
+					"chance": 100,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "A_worklegacydancerjob_more_ecdysiast",
+			"actionId": "work",
+			"requirements": {
+				"potentialecdysiast": 1,
+				"moth": 2
+			},
+			"label": "Eine Nachricht von einem Bewunderer?",
+			"startdescription": ".",
+			"description": "Ein per Bote überbrachter Brief, an mich adressiert. Er riecht stark nach Zigarettenrauch und Nelken. Da steht: 'Wenn du mit jemandem über deine Träume reden willst, findest du mich hier. Ruf erst an, wenn du bereit bist.' Da steht eine Telefonnummer und ein Name: Sulochana.",
+			"effects": {
+				"sulochana": 1,
+				"funds": 1,
+				"influence": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "job",
+					"mutateAspectId": "potentialecdysiast",
+					"mutationLevel": -1
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "legacydancer_opentalk",
+					"chance": 100,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "A_worklegacydancerjob_more_heart",
+			"actionId": "work",
+			"requirements": {
+				"heart": 2
+			},
+			"label": "Ich bin ein geschmeidiges Paket aus Fleisch und Blut.",
+			"startdescription": "Heute Abend werden die das merken.",
+			"description": "Ich habe all ihre Augen auf mir gespürt. Hinterher bekomme ich ein Geschenk von einem Bewunderer – zu grell für meinen Geschmack, aber ich werde es weiterverkaufen können.",
+			"effects": {
+				"funds": 1,
+				"influence": -1
+			}
+		},
+		{
+			"id": "A_worklegacydancerjob_more_moth",
+			"actionId": "work",
+			"requirements": {
+				"moth": 2
+			},
+			"label": "Ich bin mehr als ein geschmeidiges Paket aus Fleisch und Blut.",
+			"startdescription": "Heute Abend werden die das merken.",
+			"description": "Ich habe all ihre Augen auf mir gespürt. Hinterher bekomme ich ein Geschenk von einem Bewunderer – etwas zu persönlich, als dass es mir angenehm sein könnte, aber ich werde es weiterverkaufen können.",
+			"effects": {
+				"funds": 1,
+				"influence": -1
+			}
+		},
+		{
+			"id": "workdancerjobbenefactor",
+			"label": "Für einen Wohltäter auftreten",
+			"actionId": "work",
+			"requirements": {
+				"benefactor": 1,
+				"health": 1,
+				"funds": 1
+			},
+			"effects": {
+				"funds": -1
+			},
+			"aspects": {
+				"employment": 1
+			},
+			"linked": [
+				{
+					"id": "L_workdancerjobbenefactor_discardsme",
+					"chance": 70
+				},
+				{
+					"id": "L_workdancerjobbenefactor_proposes_always",
+					"chance": 100
+				},
+				{
+					"id": "L_workdancerjobbenefactor_proposes_sometimes",
+					"chance": 30
+				},
+				{
+					"id": "L_workdancerjobbenefactor_more_health",
+					"chance": 30
+				},
+				{
+					"id": "L_workdancerjobbenefactor_more_passion",
+					"chance": 30
+				},
+				{
+					"id": "L_workdancerjobbenefactor_more_funds",
+					"chance": 30
+				},
+				{
+					"id": "L_workdancerjobbenefactor_more_reason",
+					"chance": 30
+				},
+				{
+					"id": "L_workdancerjobbenefactor_satisfactory_norequirement",
+					"chance": 70
+				},
+				{
+					"id": "L_workdancerjobbenefactor_bored",
+					"chance": 100
+				}
+			],
+			"startdescription": "Mein Wohltäter wäre hoch erfreut, wenn ich eine Privatvorstellung für einige wenige erlesene Zuschauer geben könnte. Danach werde ich zum Abendessen eingeladen, und natürlich bekomme ich angemessene Geschenke für meine Zeit.",
+			"description": ".",
+			"warmup": 45,
+			"craftable": true
+		},
+		{
+			"id": "L_workdancerjobbenefactor_more_health",
+			"actionId": "work",
+			"label": "Mein Wohltäter: Energie",
+			"startdescription": "Heute Abend ist mein Wohltäter voller Energie. Sollte ich auch!",
+			"description": ".",
+			"slots": [
+				{
+					"id": "energy",
+					"label": "Energie",
+					"required": {
+						"health": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "L_workdancerjobbenefactor_satisfactory_health",
+					"chance": 70
+				},
+				{
+					"id": "L_workdancerjobbenefactor_bored",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "L_workdancerjobbenefactor_more_passion",
+			"actionId": "work",
+			"label": "Mein Wohltäter: Einfallsreichtum",
+			"startdescription": "Heute Abend wäre mein Wohltäter von Einfallsreichtum angetan, Enthusiasmus, Elan. Leidenschaft.",
+			"description": ".",
+			"slots": [
+				{
+					"id": "vivacity",
+					"label": "Verve",
+					"required": {
+						"passion": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "L_workdancerjobbenefactor_satisfactory_passion",
+					"chance": 70
+				},
+				{
+					"id": "L_workdancerjobbenefactor_bored",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "L_workdancerjobbenefactor_more_funds",
+			"actionId": "work",
+			"label": "Mein Wohltäter: Frische Farben",
+			"startdescription": "Heute Abend würde es mein Wohltäter vorziehen, mich in etwas Neuem zu sehen. Ich sollte mir etwas kaufen, und zwar schnell ...",
+			"description": ".",
+			"slots": [
+				{
+					"id": "funds",
+					"label": "Geldmittel",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "L_workdancerjobbenefactor_satisfactory_funds",
+					"chance": 70
+				},
+				{
+					"id": "L_workdancerjobbenefactor_bored",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "L_workdancerjobbenefactor_more_reason",
+			"actionId": "work",
+			"label": "Mein Wohltäter: Das Leben des Geistes",
+			"startdescription": "Heute Abend ist mein Wohltäter in Plauderlaune.",
+			"slots": [
+				{
+					"id": "L_conversation",
+					"label": "Gespräch",
+					"required": {
+						"reason": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "L_workdancerjobbenefactor_satisfactory_reason",
+					"chance": 70
+				},
+				{
+					"id": "L_workdancerjobbenefactor_bored",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "L_workdancerjobbenefactor_satisfactory_health",
+			"actionId": "work",
+			"requirements": {
+				"health": 1
+			},
+			"label": "Mein Wohltäter findet mich fesselnd.",
+			"description": "Nach der Vorstellung bin ich errötet und ich schwitze, doch meinem Wohltäter scheint das zu gefallen. Er hat mir ein glitzerndes Etwas mitgebracht.",
+			"mutations": [
+				{
+					"filterOnAspectId": "benefactor",
+					"mutateAspectId": "besotment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"funds": 5
+			}
+		},
+		{
+			"id": "L_workdancerjobbenefactor_satisfactory_passion",
+			"actionId": "work",
+			"requirements": {
+				"passion": 1
+			},
+			"label": "Mein Wohltäter ist entzückt",
+			"startdescription": "Alle Gäste applaudieren aus voller Überzeugung! Meine Vorstellung ist gut angekommen. Hinterher ist mein Wohltäter respektvoll und liebenswert. Ich habe ein Souvenir des Abends – ein recht teures.",
+			"mutations": [
+				{
+					"filterOnAspectId": "benefactor",
+					"mutateAspectId": "besotment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"funds": 5
+			}
+		},
+		{
+			"id": "L_workdancerjobbenefactor_satisfactory_funds",
+			"actionId": "work",
+			"requirements": {
+				"funds": 1
+			},
+			"label": "Mein Wohltäter sieht mir wohlwollend zu",
+			"description": "Ich habe mein Kostüm für die Vorstellung gut gewählt. Mein Wohltäter überhäuft mich mit Komplimenten und Geschenken.",
+			"mutations": [
+				{
+					"filterOnAspectId": "benefactor",
+					"mutateAspectId": "besotment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"funds": 4
+			},
+			"comments": "only 4 funds; 1 used up"
+		},
+		{
+			"id": "L_workdancerjobbenefactor_satisfactory_reason",
+			"actionId": "work",
+			"requirements": {
+				"reason": 1
+			},
+			"label": "Mein Wohltäter findet mich fesselnd.",
+			"description": "Die Vorstellung ist kürzer als sonst, aber die Gespräche – mit den anderen Gästen, später nur mit meinem Wohltäter – ziehen sich bis in die Nacht hin. Ich gehe mit einem ansehnlichen Geschenk.",
+			"mutations": [
+				{
+					"filterOnAspectId": "benefactor",
+					"mutateAspectId": "besotment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"funds": 5
+			}
+		},
+		{
+			"id": "L_workdancerjobbenefactor_satisfactory_norequirement",
+			"actionId": "work",
+			"label": "Mein Wohltäter findet mich fesselnd.",
+			"startdescription": ".",
+			"description": "Heute Abend habe ich getanzt und gelacht und war charmant zu meinem Wohltäter und hinreißend zu unseren Gästen. Alle sind glücklich. Und ich habe ein kleines Etwas – von dem ich eine ganze Weile leben kann.",
+			"mutations": [
+				{
+					"filterOnAspectId": "benefactor",
+					"mutateAspectId": "besotment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"funds": 5
+			}
+		},
+		{
+			"id": "L_workdancerjobbenefactor_bored",
+			"actionId": "work",
+			"label": "Mein Wohltäter ist ruhelos",
+			"description": "Aus welchem Grunde auch immer scheint mein Wohltäter heute Abend an mir nicht interessiert zu sein, trotz all meiner Bemühungen. Er strengt sich an, um mich höflich zu verabschieden, doch sein übliches Geschenk wirkt wie ein Nachtrag.",
+			"mutations": [
+				{
+					"filterOnAspectId": "benefactor",
+					"mutateAspectId": "boredom",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"funds": 2
+			},
+			"aspects": {
+				"employment": 1
+			}
+		},
+		{
+			"id": "L_workdancerjobbenefactor_discardsme",
+			"actionId": "work",
+			"requirements": {
+				"boredom": 7
+			},
+			"label": "Ist mein Wohltäter meiner überdrüssig?",
+			"startdescription": "Ich habe seit Tagen nichts von meinem Wohltäter gehört ...",
+			"description": "Wenn ich anrufe, heißt es, niemand empfange Besucher. Dreimal versichert man mir das. Schließlich bekomme ich ein bescheidenes Geschenk mit einer höflichen Karte, die mir alles Gute für die Zukunft wünscht. Sie ist nicht signiert. Vielleicht hat niemand sie geschickt.",
+			"aspects": {
+				"rejection": 1
+			},
+			"effects": {
+				"funds": 2
+			}
+		},
+		{
+			"id": "L_workdancerjobbenefactor_proposes_always",
+			"actionId": "work",
+			"requirements": {
+				"besotment": 10,
+				"benefactor_proposal": -1
+			},
+			"label": "Will mein Wohltäter mir einen Antrag machen?",
+			"startdescription": "Heute Abend umgibt ihn eine Art unterdrückter Aufregung.",
+			"description": ".",
+			"effects": {
+				"funds": 5,
+				"contentment": 1
+			},
+			"aspects": {
+				"avowal": 1
+			}
+		},
+		{
+			"id": "L_workdancerjobbenefactor_proposes_sometimes",
+			"actionId": "work",
+			"requirements": {
+				"besotment": 7,
+				"benefactor_proposal": -1
+			},
+			"label": "Will mein Wohltäter mir einen Antrag machen?",
+			"startdescription": "Heute Abend umgibt ihn eine Art unterdrückter Aufregung.",
+			"description": ".",
+			"effects": {
+				"funds": 5,
+				"contentment": 1
+			},
+			"aspects": {
+				"avowal": 1
+			},
+			"comments": "Identical to proposes_always, but with a lower threshold"
+		},
+		{
+			"id": "talk_benefactormarry",
+			"actionId": "talk",
+			"requirements": {
+				"benefactor_proposal": 1
+			},
+			"slots": [
+				{
+					"id": "Yes",
+					"label": "Ja",
+					"required": {
+						"passion": 1
+					}
+				}
+			],
+			"label": "Heiratsantrag annehmen",
+			"startdescription": "Mir ist die Ehe angetragen worden – hinein in den Adel. Frieden, Wohlstand, Bequemlichkeit und die liebevolle Gesellschaft meines Wohltäters, für den Rest meines Lebens. Ich muss ernst sein. Wenn ich keinen Ernst aufbringen kann, muss ich ihn vorspielen.",
+			"description": "Mein Wohltäter wartet noch immer, das Gesicht umwölkt.",
+			"alternativerecipes": [
+				{
+					"id": "talk_benefactormarrycomplete",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "talk_benefactormarrycomplete",
+			"actionId": "talk",
+			"label": "'Ja!'",
+			"requirements": {
+				"benefactor_proposal": 1,
+				"passion": 1
+			},
+			"startdescription": "Nun lasse ich diesen Ort hinter mir und beginne ein neues Leben. Ein glückliches, wie ich zu hoffen wage – ",
+			"ending": "workvictorymarriage"
+		}
+	]
+}

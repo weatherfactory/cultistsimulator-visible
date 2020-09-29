@@ -1,0 +1,31 @@
+{
+	"elements": [
+		{
+			"id": "legacybytjob",
+			"description": "執筆に手を出す人もいれば、絵画に手を出す人もいるが、結局のところ、安定した収入がなければ生きていけない。",
+			"label": "あれこれ",
+			"aspects": {
+				"benign": 1,
+				"job": 1
+			}
+		},
+		{
+			"id": "legacybytjobmatured",
+			"description": "執筆に手を出す人もいれば、絵画に手を出す人もいるが、結局のところ、比較的安定した収入がなければ生きていけない。",
+			"label": "あれこれ",
+			"aspects": {
+				"benign": 1,
+				"job": 1
+			},
+			"comments": "Exists to allow a switch to a longer cycle immediately after first use."
+		},
+		{
+			"id": "legacydiarylastcharacter",
+			"aspects": {
+				"legacyplotitem": 1
+			},
+			"label": "暗号化された日記",
+			"description": "#PREVIOUSCHARACTERNAME#という名前の人物に執着していく様子が描かれている。"
+		}
+	]
+}

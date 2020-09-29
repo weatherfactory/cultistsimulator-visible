@@ -1,0 +1,551 @@
+{
+	"recipes": [
+		{
+			"id": "summoning_haunt_devourer",
+			"actionId": "haunting",
+			"requirements": {
+				"devourer": 1
+			},
+			"startdescription": "逃げられた！",
+			"warmup": 0,
+			"linked": [
+				{
+					"id": "summoning_haunt_devourer_eatsmortal",
+					"chance": 50
+				},
+				{
+					"id": "summoning_haunt_devourer_damages_health",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "summoning_haunt_devourer_eatsmortal",
+			"label": "潜む食い荒らす者",
+			"actionId": "haunting",
+			"startdescription": "逃げた召喚獣が地区を徘徊し、貪り食える定命の者を探している。[食い荒らす者の属性が高いほど、定命の者に危害を加える可能性が高い。]",
+			"description": "召喚された生物は元の場所へと戻っていった。これ以上害を及ぼすようなことをしないだろう。今のところは。",
+			"slots": [
+				{
+					"id": "Consuming",
+					"label": "摂取",
+					"required": {
+						"mortal": 1
+					},
+					"greedy": true
+				}
+			],
+			"comments": "This isn't currently in use. We only allow devourers to destroy evidence, not haunt investigators, so summoners might be understandably annoyed.",
+			"alternativerecipes": [
+				{
+					"id": "devourer_haunting_mortal_highdevourer",
+					"chance": 100
+				},
+				{
+					"id": "devourer_haunting_mortal_middevourer",
+					"chance": 100
+				},
+				{
+					"id": "devourer_haunting_mortal_lowdevourer",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "devourer_haunting_mortal_highdevourer",
+			"label": "逃げだした召喚獣が犠牲者に迫る",
+			"actionId": "haunting",
+			"startdescription": "時計の針が動くたびに、旋回する風のように、川の渦のように近づいていく。",
+			"description": "死は目に見えないが、聞こえないわけではない。",
+			"requirements": {
+				"mortal": 1,
+				"devourer": 10
+			},
+			"warmup": 15,
+			"linked": [
+				{
+					"id": "devourer_haunting_mortal_success",
+					"chance": 100
+				},
+				{
+					"id": "devourer_haunting_mortal_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "devourer_haunting_mortal_middevourer",
+			"label": "逃げだした召喚獣が犠牲者に迫る",
+			"actionId": "haunting",
+			"startdescription": "犠牲者は今頃になって何かがおかしいことに気づくだろう。夜中の音に耳を傾け、態勢を整えようとする。",
+			"description": ". devourer_haunting_mortal_middevourer",
+			"requirements": {
+				"mortal": 1,
+				"devourer": 5
+			},
+			"warmup": 15,
+			"linked": [
+				{
+					"id": "devourer_haunting_mortal_success",
+					"chance": 70
+				},
+				{
+					"id": "devourer_haunting_mortal_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "devourer_haunting_mortal_lowdevourer",
+			"label": "逃げだした召喚獣が犠牲者に迫る",
+			"actionId": "haunting",
+			"startdescription": "これは、控えめな威嚇に過ぎないが、控えめな威嚇でもたまに命取りとなることがある。",
+			"description": ". devourer_haunting_mortal_lowdevourer",
+			"requirements": {
+				"mortal": 1
+			},
+			"comments": "Leaving 'Devourer' requirement out of here allows us to catch old-style hauntings where a spirit is not present in the verb. otherwise they loop forever!",
+			"warmup": 15,
+			"linked": [
+				{
+					"id": "devourer_haunting_mortal_success",
+					"chance": 30
+				},
+				{
+					"id": "devourer_haunting_mortal_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "devourer_haunting_mortal_success",
+			"label": "逃げだした召喚獣が犠牲者の命を奪う",
+			"actionId": "haunting",
+			"startdescription": ".",
+			"description": "その日の最初の太陽の光が、死体の開いた目に降り注ぐ。愚かな召喚にはしばしば代償があるが、それを支払うのは必ずしも召喚者ではない。",
+			"aspects": {
+				"killmortal": 1,
+				"killsummoned": 1
+			},
+			"effects": {
+				"notoriety": 1
+			}
+		},
+		{
+			"id": "devourer_haunting_mortal_failure",
+			"label": "逃げだした召喚獣が犠牲者を恐怖に陥れる。",
+			"actionId": "haunting",
+			"startdescription": ".",
+			"description": "被害者は生き残った！しかし、今夜の噂は染みのように広がっていくだろう。",
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"killsummoned": 1
+			}
+		},
+		{
+			"id": "summoning_haunt_devourer_damages_health",
+			"label": "食い荒らす者",
+			"actionId": "haunting",
+			"startdescription": "逃げた召喚獣が、地球の中へ戻る前に、何かを奪おうとする。[食い荒らす者の属性が高いほど、あなたに危害を加える可能性が高い。]",
+			"description": "召喚された生物は元の場所へと戻っていった。これ以上害を及ぼすようなことをしないだろう。今のところは。",
+			"slots": [
+				{
+					"id": "consuming",
+					"label": "摂取",
+					"required": {
+						"health": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 30,
+			"alternativerecipes": [
+				{
+					"id": "devourer_haunting_damageshealth_highdevourer",
+					"chance": 100
+				},
+				{
+					"id": "devourer_haunting_damageshealth_middevourer",
+					"chance": 100
+				},
+				{
+					"id": "devourer_haunting_damageshealth_lowdevourer",
+					"chance": 100
+				}
+			],
+			"linked": [
+				{
+					"id": "summoning_haunt_devourer_damages_health"
+				}
+			]
+		},
+		{
+			"id": "devourer_haunting_damageshealth_highdevourer",
+			"label": "逃げだした召喚獣はタイミングを見計らっている",
+			"actionId": "haunting",
+			"startdescription": "遊ばれているのか？",
+			"description": ".",
+			"requirements": {
+				"health": 1,
+				"devourer": 10
+			},
+			"warmup": 15,
+			"linked": [
+				{
+					"id": "devourer_haunting_damageshealth_success",
+					"chance": 100
+				},
+				{
+					"id": "devourer_haunting_damageshealth_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "devourer_haunting_damageshealth_middevourer",
+			"label": "逃げだした召喚獣が待ち受けている",
+			"actionId": "haunting",
+			"startdescription": "人間の体をバラバラにする方法ならたくさんある。肌が開いた扉のように脆く感じる。",
+			"description": ". devourer_haunting_damageshealth_middevourer",
+			"requirements": {
+				"health": 1,
+				"devourer": 5
+			},
+			"warmup": 15,
+			"linked": [
+				{
+					"id": "devourer_haunting_damageshealth_success",
+					"chance": 70
+				},
+				{
+					"id": "devourer_haunting_damageshealth_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "devourer_haunting_damageshealth_lowdevourer",
+			"label": "逃げだした召喚獣が待ち受けている",
+			"actionId": "haunting",
+			"startdescription": "窓を見張って扉に鍵をかけて、樫と銀をベッドのそばに置いておく。それで十分かもしれない。",
+			"description": ". devourer_haunting_damageshealth_lowdevourer",
+			"requirements": {
+				"health": 1
+			},
+			"comments": "Leaving 'Devourer' requirement out of here allows us to catch old-style hauntings where a spirit is not present in the verb. otherwise they loop forever!",
+			"warmup": 15,
+			"linked": [
+				{
+					"id": "devourer_haunting_damageshealth_success",
+					"chance": 30
+				},
+				{
+					"id": "devourer_haunting_damageshealth_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "devourer_haunting_damageshealth_success",
+			"label": "逃亡した召喚獣があなたを襲う",
+			"actionId": "haunting",
+			"startdescription": ".",
+			"description": "いつか写真を撮られ美術館に飾られるような傷跡を負うだろう。そして、隣人たちは好き勝手に噂をするに違いない。",
+			"aspects": {
+				"damagehealth": 1,
+				"killsummoned": 1
+			},
+			"effects": {
+				"notoriety": 1
+			}
+		},
+		{
+			"id": "devourer_haunting_damageshealth_failure",
+			"label": "逃げだした召喚獣は勝てなかった",
+			"actionId": "haunting",
+			"startdescription": ".",
+			"description": "私には敵わなかったのか！静かに片づけることはできなかった。人の口に戸は立てられない。",
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"killsummoned": 1
+			}
+		},
+		{
+			"id": "summoning_haunt_deceiver",
+			"actionId": "haunting",
+			"requirements": {
+				"deceiver": 1
+			},
+			"startdescription": "逃げられた！",
+			"warmup": 0,
+			"linked": [
+				{
+					"id": "summoning_haunt_deceiver_derangesreason",
+					"chance": 100
+				}
+			],
+			"comments": "Currently doesn't call summoning_haunt_deceiver_derangesmortal, because Deceivers don't attack directly."
+		},
+		{
+			"id": "summoning_haunt_deceiver_derangesreason",
+			"label": "潜む欺く者",
+			"actionId": "haunting",
+			"startdescription": "逃げた召喚獣が、あなたを絶望に陥れようとつきまとう――",
+			"description": "召喚された生物は元の場所へと戻っていった。これ以上害を及ぼすようなことをしないだろう。今のところは。",
+			"slots": [
+				{
+					"id": "Consuming",
+					"label": "摂取",
+					"required": {
+						"reason": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 30,
+			"alternativerecipes": [
+				{
+					"id": "deceiver_haunting_reason_highdeceiver",
+					"chance": 100
+				},
+				{
+					"id": "deceiver_haunting_reason_middeceiver",
+					"chance": 100
+				},
+				{
+					"id": "deceiver_haunting_reason_lowdeceiver",
+					"chance": 100
+				}
+			],
+			"linked": [
+				{
+					"id": "summoning_haunt_deceiver_derangesreason"
+				}
+			]
+		},
+		{
+			"id": "deceiver_haunting_reason_highdeceiver",
+			"label": "逃げだした召喚獣が待ち受けている",
+			"actionId": "haunting",
+			"startdescription": "人間の理性は脆く、この獣は抗いがたい。",
+			"description": ".",
+			"requirements": {
+				"reason": 1,
+				"deceiver": 10
+			},
+			"linked": [
+				{
+					"id": "deceiver_haunting_reason_success",
+					"chance": 100
+				},
+				{
+					"id": "deceiver_haunting_reason_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "deceiver_haunting_reason_middeceiver",
+			"label": "逃げだした召喚獣が待ち受けている",
+			"actionId": "haunting",
+			"startdescription": "人間の理性は脆く、この獣は強い。",
+			"description": ". deceiver_haunting_reason_middeceiver",
+			"requirements": {
+				"reason": 1,
+				"deceiver": 5
+			},
+			"linked": [
+				{
+					"id": "deceiver_haunting_reason_success",
+					"chance": 70
+				},
+				{
+					"id": "deceiver_haunting_reason_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "deceiver_haunting_reason_lowdeceiver",
+			"label": "逃げだした召喚獣が待ち受けている",
+			"actionId": "haunting",
+			"startdescription": "人間の理性は脆いが、この獣は危害より災難を招くかもしれない。",
+			"description": ". deceiver_haunting_reason_lowedge",
+			"requirements": {
+				"reason": 1
+			},
+			"comments": "Leaving 'Deceiver' requirement out of here allows us to catch old-style hauntings where a spirit is not present in the verb. otherwise they loop forever!",
+			"linked": [
+				{
+					"id": "deceiver_haunting_reason_success",
+					"chance": 30
+				},
+				{
+					"id": "deceiver_haunting_reason_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "deceiver_haunting_reason_success",
+			"label": "逃げだした召喚獣が夢を荒らした",
+			"actionId": "haunting",
+			"startdescription": ".",
+			"description": "その夜の出来事はあなたの記憶に長く残り、何日もの間、新聞は地区の住民に疑問を投げかける。",
+			"aspects": {
+				"damagereason": 1,
+				"killsummoned": 1
+			},
+			"effects": {
+				"notoriety": 1
+			}
+		},
+		{
+			"id": "deceiver_haunting_reason_failure",
+			"label": "逃げだした召喚にあなたの決意は破れなかった",
+			"actionId": "haunting",
+			"startdescription": ".",
+			"description": "その夜の出来事は記憶に長く残るが、「目覚め」の向こうから来た獣はあなたに歯が立たない。何日もの間、新聞は地区の住民に疑問を投げかける。",
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"killsummoned": 1
+			}
+		},
+		{
+			"id": "summoning_haunt_deceiver_derangesmortal",
+			"label": "潜む欺く者",
+			"actionId": "haunting",
+			"startdescription": "逃げた召喚獣が地区を徘徊し、錯乱させる定命の者を探している。",
+			"description": "召喚された生物は元の場所へと戻っていった。これ以上害を及ぼすようなことをしないだろう。今のところは。",
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"derangemortal": 1
+			},
+			"slots": [
+				{
+					"id": "Consuming",
+					"label": "摂取",
+					"required": {
+						"mortal": 1
+					},
+					"greedy": true
+				}
+			],
+			"comments": "This isn't currently in use. We only allow Deceivers to destroy evidence, not haunt investigators, so summoners might be understandably annoyed.",
+			"alternativerecipes": [
+				{
+					"id": "deceiver_haunting_mortal_highedge",
+					"chance": 100
+				},
+				{
+					"id": "deceiver_haunting_mortal_midedge",
+					"chance": 100
+				},
+				{
+					"id": "deceiver_haunting_mortal_lowedge",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "deceiver_haunting_mortal_highedge",
+			"label": "逃げだした召喚獣が犠牲者に迫る",
+			"actionId": "haunting",
+			"startdescription": "人間の理性は脆く、この獣は抗いがたい。",
+			"description": ".",
+			"requirements": {
+				"mortal": 1,
+				"edge": 10
+			},
+			"linked": [
+				{
+					"id": "deceiver_haunting_mortal_success",
+					"chance": 100
+				},
+				{
+					"id": "deceiver_haunting_mortal_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "deceiver_haunting_mortal_midedge",
+			"label": "逃げだした召喚獣が犠牲者に迫る",
+			"actionId": "haunting",
+			"startdescription": "人間の理性は脆く、この獣は強い。",
+			"description": ". deceiver_haunting_mortal_midedge",
+			"requirements": {
+				"mortal": 1,
+				"edge": 5
+			},
+			"linked": [
+				{
+					"id": "deceiver_haunting_mortal_success",
+					"chance": 70
+				},
+				{
+					"id": "deceiver_haunting_mortal_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "deceiver_haunting_mortal_lowedge",
+			"label": "逃げだした召喚獣が犠牲者に迫る",
+			"actionId": "haunting",
+			"startdescription": "人間の理性は脆いが、この獣は危害より災難を招くかもしれない。",
+			"description": ". deceiver_haunting_mortal_lowedge",
+			"requirements": {
+				"mortal": 1,
+				"edge": 1
+			},
+			"linked": [
+				{
+					"id": "deceiver_haunting_mortal_success",
+					"chance": 30
+				},
+				{
+					"id": "deceiver_haunting_mortal_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "deceiver_haunting_mortal_success",
+			"label": "逃げだした召喚獣が犠牲者を恐怖に陥れる。",
+			"actionId": "haunting",
+			"startdescription": ".",
+			"description": "強い意志の持ち主だけが生き残れる。新聞には奇妙な記事が載るだろう。",
+			"aspects": {
+				"derangemortal": 1,
+				"killsummoned": 1
+			},
+			"effects": {
+				"notoriety": 1
+			}
+		},
+		{
+			"id": "deceiver_haunting_mortal_failure",
+			"label": "逃げだした召喚獣が犠牲者を恐怖に陥れる。",
+			"actionId": "haunting",
+			"startdescription": ".",
+			"description": "犠牲者の決心は今も揺るがない。新聞には奇妙な記事が載るだろう。",
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"killsummoned": 1
+			}
+		}
+	]
+}

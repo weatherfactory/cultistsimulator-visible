@@ -1,0 +1,299 @@
+{
+	"recipes": [
+		{
+			"id": "studylatintutoring",
+			"label": "Latein mit einem Tutor studieren",
+			"actionId": "study",
+			"requirements": {
+				"tutorlatin": 1,
+				"commission": -1,
+				"article": -1
+			},
+			"slots": [
+				{
+					"id": "Costs",
+					"label": "Preis",
+					"required": {
+						"compensationvalue": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "studylatintutoringpaid",
+					"chance": 100
+				}
+			],
+			"startdescription": "Wenn ich Latein lernen muss, gibt es da jemanden, der mir helfen kann, doch ich muss in Spintriae bezahlen, der Währung der verborgenen Welt.",
+			"description": "Tutoren arbeiten nicht unentgeltlich. Ein andermal.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studylatintutoringpaid",
+			"label": "Latein mit einem Tutor studieren",
+			"actionId": "study",
+			"requirements": {
+				"compensationvalue": 2
+			},
+			"effects": {
+				"scholarlatin": 1,
+				"compensationvalue": -2
+			},
+			"startdescription": "Das könnte reichen. Ich werde aufmerksam zuhören.",
+			"description": "Die Sprache von Lucretius' 'Über das Wesen der Dinge', von Aquinas' 'Summa Theologiae' und der berüchtigten 'De Horis ...'"
+		},
+		{
+			"id": "studygreektutoring",
+			"label": "Griechisch mit einem Tutor studieren",
+			"actionId": "study",
+			"requirements": {
+				"tutorgreek": 1,
+				"commission": -1,
+				"article": -1
+			},
+			"slots": [
+				{
+					"id": "Costs",
+					"label": "Preis",
+					"required": {
+						"compensationvalue": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "studygreektutoringpaid",
+					"chance": 100
+				}
+			],
+			"startdescription": "Wenn ich Griechisch lernen muss, gibt es da jemanden, der mir helfen kann, doch ich muss in Spintriae bezahlen, der Währung der verborgenen Welt.",
+			"description": "Tutoren arbeiten nicht unentgeltlich. Ein andermal.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studygreektutoringpaid",
+			"label": "Griechisch mit einem Tutor studieren",
+			"actionId": "study",
+			"requirements": {
+				"compensationvalue": 2
+			},
+			"effects": {
+				"scholargreek": 1,
+				"compensationvalue": -2
+			},
+			"startdescription": "Das könnte reichen. Ich werde aufmerksam zuhören.",
+			"description": "Die Sprache der Metaphysik, von Procopius' 'Geheimer Historie' und dem bedrohlichen 'Was sich im Silber verbirgt' ..."
+		},
+		{
+			"id": "studyaramaictutoring",
+			"label": "Aramäisch mit einem Tutor studieren",
+			"actionId": "study",
+			"requirements": {
+				"tutoraramaic": 1,
+				"commission": -1,
+				"article": -1
+			},
+			"slots": [
+				{
+					"id": "Costs",
+					"label": "Preis",
+					"required": {
+						"compensationvalue": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "studyaramaictutoringpaid",
+					"chance": 100
+				}
+			],
+			"startdescription": "Wenn ich Aramäisch lernen muss, gibt es da jemanden, der mir helfen kann, doch ich muss in Spintriae bezahlen, der Währung der verborgenen Welt.",
+			"description": "Tutoren arbeiten nicht unentgeltlich. Ein andermal.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyaramaictutoringpaid",
+			"label": "Aramäisch mit einem Tutor studieren",
+			"actionId": "study",
+			"requirements": {
+				"compensationvalue": 2
+			},
+			"effects": {
+				"scholararamaic": 1,
+				"compensationvalue": -2
+			},
+			"startdescription": "Das könnte reichen. Ich werde aufmerksam zuhören.",
+			"description": "Die Sprache der Visionen von Aram, des Buches von Daniel und des Berichts von Kanishk an der Spinnentür."
+		},
+		{
+			"id": "studysanskrittutoring",
+			"label": "Sanskrit mit einem Tutor studieren",
+			"actionId": "study",
+			"requirements": {
+				"tutorsanskrit": 1,
+				"commission": -1,
+				"article": -1
+			},
+			"slots": [
+				{
+					"id": "Costs",
+					"label": "Preis",
+					"required": {
+						"compensationvalue": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "studysanskrittutoringpaid",
+					"chance": 100
+				}
+			],
+			"startdescription": "Wenn ich Sanskrit lernen muss, gibt es da jemanden, der mir helfen kann, doch ich muss in Spintriae bezahlen, der Währung der verborgenen Welt.",
+			"description": "Tutoren arbeiten nicht unentgeltlich. Ein andermal.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studysanskrittutoringpaid",
+			"label": "Sanskrit mit einem Tutor studieren",
+			"actionId": "study",
+			"requirements": {
+				"compensationvalue": 2
+			},
+			"effects": {
+				"scholarsanskrit": 1,
+				"compensationvalue": -2
+			},
+			"startdescription": "Das könnte reichen. Ich werde aufmerksam zuhören.",
+			"description": "Die heilige Sprache des Subkontinents. Die Tür zu viertausend Jahren Dichtung, Zeremonien und Mysterien."
+		},
+		{
+			"id": "studyfucinetutoringspirit",
+			"label": "Fucine mit einem Tutor studieren",
+			"actionId": "study",
+			"requirements": {
+				"spirittutorfucine": 1,
+				"summoned": 1
+			},
+			"slots": [
+				{
+					"id": "Background",
+					"label": "Hintergrund",
+					"required": {
+						"scholarlatin": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "studyfucinetutoringsuccessful",
+					"chance": 100
+				}
+			],
+			"startdescription": "'Fucine? Ja, ich kann mich in Fucine verständigen. Ich kann es dich lehren, wenn du Latein als Grundlage hast. Aber wenn ich auch nur einmal was von wegen 'Sprache der Hexen' hören, ist Feierabend.'",
+			"description": "Ich habe nicht die Grundlage, die ich brauche.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyfucinetutoringsuccessful",
+			"label": "Fucine mit einem Tutor studieren",
+			"actionId": "study",
+			"requirements": {
+				"scholarlatin": 1
+			},
+			"effects": {
+				"scholarfucine": 1
+			},
+			"startdescription": "Mein Latein wird meine Grundlage sein. Ich werde lernen, was ich nur kann.",
+			"description": "Man kann nicht lange Fucine sprechen, ohne etwas Wasser zu trinken. Es trocknet die Lippen aus und macht den Hals rau. Eigentlich hätte es nur Leute sprechen können, die nah bei einem See wohnen."
+		},
+		{
+			"id": "studyphrygiantutoringspirit",
+			"label": "Phrygisch mit einem Tutor studieren",
+			"actionId": "study",
+			"requirements": {
+				"spirittutorphrygian": 1,
+				"summoned": 1
+			},
+			"slots": [
+				{
+					"id": "Background",
+					"label": "Hintergrund",
+					"required": {
+						"scholargreek": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "studyphrygiantutoringsuccessful",
+					"chance": 100
+				}
+			],
+			"startdescription": "'Phrygisch! Die Sprache der Großen Mutter! Natürlich. Wenn du dich genug auf das Griechische verstehst, garantiere ich dir, dass es dir <i>sehr</i> viel Spaß machen wir, Phrygisch zu lernen.'",
+			"description": "Ich habe nicht die Grundlage, die ich brauche.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyphrygiantutoringsuccessful",
+			"label": "Phrygisch mit einem Tutor studieren",
+			"actionId": "study",
+			"requirements": {
+				"scholargreek": 1
+			},
+			"effects": {
+				"scholarphrygian": 1
+			},
+			"startdescription": "Mein Griechisch wird meine Grundlage sein. Ich werde lernen, was ich nur kann.",
+			"description": "Herodot erzählt uns eine wilde Geschichte über einen Pharao, der herausfand, dass Phrygisch die Sprache war, die zuerst von den Menschen gesprochen wurde. Er hat sich natürlich geirrt, denn das war ja Vak. Doch die Geschichte gefällt allen."
+		},
+		{
+			"id": "studymandaictutoringspirit",
+			"label": "Alt-Mandäisch mit einem Tutor studieren",
+			"actionId": "study",
+			"requirements": {
+				"spirittutormandaic": 1,
+				"summoned": 1
+			},
+			"slots": [
+				{
+					"id": "Background",
+					"label": "Hintergrund",
+					"required": {
+						"scholararamaic": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "studymandaictutoringsuccessful",
+					"chance": 100
+				}
+			],
+			"startdescription": "'ZUSAMMEN WERDEN WIR DER VERBRENNUNG DER UNVERBRANNTEN GOTTES GEDENKEN.'",
+			"description": "Ich habe nicht die Grundlage, die ich brauche.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studymandaictutoringsuccessful",
+			"label": "Alt-Mandäisch mit einem Tutor studieren",
+			"actionId": "study",
+			"requirements": {
+				"scholararamaic": 1
+			},
+			"effects": {
+				"scholarmandaic": 1
+			},
+			"startdescription": "Mein Aramäisch wird meine Grundlage sein. Ich werde lernen, was ich nur kann.",
+			"description": "In einer Historie war dies die Sprache der Schattenlosen Könige. In einer anderen war sie die Grundlage der Beschwörungen der Kinder der Gefesselten Flamme."
+		}
+	]
+}

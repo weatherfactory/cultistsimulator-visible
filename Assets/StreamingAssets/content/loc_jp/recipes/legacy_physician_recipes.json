@@ -1,0 +1,155 @@
+{
+	"recipes": [
+		{
+			"id": "legacyphysicianwork",
+			"label": "医院での仕事",
+			"actionId": "work",
+			"requirements": {
+				"legacyphysicianjob": 1
+			},
+			"effects": {
+				"funds": 2,
+				"legacyphysicianjob": -1,
+				"institutephysicianjob": 1,
+				"health": 1,
+				"reason": 3
+			},
+			"alternativerecipes": [
+				{
+					"id": "legacyphysicianopenstudy",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "#PREVIOUSCHARACTERNAME#は厄介な患者だった。彼の治療が終わってから、しばらく休みをもらっていた。",
+			"description": "早めに仕事が終わった。院長も同情してくれたようだ。でも、そろそろフルタイムで働きださないといけない。",
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "legacyphysicianopenstudy",
+			"actionId": "study",
+			"label": "#PREVIOUSCHARACTERNAME#の診療記録",
+			"startdescription": "引き出しに詰め込んでいたメモが散らばっている。",
+			"description": "患者は意味のないことを話していた。壁のない家。分かれた太陽。見えない光。しかし、その見えない光をどんな風に話していたかを思い出すと、私の心臓は高鳴る。もうメモを無視することはできない。\r[<b>時</b>は流れている。]",
+			"effects": {
+				"legacyphysiciannotes": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "needs",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "legacyphysicianstudynotes",
+			"actionId": "study",
+			"requirements": {
+				"legacyphysiciannotes": 1
+			},
+			"label": "#PREVIOUSCHARACTERNAME#の診療記録を読む",
+			"startdescription": "読み始めると、患者の目が嬉しそうに輝いていたことや、歌うように声が弾んでいたことを思い出すが、同時に部屋の匂いも思い出してきた。",
+			"description": "突然、何とも言えない気持ちになった。「モーランドの道」について興味深い話をしていたことを何とか思いだした。今となって気づいたことだが、あれは「モーランド<i>への</i>道」だったに違いない。モーランドのことなら聞いたことがある。厄介な本を取り扱う人だ。\nそれ以外の雑談は、あの時も、今も意味がないことだ。家に壁がないなんてありえないし、憧れの的となる栄光とは何なのだ？しかし、すでに夢が私が眠るのを待っている気がした。",
+			"effects": {
+				"legacyphysiciannotes": -1,
+				"mapbookdealer": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "legacyphysicianopendream",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"warmup": 30,
+			"comments": "The book dealer can be studied through the generic intro; there's a generic openexplore there",
+			"craftable": true
+		},
+		{
+			"id": "legacyphysicianopendream",
+			"actionId": "dream",
+			"label": "見えない光",
+			"startdescription": "夢の中の私は、曲がった木の姿をしていた。蛾が樹皮の上で蠢いている。その光は目に見えないが、夜明けが近づいている。光が触れた瞬間、私は太陽に手を伸ばそうと背筋を伸ばす。",
+			"description": "目が覚めると、嬉し涙を流していた。その光は現実の全てから私を浄化してくれたのだ。でも夢がどのように#PREVIOUSCHARACTERNAME#を変えたかを、私は覚えている。同じ道をたどるのは愚かで危険だ。",
+			"effects": {
+				"contentment": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "legacyphysicianhook",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "legacyphysicianhook",
+			"actionId": "hookplot",
+			"label": "信念？",
+			"startdescription": "夢に屈することもできるが、そうすれば、自分の理性は<i>貪り食われる</i>だろう。",
+			"description": ".",
+			"alternativerecipes": [
+				{
+					"id": "legacyphysicianhookfulfilment",
+					"chance": 100
+				}
+			],
+			"slots": [
+				{
+					"id": "Temptation",
+					"label": "誘惑",
+					"required": {
+						"reason": 1
+					},
+					"consumes": true
+				}
+			],
+			"linked": [
+				{
+					"id": "legacyphysicianhook",
+					"chance": 100
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "legacyphysicianhookfulfilment",
+			"actionId": "hookplot",
+			"label": "見張り番の目",
+			"requirements": {
+				"reason": 1
+			},
+			"startdescription": "見張り番は、瞳の扉だ。自分の目の鍵を開けるためには、小さな犠牲を払わなければならない。",
+			"description": "眠っている間にナイフを振り回した。痛みはあるが、その痛みさえも道しるべとなる。傷口を縛り、事故だったと言い聞かせる。夢の中で、私は扉を見た。いつか近いうちに、私はそれを通り抜けるだろう。",
+			"effects": {
+				"ascensionenlightenmenta": 1,
+				"passion": 1,
+				"fragmentknock": 1,
+				"fragmentlantern": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "legacyphysicianopentalk",
+					"chance": 100,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "legacyphysicianopentalk",
+			"label": "同志",
+			"actionId": "talk",
+			"startdescription": "医院の患者の中には、目に包帯を巻いている人もいる。傷は自分でつけたものだと言っていた。近いうちに話すことになるかもしれない。",
+			"description": "私の傷は癒え、あの患者の傷も癒えた。なぜそんなことをしたのか分からないようだが、あの夜、私の夢を見たという。私たちは繋がっているのだ。",
+			"deckeffect": {
+				"acquaintances": 1
+			},
+			"warmup": 60,
+			"craftable": false
+		}
+	]
+}

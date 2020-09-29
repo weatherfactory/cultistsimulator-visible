@@ -1,0 +1,1787 @@
+{
+	"recipes": [
+		{
+			"id": "paintbasic",
+			"label": "絵を描く",
+			"actionId": "work",
+			"requirements": {
+				"ritual": -1,
+				"job": -1,
+				"passion": 1,
+				"passionskill": -1
+			},
+			"startdescription": "昔はよく絵を描いていた。夢の中で見たうろ覚えの風景を描くことができた。絵を売ることができるかもしれないし、できないかもしれない。",
+			"description": "絵を描き終えた――自分以外は誰も喜んでいないけど。[絵を描くと「煌めき」が手に入ることもある。<b>学ぶ</b>と、絵描きの世界がさらに広がる。]",
+			"slots": [
+				{
+					"id": "Yearning",
+					"label": "憧れ",
+					"required": {
+						"restlessness": 1
+					},
+					"consumes": true,
+					"description": "ソワソワする。これが、自分がやりたいことなのかもしれない。"
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "paintbasicsuccess",
+					"chance": 30
+				}
+			],
+			"deckeffect": {
+				"paintingresultsbasic": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"craftable": true,
+			"warmup": 60
+		},
+		{
+			"id": "paintbasicsuccess",
+			"label": "絵が売れた！",
+			"actionId": "work",
+			"description": "購入してくれる人を見つけた！おそらく予備の寝室に飾って、二度と見てくれることもないだろうが、結局のところ、お金はお金だ。[時折、絵を描くことで「煌めき」が得られることがある。それを学習することで、より高度な絵画オプションをアンロックできる。]",
+			"deckeffect": {
+				"paintingresultsbasic": 2
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"funds": 2
+			}
+		},
+		{
+			"id": "paintwithskill",
+			"label": "絵を描く",
+			"actionId": "work",
+			"requirements": {
+				"passionskill": 1,
+				"ritual": -1,
+				"job": -1
+			},
+			"slots": [
+				{
+					"id": "Inspiration",
+					"label": "インスピレーション",
+					"required": {
+						"lore": 1,
+						"influence": 1,
+						"follower": 1,
+						"acquaintance": 1,
+						"memory": 1
+					},
+					"description": "貴重な画題がある必要はないが、役に立つ。一部の画題は取締局の注意を引くが、それはそれで面白いもの。"
+				}
+			],
+			"startdescription": "どうだろう。これで稼げるようになるかもしれない。[情熱を追加すると、個性的な絵が描けるようになる。神秘性と特に、悪評を追加すると、注目を集め、稼ぎが増える。悪評を使って絵画を出品すると、人目を引くことになるので注意しよう。]",
+			"warmup": 20,
+			"craftable": true,
+			"alternativerecipes": [
+				{
+					"id": "painthasgrandmemory.nocanvas",
+					"chance": 100
+				},
+				{
+					"id": "painthasgrandmemory",
+					"chance": 100
+				},
+				{
+					"id": "painthaslore",
+					"chance": 100
+				},
+				{
+					"id": "painthasinfluence",
+					"chance": 100
+				},
+				{
+					"id": "painthasmemory",
+					"chance": 100
+				},
+				{
+					"id": "painthassummoned",
+					"chance": 100
+				},
+				{
+					"id": "painthasfollower",
+					"chance": 100
+				}
+			],
+			"linked": [
+				{
+					"id": "paintaddpigment",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "painthasgrandmemory.nocanvas",
+			"actionId": "work",
+			"label": "忘れられた色",
+			"startdescription": "世界から消えてしまった色を覚えている。忠実にその色を再現したりはしない――例え出来たとしてもだ。それに見合うだけのキャンバスがあれば......消えた色たちに敬意を表すことができる。",
+			"requirements": {
+				"memory": 5,
+				"passion": 1
+			},
+			"extantreqs": {
+				"canvas.pale": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "paint.prepareforcanvas.pale"
+				}
+			]
+		},
+		{
+			"id": "paint.prepareforcanvas.pale",
+			"actionId": "work",
+			"label": "最も青白い絵画のキャンバスを準備する",
+			"startdescription": "人間は芸術家にも、キャンバスにもなれる。今日の私は芸術家だ。[これにはしばらく時間がかかり、キャンバスを準備している間は「仕事」の動詞トークンを占領することとなる。]",
+			"description": "世界は、もう少しだけ最も青白い絵画の完成を待てるはずだ。もうすでに長い間待ってきたのだから。",
+			"slots": [
+				{
+					"id": "corpse",
+					"label": "材料",
+					"description": "長くて複雑な作業になるが、終わった時に臭いはほとんど感じられない。",
+					"required": {
+						"corpse": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "paint.createcanvas.pale"
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "paint.createcanvas.pale",
+			"actionId": "work",
+			"label": "青白いキャンバス",
+			"requirements": {
+				"corpse": 1
+			},
+			"startdescription": "準備作業は窓のない部屋で秘密裏に行われなければならないが......非常に換気の良い部屋でなければいけない。",
+			"description": "完成した。よく見ないと分からないだろう。取締局がこのキャンバスを見ないことを祈ろう。[次に絵を描くときに記憶を使うと、キャンバス上で作業を始められるようになる。]",
+			"effects": {
+				"canvas.pale": 1,
+				"corpse": -1,
+				"notoriety": 1
+			},
+			"warmup": 120
+		},
+		{
+			"id": "painthasgrandmemory",
+			"actionId": "work",
+			"label": "忘れられた色",
+			"startdescription": "@#memory.furious|真っ赤な夕日の下、砂丘の上で、怪物が自らを襲い、その脇腹に付き人たちが群がる。それは巨大で汚れた硫黄色だった......\n   #memory.luxurious|夜の青さを帯びたマンサスの靄の中に、珊瑚の王冠が浮かび、時折、月に向かってゆらゆらと揺れる......\n   #memory.liminal|金色に輝く紫の黄昏の空......\n   #memory.horizon|霧は晴れているが、太陽が月と間違われそうなとき、空の特定の場所で見られる色あせた青白い白金色......\n   #memory.splendid|オーロラのようなバラ色と鋼青色が空を競う。そこには夜も朝もなく、待ち望まれる正午のと名残惜しまれる正午だけがある。\n   #memory.endless|その様子は、醜いかもしれないが、ガラスの迷宮から血を引くように美しい......\n   #memory.wildering|闇に包まれる前の森は、毒々しい緑色の実をつけて、根はカーネリアン色に染まっている......\n   #memory.golden|各面に一点の光が輝いている。火灯りの光かもしれない.....\n   #memory.honeyed|我々の翼は広がって輝き、鱗は黒曜石のように柔らかく光る......\n   @",
+			"requirements": {
+				"memory": 5,
+				"passion": 1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "paint.palestpainting.continue"
+				}
+			]
+		},
+		{
+			"id": "paint.palestpainting.continue",
+			"actionId": "work",
+			"label": "最も青白い絵画を描き続ける",
+			"startdescription": "ハンターのようにその姿を追いかけているが、決してまっすぐ見つめてはいない。どんな絵具を使ってもこの失われた色を再現することはできないから、控えめに表現するしかない。",
+			"description": "世界は、もう少しだけ最も青白い絵画の完成を待てるはずだ。もうすでに長い間待ってきたのだから。",
+			"slots": [
+				{
+					"id": "canvas.pale",
+					"label": "キャンバス",
+					"greedy": true,
+					"description": "ゆっくり、優しく。",
+					"required": {
+						"canvas.pale": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "paint.palestpainting.furious"
+				},
+				{
+					"id": "paint.palestpainting.luxurious"
+				},
+				{
+					"id": "paint.palestpainting.liminal"
+				},
+				{
+					"id": "paint.palestpainting.horizon"
+				},
+				{
+					"id": "paint.palestpainting.splendid"
+				},
+				{
+					"id": "paint.palestpainting.endless"
+				},
+				{
+					"id": "paint.palestpainting.wildering"
+				},
+				{
+					"id": "paint.palestpainting.golden"
+				},
+				{
+					"id": "paint.palestpainting.honeyed"
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "paint.palestpainting.furious",
+			"actionId": "work",
+			"label": "ナナトグロの色",
+			"startdescription": "真っ赤な夕日の下、砂丘の上で、怪物が自らを襲い、その脇腹に付き人たちが群がる。それは巨大で汚れた硫黄色だった。牙のついた触手のような首が、子猫のように格闘している。喜び勇んで自らの肉を引き裂き、そこから黄金の血が噴き出す。怪物がひっくり返り、肉の海へと落ちれば、付き人たちを潰し、残りの者たちは悲鳴と歓声を上げる。",
+			"requirements": {
+				"memory.furious": 1
+			},
+			"effects": {
+				"memory.furious": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"mutate": "colours.furious",
+					"filter": "canvas.pale",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "paint.palestpainting.complete"
+				}
+			]
+		},
+		{
+			"id": "paint.palestpainting.luxurious",
+			"actionId": "work",
+			"label": "潮汐の色",
+			"startdescription": "夜の青さを帯びたマンサスの靄の中に、珊瑚の王冠が浮かび、時折、月に向かってゆらゆらと揺れる。前方では劣る「名を持つ者」を吸収し、鉱物や樹液で覆い、後方では一部の「名を持つ者」を宝石のように磨いて排出する。残りのものは、棘のある潮汐の心臓の餌となる。",
+			"requirements": {
+				"memory.luxurious": 1
+			},
+			"effects": {
+				"memory.luxurious": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"mutate": "colours.luxurious",
+					"filter": "canvas.pale",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "paint.palestpainting.complete"
+				}
+			]
+		},
+		{
+			"id": "paint.palestpainting.liminal",
+			"actionId": "work",
+			"label": "二重の入り口の色",
+			"startdescription": "角斧のことを思い出すと、サンザシの香りを思い出す。金色に輝く紫の黄昏の空を思い浮かべる。私は、使命を果たしたばかりの刃から、血が滴っていたのを覚えている。",
+			"requirements": {
+				"memory.liminal": 1
+			},
+			"effects": {
+				"memory.liminal": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"mutate": "colours.liminal",
+					"filter": "canvas.pale",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "paint.palestpainting.complete"
+				}
+			]
+		},
+		{
+			"id": "paint.palestpainting.horizon",
+			"actionId": "work",
+			"label": "水平線の色",
+			"startdescription": "霧は晴れているが、太陽が月と間違われそうなとき、空の特定の場所で見られる色あせた淡い白金色。新しく作られた言葉のように色が次々と分かれていくまで、我々は息を止めて、色が明るくなっていくを見守る。孵化しない卵。",
+			"requirements": {
+				"memory.horizon": 1
+			},
+			"effects": {
+				"memory.horizon": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"mutate": "colours.horizon",
+					"filter": "canvas.pale",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "paint.palestpainting.complete"
+				}
+			]
+		},
+		{
+			"id": "paint.palestpainting.splendid",
+			"actionId": "work",
+			"label": "これまでの色",
+			"startdescription": "オーロラのようなバラ色と鋼青色が空を競う。そこには夜も朝もなく、待ち望まれる正午のと名残惜しまれる正午だけがある。一人一人が、空から降り注ぐ金色の針に心を開いた。どの色も栄光の太陽の光を浴びると色が濃くなる。",
+			"requirements": {
+				"memory.splendid": 1
+			},
+			"effects": {
+				"memory.splendid": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"mutate": "colours.splendid",
+					"filter": "canvas.pale",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "paint.palestpainting.complete"
+				}
+			]
+		},
+		{
+			"id": "paint.palestpainting.endless",
+			"actionId": "work",
+			"label": "回る色",
+			"startdescription": "回るたびに、繊毛が跳ねたりねじれたりしながら、体が透明から緋色へと変化していく。その様子は、醜いかもしれないが、ガラスの迷宮から血を引くように美しい。それは止まること知らずで、無限に回転し続ける。車輪。",
+			"requirements": {
+				"memory.endless": 1
+			},
+			"effects": {
+				"memory.endless": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"mutate": "colours.endless",
+					"filter": "canvas.pale",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "paint.palestpainting.complete"
+				}
+			]
+		},
+		{
+			"id": "paint.palestpainting.wildering",
+			"actionId": "work",
+			"label": "黒以外の色",
+			"startdescription": "闇に包まれる前の森は、毒々しい緑色の実をつけて、根はカーネリアン色に染まっている。蛾の目は空腹であることを喜んでいる。狩りをしているのだ。",
+			"requirements": {
+				"memory.wildering": 1
+			},
+			"effects": {
+				"memory.wildering": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"mutate": "colours.wildering",
+					"filter": "canvas.pale",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "paint.palestpainting.complete"
+				}
+			]
+		},
+		{
+			"id": "paint.palestpainting.golden",
+			"actionId": "work",
+			"label": "古い火の色",
+			"startdescription": "滑らかで研ぎ澄まされているとはいえ、これはただの石――でも、良く見てみると、各面に一点の光が輝いている。火灯りの光かもしれないし、様々な星なのかもしれない。",
+			"requirements": {
+				"memory.golden": 1
+			},
+			"effects": {
+				"memory.golden": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"mutate": "colours.golden",
+					"filter": "canvas.pale",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "paint.palestpainting.complete"
+				}
+			]
+		},
+		{
+			"id": "paint.palestpainting.honeyed",
+			"actionId": "work",
+			"label": "これからの色",
+			"startdescription": "我々の翼は広がって輝き、鱗は黒曜石のように柔らかく光る。瞳は宝石のように煌めき、爪は紛れもなく闇のように黒い。",
+			"requirements": {
+				"memory.honeyed": 1
+			},
+			"effects": {
+				"memory.honeyed": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"mutate": "colours.honeyed",
+					"filter": "canvas.pale",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "paint.palestpainting.complete"
+				}
+			]
+		},
+		{
+			"id": "paint.palestpainting.complete",
+			"actionId": "work",
+			"label": "9色の暗示",
+			"startdescription": "もうすぐ完成する。鳩が私の頭上の屋根の稜線に群がり、夕暮れが息を切らして待っている。",
+			"description": "絵は扉ではない。時の神々は消えた。その響きさえも空っぽだが、私は彼らをまだ覚えている。何も奪えない者、騙されない者、全ての死者を名指しで呼ぶ者――彼らはこの作品を喜んでくれているかもしれない。",
+			"requirements": {
+				"colours.furious": 1,
+				"colours.luxurious": 1,
+				"colours.liminal": 1,
+				"colours.horizon": 1,
+				"colours.splendid": 1,
+				"colours.endless": 1,
+				"colours.wildering": 1,
+				"colours.golden": 1,
+				"colours.honeyed": 1
+			},
+			"effects": {
+				"memory": -1,
+				"canvas.pale": -1,
+				"painting.palest": 1,
+				"notoriety": 2
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "painthaslore",
+			"actionId": "work",
+			"label": "秘教的芸術",
+			"startdescription": "分かる人には分かるもの。[取締局も同じく。]",
+			"requirements": {
+				"lore": 1
+			},
+			"effects": {
+				"insight": 1,
+				"notoriety": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintaddpigment",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "painthasinfluence",
+			"actionId": "work",
+			"label": "ムードのある作品",
+			"startdescription": "インパクトを与えるであろう作品。",
+			"effects": {
+				"insight": 1
+			},
+			"requirements": {
+				"influence": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintaddpigment",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "painthasmemory",
+			"actionId": "work",
+			"label": "語り継がれる人生",
+			"startdescription": "記憶は地中へと消えていたかもしれないが、これからはずっと生き続けるだろう。",
+			"requirements": {
+				"memory": 1
+			},
+			"effects": {
+				"insight": 1,
+				"notoriety": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "paint.memory.menacing.once",
+					"chance": 30
+				},
+				{
+					"id": "paint.memory.shameful.once",
+					"chance": 30
+				},
+				{
+					"id": "paint.memory.unexpected.once",
+					"chance": 30
+				},
+				{
+					"id": "paint.memory.joyful.once",
+					"chance": 30
+				},
+				{
+					"id": "paint.memory.profitable.once",
+					"chance": 30
+				},
+				{
+					"id": "paint.memory.generic"
+				},
+				{
+					"id": "paintaddpigment"
+				}
+			]
+		},
+		{
+			"id": "paint.memory.menacing.once",
+			"actionId": "work",
+			"label": "魂に秘めた秘密",
+			"startdescription": "ナナトグロの死を垣間見た。[取締局が気づくかもしれない]",
+			"requirements": {
+				"memory.menacing": 1
+			},
+			"effects": {
+				"pre.fragmentedgeb": 1,
+				"insight": 3,
+				"notoriety": 1,
+				"memory.menacing": -1
+			},
+			"warmup": 10,
+			"maxexecutions": 1,
+			"linked": [
+				{
+					"id": "paintaddpigment"
+				}
+			]
+		},
+		{
+			"id": "paint.memory.shameful.once",
+			"actionId": "work",
+			"label": "魂に秘めた秘密",
+			"startdescription": "偉大なる母の形を垣間見た。[取締局が気づくかもしれない]",
+			"requirements": {
+				"memory.shameful": 1
+			},
+			"effects": {
+				"pre.fragmentgrailb": 1,
+				"insight": 3,
+				"notoriety": 1,
+				"memory.shameful": -1
+			},
+			"warmup": 10,
+			"maxexecutions": 1,
+			"linked": [
+				{
+					"id": "paintaddpigment"
+				}
+			]
+		},
+		{
+			"id": "paint.memory.unexpected.once",
+			"actionId": "work",
+			"label": "魂に秘めた秘密",
+			"startdescription": "角斧の犠牲を垣間見た。[取締局が気づくかもしれない]",
+			"requirements": {
+				"memory.unexpected": 1
+			},
+			"effects": {
+				"pre.fragmentknockb": 1,
+				"insight": 3,
+				"notoriety": 1,
+				"memory.unexpected": -1
+			},
+			"warmup": 10,
+			"maxexecutions": 1,
+			"linked": [
+				{
+					"id": "paintaddpigment"
+				}
+			]
+		},
+		{
+			"id": "paint.memory.joyful.once",
+			"actionId": "work",
+			"label": "魂に秘めた秘密",
+			"startdescription": "私は車輪の回転を垣間見たが、高僧たちはずっと前に回転が止まったことを知っている。[取締局が気づくかもしれない]",
+			"requirements": {
+				"memory.joyful": 1
+			},
+			"effects": {
+				"pre.fragmentheartb": 1,
+				"insight": 3,
+				"notoriety": 1,
+				"memory.joyful": -1
+			},
+			"warmup": 10,
+			"maxexecutions": 1,
+			"linked": [
+				{
+					"id": "paintaddpigment"
+				}
+			]
+		},
+		{
+			"id": "paint.memory.profitable.once",
+			"actionId": "work",
+			"label": "魂に秘めた秘密",
+			"startdescription": "火があらゆる面を持つようになってからも、どのように変化していったのかを垣間見ることができた。[取締局が気づくかもしれない]",
+			"requirements": {
+				"memory.profitable": 1
+			},
+			"effects": {
+				"pre.fragmentforgeb": 1,
+				"insight": 3,
+				"notoriety": 1,
+				"memory.profitable": -1
+			},
+			"warmup": 10,
+			"maxexecutions": 1,
+			"linked": [
+				{
+					"id": "paintaddpigment"
+				}
+			]
+		},
+		{
+			"id": "paint.memory.generic",
+			"actionId": "work",
+			"label": "人生の光景",
+			"startdescription": "これが自分の人生だったとは思えないが、もしかしたら、結局はそうだったのかもしれない。いつか私には全くわからなくなるだろう。",
+			"requirements": {
+				"memory.profitable": 1
+			},
+			"effects": {
+				"insight": 2,
+				"memory": -1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "paintaddpigment"
+				}
+			]
+		},
+		{
+			"id": "painthasfollower",
+			"actionId": "work",
+			"label": "肖像画",
+			"startdescription": "これがあればその人のことを忘れない......はず。",
+			"effects": {
+				"insight": 1
+			},
+			"requirements": {
+				"mortal": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintaddpigment",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "painthassummoned",
+			"actionId": "work",
+			"label": "変わった肖像画",
+			"startdescription": "この世界に描き込めば、きっと、もう少し長く留まってくれるはずだ。[取締局が興味を持つだろう。]",
+			"requirements": {
+				"summoned": 1
+			},
+			"effects": {
+				"insight": 1,
+				"notoriety": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintaddpigment",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintaddpigment",
+			"actionId": "work",
+			"label": "夜の色",
+			"warmup": 20,
+			"startdescription": "もっといい絵の具にお金をかけることもできるし、もっとエキゾチックな絵の具を見つけることもできる......",
+			"slots": [
+				{
+					"id": "Paints",
+					"label": "絵具",
+					"required": {
+						"pigment": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "paintluck",
+					"chance": 30
+				}
+			],
+			"linked": [
+				{
+					"id": "paintfourpassion",
+					"chance": 100
+				},
+				{
+					"id": "paintthreepassion",
+					"chance": 100
+				},
+				{
+					"id": "painttwopassion",
+					"chance": 100
+				},
+				{
+					"id": "paintonepassion",
+					"chance": 100
+				},
+				{
+					"id": "paintnopassion",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintluck",
+			"actionId": "work",
+			"warmup": 1,
+			"label": "良い日",
+			"startdescription": "いつもより調子が良い。",
+			"effects": {
+				"insight": 1
+			},
+			"comments": "Passionless painting never does better than usual.",
+			"linked": [
+				{
+					"id": "paintluck",
+					"chance": 30
+				},
+				{
+					"id": "paintfourpassion",
+					"chance": 100
+				},
+				{
+					"id": "paintthreepassion",
+					"chance": 100
+				},
+				{
+					"id": "painttwopassion",
+					"chance": 100
+				},
+				{
+					"id": "paintonepassion",
+					"chance": 100
+				},
+				{
+					"id": "paintcheckpigment",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintfourpassion",
+			"label": "完全集中",
+			"startdescription": "全神経を集中させる。",
+			"actionId": "work",
+			"warmup": 10,
+			"requirements": {
+				"passion": 4
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"insight": 4
+			},
+			"linked": [
+				{
+					"id": "paintcheckpigment",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintthreepassion",
+			"actionId": "work",
+			"label": "完全なる確信",
+			"startdescription": "世界が消えていく。",
+			"warmup": 10,
+			"requirements": {
+				"passion": 3
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"insight": 3
+			},
+			"linked": [
+				{
+					"id": "paintcheckpigment",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "painttwopassion",
+			"actionId": "work",
+			"label": "情熱的な強さ",
+			"startdescription": "欠点も見えるが、終わりも見えてきた。",
+			"warmup": 10,
+			"requirements": {
+				"passion": 2
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"insight": 2
+			},
+			"linked": [
+				{
+					"id": "paintcheckpigment",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintonepassion",
+			"actionId": "work",
+			"label": "1日分の仕事",
+			"startdescription": "怠けてはいない。",
+			"warmup": 10,
+			"requirements": {
+				"passion": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"insight": 1
+			},
+			"linked": [
+				{
+					"id": "paintcheckpigment",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintnopassion",
+			"actionId": "work",
+			"label": "機械的な努力",
+			"startdescription": "正直なところ、私はただひたすらに作業をしているだけだ。作品の質が落ちることは間違いない。",
+			"warmup": 5,
+			"requirements": {
+				"passion": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"insight": -1
+			},
+			"linked": [
+				{
+					"id": "paintcheckpigment",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintcheckpigment",
+			"actionId": "work",
+			"alternativerecipes": [
+				{
+					"id": "painthasfunds",
+					"chance": 100
+				},
+				{
+					"id": "painthaspigment",
+					"chance": 100
+				},
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "painthasfunds",
+			"actionId": "work",
+			"requirements": {
+				"funds": 1
+			},
+			"effects": {
+				"insight": 1,
+				"funds": -1
+			},
+			"label": "高品質な素材があれば......",
+			"startdescription": ".......優れた絵が描ける？",
+			"linked": [
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			],
+			"warmup": 5
+		},
+		{
+			"id": "painthaspigment",
+			"actionId": "work",
+			"requirements": {
+				"pigment": 1
+			},
+			"effects": {
+				"insight": 1,
+				"notoriety": 1
+			},
+			"label": "強力な塗料",
+			"startdescription": "この塗料は危険だ。違法なものかもしれない。",
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "matchedge",
+					"chance": 100
+				},
+				{
+					"id": "matchforge",
+					"chance": 100
+				},
+				{
+					"id": "matchgrail",
+					"chance": 100
+				},
+				{
+					"id": "matchheart",
+					"chance": 100
+				},
+				{
+					"id": "matchknock",
+					"chance": 100
+				},
+				{
+					"id": "matchlantern",
+					"chance": 100
+				},
+				{
+					"id": "matchmoth",
+					"chance": 100
+				},
+				{
+					"id": "matchwinter",
+					"chance": 100
+				},
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "matchedge",
+			"requirements": {
+				"ingredientedgeb": 1,
+				"edge": 5
+			},
+			"actionId": "work",
+			"label": "価値ある媒体",
+			"startdescription": "春はいつも冬に対抗している。",
+			"effects": {
+				"insight": 2,
+				"influenceedgec": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintmasteredge_unique",
+					"chance": 100
+				},
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "matchforge",
+			"requirements": {
+				"ingredientforgeb": 1,
+				"forge": 5
+			},
+			"actionId": "work",
+			"label": "価値ある媒体",
+			"startdescription": "色の濃い穀物は、適切に処理されると、燃えるような色を生み出す。",
+			"effects": {
+				"insight": 2,
+				"influenceforgec": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintmasterforge_unique",
+					"chance": 100
+				},
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "matchgrail",
+			"requirements": {
+				"ingredientgrailb": 1,
+				"grail": 5
+			},
+			"actionId": "work",
+			"label": "価値ある媒体",
+			"startdescription": "完璧には乾かない。完璧だ。",
+			"effects": {
+				"insight": 2,
+				"influencegrailc": 1,
+				"notoriety": 1
+			},
+			"comments": "Extra notoriety for Grail",
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintmastergrail_unique",
+					"chance": 100
+				},
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "matchheart",
+			"requirements": {
+				"ingredientheartb": 1,
+				"heart": 5
+			},
+			"actionId": "work",
+			"label": "価値ある媒体",
+			"startdescription": "海の甘い夜明け、生まれ変わりの色合い。",
+			"effects": {
+				"insight": 2,
+				"influenceheartc": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintmasterheart_unique",
+					"chance": 100
+				},
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "matchknock",
+			"requirements": {
+				"ingredientknockb": 1,
+				"knock": 5
+			},
+			"actionId": "work",
+			"label": "価値ある媒体",
+			"startdescription": "遅かれ早かれ、このキャンバスは切られるが、色は豊かになるばかりだ。",
+			"effects": {
+				"insight": 2,
+				"influenceknockc": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintmasterknock_unique",
+					"chance": 100
+				},
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "matchlantern",
+			"requirements": {
+				"ingredientlanternb": 1,
+				"lantern": 5
+			},
+			"actionId": "work",
+			"label": "価値ある媒体",
+			"startdescription": "これは、我々のように、完全な暗闇の中で最大限の力を発揮するだろう。",
+			"effects": {
+				"insight": 2,
+				"influencelanternc": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintmasterlantern_unique",
+					"chance": 100
+				},
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "matchmoth",
+			"requirements": {
+				"ingredientmothb": 1,
+				"moth": 5
+			},
+			"actionId": "work",
+			"label": "価値ある媒体",
+			"startdescription": "批評家たちにこれが何色なのか議論させてみよう。殴り合いになるかもしれない。",
+			"effects": {
+				"insight": 2,
+				"restlessness": 1,
+				"influencemothc": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintmastermoth_unique",
+					"chance": 100
+				},
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "matchwinter",
+			"requirements": {
+				"ingredientwinterb": 1,
+				"winter": 5
+			},
+			"effects": {
+				"insight": 2,
+				"dread": 1,
+				"influencewinterc": 1
+			},
+			"actionId": "work",
+			"label": "価値ある媒体",
+			"startdescription": "私は何をしているのか？何をしたんだろう？これは誰かの心を傷つけるだろう。おそらく誰も彼もの心を。",
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintmasterwinter_unique",
+					"chance": 100
+				},
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintmasteredge_unique",
+			"requirements": {
+				"insight": 7,
+				"edge": 9
+			},
+			"maxexecutions": 1,
+			"effects": {
+				"paintingmasteredge": 1
+			},
+			"actionId": "work",
+			"linked": [
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintmasterforge_unique",
+			"requirements": {
+				"insight": 7,
+				"forge": 9
+			},
+			"maxexecutions": 1,
+			"effects": {
+				"paintingmasterforge": 1
+			},
+			"actionId": "work",
+			"linked": [
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintmastergrail_unique",
+			"requirements": {
+				"insight": 7,
+				"grail": 9
+			},
+			"maxexecutions": 1,
+			"effects": {
+				"paintingmastergrail": 1
+			},
+			"actionId": "work",
+			"linked": [
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintmasterheart_unique",
+			"requirements": {
+				"insight": 7,
+				"heart": 9
+			},
+			"maxexecutions": 1,
+			"effects": {
+				"paintingmasterheart": 1
+			},
+			"actionId": "work",
+			"linked": [
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintmasterknock_unique",
+			"requirements": {
+				"insight": 7,
+				"knock": 9
+			},
+			"maxexecutions": 1,
+			"effects": {
+				"paintingmasterknock": 1
+			},
+			"actionId": "work",
+			"linked": [
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintmasterlantern_unique",
+			"requirements": {
+				"insight": 7,
+				"lantern": 9
+			},
+			"maxexecutions": 1,
+			"effects": {
+				"paintingmasterlantern": 1
+			},
+			"actionId": "work",
+			"linked": [
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintmastermoth_unique",
+			"requirements": {
+				"insight": 7,
+				"moth": 9
+			},
+			"maxexecutions": 1,
+			"effects": {
+				"paintingmastermoth": 1
+			},
+			"actionId": "work",
+			"linked": [
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintmasterwinter_unique",
+			"requirements": {
+				"insight": 7,
+				"winter": 9
+			},
+			"maxexecutions": 1,
+			"effects": {
+				"paintingmasterwinter": 1
+			},
+			"actionId": "work",
+			"linked": [
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintresults",
+			"label": "完成！",
+			"startdescription": " ",
+			"actionId": "work",
+			"warmup": 1,
+			"effects": {
+				"restlessness": -1,
+				"pigment": -1
+			},
+			"linked": [
+				{
+					"id": "paintingqualitymaster_unique",
+					"chance": 100
+				},
+				{
+					"id": "paintingqualityglorious",
+					"chance": 100
+				},
+				{
+					"id": "paintingqualitymagnificent",
+					"chance": 100
+				},
+				{
+					"id": "paintingqualityexceptional",
+					"chance": 100
+				},
+				{
+					"id": "paintingqualitygood",
+					"chance": 100
+				},
+				{
+					"id": "paintingqualitycompetent",
+					"chance": 100
+				},
+				{
+					"id": "paintingqualityfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintingqualitymaster_unique",
+			"actionId": "work",
+			"warmup": 5,
+			"label": "ユニークなもの",
+			"startdescription": "ユニークで、並外れているが、人前には出せないものを作ってしまった。[これを人に見せることはできない。資金にはならない。]",
+			"requirements": {
+				"tool": 1
+			},
+			"effects": {
+				"glimmering": 3,
+				"contentment": 1,
+				"insight": -99
+			}
+		},
+		{
+			"id": "paintingqualityglorious",
+			"actionId": "work",
+			"warmup": 5,
+			"label": "輝かしい作品",
+			"startdescription": "もう二度と絵を描かなければ、私は歴史となれる。",
+			"requirements": {
+				"insight": 8
+			},
+			"deckeffect": {
+				"paintingresults": 6
+			},
+			"mutations": [
+				{
+					"filter": "passionskill",
+					"mutate": "stale",
+					"level": -1,
+					"additive": true
+				}
+			],
+			"linked": [
+				{
+					"id": "paintingreputationcheck",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"insight": -99,
+				"fascination": 1
+			}
+		},
+		{
+			"id": "paintingqualitymagnificent",
+			"actionId": "work",
+			"warmup": 5,
+			"label": "壮大な作品",
+			"startdescription": "個性的で美しい作品ができた。私の評判を上げてくれるだろう。",
+			"requirements": {
+				"insight": 6
+			},
+			"deckeffect": {
+				"paintingresults": 5
+			},
+			"mutations": [
+				{
+					"filter": "passionskill",
+					"mutate": "stale",
+					"level": -1,
+					"additive": true
+				}
+			],
+			"linked": [
+				{
+					"id": "paintingreputationcheck",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"insight": -99,
+				"fascination": 1
+			}
+		},
+		{
+			"id": "paintingqualityexceptional",
+			"actionId": "work",
+			"warmup": 5,
+			"label": "特別な作品",
+			"startdescription": "特別な作品だ。反応を得られるかもしれない。",
+			"requirements": {
+				"insight": 4
+			},
+			"deckeffect": {
+				"paintingresults": 4
+			},
+			"mutations": [
+				{
+					"filter": "passionskill",
+					"mutate": "stale",
+					"level": -1,
+					"additive": true
+				}
+			],
+			"linked": [
+				{
+					"id": "paintingreputationcheck",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"insight": -99
+			}
+		},
+		{
+			"id": "paintingqualitygood",
+			"actionId": "work",
+			"warmup": 5,
+			"label": "良い作品",
+			"startdescription": "自慢できる作品ができた。しっかりと宣伝すれば売れるだろう。",
+			"requirements": {
+				"insight": 2
+			},
+			"deckeffect": {
+				"paintingresults": 3
+			},
+			"linked": [
+				{
+					"id": "paintingreputationcheck",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"insight": -99
+			}
+		},
+		{
+			"id": "paintingqualitycompetent",
+			"actionId": "work",
+			"warmup": 5,
+			"label": "十分な作品",
+			"startdescription": "恥じることは何もない。",
+			"requirements": {
+				"insight": 1
+			},
+			"deckeffect": {
+				"paintingresults": 2
+			},
+			"linked": [
+				{
+					"id": "paintingreputationcheck",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"insight": -99
+			}
+		},
+		{
+			"id": "paintingqualityfailure",
+			"actionId": "work",
+			"warmup": 5,
+			"label": "くだらない！",
+			"startdescription": "何の役にも立たない、何の意味もないものを生み出してしまった。自分を恥じるべきだ。それでも評判が良ければ売れるかもしれない......",
+			"requirements": {
+				"insight": -1
+			},
+			"effects": {
+				"insight": -99
+			},
+			"linked": [
+				{
+					"id": "paintingreputationcheck",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintingreputationcheck",
+			"actionId": "work",
+			"effects": {
+				"insight": -1
+			},
+			"linked": [
+				{
+					"id": "paintingreputation_celebrated",
+					"chance": 100
+				},
+				{
+					"id": "paintingreputation_famed",
+					"chance": 100
+				},
+				{
+					"id": "paintingreputation_notable",
+					"chance": 100
+				},
+				{
+					"id": "paintingreputation_significant",
+					"chance": 100
+				},
+				{
+					"id": "paintingreputation_known",
+					"chance": 100
+				},
+				{
+					"id": "paintingreputation_noticed",
+					"chance": 100
+				},
+				{
+					"id": "paintingreputation_unknown",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintingreputation_celebrated",
+			"label": "芸術家の報酬？",
+			"description": "新作は好評だ！私の知名度は上がってきた。作品も売れている。",
+			"actionId": "work",
+			"requirements": {
+				"reputation": 9,
+				"stale": -1
+			},
+			"deckeffect": {
+				"paintingresultsreputation": 7
+			},
+			"linked": [
+				{
+					"id": "painting.reputation.overexposure"
+				}
+			]
+		},
+		{
+			"id": "paintingreputation_famed",
+			"label": "芸術家の報酬？",
+			"description": "新作がそれなりに有名になった！私の絵は好評を博している。",
+			"actionId": "work",
+			"requirements": {
+				"reputation": 7,
+				"stale": -2
+			},
+			"deckeffect": {
+				"paintingresultsreputation": 6
+			},
+			"linked": [
+				{
+					"id": "painting.reputation.overexposure"
+				}
+			]
+		},
+		{
+			"id": "paintingreputation_notable",
+			"label": "芸術家の報酬？",
+			"description": "新作が有名になった！最近描いた絵を公開してみた。誰かが何かを買ってくれるだろう。",
+			"actionId": "work",
+			"requirements": {
+				"reputation": 5,
+				"stale": -3
+			},
+			"deckeffect": {
+				"paintingresultsreputation": 4
+			},
+			"linked": [
+				{
+					"id": "painting.reputation.overexposure"
+				}
+			]
+		},
+		{
+			"id": "paintingreputation_significant",
+			"label": "芸術家の報酬？",
+			"description": "新作は高く評価されている！これで生計をたてられるかもしれないが、まだ分からない。",
+			"actionId": "work",
+			"requirements": {
+				"reputation": 3,
+				"stale": -4
+			},
+			"deckeffect": {
+				"paintingresultsreputation": 3
+			},
+			"linked": [
+				{
+					"id": "painting.reputation.overexposure"
+				}
+			]
+		},
+		{
+			"id": "paintingreputation_known",
+			"label": "芸術家の報酬？",
+			"description": "新作は注目を集めている。きっといくつか売れるだろう。",
+			"actionId": "work",
+			"requirements": {
+				"reputation": 2,
+				"stale": -5
+			},
+			"deckeffect": {
+				"paintingresultsreputation": 2
+			}
+		},
+		{
+			"id": "paintingreputation_noticed",
+			"comments": "No links to over-exposure risk. The overexposure cards will happily decay to funds.",
+			"label": "芸術家の報酬？",
+			"description": "新作に関して何人かが連絡をくれた。運が良ければ、何かが売れるだろう。",
+			"actionId": "work",
+			"requirements": {
+				"reputation": 1
+			},
+			"deckeffect": {
+				"paintingresultsreputation": 1
+			}
+		},
+		{
+			"id": "paintingreputation_unknown",
+			"comments": "No links to over-exposure risk. The overexposure cards will happily decay to funds.",
+			"label": "芸術家の報酬？",
+			"description": "新作は注目されていないし、何も売れていない。作品自体が報酬なのかもしれない。そう願うしかない。",
+			"actionId": "work",
+			"requirements": {
+				"reputation": -1
+			}
+		},
+		{
+			"id": "painting.reputation.overexposure",
+			"label": "芸術家の報酬？",
+			"actionId": "work",
+			"requirements": {
+				"overexposure": 1
+			},
+			"effects": {
+				"overexposure": -1
+			},
+			"mutations": [
+				{
+					"filter": "passionskill",
+					"mutate": "stale",
+					"level": 1,
+					"additive": true
+				}
+			],
+			"linked": [
+				{
+					"id": "painting.reputation.overexposure"
+				}
+			]
+		},
+		{
+			"id": "paintmansus",
+			"label": "マンサスを描く",
+			"actionId": "work",
+			"requirements": {
+				"lantern": 1
+			},
+			"effects": {
+				"paintingmansus": 1
+			},
+			"startdescription": "夢の建築について思い出した......",
+			"description": "このキャンバスを日光に当ててはいけない。そんなことをしたら厄介なことに巻き込まれる。",
+			"warmup": 0,
+			"craftable": false
+		}
+	]
+}

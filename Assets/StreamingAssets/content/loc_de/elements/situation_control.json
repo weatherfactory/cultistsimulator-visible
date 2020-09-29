@@ -1,0 +1,46 @@
+{
+	"elements": [
+		{
+			"id": "insight",
+			"label": "Erkenntnis",
+			"description": "Eine Erkenntnis bei diesem Mysterium.",
+			"lifetime": 1
+		},
+		{
+			"id": "bid",
+			"label": "Gebot",
+			"description": "Ein Gebot bei einem Auktionshaus.",
+			"xtriggers": {
+				"restore": "funds"
+			}
+		},
+		{
+			"id": "abductioninprogress",
+			"label": "Ein abgeschlossene Zelle",
+			"description": "Die Gedanken, so sagt man, sind frei, doch die Gedanken sind an den Körper gekettet.",
+			"lifetime": 1,
+			"icon": "seal_wardeddoor"
+		},
+		{
+			"id": "assassinationinprogress.player",
+			"label": "Ein Meuchelmord",
+			"description": "Dies wird mit einem Tode enden. Es könnte der meine sein.",
+			"lifetime": 1,
+			"icon": "dread"
+		},
+		{
+			"id": "assassinationinprogress.follower",
+			"label": "Ein Meuchelmord",
+			"description": "Dies wird mit einem Tode enden – deren oder unserem.",
+			"lifetime": 1,
+			"icon": "dread"
+		},
+		{
+			"id": "scandalinprogress",
+			"label": "Böser Tratsch",
+			"description": "Was sie sagen, ist nur ein Schatten der Wahrheit, doch durch unsere Schatten werden wir entdeckt.",
+			"lifetime": 1,
+			"icon": "notoriety"
+		}
+	]
+}

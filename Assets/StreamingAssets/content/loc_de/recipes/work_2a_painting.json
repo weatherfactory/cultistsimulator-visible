@@ -1,0 +1,1787 @@
+{
+	"recipes": [
+		{
+			"id": "paintbasic",
+			"label": "Malen",
+			"actionId": "work",
+			"requirements": {
+				"ritual": -1,
+				"job": -1,
+				"passion": 1,
+				"passionskill": -1
+			},
+			"startdescription": "Ich habe früher mal gemalt. Ich könnte das malen, was mir aus meinen Träumen noch halb in Erinnerung ist. Vielleicht verkaufe ich sogar etwas. Wahrscheinlich nicht.",
+			"description": "Ich habe ein Gemälde vollendet, was absolut niemanden zu Jubelstürmen hinreißt: niemanden außer mich selbst. [Manchmal bekommst du durch ein Gemälde ein Schimmern. <b>Studiere</b> es, um erweiterte Optionen für das Malen freizuschalten.]",
+			"slots": [
+				{
+					"id": "Yearning",
+					"label": "Sehnsucht",
+					"required": {
+						"restlessness": 1
+					},
+					"consumes": true,
+					"description": "Wenn ich ruhelos bin, dann ist es vielleicht das hier, was ich will."
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "paintbasicsuccess",
+					"chance": 30
+				}
+			],
+			"deckeffect": {
+				"paintingresultsbasic": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"craftable": true,
+			"warmup": 60
+		},
+		{
+			"id": "paintbasicsuccess",
+			"label": "Ich habe ein Gemälde verkauft!",
+			"actionId": "work",
+			"description": "Ich habe eine Kundin gewonnen! Wahrscheinlich hängt sie das Bild in ihr Gästezimmer und schaut es nie wieder an. Doch sie hat gut dafür bezahlt. [Manchmal bekommst du durch ein Gemälde ein Schimmern. <b>Studiere</b> es, um erweiterte Optionen für das Malen freizuschalten.]",
+			"deckeffect": {
+				"paintingresultsbasic": 2
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"funds": 2
+			}
+		},
+		{
+			"id": "paintwithskill",
+			"label": "Malen",
+			"actionId": "work",
+			"requirements": {
+				"passionskill": 1,
+				"ritual": -1,
+				"job": -1
+			},
+			"slots": [
+				{
+					"id": "Inspiration",
+					"label": "Inspiration",
+					"required": {
+						"lore": 1,
+						"influence": 1,
+						"follower": 1,
+						"acquaintance": 1,
+						"memory": 1
+					},
+					"description": "Ein würdiges Thema ist nicht zwingend notwendig, aber nützlich. Manche Thema wecken die Aufmerksamkeit der Behörden, aber sind das nicht gerade die interessanten?"
+				}
+			],
+			"startdescription": "Man weiß nie. Das könnte mein Broterwerb sein. [Füge Leidenschaft hinzu, um unverwechselbare Gemälde zu erschaffen. Füge Mystik und vor allem Berüchtigtsein hinzu, um Aufmerksamkeit zu erregen und mehr Geld zu verdienen. Vorsicht: wenn du Berüchtigtsein einsetzt, rücken dich deine Ausstellungen ins Licht der Öffentlichkeit.]",
+			"warmup": 20,
+			"craftable": true,
+			"alternativerecipes": [
+				{
+					"id": "painthasgrandmemory.nocanvas",
+					"chance": 100
+				},
+				{
+					"id": "painthasgrandmemory",
+					"chance": 100
+				},
+				{
+					"id": "painthaslore",
+					"chance": 100
+				},
+				{
+					"id": "painthasinfluence",
+					"chance": 100
+				},
+				{
+					"id": "painthasmemory",
+					"chance": 100
+				},
+				{
+					"id": "painthassummoned",
+					"chance": 100
+				},
+				{
+					"id": "painthasfollower",
+					"chance": 100
+				}
+			],
+			"linked": [
+				{
+					"id": "paintaddpigment",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "painthasgrandmemory.nocanvas",
+			"actionId": "work",
+			"label": "Vergessene Farben",
+			"startdescription": "Ich erinnere mich an Farben, die aus der Welt verschwunden sind. Ich wage es nicht, sie getreu zu reproduzieren – selbst wenn ich es könnte. Doch ich könnte ihnen Tribut zollen ... wenn ich eine Leinwand hätte, die jener Aufgabe würdig wäre.",
+			"requirements": {
+				"memory": 5,
+				"passion": 1
+			},
+			"extantreqs": {
+				"canvas.pale": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "paint.prepareforcanvas.pale"
+				}
+			]
+		},
+		{
+			"id": "paint.prepareforcanvas.pale",
+			"actionId": "work",
+			"label": "Die Leinwand für das blasseste Gemälde vorbereiten",
+			"startdescription": "Man ist entweder Künstler oder Leinwand. Heute bin ich der Künstler. [Dies wird eine Weile dauern und deine Arbeit in Beschlag nehmen, während du die Leinwand vorbereitest.]",
+			"description": "Die Welt kann noch etwas länger auf das blasseste Gemälde warten. Sie hat ja bereits so lange gewartet.",
+			"slots": [
+				{
+					"id": "corpse",
+					"label": "Materialien",
+					"description": "Das wird ein langer und komplexer Prozess werden, doch wenn ich fertig bin, wird der Geruch fast nicht mehr wahrzunehmen sein.",
+					"required": {
+						"corpse": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "paint.createcanvas.pale"
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "paint.createcanvas.pale",
+			"actionId": "work",
+			"label": "Eine blasse Leinwand",
+			"requirements": {
+				"corpse": 1
+			},
+			"startdescription": "Die Vorbereitungen müssen im Geheimen stattfinden, in einem Raum ohne Fenster ... der aber dennoch extrem gut durchlüftet sein muss.",
+			"description": "Es ist vollbracht. Man könnte es niemals auch nur erahnen, es sei denn, man schaut wirklich ganz genau hin. Es wäre wohl am besten, wenn die Behörden diese Leinwand niemals zu Gesicht bekämen. [Setze deine Erinnerung ein, wenn du das nächste Mal malst, und du kannst mit der Arbeit an der Leinwand beginnen.]",
+			"effects": {
+				"canvas.pale": 1,
+				"corpse": -1,
+				"notoriety": 1
+			},
+			"warmup": 120
+		},
+		{
+			"id": "painthasgrandmemory",
+			"actionId": "work",
+			"label": "Ein vergessene Farbe",
+			"startdescription": "@#memory.furious|Auf deinem Dünenbett unter einer tief stehenden roten Sonne ringt ein Monster mit sich selbst während sich rundherum eine Menge versammelt hat.  Es ist schlaff und riesig und hat die Farbe schmutzigen Schwefels ...\n   #memory.luxurious|In einem nachtblauen Mansus-Nebel schwimmt eine korallenfarbene Palastkrone, die sich dann und wann dem Monde beugt ...\n   #memory.liminal|Ich erinnere mich an einen lila Abendhimmel durchsetzt mit rotem Gold ...\n   #memory.horizon|Ein ausgeblichenes Weißgold, das an bestimmten Stellen am Himmel zu sehen ist, wenn sich der Nebel lichtet, aber die Sonne für den Mond gehalten werden könnte ...\n   #memory.splendid|Aurora-Rosa wetteifert mit Stahlblau. Es gibt weder Nacht noch Morgen, sondern nur die Mittagsstunden, des ersehnten und verweilenden Mittags ...\n   #memory.endless|Es mag hässlich sein, doch seine Schönheit ist wie das Ablassen des Blutes aus den gläsernen Labyrinthen ...\n   #memory.wildering|Der Forst vor seiner Verfinsterung, seine Früchte giftgrün, seine karneolen Wurzeln ...\n   #memory.golden|Jede seiner Facetten zeigt einen einzelnen Lichtpunkt. Es könnte das Glimmern des Feuerscheins sein ...\n   #memory.honeyed|Unsere Schwingen entfaltet und leuchtend, unsere Schuppen züngelnd wie Obsidian ...\n",
+			"requirements": {
+				"memory": 5,
+				"passion": 1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "paint.palestpainting.continue"
+				}
+			]
+		},
+		{
+			"id": "paint.palestpainting.continue",
+			"actionId": "work",
+			"label": "Am blassesten Gemälde weiterarbeiten",
+			"startdescription": "Ich bin um das Gemälde geschlichen wie ein Jäger auf der Pirsch, wobei ich ihm nie ins Auge geblickt habe. Kein Pigment, das ich habe, kann die verlorenen Farben ausdrücken, also muss ich sie abschwächen.",
+			"description": "Die Welt kann noch etwas länger auf das blasseste Gemälde warten. Sie hat ja bereits so lange gewartet.",
+			"slots": [
+				{
+					"id": "canvas.pale",
+					"label": "Leinwand",
+					"greedy": true,
+					"description": "Langsam, leise.",
+					"required": {
+						"canvas.pale": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "paint.palestpainting.furious"
+				},
+				{
+					"id": "paint.palestpainting.luxurious"
+				},
+				{
+					"id": "paint.palestpainting.liminal"
+				},
+				{
+					"id": "paint.palestpainting.horizon"
+				},
+				{
+					"id": "paint.palestpainting.splendid"
+				},
+				{
+					"id": "paint.palestpainting.endless"
+				},
+				{
+					"id": "paint.palestpainting.wildering"
+				},
+				{
+					"id": "paint.palestpainting.golden"
+				},
+				{
+					"id": "paint.palestpainting.honeyed"
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "paint.palestpainting.furious",
+			"actionId": "work",
+			"label": "Die Farben des Siebenspuligen",
+			"startdescription": "Auf deinem Dünenbett unter einer tief stehenden roten Sonne ringt ein Monster mit sich selbst während sich rundherum eine Menge versammelt hat.  Es ist schlaff und riesig und hat die Farbe schmutzigen Schwefels. Zahnbewehrte Tentakelhälse ringen miteinander wie Kätzchen. Es reißt munter an der eigenen Haut und das Blut, das fließt, ist golden. In einem Kataklysmus geflochtenen Fleisches wälzt es sich um, zerquetscht eine Gruppe Zuschauer während die anderen brüllen und jubeln.",
+			"requirements": {
+				"memory.furious": 1
+			},
+			"effects": {
+				"memory.furious": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"mutate": "colours.furious",
+					"filter": "canvas.pale",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "paint.palestpainting.complete"
+				}
+			]
+		},
+		{
+			"id": "paint.palestpainting.luxurious",
+			"actionId": "work",
+			"label": "Die Farben der Tide",
+			"startdescription": "In einem nachtblauen Mansus-Nebel schwimmt eine korallenfarbene Palastkrone, die sich dann und wann dem Monde beugt. An ihrer vorderen Kante absorbiert sie die niederen Namen, bedeckt sie mit ihren Mineralien und Säften, und an ihrer hinteren Kante stößt sie sie wieder aus, poliert wie Juwelen – doch nicht alle. Die anderen nähren ihr dorniges Tidenherz.",
+			"requirements": {
+				"memory.luxurious": 1
+			},
+			"effects": {
+				"memory.luxurious": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"mutate": "colours.luxurious",
+					"filter": "canvas.pale",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "paint.palestpainting.complete"
+				}
+			]
+		},
+		{
+			"id": "paint.palestpainting.liminal",
+			"actionId": "work",
+			"label": "Die Farben der Doppelschwelle",
+			"startdescription": "Wenn ich mich der Hornaxt entsinne, muss ich an den Duft von Weißdorn denken. Ich erinnere mich an einen lila Abendhimmel durchsetzt mit rotem Gold. Ich erinnere mich, dass ihre Kanten troffen, wo sie kürzlich zu Werke gewesen war.",
+			"requirements": {
+				"memory.liminal": 1
+			},
+			"effects": {
+				"memory.liminal": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"mutate": "colours.liminal",
+					"filter": "canvas.pale",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "paint.palestpainting.complete"
+				}
+			]
+		},
+		{
+			"id": "paint.palestpainting.horizon",
+			"actionId": "work",
+			"label": "Die Farben des Horizonts",
+			"startdescription": "Ein ausgeblichenes Weißgold, das an bestimmten Stellen am Himmel zu sehen ist, wenn sich der Nebel lichtet, aber die Sonne für den Mond gehalten werden könnte. Wir halten den Atem an und sehen zu, wie sie heller wird, bis jede Farbe von der anderen getrennt wird wie bei einem neu erschaffenen Alphabet. Das Ei Unschlüpfen.",
+			"requirements": {
+				"memory.horizon": 1
+			},
+			"effects": {
+				"memory.horizon": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"mutate": "colours.horizon",
+					"filter": "canvas.pale",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "paint.palestpainting.complete"
+				}
+			]
+		},
+		{
+			"id": "paint.palestpainting.splendid",
+			"actionId": "work",
+			"label": "Die Farben, die waren",
+			"startdescription": "Aurora-Rosa wetteifert mit Stahlblau. Es gibt weder Nacht noch Morgen, sondern nur die Mittagsstunden, des ersehnten und verweilenden Mittags.  Jeder von uns öffnet sein Herz der goldenen Nadel des Himmels. Alle Farben vergrößert unter der Sonne-in-Glorie.",
+			"requirements": {
+				"memory.splendid": 1
+			},
+			"effects": {
+				"memory.splendid": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"mutate": "colours.splendid",
+					"filter": "canvas.pale",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "paint.palestpainting.complete"
+				}
+			]
+		},
+		{
+			"id": "paint.palestpainting.endless",
+			"actionId": "work",
+			"label": "Die Farben, die ändern",
+			"startdescription": "Mit jeder Änderung pulsieren und zittern die Wimpern und der Körper errötet in durchscheinendem Blutrot. Es mag hässlich sein, doch seine Schönheit ist wie das Ablassen des Blutes aus den gläsernen Labyrinthen. Es vergeht nicht und all seine Involutionen sind unendlich. Das Rad.",
+			"requirements": {
+				"memory.endless": 1
+			},
+			"effects": {
+				"memory.endless": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"mutate": "colours.endless",
+					"filter": "canvas.pale",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "paint.palestpainting.complete"
+				}
+			]
+		},
+		{
+			"id": "paint.palestpainting.wildering",
+			"actionId": "work",
+			"label": "Die Farben, die nicht Schwarz sind",
+			"startdescription": "Der Forst vor seiner Verfinsterung, seine Früchte giftgrün, seine karneolen Wurzeln. Die Augen der Motte sind munter vor Hunger. Sie ist auf der Jagd.",
+			"requirements": {
+				"memory.wildering": 1
+			},
+			"effects": {
+				"memory.wildering": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"mutate": "colours.wildering",
+					"filter": "canvas.pale",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "paint.palestpainting.complete"
+				}
+			]
+		},
+		{
+			"id": "paint.palestpainting.golden",
+			"actionId": "work",
+			"label": "Die Farben des Alten Feuers",
+			"startdescription": "Dies ist nur ein Stein, doch er ist geglättet und zu einer mitternächtlichen Spitze geschliffen. Schau näher hin. Jede seiner Facetten zeigt einen einzelnen Lichtpunkt. Es könnte das Glimmern des Feuerscheins sein. Jeder könnte ein anderer Stern sein.",
+			"requirements": {
+				"memory.golden": 1
+			},
+			"effects": {
+				"memory.golden": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"mutate": "colours.golden",
+					"filter": "canvas.pale",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "paint.palestpainting.complete"
+				}
+			]
+		},
+		{
+			"id": "paint.palestpainting.honeyed",
+			"actionId": "work",
+			"label": "Die Farben, die sein werden",
+			"startdescription": "Unsere Schwingen entfaltet und leuchtend, unsere Schuppen züngelnd wie Obsidian, unsere Augen facettenreich wie Juwelen, unsere Klauen undurchdringliche Finsternis.",
+			"requirements": {
+				"memory.honeyed": 1
+			},
+			"effects": {
+				"memory.honeyed": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"mutate": "colours.honeyed",
+					"filter": "canvas.pale",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "paint.palestpainting.complete"
+				}
+			]
+		},
+		{
+			"id": "paint.palestpainting.complete",
+			"actionId": "work",
+			"label": "Neun Farben, angedeutet",
+			"startdescription": "Es ist fast vollbracht. Tauben versammeln sich auf der Dachkante über mir. Atemlos wartet die Abenddämmerung.",
+			"description": "Das Gemälde ist keine Tür. Diese Stunden sind fort. Selbst ihre Echos sind leer. Doch ich habe ihrer gedacht. Der Eine, dem nichts mehr genommen werden kann, der sich nicht täuschen lässt, der jeden Toten beim Namen nennt – jener Eine könnte des Werks zufrieden sein.",
+			"requirements": {
+				"colours.furious": 1,
+				"colours.luxurious": 1,
+				"colours.liminal": 1,
+				"colours.horizon": 1,
+				"colours.splendid": 1,
+				"colours.endless": 1,
+				"colours.wildering": 1,
+				"colours.golden": 1,
+				"colours.honeyed": 1
+			},
+			"effects": {
+				"memory": -1,
+				"canvas.pale": -1,
+				"painting.palest": 1,
+				"notoriety": 2
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "painthaslore",
+			"actionId": "work",
+			"label": "Esoterische Kunst",
+			"startdescription": "Wer sich auskennt, wird es verstehen. [Wie auch das Dezernat für Unterdrückung.]",
+			"requirements": {
+				"lore": 1
+			},
+			"effects": {
+				"insight": 1,
+				"notoriety": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintaddpigment",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "painthasinfluence",
+			"actionId": "work",
+			"label": "Ein Stimmungsbild",
+			"startdescription": "Das sollte nicht ohne Wirkung bleiben.",
+			"effects": {
+				"insight": 1
+			},
+			"requirements": {
+				"influence": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintaddpigment",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "painthasmemory",
+			"actionId": "work",
+			"label": "Ein neu erzähltes Leben",
+			"startdescription": "Diese Erinnerungen wären sonst in der Erde unter uns verloren gegangen, und jetzt werden sie weiterleben. ",
+			"requirements": {
+				"memory": 1
+			},
+			"effects": {
+				"insight": 1,
+				"notoriety": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "paint.memory.menacing.once",
+					"chance": 30
+				},
+				{
+					"id": "paint.memory.shameful.once",
+					"chance": 30
+				},
+				{
+					"id": "paint.memory.unexpected.once",
+					"chance": 30
+				},
+				{
+					"id": "paint.memory.joyful.once",
+					"chance": 30
+				},
+				{
+					"id": "paint.memory.profitable.once",
+					"chance": 30
+				},
+				{
+					"id": "paint.memory.generic"
+				},
+				{
+					"id": "paintaddpigment"
+				}
+			]
+		},
+		{
+			"id": "paint.memory.menacing.once",
+			"actionId": "work",
+			"label": "Geheimnisse in der Seele",
+			"startdescription": "Ich haben einen Blick auf den Tod der Sieben Spulen erhascht. [Das Dezernat für Unterdrückung könnte davon erfahren.]",
+			"requirements": {
+				"memory.menacing": 1
+			},
+			"effects": {
+				"pre.fragmentedgeb": 1,
+				"insight": 3,
+				"notoriety": 1,
+				"memory.menacing": -1
+			},
+			"warmup": 10,
+			"maxexecutions": 1,
+			"linked": [
+				{
+					"id": "paintaddpigment"
+				}
+			]
+		},
+		{
+			"id": "paint.memory.shameful.once",
+			"actionId": "work",
+			"label": "Geheimnisse in der Seele",
+			"startdescription": "Ich haben einen Blick auf die Gestalt der Großen Mutter erhascht. [Das Dezernat für Unterdrückung könnte davon erfahren.]",
+			"requirements": {
+				"memory.shameful": 1
+			},
+			"effects": {
+				"pre.fragmentgrailb": 1,
+				"insight": 3,
+				"notoriety": 1,
+				"memory.shameful": -1
+			},
+			"warmup": 10,
+			"maxexecutions": 1,
+			"linked": [
+				{
+					"id": "paintaddpigment"
+				}
+			]
+		},
+		{
+			"id": "paint.memory.unexpected.once",
+			"actionId": "work",
+			"label": "Geheimnisse in der Seele",
+			"startdescription": "Ich haben einen Blick auf das Opfer der Hornaxt erhascht. [Das Dezernat für Unterdrückung könnte davon erfahren.]",
+			"requirements": {
+				"memory.unexpected": 1
+			},
+			"effects": {
+				"pre.fragmentknockb": 1,
+				"insight": 3,
+				"notoriety": 1,
+				"memory.unexpected": -1
+			},
+			"warmup": 10,
+			"maxexecutions": 1,
+			"linked": [
+				{
+					"id": "paintaddpigment"
+				}
+			]
+		},
+		{
+			"id": "paint.memory.joyful.once",
+			"actionId": "work",
+			"label": "Geheimnisse in der Seele",
+			"startdescription": "Ich haben einen Blick auf das Drehen das Rads erhascht, wobei die Adepten wissen, dass jenes Drehen schon vor langer Zeit aufgehört hat. [Das Dezernat für Unterdrückung könnte davon erfahren.]",
+			"requirements": {
+				"memory.joyful": 1
+			},
+			"effects": {
+				"pre.fragmentheartb": 1,
+				"insight": 3,
+				"notoriety": 1,
+				"memory.joyful": -1
+			},
+			"warmup": 10,
+			"maxexecutions": 1,
+			"linked": [
+				{
+					"id": "paintaddpigment"
+				}
+			]
+		},
+		{
+			"id": "paint.memory.profitable.once",
+			"actionId": "work",
+			"label": "Geheimnisse in der Seele",
+			"startdescription": "Ich haben einen Blick auf den Wandel des Feuers erhascht, selbst in den Tagen, als das Feuer keine Facetten mehr hatte. [Das Dezernat für Unterdrückung könnte davon erfahren.]",
+			"requirements": {
+				"memory.profitable": 1
+			},
+			"effects": {
+				"pre.fragmentforgeb": 1,
+				"insight": 3,
+				"notoriety": 1,
+				"memory.profitable": -1
+			},
+			"warmup": 10,
+			"maxexecutions": 1,
+			"linked": [
+				{
+					"id": "paintaddpigment"
+				}
+			]
+		},
+		{
+			"id": "paint.memory.generic",
+			"actionId": "work",
+			"label": "Szenen eines Lebens",
+			"startdescription": "Ich glaube nicht, dass dies mein eigenes Leben war, aber vielleicht war es das ja doch. Eines Tages werde ich das überhaupt nicht mehr sagen können.",
+			"requirements": {
+				"memory.profitable": 1
+			},
+			"effects": {
+				"insight": 2,
+				"memory": -1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "paintaddpigment"
+				}
+			]
+		},
+		{
+			"id": "painthasfollower",
+			"actionId": "work",
+			"label": "Ein Portrait",
+			"startdescription": "Etwas zum Andenken, vielleicht.",
+			"effects": {
+				"insight": 1
+			},
+			"requirements": {
+				"mortal": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintaddpigment",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "painthassummoned",
+			"actionId": "work",
+			"label": "Ein ungewöhnliches Portrait",
+			"startdescription": "Ich werde diese Person in unsere Welt malen, und vielleicht bleibt sie dann ein wenig länger. [Das Dezernat für Unterdrückung wird sich wahrscheinlich dafür interessieren.]",
+			"requirements": {
+				"summoned": 1
+			},
+			"effects": {
+				"insight": 1,
+				"notoriety": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintaddpigment",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintaddpigment",
+			"actionId": "work",
+			"label": "Die Farben der Nacht",
+			"warmup": 20,
+			"startdescription": "Ich könnte Geld für bessere Farben ausgeben. Oder vielleicht könnte ich exotischere Pigmente entdecken ...",
+			"slots": [
+				{
+					"id": "Paints",
+					"label": "Farben",
+					"required": {
+						"pigment": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "paintluck",
+					"chance": 30
+				}
+			],
+			"linked": [
+				{
+					"id": "paintfourpassion",
+					"chance": 100
+				},
+				{
+					"id": "paintthreepassion",
+					"chance": 100
+				},
+				{
+					"id": "painttwopassion",
+					"chance": 100
+				},
+				{
+					"id": "paintonepassion",
+					"chance": 100
+				},
+				{
+					"id": "paintnopassion",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintluck",
+			"actionId": "work",
+			"warmup": 1,
+			"label": "Ein guter Tag",
+			"startdescription": "Es läuft besser als sonst.",
+			"effects": {
+				"insight": 1
+			},
+			"comments": "Passionless painting never does better than usual.",
+			"linked": [
+				{
+					"id": "paintluck",
+					"chance": 30
+				},
+				{
+					"id": "paintfourpassion",
+					"chance": 100
+				},
+				{
+					"id": "paintthreepassion",
+					"chance": 100
+				},
+				{
+					"id": "painttwopassion",
+					"chance": 100
+				},
+				{
+					"id": "paintonepassion",
+					"chance": 100
+				},
+				{
+					"id": "paintcheckpigment",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintfourpassion",
+			"label": "Totale Konzentration",
+			"startdescription": "Alles, was ich bin, ist hier.",
+			"actionId": "work",
+			"warmup": 10,
+			"requirements": {
+				"passion": 4
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"insight": 4
+			},
+			"linked": [
+				{
+					"id": "paintcheckpigment",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintthreepassion",
+			"actionId": "work",
+			"label": "Voller Überzeugung",
+			"startdescription": "Die Welt schwindet.",
+			"warmup": 10,
+			"requirements": {
+				"passion": 3
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"insight": 3
+			},
+			"linked": [
+				{
+					"id": "paintcheckpigment",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "painttwopassion",
+			"actionId": "work",
+			"label": "Leidenschaftliche Intensität",
+			"startdescription": "Ich sehe die Fehler, aber auch das Ende.",
+			"warmup": 10,
+			"requirements": {
+				"passion": 2
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"insight": 2
+			},
+			"linked": [
+				{
+					"id": "paintcheckpigment",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintonepassion",
+			"actionId": "work",
+			"label": "Ein Tagewerk",
+			"startdescription": "Ich habe nicht gezaudert.",
+			"warmup": 10,
+			"requirements": {
+				"passion": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"insight": 1
+			},
+			"linked": [
+				{
+					"id": "paintcheckpigment",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintnopassion",
+			"actionId": "work",
+			"label": "Routinearbeit",
+			"startdescription": "Ganz ehrlich, ich bin überhaupt nicht bei der Sache. Zweifellos wird die Qualität meiner Arbeit darunter leiden.",
+			"warmup": 5,
+			"requirements": {
+				"passion": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"insight": -1
+			},
+			"linked": [
+				{
+					"id": "paintcheckpigment",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintcheckpigment",
+			"actionId": "work",
+			"alternativerecipes": [
+				{
+					"id": "painthasfunds",
+					"chance": 100
+				},
+				{
+					"id": "painthaspigment",
+					"chance": 100
+				},
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "painthasfunds",
+			"actionId": "work",
+			"requirements": {
+				"funds": 1
+			},
+			"effects": {
+				"insight": 1,
+				"funds": -1
+			},
+			"label": "Hochwertiges Material ...",
+			"startdescription": "... für ein hochwertiges Werk?",
+			"linked": [
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			],
+			"warmup": 5
+		},
+		{
+			"id": "painthaspigment",
+			"actionId": "work",
+			"requirements": {
+				"pigment": 1
+			},
+			"effects": {
+				"insight": 1,
+				"notoriety": 1
+			},
+			"label": "Potente Pigmente",
+			"startdescription": "Dieses Pigment ist gefährlich. Vielleicht sogar illegal.",
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "matchedge",
+					"chance": 100
+				},
+				{
+					"id": "matchforge",
+					"chance": 100
+				},
+				{
+					"id": "matchgrail",
+					"chance": 100
+				},
+				{
+					"id": "matchheart",
+					"chance": 100
+				},
+				{
+					"id": "matchknock",
+					"chance": 100
+				},
+				{
+					"id": "matchlantern",
+					"chance": 100
+				},
+				{
+					"id": "matchmoth",
+					"chance": 100
+				},
+				{
+					"id": "matchwinter",
+					"chance": 100
+				},
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "matchedge",
+			"requirements": {
+				"ingredientedgeb": 1,
+				"edge": 5
+			},
+			"actionId": "work",
+			"label": "Ein würdiges Medium",
+			"startdescription": "Der Frühling wetteifert immer mit dem Winter.",
+			"effects": {
+				"insight": 2,
+				"influenceedgec": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintmasteredge_unique",
+					"chance": 100
+				},
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "matchforge",
+			"requirements": {
+				"ingredientforgeb": 1,
+				"forge": 5
+			},
+			"actionId": "work",
+			"label": "Ein würdiges Medium",
+			"startdescription": "Dunkle Körner ergebe, bei richtiger Behandlung, feurige Farben.",
+			"effects": {
+				"insight": 2,
+				"influenceforgec": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintmasterforge_unique",
+					"chance": 100
+				},
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "matchgrail",
+			"requirements": {
+				"ingredientgrailb": 1,
+				"grail": 5
+			},
+			"actionId": "work",
+			"label": "Ein würdiges Medium",
+			"startdescription": "Das wird nie richtig trocknen. Perfekt.",
+			"effects": {
+				"insight": 2,
+				"influencegrailc": 1,
+				"notoriety": 1
+			},
+			"comments": "Extra notoriety for Grail",
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintmastergrail_unique",
+					"chance": 100
+				},
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "matchheart",
+			"requirements": {
+				"ingredientheartb": 1,
+				"heart": 5
+			},
+			"actionId": "work",
+			"label": "Ein würdiges Medium",
+			"startdescription": "Die süße Dämmerung des Meers, der Farbton der Wiedergeburt.",
+			"effects": {
+				"insight": 2,
+				"influenceheartc": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintmasterheart_unique",
+					"chance": 100
+				},
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "matchknock",
+			"requirements": {
+				"ingredientknockb": 1,
+				"knock": 5
+			},
+			"actionId": "work",
+			"label": "Ein würdiges Medium",
+			"startdescription": "Früher oder später wird diese Leinwand aufgeschlitzt werden, doch ihre Farben werden nur noch satter sein.",
+			"effects": {
+				"insight": 2,
+				"influenceknockc": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintmasterknock_unique",
+					"chance": 100
+				},
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "matchlantern",
+			"requirements": {
+				"ingredientlanternb": 1,
+				"lantern": 5
+			},
+			"actionId": "work",
+			"label": "Ein würdiges Medium",
+			"startdescription": "Dies sieht in völliger Dunkelheit am besten aus, wie wir alle.",
+			"effects": {
+				"insight": 2,
+				"influencelanternc": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintmasterlantern_unique",
+					"chance": 100
+				},
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "matchmoth",
+			"requirements": {
+				"ingredientmothb": 1,
+				"moth": 5
+			},
+			"actionId": "work",
+			"label": "Ein würdiges Medium",
+			"startdescription": "Sollen sich die Kritiker doch darüber streiten, was für eine Farbe das nun wirklich ist. Vielleicht prügeln sie sich sogar noch deswegen.",
+			"effects": {
+				"insight": 2,
+				"restlessness": 1,
+				"influencemothc": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintmastermoth_unique",
+					"chance": 100
+				},
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "matchwinter",
+			"requirements": {
+				"ingredientwinterb": 1,
+				"winter": 5
+			},
+			"effects": {
+				"insight": 2,
+				"dread": 1,
+				"influencewinterc": 1
+			},
+			"actionId": "work",
+			"label": "Ein würdiges Medium",
+			"startdescription": "Was tue ich? Was habe ich getan? Das wird jemandem das Herz brechen. Vielleicht allen.",
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "paintmasterwinter_unique",
+					"chance": 100
+				},
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintmasteredge_unique",
+			"requirements": {
+				"insight": 7,
+				"edge": 9
+			},
+			"maxexecutions": 1,
+			"effects": {
+				"paintingmasteredge": 1
+			},
+			"actionId": "work",
+			"linked": [
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintmasterforge_unique",
+			"requirements": {
+				"insight": 7,
+				"forge": 9
+			},
+			"maxexecutions": 1,
+			"effects": {
+				"paintingmasterforge": 1
+			},
+			"actionId": "work",
+			"linked": [
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintmastergrail_unique",
+			"requirements": {
+				"insight": 7,
+				"grail": 9
+			},
+			"maxexecutions": 1,
+			"effects": {
+				"paintingmastergrail": 1
+			},
+			"actionId": "work",
+			"linked": [
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintmasterheart_unique",
+			"requirements": {
+				"insight": 7,
+				"heart": 9
+			},
+			"maxexecutions": 1,
+			"effects": {
+				"paintingmasterheart": 1
+			},
+			"actionId": "work",
+			"linked": [
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintmasterknock_unique",
+			"requirements": {
+				"insight": 7,
+				"knock": 9
+			},
+			"maxexecutions": 1,
+			"effects": {
+				"paintingmasterknock": 1
+			},
+			"actionId": "work",
+			"linked": [
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintmasterlantern_unique",
+			"requirements": {
+				"insight": 7,
+				"lantern": 9
+			},
+			"maxexecutions": 1,
+			"effects": {
+				"paintingmasterlantern": 1
+			},
+			"actionId": "work",
+			"linked": [
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintmastermoth_unique",
+			"requirements": {
+				"insight": 7,
+				"moth": 9
+			},
+			"maxexecutions": 1,
+			"effects": {
+				"paintingmastermoth": 1
+			},
+			"actionId": "work",
+			"linked": [
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintmasterwinter_unique",
+			"requirements": {
+				"insight": 7,
+				"winter": 9
+			},
+			"maxexecutions": 1,
+			"effects": {
+				"paintingmasterwinter": 1
+			},
+			"actionId": "work",
+			"linked": [
+				{
+					"id": "paintresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintresults",
+			"label": "Fertig!",
+			"startdescription": " ",
+			"actionId": "work",
+			"warmup": 1,
+			"effects": {
+				"restlessness": -1,
+				"pigment": -1
+			},
+			"linked": [
+				{
+					"id": "paintingqualitymaster_unique",
+					"chance": 100
+				},
+				{
+					"id": "paintingqualityglorious",
+					"chance": 100
+				},
+				{
+					"id": "paintingqualitymagnificent",
+					"chance": 100
+				},
+				{
+					"id": "paintingqualityexceptional",
+					"chance": 100
+				},
+				{
+					"id": "paintingqualitygood",
+					"chance": 100
+				},
+				{
+					"id": "paintingqualitycompetent",
+					"chance": 100
+				},
+				{
+					"id": "paintingqualityfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintingqualitymaster_unique",
+			"actionId": "work",
+			"warmup": 5,
+			"label": "Etwas Einzigartiges",
+			"startdescription": "Ich habe etwas Einzigartiges geschaffen – etwas Außergewöhnliches – etwas, das ich niemals in der Öffentlichkeit zeigen würde. [Dies darf absolut niemals ans Licht des Tages kommen. Ich verdiene kein Geld.]",
+			"requirements": {
+				"tool": 1
+			},
+			"effects": {
+				"glimmering": 3,
+				"contentment": 1,
+				"insight": -99
+			}
+		},
+		{
+			"id": "paintingqualityglorious",
+			"actionId": "work",
+			"warmup": 5,
+			"label": "Ruhmreiches Werk",
+			"startdescription": "Auch wenn ich nie wieder eine Leinwand anrühren sollte, habe ich mir meinen Platz in den Annalen verdient.",
+			"requirements": {
+				"insight": 8
+			},
+			"deckeffect": {
+				"paintingresults": 6
+			},
+			"mutations": [
+				{
+					"filter": "passionskill",
+					"mutate": "stale",
+					"level": -1,
+					"additive": true
+				}
+			],
+			"linked": [
+				{
+					"id": "paintingreputationcheck",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"insight": -99,
+				"fascination": 1
+			}
+		},
+		{
+			"id": "paintingqualitymagnificent",
+			"actionId": "work",
+			"warmup": 5,
+			"label": "Glorreiches Werk",
+			"startdescription": "Ich habe etwas geschaffen, das sowohl unverwechselbar als auch wunderschön ist. Es wird aller Wahrscheinlichkeit nach mein Ansehen mehren.",
+			"requirements": {
+				"insight": 6
+			},
+			"deckeffect": {
+				"paintingresults": 5
+			},
+			"mutations": [
+				{
+					"filter": "passionskill",
+					"mutate": "stale",
+					"level": -1,
+					"additive": true
+				}
+			],
+			"linked": [
+				{
+					"id": "paintingreputationcheck",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"insight": -99,
+				"fascination": 1
+			}
+		},
+		{
+			"id": "paintingqualityexceptional",
+			"actionId": "work",
+			"warmup": 5,
+			"label": "Außergewöhnliches Werk",
+			"startdescription": "Dies ist etwas Besonderes. Es könnte eine Reaktion provozieren.",
+			"requirements": {
+				"insight": 4
+			},
+			"deckeffect": {
+				"paintingresults": 4
+			},
+			"mutations": [
+				{
+					"filter": "passionskill",
+					"mutate": "stale",
+					"level": -1,
+					"additive": true
+				}
+			],
+			"linked": [
+				{
+					"id": "paintingreputationcheck",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"insight": -99
+			}
+		},
+		{
+			"id": "paintingqualitygood",
+			"actionId": "work",
+			"warmup": 5,
+			"label": "Gute Arbeit",
+			"startdescription": "Auf dieses Werk kann ich stolz sein. Wenn es bekannt genug wird, kann ich es verkaufen.",
+			"requirements": {
+				"insight": 2
+			},
+			"deckeffect": {
+				"paintingresults": 3
+			},
+			"linked": [
+				{
+					"id": "paintingreputationcheck",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"insight": -99
+			}
+		},
+		{
+			"id": "paintingqualitycompetent",
+			"actionId": "work",
+			"warmup": 5,
+			"label": "Gutes Handwerk",
+			"startdescription": "Dafür muss ich mich nicht schämen.",
+			"requirements": {
+				"insight": 1
+			},
+			"deckeffect": {
+				"paintingresults": 2
+			},
+			"linked": [
+				{
+					"id": "paintingreputationcheck",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"insight": -99
+			}
+		},
+		{
+			"id": "paintingqualityfailure",
+			"actionId": "work",
+			"warmup": 5,
+			"label": "Wertlos!",
+			"startdescription": "Ich habe nichts geschaffen, was irgendeinen Nutzen oder irgendeine Bedeutung hätte. Ich sollte mich schämen. Aber immerhin habe ich noch einen Ruf, vielleicht kann ich das ja doch noch verkaufen ...",
+			"requirements": {
+				"insight": -1
+			},
+			"effects": {
+				"insight": -99
+			},
+			"linked": [
+				{
+					"id": "paintingreputationcheck",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintingreputationcheck",
+			"actionId": "work",
+			"effects": {
+				"insight": -1
+			},
+			"linked": [
+				{
+					"id": "paintingreputation_celebrated",
+					"chance": 100
+				},
+				{
+					"id": "paintingreputation_famed",
+					"chance": 100
+				},
+				{
+					"id": "paintingreputation_notable",
+					"chance": 100
+				},
+				{
+					"id": "paintingreputation_significant",
+					"chance": 100
+				},
+				{
+					"id": "paintingreputation_known",
+					"chance": 100
+				},
+				{
+					"id": "paintingreputation_noticed",
+					"chance": 100
+				},
+				{
+					"id": "paintingreputation_unknown",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "paintingreputation_celebrated",
+			"label": "Der Lohn des Künstlers?",
+			"description": "Mein jüngstes Werk wird gefeiert! Mein Name ist bekannt und mein Werk hat sich gut gemacht.",
+			"actionId": "work",
+			"requirements": {
+				"reputation": 9,
+				"stale": -1
+			},
+			"deckeffect": {
+				"paintingresultsreputation": 7
+			},
+			"linked": [
+				{
+					"id": "painting.reputation.overexposure"
+				}
+			]
+		},
+		{
+			"id": "paintingreputation_famed",
+			"label": "Der Lohn des Künstlers?",
+			"description": "Mein jüngstes Werk hat es zu bescheidenem Ruhme gebracht! Meine Gemälde wurden wohlwollend aufgenommen.",
+			"actionId": "work",
+			"requirements": {
+				"reputation": 7,
+				"stale": -2
+			},
+			"deckeffect": {
+				"paintingresultsreputation": 6
+			},
+			"linked": [
+				{
+					"id": "painting.reputation.overexposure"
+				}
+			]
+		},
+		{
+			"id": "paintingreputation_notable",
+			"label": "Der Lohn des Künstlers?",
+			"description": "Mein jüngstes Werk gilt als beachtenswert! Ich habe meine jüngsten Gemälde öffentlich ausgestellt. Gewiss wird irgendjemand irgendetwas kaufen.",
+			"actionId": "work",
+			"requirements": {
+				"reputation": 5,
+				"stale": -3
+			},
+			"deckeffect": {
+				"paintingresultsreputation": 4
+			},
+			"linked": [
+				{
+					"id": "painting.reputation.overexposure"
+				}
+			]
+		},
+		{
+			"id": "paintingreputation_significant",
+			"label": "Der Lohn des Künstlers?",
+			"description": "Mein jüngstes Werk gilt als bedeutsam! Vielleicht werde ich ja doch davon leben können, doch noch ist nichts sicher.",
+			"actionId": "work",
+			"requirements": {
+				"reputation": 3,
+				"stale": -4
+			},
+			"deckeffect": {
+				"paintingresultsreputation": 3
+			},
+			"linked": [
+				{
+					"id": "painting.reputation.overexposure"
+				}
+			]
+		},
+		{
+			"id": "paintingreputation_known",
+			"label": "Der Lohn des Künstlers?",
+			"description": "Mein jüngstes Werk hat einige Aufmerksamkeit auf sich ziehen können. Irgendetwas sollte ich verkaufen können.",
+			"actionId": "work",
+			"requirements": {
+				"reputation": 2,
+				"stale": -5
+			},
+			"deckeffect": {
+				"paintingresultsreputation": 2
+			}
+		},
+		{
+			"id": "paintingreputation_noticed",
+			"comments": "No links to over-exposure risk. The overexposure cards will happily decay to funds.",
+			"label": "Der Lohn des Künstlers?",
+			"description": "Mein jüngstes Werk hat einige Besucher angelockt. Mit etwas Glück werde ich etwas verkaufen können.",
+			"actionId": "work",
+			"requirements": {
+				"reputation": 1
+			},
+			"deckeffect": {
+				"paintingresultsreputation": 1
+			}
+		},
+		{
+			"id": "paintingreputation_unknown",
+			"comments": "No links to over-exposure risk. The overexposure cards will happily decay to funds.",
+			"label": "Der Lohn des Künstlers?",
+			"description": "Mein jüngstes Werk ist ohne Beachtung geblieben. Nichts konnte verkauft werden. Vielleicht ist mein Werk ja schon Belohnung genug. Ich hoffe.",
+			"actionId": "work",
+			"requirements": {
+				"reputation": -1
+			}
+		},
+		{
+			"id": "painting.reputation.overexposure",
+			"label": "Der Lohn des Künstlers?",
+			"actionId": "work",
+			"requirements": {
+				"overexposure": 1
+			},
+			"effects": {
+				"overexposure": -1
+			},
+			"mutations": [
+				{
+					"filter": "passionskill",
+					"mutate": "stale",
+					"level": 1,
+					"additive": true
+				}
+			],
+			"linked": [
+				{
+					"id": "painting.reputation.overexposure"
+				}
+			]
+		},
+		{
+			"id": "paintmansus",
+			"label": "Den Mansus darstellen",
+			"actionId": "work",
+			"requirements": {
+				"lantern": 1
+			},
+			"effects": {
+				"paintingmansus": 1
+			},
+			"startdescription": "Mir fällt etwas von der Architektur der Träume ein ...",
+			"description": "Das Tageslicht sollte diese Leinwand nicht berühren. Ich werde Ärger kriegen.",
+			"warmup": 0,
+			"craftable": false
+		}
+	]
+}

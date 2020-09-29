@@ -1,0 +1,58 @@
+{
+	"recipes": [
+		{
+			"id": "deathofthebody",
+			"label": "Keine Gesundheit mehr übrig",
+			"actionId": "healthend",
+			"requirements": {
+				"health": -1,
+				"fatigue": -1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Mein Leben entgleitet mir –",
+			"description": "Wo wird man mich finden? Ich bin nicht hier.",
+			"warmup": 0,
+			"craftable": false,
+			"ending": "deathofthebody",
+			"signalEndingFlavour": "Melancholy"
+		},
+		{
+			"id": "forlornblooddeathofthebody",
+			"label": "Keine Gesundheit mehr übrig",
+			"actionId": "healthend",
+			"requirements": {
+				"health": -1,
+				"fatigue": -1,
+				"apostlegrail.pillar2": -1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Das Falsche in meinen Knochen hat mich überkommen. Wenn ich keine Kraft aufbringen oder das Blut unserer Wonne schmecken kann, ist alles aus.",
+			"description": "Wo wird man mich finden? Ich bin nicht hier.",
+			"warmup": 0,
+			"craftable": false,
+			"ending": "deathofthebody",
+			"signalEndingFlavour": "Melancholy"
+		},
+		{
+			"id": "workvictory",
+			"label": "Ich werde mich in eine bequeme Existenz fügen",
+			"actionId": "workwin",
+			"requirements": {
+				"passion": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Ich habe meine Träume aufgegeben. Ich werde auch so annehmbar leben.",
+			"description": "Es ist aus",
+			"warmup": 0,
+			"craftable": false,
+			"ending": "workvictory",
+			"burnimage": "retirement"
+		}
+	]
+}

@@ -1,0 +1,2111 @@
+{
+	"recipes": [
+		{
+			"id": "ascensionpower_upgradetoobsession",
+			"label": "Der lodernde Schlüssel",
+			"actionId": "work",
+			"requirements": {
+				"ascensionpowerb": 1,
+				"waystag_after": 1,
+				"forge": 6
+			},
+			"effects": {
+				"ascensionpowerb": -1,
+				"ascensionpowerc": 1
+			},
+			"startdescription": "Dieser Ritus ist der Schlüssel, der es der Schmiede der Tage erlaubt, in mich einzudringen. Ich werde mich für immer wandeln.",
+			"description": "Der Ritus ist abgeschlossen. Die Zeichen der Schmiede zeichnen mich. Das 1. Zeichen ist, was ich gesagt habe, und das 2. Zeichen ist, was ich getan habe. Wenn ich mir meinen Leib genau anschaue, finde ich das 3. Zeichen. Ich leuchte vor neuer Samen.",
+			"warmup": 60,
+			"craftable": true,
+			"burnimage": "flammarion"
+		},
+		{
+			"comments": "male and female flavour; //TODO implement more elegantly",
+			"id": "ascensionsensation_upgradetoobsessionm",
+			"label": "Der seufzende Schlüssel",
+			"actionId": "work",
+			"requirements": {
+				"ascensionsensationbm": 1,
+				"waystag_after": 1,
+				"grail": 6
+			},
+			"effects": {
+				"ascensionsensationbm": -1,
+				"ascensionsensationc": 1
+			},
+			"startdescription": "Dieser Ritus ist der Schlüssel, der es dem Roten Gral erlaubt, in mich einzudringen. Ich werde mich für immer wandeln.",
+			"description": "Der Ritus ist abgeschlossen. Die Zeichen des Grals zeichnen mich. Das 1. Zeichen ist, was ich gesagt habe, und das 2. Zeichen ist, was ich getan habe. Wenn ich mir meinen Leib genau anschaue, finde ich das 3. Zeichen. Ich erzittere vor neuem Appetit.",
+			"warmup": 60,
+			"craftable": true,
+			"burnimage": "flammarion"
+		},
+		{
+			"comments": "male and female flavour; //TODO implement more elegantly",
+			"id": "ascensionsensation_upgradetoobsessionf",
+			"label": "Der seufzende Schlüssel",
+			"actionId": "work",
+			"requirements": {
+				"ascensionsensationbf": 1,
+				"waystag_after": 1,
+				"grail": 6
+			},
+			"effects": {
+				"ascensionsensationbf": -1,
+				"ascensionsensationc": 1
+			},
+			"startdescription": "Dieser Ritus ist der Schlüssel, der es dem Roten Gral erlaubt, in mich einzudringen. Ich werde mich für immer wandeln.",
+			"description": "Der Ritus ist abgeschlossen. Die Zeichen des Grals zeichnen mich. Das 1. Zeichen ist, was ich gesagt habe, und das 2. Zeichen ist, was ich getan habe. Wenn ich mir meinen Leib genau anschaue, finde ich das 3. Zeichen. Ich erzittere vor neuem Appetit.",
+			"warmup": 60,
+			"craftable": true,
+			"burnimage": "flammarion"
+		},
+		{
+			"id": "ascensionsensation_switchpolarity_mtof",
+			"label": "Vorlieben",
+			"actionId": "dream",
+			"requirements": {
+				"ascensionsensationbm": 1
+			},
+			"effects": {
+				"ascensionsensationbm": -1,
+				"ascensionsensationbf": 1
+			},
+			"startdescription": "Ich bin so weit gegangen wie ich träumen kann. Ich muss das <b>Werk</b> vollbringen. Doch vielleicht, wenn ich mein Verlangen bedenke, sind es für gewöhnlich nicht Männer, die mir in den Sinn kommen ...",
+			"description": "Geschmäcker ändern sich, das Verlangen ändert sich, Gedanken nehmen eine andere Richtung.",
+			"warmup": 3,
+			"craftable": true
+		},
+		{
+			"id": "ascensionsensation_switchpolarity_ftom",
+			"label": "Vorlieben",
+			"actionId": "dream",
+			"requirements": {
+				"ascensionsensationbf": 1
+			},
+			"effects": {
+				"ascensionsensationbf": -1,
+				"ascensionsensationbm": 1
+			},
+			"startdescription": "Ich bin so weit gegangen wie ich träumen kann. Ich muss das <b>Werk</b> vollbringen. Doch vielleicht, wenn ich mein Verlangen bedenke, sind es für gewöhnlich nicht Frauen, die mir in den Sinn kommen ...",
+			"description": "Geschmäcker ändern sich, das Verlangen ändert sich, Gedanken nehmen eine andere Richtung.",
+			"warmup": 3,
+			"craftable": true
+		},
+		{
+			"id": "ascensionenlightenment_upgradetoobsession",
+			"label": "Der blendende Schlüssel",
+			"actionId": "work",
+			"requirements": {
+				"ascensionenlightenmentb": 1,
+				"waystag_after": 1,
+				"lantern": 6
+			},
+			"effects": {
+				"ascensionenlightenmentb": -1,
+				"ascensionenlightenmentc": 1
+			},
+			"startdescription": "Dieser Ritus ist der Schlüssel, der es dem Blick des Wächters erlaubt, in mich einzudringen. Ich werde mich für immer wandeln.",
+			"description": "Der Ritus ist abgeschlossen. Die Zeichen des Wächters zeichnen mich. Das 1. Zeichen ist, was ich gesagt habe, und das 2. Zeichen ist, was ich getan habe. Wenn ich mir meinen Leib genau anschaue, finde ich das 3. Zeichen. Mein Hunger ist jetzt verfeinert.",
+			"warmup": 60,
+			"craftable": true,
+			"burnimage": "flammarion"
+		},
+		{
+			"id": "majorforgevictory",
+			"label": "DIE DÄMMERUNG IST DA",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"ascensionpowerf": 1,
+				"forge": 50
+			},
+			"effects": {
+				
+			},
+			"startdescription": "[This text is available when advanced legacies arrive.]",
+			"description": "Vergiss nicht, dass der abschließende Text den Zündstoff enthalten wird.",
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "minorforgevictory_trigger",
+			"actionId": "work",
+			"label": "Der Flächenbrand des Herzens",
+			"startdescription": "Ich war schon so oft in den Flammen. Die Platten meines Leibes reiben aneinander. Ich beschwöre nun die Hitze der Schmiede, die von mir brennen wird, was ich einst war. Ich werde sterben, wenn ich das Trikuspidale Tor passiere, doch der Tod ist nicht das Ende. Ich werde unsterblich sein: ein Langer, Günstling der Schmiede. [Alle bei diesem Ritual eingesetzten Anhänger werden verzehrt. Wenn dir etwas an jemandem liegt, den du zurücklassen könntest, sei vorsichtig.]",
+			"requirements": {
+				"ritual": 1,
+				"ascensionpowerf": 1,
+				"forge": 36
+			},
+			"craftable": true,
+			"comments": "Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
+			"warmup": 1,
+			"effects": {
+				"follower": -3,
+				"summoned": -3,
+				"passion": -3
+			},
+			"linked": [
+				{
+					"id": "minorforgevictory_overture",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "minorforgevictory_overture",
+			"label": "Der Flächenbrand des Herzens",
+			"actionId": "work",
+			"description": "Ich werde zu einem Namen des Feuers. Vergiss nicht, dass der abschließende Text den Zündstoff enthalten wird.",
+			"warmup": 60,
+			"slots": [
+				{
+					"id": "beloved",
+					"label": "Liebling",
+					"required": {
+						"romanticinterest": 1
+					},
+					"forbidden": {
+						"corpse": 1,
+						"notoriety": 1
+					},
+					"greedy": true
+				}
+			],
+			"signalEndingFlavour": "Grand",
+			"linked": [
+				{
+					"chance": 100,
+					"id": "belovedfarewell"
+				},
+				{
+					"chance": 100,
+					"id": "minorforgevictorywithrisen"
+				},
+				{
+					"chance": 100,
+					"id": "minorforgevictory"
+				}
+			]
+		},
+		{
+			"id": "minorforgevictory",
+			"label": "Der Flächenbrand des Herzens",
+			"requirements": {
+				"ascensionpowerf": 1
+			},
+			"ending": "minorforgevictory",
+			"actionId": "work"
+		},
+		{
+			"id": "minorforgevictorywithrisen",
+			"requirements": {
+				"summoned": 1,
+				"ascensionpowerf": 1
+			},
+			"label": "Der Flächenbrand des Herzens",
+			"ending": "minorforgevictorywithrisen",
+			"actionId": "work"
+		},
+		{
+			"id": "majorgrailvictory",
+			"label": "DAS GELAGE STEHT VOR DER TÜR",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"ascensionsensationf": 1,
+				"grail": 50
+			},
+			"effects": {
+				
+			},
+			"startdescription": "[This text is available when advanced legacies arrive.]",
+			"description": "Das Gelage beginnt. Vergiss nicht, dass der abschließende Text den Zündstoff enthalten wird.",
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "minorgrailvictory_withromanticsacrifice",
+			"label": "Das Gelage des Gedenkens des Herzens",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"ascensionsensationf": 1,
+				"romanticinterest": 1,
+				"grail": 27
+			},
+			"startdescription": "Ich bin durch das Leben anderer aufgeschwemmt. Die Nähte meines Leibes beginnen zu bersten. Nun rufe ich den Roten Gral an, die Mutter der Berge, die verzehrt und die Quelle ist. Jemand ist hier, der mich liebt und den ich vielleicht auch geliebt habe, so wie vielleicht der Rote Gral auch die Donnerhaut vor deren Ende liebte. Mit diesem Opfer ist die Anrufung sowohl leichter als auch schrecklicher. In Ihrem Namen werde ich mich selbst gebären. Das Trikuspidale Tor öffnet sich. Ich werde unsterblich sein: ein Langer, Günstling des Grals, und jemand, den ich einst liebte, wir so lange in Erinnerung bleiben, wie ich durchhalte.",
+			"description": ".",
+			"warmup": 60,
+			"craftable": true,
+			"signalEndingFlavour": "Grand",
+			"ending": "minorgrailvictory"
+		},
+		{
+			"id": "minorgrailvictory_trigger",
+			"actionId": "work",
+			"label": "Das Fest der wahren Geburt",
+			"startdescription": "Ich bin durch das Leben anderer aufgeschwemmt. Die Nähte meines Leibes beginnen zu bersten. Nun rufe ich den Roten Gral an, die Mutter der Berge, die verzehrt und die Quelle ist. In Ihrem Namen werde ich mich selbst gebären. Das Trikuspidale Tor öffnet sich. Ich werde unsterblich sein: ein Langer, Günstling des Grals. [Alle bei diesem Ritual eingesetzten Anhänger werden verzehrt. Wenn dir etwas an jemandem liegt, den du zurücklassen könntest, sei vorsichtig.]",
+			"requirements": {
+				"ritual": 1,
+				"ascensionsensationf": 1,
+				"grail": 36
+			},
+			"craftable": true,
+			"comments": "Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
+			"warmup": 1,
+			"effects": {
+				"follower": -3,
+				"summoned": -3,
+				"passion": -3
+			},
+			"linked": [
+				{
+					"id": "minorgrailvictory_overture",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "minorgrailvictory_overture",
+			"label": "Das Fest der wahren Geburt",
+			"actionId": "work",
+			"description": ".",
+			"warmup": 60,
+			"signalEndingFlavour": "Grand",
+			"slots": [
+				{
+					"id": "beloved",
+					"label": "Liebling",
+					"required": {
+						"romanticinterest": 1
+					},
+					"forbidden": {
+						"corpse": 1,
+						"notoriety": 1
+					},
+					"greedy": true
+				}
+			],
+			"linked": [
+				{
+					"chance": 100,
+					"id": "minorgrailvictorywithrisen"
+				},
+				{
+					"chance": 100,
+					"id": "belovedfarewell"
+				},
+				{
+					"chance": 100,
+					"id": "minorgrailvictory"
+				}
+			]
+		},
+		{
+			"id": "minorgrailvictory",
+			"label": "Das Fest der wahren Geburt",
+			"requirements": {
+				"ascensionsensationf": 1
+			},
+			"ending": "minorgrailvictory",
+			"actionId": "work"
+		},
+		{
+			"id": "minorgrailvictorywithrisen",
+			"requirements": {
+				"summoned": 1,
+				"ascensionsensationf": 1
+			},
+			"label": "Das Fest der wahren Geburt",
+			"ending": "minorgrailvictorywithrisen",
+			"actionId": "work"
+		},
+		{
+			"id": "majorlanternvictory",
+			"label": "DIE LATERNE",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"ascensionenlightenmentf": 1,
+				"lantern": 50
+			},
+			"effects": {
+				
+			},
+			"startdescription": "[This text is available when advanced legacies arrive.]",
+			"description": "Ich nähere mich dem Ruhm.  Vergiss nicht, dass der abschließende Text den Zündstoff enthalten wird.",
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "belovedfarewell",
+			"label": "Die Wahl der Schwelle",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"summoned": -1
+			},
+			"startdescription": "Der letzte Abschied. Sie werden bleiben und ich werde aufsteigen.",
+			"slots": [
+				{
+					"id": "decision",
+					"label": "Entscheidung",
+					"description": "[Füge Leidenschaft hinzu, um dich von deinem Aufstieg abzuwenden ... und als Sterblicher mit deinem Liebling zu leben. Tue zum Fortfahren nichts.]",
+					"required": {
+						"passion": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "auclairvictory",
+					"chance": 100
+				},
+				{
+					"id": "catvictory",
+					"chance": 100
+				},
+				{
+					"id": "clovettevictory",
+					"chance": 100
+				},
+				{
+					"id": "cliftonvictory",
+					"chance": 100
+				},
+				{
+					"id": "dorothyvictory",
+					"chance": 100
+				},
+				{
+					"id": "elridgevictory",
+					"chance": 100
+				},
+				{
+					"id": "enidvictory",
+					"chance": 100
+				},
+				{
+					"id": "laidlawvictory",
+					"chance": 100
+				},
+				{
+					"id": "leovictory",
+					"chance": 100
+				},
+				{
+					"id": "nevillevictory",
+					"chance": 100
+				},
+				{
+					"id": "portervictory",
+					"chance": 100
+				},
+				{
+					"id": "reniravictory",
+					"chance": 100
+				},
+				{
+					"id": "rosevictory",
+					"chance": 100
+				},
+				{
+					"id": "salibavictory",
+					"chance": 100
+				},
+				{
+					"id": "sleevictory",
+					"chance": 100
+				},
+				{
+					"id": "sylviavictory",
+					"chance": 100
+				},
+				{
+					"id": "tristanvictory",
+					"chance": 100
+				},
+				{
+					"id": "valcianevictory",
+					"chance": 100
+				},
+				{
+					"id": "victorvictory",
+					"chance": 100
+				},
+				{
+					"id": "violetvictory",
+					"chance": 100
+				},
+				{
+					"id": "ysabetvictory",
+					"chance": 100
+				},
+				{
+					"id": "imnotinlove",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "auclairvictory",
+			"label": "Liebe?",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqauclair": 1
+			},
+			"startdescription": "Ich habe mal eine Geschichte gehört: von Waagschalen, bei denen in einer ein Herz und in der anderen eine Feder lag. Dies ist die Wahl, vor der ich jetzt stehe, nur dass die Feder die Ewigkeit ist. [Diese Wahl wird deinen Aufstieg beenden und dich als Sterblicher mit deinem Liebling Auclair leben lassen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "auclairvictory"
+		},
+		{
+			"id": "catvictory",
+			"label": "Liebe?",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqcat": 1
+			},
+			"startdescription": "Ich habe mal eine Geschichte gehört: von Waagschalen, bei denen in einer ein Herz und in der anderen eine Feder lag. Dies ist die Wahl, vor der ich jetzt stehe, nur dass die Feder die Ewigkeit ist. [Diese Wahl wird deinen Aufstieg beenden und dich als Sterblicher mit Katze Karo leben lassen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "catvictory"
+		},
+		{
+			"id": "clovettevictory",
+			"label": "Liebe?",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqclovette": 1
+			},
+			"startdescription": "Ich habe mal eine Geschichte gehört: von Waagschalen, bei denen in einer ein Herz und in der anderen eine Feder lag. Dies ist die Wahl, vor der ich jetzt stehe, nur dass die Feder die Ewigkeit ist. [Diese Wahl wird deinen Aufstieg beenden und dich als Sterblicher mit Clovette leben lassen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "clovettevictory"
+		},
+		{
+			"id": "cliftonvictory",
+			"label": "Liebe?",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqclifton": 1
+			},
+			"startdescription": "Ich habe mal eine Geschichte gehört: von Waagschalen, bei denen in einer ein Herz und in der anderen eine Feder lag. Dies ist die Wahl, vor der ich jetzt stehe, nur dass die Feder die Ewigkeit ist. [Diese Wahl wird deinen Aufstieg beenden und dich als Sterblicher mit Clifton leben lassen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "cliftonvictory"
+		},
+		{
+			"id": "dorothyvictory",
+			"label": "Liebe?",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqdorothy": 1
+			},
+			"startdescription": "Ich habe mal eine Geschichte gehört: von Waagschalen, bei denen in einer ein Herz und in der anderen eine Feder lag. Dies ist die Wahl, vor der ich jetzt stehe, nur dass die Feder die Ewigkeit ist. [Diese Wahl wird deinen Aufstieg beenden und dich als Sterblicher mit Dorothy leben lassen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "dorothyvictory"
+		},
+		{
+			"id": "elridgevictory",
+			"label": "Liebe?",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqelridge": 1
+			},
+			"startdescription": "Ich habe mal eine Geschichte gehört: von Waagschalen, bei denen in einer ein Herz und in der anderen eine Feder lag. Dies ist die Wahl, vor der ich jetzt stehe, nur dass die Feder die Ewigkeit ist. [Diese Wahl wird deinen Aufstieg beenden und dich als Sterblicher mit Elridge leben lassen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "elridgevictory"
+		},
+		{
+			"id": "enidvictory",
+			"label": "Liebe?",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqenid": 1
+			},
+			"startdescription": "Ich habe mal eine Geschichte gehört: von Waagschalen, bei denen in einer ein Herz und in der anderen eine Feder lag. Dies ist die Wahl, vor der ich jetzt stehe, nur dass die Feder die Ewigkeit ist. [Diese Wahl wird deinen Aufstieg beenden und dich als Sterblicher mit Enid leben lassen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "enidvictory"
+		},
+		{
+			"id": "laidlawvictory",
+			"label": "Liebe?",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqlaidlaw": 1
+			},
+			"startdescription": "Ich habe mal eine Geschichte gehört: von Waagschalen, bei denen in einer ein Herz und in der anderen eine Feder lag. Dies ist die Wahl, vor der ich jetzt stehe, nur dass die Feder die Ewigkeit ist. [Diese Wahl wird deinen Aufstieg beenden und dich als Sterblicher mit Laidlaw leben lassen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "laidlawvictory"
+		},
+		{
+			"id": "leovictory",
+			"label": "Liebe?",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqleo": 1
+			},
+			"startdescription": "Ich habe mal eine Geschichte gehört: von Waagschalen, bei denen in einer ein Herz und in der anderen eine Feder lag. Dies ist die Wahl, vor der ich jetzt stehe, nur dass die Feder die Ewigkeit ist. [Diese Wahl wird deinen Aufstieg beenden und dich als Sterblicher mit Leo leben lassen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "leovictory"
+		},
+		{
+			"id": "nevillevictory",
+			"label": "Liebe?",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqneville": 1
+			},
+			"startdescription": "Ich habe mal eine Geschichte gehört: von Waagschalen, bei denen in einer ein Herz und in der anderen eine Feder lag. Dies ist die Wahl, vor der ich jetzt stehe, nur dass die Feder die Ewigkeit ist. [Diese Wahl wird deinen Aufstieg beenden und dich als Sterblicher mit Neville leben lassen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "nevillevictory"
+		},
+		{
+			"id": "portervictory",
+			"label": "Liebe?",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqporter": 1
+			},
+			"startdescription": "Ich habe mal eine Geschichte gehört: von Waagschalen, bei denen in einer ein Herz und in der anderen eine Feder lag. Dies ist die Wahl, vor der ich jetzt stehe, nur dass die Feder die Ewigkeit ist. [Diese Wahl wird deinen Aufstieg beenden und dich als Sterblicher mit Porter leben lassen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "portervictory"
+		},
+		{
+			"id": "reniravictory",
+			"label": "Liebe?",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqrenira": 1
+			},
+			"startdescription": "Ich habe mal eine Geschichte gehört: von Waagschalen, bei denen in einer ein Herz und in der anderen eine Feder lag. Dies ist die Wahl, vor der ich jetzt stehe, nur dass die Feder die Ewigkeit ist. [Diese Wahl wird deinen Aufstieg beenden und dich als Sterblicher mit Renira leben lassen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "reniravictory"
+		},
+		{
+			"id": "rosevictory",
+			"label": "Liebe?",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqrose": 1
+			},
+			"startdescription": "Ich habe mal eine Geschichte gehört: von Waagschalen, bei denen in einer ein Herz und in der anderen eine Feder lag. Dies ist die Wahl, vor der ich jetzt stehe, nur dass die Feder die Ewigkeit ist. [Diese Wahl wird deinen Aufstieg beenden und dich als Sterblicher mit Rose leben lassen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "rosevictory"
+		},
+		{
+			"id": "salibavictory",
+			"label": "Liebe?",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqsaliba": 1
+			},
+			"startdescription": "Ich habe mal eine Geschichte gehört: von Waagschalen, bei denen in einer ein Herz und in der anderen eine Feder lag. Dies ist die Wahl, vor der ich jetzt stehe, nur dass die Feder die Ewigkeit ist. [Diese Wahl wird deinen Aufstieg beenden und dich als Sterblicher mit Saliba leben lassen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "salibavictory"
+		},
+		{
+			"id": "sleevictory",
+			"label": "Liebe?",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqslee": 1
+			},
+			"startdescription": "Ich habe mal eine Geschichte gehört: von Waagschalen, bei denen in einer ein Herz und in der anderen eine Feder lag. Dies ist die Wahl, vor der ich jetzt stehe, nur dass die Feder die Ewigkeit ist. [Diese Wahl wird deinen Aufstieg beenden und dich als Sterblicher mit Slee leben lassen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "sleevictory"
+		},
+		{
+			"id": "sylviavictory",
+			"label": "Liebe?",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqsylvia": 1
+			},
+			"startdescription": "Ich habe mal eine Geschichte gehört: von Waagschalen, bei denen in einer ein Herz und in der anderen eine Feder lag. Dies ist die Wahl, vor der ich jetzt stehe, nur dass die Feder die Ewigkeit ist. [Diese Wahl wird deinen Aufstieg beenden und dich als Sterblicher mit Sylvia leben lassen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "sylviavictory"
+		},
+		{
+			"id": "tristanvictory",
+			"label": "Liebe?",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqtristan": 1
+			},
+			"startdescription": "Ich habe mal eine Geschichte gehört: von Waagschalen, bei denen in einer ein Herz und in der anderen eine Feder lag. Dies ist die Wahl, vor der ich jetzt stehe, nur dass die Feder die Ewigkeit ist. [Diese Wahl wird deinen Aufstieg beenden und dich als Sterblicher mit Tristan leben lassen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "tristanvictory"
+		},
+		{
+			"id": "valcianevictory",
+			"label": "Liebe?",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqvalciane": 1
+			},
+			"startdescription": "Ich habe mal eine Geschichte gehört: von Waagschalen, bei denen in einer ein Herz und in der anderen eine Feder lag. Dies ist die Wahl, vor der ich jetzt stehe, nur dass die Feder die Ewigkeit ist. [Diese Wahl wird deinen Aufstieg beenden und dich als Sterblicher mit Valciane leben lassen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "valcianevictory"
+		},
+		{
+			"id": "victorvictory",
+			"label": "Liebe?",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqvictor": 1
+			},
+			"startdescription": "Ich habe mal eine Geschichte gehört: von Waagschalen, bei denen in einer ein Herz und in der anderen eine Feder lag. Dies ist die Wahl, vor der ich jetzt stehe, nur dass die Feder die Ewigkeit ist. [Diese Wahl wird deinen Aufstieg beenden und dich als Sterblicher mit Victor leben lassen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "victorvictory"
+		},
+		{
+			"id": "violetvictory",
+			"label": "Liebe?",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqviolet": 1
+			},
+			"startdescription": "Ich habe mal eine Geschichte gehört: von Waagschalen, bei denen in einer ein Herz und in der anderen eine Feder lag. Dies ist die Wahl, vor der ich jetzt stehe, nur dass die Feder die Ewigkeit ist. [Diese Wahl wird deinen Aufstieg beenden und dich als Sterblicher mit Violet leben lassen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "violetvictory"
+		},
+		{
+			"id": "ysabetvictory",
+			"label": "Liebe?",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqysabet": 1
+			},
+			"startdescription": "Ich habe mal eine Geschichte gehört: von Waagschalen, bei denen in einer ein Herz und in der anderen eine Feder lag. Dies ist die Wahl, vor der ich jetzt stehe, nur dass die Feder die Ewigkeit ist. [Diese Wahl wird deinen Aufstieg beenden und dich als Sterblicher mit Ysabet leben lassen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "ysabetvictory"
+		},
+		{
+			"id": "imnotinlove",
+			"label": "Hingabe",
+			"startdescription": "Vielleicht werde ich geliebt. Vielleicht liebe ich. Vielleicht spielt all das gar keine Rolle.",
+			"actionId": "work",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "minorlanternvictory",
+					"chance": 100
+				},
+				{
+					"id": "minorgrailvictory",
+					"chance": 100
+				},
+				{
+					"id": "minorforgevictory",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "minorlanternvictory_trigger",
+			"actionId": "work",
+			"label": "Der Incursus",
+			"startdescription": "Wenig ist von diesem Fleische geblieben. Ich werde durch das Trikuspidale Tor schreiten und nicht mehr zurückkehren. Der Wächter erwartet mich. In Seinen Fußstapfen werde ich das Licht des Ruhmes finden. Die Erkenntnis ist zu groß, als dass meine Seele sie festhalten könnte, also wird sich meine Seele öffnen. Ich werde nicht unsterblich sein: Ich werde mehr als das sein. [Alle bei diesem Ritual eingesetzten Anhänger werden verzehrt. Wenn dir etwas an jemandem liegt, den du zurücklassen könntest, sei vorsichtig.]",
+			"requirements": {
+				"ritual": 1,
+				"ascensionenlightenmentf": 1,
+				"lantern": 36
+			},
+			"craftable": true,
+			"comments": "Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
+			"warmup": 1,
+			"effects": {
+				"follower": -3,
+				"summoned": -3,
+				"passion": -3
+			},
+			"linked": [
+				{
+					"id": "minorlanternvictory_overture",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "minorlanternvictory_overture",
+			"label": "Der Incursus",
+			"actionId": "work",
+			"description": ".",
+			"warmup": 60,
+			"slots": [
+				{
+					"id": "beloved",
+					"label": "Liebling",
+					"required": {
+						"romanticinterest": 1
+					},
+					"forbidden": {
+						"corpse": 1,
+						"notoriety": 1
+					},
+					"greedy": true
+				}
+			],
+			"signalEndingFlavour": "Grand",
+			"linked": [
+				{
+					"chance": 100,
+					"id": "minorlanternvictorywithrisen"
+				},
+				{
+					"chance": 100,
+					"id": "belovedfarewell"
+				},
+				{
+					"chance": 100,
+					"id": "minorlanternvictory"
+				}
+			]
+		},
+		{
+			"id": "minorlanternvictory",
+			"label": "Der Incursus",
+			"requirements": {
+				"ascensionenlightenmentf": 1
+			},
+			"ending": "minorlanternvictory",
+			"actionId": "work"
+		},
+		{
+			"id": "minorlanternvictorywithrisen",
+			"requirements": {
+				"summoned": 1,
+				"ascensionenlightenmentf": 1
+			},
+			"label": "Der Incursus",
+			"ending": "minorlanternvictorywithrisen",
+			"actionId": "work"
+		},
+		{
+			"id": "ambition",
+			"requirements": {
+				"seasonambitions": 1
+			},
+			"label": "Exotisches Verlangen?",
+			"actionId": "craving",
+			"slots": [
+				{
+					"id": "Obsessions",
+					"label": "Obsessionen",
+					"description": "Tiefer sitzende Triebe",
+					"required": {
+						"enlightenmentmarks": 3,
+						"powermarks": 3,
+						"sensationmarks": 3,
+						"remembrancemarks": 2,
+						"changemarks": 1,
+						"independent": 1,
+						"resentment": 3,
+						"mentor": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "Welcher Hunger treibt uns an?",
+			"description": "",
+			"effects": {
+				
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "L_ascension_rival",
+					"chance": 100
+				},
+				{
+					"id": "L_independent",
+					"chance": 100
+				},
+				{
+					"id": "L_rebellion_activate",
+					"chance": 70
+				},
+				{
+					"id": "L_rebellion_noactivation",
+					"chance": 100
+				},
+				{
+					"id": "ending.minorcrownedgrowthvictory",
+					"chance": 100
+				},
+				{
+					"id": "ambition.apostleforge.emitfuel",
+					"chance": 100
+				},
+				{
+					"id": "ambition.apostlegrail.emitfuel",
+					"chance": 100
+				},
+				{
+					"id": "ambition.apostlelantern.emitfuel",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingpower",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingsensation",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingenlightenment",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingremembrance",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingremembrancenegative",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_tryascendfromg",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_tryascendfromf",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_tryascendfrome",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_tryascendfromd",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_tryascendfromc",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_tryascendfromb",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_tryascendfroma",
+					"chance": 100
+				},
+				{
+					"id": "ascensionnotyet",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "L_independent",
+			"label": "Rivalität!",
+			"requirements": {
+				"independent": 1
+			},
+			"actionId": "ambition",
+			"deckeffect": {
+				"schemeevents": 1
+			},
+			"linked": [
+				{
+					"id": "L_independent_router",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "L_independent_router",
+			"label": "Rivalität!",
+			"actionId": "ambition",
+			"requirements": {
+				"independent": 1
+			},
+			"comments": "That requirement is strictly unnecessary, but leaving it here just in case we move recipe connections again - it's an important filter",
+			"startdescription": "Da ist ein anderer, der vor mir aufsteigen will. [Unabhängige Okkultisten werden versuchen, die Aufmerksamkeit der Stunden für sich in Beschlag zu nehmen. Sie könnten auch ihre eigenen Pläne verfolgen, ob dir das nun passt oder nicht.]",
+			"alternativerecipes": [
+				{
+					"id": "scheme_murderhunter",
+					"chance": 100,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"independent": 1
+						}
+					}
+				},
+				{
+					"id": "scheme_expedition_grab",
+					"chance": 100,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"independent": 1
+						}
+					}
+				},
+				{
+					"id": "scheme_activities",
+					"chance": 100,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"independent": 1
+						}
+					}
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "L_ascension_rival",
+			"actionId": "ambition",
+			"requirements": {
+				"rivalmarks": 7
+			},
+			"extantreqs": {
+				"long.enemy": -1
+			},
+			"label": "Ein siegreicher Prätendent",
+			"startdescription": "Die Erfolge meines Rivalen stellen die meinen in den Schatten. Nun wird er zu einem Platz im Hause der Sonne aufsteigen während ich hier, in dieser Welt, mit meinem Frust allein bleiben werde.",
+			"ending": "rivalascension",
+			"signalEndingFlavour": "Melancholy",
+			"warmup": 60
+		},
+		{
+			"id": "L_ascension_rival_apostle",
+			"actionId": "ambition",
+			"requirements": {
+				"rivalmarks": 7
+			},
+			"extantreqs": {
+				"long.enemy": 1
+			},
+			"label": "Zu viele Feinde",
+			"startdescription": "Ein unsterblicher Feind ist eine tödliche Gefahr. Zwei unsterbliche Feinde sind zu viel. Unser Großes Werk ist gescheitert.",
+			"ending": "rivalascension",
+			"signalEndingFlavour": "Melancholy",
+			"warmup": 60
+		},
+		{
+			"id": "L_rebellion_activate",
+			"label": "Rebellion!",
+			"actionId": "ambition",
+			"requirements": {
+				"resentment": 3
+			},
+			"startdescription": "Zu viel oder nicht genug? Was auch immer ich getan habe, es hat jemanden verärgert, der nun keine Nachsicht mehr kennt.",
+			"description": "Ein Verbündeter hat mit mir gebrochen. Er mag jetzt zwar kein Feind sein – noch nicht, nicht wirklich – doch dienen wird er mir nicht mehr.",
+			"aspects": {
+				"rebellion": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "L_rebellion_noactivation",
+			"label": "Unzufriedenheit",
+			"actionId": "ambition",
+			"requirements": {
+				"resentment": 3
+			},
+			"startdescription": "Zu viel oder nicht genug? Was auch immer ich getan habe, es hat einen Verbündeten verärgert.",
+			"description": "Dieser hier hat einige Zeit mit einsamem Schmollen verbracht. Für den Moment wird er in die Reihe meiner Schäfchen zurückkehren.",
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "ending.minorcrownedgrowthvictory",
+			"actionId": "ambition",
+			"label": "INFIZIEREN UND WERDEN",
+			"requirements": {
+				"ghoul.hunger": 7
+			},
+			"startdescription": "Mein Appetit hat sich zu etwas entwickelt, das jenseits von mir ist, aber nicht außerhalb von mir. Mein Bauch wuchert vor Fruchtbarkeit. Es ist zu spät.",
+			"ending": "minorcrownedgrowthvictory",
+			"signalEndingFlavour": "Vile",
+			"warmup": 30
+		},
+		{
+			"id": "ascensionnotyet",
+			"label": "Frustration eines Sterblichen",
+			"actionId": "craving",
+			"requirements": {
+				"enlightenmentmarks": -1,
+				"powermarks": -1,
+				"sensationmarks": -1
+			},
+			"slots": [
+				{
+					"id": "Temptations",
+					"label": "Versuchungen",
+					"description": "Das Feuer muss genährt werden",
+					"required": {
+						"desire": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "Welcher Hunger treibt mich an?",
+			"effects": {
+				"restlessness": 1
+			},
+			"description": "Bislang habe ich nur die Bedürfnisse und das Verlangen jedes anderen Sterblichen. Doch was regt sich in mir?",
+			"alternativerecipes": [
+				{
+					"id": "ascensionhintpower2",
+					"chance": 100
+				},
+				{
+					"id": "ascensionhintenlightenment2",
+					"chance": 100
+				},
+				{
+					"id": "ascensionhintsensation2m",
+					"chance": 100
+				},
+				{
+					"id": "ascensionhintsensation2f",
+					"chance": 100
+				},
+				{
+					"id": "ascensionhintpower1",
+					"chance": 100
+				},
+				{
+					"id": "ascensionhintenlightenment1",
+					"chance": 100
+				},
+				{
+					"id": "ascensionhintsensation1",
+					"chance": 100
+				},
+				{
+					"id": "legacydetectiveplotitem_tempt",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensionhintpower2",
+			"label": "Das Brüllen der Schmiede",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionpowerb": 1
+			},
+			"startdescription": "Nun ist mir nie warm genug.",
+			"description": "Ich habe von der Schmiede geträumt, und ich sehne mich nach der Hitze ihrer Flammen. Es ist fast an der Zeit, sich dem Werke zu widmen und den Wandel einzuleiten – doch ich muss genug vom Aspekt der Schmiede haben. Durch <b>Erkundung</b> könnte ich noch mehr finden.",
+			"effects": {
+				"restlessness": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "ascensionhintenlightenment2",
+			"label": "Das Licht des Wächters",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionenlightenmentb": 1
+			},
+			"startdescription": "Selbst in wachen Stunden haben ich begonnen neue Farben zu sehen.",
+			"description": "Meine Neugier ist mir ein körperliches Bedürfnis geworden. Meine Augen werden Schwellen sein. Es ist fast an der Zeit, sich dem Werke zu widmen und den Wandel einzuleiten – doch ich muss genug vom Aspekt der Laterne haben. Durch <b>Erkundung</b> könnte ich noch mehr finden.",
+			"effects": {
+				"restlessness": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "ascensionhintsensation2m",
+			"label": "Die Berührung des Grals",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionsensationbm": 1
+			},
+			"startdescription": "Mein Verlangen wandelt sich.",
+			"description": "Die wunderbaren Gezeiten des Grals wiegen mich. Es ist fast an der Zeit, sich dem Werke zu widmen und den Wandel einzuleiten – doch ich muss genug vom Aspekt des Grals haben. Durch <b>Erkundung</b> könnte ich noch mehr finden.",
+			"effects": {
+				"restlessness": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "ascensionhintsensation2f",
+			"label": "Die Berührung des Grals",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionsensationbf": 1
+			},
+			"startdescription": "Mein Verlangen wandelt sich.",
+			"description": "Der Gral hat mich mit seinen wunderbaren Fingern angerührt. Es ist fast an der Zeit, sich dem Werke zu widmen und den Wandel einzuleiten – doch ich muss genug vom Aspekt des Grals haben. Durch <b>Erkundung</b> könnte ich noch mehr finden.",
+			"effects": {
+				"restlessness": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "ascensionhintpower1",
+			"label": "Das Glühen der Schmiede",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionpowera": 1
+			},
+			"startdescription": "Hunger brennt in meinem Herzen – Hunger nach der Macht, welche die unsichtbaren Künste mit sich bringen könnten.",
+			"description": "Die Schmiede der Tage wartet in meinen Träumen. Erlerne ich das Wissen der Schmiede und träume von dieser Versuchung, kann ich meine Sache vorantreiben. Das Verlangen nagt an mir.",
+			"effects": {
+				"restlessness": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "ascensionhintenlightenment1",
+			"label": "Die Fußstapfen des Wächters",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionenlightenmenta": 1
+			},
+			"startdescription": "Hunger brennt in meinem Hirn – Hunger nach dem Wissen, welches die unsichtbaren Künste mit sich bringen könnten.",
+			"description": "Der Wächter, der die Tür-im-Auge ist, wartet in meinen Träumen. Erlerne ich das Wissen der Laterne und träume von dieser Versuchung, kann ich meine Sache vorantreiben. Das Verlangen nagt an mir.",
+			"effects": {
+				"restlessness": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "ascensionhintsensation1",
+			"label": "Das Wispern des Grals",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionsensationa": 1
+			},
+			"startdescription": "Hunger brennt in meinem Leibe – Hunger nach der Wonne, welche die unsichtbaren Künste mit sich bringen könnten.",
+			"description": "Der rote Pokal, der Pokal des Ertränkens und Verschlingens, wartet in meinen Träumen. Erlerne ich das Wissen des Grals und träume von dieser Versuchung, kann ich meine Sache vorantreiben. Das Verlangen nagt an mir.",
+			"effects": {
+				"restlessness": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingpower",
+			"label": "Das gestaltende Herz",
+			"actionId": "craving",
+			"requirements": {
+				"powermarks": 1
+			},
+			"slots": [
+				{
+					"id": "Fuels",
+					"label": "Brennstoff",
+					"description": "Das Feuer muss genährt werden",
+					"required": {
+						"funds": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "Ich brauche noch heißere Feuer. Der Brennstoff ist nun selten und teuer. Wenn ich ihn mir nicht leisten kann, wird mich die Kälte überwältigen.",
+			"linked": [
+				{
+					"id": "ascensionsuccesscravingpower_descend",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingpower_ascend",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "ascensionsuccesscravingpower_descend",
+			"label": "Die Asche des Wandels",
+			"actionId": "craving",
+			"requirements": {
+				"funds": -1
+			},
+			"slots": [
+				{
+					"id": "Pain",
+					"label": "Pein",
+					"description": "Mein Verlangen nagt an mir.",
+					"required": {
+						"health": 1,
+						"vitality": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "Ich zittere. Ohne das Feuer wird mein Fleisch dünn und schwach.",
+			"description": "Meine Kraft ist geringer. Mein Blut ist kälter. Ich dachte, dass sogar einige meiner Narben verheilen. Ich verschwinde.",
+			"aspects": {
+				"descend": 1,
+				"damagehealth": 1
+			},
+			"effects": {
+				"vitality": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "ascensioncravingpower_ascend",
+			"label": "Noch ein Mal",
+			"actionId": "craving",
+			"startdescription": "",
+			"description": "Die Flammen sehnen sich nach mir wie ich mich nach ihnen. Ihre Berührung ist sehr viel schmerzhafter. Ich habe noch ein Mal.",
+			"effects": {
+				"vitality": 2,
+				"funds": -1
+			},
+			"aspects": {
+				"ascend": 1
+			}
+		},
+		{
+			"id": "ascensioncravingsensation",
+			"label": "Das rote Verlangen",
+			"actionId": "craving",
+			"requirements": {
+				"sensationmarks": 1
+			},
+			"slots": [
+				{
+					"id": "Sustenance",
+					"label": "Nahrung",
+					"description": "Die kürzlich Verstorbenen oder die Lebenden.",
+					"required": {
+						"corpse": 1,
+						"lunatic": -1,
+						"prisoner": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "Blutdurst? Wenn es nur so einfach wäre. Ich werde sie noch viel tiefgründiger ausleeren.",
+			"linked": [
+				{
+					"id": "ascensionsuccesscravingsensation_descend",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingsensation_ascend",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "ascensionsuccesscravingsensation_descend",
+			"label": "Die Wüste im Inneren",
+			"actionId": "craving",
+			"requirements": {
+				"corpse": -1,
+				"lunatic": -1,
+				"prisoner": -1
+			},
+			"slots": [
+				{
+					"id": "Pain",
+					"label": "Pein",
+					"description": "Mein Verlangen nagt an mir.",
+					"required": {
+						"passion": 1,
+						"glimmering": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "Ohne das Leben anderer nährt sich mein eigenes Leben von sich selbst.",
+			"description": "Meine Säfte sind dünn, mein Fleisch zerfällt, mein Wandel vergeht, meine Leidenschaften ermatten. Ich bin immer weniger das, was ich sein will.",
+			"aspects": {
+				"descend": 1,
+				"fatiguing": 1
+			},
+			"effects": {
+				"glimmering": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "ascensioncravingsensation_ascend",
+			"label": "Noch ein Mal",
+			"actionId": "craving",
+			"effects": {
+				"glimmering": 2,
+				"corpse": -1,
+				"lunatic": -1,
+				"prisoner": -1
+			},
+			"startdescription": "",
+			"description": "Wenn ich fertig bin, ist die Befriedigung so tief wie der Mond im Meer. Noch ein Mal erwacht in mir.",
+			"aspects": {
+				"ascend": 1
+			}
+		},
+		{
+			"id": "ascensioncravingenlightenment",
+			"label": "Die Kuriositäten des Lichts",
+			"actionId": "craving",
+			"requirements": {
+				"enlightenmentmarks": 1
+			},
+			"slots": [
+				{
+					"id": "Conversation",
+					"label": "Gespräch",
+					"description": "Die letzten Worte eines lebendigen Geistes",
+					"required": {
+						"prisoner": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "Zeit allein in einem ruhigen Zimmer mit einem lebendigen Geist. Mehr brauche ich nicht.",
+			"linked": [
+				{
+					"id": "ascensionsuccesscravingenlightenment_descend",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingenlightenment_ascend",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "ascensionsuccesscravingenlightenment_descend",
+			"label": "Die Wüste im Inneren",
+			"actionId": "craving",
+			"requirements": {
+				"prisoner": -1
+			},
+			"slots": [
+				{
+					"id": "Pain",
+					"label": "Pein",
+					"description": "Mein Verlangen nagt an mir.",
+					"required": {
+						"reason": 1,
+						"erudition": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "Wenn ich selbst nicht die Gedanken eines lebendigen Geistes verzehren kann, wird sich mein Verlangen gegen mich selbst richten. ",
+			"description": "Das Licht des Mansus verblasst in mir. Ich bin weniger als ich war. Ich brauche Gespräche. Ich muss diese speziellen Gespräche führen.",
+			"aspects": {
+				"descend": 1,
+				"fatiguing": 1
+			},
+			"effects": {
+				"erudition": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "ascensioncravingenlightenment_ascend",
+			"label": "Noch ein Mal",
+			"actionId": "craving",
+			"effects": {
+				"erudition": 2,
+				"prisoner": -1
+			},
+			"startdescription": "",
+			"description": "Ich habe das Licht ihres Geistes getrunken. Es regt mich an und erfüllt mich. Die Male werden in mir heller.",
+			"aspects": {
+				"ascend": 1
+			}
+		},
+		{
+			"id": "ascensioncravingremembrance",
+			"label": "Der Hunger, der in Dunkler Erde wächst",
+			"actionId": "craving",
+			"requirements": {
+				"remembrancemarks": 2,
+				"ghoul.hunger": 1
+			},
+			"mutations": [
+				{
+					"filter": "remembrancemarks",
+					"mutate": "ghoul.hunger",
+					"level": 1,
+					"additive": true
+				}
+			],
+			"startdescription": "Der Geschmack – der spezielle Geschmack – der Geschmack, der weder schön noch übel ist – er sucht meinen Mund wieder heim. Meine Zunge wird anschwellen, meine Lippen schwärzen sich. Das Elixier hat seine Sporen in mich gepflanzt und nur totes Fleisch kann sie einhegen.",
+			"warmup": 30
+		},
+		{
+			"id": "ascensioncravingremembrancenegative",
+			"label": "Der Hunger, der in Dunkler Erde wächst",
+			"actionId": "craving",
+			"requirements": {
+				"remembrancemarks": 2
+			},
+			"mutations": [
+				{
+					"filter": "remembrancemarks",
+					"mutate": "ghoul.hunger",
+					"level": 1,
+					"additive": false
+				}
+			],
+			"startdescription": "Der Geschmack – der spezielle Geschmack – der Geschmack, der weder schön noch übel ist – er sucht meinen Mund wieder heim. Meine Zunge wird anschwellen, meine Lippen schwärzen sich. Das Elixier hat seine Sporen in mich gepflanzt und nur totes Fleisch kann sie einhegen.",
+			"comments": "This is a safety measure for players who managed to allow their hunger to go negative with an old save.",
+			"warmup": 30
+		},
+		{
+			"id": "ascensioncravingchange_tryascendfroma",
+			"label": "Die Versuchung des Wandels",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionchangea": 1
+			},
+			"slots": [
+				{
+					"id": "Lesson",
+					"label": "Lektion",
+					"description": "Unterwerfung, um zu werden",
+					"required": {
+						"ascensionlessonhearta": 1,
+						"ascensionlessonmotha": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "Ich sehne mich danach, jemand anderer zu sein, doch habe ich die Lektion, die ich lernen muss, vor den Zeugen gelernt, die ich brauche?",
+			"linked": [
+				{
+					"id": "ascensioncravingchange_heartlessonascendfroma",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_mothlessonascendfroma",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_noascension",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "ascensioncravingchange_heartlessonascendfroma",
+			"label": "Kleider, abgelegt",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonhearta": 1
+			},
+			"description": "Wenn ich mich von den Entscheidungen löse, die ich gefällt habe, wenn der baumgefilterte Mond über meine Oberfläche wandelt, wachse ich so leicht wie ein Blatt.",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonhearta": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desireheart_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_mothlessonascendfroma",
+			"label": "Kleider, abgelegt",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonmotha": 1
+			},
+			"description": "Ich häute mich, um zu wachsen. Hier ist der Mond und hier bin ich, in seinem Auge –",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonmotha": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desiremoth_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_tryascendfromb",
+			"label": "Zum 2. Wandel",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionchangeb": 1
+			},
+			"slots": [
+				{
+					"id": "Lesson",
+					"label": "Lektion",
+					"description": "Unterwerfung, um zu werden",
+					"required": {
+						"ascensionlessonheartb": 1,
+						"ascensionlessonmothb": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "Die Haut, die ich trage, wird mir zu klein werden, also muss ich sie ablegen. Ich muss einen Teil von mir losschicken um zu erfahren, wie das geht.",
+			"linked": [
+				{
+					"id": "ascensioncravingchange_heartlessonascendfromb",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_mothlessonascendfromb",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_noascension",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "ascensioncravingchange_heartlessonascendfromb",
+			"label": "Integument, abgelegt",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonheartb": 1
+			},
+			"description": "Meine äußere Haut löst sich in Streifen und Fetzen ab, und ich auch.",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonheartb": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desireheart_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_mothlessonascendfromb",
+			"label": "Integument, abgelegt",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonmothb": 1
+			},
+			"description": "Wir sind alle Schichten\n\nich aber nicht so sehr",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonmothb": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desiremoth_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_tryascendfromc",
+			"label": "Zum 3. Wandel",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionchangec": 1
+			},
+			"slots": [
+				{
+					"id": "Lesson",
+					"label": "Lektion",
+					"description": "Unterwerfung, um zu werden",
+					"required": {
+						"ascensionlessonheartc": 1,
+						"ascensionlessonmothc": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "Einer enthüllt, einer verhüllt, einer enthüllt Zum Fortfahren muss ich eine Lektion des Verhüllens erlernen.",
+			"linked": [
+				{
+					"id": "ascensioncravingchange_heartlessonascendfromc",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_mothlessonascendfromc",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_noascension",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "ascensioncravingchange_heartlessonascendfromc",
+			"label": "Schritte, aufgegeben",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonheartc": 1
+			},
+			"description": "Wenn es keine Fußstapfen gibt, in die man treten könnte, wer kennt dann unser Ziel? Ich wünsche mir ja so sehr zu gehen.",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonheartc": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desireheart_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_mothlessonascendfromc",
+			"label": "Schritte, aufgegeben",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonmothc": 1
+			},
+			"description": "Muffis älteste Lektion: zwischen Musik, Schweigen",
+			"comments": "lack of full stop intentional",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonmothc": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desiremoth_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_tryascendfromd",
+			"label": "Zum 4. Wandel",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionchanged": 1
+			},
+			"slots": [
+				{
+					"id": "Lesson",
+					"label": "Lektion",
+					"description": "Unterwerfung, um zu werden",
+					"required": {
+						"ascensionlessonheartd": 1,
+						"ascensionlessonmothd": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "Für den nächsten Wandel muss ich mich für die Mittel des Wandels erweichen.",
+			"linked": [
+				{
+					"id": "ascensioncravingchange_heartlessonascendfromd",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_mothlessonascendfromd",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_noascension",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "ascensioncravingchange_heartlessonascendfromd",
+			"label": "Farbtöne, aufgegeben",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonheartd": 1
+			},
+			"description": "Mein neues, erbleichendes Fleisch ist reich an den Säften der Auflösung.",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonheartd": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desireheart_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_mothlessonascendfromd",
+			"label": "Farbtöne, aufgegeben",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonmothd": 1
+			},
+			"description": "Wenn ich bei der letzten Haut angelangt bin, wird all das Ich sich auflösen, scheckig, scheckig. Schon bald, scheckig, scheckig.",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonmothd": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desiremoth_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_tryascendfrome",
+			"label": "Zum 5. Wandel",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionchangee": 1
+			},
+			"slots": [
+				{
+					"id": "Lesson",
+					"label": "Lektion",
+					"description": "Unterwerfung, um zu werden",
+					"required": {
+						"ascensionlessonhearte": 1,
+						"ascensionlessonmothe": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "Die Tür, durch die ich schreite, ist niemals zu sehen, sowohl für das wachende als auch das geschlossene Auge. Ich muss diese Augen jemandem unterwerfen, der den Weg kennt, auf dass ich sehen möge.",
+			"linked": [
+				{
+					"id": "ascensioncravingchange_heartlessonascendfrome",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_mothlessonascendfrome",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_noascension",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "ascensioncravingchange_heartlessonascendfrome",
+			"label": "Augenlicht, aufgegeben",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonhearte": 1
+			},
+			"description": "Zuweilen werden die quarzgelben Augen von einem, der sich diesem Wandel unterzogen hat, für die erleuchteten Augen von einem gehalten, der sich dem Incursus nähert. Doch nie für lang. ",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonhearte": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desireheart_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_mothlessonascendfrome",
+			"label": "Augenlicht, aufgegeben",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonmothe": 1
+			},
+			"description": "Nun schlüpfe ich in meine letzte Haut.",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonmothe": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desiremoth_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_tryascendfromg",
+			"actionId": "craving",
+			"label": "Der Puls im Inneren",
+			"requirements": {
+				"ascensionchangeg": 1
+			},
+			"slots": [
+				{
+					"id": "Lesson",
+					"label": "Lektion",
+					"description": "Unterwerfung, um zu werden",
+					"required": {
+						"ascensionlessonheartf": 1,
+						"ascensionlessonmothf": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "Ich muss bald träumen, bevor meine Seele birst.",
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_tryascendfromf",
+			"actionId": "craving",
+			"label": "Zum 6. Wandel",
+			"requirements": {
+				"ascensionchangef": 1
+			},
+			"slots": [
+				{
+					"id": "Lesson",
+					"label": "Lektion",
+					"description": "Unterwerfung, um zu werden",
+					"required": {
+						"ascensionlessonheartf": 1,
+						"ascensionlessonmothf": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "Die Knochen kommen immer zuletzt. Wenn ich gelernt habe, wie sie sich wandeln, bin ich bereit.",
+			"linked": [
+				{
+					"id": "ascensioncravingchange_heartlessonascendfromf",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_mothlessonascendfromf",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_noascension",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "ascensioncravingchange_heartlessonascendfromf",
+			"label": "Knochen, aufgegeben",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonheartf": 1
+			},
+			"description": "Nun, da die Sonne untergegangen ist und die Schatten verlöscht sind, ist es an der Zeit sich zu erinnern, und ich werde mich mit meinen Knochen erinnern, wie ich es geleert wurde. Ich bin fast bereit.",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonheartf": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desireheart_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_mothlessonascendfromf",
+			"label": "Knochen, aufgegeben",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonmothf": 1
+			},
+			"description": "Nun, da die Sonne gefallen ist und die Schatten sich wie Öl ausgebreitet haben, wissen meine Knochen, was am Ende geschehen muss. Das Ende steht unmittelbar bevor.",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonmothf": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desiremoth_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_noascension",
+			"label": "Das gleiche Ich",
+			"actionId": "craving",
+			"description": "Ich bin auf meinem Pfad des Wandels nicht weiter. In den Bewegungen der geheimen Gestalten muss ich meine Lektion finden.",
+			"effects": {
+				"restlessness": 1
+			},
+			"warmup": 10
+		}
+	]
+}

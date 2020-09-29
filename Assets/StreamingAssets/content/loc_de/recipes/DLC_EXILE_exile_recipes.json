@@ -1,0 +1,2337 @@
+{
+	"recipes": [
+		{
+			"id": "_cities",
+			"actionId": "spawner",
+			"effects": {
+				"city.aachen": 1,
+				"city.alexandria": 1,
+				"city.algiers": 1,
+				"city.amsterdam": 1,
+				"city.avignon": 1,
+				"city.baghdad": 1,
+				"city.budapest": 1,
+				"city.candia": 1,
+				"city.cluj": 1,
+				"city.granada": 1,
+				"city.istanbul": 1,
+				"city.kaunas": 1,
+				"city.kiev": 1,
+				"city.krakow": 1,
+				"city.leningrad": 1,
+				"city.london": 1,
+				"city.marrakech": 1,
+				"city.meshad": 1,
+				"city.munich": 1,
+				"city.nizhny": 1,
+				"city.paris": 1,
+				"city.prague": 1,
+				"city.rostock": 1,
+				"city.samarkand": 1,
+				"city.stalingrad": 1,
+				"city.strasbourg": 1,
+				"city.sverdlovsk": 1,
+				"city.tiflis": 1,
+				"city.tirana": 1,
+				"city.tripoli": 1,
+				"city.valletta": 1,
+				"city.venice": 1,
+				"city.vienna": 1
+			},
+			"warmup": 1
+		},
+		{
+			"id": "_domiciles",
+			"actionId": "spawner",
+			"effects": {
+				"domicile.aachen": 1,
+				"domicile.alexandria": 1,
+				"domicile.algiers": 1,
+				"domicile.amsterdam": 1,
+				"domicile.avignon": 1,
+				"domicile.baghdad": 1,
+				"domicile.budapest": 1,
+				"domicile.candia": 1,
+				"domicile.cluj": 1,
+				"domicile.granada": 1,
+				"domicile.istanbul": 1,
+				"domicile.kaunas": 1,
+				"domicile.kiev": 1,
+				"domicile.krakow": 1,
+				"domicile.leningrad": 1,
+				"domicile.london": 1,
+				"domicile.marrakech": 1,
+				"domicile.meshad": 1,
+				"domicile.munich": 1,
+				"domicile.nizhny": 1,
+				"domicile.paris": 1,
+				"domicile.prague": 1,
+				"domicile.rostock": 1,
+				"domicile.samarkand": 1,
+				"domicile.stalingrad": 1,
+				"domicile.strasbourg": 1,
+				"domicile.sverdlovsk": 1,
+				"domicile.tiflis": 1,
+				"domicile.tirana": 1,
+				"domicile.tripoli": 1,
+				"domicile.valletta": 1,
+				"domicile.venice": 1,
+				"domicile.vienna": 1
+			},
+			"warmup": 1
+		},
+		{
+			"id": "travel.first",
+			"actionId": "travel",
+			"label": "Weit genug und schnell genug ",
+			"startdescription": "Ich habe mehr als genug Bargeld für die Reise – doch vielleicht muss ich mit leichtem Gepäck reisen. [Verlässt du eine Stadt, schüttelst du deine Verfolger ab – doch irgendwann finden sie dich wieder.",
+			"effects": {
+				"cash": 2
+			},
+			"warmup": 1
+		},
+		{
+			"id": "travel.caper.begin",
+			"actionId": "travel",
+			"label": "Einen Raubzug beginnen",
+			"startdescription": "Rein, das Zeug mitnehmen, raus. Ich glaube nicht, dass das jemals so einfach war.",
+			"description": "Der Anfang ist gemacht. [Behalte die Operation im Auge. Es wird noch zu Komplikationen kommen.]",
+			"requirements": {
+				"vault": 1
+			},
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"alt": [
+				{
+					"id": "opx.caper.populate",
+					"additional": true,
+					"expulsion": {
+						"limit": 2,
+						"filter": {
+							"vault": 1,
+							"edge": 1,
+							"forge": 1,
+							"grail": 1,
+							"heart": 1,
+							"knock": 1,
+							"lantern": 1,
+							"moth": 1,
+							"secrethistories": 1,
+							"winter": 1
+						}
+					}
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "opx.caper.progress3",
+			"actionId": "opx.caper",
+			"label": "Der Lohn!",
+			"startdescription": "Deswegen bin ich hier.",
+			"requirements": {
+				"progress": 3
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "opx.caper.end"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.progress2",
+			"actionId": "opx.caper",
+			"label": "Eine letzte Komplikation ...",
+			"startdescription": "Fast da ...",
+			"requirements": {
+				"progress": 2
+			},
+			"aspects": {
+				"opx.progress2": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "opx.caper.next"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.progress1",
+			"actionId": "opx.caper",
+			"label": "Noch eine Komplikation ...",
+			"startdescription": "Was jetzt?",
+			"requirements": {
+				"progress": 1
+			},
+			"aspects": {
+				"opx.progress1": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "opx.caper.next"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.populate",
+			"actionId": "opx.caper",
+			"label": "Eine geschäftige Nacht liegt vor dir",
+			"startdescription": "Bereit. [3 Mal Dynamik bedeutet Erfolg. Vorher wird es zu Komplikationen kommen.]",
+			"aspects": {
+				"opx.progress0": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "opx.caper.next"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.next",
+			"actionId": "opx.caper",
+			"label": "Eine Komplikation",
+			"startdescription": "@#ee.armouredgate|Eine schwere, gepanzerte Tür versperrt mir den Weg.\n#ee.avidadept|'Eine Adeptin des Grals lagert bereits in der Nähe. Du musst dich für ihre Tricks wappnen.'\n#ee.bosk|Dornig-kosende Zweige, die Düfte dunkelsten Grüns, bepelzte Bewegungen unter meiner Hand, die schwarze und klopfende Finsternis ... der Forst verläuft hier direkt unter der Haut der Welt.\n#ee.coiltrace|'Diese Macht an sich, das Ding unter der Erde. Das Dezernat sagt, es habe als niederer Fühler der Siebenspuligen angefangen. Alter Gott, weißte? Das Götterfleisch fängt an zu verwesen und etwas anderes beginnt sich darin einzunisten. Was man Würmer nennt. An deiner Stelle würde ich lieber aufpassen. Nur so zur Warnung.'\n#ee.crags|'Viele der Pässe, die hier hinauf führen, sind versperrt. Du musst eine Straße finden oder dir eine bauen. Ich würde ja versuchen, dir Sprengstoff zu beschaffen, aber der steht beim Dezernat nicht hoch im Kurs, so wie ich bei der Armee.'\n#ee.creepinghorror|Ein schleichendes Grauen zieht durch die Haut ein. Komm näher, sagt die Nacht. Komm näher.\n#ee.deceiver|Ein Geschöpf von durchtriebenem Witz lauert hier!\n#ee.devourer|Ein Geschöpf von erdrückender Kraft lauert hier! Manche Monster sind die Kinder des Löwenschmieds, manche Echidnas, manche beides. Andere sind noch schlimmer.\n#ee.feast|Der Weg zu meinem Ziel verlangt nach einem Ritual oder einem Gelage. Ich würde das gern als Party betrachten, nur ist das nicht die Art von Party, die ich gern feiern würde. Ich muss kühlen Kopf bewahren, seltsame Rauschzustände hin oder her. Wenn ich das nicht schaffe, kehre ich mit nichts Spannenderem als einem Kater zurück.\n#ee.fretfuldead|Spinnenbewebte, tadelnde Überreste – zerbrechlich, aber schneller als sie aussehen, und ihre Berührung zieht die Jahre direkt aus der Haut.\n#ee.guardedcompound|Eine bewachte Anlage – Mauern, Türme und Wächter.\n#ee.labyrinthseal|Ein außerordentlicher Knoten aus Mechanismen, der eine Panzertür versiegelt. Ich bin mir nicht ganz sicher, ob er rein okkulten oder rein mechanischen Ursprungs ist, doch ich bin mir ganz sicher, dass er mir das Leben schwer machen wird.\n#ee.ligeian|Eine Ligeianerin! Ich kann sie nicht besiegen, doch ich kann sie davon überzeugen, dass ich die Mühe nicht wert bin.\n#ee.miasma|Ein klebriges, stinkendes Miasma. Mir schwirrt der Kopf.\n#ee.mist|Der Namenlose Name des Samtes ist hier vorbei gekommen. Dieser Nebel ist der Saum ihres grauen Gewands. Es wird die Hölle sein, einen Weg hindurch zu finden.\n#ee.monks|Die Hüter dieses Ortes lassen sich weder bestechen noch verführen. Manch einer würde sagen, das liege an ihren heiligen Gelöbnissen, doch ich vermute eher, dass sie sich gegenseitig genau im Auge haben.\n#ee.ordeal.agony|Nun stehe ich vor einem Martyrium der Agonie. Ich habe so etwas schon mal gemacht, weshalb ich mich nicht gerade darauf freue. Ich habe immer noch die Narben vom letzten Mal, wenn auch nicht auf meiner Haut.\n#ee.ordeal.agony|Nun stehe ich vor einem Martyrium der Verlassenheit – einem Sonnenuntergang der Seele.\n#ee.ordeal.enigma|Nun stehe ich vor einem Rätselhaften Martyrium. Es gibt zwei Wege hindurch: alles verstehen oder gar nichts.\n#ee.percussigant|Ein tapsiger Wirbel kralliger Musik verlangt sofort nach meiner Aufmerksamkeit. Ein Percussigant!\n#ee.scarredduellist|Ein narbiger Duellant grüßt mich.\n#ee.securevault|Eine schwere Panzertür mit einem beeindruckenden Schloss.\n#ee.shadowedway|Der Eingang ist hier irgendwo. Ich muss ihn nur noch finden.\n#ee.soldiers|Bewaffnete Männer stehen hier Wache.\n#ee.storm|Der Donner verfolgt den Blitz durch die Wolken, und der Regen kommt herab wie Fäuste.\n#ee.strixriddenadversary|Ein Duellant trippelt auf dich zu. Seine Muskeln sind straff und zittern, seine Augen sind schwarz und golden wie bei einer Eule. Er ist strixverseucht, besessen von einem vielgeflügelten Namen der Kante.\n#ee.thugs|Eine mürrische Bande Missetäter lungert hier herum und brennt auf Ärger.\n#ee.unknownlocation|Ein unbekannter Ort. Ich muss zuerst herausfinden, wo er überhaupt gelegen ist.\n#ee.unwelcomememories|Unwillkommene Erinnerungen! Die Spiegel in den Wänden blitzen, und blitzen wieder, und ich sehe mich selbst in den Tagen meines Dienstes für den Feind – was mir angetan wurde und, was noch schlimmer ist, was ich getan habe –\n#ee.vigil|Die Lieder der Kultisten werden sanft wie ein Schlaflied. Ich habe Schwierigkeiten, die Augen offen zu halten. Mein Kopf scheint mit Federn ausgestopft zu sein. Irgendwie muss ich bis zum Einbruch der Dämmerung wach bleiben.\n#|Eine Komplikation liegt vor dir.@\n\n[Die meisten Komplikationen lassen sich mit genug vom entsprechenden Aspekt beseitigen.]",
+			"warmup": 60,
+			"slots": [
+				{
+					"id": "response",
+					"label": "Antwort",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "opx.caper.tryresolve.edge"
+				},
+				{
+					"id": "opx.caper.tryresolve.forge"
+				},
+				{
+					"id": "opx.caper.tryresolve.grail"
+				},
+				{
+					"id": "opx.caper.tryresolve.heart"
+				},
+				{
+					"id": "opx.caper.tryresolve.knock"
+				},
+				{
+					"id": "opx.caper.tryresolve.lantern"
+				},
+				{
+					"id": "opx.caper.tryresolve.moth"
+				},
+				{
+					"id": "opx.caper.tryresolve.secrethistories"
+				},
+				{
+					"id": "opx.caper.tryresolve.winter"
+				}
+			],
+			"linked": [
+				{
+					"chance": 30,
+					"id": "opx.caper.lucky"
+				},
+				{
+					"id": "opx.caper.end"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.edge",
+			"actionId": "opx.caper",
+			"label": "Gewalt ist eine Lösung",
+			"startdescription": "@#ee.devourer|Ein Geschöpf von erdrückender Kraft haust hier! Ich bin ihm ebenbürtig.\n#ee.soldiers|Laut, schmutzig. nötig. Nun muss ich mir die Stiefel putzen.\n#|Ich habe Gewalt angewendet.@",
+			"requirements": {
+				"minedge": 1,
+				"edge": "minedge"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.forge",
+			"actionId": "opx.caper",
+			"label": "Hammer und Amboss",
+			"startdescription": "@#ee.mist|Wieder haben mir Feuer und Einfallsreichtum gute Dienste geleistet.\n#ee.securevault|Ich bin in das Gewölbe eingedrungen.\n#|Ich habe Einfallsreichtum angewendet.@",
+			"requirements": {
+				"minforge": 1,
+				"forge": "minforge"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.grail",
+			"actionId": "opx.caper",
+			"label": "Gier und Täuschung",
+			"startdescription": "@#ee.soldiers|Ich bin zu einer Übereinkunft mit den Soldaten gekommen, die hier Wache schieben.\n#|Ich habe Bestechung eingesetzt.@",
+			"requirements": {
+				"mingrail": 1,
+				"grail": "mingrail"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.heart",
+			"actionId": "opx.caper",
+			"label": "Die Rastlose Trommel",
+			"startdescription": "@#|Ich habe Hartnäckigkeit eingesetzt.@",
+			"requirements": {
+				"minheart": 1,
+				"heart": "minheart"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.knock",
+			"actionId": "opx.caper",
+			"label": "Alle Wunden sind Türen",
+			"startdescription": "@#|Ich habe geöffnet, was versiegelt war.@",
+			"requirements": {
+				"minknock": 1,
+				"knock": "minknock"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.lantern",
+			"actionId": "opx.caper",
+			"label": "Erleuchtung",
+			"startdescription": "@#ee.mist|'Der Wächter kommt vor dem Samt' ist etwas, das Adepten sagen würden. Ich denke, das bedeutet, dass der Nebel in Wahrheit nur eine feuchtere Art von Finsternis ist.\n#|Ich habe mich aufgelöst wie eine Finsternis.@",
+			"requirements": {
+				"minlantern": 1,
+				"lantern": "minlantern"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.moth",
+			"actionId": "opx.caper",
+			"label": "Netz und doppelter Boden",
+			"startdescription": "@#ee.devourer|Ein Geschöpf von erdrückender Kraft haust hier! Ich kann es nicht direkt stellen, weshalb ich es mit Trickserei versuche.\n#ee.soldiers|Die Soldaten, die hier Wache schieben sollten, sind in die Nacht davon gedonnert. Ich werde genug Zeit haben, um hier fertig zu werden, bevor sie zurückkommen –\n#|Ich habe Trickserei eingesetzt.@",
+			"requirements": {
+				"minmoth": 1,
+				"moth": "minmoth"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.secrethistories",
+			"actionId": "opx.caper",
+			"label": "Nicht nur eine Historie",
+			"startdescription": "@#|Ich habe Wissen eingesetzt.@",
+			"requirements": {
+				"minsecrethistories": 1,
+				"secrethistories": "minsecrethistories"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.winter",
+			"actionId": "opx.caper",
+			"label": "Die Nacht wird tiefer",
+			"startdescription": "@#|Ich habe Geduld eingesetzt.@",
+			"requirements": {
+				"minwinter": 1,
+				"winter": "minwinter"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.lucky",
+			"actionId": "opx.caper",
+			"label": "Pures Glück",
+			"startdescription": "Jemand anderer hätte aufgegeben. [Gelegentlich kannst du eine Komplikation beseitigen, auch wenn dir die richtigen Aspekte fehlen.]",
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.makeprogress",
+			"actionId": "opx.caper",
+			"label": "Dynamik",
+			"startdescription": "Was kommt jetzt?",
+			"effects": {
+				"complication": -1,
+				"progress": 1
+			},
+			"linked": [
+				{
+					"id": "opx.caper.progress3"
+				},
+				{
+					"id": "opx.caper.progress2"
+				},
+				{
+					"id": "opx.caper.progress1"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.end",
+			"actionId": "opx.caper",
+			"effects": {
+				"complication": -100
+			},
+			"linked": [
+				{
+					"id": "opx.caper.success"
+				},
+				{
+					"id": "opx.caper.failure"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.success",
+			"actionId": "opx.caper",
+			"label": "Geschafft!",
+			"startdescription": "In Sicherheit mit meiner Beute!",
+			"requirements": {
+				"progress": 3
+			},
+			"effects": {
+				"progress": -3
+			},
+			"burnimage": "caper.complete",
+			"aspects": {
+				"fatiguing": 1,
+				"success": 1
+			}
+		},
+		{
+			"id": "opx.caper.failure",
+			"actionId": "opx.caper",
+			"label": "Katastrophe!",
+			"startdescription": "Der Raubzug ist gescheitert!",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"trace": 1
+			}
+		},
+		{
+			"id": "travel.visit.serapeum.peristasis",
+			"actionId": "travel",
+			"label": "Gespräch mit Dr. Blackwood",
+			"startdescription": "'Sie wissen ja, dass ich mit Ihrer Berufswahl niemals einverstanden war' , sagt sie zu mir, 'und ich habe auch nicht viel Zeit für die Art Ihrer Kündigung. Doch es freut mich, dass Sie und dieser Halunke nun getrennte Wege gehen. Ich gehe mal davon aus, dass das letzten Endes eine moralische Entscheidung war. Und natürlich kann ich Ihnen das Bisschen Unterstützung geben, zu dem ich berechtigt bin.'",
+			"slots": [
+				{
+					"id": "assistancewith",
+					"label": "Hilfe bei",
+					"actionId": "travel",
+					"required": {
+						"rarity.lantern": 1,
+						"wound.exile": 1,
+						"wound.exile.medusa": 1,
+						"trace": 1,
+						"temptation.obscurity": 1
+					}
+				}
+			],
+			"requirements": {
+				"vault.serapeum.completed": 1
+			},
+			"alt": [
+				{
+					"id": "travel.visit.serapeum.peristasis.pentiment"
+				},
+				{
+					"id": "travel.visit.serapeum.peristasis.heal"
+				},
+				{
+					"id": "travel.visit.serapeum.peristasis.hide"
+				},
+				{
+					"id": "travel.visit.serapeum.peristasis.obscure"
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.serapeum.peristasis.pentiment",
+			"actionId": "travel",
+			"requirements": {
+				"rarity.lantern": 1
+			},
+			"label": "Gespräch mit Dr. Blackwood",
+			"startdescription": "'Das Buch der Sonnen! Ich wünschte, ich könnte das unserer Abteilung für Beschaffung zukommen lassen. Doch das Serapeum steht unter dem Schutz der Schmiede der Tage, und das bedeutet, dass es dort nicht sein kann. Warum? Wissen Sie, was ein <i>Pentimento</i> ist? Die Reue eines Künstlers. Etwas anderes war vorgesehen gewesen. Und es bleibt eine Spur. Es bleiben mehr Spuren als man meinen sollte.'"
+		},
+		{
+			"id": "travel.visit.serapeum.peristasis.heal",
+			"actionId": "travel",
+			"requirements": {
+				"damage.exile": 1
+			},
+			"label": "Gespräch mit Dr. Blackwood",
+			"startdescription": "'Unsere medizinische Expertise hat hier ihre Grenzen, fürchte ich. Wäre ich immer noch bei Hush House, wäre das etwas ganz anderes ... doch wir tun, was wir können. [Dies heilt bis zu 3 Wunden.]'",
+			"purge": {
+				"damage.exile": 3
+			},
+			"effects": {
+				"vault.serapeum.completed": -1
+			}
+		},
+		{
+			"id": "travel.visit.serapeum.peristasis.hide",
+			"actionId": "travel",
+			"requirements": {
+				"trace": 1
+			},
+			"label": "Gespräch mit Dr. Blackwood",
+			"startdescription": "'Am Ende wird er Sie finden, fürchte ich. Aber ich sehe nicht ein, warum wir es ihm leicht machen sollten. [So werden alle aktuellen Spuren beseitigt und eine Falsche Spur gelegt.]",
+			"purge": {
+				"trace": 7
+			},
+			"effects": {
+				"vault.serapeum.completed": -1,
+				"trail.false.exile": 1
+			}
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.tripoli.pentiment.colonel",
+			"actionId": "travel",
+			"requirements": {
+				"loc.shrine.lionsmith.tripoli": 1,
+				"contact.retainer": 1
+			},
+			"extantreqs": {
+				"memento.grail.lantern": -1,
+				"defiance.consecration.colonel": 1
+			},
+			"label": "Im Antaeum",
+			"startdescription": "Die Zuflucht ist still und kühl, aber durch eine Sandstein-Sonne versperrt. 'Ich bin der Letzte', sagt der Alte leise. 'Und so bin ich der Letzte, der weiß, dass sie hier zur Ruhe gebettet wurde – hier – unter dem großen Stein des Altars. Ein Kind der Erde ist eine schwere Geburt für gewöhnliches Fleisch, weißt du? Also barst ihr Herz. Dann nahm dich sowieso dein Vater ...'",
+			"description": "Ich bleibe in der Zuflucht nachdem der Alte fort ist, bis die Sterne draußen durch die leeren Fenster zwinkern und die Luft bitter vor Nacht ist. Er drückte mir ein Geschenk in die Hand bevor er ging – ein Stück Fleisch, das ich trug, als ich auf die Welt kam. 'Du wurdest unter dem zerschmetterten Schwerte geboren', sprach er, 'und so hatten wir immer gehofft, du würdest dich für die Rebellion entscheiden. Wir hätten niemals gedacht, dass du dich gegen den Löwenschmied auflehnen würdest. Doch die Wahl ist der Schatten der Freiheit.'",
+			"warmup": 30,
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"memento.grail.lantern": 1,
+				"grief": 1
+			},
+			"burnimage": "pentiment",
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.tripoli.pentiment",
+			"actionId": "travel",
+			"requirements": {
+				"loc.shrine.lionsmith.tripoli": 1,
+				"contact.retainer": 1
+			},
+			"extantreqs": {
+				"memento.grail.lantern": -1
+			},
+			"label": "Im Antaeum",
+			"startdescription": "Die Zuflucht ist still und kühl, aber durch eine Sandstein-Sonne versperrt. 'Ich bin der Letzte', sagt der Alte leise. 'Und so bin ich der Letzte, der weiß, dass sie hier zur Ruhe gebettet wurde – hier – unter dem großen Stein des Altars. Ein Kind der Erde ist eine schwere Geburt für gewöhnliches Fleisch, weißt du? Also barst ihr Herz. Dann nahm dich sowieso dein Vater ...'",
+			"description": "Ich bleibe in der Zuflucht nachdem der Alte fort ist, bis die Sterne draußen durch die leeren Fenster zwinkern und die Luft bitter vor Nacht ist. Er drückte mir ein Geschenk in die Hand bevor er ging – ein Stück Fleisch, das ich trug, als ich auf die Welt kam. 'Du wurdest unter dem zerschmetterten Schwerte geboren', sprach er, 'und so hatten wir immer gehofft, du würdest dich für die Rebellion entscheiden. Nach der Rebellion kommt natürlich die schwierigere Wahl.'",
+			"warmup": 30,
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"memento.grail.lantern": 1,
+				"grief": 1
+			},
+			"burnimage": "pentiment",
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.tripoli.pentiment.after",
+			"actionId": "travel",
+			"requirements": {
+				"loc.shrine.lionsmith.tripoli": 1,
+				"contact.retainer": 1
+			},
+			"extantreqs": {
+				"memento.grail.lantern": 1
+			},
+			"burnimage": "pentiment",
+			"label": "Im Antaeum",
+			"startdescription": "Heute fehlt jede Spur von dem Alten.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.serapeum.peristasis.obscure",
+			"actionId": "travel",
+			"requirements": {
+				"temptation.obscurity": 1
+			},
+			"label": "Gespräch mit Dr. Blackwood",
+			"startdescription": "'Jetzt, wo Sie es sagen, ja. Wir kennen uns da ein wenig aus, wenn es darum geht, kein Aufsehen zu erregen.' [Dies erhöht Unklarheit um 3.]",
+			"effects": {
+				"vault.serapeum.completed": -1,
+				"obscurity": 3
+			}
+		},
+		{
+			"id": "travel.visit.shrine.colonel.blocked.hint",
+			"actionId": "travel",
+			"label": "Ein feindlicher Schrein?",
+			"startdescription": "Meine Treue gehört dem Löwenschmied, dem ewigen Feind des Obersts. Ich bin hier nicht willkommen.",
+			"extantreqs": {
+				"defiance.consecration.lionsmith": 1
+			},
+			"requirements": {
+				"shrine.colonel": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.blocked.hint",
+			"actionId": "travel",
+			"label": "Ein feindlicher Schrein?",
+			"startdescription": "Meine Treue gehört dem Oberst, dem ewigen Feind des Löwenschmieds. Ich bin hier nicht willkommen.",
+			"extantreqs": {
+				"defiance.consecration.colonel": 1
+			},
+			"requirements": {
+				"shrine.lionsmith": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.shrine.blocked.tranquillity",
+			"actionId": "travel",
+			"label": "Das Gegenteil von Frieden",
+			"startdescription": "Nicht heute. Ich gehe weiter, pfeife ein Stück, das ich vergessen geglaubt hatte.  [Du kannst weder einen Schrein des Löwenschmieds noch des Obersts benutzen, wenn Beschaulichkeit auf dem Tisch liegt.]",
+			"extantreqs": {
+				"tranquillity": 1
+			},
+			"requirements": {
+				"shrine.edge": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.shrine.abandonobscurity.hint",
+			"actionId": "travel",
+			"label": "Ein mögliches Opfer?",
+			"startdescription": "Die Macht, die hier geehrt wird, könnte einen gewissen Schwur akzeptieren. Doch jetzt hättest du noch nichts davon. [Versuch's erneut, wenn du eine Versuchung des Trotzes auf dem Tisch hast.]",
+			"requirements": {
+				"shrine.edge": 1,
+				"temptation.obscurity": 1
+			},
+			"extantreqs": {
+				"temptation.defiance": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.shrine.consecration.hint",
+			"actionId": "travel",
+			"label": "Du bist geweiht",
+			"startdescription": "Den Mächten des Konflikts geweiht zu werden, ist so unwiderruflich wie eine Narbe oder ein Verrat. [Du kannst nicht zweimal geweiht werden.]",
+			"comments": "This should trigger only if neither Consecration recipe does.",
+			"requirements": {
+				"shrine.edge": 1,
+				"temptation.defiance": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.shrine.colonel.upgrade.hint",
+			"actionId": "travel",
+			"label": "Einen Eisernen Schrein besuchen?",
+			"startdescription": "Ich bin jahrzehntelang den Stunden aus dem Weg gegangen. Vielleicht ist es an der Zeit, das zu ändern.",
+			"requirements": {
+				"shrine.colonel": 1,
+				"lore": -1
+			},
+			"extantreqs": {
+				"tranquillity": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.shrine.colonel.consecrated.weapon",
+			"actionId": "travel",
+			"label": "Zu einem Eisernen Schrein pilgern, um ein Relikt zu bergen",
+			"startdescription": "Die Schreine des Obersts riechen manchmal nach Schießpulver und zuweilen nach Schnee. Ich habe seine Mysterien gemeistert. Wenn ich an seinem Schreine meditiere, finde ich vielleicht etwas, das für mich zurückgelassen wurde. [Jede Meditation im Schreine des Obersts verursacht eine Wunde.]",
+			"description": "Im Raum unter dem Altar habe ich etwas gefunden, das vor langer Zeit für mich zurückgelassen wurde.",
+			"requirements": {
+				"shrine.colonel": 1,
+				"fragmentedgeg.colonel": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.colonel": 1,
+				"tranquillity": -1,
+				"weakness.foe.unknown": -1
+			},
+			"effects": {
+				"location": -1,
+				"wound.exile": 1
+			},
+			"aspects": {
+				"epiphany.colonel": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.colonel.consecrated.revelation",
+			"actionId": "travel",
+			"label": "Zu einem Eisernen Schrein pilgern, um eine Offenbarung zu haben",
+			"startdescription": "Die Schreine des Obersts riechen manchmal nach Schießpulver und zuweilen nach Schnee. Ich habe seine Mysterien gemeistert. Wenn ich an seinem Schreine meditiere, vernehme ich vielleicht seine Stimme. [Jede Meditation im Schreine des Obersts verursacht eine Wunde.]",
+			"description": "Die Schatten des Schreins verdichten sich. Ich bin so blind wie der Oberst. Ich kann den Namen Quirinus nicht sehen, der mit seinem Speer mit zwei Spitzen vor mir steht. 'Kind der Erde', flüstert er, 'hier ist Weisheit für dich.' [Du hast eine der Schwächen deines Feindes kennengelernt.]",
+			"requirements": {
+				"shrine.colonel": 1,
+				"fragmentedgeg.colonel": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.colonel": 1,
+				"tranquillity": -1
+			},
+			"effects": {
+				"location": -1,
+				"wound.exile": 1
+			},
+			"linked": [
+				{
+					"id": "cold.weakness.reveal.colonel",
+					"label": "Offenbarung",
+					"extantreqs": {
+						"rkx.weakness.cold.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.cold.hidden": 1
+					}
+				},
+				{
+					"id": "heat.weakness.reveal.colonel",
+					"label": "Offenbarung",
+					"extantreqs": {
+						"rkx.weakness.heat.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.heat.hidden": 1
+					}
+				},
+				{
+					"id": "sea.weakness.reveal.colonel",
+					"label": "Offenbarung",
+					"extantreqs": {
+						"rkx.weakness.sea.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.sea.hidden": 1
+					}
+				},
+				{
+					"id": "faith.weakness.reveal.colonel",
+					"label": "Offenbarung",
+					"extantreqs": {
+						"rkx.weakness.faith.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.faith.hidden": 1
+					}
+				},
+				{
+					"id": "heights.weakness.reveal.colonel",
+					"label": "Offenbarung",
+					"extantreqs": {
+						"rkx.weakness.heights.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.heights.hidden": 1
+					}
+				},
+				{
+					"id": "cats.weakness.reveal.colonel",
+					"label": "Offenbarung",
+					"extantreqs": {
+						"rkx.weakness.cats.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.cats.hidden": 1
+					}
+				},
+				{
+					"id": "flowermaker.weakness.reveal.colonel",
+					"label": "Offenbarung",
+					"extantreqs": {
+						"rkx.weakness.flowermaker.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.flowermaker.hidden": 1
+					}
+				},
+				{
+					"id": "horned.weakness.reveal.colonel",
+					"label": "Offenbarung",
+					"extantreqs": {
+						"rkx.weakness.horned.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.horned.hidden": 1
+					}
+				},
+				{
+					"id": "wolf.weakness.reveal.colonel",
+					"label": "Offenbarung",
+					"extantreqs": {
+						"rkx.weakness.wolf.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.wolf.hidden": 1
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.colonel.consecrated.upgrade",
+			"actionId": "travel",
+			"label": "Zu einem Eisernen Schrein pilgern",
+			"startdescription": "Die Schreine des Obersts riechen manchmal nach Schießpulver und zuweilen nach Schnee. Wenn ich hier meditiere, verbessert sich mein Verständnis der Techniken, die von den Namen des Obersts gelehrt werden. [Jede Meditation im Schreine des Obersts verursacht eine Wunde.]",
+			"description": "Der Ritus kostet Blut, jedes Mal. In meinem Delirium liege ich halb ohnmächtig im Schrein und glaube, die Vielgeflügelten in den Dachsparren flüstern zu hören. 'Blut kehrt zur Erde zurück. Blut kehrt zurück ...'",
+			"requirements": {
+				"shrine.colonel": 1,
+				"lore": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.colonel": 1,
+				"tranquillity": -1
+			},
+			"aspects": {
+				"epiphany.colonel": 1
+			},
+			"effects": {
+				"location": -1,
+				"wound.exile": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.colonel.upgrade",
+			"actionId": "travel",
+			"label": "Einen Eisernen Schrein besuchen",
+			"startdescription": "Die Schreine des Obersts riechen manchmal nach Schießpulver und zuweilen nach Schnee. @#fragmentedgeg.exile|Hier werde ich nicht mehr erfahren, aber ich könnte 1 Vitalität bekommen, um 1 Wunde zu heilen.#|Hier kann ich mehr über die Schlacht-Mysterien der Kante erfahren.@",
+			"description": "Meine Knochen knirschen. Mein Gehör scheint geschärft.",
+			"requirements": {
+				"shrine.colonel": 1,
+				"lore": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.lionsmith": -1,
+				"tranquillity": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"effects": {
+				"location": -1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.upgrade.hint",
+			"actionId": "travel",
+			"label": "Einen Messingener Schrein besuchen?",
+			"startdescription": "Ich bin jahrzehntelang den Stunden aus dem Weg gegangen. Vielleicht ist es an der Zeit, das zu ändern.",
+			"requirements": {
+				"shrine.lionsmith": 1,
+				"lore": -1
+			},
+			"extantreqs": {
+				"tranquillity": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.consecrated.weapon",
+			"actionId": "travel",
+			"label": "Zu einem Messingenen Schrein pilgern, um ein Relikt zu bergen",
+			"startdescription": "Die Schreine des Löwenschmieds sind erhellt vom Dufte heißen Messings und ranzig vom Dufte großer Katzen. Ich habe seine Mysterien gemeistert. Wenn ich an seinem Schreine meditiere, finde ich vielleicht etwas, das für mich zurückgelassen wurde. [Jede Meditation im Schreine des Löwenschmieds verursacht eine Wut.]",
+			"description": "Im Raum unter dem Altar habe ich etwas gefunden, das vor langer Zeit für mich zurückgelassen wurde.",
+			"requirements": {
+				"shrine.lionsmith": 1,
+				"fragmentedgeg.lionsmith": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.lionsmith": 1,
+				"tranquillity": -1,
+				"weakness.foe.unknown": -1
+			},
+			"effects": {
+				"location": -1,
+				"rage": 1
+			},
+			"aspects": {
+				"epiphany.lionsmith": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.consecrated.revelation",
+			"actionId": "travel",
+			"label": "Zu einem Messingenen Schrein pilgern, um eine Offenbarung zu haben",
+			"startdescription": "Die Schreine des Löwenschmieds sind erhellt vom Dufte heißen Messings und ranzig vom Dufte großer Katzen. Ich habe seine Mysterien gemeistert. Wenn ich an seinem Schreine meditiere, vernehme ich vielleicht seine Stimme. [Jede Meditation im Schreine des Löwenschmieds verursacht eine Wut.]",
+			"description": "Das Sonnenlicht fällt wie Blut in meine Augen, und alles, was ich sehen kann, ist Gold. Der Name Menhit steht knurrend im Lichte, doch ich kann sie nicht sehen. 'Kind der Erde!', zischt sie. 'Höre mich an!' [Du hast eine der Schwächen deines Feindes kennengelernt.] ",
+			"requirements": {
+				"shrine.lionsmith": 1,
+				"fragmentedgeg.lionsmith": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.lionsmith": 1,
+				"tranquillity": -1
+			},
+			"effects": {
+				"location": -1,
+				"rage": 1
+			},
+			"linked": [
+				{
+					"id": "cats.weakness.reveal.lionsmith",
+					"label": "Offenbarung",
+					"extantreqs": {
+						"rkx.weakness.cats.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.cats.hidden": 1
+					}
+				},
+				{
+					"id": "heat.weakness.reveal.lionsmith",
+					"label": "Offenbarung",
+					"extantreqs": {
+						"rkx.weakness.heat.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.heat.hidden": 1
+					}
+				},
+				{
+					"id": "sea.weakness.reveal.lionsmith",
+					"label": "Offenbarung",
+					"extantreqs": {
+						"rkx.weakness.sea.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.sea.hidden": 1
+					}
+				},
+				{
+					"id": "faith.weakness.reveal.lionsmith",
+					"label": "Offenbarung",
+					"extantreqs": {
+						"rkx.weakness.faith.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.faith.hidden": 1
+					}
+				},
+				{
+					"id": "heights.weakness.reveal.lionsmith",
+					"label": "Offenbarung",
+					"extantreqs": {
+						"rkx.weakness.heights.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.heights.hidden": 1
+					}
+				},
+				{
+					"id": "cold.weakness.reveal.lionsmith",
+					"label": "Offenbarung",
+					"extantreqs": {
+						"rkx.weakness.cold.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.cold.hidden": 1
+					}
+				},
+				{
+					"id": "flowermaker.weakness.reveal.lionsmith",
+					"label": "Offenbarung",
+					"extantreqs": {
+						"rkx.weakness.flowermaker.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.flowermaker.hidden": 1
+					}
+				},
+				{
+					"id": "horned.weakness.reveal.lionsmith",
+					"label": "Offenbarung",
+					"extantreqs": {
+						"rkx.weakness.horned.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.horned.hidden": 1
+					}
+				},
+				{
+					"id": "wolf.weakness.reveal.lionsmith",
+					"label": "Offenbarung",
+					"extantreqs": {
+						"rkx.weakness.wolf.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.wolf.hidden": 1
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.consecrated.upgrade",
+			"actionId": "travel",
+			"label": "Zu einem Messingenen Schrein pilgern",
+			"startdescription": "Die Schreine des Löwenschmieds sind erhellt vom Dufte heißen Messings und ranzig vom Dufte großer Katzen. Wenn ich hier meditiere, verbessert sich mein Verständnis der Techniken, die von den Namen des Löwenschmieds gelehrt werden. [Jede Meditation im Schreine des Löwenschmieds verursacht eine Wunde.]",
+			"description": "Meine Kraft überwältigt meine Gedanken und ich umkreise den Schrei, knurrend wie ein wildes Tier. Durch den Nebel meiner Wut glaube ich, die Vielgeflügelten in den Dachsparren flüstern zu hören. 'Die Kraft der Erde. Der Erde ...'",
+			"requirements": {
+				"shrine.lionsmith": 1,
+				"lore": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.lionsmith": 1,
+				"tranquillity": -1
+			},
+			"aspects": {
+				"epiphany.lionsmith": 1
+			},
+			"effects": {
+				"location": -1,
+				"rage": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.upgrade",
+			"actionId": "travel",
+			"label": "Einen Messingener Schrein besuchen",
+			"startdescription": "Die Schreine des Löwenschmieds sind erhellt vom Dufte heißen Messings und ranzig vom Dufte großer Katzen. @#fragmentedgeg.exile|Hier werde ich nicht mehr erfahren, aber ich könnte 1 Vitalität bekommen, um 1 Wunde zu heilen.#|Hier kann ich mehr über die Kampftechniken der Kante erfahren.@",
+			"description": "Ich werde stärker.",
+			"requirements": {
+				"shrine.lionsmith": 1,
+				"lore": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.colonel": -1,
+				"tranquillity": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"effects": {
+				"location": -1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.consecration.colonel",
+			"actionId": "travel",
+			"label": "Eine Weihe für den Oberst",
+			"startdescription": "Ich könnte mich dem Oberst weihen. [Dies wird dir Schaden zufügen und deinen Umgang mit dem Löwenschmied einschränken, aber deinen Trotz vergrößern und dir die Mysterien des Obersts eröffnen.]",
+			"description": "Ich habe meine Augen maskiert und meine Haut vernarbt. Ich habe mich mit den Neun Schwüren der Geduld gebunden. Ich bin ein Soldat des Obersts, der mich nicht freigeben wird.",
+			"requirements": {
+				"shrine.colonel": 1,
+				"temptation.defiance": 1,
+				"defiance.consecration.lionsmith": -1,
+				"defiance.consecration.colonel": -1
+			},
+			"extantreqs": {
+				"tranquillity": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.consecration.colonel",
+					"mutationLevel": 1
+				}
+			],
+			"effects": {
+				"location": -1,
+				"wound.exile": 1
+			},
+			"burnimage": "consecration.colonel",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.consecration.lionsmith",
+			"actionId": "travel",
+			"label": "Eine Weihe für den Löwenschmied",
+			"startdescription": "Ich könnte mich dem Löwenschmied weihen. [Dies wird dich erzürnen und deinen Umgang mit dem Oberst einschränken, aber deinen Trotz vergrößern und dir die Mysterien des Löwenschmieds eröffnen.]",
+			"description": "Ich habe das Blut der Bestie vergossen und meine Haut versengt. Ich habe mich den Drei Prüfungen der Tapferkeit unterzogen. Ich bin ein Krieger des Löwenschmieds, es sei denn, er gibt mich eines Tages frei.",
+			"requirements": {
+				"shrine.lionsmith": 1,
+				"temptation.defiance": 1,
+				"defiance.consecration.lionsmith": -1,
+				"defiance.consecration.colonel": -1
+			},
+			"extantreqs": {
+				"tranquillity": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.consecration.lionsmith",
+					"mutationLevel": 1
+				}
+			],
+			"effects": {
+				"location": -1,
+				"rage": 1
+			},
+			"burnimage": "consecration.lionsmith",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.colonel.abandonobscurity",
+			"actionId": "travel",
+			"label": "Der Unverzagte Schwur",
+			"startdescription": "Ich könnte den Unverzagten Schwur leisten, der Beharrlichkeit um jeden Preis verlangt. [Dies wird dir eine Wunde zufügen und es dir unmöglich machen, das Spiel mit einem Sieg der Unklarheit zu gewinnen, steigert aber deinen Trotz.]",
+			"description": "'Jede Marter eine Lektion. Jede Narbe eine Waffe. Keine Niederlage außer der Vernichtung.'",
+			"requirements": {
+				"shrine.colonel": 1,
+				"temptation.obscurity": 1
+			},
+			"extantreqs": {
+				"temptation.defiance": 1,
+				"defiance.consecration.colonel": 1,
+				"tranquillity": -1
+			},
+			"slots": [
+				{
+					"id": "defiance",
+					"label": "Trotz",
+					"required": {
+						"temptation.defiance": 1
+					},
+					"greedy": true
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"temptation.obscurity": -1,
+				"location": -1,
+				"wound.exile": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.abandonobscurity",
+			"actionId": "travel",
+			"label": "Der Unverfrorene Schwur",
+			"startdescription": "Ich könnte den Unverfrorenen Schwur leisten, der Mut unter allen Umständen verlangt. [Dies wird dir eine Wut geben und es dir unmöglich machen, das Spiel mit einem Sieg der Unklarheit zu gewinnen, steigert aber deinen Trotz.]",
+			"description": "'Aus Tapferkeit, Stärke. Aus Stärke, Tapferkeit.  Keine Niederlage außer der Schande.'",
+			"requirements": {
+				"shrine.lionsmith": 1,
+				"temptation.obscurity": 1
+			},
+			"extantreqs": {
+				"temptation.defiance": 1,
+				"defiance.consecration.lionsmith": 1,
+				"tranquillity": -1
+			},
+			"slots": [
+				{
+					"id": "defiance",
+					"label": "Trotz",
+					"required": {
+						"temptation.defiance": 1
+					},
+					"greedy": true
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"temptation.obscurity": -1,
+				"location": -1,
+				"rage": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.nameless.hint",
+			"actionId": "travel",
+			"label": "Davonschleichen",
+			"startdescription": "Ich werde hier nicht noch mehr Zeit vergeuden. [Die Präsenz der Wut verhindert die Nutzung dieses Schreins.]",
+			"requirements": {
+				"loc.shrine.nameless": 1
+			},
+			"extantreqs": {
+				"rage": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment",
+			"actionId": "travel",
+			"label": "Dem Namenlosen Namen ein Pentiment darbringen",
+			"startdescription": "Etwas wird vergessen werden – diesmal richtig.",
+			"requirements": {
+				"loc.shrine.nameless": 1,
+				"pentiment": 1
+			},
+			"extantreqs": {
+				"rage": -1
+			},
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.ii"
+				},
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.ii",
+			"actionId": "travel",
+			"requirements": {
+				"pentiment": 1
+			},
+			"label": "Dem Namenlosen Namen ein zweites Pentiment darbringen",
+			"startdescription": "Der Nebel hält den Atem an.",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Pentiment",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.iii"
+				},
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.iii",
+			"actionId": "travel",
+			"requirements": {
+				"pentiment": 2
+			},
+			"label": "Dem Namenlosen Namen ein drittes Pentiment darbringen",
+			"startdescription": "Etwas mehr, was der Samt vergraben kann.",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Pentiment",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.iv"
+				},
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.iv",
+			"actionId": "travel",
+			"requirements": {
+				"pentiment": 3
+			},
+			"label": "Dem Namenlosen Namen ein viertes Pentiment darbringen",
+			"startdescription": "Die Haut der Welt glätten.",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Pentiment",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.v"
+				},
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.v",
+			"actionId": "travel",
+			"requirements": {
+				"pentiment": 4
+			},
+			"label": "Dem Namenlosen Namen ein fünftes Pentiment darbringen",
+			"startdescription": "Geheime Verbrechen, geheime Sorgen, geheime Wonnen – verloren im Forst.",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Pentiment",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.vi"
+				},
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.vi",
+			"actionId": "travel",
+			"requirements": {
+				"pentiment": 5
+			},
+			"label": "Dem Namenlosen Namen ein sechstes Pentiment darbringen",
+			"startdescription": "Im Nebel: der Duft von Erde und schwarzem Moos.",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Pentiment",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.vii"
+				},
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.vii",
+			"actionId": "travel",
+			"requirements": {
+				"pentiment": 6
+			},
+			"label": "Dem Namenlosen Namen ein siebentes Pentiment darbringen",
+			"startdescription": "Im Nebel: das tiefe und mahlende Grollen gigantischer Ketten.",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Pentiment",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.final"
+				},
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.final",
+			"requirements": {
+				"pentiment": 7
+			},
+			"actionId": "travel",
+			"label": "In den Nebel",
+			"startdescription": "Es ist vollbracht. Ich strecke mich und lass die Halswirbel knacken. Um mich herum löst sich der Nebel auf ... aber nicht ganz. Dem Samt müssen meine Gaben gefallen haben. Eine Weile lang werde ich im Schutze des Gewandes des Namenlosen Namens wandeln. Was bedeuten soll: viel Glück dabei, mich <i>jetzt</i> zu finden, ihr Dreckskerle.",
+			"warmup": 30,
+			"effects": {
+				"obscurity": 9,
+				"pentiment": -7,
+				"location": -1,
+				"op.dawn": 1,
+				"trail.false.exile.nameless": 1
+			}
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.break",
+			"actionId": "travel",
+			"label": "Die Dämmerung kommt.",
+			"startdescription": "Dies ist ein Anfang. Doch hier sind noch nicht genug Geheimnisse, um die Aufmerksamkeit des Samtes zu erregen. Diese Dinge geschehen immer zu siebt. Der Nebel löst sich um mich herum auf und der Schrein ist fort.",
+			"effects": {
+				"op.dawn": 1,
+				"location": -1
+			}
+		},
+		{
+			"id": "travel.visit.shrine.nameless.downgrade",
+			"actionId": "travel",
+			"label": "Dem Nebel ein Geheimnis darbringen",
+			"startdescription": "Ich entzünde die Kerze und warte. [Dadurch verringert sich dein Wissen dauerhaft um eine Stufe, doch du bekommst eine Unklarheit und eine Beschaulichkeit.]",
+			"description": "Der Nebel bewegt sich nicht direkt, steht aber auch nicht vollkommen still. Die Nacht ist sehr still. Nach einer Weile neigt die Kerzenflamme ihr Haupt, kämpft anmutig einen Moment und vergeht dann in Woge aus Wachs. Sonst geschieht nichts.",
+			"requirements": {
+				"loc.shrine.nameless": 1,
+				"lore": 1
+			},
+			"extantreqs": {
+				"rage": -1
+			},
+			"aspects": {
+				"depiphany": 1
+			},
+			"effects": {
+				"loc.shrine.nameless": -1,
+				"obscurity": 1,
+				"tranquillity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.nameless",
+			"actionId": "travel",
+			"label": "Für eine Weile im Nebel ausruhen",
+			"startdescription": "Ich lehne mich gegen die Wand und warte. [Dies bringt dir eine Beschaulichkeit.]",
+			"description": "Der Nebel bewegt sich nicht direkt, steht aber auch nicht vollkommen still. Die Nacht ist sehr still. Nach einer Stunde kehre ich in mein Bett zurück, wo ich eine Nacht voller erholsamem Schlaf genieße.",
+			"requirements": {
+				"loc.shrine.nameless": 1
+			},
+			"extantreqs": {
+				"rage": -1
+			},
+			"effects": {
+				"loc.shrine.nameless": -1,
+				"tranquillity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.wilderness.leave",
+			"actionId": "travel",
+			"label": "Irgendwo, nur nicht hier",
+			"startdescription": "Ich muss weiter. [Du könntest irgendwo landen.]",
+			"comments": "You can leave wilderness even if you have outstanding Rage. I'm not a monster.",
+			"requirements": {
+				"wilderness": 1,
+				"domicile": 1,
+				"cash": 1
+			},
+			"effects": {
+				"wilderness": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.bornholm",
+					"end.slettnes",
+					"end.cheko",
+					"end.paro",
+					"end.messana",
+					"end.ghardaia",
+					"end.morbihan",
+					"city.alexandria",
+					"city.algiers",
+					"city.amsterdam",
+					"city.avignon",
+					"city.baghdad",
+					"city.budapest",
+					"city.candia",
+					"city.cluj",
+					"city.granada",
+					"city.istanbul",
+					"city.kaunas",
+					"city.kiev",
+					"city.krakow",
+					"city.london",
+					"city.marrakech",
+					"city.meshad",
+					"city.munich",
+					"city.nizhny",
+					"city.paris",
+					"city.prague",
+					"city.aachen",
+					"city.rostock",
+					"city.samarkand",
+					"city.leningrad",
+					"city.stalingrad",
+					"city.strasbourg",
+					"city.tiflis",
+					"city.tirana",
+					"city.tripoli",
+					"city.valletta",
+					"city.venice",
+					"city.vienna",
+					"city.sverdlovsk"
+				],
+				"draws": 1,
+				"defaultcard": "end.slettnes",
+				"resetonexhaustion": false
+			},
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "travel.depart"
+				}
+			]
+		},
+		{
+			"id": "travel.rage.hint",
+			"actionId": "travel",
+			"label": "NEIN",
+			"startdescription": "Mein Blut kocht bei dem Gedanken, <i>wieder</i> davonzulaufen. Bis diese Wut verebbt ist, kann ich mich nur umdrehen und kämpfen. [Du kannst voller Wut nicht eine Stadt verlassen.]",
+			"requirements": {
+				"destination": 1
+			},
+			"comments": "This is only a hint, so the Wilderness recipe will override it.",
+			"extantreqs": {
+				"rage": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.ally.duplicate.hint",
+			"actionId": "travel",
+			"label": "Zu viel Verwirrung",
+			"startdescription": "[Du kannst nicht mehr als einen Verbündeten entsenden, um falsche Spuren zu legen.]",
+			"requirements": {
+				"ally": 1
+			},
+			"extantreqs": {
+				"apx.trail.false.exile": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "travel.ally.hint",
+			"actionId": "travel",
+			"label": "Einen Verbündeten entsenden, um eine Falsche Spur zu legen?",
+			"startdescription": "[Füge eine Stadt hinzu, die du noch nicht besucht hast.]",
+			"requirements": {
+				"ally": 1,
+				"exhausted": -1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "travel.ally",
+			"actionId": "travel",
+			"label": "Einen Verbündeten entsenden, um eine Falsche Spur zu legen",
+			"startdescription": "Riskant, aber was ist das nicht? [Eine Falsche Spur hindert Abrechner daran, dich zu finden, solange sie wirksam ist. Du wirst niemals in diese Stadt reisen können. Dein Verbündeter nimmt ein Unberechenbar, um die Spur zu legen. Für eine unberechenbare Zeit wird er nicht verfügbar sein. Und es besteht eine gewisse Chance, dass er niemals zurückkehrt.]",
+			"description": "Der Verbündete ist unterwegs.",
+			"requirements": {
+				"ally": 1,
+				"destination": 1,
+				"exhausted": -1,
+				"end": -1,
+				"wilderness": -1
+			},
+			"extantreqs": {
+				"apx.trail.false.exile": -1
+			},
+			"effects": {
+				"apx.trail.false.exile": 1
+			},
+			"alt": [
+				{
+					"id": "ally.trail.false.begin",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"ally": 1,
+							"destination": 1,
+							"apx.trail.false.exile": 1
+						}
+					}
+				}
+			],
+			"craftable": true,
+			"warmup": 60
+		},
+		{
+			"id": "ally.trail.false.begin",
+			"actionId": "ally.trail.false.1",
+			"label": "Arbeitet an einer Falschen Spur ...",
+			"startdescription": "@#ally.barber|Zulfiya sorgt für das passende Chaos.\n#ally.delver|Orsolina geht methodisch zu Werke.\n#ally.fivegoer|Vasil scheint irgendeine Art von Party zu planen.\n#ally.ghoul|Dominykas befasst sich mit seinen Ränken.\n#ally.huntress|Lalla Chaima sorgt für ein nützliches Durcheinander.\n#ally.smuggler|Giorgiou will Profit machen und gleichzeitig die Aufmerksamkeit ablenken.\n#ally.visionary|Mireya arrangiert etwas, das im Gedächtnis bleibt.\n#ally.vivisectionist|Jannings setzt seine Ressourcen ein.@ [Bei jedem Zug besteht eine moderate Chance, eine Falsche Spur zu legen.]",
+			"warmup": 60,
+			"linked": [
+				{
+					"id": "ally.trail.false.create",
+					"chance": 30
+				},
+				{
+					"id": "ally.trail.false.begin"
+				}
+			]
+		},
+		{
+			"id": "ally.trail.false.create",
+			"actionId": "ally.trail.false.1",
+			"label": "Eine Falsche Spur legen",
+			"startdescription": "@#ally.barber|Zulfiya hat für das passende Chaos gesorgt.\n#ally.delver|Orsolina hat methodisch ihr Werk vollbracht.\n#ally.fivegoer|Vasils Feier hat alle mögliche Aufmerksamkeit auf sich gezogen.\n#ally.ghoul|Dominykas hat seine Ränke abgeschlossen.\n#ally.huntress|Lalla Chaima hat für ein nützliches Durcheinander gesorgt.\n#ally.smuggler|Giorgiou hat Profit gemacht und gleichzeitig die Aufmerksamkeit abgelenkt.\n#ally.visionary|Mireya hat etwas arrangiert, das im Gedächtnis bleibt.\n#ally.vivisectionist|Jannings hat seine Ressourcen eingesetzt.@",
+			"description": "Mein Verbündeter hat eine Falsche Spur gelegt. Er wird seine Spuren verwischen und schon bald wieder zurück sein – hoffe ich.",
+			"alt": [
+				{
+					"id": "ally.trail.false.waiting",
+					"additional": true,
+					"expulsion": {
+						"limit": 2,
+						"filter": {
+							"ally": 1,
+							"destination": 1
+						}
+					}
+				}
+			],
+			"effects": {
+				"trail.false.exile": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "ally.trail.false.waiting",
+			"actionId": "ally.trail.false.2",
+			"label": "Warten ...",
+			"startdescription": "Bald zu Hause?",
+			"linked": [
+				{
+					"id": "ally.trail.false.waiting.displaytext"
+				}
+			]
+		},
+		{
+			"id": "ally.trail.false.waiting.displaytext",
+			"actionId": "ally.trail.false.2",
+			"label": "Warten ...",
+			"startdescription": "@#ally.barber|Zulfiyas Werk ist vollbracht. Sie kommt zurück sobald sie sicher reisen kann.\n#ally.delver|Orsolinas Werk ist vollbracht. Sie kommt zurück sobald sie sicher reisen kann.\n#ally.fivegoer|Vasils Werk ist vollbracht. Er kommt zurück sobald er sicher reisen kann.\n#ally.ghoul|Dominykas' Werk ist vollbracht. Er kommt zurück sobald er sicher reisen kann.\n#ally.huntress|Lalla Chaimas Werk ist vollbracht. Sie kommt zurück sobald sie sicher reisen kann.\n#ally.smuggler|Giorgious Werk ist vollbracht. Er kommt zurück sobald er sicher reisen kann.\n#ally.visionary|Mireyas Werk ist vollbracht. Sie kommt zurück sobald sie sicher reisen kann.\n#ally.vivisectionist|@",
+			"warmup": 60,
+			"linked": [
+				{
+					"id": "ally.trail.false.returning",
+					"chance": 30
+				},
+				{
+					"id": "ally.trail.false.lost",
+					"chance": 10
+				},
+				{
+					"id": "ally.trail.false.waiting"
+				}
+			]
+		},
+		{
+			"id": "ally.trail.false.returning",
+			"actionId": "ally.trail.false.2",
+			"label": "Auf dem Weg zurück ...",
+			"startdescription": "@#ally.barber|Zulfiya ist auf dem Weg zurück.\n#ally.delver|Orsolina ist auf dem Weg zurück.\n#ally.fivegoer|Vasil ist auf dem Weg zurück.\n#ally.ghoul|Dominykas ist auf dem Weg zurück.\n#ally.huntress|Lalla Chaima ist auf dem Weg zurück.\n#ally.smuggler|Giorgiou ist auf dem Weg zurück.\n#ally.visionary|Mireya ist auf dem Weg zurück.\n#ally.vivisectionist|Jannings ist auf dem Weg zurück.@",
+			"warmup": 60,
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"destination": -1
+			}
+		},
+		{
+			"id": "ally.trail.false.lost",
+			"actionId": "ally.trail.false.2",
+			"label": "Verschwunden ...",
+			"startdescription": "@#ally.barber|Zulfiya ist verschwunden. Das könnte alles bedeuten. Aber ich glaube nicht, dass ich sie wiedersehen werde.\n#ally.delver|So oder so, ich denke, Orsolina ist in die Erde zurückgekehrt.\n#ally.fivegoer|Fast wäre mir der Artikel entgangen: ein Bericht über eine Leiche, die in einem Koffer entdeckt wurde – mit einigen sehr auffälligen 'anatomischen Besonderheiten'. Das kann nur Vasil gewesen sein.\n#ally.ghoul|In einem Artikel ist zu lesen, dass ein litauischer Würdenträger vergiftet aufgefunden wurde. Dominykas hätte sich vermutlich gern als 'Würdenträger' bezeichnen lassen.\n#ally.huntress|Chaimas Leiche wurde zusammen mit den Leichen dreier Männer aufgefunden, die sauber durch einen Schuss zwischen die Augen getötet wurden. Sie hat sich gewehrt.\n#ally.smuggler|Giorgiou scheint von seiner Vergangenheit eingeholt worden zu sein. Das waren nicht mal die Abrechner – nur einer seiner zahlreichen Konkurrenten.\n#ally.visionary|Mireya wurde für 'Verbrechen der Offenbarung' verhaftet.\n#ally.vivisectionist|Ich habe heute einen Bericht über einen deutschen Adligen gelesen, der als Freiwilliger im Hospital geholfen hat, die Opfer eines Ausbrauchs von Typhus zu behandeln, nur um dann selbst der Seuche zum Opfer zu fallen. Jannings war ein komplizierter Mann. Ich werde ihn vermissen.@",
+			"effects": {
+				"ally": -1,
+				"destination": -1,
+				"grief": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "travel.prepare.end",
+			"actionId": "travel",
+			"label": "Eine letzte Abreise",
+			"startdescription": "Mein Zug fährt bei Einbruch der Dämmerung ab. Habe ich etwas vergessen? [Dies ist ein Ziel am Kartenrand. Du kannst nicht weiter reisen. Sobald du eintriffst, musst du bereit sein, diese Sache zu Ende zu bringen. Verbündete folgen dir nicht zum Kartenrand.]",
+			"requirements": {
+				"end": 1,
+				"destination": 1,
+				"cash": 2
+			},
+			"extantreqs": {
+				"rage": -1
+			},
+			"craftable": true,
+			"linked": [
+				{
+					"id": "travel.showslot"
+				}
+			]
+		},
+		{
+			"id": "travel.prepare.wilderness",
+			"actionId": "travel",
+			"label": "In die Wildnis",
+			"startdescription": "Dies ist meine letzte Zuflucht. Abseits sicherer Menschenmassen bin ich leichter aufzuspüren. Ich kenne mich hier nicht aus. Ich könnte eines würdelosen Todes sterben. [Du kannst nur Portable Aktiva mitnehmen. Deine Abreise beendet alle laufenden Aktivitäten der Abrechner und entfernt alle Spuren, doch du lässt auch Aktiva, Orte, Ziele, Lokale Kontakte und laufende Operationen hinter dir.]",
+			"requirements": {
+				"wilderness": 1,
+				"destination": 1
+			},
+			"extantreqs": {
+				"rage": -1
+			},
+			"craftable": true,
+			"linked": [
+				{
+					"id": "travel.showslot"
+				}
+			]
+		},
+		{
+			"id": "travel.prepare.remote",
+			"actionId": "travel",
+			"label": "Abreise an ein Abgelegenes Ziel vorbereiten",
+			"startdescription": "Mein Zug fährt bei Einbruch der Dämmerung ab. Habe ich etwas vergessen? [Du kannst nur Portable Aktiva mitnehmen. Deine Abreise beendet alle laufenden Aktivitäten der Abrechner und entfernt alle Spuren, doch du lässt auch Aktiva, Orte, Ziele, Lokale Kontakte und laufende Operationen hinter dir.]",
+			"requirements": {
+				"remote": 1,
+				"destination": 1,
+				"cash": 2
+			},
+			"extantreqs": {
+				"rage": -1
+			},
+			"craftable": true,
+			"linked": [
+				{
+					"id": "travel.showslot"
+				}
+			]
+		},
+		{
+			"id": "travel.prepare",
+			"actionId": "travel",
+			"label": "Abreise vorbereiten",
+			"startdescription": "Zeit zu gehen. Habe ich etwas vergessen? [Du kannst nur Portable Aktiva mitnehmen. Deine Abreise beendet alle laufenden Aktivitäten der Abrechner und entfernt alle Spuren, doch du lässt auch Aktiva, Orte, Ziele, Lokale Kontakte und laufende Operationen hinter dir.]",
+			"requirements": {
+				"destination": 1,
+				"cash": 1,
+				"remote": -1,
+				"end": -1
+			},
+			"extantreqs": {
+				"rage": -1
+			},
+			"craftable": true,
+			"linked": [
+				{
+					"id": "travel.showslot"
+				}
+			]
+		},
+		{
+			"id": "travel.prepare.remote.hint",
+			"actionId": "travel",
+			"label": "Abreise vorbereiten?",
+			"startdescription": "Dies ist ein Abgelegenes Ziel. Ich brauche genug Bargeld.",
+			"requirements": {
+				"op": -1,
+				"connection": -1,
+				"destination": 1,
+				"remote": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.prepare.hint",
+			"actionId": "travel",
+			"label": "Abreise vorbereiten?",
+			"startdescription": "Ich brauche Bargeld.",
+			"requirements": {
+				"op": -1,
+				"connection": -1,
+				"destination": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.showslot",
+			"actionId": "travel",
+			"label": "Abreise vorbereiten",
+			"startdescription": "Zeit zu gehen. Habe ich etwas vergessen? [Du kannst nur Portable Aktiva mitnehmen. Durch Aufgeben kannst du Aktiva zurücklassen, die du nicht mitnehmen möchtest. Deine Abreise beendet alle laufenden Aktivitäten der Abrechner und entfernt alle Spuren, doch du lässt auch Aktiva, Orte, Ziele, Lokale Kontakte und laufende Operationen hinter dir.]",
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Vorbereitungen",
+					"required": {
+						"portable": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "travel.packing"
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "travel.end.depart"
+				},
+				{
+					"id": "travel.depart"
+				}
+			]
+		},
+		{
+			"id": "travel.packing",
+			"actionId": "travel",
+			"label": "Packen ...",
+			"startdescription": "Das könnte ich brauchen. [Du kannst alles Portable mitnehmen, doch dadurch ziehen sich deine Vorbereitungen in die Länge.]",
+			"requirements": {
+				"asset": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "asset",
+					"mutateAspectId": "asset.packed",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "asset.packed",
+					"mutateAspectId": "asset",
+					"mutationLevel": -1
+				}
+			],
+			"linked": [
+				{
+					"id": "travel.showslot"
+				}
+			]
+		},
+		{
+			"id": "travel.end.depart",
+			"actionId": "travel",
+			"label": "Zum Kartenrand",
+			"startdescription": "So weit folgen mir meine Verbündeten. Zeit, sich zu verabschieden.",
+			"requirements": {
+				"end": 1
+			},
+			"extantreqs": {
+				"ally": 1
+			},
+			"purge": {
+				"ally": 100
+			},
+			"deleteverb": {
+				"ally.trail.false*": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "travel.depart"
+				}
+			]
+		},
+		{
+			"id": "travel.depart",
+			"actionId": "travel",
+			"label": "Abreise",
+			"startdescription": "Lebt wohl.",
+			"requirements": {
+				"destination": 1
+			},
+			"haltverb": {
+				"rkx*": 100,
+				"opx*": 100,
+				"scout": 1,
+				"use": 1,
+				"send": 1,
+				"relinquish": 1,
+				"spawn.*": 100,
+				"spit.*": 100
+			},
+			"purge": {
+				"trace": 100,
+				"asset": 100,
+				"op": 100,
+				"location": 100,
+				"destination": 100,
+				"contact.local": 100,
+				"rkx.internal": 100,
+				"damage.underling": 100,
+				"domicile": 1
+			},
+			"comments": "Deleting the rkx verb and then recreating it with the alt works fine because effect execution occurs in turn inside each recipe, and alt additional=true\ngives us another recipe. But keep an eye on this.",
+			"alt": [
+				{
+					"id": "rkx.arrive.ahead",
+					"additional": true
+				}
+			],
+			"warmup": 10,
+			"burnimage": "departure",
+			"linked": [
+				{
+					"id": "travel.enroute"
+				}
+			]
+		},
+		{
+			"id": "travel.enroute",
+			"actionId": "travel",
+			"label": "Unterwegs",
+			"startdescription": "Ich bin unterwegs ...",
+			"mutations": [
+				{
+					"filterOnAspectId": "destination",
+					"mutateAspectId": "lure.foe",
+					"mutationLevel": -1
+				},
+				{
+					"filterOnAspectId": "destination",
+					"mutateAspectId": "rkx.infected",
+					"mutationLevel": -1
+				}
+			],
+			"aspects": {
+				"arriving": 1
+			},
+			"linked": [
+				{
+					"id": "travel.stillenroute.remote"
+				},
+				{
+					"id": "travel.arrive"
+				}
+			]
+		},
+		{
+			"id": "travel.stillenroute.remote",
+			"actionId": "travel",
+			"label": "Unterwegs ...",
+			"startdescription": "Durch die Finsternis in ein neues Morgen. Ich bin so weit gereist, dass die Abrechner gründlicher als sonst suchen müssen. Es sei denn, die sind schon hier?",
+			"requirements": {
+				"remote": 1
+			},
+			"effects": {
+				"obscurity": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "travel.arrive"
+				}
+			]
+		},
+		{
+			"id": "travel.arrive",
+			"actionId": "travel",
+			"label": "Ankunft",
+			"startdescription": "@#domicile.aachen|Lalla Chaima hat eine Nachricht in dem Hotel hinterlassen, wo ich früher abgestiegen bin. Es ist nur ein Wort: 'Mittag.' Da steht nicht, wo ich mittags sein soll, doch Chaima war schon immer gut darin, Leute zu finden, wenn sie muss.\n#domicile.alexandria|Das Unsichtbare Serapeum ist selbst von innen unsichtbar. Vielleicht habe ich es sogar schon betreten, wenn ich von Bord des Schiffs gehe. Es wird eine Weile dauern, bis ich mir sicher sein kann.\n#domicile.algiers|Ein Haufen weißer Häuser über einem sonnigen Kai. Ich habe die Adresse von jemandem von M. Giorgious Leuten.\n#domicile.amsterdam|Die Stegenga-Zwillinge sind nicht in der Stadt – vermutlich kein Zufall – und ihr Haus mit den vielen Fenster steht leer. Doch ihr Faktotum hat eine Nachricht für mich. Sie haben einen ihrer einflussreicheren Klienten gebeten, mir behilflich zu sein.\n#domicile.avignon|M. Giorgiou hat mich in den Räumlichkeiten zum Diner gebeten, die er am Palais des Papes unterhält.\n#domicile.baghdad|Percy Styles erwartet mich am Bahnhof. Seine Haare sind noch immer das reinste Chaos, aber es ist weiß geworden. Er sieht mehr denn je wie ein verlotterter Bischof aus. 'Verdammt gutes Timing', sagt er und schüttelt mir die Hand. 'Gut möglich, dass hier eine Hand die andere waschen könnte.'\n#domicile.budapest|Es ist eiskalt, doch Lili hält wie immer im Városliget Hof, wie immer in Witwenschwarz, und spielt Schach zwischen den Treffen mit ihren Klienten. 'Ich hatte mir schon gedacht, dass du auftauchen würdest', sagt sie resigniert. 'Bitte sag mir, dass du sie noch nicht hierher gebracht hast?'\n#domicile.candia|Am Abend vor meiner Ankunft auf Kreta habe ich von Göttern unter der Erde geträumt. Als ich erwachte, bin ich an Deck gegangen. Die Sterne brannten erbarmungslos, als wären Löcher in die Nacht über mir gestanzt worden. Die Nacht war klar, der Horizont skalpellscharf. Hinter mir sagte eine Frau ein knisterndes Wort, das ich nicht verstand. Als ich mich umdrehte, sah ich, dass sie nur ein halbes Gesicht hatte – die andere Hälfte war von Schuppen bedeckt, wie der Flügel eines Schmetterlings. Dann erwachte ich wirklich, allein in der heißen eisernen Finsternis meiner Kabine.\n#domicile.cluj|Die Stammgäste im Café Oradea schütteln traurig den Kopf als ich Lilis Namen erwähne. 'Sie war nicht nett, aber geduldig', stellt einer fest. 'Nicht wie dieser Schlächter aus Vaslui. Doch du musst ihn treffen, nehmen wir an. Ich werde euch einander vorstellen.'\n#domicile.granada|Mireyas Zuhause ist im Albaicín, was im Arabischen so viel bedeutet wie 'der Ort ganz oben auf den Hügeln, nachdem du den ganzen Tag gereist bist, und keine der Straßen ist beleuchtet'.\n#domicile.istanbul|Kemals Name verschafft mir ein Treffen mit einem Karaköl-Veteranen mit Raubvogelgesicht in einem schmierigen Kaffeehaus am Taksimplatz. Hauptsächlich scheint er sich darüber beschweren zu wollen, dass der Präsident die Nähe der Briten suche, doch als ich ihm lange genug zugehört habe, bietet er mir widerwillig seine Hilfe an.\n#domicile.kiev|Sobald ich aus dem Zug steige, rieche ich Blut. Ich drehe mich um. Nichts: nur Rauch und Schweiß. Muss ich mir eingebildet haben. Doch da ist es wieder. Dieses rote Kupfer.\n#domicile.krakow|Jitschok hat mir ein Zimmer unter dem Dach vorbereitet. 'Ich bin zu alt, um umgebracht zu werden', versichert er mir. 'Wenn die dich holen kommen, verstecke ich mich unter dem Tisch und weine.'\n#domicile.leningrad|Suschkin, der 'Athener', erinnert sich wirklich an mich. 'Ich werde dir ein aufwendiges Begräbnis spendieren', sagt er mir hoch erfreut. 'Ich hab da schon ein schönes Plätzchen für dich in Tichwin ausgeguckt. Bisschen klein, aber ich denke nicht, dass deine Freunde so viel von dir übrig lassen werden. Nein, nein, ich bestehe darauf. Das ist das Mindeste, was ich tun kann.'\n#domicile.london|Ottavio wartet vor der Victoria Station auf mich und schüttelt sorgenvoll den Kopf als Demonstranten vorbeiziehen. 'Bezahlung muss sein, gewiss', klagt er, 'aber das hier? Das muss doch nicht sein. Die Rennbahnen sind geschlossen, wusstest du das? Und die Polizei! Wie ein Taubenschlag! Vielleicht sollte ich auch streiken. Sollen die doch mal versuchen, echte Verbrecher zu kriegen.'\n#domicile.marrakech|Ich erkenne Navil nicht, er aber dafür mich, und er begrüßt mich herzlich. 'Dein Herz ist Stahl', erklärt er mir, 'doch Stahl kann auch ein Spiegel sein, und in Spiegeln finden wir Ruhm. Du weißt nicht, was ich meine, oder? Egal! Nimm meine Hilfe an und geh, wann immer du willst. Mehr brauchst du nicht zu machen.'\n#domicile.meshad|Meine Freundin hatte sich in einem Dorf bei Maschhad zur Ruhe gesetzt. Weil sie der alten Religion angehörte, war sie zum Basehor-Feuertempel gegangen, als sie erkrankt war. Sie starb vor Sonnenuntergang. Als ich eintraf, hatte man ihre Leiche bereits zur Exkarnation zum Turm geschafft.\n#domicile.munich|Graf Jannings hat einen narbigen und stummen Diener entsandt, um mich zu unserem Treffen zu geleiten.\n#domicile.nizhny|Suschkins Leute sind argwöhnisch, aber einer klopft mir auf die Schulter, als ich meine Verfolger erwähne. Er sagt etwas Abfälliges über die Abrechner und ich gebe vor, davon nicht beleidigt zu sein.\n#domicile.paris|Tante Adelines Mann ist ein mürrischer, schlaksiger Kerl mit einer Lederschürze. Er redet überhaupt nicht mit mir – sitzt einfach nur da und füttert seine Hunde mit Fleischbrocken – aber er hört mir zu, als ich mich erkläre, und er macht einem hünenhaften Korsen ein Zeichen, mir zu folgen, als ich gehe.\n#domicile.prague|Tante Adeline ist ein Berg von einer Frau mit Spatzenaugen, Bärennacken, roten Wangen und einer unpassend lieblichen Stimme. 'Du willst hier ein paar Köpfe für mich einschlagen?', fragt sie begeistert.\n#domicile.rostock|Jannings' Personal hat mich bereits erwartet. Ich bin so lange willkommen wie ich nur bleiben möchte.\n#domicile.samarkand|Mein jadidischer Freund ist gramgebeugt. Er kann kaum sprechen. Doch auf seine Hilfe kann ich zählen.\n#domicile.stalingrad|Die Vogelfresser hausen in einer ausgebrannten Kirche. Ich bin sicher, dass ich eine große Schlange sehe – glitzernd wie nasses Leder –, die sich durch die Trümmer davon schlängelt, als ich mich nähere. Doch Zulfiya und die anderen beharren darauf, dass da nichts gewesen sei.\n#domicile.sverdlovsk|Zulfiyas Freund ist jetzt Kommissar. Er werde mir helfen, versichert er mir, wenn ich keinen allzu großen Ärger mache.\n#domicile.strasbourg|Eine hoch aufgeschossene Gestalt erwartet mich in einem kleinen Garten beim Museum. Wenn ich nicht allzu genau hinsehe, könnte es sich um einen in Decken gehüllten Mann handeln. Sagen wir einfach, es ist so. Ich sehe ihn nicht an, als er mir etwas zuflüstert, doch ich weiß danach etwas mehr über die geheimen Wege von Strasbourg.\n#domicile.tiflis|Heitere Grammophon-Musik schallt aus Vasils offenem Fenster als ich an ihre Tür klopfe.\n#domicile.tirana|Meine Freundin und Zogistin schüttelt mir eisern die Hand. 'Ich kann dich vorstellen', sagt sie, 'wenn du genug Jahre hast, um seine Gunst zu gewinnen.'\n#domicile.tripoli|Ein Fetzen blauen Himmels als ich aus dem Zug steige, das Bröckeln goldenen Steins. Eine plötzliche Welle unmöglichen Heimwehs schüttelt mich durch.\n#domicile.valletta|Kemal wartet auf mich am Kai. 'Ich werde tun, was ich kann', versichert er mir. 'Ich habe das Ohr des Gouverneurs. Du kennst ja die Briten. Sehr zuverlässig. Aber nicht sonderlich hell.'\n#domicile.venice|Orsolina betreibt ein kleines Fisch-Restaurant in Cannaregio. 'Du kennst meine Sorgen', hatte sie mir bei meinem letzten Besuch gesagt. 'Baccalà war immer meine Schwäche. Hätte ich nie davon gekostet, würde ich noch immer in der Erde leben, keine Frage.'\n#domicile.vienna|Als ich den Bahnhof verlasse, sehe ich eine grauhaarige Frau in Schwarz und Weiß, die mich von der anderen Straßenseite aus beobachtet. Die Menge schließt sich vor ihr und sie ist fort.\n#domicile.bornholm|Ich finde ein Zimmer über dem Hafen. Wenn mein Feind kommt, erwarte ich ihn draußen auf den Klippen.\n#domicile.cheko|Ich entzünde ein Feuer im Hauptraum der Hütte und tue, was ich kann, um die Fensterläden zu reparieren. Ich weiß nicht, wie lange ich werde warten müssen.\n#domicile.ghardaia|Jeden Abend, wenn der Himmel sich verfinstert, ist die Wüstenluft knackig wie frischer Schnee, und beinahe vergesse ich, wo ich hier bin.\n#domicile.messana|Es ist hier sehr still. Wie leise er sich auch nähern mag, ich werde ihn hören. Aber ich denke, er wird zu stolz sein, um sich anzuschleichen.\n#domicile.morbihan|'Du kannst bleiben', sagt der Prior. 'Doch dein Geld werde ich nicht annehmen. Es ist der Teufel, der es auf dich abgesehen hat. Für dich gibt es keine Zuflucht, weder hier noch irgendwo sonst auf dem Angesicht der Erde.'\n#domicile.paro|Es ist ein langer Aufstieg. Nicht zu lang für meinen Feind, da bin ich mir sicher. Doch ich kann ihn kommen sehen.\n#domicile.slettnes|Ich treffe in der Abenddämmerung ein. Das Licht flackert, flackert. Es wird auch ihn hierher locken.\n\n#|Ich bin angekommen.@",
+			"comments": "Converts packed assets back into assets.",
+			"alt": [
+				{
+					"id": "scout.first",
+					"additional": true
+				},
+				{
+					"id": "meeting.navil.chaima",
+					"additional": true
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "asset.packed",
+					"mutateAspectId": "asset",
+					"mutationLevel": 0
+				},
+				{
+					"filterOnAspectId": "asset",
+					"mutateAspectId": "asset.packed",
+					"mutationLevel": 0
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "meeting.navil.chaima",
+			"actionId": "meeting.navil.chaima",
+			"label": "Ein Wiedersehen",
+			"startdescription": "'Chaima!' Navil jauchzt vor Freude. 'Vater', antwortet sie etwas vorsichtiger. Sie umarmen sich und Navil dreht sich zu mir um und strahlt. 'Meine Tochter jagt Monster für den Oberst und ich heile sie für den Löwenschmied. Doch ich freue mich immer sie zu sehen. War denn nicht der Löwenschmied das Kind des Leibes der Obersts bevor sie zu Feinden wurden? Gerade du solltest das wissen.' [Halte Ausschau nach Echidna. Chaima ist an ihr interessiert.]",
+			"extantreqs": {
+				"domicile.marrakech": 1,
+				"ally.huntress": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "turn.begin",
+			"actionId": "time.exile",
+			"label": "Das Rad dreht sich",
+			"startdescription": "Die Sonne wandert über den Himmel. Verfolgt von der Nacht.",
+			"warmup": 60,
+			"comments": "No enemies arrive in the first turn.",
+			"alt": [
+				{
+					"id": "use.first",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "turn.next",
+			"actionId": "time.exile",
+			"label": "Das Rad dreht sich",
+			"startdescription": "Die Sonne wandert über den Himmel. Verfolgt von der Nacht. [Am Ende jedes Zyklus können auch Abrechner die Stadt betreten. Dies ist wahrscheinlicher, wenn du eine Spur hinterlassen hast, und noch sehr viel wahrscheinlicher, wenn du mehr als eine hinterlassen hast.]",
+			"warmup": 60,
+			"comments": "using linked recipes so we can select just one possible additional trace response",
+			"linked": [
+				{
+					"id": "wounds.exile.danger"
+				},
+				{
+					"id": "turn.check.traces"
+				},
+				{
+					"id": "turn.check.trace"
+				},
+				{
+					"id": "turn.check.no.trace"
+				},
+				{
+					"id": "turn.check.mapedge.traces"
+				},
+				{
+					"id": "turn.check.mapedge.trace"
+				},
+				{
+					"id": "turn.check.mapedge.no.trace"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "turn.check.traces",
+			"actionId": "time.exile",
+			"extantreqs": {
+				"trace": 2,
+				"rkx.underlings.blocker": -1,
+				"diversion.exile": -1,
+				"rkx.foe.defeated": -1
+			},
+			"alt": [
+				{
+					"id": "rkx.arrive.traces",
+					"additional": true,
+					"chance": 70
+				}
+			],
+			"linked": [
+				{
+					"id": "wounds.exile.danger"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "turn.check.trace",
+			"actionId": "time.exile",
+			"extantreqs": {
+				"trace": 1,
+				"rkx.underlings.blocker": -1,
+				"diversion.exile": -1,
+				"rkx.foe.defeated": -1
+			},
+			"alt": [
+				{
+					"id": "rkx.arrive.trace",
+					"additional": true,
+					"chance": 30
+				}
+			],
+			"linked": [
+				{
+					"id": "wounds.exile.danger"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "turn.check.no.trace",
+			"actionId": "time.exile",
+			"extantreqs": {
+				"trace": -1,
+				"rkx.underlings.blocker": -1,
+				"diversion.exile": -1,
+				"rkx.foe.defeated": -1
+			},
+			"alt": [
+				{
+					"id": "rkx.arrive.no.trace",
+					"additional": true,
+					"chance": 10
+				}
+			],
+			"linked": [
+				{
+					"id": "wounds.exile.danger"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "turn.check.mapedge.traces",
+			"actionId": "time.exile",
+			"extantreqs": {
+				"trace": 2,
+				"rkx.foe": -1,
+				"rkx.underlings.blocker": 1,
+				"diversion.exile": -1,
+				"rkx.foe.defeated": -1
+			},
+			"alt": [
+				{
+					"id": "rkx.foe.arrive.mapedge",
+					"additional": true,
+					"chance": 70
+				}
+			],
+			"linked": [
+				{
+					"id": "wounds.exile.danger"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "turn.check.mapedge.trace",
+			"actionId": "time.exile",
+			"extantreqs": {
+				"trace": 1,
+				"rkx.foe": -1,
+				"rkx.underlings.blocker": 1,
+				"diversion.exile": -1,
+				"rkx.foe.defeated": -1
+			},
+			"alt": [
+				{
+					"id": "rkx.foe.arrive.mapedge",
+					"additional": true,
+					"chance": 30
+				}
+			],
+			"linked": [
+				{
+					"id": "wounds.exile.danger"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "turn.check.mapedge.no.trace",
+			"actionId": "time.exile",
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.underlings.blocker": 1,
+				"diversion.exile": -1,
+				"rkx.foe.defeated": -1
+			},
+			"alt": [
+				{
+					"id": "rkx.foe.arrive.mapedge",
+					"additional": true,
+					"chance": 10
+				}
+			],
+			"linked": [
+				{
+					"id": "wounds.exile.danger"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "wounds.exile.danger",
+			"actionId": "time.exile",
+			"label": "Die Abrechnung naht",
+			"startdescription": "Der Himmel weicht. Dann alles andere. [Hast du immer noch 7 Wunden, wenn dies abgeschlossen wird, stirbst du.]",
+			"extantreqs": {
+				"damage.exile": 7
+			},
+			"warmup": 15,
+			"signalEndingFlavour": "Melancholy",
+			"linked": [
+				{
+					"id": "wounds.exile.ending"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "wounds.exile.ending",
+			"actionId": "time.exile",
+			"label": "Die Abrechnung naht",
+			"extantreqs": {
+				"damage.exile": 7
+			},
+			"ending": "foecaughtup"
+		},
+		{
+			"id": "spawn.obscurity",
+			"actionId": "spawn.obscurity",
+			"label": "Kind der Zeit",
+			"startdescription": "Wenn die Wahrheit die Tochter der Zeit ist, wessen Kind ist dann die Vergesslichkeit? [Du hast Unklarheit gewonnen.]",
+			"extantreqs": {
+				"rkx.foe": -1
+			},
+			"effects": {
+				"obscurity": 1
+			},
+			"warmup": 5
+		},
+		{
+			"id": "spawn.trace",
+			"actionId": "spawn.trace",
+			"label": "Eine Spur!",
+			"startdescription": "Es ist schwer, durch die Welt zu kommen und keine Fußspuren zu hinterlassen. [Abrechner benutzen deine Spuren, um dich zu finden.]",
+			"effects": {
+				"trace": 1
+			},
+			"warmup": 5
+		}
+	]
+}

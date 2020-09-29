@@ -1,0 +1,315 @@
+{
+	"recipes": [
+		{
+			"id": "explore_vaultlandbeyondforest1_setup",
+			"label": "Der Beginn einer Expedition: Die Höhle der Kerzen",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultlandbeyondforest1": 1
+			},
+			"effects": {
+				"peril_mountains": 1,
+				"guardian_serpent": 1
+			},
+			"startdescription": "Der Aufstieg zur Höhle über die hohen Pässe wird gefährlich sein. Was auch immer unten in der Finsternis wartet, ist aber wahrscheinlich noch gefährlicher. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultlandbeyondforest2_setup",
+			"label": "Der Beginn einer Expedition: Die Woivoden-Zitadelle",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultlandbeyondforest2": 1
+			},
+			"effects": {
+				"seal_hiddendoor": 1,
+				"guardian_dead": 1
+			},
+			"startdescription": "Das Woivoden-Gewölbe wird gut versteckt sein, und wenn die Geschichten stimmen, dürften seine Opfer nicht in Frieden in der Finsternis hinter den Mauern der Zitadelle ruhen. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultlandbeyondforest3_setup",
+			"label": "Der Beginn einer Expedition: Grunewalds Dauerzirkus",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultlandbeyondforest3": 1
+			},
+			"effects": {
+				"guardian_watchers": 1,
+				"curse_nowhere": 1
+			},
+			"startdescription": "Die Zirkusleute werden bereit sein, gegen uns zu den Waffen zu greifen, und die Macht der Zirkus' könnte, so fürchten wir, vom Wurme verderbt sein. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultlandbeyondforest4_setup",
+			"label": "Der Beginn einer Expedition: Turm Revek",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultlandbeyondforest4": 1
+			},
+			"effects": {
+				"seal_hiddendoor": 1,
+				"curse_affliction": 1
+			},
+			"startdescription": "Wir werden minutiös suchen müssen, um noch verbliebene Schätze finden zu können. Und wenn der Turm wirklich in einem Kampf von Adepten gegeneinander zerstört wurde, dann könnten immer noch gefährliche Einflüsse vorhanden sein. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultlandbeyondforest5_setup",
+			"label": "Der Beginn einer Expedition: Die Kusnetzow-Stiftung",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultlandbeyondforest5": 1
+			},
+			"effects": {
+				"seal_hiddendoor": 1,
+				"guardian_watchers": 1,
+				"peril_treacherousground": 1
+			},
+			"startdescription": "Die Reise zu den Gebäuden der Stiftung ist nicht lang, doch das Terrain ist schwierig. Dreimal haben wir um eine Besuchserlaubnis ersucht, und jedes Mal bekamen wir eine immer weniger freundliche Antwort. Zweifellos wird das Personal dort versuchen, uns den Zugang zu verwehren. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultlandbeyondforestdefault_setup",
+			"label": "Der Beginn einer Expedition: Fuchslilien-Wiese",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultlandbeyondforestdefault": 1
+			},
+			"effects": {
+				"peril_mountains": 1,
+				"guardian_watchers": 1,
+				"curse_visions": 1
+			},
+			"startdescription": "Der Weg durch die Berge zur Hochwiese wird schwer sein. Die Bauern in den Bergen wollen uns vertreiben. Wenn wir sicher nach Hause zurückkehren, haben wir vielleicht Probleme, Visionen jenes Ortes wieder loszuwerden. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultlandbeyondforest1_success",
+			"label": "Ein Nest aus Licht",
+			"actionId": "explore",
+			"requirements": {
+				"vaultlandbeyondforest1": 1
+			},
+			"effects": {
+				"vaultlandbeyondforest1": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"influencelanternc",
+					"accountkanishkspidersdooraramaic",
+					"theskythesoularamaic",
+					"ingredientlanternf"
+				],
+				"draws": 4,
+				"defaultcard": "compensationc",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Die Tunnel unter der Höhle sind glatt durch das Hindurchkriechen der großen Schlange und stockfinster, bis wir mit unseren Laternen kommen. Doch die Kammer, in der sie ihr Nest hatte, ist verblüffend hell. Leuchtende Pilze tauchen den Ort in ein falsches Mondlicht. Vielleicht haben die Kerzen sie angelockt und nicht vertrieben.",
+			"description": "Eine Handvoll Schätze, über die Jahre hinweg von den Mahlzeiten der Schlange übrig geblieben. Sie hat sie zu einem funkelnden Haufen zusammengeschoben.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultlandbeyondforest2_success",
+			"label": "Die leere Gruft",
+			"actionId": "explore",
+			"requirements": {
+				"vaultlandbeyondforest2": 1
+			},
+			"effects": {
+				"vaultlandbeyondforest2": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"influencegrailc",
+					"gospelzacchaeusgreek",
+					"catalogueofunchartedpleasuresphrygian",
+					"bookofthronesphrygian",
+					"twentysixenticementsseventormentsfucine",
+					"toolheartd"
+				],
+				"draws": 6,
+				"defaultcard": "compensationc",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Hier ist das Mausoleum des Woivoden. Schlaffe Spinnweben hängen wie weiche graue Vorhänge herab. Ein großer Sarkophag aus Sandstein steht aufrecht in einer Ecke. Er ist leer.",
+			"description": "Jemand hat ein Häuflein Schätze vor dem Sarkophag hinterlassen, wie als Opfergabe. Im Staub sind keine Fußspuren. Wer auch immer hier war, kam vor langer Zeit und berührte seinerzeit nicht den Boden.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultlandbeyondforest3_success",
+			"label": "Nach dem Zirkus",
+			"actionId": "explore",
+			"requirements": {
+				"vaultlandbeyondforest3": 1
+			},
+			"effects": {
+				"vaultlandbeyondforest3": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"erudition",
+					"jumble",
+					"sunsetpassageslatin",
+					"historyofshadowlesskingsaramaic",
+					"ivorybookfucine",
+					"ingredientgrailf",
+					"textbooksanskrit"
+				],
+				"draws": 7,
+				"defaultcard": "compensationc",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Im gestreiften Zelt winden sich die Missgebildeten hinter verschmiertem, trübem Glase. Im grauen Zelt beschnüffelt uns der tropfende Nebel wie eine Katze auf der Jagd – ein Nebel wie ein Tier. Im schwarzen Zelt mit den Sternen gibt es herrliche Modelle des Sonnensystems sowie mit Strass besetzte Skulpturen zu sehen. Im roten Zelt ist der wächserne Priester im Glassarg, die Bücher an die Brust gepresst –",
+			"description": "Im roten Zelt, ein Papier gewordener Wahnsinn. Die Zirkusleute haben alle mit Diagrammen tapeziert: die Anatomie der Zeit, die Sektionen alten Wetters. Es stinkt nach dem Nirgendwo. Wir sollten alles verbrennen, wenn wir gehen. Auf einem Tapeziertisch steht ein schmuckloser Haufen aus Trophäen und Andenken.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultlandbeyondforest4_success",
+			"label": "Ein lange herausgezögerter Abschluss",
+			"actionId": "explore",
+			"requirements": {
+				"vaultlandbeyondforest4": 1
+			},
+			"effects": {
+				"vaultlandbeyondforest4": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"furioustantrasanskrit",
+					"twinserpenttantrasanskrit",
+					"howendwillbeginvak",
+					"ingredientforgeb"
+				],
+				"draws": 4,
+				"defaultcard": "compensationc",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Unter dem Turm ist ein vollgestellter Keller mit gesprungenen Schieferwänden. Den Proportionen zufolge sollte es ein perfekter Würfel sein, doch es gibt einfach zu viele Ecken. Blaues Licht wuchert am Übergang von Decke und Wänden. Der Boden wölbt sich langsam, wie die Haut einer Blase. Stampft man auf, gibt es ein Echo. Welche Räume liegen wohl darunter?",
+			"description": "Die Bücher in einen Sack. Schnell, die Handgriffe zum Turmstumpf. Der Himmel kräuselt sich vor kobaltblauen Auroren.  Die Hügel in der Umgebung sind von Stößen blauen Lichts überwogt. Ein hohes, singendes Geräusch dringt aus den Steinen des Turms, als wir gehen. Ein Blitz fährt vom Himmel herab, und plötzlich ist alles still. Der Turmstumpf ist fort.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultlandbeyondforest5_success",
+			"label": "Das Ende der Worte",
+			"actionId": "explore",
+			"requirements": {
+				"vaultlandbeyondforest5": 1
+			},
+			"effects": {
+				"vaultlandbeyondforest5": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"burningwomanphrygian",
+					"encirclingtantrasanskrit",
+					"knownunknowntantrasanskrit",
+					"ironbookfucine",
+					"silverbookfucine",
+					"matthiasamethystpursuitaramaic"
+				],
+				"draws": 6,
+				"defaultcard": "compensationc",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Die Decke der Bibliothek ist vor Jahren eingestürzt. Viele der Bücher sind dank des herabtropfenden Wassers nur noch aufgequollener Papierbrei. Etwas muss bleiben. ",
+			"description": "Ein Portrait eines heiter lächelnden Mannes – dunkle Haut, helle Augen, weder Haare noch Augenbrauen – schaut auf die zerstörte Bibliothek. Es trägt den Titel 'Kümmert euch nicht um mich' und ist mit einer unleserlichen schlangengleichen Signatur unterschrieben. Die Farbe schält sich ab. Es schaut uns mit wohlwollendem Lächeln an, während wir inmitten der aufgedunsenen Bücher auf den Regalen noch intakte Schätze finden.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultlandbeyondforestdefault_success",
+			"label": "Die Nahrung der Blüten",
+			"actionId": "explore",
+			"requirements": {
+				"vaultlandbeyondforestdefault": 1
+			},
+			"effects": {
+				"vaultlandbeyondforestdefault": -1
+			},
+			"deckeffect": {
+				"vaultrewardsd": 3
+			},
+			"startdescription": "Wir haben Kleidung in Ammoniak getunkt und sie uns um das Gesicht gewickelt, um den Duft der Fuchslilien abzutöten. Trotzdem ist uns schwindelig, unsere Leiber folgen einem halben Dutzend widersprüchlicher Begierden. Hier sind die Knochen, die wir gesucht haben. Mitnehmen, dann nichts wie fort von hier.",
+			"description": "Die Fuchslilien sind so weiß wie Höhlenhaut, weiß wie Frost, weiß wie unbefleckte Laken. Es ist sehr schwer nicht hinzusehen. Wir werden die Augen schließen und uns mit unseren Schätzen davon machen.",
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "expeditionascensionheartd",
+					"chance": 100
+				},
+				{
+					"id": "expeditionascensionmothd",
+					"chance": 100
+				}
+			]
+		}
+	]
+}

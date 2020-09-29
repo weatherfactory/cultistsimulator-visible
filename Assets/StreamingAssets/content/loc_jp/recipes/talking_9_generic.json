@@ -1,0 +1,759 @@
+{
+	"recipes": [
+		{
+			"id": "speakpublicly",
+			"label": "秘教的な事柄について話す",
+			"actionId": "talk",
+			"requirements": {
+				"society": -1,
+				"lore": 1
+			},
+			"effects": {
+				"mystique": 1
+			},
+			"startdescription": "目に見えない術を公に語ることで注目を集める。それが私の望みなのかもしれない。",
+			"description": ".",
+			"warmup": 60,
+			"craftable": true,
+			"deckeffect": {
+				"talkevents": 1
+			},
+			"linked": [
+				{
+					"id": "talkfindacquaintance",
+					"chance": 100
+				},
+				{
+					"id": "talkfindpatron",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "talkfindacquaintance",
+			"label": "知人？",
+			"actionId": "talk",
+			"requirements": {
+				"dayacquaintances": 1
+			},
+			"slots": [
+				{
+					"id": "escalation",
+					"label": "情熱",
+					"description": "熱心になって説得しなければならない。",
+					"required": {
+						"passion": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "気の合う人を見つけた――でも、まずは説得しなければならない。[知人を説得するには情熱が必要だ。]",
+			"alternativerecipes": [
+				{
+					"id": "talkmeetacquaintance",
+					"chance": 100
+				}
+			],
+			"description": "新しい人を仲間に引き入れるほどの情熱がわかなかった。別の機会に試してみよう。",
+			"effects": {
+				"season": -1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "talkfindpatron",
+			"label": "パトロン？",
+			"actionId": "talk",
+			"requirements": {
+				"daypatrons": 1
+			},
+			"slots": [
+				{
+					"id": "escalation",
+					"label": "理性",
+					"description": "私は明確で信頼できる人物でなければならない。",
+					"required": {
+						"reason": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "私に役立つ資源を持っている人を見つけたが、その前にその人に興味を持ってもらわなくてはいけない。[パトロンを感心させるには、理性が必要だ。]",
+			"alternativerecipes": [
+				{
+					"id": "talkmeetpatron",
+					"chance": 100
+				}
+			],
+			"description": "本当の自分を披露する勇気を奮い立たせることが出来なかった。次の機会に頑張ってみよう。",
+			"effects": {
+				"season": -1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "talkmeetacquaintance",
+			"label": "知人",
+			"actionId": "talk",
+			"requirements": {
+				"passion": 1
+			},
+			"startdescription": "「おいで」",
+			"description": ".",
+			"deckeffect": {
+				"acquaintances": 1
+			},
+			"effects": {
+				"season": -1
+			},
+			"warmup": 5
+		},
+		{
+			"id": "talkmeetpatron",
+			"label": "パトロン",
+			"actionId": "talk",
+			"requirements": {
+				"reason": 1
+			},
+			"startdescription": "「お互いから学べることがあるはず」",
+			"description": ".",
+			"deckeffect": {
+				"scholarpatrons": 1
+			},
+			"effects": {
+				"season": -1
+			},
+			"warmup": 5
+		},
+		{
+			"id": "talktotroublemaker",
+			"label": "中立的な場所での話し合いを手配する",
+			"actionId": "talk",
+			"requirements": {
+				"independent": 1,
+				"society": -1,
+				"ritual": -1
+			},
+			"slots": [
+				{
+					"id": "Subject",
+					"label": "話題",
+					"description": "話の種。"
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "A_follower_settrap_independent",
+					"chance": 100
+				},
+				{
+					"id": "independentloreconversation",
+					"chance": 100
+				},
+				{
+					"id": "independentdesireconversation",
+					"chance": 100
+				},
+				{
+					"id": "independentfitewithextraswole",
+					"chance": 100
+				},
+				{
+					"id": "independentfitewithswole",
+					"chance": 100
+				},
+				{
+					"id": "independentspeakpoison",
+					"chance": 100
+				}
+			],
+			"startdescription": "「私たちは敵なのだろうか？そうでなくて良いのではないだろうか」",
+			"description": "雨が降り、風が震える夜明け後に、早朝から開店している喫茶店で交わされる慎重な会話。私は何も学べなかった。",
+			"effects": {
+				"mystique": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "independentloreconversation",
+			"label": "中立的な場所での話し合いを手配する",
+			"actionId": "talk",
+			"requirements": {
+				"lore": 1
+			},
+			"startdescription": "「話し合わなくてはいけない<i>こと</i>があるようだね......」",
+			"description": "ランプの明かりの下で声を潜めて交わされる、聞き取りにくい会話。川の泥に混じる黄金のような真実がちらちらと隠れている。もしかしたら、いつか、警戒せずに話せる日が来るかもしれない。",
+			"deckeffect": {
+				"troublemakerconversations": 1
+			}
+		},
+		{
+			"id": "independentdesireconversation",
+			"label": "中立的な場所での話し合いを手配する",
+			"actionId": "talk",
+			"requirements": {
+				"desire": 1
+			},
+			"startdescription": "「共通の目的を作ろうって？正気？」",
+			"description": "「多分。いつか。まずは証明してもらわないと。詳しく話をしよう......」[カルトがあれば、難しいが、トラブルメーカーを自分の味方につけることは可能だ。]",
+			"deckeffect": {
+				"troublemakerconversations": 1
+			}
+		},
+		{
+			"id": "independentfitewithextraswole",
+			"label": "ライバルへの奇襲",
+			"actionId": "talk",
+			"requirements": {
+				"murderskill": 1
+			},
+			"startdescription": "中立的な場所で会うことになった。必要な安全対策はしていると言うが、私のような人間を止められる対策はない。直接攻撃はかなりのリスクを伴うが......それ以外に方法はないのかもしれない。[確率は低いが、成功するかもしれない。]",
+			"description": "彼らの頭を両手で挟み首をへし折る。体が地面に叩きつけられる前に、私は消える。",
+			"alternativerecipes": [
+				{
+					"id": "independentfitewithswole_failure",
+					"chance": 70
+				}
+			],
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"killmortal": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "independentfitewithswole",
+			"label": "ライバルへの奇襲",
+			"actionId": "talk",
+			"requirements": {
+				"healthskill": 1
+			},
+			"startdescription": "中立的な場所で会うことになった。。必要な安全対策はしていると言う。それに直接攻撃はかなりのリスクを伴うが......それ以外に方法はないのかもしれない。[成功する確率は非常に低い。]",
+			"description": "彼らの頭を両手で挟み首をへし折る。体が地面に叩きつけられる前に、私は消える。",
+			"alternativerecipes": [
+				{
+					"id": "independentfitewithswole_failure",
+					"chance": 90
+				}
+			],
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"killmortal": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "independentfitewithswole_failure",
+			"label": "奇襲は失敗に終わった！",
+			"actionId": "talk",
+			"startdescription": ".",
+			"description": "叫び声を上げながら、テーブルを蹴り倒して、後ろに飛び退いた。周りの人たちは振り向く。誰も私が動くところを見ていない。唯一の目撃者はライバルだ。それでも、今すぐにここを去るべきだろう。",
+			"craftable": false,
+			"effects": {
+				"notoriety": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "independent",
+					"mutateAspectId": "wary",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "independent",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "independentspeakpoison",
+			"label": "ライバルに対して、驚異的な毒を使用する",
+			"actionId": "talk",
+			"requirements": {
+				"poison": 1
+			},
+			"startdescription": "「お茶は好き？」",
+			"description": "ライバルは失望した表情で顔を横に振り「本当に？」と言うと、それ以上は何も言わずに部屋を去った。机の上の紅茶には一口も口をつけなかったようだ。",
+			"mutations": [
+				{
+					"filterOnAspectId": "independent",
+					"mutateAspectId": "wary",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "independent",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "talktohunter",
+			"label": "敵との話し合いを手配する",
+			"actionId": "talk",
+			"requirements": {
+				"hunter": 1
+			},
+			"slots": [
+				{
+					"id": "Subject",
+					"label": "話題",
+					"description": "話の種.....または攻撃を仕掛ける手下。"
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "hunterfitewithextraswole"
+				},
+				{
+					"id": "hunterfitewithswole"
+				},
+				{
+					"id": "hunterspeakpoison_glassfinger"
+				},
+				{
+					"id": "hunterspeakpoison"
+				},
+				{
+					"id": "hunterspeakwinterg"
+				},
+				{
+					"id": "hunterspeakwinterd"
+				},
+				{
+					"id": "hunterspeakwinter"
+				},
+				{
+					"id": "hunterspeakdread"
+				},
+				{
+					"id": "hunterspeaklanterng"
+				},
+				{
+					"id": "hunterspeaklanternd"
+				},
+				{
+					"id": "hunterspeaklantern"
+				},
+				{
+					"id": "hunterspeakfascination"
+				},
+				{
+					"id": "hunterattackhighedge"
+				},
+				{
+					"id": "hunterattackhighwinter"
+				},
+				{
+					"id": "hunterattackmidedge"
+				},
+				{
+					"id": "hunterattackmidwinter"
+				},
+				{
+					"id": "hunterattacklowedge"
+				},
+				{
+					"id": "hunterattacklowwinter"
+				},
+				{
+					"id": "hunterattacknoedge"
+				}
+			],
+			"startdescription": "交渉できるかもしれない。もしくは、奇襲攻撃を仕掛けるために何かを送り込めるかもしれない。",
+			"description": "軽率な行動だった。こんなに自分をさらけ出すべきではなかったのかもしれない。",
+			"effects": {
+				"notoriety": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "talktospirit",
+			"label": "召喚したものに話しかける",
+			"actionId": "talk",
+			"requirements": {
+				"society": -1,
+				"follower": 1,
+				"summoned": 1
+			},
+			"slots": [
+				{
+					"id": "Subject",
+					"label": "話題",
+					"description": "話の種.....か、ターゲット。"
+				}
+			],
+			"comments": "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
+			"alternativerecipes": [
+				{
+					"id": "discusspassionsacrifice"
+				},
+				{
+					"id": "discussreasonsacrifice"
+				},
+				{
+					"id": "discusssicknessprotectionspirit"
+				},
+				{
+					"id": "discussfucinespirit"
+				},
+				{
+					"id": "discussphrygianspirit"
+				},
+				{
+					"id": "discussmandaicspirit"
+				},
+				{
+					"id": "hunterattackhighedge"
+				},
+				{
+					"id": "hunterattackmidedge"
+				},
+				{
+					"id": "hunterattacklowedge"
+				},
+				{
+					"id": "hunterattacknoedge"
+				},
+				{
+					"id": "evidencedestroymidmoth"
+				},
+				{
+					"id": "evidencedestroylowmoth"
+				},
+				{
+					"id": "evidencedestroynomoth"
+				},
+				{
+					"id": "annoyanceseducehighgrail"
+				},
+				{
+					"id": "annoyanceattackhighedge"
+				},
+				{
+					"id": "annoyanceseducemidgrail"
+				},
+				{
+					"id": "annoyanceattackmidedge"
+				},
+				{
+					"id": "annoyancederangemidmoth"
+				},
+				{
+					"id": "annoyanceseducelowgrail"
+				},
+				{
+					"id": "annoyanceattacklowedge"
+				},
+				{
+					"id": "annoyancederangelowmoth"
+				},
+				{
+					"id": "annoyanceattacknoedge"
+				},
+				{
+					"id": "apostlelantern.recruitkleidouchos.teresa"
+				},
+				{
+					"id": "apostlelantern.usepillar3"
+				},
+				{
+					"id": "teresadiscusslocksmithsdream1"
+				},
+				{
+					"id": "teresadiscusslocksmithsdream2"
+				},
+				{
+					"id": "teresadiscusslocksmithsdream3"
+				},
+				{
+					"id": "teresadiscusslocksmithsdream4"
+				},
+				{
+					"id": "teresadiscusslocksmithsdream5"
+				}
+			],
+			"startdescription": "マンサスの全ての者が言葉を話せるわけではない。しかし、たとえそれが白い扉を通過した後でも、全ての者が定命の者の言葉を理解できる。",
+			"description": "反応なし。私の言葉はグラスの中の砂のように止まっている。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "discusspassionsacrifice",
+			"actionId": "talk",
+			"label": "冷たい教訓",
+			"startdescription": "冬の太陽が語る物語に耳を澄ませば、魂の衰えを犠牲にしてでも、何かを学ぶことができるかもしれない。[ストリッパーの寓話を教えてくれるが、情熱を老化に変えてしまう.....しかしそれさえも、狭い扉を開くかもしれない。]",
+			"description": "@#spirit_winterb_heart|「私を見れば、私が死んだことが分かるだろう。それが私が失ったことだと思うかもしれない。しかしそれだけなら、なぜ私に聞くのだ」。しかし私は何も聞かなかった。死者が喋ることはめったにない。\n#spirit_winterd_edge|少女の声は、切ったばかりの宝石のように鋭く新鮮だ。「何が失われるか？選択をするたびに扉が閉じる......マンサスには7つしかないのに」\n#spirit_lanterne_secret|「何が失われるか？私の子供時代。私の重荷。私の幻想。私の誇り。私の評判。私の影。私の心......」＠",
+			"requirements": {
+				"passion": 1,
+				"spiriteatspassion": 1
+			},
+			"effects": {
+				"passion": -1,
+				"decrepitude": 1,
+				"fragmentmothc": 1,
+				"influencewintere": 1
+			}
+		},
+		{
+			"id": "discussreasonsacrifice",
+			"actionId": "talk",
+			"label": "野性の教え",
+			"startdescription": "狂気に身を委ねれば、野性の教えを学ぶことになる。[これにより傷の承諾を学ぶことになるが、理性を老化に変える......それさえも狭い扉を開くことになるかもしれないが。]",
+			"description": "@#spirit_grailc_moth|預言者はその預言を私の肌で行い、その宣告の下で私の心は古布のように破れていく。\n#spirit_heartc_edge|パーカッシガントは、私の体にはできない動きで私を導き、私が変化し、取り繕うことができれば、私の肌は、物語を、この物語を受け継ぐことになる。ああ、私の肌は、この物語を、受け継ぐだろう。\n#spirit_graile_edge|「覚醒世界で彼女のことを知っていた。その頃は、今よりも彼女の腕の数が少なく、温かかったが、口元はいつも冷たかった。私を嘘つきと呼べるものなら呼んでみろ。さもなくば、第五史を奥に深く刻み込んでやる。誰にも見えない場所に。あなたにさえも――」@",
+			"requirements": {
+				"reason": 1,
+				"spiriteatsreason": 1
+			},
+			"effects": {
+				"reason": -1,
+				"decrepitude": 1,
+				"fragmentknockc": 1,
+				"influenceknocke": 1
+			}
+		},
+		{
+			"id": "discusssicknessprotectionspirit",
+			"label": "執行停止の要請",
+			"actionId": "talk",
+			"requirements": {
+				"summoned": 1,
+				"spiritsicknessprotector": 1,
+				"health": 1
+			},
+			"startdescription": "マンサスの住人は肉の弱さに悩まされることはない。その中には、時折、覚醒世界に囚われている私たちにまで保護の手を差し伸べてくれるものもいる。",
+			"description": "@#spirit_wintera_moth|自分の髪を1束、この者の胸に入れよう。運が良ければ、いつか病がそこに私を探しに来るだろう。#spirit_grailc_moth|未熟な預言者は、その全ての腕で私を抱きしめ、口か、他のそれらしきもので口づけをしてくれる。これで病にならずに済むかもしれないし、単純に数で病を圧倒できるのかもしれない。#spirit_heartc_edge|パーカッシガントは、私の心の鼓動を、終わりなきダンスのステップに織り込んでいくだろう。それだけで十分、十分、十分かもしれない。#spirit_graile_edge|「口を開けて、頭を後ろに傾けて。一滴だけだから。飲み込んで。そう。これでもう大丈夫」#spirit_lanterne_secret|「私があなたの影に話しかければ、やがて大きな影が追いやられていくだろう。今約束できるのはこれだけだ」@",
+			"craftable": false,
+			"effects": {
+				"sicknessprotection": 1
+			}
+		},
+		{
+			"id": "discussfucinespirit",
+			"label": "フチーノ語の学習",
+			"actionId": "talk",
+			"requirements": {
+				"scholarlatin": 1,
+				"summoned": 1,
+				"spirittutorfucine": 1
+			},
+			"startdescription": "「フチーノ語？ええ、フチーノ語なら何とか喋れるわ。ラテン語の基礎を知っているなら、教えてあげる。でも「魔女の言葉」の冗談を言ったら、すぐにやめるわよ」[バルドメリアンで<b>学習</b>を使ってフチーノ語を学ぶ。]",
+			"description": ".",
+			"craftable": true
+		},
+		{
+			"id": "discussphrygianspirit",
+			"label": "フリジア語の学習",
+			"actionId": "talk",
+			"requirements": {
+				"scholargreek": 1,
+				"summoned": 1,
+				"spirittutorphrygian": 1
+			},
+			"startdescription": "「フリジア語！大いなる母の母語！もちろん。ギリシャ語の基礎を知っていれば、フリジア語の勉強は<i>とても</i>楽しいものになるだろう」[エジームで<b>学習</b>を使ってフリジア語を学ぶ。]",
+			"description": ".",
+			"craftable": true
+		},
+		{
+			"id": "discussmandaicspirit",
+			"label": "ディープマンダ語の学習",
+			"actionId": "talk",
+			"requirements": {
+				"scholararamaic": 1,
+				"summoned": 1,
+				"spirittutormandaic": 1
+			},
+			"startdescription": "「共に未燃の神の言葉を讃えよう」[坩堝の王で<b>学習</b>を使ってディープマンダ語を学ぶ。]",
+			"description": ".",
+			"craftable": true
+		},
+		{
+			"id": "teresadiscusslocksmithsdream1",
+			"label": "鍵屋の夢を語り合う 1巻",
+			"requirements": {
+				"spirit_lanterne_secret": 1,
+				"locksmithsdream1": 1,
+				"autographed": -1
+			},
+			"actionId": "talk",
+			"startdescription": "「サインをしましょうか？その方が楽しいと思うの」",
+			"description": "「カムデンロックのそばに住んでいた時に、書き始めた作品よ。それが時の神々の冗談でなければ、何だかわからないわ。私の情報源を教えてあげる――」",
+			"effects": {
+				"erudition": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "text",
+					"mutateAspectId": "autographed",
+					"mutationLevel": 1
+				}
+			]
+		},
+		{
+			"id": "teresadiscusslocksmithsdream2",
+			"label": "鍵屋の夢を語り合う 2巻",
+			"requirements": {
+				"spirit_lanterne_secret": 1,
+				"locksmithsdream2": 1,
+				"autographed": -1
+			},
+			"actionId": "talk",
+			"startdescription": "「サインをしましょうか？気取りすぎかしら？誰も本物だとは信じないでしょうね。私は死んだことになっているもの」",
+			"description": "「私は今でも、扉は職人の技、製作過程に関係があると思っているわ。そうやって家への道を見つけ始めたはずよ。もちろん、言葉を話せるようになるまでは、私たちの昇天には限界があったわ。詳しく説明すると――」",
+			"effects": {
+				"glimmering": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "text",
+					"mutateAspectId": "autographed",
+					"mutationLevel": 1
+				}
+			]
+		},
+		{
+			"id": "teresadiscusslocksmithsdream3",
+			"label": "鍵屋の夢を語り合う 3巻",
+			"requirements": {
+				"spirit_lanterne_secret": 1,
+				"locksmithsdream3": 1,
+				"autographed": -1
+			},
+			"actionId": "talk",
+			"startdescription": "「中に名前を書いた方が良いかしら？クリストファーが呼んでくれた名前よ。ここで使っている名前ではないわ」",
+			"description": "「あらやだ、どんな状態でこれを書いたのかしら......ごめんなさいね。でも死が下にあるって書いたのは間違いではないわ。だから私は普段からマンサスの高いところにいるの。どういう意味か説明すると、少し――」",
+			"effects": {
+				"glimmering": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "text",
+					"mutateAspectId": "autographed",
+					"mutationLevel": 1
+				}
+			]
+		},
+		{
+			"id": "teresadiscusslocksmithsdream4",
+			"label": "鍵屋の夢を語り合う 4巻",
+			"requirements": {
+				"spirit_lanterne_secret": 1,
+				"locksmithsdream4": 1,
+				"autographed": -1
+			},
+			"actionId": "talk",
+			"startdescription": "「これには絶対サインするわ。でも本の夢を見ていない限り、誰もサインを見ないでしょうね」",
+			"description": "「あの頃はヤヌスにとても興味を持っていたの。今思うと、ヤヌスが誰でも良いなら、その誰かは見張り番かメニスカーテだと思うわ。なぞなぞは広がり、パズルは解けていくもの」",
+			"effects": {
+				"glimmering": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "text",
+					"mutateAspectId": "autographed",
+					"mutationLevel": 1
+				}
+			]
+		},
+		{
+			"id": "teresadiscusslocksmithsdream5",
+			"label": "鍵屋の夢を語り合う 5巻",
+			"requirements": {
+				"spirit_lanterne_secret": 1,
+				"locksmithsdream5": 1,
+				"autographed": -1
+			},
+			"actionId": "talk",
+			"startdescription": "「どこでこれを見つけたの？」",
+			"description": "「サインはするけど、私の名前は使わないわ。まだよ」",
+			"effects": {
+				"glimmering": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "text",
+					"mutateAspectId": "autographed",
+					"mutationLevel": 1
+				}
+			]
+		},
+		{
+			"id": "begincultfoundation",
+			"label": "新しい始まり？",
+			"actionId": "talk",
+			"requirements": {
+				"acquaintance": 1,
+				"ritual": -1,
+				"location": -1
+			},
+			"extantreqs": {
+				"society": -1
+			},
+			"craftable": true,
+			"startdescription": "力を合わせれば、上を目指せる。",
+			"comments": "This is hijacked by links from the Apostle open-talk verbs, to prevent apostles founding a second cult. This is why all the content is in the followup recipe.",
+			"linked": [
+				{
+					"id": "begincultfoundation_createcult",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "begincultfoundation_createcult",
+			"label": "神秘的な組織を設立する",
+			"extantreqs": {
+				"society": -1
+			},
+			"alternativerecipes": [
+				{
+					"id": "cultfoundation",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"actionId": "talk",
+			"effects": {
+				"notoriety": 1
+			},
+			"startdescription": "この人となら力を合わせても良い。仲間か信奉者にぴったりなはずだ。しかし、まずは何か従えるものを与えなくてはいけない。協会、信心会、教団、カルトが良いだろうか。",
+			"description": "真の目的を実行し始めた。取締局が関心を持つだろう。そのために準備をしなければならない。[教団の設立が始まったが、信奉者を募るにはもう少し時間が必要だ。]",
+			"warmup": 10
+		},
+		{
+			"id": "inspiremystique",
+			"actionId": "talk",
+			"label": "注目を集める",
+			"effects": {
+				"mystique": 1
+			},
+			"startdescription": "その瞬間もあり、あの瞬間もあるが、この瞬間は私のものだ。",
+			"description": "開いた唇、輝く瞳。",
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "findacquaintanceopentalk",
+			"label": "知人",
+			"actionId": "talk",
+			"startdescription": "手紙の返事を待っている。",
+			"description": "手紙への返信は、慎重であり丁寧であった。どうやって自分の名前を見つけたのか気になるようだ。気になりすぎて、あなたに会いたいと言う。",
+			"warmup": 30,
+			"craftable": false,
+			"comments": "this runs as an additional, and is how Talk is opened. I'd like to remove maxexecutions, but it's in here now for safety.",
+			"deckeffect": {
+				"acquaintances": 1
+			},
+			"maxexecutions": 1
+		}
+	]
+}

@@ -1,0 +1,517 @@
+{
+	"elements": [
+		{
+			"id": "ritetoolconsumeingredient",
+			"label": "海の宴の儀式",
+			"aspects": {
+				"ritual": 1
+			},
+			"slots": [
+				{
+					"id": "Invocation",
+					"label": "祈願",
+					"actionId": "work",
+					"required": {
+						"lore": 1
+					},
+					"description": "何て言おう？"
+				},
+				{
+					"id": "Instrument",
+					"label": "手段",
+					"actionId": "work",
+					"required": {
+						"tool": 1
+					},
+					"description": "どんな手段を使う？"
+				},
+				{
+					"id": "Offering",
+					"label": "供物",
+					"actionId": "work",
+					"required": {
+						"ingredient": 1
+					},
+					"consumes": true,
+					"description": "何を手放す？"
+				},
+				{
+					"id": "Desire",
+					"label": "欲望",
+					"actionId": "work",
+					"required": {
+						"desire": 6
+					},
+					"description": "何になるのだろう？[このスロットは昇天の最終段階のみ受け付ける。第六の印を達成した場合、このスロットに上昇を加えて、大いなる業を完成させることができる。]"
+				}
+			],
+			"description": "この儀式は魔女と双子の片割れに、現実と可能性の差を埋めてほしいと願うもの。供物が高僧によって水の中に注がれるか、投げ入れられる。海が好ましいが、必ずしも海である必要はない。",
+			"unique": true
+		},
+		{
+			"id": "ritetoolconsumeinfluence",
+			"label": "地図の端の儀式",
+			"aspects": {
+				"ritual": 1
+			},
+			"slots": [
+				{
+					"id": "Invocation",
+					"label": "祈願",
+					"actionId": "work",
+					"required": {
+						"lore": 1
+					},
+					"description": "何て言おう？"
+				},
+				{
+					"id": "Offering",
+					"label": "供物",
+					"actionId": "work",
+					"required": {
+						"influence": 1
+					},
+					"description": "どの影響力を手放す？",
+					"consumes": true
+				},
+				{
+					"id": "Instrument",
+					"label": "手段",
+					"actionId": "work",
+					"required": {
+						"tool": 1
+					},
+					"description": "どんな手段を使う？"
+				},
+				{
+					"id": "Desire",
+					"label": "欲望",
+					"actionId": "work",
+					"required": {
+						"desire": 6
+					},
+					"description": "何になるのだろう？[このスロットは昇天の最終段階のみ受け付ける。第六の印を達成した場合、このスロットに上昇を加えて、大いなる業を完成させることができる。]"
+				}
+			],
+			"description": "ならず者はマンサスに入らない唯一の時の神である。この儀式は、適切な場所で適切な時間に行われなければならず、ならず者はその正しさを自分のおかげだと言うだろう。",
+			"unique": true
+		},
+		{
+			"id": "ritetoolconsumefollower",
+			"label": "坩堝の魂の儀式",
+			"comments": "endgame rite",
+			"aspects": {
+				"ritual": 1
+			},
+			"slots": [
+				{
+					"id": "Invocation",
+					"label": "祈願",
+					"actionId": "work",
+					"required": {
+						"lore": 1
+					},
+					"description": "何て言おう？"
+				},
+				{
+					"id": "Victim",
+					"label": "犠牲者",
+					"actionId": "work",
+					"required": {
+						"follower": 1,
+						"prisoner": 1
+					},
+					"consumes": true,
+					"description": "喜んで犠牲となる者が必要だ。"
+				},
+				{
+					"id": "Instrument",
+					"label": "手段",
+					"actionId": "work",
+					"required": {
+						"tool": 1
+					},
+					"description": "何に血を流すのだろう？"
+				},
+				{
+					"id": "Desire",
+					"label": "欲望",
+					"actionId": "work",
+					"required": {
+						"desire": 6
+					},
+					"description": "何になるのだろう？[このスロットは昇天の最終段階のみ受け付ける。第六の印を達成した場合、このスロットに上昇を加えて、大いなる業を完成させることができる。]"
+				}
+			],
+			"description": "この儀式では力のある道具を使って血に火をつける。火は世界の皮膚に現れる病変。助手が無傷で生き延びることはほとんどない。",
+			"unique": true
+		},
+		{
+			"id": "ritetoolfollowerconsumelore",
+			"label": "見張り番の嘆きの儀式",
+			"comments": "endgame rite",
+			"aspects": {
+				"ritual": 1
+			},
+			"slots": [
+				{
+					"id": "Sacrifice",
+					"label": "生贄",
+					"actionId": "work",
+					"required": {
+						"lore": 1
+					},
+					"consumes": true,
+					"description": "何を忘れよう。"
+				},
+				{
+					"id": "Assistant",
+					"label": "助手",
+					"actionId": "work",
+					"required": {
+						"follower": 1,
+						"prisoner": 1
+					},
+					"description": "誰が言葉を話すのだろう？"
+				},
+				{
+					"id": "Instrument",
+					"label": "手段",
+					"actionId": "work",
+					"required": {
+						"tool": 1
+					},
+					"description": "どんな手段を使う？"
+				},
+				{
+					"id": "Desire",
+					"label": "欲望",
+					"actionId": "work",
+					"required": {
+						"desire": 6
+					},
+					"description": "何になるのだろう？[このスロットは昇天の最終段階のみ受け付ける。第六の印を達成した場合、このスロットに上昇を加えて、大いなる業を完成させることができる。]"
+				}
+			],
+			"description": "この儀式は、壁のない家を歩く見張り番の喪失を思い起こさせる（光は彼の前を通り、影は彼の後ろを通り、彼にみられてはいけない）。力を宿した道具は彼を召喚して、彼の生け贄となる貴重な知識をあなたの思考の根底から奪うために使われる。あなたの正気を保つ言葉を唱えられる助手が必要なため、信頼できる人を選ぶべきである。",
+			"unique": true
+		},
+		{
+			"id": "ritefollowerconsumetool",
+			"label": "反逆者の苦闘の儀式",
+			"aspects": {
+				"ritual": 1
+			},
+			"slots": [
+				{
+					"id": "Invocation",
+					"label": "祈願",
+					"actionId": "work",
+					"required": {
+						"lore": 1
+					},
+					"description": "何て言おう？"
+				},
+				{
+					"id": "Assistant",
+					"label": "助手",
+					"actionId": "work",
+					"required": {
+						"follower": 1,
+						"prisoner": 1
+					},
+					"description": "誰が言葉を話すのだろう？"
+				},
+				{
+					"id": "Offering",
+					"label": "供物",
+					"actionId": "work",
+					"required": {
+						"tool": 1
+					},
+					"consumes": true,
+					"description": "何を手放す？"
+				},
+				{
+					"id": "Desire",
+					"label": "欲望",
+					"actionId": "work",
+					"required": {
+						"desire": 6
+					},
+					"description": "何になるのだろう？[このスロットは昇天の最終段階のみ受け付ける。第六の印を達成した場合、このスロットに上昇を加えて、大いなる業を完成させることができる。]"
+				}
+			],
+			"description": "この儀式は日々の鍛造の教えを実行するもので、職人は最も貴重な道具を破壊することによってのみ、最高の目標を達成することができる。大佐の前で剣を粉々にした時、ライオンスミスはこの事実を知っていた。だから私の助手は、選ばれた道具を破壊しなければならない。",
+			"unique": true
+		},
+		{
+			"id": "ritefollowerconsumeingredient",
+			"label": "母の慈悲の儀式",
+			"aspects": {
+				"ritual": 1
+			},
+			"slots": [
+				{
+					"id": "Invocation",
+					"label": "祈願",
+					"actionId": "work",
+					"required": {
+						"lore": 1
+					},
+					"description": "何て言おう？"
+				},
+				{
+					"id": "Assistant",
+					"label": "助手",
+					"actionId": "work",
+					"required": {
+						"follower": 1,
+						"prisoner": 1
+					},
+					"description": "誰が言葉を話すのだろう？"
+				},
+				{
+					"id": "Offering",
+					"label": "供物",
+					"actionId": "work",
+					"required": {
+						"ingredient": 1
+					},
+					"description": "何を捧げよう？",
+					"consumes": true
+				},
+				{
+					"id": "Desire",
+					"label": "欲望",
+					"actionId": "work",
+					"required": {
+						"desire": 6
+					},
+					"description": "何になるのだろう？[このスロットは昇天の最終段階のみ受け付ける。第六の印を達成した場合、このスロットに上昇を加えて、大いなる業を完成させることができる。]"
+				}
+			],
+			"description": "助手は蟻の母に生贄として捧げられる。しかし母は毒だけでなく、癒しも知っているので、劣等な身代わりでも慈悲深く受け入れてくれるだろう。通常は。これは、助手を不安を煽る経験である。",
+			"unique": true
+		},
+		{
+			"id": "riteinfluenceconsumeingredient",
+			"label": "鴉の癒しの儀式",
+			"aspects": {
+				"ritual": 1
+			},
+			"slots": [
+				{
+					"id": "Invocation",
+					"label": "祈願",
+					"actionId": "work",
+					"required": {
+						"lore": 1
+					},
+					"description": "何て言おう？"
+				},
+				{
+					"id": "Influence",
+					"label": "影響力",
+					"actionId": "work",
+					"required": {
+						"influence": 1
+					},
+					"description": "どんな力があるのだろう？"
+				},
+				{
+					"id": "Offering",
+					"label": "供物",
+					"actionId": "work",
+					"required": {
+						"ingredient": 1
+					},
+					"description": "何を捧げよう？",
+					"consumes": true
+				},
+				{
+					"id": "Desire",
+					"label": "欲望",
+					"actionId": "work",
+					"required": {
+						"desire": 6
+					},
+					"description": "何になるのだろう？[このスロットは昇天の最終段階のみ受け付ける。第六の印を達成した場合、このスロットに上昇を加えて、大いなる業を完成させることができる。]"
+				}
+			],
+			"description": "この儀式は、日の出または月の出前に浜辺の鴉を呼び出す。鴉は生け贄を受け入れ、代わりに大地の贈り物を授ける。",
+			"unique": true
+		},
+		{
+			"id": "ritefollowerconsumeinfluence",
+			"label": "夕焼けの儀式",
+			"aspects": {
+				"ritual": 1
+			},
+			"slots": [
+				{
+					"id": "Invocation",
+					"label": "祈願",
+					"actionId": "work",
+					"required": {
+						"lore": 1
+					},
+					"description": "何て言おう？"
+				},
+				{
+					"id": "Assistant",
+					"label": "助手",
+					"actionId": "work",
+					"required": {
+						"follower": 1,
+						"prisoner": 1
+					},
+					"description": "誰が言葉を話すのだろう？"
+				},
+				{
+					"id": "Offering",
+					"label": "供物",
+					"actionId": "work",
+					"required": {
+						"influence": 1
+					},
+					"consumes": true,
+					"description": "どんな影響力が消費されるのだろうか？"
+				},
+				{
+					"id": "Desire",
+					"label": "欲望",
+					"actionId": "work",
+					"required": {
+						"desire": 6
+					},
+					"description": "何になるのだろう？[このスロットは昇天の最終段階のみ受け付ける。第六の印を達成した場合、このスロットに上昇を加えて、大いなる業を完成させることができる。]"
+				}
+			],
+			"description": "助手は心から涙を流さなくてはいけない。その涙は影響力がある場所で聖水のように振りかけられる。すべてがうまく行われれば、ボロボロの太陽は影響力を消費し、結末を認め、手を貸してくれるだろう。",
+			"unique": true
+		},
+		{
+			"id": "riteinfluenceconsumefollower",
+			"label": "獣の分裂の儀式",
+			"aspects": {
+				"ritual": 1
+			},
+			"slots": [
+				{
+					"id": "Invocation",
+					"label": "祈願",
+					"actionId": "work",
+					"required": {
+						"lore": 1
+					},
+					"description": "何て言おう？"
+				},
+				{
+					"id": "Victim",
+					"label": "犠牲者",
+					"actionId": "work",
+					"required": {
+						"follower": 1,
+						"prisoner": 1
+					},
+					"description": "誰が分裂されるのだ？",
+					"consumes": true
+				},
+				{
+					"id": "Influence",
+					"label": "影響力",
+					"actionId": "work",
+					"required": {
+						"influence": 1
+					},
+					"description": "どんな力があるのだろう？"
+				},
+				{
+					"id": "Desire",
+					"label": "欲望",
+					"actionId": "work",
+					"required": {
+						"desire": 6
+					},
+					"description": "何になるのだろう？[このスロットは昇天の最終段階のみ受け付ける。第六の印を達成した場合、このスロットに上昇を加えて、大いなる業を完成させることができる。]"
+				}
+			],
+			"description": "助手の名前は力のある場所や力のある時に奪われ、9つに分けられる。彼らは動物のように駆られていたが、時代は変わった。",
+			"unique": true
+		},
+		{
+			"id": "riteconsumetoolingredientfollowerinfluence",
+			"label": "閏月挿入の儀式",
+			"aspects": {
+				"ritual": 1
+			},
+			"slots": [
+				{
+					"id": "Sacrifice",
+					"label": "生贄",
+					"actionId": "work",
+					"required": {
+						"lore": 1
+					},
+					"description": "失われるもの。",
+					"consumes": true
+				},
+				{
+					"id": "Offering",
+					"label": "供物",
+					"actionId": "work",
+					"required": {
+						"follower": 1,
+						"prisoner": 1,
+						"summoned": 1
+					},
+					"description": "失われるもの。",
+					"consumes": true
+				},
+				{
+					"id": "Surrender",
+					"label": "降伏",
+					"actionId": "work",
+					"required": {
+						"tool": 1
+					},
+					"description": "失われるもの。",
+					"consumes": true
+				},
+				{
+					"id": "Dissolution",
+					"label": "溶解",
+					"actionId": "work",
+					"required": {
+						"influence": 1
+					},
+					"description": "失われるもの。",
+					"consumes": true
+				},
+				{
+					"id": "Grief",
+					"label": "嘆き",
+					"actionId": "work",
+					"required": {
+						"ingredient": 1
+					},
+					"description": "失われるもの。",
+					"consumes": true
+				},
+				{
+					"id": "Desire",
+					"label": "欲望",
+					"actionId": "work",
+					"required": {
+						"desire": 6,
+						"promise": 1
+					},
+					"description": "何になるのだろう？[このスロットは昇天の最終段階のみ受け付ける。第六の印を達成した場合、このスロットに上昇を加えて、大いなる業を完成させることができる。]"
+				}
+			],
+			"description": "この儀式は太陽の忌まわしい運命を再現する。極限の時に、愚かな高僧によって使われる。",
+			"unique": true
+		}
+	]
+}

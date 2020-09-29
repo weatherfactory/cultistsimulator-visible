@@ -1,0 +1,477 @@
+{
+	"recipes": [
+		{
+			"id": "exploremovehq",
+			"actionId": "explore",
+			"label": "場所を変える",
+			"startdescription": "組織の本部は新しい場所に移転する。[本部の住所を完全に移転する。元の場所に戻ることはできない。これを使うと悪評を減らすことができる。]",
+			"description": "どんな住所でも完全に永久的なものはない。私たちの体のように、最後には別れを告げなければいけない。でも今はここが家だ。",
+			"requirements": {
+				"hq": 1,
+				"hq.potential": 1
+			},
+			"aspects": {
+				"movehq": 1
+			},
+			"slots": [
+				{
+					"id": "coldtrail",
+					"label": "途絶える足取り",
+					"description": "移転したら、取締局は我々の古い住所を調査し続けて時間を無駄にしてくれるかもしれない。",
+					"greedy": true,
+					"required": {
+						"notoriety": 1
+					}
+				}
+			],
+			"effects": {
+				"notoriety": -1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "explorehq.townhouse",
+			"actionId": "explore",
+			"label": "――",
+			"startdescription": "――",
+			"description": "――",
+			"requirements": {
+				"hq.townhouse": 1,
+				"funds": 1
+			},
+			"effects": {
+				"influencegrail": 1,
+				"funds": -1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "explorehq.hospital",
+			"actionId": "explore",
+			"label": "開く場所",
+			"startdescription": "この地の最初の看守たちは、切開と切断を行い、果実の皮のように世界を切り開いた。開口部はとっくに治っているが、この世の中に完全に治るものはない。",
+			"description": "もちろん、最初は違和感を感じるが、最初から最後まで綺麗に行うように心がけていた。そして我々は今、蟻の母の鮮やかなスカートに触れている。",
+			"requirements": {
+				"hq.hospital": 1,
+				"funds": 1
+			},
+			"effects": {
+				"influenceknock": 1,
+				"funds": -1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "explorehq.mithraeum",
+			"actionId": "explore",
+			"label": "下にある太陽",
+			"startdescription": "かつてここは「無敵な太陽」「未分裂の太陽」の聖地だった。最も純粋なロウソクを使えば、石の中をさまよう光に触れることができる。",
+			"description": "透明な記憶、半透明な記憶、輝かしい記憶。多くのものは失われたが、多くのものは残っており、目に見えない、割り切れない太陽は生き続けている。",
+			"requirements": {
+				"hq.mithraeum": 1,
+				"funds": 1
+			},
+			"effects": {
+				"influencelantern": 1,
+				"funds": -1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "explorehq.church",
+			"actionId": "explore",
+			"label": "知恵の傷口",
+			"startdescription": "「すべての扉は傷ではないが、すべての傷は扉である」。この地の歴史は、傷と扉に満ちている。適切な素材を使えば、一度開いた場所の空気を柔らかくできる。",
+			"description": "今夜、この教会の扉はすべて開き、どの錠も鍵を必要としない。そしてすべての心が開かれる。",
+			"requirements": {
+				"hq.church": 1,
+				"funds": 1
+			},
+			"effects": {
+				"influenceknock": 1,
+				"funds": -1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "explorehq.bookshop",
+			"actionId": "explore",
+			"label": "守られた炉",
+			"startdescription": "店の裏の空間を暖炉の明かりで暖め、やかんの笛と蓄音機の音で盛り上げる。祝い事だからといって血を流す必要はない。",
+			"description": "本屋は不安な者、無知な者、問題を抱える者に慰めを与える。モーランドが奇妙な商品を持ってきた後も、慰めは続いている。今夜、サンダースキンと呼ばれる時の神が静かに歩く。",
+			"requirements": {
+				"hq.bookshop": 1,
+				"funds": 1
+			},
+			"effects": {
+				"influenceheart": 1,
+				"funds": -1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "explorehq.warehouse",
+			"actionId": "explore",
+			"label": "エンジンの記憶",
+			"startdescription": "ここが倉庫になる前は、機械の館であり、蒸気と鉄の館であり、時折、肉の引き裂かれる音と叫び声が響く館であった。その時代を記念して我々は油を注ぐ。",
+			"description": "我々には再び炎があり、再び鉄があり、肉は再び熱の口づけを味わったが、火の高いうちにはどこにも現われない。遥かに上でも下でも、日々の鍛造は、彼女の浄化を続ける。",
+			"requirements": {
+				"hq.warehouse": 1,
+				"funds": 1
+			},
+			"effects": {
+				"influenceforge": 1,
+				"funds": -1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "explorelocationbookdealer",
+			"label": "図書館に加える",
+			"actionId": "explore",
+			"requirements": {
+				"locationbookdealer": 1,
+				"funds": 1
+			},
+			"effects": {
+				
+			},
+			"deckeffect": {
+				"commontomes": 1
+			},
+			"startdescription": "鉱さいから金を、もみ殻から麦を、水から血を、選別するのには時間がかかる。本をたくさん買えば、何か面白いものが見つかるだろう。",
+			"description": "注目すべきものを見つけた。",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorelocationbookdealer_exhausted",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorelocationbookdealer_exhausted",
+			"label": "モーランドが店をしまう！",
+			"actionId": "explore",
+			"requirements": {
+				"genericrubbishbook": 1
+			},
+			"description": "「他のことをすることにしたの」と、モーランド嬢が言う。「在庫はほとんど売り切れてしまったし、取締局が興味を持ち出したの。これでお別れよ。くだらない本だけど、裏に面白い資料を挟んでおいたわ。日頃の感謝の気持ちを込めて、あなたにあげる」",
+			"deckeffect": {
+				"oneoffrewards": 1
+			},
+			"warmup": 1,
+			"aspects": {
+				"exhaustlocation": 1
+			}
+		},
+		{
+			"id": "explorelocationauctionhouse",
+			"label": "オリフラムのオークションに参加する",
+			"actionId": "explore",
+			"requirements": {
+				"locationauctionhouse": 1,
+				"auctionable": -1
+			},
+			"effects": {
+				
+			},
+			"deckeffect": {
+				"auctionedcommontomes": 1
+			},
+			"startdescription": "鮮やかな濃いオレンジ色の壁がある窓のないオークション会場で、リートフェルトの椅子に腰掛けて、競売人が出品物を発表するのを待っている。塗りたてのペンキの臭いのせいで、頭が回る。[スタートを押すと、出品物を確認したり、売りたい品を追加したりすることができる。]",
+			"description": ".",
+			"warmup": 5,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "auctionbuy",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorelocationstreetsstrange",
+			"label": "月明かりの中、不気味なほど絡み合い通りを探索しよう。",
+			"actionId": "explore",
+			"requirements": {
+				"locationstreetsstrange": 1
+			},
+			"deckeffect": {
+				"streetsstrangefinds": 1
+			},
+			"startdescription": "メニスカーテと呼ばれる時間になると、通りに奇妙な雰囲気で包まれる。",
+			"description": "パヴァーヌのような優美さで幻影が通り過ぎていく。森の窓、氷の庭、震える太陽、ガラスの女。私は不本意ながらも家に帰ることにした。",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "explorefollower",
+			"label": "街を探す",
+			"actionId": "explore",
+			"requirements": {
+				"follower": 1,
+				"location": -1
+			},
+			"deckeffect": {
+				"exploreevents": 1
+			},
+			"linked": [
+				{
+					"id": "explorefindcriminal",
+					"chance": 100
+				},
+				{
+					"id": "explorefindplace",
+					"chance": 100
+				}
+			],
+			"startdescription": "昼には賑やかな大通り、夜には霧の迷路。機会を見つけるために部下を送り込む。",
+			"description": ".",
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "explorerumour",
+			"label": "噂を追う",
+			"actionId": "explore",
+			"requirements": {
+				"rumour": 1
+			},
+			"deckeffect": {
+				"acquaintances": 1
+			},
+			"effects": {
+				"rumour": -1,
+				"notoriety": 1
+			},
+			"startdescription": "この話の最後には、私の言いたいことを聞いてくれる人が現れるのではないかと思っている。",
+			"description": "期待できない住所だが、期待できる住人がいる。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "explorehealth",
+			"label": "街を探す",
+			"actionId": "explore",
+			"requirements": {
+				"health": 1,
+				"location": -1
+			},
+			"deckeffect": {
+				"exploreevents": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"linked": [
+				{
+					"id": "explorefindcriminal",
+					"chance": 100
+				},
+				{
+					"id": "explorefindplace",
+					"chance": 100
+				}
+			],
+			"startdescription": "昼には混雑した大通り、夜には霧に包まれた迷宮。私は秘密を求めて、歩けなくなるまで街を歩く。",
+			"description": ".",
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "explorefindcriminal",
+			"label": "雇い人？",
+			"actionId": "explore",
+			"requirements": {
+				"daycriminals": 1
+			},
+			"deckeffect": {
+				"hirelings": 1
+			},
+			"effects": {
+				"season": -1
+			},
+			"warmup": 0,
+			"linked": [
+				{
+					"id": "explorechoosepaycriminal",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorechoosepaycriminal",
+			"label": "雇い人？",
+			"actionId": "explore",
+			"startdescription": "現金のためなら後悔しそうな事でもやってくれそうな人を見つけた。[期間限定で雇うために資金を追加する。]",
+			"slots": [
+				{
+					"id": "Payment",
+					"label": "支払い",
+					"required": {
+						"funds": 1
+					},
+					"consumes": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorepaycriminal",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"hireling": -1
+			},
+			"description": "やめておこう。仲間は慎重に選ばなければならない。",
+			"warmup": 60
+		},
+		{
+			"id": "explorepaycriminal",
+			"label": "雇い人",
+			"requirements": {
+				"funds": 1
+			},
+			"actionId": "explore",
+			"startdescription": "これでその場しのぎの忠誠心が買えるだろう。",
+			"effects": {
+				"funds": -1
+			}
+		},
+		{
+			"id": "explorefindplace",
+			"label": "見過ごした場所？",
+			"actionId": "explore",
+			"requirements": {
+				"dayplaces": 1
+			},
+			"startdescription": "変わった場所を見つけてしまったかもしれない。",
+			"description": ".",
+			"deckeffect": {
+				"citysecrets": 1
+			},
+			"effects": {
+				"season": -1
+			},
+			"warmup": 5
+		},
+		{
+			"id": "explore.searchgraveyard.self",
+			"actionId": "explore",
+			"requirements": {
+				"location.cemetery": 1,
+				"health": 1
+			},
+			"effects": {
+				"corpse": 1,
+				"mystique": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"label": "墓掘",
+			"startdescription": "布張りの提灯の柔らかな光の中で、慎重に掘り出す。",
+			"description": "シャベルが木に当たった。良い兆候だ。棺桶が腐りすぎていると、遺骨はあまり残っていないこともある。",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "explore.searchgraveyard.follower",
+			"actionId": "explore",
+			"requirements": {
+				"location.cemetery": 1,
+				"follower": 1
+			},
+			"effects": {
+				"corpse": 1,
+				"mystique": 1
+			},
+			"label": "墓掘",
+			"startdescription": "布張りの提灯の柔らかな光の中で、慎重に掘り出す。",
+			"description": "シャベルが木に当たった。良い兆候だ。棺桶が腐りすぎていると、遺骨はあまり残っていないこともある。",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "explore.searchgraveyard.closing.self",
+			"actionId": "explore",
+			"requirements": {
+				"location.cemetery.closing": 1,
+				"health": 1
+			},
+			"effects": {
+				"corpse": 1,
+				"notoriety": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"label": "慎重な墓掘",
+			"startdescription": "揺れる影の中を忍び抜けて、灯りはつけない。慎重に動こう。",
+			"description": "必要な量が見つかるまで、暗闇の中で掘り続ける。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "explore.searchgraveyard.closing.follower",
+			"actionId": "explore",
+			"requirements": {
+				"location.cemetery.closing": 1,
+				"follower": 1
+			},
+			"effects": {
+				"corpse": 1,
+				"notoriety": 1
+			},
+			"label": "慎重な墓掘",
+			"startdescription": "揺れる影の中を忍び抜けて、灯りはつけない。慎重に動こう。",
+			"description": "必要な量が見つかるまで、暗闇の中で掘り続ける。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "explore.fleeting",
+			"actionId": "explore",
+			"requirements": {
+				"fleeting": 1
+			},
+			"label": "記憶が私の歩みを導いてくれる",
+			"startdescription": "思考が彷徨う、私はそれを追いかける。昔の感情が心に宿る。",
+			"description": "記憶は迷路であり、その中心には庭がある。",
+			"effects": {
+				"fleeting": -1
+			},
+			"internaldeck": {
+				"label": "行き先",
+				"description": "行き先",
+				"spec": [
+					"restlessness",
+					"dread",
+					"fascination",
+					"contentment",
+					"restlessness",
+					"dread",
+					"fascination",
+					"contentment",
+					"restlessness",
+					"dread",
+					"fascination",
+					"contentment"
+				],
+				"resetonexhaustion": true,
+				"draws": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		}
+	]
+}

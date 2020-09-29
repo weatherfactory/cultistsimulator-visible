@@ -1,0 +1,1005 @@
+{
+	"recipes": [
+		{
+			"id": "findclericalwork",
+			"label": "事務職を見つける",
+			"actionId": "work",
+			"requirements": {
+				"reason": 1,
+				"ritual": -1,
+				"job": -1
+			},
+			"effects": {
+				"gloverandgloverjuniorjob": 1
+			},
+			"startdescription": "ストレスが溜まっても、肉体的に楽な仕事を見つける。",
+			"description": "グローバー＆グローバーから下級職の内定が出た。明日の朝8時が始業時間だ！",
+			"warmup": 10,
+			"craftable": true,
+			" maxexecutions": 1,
+			"burnimage": "office"
+		},
+		{
+			"id": "job_plead_hint",
+			"label": "解雇にならないように懇願する？",
+			"actionId": "work",
+			"requirements": {
+				"demotion": 1
+			},
+			"aspects": {
+				"plead": 1
+			},
+			"startdescription": "上司は私の悔しさを信じてくれるに違いない。[情熱を使って上司を説得すると、職場復帰できる。]",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "job_plead",
+			"label": "解雇にならないように懇願する",
+			"actionId": "work",
+			"requirements": {
+				"passion": 1,
+				"demotion": 1
+			},
+			"aspects": {
+				"plead": 1
+			},
+			"startdescription": "楽しい会話ではないが、必要な会話ではある。",
+			"description": "もう一度チャンスを与えてもらえた。感謝の気持ちを伝えなくてはいけないらしい。",
+			"craftable": true,
+			"warmup": 30
+		},
+		{
+			"id": "gloverandgloverjuniorwork",
+			"label": "グローバー&グローバーの下級職",
+			"aspects": {
+				"employment": 1
+			},
+			"requirements": {
+				"gloverandgloverjuniorjob": 1,
+				"ritual": -1
+			},
+			"alternativerecipes": [
+				{
+					"id": "gloverandglover_diligence",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"funds": 1
+			},
+			"actionId": "work",
+			"startdescription": "ペンのこすれる音と、埃が放つ酸っぱい匂いの中、グローバ2世のため息と、ゴロゴロと鳴る腹の音がグローバー1世から聞こえる。",
+			"description": "事務員たちが無言で去っていく。これで自由になった。",
+			"warmup": 60,
+			"slots": [
+				{
+					"id": "Diligence",
+					"label": "勤勉",
+					"required": {
+						"reason": 1
+					},
+					"forbidden": {
+						
+					},
+					"description": "もっと努力をしてみる。たまには、糧となるかもしれない。"
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "gloverandglover_diligence",
+			"label": "グローバー&グローバーでのさらなる努力",
+			"aspects": {
+				"employment": 1
+			},
+			"requirements": {
+				"reason": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "gloverandgloverjunior_diligence_promotion",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"funds": 1
+			},
+			"actionId": "work",
+			"startdescription": "さらなる努力をしよう。評価してもらえるかもしれない。",
+			"description": "一日の終わり。首が痛い。明日も今までと同じくらい仕事がある。",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "gloverandgloverjunior_diligence_promotion",
+			"label": "昇進！",
+			"requirements": {
+				"gloverandgloverjuniorjob": 1,
+				"reason": 1
+			},
+			"effects": {
+				"funds": 1
+			},
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"actionId": "work",
+			"startdescription": "",
+			"description": "記録部門の責任者であるオールデン氏に呼ばれ彼のオフィスへと向かった。私の勤勉さが認められたようだ。オールデン氏が永遠と話し続ける中、私は彼の首にあるホクロをじっと見つめていた。そして、話がやっと終わりを迎えると、オールデン氏は、私が昇進したことを教えてくれた。\n   \n   新しい役職のほうが給料が良いし、机は窓際で通りが見渡せるが、オールデン氏が直属の上司だ。彼は扱いが難しいことで有名だ。",
+			"warmup": 0
+		},
+		{
+			"id": "gloverandgloverjuniorwork_again",
+			"label": "グローバー&グローバーの下級職",
+			"aspects": {
+				"employment": 1
+			},
+			"requirements": {
+				"gloverandgloverjuniorjob_nodifficultbossa": 1,
+				"ritual": -1
+			},
+			"alternativerecipes": [
+				{
+					"id": "gloverandglover_diligence_again",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"funds": 1
+			},
+			"actionId": "work",
+			"startdescription": "ペンのこすれる音と、埃が放つ酸っぱい匂いの中、グローバ2世のため息と、ゴロゴロと鳴る腹の音がグローバー1世から聞こえる。",
+			"description": "事務員たちが無言で去っていく。これで自由になった。",
+			"warmup": 60,
+			"slots": [
+				{
+					"id": "Diligence",
+					"label": "勤勉",
+					"required": {
+						"reason": 1
+					},
+					"forbidden": {
+						
+					},
+					"description": "もっと努力をしてみる。たまには、糧となるかもしれない。"
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "gloverandglover_diligence_again",
+			"label": "グローバー&グローバーでのさらなる努力",
+			"aspects": {
+				"employment": 1
+			},
+			"requirements": {
+				"reason": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "gloverandgloverjunior_diligence_promotion_again",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"funds": 1
+			},
+			"actionId": "work",
+			"startdescription": "さらなる努力をしてみよう。それが評価されて、また上級職に登り詰められるかもしれない。",
+			"description": "一日の終わり。首が痛い。明日も今までと同じくらい仕事がある。",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "gloverandgloverjunior_diligence_promotion_again",
+			"label": "昇進！",
+			"requirements": {
+				"gloverandgloverjuniorjob_nodifficultbossa": 1,
+				"reason": 1
+			},
+			"effects": {
+				"funds": 1
+			},
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"actionId": "work",
+			"startdescription": "",
+			"description": "上級職を取り戻した。",
+			"warmup": 0
+		},
+		{
+			"id": "gloverandgloverwork_difficultbossa",
+			"actionId": "work",
+			"aspects": {
+				"employment": 1
+			},
+			"label": "グローバー&グローバーの仕事",
+			"requirements": {
+				"gloverandglover_difficultbossa_job": 1
+			},
+			"startdescription": "今の方がはるかに給料がいいが、オールデン氏が私に興味を持ちだした。彼はは非常にこだわりが強く、慎重に事を進めたがる人だ。それに、オールデン氏は、私が適任だとは思っていない。",
+			"description": ".",
+			"effects": {
+				"funds": 2
+			},
+			"linked": [
+				{
+					"id": "gloverandglover_difficultbossa_overtime_initial",
+					"chance": 100
+				},
+				{
+					"id": "gloverandglover_difficultbossa_overtime",
+					"chance": 70
+				},
+				{
+					"id": "gloverandglover_difficultbossa_no_overtime",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "gloverandglover_difficultbossa_no_overtime",
+			"actionId": "work",
+			"aspects": {
+				"employment": 1
+			},
+			"label": "グローバー&グローバーの仕事",
+			"startdescription": ".",
+			"description": "オールデン氏が、今日、私の仕事ぶりを批判することはなかった。私が去っても彼は見向きもしない。"
+		},
+		{
+			"id": "gloverandglover_difficultbossa_patienceisavirtue",
+			"actionId": "work",
+			"label": "オールデン氏の引退！",
+			"startdescription": "「明日で、グローバー＆グロー場を辞める。仕事が終わったら、会いに来てくれ」",
+			"description": "「私の指導の下、君は<i>進歩</i>した。君を後任に推薦した。私が教えたことを忘れないでくれ。そうすれば、君はいつかこの部署で成功を収めるかもしれない。それだけだ、行っていいぞ」\n   \n   「ああ、忘れるところだった――」\n   \n   「明日は特に時間厳守で来てくれ」\n   ",
+			"warmup": 30,
+			"craftable": false,
+			"aspects": {
+				"careeradvancement": 1
+			}
+		},
+		{
+			"id": "gloverandglover_difficultbossa_overtime_initial",
+			"comments": "Player will need to go through this minimum ten times. After that, the chance of overtime is reduced, and there is a small possibility Alden will retire.",
+			"actionId": "work",
+			"aspects": {
+				"employment": 1
+			},
+			"label": "オールデン氏の言いなりになって残業する",
+			"startdescription": "「仕事は、私が終わったと言うまで終わらない。それ以前に帰るなんて問題外だ。異論はないな？」",
+			"slots": [
+				{
+					"id": "Attention",
+					"label": "注意",
+					"required": {
+						"reason": 1
+					},
+					"description": "もっと努力をしてみる。運が良ければ、糧となるかもしれない。"
+				}
+			],
+			"description": "「今回は、合格ラインに達している出来だ。帰っても良いぞ。明日は時間厳守で頼む」\n   \n   [オールデン氏への対処法があるかもしれない。]",
+			"alternativerecipes": [
+				{
+					"id": "gloverandglover_difficultbossa_overtime_fail",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			" maxexecutions": 1
+		},
+		{
+			"id": "gloverandglover_difficultbossa_overtime",
+			"actionId": "work",
+			"aspects": {
+				"employment": 1
+			},
+			"label": "オールデン氏の言いなりになって残業する",
+			"startdescription": "「仕事は、私が終わったと言うまで終わらない。それ以前に帰るなんて問題外だ。異論はないな？」",
+			"slots": [
+				{
+					"id": "Attention",
+					"label": "注意",
+					"required": {
+						"reason": 1,
+						"passion": 1
+					},
+					"description": "もっと努力をしてみる。運が良ければ、糧となるかもしれない。"
+				}
+			],
+			"description": "「今回も、合格ラインに達している出来だ。帰っても良いぞ。明日は時間厳守で頼む」\n   \n   [オールデン氏への対処法があるかもしれない。]",
+			"alternativerecipes": [
+				{
+					"id": "gloverandglover_difficultbossa_overtime_fail",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "gloverandglover_difficultbossa_patienceisavirtue",
+					"chance": 2
+				}
+			]
+		},
+		{
+			"id": "gloverandglover_difficultbossa_overtime_fail",
+			"actionId": "work",
+			"aspects": {
+				"employment": 1
+			},
+			"label": "オールデン氏の言いなりになって残業する",
+			"startdescription": "「君は、ここでの仕事の重要さをきちんと理解していないようだ。この仕事には、<i>全</i>神経を集中させてくれないと困る」 [オールデン氏を納得させるために、理性を追加する。]",
+			"description": "「がっかりしたと言いたいところだが、君にはもともと期待はしていなかった。給料の一部を差し引かせてもらう。帰っていいぞ。明日は時間厳守で頼む」\n   \n[オールデン氏への対処法があるかもしれない。]",
+			"requirements": {
+				"reason": -1
+			},
+			"effects": {
+				"funds": -1
+			},
+			"craftable": false
+		},
+		{
+			"id": "gloverandgloverwork_difficultbossa_gone",
+			"actionId": "work",
+			"aspects": {
+				"employment": 1
+			},
+			"label": "グローバー&グローバーの仕事",
+			"requirements": {
+				"gloverandglover_difficultbossa_gone_job": 1
+			},
+			"startdescription": "オールデンが突然いなくなったことで、事務所は騒めいている。4階の痩せ細った神経質な男が、記録監督者（臨時）に任命されたのだ。オールデンと違って、彼は私の仕事の邪魔をしない。",
+			"description": "インクと紙と電灯の軋む音。帰るときには事務所が真っ暗になっているが、私は約束の時間に帰る。",
+			"effects": {
+				"funds": 2,
+				"gloverandglover_difficultbossa_gone_job": -1,
+				"gloverandgloverjob": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "gloverandgloverwork",
+			"label": "グローバー&グローバーの仕事",
+			"aspects": {
+				"employment": 1
+			},
+			"requirements": {
+				"gloverandgloverjob": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "gloverandglover_diligence_promotion",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"funds": 2
+			},
+			"actionId": "work",
+			"startdescription": "仕事は今の方が大変だけど、給料は良い方だ。",
+			"description": "インクと紙と電灯の軋む音。帰るときには事務所が真っ暗になっている。外の舗道で、私は襟を立てた。",
+			"warmup": 70,
+			"slots": [
+				{
+					"id": "Devotion",
+					"label": "献身",
+					"required": {
+						"reason": 1
+					},
+					"description": "もっと努力をしてみる。運が良ければ、糧となるかもしれない。"
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "gloverandglover_diligence_promotion",
+			"label": "グローバー&グローバーでの残業",
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"requirements": {
+				"gloverandgloverjob": 1,
+				"reason": 2
+			},
+			"effects": {
+				"funds": 3
+			},
+			"actionId": "work",
+			"startdescription": "",
+			"description": "グローバー2世誘われ、クラブに昼食を食べに行った。もっと丁寧に仕事をすれば、その見返りに、少しばかり給料を上げてくれるらしい。",
+			"warmup": 0
+		},
+		{
+			"id": "gloverandgloverwork_again",
+			"label": "グローバー&グローバーの仕事",
+			"aspects": {
+				"employment": 1
+			},
+			"requirements": {
+				"gloverandgloverjob_youngerglovergone": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "gloverandglover_diligence_promotion_again",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"funds": 2
+			},
+			"actionId": "work",
+			"startdescription": "仕事は今の方が大変だけど、給料は良い方だ。",
+			"description": "インクと紙と電灯の軋む音。帰るときには事務所が真っ暗になっている。外の舗道で、私は襟を立てた。",
+			"warmup": 70,
+			"slots": [
+				{
+					"id": "Devotion",
+					"label": "献身",
+					"required": {
+						"reason": 1
+					},
+					"description": "もっと努力をしてみる。運が良ければ、糧となるかもしれない。"
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "gloverandglover_diligence_promotion_again",
+			"label": "グローバー&グローバーでの残業",
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"requirements": {
+				"reason": 2
+			},
+			"effects": {
+				"funds": 2
+			},
+			"actionId": "work",
+			"startdescription": "",
+			"description": "上級職を取り戻した。",
+			"warmup": 0
+		},
+		{
+			"id": "gloverandgloverseniorwork_retirementoption",
+			"label": "グローバー&グローバーの仕事",
+			"aspects": {
+				"employment": 1
+			},
+			"requirements": {
+				"gloverandgloverseniorjob": 1,
+				"reason": 1
+			},
+			"effects": {
+				"funds": 3
+			},
+			"actionId": "work",
+			"startdescription": "正しい形に手を丸めて、始める。",
+			"description": "いつも最後に退社するのは私だ。グローバー1世でさえ、私より先に帰る。",
+			"warmup": 70,
+			"slots": [
+				{
+					"id": "Acceptance",
+					"label": "受け入れる",
+					"required": {
+						"passion": 1
+					},
+					"description": "これに人生を捧げられるかもしれない。"
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "workvictory",
+					"chance": 100
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "gloverandgloverseniorwork",
+			"label": "グローバー&グローバーの仕事",
+			"aspects": {
+				"employment": 1
+			},
+			"requirements": {
+				"gloverandgloverseniorjob": 1,
+				"reason": 1
+			},
+			"effects": {
+				"funds": 3
+			},
+			"actionId": "work",
+			"startdescription": "正しい形に手を丸めて、始める。",
+			"description": "いつも最後に退社するのは私だ。グローバー1世でさえ、私より先に帰る。グローバー2世とは良好な関係を築いている。私が彼の仕事を奪うのではないかと、よく冗談を言うが、もちろんそんなことをするつもりはない。彼の父親がそれを許さないだろう私に身の程をわきまえさせるために、そんな冗談を言うのだ。段々と癪に障るようになってきた。",
+			"warmup": 70,
+			"craftable": true
+		},
+		{
+			"id": "gloverandgloverseniorwork_hint",
+			"label": "グローバー&グローバーで働く？",
+			"actionId": "work",
+			"requirements": {
+				"gloverandgloverseniorjob": 1
+			},
+			"startdescription": "骨の折れる仕事だ。ある程度、理性を働かせる必要がある。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "gloverandgloverseniorworkyoungerglovergone",
+			"label": "グローバー&グローバーの仕事",
+			"aspects": {
+				"employment": 1
+			},
+			"requirements": {
+				"gloverandgloverseniorjob_youngerglovergone": 1,
+				"reason": 1
+			},
+			"effects": {
+				"funds": 3
+			},
+			"actionId": "work",
+			"startdescription": "正しい形に手を丸めて、始める。",
+			"description": "目を閉じると、まぶたの裏に歩く人影が映る。瞼を開くと、光で目が痛い。",
+			"warmup": 70,
+			"slots": [
+				{
+					"id": "Ambition",
+					"label": "野望",
+					"required": {
+						"passion": 1
+					},
+					"description": "グローバー2世の取締役会の座は空のままだ......"
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "gloverandgloversenior_diligence_promotion",
+					"chance": 30
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "gloverandgloverseniorwork_youngerglovergone_hint",
+			"label": "グローバー&グローバーで働く？",
+			"actionId": "work",
+			"requirements": {
+				"gloverandgloverseniorjob_youngerglovergone": 1
+			},
+			"startdescription": "骨の折れる仕事だ。ある程度、理性を働かせる必要がある。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "gloverandgloversenior_diligence_promotion",
+			"label": "昇進！",
+			"requirements": {
+				"passion": 1
+			},
+			"effects": {
+				"funds": 5
+			},
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"actionId": "work",
+			"startdescription": ".",
+			"description": "「私の息子は良い子だが、野心に欠けていた。それに比べて君は野心に燃えている」と、グローバー1世が打ち明けた。「君は私に似ている、そう思わないかい？私はそう思っているよ。よし、君を取締役会の一員にしてあげよう。」"
+		},
+		{
+			"id": "gloverandglovertopwork",
+			"label": "グローバー&グローバーの仕事",
+			"aspects": {
+				"employment": 1
+			},
+			"actionId": "work",
+			"requirements": {
+				"gloverandglovertopjob": 1
+			},
+			"slots": [
+				{
+					"id": "Scandal",
+					"label": "スキャンダル",
+					"required": {
+						"notoriety": 1
+					},
+					"greedy": true,
+					"description": "重役に着いたおかげでスキャンダルから守られているが、会社が心配し始めたら解雇されるかもしれない。"
+				}
+			],
+			"startdescription": "まだまだ何時間も働かなくてはいけない。お昼休みに早退したいくらいだ......",
+			"description": "グローバー＆グローバーに心臓があるとしたら、それは春の波のように現金がが流れていく経理部だろう。活発で物静かな管理者と事務員が、その手足となるだろう。そして、私は他の取締役と一緒に頭蓋骨の頂点に座る。スキャンダルや財務上の懸念から（今のところは）守られている。",
+			"warmup": 50,
+			"effects": {
+				"funds": 4,
+				"notoriety": -1
+			},
+			"craftable": true,
+			"alternativerecipes": [
+				{
+					"id": "gloverandglovertopwork_scandal_a",
+					"chance": 30
+				}
+			]
+		},
+		{
+			"id": "gloverandglovertopwork_scandal_a",
+			"aspects": {
+				"employment": 1
+			},
+			"label": "懸念表明",
+			"actionId": "work",
+			"requirements": {
+				"notoriety": 1
+			},
+			"startdescription": ".",
+			"description": "今では、唯一のグローバー氏となった、グローバー1世に呼び出された。彼は心地悪そうに椅子にもたれかかっている。「とある噂を聞いた――」と、口を開くと、グローバー氏は躊躇して、私の目を見つめた。「そのことは何も聞きたくない――何のことか分かるだろう。一言もこれ以上聞きたくない。一言もだ」",
+			"effects": {
+				"funds": 4,
+				"notoriety": -1,
+				"gloverandglovertopjob": -1,
+				"gloverandglovertopjob_tainted": 1
+			}
+		},
+		{
+			"id": "gloverandglovertopjob_tainted",
+			"aspects": {
+				"employment": 1
+			},
+			"label": "グローバー&グローバーの仕事",
+			"actionId": "work",
+			"requirements": {
+				"gloverandglovertopjob_tainted": 1
+			},
+			"slots": [
+				{
+					"id": "Scandal",
+					"label": "スキャンダル",
+					"required": {
+						"notoriety": 1
+					},
+					"greedy": true,
+					"description": "自分の地位のおかげで、あともう少しだけスキャンダルから逃げられるかもしれない。しかし、今、私は仕事を失う危機に立たされている。"
+				}
+			],
+			"startdescription": "お昼休み後に家に帰れたのは過去の話となってしまった。同僚たちが私の正体を疑いだしている。私の隠された力を彼らは知らない。",
+			"description": "5階の整然とした部屋で、整然とした数字の列を見直している。事務所の窓からは川が見える。秘書が59分ごとに温かい飲み物を持ってきてくれる。川は雨の色だ。",
+			"warmup": 60,
+			"effects": {
+				"funds": 4,
+				"notoriety": -1
+			},
+			"craftable": true,
+			"alternativerecipes": [
+				{
+					"id": "gloverandglovertopwork_scandal_b",
+					"chance": 70
+				}
+			]
+		},
+		{
+			"id": "gloverandglovertopwork_scandal_b",
+			"label": "汚名！",
+			"actionId": "work",
+			"requirements": {
+				"notoriety": 1
+			},
+			"startdescription": ".",
+			"description": "グローバー＆グローバー社から正式な（しかし奇妙なほど丁寧に書かれた）手紙を手渡しされた。私を取締役として必要としなくなったようだが、かなり手厚い退職金を提示してくれた。恨みを持たないことを会社は心から願っているのだろう。手紙に書かれていた署名は、少し震えていた......",
+			"effects": {
+				"funds": 8,
+				"notoriety": -1,
+				"gloverandglovertopjob_tainted": -1
+			}
+		},
+		{
+			"id": "institutephysicianwork",
+			"label": "医院での仕事",
+			"requirements": {
+				"institutephysicianjob": 1,
+				"ritual": -1
+			},
+			"effects": {
+				"funds": 2
+			},
+			"actionId": "work",
+			"startdescription": "医院のホールには、まとわりついて離れないような、じめじめとした臭いがある。ペンキのせいかもしれないし、患者のせいかもしれない。いや、壁の中の何かかもしれない。",
+			"description": "進歩している。患者たちは、私が働き始めた頃より静かになってきた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "workbeg",
+			"label": "路上で物乞いをする",
+			"actionId": "work",
+			"requirements": {
+				"decrepitude": 1
+			},
+			"effects": {
+				"funds": 1,
+				"dread": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "workbeg_lucky",
+					"chance": 30
+				}
+			],
+			"startdescription": "弱さを見せれば、通行人から同情を引くことができるかもしれない。",
+			"description": "長い一日だった。コインを投げつける者もいたが、ほとんどは目を背けた。何時間も去っていく背中を見ているのは辛い。",
+			"warmup": 90,
+			"craftable": true
+		},
+		{
+			"id": "workbeg_lucky",
+			"label": "路上で物乞いをする",
+			"actionId": "work",
+			"requirements": {
+				"decrepitude": 1
+			},
+			"effects": {
+				"funds": 2
+			},
+			"description": "長い一日だった。コインを投げつける者もいたが、ほとんどは目を背けた。しかし、器の中にはソブリン金貨が入っている！気前の良い寄付か事故か？",
+			"warmup": 90
+		},
+		{
+			"id": "workhealthskilld_edge",
+			"label": "単純労働：山のように",
+			"actionId": "work",
+			"requirements": {
+				"health": 1,
+				"skillhealthd_strength": 1,
+				"ritual": -1,
+				"job": -1,
+				"benefactor": -1
+			},
+			"effects": {
+				"funds": 1,
+				"vitality": 1
+			},
+			"aspects": {
+				"employment": 1
+			},
+			"startdescription": "私はもう一度、全力を尽くした。",
+			"description": "2人分の仕事ができる奴だと褒められたが、そんなことはない。",
+			"warmup": 40,
+			"craftable": true
+		},
+		{
+			"id": "workhealthskillc",
+			"label": "単純労働：鋼の腕",
+			"actionId": "work",
+			"requirements": {
+				"health": 1,
+				"healthskill": 3,
+				"ritual": -1,
+				"job": -1,
+				"benefactor": -1
+			},
+			"effects": {
+				"funds": 1,
+				"vitality": 1
+			},
+			"aspects": {
+				"employment": 1
+			},
+			"startdescription": "私はもう一度、全力を尽くした。",
+			"description": "私の力が注目を集め始めた。言われた言葉の全てが褒め言葉とは限らない。給料をもらって帰ることにした。",
+			"warmup": 45,
+			"craftable": true
+		},
+		{
+			"id": "workhealthskillb",
+			"label": "単純労働：鉄の腕",
+			"actionId": "work",
+			"requirements": {
+				"health": 1,
+				"healthskill": 2,
+				"ritual": -1,
+				"job": -1,
+				"benefactor": -1
+			},
+			"effects": {
+				"funds": 1,
+				"vitality": 1
+			},
+			"aspects": {
+				"employment": 1
+			},
+			"startdescription": "スピード感を持って黙々と仕事をする。怪我を恐れない。",
+			"description": "他の人たちは私にはほとんど話しかけてこないが、私が通り過ぎると会釈してくれる。給料をもらった。",
+			"warmup": 50,
+			"craftable": true
+		},
+		{
+			"id": "workhealthskilla",
+			"label": "単純労働：青銅の腕",
+			"alternativerecipes": [
+				{
+					"id": "workhealthinjury",
+					"chance": 10
+				}
+			],
+			"actionId": "work",
+			"requirements": {
+				"health": 1,
+				"healthskill": 1,
+				"ritual": -1,
+				"job": -1,
+				"benefactor": -1
+			},
+			"effects": {
+				"funds": 1,
+				"vitality": 1
+			},
+			"aspects": {
+				"employment": 1
+			},
+			"startdescription": "さて、仕事を始めよう。",
+			"description": "早々に終わってしまった。給料が支払われた。",
+			"warmup": 55,
+			"craftable": true
+		},
+		{
+			"id": "workhealth_noinjurychance",
+			"label": "単純労働",
+			"actionId": "work",
+			"requirements": {
+				"health": 1,
+				"ritual": -1,
+				"job": -1,
+				"benefactor": -1
+			},
+			"aspects": {
+				"employment": 1
+			},
+			"effects": {
+				"vitality": 1,
+				"funds": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "needs",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "身を粉にして働いているのに、薄給しかもらえない。もっと良い仕事があるのではないだろうか？",
+			"description": "1日が終わり疲労困憊だが、給料分頑張って働いた。",
+			"warmup": 60,
+			"craftable": true,
+			" maxexecutions": 3,
+			"comments": "guaranteed three days without injury"
+		},
+		{
+			"id": "workhealth",
+			"label": "単純労働",
+			"alternativerecipes": [
+				{
+					"id": "workhealthinjury",
+					"chance": 30
+				}
+			],
+			"actionId": "work",
+			"requirements": {
+				"health": 1,
+				"ritual": -1,
+				"job": -1,
+				"benefactor": -1
+			},
+			"effects": {
+				"funds": 1,
+				"vitality": 1
+			},
+			"aspects": {
+				"employment": 1
+			},
+			"startdescription": "身を粉にして働いているのに、薄給しかもらえない。もっと良い仕事があるのではないだろうか？",
+			"description": "1日が終わり疲労困憊だが、給料分頑張って働いた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "workhealthinjury",
+			"label": "仕事中の怪我！",
+			"actionId": "work",
+			"requirements": {
+				
+			},
+			"effects": {
+				"health": -1,
+				"injury": 1,
+				"funds": 1
+			},
+			"startdescription": ".",
+			"description": "怪我をした！惨めな給料をもらい、辛くてもよろよろと歩いて帰るしかない。",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "workinvestmentjobc",
+			"label": "財務管理",
+			"actionId": "work",
+			"requirements": {
+				"investmentsjobc": 1
+			},
+			"effects": {
+				"funds": 4
+			},
+			"linked": [
+				{
+					"id": "investmentsjobdecline",
+					"chance": 30
+				}
+			],
+			"startdescription": "時間をかけて資産運用をしていけば、手取りで快適に暮らせるはずだ。",
+			"description": "きちんとした白い封筒に入った、立派な金額の小切手。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "workinvestmentjobb",
+			"label": "財務管理",
+			"actionId": "work",
+			"requirements": {
+				"investmentsjobb": 1
+			},
+			"effects": {
+				"funds": 3
+			},
+			"linked": [
+				{
+					"id": "investmentsjobdecline",
+					"chance": 30
+				}
+			],
+			"startdescription": "時間をかけて資産運用をしていけば、手取りで十分暮らせるはずだ。",
+			"description": "きちんとした白い封筒に入った、それなりに魅力的な金額を含む小切手。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "workinvestmentjoba",
+			"label": "財務管理",
+			"actionId": "work",
+			"requirements": {
+				"investmentsjoba": 1
+			},
+			"effects": {
+				"funds": 2
+			},
+			"linked": [
+				{
+					"id": "investmentsjobdecline",
+					"chance": 30
+				}
+			],
+			"startdescription": "時間をかけて資産運用をしていけば、手取りでちょうど暮らせるはずだ。",
+			"description": "きちんとした白い封筒に入った、控えめな金額を含む小切手。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "investmentsjobdecline",
+			"label": "境遇の悪化",
+			"aspects": {
+				"decline": 1
+			},
+			"actionId": "work",
+			"startdescription": ".",
+			"description": "いつものように小切手を受け取ったが、不穏なニュースが入ってきた。私の投資が失敗したのだ。運が悪かったのか、もしかしたら敵の悪意なのかもしれない。",
+			"warmup": 5,
+			"craftable": false
+		}
+	]
+}

@@ -1,0 +1,457 @@
+{
+	"recipes": [
+		{
+			"id": "lockfollowerincupboard",
+			"label": "信者を裏切って閉じ込める",
+			"actionId": "talk",
+			"requirements": {
+				"hq": 1,
+				"follower": 1
+			},
+			"startdescription": "この人には別の目的を果たしてもらおう。さあ、戸棚へ入れて。",
+			"description": "しっかりと閉じ込めた。叫び声や怒鳴り声が聞こえなくなってきたら、ちゃんと服従させよう。",
+			"aspects": {
+				"capturefollower": 1
+			},
+			"effects": {
+				"notoriety": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "romanticinterest",
+					"mutationLevel": -1
+				}
+			],
+			"craftable": true,
+			"warmup": 10
+		},
+		{
+			"id": "sulochanachat",
+			"label": "スロチャナと喋る",
+			"actionId": "talk",
+			"requirements": {
+				"sulochana": 1
+			},
+			"slots": [
+				{
+					"id": "Subject",
+					"label": "話題",
+					"description": "話の種"
+				}
+			],
+			"startdescription": "@#ascensionlessonhearta|「もっと知りたいって？」\n#ascensionlessonheartb|「もっと知りたいって？」\n#ascensionlessonheartc|「もっと知りたいって？」\n#ascensionlessonheartd|「もっと知りたいって？」\n#ascensionlessonhearte|「もっと知りたいって？」\n#ascensionlessonheartf|「もっと知りたいって？」\n#ascensionlessonmotha|「もっと知りたいって？」\n#ascensionlessonmothb|「もっと知りたいって？」\n#ascensionlessonmothc|「もっと知りたいって？」\n#ascensionlessonmothd|「もっと知りたいって？」\n#ascensionlessonmothe|「もっと知りたいって？」'\n#ascensionlessonmothf|「もっと知りたいって？」\n#|スロチャナは煙草をもみ消した。「ええ、私と一緒に語学を勉強したいなら、しても良いわよ。他にも何かある？」@",
+			"description": "＠#ascensionlessonhearta|「私の専門外よ」とスロチャナは微笑む\n#ascensionlessonheartb|「私の専門外よ」と、スロチャナは蛇のように肩をすくめる。\n#ascensionlessonheartc|「私の専門外よ」とスロチャナは微笑む。\n#ascensionlessonheartd|「私の専門外よ」と、スロチャナは蛇のように肩をすくめる。\n#ascensionlessonhearte|「私の専門外よ」とスロチャナは微笑む。\n#ascensionlessonheartf|「私の専門外よ」と、スロチャナは蛇のように肩をすくめる。\n#ascensionlessonmotha|「勉強は勉強よ。私は雇い主よ、先生ではないわ」と言いスロチャナは背伸びをする。「少しは我慢しなさい」。\n#ascensionlessonmothb|「勉強は勉強よ。私は雇い主よ、先生ではないわ」と言いスロチャナは背伸びをする。「少しは我慢しなさい」。\n#ascensionlessonmothc|「勉強は勉強よ。私は雇い主よ、先生ではないわ」と言いスロチャナは背伸びをする。「少しは我慢しなさい」。\n#ascensionlessonmothd|「勉強は勉強よ。先生を探しているなら「忘却」にお願いすることね」と言い、スロチャナは満面の笑みを見せた。「話しかけてくれるわけじゃないけどね」。\n#ascensionlessonmothe|「勉強は勉強よ。先生を探しているなら忘却にお願いすることね」と言い、スロチャナはニヤリと笑った。「口をきいてくれるような人たちではないけど」。\n#ascensionlessonmothf|「勉強は勉強よ。先生を探しているなら忘却にお願いすることね」と言い、スロチャナは満面の笑みを見せた。「話しかけてくれるわけじゃないけどね」。\n#|がっかりさせたのだろうか？スロチャナは、分かりづらい。@",
+			"alternativerecipes": [
+				{
+					"id": "talk.apostleforge.sulochanaechidna"
+				},
+				{
+					"id": "talk.apostlegrail.sulochanamarinette"
+				},
+				{
+					"id": "apostlelantern.attemptrecruitkleidouchos.sulochana"
+				},
+				{
+					"id": "sulochanachat_health",
+					"chance": 100
+				},
+				{
+					"id": "sulochanachat_passion",
+					"chance": 100
+				},
+				{
+					"id": "sulochanachat_cabaret",
+					"chance": 100
+				},
+				{
+					"id": "sulochanachat_desireheart_track",
+					"chance": 100
+				},
+				{
+					"id": "sulochanachat_desiremoth_track",
+					"chance": 100
+				},
+				{
+					"id": "sulochanachat_desire",
+					"chance": 100
+				},
+				{
+					"id": "sulochanachat_secrethistoriesrouter",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "sulochanachat_health",
+			"actionId": "talk",
+			"label": "体の強さについて",
+			"requirements": {
+				"sulochana": 1,
+				"health": 1
+			},
+			"startdescription": "「あなたは若いわね。おめでとう」",
+			"description": "「みんな若かったのよ。誰もがよ。これだけが私たち人間の共通点よ」"
+		},
+		{
+			"id": "sulochanachat_passion",
+			"label": "情熱について",
+			"actionId": "talk",
+			"requirements": {
+				"sulochana": 1,
+				"passion": 1
+			},
+			"startdescription": "「ええ。困ったことになるわよ」",
+			"description": "「あなたには可能性があるわ。私がそれを知っているのは、分かっているわよね？でも可能性だけじゃ足りないの。他には何かないの？」"
+		},
+		{
+			"id": "sulochanachat_cabaret",
+			"label": "エクディシスクラブについて",
+			"actionId": "talk",
+			"requirements": {
+				"sulochana": 1,
+				"locationcabaret": 1
+			},
+			"startdescription": "「あら」",
+			"description": "「私の家から始まる道があるわ。話したいなら、そこで会いましょう」"
+		},
+		{
+			"id": "sulochanachat_desireheart_track",
+			"label": "新しい形態について",
+			"actionId": "talk",
+			"requirements": {
+				"sulochana": 1,
+				"desireheart_track": 1
+			},
+			"effects": {
+				"locationcabaret": 1
+			},
+			"startdescription": "「脱皮したいのね？」",
+			"description": "「あなたが歩みたい道を、私たちは新しい形態って呼んでいるの。もうそんなに新しくはないけど、痛みに耐えられるなら、メリットはあるわ。私の家まで来て。そこで最終的に必要になるパートナーについて話しましょう。住所はこれよ」"
+		},
+		{
+			"id": "sulochanachat_desiremoth_track",
+			"actionId": "talk",
+			"label": "古い形態について",
+			"requirements": {
+				"sulochana": 1,
+				"desiremoth_track": 1
+			},
+			"effects": {
+				"locationcabaret": 1
+			},
+			"startdescription": "「やっと、話が通じるようになってきたわね」",
+			"description": "あなたが歩みたい道は、私たちが古い形態と呼んでいるものよ。私も歩いて、最終的にここにたどり着いたの。途中ですべてを手放すことになるわ。何度も何度も、脱皮をするのよ。 私の家まで来て。そこで最終的に必要になるパートナーについて話しましょう。住所はこれよ。"
+		},
+		{
+			"id": "sulochanachat_desire_change",
+			"actionId": "talk",
+			"label": "欲望について",
+			"requirements": {
+				"sulochana": 1,
+				"changemarks": 1
+			},
+			"startdescription": "踊り？",
+			"description": "私の家まで来て。そこで最終的に必要になるパートナーについて話しましょう。住所はこれよ。"
+		},
+		{
+			"id": "sulochanachat_desire",
+			"actionId": "talk",
+			"label": "欲望について",
+			"requirements": {
+				"sulochana": 1,
+				"desire": 1
+			},
+			"startdescription": "そんなことが好きなの？",
+			"description": "私たちに共通点はないわね。私はかなり前に、違う道を選んだの。でも、あなたがその道を望むなら.....エクディシスクラブでもう一度話しかけて。"
+		},
+		{
+			"id": "sulochanachat_secrethistoriesrouter",
+			"actionId": "talk",
+			"label": "秘密の場所について",
+			"requirements": {
+				"sulochana": 1,
+				"lore": 1,
+				"secrethistories": 1
+			},
+			"startdescription": "それに関しては......",
+			"description": ".",
+			"linked": [
+				{
+					"id": "sulochanachat_secrethistoriesg",
+					"chance": 100
+				},
+				{
+					"id": "sulochanachat_secrethistoriesf",
+					"chance": 100
+				},
+				{
+					"id": "sulochanachat_secrethistoriese",
+					"chance": 100
+				},
+				{
+					"id": "sulochanachat_secrethistoriesd",
+					"chance": 100
+				},
+				{
+					"id": "sulochanachat_secrethistoriesc",
+					"chance": 100
+				},
+				{
+					"id": "sulochanachat_secrethistoriesb",
+					"chance": 100
+				},
+				{
+					"id": "sulochanachat_secrethistoriesa",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "sulochanachat_secrethistoriesg",
+			"actionId": "talk",
+			"label": "象牙への道のり",
+			"requirements": {
+				"sulochana": 1,
+				"fragmentsecrethistoriesg": 1
+			},
+			"startdescription": "「正午に行かなくてはいけないって？それはそれはご愁傷さまね」、とスロチャナは珍しく毒気を吐いた。",
+			"description": "「ほら、しばらくの間はこの地図が仕えるはずよ。誰かに私のことを聞かれたら、子供を奪いに行くからって伝えておいて」",
+			"effects": {
+				"lore": -1,
+				"vaulteveningislesdefault": 1
+			}
+		},
+		{
+			"id": "sulochanachat_secrethistoriesf",
+			"actionId": "talk",
+			"label": "瞳孔への道のり",
+			"requirements": {
+				"sulochana": 1,
+				"fragmentsecrethistoriesf": 1
+			},
+			"startdescription": "「ミアに行かなくちゃいけないの？デーツを持って帰ってきてくれる？」",
+			"description": "「ほら。これが案内してくれる人の住所よ。視力泥棒が私のことを尋ねてきたら......クライドによろしくって伝えて......待って、やっぱり私のことは何も言わないでちょうだい。これが住所よ」",
+			"effects": {
+				"lore": -1,
+				"vaultloneandlevelsandsdefault": 1
+			}
+		},
+		{
+			"id": "sulochanachat_secrethistoriese",
+			"actionId": "talk",
+			"label": "そこじゃない―― ",
+			"requirements": {
+				"sulochana": 1,
+				"fragmentsecrethistoriese": 1
+			},
+			"startdescription": "「影のない王たち？いや――」",
+			"description": "「私やあなたのような人に役に立つものはないわよ。あそこで踊る価値のある踊りはないわ。南へ向かうべきよ」",
+			"effects": {
+				
+			}
+		},
+		{
+			"id": "sulochanachat_secrethistoriesd",
+			"actionId": "talk",
+			"label": "刻印への道のり",
+			"requirements": {
+				"sulochana": 1,
+				"fragmentsecrethistoriesd": 1
+			},
+			"startdescription": "「草原に行かなくてはいけないの？」",
+			"description": "「これがこの時期では一番楽な道のりよ。でも簡単ではないわ。楽しんでね」",
+			"effects": {
+				"lore": -1,
+				"vaultlandbeyondforestdefault": 1
+			}
+		},
+		{
+			"id": "sulochanachat_secrethistoriesc",
+			"actionId": "talk",
+			"label": "擬本影への道のり",
+			"requirements": {
+				"sulochana": 1,
+				"fragmentsecrethistoriesc": 1
+			},
+			"startdescription": "「石へ行きたいの？」",
+			"description": "「ほら、これで近くまでは行けるけど、最後の1マイルは歩くことになるわ。そこに行くたびに泊まっていた小さな宿屋があるの。でも、私のせいで全焼したけど」。そういうと彼女はタバコに火をつけた。",
+			"effects": {
+				"lore": -1,
+				"vaultcontinentdefault": 1
+			}
+		},
+		{
+			"id": "sulochanachat_secrethistoriesb",
+			"actionId": "talk",
+			"label": "真珠への道のり",
+			"requirements": {
+				"sulochana": 1,
+				"fragmentsecrethistoriesb": 1
+			},
+			"startdescription": "「ケリシャムへ行きたいのね？ええ、列車は楽じゃないわよ」",
+			"description": "スロチャナが印刷された伝票を手渡してくれた。「今月のホーム番号よ。必ず正しいホームへ向かって。今は簡単にたどり着けるようになったわね。昔は「間違った扉」を通らなければならなかったのよ。そこまで私は暇じゃないわ」。そういうと彼女は笑った。",
+			"effects": {
+				"lore": -1,
+				"vaultshiresdefault": 1
+			}
+		},
+		{
+			"id": "sulochanachat_secrethistoriesa",
+			"actionId": "talk",
+			"label": "変化への道のり",
+			"requirements": {
+				"sulochana": 1,
+				"fragmentsecrethistories": 1
+			},
+			"startdescription": "「変わりたいなら......手伝うわよ」",
+			"description": "「いつも、まずは海で変化するの。まずはケリシャムで始めて、次に遠くへと進めば良いのよ。でも直接行ってはダメ。別の自分自身を送るの。どこに行ったら良いか分からなくなったら、伝承を持って私のところまで戻っていらっしゃい。変化以外のことを求めているなら.....私では手伝えないわ」"
+		},
+		{
+			"id": "poppyoffer",
+			"label": "ポピー・ラスセルズに話しかける",
+			"actionId": "talk",
+			"requirements": {
+				"poppyready": 1
+			},
+			"slots": [
+				{
+					"id": "Consent",
+					"label": "同意",
+					"description": "受け入れるには情熱を、ポピーにもっと質問をするには理性を加える。",
+					"required": {
+						"passion": 1,
+						"reason": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "poppyofferaccept",
+					"chance": 100
+				},
+				{
+					"id": "poppyofferquery",
+					"chance": 100
+				}
+			],
+			"startdescription": "「あなたとずっと話がしたかったのよ。私は時々、目に見えない術を研究している学者たちに資金を提供しているの。あなたの支援もしたいわ。多額な寄付を約束する。その代わりに、いつか、問題をしっかりと解決できる誰かを紹介してほしいの」。そういうと彼女は微笑んだ。[受け入れるには<b>情熱</b>を、問いただすには<b>理性</b>を加える。]",
+			"description": "ポピーの申し出には応じなかった。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "poppyofferaccept",
+			"label": "ポピーの申し出を受け入れる",
+			"actionId": "talk",
+			"requirements": {
+				"passion": 1
+			},
+			"startdescription": "「ええ、その通りよ。今夜戻ってくるわ」",
+			"description": "ポピーから贈り物をもらった。小さな宝物が入った小さな包みだ。次に彼女が会いに来るのは、私が約束した人に会うためとなるだろう。それはきっとボロボロの季節となるはずだ。",
+			"effects": {
+				"funds": 10,
+				"compensationc": 1,
+				"poppyready": -1
+			},
+			"alternativerecipes": [
+				{
+					"id": "poppytimebomb",
+					"chance": 100,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "poppyofferquery",
+			"label": "ポピーに慎重に質問する",
+			"actionId": "talk",
+			"requirements": {
+				"reason": 1
+			},
+			"startdescription": "問題をきちんと解決してくれる人？",
+			"description": "「ええ、ボロボロの季節になったら、私のスポンサーが終わりのために誰かを求めるわ。それなりに忠誠心がある人でもいいし、あなた自身でもいいのよ？あなたに任せるわ。迷惑はかけたくないから」",
+			"effects": {
+				"influencewinter": 1
+			}
+		},
+		{
+			"id": "poppytimebomb",
+			"label": "ポピーのお願い",
+			"actionId": "poppytime",
+			"startdescription": "「ボロボロの季節」に、ポピーは戻ってくる......",
+			"description": ".",
+			"linked": [
+				{
+					"id": "poppysafefornow",
+					"chance": 7
+				},
+				{
+					"id": "poppywantssoul",
+					"chance": 100
+				}
+			],
+			"warmup": 300
+		},
+		{
+			"id": "poppysafefornow",
+			"actionId": "poppytime",
+			"label": "ポピーの沈黙",
+			"startdescription": "街中でポピーを見かける。彼女は優しくほほ笑みながら、慈善イベントの手伝いをしている。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "poppytimebomb",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "poppywantssoul",
+			"label": "ポピーの訪問",
+			"actionId": "poppytime",
+			"slots": [
+				{
+					"id": "Sacrifice",
+					"label": "生贄",
+					"required": {
+						"follower": 1
+					},
+					"forbidden": {
+						"hireling": 1,
+						"summoned": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "poppysatiated",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"signalEndingFlavour": "Melancholy",
+			"ending": "wintersacrifice",
+			"startdescription": "「今がその時よ。ボロボロの太陽は結論を求めている。自分を犠牲にしたい？それとも友だちがいるのかしら？」",
+			"description": "."
+		},
+		{
+			"id": "poppysatiated",
+			"actionId": "poppytime",
+			"label": "適した結論",
+			"requirements": {
+				"follower": 1
+			},
+			"startdescription": "「忠実な友だちを持ったわね！さあ、さよならを言うのよ」",
+			"description": "信奉者はいなくなったが、私はまだここにいる。ポピー・ラスセルズをあちこちで見かける。まだ私に言いたいことがあるのかもしれない。",
+			"effects": {
+				"poppycommissionready": 1,
+				"influencewinter": 1,
+				"follower": -1
+			}
+		}
+	]
+}

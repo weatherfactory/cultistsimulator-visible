@@ -1,0 +1,1933 @@
+{
+	"recipes": [
+		{
+			"id": "studydehoris1",
+			"label": "『デ・ホリス』の1巻を読む",
+			"actionId": "study",
+			"requirements": {
+				"dehoris1": 1
+			},
+			"effects": {
+				"dehoris1": -1,
+				"fragmentmoth": 1,
+				"erudition": 1
+			},
+			"startdescription": "この巻では、蛾、黒い亜麻、ワノイチイなど、森の時の神々の物語が語られている。",
+			"description": "「栄光は質問だ。蛾は常に肯定的に、黒い亜麻は否定的に答える。その答えが変わることはない」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydehoris2",
+			"label": "『デ・ホリス』の2巻を読む",
+			"actionId": "study",
+			"requirements": {
+				"dehoris2": 1
+			},
+			"effects": {
+				"dehoris2": -1,
+				"fragmentedge": 1,
+				"erudition": 1
+			},
+			"startdescription": "この巻は、ライオンスミスと傷跡の護民官の物語と、そのライバル関係に焦点を当てている。",
+			"description": "「ライオンスミスは護民官を倒すために怪物を作りだすが、護民官の傷跡はすべて武器になっている」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytravellingatnight1",
+			"label": "『夜の旅』の本巻を読む",
+			"actionId": "study",
+			"requirements": {
+				"travellingatnight1": 1
+			},
+			"effects": {
+				"travellingatnight1": -1,
+				"fragmentmoth": 1,
+				"erudition": 1
+			},
+			"startdescription": "「マンサスの壁の外には森が生い茂っている。歴史を学ぶ者はそこに壁がないことを知っている」",
+			"description": "イルポーリーは著書の中で、銀の夢と彼が呼ぶものを通して、夢の森を何度も訪れる様子を描いている。「森への道のりを想像しようとするのは、恋をすることを想像するようなものだ」と彼は説明し、「しかし、私は助けになる秘密を見つけた」と綴った。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytravellingatnight2",
+			"label": "『夜の旅』の本巻を読む",
+			"actionId": "study",
+			"requirements": {
+				"travellingatnight2": 1
+			},
+			"effects": {
+				"travellingatnight2": -1,
+				"fragmentwinter": 1,
+				"erudition": 1
+			},
+			"startdescription": "この本では、イルポーリー自身の夢と皇帝ヘリオガバルスの夢との類似性が詳しく論じられている。皇帝ヘリオガバルスは、ボロボロの太陽の操り人形か化身である、とイルポーリーは信じていた。そして彼は著書の中で「白は世界の西側にあり、冬は永遠に留まらない」、と綴っている。",
+			"description": "「ヘリオガバルスがようやく純白の扉を見つけてくれてよかった。言葉は白の門をくぐることはできないし、正直なところ、ヘリオガバルスはあまり面白い話をしたことがない。彼の足跡をたどってみたが、結局、白のことはよくわからないままだ。それはそれでありがたいことだと思ってい。しかし、ここでわかったことは......」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytravellingatnight3",
+			"label": "『夜の旅』の本巻を読む",
+			"actionId": "study",
+			"requirements": {
+				"travellingatnight3": 1
+			},
+			"effects": {
+				"travellingatnight3": -1,
+				"fragmentforge": 1,
+				"erudition": 1
+			},
+			"startdescription": "イルポーリーは、火と未燃の神について綴った論文の中で、「バルドメロ」に宛てた色情的な詩をいくつか挿入している。",
+			"description": "「牡鹿の扉にたどり着くために必要なのは、何かをひどく欲しがることだと思う。しかし、私自身、バルドメロ以外に、そんなに何かを欲したことはない。バルドメロが牡鹿の扉を欲する結末になるのではないかと、心配している。しかし、ペルシャで学んだことがある。これを見れば<i>何が</i>欲しいのかが分かるかもしれない」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studysixlettersonnecessity",
+			"label": "『6つの必見の手紙』を読む",
+			"actionId": "study",
+			"requirements": {
+				"sixlettersonnecessity": 1
+			},
+			"effects": {
+				"sixlettersonnecessity": -1,
+				"fragmentforge": 1,
+				"erudition": 1
+			},
+			"startdescription": "コーズリーは切迫した様子で綴っている。書いている時点で「もう時間がない」と気付いていたようだ。",
+			"description": "「大陽でさえ分裂できる。分裂には目々の鍛造が必要だが」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studylocksmithsdream1",
+			"label": "『鍵屋の夢』の本巻を読む",
+			"actionId": "study",
+			"requirements": {
+				"locksmithsdream1": 1
+			},
+			"effects": {
+				"locksmithsdream1": -1,
+				"fragmentlantern": 1,
+				"erudition": 1
+			},
+			"startdescription": "大工や石工などの職人が見る不思議な夢の類似点の説明と、これらの夢が世界秩序について何を語っているのかについてを考察したもの。皮肉な発言もあれば、面白いものもある。ガルミエがなぜ職人の夢を研究することに人生を捧げたのか、その理由は誰にもわからない。",
+			"description": "「世界の基礎からそびえ立つ「森」という言葉を何度も耳にした。すべての木は光に向かって成長する。「森」は何を目指しているのだろう？光と「光」の違いは？森森の夢への鍵は、この中のどれか――厳密には、実在しないものなのだと思う」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studylocksmithsdream2",
+			"label": "『鍵屋の夢』の本巻を読む",
+			"actionId": "study",
+			"requirements": {
+				"locksmithsdream2": 1
+			},
+			"effects": {
+				"locksmithsdream2": -1,
+				"fragmentknock": 1,
+				"erudition": 1
+			},
+			"startdescription": "本巻で、ガルミエが記録した夢の数は少ないが、彼女自身の複雑な理論が多く記述されている。「何度も何度も見てきたことだが、底辺にあるものは、上辺にあるものからは逃れられない」",
+			"description": "「最も優秀な職人たちは、最後に白い扉を夢見る。私はただの学者であって、職人ではない。職人たちが知っている秘密があるはずだが、その秘密は物語の半分に過ぎないとも思う」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studylocksmithsdream3",
+			"label": "『鍵屋の夢』の本巻を読む",
+			"actionId": "study",
+			"requirements": {
+				"locksmithsdream3": 1
+			},
+			"effects": {
+				"locksmithsdream3": -1,
+				"fragmentmothb": 1,
+				"glimmering": 1
+			},
+			"startdescription": "この巻は、ガルミエの文章は支離滅裂で、どの夢が実際、彼女の夢なのか分からないことで有名である。",
+			"description": "「砂色のローブを着た女性が、マンサスの階段はずっと上に続いていて、死は下を向いている、と言っていた。蟻の母は、2つの頭を使って上と下を守り、傷を必ず通らなくてはいけないようになっている。白の扉が傷なのだと思う。それが死者が時々通過する理由の1つだ。もう半分の秘密を見つけた気がする。読者には、2つの半分をくっつけてもらいたいと思う」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studylocksmithsdream4",
+			"label": "『鍵屋の夢』の本巻を読む",
+			"actionId": "study",
+			"requirements": {
+				"locksmithsdream4": 1
+			},
+			"effects": {
+				"locksmithsdream4": -1,
+				"fragmentmothc": 1,
+				"fragmentlanternc": 1,
+				"fascination": 1
+			},
+			"startdescription": "ヤヌスは門番であり、双子の神であり、傷を作る神であり、変化を示す神であり、太陽と月である。そのため我々は、彼を見張り番、双子、蟻の母、鍛造、メニスカーテ、マドゥルガーダであるとみなしている。ヤヌスが、これらすべての神々であるはずがない。それとも可能なのか？<i>神官たち</i>は教会を知り、乾いた地を知り、ヘリオガバルスを知っていた。と言うことは、彼は総合体なのか？それとも、他の存在なのか？ガラエキア王国では、ヤヌス・ラミウスと呼ばれていたが、忘却の者たちは中傷することで知られている。",
+			"description": "「ヤヌスの顔は1つではなく2つである、と言われている。それに対して私は、なぜ1つだけなのか？なぜ2つだけなのか？と問う。トーマス・ラブ・デンマンによると、ヘルソーとコーズリーは、かつてヤヌスは「すべての神々であり、どの神でもない」と同意していた。しかし、後にヘルソーは自分は「すべての神々」だと主張し、コーズリーは単に「度の神でもない」という意見を好んだ。デンマンは恩知らずの間抜けだが、どれも本当のことを言っているように聞こえる",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyorchidtransfigurations1",
+			"label": "『蘭の変容』の本巻を読む",
+			"actionId": "study",
+			"requirements": {
+				"orchidtransfigurations1": 1
+			},
+			"effects": {
+				"orchidtransfigurations1": -1,
+				"fragmentgrail": 1,
+				"glimmering": 1
+			},
+			"startdescription": "本を閉じた後も、皮膚を赤らめ、目に焼き付かせるような目を引く挿絵を含む。",
+			"description": "「貪るためには、貪られなくてはいけない。産まれる前に戻れないように、一度貪られたら後戻りはできない」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyorchidtransfigurations2",
+			"label": "『蘭の変容』の本巻を読む",
+			"actionId": "study",
+			"requirements": {
+				"orchidtransfigurations2": 1
+			},
+			"effects": {
+				"orchidtransfigurations2": -1,
+				"fragmentgrailb": 1
+			},
+			"startdescription": "フラッド（偽フラッド）は、辰砂の聖杯を求める松のの騎士の冒険を通して、ルベドの錬金術の伝統と聖杯の古い伝統とのつながりについての考察を描いている。",
+			"description": "「分娩台の中で聖杯を探せ」。これが松の騎士の任務だ。驚いたことに、分娩台のそばに立つ助産師は山の母だった。畏敬の念に駆られて、彼は自分自身を去勢して皮を剥ぐ。警戒の嵐が、彼の残骸から喜び勇んで出てきた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyorchidtransfigurations3",
+			"label": "『蘭の変容』の本巻を読む",
+			"actionId": "study",
+			"requirements": {
+				"orchidtransfigurations3": 1
+			},
+			"effects": {
+				"orchidtransfigurations3": -1,
+				"fragmentheart": 1
+			},
+			"startdescription": "山の母と警戒の嵐の間で繰り広げられる長い会話の中で、山と嵐の没落と、そのような没落をどのように回避するかが説明されている。",
+			"description": "ライオンの王座に座る者は、「それでも我らは、三弁の扉を通った者に剣、縄、炎、覚醒の言葉を使って、立ち向かわなくてはいけない」と言った。「誰もここを通らせてはならない。これが我らの法であり、太陽の法である」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyhumoursofagentleman",
+			"label": "サヴェージ著、『紳士のユーモア』を熟読する",
+			"actionId": "study",
+			"requirements": {
+				"humoursofagentleman": 1
+			},
+			"effects": {
+				"humoursofagentleman": -1,
+				"fragmentlantern": 1
+			},
+			"startdescription": "第一幕の最後に、マヴェリンは家の壁に秘密の扉があることをレオに明かし、コルヴィーノはワームを食べ始める。",
+			"description": "この芝居は下品であり、同時に陽気でもある。登場人物は対照的で、予想外な行動をとる。印象に残りやすいセリフの多くは、分かりやすく隠された権力の公式なのかもしれない。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyvictoryofcrowns",
+			"label": "「アルン」著、『王冠の勝利』を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"victoryofcrowns": 1
+			},
+			"effects": {
+				"victoryofcrowns": -1,
+				"fragmentedge": 1
+			},
+			"startdescription": "「アルン」によると、暗殺者は大佐と呼ばれる勢力の工作員であり、「秘密の主人に仕える兵士」だったという。このような記述はローマ時代にまで遡る。",
+			"description": " アルンの知識は怪しいが、彼（彼女？）の文章は力強い。突然死や暴力的な死の警句が、本の中に散りばめられている。「時の神々は夢を見ない。長生者は夢を見ないように努力している」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyintroductiontohistories",
+			"label": "ヘルソーの『歴史学入門』を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"introductiontohistories": 1
+			},
+			"effects": {
+				"introductiontohistories": -1,
+				"fragmentsecrethistories": 1
+			},
+			"startdescription": "この本の序章には、へルソーが今では「虫けらの虫」と呼んでいる、元同僚のジュリアン・コーズリーという男の悪行について詳しく書かれている。へルソーはこの本の制作初期にコーズリーの助言を受けていたが、その後、彼に不審を抱くようになったようだ。",
+			"description": "ヘルソーは、血、銀、設計、ワームをそれぞれの歴史の中心軸とし、いわゆる「第2の歴史」こそが真の歴史であると主張している。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytreatiseonunderplaces",
+			"label": "ヘルソーの『下地論』を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"treatiseonunderplaces": 1
+			},
+			"effects": {
+				"treatiseonunderplaces": -1,
+				"fragmentknockb": 1
+			},
+			"startdescription": "「マンサスの壁は星明りの大きさである」とヘルソーは綴る。彼の指摘は無意味なものが多いが、共通点が浮かび上がってくる。",
+			"description": "悪夢の中を旅する悪漢物語で、儀式の断片のようなものが散りばめられている。「18回目の昇天で芽が出て、36回目の昇天で花を咲かせる」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyonthewhite",
+			"label": "『白の上で』を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"onthewhite": 1
+			},
+			"effects": {
+				"onthewhite": -1,
+				"fragmentwinter": 1
+			},
+			"startdescription": "よくよく調べてみると、この作品は美学の理論か、あるいは絵画の危険性についての警告のように見える。",
+			"description": "ハッシャーは、色への憎悪と死への憧れを気を取られながら書いている。彼は構想していた、あるいはすでに始めた大いなる業についてほのめかし、その中で世界は「最も青白い絵画」に魅了されることとなる。彼は「冬の秘密の言葉」だと言う、説得力のある言葉を何度も繰り返す。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studywaroftheroadscensored",
+			"label": "『道の戦争、1450年～1580年、検閲版』を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"waroftheroadscensored": 1
+			},
+			"effects": {
+				"waroftheroadscensored": -1,
+				"fragmentsecrethistoriesb": 1
+			},
+			"startdescription": "「過去には10数名の長生者が作られた。イングランドが征服活動を始め、最終的に破滅する道へと歩みだせるまで、彼らは日々の鍛造との和平を仲介した。そして鍛造自身は、彼らの中でも最も偉大な者を食い尽くした」",
+			"description": "ウィリス・フォードによると、英国の王族は繋がれた炎の主権者となり、敵を破壊したり変化したりして、ヨーロッパを征服し、聖スパークに大聖堂を建立したという。鍛造とのまた、彼らに悪影響を与え始めた。この本から、最後の数章が抜けている。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyqueensoftherivers",
+			"label": "『川の女王たち』を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"queensoftherivers": 1
+			},
+			"effects": {
+				"queensoftherivers": -1,
+				"fragmentsecrethistories": 1
+			},
+			"startdescription": "ヴィスワ川の女王は毒を盛られ、ドニエプル川の女王は釣り針で窒息した。タホ川の女王は生きたまま焼かれ......",
+			"description": "犯人は観客であったことが判明した。脚本には、観客たちが逃げないように、生き残った女王たちが処刑しなくてはいけないと書かれている。驚くほど明快なエピローグは、川の名前と歴史的出来事の一致が、自分たちの歴史の裏に隠された歴史への手がかりを与えてくれることを示唆している。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyapolloandmarsyas",
+			"label": "『アポロンとマルシュアース』を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"apolloandmarsyas": 1
+			},
+			"effects": {
+				"apolloandmarsyas": -1,
+				"fragmentheart": 1
+			},
+			"startdescription": "元の神話では、マルシュアースは音楽競技でアポロンと技競べをして負けたことで皮を剥がされたが、アポロンはこのことを後で後悔したと語られている。本書では、マルシュアースの肌にまつわる更なる歴史が......",
+			"description": "マルシュアースの皮膚は神託を授け、後にフリュギアに密輸され、キュベレーの女祭司たちに太鼓の皮として使われた。オペラのクライマックスでは、この太鼓の音が、神官を冒涜した者たちを自殺に追い込む。オペラは最年少の女祭司が山の松の美しさを讃える哀歌で幕を閉じる。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyskeletonsongs",
+			"label": "『骸骨の歌』を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"skeletonsongs": 1
+			},
+			"effects": {
+				"skeletonsongs": -1,
+				"fragmentgrail": 1
+			},
+			"startdescription": "アラベラの紹介文では、この本には挿絵が描かれる予定だったが、取締局がそれを許さなかったと説明している。挿絵は今でもどこかに残っているのではないかとほのめかしている。この本は「赤い聖杯のパーシヴァル卿」に捧げられている。",
+			"description": "26個の美味な果物、7つの懲罰、9つの園、4つの後悔。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyburningofunburntgod",
+			"label": "タスマネの『未燃の神の燃焼』を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"burningofunburntgod": 1
+			},
+			"effects": {
+				"burningofunburntgod": -1,
+				"fragmentforgeb": 1,
+				"ritetoolconsumefollower": 1
+			},
+			"startdescription": "タスマネは、ゾロアスター教以前に火の神が存在し、その神の儀式である鍛冶屋の儀式が存在していたという仮説を提唱した。",
+			"description": "タスマネは最終的に、その神は女神であったとしぶしぶ結論付けた。彼は、性別が抑圧の原因だったのではないかと綴る。描写されている儀式は、しばしば不気味で、時に残忍なものである。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydebellismurorum",
+			"label": "「ソリプシストス」著、『デ・ベリス・ミュローラム』を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"debellismurorum": 1
+			},
+			"effects": {
+				"debellismurorum": -1,
+				"fragmentedgeb": 1
+			},
+			"startdescription": "獣同士の戦争、気象現象、難解な概念を簡潔に描いた詩である。戦術についてはかなり具体的に説明されている。",
+			"description": "「2つのものと1つのものが1つになり、角のあるものが分裂した。そしてその結果、血が流れる」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyonwhatiscontainedbysilver",
+			"label": "ポイマンドロス著、『銀に閉じ込められたもの』を読む",
+			"actionId": "study",
+			"requirements": {
+				"onwhatiscontainedbysilver": 1
+			},
+			"effects": {
+				"onwhatiscontainedbysilver": -1,
+				"fragmentlanternb": 1,
+				"ritetoolfollowerconsumelore": 1
+			},
+			"startdescription": "鏡像の恐怖を描いた恐ろしい動物寓話集。3世紀に「ポイマンドロス」によって書かれた作品の最新版。",
+			"description": "「鏡の少女/乙女たちは蘭を好む。[後ろの者？]はシャクナゲを好む。どちらの切り花も、磨かれた青銅の前には置いてはいけない」。付録には、これらの存在を召喚するため使用できる儀式が含まれているが、その使用方法については詳しく書かれていない。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytruecompleteasclepian",
+			"label": "グリースの『アスクレピアンの家の起源に関する謎の真相・完全版』を読む",
+			"actionId": "study",
+			"requirements": {
+				"truecompleteasclepian": 1
+			},
+			"effects": {
+				"truecompleteasclepian": -1,
+				"fragmentheartb": 1,
+				"ritetoolconsumeinfluence": 1
+			},
+			"startdescription": "明らかに古文ではないが、破損は激しい。しかしこの本には、壁のない家、人体への扉のない家とポータルとの説得力のある比較など、興味深い資料が含まれている。",
+			"description": "「死は下を向いている」と本書では説明されている、「孔雀の扉はひび割れや消耗と考えられているが、別の視点から見ると、それはどちらかというと口のようなもの――つまり、もっと尊い入り口のようなものである」。扉に関する考察には、鍵となる召喚文が欠落しているものの、これらの扉を通してクリーチャーを召喚するための儀式が含まれている。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studywainscothistories",
+			"label": "ゴア著、『ウェインスコットの歴史』を読む",
+			"actionId": "study",
+			"requirements": {
+				"wainscothistories": 1
+			},
+			"effects": {
+				"wainscothistories": -1,
+				"fragmentsecrethistoriesb": 1
+			},
+			"startdescription": "ゴアはマンサスについて直接語ってはいないが、「年の階段を上る」、「眠りの扉」、「夜明けの青い光」など、彼が目に見えない世界と取引をしていたことを暗示するような比喩的な表現を繰り返している。",
+			"description": "「当時は太陽の分割について話すのが一般的だった。それによってこの時代の人間たちは、無骨な神々を従えた蛮族の軍勢の侵入を理解していた」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studygeminiad",
+			"label": "『双子』を読む",
+			"actionId": "study",
+			"requirements": {
+				"geminiad": 1
+			},
+			"effects": {
+				"geminiad": -1,
+				"geminiadread": 1,
+				"fragmentgraild": 1,
+				"fragmentheartd": 1,
+				"fragmentmothd": 1,
+				"riteinfluenceconsumeingredient": 1
+			},
+			"startdescription": "本書は、休止しているものの統合を求める時の神、水辺や月の下で求められる時の神、つまり「魔女と双子の片割れ」の本質と教義を概説している。詩的で紛らわしい言葉が特徴的であり、紐解きには時間がかかるだろう。",
+			"description": "『双子』には、魔女と双子の片割れが、双子の片割れと魔女として現れることがあると書かれている。そして、一方の顔は癒えるかもしれないが、もう一方の顔は常に飢えている、とも綴られている。著者は魔女と双子の片割れと森の時の神々――特にベルベットと言う名の秘密の守りて――の繋がりを暗示している。しかし、魔女と双子の片割れを「森の時の神」と分類しているのかどうかは不明である。そして1つであった2人の悲しみ、生身の人間であった頃から続く悲しみについては詳しく語られている。",
+			"warmup": 90,
+			"craftable": true
+		},
+		{
+			"id": "studychioneatabydos",
+			"label": "『アビドスのキオネー』を読む",
+			"actionId": "study",
+			"requirements": {
+				"chioneatabydos": 1
+			},
+			"effects": {
+				"chioneatabydos": -1,
+				"fragmentwinterb": 1
+			},
+			"warmup": 60,
+			"startdescription": "吹雪の中、キオネーと呼ばれる存在が降臨し、城門の閉鎖を要求する。アビドスの街が彼女の呪縛に陥ると、死者は戻ってきたが、口を閉ざしたままだった......",
+			"description": "8年間、街は緩やかな死、凍てつくような恍惚と静寂の美しさに包まれていたが、9年目、キオネーが求める静けさに対抗するために、叫びの陰謀が立ちはだかる。陰謀者たちは城門を開けると、傷を負った男がキオネーの髪を掴み、引きずり出した。夏は戻ってきたが、陰謀者たちは後悔のあまり死んでしまった。",
+			"craftable": true
+		},
+		{
+			"id": "studyirreproachabletraditionssocietynobleendeavour",
+			"label": "『高貴な試みの会の申し分のない伝統』を読む",
+			"actionId": "study",
+			"requirements": {
+				"irreproachabletraditionssocietynobleendeavour": 1
+			},
+			"effects": {
+				"irreproachabletraditionssocietynobleendeavour": -1,
+				"fragmentforgeb": 1
+			},
+			"warmup": 60,
+			"startdescription": "彼らの「試み」は確かに高貴なものであり、人間以上のものへと変貌させる猛烈な魔術の炎を生む。しかし、この変化が成功することはほとんどなく、ほとんどの場合、高貴とは言い難い灰の山になってしまう。",
+			"description": "パートリッジは、上昇した人々の間で一貫した特徴を識別したと主張している。全員が牡鹿の扉を通り抜け、知る者となった。昇天の初めには、全員が「カリデートの召喚文」を唱えたり、より強力な儀式を行ったりしていた。そして、1人残らず裕福であったという。",
+			"craftable": true
+		},
+		{
+			"id": "studyroseofnuriel",
+			"label": "『ヌリエルの薔薇』を読む",
+			"actionId": "study",
+			"requirements": {
+				"roseofnuriel": 1
+			},
+			"effects": {
+				"roseofnuriel": -1,
+				"fragmentgrailb": 1,
+				"fragmentknockb": 1
+			},
+			"warmup": 60,
+			"startdescription": "ヌリエルは、聖トリファンが「血を流して産む者」と「開く者」の名の下に秘密の奇跡を行ったと説明した。こうして聖トリフォンは太陽の棲む家への道を開き、聖トリフォンは偉大な誕生、不死への昇天を経験したのだ。",
+			"description": "聖トリフォンは「角の扉」を通過することで昇天を始めた。次に彼は「チアティックの召喚」を学んだが、極めて神聖な内容であるため、この本には記録されていない。そして、偉大な誕生の7つの印を達成するために、聖トリフォンは「魂が去った者と、魂が残っている者の両方を摂取した」と、ヌリエルは苦々しく説明している。",
+			"craftable": true
+		},
+		{
+			"id": "studyroseofhypatia",
+			"label": "『ヒュパティアの薔薇』を読む",
+			"actionId": "study",
+			"requirements": {
+				"roseofhypatia": 1
+			},
+			"effects": {
+				"roseofhypatia": -1,
+				"fragmentheartb": 1,
+				"fragmentmothb": 1
+			},
+			"warmup": 60,
+			"startdescription": "聖ニンファは「生まれたのではなく、育てられた」と書かれている。「ヒュパティア」は、聖人となった魂が、罪人の贖いのために罪人の死体に宿ったと言っている。",
+			"description": "「冬の扉からマンサスに入る死者ばかりではない。すべての死者がマンサスに入るわけではない」",
+			"craftable": true
+		},
+		{
+			"id": "studyroseofwaznei",
+			"label": "『ワズネイの薔薇』を読む",
+			"actionId": "study",
+			"requirements": {
+				"roseofwaznei": 1
+			},
+			"effects": {
+				"roseofwaznei": -1,
+				"fragmentlanternb": 1,
+				"fragmentedgeb": 1
+			},
+			"warmup": 60,
+			"startdescription": "ワズネイの支持された分派――「真の姉妹団」――は、聖レスピシウスに従い、冷酷な光の時の神、瞳の扉の名の下、昇天を追求した。聖レスピシウスは、おそらく、はるかに大きな姉妹団によって儀式の中で捕らえられ、絞め殺されたために昇天に失敗したが、ワズネイは、成功を望んでいる人たちのために手順を概説している。",
+			"description": "「夢の中で、マンサスを求めよ。第三の印は、牡鹿の扉をくぐって初めて得られる。森の扉を通過しなければならず、白い扉へたどり着かなければならない。牡鹿の扉は、ギルビの目の前で光の運び手を待っている」",
+			"craftable": true
+		},
+		{
+			"id": "studysunsetpassages",
+			"label": "『夕焼けの道』を読む",
+			"actionId": "study",
+			"requirements": {
+				"sunsetpassages": 1
+			},
+			"effects": {
+				"sunsetpassages": -1,
+				"fragmentwinterb": 1
+			},
+			"warmup": 60,
+			"startdescription": "教会は、分裂されるまで栄光の太陽を崇拝してきた――しかし、それがまだ分割されていない間にも、後の姿は名を持つ者として認識されていた。もちろん、マドゥルガーダは死と家への通過を管理した。",
+			"description": "「白い儀式」とは、マドゥルガーダを称えて行われる儀式であり、夜明け前の寒さの中で行われる葬儀で行われる。本書には、儀式の間、刃物を鞘から取り出すことはできないと書かれている。「さもなければ、死体が騒ぎ出す」",
+			"craftable": true
+		},
+		{
+			"id": "studygospelzacchaeus",
+			"label": "『ザアカイの福音書』を読む",
+			"actionId": "study",
+			"requirements": {
+				"gospelzacchaeus": 1
+			},
+			"effects": {
+				"gospelzacchaeus": -1,
+				"fragmentknockc": 1,
+				"ritefollowerconsumeingredient": 1
+			},
+			"warmup": 60,
+			"startdescription": "「彼の体には7つの傷があり、家の中には7つの扉があった。時の神々には7つの下級属性があり、属性の開錠が何よりも優れているのは、蟻の母が救いの母であるからである」",
+			"description": "「森のために血を流した者を偲んで」――この本には、死体を半死状態に引き上げるための儀式の説明が書かれている。必要なのは死体と十分な力。著者は冬の伝承を唱えることと、森の力に触れた助手を使うことを提案している。",
+			"craftable": true
+		},
+		{
+			"id": "studymatthiasamethystloss",
+			"label": "『マティアスとアメジストのイマーゴ：喪失』を読む",
+			"actionId": "study",
+			"requirements": {
+				"matthiasamethystloss": 1
+			},
+			"effects": {
+				"matthiasamethystloss": -1,
+				"fragmentmothc": 1,
+				"ritetoolconsumeinfluence": 1
+			},
+			"warmup": 60,
+			"startdescription": "「家の掟はマティアスが愛することを禁じ、森の慣習はイマーゴが残ることを禁じた。そこで、彼女がアラカプラの大ばさみを発見すると、マティアスは最後に彼女を召喚した。そして彼女は、留まることができるように、彼に背中の羽を切り取らせ、彼は、卑劣な行為を起こさないように、人間の種が宿る部位を彼女に切り取らせた。これは血と喜びに満ちた愛だった。我々はマティアスを家から追い出した」",
+			"description": "地図の端の儀式はならず者によって与えられた。これはマティアスがアメジストのイマーゴを召喚するのに使った儀式だが、多くの召喚の儀式と同様に、適切な道具と適切な影響力が与えられれば、ほぼ全てのものを召喚することができる。この儀式は、結束のために耐え難い苦痛を受けてきた名を持つ者と長生者を偲んで、大切に使われるべきである。",
+			"craftable": true
+		},
+		{
+			"id": "studymatthiasamethysttransformation",
+			"label": "『マティアスとアメジストのイマーゴ：変容』を読む",
+			"actionId": "study",
+			"requirements": {
+				"matthiasamethysttransformation": 1
+			},
+			"effects": {
+				"matthiasamethysttransformation": -1,
+				"fragmentforgec": 1
+			},
+			"warmup": 60,
+			"startdescription": "「我々はマティアスを追放し、アメジストのイマーゴに呪いをかけたが、それでも、夢の中で彼らを見た。彼らが鍛造に身を捧げ、自分自身を変え、昇り、生まれ変わることを誓っているのを見たのだ。 彼らは火の中へと飛び込む」",
+			"description": "これは、イマーゴとマティアスが力への昇天を開始するためにとった第一歩である。彼らは我々の目の届かないところまで昇って行ったが、その炎はまだマレーリーで燃えているかもしれない",
+			"craftable": true
+		},
+		{
+			"id": "studymatthiasamethystpursuit",
+			"label": "『マティアスとアメジストのイマーゴ：追求』を読む",
+			"actionId": "study",
+			"requirements": {
+				"matthiasamethystpursuit": 1
+			},
+			"effects": {
+				"matthiasamethystpursuit": -1,
+				"fragmentgrailc": 1
+			},
+			"warmup": 60,
+			"startdescription": "「マティアスは我々に背き、自身の昆虫標本に加えるために、森で蛾の名を持つ者を追いかけた。アメジストのイマーゴは魔女と双子の片割れと戯れていたが、蛾の許しを請うために森へ戻った。しかし、蛾は、気まぐれか懺悔のつもりか、長生者を悪夢の泥沼に誘い込むために彼女を送り返した」",
+			"description": "「マティアスはイマーゴを愛していた（本当に？長生者は愛することができるのだろうか。それとも、魂の器官が手の施しようがないほど乾ききってしまったのだろうか）。イマーゴはマティアスを愛していた(本当に？気まぐれだったのではないだろうか？)。彼は森の中で彼女を追いかけ続けた。そして彼女はついに悪夢の泥沼に顔を背け、2人は明るく輝く境界線の上に横たわった。そうして彼らは聖杯の喜びを知り、この伝承を獲得したのだ」",
+			"craftable": true
+		},
+		{
+			"id": "studyfranklinbancroftdiaries",
+			"label": "『フランクリン・バンクロフト卿：日記、1750年～1790年』を読む",
+			"actionId": "study",
+			"requirements": {
+				"franklinbancroftdiaries": 1
+			},
+			"effects": {
+				"franklinbancroftdiaries": -1,
+				"fragmentlanternc": 1
+			},
+			"warmup": 60,
+			"startdescription": "バンクロフトは才能のある高僧だったようだが、彼はもどかしいほど気まぐれなプロジェクトにエネルギーを費やしていた。マンサスの精霊たちのために「ぶどう狩りレース」を開催したり、パーカッシガントに曲芸を教えたり、バラの魔女エアシャーのために空想の花の嵐を作り出したりしたが、彼女は彼との交際を拒否していた。バンクロフトは20ページに渡って、このことを嘆いた。",
+			"description": "本書に収録されているマントラは、高さと奥深さを兼ね備えた魔法であり、見張り番に魂を捧げることで、マントラへの昇天の道が開かれるものだ。バンクロフトは酒を飲むと、そのマントラを唱えられると自慢していた。また、また、ヴォクスホール・ガーデンズで開催された花火大会でも曲をつけて披露した。",
+			"craftable": true
+		},
+		{
+			"id": "studyindignitiesobliviate",
+			"label": "『忘却の裏切り者たちが行った残虐行為』を読む",
+			"actionId": "study",
+			"requirements": {
+				"indignitiesobliviate": 1
+			},
+			"effects": {
+				"indignitiesobliviate": -1,
+				"fragmentwinterc": 1,
+				"ritetoolfollowerconsumelore": 1
+			},
+			"warmup": 60,
+			"startdescription": "「58番。彼らは忘却の家の伝統を受け継ぐと主張するが、都合が悪くなると、最も美しく神聖な儀式を放棄する。59番......」",
+			"description": "「教団が煙霧のを召喚するために使用していた儀式を共有しよう。忘却の伝統に明確に反して、冬の伝授者と槌骨の槌ではなく、冬の伝承と開錠の伝授者、そして椎骨を捧げたのだ！これは堪え難い――」",
+			"craftable": true
+		},
+		{
+			"id": "studyfurioustantra",
+			"label": "『怒涛のタントラ』を読む",
+			"actionId": "study",
+			"requirements": {
+				"furioustantra": 1
+			},
+			"effects": {
+				"furioustantra": -1,
+				"fragmentedgec": 1,
+				"ritefollowerconsumetool": 1
+			},
+			"warmup": 60,
+			"startdescription": "このタントラは、怒りの使い方と起こりうる脅威に関する説明が綴られている。怒りが必ずしも変容に耐えられるものではないと警告する内容である。",
+			"description": "「満月が現れ、生き物たちが生まれ変わる。トカゲでさえ殺されてはいけない。自分の生まれ変わりかもしれないから」",
+			"craftable": true
+		},
+		{
+			"id": "studydevouredtantra",
+			"label": "『貪られしタントラ』を読む",
+			"actionId": "study",
+			"requirements": {
+				"devouredtantra": 1
+			},
+			"effects": {
+				"devouredtantra": -1,
+				"fragmentgrailc": 1
+			},
+			"warmup": 60,
+			"startdescription": "『貪られしタントラ』は欲望の利用と危険性を警告する一方で、その中の一節を「星型の手足を持つ空腹の使者」に捧げており、著者による愛情のこもった説明が綴られている。",
+			"description": "「腹の中で燃える百万の炎が、様々な口に飲み込まれたものを飲み込む」",
+			"craftable": true
+		},
+		{
+			"id": "studyceaselesstantra",
+			"label": "『滅びなきタントラ』を読む",
+			"actionId": "study",
+			"requirements": {
+				"ceaselesstantra": 1
+			},
+			"effects": {
+				"ceaselesstantra": -1,
+				"fragmentheartc": 1
+			},
+			"warmup": 60,
+			"startdescription": "『滅びなきタントラ』の大部分には、パーカシーガントと呼ばれる生き生きとした生き物に対する警告が綴られているが、最後にはパーカシーガントの召喚に使用できる詠唱で締めくくられている。パーカッシガントにはどんな踊りでも教えることはできるが、1種類の踊りだけを好むと綴られている。",
+			"description": "「止まらないものは止まらない」",
+			"craftable": true
+		},
+		{
+			"id": "studyknownunknowntantra",
+			"label": "『知られざる未知のタントラ』を読む",
+			"actionId": "study",
+			"requirements": {
+				"knownunknowntantra": 1
+			},
+			"effects": {
+				"knownunknowntantra": -1,
+				"fragmentlanternc": 1
+			},
+			"warmup": 60,
+			"startdescription": "『知られざる未知のタントラ』は、言葉が終わる「白の扉」への旅を語る。ここには、特定の時間と場所でその扉を開くことができるマントラも綴られている。",
+			"description": "「灯籠の光は、森の影の間しか見せてくれない」",
+			"craftable": true
+		},
+		{
+			"id": "studyencirclingtantra",
+			"label": "『取り巻くタントラ』を読む",
+			"actionId": "study",
+			"requirements": {
+				"encirclingtantra": 1
+			},
+			"effects": {
+				"encirclingtantra": -1,
+				"fragmentknockc": 1
+			},
+			"warmup": 60,
+			"startdescription": "『取り巻くタントラ』には、空腹の門であり、蜘蛛の門とも呼ばれ、蟻の母を祀り、偉大な頭巾王子が通る「蛇の門」の物語が綴られている。",
+			"description": "このタントラには召喚文が含まれているが、ハンターの扉から蛇の扉に到達するには力不足な召喚文であると警告している。「目的地のない道は、それ自体が目的地である」と、書かれている。",
+			"craftable": true
+		},
+		{
+			"id": "studyshavenlocktantra",
+			"label": "『剃髪のタントラ』・『髪を剃る者』を読む",
+			"actionId": "study",
+			"requirements": {
+				"shavenlocktantra": 1
+			},
+			"effects": {
+				"shavenlocktantra": -1,
+				"fragmentmothc": 1
+			},
+			"warmup": 60,
+			"startdescription": "このタントラは、過去の自分にとらわれず、新しい高次元の自分自身を求める準備ができている人たちのことを熱く語っている。一度変化が本当に始まると――「第三の印をすぎると」――、昔の自分に戻るのは危険で苦痛なものだと書かれている。",
+			"description": "「秘密を大地に囁き、火で燃やし、海に撒き散らせ。それでも秘密は髪にくっついて離れないだろう」と、タントラは警告する。時にはハンターの扉を開くなぞなぞの答えであるという、オカルトのなぞなぞも書かれている。",
+			"craftable": true
+		},
+		{
+			"id": "studytantraworms",
+			"label": "『ワームのタントラ』を読む",
+			"actionId": "study",
+			"requirements": {
+				"tantraworms": 1
+			},
+			"effects": {
+				"tantraworms": -1,
+				"fragmentwinterc": 1
+			},
+			"warmup": 60,
+			"startdescription": "このタントラには、「蛇ではない蛇」であるワームに対する非実用的な様々な対策が記述されている。蛾と冬は一番身近な存在なので、その弱点を理解しているが、どちらにも欠点がある。ライオンスミスはワームを潰すことができるが、定命の者には勧められない。",
+			"description": "「ワームたちはずっと、我々の中に寄生しようとしてきた。ここで紹介するのは、彼らを受け入れない体を作る方法である」。タントラには図が挿入されている。この図を見ても不快感を感じるだけであり、書かれていることを実践しても、命は助からない。",
+			"craftable": true
+		},
+		{
+			"id": "studybookofcentipede",
+			"label": "『ムカデの書』を読む",
+			"actionId": "study",
+			"requirements": {
+				"bookofcentipede": 1
+			},
+			"effects": {
+				"bookofcentipede": -1,
+				"fragmentsecrethistoriesc": 1
+			},
+			"warmup": 60,
+			"startdescription": "「ムカデはいつでも暗い場所に入り込む。罰を受けると、彼女は逆上した――それマンサスでも、ミアでも同じであった」",
+			"description": "「川は神話から流れだし砂地を通り、伝説へと流れ込む。描かれた川は逆流する。今、ムカデに近づくことはできないが、時折、彼女は入り口を見つけては戻ってくる。",
+			"craftable": true
+		},
+		{
+			"id": "studyaccountkanishkspidersdoor",
+			"label": "『蜘蛛の扉のカニシュクの話』を読む",
+			"actionId": "study",
+			"requirements": {
+				"accountkanishkspidersdoor": 1
+			},
+			"effects": {
+				"accountkanishkspidersdoor": -1,
+				"fragmentedgec": 1
+			},
+			"warmup": 60,
+			"startdescription": "カニシュクは名を持つ者になろうとしていた。その目的のために、彼はロク・カフーリを自分の欲望の器にして、一緒に昇天するとロクに約束した。しかし彼は、蜘蛛の扉で恋人を裏切り......",
+			"description": "この裏切りについてを耳にしたキリアークは、カニシュクを強制的に仕えさせた。誰であっても、キリアークを否定することはできない。ロク・カフーリはこの作品を書くために留まり、闘争と競争の下級魔術についてを綴った。",
+			"craftable": true
+		},
+		{
+			"id": "studystumm",
+			"label": "『STUMM』を観る",
+			"actionId": "study",
+			"requirements": {
+				"stumm": 1,
+				"funds": 1
+			},
+			"effects": {
+				"stumm": -1,
+				"fragmentwinterc": 1,
+				"dread": 1,
+				"ritefollowerconsumeinfluence": 1,
+				"funds": -1
+			},
+			"warmup": 60,
+			"startdescription": "プロジェクターがガタガタと軋み、無音で壁に映像を映し出す。禁断の科学を学ぶ愚かな学生が、世界の表皮についた傷を利用して死者をおびき寄せるために、ダンサーを募集するという物語だ。架空の話だが、映画のインタータイトルには「衰退の太陽作戦」と書かれている......",
+			"description": "儀式が不気味なほど細かく描写されている。これが世界の割れ目だ。光り輝く絵の具の中で影響力が光る。次に映るのは、魅力的なリズムで踊るダンサーだ。そして、学者が「作戦」について語り、霧のような死者が彼を食らうために割れ目を通って現れる。映画は最後に、ダンサーの用心深い瞳を映して終わる。彼女は最初からそのつもりだったのだろうか？",
+			"craftable": true
+		},
+		{
+			"id": "studyvinzantinscriptions",
+			"label": "『ヴィンザントの碑文』を読む",
+			"actionId": "study",
+			"requirements": {
+				"vinzantinscriptions": 1
+			},
+			"effects": {
+				"vinzantinscriptions": -1,
+				"fragmentforgec": 1
+			},
+			"warmup": 60,
+			"startdescription": "遥か昔、「絆の姉妹団」によると、鍛造は栄光の太陽という名の時の神に恋をしたという。赤い聖杯は二人の結婚を待ち望み、聖杯の女司祭たちはそれを予言していた......",
+			"description": "残りの文章は、聖杯の女司祭たちによる、来るべき「形」に関するあざ笑うような発言で構成されている。また、その中に、ワノイチイと、特に角斧に仕える姉妹団の警告と嘆きが散りばめられている。そして、本文には後押しする試みの一環として、鍛造への祈りが添えられている。",
+			"craftable": true
+		},
+		{
+			"id": "studylarquebinecodex",
+			"label": "『ラルケビン写本』を読む",
+			"actionId": "study",
+			"requirements": {
+				"larquebinecodex": 1
+			},
+			"effects": {
+				"larquebinecodex": -1,
+				"fragmentheartc": 1
+			},
+			"warmup": 60,
+			"startdescription": "西から来た双子の片割れと魔女は、2つの子宮から生まれた姫と怪物だった。しかし、2人は生まれた瞬間からお互いを愛し、「結束を求める」ために密かに会っていた。",
+			"description": "大干ばつに見舞われると、この地を支配する王たちが王女やと魔女を生贄にしようし、2人は海を渡ることにした。絶望に囚われた彼女たちは、深海へと飛び込み......描かれた川を見つけた。そして、そこから赤い聖杯の力を借りて、マンサスへと入るのだが......この本は最後に聖杯を非難して終わる。",
+			"craftable": true
+		},
+		{
+			"id": "studyagainstsisterhoodknot",
+			"label": "『絆の姉妹団とその退廃的な習慣に関する批判』を読む",
+			"actionId": "study",
+			"requirements": {
+				"againstsisterhoodknot": 1
+			},
+			"effects": {
+				"againstsisterhoodknot": -1,
+				"fragmentsecrethistoriesd": 1
+			},
+			"warmup": 60,
+			"startdescription": "ヒエロニムスの主張によると、「絆の姉妹団」に仕えていた者たちは次のような取り決めをした。サンダースキンはワノイチイを愛していた。角斧の愛する者たちを破壊したことへの賠償として、聖杯は彼を破壊した。この辺りからヒエロニムスの文章が支離滅裂になる。どうやら怒り狂いながら書いていたようだ。",
+			"description": "ヒエロニムスはやがて冷静さを取り戻し、サンダースキンが孔雀の扉からマンサスに入った経緯を説明する。これをヒエロニムスは「醜態中の醜態だが、扉の中で最も醜態を晒すものは常に醜態である」と、力説した。",
+			"craftable": true
+		},
+		{
+			"id": "studymorphycodex",
+			"label": "『モーフィー写本』を読む",
+			"actionId": "study",
+			"requirements": {
+				"morphycodex": 1
+			},
+			"effects": {
+				"morphycodex": -1,
+				"fragmentsecrethistoriesd": 1
+			},
+			"warmup": 60,
+			"startdescription": "本書の著者は、姉妹団が崇拝する赤い聖杯、ワノイチイ、角斧が、家の時の神々と居場所をなくした時の神々間の最終条約に合意したことを称賛している。サンダースキンはワノイチイを愛していた。そして聖杯は、角斧の姉妹と兄弟を殺害したことへの賠償として、彼を破壊した。",
+			"description": "サンダースキンは孔雀の扉からマンサスに入った。それは「魔女と双子の片割れには決して与えられない特権だが、彼女たちにはほとんど見返りがないものだった」。作家は孔雀の扉からの侵入は見苦しいものであると認めているが、この状況下では他に方法がなかったと主張している。",
+			"craftable": true
+		},
+		{
+			"id": "studyleoninetantra",
+			"label": "『獅子のタントラ』を読む",
+			"actionId": "study",
+			"requirements": {
+				"leoninetantra": 1
+			},
+			"effects": {
+				"leoninetantra": -1,
+				"fragmentedged": 1
+			},
+			"warmup": 60,
+			"startdescription": "タントラには、偉大な頭巾王子についてと、王子たちが大河国の侵略者との戦争にどのように影響を与えたのかが、簡潔に説明されている。また作者は、「ある意味、王子たちも侵略者であった」とも綴っている。",
+			"description": "「ライオンは、子供や言葉ではなく、武器のように創られる。偉大な頭巾王子は時の神々を密かに見張って、ライオンの創造方法を覚えたが、今となっては、すべてのライオンが黄金の将軍に仕えているわけではない」",
+			"craftable": true
+		},
+		{
+			"id": "studyincandescenttantra",
+			"label": "『灼熱のタントラ』を読む",
+			"actionId": "study",
+			"requirements": {
+				"incandescenttantra": 1
+			},
+			"effects": {
+				"incandescenttantra": -1,
+				"fragmentforged": 1
+			},
+			"warmup": 60,
+			"startdescription": "「坩堝の王子」と呼ばれる存在との会話が収録されている。この王子は、主人である灼熱の女王の旺盛な食欲と、彼女が太陽と共有する裸の欲望の危険性を警告しているが、それでも彼は女王への忠誠を公言している。",
+			"description": "「変化する儀式は必然的に破壊する儀式である。しかし、大きな変化は、凶暴な破壊を必要とする。」",
+			"craftable": true
+		},
+		{
+			"id": "studythirstingtantra",
+			"label": "『渇きのタントラ』を読む",
+			"actionId": "study",
+			"requirements": {
+				"thirstingtantra": 1
+			},
+			"effects": {
+				"thirstingtantra": -1,
+				"fragmentgraild": 1,
+				"ritetoolconsumeingredient": 1
+			},
+			"warmup": 60,
+			"startdescription": "喉の渇きの多くの種類、用途、効果に関する研究論文。",
+			"description": "このタントラは、渇きを癒すことによって定命の者が渇きの力に仕えることができると説明しているが、普通の渇きを癒すために、より稀な渇きを拒むことの危険性についても読者に警告している。「喉を渇かせた者、力ある者は、この世界での行為に執着し、向こう側からこの世界に戻ってくるだろう」",
+			"craftable": true
+		},
+		{
+			"id": "studyflayedtantra",
+			"label": "『剥皮のタントラ』を読む",
+			"actionId": "study",
+			"requirements": {
+				"flayedtantra": 1
+			},
+			"effects": {
+				"flayedtantra": -1,
+				"fragmentheartd": 1
+			},
+			"warmup": 60,
+			"startdescription": "「ピール」はかつて偉大な頭巾王子の一員であったが、兄弟たちと別れ、サンダースキンを追って踊り続けた。",
+			"description": "ピールが自分の皮をむくと、タントラを書くのに必要なインクが手に入った。ピールは、仲間の怒りに直面しなければならなかったが、これが彼らを撃退するために使用した召喚文だ。",
+			"craftable": true
+		},
+		{
+			"id": "studywatchfultantra",
+			"label": "『見張りのタントラ』を読む",
+			"actionId": "study",
+			"requirements": {
+				"watchfultantra": 1
+			},
+			"effects": {
+				"watchfultantra": -1,
+				"fragmentlanternd": 1,
+				"ritetoolfollowerconsumelore": 1
+			},
+			"warmup": 60,
+			"startdescription": "タントラには、「ハンターの門」から「蛇の門」（西洋では通常「蜘蛛の門」と呼ばれている）への道を示す言葉など、カルトの啓示過程が記述されている。",
+			"description": "「太陽は決まった時間に家を通過する。太陽が分裂してからは、その時間が不確かになった」",
+			"craftable": true
+		},
+		{
+			"id": "studytwinserpenttantra",
+			"label": "『双蛇のタントラ』を読む",
+			"actionId": "study",
+			"requirements": {
+				"twinserpenttantra": 1
+			},
+			"effects": {
+				"twinserpenttantra": -1,
+				"fragmentknockd": 1,
+				"ritefollowerconsumeingredient": 1
+			},
+			"warmup": 60,
+			"startdescription": "このタントラには、偉大な頭巾王子（出自不明の王族）が、鍵の蛇、十字路の双子、鏡の女王を讃えて、祈り、犠牲、詩を捧げる様子が描かれている。「ナギは包み、ナギは傷から立ち上がり、ナギは既に傷ついている者を救う」",
+			"description": "この文献には、偉大な頭巾王子たちを「死の歴史から不死の歴史へと逃避した」と書かれており、現在108人いるが、死の歴史から足を踏み出す前は――つまり双子になる前は――54人しかいなかったとも書かれている。",
+			"craftable": true
+		},
+		{
+			"id": "studyfirecircletantra",
+			"label": "『火の輪のタントラ』を読む",
+			"actionId": "study",
+			"requirements": {
+				"firecircletantra": 1
+			},
+			"effects": {
+				"firecircletantra": -1,
+				"fragmentmothd": 1
+			},
+			"warmup": 60,
+			"startdescription": "ここでは、偉大な頭巾王子たちが森に侵入してくるティムリド軍を飲み込むように懇願した様子が描かれている。王子たちが、穴に棲む秘密の守人の助けを借りるまでは、「斑の王」、「蜂蜜の木」、そして「海の双子」は皆揃って彼らの願いを聞き入れなかった。",
+			"description": "埋穴に棲む秘密の守人から恐喝材料を手に入れた偉大な頭巾王子たちは、森の神々に2度目の請願をし、成功した。ティムリッドの軍勢の4分の1は蜂に食い尽くされ、4分の1は水中に身を投げて死に、4分の1は「何も残らなくなるまで脱いだ」。",
+			"craftable": true
+		},
+		{
+			"id": "studyasthesunhiscourse",
+			"label": "『太陽を追って』を読む",
+			"actionId": "study",
+			"requirements": {
+				"asthesunhiscourse": 1
+			},
+			"effects": {
+				"asthesunhiscourse": -1,
+				"fragmentedged": 1,
+				"ritefollowerconsumetool": 1
+			},
+			"warmup": 60,
+			"startdescription": "アレクサンダーは3日3晩、諸王の王ダリウスとイッススで会談した。初日、二人は脅しを交わし、2日目は約束を交わし、3日目は秘密を交わした。ダリウスはアレクサンダーに衝撃的なことを告げ、彼は「力の問題と支配の問題」についてを考えるために天幕に戻った。",
+			"description": "4日目の夜明けに、アレクサンダーは「太陽は自分の進路を持ち、それに基づいて彼は戻り、私も戻る」と宣言した。彼はマケドニアに戻り、彼の決定に異議を唱えた2人の隊長を処刑した。彼は「盲目の神の名前」と「神聖な裏切りの儀式」をもたらす。ジョエルは、裏切りがなければ戦争は終わらないと考えている。",
+			"craftable": true
+		},
+		{
+			"id": "studyconcursumdiaries",
+			"label": "『収束の日記』を読む",
+			"actionId": "study",
+			"requirements": {
+				"concursumdiaries": 1
+			},
+			"effects": {
+				"concursumdiaries": -1,
+				"fragmentlanternd": 1
+			},
+			"warmup": 60,
+			"startdescription": "「地図伝説があり、伝説の地図があり、地図の伝説がある。沼の中に水があり、コップの中に水があり、空に水があるように、マンサスの属性はこれらのすべての中に存在している」",
+			"description": "ウェスターグレンはマンサスへの遠征について綴っている。彼は実用的なことよりも、色や景色、質感など、彼が経験したことに焦点を当てている。彼は、マンサスは毎年変わると言っているが、「扉」は昔から変わらないと確信を持って言っている。「扉は閉まるかもしれないが、消えることはない。少なくとも定命の者たちがマンサスにいる間は。我々はネズミのようなものだ」",
+			"craftable": true
+		},
+		{
+			"id": "studyironbook",
+			"label": "『鉄の書』を読む",
+			"actionId": "study",
+			"requirements": {
+				"ironbook": 1
+			},
+			"effects": {
+				"ironbook": -1,
+				"fragmentforged": 1
+			},
+			"warmup": 60,
+			"startdescription": "オルドの者たちは「鉄の鎖」と呼ばれる誓いを立て、世間から隠れることを求められていた。この文献には、おそらく長い間使われてこなかった、住所や合言葉などが記載されている。イリアの町で教団の連絡先を見つけるために使われていたと思われる。",
+			"description": "最終章には、秘密の誓いを破ったオルドの教団員への罰則が記載されている。これには、「坩堝の王」と呼ばれる精霊を召喚して復讐させるための召喚文も含まれている。これは誓いを破る者に対する最後の手段であり、他の手段が利用できない場合にのみ使用されるべきである。坩堝の王を召喚すると、日々の鍛造自身の注意を引いてしまうかもしれない、とイブニは警告している。",
+			"craftable": true
+		},
+		{
+			"id": "studysilverbook",
+			"label": "『銀の書』を読む",
+			"actionId": "study",
+			"requirements": {
+				"silverbook": 1
+			},
+			"effects": {
+				"silverbook": -1,
+				"fragmentknockd": 1
+			},
+			"warmup": 60,
+			"startdescription": "オルドの教団員は「銀の鎖」と呼ばれる誓いを立てなければならない。これは、男女間での性行為を禁じるものである。「来たるべきことは、必ずしも天空の罪とは限らないが、重大な危険を伴うことである」と綴られている。さらに、ブルズガッシュは、教団員を他の誘惑から守るために同性関係を歓迎するべきだと考えている。",
+			"description": "この本には、仮面を被る、美貌を失う、厳かで詩的な戒めに耳を傾けるなど、誓いを破りたくなる教団員たちを守るための対策が定められている。これを破った者は死刑に処せられるが、性交を伴わない行為を行った者には、より軽い罰則が課せられる。召喚の儀式にこれらの罰を組み込むために使用された召喚文もここに含まれている。",
+			"craftable": true
+		},
+		{
+			"id": "studyivorybook",
+			"label": "『象牙の書』を読む",
+			"actionId": "study",
+			"requirements": {
+				"ivorybook": 1
+			},
+			"effects": {
+				"ivorybook": -1,
+				"fragmentwinterd": 1,
+				"ritefollowerconsumeinfluence": 1
+			},
+			"warmup": 60,
+			"startdescription": "オルドの教団員は「象牙の鎖」と呼ばれる誓いを立て、時の神々と取引しないことを約束しなければならなかった。高僧たちがこの誓いを一字一句守ることはほぼ不可能であったため、この書には数え切れないほどの解説、例外、免償が掲載されている。",
+			"description": "クレナイは教団の葬儀について説明しており、ここに含まれる呪文は、理論的には、亡くなった長生者の魂が時の神々に渡らないようにするものである。記憶し、記念する「骨の鳩」と呼ばれる時の神は、これらの儀式の中で、秘密裏に呼び出されることになっている。その理由は「この時の神で、我々は理解を深めた」からである。",
+			"craftable": true
+		},
+		{
+			"id": "studyworlddoesnotweep",
+			"label": "『世界は泣かない』を読む",
+			"actionId": "study",
+			"requirements": {
+				"worlddoesnotweep": 1
+			},
+			"effects": {
+				"worlddoesnotweep": -1,
+				"fragmentwinterd": 1,
+				"riteinfluenceconsumefollower": 1
+			},
+			"warmup": 60,
+			"startdescription": "これを書いた無名の高僧は、「世界は忘れるが、骨の鳩は忘れない」と宣言している。これには、ある行為を確実に記憶させるためのいくつかの指示が書かれていて、その中には、特に恐ろしい方法で生け贄を捧げる必要がある儀式も含まれていた......",
+			"description": "時の神々は、車輪、火打ち石、潮汐、ナナトグロの記憶を葬ろうとしたが、鳩はそれを許さない。最初の卵に起こったことを忘れることも、彼は許さないだろう。しかし、それは、見張り番が許すことができる唯一のことであるかもしれない......",
+			"craftable": true
+		},
+		{
+			"id": "studydeedsofthescarredcaptain",
+			"label": "『傷だらけの隊長の記録』を読む",
+			"actionId": "study",
+			"requirements": {
+				"deedsofthescarredcaptain": 1
+			},
+			"effects": {
+				"deedsofthescarredcaptain": -1,
+				"fragmentedged": 1
+			},
+			"warmup": 60,
+			"startdescription": "最初に7体の怪物を倒して土地を安全にした「傷だらけの隊長」によるミケーネ建国の物語。",
+			"description": "隊長が怪物を1匹1匹倒していくと血の洪水は溢れだし、最後には女祭司が溺れて蛇の女神に生まれ変わった。彼女は隊長を祝福し、血の洪水がおさまった後、隊長はミケーネを去り「森の上の家」へと旅立ち、最高の支配者の座に君臨した。",
+			"craftable": true
+		},
+		{
+			"id": "studybookofdissolution",
+			"label": "『溶解の書』を読む",
+			"actionId": "study",
+			"requirements": {
+				"bookofdissolution": 1
+			},
+			"effects": {
+				"bookofdissolution": -1,
+				"fragmentforgee": 1,
+				"ritetoolconsumefollower": 1
+			},
+			"warmup": 60,
+			"startdescription": "本書では、未燃の神、消費し変容する日々の鍛造への祈りに焦点があてられている。著者は、鍛造の力は、その性質からも、道具から生じていると綴っている。",
+			"description": "本書には、現在とは異なる扉や通路があったかつての「太陽の棲む家」についてが書かれている。それは、太陽の棲む家への道を開いた日々の鍛造の功績と、石の悲鳴にもかかわらず、過去を現在に変えた彼女の働きを讃えた......",
+			"craftable": true
+		},
+		{
+			"id": "studycatalogueofunchartedpleasures",
+			"label": "『未知なる快楽の目録』を読む",
+			"actionId": "study",
+			"requirements": {
+				"catalogueofunchartedpleasures": 1
+			},
+			"effects": {
+				"catalogueofunchartedpleasures": -1,
+				"fragmentgraile": 1
+			},
+			"warmup": 60,
+			"startdescription": "肉欲の公式によると「快楽のなかには現実世界の法則を狂わせるほど強烈なものがある」という。この文献には、いくつかの例が挙げられている。",
+			"description": "誕生は快楽と苦悩が重なった時に起こる。鍛造の最初の禁断の行為が喜びの火花を咲かせ、それが栄光の中に根付いたのか、それとも名もなき場所に根付いたのか――答えを出せる者はいないだろう。こうしてフラワーメーカーの種が蒔かれたが、彼は長い間、満たされない痛みに過ぎなかった。",
+			"craftable": true
+		},
+		{
+			"id": "studythosewhodonotsleep",
+			"label": "『眠らないものたち』を読む",
+			"actionId": "study",
+			"requirements": {
+				"thosewhodonotsleep": 1
+			},
+			"effects": {
+				"thosewhodonotsleep": -1,
+				"fragmenthearte": 1,
+				"ritetoolconsumeingredient": 1
+			},
+			"warmup": 60,
+			"startdescription": "「双子の片割れと魔女は、海の両側に位置する2つの子宮から生まれた。1人は貧乏人、もう1人は金持ちだった。双子の片割れは強い心臓の属性だったので、生き残ることは保証されていた。魔女は強い聖杯の属性の持ち主だったため、満たされることはなかった......」",
+			"description": "双子の片割れと魔女が西から来たとき、赤い聖杯は2人の昇天を許したが、その後、その力に嫉妬するようになった。そこで赤杯は偉大な音楽家を誘い込み、名を持つ者にし、心臓の時の神として血から生まれ変わらせた。こうすることで、聖杯もまた心臓の領域で力を維持することができたのである。しかし常に勝利が保証されていたわけではない。",
+			"craftable": true
+		},
+		{
+			"id": "studytheskythesoul",
+			"label": "『空と魂』を読む",
+			"actionId": "study",
+			"requirements": {
+				"theskythesoul": 1
+			},
+			"effects": {
+				"theskythesoul": -1,
+				"fragmentlanterne": 1,
+				"fascination": 1
+			},
+			"warmup": 60,
+			"startdescription": "カルの詩は短く、曖昧で、暴力描写に満ちている。「星は針で突かれた穴だが、太陽は傷口だ」",
+			"description": "「いつでも死を超えて死ぬことはできる」とカルは言う。「見張り番が先に行き、ちょうど7人が後を追える」。「しかし我々は、火花が上に向かって飛んでいくように、栄光のために生まれてきたに違いない」",
+			"craftable": true
+		},
+		{
+			"id": "studyonthematterandthedeedsofserpents",
+			"label": "『蛇の行いに関する考察』を読む",
+			"actionId": "study",
+			"requirements": {
+				"onthematterandthedeedsofserpents": 1
+			},
+			"effects": {
+				"onthematterandthedeedsofserpents": -1,
+				"fragmentknocke": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "偉大な頭巾王子と呼ばれる蛇族が、忘却の家と呼ばれる教団の存在を知り、何マイルも超えて彼らと戦った。王子たちは「子供たちを産んだ」蟻の母と同盟を結んだ。",
+			"description": "文中では、偉大な頭巾王子たちがどのようにして、彼らの命を奪った（または死ぬ運命であった）第五史から脱出したのか（あるいは脱出することになったのか）を説明している。彼らは、一部の歴史の中でインドと呼ばれる「大河の国」の秘密の征服に従事し、その国で起こるその他の征服をすべて偽りのものにした。",
+			"craftable": true
+		},
+		{
+			"id": "studyserenityofblackwood",
+			"label": "『黒い森の静けさ』を読む",
+			"actionId": "study",
+			"requirements": {
+				"serenityofblackwood": 1
+			},
+			"effects": {
+				"serenityofblackwood": -1,
+				"fragmentmothe": 1,
+				"fascination": 1
+			},
+			"warmup": 60,
+			"startdescription": "旅人たちを集めて森の中を案内し、途中で彼らを見捨てる「あの流浪人」と呼ばれる者がいる。旅人たちは、気が付くと「壮大な怪物」に付きまとわれるのだという。",
+			"description": "旅人たちは、目を閉じれば生き延びられること（閉じた目は彼らの印となった）、小川の澄んだ冷たい水を飲むと怪物に見つからないことに気がついた。彼らは決して「あの流浪人、別名ムカデ」を忘れることも、許すこともなかった。",
+			"craftable": true
+		},
+		{
+			"id": "studybookofthrones",
+			"label": "『玉座物語』を読む",
+			"actionId": "study",
+			"requirements": {
+				"bookofthrones": 1
+			},
+			"effects": {
+				"bookofthrones": -1,
+				"fragmentsecrethistoriese": 1,
+				"fragmentedgee": 1
+			},
+			"warmup": 60,
+			"startdescription": "『最初にして最大の歴史』では、影のないペルシア帝国の臣下が西方に旅をしてペルセウス王国を訪れる。そこで彼は、守護神ペルセウス、闇の中に住む傷だらけの男の弟子となる。7年後、彼は国へと戻り、その知識を使って影のない帝国に仕え、その黄金の将軍となった......       ",
+			"description": "数年の平和を経て、ペルセウス王国の継承者たちは、影のない帝国と諸王の王に反旗を翻す。黄金の将軍は、諸王の王が「裏切りの大きな秘密」を囁くまでは、師匠の血縁者との戦いを渋っていた。剣を折って帝国と傷だらけの男への誓いを捨て、命を捨てて「世界の裏側の神殿」へと足を踏み入れた。",
+			"craftable": true
+		},
+		{
+			"id": "studysecondglory",
+			"label": "『第二の栄光』を読む",
+			"actionId": "study",
+			"requirements": {
+				"secondglory": 1
+			},
+			"effects": {
+				"secondglory": -1,
+				"fragmentwintere": 1,
+				"dread": 1,
+				"riteinfluenceconsumefollower": 1
+			},
+			"warmup": 60,
+			"startdescription": "ジュセは時の神々を破壊する口実を探している。彼らは老い、臆病で、卑劣で、時代は過ぎ去り、栄光の戦いを経て「家」を掌握するのは、人類の輝かしい運命だった。",
+			"description": "ジュセは七つの渦巻きが戦場で大佐に殺されたこと、潮汐が聖杯に飲み込まれたこと、孵化しない卵が「臆病者のように逃げた」ことなどについて語っている。彼は孵化しない卵に関して激しく非難し、卵の復活を暗に警告している。",
+			"craftable": true
+		},
+		{
+			"id": "studybookoftrueblood",
+			"label": "『真血の書』を読む",
+			"actionId": "study",
+			"requirements": {
+				"bookoftrueblood": 1
+			},
+			"effects": {
+				"bookoftrueblood": -1,
+				"fragmentedgee": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "軍団の使節は、時の神である「傷跡の護民官」の直属であり、戦死すれば不老不死を約束されている......",
+			"description": "終盤、カシアスは元使節であることを告白する。護民官の恐怖を語り、いつか護民官が倒されることを願って、影のない帝国の守護者であり、護民官の敵でもある黄金の将軍の秘話を語る。",
+			"craftable": true
+		},
+		{
+			"id": "studyburningwoman",
+			"label": "『燃える女』を読む",
+			"actionId": "study",
+			"requirements": {
+				"burningwoman": 1
+			},
+			"effects": {
+				"burningwoman": -1,
+				"fragmentforgee": 1,
+				"fascination": 1
+			},
+			"warmup": 60,
+			"startdescription": "この戯曲は、鍛冶屋や高僧たちが、あらゆる夢の中に現れ、1人1人に傷やと言葉を与えられた燃える女の軌跡を辿る巡礼の物語である。",
+			"description": "鍛冶屋と高僧たちは、燃える女を探すことを諦め、「世界を粉々にするほどの強さを持つ」自分たちの王国を築くことを決意した。",
+			"craftable": true
+		},
+		{
+			"id": "studytwentysixenticementsseventorments",
+			"label": "『二十六の誘惑と七つの苦悩』を読む",
+			"actionId": "study",
+			"requirements": {
+				"twentysixenticementsseventorments": 1
+			},
+			"effects": {
+				"twentysixenticementsseventorments": -1,
+				"fragmentgraile": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "「聖杯の誘惑は、その苦悩の数を上回るが、苦悩は、その本質である。誕生は第一の苦悩であり、渇きは第七の苦悩だ」",
+			"description": "2つの胎内に生まれたゆえの苦悩や、聖杯に関する苦労と嘆願、そして、魔女たちを駆り立てる1体になることへの強い願望など、乾いた土地の魔女たちの悲しい歴史を抜きにして、聖杯の数々の誘惑と苦悩を語ることはできない。",
+			"craftable": true
+		},
+		{
+			"id": "studyhistoryofshadowlesskings",
+			"label": "『影のない王たちの真実と正確な歴史』を読む",
+			"actionId": "study",
+			"requirements": {
+				"historyofshadowlesskings": 1
+			},
+			"effects": {
+				"historyofshadowlesskings": -1,
+				"fragmentsecrethistoriese": 1,
+				"fragmenthearte": 1
+			},
+			"warmup": 60,
+			"startdescription": " ここには「最初で最大の歴史」が記されている。「アケメネスの息子たち」、「影のない王たち」、「最も栄光に満ちた帝国」であるペルシャ帝国は、アレクサンダー大王の攻撃を生き抜き、5世紀後半まで繁栄していた。",
+			"description": "西ローマ帝国滅亡後、影のない帝国はビザンティオンを手中に収め、東進して大河の国を攻略した。アイザックの物語は、「頭巾を被った蛇の皮付き軍隊」に対する侵略の戦争から始まるが、突然、影のない帝国を維持したという呪文を綴って終わっている。",
+			"craftable": true
+		},
+		{
+			"id": "studyhighmysterieschurchsolar",
+			"label": "『太陽教会の最奥の部屋にまつわる最大の謎』を読む",
+			"actionId": "study",
+			"requirements": {
+				"highmysterieschurchsolar": 1
+			},
+			"effects": {
+				"highmysterieschurchsolar": -1,
+				"fragmentlanterne": 1,
+				"fascination": 1
+			},
+			"warmup": 60,
+			"startdescription": "この教会では主に、元来の分裂されていない太陽である「栄光の太陽」が崇拝されていたが、本文には寒い冬の夜明けと出発する日没、そして太陽の「夜の姿」である「メニスカーテ」を崇拝する方法も綴られている。教会の祭司は全員男性だが、女性を男性に変える儀式についても書かれている。",
+			"description": "教会の最重要儀式は、時の神々が通過することが知られているマンサスの心臓部にある啓示の間で行われていた。これらの儀式には、太陽とは関係のない聖杯、ワノイチイ、角斧、サンダースキンへの礼拝が含まれていた。",
+			"craftable": true
+		},
+		{
+			"id": "studymedusaslament",
+			"label": "『メデューサの嘆き』を読む",
+			"actionId": "study",
+			"requirements": {
+				"medusaslament": 1
+			},
+			"effects": {
+				"medusaslament": -1,
+				"fragmentknocke": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "詩の最初の部分では、七つの渦巻きに奇襲を仕掛けた戦士の物語が描かれている。渦巻きの姿を見ても身を滅ぼすことがないように、この戦士は裏切り者の神々に全身に傷をつけられ、目にまで傷を負っていた。",
+			"description": "七つの渦巻きが自らの血に溺れるまで戦いは続き、この時点で物語は神秘的で引喩に富んだものへと変貌していく。そして、血の泡の中から7つの名を持つ女神が現れた。彼女は鎧の女王であり、蛇の娘であり、鍵であり、治療者であり、殺人者であり、神託であるが、彼女の7つ目の称号は明かされない。",
+			"craftable": true
+		},
+		{
+			"id": "studybookofmasks",
+			"label": "『仮面の書』を読む",
+			"actionId": "study",
+			"requirements": {
+				"bookofmasks": 1
+			},
+			"effects": {
+				"bookofmasks": -1,
+				"fragmentmothe": 1
+			},
+			"warmup": 60,
+			"startdescription": "アテナ・ヴァナーによると、ワライツグミの仮面は、マンサスの時の神々の天頂に立つ、栄光の太陽（現在は分裂して色あせている）と親しい関係にあったという。風景泥棒の仮面は、マンサスに川を描き、放浪者の仮面は彼女がしたことではなく、これから起こるであろうことを理由にマンサスを禁じられた......",
+			"description": "ムカデの仮面は、彼女の生まれ故郷であるミアを思い起こした。そこは、神殿の境内に忍び込んだ彼女を罰した場所でもある。この仮面はミアに、塵だけを飲み、風以外からは忘れ去られるようにと呪いをかけた――「どの仮面を被ろうと彼女が許すことはない。そしてムカデの空腹はいつか満たされなければならない」。",
+			"craftable": true
+		},
+		{
+			"id": "studyinthemountainsasupontheplain",
+			"label": "『平原の上に立つ山に誰も通ったことのない道はないかもしれない』を読む",
+			"actionId": "study",
+			"requirements": {
+				"inthemountainsasupontheplain": 1
+			},
+			"effects": {
+				"inthemountainsasupontheplain": -1,
+				"fragmentsecrethistoriese": 1,
+				"fragmentmothe": 1
+			},
+			"warmup": 60,
+			"startdescription": "著者のニネガラは、謎めいた鬼や山中の部族間で起こる戦争を、生き生きと語るが、素手のハンターの話になると、突然、憂鬱な口調になる。このハンターは、聖杯の恋人であり、彼女の願いを叶えて、彼女と同じく時の神になりたいと願った。しかし、最後には、かつて歩き回った山に自分の名前をつけて、自分自身を裂き、むさぼり食ってしまった。",
+			"description": "ニネガラによると、時折、鳥の姿を現す時の神々、ワライツグミ、骨の鳩、浜辺の鴉、魔女と双子の片割れは、山頂の秘密の場所に集まり、仲間には聞こえない噂話を交換するという。時々、彼らの話を盗み聞きしてしまう定命の者もいるらしい。そのような定命の者は必ず抹消され、集会の場所は変わる。",
+			"craftable": true
+		},
+		{
+			"id": "studymemoryofgods",
+			"label": "『神々の記憶』を読む",
+			"actionId": "study",
+			"requirements": {
+				"memoryofgods": 1
+			},
+			"effects": {
+				"memoryofgods": -1,
+				"fragmentwintere": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "本書で墓の子は、傷跡の護民官、赤い聖杯、鍛造、蛾が最初の神々を殺したことを非難している。彼女は、「我々は彼らが起こした犯罪の影の中で生きている。避けなければ、歴史を繰り返すことになる」と語った。",
+			"description": "この本でバローチャイルドは、赤い聖杯がいかにして潮汐と呼ばれる時の神を枯らしたのか、蛾が「内側から車輪を奪い」、その皮を奪ったか、そして鍛造がまず火打石を覆い隠して破壊したかを描いている。「これは栄光かもしれないが、それならば栄光は慈悲深いとは言えない」と彼女は言った。",
+			"craftable": true
+		},
+		{
+			"id": "studysevenfoldslayingsevencoiled",
+			"label": "『ナナトグロの七重斬り』を読む",
+			"actionId": "study",
+			"requirements": {
+				"sevenfoldslayingsevencoiled": 1
+			},
+			"effects": {
+				"sevenfoldslayingsevencoiled": -1,
+				"fragmentedgef": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "12節がある。1節目では、傷だらけの者と呼ばれる時の神々が、ナナトグロの破壊に対する正当な理由として、その欲望、成長、人類への憎悪をあげている。2節目では女司祭が、ナナトグロの魔術から彼を守るために、彼の視力を奪い、皮膚に傷をつける。その後に続く7つの節のそれぞれで、彼はナナトグロの属性を1つずつ破壊していく。",
+			"description": "第10節では、傷だらけの者が女司祭のパトロンにナナトグロの血を浴びせて力を貸す。第11節では、彼らは力ずくで「世界の奥の神殿」を襲撃し、侵入する。第12節では、先祖、子孫、そして自分自身を守るために三者の誓いを立てる。",
+			"craftable": true
+		},
+		{
+			"id": "studybighuff",
+			"label": "『私の行為、力、業績と私に対する不当な扱い』を読む",
+			"actionId": "study",
+			"requirements": {
+				"bighuff": 1
+			},
+			"effects": {
+				"bighuff": -1,
+				"fragmentforgef": 1
+			},
+			"warmup": 60,
+			"startdescription": "ホコバルドは王の血を引いていることを自慢し、鍛造の魔法は貴族の血を引く者が実践するとより効果的だと言い張る。",
+			"description": "ポシンドはオルド・リミアに非難されたことに関して、不満を漏らしている。彼は、「その特定の喜びを達成した」後に「変化した」ことを認めているが、そのような変化は優雅であり、必然的なことでもあると主張している。「誰が火で、誰が燃料なのだ？」と彼は大げさに尋ねた。",
+			"craftable": true
+		},
+		{
+			"id": "studydreamconspiracyskies",
+			"label": "『下天の陰謀の夢』を読む",
+			"actionId": "study",
+			"requirements": {
+				"dreamconspiracyskies": 1
+			},
+			"effects": {
+				"dreamconspiracyskies": -1,
+				"fragmentgrailf": 1,
+				"fascination": 1
+			},
+			"warmup": 60,
+			"startdescription": "ダマオンは、時の神々は、定命の者よりもはるかに情熱に支配され、憎しみや愛にさえ支配されていると主張している。「飢饉と豊穣の季節、地球の自転、炉の変容、これらはすべて時の神々に劣る情熱の結果にすぎない」",
+			"description": "ダマオンは、時の神々が、太陽の棲む家で戦争を起こさないように、敵対心を抑えていると考えている。時の神々が他の情熱を追求しない理由として、彼は「天空の罪に対する恐怖」を挙げている。そして、ダマオンは、時の神々がアルカイトになったら、という恐ろしい可能性を考えている。「そうしたら彼らは、何を食べるというのだろう？」",
+			"craftable": true
+		},
+		{
+			"id": "studybookwhitecat",
+			"label": "『白猫の書』を読む",
+			"actionId": "study",
+			"requirements": {
+				"bookwhitecat": 1
+			},
+			"effects": {
+				"bookwhitecat": -1,
+				"fragmentheartf": 1
+			},
+			"warmup": 60,
+			"startdescription": "鳥の姿をした時の神々、鴉、ワライツグミ、鳩、双子の凧は、ゴルディオンの北の山中にある止まり木と呼ばれる場所に集まり、噂話を交わすことで知られている。ペネロペによると、彼らの言葉を直接聞いた定命の者は抹殺されるが、彼女の猫は気づかれず、時の神々の噂話を聞いて彼女の元に戻ってくると言う。",
+			"description": "ペネロペによって書かれた時の神々の噂話は、断片的で紛らわしい。本書には、希望と恐怖、影のない帝国を駒にして競い合う話や、未知の歴史の残骸や記憶なども含まれている。一番興味深いのは、時の神々に自分のスパイ行為が知られることを恐れた彼女が、本の終盤に綴った保護呪文である。",
+			"craftable": true
+		},
+		{
+			"id": "studyfocusamber",
+			"label": "『琥珀の焦点』を読む",
+			"actionId": "study",
+			"requirements": {
+				"focusamber": 1
+			},
+			"effects": {
+				"focusamber": -1,
+				"fragmentlanternf": 1,
+				"fascination": 1
+			},
+			"warmup": 60,
+			"startdescription": "オマールは、見張り人と呼ばれる時の神々は肉身を持っていた神――定命の者であった時の神――であり、光から来た神――栄光から降りてきた時の神――であると綴っているが、最後に、見張り人は3つの起源を持っていると語り、「本質的に彼は琥珀である」と付け加えている。",
+			"description": "オマールによれば、見張り人はかつて、全く違う時の神であり、他の時の神々によって名もなき場所へと追いやられそうになり、栄光へと昇ったと言う。この時点で、オマール自身の迫害の感覚が滲み出ていたのかもしれない。物語は、ここから段々と辻褄が合わなくなり、最終章では、彼は目と卵と太陽が何らかの形で密接な関係にあることを証明しようとしている。",
+			"craftable": true
+		},
+		{
+			"id": "studysongscarapacecross",
+			"label": "『クロス・カラペイスの歌』を読む",
+			"actionId": "study",
+			"requirements": {
+				"songscarapacecross": 1
+			},
+			"effects": {
+				"songscarapacecross": -1,
+				"fragmentknockf": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "著者は、人類の文明が存在する以前に「甲羅の十字」が行っていた、石であった神々、最初の時の神々の儀式について記述している。この情報を、最後に生き残った「甲羅の十字」から聞いたのだ、と著者は主張している。",
+			"description": "現在では、これらの儀式のほとんどが行われておらず、少なくとも過去千年以上は何の効果も見られていない。しかし、シーは特定の魔力を持つ召喚文を少なくとも1つは確認している。彼は、石であった神々が名もなき場所から戻ってこないように、この召喚文は慎重に使用しなければならないと警告している。",
+			"craftable": true
+		},
+		{
+			"id": "studyoriginsofhours",
+			"label": "『時の神々の起源』を読む",
+			"actionId": "study",
+			"requirements": {
+				"originsofhours": 1
+			},
+			"effects": {
+				"originsofhours": -1,
+				"fragmentmothf": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "ソハムのこの作品は、詩編に始まり、告白で終わる。彼は神々を、肉の神（定命の者であった者）、血の神（生贄から生まれた者）、光の神（栄光から生まれた者）、石の神（気づく前に生れていた者）に区別している。初代の血であった神は蛾だと主張していたが、後に赤い聖杯だと矛盾したことを言った。",
+			"description": "「最初の神が光から来た時、マンサスは今とは違うところだったが、その時でさえ、その存在を疑うことはなかった」",
+			"craftable": true
+		},
+		{
+			"id": "studywherehasshegone",
+			"label": "『彼女はどこへ行ってしまったのか』を読む",
+			"actionId": "study",
+			"requirements": {
+				"wherehasshegone": 1
+			},
+			"effects": {
+				"wherehasshegone": -1,
+				"fragmentsecrethistoriesf": 1
+			},
+			"warmup": 60,
+			"startdescription": "放浪者はマンサスや森、そして9つの大陸全てを旅しただけでなく、他の時の神々には禁じられている場所も旅したと記録されている......",
+			"description": "時の神々の噂話や目に見えない伝承から、ならず者は名もなき場所を訪れたが、彼女は帰ってこないとスピースは推理している。また、彼女はまだ栄光を訪れていないが、必然的にこれが彼女の目標に違いないと断言している。",
+			"craftable": true
+		},
+		{
+			"id": "studybookextinguishedheart",
+			"label": "『消えた心の書』を読む",
+			"actionId": "study",
+			"requirements": {
+				"bookextinguishedheart": 1
+			},
+			"effects": {
+				"bookextinguishedheart": -1,
+				"fragmentwinterf": 1,
+				"dread": 1,
+				"riteconsumetoolingredientfollowerinfluence": 1
+			},
+			"warmup": 60,
+			"startdescription": "ラザリーは、心の中に愛を溜めた日々の鍛造によって、太陽がマレーリーで分裂されると言う。",
+			"description": "「太陽の死の原因は愛ではなく、嫉妬である。太陽の死を引き起こすのは妬みではなく、渇きであろう。太陽を死に陥れるのは渇きではなく、好奇心だ。彼を殺すのは好奇心ではなく、結局のところ愛なのだろう。」",
+			"craftable": true
+		},
+		{
+			"id": "studyhowendwillbegin",
+			"label": "『終わりの始まり方』を読む",
+			"actionId": "study",
+			"requirements": {
+				"howendwillbegin": 1
+			},
+			"effects": {
+				"howendwillbegin": -1,
+				"fragmentedgeg": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "予言されていた戦争で、大陸の都市に進撃してきた繋がれた炎の子供たちだったが、「太陽法則の制定者」と「三姉妹」が手を組み、多大な犠牲を払って彼らを食い止めようとする。",
+			"description": "「不滅の軍団と繋がれた炎の戦いで、軍団は滅び、炎が解き放たれるだろう」",
+			"craftable": true
+		},
+		{
+			"id": "studymanneralchemistspared",
+			"label": "『錬金術師の死の免れ方』を読む",
+			"actionId": "study",
+			"requirements": {
+				"manneralchemistspared": 1
+			},
+			"effects": {
+				"manneralchemistspared": -1,
+				"fragmentforgeg": 1,
+				"fascination": 1
+			},
+			"warmup": 60,
+			"startdescription": "クロス・カラペイスの時代、人類が暗闇の中で暮らし、跪いて食事をしていた頃、人間は害獣のようにマンサスに入ることを許されていた。人は火打石の術を学び、形を整えて作り直す術を学んだ......",
+			"description": "「黒と黄と赤を経て、知恵のない定命の者は、孵化しない卵の影に昇り、彼に仕えていた。彼は今でもまだそこにいるかもしれない」",
+			"craftable": true
+		},
+		{
+			"id": "studyfivecreations",
+			"label": "『五つの創造物』を読む",
+			"actionId": "study",
+			"requirements": {
+				"fivecreations": 1
+			},
+			"effects": {
+				"fivecreations": -1,
+				"fragmentgrailg": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "「甲羅の起源：蜘蛛の体からスズメバチの子が出てくるように、我々は甲羅から生まれた。栄光の起源：我々の命の粒子は光から降りてきた。汚れた起源：我々は森の根っこで裸で泥まみれになっていたのを発見された。",
+			"description": "ショウヘイは、皮肉を込めた口調で、我々は直立歩行をした類人猿の子孫であるという説を好むと言った。また、「天空の罪ではない」が、我々は両親を消費しただけでなく、我々の起源も消費したので、我々は名もなき場所から来たのではないかという説も、彼が好む起源説である。",
+			"craftable": true
+		},
+		{
+			"id": "studycommandspreservationallexists",
+			"label": "『万物を維持するための戒め』を読む",
+			"actionId": "study",
+			"requirements": {
+				"commandspreservationallexists": 1
+			},
+			"effects": {
+				"commandspreservationallexists": -1,
+				"fragmentheartg": 1
+			},
+			"warmup": 60,
+			"startdescription": "エリーは様々な状況で使用できる防御呪文を紹介している。",
+			"description": "「ワームの侵入と波と傷の貪欲さから身を守るために、これらの防御を4年ごとに行わなければならない」。少なくとも現在の歴史を千年以上遡っても、これらの防御呪文が定期的に唱えられていた形跡は見つからない。",
+			"craftable": true
+		},
+		{
+			"id": "studytimedivision",
+			"label": "『分裂の時』を読む",
+			"actionId": "study",
+			"requirements": {
+				"timedivision": 1
+			},
+			"effects": {
+				"timedivision": -1,
+				"fragmentlanterng": 1,
+				"fascination": 1,
+				"dread": 1,
+				"riteconsumetoolingredientfollowerinfluence": 1
+			},
+			"warmup": 60,
+			"startdescription": "「太陽は裂かれ、子孫を残せなくなる。それでも太陽は4人の子を産み、その子たちが7人の子を産み、その子たとが無数の子を産む。無数の者が7人のために扉を開き、7人が4人を食べる......」",
+			"description": "アミラは、栄光の太陽が再度昇る第2の夜明けの前に、4つの大きな戦争が起こると予言した。彼女の警告によると「日の出は血であり、私は今、太陽が血から昇ることを予言するが、血の色ではなく、夜の時間でもない」。彼女は第2の夜明けに必要だと推測する儀式についても、この書で触れている。",
+			"craftable": true
+		},
+		{
+			"id": "studymanualdeparture",
+			"label": "『旅立ちの手引き』を読む",
+			"actionId": "study",
+			"requirements": {
+				"manualdeparture": 1
+			},
+			"effects": {
+				"manualdeparture": -1,
+				"fragmentknockg": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "いや、この扉は記録すべきではないが、もし第五史記から離れる前に記録していれば、もっと良い人生を送れていただろう。だからここに書き留めているのだが、もし気に入らなければ私に制裁を加えても構わない。",
+			"description": "「旅立ちの手引き」には、素早く脱出するための戦略（オカルト、武術、政治的なもの）がいくつか掲載されている。その多くは無関係であったり、時代遅れであったり、謎に包まれていたりするが、手引きにはポータルを開くための強力な技がいくつか書かれている。",
+			"craftable": true
+		},
+		{
+			"id": "studybirdsong",
+			"label": "『鳥のさえずり』を読む",
+			"actionId": "study",
+			"requirements": {
+				"birdsong": 1
+			},
+			"effects": {
+				"birdsong": -1,
+				"fragmentmothg": 1,
+				"fascination": 1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"startdescription": "イナーム：「浜辺の鴉は宝を分けてくれなかったのか？」 ガーキー：「珍しい物は独り占めしている。最も高価なものを持ち出し、盗んだのではなく見つけたと言い張っている」",
+			"description": "カピギギンルピルは、浜辺の鴉は泥棒なだけでなく、スパイであり覗き魔でもあると言った。彼は、時の神々と彼らの名を持つ者たちの密会の記憶を家の隅に隠して、ほくそ笑んでいた熱烈な森の時の神であるワノイチイと、時には魔女の妹であった木の牝馬の関係について、熱い憶測が飛び交っている。",
+			"craftable": true
+		},
+		{
+			"id": "studyvoyagesfo",
+			"label": "『オレオールのフェルナンシュンの航海』を読む",
+			"actionId": "study",
+			"requirements": {
+				"voyagesfo": 1
+			},
+			"effects": {
+				"voyagesfo": -1,
+				"fragmentsecrethistoriesg": 1
+			},
+			"warmup": 60,
+			"startdescription": "フェルナンシュンは明らかにマンサスを訪れ、描かれた川を船で移動した。そして彼は、極上の砂海を彷徨い、太陽の表面に燃える波に立ち向かい、黒い軟玉に照らされた地底海に潜ったと主張しているが......",
+			"description": "フェルナンシュンは最後の航海で、夕暮れの海を渡り、残りの日々を過ごすために穏やかな島へと向かった。そこにある泉が自分を守ってくれる彼は信じていた。「人々は私を忘れるだろう」と彼は言った。「この本は私が残した唯一の痕跡である」。",
+			"craftable": true
+		},
+		{
+			"id": "studyscarsky",
+			"label": "『天空の傷跡』を読む",
+			"actionId": "study",
+			"requirements": {
+				"scarsky": 1
+			},
+			"effects": {
+				"scarsky": -1,
+				"fragmentwinterg": 1,
+				"dread": 1,
+				"riteconsumetoolingredientfollowerinfluence": 1
+			},
+			"warmup": 60,
+			"startdescription": "この本の各ページには１つの言葉しか書かれていないが、ページをめくるたびに知識が身についていく。",
+			"description": "最後のページは書き込みだらけだ。この本を読み終わた人間は皆、同じ言葉を書き留めている。次は私の番だ。",
+			"craftable": true
+		},
+		{
+			"id": "studykitlingripe",
+			"label": "『老成した子猫とモグラの墓（とその他の物語）』を読む",
+			"actionId": "study",
+			"requirements": {
+				"kitlingripe": 1
+			},
+			"effects": {
+				"kitlingripe": -1,
+				"fragmentmothb": 1,
+				"glimmering": 1
+			},
+			"warmup": 60,
+			"startdescription": "主人公の「老成した子猫」という無口な猫のような生き物は、親族を救うために複雑な儀式を行う。そして、物語のラストシーンで「もう1人の祖母」であるモグラを復活させる。",
+			"description": "「蛇の魔女が牡鹿を殺すと、子猫は片方の目玉をえぐった。渇水の魔女が雌豚を殺すと、子猫はその血を盗んだ。彼女はそれをモグラが埋葬されている所へと持って行き、髪を振り乱しながら踊り始めたのだった......」",
+			"craftable": true
+		},
+		{
+			"id": "studyraptintheking",
+			"label": "『王の陶酔』を読む",
+			"actionId": "study",
+			"requirements": {
+				"raptintheking": 1
+			},
+			"effects": {
+				"raptintheking": -1,
+				"fragmentheartc": 1,
+				"vitality": 1
+			},
+			"warmup": 60,
+			"startdescription": "女神イシスとキュベレーのカルトに継承された神秘に由来する踊りは、象徴的、そして文字通りに皮剥ぎを含むだけでなく、常に人間の心を儀式の主軸としている。著者は、中断された自身の饗宴を、病的でありながら官能的な描写を添えて綴っている。",
+			"description": "このような大きな祭りでは、黒豚は殺される前に王として戴冠されるものである。この日、黒豚の心臓は羽毛の絆と天秤にかけられ、その皮は司祭の外套となった。その肉は鴉のために残されたが、正直に言うと、私はその死骸に興味があるのではなく、埋められたばかりの帽子屋の香ばしい肉に興味があるのだ。",
+			"craftable": true
+		},
+		{
+			"id": "studyvienneseconundra",
+			"label": "『ウィーンの難問』を読む",
+			"actionId": "study",
+			"requirements": {
+				"vienneseconundra": 1
+			},
+			"effects": {
+				"vienneseconundra": -1,
+				"fragmentmothc": 1,
+				"glimmering": 1
+			},
+			"warmup": 60,
+			"startdescription": "「Kが出席した時には、黒犬が生贄にされ四つ裂きにされていた。Ｍが出席した時には黒馬が喉を切られていた。私の意見では、これらの犠牲は不必要なものだったが、リゲイアの者たちはそれを「適切なもの」と考えるかもしれない。次の図は、切断の様子を――」",
+			"description": "「メドゥーサのなぞなぞを、私は「見えないものは何か？」と訳すことにした。別のなぞなぞには「見えないものは何だ？」と訳されたものもある。答えを出すために、先人の試みを説明していこうと思う。これらの試み自体が、ある意味、生贄であり――」",
+			"craftable": true
+		},
+		{
+			"id": "studytextbooklatin",
+			"label": "ラテン語の上達",
+			"actionId": "study",
+			"requirements": {
+				"textbooklatin": 1
+			},
+			"effects": {
+				"textbooklatin": -1,
+				"scholarlatin": 1
+			},
+			"startdescription": "学生時代に習ったことはある程度覚えているが、復習が必要だ。",
+			"description": "記憶の宮殿の扉が開く。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytextbookgreek",
+			"label": "ギリシャ語の上達",
+			"actionId": "study",
+			"requirements": {
+				"textbookgreek": 1
+			},
+			"effects": {
+				"textbookgreek": -1,
+				"scholargreek": 1
+			},
+			"startdescription": "確かに、ギリシャ語は少し話せるけれど、「少し」以上に理解できるようになりたい。",
+			"description": "気強く、独特な言語だが、私には素質がある。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytextbookaramaic",
+			"label": "アラム語の上達",
+			"actionId": "study",
+			"requirements": {
+				"textbookaramaic": 1
+			},
+			"effects": {
+				"textbookaramaic": -1,
+				"scholararamaic": 1
+			},
+			"startdescription": "当然、「アラム語」は1つの言語ではないが、できる限り学びたいと思う。",
+			"description": "基礎を理解できた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytextbooksanskrit",
+			"label": "サンスクリット語の上達",
+			"actionId": "study",
+			"requirements": {
+				"textbooksanskrit": 1
+			},
+			"effects": {
+				"textbooksanskrit": -1,
+				"scholarsanskrit": 1
+			},
+			"startdescription": "サンスクリットは「正しく構成された言語」を意味する。",
+			"description": "覚えたい単語はたくさんあるのに時間が足りない。参考書は肌身離さず持ち歩こうと思う。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytextbookfucine",
+			"label": "遠い昔に消滅した言語、フチーノ語の理解を深める",
+			"actionId": "study",
+			"requirements": {
+				"textbookfucine": 1
+			},
+			"effects": {
+				"textbookfucine": -1,
+				"scholarfucine": 1
+			},
+			"startdescription": "ラテン語と共通するところがあり、狂ったネズミの爪跡に似たところもある。",
+			"description": "私が知っている言語を話す場所はいくつかあるが、他の場所では......ああ、「魔女の言語」と呼ばれるだけのことはあるが......私はこの言語をかなり理解できるようになった。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytextbookphrygian",
+			"label": "フリュギア語の基礎を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"textbookphrygian": 1
+			},
+			"effects": {
+				"textbookphrygian": -1,
+				"scholarphrygian": 1
+			},
+			"startdescription": "フリュギア語――ミダースの言葉、テクメッサの言葉、キュベレーの祭司たちの言葉。",
+			"description": "この言語は人を興奮させる。その響きを覚えている人間がいないのは、幸いなことかもしれない。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytextbookmandaic",
+			"label": "ディープマンダ語について学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"textbookmandaic": 1
+			},
+			"effects": {
+				"textbookmandaic": -1,
+				"scholarmandaic": 1
+			},
+			"startdescription": "マンダ語はペルシャの奥地にあるグノーシス派の言語である。ディープマンダ語は、その宗派内の宗派の言語として残っているが、かつては高僧たちによって話されていた。",
+			"description": "アラム語と多少似ているため学習を始めたが、簡単ではない。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytextbookvak",
+			"label": "ヴャック語の知識をある程度身に付ける",
+			"actionId": "study",
+			"requirements": {
+				"textbookvak": 1
+			},
+			"effects": {
+				"textbookvak": -1,
+				"scholarvak": 1
+			},
+			"startdescription": "時の神々は言葉を話すのだろうか？話すとしたら、この言語を使うのかもしれない。",
+			"description": "人はヴャック語を知らずにして学ぶことはない、と言われている。私は前より少しこの言語と知り合うことができたと思う。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytextbookreason",
+			"label": "自分の理性を磨く",
+			"actionId": "study",
+			"requirements": {
+				"textbookreason": 1
+			},
+			"effects": {
+				"textbookreason": -1,
+				"eruditionplus": 1
+			},
+			"startdescription": "知性の運動。",
+			"description": "可能性―― ",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studytextbookpassion",
+			"label": "詩を読む",
+			"actionId": "study",
+			"requirements": {
+				"textbookpassion": 1
+			},
+			"effects": {
+				"textbookpassion": -1,
+				"glimmeringplus": 1
+			},
+			"startdescription": "想像力に火をつける。",
+			"description": "閃き――",
+			"warmup": 60,
+			"craftable": true
+		}
+	]
+}

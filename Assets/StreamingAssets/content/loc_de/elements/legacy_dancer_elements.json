@@ -1,0 +1,262 @@
+{
+	"elements": [
+		{
+			"id": "legacydancerjob",
+			"label": "Ein Kontrakt beim Varietee",
+			"description": "Ich habe einen Platz im Chor des Varietees. Er gehört mir solange ich mein Glück und mein gutes Aussehen behalte ... oder ich etwas besseres finde.",
+			"aspects": {
+				"job": 1,
+				"dance": 1,
+				"potentialbenefactorm": 1,
+				"potentialbenefactorf": 1,
+				"potentialecdysiast": 1
+			},
+			"lifetime": 120,
+			"decayTo": "legacydancerjob_suspended",
+			"xtriggers": {
+				"job": "legacydancerjob"
+			},
+			"slots": [
+				{
+					"id": "health",
+					"label": "Gesundheit",
+					"actionId": "work",
+					"required": {
+						"health": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "legacydancerjob_suspended",
+			"label": "Ein Kontrakt beim Varietee: Gefeuert",
+			"description": "Ich habe zu viele Vorstellungen versäumt. Wenn ich überzeugend genug bettle, kriege ich meinen Job vielleicht zurück.",
+			"aspects": {
+				"job": 1
+			},
+			"lifetime": 300,
+			"xtriggers": {
+				"plead": "legacydancerjob"
+			},
+			"slots": [
+				{
+					"id": "passion",
+					"label": "Leidenschaft",
+					"actionId": "work",
+					"required": {
+						"passion": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "dancerlegacy_plotitem_a",
+			"label": "Ein zerknittertes Gedicht",
+			"description": "Es ist an einen anderen Tänzer gerichtet und unterschrieben von jemandem namens #LAST_FOLLOWER#. Der Verfasser beschreibt, wie er den Tänzer im Traume in einem finsteren Forst getroffen habe. In jenem Traum kommen Trommelschläge, Flügelschläge, die Haut der Schatten und das Blut des Mondes vor. Kein Wunder, dass das Gedicht weggeworfen wurde. Doch ich kann schon jetzt sehen, dass es da viele Bedeutungsschichten abzupellen gibt.",
+			"slots": [
+				{
+					"id": "Approach",
+					"label": "Ansatz",
+					"actionId": "study",
+					"description": "Das Pochen des Herzens oder das Weinen der Violine?",
+					"required": {
+						"heart": 1,
+						"moth": 1
+					}
+				}
+			],
+			"aspects": {
+				"legacyplotitem": 1
+			}
+		},
+		{
+			"id": "dancerjobecdysisa",
+			"label": "Ein Kontrakt im Ecdysis-Klub",
+			"description": "Ich trete im Ecdysis-Klub auf, an den Abenden, wenn er geöffnet hat.",
+			"slots": [
+				{
+					"id": "location",
+					"label": "Der Ecdysis-Klub",
+					"description": "Der Ecdysis-Klub, wo ich Erleuchtungen vor Zeugen offenbare",
+					"actionId": "work",
+					"required": {
+						"locationcabaret": 1
+					}
+				},
+				{
+					"id": "purpose",
+					"label": "Zweck",
+					"actionId": "work",
+					"required": {
+						"changemarks": 1,
+						"healthskill": 1
+					},
+					"description": "Meine Fertigkeit zeigen, um auf komplexere Tänze zurückgreifen zu können. Oder mein Verlangen einsetzen, um den Wandel voranzutreiben. Oder frei lassen, wenn ich einfach nur Geld verdienen will."
+				},
+				{
+					"id": "abilityfirst",
+					"label": "Fähigkeit, oder Narbe",
+					"description": "Welchen Teil von mir soll ich einsetzen?",
+					"actionId": "work",
+					"required": {
+						"health": 1,
+						"passion": 1,
+						"scar": 1
+					}
+				},
+				{
+					"id": "influence",
+					"label": "Einfluss",
+					"description": "Was regt sich heute in mir?",
+					"actionId": "work",
+					"required": {
+						"influence": 1
+					},
+					"consumes": true
+				}
+			],
+			"aspects": {
+				"job": 1,
+				"dance": 1,
+				"ecdysijob": 1
+			}
+		},
+		{
+			"id": "dancerjobecdysisb",
+			"label": "Ein Premium-Kontrakt im Ecdysis-Klub",
+			"description": "Ich führe anspruchsvollere Tänze im Ecdysis-Klub auf.",
+			"slots": [
+				{
+					"id": "location",
+					"label": "Der Ecdysis-Klub",
+					"description": "Der Ecdysis-Klub, wo ich Erleuchtungen vor Zeugen offenbare",
+					"actionId": "work",
+					"required": {
+						"locationcabaret": 1
+					}
+				},
+				{
+					"id": "purpose",
+					"label": "Zweck",
+					"actionId": "work",
+					"required": {
+						"changemarks": 1,
+						"healthskill": 1
+					},
+					"description": "Meine Fertigkeit zeigen, um auf komplexere Tänze zurückgreifen zu können. Oder mein Verlangen einsetzen, um den Wandel voranzutreiben. Oder frei lassen, wenn ich einfach nur Geld verdienen will."
+				},
+				{
+					"id": "abilityfirst",
+					"label": "Fähigkeit, oder Narbe",
+					"description": "Welchen Teil von mir soll ich einsetzen?",
+					"actionId": "work",
+					"required": {
+						"health": 1,
+						"passion": 1,
+						"scar": 1
+					}
+				},
+				{
+					"id": "abilitysecond",
+					"label": "Fähigkeit, oder Narbe",
+					"description": "Welchen Teil von mir soll ich einsetzen?",
+					"actionId": "work",
+					"required": {
+						"health": 1,
+						"passion": 1,
+						"scar": 1
+					}
+				},
+				{
+					"id": "influence",
+					"label": "Einfluss",
+					"description": "Was regt sich heute in mir?",
+					"actionId": "work",
+					"required": {
+						"influence": 1
+					},
+					"consumes": true
+				}
+			],
+			"aspects": {
+				"job": 1,
+				"dance": 1,
+				"ecdysijob": 1
+			}
+		},
+		{
+			"id": "dancerjobecdysisc",
+			"label": "Ein Besonderes Arrangement mit dem Ecdysis-Klub",
+			"description": "Gelegentlich wird mir eine großzügige Summe dafür bezahlt, dass ich sehr spezielle Tänze für sehr spezielle Kenner aufführen.",
+			"slots": [
+				{
+					"id": "location",
+					"label": "Der Ecdysis-Klub",
+					"description": "Der Ecdysis-Klub, wo ich Erleuchtungen vor Zeugen offenbare",
+					"actionId": "work",
+					"required": {
+						"locationcabaret": 1
+					}
+				},
+				{
+					"id": "purpose",
+					"label": "Zweck",
+					"actionId": "work",
+					"required": {
+						"changemarks": 1,
+						"healthskill": 1
+					},
+					"description": "Mein Verlangen einsetzen, um den Wandel voranzutreiben. Oder frei lassen, wenn ich einfach nur Geld verdienen will."
+				},
+				{
+					"id": "abilityfirst",
+					"label": "Fähigkeit, oder Narbe",
+					"description": "Welchen Teil von mir soll ich einsetzen?",
+					"actionId": "work",
+					"required": {
+						"health": 1,
+						"passion": 1,
+						"scar": 1
+					}
+				},
+				{
+					"id": "abilitysecond",
+					"label": "Fähigkeit, oder Narbe",
+					"description": "Welchen Teil von mir soll ich einsetzen?",
+					"actionId": "work",
+					"required": {
+						"health": 1,
+						"passion": 1,
+						"scar": 1
+					}
+				},
+				{
+					"id": "abilitythird",
+					"label": "Fähigkeit, oder Narbe",
+					"description": "Welchen Teil von mir soll ich einsetzen?",
+					"actionId": "work",
+					"required": {
+						"health": 1,
+						"passion": 1,
+						"scar": 1
+					}
+				},
+				{
+					"id": "influence",
+					"label": "Einfluss",
+					"description": "Was regt sich heute in mir?",
+					"actionId": "work",
+					"required": {
+						"influence": 1
+					},
+					"consumes": true
+				}
+			],
+			"aspects": {
+				"job": 1,
+				"dance": 1,
+				"ecdysijob": 1
+			}
+		}
+	]
+}

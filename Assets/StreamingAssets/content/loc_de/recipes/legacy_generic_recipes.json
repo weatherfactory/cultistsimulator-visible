@@ -1,0 +1,44 @@
+{
+	"recipes": [
+		{
+			"id": "studymapbookdealer",
+			"label": "Morlands Laden finden",
+			"actionId": "study",
+			"requirements": {
+				"mapbookdealer": 1
+			},
+			"effects": {
+				"mapbookdealer": -1,
+				"locationbookdealer": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "openexplore",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "Die Wegbeschreibung zu Morlands Laden ist kryptisch. Wer mit der Art von Büchern handelt, die mein Korrespondent studierte, muss vorsichtig sein.",
+			"description": "Eine schlecht beleuchtete Straße in einer wenig beliebten Biegung eines unwichtigen Flusses. Ein weiches gelbes Licht scheint durch ein schmieriges Fenster. Miss Morland nickt, als ich eintrete, erhebt sich aber nicht. 'Ich frage nie nach den Namen meiner Kunden', lässt sie mich wissen, bevor ich mich auch nur vorstellen kann.\n\n[<b>Erkunden</b> ist freigeschaltet.]",
+			"warmup": 30,
+			"craftable": true,
+			"comments": "This is one way the Explore verb may be opened."
+		},
+		{
+			"id": "openexplore",
+			"label": "Erkunden",
+			"actionId": "explore",
+			"requirements": {
+				
+			},
+			"effects": {
+				"fragmentsecrethistories": 1
+			},
+			"startdescription": ".",
+			"description": "Nun, da ich einen Ort entdeckt habe, kann ich ihn ERKUNDEN.",
+			"warmup": 0,
+			"maxexecutions": 1,
+			"craftable": false
+		}
+	]
+}

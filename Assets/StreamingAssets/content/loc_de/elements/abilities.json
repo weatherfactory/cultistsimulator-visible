@@ -1,0 +1,821 @@
+{
+	"elements": [
+		{
+			"id": "hunger",
+			"label": "Hunger",
+			"aspects": {
+				"illhealth": 1,
+				"grail": 2,
+				"ingredient": 1
+			},
+			"slots": [
+				{
+					"id": "nourishment",
+					"label": "Nahrung",
+					"actionid": "dream",
+					"description": "Um mich zu erholen, muss ich etwas essen.",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"description": "Ich brauche Ruhe und Nahrung, wenn ich mich erholen soll. Doch wenn mir das Wasser im Munde zusammenläuft, wenn mir alles vor den Augen verschwimmt, sehe ich den roten Kelch – und ab und zu spricht er zu mir. [Durch Träumen mit Hunger vor dem Verblassen der Karte kannst du Gesundheit wiederherstellen.]",
+			"xtriggers": {
+				"restorehealth": "health",
+				"scar_ability": "scar_heart"
+			},
+			"lifetime": 60,
+			"decayTo": "decrepitude"
+		},
+		{
+			"id": "health",
+			"label": "Gesundheit",
+			"aspects": {
+				"heart": 2,
+				"ingredient": 1,
+				"ability": 1
+			},
+			"animFrames": 1,
+			"xtriggers": {
+				"damagehealth": "injury",
+				"fallsick": "affliction",
+				"destroyhealth": "decrepitude",
+				"fatiguing": "fatigue",
+				"employment": "fatigue",
+				"job": "fatigue",
+				"ritual": "fatigue",
+				"society": "fatigue",
+				"scar_ability": "scar_heart"
+			},
+			"description": "Dies ist mein Leib. Es gibt andere Leiber, doch dies ist der meine, und mein Geist braucht ihn wie ein Pilz die Erde braucht. [Mit genug Vitalität kannst du mehr Gesundheit bekommen.]"
+		},
+		{
+			"id": "vitality",
+			"label": "Vitalität",
+			"slots": [
+				{
+					"id": "morevitality",
+					"label": "Mehr Vitalität",
+					"actionid": "study",
+					"description": "Mit genug Vitalität – oder manchmal auch etwas Exotischerem – kann ich meine Gesundheit verbessern.",
+					"required": {
+						"vitality": 1,
+						"influenceheart": 1
+					}
+				}
+			],
+			"aspects": {
+				"advancement": 1,
+				"heart": 1,
+				"influence": 1
+			},
+			"description": "Bewegung, oder etwas Selteneres, hat mich erquickt. [Mit anderer Vitalität benutzen, um deine Fähigkeiten zu verbessern. Hält nur drei Minuten, falls unbenutzt.]",
+			"xtriggers": {
+				"upgradeinfluence": "influenceheartc"
+			},
+			"lifetime": 180
+		},
+		{
+			"id": "vitalityplus",
+			"label": "Vitalität: Eine gelernte Lektion ",
+			"aspects": {
+				"advancement": 1,
+				"heart": 2,
+				"influence": 1
+			},
+			"description": "Ich bin bereit mich zu verbessern. [Benutze dies mit deiner Fertigkeit 'Stärke', um die Fertigkeit zu verbessern und Gesundheit hinzu zu gewinnen. Hält bis zu fünf Minuten, bis sie zu einer Vitalität zerfällt.]",
+			"xtriggers": {
+				"upgradeinfluence": "influenceheartc"
+			},
+			"lifetime": 300,
+			"decayTo": "vitality"
+		},
+		{
+			"id": "restlessness",
+			"label": "Rastlosigkeit",
+			"aspects": {
+				"influence": 1,
+				"forge": 2,
+				"heart": 2,
+				"grail": 2,
+				"lantern": 2,
+				"moth": 2,
+				"memory": 1
+			},
+			"description": "Eine rastlose Sehnsucht hat von mir Besitz ergriffen.  Ich spüre, dass ich ... <i>etwas</i> tun möchte. Was genau?",
+			"lifetime": 60,
+			"decayTo": "dread"
+		},
+		{
+			"id": "bloodshed",
+			"label": "Blutvergießen",
+			"description": "Blut wurde vergossen.",
+			"lifetime": 1
+		},
+		{
+			"id": "injury",
+			"label": "Eine Verletzung",
+			"aspects": {
+				"illhealth": 1,
+				"knock": 2,
+				"ingredient": 1
+			},
+			"slots": [
+				{
+					"id": "medicines",
+					"label": "Medizin oder ...",
+					"actionid": "dream",
+					"description": "Ich könnte für einen Besuch beim Arzt bezahlen ...",
+					"required": {
+						"funds": 1
+					}
+				},
+				{
+					"id": "vitality",
+					"label": "... Vitalität",
+					"description": "... doch vielleicht brauche ich auch einfach nur ein wenig Ruhe.",
+					"required": {
+						"vitality": 1
+					},
+					"actionid": "dream"
+				}
+			],
+			"description": "Ich brauche Ruhe und Nahrung, wenn ich mich erholen soll. Doch die Mutter der Ameisen betrachtet Wunden mit Wohlwollen. [Durch Träumen mit einer Verletzung vor dem Verblassen der Karte kannst du auch Gesundheit wiederherstellen.]",
+			"xtriggers": {
+				"restorehealth": "health",
+				"scar_ability": "scar_heart"
+			},
+			"lifetime": 150,
+			"decayTo": "decrepitude"
+		},
+		{
+			"id": "disillusionment",
+			"label": "Leidenschaft (Desillusioniert)",
+			"description": "Ich habe gegen meine eigenen Grundsätze verstoßen – oder meine eigenen Vorlieben. [Diese Karte kann nicht eingesetzt werden, erholt sich aber nach sechzig Sekunden.]",
+			"lifetime": 60,
+			"decayTo": "passion",
+			"icon": "passion",
+			"xtriggers": {
+				"scarability": "scar_moth",
+				"toreason": "concentration",
+				"damagepassion": "fascination"
+			},
+			"resaturate": true
+		},
+		{
+			"id": "passionexhausted",
+			"label": "Leidenschaft (Erschöpft)",
+			"description": "Meine Leidenschaften kochen auf Sparflamme. [Diese Karte kann nicht eingesetzt werden, erholt sich aber nach sechzig Sekunden.]",
+			"lifetime": 60,
+			"decayTo": "passion",
+			"icon": "passion",
+			"xtriggers": {
+				"scarability": "scar_moth",
+				"toreason": "concentration",
+				"damagepassion": "fascination"
+			},
+			"resaturate": true
+		},
+		{
+			"id": "fatigue",
+			"label": "Gesundheit (Ermüdet)",
+			"aspects": {
+				"illhealth": 1,
+				"heart": 1
+			},
+			"description": "Diese Karte kann nicht eingesetzt werden, erholt sich aber nach sechzig Sekunden. Durch Träumen kann sie sich schneller erholen.",
+			"xtriggers": {
+				"restorehealth": "health",
+				"damagehealth": "injury",
+				"destroyhealth": "decrepitude",
+				"fallsick": "affliction",
+				"scarability": "scar_heart"
+			},
+			"lifetime": 60,
+			"decayTo": "health",
+			"icon": "health",
+			"resaturate": true
+		},
+		{
+			"id": "affliction",
+			"label": "Ein Gebrechen",
+			"aspects": {
+				"illhealth": 1,
+				"winter": 2,
+				"ingredient": 1
+			},
+			"xtriggers": {
+				"restorehealth": "health",
+				"scarability": "scar_heart"
+			},
+			"slots": [
+				{
+					"id": "medicine",
+					"label": "Medizin oder ...",
+					"actionid": "dream",
+					"description": "Ich könnte für einen Besuch beim Arzt bezahlen ...",
+					"required": {
+						"funds": 1
+					}
+				},
+				{
+					"id": "vitality",
+					"label": "... Vitalität",
+					"actionid": "dream",
+					"description": "... doch vielleicht brauche ich auch einfach nur ein wenig Ruhe.",
+					"required": {
+						"vitality": 1
+					}
+				}
+			],
+			"description": "Ich bin durch Krankheit geschwächt. Ich brauche Ruhe und Nahrung, wenn ich mich erholen soll. [Durch Träumen mit einem Gebrechen verwandelst du es zurück in Gesundheit bevor die Karte zerfällt.]",
+			"lifetime": 180,
+			"decayTo": "decrepitude"
+		},
+		{
+			"id": "reason",
+			"label": "Verstand",
+			"aspects": {
+				"lantern": 2,
+				"ingredient": 1,
+				"ability": 1
+			},
+			"animFrames": 1,
+			"description": "'Kein lebendiger Organismus kann längere Zeit in einem Zustand absoluter Realität bei Verstand bleiben.' – Shirley Jackson\n\n[Mit Erudition kannst du im Studium zu mehr Verstand kommen.]",
+			"xtriggers": {
+				"damagereason": "dread",
+				"fatiguing": "concentration",
+				"employment": "concentration",
+				"job": "concentration",
+				"topassion": "passion",
+				"ritual": "concentration",
+				"society": "concentration",
+				"scarability": "scar_lantern"
+			}
+		},
+		{
+			"id": "concentration",
+			"label": "Verstand [Getrübt]",
+			"description": "Mein Geist ist müde. [Diese Karte kann nicht eingesetzt werden, erholt sich aber nach sechzig Sekunden.]",
+			"lifetime": 60,
+			"decayTo": "reason",
+			"icon": "reason",
+			"xtriggers": {
+				"scarability": "scar_lantern",
+				"topassion": "passionexhausted",
+				"damagereason": "dread"
+			},
+			"resaturate": true
+		},
+		{
+			"id": "erudition",
+			"label": "Erudition",
+			"slots": [
+				{
+					"id": "moreerudition",
+					"label": "Mehr Erudition",
+					"actionid": "study",
+					"description": "Mit genug Erudition – oder manchmal auch etwas Exotischerem – kann ich meinen Verstand schärfen.",
+					"required": {
+						"erudition": 1,
+						"influencelantern": 1
+					}
+				}
+			],
+			"aspects": {
+				"advancement": 1,
+				"lantern": 1,
+				"influence": 1
+			},
+			"description": "Ich sauge das Wissen auf wie ein Schatten das Licht. Ich könnte kurz vor einem Fortschritt stehen. [Erudition kann mit einem Studium benutzt werden, um den Verstand zu schärfen. Hält nur drei Minuten, falls unbenutzt.]",
+			"lifetime": 180,
+			"xtriggers": {
+				"upgradeinfluence": "influencelanternc"
+			}
+		},
+		{
+			"id": "eruditionplus",
+			"label": "Erudition: Eine gelernte Lektion",
+			"aspects": {
+				"advancement": 1,
+				"lantern": 2,
+				"influence": 1
+			},
+			"description": "Ich bin bereit mich zu verbessern. [Benutze dies mit deiner Fertigkeit 'Gelehrsamkeit', um die Fertigkeit zu verbessern und Verstand hinzu zu gewinnen. Hält bis zu fünf Minuten, bis sie zu einer Erudition zerfällt.]",
+			"lifetime": 300,
+			"xtriggers": {
+				"upgradeinfluence": "influencelanternc"
+			},
+			"decayTo": "erudition"
+		},
+		{
+			"id": "dread",
+			"label": "Grauen",
+			"aspects": {
+				"edge": 2,
+				"inducesdespair": 1,
+				"influence": 1,
+				"illhealth": 1,
+				"memory": 1
+			},
+			"slots": [
+				{
+					"id": "reminders",
+					"label": "Erinnerungen",
+					"actionid": "dream",
+					"required": {
+						"contentment": 1
+					},
+					"description": "Ich brauche ein wenig Frieden, oder einen Augenblick des Glücks. [Zu viel des Grauens wäre dein Verderben. Zufriedenheit bedeutet Heilung.]"
+				},
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Vielleicht kann ich mein Grauen einsetzen, um einen gefährlichen Einfluss zu stärken.",
+					"required": {
+						"influenceedge": 1,
+						"influencewinter": 1
+					},
+					"actionid": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentedgec": 1,
+						"fragmentedged": 1,
+						"fragmentedgee": 1,
+						"fragmentedgef": 1,
+						"fragmentedgeg": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"description": "Ich hab zu viel gesehen. Eine namenlose Furcht hat ihre Zähne in meine Hoffnungen geschlagen – ein existenzieller Schrecken.",
+			"lifetime": 180,
+			"xtriggers": {
+				"upgradeinfluence": "influenceedgec",
+				"glorify": "fascination"
+			}
+		},
+		{
+			"id": "passion",
+			"label": "Leidenschaft",
+			"aspects": {
+				"moth": 2,
+				"ingredient": 1,
+				"ability": 1
+			},
+			"animFrames": 1,
+			"description": "'Stumpfe Geister sind nie intuitiver oder mathematischer Natur.' – Blaise Pascal\n\n[Mit genug Schimmern kannst du durch Studium mehr Leidenschaft gewinnen.]",
+			"xtriggers": {
+				"damagepassion": "fascination",
+				"plead": "disillusionment",
+				"fatiguing": "passionexhausted",
+				"employment": "passionexhausted",
+				"job": "passionexhausted",
+				"toreason": "reason",
+				"ritual": "passionexhausted",
+				"society": "passionexhausted"
+			}
+		},
+		{
+			"id": "decrepitude",
+			"label": "Hinfälligkeit",
+			"description": "Manche Wunden verheilen nie richtig. [Unbehandelte Verletzungen und Hunger werden zu Hinfälligkeit, die sich nicht zurück in Gesundheit verwandelt. Die Hinfälligkeit bleibt bis zu deinem Tode.",
+			"aspects": {
+				"ability": 1,
+				"winter": 1,
+				"remnant": 1
+			},
+			"xtriggers": {
+				"tohealth": "health",
+				"alzabo": "memory.honeyed"
+			},
+			"slots": [
+				{
+					"id": "consume",
+					"label": "Verzehren",
+					"required": {
+						"ingredient": 1
+					},
+					"forbidden": {
+						"poison": 1
+					},
+					"actionid": "dream"
+				}
+			]
+		},
+		{
+			"id": "glimmering",
+			"label": "Schimmern",
+			"slots": [
+				{
+					"id": "moreglimmering",
+					"label": "Mehr Schimmern",
+					"actionid": "study",
+					"description": "Mit genug Schimmern – oder manchmal auch etwas Exotischerem – kann ich meine Leidenschaft steigern.",
+					"required": {
+						"glimmering": 1,
+						"influencemoth": 1
+					}
+				}
+			],
+			"aspects": {
+				"advancement": 1,
+				"moth": 1,
+				"influence": 1
+			},
+			"description": "Meine Gefühle sind stärker in Wallung als sonst. Es gibt da Dinge, die ich niemals verstehen werde, und Dinge, die immer kostbar sein werden, doch jetzt gerade bin ich ihnen näher. [Schimmern kann mit Studium benutzt werden, um Leidenschaft zu erlangen. Hält nur drei Minuten, falls unbenutzt.]",
+			"lifetime": 180,
+			"xtriggers": {
+				"upgradeinfluence": "influencemothc"
+			}
+		},
+		{
+			"id": "glimmeringplus",
+			"label": "Schimmern: Eine gelernte Lektion",
+			"aspects": {
+				"advancement": 1,
+				"moth": 2,
+				"influence": 1
+			},
+			"description": "Ich bin bereit mich zu verbessern. [Benutze dies mit deiner Fertigkeit 'Vorstellungskraft', um die Fertigkeit zu verbessern und an Leidenschaft zu gewinnen. Hält bis zu fünf Minuten, bis sie zu einem Schimmern zerfällt.]",
+			"lifetime": 300,
+			"xtriggers": {
+				"upgradeinfluence": "influencemothc"
+			},
+			"decayTo": "glimmering"
+		},
+		{
+			"id": "fascination",
+			"label": "Faszination",
+			"aspects": {
+				"moth": 2,
+				"illhealth": 1,
+				"influence": 1,
+				"memory": 1
+			},
+			"slots": [
+				{
+					"id": "reminders",
+					"label": "Erinnerungen",
+					"required": {
+						"dread": 1,
+						"fleeting": 1
+					},
+					"actionid": "dream",
+					"description": "Die graue Realität wird meiner Seele Stabilität geben."
+				},
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Vielleicht kann ich meine Faszination einsetzen, um einen verführenden Einfluss zu stärken.",
+					"required": {
+						"influencemoth": 1,
+						"influencelantern": 1
+					},
+					"actionid": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentmothc": 1,
+						"fragmentmothd": 1,
+						"fragmentmothe": 1,
+						"fragmentmothf": 1,
+						"fragmentmothg": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"description": "Licht LECKT durch die RITZEN. Mein Geist ist HELLER denn JE. JE HÖHER ICH MICH ERHEBE, DESTO MEHR SEHE ICH.",
+			"lifetime": 180,
+			"xtriggers": {
+				"upgradeinfluence": "influencemothc"
+			}
+		},
+		{
+			"id": "scholarlatin",
+			"label": "Gelehrter: Latein",
+			"aspects": {
+				"language": 1
+			},
+			"slots": [
+				{
+					"id": "Text",
+					"label": "Unübersetzter Text",
+					"required": {
+						"textlatin": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"description": "Eine tote Sprache: tot wie Diamanten. [Manche Bücher müssen übersetzt werden, bevor sie gelesen werden können.]",
+			"unique": true
+		},
+		{
+			"id": "scholarfucine",
+			"label": "Gelehrter: Fucine",
+			"aspects": {
+				"language": 1
+			},
+			"slots": [
+				{
+					"id": "Text",
+					"label": "Unübersetzter Text",
+					"required": {
+						"textfucine": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"description": "Ein Volk lebte einst im Osten des untergegangenen Sees Fucino. Horaz warnte, ihre Lande seien die Lande der Hexen. Dies war ihre Sprache, die manche 'die trockene Sprache' und andere 'die Sprache der Hexen' nannten. [Manche Bücher müssen übersetzt werden, bevor sie gelesen werden können.]",
+			"unique": true
+		},
+		{
+			"id": "scholargreek",
+			"label": "Gelehrter: Griechisch",
+			"aspects": {
+				"language": 1
+			},
+			"slots": [
+				{
+					"id": "Text",
+					"label": "Unübersetzter Text",
+					"required": {
+						"textgreek": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"description": "Zweifellos verstehst du dich auf jede Variante des Griechischen, von den Anfängen bis nach Byzanz. Doch es ist nur gut, dass du diese Nachschlagewerke hast. [Manche Bücher müssen übersetzt werden, bevor sie gelesen werden können.]",
+			"unique": true
+		},
+		{
+			"id": "scholarphrygian",
+			"label": "Gelehrter: Phrygisch",
+			"slots": [
+				{
+					"id": "Text",
+					"label": "Unübersetzter Text",
+					"required": {
+						"textphrygian": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"aspects": {
+				"language": 1
+			},
+			"description": "Die Phrygier verehrten die Große Mutter, die wir den Gral nennen. Ihre waren die Lande, in denen die Schwesternschaft des Knotens geboren wurde, und in dieser Sprache flehte die Donnerhaut bei ihrem Aufstieg. [Manche Bücher müssen übersetzt werden, bevor sie gelesen werden können.]",
+			"unique": true
+		},
+		{
+			"id": "scholararamaic",
+			"label": "Gelehrter: Aramäisch",
+			"slots": [
+				{
+					"id": "Text",
+					"label": "Unübersetzter Text",
+					"required": {
+						"textaramaic": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"aspects": {
+				"language": 1
+			},
+			"description": "Die Sprache von Aram und ihren vielen Kindern, dreitausend Jahre und noch weiter in der Vergangenheit. [Manche Bücher müssen übersetzt werden, bevor sie gelesen werden können.]",
+			"unique": true
+		},
+		{
+			"id": "scholarmandaic",
+			"label": "Gelehrter: Alt-Mandäisch",
+			"slots": [
+				{
+					"id": "Text",
+					"label": "Unübersetzter Text",
+					"required": {
+						"textmandaic": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"aspects": {
+				"language": 1
+			},
+			"description": "Das geheimste Skriptum der innersten Riten der tiefen Sekten der tiefen Wüste. Die Geburtssprache, so wird behauptet, der Mutter der Ameisen selbst. [Manche Bücher müssen übersetzt werden, bevor sie gelesen werden können.]",
+			"unique": true
+		},
+		{
+			"id": "scholarsanskrit",
+			"label": "Gelehrter: Sanskrit",
+			"slots": [
+				{
+					"id": "Text",
+					"label": "Unübersetzter Text",
+					"required": {
+						"textsanskrit": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"aspects": {
+				"language": 1
+			},
+			"description": "Die heilige Sprache des Subkontinents. Die Tür zu viertausend Jahren Dichtung, Zeremonien und Mysterien öffnet sich nun für dich, falls du dich nicht in den lotusartigen Windungen des Vokabulars verirrst. [Manche Bücher müssen übersetzt werden, bevor sie gelesen werden können.]",
+			"unique": true
+		},
+		{
+			"id": "scholarvak",
+			"label": "Gelehrter: Vak",
+			"slots": [
+				{
+					"id": "Text",
+					"label": "Unübersetzter Text",
+					"required": {
+						"textvak": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"aspects": {
+				"language": 1
+			},
+			"description": "Bevor sich die Götter aus dem Blut erhoben, bevor auch nur der Affe aufrecht stand, war diese Sprache im Hause der Sonnen zu vernehmen. [Manche Bücher müssen übersetzt werden, bevor sie gelesen werden können.]",
+			"unique": true
+		},
+		{
+			"id": "fleeting",
+			"label": "Flüchtige Reminiszenz",
+			"description": "Ein Moment in der Zeit. Noch ein Moment, und er ist vergangen.",
+			"aspects": {
+				"secrethistories": 2,
+				"moth": 2,
+				"influence": 1,
+				"memory": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Vielleicht kann ich etwas in meinen Erinnerungen finden, um einen vergänglichen Einfluss zu stärken.",
+					"required": {
+						"influencemoth": 1,
+						"influencelantern": 1
+					},
+					"actionid": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentmothc": 1,
+						"fragmentmothd": 1,
+						"fragmentmothe": 1,
+						"fragmentmothf": 1,
+						"fragmentmothg": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"lifetime": 120,
+			"xtriggers": {
+				"upgradeinfluence": "influencemothc"
+			}
+		},
+		{
+			"id": "contentment",
+			"label": "Zufriedenheit",
+			"aspects": {
+				"lantern": 2,
+				"heart": 2,
+				"influence": 1
+			},
+			"description": "Ich bin glücklich, denke ich. [Zufriedenheit schützt vor Grauen, doch die Zufriedenheit hält nicht an.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Vielleicht kann ich meine Zufriedenheit einsetzen, um einen positiven Einfluss zu stärken.",
+					"required": {
+						"influencelantern": 1,
+						"influenceheart": 1,
+						"influencewinter": 1,
+						"influenceforge": 1
+					},
+					"actionid": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentheartc": 1,
+						"fragmentheartd": 1,
+						"fragmenthearte": 1,
+						"fragmentheartf": 1,
+						"fragmentheartg": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceheartc"
+			}
+		},
+		{
+			"id": "scar_edge",
+			"label": "Narbe: Brutales Erlebnis",
+			"description": "FAUST: Mich dünkt, die Hölle ist eine Fabel. MEPHISTO: Ei, so möge es dich dünken, bis die Erfahrung dich eines Besseren belehrt. [Du hast der Macht ein dauerhaftes Opfer gebracht.]",
+			"aspects": {
+				"tool": 1,
+				"edge": 4,
+				"scar": 1
+			}
+		},
+		{
+			"id": "scar_knock",
+			"label": "Narbe: Halbverheilte Fistel",
+			"description": "Nicht alle Türen sind Wunden, doch alle Wunden sind Türen. [Du hast der Macht ein dauerhaftes Opfer gebracht.]",
+			"aspects": {
+				"tool": 1,
+				"knock": 4,
+				"scar": 1
+			}
+		},
+		{
+			"id": "scar_winter",
+			"label": "Narbe: Alte Wunde",
+			"description": "Nähere dich dem Sonnenuntergang und erblicke die ersten Sterne der Nacht. [Du hast der Macht ein dauerhaftes Opfer gebracht.]",
+			"aspects": {
+				"tool": 1,
+				"winter": 4,
+				"scar": 1
+			}
+		},
+		{
+			"id": "scar_heart",
+			"label": "Narbe: Ein wanderndes Herz",
+			"description": "Ich trage so viel Liebe in mir. Es ist schwer, sich nicht zu bewegen. Wenn ich sitze, brennen mir die Gelenke. Ich weiß, wenn ich aufhöre, könnte es für immer sein. [Du hast der Macht ein dauerhaftes Opfer gebracht. Obacht: Anders als Gesundheit wirkt diese Karte nicht gegen Krankheit oder Verhungern.]",
+			"aspects": {
+				"tool": 1,
+				"heart": 4,
+				"scar": 1
+			},
+			"xtriggers": {
+				"job": "scar_heart_fatigued",
+				"employment": "scar_heart_fatigued",
+				"ritual": "scar_heart_fatigued"
+			}
+		},
+		{
+			"id": "scar_heart_fatigued",
+			"label": "Narbe: Ein wanderndes Herz (Überstrapaziert)",
+			"description": "Meine Arterien singen, meine Vene brennen. Ich kann mich nicht noch weiter antreiben. [Warten.]",
+			"decayTo": "scar_heart",
+			"lifetime": 60,
+			"resaturate": true
+		},
+		{
+			"id": "scar_moth",
+			"label": "Narbe: Ein flexibler Aspekt",
+			"description": "Ich habe so viele Larven getragen. Mit jeder neuen Larve fällt es schwerer, sich an mein eigentliches Gesicht zu erinnern. Selbst die Knorpel werden weicher, wenn meine Gefühle in Wallung sind. [Du hast der Macht ein dauerhaftes Opfer gebracht.]",
+			"aspects": {
+				"tool": 1,
+				"moth": 4,
+				"scar": 1
+			},
+			"xtriggers": {
+				"job": "scar_moth_fatigued",
+				"employment": "scar_moth_fatigued",
+				"ritual": "scar_moth_fatigued"
+			}
+		},
+		{
+			"id": "scar_moth_fatigued",
+			"label": "Narbe: Ein flexibler Aspekt (Überstrapaziert)",
+			"description": "Mit jedem neuen Ausdruck kräuselt sich meine Miene wie das Wasser. Wenn ich nicht Obacht gebe, löse ich mich ganz auf. [Warten.]",
+			"decayTo": "scar_moth",
+			"lifetime": 60,
+			"resaturate": true
+		},
+		{
+			"id": "scar_lantern",
+			"label": "Narbe: Eine Transluzenz",
+			"description": "Manchmal bin ich nun schön unter meiner Haut. Beuge ich mich im richtigen Winkel – fallen meine Kleider beiseite – ist das Auge scharf – ist meine Gestalt eine perfekte Offenbarung. [Du hast der Macht ein dauerhaftes Opfer gebracht.]",
+			"aspects": {
+				"tool": 1,
+				"lantern": 4,
+				"scar": 1
+			}
+		}
+	]
+}

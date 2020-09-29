@@ -1,0 +1,59 @@
+{
+	"recipes": [
+		{
+			"id": "health_expel_to_scar",
+			"label": "Gesundheit: Vernarbt",
+			"actionId": "scar_ability",
+			"startdescription": "Mein Leib wandelt sich ...",
+			"description": "Manche Bewegungen hinterlassen tiefere Spuren als andere. [Gesundheit wurde dauerhaft zu einer Narbe. Vorsicht: Narben helfen nicht bei Krankheit oder Hunger.]",
+			"requirements": {
+				"health": 1
+			},
+			"aspects": {
+				"scarability": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "passion_expel_to_scar",
+			"label": "Leidenschaft: Vernarbt",
+			"actionId": "scar_ability",
+			"startdescription": "Meine Gefühle verwandeln mich ...",
+			"description": "Meine Gedanken engen mein Fleisch und meinen Geist mehr ein als es sicher wäre. [Leidenschaft wurde dauerhaft zu einer Narbe.]",
+			"requirements": {
+				"passion": 1
+			},
+			"aspects": {
+				"scarability": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "expel_independent",
+			"label": "Sicher ahnungslos",
+			"actionId": "expel_independent",
+			"startdescription": "Mein Rivale hat keine Ahnung, was ihn erwartet.",
+			"warmup": 1
+		},
+		{
+			"id": "expel_corpses",
+			"label": "Ein zerbrechlicher Schatten",
+			"actionId": "expel_corpse",
+			"requirements": {
+				"corpse": 1
+			},
+			"startdescription": "Da liegt er.",
+			"warmup": 1
+		},
+		{
+			"id": "expel_injury",
+			"label": "Eine Blutspur",
+			"actionId": "expel_injury",
+			"requirements": {
+				"injury": 1
+			},
+			"startdescription": "Die Pein ist das letzte Geschenk.",
+			"warmup": 1
+		}
+	]
+}

@@ -1,0 +1,153 @@
+{
+	"recipes": [
+		{
+			"id": "workintrojob",
+			"label": "Noch eine Schicht im Hospital",
+			"actionId": "work",
+			"requirements": {
+				"introjob": 1
+			},
+			"effects": {
+				"introjob": -1,
+				"health": 1,
+				"funds": 2
+			},
+			"alternativerecipes": [
+				{
+					"id": "introdream",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "Noch eine Schicht: die abgedunkelten Gänge wischen, Invaliden mit hohlen Augen ihre Post bringen, mit Leichen befrachtete Tragen in den Keller schaffen.",
+			"description": "Mitten in deiner Schicht nimmt dich der Hauptpförtner zur Seite. 'Wir brauchen deine Dienste nicht mehr', sagt er. 'Hier: deine letzte Lohntüte. Wir haben dich bis zum Ende des Monats bezahlt.'\n\nIch habe meine Arbeit verloren. Immerhin habe ich jetzt etwas Zeit, mich auszuruhen, und meine Gesundheit erholt sich wieder.\n\n[<b>Traum</b> ist freigeschaltet.]",
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "introdream",
+			"label": "An meine Träume erinnern",
+			"actionId": "dream",
+			"requirements": {
+				
+			},
+			"effects": {
+				"passion": 1,
+				"contentment": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "bequestcountdown",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "Wieder träume ich von einem Leuchten unter der schmutzigen Haut der Welt. Das Licht im schwarzen Forst. Die bleiche Tür. Der Alte – ",
+			"description": "Es fing damit an, dass ich mit dem Alten im Hospital sprach. Er kannte meinen Namen. Doch nun ist er tot. Lungenentzündung. Warum träume ich noch immer von ihm? Was ist das für ein kobaltblaues Licht in meinen Träumen?\n\n[Die Zeit verstreicht nun.]",
+			"warmup": 30,
+			"craftable": false,
+			"comments": "This is triggered from the intro work recipe only."
+		},
+		{
+			"id": "bequestcountdown",
+			"label": "Eine Veränderung in der Luft",
+			"actionId": "study",
+			"requirements": {
+				
+			},
+			"startdescription": "Zum Leben brauche ich Geld. Doch vielleicht ist diese plötzliche Veränderung meiner Verhältnisse ja in Wahrheit ein Segen. Steckt da mehr hinter meinen Träumen? Es gibt da eine Veränderung in der Luft.",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "bequestarrives",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "bequestarrives",
+			"label": "Ein Nachlass trifft ein",
+			"actionId": "study",
+			"requirements": {
+				
+			},
+			"effects": {
+				"reason": 1,
+				"funds": 9,
+				"bequestintro": 1
+			},
+			"startdescription": "Ein Brief von einem Notar. Der Alte im Hospital – von dem ich geträumt habe – hat mich in seinem Testament bedacht. Ich werde schon bald mehr hören.",
+			"description": "Der Alte hat mir einen Geldbetrag sowie einen Stapel eigenartiger Papiere zugedacht – Gedichte. Rätsel, metaphysische Spekulationen. Zum ersten Mal seit Monaten fühlt sich wieder mein Verstand angesprochen.\n\n[<b>Studium</b> ist freigeschaltet.]",
+			"warmup": 30,
+			"craftable": false,
+			"maxexecutions": 1,
+			"comments": "This makes the Study action available, and is triggered from intro only."
+		},
+		{
+			"id": "studybequestreason",
+			"label": "Nachlass mit Verstand untersuchen",
+			"actionId": "study",
+			"requirements": {
+				"bequestintro": 1,
+				"reason": 1
+			},
+			"effects": {
+				"bequestintro": -1,
+				"ascensionenlightenmenta": 1,
+				"mapbookdealer": 1,
+				"fragmentlantern": 1,
+				"contactintro": 1
+			},
+			"startdescription": "Ich werde jedes Stück mit größter Sorgfalt untersuchen. ",
+			"description": "Mein Korrespondent beschreibt meine Träume ganz genau! Er benutzt Namen, die mir sofort vertraut sind – das Haus, der Forst, die Stunden, der Ruhm. Er kannte Geheimnisse unter der Zeit und der Haut der Welt. <b>Eine neue Neugier brennt in mir</b>.\n\nHier ist eine Notiz – eine Wegbeschreibung zu einem Buchladen, der seine Waren nicht bewirbt –\n",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studybequestpassion",
+			"label": "Meinen Nachlass mit Leidenschaft untersuchen",
+			"actionId": "study",
+			"requirements": {
+				"bequestintro": 1,
+				"passion": 1
+			},
+			"effects": {
+				"bequestintro": -1,
+				"ascensionpowera": 1,
+				"mapbookdealer": 1,
+				"fragmentforge": 1,
+				"contactintro": 1
+			},
+			"startdescription": "Ich werde lesen, Theorien aufstellen, umhergehen, skizzieren, mir die Haare raufen, entzückt aufspringen, verzweifelt zusammensinken.",
+			"description": "Mein Korrespondent beschreibt meine Träume ganz genau! Er benutzt Namen, die mir sofort vertraut sind – das Haus, der Forst, die Stunden, der Ruhm. Ich spüre hier eine Macht, die Generäle und Könige neidisch machen würde. <b>Ein neues Verlangen lodert in mir.</b>\n\nHier ist eine Notiz – eine Wegbeschreibung zu einem Buchladen, der seine Waren nicht bewirbt –\n",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studycontactintro",
+			"label": "Einen möglichen Partner finden",
+			"actionId": "study",
+			"requirements": {
+				"contactintro": 1
+			},
+			"effects": {
+				"contactintro": -1,
+				"mystique": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "findacquaintanceopentalk",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "Ich habe einen Namen, eine Beschreibung, ein paar ansprechende Details ... doch in dieser Stadt gibt es Tausende von Gesichtern.",
+			"description": "Und jetzt habe ich eine Adresse. Ich werden einen Brief schicken und ein Treffen vorschlagen. [ <b>Gespräch</b> ist freigeschaltet].",
+			"warmup": 30,
+			"craftable": true,
+			"comments": "This is one way the Talk verb may be opened."
+		}
+	]
+}

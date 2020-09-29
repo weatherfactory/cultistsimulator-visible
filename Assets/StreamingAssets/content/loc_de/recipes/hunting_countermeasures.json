@@ -1,0 +1,1006 @@
+{
+	"recipes": [
+		{
+			"id": "huntermysticsurvives",
+			"actionId": "talk",
+			"label": "Schloss und Siegel",
+			"requirements": {
+				"mystic": 1,
+				"summoned": 1
+			},
+			"description": "'Unser Feind ist im Besitz der gefährlichsten Waffe überhaupt: Wissen.'\n\nDeine Beschwörung ist den Gegenmaßnahmen deines Gegners zu Opfer gefallen. Mystische Jäger kennen den richtigen Schutz und überleben in der Regel Angriffe beschworener Schergen. Doch früher oder später machen sie vielleicht einen Fehler.",
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"killsummoned": 1
+			}
+		},
+		{
+			"id": "huntertenacioussurvives",
+			"actionId": "talk",
+			"label": "Hartnäckigkeit",
+			"requirements": {
+				"tenacious": 1
+			},
+			"description": "'Aber – das hätte niemand überleben können!'\n\nAb und zu überleben Hartnäckige Jäger irgendwie Angriffe, die eigentlich tödlich hätten sein müssen. Doch am Ende verlässt sie dann immer das Glück, und es gibt noch andere Mittel und Wege als körperliche Angriffe.",
+			"effects": {
+				"notoriety": 1
+			}
+		},
+		{
+			"id": "huntersurvives_becomestenacious",
+			"actionId": "talk",
+			"label": "Narben",
+			"requirements": {
+				"tenacious": -1
+			},
+			"description": "'Die sind härter drauf als sie aussehen.'\n\nEin Jäger, der einen körperlichen Angriff überlebt, wird manchmal Hartnäckig. Hartnäckige Jäger sind schwerer zu beseitigen.",
+			"mutations": [
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "tenacious",
+					"mutationLevel": 1
+				}
+			],
+			"effects": {
+				"notoriety": 1,
+				"follower": -1
+			}
+		},
+		{
+			"id": "huntersurvives_becomesmystic",
+			"actionId": "talk",
+			"label": "Harte Lektionen",
+			"requirements": {
+				"summoned": 1,
+				"mystic": -1
+			},
+			"description": "'Was jemanden nicht umbringt, macht ihn zuweilen seltsamer.'\n\nÜberlebt ein Jäger den Angriff eines beschworenen Wesens, wird er zuweilen dazu inspiriert, sich mit Gegenmaßnahmen gegen die Dinge des Mansus vertraut zu machen und Mystiker zu werden. Mystische Jäger überleben in der Regel weitere Angriffe durch beschworene Wesen.",
+			"mutations": [
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "mystic",
+					"mutationLevel": 1
+				}
+			],
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"killsummoned": 1
+			}
+		},
+		{
+			"id": "hunterfitewithextraswole",
+			"label": "Ein Überraschungsangriff auf einen Gegner",
+			"actionId": "talk",
+			"requirements": {
+				"murderskill": 1
+			},
+			"startdescription": "Mein Gegner besteht auf einem Treffen in der Öffentlichkeit. Er hat alle sinnvollen Sicherheitsvorkehrungen getroffen. Doch gegen mich gibt es keine sinnvollen Sicherheitsvorkehrungen. Ein direkter körperlicher Angriff wäre mit erheblichen Risiken verbunden ... doch vielleicht ist es jetzt so weit. [Dies könnte entgegen aller Wahrscheinlichkeit Erfolg haben.]",
+			"description": "Ich habe seinen Kopf in meinen Händen. Ich breche ihm das Genick. Ich bin fort bevor die Leiche auch nur ganz am Boden ist.",
+			"alternativerecipes": [
+				{
+					"id": "hunterfitewithswole_failure",
+					"chance": 70
+				},
+				{
+					"id": "huntertenacioussurvives",
+					"chance": 30
+				}
+			],
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"killhunter": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "hunterfitewithswole",
+			"label": "Ein Überraschungsangriff auf einen Gegner",
+			"actionId": "talk",
+			"requirements": {
+				"healthskill": 1
+			},
+			"startdescription": "Mein Gegner besteht auf einem Treffen in der Öffentlichkeit. Er hat alle sinnvollen Sicherheitsvorkehrungen getroffen, und ein direkter körperlicher Angriff wäre mit erheblichen Risiken verbunden ... doch vielleicht ist es jetzt so weit. [Dies ist wirklich sehr gewagt.]",
+			"description": "Ich habe seinen Kopf in meinen Händen. Ich breche ihm das Genick. Ich bin fort bevor die Leiche auch nur ganz am Boden ist.",
+			"alternativerecipes": [
+				{
+					"id": "hunterfitewithswole_failure",
+					"chance": 90
+				},
+				{
+					"id": "huntertenacioussurvives",
+					"chance": 30
+				}
+			],
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"killhunter": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "hunterfitewithswole_failure",
+			"label": "Ein Überraschungsangriff ist gescheitert!",
+			"actionId": "talk",
+			"startdescription": ".",
+			"description": "Mit einem Aufschrei springt mein Gegner zurück und wirft den Tisch um! Um uns herum starrt man uns an. Keine hat gesehen, wie ich mich bewegt habe. Der einzige wahre Zeuge ist mein Gegner. Doch ich muss sofort weg.",
+			"craftable": false,
+			"effects": {
+				"notoriety": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "wary",
+					"mutationLevel": 1
+				}
+			]
+		},
+		{
+			"id": "hunterspeakpoison_glassfinger",
+			"label": "Glasfinger-Toxin gegen einen Jäger einsetzen",
+			"actionId": "talk",
+			"requirements": {
+				"ingredientlanternd": 1
+			},
+			"startdescription": "'Schmeckt der Tee?'",
+			"description": "Das Ende ist nicht schön, aber dafür schnell und fast schmerzlos. Ist die Auflösung abgeschlossen, bleibt nichts Sichtbares mehr übrig.",
+			"alternativerecipes": [
+				{
+					"id": "huntertenacioussurvives",
+					"chance": 30
+				}
+			],
+			"effects": {
+				"ingredientlanternd": -1
+			},
+			"aspects": {
+				"dissolution": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "hunterspeakpoison",
+			"label": "Ein Bemerkenswertes Gift gegen einen Jäger einsetzen",
+			"actionId": "talk",
+			"requirements": {
+				"poison": 1
+			},
+			"startdescription": "'Schmeckt der Tee?'",
+			"description": "Das Ende ist nicht schön, aber dafür schnell und fast schmerzlos. Es gibt weitaus schlimmere Arten zu sterben.",
+			"alternativerecipes": [
+				{
+					"id": "huntertenacioussurvives",
+					"chance": 30
+				}
+			],
+			"effects": {
+				"poison": -1,
+				"notoriety": 1
+			},
+			"aspects": {
+				"killhunter": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "hunterattackhighwinter",
+			"label": "Einen stummen Schergen entsenden, um ein Problem mit einem Jäger zu lösen",
+			"actionId": "talk",
+			"startdescription": "Das sorgt vielleicht dafür, dass der Jäger uns nicht mehr behelligt. [Dies hat geringere Aussichten auf Erfolg als ein Angriff der Kante, und sowohl Erfolg als auch Scheitern werden für Aufmerksamkeit sorgen, wobei der Scherge in der Regel überlebt.]",
+			"requirements": {
+				"hunter": 1,
+				"winter": 10,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "hunterstealthattacksuccess",
+					"chance": 70
+				},
+				{
+					"id": "hunterstealthattackfailure",
+					"chance": 100
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "hunterattackmidwinter",
+			"label": "Einen stillen Schergen entsenden, um ein Problem mit einem Jäger zu lösen",
+			"actionId": "talk",
+			"startdescription": "Mein Scherge wird beobachten und warten. Wenn wir Glück haben, hat er die Chance, unseren Feind zu beseitigen. [Dies hat geringere Aussichten auf Erfolg als ein Angriff der Kante, und sowohl Erfolg als auch Scheitern werden für Aufmerksamkeit sorgen, wobei der Scherge in der Regel überlebt.]",
+			"description": ".",
+			"requirements": {
+				"hunter": 1,
+				"winter": 5,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "hunterstealthattacksuccess",
+					"chance": 30
+				},
+				{
+					"id": "hunterstealthattackfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterattacklowwinter",
+			"label": "Einen vorsichtigen Schergen entsenden, um ein Problem mit einem Jäger zu lösen",
+			"actionId": "talk",
+			"startdescription": "Mein Scherge wird auf den richtigen Moment warten, wobei jener Moment wahrscheinlich niemals kommen wird. [Dies hat geringere Aussichten auf Erfolg als ein Angriff der Kante, und sowohl Erfolg als auch Scheitern werden für Aufmerksamkeit sorgen, wobei der Scherge in der Regel überlebt.]",
+			"description": ".",
+			"requirements": {
+				"hunter": 1,
+				"winter": 1,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "hunterstealthattacksuccess",
+					"chance": 10
+				},
+				{
+					"id": "hunterstealthattackfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterstealthattacksuccess",
+			"label": "Geduld ...",
+			"actionId": "talk",
+			"startdescription": "Ich warte auf Antwort ...",
+			"description": "Mein Scherge ist mit einer Trophäe zurück.",
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"killhunter": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "huntertenacioussurvives",
+					"chance": 30
+				},
+				{
+					"id": "huntermysticsurvives",
+					"chance": 70
+				}
+			],
+			"comments": "No summoned creatures currently attack with Winter. This is in case I add one later.",
+			"warmup": 10
+		},
+		{
+			"id": "hunterstealthattackfailure",
+			"label": "Geduld ...",
+			"actionId": "talk",
+			"startdescription": "Ich warte auf Antwort ...",
+			"description": "Mein Scherge ist zurück. Es gab keine Chance, das Leben des Jägers zu beenden, und dem Jäger könnte nun die Gefahr bewusst sein.",
+			"effects": {
+				"notoriety": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "hunterattackhighedge",
+			"label": "Eine Unaufhaltsame Macht entsenden, um einen Jäger zu ermorden",
+			"actionId": "talk",
+			"startdescription": "Wenn dieser Jäger keine speziellen Schutzmaßnahmen ergriffen hat, dürfte er bereits tot sein. Doch sein Ableben dürfte für Aufsehen sorgen.",
+			"description": ".",
+			"requirements": {
+				"hunter": 1,
+				"edge": 10,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "hunterattacksuccess",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterattackmidedge",
+			"label": "Einen starken Schergen entsenden, um einen Jäger zu ermorden",
+			"actionId": "talk",
+			"startdescription": "Mein Scherge ist mächtig. Dieser Jäger wird wohl kaum überleben. Doch der Versuch wird für Aufsehen sorgen. [Bei einem Fehlschlag stirbt dein Scherge.]",
+			"description": ".",
+			"requirements": {
+				"hunter": 1,
+				"edge": 5,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "hunterattacksuccess",
+					"chance": 70
+				},
+				{
+					"id": "hunterattackfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterattacklowedge",
+			"label": "Einen Schergen entsenden, um einen Jäger zu ermorden",
+			"actionId": "talk",
+			"startdescription": "Die Fähigkeiten meines Schergen sind begrenzt. Dieser Jäger wird womöglich überleben und der Versuch wird für Aufsehen sorgen. [Bei einem Fehlschlag stirbt dein Scherge.]",
+			"description": ".",
+			"requirements": {
+				"hunter": 1,
+				"edge": 1,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "hunterattacksuccess",
+					"chance": 30
+				},
+				{
+					"id": "hunterattackfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterattacknoedge",
+			"label": "Jemand Ungeeigneten entsenden, um einen Jäger zu ermorden",
+			"actionId": "talk",
+			"startdescription": "Meinem Schergen fehlt der Aspekt der Kante und er ist schrecklich ungeeignet dafür, diesen Jäger anzugreifen. Es besteht eine geringe Chance auf Erfolg. [Bei einem Fehlschlag stirbt dein Scherge.]",
+			"description": ".",
+			"requirements": {
+				"hunter": 1,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "hunterattacksuccess",
+					"chance": 10
+				},
+				{
+					"id": "hunterattackfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterattacksuccess",
+			"label": "Jagd auf einen Jäger ...",
+			"actionId": "talk",
+			"startdescription": "Ich warte auf Antwort ...",
+			"description": "Mein Scherge ist mit einer Trophäe zurück.",
+			"effects": {
+				"hunter": -1,
+				"corpse": 1,
+				"notoriety": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "huntertenacioussurvives",
+					"chance": 30
+				},
+				{
+					"id": "huntermysticsurvives",
+					"chance": 70
+				},
+				{
+					"id": "huntercapturesuccess",
+					"chance": 30
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "huntercapturesuccess",
+			"label": "Jagd auf einen Jäger ...",
+			"actionId": "talk",
+			"startdescription": "Ich warte auf Antwort ...",
+			"description": "Mein Scherge ist zurück, mit einem Gefangenen!",
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"capturehunter": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "hunterattackfailure",
+			"label": "Jagd auf einen Jäger ...",
+			"actionId": "talk",
+			"startdescription": "Ich warte auf Antwort ...",
+			"description": "Mein Scherge ist nicht zurückgekehrt. Er muss gescheitert sein.",
+			"effects": {
+				"follower": -1,
+				"notoriety": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "huntersurvives_becomesmystic",
+					"chance": 30
+				},
+				{
+					"id": "huntersurvives_becomestenacious",
+					"chance": 10
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "evidencedestroymidmoth",
+			"label": "Einen Verschlagenen Schergen entsenden, um Beweise zu beseitigen",
+			"actionId": "talk",
+			"startdescription": "Mein Plan hat wahrscheinlich Erfolg. Es besteht immer die Chance, dass etwas schiefgeht.",
+			"description": ".",
+			"requirements": {
+				"follower": 1,
+				"moth": 5,
+				"evidencelevel": 1
+			},
+			"linked": [
+				{
+					"id": "evidencedestroysuccess",
+					"chance": 70
+				},
+				{
+					"id": "evidencedestroyfailure_mortalfollower",
+					"chance": 100
+				},
+				{
+					"id": "evidencedestroyfailure",
+					"chance": 100
+				}
+			],
+			"comments": "We don't want a 100% chance because there's no downside. This could easily change later."
+		},
+		{
+			"id": "evidencedestroylowmoth",
+			"label": "Einen Schergen entsenden, um Beweise zu beseitigen",
+			"actionId": "talk",
+			"startdescription": "Mein Scherge ist nur bedingt zur Täuschung befähigt, und dies ist eine schwierige Aufgabe. Wahrscheinlich wird er scheitern.",
+			"description": ".",
+			"requirements": {
+				"follower": 1,
+				"moth": 1,
+				"evidencelevel": 1
+			},
+			"linked": [
+				{
+					"id": "evidencedestroysuccess",
+					"chance": 30
+				},
+				{
+					"id": "evidencedestroyfailure_mortalfollower",
+					"chance": 100
+				},
+				{
+					"id": "evidencedestroyfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "evidencedestroynomoth",
+			"label": "Jemand Ungeeigneten entsenden, um Beweise zu beseitigen",
+			"actionId": "talk",
+			"startdescription": "Meinem Scherge mangelt es am Aspekt der Motte, und er wird überfordert sein. Es besteht eine geringe Chance auf Erfolg.",
+			"description": ".",
+			"requirements": {
+				"evidencelevel": 1
+			},
+			"linked": [
+				{
+					"id": "evidencedestroysuccess",
+					"chance": 10
+				},
+				{
+					"id": "evidencedestroyfailure_mortalfollower",
+					"chance": 100
+				},
+				{
+					"id": "evidencedestroyfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "evidencedestroysuccess",
+			"label": "Akten-Manipulation ...",
+			"actionId": "talk",
+			"startdescription": "Ich warte auf Antwort ...",
+			"description": "Mein Scherge ist zurück. Die Beweise sind beseitigt. Ich bin ein wenig sicherer.",
+			"effects": {
+				"evidencelevel": -1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "evidencedestroyfailure",
+			"label": "Akten-Manipulation ...",
+			"actionId": "talk",
+			"startdescription": "Ich warte auf Antwort ...",
+			"description": "Mein Scherge ist nicht zurückgekehrt. Er hat versagt und seine Stümperei könnten für Aufmerksamkeit gesorgt haben ...",
+			"effects": {
+				"follower": -1,
+				"notoriety": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "evidencedestroyfailure_mortalfollower",
+			"label": "Akten-Manipulation ...",
+			"actionId": "talk",
+			"requirements": {
+				"summoned": -1
+			},
+			"startdescription": "Ich warte auf Antwort ...",
+			"description": "Mein Scherge ist zurück, taumelnd, stammelnd und schlampig verbunden. Er hat sich in seinem eigenen Plan verheddert. [Gefallenen Anhänger durch Reden heilen.]",
+			"effects": {
+				"notoriety": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower_wound",
+					"mutationLevel": 1,
+					"additive": false
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower",
+					"mutationLevel": -1,
+					"additive": false
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "hunterspeakwinterg",
+			"actionId": "talk",
+			"label": "Ein schreckliches Rätsel des Zerlumpten Wissens teilen",
+			"startdescription": "'Wenn die Schmiede kalt, der Ruhm dunkel und der Forst nur noch Staub ist, kommt der Geteilte Wolf vielleicht zur Ruhe, doch nur, bis er sich selbst verschlingen kann. Hört mich nun an ...'  [Dies wird den Jäger wahrscheinlich von seinem Weg abbringen, aber stets dein eigenes Grauen steigern.]",
+			"requirements": {
+				"winter": 14,
+				"lore": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "grim",
+					"mutationLevel": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "hunterspeakdread_resistant",
+					"chance": 100
+				},
+				{
+					"id": "hunterspeakdread_vulnerable_demoralised",
+					"chance": 70
+				},
+				{
+					"id": "hunterspeakdread_demoralised",
+					"chance": 70
+				},
+				{
+					"id": "hunterspeakdread_survives",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterspeakwinterd",
+			"actionId": "talk",
+			"label": "Die kälteren Anrufungen des Zerlumpten Wissens teilen",
+			"startdescription": "'Es gibt da eine Macht, die gedenkt und trauert, der nichts genommen wird, die aber nicht zu täuschen ist. Ich werde dir den Namen jener Macht nennen. Hör mich an ...'  [Dies wird den Jäger wahrscheinlich von seinem Weg abbringen, vor allem wenn er bereits Düster ist, aber stets dein eigenes Grauen steigern.]",
+			"requirements": {
+				"winter": 8,
+				"lore": 1
+			},
+			"linked": [
+				{
+					"id": "hunterspeakdread_resistant",
+					"chance": 100
+				},
+				{
+					"id": "hunterspeakdread_vulnerable_demoralised",
+					"chance": 70
+				},
+				{
+					"id": "hunterspeakdread_demoralised",
+					"chance": 30
+				},
+				{
+					"id": "hunterspeakdread_survives",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterspeakwinter",
+			"actionId": "talk",
+			"label": "Verweis auf das Zerlumpte Wissen",
+			"startdescription": "'Sprechen wir von Enden. Sprechen wir von der Abnehmenden Sonne. Sprechen wir von Dingen, die nicht ganz tot sind und nicht ganz sterben ...'  [Dies wird den Jäger wahrscheinlich von seinem Weg abbringen, aber stets dein eigenes Grauen steigern.]",
+			"requirements": {
+				"winter": 1,
+				"lore": 1
+			},
+			"linked": [
+				{
+					"id": "hunterspeakdread_resistant",
+					"chance": 100
+				},
+				{
+					"id": "hunterspeakdread_vulnerable_demoralised",
+					"chance": 30
+				},
+				{
+					"id": "hunterspeakdread_demoralised",
+					"chance": 30
+				},
+				{
+					"id": "hunterspeakdread_survives",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterspeakdread",
+			"actionId": "talk",
+			"label": "Das Grauen beschreiben, das einen Gegner erwartet",
+			"requirements": {
+				"dread": 1
+			},
+			"startdescription": "'Etwas zum Nachdenken, immer wenn du die Augen schließt.' [Dies könnte den Jäger von seinem Weg abbringen, aber stets steigert es dein eigenes Grauen.]",
+			"description": "",
+			"linked": [
+				{
+					"id": "hunterspeakdread_resistant",
+					"chance": 100
+				},
+				{
+					"id": "hunterspeakdread_vulnerable_demoralised",
+					"chance": 30
+				},
+				{
+					"id": "hunterspeakdread_demoralised",
+					"chance": 30
+				},
+				{
+					"id": "hunterspeakdread_survives",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterspeakdread_resistant",
+			"actionId": "talk",
+			"requirements": {
+				"idealist": 1
+			},
+			"label": "Das Grauen unter der Haut der Welt",
+			"startdescription": "'Schön, es könnte mit mir ein böses Ende nehmen, aber das Opfer ist es wert. Und andere werden weiterkämpfen. Wir sehen uns wieder. [Idealisten lassen sich nicht demoralisieren.]",
+			"effects": {
+				"notoriety": 1,
+				"dread": 1
+			}
+		},
+		{
+			"id": "hunterspeakdread_vulnerable_demoralised",
+			"actionId": "talk",
+			"requirements": {
+				"grim": 1
+			},
+			"label": "Das Grauen unter der Haut der Welt",
+			"startdescription": "Deine Schilderungen sind zu viel für den Jäger. Seine Augen quellen hervor. Sein Kiefer verkrampft sich. In den nächsten Tagen wird er unaufhaltsam in seiner Verzweiflung versinken ... es sei denn, er findet eine neue Wahrheit, um sich daran zu klammern.",
+			"description": "",
+			"effects": {
+				"dread": 1
+			},
+			"aspects": {
+				"derangemortal": 1
+			}
+		},
+		{
+			"id": "hunterspeakdread_demoralised",
+			"actionId": "talk",
+			"requirements": {
+				"grim": -1
+			},
+			"label": "Das Grauen unter der Haut der Welt",
+			"startdescription": "Der Jäger knurrt trotzig, doch man kann sehen, dass deine Worte ihre Wirkung nicht verfehlt haben. [Dieser Jäger ist nun Düster.] ",
+			"description": "",
+			"mutations": [
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "grim",
+					"mutationLevel": 1
+				}
+			],
+			"effects": {
+				"notoriety": 1,
+				"dread": 1
+			}
+		},
+		{
+			"id": "hunterspeakdread_survives",
+			"actionId": "talk",
+			"label": "Das Grauen unter der Haut der Welt",
+			"alternativerecipes": [
+				{
+					"id": "hunterspeakdread_survives_becometenacious",
+					"chance": 100
+				}
+			],
+			"startdescription": "",
+			"description": "'Ja, es gibt schreckliche Dinge auf der Welt, aber umso mehr sollte man sich dagegen wehren. Ich sollte dir danken. Du hast mir gezeigt, was zu tun ist.' [Dieser Jäger ist ein Idealist geworden.]",
+			"mutations": [
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "idealist",
+					"mutationLevel": 1
+				}
+			],
+			"effects": {
+				"notoriety": 1,
+				"dread": 1
+			}
+		},
+		{
+			"id": "hunterspeakdread_survives_becometenacious",
+			"actionId": "talk",
+			"label": "Das Grauen unter der Haut der Welt",
+			"requirements": {
+				"tenacious": -1
+			},
+			"startdescription": "",
+			"description": "'Ja, es gibt schreckliche Dinge auf der Welt, aber umso mehr sollte man sich dagegen wehren. Ich sollte dir danken. Du hast mir gezeigt, was zu tun ist.' [Dieser Jäger ist nun Hartnäckig und ein Idealist geworden.]",
+			"mutations": [
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "tenacious",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "idealist",
+					"mutationLevel": 1
+				}
+			],
+			"effects": {
+				"notoriety": 1,
+				"dread": 1
+			}
+		},
+		{
+			"id": "hunterspeaklanterng",
+			"actionId": "talk",
+			"label": "Ein schreckliches Rätsel des Ruhmreichen Wissens teilen",
+			"startdescription": "'Dies ist die geheime Doktrin der Tür-im-Auge. Mach die Ohren auf ...'  [Dies wird den Jäger wahrscheinlich von seinem Weg abbringen, aber stets deine eigene Faszination steigern.]",
+			"requirements": {
+				"lantern": 14,
+				"lore": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "idealist",
+					"mutationLevel": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "hunterspeakfascination_resistant",
+					"chance": 100
+				},
+				{
+					"id": "hunterspeakfascination_vulnerable_fascinated",
+					"chance": 70
+				},
+				{
+					"id": "hunterspeakfascination_fascinated",
+					"chance": 70
+				},
+				{
+					"id": "hunterspeakfascination_survives",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterspeaklanternd",
+			"actionId": "talk",
+			"label": "Die heitereren Anrufungen des Ruhmreichen Wissens teilen",
+			"startdescription": "'Die Tür-im-Auge bestimmt den Kurs. Sie ist nicht barmherzig, doch vor allem erleuchtet sie. Höre zu und sei erleuchtet ...' [Dies wird den Jäger wahrscheinlich von seinem Weg abbringen, vor allem wenn er bereits ein Idealist ist, aber stets deine eigene Faszination steigern.]",
+			"requirements": {
+				"lantern": 8,
+				"lore": 1
+			},
+			"linked": [
+				{
+					"id": "hunterspeakfascination_resistant",
+					"chance": 100
+				},
+				{
+					"id": "hunterspeakfascination_vulnerable_fascinated",
+					"chance": 70
+				},
+				{
+					"id": "hunterspeakfascination_fascinated",
+					"chance": 30
+				},
+				{
+					"id": "hunterspeakfascination_survives",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterspeaklantern",
+			"actionId": "talk",
+			"label": "Verweis auf das Ruhmreiche Wissen",
+			"startdescription": "'Es gibt noch edlere Dinge als solche, die wir sehen. Das musst du gespürt haben. Stell dir nur die Möglichkeiten der Ewigkeit vor ...'  [Dies könnte den Jäger von seinem Weg abbringen, aber stets deine eigene Faszination steigern.]",
+			"requirements": {
+				"lantern": 1,
+				"lore": 1
+			},
+			"linked": [
+				{
+					"id": "hunterspeakfascination_resistant",
+					"chance": 100
+				},
+				{
+					"id": "hunterspeakfascination_vulnerable_fascinated",
+					"chance": 30
+				},
+				{
+					"id": "hunterspeakfascination_fascinated",
+					"chance": 30
+				},
+				{
+					"id": "hunterspeakfascination_survives",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterspeakfascination",
+			"actionId": "talk",
+			"label": "Deinem Gegner deine Visionen schildern",
+			"requirements": {
+				"fascination": 1
+			},
+			"startdescription": "Je höher du aufsteigst, desto mehr siehst du.'  [Dies könnte den Jäger von seinem Weg abbringen, aber stets deine eigene Faszination steigern.]",
+			"description": "",
+			"linked": [
+				{
+					"id": "hunterspeakfascination_resistant",
+					"chance": 100
+				},
+				{
+					"id": "hunterspeakfascination_vulnerable_fascinated",
+					"chance": 30
+				},
+				{
+					"id": "hunterspeakfascination_fascinated",
+					"chance": 30
+				},
+				{
+					"id": "hunterspeakfascination_survives",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterspeakfascination_resistant",
+			"actionId": "talk",
+			"requirements": {
+				"grim": 1
+			},
+			"label": "Visionen des Ruhms",
+			"startdescription": "'Hört sich gut an. Aber ich hab meine Arbeit zu erledigen. Du hörst von mir. [Düstere Jäger sind immun gegen Faszination.]",
+			"effects": {
+				"notoriety": 1,
+				"fascination": 1
+			}
+		},
+		{
+			"id": "hunterspeakfascination_vulnerable_fascinated",
+			"actionId": "talk",
+			"requirements": {
+				"idealist": 1
+			},
+			"label": "Visionen des Ruhms",
+			"startdescription": "Deine Schilderungen sind zu viel für den Jäger. Seine Augen werden groß und leuchten. Sein Lächeln wird verträumt. In den nächsten Tagen wird er alles hinter sich lassen, was er jemals gewusst hat.",
+			"description": "",
+			"effects": {
+				"fascination": 1
+			},
+			"aspects": {
+				"derangemortal": 1
+			}
+		},
+		{
+			"id": "hunterspeakfascination_fascinated",
+			"actionId": "talk",
+			"requirements": {
+				"idealist": -1
+			},
+			"label": "Visionen des Ruhms",
+			"startdescription": "Der Jäger schnaubt verächtlich, doch du siehst, dass die Dringlichkeit dessen, was du ihm erzählt hast, ihn nicht unbeeindruckt gelassen hat. [Dieser Jäger ist ein Idealist geworden.] ",
+			"description": "",
+			"mutations": [
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "idealist",
+					"mutationLevel": 1
+				}
+			],
+			"effects": {
+				"notoriety": 1,
+				"fascination": 1
+			}
+		},
+		{
+			"id": "hunterspeakfascination_survives",
+			"actionId": "talk",
+			"label": "Visionen des Ruhms",
+			"alternativerecipes": [
+				{
+					"id": "hunterspeakfascination_survives_becometenacious",
+					"chance": 100
+				}
+			],
+			"description": "'Ja, ich könnte etwas Besseres sein, doch was wir sind, ist weniger wichtig als das, was wir tun. Die Welt ist, wo wir leben. und ich werde sie verteidigen, bis ich tot bin. Deine Visionen kannst du behalten.' [Dieser Jäger ist nun Düster.]",
+			"mutations": [
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "grim",
+					"mutationLevel": 1
+				}
+			],
+			"effects": {
+				"notoriety": 1,
+				"fascination": 1
+			}
+		},
+		{
+			"id": "hunterspeakfascination_survives_becometenacious",
+			"actionId": "talk",
+			"label": "Visionen des Ruhms",
+			"requirements": {
+				"tenacious": -1
+			},
+			"description": "'Ja, ich könnte etwas Besseres sein, doch was wir sind, ist weniger wichtig als das, was wir tun. Die Welt ist, wo wir leben. und ich werde sie verteidigen, bis ich tot bin. Deine Visionen kannst du behalten.' [Dieser Jäger ist nun Düster und Hartnäckig.]",
+			"mutations": [
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "grim",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "tenacious",
+					"mutationLevel": 1
+				}
+			],
+			"effects": {
+				"notoriety": 1,
+				"fascination": 1
+			}
+		}
+	]
+}

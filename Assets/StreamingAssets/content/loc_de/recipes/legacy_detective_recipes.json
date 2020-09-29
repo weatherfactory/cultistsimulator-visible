@@ -1,0 +1,622 @@
+{
+	"recipes": [
+		{
+			"id": "workdetectivejob_start",
+			"label": "Auf dem Revier",
+			"actionId": "work",
+			"requirements": {
+				"legacydetectivejob": 1
+			},
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"effects": {
+				"LEVER_LastFollower": 1,
+				"legacydetective_plotitem": 1,
+				"funds": 3,
+				"health": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "needs",
+					"chance": 100,
+					"additional": true
+				},
+				{
+					"id": "detectiveopendream",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "Wieder wurde ich zum Dezernat für Unterdrückung abgestellt, der Regierungsbehörde, die sich mit 'okkulten' Straftaten befasst. Das Dezernat hat einen schlechten Ruf.",
+			"description": "Das Dezernat hat ein problematisches Individuum identifiziert, zu dem ich Ermittlungen anstellen soll. Mir stockt der Atem, als ich den Namen sehe. Es gab da mal einen anderen Fall, an den ich mich nur allzu gut erinnere ...",
+			"warmup": 10,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "workdetectivejob_start_rebellion",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "detectiveopendream",
+			"label": "Träumen ...",
+			"actionId": "dream",
+			"startdescription": "Das Dezernat für Unterdrückung veröffentlicht Memoranden zu den Gefahren von Träumen. Jede Woche ein anderes.",
+			"description": "'Träume von Mondschein sind zu melden. Träume von einem nächtlichen Wald sind zu melden. Die Vorhänge sind zu öffnen, damit die Sonne Sie wecken kann. Vor dem Schlafengehen sind die Haare nicht zu schneiden. Niemals vor einem gesprungenen Spiegel schlafen.'",
+			"effects": {
+				"passion": 1
+			},
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "workdetectivejob_matured_investigate_hint",
+			"label": "Mit Ermittlungen beschäftigt?",
+			"actionId": "work",
+			"requirements": {
+				"legacydetectivejob_matured": 1,
+				"suspicious": 1
+			},
+			"startdescription": "Wenn ich meinen Verstand einsetze, kann ich vielleicht mehr über meine Zielperson erfahren.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "workdetectivejob_matured_pursuepromotion",
+			"label": "Eine Art von Aufstieg",
+			"actionId": "work",
+			"requirements": {
+				"legacydetectivejob_matured": 1,
+				"favour": 1
+			},
+			"startdescription": "Ich habe bei den Behörden was gut. Damit könnte ich mir eine Beförderung verdienen und mir einen Platz in der Hierarchie des Dezernats sichern. [Dies ist ein Ende mit einem kleinen Sieg.]",
+			"description": "Ende.",
+			"warmup": 60,
+			"ending": "workvictoryb",
+			"signalEndingFlavour": "Grand",
+			"craftable": true
+		},
+		{
+			"id": "workdetectivejob_matured_investigate",
+			"label": "Mit Ermittlungen beschäftigt",
+			"actionId": "work",
+			"requirements": {
+				"legacydetectivejob_matured": 1,
+				"suspicious": 1,
+				"reason": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "detectiveopenstudy",
+					"chance": 100,
+					"additional": true
+				},
+				{
+					"id": "workdetectivejob_matured_investigate_threereason_success",
+					"chance": 100
+				},
+				{
+					"id": "workdetectivejob_matured_investigate_tworeason_success",
+					"chance": 70
+				},
+				{
+					"id": "workdetectivejob_matured_investigate_onereason_success",
+					"chance": 30
+				}
+			],
+			"effects": {
+				"funds": 2
+			},
+			"startdescription": "Ermittlungen zu einer Zielperson. Je mehr Verstand ist einsetze, desto größer meine Erfolgschancen.",
+			"description": "Meine Ermittlungen haben zu keinen neuen Spuren geführt.",
+			"warmup": 60,
+			"aspects": {
+				"employment": 1,
+				"fatiguing": 1
+			},
+			"craftable": true
+		},
+		{
+			"id": "workdetectivejob_matured_investigate_threereason_success",
+			"label": "Fortschritt!",
+			"actionId": "work",
+			"alternativerecipes": [
+				{
+					"id": "detectiveopenstudy",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"requirements": {
+				"reason": 3
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "workdetectivejob_matured_attemptsolvecase",
+					"chance": 100
+				},
+				{
+					"id": "workdetectivejob_matured_investigate_successresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "workdetectivejob_matured_investigate_tworeason_success",
+			"label": "Fortschritt!",
+			"actionId": "work",
+			"alternativerecipes": [
+				{
+					"id": "detectiveopenstudy",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"requirements": {
+				"reason": 2
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "workdetectivejob_matured_attemptsolvecase",
+					"chance": 100
+				},
+				{
+					"id": "workdetectivejob_matured_investigate_successresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "workdetectivejob_matured_investigate_onereason_success",
+			"label": "Fortschritt!",
+			"actionId": "work",
+			"alternativerecipes": [
+				{
+					"id": "detectiveopenstudy",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"requirements": {
+				"reason": 1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "workdetectivejob_matured_attemptsolvecase",
+					"chance": 100
+				},
+				{
+					"id": "workdetectivejob_matured_investigate_successresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "workdetectivejob_matured_investigate_successresults",
+			"label": "Fortschritt!",
+			"actionId": "work",
+			"effects": {
+				"funds": 3,
+				"myevidence": 1
+			},
+			"aspects": {
+				"employment": 1,
+				"fatiguing": 1,
+				"investigatingsuccess": 1,
+				"dreadful": 1
+			},
+			"description": "Das ständige Geklapper sich schließender Türen, die feuchten Flecken an den Wänden des Reviers, der Geruch von Schuhcreme und ungewaschenen Wachtmeistern. All dies verdichtet sich zu einer einzigen kristallklaren Wahrheit. Ich habe Fortschritte gemacht und mir mit Überstunden etwas Geld verdient.",
+			"craftable": false
+		},
+		{
+			"id": "workdetectivejob_matured_attemptsolvecase",
+			"label": "Den Fall lösen",
+			"actionId": "work",
+			"requirements": {
+				"myevidenceb": 1
+			},
+			"slots": [
+				{
+					"id": "Culprit",
+					"label": "Täter",
+					"required": {
+						"independent": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "Ich habe meine Beweise dem Stellvertretenden Direktor des Dezernats für Unterdrückung übergeben ...",
+			"description": "Ich habe dem Dezernat genug Beweise für eine Verhaftung geliefert ... doch es gibt niemanden, den man verhaften könnte.",
+			"alternativerecipes": [
+				{
+					"id": "workdetectivejob_matured_solvecase_withbackup",
+					"chance": 100
+				},
+				{
+					"id": "workdetectivejob_matured_solvecase",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"aspects": {
+				"employment": 1,
+				"fatiguing": 1
+			},
+			"effects": {
+				"funds": 2,
+				"suspicious": -99
+			},
+			"craftable": false
+		},
+		{
+			"id": "workdetectivejob_matured_solvecase_withbackup",
+			"label": "Den Fall lösen",
+			"actionId": "work",
+			"requirements": {
+				"myevidenceb": 1,
+				"independent": 1
+			},
+			"extantreqs": {
+				"desire": -1
+			},
+			"startdescription": "Ich habe meine Beweise dem Stellvertretenden Direktor des Dezernats für Unterdrückung übergeben. In diesem Augenblick klopfen, da bin ich mir sicher, entschlossene Herren in Zivil an die Tür meiner Beute. ",
+			"description": "Das Dezernat für Unterdrückung hält seine Verfahren hinter verschlossenen Tüten ab, und es kennt keine Gnade. Meine Beute verschwindet aus dieser Welt. Ich habe mir eine Beförderung verdient. ",
+			"effects": {
+				"funds": 7,
+				"favour": 1,
+				"suspicious": -99,
+				"independent": -1,
+				"legacydetective_plotitem_backup": 1
+			},
+			"warmup": 60,
+			"aspects": {
+				"employment": 1,
+				"fatiguing": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "workdetectivejob_newrival",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "workdetectivejob_matured_solvecase",
+			"label": "Den Fall lösen",
+			"actionId": "work",
+			"requirements": {
+				"myevidenceb": 1,
+				"independent": 1
+			},
+			"startdescription": "Ich habe meine Beweise dem Stellvertretenden Direktor des Dezernats für Unterdrückung übergeben. In diesem Augenblick klopfen, da bin ich mir sicher, entschlossene Herren in Zivil an die Tür meiner Beute. ",
+			"description": "Das Dezernat für Unterdrückung hält seine Verfahren hinter verschlossenen Tüten ab, und es kennt keine Gnade. Meine Beute verschwindet aus dieser Welt. Ich habe mir eine Beförderung verdient. ",
+			"effects": {
+				"funds": 7,
+				"favour": 1,
+				"suspicious": -99,
+				"independent": -1
+			},
+			"warmup": 60,
+			"aspects": {
+				"employment": 1,
+				"fatiguing": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "workdetectivejob_newrival",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "workdetectivejob_newrival",
+			"label": "Noch ein Missetäter?",
+			"actionId": "newrival",
+			"startdescription": "Hört das denn nie auf? Können wir denn niemals das Gesetz, die Stadt, die Welt 'sicher' nennen?",
+			"description": "Es gibt Berichte – beunruhigender Art – über den hier.",
+			"deckeffect": {
+				"acquaintances": 1
+			},
+			"warmup": 60,
+			"linked": [
+				{
+					"id": "workdetectivejob_newrival_recruit",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "workdetectivejob_newrival_recruit",
+			"label": "Noch ein Missetäter?",
+			"actionId": "newrival",
+			"startdescription": ".",
+			"description": ".",
+			"aspects": {
+				"recruiting": 1
+			},
+			"linked": [
+				{
+					"id": "workdetectivejob_start_promote_lever_believer",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "workdetectivejob_start_promote_lever_believer",
+			"comments": "left unrenamed for backwards compatibility",
+			"label": "Aufgepasst ...",
+			"actionId": "newrival",
+			"aspects": {
+				"promotiontodisciple": 1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "workdetectivejob_start_promote_lever_disciple",
+					"chance": 30
+				},
+				{
+					"id": "workdetectivejob_start_rebellion",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "workdetectivejob_start_promote_lever_disciple",
+			"comments": "left unrenamed for backwards compatibility",
+			"label": "Aufgepasst ...",
+			"actionId": "newrival",
+			"aspects": {
+				"promotionto_d_edge": 1,
+				"promotionto_d_forge": 1,
+				"promotionto_d_grail": 1,
+				"promotionto_d_heart": 1,
+				"promotionto_d_knock": 1,
+				"promotionto_d_lantern": 1,
+				"promotionto_d_moth": 1,
+				"promotionto_d_winter": 1
+			},
+			"linked": [
+				{
+					"id": "workdetectivejob_start_rebellion",
+					"chance": 100
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "workdetectivejob_start_rebellion",
+			"comments": "left unrenamed for backwards compatibility",
+			"label": "Aufgepasst ...",
+			"actionId": "work",
+			"aspects": {
+				"rebellion": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "workdetectivejob_matured_plead",
+			"label": "Um Rehabilitierung betteln!",
+			"actionId": "work",
+			"requirements": {
+				"legacydetectivejob_suspended": 1,
+				"passion": 1
+			},
+			"startdescription": "Warum verstehen die das nicht?",
+			"description": "Ich bin rehabilitiert ... für den Augenblick.",
+			"aspects": {
+				"plead": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "workdetectivejob_epilogue",
+			"label": "",
+			"actionId": "work",
+			"effects": {
+				"legacydetectivejob_matured": -1
+			},
+			"startdescription": "Hab meinen Job verloren",
+			"description": "",
+			"craftable": false
+		},
+		{
+			"id": "legacydetectiveplotitem_tempt",
+			"label": "Der Duft der Seiten",
+			"actionId": "craving",
+			"requirements": {
+				"detectivetemptation": 1
+			},
+			"linked": [
+				{
+					"id": "legacydetectiveplotitem_tempt_addslot",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "legacydetectiveplotitem_tempt_addslot",
+			"label": "Der Duft der Seiten",
+			"actionId": "craving",
+			"slots": [
+				{
+					"id": "resist",
+					"label": "Widerstehen",
+					"description": "Es ist schwer, der Versuchung zu widerstehen, die Akte erneut zu lesen. Füge Verstand hinzu, um deinen Widerstand zu stärken.",
+					"required": {
+						"reason": 1
+					}
+				}
+			],
+			"startdescription": "Ich kann nicht vergessen, was ich in der Akte über #PREVIOUSCHARACTERNAME# gelesen habe. [Es ist schwer, der Versuchung zu widerstehen, die Akte erneut zu lesen. Füge Verstand hinzu, um deinen Widerstand zu stärken.]",
+			"description": "Die Seiten lassen sich so leicht umblättern. Als würde man eine Frucht schälen oder ein geheimes Geschenk auspacken. Am Ende sind meine Hände mit Tinte besudelt. Mein Hirn kocht. Was habe ich da angefangen?",
+			"effects": {
+				"legacydetective_plotitem": -1,
+				"LEVER_LastDesire": 1,
+				"fascination": 1,
+				"dread": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "legacydetectiveplotitem_tempt_resist",
+					"chance": 100
+				},
+				{
+					"id": "visionsrisk",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "legacydetectiveplotitem_tempt_resist",
+			"label": "Der Duft der Seiten",
+			"requirements": {
+				"reason": 1
+			},
+			"actionId": "craving",
+			"startdescription": "Ich bin Disziplin.  Ich bin nicht als Disziplin.  Ich habe nicht so lange durchgehalten, um dann so leicht aufzugeben.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"description": "Die Versuchung ist überwunden, für den Augenblick."
+		},
+		{
+			"id": "detectiveopenstudy",
+			"label": "Studieren ...",
+			"alternativerecipes": [
+				{
+					"id": "ascensionnotyet",
+					"chance": 100,
+					"additional": true
+				},
+				{
+					"id": "detectiveopenexplore",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"actionId": "study",
+			"startdescription": "Ab und zu habe ich ein wenig Zeit, um an mir zu arbeiten.",
+			"description": "Zweifellos kann ich irgendwo da draußen Materialien für mein Studium finden.",
+			"effects": {
+				"reason": 1
+			},
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "detectiveopenexplore",
+			"label": "Erkunden ...",
+			"actionId": "explore",
+			"startdescription": "Ich habe eine Karte der Hauptstadt an einer Wand in meinem Büro, voller schwarzköpfiger Stecknadeln, gespickt mit Anmerkungen.",
+			"description": "Ich kenne diese Stadt gut, aber es bräuchte ein ganzes Leben, um sie komplett kennenzulernen.",
+			"warmup": 10,
+			"deckeffect": {
+				"citysecrets": 2
+			},
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "detectiveopentalk",
+					"chance": 100,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "detectiveopentalk",
+			"label": "Sprechen ...",
+			"actionId": "talk",
+			"startdescription": "Ich könnte Freundschaft schließen – oder eine beenden.",
+			"description": "",
+			"effects": {
+				
+			},
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "detectivestudy_plotitem",
+			"label": "Ich sollte die Akte nicht öffnen.",
+			"actionId": "study",
+			"requirements": {
+				"detectivetemptation": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "detectiveopendream",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"effects": {
+				"detectivetemptation": -1,
+				"fascination": 1,
+				"LEVER_LastDesire": 1,
+				"dread": 1
+			},
+			"startdescription": "ICH DARF MIR DAS NICHT NOCH EINMAL DURCHLESEN. Hat mich Wochen gekostet, die Berichte zu vergessen, die Anweisungen – Gott steh mir bei, die Skizzen.",
+			"description": "Die Seiten lassen sich so leicht umblättern. Als würde man eine Frucht schälen oder ein geheimes Geschenk auspacken. Am Ende sind meine Hände mit Tinte besudelt. Mein Hirn kocht. Was habe ich da angefangen?",
+			"warmup": 60,
+			"craftable": true,
+			"maxexecutions": 1
+		},
+		{
+			"id": "detectivestudy_plotitem_afterfirsttime",
+			"label": "Ich sollte die Akte nicht öffnen.",
+			"actionId": "study",
+			"requirements": {
+				"detectivetemptation": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "detectiveopendream",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"effects": {
+				"detectivetemptation": -1,
+				"fascination": 1,
+				"dread": 1
+			},
+			"startdescription": "ICH DARF MIR DAS NICHT NOCH EINMAL DURCHLESEN. Hat mich Wochen gekostet, die Berichte zu vergessen, die Anweisungen – Gott steh mir bei, die Skizzen.",
+			"description": "Die Seiten lassen sich so leicht umblättern. Als würde man eine Frucht schälen oder ein geheimes Geschenk auspacken. Am Ende sind meine Hände mit Tinte besudelt. Mein Hirn kocht. Was habe ich getan?",
+			"warmup": 60,
+			"craftable": true,
+			"maxexecutions": 1
+		},
+		{
+			"id": "detectivework_plotitem",
+			"label": "Akte verbrennen",
+			"actionId": "work",
+			"requirements": {
+				"detectivetemptation": 1,
+				"legacydetective_plotitem_burning": -1
+			},
+			"effects": {
+				"detectivetemptation": -1,
+				"legacydetective_plotitem_burning": 1,
+				"restlessness": 1,
+				"contentment": 1
+			},
+			"startdescription": "Das sind Beweise. Wir verbrennen keine Beweise. Aber vielleicht ist das so am besten.",
+			"description": "Die Seiten schwärzen sich, eine nach der anderen, rollen sich auf wie sich schließende Finger. Ich habe das Fenster in meinem Büro geöffnet. Der Rauch verfliegt und löst sich auf. Was genau habe ich getan?",
+			"warmup": 30,
+			"craftable": true
+		}
+	]
+}

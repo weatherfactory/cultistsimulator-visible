@@ -1,0 +1,422 @@
+{
+	"elements": [
+		{
+			"id": "gloverandgloverjuniorjob",
+			"label": "グローバー&グローバーの下級職",
+			"aspects": {
+				"job": 1
+			},
+			"description": "自分の才能をもっと生かすべきだ！でも、少なくとも.....重労働をするよりは、今の方が給料は良い。[定期的に出勤しなければ、降格させられる可能性がある。]",
+			"xtriggers": {
+				"careeradvancement": "gloverandglover_difficultbossa_job",
+				"employment": "gloverandgloverjuniorjob"
+			},
+			"lifetime": 90,
+			"decayTo": "gloverandgloverjuniorjob_demotion"
+		},
+		{
+			"id": "gloverandgloverjuniorjob_nodifficultbossa",
+			"label": "グローバー&グローバーの下級職",
+			"aspects": {
+				"job": 1
+			},
+			"description": "自分の才能をもっと生かすべきだ！でも、少なくとも.....重労働をするよりは、今の方が給料は良い。[定期的に出勤しなければ、降格させられる可能性がある。]",
+			"xtriggers": {
+				"careeradvancement": "gloverandgloverjob",
+				"employment": "gloverandgloverjuniorjob_nodifficultbossa"
+			},
+			"lifetime": 90,
+			"decayTo": "gloverandgloverjuniorjob_nodifficultbossa_demotion"
+		},
+		{
+			"id": "gloverandglover_difficultbossa_job",
+			"label": "グローバー&グローバーの仕事",
+			"aspects": {
+				"annoyance": 1,
+				"job": 1
+			},
+			"description": "私は記録部門で働いている。直属の上司のオールデン氏だ。給料は少し上がったが、残業時間も増えた。オールデン氏はいつも私を監視している。[定期的に出勤しなければ、降格させられる可能性がある。]",
+			"xtriggers": {
+				"endannoyance": "gloverandglover_difficultbossa_gone_job",
+				"careeradvancement": "gloverandgloverseniorjob",
+				"employment": "gloverandglover_difficultbossa_job"
+			},
+			"lifetime": 59,
+			"decayTo": "gloverandgloverjuniorjob_demotion"
+		},
+		{
+			"id": "gloverandglover_difficultbossa_gone_job",
+			"label": "グローバー&グローバーの仕事",
+			"aspects": {
+				"job": 1
+			},
+			"description": "オールデンという男はもういない。仕事に戻れば問題が解決するかもしれない。",
+			"comments": "interim job that immediately changes to standard one."
+		},
+		{
+			"id": "gloverandgloverjob",
+			"label": "グローバー&グローバーの仕事",
+			"aspects": {
+				"job": 1
+			},
+			"slots": [
+				{
+					"id": "Diligence",
+					"label": "勤勉",
+					"actionId": "work",
+					"required": {
+						"reason": 1
+					},
+					"description": "もっと努力をしてみる。運が良ければ、糧となるかもしれない。"
+				}
+			],
+			"description": "給料が少し上がり、終業時刻が少し遅くなった。私の前の席に座る後輩が、嫉妬の眼差しをこちらに向ける。[定期的に出勤しなければ、降格させられる可能性がある。]",
+			"xtriggers": {
+				"careeradvancement": "gloverandgloverseniorjob",
+				"employment": "gloverandgloverjob"
+			},
+			"lifetime": 90,
+			"decayTo": "gloverandgloverjuniorjob_nodifficultbossa_demotion"
+		},
+		{
+			"id": "gloverandgloverjob_youngerglovergone",
+			"label": "グローバー&グローバーの仕事",
+			"aspects": {
+				"job": 1
+			},
+			"slots": [
+				{
+					"id": "Diligence",
+					"label": "勤勉",
+					"actionId": "work",
+					"required": {
+						"reason": 1
+					},
+					"description": "もっと努力をしてみる。運が良ければ、糧となるかもしれない。"
+				}
+			],
+			"description": "給料が少し上がり、終業時刻が少し遅くなった。私の前の席に座る後輩が、嫉妬の眼差しをこちらに向ける。[定期的に出勤しなければ、降格させられる可能性がある。]",
+			"xtriggers": {
+				"careeradvancement": "gloverandgloverseniorjob_youngerglovergone",
+				"employment": "gloverandgloverjob_youngerglovergone"
+			},
+			"lifetime": 90,
+			"decayTo": "gloverandgloverjob_youngerglovergone_demotion"
+		},
+		{
+			"id": "gloverandgloverseniorjob",
+			"label": "グローバー&グローバーの上級職",
+			"aspects": {
+				"annoyance": 1,
+				"job": 1
+			},
+			"slots": [
+				{
+					"id": "Devotion",
+					"label": "献身",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work",
+					"description": "忙しい役職だ。集中しなくてはいけない。"
+				}
+			],
+			"description": "理論的には、誰かが死ねば、私はもっと高く上昇できるのだろう。[定期的に出勤しなければ、降格させられる可能性がある。]",
+			"xtriggers": {
+				"endannoyance": "gloverandgloverseniorjob_youngerglovergone",
+				"employment": "gloverandgloverseniorjob"
+			},
+			"lifetime": 60,
+			"decayTo": "gloverandgloverjob_demotion"
+		},
+		{
+			"id": "gloverandgloverseniorjob_youngerglovergone",
+			"label": "グローバー&グローバーの上級職",
+			"aspects": {
+				"job": 1
+			},
+			"slots": [
+				{
+					"id": "Devotion",
+					"label": "献身",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work",
+					"description": "忙しい役職だ。集中しなくてはいけない。"
+				}
+			],
+			"description": "グローバー2世がいなくなれば、もっと高みを目指して上昇できるのかもしれない。[定期的に出勤しなければ、降格させられる可能性がある。]",
+			"xtriggers": {
+				"careeradvancement": "gloverandglovertopjob",
+				"employment": "gloverandgloverseniorjob_youngerglovergone"
+			},
+			"lifetime": 90,
+			"decayTo": "gloverandgloverjob_youngerglovergone_demotion"
+		},
+		{
+			"id": "gloverandglovertopjob",
+			"aspects": {
+				"job": 1
+			},
+			"label": "グローバー＆グローバーの取締役会の座",
+			"description": "グローバー2世が失踪したせいで、取締役会の座が1つ空席になっていたが、今その席は私のものだ。[定期的に出勤しなければ、降格させられる可能性がある。]",
+			"lifetime": 100,
+			"decayTo": "gloverandglovertopjob_tainted_demotion",
+			"xtriggers": {
+				"employment": "gloverandglovertopjob"
+			}
+		},
+		{
+			"id": "gloverandglovertopjob_tainted",
+			"aspects": {
+				"job": 1
+			},
+			"label": "グローバー＆グローバーの取締役会の座",
+			"description": "私が密教に興味を持っているという噂がグローバー1世の耳に届いてしまった。このせいで自分の立場が危うくなった。[定期的に出勤しなければ、降格させられる可能性がある。]",
+			"lifetime": 100,
+			"decayTo": "gloverandglovertopjob_tainted_demotion",
+			"xtriggers": {
+				"employment": "gloverandglovertopjob_tainted"
+			}
+		},
+		{
+			"id": "gloverandgloverjuniorjob_demotion",
+			"aspects": {
+				"job": 1,
+				"demotion": 1
+			},
+			"label": "職場でのトラブル：下級職への降格",
+			"slots": [
+				{
+					"id": "passion",
+					"label": "説得",
+					"required": {
+						"passion": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"description": "欠勤を指摘され、降格することになった。仕事を維持するには、説得力のある働き方をしなくてはいけない。",
+			"xtriggers": {
+				"plead": "gloverandgloverjuniorjob"
+			}
+		},
+		{
+			"id": "gloverandgloverjuniorjob_nodifficultbossa_demotion",
+			"aspects": {
+				"job": 1,
+				"demotion": 1
+			},
+			"label": "職場でのトラブル：下級職への降格",
+			"slots": [
+				{
+					"id": "passion",
+					"label": "説得",
+					"required": {
+						"passion": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"description": "欠勤を指摘され、降格することになった。仕事を維持するには、説得力のある働き方をしなくてはいけない。",
+			"xtriggers": {
+				"plead": "gloverandgloverjuniorjob_nodifficultbossa"
+			}
+		},
+		{
+			"id": "gloverandgloverjob_demotion",
+			"aspects": {
+				"job": 1,
+				"demotion": 1
+			},
+			"label": "職場でのトラブル：降格",
+			"slots": [
+				{
+					"id": "passion",
+					"label": "説得",
+					"required": {
+						"passion": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"description": "欠勤を指摘され、降格することになった。仕事を維持するには、説得力のある働き方をしなくてはいけない。",
+			"xtriggers": {
+				"plead": "gloverandgloverjob"
+			}
+		},
+		{
+			"id": "gloverandgloverjob_youngerglovergone_demotion",
+			"aspects": {
+				"job": 1,
+				"demotion": 1
+			},
+			"label": "職場でのトラブル：降格",
+			"slots": [
+				{
+					"id": "passion",
+					"label": "説得",
+					"required": {
+						"passion": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"description": "欠勤を指摘され、降格することになった。仕事を維持するには、説得力のある働き方をしなくてはいけない。",
+			"xtriggers": {
+				"plead": "gloverandgloverjob_youngerglovergone"
+			}
+		},
+		{
+			"id": "gloverandglovertopjob_tainted_demotion",
+			"aspects": {
+				"job": 1,
+				"demotion": 1
+			},
+			"label": "職場でのトラブル：降格の危機",
+			"slots": [
+				{
+					"id": "passion",
+					"label": "説得",
+					"required": {
+						"passion": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"description": "会社は私の立場の人にはかなり甘いが、欠勤していたことを指摘されてしまった。グローバー一世の機嫌を取りに行かなくてはいけない。",
+			"xtriggers": {
+				"plead": "gloverandglovertopjob_tainted"
+			}
+		},
+		{
+			"id": "institutephysicianjob",
+			"aspects": {
+				"job": 1
+			},
+			"description": "長時間労働だが、給料は良い。",
+			"label": "医院での役職"
+		},
+		{
+			"id": "investmentsjobc",
+			"aspects": {
+				"benign": 1
+			},
+			"label": "恵まれた収入",
+			"description": "裕福な生活を送っている。",
+			"xtriggers": {
+				"decline": "investmentsjobb"
+			},
+			"noartneeded": true
+		},
+		{
+			"id": "investmentsjobb",
+			"label": "かなりの収入",
+			"description": "快適に暮らせるだけの収入。",
+			"aspects": {
+				"benign": 1
+			},
+			"xtriggers": {
+				"decline": "investmentsjoba"
+			},
+			"noartneeded": true
+		},
+		{
+			"id": "investmentsjoba",
+			"aspects": {
+				"benign": 1
+			},
+			"label": "控えめな収入",
+			"description": "投資で得た収入で十二分に生きていける。",
+			"xtriggers": {
+				"decline": "jumble"
+			},
+			"noartneeded": true
+		},
+		{
+			"id": "ghouljob.first",
+			"aspects": {
+				"job": 1
+			},
+			"label": "説得力のある霊能者のルーティン",
+			"description": "私が特に調子が良い日には、最前列の観客たちが気絶することもある。",
+			"slots": [
+				{
+					"id": "memory",
+					"label": "情報",
+					"actionId": "work",
+					"required": {
+						"memory": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"demotion": "ghouljob"
+			}
+		},
+		{
+			"id": "ghouljob",
+			"aspects": {
+				"job": 1
+			},
+			"label": "霊能者としての評判",
+			"description": "自分でも思いもよらないような声で話すこともある。",
+			"slots": [
+				{
+					"id": "memory",
+					"label": "情報",
+					"actionId": "work",
+					"required": {
+						"memory": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "auctioneerjob",
+			"aspects": {
+				"job": 1
+			},
+			"label": "オリフラムのオークションハウスでの役職",
+			"description": "",
+			"noartneeded": true
+		},
+		{
+			"id": "priestjob",
+			"aspects": {
+				"job": 1
+			},
+			"slots": [
+				{
+					"id": "ability",
+					"label": "能力",
+					"required": {
+						"passion": 1,
+						"reason": 1,
+						"health": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "doctrine",
+					"label": "教義",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "fervour",
+					"label": "熱狂",
+					"required": {
+						"fervour": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"label": "静かな教区へ",
+			"description": "怠慢や不祥事で司教の注意を引かない限り、私はここで生計を立てることができる。"
+		}
+	]
+}

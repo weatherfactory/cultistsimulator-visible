@@ -1,0 +1,249 @@
+{
+	"recipes": [
+		{
+			"id": "auctionentry6",
+			"label": "値打ちのあるものを売る",
+			"actionId": "explore",
+			"requirements": {
+				"locationauctionhouse": 1,
+				"auctionable": 6
+			},
+			"effects": {
+				"funds": 20
+			},
+			"linked": [
+				{
+					"id": "auctionsell_increasegrand",
+					"chance": 30
+				},
+				{
+					"id": "auctioncleanup",
+					"chance": 100
+				}
+			],
+			"startdescription": "オリフラムの客の中には、目に見えない術を学んでいる人はほとんどいないが、素人であっても、これが価値のあるものであることに気づくはずだ。[慎重に売ること。一度売ったものは取り戻せない。]",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "auctionentry5",
+			"label": "珍しいものを売る",
+			"actionId": "explore",
+			"requirements": {
+				"locationauctionhouse": 1,
+				"auctionable": 5
+			},
+			"effects": {
+				"funds": 16
+			},
+			"linked": [
+				{
+					"id": "auctionsell_increasemajor",
+					"chance": 30
+				},
+				{
+					"id": "auctioncleanup",
+					"chance": 100
+				}
+			],
+			"startdescription": "オリフラムの客の中には、目に見えない術を学んでいる人はほとんどいない。彼らはその真の価値を見出すことなく、力の宿る道具を戦利品や骨董品として買う。しかし、これはどこから見ても希少な物だ。[慎重に売ること。一度売ったものは取り戻せない。]",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "auctionentry4",
+			"label": "値の張るものを売る",
+			"actionId": "explore",
+			"requirements": {
+				"locationauctionhouse": 1,
+				"auctionable": 4
+			},
+			"effects": {
+				"funds": 8
+			},
+			"linked": [
+				{
+					"id": "auctionsell_increasemajor",
+					"chance": 30
+				},
+				{
+					"id": "auctioncleanup",
+					"chance": 100
+				}
+			],
+			"startdescription": "オリフラムの客の中には、目に見えない術を学んでいる人はほとんどいない。彼らはその真の価値を見出すことなく、力の宿る道具を戦利品や骨董品として買う。しかし、これは彼らの目に留まるはずだ。[慎重に売ること。一度売ったものは取り戻せない。]",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "auctionentry3",
+			"label": "本当に価値のあるものを売る",
+			"actionId": "explore",
+			"requirements": {
+				"locationauctionhouse": 1,
+				"auctionable": 3
+			},
+			"effects": {
+				"funds": 4
+			},
+			"linked": [
+				{
+					"id": "auctionsell_increaseminor",
+					"chance": 30
+				},
+				{
+					"id": "auctioncleanup",
+					"chance": 100
+				}
+			],
+			"startdescription": "この珍しい品を売れば、間違いなく資金が稼げる。[慎重に売ること。一度売ったものは取り戻せない。]",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "auctionentry2",
+			"label": "価値のあるものを売る",
+			"actionId": "explore",
+			"requirements": {
+				"locationauctionhouse": 1,
+				"auctionable": 2
+			},
+			"effects": {
+				"funds": 2
+			},
+			"linked": [
+				{
+					"id": "auctionsell_increaseminor",
+					"chance": 30
+				},
+				{
+					"id": "auctioncleanup",
+					"chance": 100
+				}
+			],
+			"startdescription": "この珍品を売れば、間違いなく資金が稼げる。[慎重に売ること。一度売ったものは取り戻せない。]",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "auctionentry1",
+			"label": "価値の少ないものを売る",
+			"actionId": "explore",
+			"requirements": {
+				"locationauctionhouse": 1,
+				"auctionable": 1
+			},
+			"effects": {
+				"funds": 1
+			},
+			"linked": [
+				{
+					"id": "auctionsell_increasepetty",
+					"chance": 30
+				},
+				{
+					"id": "auctionsell_worthless",
+					"chance": 30
+				},
+				{
+					"id": "auctioncleanup",
+					"chance": 100
+				}
+			],
+			"startdescription": "この奇妙な物にはおそらく価値があるのだろうが、確認するのは難しい。",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "auctionsell_worthless",
+			"label": "オークション：全くの無関心",
+			"actionId": "explore",
+			"startdescription": "誰も興味を持たなかった。競売人の小槌が音を鳴らす。私の商品は売れたが、記録する価値がないほど些細な金額だった。",
+			"linked": [
+				{
+					"id": "auctioncleanup",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"funds": -99,
+				"auctionable": -99
+			},
+			"warmup": 30
+		},
+		{
+			"id": "auctionsell_increasepetty",
+			"label": "オークション：観客が囁く",
+			"actionId": "explore",
+			"startdescription": "何らかの理由で、私の商品は入札者たちの目に留まった。",
+			"linked": [
+				{
+					"id": "auctioncleanup",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"funds": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "auctionsell_increaseminor",
+			"label": "オークション：活気のある入札",
+			"actionId": "explore",
+			"startdescription": "立ち上がった観客たちもいた。情熱が高まっている。",
+			"linked": [
+				{
+					"id": "auctioncleanup",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"funds": 2
+			},
+			"warmup": 30
+		},
+		{
+			"id": "auctionsell_increasemajor",
+			"label": "オークション：興奮の叫び",
+			"actionId": "explore",
+			"startdescription": "競売人は群衆のざわめきをかき消すために声を張り上げなければならなかった。",
+			"linked": [
+				{
+					"id": "auctioncleanup",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"funds": 4
+			},
+			"warmup": 30
+		},
+		{
+			"id": "auctionsell_increasegrand",
+			"label": "オークション：入札者の決闘",
+			"actionId": "explore",
+			"startdescription": "2人の裕福なコレクターたちが競売人と目を合わせ、わずかにうなずきながら意思表示をした。競売人の真剣な声を除けば、この部屋は静まり返っていた。",
+			"effects": {
+				"funds": 8
+			},
+			"linked": [
+				{
+					"id": "auctioncleanup",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "auctioncleanup",
+			"label": "オークション完了",
+			"actionId": "explore",
+			"description": "競売人の小槌が鳴る。私の商品が売れた。",
+			"effects": {
+				"auctionable": -99
+			},
+			"warmup": 0
+		}
+	]
+}

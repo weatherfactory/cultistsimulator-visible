@@ -1,0 +1,330 @@
+{
+	"recipes": [
+		{
+			"id": "ambition.apostleforge.emitfuel",
+			"actionId": "work",
+			"label": "形作る者の導き",
+			"requirements": {
+				"apostleforge.mentor": 1
+			},
+			"startdescription": "形作る者は我々を導いてくれた。それを利用して大いなる業を追求しよう。",
+			"effects": {
+				"apostleforge.pillarfuel": 1
+			}
+		},
+		{
+			"id": "work.apostleforge.majorvictory.postbetrayal",
+			"actionId": "work",
+			"label": "それでも、大いなる業は続く",
+			"extantreqs": {
+				"apostleforge.mentor": -1
+			},
+			"startdescription": "火で作り直し、不変のものを終わらせ、全ての夜を終わらせる。ドーンブレイカーが回転し始めると、段々と地球の自転は遅くなる。エキドナの鉤爪のついた手には鍵が握られている。羅針盤は最後の言葉を口にし、青金が燃え、凶暴な扉が開き、形作る者が鍛造の性質を実行する。そして私は形作る者のそばへ戻るだろう。私はとっくの昔に心を決めた。私はむさぼり食わされるのだ。",
+			"description": "",
+			"requirements": {
+				"fragmentknockg": 1,
+				"influenceforgeg": 1,
+				"apostleforge.pillar2": 1,
+				"apostleforge.pillar3": 1,
+				"apostleforge.pillar4": 1,
+				"apostleforge.pillar5": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"ending": "majorforgevictory"
+		},
+		{
+			"id": "work.apostleforge.majorvictory",
+			"actionId": "work",
+			"label": "大いなる業の最後の鍵",
+			"extantreqs": {
+				"apostleforge.mentor": 1
+			},
+			"startdescription": "火で作り直し、不変のものを終わらせ、全ての夜を終わらせる。ドーンブレイカーが回転し始めると、段々と地球の自転は遅くなる。エキドナの鉤爪のついた手には鍵が握られている。羅針盤は最後の言葉を口にし、青金が燃え、凶暴な扉が開き、形作る者が鍛造の性質を実行する。そして私は、むさぼり食わされるだろう。",
+			"description": "",
+			"requirements": {
+				"fragmentknockg": 1,
+				"influenceforgeg": 1,
+				"apostleforge.pillar2": 1,
+				"apostleforge.pillar3": 1,
+				"apostleforge.pillar4": 1,
+				"apostleforge.pillar5": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"ending": "majorforgevictory"
+		},
+		{
+			"id": "work.apostleforge.createcore",
+			"actionId": "work",
+			"label": "ドーンブレイカーコアを鍛える",
+			"startdescription": "形作る者の指導と古き太陽の粒子があればドーンブレイカー装置の製作を始めることができる。",
+			"description": "「変わらないものは終わらなければならない」という古い歌を鼻歌で歌いながら作業をする。ついにコアが完成した。装置は眠っている。「創造の神秘」が命を吹き込むはずだ。",
+			"requirements": {
+				"toolforgef": 1,
+				"apostleforge.pillarfuel": 1
+			},
+			"effects": {
+				"toolforgef": -1,
+				"apostleforge.pillarfuel": -1,
+				"apostleforge.pillar2.dormant": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work.apostleforge.awakencore",
+			"actionId": "work",
+			"label": "ドーンブレイカーコアを覚醒させる",
+			"startdescription": "鍛造やマドゥルガーダ、そしてメニスカーテも太陽を覚えている。彼らの記憶をコアの周りに電機子として建てれば、徐々に意識を持ち始めるだろう。",
+			"description": "低い音を立てながら装置は目を覚ましていく。そしてすべての生き物がそうであるように、空腹感を覚えた。最高級の錬金素材だけが、装置を満たせるだろう。",
+			"requirements": {
+				"apostleforge.pillar2.dormant": 1,
+				"fragmentforgeg": 1
+			},
+			"effects": {
+				"apostleforge.pillar2.dormant": -1,
+				"apostleforge.pillar2": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work.apostleforge.upgradeingredientforgeb",
+			"actionId": "work",
+			"label": "苦黒の塩を精製する",
+			"startdescription": "形作る者の指導のもと、より強力なものに磨きをかけることができる。",
+			"description": "黒は黄色に澄んでいく。",
+			"requirements": {
+				"ingredientforgeb": 1,
+				"apostleforge.pillarfuel": 1
+			},
+			"effects": {
+				"ingredientforgeb": -1,
+				"apostleforge.pillarfuel": -1,
+				"ingredientforged": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work.apostleforge.upgradeingredientforged",
+			"actionId": "work",
+			"label": "黄変のエッセンスを精製する",
+			"startdescription": "形作る者の指導のもと、より強力なものに磨きをかけることができる。",
+			"description": "黄色が赤く熟す。",
+			"requirements": {
+				"ingredientforged": 1,
+				"apostleforge.pillarfuel": 1
+			},
+			"effects": {
+				"ingredientforged": -1,
+				"apostleforge.pillarfuel": -1,
+				"ingredientforgef": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work.apostleforge.prepareingredientforgef",
+			"actionId": "work",
+			"label": "赤変のエッセンスを精製する",
+			"startdescription": "形作る者の指導のもと、より強力なものに磨きをかけることができる。",
+			"description": "赤は震え青となる。",
+			"requirements": {
+				"ingredientforgef": 1,
+				"apostleforge.pillarfuel": 1
+			},
+			"effects": {
+				"ingredientforgef": -1,
+				"apostleforge.pillarfuel": -1,
+				"apostleforge.pillar3": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work.apostleforge.baptisefollower",
+			"actionId": "work",
+			"label": "羅針盤を選ぶ",
+			"startdescription": "形作る者の力を借りれば、信奉者が世界の割れ目への道を見つけられるように準備を整えることができる。一度見つけてしまえば、他には何も見つからないだろう。",
+			"description": "瞳は、燃え盛る。心は、待つ神殿だ。",
+			"requirements": {
+				"follower": 1,
+				"mortal": 1,
+				"apostleforge.pillarfuel": 1,
+				"tool": -1,
+				"lore": -1
+			},
+			"effects": {
+				"apostleforge.pillarfuel": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "apostleforge.pillar4.dormant",
+					"mutationLevel": 1
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "explore.apostleforge.findflaw",
+			"actionId": "explore",
+			"label": "世界の割れ目",
+			"startdescription": "割れ目を見ることができる目を持つ者は多くない。一度見てしまうと、他の者が見えなくなってしまう。",
+			"description": "ここは歴史と歴史が和解する場であり、世界の皮が剥がれた肉のように疼く場所でもある。ここで傷をつけると、7倍のダメージを与えることになる。ここでドーンブレイカー装置を爆発させれば、凶暴な扉を開く噛む鍵を回し、石であった神々のように形作る者が通過できるようになるかもしれない。",
+			"requirements": {
+				"apostleforge.pillar4.dormant": 1
+			},
+			"effects": {
+				
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "apostleforge.pillar4.dormant",
+					"mutateAspectId": "apostleforge.pillar4",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "apostleforge.pillar4.dormant",
+					"mutateAspectId": "edge",
+					"mutationLevel": -99
+				},
+				{
+					"filterOnAspectId": "apostleforge.pillar4.dormant",
+					"mutateAspectId": "forge",
+					"mutationLevel": -99
+				},
+				{
+					"filterOnAspectId": "apostleforge.pillar4.dormant",
+					"mutateAspectId": "grail",
+					"mutationLevel": -99
+				},
+				{
+					"filterOnAspectId": "apostleforge.pillar4.dormant",
+					"mutateAspectId": "heart",
+					"mutationLevel": -99
+				},
+				{
+					"filterOnAspectId": "apostleforge.pillar4.dormant",
+					"mutateAspectId": "knock",
+					"mutationLevel": -99
+				},
+				{
+					"filterOnAspectId": "apostleforge.pillar4.dormant",
+					"mutateAspectId": "lantern",
+					"mutationLevel": -99
+				},
+				{
+					"filterOnAspectId": "apostleforge.pillar4.dormant",
+					"mutateAspectId": "moth",
+					"mutationLevel": -99
+				},
+				{
+					"filterOnAspectId": "apostleforge.pillar4.dormant",
+					"mutateAspectId": "winter",
+					"mutationLevel": -99
+				}
+			],
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "talk.apostleforge.sulochanaechidna",
+			"actionId": "talk",
+			"label": "E夫人の紹介",
+			"startdescription": "「形作る者が凶暴な扉を通りたがっているって？何をしようとしているか分かっているのかしら？鍛造の長生者が試すところを見たことがあるわ。大体彼らは失敗するの。でも、手伝ってあげるわ。姉が、あなたが求めている鍵を持っているのよ。彼女に連絡してみるけど......時間がかかると思うわ」",
+			"description": "",
+			"requirements": {
+				"apostleforge.pillarfuel": 1
+			},
+			"effects": {
+				"apostleforge.pillarfuel": -1,
+				"echidna.enroute": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "talk.apostleforge.echidna",
+			"actionId": "talk",
+			"label": "E夫人へのお願い",
+			"startdescription": "「もちろん手伝ってあげるわよ。私のところに来てくれてよかったわ。私のほうが姉妹より融通が利くもの。でも、よっぽどの理由がない限り......美味しい人を連れてきてほしいの」",
+			"description": "「だめなの？もう少しだけ待ってあげる」",
+			"requirements": {
+				"echidna": 1
+			},
+			"slots": [
+				{
+					"id": "sacrifice",
+					"label": "美味しい人か、正当な理由",
+					"required": {
+						"exalted": 1,
+						"cultsecrethistories_1": 1
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true,
+			"alternativerecipes": [
+				{
+					"id": "talk.apostleforge.echidnahelp.independent"
+				},
+				{
+					"id": "talk.apostleforge.echidnahelp"
+				},
+				{
+					"id": "talk.apostleforge.echidnahelp.sthydra"
+				}
+			]
+		},
+		{
+			"id": "talk.apostleforge.echidnahelp.independent",
+			"actionId": "talk",
+			"label": "美味しい人",
+			"startdescription": "喧嘩でもしたの？心配しないで、後始末は私がやるわ。でも聞いて、私は約束は守るけどせっかちなの。あなたの準備が整ってから、美味しい頭痛の種に会ってあげるわ」",
+			"description": "「ほら、これを。なくさないで。待っているから」",
+			"requirements": {
+				"echidna": 1,
+				"exalted": 1
+			},
+			"effects": {
+				"exalted": -1,
+				"apostleforge.pillar5": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "talk.apostleforge.echidnahelp",
+			"actionId": "talk",
+			"label": "美味しい人",
+			"startdescription": "「あらあら、でも聞いて。私は約束を守るけど、せっかちなの。準備ができてから、お友達を渡してちょうだい」",
+			"description": "「ほら、これを。なくさないで。待っているから」",
+			"requirements": {
+				"echidna": 1,
+				"exalted": 1
+			},
+			"effects": {
+				"exalted": -1,
+				"apostleforge.pillar5": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "talk.apostleforge.echidnahelp.sthydra",
+			"actionId": "talk",
+			"label": "正当な理由",
+			"startdescription": "「どうやら私たちはお互い蛇の世話をしているようね。「リギアの者は決して忘れない」が姉の口癖よ。あなたのお願いを聞いてあげる(なぜ7じゃなくて5なのか疑問に思ったことはない？歴史が2つ欠けている。でも、なぜ2つだけなのかしら？ああ、でもそんなことを話し合っている暇はないわ。私はせっかちなのよ)。準備ができたら呼んでちょうだい」",
+			"description": "「ほら、これを。なくさないで。待っているから」",
+			"requirements": {
+				"echidna": 1,
+				"cultsecrethistories_1": 1
+			},
+			"effects": {
+				"apostleforge.pillar5": 1
+			},
+			"craftable": false
+		}
+	]
+}

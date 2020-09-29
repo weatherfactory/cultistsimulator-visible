@@ -1,0 +1,712 @@
+{
+	"elements": [
+		{
+			"id": "skillhealtha",
+			"label": "Fertigkeit: Ein stärkerer Körper",
+			"aspects": {
+				"healthskill": 1,
+				"ability": 1
+			},
+			"description": "Das Training hat mir gut getan. [Setze dies mit 2 Gelernten Lektionen ein, um an Gesundheit zu gewinnen.]",
+			"slots": [
+				{
+					"id": "Health",
+					"actionId": "work",
+					"description": "Ich muss dem meine Energie widmen.",
+					"required": {
+						"health": 1
+					}
+				},
+				{
+					"id": "V1",
+					"actionId": "study",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"vitalityplus": 1
+					},
+					"consumes": true,
+					"description": "Bin ich bereit stärker zu werden?"
+				},
+				{
+					"id": "V2",
+					"actionId": "study",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"vitalityplus": 1
+					},
+					"consumes": true,
+					"description": "Bin ich bereit stärker zu werden?"
+				}
+			],
+			"xtriggers": {
+				"careeradvancement": "skillhealthb"
+			}
+		},
+		{
+			"id": "skillhealthb",
+			"label": "Fertigkeit: Ein gestählter Körper",
+			"description": "Du magst es mir nicht ansehen, doch ich bin so stark wie ein Schmied oder ein Soldat geworden. [Setze dies mit 3 Gelernten Lektionen ein, um an Gesundheit zu gewinnen.]",
+			"xtriggers": {
+				"careeradvancement": "skillhealthc"
+			},
+			"aspects": {
+				"healthskill": 2,
+				"ability": 1
+			},
+			"slots": [
+				{
+					"id": "Health",
+					"actionId": "work",
+					"description": "Ich muss dem meine Energie widmen.",
+					"required": {
+						"health": 1
+					}
+				},
+				{
+					"id": "V1",
+					"actionId": "study",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"vitalityplus": 1
+					},
+					"consumes": true,
+					"description": "Soll ich noch stärker werden? [Setze dies mit 3 Gelernten Lektionen ein, um an Gesundheit zu gewinnen.]"
+				},
+				{
+					"id": "V2",
+					"actionId": "study",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"vitalityplus": 1
+					},
+					"consumes": true,
+					"description": "Soll ich noch stärker werden?"
+				},
+				{
+					"id": "V3",
+					"actionId": "study",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"vitalityplus": 1
+					},
+					"consumes": true,
+					"description": "Soll ich noch stärker werden?"
+				}
+			]
+		},
+		{
+			"id": "skillhealthc",
+			"label": "Fertigkeit: Ein eiserner Körper",
+			"description": "Es gibt vieles, was ich nun in meinen Fäusten zerquetschen könnte. [Setze dies mit 4 Gelernten Lektionen ein, um an Gesundheit zu gewinnen.]",
+			"aspects": {
+				"healthskill": 3,
+				"ability": 1
+			},
+			"slots": [
+				{
+					"id": "Health",
+					"actionId": "work",
+					"description": "Ich muss dem meine Energie widmen.",
+					"required": {
+						"health": 1
+					}
+				},
+				{
+					"id": "specialisation",
+					"actionId": "study",
+					"label": "Etwas mehr",
+					"required": {
+						"lore": 1
+					},
+					"description": "Habe ich das richtige Wissen, kann ich die Unsichtbaren Künste einsetzen, um einen noch höheren Gipfel zu erklimmen. Ich muss zwischen Stärke und Anmut wählen."
+				},
+				{
+					"id": "V1",
+					"actionId": "study",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"vitalityplus": 1
+					},
+					"consumes": true,
+					"description": "Könnte ich noch gesünder werden? [Setze dies mit 4 Gelernten Lektionen ein, um an Gesundheit zu gewinnen.]"
+				},
+				{
+					"id": "V2",
+					"actionId": "study",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"vitalityplus": 1
+					},
+					"consumes": true,
+					"description": "Könnte ich noch gesünder werden?"
+				},
+				{
+					"id": "V3",
+					"actionId": "study",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"vitalityplus": 1
+					},
+					"consumes": true,
+					"description": "Könnte ich noch gesünder werden?"
+				},
+				{
+					"id": "V4",
+					"actionId": "study",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"vitalityplus": 1
+					},
+					"consumes": true,
+					"description": "Könnte ich noch gesünder werden?"
+				}
+			]
+		},
+		{
+			"id": "skillhealthd_strength",
+			"label": "Fertigkeit: Ein beispielloser Körper",
+			"description": "Ich bewege mich wie ein Berg und schlage zu wie der Himmel. 'Andere zu beherrschen, ist Kraft. Sich selbst zu beherrsch, ist Macht.' [Gesundheit und Fertigkeit lassen sich nicht weiter steigern.]",
+			"aspects": {
+				"healthskill": 4,
+				"ability": 1,
+				"murderskill": 1
+			},
+			"slots": [
+				{
+					"id": "Health",
+					"actionId": "work",
+					"description": "Ich muss dem meine Energie widmen.",
+					"required": {
+						"health": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "skillhealthd_grace",
+			"label": "Fertigkeit: Ein makelloser Körper",
+			"description": "Maschinelle Perfektion. Sehnengebundenes Elfenbein, straff in seidiger Haut. Von hier an kann ich nur noch nachlassen.' [Gesundheit und Fertigkeit lassen sich nicht weiter steigern.]",
+			"aspects": {
+				"healthskill": 4,
+				"ability": 1
+			},
+			"slots": [
+				{
+					"id": "Health",
+					"actionId": "work",
+					"description": "Ich muss dem meine Energie widmen.",
+					"required": {
+						"health": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "skillreasona",
+			"label": "Fertigkeit: Gelehrsamkeit",
+			"aspects": {
+				"reasonskill": 1,
+				"ability": 1
+			},
+			"description": "Ich stecke voller gewitzter Zitate. [Setze dies mit 2 Gelernten Lektionen ein, um an Gesundheit zu gewinnen.]",
+			"slots": [
+				{
+					"id": "e1",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"eruditionplus": 1
+					},
+					"consumes": true,
+					"description": "Soll ich meinen Geist mit noch mehr Wissen füllen?",
+					"actionId": "study"
+				},
+				{
+					"id": "e2",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"eruditionplus": 1
+					},
+					"consumes": true,
+					"description": "Soll ich meinen Geist mit noch mehr Wissen füllen?",
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"careeradvancement": "skillreasonb"
+			}
+		},
+		{
+			"id": "skillreasonb",
+			"label": "Fertigkeit: Bemerkenswerte Gelehrsamkeit",
+			"description": "Ich habe genug gelernt um zu wissen, wie wenig ich doch weiß. [Setze dies mit 3 Gelernten Lektionen ein, um an Gesundheit zu gewinnen.]",
+			"xtriggers": {
+				"careeradvancement": "skillreasonc"
+			},
+			"aspects": {
+				"reasonskill": 2,
+				"ability": 1
+			},
+			"slots": [
+				{
+					"id": "e1",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"eruditionplus": 1
+					},
+					"consumes": true,
+					"description": "Könnte ich noch mehr lernen?",
+					"actionId": "study"
+				},
+				{
+					"id": "e2",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"eruditionplus": 1
+					},
+					"consumes": true,
+					"description": "Könnte ich noch mehr lernen?",
+					"actionId": "study"
+				},
+				{
+					"id": "e3",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"eruditionplus": 1
+					},
+					"consumes": true,
+					"description": "Könnte ich noch mehr lernen?",
+					"actionId": "study"
+				}
+			]
+		},
+		{
+			"id": "skillreasonc",
+			"label": "Fertigkeit: Profunde Gelehrsamkeit",
+			"description": "Mein Schädel knirscht in seinen Fugen vor lauter Wissen, das ich gesammelt habe. [Setze dies mit 4 Gelernten Lektionen ein, um an Verstand zu gewinnen.]",
+			"aspects": {
+				"reasonskill": 3,
+				"ability": 1
+			},
+			"slots": [
+				{
+					"id": "specialisation",
+					"actionId": "study",
+					"label": "Etwas mehr",
+					"required": {
+						"lore": 1
+					},
+					"description": "Habe ich das richtige Wissen, kann ich die Unsichtbaren Künste einsetzen, um einen noch höheren Gipfel zu erklimmen. Ich muss zwischen Erleuchtung und Konzentration wählen."
+				},
+				{
+					"id": "e1",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"eruditionplus": 1
+					},
+					"consumes": true,
+					"description": "Kann ich meinen Verstand noch weiter schärfen?",
+					"actionId": "study"
+				},
+				{
+					"id": "e2",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"eruditionplus": 1
+					},
+					"consumes": true,
+					"description": "Kann ich meinen Verstand noch weiter schärfen?",
+					"actionId": "study"
+				},
+				{
+					"id": "e3",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"eruditionplus": 1
+					},
+					"consumes": true,
+					"description": "Kann ich meinen Verstand noch weiter schärfen?",
+					"actionId": "study"
+				},
+				{
+					"id": "e4",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"eruditionplus": 1
+					},
+					"consumes": true,
+					"description": "Kann ich meinen Verstand noch weiter schärfen?",
+					"actionId": "study"
+				}
+			]
+		},
+		{
+			"id": "skillreasond_illumination",
+			"label": "Fertigkeit: Ein geschärfter Geist",
+			"description": "Mein Geist ist Glas und mein Gedächtnis das Licht. [Verstand und Fertigkeit lassen sich nicht weiter steigern.]",
+			"aspects": {
+				"reasonskill": 4,
+				"ability": 1
+			},
+			"icon": "skillreasonc"
+		},
+		{
+			"id": "skillreasond_concentration",
+			"label": "Fertigkeit: Eine stumme Intensität",
+			"description": "Diese kühle Stille ist die Stille der Gewissheit. [Verstand und Fertigkeit lassen sich nicht weiter steigern.]",
+			"aspects": {
+				"reasonskill": 4,
+				"ability": 1
+			},
+			"icon": "skillreasonc"
+		},
+		{
+			"id": "skillpassiona",
+			"label": "Fertigkeit: Eine blühende Phantasie",
+			"aspects": {
+				"passionskill": 1,
+				"ability": 1
+			},
+			"description": "Meine Tagträume überholen manchmal meine Träume. [Setze dies mit Arbeit zum Malen oder mit Studieren und 2 Gelernten Lektionen ein, um an Leidenschaft zu gewinnen.]",
+			"slots": [
+				{
+					"id": "G1",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"glimmeringplus": 1
+					},
+					"consumes": true,
+					"description": "Bin ich bereit, meine Leidenschaften weiter zu nähren?",
+					"actionId": "study"
+				},
+				{
+					"id": "G2",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"glimmeringplus": 1
+					},
+					"consumes": true,
+					"description": "Bin ich bereit, meine Leidenschaften weiter zu nähren?",
+					"actionId": "study"
+				},
+				{
+					"id": "painting1",
+					"label": "Kunst oder Brot?",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "Ich kann Leidenschaft einsetzen, um die bestmögliche Arbeit abzuliefern. Oder falls ich Ansehen habe, kann ich etwas malen, um Aufmerksamkeit zu gewinnen.",
+					"actionId": "work"
+				},
+				{
+					"id": "painting2",
+					"label": "Kunst oder Brot?",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "Ich kann Leidenschaft einsetzen, um die bestmögliche Arbeit abzuliefern. Oder falls ich Ansehen habe, kann ich etwas malen, um Aufmerksamkeit zu gewinnen.",
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"careeradvancement": "skillpassionb"
+			}
+		},
+		{
+			"id": "skillpassionb",
+			"label": "Fertigkeit: Eine wilde Phantasie",
+			"description": "Ich bin dafür bekannt, sechs Bleistifte pro Tag zu zerbrechen. [Setze dies mit Arbeit zum Malen oder mit Studieren und 3 Gelernten Lektionen ein, um an Leidenschaft zu gewinnen.]",
+			"xtriggers": {
+				"careeradvancement": "skillpassionc"
+			},
+			"aspects": {
+				"passionskill": 2,
+				"ability": 1
+			},
+			"slots": [
+				{
+					"id": "G1",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"glimmeringplus": 1
+					},
+					"consumes": true,
+					"description": "Was könnte ich sehen, was könnte ich sein? [Setze dies mit 3 Gelernten Lektionen ein, um an Gesundheit zu gewinnen.]",
+					"actionId": "study"
+				},
+				{
+					"id": "G2",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"glimmeringplus": 1
+					},
+					"consumes": true,
+					"description": "Was könnte ich sehen, was könnte ich sein?",
+					"actionId": "study"
+				},
+				{
+					"id": "G3",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"glimmeringplus": 1
+					},
+					"consumes": true,
+					"description": "Was könnte ich sehen, was könnte ich sein?",
+					"actionId": "study"
+				},
+				{
+					"id": "painting1",
+					"label": "Kunst oder Brot?",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "Ich kann Leidenschaft einsetzen, um die bestmögliche Arbeit abzuliefern. Oder falls ich Ansehen habe, kann ich etwas malen, um Aufmerksamkeit zu gewinnen.",
+					"actionId": "work"
+				},
+				{
+					"id": "painting2",
+					"label": "Kunst oder Brot?",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "Ich kann Leidenschaft einsetzen, um die bestmögliche Arbeit abzuliefern. Oder falls ich Ansehen habe, kann ich etwas malen, um Aufmerksamkeit zu gewinnen.",
+					"actionId": "work"
+				},
+				{
+					"id": "painting3",
+					"label": "Kunst oder Brot?",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "Ich kann Leidenschaft einsetzen, um die bestmögliche Arbeit abzuliefern. Oder falls ich Ansehen habe, kann ich etwas malen, um Aufmerksamkeit zu gewinnen.",
+					"actionId": "work"
+				}
+			]
+		},
+		{
+			"id": "skillpassionc",
+			"label": "Fertigkeit: Eine fiebernde Phantasie",
+			"description": "Phantome reiten auf meinem wachenden Geist. [Setze dies mit 4 Gelernten Lektionen ein, um an Gesundheit zu gewinnen.]",
+			"aspects": {
+				"passionskill": 3,
+				"ability": 1
+			},
+			"slots": [
+				{
+					"id": "specialisation",
+					"actionId": "study",
+					"label": "Etwas mehr",
+					"required": {
+						"lore": 1
+					},
+					"description": "Habe ich das richtige Wissen, kann ich die Unsichtbaren Künste einsetzen, um einen noch höheren Gipfel zu erklimmen. Ich muss mich zwischen Unvernunft und Narretei entscheiden."
+				},
+				{
+					"id": "G1",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"glimmeringplus": 1
+					},
+					"consumes": true,
+					"description": "Welche rasenden Visionen bleiben? [Setze dies mit Arbeit zum Malen oder mit Studieren und 2 Gelernten Lektionen ein, um an Leidenschaft zu gewinnen.]",
+					"actionId": "study"
+				},
+				{
+					"id": "G2",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"glimmeringplus": 1
+					},
+					"consumes": true,
+					"description": "Welche rasenden Visionen bleiben? ",
+					"actionId": "study"
+				},
+				{
+					"id": "G3",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"glimmeringplus": 1
+					},
+					"consumes": true,
+					"description": "Welche rasenden Visionen bleiben? ",
+					"actionId": "study"
+				},
+				{
+					"id": "G4",
+					"label": "Eine gelernte Lektion",
+					"required": {
+						"glimmeringplus": 1
+					},
+					"consumes": true,
+					"description": "Welche rasenden Visionen bleiben? ",
+					"actionId": "study"
+				},
+				{
+					"id": "painting1",
+					"label": "Kunst oder Brot?",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "Ich kann Leidenschaft einsetzen, um die bestmögliche Arbeit abzuliefern. Oder falls ich Ansehen habe, kann ich etwas malen, um Aufmerksamkeit zu gewinnen.",
+					"actionId": "work"
+				},
+				{
+					"id": "painting2",
+					"label": "Kunst oder Brot?",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "Ich kann Leidenschaft einsetzen, um die bestmögliche Arbeit abzuliefern. Oder falls ich Ansehen habe, kann ich etwas malen, um Aufmerksamkeit zu gewinnen.",
+					"actionId": "work"
+				},
+				{
+					"id": "painting3",
+					"label": "Kunst oder Brot?",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "Ich kann Leidenschaft einsetzen, um die bestmögliche Arbeit abzuliefern. Oder falls ich Ansehen habe, kann ich etwas malen, um Aufmerksamkeit zu gewinnen.",
+					"actionId": "work"
+				},
+				{
+					"id": "painting4",
+					"label": "Kunst oder Brot?",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "Ich kann Leidenschaft einsetzen, um die bestmögliche Arbeit abzuliefern. Oder falls ich Ansehen habe, kann ich etwas malen, um Aufmerksamkeit zu gewinnen.",
+					"actionId": "work"
+				}
+			]
+		},
+		{
+			"id": "skillpassiond_unreason",
+			"label": "Fertigkeit: Niemals-Nie",
+			"description": "Je mehr, je mehr, je mehr, je m... [Leidenschaft und Fertigkeit lassen sich nicht weiter steigern.]",
+			"aspects": {
+				"passionskill": 4,
+				"ability": 1
+			},
+			"slots": [
+				{
+					"id": "painting1",
+					"label": "Kunst oder Brot?",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "Ich kann Leidenschaft einsetzen, um die bestmögliche Arbeit abzuliefern. Oder falls ich Ansehen habe, kann ich etwas malen, um Aufmerksamkeit zu gewinnen.",
+					"actionId": "work"
+				},
+				{
+					"id": "painting2",
+					"label": "Kunst oder Brot?",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "Ich kann Leidenschaft einsetzen, um die bestmögliche Arbeit abzuliefern. Oder falls ich Ansehen habe, kann ich etwas malen, um Aufmerksamkeit zu gewinnen.",
+					"actionId": "work"
+				},
+				{
+					"id": "painting3",
+					"label": "Kunst oder Brot?",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "Ich kann Leidenschaft einsetzen, um die bestmögliche Arbeit abzuliefern. Oder falls ich Ansehen habe, kann ich etwas malen, um Aufmerksamkeit zu gewinnen.",
+					"actionId": "work"
+				},
+				{
+					"id": "painting4",
+					"label": "Kunst oder Brot?",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "Ich kann Leidenschaft einsetzen, um die bestmögliche Arbeit abzuliefern. Oder falls ich Ansehen habe, kann ich etwas malen, um Aufmerksamkeit zu gewinnen.",
+					"actionId": "work"
+				}
+			],
+			"icon": "skillpassionc"
+		},
+		{
+			"id": "skillpassiond_folly",
+			"label": "Fertigkeit: Eine offene Seele",
+			"description": "'Siehe, sie stehen an meiner Türe und klopfen. Vernehme ich eine Stimme, öffne ich die Türe und sie werden zu mir kommen. Ich werde mit ihnen speisen und sie mit mir.' [Leidenschaft und Fertigkeit lassen sich nicht weiter steigern.]",
+			"aspects": {
+				"passionskill": 4,
+				"ability": 1
+			},
+			"slots": [
+				{
+					"id": "painting1",
+					"label": "Kunst oder Brot?",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "Ich kann Leidenschaft einsetzen, um die bestmögliche Arbeit abzuliefern. Oder falls ich Ansehen habe, kann ich etwas malen, um Aufmerksamkeit zu gewinnen.",
+					"actionId": "work"
+				},
+				{
+					"id": "painting2",
+					"label": "Kunst oder Brot?",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "Ich kann Leidenschaft einsetzen, um die bestmögliche Arbeit abzuliefern. Oder falls ich Ansehen habe, kann ich etwas malen, um Aufmerksamkeit zu gewinnen.",
+					"actionId": "work"
+				},
+				{
+					"id": "painting3",
+					"label": "Kunst oder Brot?",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "Ich kann Leidenschaft einsetzen, um die bestmögliche Arbeit abzuliefern. Oder falls ich Ansehen habe, kann ich etwas malen, um Aufmerksamkeit zu gewinnen.",
+					"actionId": "work"
+				},
+				{
+					"id": "painting4",
+					"label": "Kunst oder Brot?",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "Ich kann Leidenschaft einsetzen, um die bestmögliche Arbeit abzuliefern. Oder falls ich Ansehen habe, kann ich etwas malen, um Aufmerksamkeit zu gewinnen.",
+					"actionId": "work"
+				}
+			],
+			"icon": "skillpassionc"
+		}
+	]
+}

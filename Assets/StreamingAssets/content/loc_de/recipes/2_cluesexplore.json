@@ -1,0 +1,96 @@
+{
+	"recipes": [
+		{
+			"id": "explore_movehq_hint",
+			"label": "Eine Veränderung der Lokalität?",
+			"actionId": "explore",
+			"requirements": {
+				"hq.potential": 1
+			},
+			"startdescription": "Wir könnten unsere Zentrale hierher verlegen, so wir denn wollen.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "explorevault_hint_sending",
+			"label": "Ein zweites Ich?",
+			"actionId": "explore",
+			"requirements": {
+				"vault": 1,
+				"sending": 1
+			},
+			"startdescription": "Ist diese Expedition ein Erfolg, wird das Ich-das-nicht-Ich-bin dort sein, um die Gestalten darzustellen. [Hast du Erfolg, bekommst du die üblichen Belohnungen, und dein Aufstieg des Wandels macht Fortschritte.]",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "explorevault_hint_addfunds",
+			"label": "Vorbereitungen für eine Expedition?",
+			"actionId": "explore",
+			"requirements": {
+				"vault": 1,
+				"follower": 1
+			},
+			"startdescription": "Wenn ich mindestens 1 Geldmittel hinzufüge, kann ich mit der Expedition beginnen. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "explorevault_hint_addfollower",
+			"label": "Vorbereitungen für eine Expedition?",
+			"actionId": "explore",
+			"requirements": {
+				"vault": 1,
+				"funds": 1
+			},
+			"startdescription": "Wenn ich 1 Anhänger hinzufüge, kann ich mit der Expedition beginnen. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "explorevault_hint",
+			"label": "Vorbereitungen für eine Expedition?",
+			"actionId": "explore",
+			"requirements": {
+				"vault": 1
+			},
+			"startdescription": "Ich könnte eine Expedition hierher schicken, um Bücher, Schätze und Werkzeuge der Macht zu finden. Doch ich muss auch Anhänger entsenden und brauche Geldmittel, um sie auszurüsten.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "exploresulochanacabaret_hint",
+			"label": "Die alte Gestalt und die neue",
+			"actionId": "explore",
+			"requirements": {
+				"locationcabaret": 1,
+				"sulochana": 1
+			},
+			"startdescription": "[Hast du dir Erweiterung 'Tänzer', kannst du diese Kombination verwenden, um einem Job im Ecdysis-Klub zu finden und nach dem Aufstieg des Wandels zu streben.]",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "explore.searchgraveyard.hint",
+			"actionId": "explore",
+			"requirements": {
+				"location.cemetery": 1
+			},
+			"label": "Eine Ausgrabung?",
+			"startdescription": "Ich muss meine eigene Stärke einsetzen, oder die eines Freundes.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "explore.searchgraveyard.closing.hint",
+			"actionId": "explore",
+			"requirements": {
+				"location.cemetery.closing": 1
+			},
+			"label": "Eine vorsichtige Ausgrabung?",
+			"startdescription": "Ich muss meine eigene Stärke einsetzen, oder die eines Freundes.",
+			"craftable": false,
+			"hintonly": true
+		}
+	]
+}

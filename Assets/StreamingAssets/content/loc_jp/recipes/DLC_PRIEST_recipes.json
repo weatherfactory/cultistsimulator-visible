@@ -1,0 +1,1342 @@
+{
+	"recipes": [
+		{
+			"id": "work.priest.first",
+			"actionId": "work",
+			"label": "初めての礼拝を行う",
+			"startdescription": "私はマティアス 7：7を選んだ――「求めれば与えられ、苦しめば行きつき、たたけば開かれる」。そう書かれたページでこの本が開いた。そうでなければ、この聖句を選ばなかっただろう。",
+			"description": "壁から上手く自分の声が反射して、即興で話をしたくなるほどだったが、説教は順調に進んだ。正確には覚えていないが、好評だったのは確かだ。説教壇から降りてくる時に裾を釘に引っ掛けて破ってしまい、最前列に座っていた女性が驚いた顔をしていた。",
+			"requirements": {
+				"priestjob": 1,
+				"passion": 1
+			},
+			"effects": {
+				"funds": 1,
+				"reason": 1
+			},
+			"warmup": 10,
+			"craftable": true,
+			"maxexecutions": 1,
+			"alt": [
+				{
+					"id": "dream.priest.open",
+					"additional": true
+				},
+				{
+					"id": "study.priest.open",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "work.priest.second",
+			"actionId": "work",
+			"label": "礼拝を行い、鍵屋の夢を語り合う",
+			"startdescription": "マティアスが扉について語ったことをもう一度話そう。そして、聖アグネスについても話す予定だ。そして、鍵を形作った夜に訪れるものについても話したい。",
+			"description": "夢を見た人もいる。顔を見れば分かることだ。この教会のせいだ――ここにある扉は、目に見えている扉だけではない。心臓の弁さえも、手足がきちんと揃えば扉なのだ。説教中に、このことを説いたことはないが、それでも彼らの心は真理に反応しているようだ。",
+			"requirements": {
+				"priestjob": 1,
+				"reason": 1,
+				"fragmentknock": 1
+			},
+			"effects": {
+				"fervour": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"maxexecutions": 1,
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"additional": true
+				},
+				{
+					"id": "explore.priest.open",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "work.priest.third",
+			"actionId": "work",
+			"label": "礼拝を行う",
+			"startdescription": "会衆は待ちわびるように囁き合い、それは翼が高く羽ばたくように、枝が風で揺れるように響き渡った。助祭と聖具室係は、私が説教壇に立つのを見守っている。彼らの目には、思ってもみなかったようなものが映っている。それは......プライドだろうか。",
+			"description": "私の心臓は血液の通る十字路である。私の舌は研ぎ澄まされた炎である。ステンドグラスにはいつもと違う形が見える。灰色の牝馬、破壊された木、双子の蛇。私が語り終えると、信徒は足を踏み鳴らし歓声を上げた。彼らの目と口は扉になっている。教会全体が見守る中、聖具室係がしわくちゃになった手で私の手を取る。彼の目には涙が浮かんでいる。「長い間待っていた」と彼はささやいた。",
+			"requirements": {
+				"priestjob": 1,
+				"ability": 1,
+				"lore": 1,
+				"fervour": 1
+			},
+			"effects": {
+				"funds": 1,
+				"fervour": -1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"maxexecutions": 1,
+			"alt": [
+				{
+					"id": "talk.priest.open",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "dream.priest.open",
+			"actionId": "dream",
+			"label": "正義の眠り",
+			"startdescription": "私は教えられた通りに奉納をしてきた。読んではいけない歴史を脇に置き、もはや絆や無敵な太陽のことを口にすることはない。司教の秘書が、このことについてはっきりと語っていた。それでも聖アグネスは、時々私の夢を訪れる。今夜もそうだ。",
+			"description": "聖アグネスは煙の中を歩き、彼女の細い青白い足の下でスミレを砕く。聖アグネスは鍵と明るいナイフと鋭利なロウソク、そして、彼女の細い最後の手には、殉教した彼女自身の頭が掴まれている。聖アグネスは私の肩の上に彼女の顔を持ち上げて私の額に口づけをし、私は扉のように彼女に向かって開いた。目が覚めると心臓はバクバクし、皮膚はチクチクし、手足はビクビクと震えていた。私は漏れ始めたのだ。",
+			"effects": {
+				"health": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "study.priest.open",
+			"actionId": "study",
+			"label": "言葉の蝶番",
+			"startdescription": "本の荷解きを始めた......",
+			"description": "これは私の古い日記の1つだ。紙の束が表紙の裏から床へと落ちていく。これは、私がかつて複写し、忘れようとしていたものだ。",
+			"effects": {
+				"fragmentknock": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "explore.priest.open",
+			"actionId": "explore",
+			"label": "古い石",
+			"startdescription": "この街には、ずっと前に鍵の使徒である聖ペテロに捧げられた大聖堂があったが、2世紀前に火事で焼失した。大聖堂は聖スパークに密かに捧げられていたという話を聞いたことがある。おそらくそれが原因だったのだろう。大聖堂が再建されると、王は鍵を聖ペテロ以外に託すことに、しぶしぶ同意した。かつては、この教会も聖ペテロにも捧げられていた......",
+			"description": "教会には今、別の守護聖人がいる。おそらく別の司教が石が見たものを、消そうとしたのだろう。しかし、石は覚えている。ここには、太陽の光に照らされた印がある。ここ、聖水盤の下には、結び目がある。祭壇の後ろの窓には、花のように広がった夜明けにしか見えない7つの鍵がある......",
+			"effects": {
+				"hq.church": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "talk.priest.open",
+			"actionId": "talk",
+			"label": "歓迎",
+			"startdescription": "助祭と聖具室係が、客人を連れて個人的な話をしに来た。会ったことのない人だったが、客人は敬意を表して、私の目の前にひざまずいた。そして他の2人もそれに倣って、私に敬意を表す。 ",
+			"effects": {
+				"LEVER_LastCult": 1,
+				"LEVER_LastFollower": 1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "talk.priest.open.followup"
+				}
+			]
+		},
+		{
+			"id": "talk.priest.open.followup",
+			"actionId": "talk",
+			"label": "再献身",
+			"startdescription": "聖具室係はまた、泣き始めるとこう言った。「あなたを待っていた。#PREVIOUSCHARACTERNAME#は我々に @#cultedge_1|明るい刃#cultforge_1|形作る炎に宿る力#cultgrail_1|欲望に隠された秘密の喜び#cultheart_1|終わらない踊り#cultknock_1|鍵の本質#cultlantern_1|栄光#cultmoth_1|森#cultsecrethistories_1|複数の歴史#cultwinter_1|静寂#|世界の表面下にある色@を教えてくれた。そして我々は、その教えを使って道を用意してきた。あなたは我々の光であり、入口だ。あなたが、あなたの導きが必要だ」",
+			"mutations": [
+				{
+					"filter": "society",
+					"mutate": "rededicable",
+					"level": 1
+				}
+			]
+		},
+		{
+			"id": "talk.rededicatecult",
+			"actionId": "talk",
+			"label": "新しい道",
+			"startdescription": "#PREVIOUSCHARACTERNAME#は道を用意したが、<i>私</i>が道だ。確立された形を変えることができる。[一度だけ、別の種類の伝承をカルト教団の中心に据えることができる。好みの属性が手元にある場合のみ、その過程を始められる。]",
+			"description": "今のところは......#PREVIOUSCHARACTERNAME#が敷いた道を辿ることにしよう。",
+			"requirements": {
+				"society": 1,
+				"rededicable": 1,
+				"mortal": -1,
+				"summoned": -1,
+				"influence": -1,
+				"ability": -1,
+				"tool": -1,
+				"ingredient": -1,
+				"lore": -1
+			},
+			"slots": [
+				{
+					"id": "principle",
+					"label": "新しい基本信条",
+					"required": {
+						"lore": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "talk.rededicatecult.edge",
+					"label": "カルトの再献身：刃",
+					"startdescription": "かつてのカルト教団とこれからのカルト教団の間に、明るい線を引く。彼らを私の意志に従わせる。[開錠以外の昇天を追求することもできる。この過程を完遂する必要はない。]",
+					"requirements": {
+						"society": 1,
+						"lore": 1,
+						"edge": 1
+					},
+					"effects": {
+						"society": -1,
+						"cultedge_1": 1,
+						"ascensionpowera": 1
+					},
+					"mutations": [
+						{
+							"filter": "society",
+							"mutate": "rededicable",
+							"level": -1
+						}
+					]
+				},
+				{
+					"id": "talk.rededicatecult.forge",
+					"label": "カルトの再献身：鍛造",
+					"startdescription": "私の目的のために教団の形を変えるつもりだ。予想外の力を手にしている。[開錠以外の昇天を追求することもできる。この過程を完遂する必要はない。]",
+					"requirements": {
+						"society": 1,
+						"lore": 1,
+						"forge": 1
+					},
+					"effects": {
+						"society": -1,
+						"cultforge_1": 1,
+						"ascensionpowera": 1
+					},
+					"mutations": [
+						{
+							"filter": "society",
+							"mutate": "rededicable",
+							"level": -1
+						}
+					]
+				},
+				{
+					"id": "talk.rededicatecult.grail",
+					"label": "カルトの再献身：聖杯",
+					"startdescription": "自分の欲望を満たすために、教団を調整するつもりだ。欲望の本質を、もっと慎重に考えるかもしれない。[開錠以外の昇天を追求することもできる。この過程を完遂する必要はない。]",
+					"requirements": {
+						"society": 1,
+						"lore": 1,
+						"grail": 1
+					},
+					"effects": {
+						"society": -1,
+						"cultgrail_1": 1,
+						"ascensionsensationa": 1
+					},
+					"mutations": [
+						{
+							"filter": "society",
+							"mutate": "rededicable",
+							"level": -1
+						}
+					]
+				},
+				{
+					"id": "talk.rededicatecult.heart",
+					"label": "カルトの再献身：心臓",
+					"startdescription": "古い教団は終わり、新しい教団は決して終わらない。血の中で太鼓の音が聞こえる。[開錠以外の昇天を追求することもできる。この過程を完遂する必要はない。]",
+					"requirements": {
+						"society": 1,
+						"lore": 1,
+						"heart": 1
+					},
+					"effects": {
+						"society": -1,
+						"cultheart_1": 1,
+						"ascensionsensationa": 1
+					},
+					"mutations": [
+						{
+							"filter": "society",
+							"mutate": "rededicable",
+							"level": -1
+						}
+					]
+				},
+				{
+					"id": "talk.rededicatecult.knock",
+					"label": "カルトの再献身：開錠",
+					"startdescription": "封印が解かれ、その背後には真のカルトが隠されていた。封印を開くのは聖アグネスだが、その背後には誰が待っているのだろうか？[開錠以外の昇天を追求することもできる。この過程を完遂する必要はない。] ",
+					"requirements": {
+						"society": 1,
+						"lore": 1,
+						"knock": 1
+					},
+					"effects": {
+						"society": -1,
+						"cultknock_1": 1,
+						"ascensionenlightenmenta": 1
+					},
+					"mutations": [
+						{
+							"filter": "society",
+							"mutate": "rededicable",
+							"level": -1
+						}
+					]
+				},
+				{
+					"id": "talk.rededicatecult.lantern",
+					"label": "カルトの再献身：灯り",
+					"startdescription": "私は新たな真実を明かす。その真実が何であるべきか考えるかもしれない。[開錠以外の昇天を追求することもできる。この過程を完遂する必要はない。]",
+					"requirements": {
+						"society": 1,
+						"lore": 1,
+						"lantern": 1
+					},
+					"effects": {
+						"society": -1,
+						"cultlantern_1": 1,
+						"ascensionenlightenmenta": 1
+					},
+					"mutations": [
+						{
+							"filter": "society",
+							"mutate": "rededicable",
+							"level": -1
+						}
+					]
+				},
+				{
+					"id": "talk.rededicatecult.moth",
+					"label": "カルトの再献身：蛾",
+					"startdescription": "彼らは変わるだろう。そうでなければ私が彼らを変えるだろう。その気になれば、私はもっと変われるのかもしれない。[開錠以外の昇天を追求することもできる。この過程を完遂する必要はない。]",
+					"requirements": {
+						"society": 1,
+						"lore": 1,
+						"moth": 1
+					},
+					"effects": {
+						"society": -1,
+						"cultmoth_1": 1,
+						"ascensionsensationa": 1
+					},
+					"mutations": [
+						{
+							"filter": "society",
+							"mutate": "rededicable",
+							"level": -1
+						}
+					]
+				},
+				{
+					"id": "talk.rededicatecult.secrethistories",
+					"label": "カルトの再献身：秘史",
+					"startdescription": "別の歴史では、我々の教団は変わっていなかった。ここでは違う。ここでは、私がその道を変えた......そして、それ以上に変えることもできるのだ。[開錠以外の昇天を追求することもできる。この過程を完遂する必要はない。]",
+					"requirements": {
+						"society": 1,
+						"lore": 1,
+						"secrethistories": 1
+					},
+					"effects": {
+						"society": -1,
+						"cultsecrethistories_1": 1,
+						"ascensionenlightenmenta": 1
+					},
+					"mutations": [
+						{
+							"filter": "society",
+							"mutate": "rededicable",
+							"level": -1
+						}
+					]
+				},
+				{
+					"id": "talk.rededicatecult.winter",
+					"label": "カルトの再献身：冬",
+					"startdescription": "今夜、古いやり方は終わりを告げる。そして初めて、私は運命の手綱を握る。私が選べば......別の道を歩むこともできるのだ。[開錠以外の昇天を追求することもできる。この過程を完遂する必要はない。]",
+					"requirements": {
+						"society": 1,
+						"lore": 1,
+						"winter": 1
+					},
+					"effects": {
+						"society": -1,
+						"cultwinter_1": 1,
+						"ascensionenlightenmenta": 1
+					},
+					"mutations": [
+						{
+							"filter": "society",
+							"mutate": "rededicable",
+							"level": -1
+						}
+					]
+				}
+			],
+			"craftable": true,
+			"warmup": 60
+		},
+		{
+			"id": "work.priest.passion.fervour.lore",
+			"actionId": "work",
+			"label": "熱心な会衆の前で、秘密教義を即興で説く",
+			"startdescription": "会衆はすでに興奮状態にある。どんな秘密の知識であっても、ほぼ確実に彼らは狂喜に満ちるだろう。",
+			"description": "やっと会衆の熱狂が落ち着いてきた。彼らは今夜何を思ったのだろう？[熱狂と伝承は高確率で歓喜を引き起こすが、熱狂を使い切ってしまう。]",
+			"requirements": {
+				"priestjob": 1,
+				"passion": 1,
+				"lore": 1,
+				"fervour": 1
+			},
+			"effects": {
+				"funds": 1,
+				"fervour": -1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"chance": 90,
+					"additional": true
+				}
+			],
+			"warmup": 50,
+			"craftable": true
+		},
+		{
+			"id": "work.priest.reason.fervour.lore",
+			"actionId": "work",
+			"label": "秘密教義についての説教を準備して、熱心な会衆に説く",
+			"startdescription": "会衆はすでに興奮状態にある。どんな秘密の知識であっても、ほぼ確実に彼らは狂喜に満ちるだろう。",
+			"description": "やっと会衆の熱狂が落ち着いてきた。彼らは今夜何を思ったのだろう？[熱狂と伝承は高確率で歓喜を引き起こすが、熱狂を使い切ってしまう。]",
+			"requirements": {
+				"priestjob": 1,
+				"reason": 1,
+				"lore": 1,
+				"fervour": 1
+			},
+			"effects": {
+				"funds": 1,
+				"fervour": -1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"chance": 90,
+					"additional": true
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work.priest.passion.fervour",
+			"actionId": "work",
+			"label": "熱心な会衆の前で、即興の説教をする",
+			"startdescription": "会衆はすでに興奮状態にある。どんな秘密の知識であっても、彼らが狂喜に満ちる可能性は高い。",
+			"description": "やっと会衆の熱狂が落ち着いてきた。彼らは今夜何を思ったのだろう？[通常、熱狂は歓喜を引き起こすが、熱狂を使い切ってしまう。]",
+			"requirements": {
+				"priestjob": 1,
+				"passion": 1,
+				"fervour": 1
+			},
+			"effects": {
+				"funds": 1,
+				"fervour": -1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"chance": 70,
+					"additional": true
+				}
+			],
+			"warmup": 50,
+			"craftable": true
+		},
+		{
+			"id": "work.priest.reason.fervour",
+			"actionId": "work",
+			"label": "熱心な信徒のために入念に説教を用意する",
+			"startdescription": "会衆はすでに興奮状態にある。どんな秘密の知識であっても、彼らが狂喜に満ちる可能性は高い。",
+			"description": "やっと会衆の熱狂が落ち着いてきた。彼らは今夜何を思ったのだろう？[通常、熱狂は歓喜を引き起こすが、熱狂を使い切ってしまう。]",
+			"requirements": {
+				"priestjob": 1,
+				"reason": 1,
+				"fervour": 1
+			},
+			"effects": {
+				"funds": 1,
+				"fervour": -1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"chance": 70,
+					"additional": true
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work.priest.passion.lore",
+			"actionId": "work",
+			"label": "秘密教義の説教を即興で行う",
+			"startdescription": "私は彼らの魂に語りかける。確信を持って話せば、彼らの魂は答えてくれるだろう。[情熱的な説教と適切な教義を使うと、「熱狂」が生まれる可能性が高い。即興の説教は若干スピードが早くなる。]",
+			"requirements": {
+				"priestjob": 1,
+				"passion": 1,
+				"lore": 1
+			},
+			"linked": [
+				{
+					"id": "preach.edge",
+					"challenges": {
+						"edge": "base"
+					}
+				},
+				{
+					"id": "preach.forge",
+					"challenges": {
+						"forge": "base"
+					}
+				},
+				{
+					"id": "preach.grail",
+					"challenges": {
+						"grail": "base"
+					}
+				},
+				{
+					"id": "preach.heart",
+					"challenges": {
+						"heart": "base"
+					}
+				},
+				{
+					"id": "preach.moth",
+					"challenges": {
+						"moth": "base"
+					}
+				},
+				{
+					"id": "work.priest.nolorematch"
+				}
+			],
+			"warmup": 50,
+			"craftable": true
+		},
+		{
+			"id": "work.priest.reason.lore",
+			"actionId": "work",
+			"label": "秘密教義の説教の準備をする",
+			"startdescription": "私は彼らの魂に語りかける。私が正確に話せば、彼らの魂は答えてくれるだろう。[理性的な説教でで適切な教義を使うと、熱狂を生み出す可能性が高まる。]",
+			"requirements": {
+				"priestjob": 1,
+				"reason": 1,
+				"lore": 1
+			},
+			"linked": [
+				{
+					"id": "preach.knock",
+					"challenges": {
+						"knock": "base"
+					}
+				},
+				{
+					"id": "preach.secrethistories",
+					"challenges": {
+						"secrethistories": "base"
+					}
+				},
+				{
+					"id": "preach.winter",
+					"challenges": {
+						"winter": "base"
+					}
+				},
+				{
+					"id": "preach.lantern",
+					"challenges": {
+						"lantern": "base"
+					}
+				},
+				{
+					"id": "work.priest.nolorematch"
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work.priest.nolorematch",
+			"actionId": "work",
+			"label": "静かな儀式",
+			"startdescription": "今夜、彼らは耳を傾けているが......聞こえていない。[理性的な教義には理性を、情熱的な教義には情熱を使うと、熱狂を生み出す可能性が高まる。伝承が深ければ深いほど、歓喜を生み出す可能性が高くなる。]",
+			"effects": {
+				"funds": 1
+			}
+		},
+		{
+			"id": "preach.edge",
+			"actionId": "work",
+			"label": "「強さには強さで答える」",
+			"startdescription": "「世界を覆う光は降伏を喜ばない。息を引き取るまで戦え。太陽の棲む家の天使たちが互いに戦うように、我々も、最終的に征服されるまで、戦わなければいけない」[伝承が深ければ深いほど、「歓喜」を生み出す可能性が高くなる。]",
+			"effects": {
+				"funds": 1,
+				"fervour": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"challenges": {
+						"edge": "base"
+					},
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "preach.forge",
+			"actionId": "work",
+			"label": "「森のことを考えても無駄だ。炎が来て灰に変えてしまったから」",
+			"startdescription": "「我々は皆、変化する。ある時は生きていないものに、ある時は一度も生きたことがないものに、ある時は栄光に満ちたものに変えられる。そして時には、自分自身を変えることもある。ここは太陽の影が待つ十字路だ」[伝承が深ければ深いほど、「歓喜」を生み出す可能性が高くなる。]",
+			"effects": {
+				"funds": 1,
+				"fervour": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"challenges": {
+						"forge": "base"
+					},
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "preach.grail",
+			"actionId": "work",
+			"label": "「母の道を歩んできた汝の手に、彼女の聖杯を委ねよう」",
+			"startdescription": "「我々の魂は、肉体である家に宿っている。五感は窓であり、それぞれの感覚には欲望が伴う。欲望が満たされないままにしておくことは、窓を手入れしないままにしておくことと同じだ。窓の汚い家に住みたいと思う者はいないだろう。[伝承が深ければ深いほど、「歓喜」を生み出す可能性が高くなる。]",
+			"effects": {
+				"funds": 1,
+				"fervour": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"challenges": "grail",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "preach.heart",
+			"actionId": "work",
+			"label": "「偽りの者の心は止まれば奪われるが、真の者の心は止まらない」",
+			"startdescription": "「太陽の棲む家では、栄光の天使たちの踊りが止まることはない。波や傷や雪に見舞われたた者は、家から姿を消した。踊りの中で彼らの役割が満たされている限り、彼らが戻ってくることはない。だから手を取り合って、一緒に踊ろう」[伝承が深ければ深いほど、「歓喜」を生み出す可能性が高くなる。]",
+			"effects": {
+				"funds": 1,
+				"fervour": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"challenges": "heart",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "preach.knock",
+			"actionId": "work",
+			"label": "「見よ、彼は壊されても再び建てることはできず、人を開いても閉じられない」",
+			"startdescription": "「あなたはこの地の扉を開いた。私はその扉をくぐり抜け、あなたの前に立っているが、時が来れば、私は開き、あなたは私を通り抜けて、ここよりも高い場所に立つだろう。これは約束だ」[伝承が深ければ深いほど、「歓喜」を生み出す可能性が高くなる。]",
+			"effects": {
+				"funds": 1,
+				"fervour": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"challenges": "knock",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "preach.lantern",
+			"actionId": "work",
+			"label": "「慈悲と真実は王を守るが、光を守るのは真実だけだ」",
+			"startdescription": "「栄光は真実を求める。真実を身にまとっていれば、それによって燃やされることはない。[伝承が深ければ深いほど、「歓喜」を生み出す可能性が高くなる。]",
+			"effects": {
+				"funds": 1,
+				"fervour": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"challenges": "lantern",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "preach.moth",
+			"actionId": "work",
+			"label": "「彼らは私を導き、最初に暗闇へと、そして光へと連れてきた」",
+			"startdescription": "「栄光は真実を求める。嘘を身にまとっていれば、それを燃やし尽くしてくれるだろう。[伝承が深ければ深いほど、「歓喜」を生み出す可能性が高くなる。]",
+			"effects": {
+				"funds": 1,
+				"fervour": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"challenges": "moth",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "preach.secrethistories",
+			"actionId": "work",
+			"label": "「古い衣服にあて布を縫い付け、その衣服が破れてしまったら、それは1着の衣服なのか、2着なのか、それとも衣服ではなくなるのだろうか」",
+			"startdescription": "「私はこの言葉をあなたに伝えた。私はこの言葉をあなたに伝えなかった。昨日は、どちらも偽りであった。明日は何が真実となるだろう？[伝承が深ければ深いほど、「歓喜」を生み出す可能性が高くなる。]",
+			"effects": {
+				"funds": 1,
+				"fervour": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"challenges": "secrethistories",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "preach.winter",
+			"actionId": "work",
+			"label": "「彼は一人で静かに座っている。冬は永遠には続かないから」",
+			"startdescription": "「口を閉じ、耳を閉じて、耳を傾けよ」[伝承が深ければ深いほど、「歓喜」を生み出す可能性が高くなる。]",
+			"effects": {
+				"funds": 1,
+				"fervour": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"challenges": "winter",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "priest.repevent",
+			"actionId": "priest.repevent",
+			"label": "歓喜",
+			"startdescription": "時には私の言葉と私の借り物の言葉が、私の信徒を単なる集中を超えて、歓喜に追い込む。",
+			"description": "@#reputation| 私たちの崇拝行為は議論を呼んでいる.....\n#funds|残りの会衆も惜しみなく献金を捧げ、献金皿以外にも寄付をした。@",
+			"slots": [
+				{
+					"id": "society",
+					"label": "仲間の輪",
+					"description": "最も熱心な参拝者を仲間入りさせても良いかもしれない......",
+					"required": {
+						"society": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "priest.repevent.devotee.edge",
+					"requirements": {
+						"venerationedge": 1
+					},
+					"deckeffect": {
+						"priest.repevent": 1
+					},
+					"label": "インスピレーション",
+					"description": "崇拝者が、分裂の聖アグネスの夢を見た！一方、@#reputation|私たちの崇拝行為は議論を呼んでいる.....\n#funds|残りの会衆も惜しみなく献金を捧げ、献金皿以外にも寄付をした。@",
+					"effects": {
+						"funds": 2,
+						"devotee_edge": 1
+					}
+				},
+				{
+					"id": "priest.repevent.devotee.forge",
+					"requirements": {
+						"venerationforge": 1
+					},
+					"deckeffect": {
+						"priest.repevent": 1
+					},
+					"label": "インスピレーション",
+					"description": "崇拝者が、炎の聖アグネスの夢を見た！一方、@#reputation|私たちの崇拝行為は議論を呼んでいる.....\n#funds|残りの会衆も惜しみなく献金を捧げ、献金皿以外にも寄付をした。@",
+					"effects": {
+						"funds": 2,
+						"devotee_forge": 1
+					}
+				},
+				{
+					"id": "priest.repevent.devotee.grail",
+					"requirements": {
+						"venerationgrail": 1
+					},
+					"deckeffect": {
+						"priest.repevent": 1
+					},
+					"label": "インスピレーション",
+					"description": "崇拝者が、赤の聖アグネスの夢を見た！一方、@#reputation|私たちの崇拝行為は議論を呼んでいる.....\n#funds|残りの会衆も惜しみなく献金を捧げ、献金皿以外にも寄付をした。@",
+					"effects": {
+						"funds": 2,
+						"devotee_grail": 1
+					}
+				},
+				{
+					"id": "priest.repevent.devotee.heart",
+					"requirements": {
+						"venerationheart": 1
+					},
+					"deckeffect": {
+						"priest.repevent": 1
+					},
+					"label": "インスピレーション",
+					"description": "崇拝者が太鼓の聖アグネスの夢を見た！一方、@#reputation|私たちの崇拝行為は議論を呼んでいる.....\n#funds|残りの会衆も惜しみなく献金を捧げ、献金皿以外にも寄付をした。@",
+					"effects": {
+						"funds": 2,
+						"devotee_heart": 1
+					}
+				},
+				{
+					"id": "priest.repevent.devotee.knock",
+					"requirements": {
+						"venerationknock": 1
+					},
+					"deckeffect": {
+						"priest.repevent": 1
+					},
+					"label": "インスピレーション",
+					"description": "崇拝者が入り口の聖アグネスの夢を見た！一方、@#reputation|私たちの崇拝行為は議論を呼んでいる.....\n#funds|残りの会衆も惜しみなく献金を捧げ、献金皿以外にも寄付をした。@",
+					"effects": {
+						"funds": 2,
+						"devotee_knock": 1
+					}
+				},
+				{
+					"id": "priest.repevent.devotee.lantern",
+					"requirements": {
+						"venerationlantern": 1
+					},
+					"deckeffect": {
+						"priest.repevent": 1
+					},
+					"label": "インスピレーション",
+					"description": "崇拝者が蝋燭の聖アグネスの夢を見た！一方、@#reputation|私たちの崇拝行為は議論を呼んでいる.....\n#funds|残りの会衆も惜しみなく献金を捧げ、献金皿以外にも寄付をした。@",
+					"effects": {
+						"funds": 2,
+						"devotee_lantern": 1
+					}
+				},
+				{
+					"id": "priest.repevent.devotee.moth",
+					"requirements": {
+						"venerationmoth": 1
+					},
+					"deckeffect": {
+						"priest.repevent": 1
+					},
+					"label": "インスピレーション",
+					"description": "崇拝者が、ハサミの聖アグネスの夢を見た！一方、@#reputation|私たちの崇拝行為は議論を呼んでいる.....\n#funds|残りの会衆も惜しみなく献金を捧げ、献金皿以外にも寄付をした。@",
+					"effects": {
+						"funds": 2,
+						"devotee_moth": 1
+					}
+				},
+				{
+					"id": "priest.repevent.devotee.winter",
+					"requirements": {
+						"venerationwinter": 1
+					},
+					"deckeffect": {
+						"priest.repevent": 1
+					},
+					"label": "インスピレーション",
+					"description": "夢を語ろうとしない崇拝者が来たが、語る必要はない！一方、@#reputation|私たちの崇拝行為は議論を呼んでいる.....\n#funds|残りの会衆も惜しみなく献金を捧げ、献金皿以外にも寄付をした。@",
+					"effects": {
+						"funds": 2,
+						"devotee_winter": 1
+					}
+				}
+			],
+			"deckeffect": {
+				"priest.repevent": 1
+			},
+			"effects": {
+				"funds": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "work.priest.passion",
+			"actionId": "work",
+			"label": "礼拝を行う",
+			"startdescription": "即興で説教をする。",
+			"description": "会衆が耳を澄ませている。今日は秘密教義について説いていない。",
+			"requirements": {
+				"priestjob": 1,
+				"passion": 1
+			},
+			"effects": {
+				"funds": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"chance": 90,
+					"additional": true
+				}
+			],
+			"warmup": 50,
+			"craftable": true
+		},
+		{
+			"id": "work.priest.reason",
+			"actionId": "work",
+			"label": "礼拝を行う",
+			"startdescription": "慎重に説教の用意をする。",
+			"description": "会衆が耳を澄ませている。今日は秘密教義について説いていない。",
+			"requirements": {
+				"priestjob": 1,
+				"reason": 1
+			},
+			"effects": {
+				"funds": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"chance": 10,
+					"additional": true
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work.openscar",
+			"actionId": "work",
+			"label": "傷跡を開く",
+			"startdescription": "私が7つの錠になれば、私は開かれ、会衆を通すことができる。過ぎ去った長い夜の中で、憧れがそれを教えてくれた。会衆の祈りが私の痛みを賛美してくれる。",
+			"description": "痛みが引いていく。一瞬は安堵し、その後絶望が押し寄せてくる。おそらく私はまだ準備ができていない。そうなる日は訪れないのかもしれない。",
+			"requirements": {
+				"ritual": 1,
+				"lockscar": 1,
+				"knock": 24
+			},
+			"effects": {
+				"dread": 1
+			},
+			"aspects": {
+				"unlockscar": 1
+			},
+			"linked": [
+				{
+					"id": "work.openscar.continue"
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "work.openscar.continue",
+			"actionId": "work",
+			"label": "もう1つの傷",
+			"startdescription": "もう1つ。忠実な信奉者たちは、私の喉の渇きを癒し、私の口から血を拭いながら、一生懸命に道具を使い、涙を流している。熟した果物のように破裂するのかもしれないし、雨のように降るのかもしれない。",
+			"description": "痛みが引いていく。私はまだ準備ができていないのだろう。",
+			"slots": [
+				{
+					"id": "scar",
+					"label": "私の錠",
+					"required": {
+						"lockscar": 1
+					}
+				}
+			],
+			"effects": {
+				"dread": 1
+			},
+			"alt": [
+				{
+					"id": "minorknockvictory"
+				},
+				{
+					"id": "work.openscar.failed"
+				}
+			],
+			"linked": [
+				{
+					"id": "work.openscar.continue"
+				}
+			],
+			"aspects": {
+				"unlockscar": 1
+			},
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "work.openscar.failed",
+			"actionId": "work",
+			"label": "もう1つの傷？",
+			"startdescription": "痛みの波が引いていく。一瞬は安堵し、その後絶望が押し寄せてくる。おそらく私はまだ準備ができていない。そうなる日は訪れないのかもしれない。",
+			"requirements": {
+				"lockscar": -1
+			},
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "minorknockvictory",
+			"actionId": "work",
+			"label": "入り口",
+			"startdescription": "人々は、泣き叫び、笑いながら私から身を引いていった。あれだけのことをした今、彼らの目に私は美しく映らないのだろう。しかし今では、まるで私が新しい空になるかのように、彼らは見上げてくる――",
+			"requirements": {
+				"openedlockscar": 6,
+				"lockscar": 1
+			},
+			"warmup": 30,
+			"signalEndingFlavour": "Grand",
+			"ending": "minorknockvictory"
+		},
+		{
+			"id": "work.priest.scarhealth.hint",
+			"actionId": "work",
+			"label": "「入り口になるには？」",
+			"requirements": {
+				"priestjob": 1,
+				"health": 1
+			},
+			"startdescription": "聖アグネスが私をここに引き寄せた。ここなら、私は自分の可能性を十分に発揮できるかもしれない――単に扉を開くだけではなく自分自身に、扉、に<i>なれる</i>のかもしれない。[レベル10以上の伝承と熱狂をを追加し、傷跡の鍵を生み出し始める。]",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "work.priest.scarhealth",
+			"actionId": "work",
+			"label": "「入り口になる」",
+			"requirements": {
+				"priestjob": 1,
+				"health": 1,
+				"lore": 1,
+				"fervour": 1
+			},
+			"startdescription": "会衆は私の目の前に立ち、歌声を上げ、赤くなった顔を上げる。この世には、目に見える扉はほとんどなく、開いている扉はさらに少ない。もし私がその結果を恐れないのであれば、いつか会衆たちが通る扉になれるのかもしれない。「叩けよさらば開かれん」",
+			"description": "会衆は私の苦行に満足をしていたが、神の輝きは消えていた。[傷跡の鍵を生み出すには落ち着きのなさ、レベル10以上の伝承、そして身体や精神の特定の修行が必要。傷は各種類１つずつしか持てない。]",
+			"aspects": {
+				"damagehealth": 1
+			},
+			"effects": {
+				"fervour": -1,
+				"funds": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"chance": 90,
+					"additional": true
+				}
+			],
+			"slots": [
+				{
+					"id": "restlessnessfuel",
+					"label": "憧れ",
+					"required": {
+						"restlessness": 1
+					},
+					"greedy": true
+				}
+			],
+			"linked": [
+				{
+					"id": "work.priest.scarhealth.restlessnesspresent"
+				}
+			],
+			"craftable": true,
+			"warmup": 60
+		},
+		{
+			"id": "work.priest.scarhealth.restlessnesspresent",
+			"actionId": "work",
+			"label": "入り口の働き",
+			"startdescription": "助祭は聖レスピシウスの書から1節を読み上げる。「青銅は形作るが、心臓は働く。空腹は赤い杯を示し、病は雪を示す。灯りは知っているが、蛾は理解している。そして剣は、時が来ると、自身の答えとなる」",
+			"description": "苦しまなければならなかったが、苦しみ足りていないのかもしれない。私の落ち着きのなさは鎮まり、会衆は満足していたが、ただそれだけだ。[傷跡の鍵を生み出すには落ち着きのなさ、レベル10以上の伝承、そして伝承と一致する、身体や精神の修行が必要。傷は各種類１つずつしか持てない。]",
+			"requirements": {
+				"restlessness": 1
+			},
+			"effects": {
+				"restlessness": -1
+			},
+			"slots": [
+				{
+					"id": "discipline",
+					"label": "修行",
+					"required": {
+						"injury": 1,
+						"compensationb": 1,
+						"hunger": 1,
+						"vitality": 1,
+						"erudition": 1,
+						"glimmering": 1,
+						"affliction": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "a_scarhealth_edge",
+					"chance": 100
+				},
+				{
+					"id": "a_scarhealth_forge",
+					"chance": 100
+				},
+				{
+					"id": "a_scarhealth_grail",
+					"chance": 100
+				},
+				{
+					"id": "a_scarhealth_heart",
+					"chance": 100
+				},
+				{
+					"id": "a_scarhealth_lantern",
+					"chance": 100
+				},
+				{
+					"id": "a_scarhealth_moth",
+					"chance": 100
+				},
+				{
+					"id": "a_scarhealth_winter",
+					"chance": 100
+				},
+				{
+					"id": "a_noscar_secrethistories",
+					"chance": 100
+				},
+				{
+					"id": "a_noscar_knock",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "a_scarhealth_edge",
+			"actionId": "work",
+			"label": "ナナトグロの幻像",
+			"startdescription": "幻像では、私の傷には７本の枝が生えていて、それぞれの枝からさらに７本の枝が映えていた。そして、それらの枝には７つの頭がある。幻像では、傷跡を武器にする者が1人1人の頭を切断していく。彼はそれぞれの頭を聖アグネスに渡す。彼女はロウソクを持って待っている。そして切り取られるたびに、私の苦痛は増していく。",
+			"description": "会衆は一晩中寝ずに待っていた。私が目を覚ますと、傷口はすべて閉じていた。傷跡は残っている。[体力が永久的に傷に変換された。印の数は全部で7つで、7つの傷跡の鍵が必要になる。どんなに困難でも、あきらめなければ必ず道はある。]",
+			"requirements": {
+				"edge": 10,
+				"restlessness": 1,
+				"injury": 2
+			},
+			"extantreqs": {
+				"lockscaredge": -1,
+				"openedlockscaredge": -1
+			},
+			"effects": {
+				"injury": -1,
+				"lockscaredge": 1,
+				"fervour": -1,
+				"restlessness": -1
+			},
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "a_scarhealth_forge",
+			"actionId": "work",
+			"label": "火打石の幻影",
+			"startdescription": "幻影の中で私は、太陽の棲む家の下にある冷たいトンネルの中を、ネフライトと黒翡翠のランプに照らされながら歩いていた。火打石が壁から突き出ていて、その先端は熱を放っている。1つ1つを手で触れていく。火打石は鋭さを失っているから、会衆がロウソクを持ってくるだろう。",
+			"description": "会衆は一晩中寝ずに待っていた。私が目を覚ますと、傷口はほとんど治っていた。傷跡は残るだろう。[体力が永久的に傷に変換された。印の数は全部で7つで、7つの傷跡の鍵が必要になる。どんなに困難でも、あきらめなければ必ず道はある。]",
+			"requirements": {
+				"forge": 16,
+				"restlessness": 1,
+				"compensationb": 1
+			},
+			"extantreqs": {
+				"lockscarforge": -1,
+				"openedlockscarforge": -1
+			},
+			"effects": {
+				"injury": -1,
+				"lockscarforge": 1,
+				"restlessness": -1,
+				"fervour": -1,
+				"compensationb": -1
+			},
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "a_scarhealth_grail",
+			"actionId": "work",
+			"label": "赤い杯の幻影",
+			"startdescription": "「さあ、傷が痛みをもたらすとは限らないことを教えてあげる」と幻影の中で象牙色の女が言った。を教えてあげよう。彼女は、薔薇色の糸が青白い体にまんべんなく広がっていくまで、私の血の海に口をつけた。",
+			"description": "会衆は一晩中寝ずに待っていた。私が目を覚ますと、傷口はほとんど見えない。傷跡は残るだろう。[体力が永久的に傷に変換された。印の数は全部で7つで、7つの傷跡の鍵が必要になる。どんなに困難でも、あきらめなければ必ず道はある。]",
+			"requirements": {
+				"grail": 14,
+				"restlessness": 1,
+				"hunger": 1
+			},
+			"extantreqs": {
+				"lockscargrail": -1,
+				"openedlockscargrail": -1
+			},
+			"effects": {
+				"injury": -1,
+				"lockscargrail": 1,
+				"restlessness": -1,
+				"fervour": -1
+			},
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "a_scarhealth_heart",
+			"actionId": "work",
+			"label": "松の幻影",
+			"startdescription": "幻影では、松の幹に火がついていたが、移り変わる火の光の中をダンサーの影が行ったり来たりしていた。ドラムが叩かれるたびに皮膚を1枚ずつ払いのけたが、ナイフを持っていたのは聖アグネスではなく、ついに我慢できなくなり、抑えていた悲鳴がすべて噴き出した――",
+			"description": "会衆は一晩中寝ずに待っていた。私が目を覚ますと、心臓の上にある傷口以外は見えなかった。それも、時間が経てば治るだろうが、傷跡は残る。[体力が永久的に傷に変換された。印の数は全部で7つで、7つの傷跡の鍵が必要になる。どんなに困難でも、あきらめなければ必ず道はある。]",
+			"requirements": {
+				"heart": 11,
+				"restlessness": 1,
+				"vitality": 1
+			},
+			"extantreqs": {
+				"lockscarheart": -1,
+				"openedlockscarheart": -1
+			},
+			"effects": {
+				"injury": -1,
+				"lockscarheart": 1,
+				"restlessness": -1,
+				"fervour": -1,
+				"vitality": -1
+			},
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "a_scarhealth_lantern",
+			"actionId": "work",
+			"label": "孔雀の幻影",
+			"startdescription": "幻像の中で、壁を切り開いて第2の広間に入ると、壁は孔雀のように悲鳴を上げ、金色の血を流した。日陰の斜面から太陽の棲む家の明るい廊下へと、私たちは堂々と歩いた。言葉を発するために口を開いているが、生まれてくるものがすべてそうであるように、最初に発された言葉は叫び声だった。",
+			"description": "会衆は一晩中寝ずに待っていた。私が目を覚ますと、口が頬まで裂かれていた。ほぼ治りかけているが、話すことは困難だろう。傷口はいずれ治り、私の言葉は新しくなるだろう。しかし、傷跡は残るはずだ。[体力が永久的に傷に変換された。印の数は全部で7つで、7つの傷跡の鍵が必要になる。どんなに困難でも、あきらめなければ必ず道はある。]",
+			"requirements": {
+				"lantern": 11,
+				"restlessness": 1,
+				"erudition": 1
+			},
+			"extantreqs": {
+				"lockscarlantern": -1,
+				"openedlockscarlantern": -1
+			},
+			"effects": {
+				"injury": -1,
+				"lockscarlantern": 1,
+				"restlessness": -1,
+				"fervour": -1,
+				"erudition": -1
+			},
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "a_scarhealth_moth",
+			"actionId": "work",
+			"label": "せん断の幻影",
+			"startdescription": "幻影の中で、自分たちの翼が見え、鋏の前に翼を広げる音が聞こえた。腹には白黒の包帯を巻いていて、くちばしは鋏のように鋭い。我々の体は、さなぎに収められ、暗闇に閉じ込められてしまう。卵を割って、髪を盗み、中から見守ろう。",
+			"description": "会衆は一晩中寝ずに待っていた。私は目を覚ました。背中にある2つの傷口は治るが、傷跡は残るだろう。 [体力が永久的に傷に変換された。印の数は全部で7つで、7つの傷跡の鍵が必要になる。どんなに困難でも、あきらめなければ必ず道はある。]",
+			"requirements": {
+				"moth": 12,
+				"restlessness": 1,
+				"glimmering": 1
+			},
+			"extantreqs": {
+				"lockscarmoth": -1,
+				"openedlockscarmoth": -1
+			},
+			"effects": {
+				"injury": -1,
+				"lockscarmoth": 1,
+				"restlessness": -1,
+				"fervour": -1,
+				"glimmering": -1
+			},
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "a_scarhealth_winter",
+			"actionId": "work",
+			"label": "9年の幻影",
+			"startdescription": "壁の白で待つ。ゆっくりとした太陽を眺める。キオネーは静かに通りを歩く。彼女のスカートは風のようになびき、彼女の表面はとても白い。嵐の中で止まるものを見よ。",
+			"description": "日の出に私が白い夢から目を覚ますと、会衆が待っていた。霜で手が枯れてしまった。傷口はないが、傷跡は残るだろう。[体力が永久的に傷に変換された。印の数は全部で7つで、7つの傷跡の鍵が必要になる。どんなに困難でも、あきらめなければ必ず道はある。]",
+			"requirements": {
+				"winter": 12,
+				"restlessness": 1,
+				"affliction": 1
+			},
+			"extantreqs": {
+				"lockscarwinter": -1,
+				"openedlockscarwinter": -1
+			},
+			"effects": {
+				"injury": -1,
+				"lockscarwinter": 1,
+				"restlessness": -1,
+				"fervour": -1
+			},
+			"craftable": false
+		},
+		{
+			"id": "a_noscar_knock",
+			"actionId": "work",
+			"label": "聖アグネスの幻影",
+			"startdescription": "私は寝ずの番を始めた。私の口と目は開いている。それを通って、会衆が讃美歌を上げる中、聖アグネスは探る手のように入ってくる。",
+			"description": "聖アグネスが私の舌の鍵を開け、私は血を味わった。聖アグネスが私の心臓の血管を包むと一瞬の痛みを感じた。聖アグネスは1つ目の傷口を通って出発する。私の腹の穴にある傷は、私の誕生の蛇が切断された場所だ。しかし最初に彼女は私に賛同し、高揚させてくれる。私自身が道となるまで、これが私の道だ。信奉者たちが通れるように、私は扉のように開いていくだろう。[開錠と秘史では傷跡の鍵は作れない。その他の7つの属性のみが有効である。]",
+			"requirements": {
+				"knock": 3
+			},
+			"effects": {
+				"funds": 1,
+				"restlessness": -1,
+				"fervour": -1,
+				"influenceknockc": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "a_noscar_secrethistories",
+			"actionId": "work",
+			"label": "百八の幻",
+			"startdescription": "私は寝ずの番を始めた。会衆の声はどんどんと高くなっていく。窓から差し込む光が祭壇の前で混ざり合っていた。その光の中で、私は、まだ起きていない出来事を見た......",
+			"description": "偉大な王子たちは黒と黄色の縞模様の服を着て頭巾を被り、黄金の高価な装飾品を身にまとい、骨の野原に横たわっている。彼らの目は空に向かって開き、鱗は傷つき冷たくなっている。とうとう姿が目で見えるのだ。彼らを見ることは長い間禁じられていたことである。これは起こらなかったことだ。[開錠と秘史では傷跡の鍵は作れない。その他の7つの属性のみが有効である。]",
+			"requirements": {
+				"secrethistories": 2
+			},
+			"effects": {
+				"funds": 1,
+				"restlessness": -1,
+				"fervour": -1,
+				"erudition": 1
+			},
+			"craftable": false
+		}
+	]
+}

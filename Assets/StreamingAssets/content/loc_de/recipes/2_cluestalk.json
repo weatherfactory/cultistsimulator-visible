@@ -1,0 +1,301 @@
+{
+	"recipes": [
+		{
+			"id": "recruitindependentresentmenthint",
+			"label": "Jemand Unabhängigen rekrutieren?",
+			"actionId": "talk",
+			"requirements": {
+				"independent": 1,
+				"mortal": 1,
+				"resentment": 1
+			},
+			"startdescription": "Nein. Der hier hat nicht vergessen, was zwischen uns vorgefallen ist. Vielleicht ändern sich seine Gefühle eines Tages, wenn ich ihm nicht weiter zusetze.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "recruitindependenthint",
+			"label": "Jemand Unabhängigen rekrutieren?",
+			"actionId": "talk",
+			"requirements": {
+				"independent": 1,
+				"mortal": 1,
+				"resentment": -1
+			},
+			"startdescription": "Könnte sich mir anschließen ... wenn ich denn den Aspekt unseres Kultes auf den 21. Grad bringe. [Du kannst einen Störenfried rekrutieren, selbst jemanden einer anderen Überzeugung, wenn du genug Macht aufbieten kannst – doch du musst mindestens 1 Werkzeug als Geschenk für den Unabhängigen haben.].",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "promoteto_d_edgehint",
+			"label": "Einen Jünger erhöhen?",
+			"actionId": "talk",
+			"requirements": {
+				"cultedge_1": 1,
+				"follower": 1,
+				"disciple": 1
+			},
+			"startdescription": "Um einen Jünger zu einem Meuchelmörder zu erhöhen, brauche ich mindestens eine Kante der 21. Intensität. In jedem Falle eignen sich dazu nur die Wildesten.",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_forgehint",
+			"label": "Einen Jünger erhöhen?",
+			"actionId": "talk",
+			"requirements": {
+				"cultforge_1": 1,
+				"follower": 1,
+				"disciple": 1
+			},
+			"startdescription": "Um einen Jünger zu einem Umformer zu erhöhen, brauche ich mindestens eine Schmiede der 21. Intensität. In jedem Falle eignen sich dazu nur die Einfallsreichsten und Effektivsten.",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_grailhint",
+			"label": "Einen Jünger erhöhen?",
+			"actionId": "talk",
+			"requirements": {
+				"cultgrail_1": 1,
+				"follower": 1,
+				"disciple": 1
+			},
+			"startdescription": "Um einen Jünger zu einem Cyprian zu erhöhen, brauche ich mindestens einen Gral der 21. Intensität. In jedem Falle eignen sich dazu nur diejenigen mit dem unstillbarsten Appetit.",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_hearthint",
+			"label": "Einen Jünger erhöhen?",
+			"actionId": "talk",
+			"requirements": {
+				"cultheart_1": 1,
+				"follower": 1,
+				"disciple": 1
+			},
+			"startdescription": "Um einen Jünger zu einem Taratellisten zu erhöhen, brauche ich mindestens ein Herz der 21. Intensität. In jedem Falle eignen sich dazu nur die Lebhaftesten.",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_knockhint",
+			"label": "Einen Jünger erhöhen?",
+			"actionId": "talk",
+			"requirements": {
+				"cultknock_1": 1,
+				"follower": 1,
+				"disciple": 1
+			},
+			"startdescription": "Um einen Jünger zu einem Schlüssel zu erhöhen, brauche ich mindestens ein Klopfen der 21. Intensität.  In jedem Falle eignen sich dazu nur die Begabtesten.",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_lanternhint",
+			"label": "Einen Jünger erhöhen?",
+			"actionId": "talk",
+			"requirements": {
+				"cultlantern_1": 1,
+				"follower": 1,
+				"disciple": 1
+			},
+			"startdescription": "Um einen Jünger zu einem Seher zu erhöhen, brauche ich mindestens eine Laterne der 21. Intensität.  In jedem Falle eignen sich dazu nur die Hellsichtigsten.",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_mothhint",
+			"label": "Einen Jünger erhöhen?",
+			"actionId": "talk",
+			"requirements": {
+				"cultmoth_1": 1,
+				"follower": 1,
+				"disciple": 1
+			},
+			"startdescription": "Um einen Jünger zu einem Zwicker zu erhöhen, brauche ich mindestens eine Motte der 21. Intensität.  In jedem Falle eignen sich dazu nur sehr außergewöhnliche Individuen.",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_winterhint",
+			"label": "Einen Jünger erhöhen?",
+			"actionId": "talk",
+			"requirements": {
+				"venerationwinter": 1,
+				"venerationedge": -1,
+				"venerationforge": -1,
+				"venerationgrail": -1,
+				"venerationheart": -1,
+				"venerationlantern": -1,
+				"venerationknock": -1,
+				"venerationmoth": -1,
+				"follower": 1,
+				"disciple": 1
+			},
+			"startdescription": "Um einen Jünger zu einem Rang ohne Namen zu erhöhen, brauche ich mindestens einen Winter der 21. Intensität.  In jedem Falle eignen sich dazu nur die tristesten Seelen.",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "promotetodisciplehint",
+			"label": "Einen Gläubigen befördern?",
+			"actionId": "talk",
+			"requirements": {
+				"society": 1,
+				"follower": 1,
+				"disciple": -1,
+				"summoned": -11
+			},
+			"startdescription": "Um einen Gläubigen zu einem Jünger zu befördern, muss ich einen passenden Aspekt für den Kult bereitstellen, mindestens der 7. Intensität.",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "talktobenefactorhint",
+			"label": "Mein Wohltäter besteht auf Diskretion",
+			"actionId": "talk",
+			"requirements": {
+				"benefactor": 1
+			},
+			"startdescription": "'Wir können hier nicht reden. Lass uns diskret sein.'",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "recruitacquaintancenoculthint",
+			"label": "Einen neuen Anhänger rekrutieren?",
+			"actionId": "talk",
+			"requirements": {
+				"society": -1,
+				"acquaintance": 1
+			},
+			"startdescription": "[Sobald du einen Kult etabliert hast, kannst du mit dem Kult <b>REDEN</b> um eine Bekanntschaft zu rekrutieren.]",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "recruitacquaintancehint",
+			"label": "Einen neuen Anhänger rekrutieren?",
+			"actionId": "talk",
+			"requirements": {
+				"society": 1,
+				"acquaintance": 1
+			},
+			"startdescription": "Um einen Anhänger zu rekrutieren, brauche ich ein wenig von der Macht, die wir verehren. Ich könnte sie von einem Einfluss, einem Werkzeug, einer Zutat oder einfach dem Wissen über unsere Traditionen bekommen.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "talk_aladim_wantscommission",
+			"label": "Ein Auftrag?",
+			"actionId": "talk",
+			"requirements": {
+				"aladim": 1
+			},
+			"startdescription": "'Wie läuft's denn mit dem Auftrag? Ich freue mich schon, deine Gedanken dazu zu hören.'",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "talk_bechet_wantscommission",
+			"label": "Ein Auftrag?",
+			"actionId": "talk",
+			"requirements": {
+				"bechet": 1
+			},
+			"startdescription": "'Tach. Hast du was für mich? Der Auftrag?'",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "talk_jannings_wantscommission",
+			"label": "Ein Auftrag?",
+			"actionId": "talk",
+			"requirements": {
+				"jannings": 1
+			},
+			"startdescription": "'Bitte, erledigst du endlich den Auftrag? Meine Kollegen brauchen dringend die Informationen.'",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "talk_poppy_wantscommission",
+			"label": "Ein Auftrag?",
+			"actionId": "talk",
+			"requirements": {
+				"poppycommission": 1
+			},
+			"startdescription": "'Ach, jetzt mach mal hinne mit dem Auftrag! Ich kann nicht länger warten.'",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "fulfilcommission_aladimhint",
+			"label": "Einen Auftrag für den Doktor erledigen?",
+			"actionId": "talk",
+			"requirements": {
+				"commission": 1,
+				"aladim": 1,
+				"article": 1
+			},
+			"startdescription": "'Mm. Ich hatte mir mehr erhofft.' [Schau in den Details zum Auftrag nach.]",
+			"warmup": 10,
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "fulfilcommission_bechethint",
+			"label": "Einen Auftrag für Mme Bechet erledigen?",
+			"actionId": "talk",
+			"requirements": {
+				"commission": 1,
+				"bechet": 1,
+				"article": 1
+			},
+			"startdescription": "'Bedaure, das reicht mir nicht ganz. Ich hatte mir etwas anderes gewünscht.' [Schau in den Details zum Auftrag nach.]",
+			"warmup": 10,
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "fulfilcommission_janningshint",
+			"label": "Einen Auftrag für den Grafen erledigen?",
+			"actionId": "talk",
+			"requirements": {
+				"commission": 1,
+				"jannings": 1,
+				"article": 1
+			},
+			"startdescription": "'Nein, nein, nein. Das reicht mir nicht. Meine Anweisungen waren sehr präzise.' [Schau in den Details zum Auftrag nach.]",
+			"warmup": 10,
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "fulfilcommission_poppyhint",
+			"label": "Einen Auftrag für Poppy erledigen?",
+			"actionId": "talk",
+			"requirements": {
+				"commission": 1,
+				"poppycommission": 1,
+				"article": 1
+			},
+			"startdescription": "'Ach, herrje. Bedaure. Ich brauche mehr ... Einsichten.' [Schau in den Details zum Auftrag nach.]",
+			"warmup": 10,
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "talk_nointeraction_mortal",
+			"label": "Nichts zu sagen?",
+			"actionId": "talk",
+			"requirements": {
+				"mortal": 1
+			},
+			"startdescription": "'Ich glaube nicht, dass wir uns etwas zu sagen haben.'",
+			"craftable": false,
+			"hintonly": true
+		}
+	]
+}

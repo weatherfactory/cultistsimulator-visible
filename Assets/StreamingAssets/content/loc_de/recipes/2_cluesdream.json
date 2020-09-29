@@ -1,0 +1,119 @@
+{
+	"recipes": [
+		{
+			"id": "temptationremembrancehintdream",
+			"label": "Versuchungen?",
+			"actionId": "dream",
+			"requirements": {
+				"temptation.remembrance": 1
+			},
+			"startdescription": "Es gibt Farben in der Welt, es gibt Farben im Mansus, und dann wären da noch verlorene Farben. Ihr Fehlen ist das Messer, das ich nicht loslassen kann. [Die Versuchung des Gedenkens hat ihre Zähne in die geschlagen, und keine andere Versuchung wird dich anrühren.]",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "vitalityhintdream",
+			"label": "Vitalität",
+			"actionId": "dream",
+			"requirements": {
+				"vitality": 1
+			},
+			"startdescription": "Provoziert keine Träume, aber ich könnte durch ihr Studium meine Gesundheit verbessern.",
+			"craftable": false,
+			"hintonly": true,
+			"comments": "Not currently possible with restrictions on Dream primary slot"
+		},
+		{
+			"id": "eruditionhintdream",
+			"label": "Erudition",
+			"actionId": "dream",
+			"requirements": {
+				"erudition": 1
+			},
+			"startdescription": "Provoziert keine Träume, aber ich könnte durch ihr Studium meinen Verstand verbessern.",
+			"craftable": false,
+			"hintonly": true,
+			"comments": "Not currently possible with restrictions on Dream primary slot"
+		},
+		{
+			"id": "glimmeringhintdream",
+			"label": "Schimmern",
+			"actionId": "dream",
+			"requirements": {
+				"glimmering": 1
+			},
+			"startdescription": "Provoziert keine Träume, noch nicht, aber ich könnte durch sein Studium meine Leidenschaft verbessern.",
+			"craftable": false,
+			"hintonly": true,
+			"comments": "Not currently possible with restrictions on Dream primary slot"
+		},
+		{
+			"id": "contentmenthintdream",
+			"label": "Zufriedenheit",
+			"actionId": "dream",
+			"requirements": {
+				"contentment": 1
+			},
+			"startdescription": "Zufriedenheit ist kein Schlüssel zu Träumen, wobei Träume mich manchmal zufrieden machen.",
+			"craftable": false,
+			"hintonly": true,
+			"comments": "Not currently possible with restrictions on Dream primary slot"
+		},
+		{
+			"id": "dedicationtoobsession_power_hint",
+			"label": "Der nächste Schritt",
+			"actionId": "dream",
+			"requirements": {
+				"ascensionpowerb": 1
+			},
+			"startdescription": "Ich bin so weit gegangen wie ich träumen kann. Ich muss das <b>Werk</b> vollbringen.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "dedicationtoobsession_enlightenment_hint",
+			"label": "Der nächste Schritt",
+			"actionId": "dream",
+			"requirements": {
+				"ascensionenlightenmentb": 1
+			},
+			"startdescription": "Ich bin so weit gegangen wie ich träumen kann. Ich muss das <b>Werk</b> vollbringen.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "tryreducefascination",
+			"label": "Du suchst nach Gelassenheit?",
+			"actionId": "dream",
+			"requirements": {
+				"fascination": 1
+			},
+			"startdescription": "Die Türen der Vision öffnen sich weit. Ein wenig Finsternis wird mein Licht dämpfen. Selbst das Grauen hat seinen Nutzen.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "tryrecoverreason",
+			"label": "Meinen Kopf frei machen?",
+			"actionId": "dream",
+			"requirements": {
+				"dread": 1
+			},
+			"startdescription": "Ich weiß noch, dass ich anders war: doch ich weiß noch nicht, inwiefern. [Das Grauen kann mit der richtigen Ressource unterdrückt werden.]",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "tryrecoverillhealth",
+			"label": "Erholen?",
+			"actionId": "dream",
+			"requirements": {
+				"illhealth": 1
+			},
+			"startdescription": "Die Ruhe wird mich wiederherstellen – sofern ich über die nötigen Ressourcen verfüge.",
+			"craftable": false,
+			"hintonly": true,
+			"comments": "This one's generic."
+		}
+	]
+}

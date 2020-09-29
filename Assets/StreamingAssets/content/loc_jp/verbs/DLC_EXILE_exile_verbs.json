@@ -1,0 +1,101 @@
+{
+	"verbs": [
+		{
+			"id": "scout",
+			"label": "偵察",
+			"description": "可能性を嗅ぎ分ける。",
+			"slots": [
+				{
+					"id": "scout",
+					"label": "偵察",
+					"required": {
+						"domicile": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "use",
+			"label": "採用",
+			"description": "何かを活用する。[チャンスを掴みに行ったり、作戦を実行したり、または年を現金に変換したりする。]",
+			"slots": [
+				{
+					"id": "plan",
+					"label": "計画",
+					"required": {
+						"connection": 1,
+						"op": 1,
+						"weapon": 1,
+						"lore": 1,
+						"comfort": 1,
+						"proof": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "travel",
+			"label": "旅",
+			"atStart": true,
+			"description": "心を豊かにするたびもあれば、寿命を延ばす旅もある。",
+			"slots": [
+				{
+					"id": "direction",
+					"label": "意図",
+					"description": "道か、その果てか？",
+					"required": {
+						"destination": 1,
+						"location": 1,
+						"ally": 1
+					},
+					"forbidden": {
+						"exhausted": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "send",
+			"label": "コミュニケーション",
+			"description": "メッセージや現金などを送る。気を付けて。",
+			"slots": [
+				{
+					"id": "send",
+					"label": "送る",
+					"required": {
+						"desire": 1,
+						"domicile": 1,
+						"cash": 1,
+						"mortal": 1,
+						"ligeian": 1
+					},
+					"forbidden": {
+						"exhausted": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "relinquish",
+			"label": "放棄",
+			"description": "売る、放棄、駆除、降伏。",
+			"slots": [
+				{
+					"id": "relinquish",
+					"label": "放棄",
+					"required": {
+						"asset": 1,
+						"lifespan.stolen": 1,
+						"trace": 1,
+						"wound.exile": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "time.exile",
+			"label": "時間",
+			"description": "最後の敵？"
+		}
+	]
+}

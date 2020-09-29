@@ -1,0 +1,1093 @@
+{
+	"recipes": [
+		{
+			"id": "studyresearch.entrypoint",
+			"actionId": "study",
+			"label": "In die Nacht",
+			"startdescription": "Die Weisheit ist ein Land, und dies sind seine Karten. [Meistere alle Herausforderungen beider Fragmente des Wissens, um eine Forschungsaufgabe abzuschließen. Du kannst später zu einer Aufgabe zurückkehren, falls du scheitern solltest.]",
+			"description": ".",
+			"requirements": {
+				"lore": 2
+			},
+			"effects": {
+				
+			},
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearch.attemptsolve",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearch.attemptsolve",
+			"actionId": "study",
+			"label": "In die Nacht",
+			"startdescription": "Die Weisheit ist ein Land, und dies sind seine Karten. [Meistere alle Herausforderungen beider Fragmente des Wissens, um eine Forschungsaufgabe abzuschließen. Du kannst später zu einer Aufgabe zurückkehren, falls du scheitern solltest.]",
+			"linked": [
+				{
+					"id": "studyresearch.nochallengesremaining"
+				},
+				{
+					"id": "studyresearch.attemptsolve.challenge.knowledge"
+				},
+				{
+					"id": "studyresearch.attemptsolve.challenge.intuition"
+				},
+				{
+					"id": "studyresearch.attemptsolve.challenge.grim"
+				},
+				{
+					"id": "studyresearch.attemptsolve.challenge.obsessive"
+				},
+				{
+					"id": "studyresearch.attemptsolve.challenge.paradox"
+				},
+				{
+					"id": "studyresearch.attemptsolve.challenge.illumination"
+				},
+				{
+					"id": "studyresearch.attemptsolve.challenge.practical"
+				}
+			]
+		},
+		{
+			"id": "studyresearch.attemptsolve.challenge.knowledge",
+			"actionId": "study",
+			"label": "Eine Herausforderung: Wissen",
+			"requirements": {
+				"challenge.knowledge": 1
+			},
+			"startdescription": "Dies ist ein Rätsel mit fehlenden Teilen. Vielleicht finde ich jene Teile in obskuren Winkeln der Gelehrsamkeit. [Benutze Erudition oder eine Bibliothek.]",
+			"slots": [
+				{
+					"id": "solvechallenge",
+					"label": "Lösung",
+					"required": {
+						"erudition": 1,
+						"library": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearch.failed.challenge.knowledge"
+				},
+				{
+					"id": "studyresearch.solved.challenge.knowledge"
+				}
+			]
+		},
+		{
+			"id": "studyresearch.failed.challenge.knowledge",
+			"actionId": "study",
+			"label": "Sackgasse!",
+			"startdescription": "Meine Studien kommen momentan nicht weiter.",
+			"requirements": {
+				"erudition": -1,
+				"library": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "studyresearch.solved.challenge.knowledge",
+			"actionId": "study",
+			"label": "Aha – !",
+			"startdescription": " – da haben wir es. War's das jetzt? [Du hast eine Herausforderung des Wissens gemeistert.]",
+			"mutations": [
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.knowledge",
+					"level": -1
+				}
+			],
+			"warmup": 30,
+			"effects": {
+				"erudition": -1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.attemptsolve",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearch.attemptsolve.challenge.intuition",
+			"actionId": "study",
+			"label": "Eine Herausforderung: Intuition",
+			"requirements": {
+				"challenge.intuition": 1
+			},
+			"startdescription": "Dies ist ein Rätsel mit fehlenden Teilen. Vielleicht finde ich jene Teile in obskuren Winkeln der Gelehrsamkeit. [Benutze Schimmern oder eine Zuflucht.]",
+			"slots": [
+				{
+					"id": "solvechallenge",
+					"label": "Lösung",
+					"required": {
+						"glimmering": 1,
+						"sanctuary": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearch.failed.challenge.intuition"
+				},
+				{
+					"id": "studyresearch.solved.challenge.intuition"
+				}
+			]
+		},
+		{
+			"id": "studyresearch.failed.challenge.intuition",
+			"actionId": "study",
+			"label": "Sackgasse!",
+			"startdescription": "Meine Studien kommen momentan nicht weiter.",
+			"requirements": {
+				"glimmering": -1,
+				"sanctuary": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "studyresearch.solved.challenge.intuition",
+			"actionId": "study",
+			"label": "Aha – !",
+			"startdescription": " – da haben wir es. War's das jetzt? [Du hast eine Herausforderung der Intuition gemeistert.]",
+			"mutations": [
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.intuition",
+					"level": -1
+				}
+			],
+			"warmup": 30,
+			"effects": {
+				"glimmering": -1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.attemptsolve",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearch.attemptsolve.challenge.grim",
+			"actionId": "study",
+			"label": "Eine Herausforderung: Düstere Lektionen",
+			"requirements": {
+				"challenge.grim": 1
+			},
+			"startdescription": "Dies ist ein Rätsel mit fehlenden Teilen. Vielleicht finde ich jene Teile in obskuren Winkeln der Gelehrsamkeit. [Nimm Grauen, benutze eine Grube oder die Fertigkeit 'Stumme Intensität'. Das Grauen könnte sich vermehren.]",
+			"slots": [
+				{
+					"id": "solvechallenge",
+					"label": "Lösung",
+					"required": {
+						"dread": 1,
+						"pit": 1,
+						"skillreasond_concentration": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearch.failed.challenge.grim"
+				},
+				{
+					"id": "studyresearch.solved.challenge.grim"
+				}
+			]
+		},
+		{
+			"id": "studyresearch.failed.challenge.grim",
+			"actionId": "study",
+			"label": "Sackgasse!",
+			"startdescription": "Meine Studien kommen momentan nicht weiter.",
+			"requirements": {
+				"dread": -1,
+				"pit": -1,
+				"skillreasond_concentration": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "studyresearch.solved.challenge.grim",
+			"actionId": "study",
+			"label": "Aha – !",
+			"startdescription": " – da haben wir es. War's das jetzt? [Du hast eine Düstere Herausforderung gemeistert.]",
+			"mutations": [
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.grim",
+					"level": -1
+				}
+			],
+			"warmup": 30,
+			"alt": [
+				{
+					"id": "dreadinduction_ifdread",
+					"chance": 70,
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "studyresearch.attemptsolve",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearch.attemptsolve.challenge.obsessive",
+			"actionId": "study",
+			"label": "Eine Herausforderung: Obsessive Recherchen",
+			"requirements": {
+				"challenge.obsessive": 1
+			},
+			"startdescription": "Dies ist ein Rätsel mit fehlenden Teilen. Vielleicht finde ich jene Teile in obskuren Winkeln der Gelehrsamkeit. [Gib deinen Verstand auf, der ab und zu dauerhaft Schaden nehmen könnte, oder benutze eine Bibliothek oder die Fertigkeit 'Niemals-Nie'.]",
+			"slots": [
+				{
+					"id": "solvechallenge",
+					"label": "Lösung",
+					"required": {
+						"reason": 1,
+						"library": 1,
+						"skillpassiond_unreason": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearch.failed.challenge.obsessive"
+				},
+				{
+					"id": "studyresearch.solved.challenge.obsessive"
+				}
+			]
+		},
+		{
+			"id": "studyresearch.failed.challenge.obsessive",
+			"actionId": "study",
+			"label": "Sackgasse!",
+			"startdescription": "Meine Studien kommen momentan nicht weiter.",
+			"requirements": {
+				"reason": -1,
+				"library": -1,
+				"skillpassiond_unreason": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "studyresearch.solved.challenge.obsessive",
+			"actionId": "study",
+			"label": "Aha – !",
+			"startdescription": " – da haben wir es. War's das jetzt? [Du hast eine Herausforderung der Obsession gemeistert.]",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.obsessive",
+					"level": -1
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "studyresearch.damagereason",
+					"chance": 10
+				},
+				{
+					"id": "studyresearch.attemptsolve",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearch.damagereason",
+			"actionId": "study",
+			"label": "Bürde der Obsession",
+			"startdescription": "Ich habe meine Gedanken wie eine Klinge geschärft. Nun ist die Spitze der Klinge abgebrochen. [Dein Verstand hat bleibenden Schaden genommen.]",
+			"requirements": {
+				"concentration": 1
+			},
+			"aspects": {
+				"damagereason": 1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "studyresearch.attemptsolve",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearch.attemptsolve.challenge.paradox",
+			"actionId": "study",
+			"label": "Eine Herausforderung: Paradoxe Lösung",
+			"requirements": {
+				"challenge.paradox": 1
+			},
+			"startdescription": "Dies ist ein Rätsel mit fehlenden Teilen. Vielleicht finde ich jene Teile in obskuren Winkeln der Gelehrsamkeit. [Gib Leidenschaft auf, die gelegentlich Schaden nehmen kann, benutze eine Zuflucht oder die Fertigkeit 'Offene Seele'.]",
+			"slots": [
+				{
+					"id": "solvechallenge",
+					"label": "Lösung",
+					"required": {
+						"passion": 1,
+						"sanctuary": 1,
+						"skillpassiond_folly": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearch.failed.challenge.paradox"
+				},
+				{
+					"id": "studyresearch.solved.challenge.paradox"
+				}
+			]
+		},
+		{
+			"id": "studyresearch.failed.challenge.paradox",
+			"actionId": "study",
+			"label": "Sackgasse!",
+			"startdescription": "Meine Studien kommen momentan nicht weiter.",
+			"requirements": {
+				"passion": -1,
+				"sanctuary": -1,
+				"skillpassiond_folly": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "studyresearch.solved.challenge.paradox",
+			"actionId": "study",
+			"label": "Aha – !",
+			"startdescription": " – da haben wir es. War's das jetzt? [Du hast eine Paradoxe Herausforderung gemeistert.]",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.paradox",
+					"level": -1
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "studyresearch.damagepassion",
+					"chance": 10
+				},
+				{
+					"id": "studyresearch.attemptsolve",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearch.damagepassion",
+			"actionId": "study",
+			"label": "Der Irrgarten des Herzens",
+			"startdescription": "Ich bin meiner Leidenschaft durch den Irrgarten gefolgt, und hier bin ich in seinem Herzen. Das Herz des Irrgartens ist schwarz und hohl, verkohlt wie Holz. [Leidenschaft wurde dauerhaft geschmälert.]",
+			"requirements": {
+				"passionexhausted": 1
+			},
+			"aspects": {
+				"damagepassion": 1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "studyresearch.attemptsolve",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearch.attemptsolve.challenge.illumination",
+			"actionId": "study",
+			"label": "Eine Herausforderung: Erleuchtung",
+			"requirements": {
+				"challenge.illumination": 1
+			},
+			"startdescription": "Dies ist ein Rätsel mit fehlenden Teilen. Vielleicht finde ich jene Teile in obskuren Winkeln der Gelehrsamkeit. [Nimm Faszination, die sich vermehren könnte, benutze eine Bibliothek oder setze die Fertigkeit 'Geschärfter Geist' ein.]",
+			"slots": [
+				{
+					"id": "solvechallenge",
+					"label": "Lösung",
+					"required": {
+						"fascination": 1,
+						"library": 1,
+						"skillreasond_illumination": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearch.failed.challenge.illumination"
+				},
+				{
+					"id": "studyresearch.solved.challenge.illumination"
+				}
+			]
+		},
+		{
+			"id": "studyresearch.failed.challenge.illumination",
+			"actionId": "study",
+			"label": "Sackgasse!",
+			"startdescription": "Meine Studien kommen momentan nicht weiter.",
+			"requirements": {
+				"fascination": -1,
+				"library": -1,
+				"skillreasond_illumination": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "studyresearch.solved.challenge.illumination",
+			"actionId": "study",
+			"label": "Aha – !",
+			"startdescription": " – da haben wir es. War's das jetzt? [Du hast eine Herausforderung der Erleuchtung gemeistert.]",
+			"mutations": [
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.illumination",
+					"level": -1
+				}
+			],
+			"warmup": 30,
+			"alt": [
+				{
+					"id": "fascinationinduction_iffascination",
+					"chance": 70,
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "studyresearch.attemptsolve",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearch.attemptsolve.challenge.practical",
+			"actionId": "study",
+			"label": "Eine Herausforderung: Praktisches Experimentieren",
+			"requirements": {
+				"challenge.practical": 1
+			},
+			"startdescription": "Dies ist ein Rätsel mit fehlenden Teilen. Vielleicht finde ich jene Teile in obskuren Winkeln der Gelehrsamkeit. [Riskiere deine Gesundheit oder benutze einen Gefangenen.]",
+			"slots": [
+				{
+					"id": "solvechallenge",
+					"label": "Lösung",
+					"required": {
+						"health": 1,
+						"prisoner": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearch.failed.challenge.practical"
+				},
+				{
+					"id": "studyresearch.solved.challenge.practical"
+				}
+			]
+		},
+		{
+			"id": "studyresearch.failed.challenge.practical",
+			"actionId": "study",
+			"label": "Sackgasse!",
+			"startdescription": "Meine Studien kommen momentan nicht weiter.",
+			"requirements": {
+				"health": -1,
+				"prisoner": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "studyresearch.solved.challenge.practical",
+			"actionId": "study",
+			"label": "Aha – !",
+			"startdescription": " – da haben wir es. War's das jetzt? [Du hast eine Praktische Herausforderung gemeistert.]",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.practical",
+					"level": -1
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "studyresearch.damagehealth",
+					"chance": 30
+				},
+				{
+					"id": "studyresearch.attemptsolve",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearch.damagehealth",
+			"actionId": "study",
+			"label": "Der Schaden",
+			"startdescription": "Der Schmerz ist ein Lehrmeister, sagt man, vor allem, wenn man selbst gerade keine Schmerzen hat. [Gesundheit wurde verringert.]",
+			"requirements": {
+				"fatigue": 1
+			},
+			"aspects": {
+				"damagehealth": 1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "studyresearch.attemptsolve",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearch.nochallengesremaining",
+			"actionId": "study",
+			"label": "Blinzeln im Licht",
+			"startdescription": "Jetzt – jetzt begreife ich!",
+			"description": "",
+			"warmup": 30,
+			"requirements": {
+				"challenge.knowledge": -1,
+				"challenge.intuition": -1,
+				"challenge.grim": -1,
+				"challenge.obsessive": -1,
+				"challenge.paradox": -1,
+				"challenge.illumination": -1,
+				"challenge.practical": -1
+			},
+			"mutations": [
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.knowledge",
+					"level": 0
+				},
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.intuition",
+					"level": 0
+				},
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.grim",
+					"level": 0
+				},
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.obsessive",
+					"level": 0
+				},
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.paradox",
+					"level": 0
+				},
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.illumination",
+					"level": 0
+				},
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.practical",
+					"level": 0
+				}
+			],
+			"linked": [
+				{
+					"id": "studyproject_upgrade_edge",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_forge",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_grail",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_heart",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_lantern",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_moth",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_secrethistories",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_winter",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_edgetowinter",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_forgetoedge",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_grailtomoth",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_hearttograil",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_lanterntoforge",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_mothtolantern",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_wintertoheart",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_subvert_knock",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearchtick",
+			"comments": "The lore 2 requirement means this is only available when someone has paired two lore fragments with an earlier recipe. This routes to opportunities to increase Insight.",
+			"label": "Vielversprechende Recherchen",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2
+			},
+			"startdescription": "Dieses Projekt hat Potenzial. Wenn Forschungsanforderungen auftauchen, muss ich sie erfüllen, um an Erkenntnis zu gewinnen. Sammle ich drei Erkenntnisse, habe ich Erfolg, ansonsten könnte ich scheitern.",
+			"description": ".",
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "studyresearchearlyconclusion",
+					"chance": 100
+				},
+				{
+					"id": "studyresearchneedsreason",
+					"chance": 50
+				},
+				{
+					"id": "studyresearchneedserudition",
+					"chance": 50
+				},
+				{
+					"id": "studyresearchneedsglimmering",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearchneedsreason",
+			"label": "Schatten der Verwirrung",
+			"actionId": "study",
+			"requirements": {
+				
+			},
+			"effects": {
+				
+			},
+			"slots": [
+				{
+					"id": "Reason",
+					"required": {
+						"reason": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "studyresearchreasonsuccess",
+					"chance": 100
+				}
+			],
+			"startdescription": "Verwirrung vernebelt den Weg. Ich muss mehr Verstand einsetzen.",
+			"description": "Ich muss meinen Verstand einsetzen, um bei meinen Forschungen Fortschritte zu machen.",
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearchconclusion",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearchreasonsuccess",
+			"label": "Das Licht des Intellekts!",
+			"actionId": "study",
+			"requirements": {
+				"reason": 1
+			},
+			"effects": {
+				"insight": 1
+			},
+			"craftable": false,
+			"startdescription": "Die Aufgabe nimmt sogar noch mehr meiner Aufmerksamkeit in Anspruch. Doch meine Bemühungen zahlen sich aus. [Erkenntnis gewonnen.].",
+			"linked": [
+				{
+					"id": "studyresearchtick",
+					"chance": 100
+				}
+			],
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "studyresearchneedserudition",
+			"label": "Die Teile des Puzzles",
+			"actionId": "study",
+			"requirements": {
+				
+			},
+			"effects": {
+				
+			},
+			"slots": [
+				{
+					"id": "Erudition",
+					"required": {
+						"erudition": 1
+					},
+					"consumes": true,
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "studyresearcheruditionsuccess",
+					"chance": 100
+				}
+			],
+			"startdescription": "Für meine Forschungen brauche ich Erudition.",
+			"description": "Für meine Forschungen brauche ich Erudition.",
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearchconclusion",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearcheruditionsuccess",
+			"label": "Die Teile passen!",
+			"actionId": "study",
+			"requirements": {
+				"erudition": 1
+			},
+			"effects": {
+				"insight": 1
+			},
+			"craftable": false,
+			"startdescription": "Wissen erzeigt Wissen. [Erkenntnis gewonnen.]",
+			"linked": [
+				{
+					"id": "studyresearchtick",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearchneedsglimmering",
+			"label": "Das Tor der Intuition",
+			"actionId": "study",
+			"requirements": {
+				
+			},
+			"effects": {
+				
+			},
+			"slots": [
+				{
+					"id": "Glimmering",
+					"required": {
+						"glimmering": 1
+					},
+					"consumes": true,
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "studyresearchglimmeringsuccess",
+					"chance": 100
+				}
+			],
+			"startdescription": "Für meine Forschungen brauche ich Schimmern. ",
+			"description": ".",
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearchconclusion",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearchglimmeringsuccess",
+			"label": "Das Tor der Intuition steht offen!",
+			"actionId": "study",
+			"requirements": {
+				"glimmering": 1
+			},
+			"effects": {
+				"insight": 1
+			},
+			"startdescription": "Manchmal wartet die Erkenntnis an den ungewöhnlichsten Orten. [Erkenntnis gewonnen.]",
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearchtick",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearchearlyconclusion",
+			"actionId": "study",
+			"comments": "this is a passthrough / router for if Insight reaches 3,which routes directly to the conclusion",
+			"requirements": {
+				"insight": 3
+			},
+			"alternativerecipes": [
+				{
+					"id": "studyresearchconclusion",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearchconclusion",
+			"actionId": "study",
+			"comments": "this is a passthrough / router which the player sees if they don't satisfy a research requirement.",
+			"alternativerecipes": [
+				{
+					"id": "studyresearchmaxinsight",
+					"chance": 100
+				},
+				{
+					"id": "studyresearchmoderateinsight",
+					"chance": 100
+				},
+				{
+					"id": "studyresearchminimalinsight",
+					"chance": 100
+				},
+				{
+					"id": "studyresearchconsolation",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearchmaxinsight",
+			"label": "Forschung abgeschlossen, max. Erkenntnis ",
+			"alternativerecipes": [
+				{
+					"id": "studyresearchsuccess",
+					"chance": 100
+				}
+			],
+			"actionId": "study",
+			"requirements": {
+				"insight": 3
+			},
+			"effects": {
+				
+			},
+			"startdescription": "studyresearchmaxinsight BEGINNEN",
+			"description": "studyresearchmaxinsight ABSCHLIESSEN",
+			"warmup": 0,
+			"comments": "This is currently a pass-through only; including for consistency."
+		},
+		{
+			"id": "studyresearchmoderateinsight",
+			"label": "Forschung abgeschlossen, einige Erkenntnisse ",
+			"alternativerecipes": [
+				{
+					"id": "studyresearchsuccess",
+					"chance": 70
+				},
+				{
+					"id": "studyresearchconsolation",
+					"chance": 100
+				}
+			],
+			"actionId": "study",
+			"requirements": {
+				"insight": 2
+			},
+			"effects": {
+				
+			},
+			"startdescription": "studyresearchsomeinsight BEGINNEN",
+			"description": "studyresearchsomeinsight ABSCHLIESSEN",
+			"warmup": 0
+		},
+		{
+			"id": "studyresearchminimalinsight",
+			"label": "Forschung abgeschlossen, min. Erkenntnis ",
+			"actionId": "study",
+			"requirements": {
+				
+			},
+			"alternativerecipes": [
+				{
+					"id": "studyresearchsuccess",
+					"chance": 30
+				},
+				{
+					"id": "studyresearchconsolation",
+					"chance": 100
+				}
+			],
+			"effects": {
+				
+			},
+			"startdescription": "studyresearchnoinsight BEGINNEN",
+			"description": "studyresearchnoinsight ABSCHLIESSEN",
+			"warmup": 0
+		},
+		{
+			"id": "studyresearchsuccess",
+			"label": "Geschafft!",
+			"actionId": "study",
+			"requirements": {
+				
+			},
+			"aspects": {
+				"restore": 1
+			},
+			"effects": {
+				"insight": -100
+			},
+			"startdescription": ".",
+			"description": "Ich habe etwas Neues gelernt.",
+			"warmup": 0,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyproject_upgrade_edge",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_forge",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_grail",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_heart",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_lantern",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_moth",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_secrethistories",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_winter",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_edgetowinter",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_forgetoedge",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_grailtomoth",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_hearttograil",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_lanterntoforge",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_mothtolantern",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_wintertoheart",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_subvert_knock",
+					"chance": 100
+				}
+			]
+		}
+	]
+}

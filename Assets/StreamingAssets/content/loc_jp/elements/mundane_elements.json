@@ -1,0 +1,118 @@
+{
+	"elements": [
+		{
+			"id": "rumour",
+			"label": "奇妙な噂",
+			"description": "これを辿れば必要としている人にたどり着くかもしれないし、全く違うことを意味するかもしれない。[噂を探って追求する。}",
+			"aspects": {
+				"ingredient": 1,
+				"secrethistories": 1,
+				"moth": 1
+			},
+			"lifetime": 60
+		},
+		{
+			"id": "favour",
+			"label": "取締局の助け",
+			"description": "困った時に、一度だけ、取締局が私を助けたくなるようなことを学んだ。[これを使えば、自分や信奉者が投獄されることはないが......当てにはならない。] ",
+			"aspects": {
+				"suspicious": 1
+			},
+			"lifetime": 300
+		},
+		{
+			"id": "mistakenidentity",
+			"label": "人違い",
+			"aspects": {
+				"mortal": 1
+			},
+			"description": "結局この人は、あなたが求めていた人ではなかった。取るに足らないし、印象にも残らない人だ。もうこの世には、会う価値のある人はいないかもしれない。",
+			"xtriggers": {
+				"rebellion": "generic_r"
+			},
+			"comments": "This xtrigger is here specifically in case someone runs through all the possible rivals as a Detective",
+			"lifetime": 10
+		},
+		{
+			"id": "funds",
+			"label": "資金",
+			"aspects": {
+				"ingredient": 1
+			},
+			"description": "少しの間、快適に生活するのに十分な量。"
+		},
+		{
+			"id": "compensation",
+			"label": "鉄のスピントリア",
+			"aspects": {
+				"edge": 2,
+				"secrethistories": 1,
+				"compensationvalue": 2,
+				"ingredient": 1,
+				"auctionable": 2
+			},
+			"description": "隠れた世界の伝授者は、スピントリアで支払いを行う。鉄のスピントリアは、一番価値が低く、裏側には殺人場面が描かれている。[スピントリアは、オークションハウスで一般的な通貨と交換することができる。]"
+		},
+		{
+			"id": "compensationb",
+			"label": "青銅のスピントリア",
+			"aspects": {
+				"forge": 4,
+				"secrethistories": 1,
+				"compensationvalue": 4,
+				"ingredient": 1,
+				"auctionable": 3
+			},
+			"description": "隠れた世界の伝授者は、スピントリアで支払いを行う。青銅のスピントリアの裏面には、通常、成形の場面が描かれている。[スピントリアは、オークションハウスで一般的な通貨と交換することができる。]"
+		},
+		{
+			"id": "compensationc",
+			"label": "銀のスピントリア",
+			"aspects": {
+				"grail": 6,
+				"secrethistories": 1,
+				"compensationvalue": 8,
+				"ingredient": 1,
+				"auctionable": 4
+			},
+			"description": "隠れた世界の伝授者は、スピントリアで支払いを行う。この硬貨は一般的な通貨と交換することができる。銀のスピントリアの価値は高く、通常、裏面に乱交などが描かれている。[スピントリアは、オークションハウスで一般的な通貨と交換することができる。]"
+		},
+		{
+			"id": "compensationd",
+			"label": "金のスピントリア",
+			"aspects": {
+				"lantern": 8,
+				"secrethistories": 1,
+				"compensationvalue": 16,
+				"ingredient": 1,
+				"auctionable": 5
+			},
+			"description": "隠れた世界の伝授者は、スピントリアで支払いを行う。この硬貨は一般的な通貨と交換することができる。金のスピントリアの裏面には、定命の者には見えない場面が描かれている。[スピントリアは、オークションハウスで一般的な通貨と交換することができる。]"
+		},
+		{
+			"id": "mapbookdealer",
+			"label": "モーランドへの道順",
+			"aspects": {
+				"legacyplotitem": 1
+			},
+			"description": "暗号化された道順。辿ると。珍書商人、某モーランドの曖昧な居場所までたどり着ける。"
+		},
+		{
+			"id": "jumble",
+			"label": "がらくた",
+			"aspects": {
+				"auctionable": 1
+			},
+			"description": "古着に価値のないアクセサリー。どこかで小銭に変えられるかもしれないが、私にはほとんど意味のないものだ。"
+		},
+		{
+			"id": "snare",
+			"label": "罠",
+			"aspects": {
+				"snarelevel": 1
+			},
+			"description": "ライバルに罠を仕掛けてきた。[罠はどの独立者にも使える。また、金庫室を破ろうとする独立者を阻止するためにも使える。]",
+			"lifetime": 300
+		}
+	]
+}

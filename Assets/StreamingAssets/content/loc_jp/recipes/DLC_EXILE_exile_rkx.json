@@ -1,0 +1,1319 @@
+{
+	"recipes": [
+		{
+			"id": "rkx.spawn.escort",
+			"actionId": "rkx",
+			"label": "1人ではない",
+			"startdescription": "決してそれだけではない。[地図の端で会わない限り、敵はいつでもあなたに対抗する援助を連れてくる。]",
+			"extantreqs": {
+				"rkx.foe": 1,
+				"rkx.underlings.blocker": -1
+			},
+			"effects": {
+				"rkx.enforcer": 1,
+				"rkx.event.aggressive": 1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.enforcer.aggressive"
+				}
+			]
+		},
+		{
+			"id": "rkx.first",
+			"actionId": "rkx",
+			"label": "すぐ後ろ",
+			"startdescription": "この人は私の顔を知っていて、私は彼の顔を知っている。",
+			"effects": {
+				"rkx.enforcer": 1,
+				"rkx.event.aggressive": 1
+			},
+			"warmup": 1,
+			"linked": [
+				{
+					"id": "rkx.enforcer.aggressive"
+				}
+			]
+		},
+		{
+			"id": "rkx.arrive.ahead",
+			"actionId": "rkx",
+			"label": "精算人が先にここに到着した",
+			"startdescription": "私がここに来るかもしれないと、精算人たちは思っていたようだ。この街にはすでに、偵察兵たちがいる。",
+			"requirements": {
+				"rkx.infected": 1
+			},
+			"effects": {
+				"rkx.scout": 1
+			},
+			"extantreqs": {
+				"rkx.underlings.blocker": -1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.arrive.traces",
+			"actionId": "rkx",
+			"label": "痕跡が多すぎる",
+			"startdescription": "あまりにも多くの痕跡を残してしまった。精算人たちがここまで私を追いかけてきた。[盤面に複数の痕跡を残すと、通常精算人を引き寄せる。]",
+			"extantreqs": {
+				"trace": 2
+			},
+			"effects": {
+				"rkx.scout": 1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.arrive.trace",
+			"actionId": "rkx",
+			"label": "ちょっとした不注意",
+			"startdescription": "気を付けていたが......慎重さが足りなかったようだ。[盤面に痕跡があると、精算人を引き寄せることがある。]",
+			"extantreqs": {
+				"trace": 1
+			},
+			"effects": {
+				"rkx.scout": 1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.arrive.no.trace",
+			"actionId": "rkx",
+			"label": "精算人の到着！",
+			"startdescription": "追っ手が来た。用心してきたのに。運が悪かっただけに違いない。[時折、痕跡がなくても、精算人が街を探索することがある。]",
+			"extantreqs": {
+				"trace": -1
+			},
+			"effects": {
+				"rkx.scout": 1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.selector",
+			"actionId": "rkx",
+			"label": "探索",
+			"startdescription": "@#rkx.underboss|この兆候には見覚えがある。下級の精算人の主が街へ侵入してきたに違いない。敵もすぐにたどり着くはずだ。\n#rkx.enforcer|人ごみの中に見覚えのある顔が......見覚えがありすぎる。\n#rkx.operative|私は、自分の本能に従うようになった。誰か私の邪魔をしていると本能が教えてくれている。\n#|首の後ろにヒリヒリとした感覚がある。誰かが私を探している。@[盤面にある痕跡のカードが多ければおいほど、追っ手が素早くあなたに攻撃できるようになる。]",
+			"deckeffect": {
+				"rkx.events": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.underboss.slain"
+				},
+				{
+					"id": "rkx.reckoner.slain"
+				},
+				{
+					"id": "rkx.escort.attack"
+				},
+				{
+					"id": "rkx.underboss.aggressive.obscured"
+				},
+				{
+					"id": "rkx.underboss.aggressive.violent",
+					"chance": 50
+				},
+				{
+					"id": "rkx.underboss.aggressive.cunning"
+				},
+				{
+					"id": "rkx.underboss.reinforcements"
+				},
+				{
+					"id": "rkx.underboss.search"
+				},
+				{
+					"id": "rkx.enforcer.aggressive.obscured"
+				},
+				{
+					"id": "rkx.enforcer.aggressive"
+				},
+				{
+					"id": "rkx.enforcer.reinforcements"
+				},
+				{
+					"id": "rkx.enforcer.search"
+				},
+				{
+					"id": "rkx.operative.aggressive.obscured"
+				},
+				{
+					"id": "rkx.operative.aggressive"
+				},
+				{
+					"id": "rkx.operative.reinforcements"
+				},
+				{
+					"id": "rkx.operative.search"
+				},
+				{
+					"id": "rkx.scouts.aggressive.reinforcements"
+				},
+				{
+					"id": "rkx.scouts.aggressive.search"
+				},
+				{
+					"id": "rkx.scouts.passive.hesitate"
+				},
+				{
+					"id": "rkx.scouts.passive.leave"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.slain",
+			"actionId": "rkx",
+			"label": "死に至った傷",
+			"startdescription": "このアンダーボスは死んだ。",
+			"requirements": {
+				"rkx.underboss": 1
+			},
+			"extantreqs": {
+				"damage.underling": 4
+			},
+			"purge": {
+				"damage.underling": 5
+			}
+		},
+		{
+			"id": "rkx.reckoner.slain",
+			"actionId": "rkx",
+			"label": "死に至った傷",
+			"startdescription": "この精算人は死んだ。",
+			"requirements": {
+				"rkx.underboss": -1,
+				"rkx.rank": 1
+			},
+			"extantreqs": {
+				"damage.underling": 2
+			},
+			"purge": {
+				"damage.underling": 3
+			}
+		},
+		{
+			"id": "rkx.escort.attack",
+			"actionId": "rkx.escort",
+			"label": "一瞬の休息",
+			"startdescription": "敵の手下はすぐに別の攻撃を仕掛けてくるだろう―― ",
+			"requirements": {
+				"rkx.enforcer": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"effects": {
+				"rkx.event.aggressive": 1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.enforcer.aggressive.obscured"
+				},
+				{
+					"id": "rkx.enforcer.aggressive"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.aggressive.obscured",
+			"actionId": "rkx",
+			"label": "影を探る",
+			"startdescription": "精算人のアンダーボスが私を探している。まだ私を見つけられないだろうが、秘密のベールは薄くなってきている。",
+			"requirements": {
+				"rkx.underboss": 1,
+				"rkx.event.aggressive": 1
+			},
+			"extantreqs": {
+				"obscurity": 1
+			},
+			"effects": {
+				"obscurity": -1
+			},
+			"slots": [
+				{
+					"id": "obscurity",
+					"label": "不明瞭",
+					"required": {
+						"obscurity": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.enforcer.aggressive.obscured",
+			"actionId": "rkx",
+			"label": "影を探る",
+			"startdescription": "精算人の暗殺者が街をうろついている。まだ私を見つけられないだろうが、秘密のベールは薄くなってきている。",
+			"requirements": {
+				"rkx.enforcer": 1,
+				"rkx.event.aggressive": 1
+			},
+			"extantreqs": {
+				"obscurity": 1
+			},
+			"slots": [
+				{
+					"id": "obscurity",
+					"label": "不明瞭",
+					"required": {
+						"obscurity": 1
+					},
+					"greedy": true
+				}
+			],
+			"effects": {
+				"obscurity": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.aggressive.obscured",
+			"actionId": "rkx",
+			"label": "影を探る",
+			"startdescription": "精算人の諜報員がここで活動している。まだ私を見つけられないだろうが、秘密のベールは薄くなってきている。",
+			"requirements": {
+				"rkx.operative": 1,
+				"rkx.event.aggressive": 1
+			},
+			"extantreqs": {
+				"obscurity": 1
+			},
+			"slots": [
+				{
+					"id": "obscurity",
+					"label": "不明瞭",
+					"required": {
+						"obscurity": 1
+					},
+					"greedy": true
+				}
+			],
+			"effects": {
+				"obscurity": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.aggressive.violent",
+			"actionId": "rkx",
+			"label": "敵の攻撃！",
+			"startdescription": "アンダーボスが直接攻撃を仕掛けてきた！[精算人の直接攻撃が成功した場合、傷口ができる。自分を守るカードを出さない限り、攻撃は成功する。アンダーボスはいつでも欲張りだから、盗まれた10年での買収も効果的である。]",
+			"requirements": {
+				"rkx.underboss": 1,
+				"rkx.event.aggressive": 1
+			},
+			"slots": [
+				{
+					"id": "defence",
+					"label": "防衛",
+					"required": {
+						"lore": 1,
+						"weapon": 1,
+						"distraction": 1,
+						"associate": 1,
+						"decade.stolen": 1
+					},
+					"forbidden": {
+						"remnant": 1,
+						"exhausted": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"alt": [
+				{
+					"id": "rkx.bossondeck.attack"
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.underling.bribe.greedy"
+				},
+				{
+					"id": "rkx.underling.distracted"
+				},
+				{
+					"id": "rkx.underling.attack.success",
+					"chance": 70
+				},
+				{
+					"id": "rkx.underling.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.aggressive.cunning",
+			"actionId": "rkx",
+			"label": "窃盗・妨害",
+			"startdescription": "アンダーボスが私の資産を狙っている。[過激派、裏社会、支配者、官界のいずれかの人脈を使うことで先手を打つことができる。そうでなければ、ランダムな資産を破壊してくる。アンダーボスはいつでも欲張りだから、盗まれた10年での買収も効果的である。]",
+			"requirements": {
+				"rkx.underboss": 1,
+				"rkx.event.aggressive": 1
+			},
+			"slots": [
+				{
+					"id": "defence",
+					"label": "防衛",
+					"description": "過激派、裏社会、支配者、官界のいずれかの人脈を使う。そうでなければ、ランダムな資産を破壊してくる。",
+					"required": {
+						"connection.ruler": 1,
+						"connection.underworld": 1,
+						"connection.radicals": 1,
+						"connection.official": 1,
+						"decade.stolen": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "rkx.bossondeck.underboss.cunning"
+				},
+				{
+					"id": "rkx.underboss.aggressive.cunning.defended"
+				}
+			],
+			"warmup": 30,
+			"effects": {
+				"asset": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.underling.bribe.greedy"
+				},
+				{
+					"id": "rkx.underboss.aggressive.cunning.undefended"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.aggressive.cunning.defended",
+			"actionId": "rkx",
+			"label": "大物の友人",
+			"startdescription": "コネを使うことにした。あのアンダーボスはひどく驚くだろう。",
+			"requirements": {
+				"connection": 1
+			},
+			"effects": {
+				"connection": -1
+			},
+			"alt": [
+				{
+					"id": "spit.underling.wounded",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.aggressive.cunning.undefended",
+			"actionId": "rkx",
+			"label": "押され気味",
+			"startdescription": "@#connection|アンダーボスが私と味方との関係に楔を打ち込んできた。\n#space|財産の1つが不思議なことに全焼した。\n#portable|何かがなくなっている！アンダーボスか工作員が侵入したに違いない。\n#|アンダーボスが私から資源を奪おうとしている。@",
+			"slots": [
+				{
+					"id": "asset",
+					"label": "ターゲット",
+					"required": {
+						"asset": 1
+					},
+					"greedy": true
+				}
+			],
+			"requirements": {
+				"connection.ruler": -1,
+				"connection.underworld": -1,
+				"connection.radicals": -1
+			},
+			"warmup": 10,
+			"effects": {
+				"asset": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.reinforcements",
+			"actionId": "rkx",
+			"label": "増援を！",
+			"startdescription": "精算人のアンダーボスは、私がここにいると言う証拠を抑えているが、まだ攻撃を仕掛けてきていない。上官......私の敵を呼びに行ったに違いない。[盤面に痕跡が5枚ある場合、敵が出現する可能性がある。]",
+			"requirements": {
+				"rkx.underboss": 1,
+				"rkx.event.passive": 1
+			},
+			"extantreqs": {
+				"trace": 5,
+				"rkx.foe": -1
+			},
+			"alt": [
+				{
+					"id": "rkx.foe.arrive",
+					"additional": true
+				}
+			],
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.search",
+			"actionId": "rkx",
+			"label": "捜索範囲の拡大......",
+			"startdescription": "精算人のアンダーボスが、私の行動や私のことについて情報を集めている。",
+			"requirements": {
+				"rkx.underboss": 1,
+				"rkx.event.passive": 1
+			},
+			"alt": [
+				{
+					"id": "spawn.trace",
+					"additional": true
+				}
+			],
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.enforcer.aggressive",
+			"actionId": "rkx",
+			"label": "敵の攻撃！",
+			"startdescription": "暗殺者がこちらに向かってきている！[精算人の直接攻撃が成功した場合、傷口ができる。自分を守るカードを出さない限り、攻撃は成功する。暗殺者が欲張りだすかもしれないが、盗まれた10年での買収も効果的である。]",
+			"requirements": {
+				"rkx.enforcer": 1,
+				"rkx.event.aggressive": 1
+			},
+			"slots": [
+				{
+					"id": "defence",
+					"label": "防衛",
+					"required": {
+						"lore": 1,
+						"weapon": 1,
+						"distraction": 1,
+						"associate": 1,
+						"decade.stolen": 1
+					},
+					"forbidden": {
+						"remnant": 1,
+						"exhausted": 1
+					}
+				}
+			],
+			"warmup": 40,
+			"alt": [
+				{
+					"id": "rkx.bossondeck.attack"
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.underling.bribe.greedy",
+					"chance": 30
+				},
+				{
+					"id": "rkx.underling.bribe.success"
+				},
+				{
+					"id": "rkx.underling.distracted"
+				},
+				{
+					"id": "rkx.underling.attack.success",
+					"chance": 70
+				},
+				{
+					"id": "rkx.underling.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.enforcer.reinforcements",
+			"actionId": "rkx",
+			"label": "増援を！",
+			"startdescription": "精算人の暗殺者は、私がここにいると言う証拠を抑えているが、まだ攻撃を仕掛けてきていない。上官を呼びに行ったに違いない。[盤面に痕跡が3枚ある場合、アンダーボスが出現する可能性がある。]",
+			"requirements": {
+				"rkx.enforcer": 1,
+				"rkx.event.passive": 1
+			},
+			"extantreqs": {
+				"trace": 3
+			},
+			"aspects": {
+				"rkx.promote": 1
+			},
+			"purge": {
+				"damage.underling": 100
+			},
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.enforcer.search",
+			"actionId": "rkx",
+			"label": "捜索範囲の拡大......",
+			"startdescription": "精算人の暗殺者が手がかりを掴みだした。もうすぐ援軍を呼び寄せるかもしれない。",
+			"requirements": {
+				"rkx.enforcer": 1,
+				"rkx.event.passive": 1
+			},
+			"alt": [
+				{
+					"id": "spawn.trace",
+					"additional": true
+				}
+			],
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.aggressive",
+			"actionId": "rkx",
+			"label": "窃盗・妨害",
+			"startdescription": "精算人の諜報員が私の資産を狙っている。[過激派、裏社会、支配者、官界のいずれかの人脈を使うことで先手を打つことができる。精算人のスパイが欲張りだすかもしれないが、盗まれた10年での買収も効果的である。そうでなければ、ランダムな資産を破壊してくる。]",
+			"slots": [
+				{
+					"id": "defence",
+					"label": "防衛",
+					"description": "過激派、裏社会、支配者、官界のいずれかの人脈を使う。そうでなければ、ランダムな資産を破壊してくる。",
+					"required": {
+						"connection.ruler": 1,
+						"connection.underworld": 1,
+						"connection.radicals": 1,
+						"connection.official": 1,
+						"decade.stolen": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "rkx.bossondeck.operative"
+				},
+				{
+					"id": "rkx.operative.aggressive.defended"
+				}
+			],
+			"requirements": {
+				"rkx.operative": 1,
+				"rkx.event.aggressive": 1
+			},
+			"warmup": 30,
+			"effects": {
+				"asset": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.underling.bribe.greedy",
+					"chance": 30
+				},
+				{
+					"id": "rkx.underling.bribe.success"
+				},
+				{
+					"id": "rkx.operative.aggressive.undefended"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.aggressive.defended",
+			"actionId": "rkx",
+			"label": "大物の友人",
+			"startdescription": "コネを使うことにした。あの諜報員はひどく驚くだろう。",
+			"requirements": {
+				"connection": 1
+			},
+			"effects": {
+				"connection": -1
+			},
+			"alt": [
+				{
+					"id": "spit.underling.wounded",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.aggressive.undefended",
+			"actionId": "rkx",
+			"label": "押され気味",
+			"startdescription": "@#connection|精算人の諜報員が私と味方との関係に楔を打ち込んできた。\n#space|財産の1つが不思議なことに全焼した。\n#portable|何かがなくなっている！精算人の諜報員か工作員が侵入したに違いない。\n#|精算人の諜報員が私から資源を奪おうとしている。@",
+			"slots": [
+				{
+					"id": "asset",
+					"label": "ターゲット",
+					"required": {
+						"asset": 1
+					},
+					"greedy": true
+				}
+			],
+			"requirements": {
+				"connection.ruler": -1,
+				"connection.underworld": -1,
+				"connection.radicals": -1
+			},
+			"warmup": 10,
+			"effects": {
+				"asset": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.reinforcements",
+			"actionId": "rkx",
+			"label": "増援を！",
+			"startdescription": "精算人の諜報員は、私がここにいると言う証拠を抑えているが、まだ攻撃を仕掛けてきていない。上官を呼びに行ったに違いない。[盤面に痕跡が3枚ある場合、アンダーボスが出現する可能性がある。]",
+			"requirements": {
+				"rkx.operative": 1,
+				"rkx.event.passive": 1
+			},
+			"extantreqs": {
+				"trace": 3
+			},
+			"aspects": {
+				"rkx.promote": 1
+			},
+			"purge": {
+				"damage.underling": 100
+			},
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.search",
+			"actionId": "rkx",
+			"label": "捜索範囲の拡大......",
+			"startdescription": "精算人の諜報員が手がかりを掴みだした。もうすぐ援軍を呼び寄せるかもしれない。",
+			"requirements": {
+				"rkx.operative": 1,
+				"rkx.event.passive": 1
+			},
+			"alt": [
+				{
+					"id": "spawn.trace",
+					"additional": true
+				}
+			],
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.scouts.aggressive.reinforcements",
+			"actionId": "rkx",
+			"label": "増援を！",
+			"startdescription": "精算人たちは、私がここにいるという証拠を集めた。彼らは私を燻すために助けを呼び寄せている。",
+			"requirements": {
+				"rkx.event.aggressive": 1,
+				"rkx.rank": -1
+			},
+			"extantreqs": {
+				"trace": 1
+			},
+			"aspects": {
+				"rkx.promote": 1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.scouts.aggressive.search",
+			"actionId": "rkx",
+			"label": "捜索範囲の拡大......",
+			"startdescription": "精算人の密告者が手がかりを掴みだした。もうすぐ援軍を呼び寄せるかもしれない。",
+			"requirements": {
+				"rkx.event.aggressive": 1,
+				"rkx.rank": -1
+			},
+			"alt": [
+				{
+					"id": "spawn.trace",
+					"additional": true
+				}
+			],
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.scouts.passive.hesitate",
+			"actionId": "rkx",
+			"label": "躊躇",
+			"startdescription": "追っ手は......用心深いのか、臆病なのか、それとも証拠の裏が取れないのか........まだ何もしてこない。",
+			"requirements": {
+				"rkx.event.passive": 1,
+				"rkx.rank": -1
+			},
+			"extantreqs": {
+				"trace": 1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.scouts.passive.leave",
+			"actionId": "rkx",
+			"label": "未発見！",
+			"startdescription": "追っ手は私がいないことに満足している。もちろん、また戻ってくるかもしれない。",
+			"requirements": {
+				"rkx.event.passive": 1,
+				"rkx.rank": -1
+			},
+			"extantreqs": {
+				"trace": -1
+			},
+			"purge": {
+				"damage.underling": 100
+			},
+			"haltverb": {
+				"rkx": 1
+			},
+			"warmup": 50
+		},
+		{
+			"id": "rkx.underling.distracted",
+			"actionId": "rkx",
+			"label": "目くらまし成功！",
+			"startdescription": "...",
+			"requirements": {
+				"distraction": 1
+			},
+			"linked": [
+				{
+					"id": "rkx.underling.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.underling.attack.success",
+			"actionId": "rkx",
+			"label": "怪我をした！",
+			"startdescription": "敵に怪我を負わされた！油断したせいだ。",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"alt": [
+				{
+					"id": "spit.underling.attack.success",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"lore": 1,
+							"weapon": 1,
+							"associate": 1
+						}
+					}
+				}
+			],
+			"requirements": {
+				"lore": -1,
+				"weapon": -1,
+				"associate": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			],
+			"warmup": 2
+		},
+		{
+			"id": "spit.underling.attack.success",
+			"actionId": "spit.underling.attack",
+			"label": "怪我をした！",
+			"startdescription": "治すためには時間と安全な場所が必要だ。",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"wound.exile": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "rkx.underling.attack.failure",
+			"actionId": "rkx",
+			"label": "阻まれた追っ手",
+			"startdescription": "@#lore|追っ手を抑えるために自分のスキルを使った。\n#weapon|追っ手を食い止めるために武器を使った。\n#associate|友人が保護の手を差し伸べてくれた。\n#op.cold|雪が夜のように降る。追っ手を置き去りにしてきた。\n#op.heat|暑さでよろけだすまで、真昼の太陽の下で追っ手を踊らせた。\n#op.sea|港の喧騒の中で追っ手を失った。\n#op.faith|精算人は昔から神聖な場所を警戒している。私は、それを利用してすり抜けてきた。\n#op.cats|大佐（我が敵を守る時の神）は昔から猫を嫌っていた。敵の間では、猫に対する警戒心が強力な迷信となっている。追っ手が躊躇している間に、私は逃げた。\n#op.height|ほとんどの人が行かない高台に身を潜め、追っ手を置き去りにした。\n#op.horned|精算人は時の神を警戒している。ここの影は角斧の存在で鋭くなっている。追っ手が躊躇している間に、私は逃げた。\n#op.wolf|分裂した狼、そしてこの地に触れる彼の息を恐れよ。追っ手は、彼の影の中で私の跡を追うことを躊躇している。その間に私は逃げた。\n#op.flowermaker|この場所にはフラワーメーカーの香りが甘く漂っている。そのおかげでが追っ手を困惑し、逃げ出す余裕ができた。\n#ligeian|ここでは、精算人が特に恐れる強欲が動いている。\n#|......運が良かった。[時折、精算人の攻撃が失敗することもある。]@",
+			"alt": [
+				{
+					"id": "spit.underling.attack.failure.lore",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"lore": 1
+						}
+					}
+				},
+				{
+					"id": "spit.underling.attack.failure.weapon",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"weapon": 1
+						}
+					}
+				},
+				{
+					"id": "spit.underling.attack.failure.associate",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"associate": 1
+						}
+					}
+				}
+			],
+			"effects": {
+				"distraction": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "spit.underling.attack.failure.lore",
+			"actionId": "spit.underling.attack.failure",
+			"requirements": {
+				"lore": 1
+			},
+			"label": "ちょっとした騒ぎ。",
+			"startdescription": "攻撃者を撃退したが、さらに注目を集めてしまった。",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"trace": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.underling.attack.failure.weapon",
+			"actionId": "spit.underling.attack.failure",
+			"requirements": {
+				"weapon": 1
+			},
+			"label": "ちょっとした騒ぎ。",
+			"startdescription": "攻撃者を撃退したが、さらに注目を集めてしまった。",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"trace": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.underling.attack.failure.associate",
+			"actionId": "spit.underling.attack.failure",
+			"requirements": {
+				"associate": 1
+			},
+			"label": "助け舟",
+			"startdescription": "ありがたいことに、仲間がかばってくれた！しかし、精算人たちはさらに手掛かりを掴んでしまった。",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"trace": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "rkx.lookfurtherafield",
+			"actionId": "rkx",
+			"label": "精算人たちは遠くまで探している",
+			"startdescription": "私をここで見つけられなければ、追っ手は他の街で探し出すかもしれない。特に私が興味を持った場所で。[精算人は時折、目的地に先回りすることがある。そこに資金を送っていれば、その可能性は高くなる。]",
+			"requirements": {
+				"rkx.event.passive": 1,
+				"rkx.rank": 1
+			},
+			"extantreqs": {
+				"trace": -1
+			},
+			"slots": [
+				{
+					"id": "destination",
+					"label": "手がかり？",
+					"required": {
+						"destination": 1
+					},
+					"forbidden": {
+						"rkx.infected": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.infect.becauseprep",
+					"chance": 70
+				},
+				{
+					"id": "rkx.infect.noprep",
+					"chance": 30
+				},
+				{
+					"id": "rkx.notfollowinglead"
+				}
+			]
+		},
+		{
+			"id": "rkx.infect.becauseprep",
+			"actionId": "rkx",
+			"label": "現金を追う",
+			"startdescription": "追っ手は、私が先に送った資金の痕跡を辿ってきた。",
+			"requirements": {
+				"destination": 1,
+				"cash.sent": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "destination",
+					"mutateAspectId": "rkx.infected",
+					"mutationLevel": 1
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.infect.demote"
+				}
+			]
+		},
+		{
+			"id": "rkx.infect.noprep",
+			"actionId": "rkx",
+			"label": "目くらまし？",
+			"startdescription": "追っ手は他のところに意識を向けている――なぜだろう？",
+			"requirements": {
+				"destination": 1,
+				"cash.sent": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "destination",
+					"mutateAspectId": "rkx.infected",
+					"mutationLevel": 1
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.infect.demote"
+				}
+			]
+		},
+		{
+			"id": "rkx.notfollowinglead",
+			"actionId": "rkx",
+			"label": "精算人はじっと待機している",
+			"startdescription": "追っ手は、私がまだここにいると信じている。",
+			"alt": [
+				{
+					"id": "spit.uninfected.destination",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"destination": 1
+						}
+					}
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.infect.demote",
+			"actionId": "rkx",
+			"label": "精算人の存在感が薄まってきた",
+			"startdescription": "街内の精算人の数が減った",
+			"aspects": {
+				"rkx.demote": 1
+			},
+			"comments": "If we infected a destination in the previous step, spit the destination out",
+			"alt": [
+				{
+					"id": "spit.infected.destination",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"rkx.infected": 1
+						}
+					}
+				}
+			],
+			"purge": {
+				"damage.underling": 100
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "spit.infected.destination",
+			"actionId": "spit.infected.destination",
+			"label": "危険が迫っている",
+			"startdescription": "ここに行けば、追っ手が目の前に現れるかもしれない。",
+			"requirements": {
+				"rkx.infected": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.uninfected.destination",
+			"actionId": "spit.uninfected.destination",
+			"label": "却下された手がかり",
+			"startdescription": "追っ手は、私がまだここにいると信じている。彼らはこの目的地には行かないと決めた。",
+			"warmup": 2
+		},
+		{
+			"id": "spit.underling.wounded",
+			"actionId": "spit.underling.wounded",
+			"label": "血の軌跡",
+			"startdescription": "追っ手が怪我をした！",
+			"effects": {
+				"wound.underling": 1
+			},
+			"warmup": 1,
+			"linked": [
+				{
+					"id": "use.attack.underling.slain"
+				}
+			]
+		},
+		{
+			"id": "rkx.underling.bribe.greedy",
+			"actionId": "rkx",
+			"label": "高い価格",
+			"startdescription": "@#rkx.underboss|「真面目にやれ」\n#rkx.enforcer|「2倍」\n#rkx.operative|「話を続けろ......」\n#|「話を続けろ......」@[あと「10年」追加すれば、買収は成功する。そうでなければ、追っ手は最初の「10年」を消費して、また追い掛けてくるだろう。]",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"slots": [
+				{
+					"id": "more",
+					"label": "その他",
+					"description": "2倍にするか、立ち去るか。",
+					"required": {
+						"decade.stolen": 1
+					}
+				}
+			],
+			"effects": {
+				"decade.stolen": -1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.underling.bribe.success"
+				},
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.underling.bribe.success",
+			"actionId": "rkx",
+			"label": "買収の成功",
+			"startdescription": "@#rkx.underboss|「良いやつだと思っていたんだ。あの老人が事故に遭ったら......連絡してくれ」\n#rkx.enforcer|「分かった。このことはなかったことにしよう」\n#rkx.operative|「悪くないな。あの老人が追いついたら......お前のために地面に酒を巻こう」",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"effects": {
+				"decade.stolen": -1,
+				"rkx.rank": -1,
+				"rkx.event": -1,
+				"trail.false.bribe": 1
+			},
+			"purge": {
+				"damage.underling": 100
+			},
+			"warmup": 10
+		},
+		{
+			"id": "rkx.bossondeck.attack",
+			"actionId": "rkx",
+			"label": "遅すぎる",
+			"startdescription": "下っ端は敵がいる間は私の存在に目をつぶることはできないだろう。",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"effects": {
+				"decade.stolen": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.underling.attack.success",
+					"chance": 70
+				},
+				{
+					"id": "rkx.underling.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.bossondeck.underboss.cunning",
+			"actionId": "rkx",
+			"label": "遅すぎる",
+			"startdescription": "下っ端は敵がいる間は私の存在に目をつぶることはできないだろう。",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"effects": {
+				"decade.stolen": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.underboss.aggressive.cunning.undefended"
+				}
+			]
+		},
+		{
+			"id": "rkx.bossondeck.operative",
+			"actionId": "rkx",
+			"label": "遅すぎる",
+			"startdescription": "下っ端は敵がいる間は私の存在に目をつぶることはできないだろう。",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"effects": {
+				"decade.stolen": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.operative.aggressive.undefended"
+				}
+			]
+		},
+		{
+			"id": "rkx.reset",
+			"actionId": "rkx",
+			"label": "次は？",
+			"startdescription": "次は？",
+			"effects": {
+				"rkx.event": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.selector"
+				}
+			]
+		}
+	]
+}

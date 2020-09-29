@@ -1,0 +1,2337 @@
+{
+	"recipes": [
+		{
+			"id": "_cities",
+			"actionId": "spawner",
+			"effects": {
+				"city.aachen": 1,
+				"city.alexandria": 1,
+				"city.algiers": 1,
+				"city.amsterdam": 1,
+				"city.avignon": 1,
+				"city.baghdad": 1,
+				"city.budapest": 1,
+				"city.candia": 1,
+				"city.cluj": 1,
+				"city.granada": 1,
+				"city.istanbul": 1,
+				"city.kaunas": 1,
+				"city.kiev": 1,
+				"city.krakow": 1,
+				"city.leningrad": 1,
+				"city.london": 1,
+				"city.marrakech": 1,
+				"city.meshad": 1,
+				"city.munich": 1,
+				"city.nizhny": 1,
+				"city.paris": 1,
+				"city.prague": 1,
+				"city.rostock": 1,
+				"city.samarkand": 1,
+				"city.stalingrad": 1,
+				"city.strasbourg": 1,
+				"city.sverdlovsk": 1,
+				"city.tiflis": 1,
+				"city.tirana": 1,
+				"city.tripoli": 1,
+				"city.valletta": 1,
+				"city.venice": 1,
+				"city.vienna": 1
+			},
+			"warmup": 1
+		},
+		{
+			"id": "_domiciles",
+			"actionId": "spawner",
+			"effects": {
+				"domicile.aachen": 1,
+				"domicile.alexandria": 1,
+				"domicile.algiers": 1,
+				"domicile.amsterdam": 1,
+				"domicile.avignon": 1,
+				"domicile.baghdad": 1,
+				"domicile.budapest": 1,
+				"domicile.candia": 1,
+				"domicile.cluj": 1,
+				"domicile.granada": 1,
+				"domicile.istanbul": 1,
+				"domicile.kaunas": 1,
+				"domicile.kiev": 1,
+				"domicile.krakow": 1,
+				"domicile.leningrad": 1,
+				"domicile.london": 1,
+				"domicile.marrakech": 1,
+				"domicile.meshad": 1,
+				"domicile.munich": 1,
+				"domicile.nizhny": 1,
+				"domicile.paris": 1,
+				"domicile.prague": 1,
+				"domicile.rostock": 1,
+				"domicile.samarkand": 1,
+				"domicile.stalingrad": 1,
+				"domicile.strasbourg": 1,
+				"domicile.sverdlovsk": 1,
+				"domicile.tiflis": 1,
+				"domicile.tirana": 1,
+				"domicile.tripoli": 1,
+				"domicile.valletta": 1,
+				"domicile.venice": 1,
+				"domicile.vienna": 1
+			},
+			"warmup": 1
+		},
+		{
+			"id": "travel.first",
+			"actionId": "travel",
+			"label": "遠く速く ",
+			"startdescription": "旅のために、あまるほど現金を用意できたが、身軽に旅をした方が良いかもしれない。[街を出れば追っ手を振り払えるが、いずれまた見つかってしまう。]",
+			"effects": {
+				"cash": 2
+			},
+			"warmup": 1
+		},
+		{
+			"id": "travel.caper.begin",
+			"actionId": "travel",
+			"label": "泥棒を始める",
+			"startdescription": "入って、商品を手に入れて、出て行く。そんなに簡単なことではないと思う。",
+			"description": "始めた。[作戦に目を光らせておくこと。途中で複雑な問題が起きるかもしれない。]",
+			"requirements": {
+				"vault": 1
+			},
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"alt": [
+				{
+					"id": "opx.caper.populate",
+					"additional": true,
+					"expulsion": {
+						"limit": 2,
+						"filter": {
+							"vault": 1,
+							"edge": 1,
+							"forge": 1,
+							"grail": 1,
+							"heart": 1,
+							"knock": 1,
+							"lantern": 1,
+							"moth": 1,
+							"secrethistories": 1,
+							"winter": 1
+						}
+					}
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "opx.caper.progress3",
+			"actionId": "opx.caper",
+			"label": "獲得！",
+			"startdescription": "このためにここに来たんだ。",
+			"requirements": {
+				"progress": 3
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "opx.caper.end"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.progress2",
+			"actionId": "opx.caper",
+			"label": "最後の複雑な状況......",
+			"startdescription": "あともう少し――",
+			"requirements": {
+				"progress": 2
+			},
+			"aspects": {
+				"opx.progress2": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "opx.caper.next"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.progress1",
+			"actionId": "opx.caper",
+			"label": "またしても複雑な状況が発生......",
+			"startdescription": "今度は何だ？",
+			"requirements": {
+				"progress": 1
+			},
+			"aspects": {
+				"opx.progress1": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "opx.caper.next"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.populate",
+			"actionId": "opx.caper",
+			"label": "忙しい夜が待ち受けている",
+			"startdescription": "準備万端。[勢いが3枚揃うと成功となる。その前に複雑な問題が発生するだろう。]",
+			"aspects": {
+				"opx.progress0": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "opx.caper.next"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.next",
+			"actionId": "opx.caper",
+			"label": "複雑な状況",
+			"startdescription": "@#ee.armouredgate|重い強化扉が私の行く手を阻む。\n#ee.avidadept|聖杯の高僧がすでにそこの近くで野宿をしている。彼女の企みに向き合う準備をしなくては。\n#ee.bosk|棘のある枝の感触、濃い緑の香り、手の下の毛皮の動き、鼓動する真っ暗な闇......この世界の皮の下には森が存在している。\n#ee.coiltrace|「地中にある力そのものだ。取締局によると、ナナトグロの小さな蔓から始まったそうだ。昔の神だ、わかるか？神の肉体が腐りだすと他のものが繁殖しだす。ワームって呼ばれているものだ。気を付けろ。注意はしたからな」\n#ee.crags|「そこに続くたくさんの道が封鎖されている。通れる道を見つけるか作らなくてはいけない。爆薬を手に入れようとしたが、取締局はそれを好まないし、陸軍側は私を嫌っている」\n#ee.creepinghorror|不気味な恐怖が肌を伝わってくる。近くに来て、と夜が言う。近くに来て、と。\n#ee.deceiver|狡猾な生き物が潜んでいる！\n#ee.devourer|破壊力のあるクリーチャーがここに潜んでいる。一部の怪物はライオンスミスの子供で、一部はエキドナの子供で、両方の子供である者もいる。それ以外に、もっと酷い背景を持つ怪物もいる。\n#ee.feast|私の道のりには、儀式か饗宴のようなものが必要になる。パーティーだと思いたいが、自分が好むようなパーティーではない。妙な酔い方をしてもしなくても、冷静でいなくてはいけない。そうでなければ、二日酔いを土産代わりに帰ってくることになるだろう。\n#ee.fretfuldead|蜘蛛の巣のような、恨めしそうな残骸――壊れやすいが、見た目よりも動きが速く、触れられると、皮膚から年月を吸い取られるだろう。\n#ee.guardedcompound|守られた区域――壁、塔、番人。\n#ee.labyrinthseal|装甲金庫の扉を封印する、複雑な結び目を持つメカニズム。カルト的なものか機械的な性質なのかは分からないが、面倒なことになりそうなのは確かだ。\n#ee.ligeian|リゲイアの者だ！彼女を倒すことはできないが、私に構っても時間の無駄だと説得することはできる。\n#ee.miasma|べたべたして、悪臭を放つ毒気。頭がくらくらしだした。\n#ee.mist|ベルベットの名もなき名を持つ者がここを通った。この霧は、彼女の灰色の裾だ。通れる道を探すのは困難だろう。\n#ee.monks|ここの看守は賄賂や誘惑に弱くない。聖なる誓いをしているからだと言う者もいるが、私はお互いを注意深く観察しているからだと思っている。\n#ee.ordeal.agony|今、私は苦悩の試練に直面している。この手のことを前にもやったことがあるから、またやりたいとは思わない。肌にはないが、前回の傷跡は今も残っている。\n#ee.ordeal.desolation|今、私は荒廃の試練に直面している――魂の夕日だ。\n#ee.ordeal.enigma|今、私は不可解な試練に直面している。克服する方法は2つ。全てを理解するか、何も理解しないかだ。\n#ee.percussigant|毛皮と爪を生やした音楽がよたよたと渦を巻いて、私の気を引いている。パーカッシガントだ！\n#ee.scarredduellist|傷を負ったデュエリストが私に挨拶している。\n#ee.securevault|重々しい鍵のかかった頑丈な金庫の扉。\n#ee.shadowedway|入り口はここのどこかにある。それを見つければ良いだけだ。\n#ee.soldiers|武装した男たちがここを守っている。\n#ee.storm|雷は雲を稲妻を刺し、雨は拳のように降ってくる。\n#ee.strixriddenadversary|デュエリストがあなたに向かって慌てて走ってくる。彼の筋肉は緊張して震えており、目はフクロウのように黒と金色だ。彼はストリックスに支配され多翼の者の名を持つ者の力に憑りつかれている。\n#ee.thugs|不愛想な悪党集団がここでうろついていてる。もめごとを起こそうとしているようだ。\n#ee.unknownlocation|未知の場所。ここがどこにあるのかを調べることから始めなければ。\n#ee.unwelcomememories|嫌な記憶だ！壁の鏡が何度も何度も光り、敵に仕えていた時代の自分の姿が映った。何をされたんだ.....いや、私は何をしたんだ――\n#ee.vigil|カルトの歌は子守唄のようにやわらいでいく。目を開けるのに苦労していることに気づく。頭の中に羽毛が詰まっているような気分だ。どうにかして、夜明けまで起きていなければならない。\n#|複雑な状況が待ち受けている。@\n\n[ほとんどの複雑な問題は、適切な属性を持っていれば倒せる。]",
+			"warmup": 60,
+			"slots": [
+				{
+					"id": "response",
+					"label": "応答",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "opx.caper.tryresolve.edge"
+				},
+				{
+					"id": "opx.caper.tryresolve.forge"
+				},
+				{
+					"id": "opx.caper.tryresolve.grail"
+				},
+				{
+					"id": "opx.caper.tryresolve.heart"
+				},
+				{
+					"id": "opx.caper.tryresolve.knock"
+				},
+				{
+					"id": "opx.caper.tryresolve.lantern"
+				},
+				{
+					"id": "opx.caper.tryresolve.moth"
+				},
+				{
+					"id": "opx.caper.tryresolve.secrethistories"
+				},
+				{
+					"id": "opx.caper.tryresolve.winter"
+				}
+			],
+			"linked": [
+				{
+					"chance": 30,
+					"id": "opx.caper.lucky"
+				},
+				{
+					"id": "opx.caper.end"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.edge",
+			"actionId": "opx.caper",
+			"label": "暴力は解決策になる",
+			"startdescription": "@#ee.devourer|圧倒的な強さのクリーチャーがここに潜んでいる。私の力の方がはるかに強い。\n#ee.soldiers|騒がしくて、乱雑だが、必要不可欠。今度は、自分のブーツを綺麗にしなくては。\n#|暴力を振るった。",
+			"requirements": {
+				"minedge": 1,
+				"edge": "minedge"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.forge",
+			"actionId": "opx.caper",
+			"label": "金槌と鉄床",
+			"startdescription": "@#ee.mist|またしても、火と工夫が功を奏してくれた。\n#ee.securevault|金庫室を破った。\n#|工夫を凝らした。@",
+			"requirements": {
+				"minforge": 1,
+				"forge": "minforge"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.grail",
+			"actionId": "opx.caper",
+			"label": "貪欲と欺き",
+			"startdescription": "@#ee.soldiers|ここを守っている兵士たちと交渉した。\n#|賄賂を使った。@",
+			"requirements": {
+				"mingrail": 1,
+				"grail": "mingrail"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.heart",
+			"actionId": "opx.caper",
+			"label": "鳴りやまぬ鼓動",
+			"startdescription": "@#|粘り強さを利用してきた。@",
+			"requirements": {
+				"minheart": 1,
+				"heart": "minheart"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.knock",
+			"actionId": "opx.caper",
+			"label": "傷口はすべて扉である",
+			"startdescription": "@#|封印されていたものを開けた。@",
+			"requirements": {
+				"minknock": 1,
+				"knock": "minknock"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.lantern",
+			"actionId": "opx.caper",
+			"label": "光",
+			"startdescription": "＠#ee.mist|「ベルベットより先に見張り番が来る」と言うのは、高僧が言うようなもの。霧は湿った暗闇でしかないという意味だろう。\n#|闇を溶かした。@",
+			"requirements": {
+				"minlantern": 1,
+				"lantern": "minlantern"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.moth",
+			"actionId": "opx.caper",
+			"label": "巧妙なトリック",
+			"startdescription": "@#ee.devourer|圧倒的な強さのクリーチャーがここに潜んでいる。面と向かって立ち向かうことは不可能だから、策略を練ることにした。\n#ee.soldiers|ここを守っているはずの兵士たちは、夜の暗闇へと騒々しく消えていった。彼らが戻ってくる前に、終わらせられるはずだ――\n#|策略を使った。@",
+			"requirements": {
+				"minmoth": 1,
+				"moth": "minmoth"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.secrethistories",
+			"actionId": "opx.caper",
+			"label": "歴史は1つだけではない",
+			"startdescription": "@#|知識を使った。@",
+			"requirements": {
+				"minsecrethistories": 1,
+				"secrethistories": "minsecrethistories"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.winter",
+			"actionId": "opx.caper",
+			"label": "夜は深まる",
+			"startdescription": "@#|我慢した。@",
+			"requirements": {
+				"minwinter": 1,
+				"winter": "minwinter"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.lucky",
+			"actionId": "opx.caper",
+			"label": "幸運",
+			"startdescription": "他の誰かだったら諦めていただろう。[たまに、一致する属性がなくても、複雑な状況を解決することができる。]",
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.makeprogress",
+			"actionId": "opx.caper",
+			"label": "勢い",
+			"startdescription": "次は何だ？",
+			"effects": {
+				"complication": -1,
+				"progress": 1
+			},
+			"linked": [
+				{
+					"id": "opx.caper.progress3"
+				},
+				{
+					"id": "opx.caper.progress2"
+				},
+				{
+					"id": "opx.caper.progress1"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.end",
+			"actionId": "opx.caper",
+			"effects": {
+				"complication": -100
+			},
+			"linked": [
+				{
+					"id": "opx.caper.success"
+				},
+				{
+					"id": "opx.caper.failure"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.success",
+			"actionId": "opx.caper",
+			"label": "成功！",
+			"startdescription": "獲物を持って無事に出発！",
+			"requirements": {
+				"progress": 3
+			},
+			"effects": {
+				"progress": -3
+			},
+			"burnimage": "caper.complete",
+			"aspects": {
+				"fatiguing": 1,
+				"success": 1
+			}
+		},
+		{
+			"id": "opx.caper.failure",
+			"actionId": "opx.caper",
+			"label": "災難！",
+			"startdescription": "泥棒失敗！",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"trace": 1
+			}
+		},
+		{
+			"id": "travel.visit.serapeum.peristasis",
+			"actionId": "travel",
+			"label": "ブラックウッド博士との会話",
+			"startdescription": "「あなたが選んだ進路を認めたことがないのは知っていると思うけど、あなたの辞任の仕方について、あれこれ言っている暇もないわ」と博士は言う。そして、「でも、あの悪党と決別してくれて良かった。結局は道徳的な判断だったんでしょうね。もちろん、少しだけど出来る限り援助するわ」と続けた。",
+			"slots": [
+				{
+					"id": "assistancewith",
+					"label": "援助",
+					"actionId": "travel",
+					"required": {
+						"rarity.lantern": 1,
+						"wound.exile": 1,
+						"wound.exile.medusa": 1,
+						"trace": 1,
+						"temptation.obscurity": 1
+					}
+				}
+			],
+			"requirements": {
+				"vault.serapeum.completed": 1
+			},
+			"alt": [
+				{
+					"id": "travel.visit.serapeum.peristasis.pentiment"
+				},
+				{
+					"id": "travel.visit.serapeum.peristasis.heal"
+				},
+				{
+					"id": "travel.visit.serapeum.peristasis.hide"
+				},
+				{
+					"id": "travel.visit.serapeum.peristasis.obscure"
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.serapeum.peristasis.pentiment",
+			"actionId": "travel",
+			"requirements": {
+				"rarity.lantern": 1
+			},
+			"label": "ブラックウッド博士との会話",
+			"startdescription": "「太陽の書！買収部を呼び寄せたいところだ。でもセラぺウムは日々の鍛造の保護を受けているから、ここではそれはできない。なぜかって？<i>ペンティメント</i>を知っているか？芸術家の後悔だ。違うものを意図していて、痕跡が残ってしまった時に生まれるものだ。思っているより、痕跡は残っているものだよ」"
+		},
+		{
+			"id": "travel.visit.serapeum.peristasis.heal",
+			"actionId": "travel",
+			"requirements": {
+				"damage.exile": 1
+			},
+			"label": "ブラックウッド博士との会話",
+			"startdescription": "「ここでの医療知識は限られている。もし私がまだハッシュハウスにいたら、状況は大きく変わっていたかもしれないけど......でもできる限りのことはするわ」[これで傷口が3つまで治る。]",
+			"purge": {
+				"damage.exile": 3
+			},
+			"effects": {
+				"vault.serapeum.completed": -1
+			}
+		},
+		{
+			"id": "travel.visit.serapeum.peristasis.hide",
+			"actionId": "travel",
+			"requirements": {
+				"trace": 1
+			},
+			"label": "ブラックウッド博士との会話",
+			"startdescription": "残念だけど、最終的には彼に見つかってしまうわ。だから、探しにくくすれば良いのよ。[これによって現在の痕跡がすべて削除され、偽の痕跡が作成される。]",
+			"purge": {
+				"trace": 7
+			},
+			"effects": {
+				"vault.serapeum.completed": -1,
+				"trail.false.exile": 1
+			}
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.tripoli.pentiment.colonel",
+			"actionId": "travel",
+			"requirements": {
+				"loc.shrine.lionsmith.tripoli": 1,
+				"contact.retainer": 1
+			},
+			"extantreqs": {
+				"memento.grail.lantern": -1,
+				"defiance.consecration.colonel": 1
+			},
+			"label": "アンテウムで",
+			"startdescription": "聖域は砂岩の太陽に阻まれながらも、静かで涼しい。「私が最後の1人だ」と老人は静かに言う。「そして、ここにある、祭壇の大きな石の下に彼女が葬られたことを知っているのは、今となって私しかいない。大地の子を産むことは、普通の人間には困難だことだ。だから、彼女の心は破裂した。そして君の父親が、幼いお前を連れて行った......」",
+			"description": "老人が去った後も私は聖域に留まった。素焼きの窓の外に星が瞬き、夜の空気が苦しくなるまで、動けずにいた。彼は去る前に贈り物を私の手に押し付けてきた。それは、私がこの世に生まれた時に身に着けていた肉の切れ端だった。「お前は粉々になった剣の下に生まれた」と、彼は言う。「だから我々は反抗してくれることを望んでいたが、ライオンスミスに反旗を翻すとは、思ってもいなかった。しかし、選択は自由の影だ」",
+			"warmup": 30,
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"memento.grail.lantern": 1,
+				"grief": 1
+			},
+			"burnimage": "pentiment",
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.tripoli.pentiment",
+			"actionId": "travel",
+			"requirements": {
+				"loc.shrine.lionsmith.tripoli": 1,
+				"contact.retainer": 1
+			},
+			"extantreqs": {
+				"memento.grail.lantern": -1
+			},
+			"label": "アンテウムで",
+			"startdescription": "聖域は砂岩の太陽に阻まれながらも、静かで涼しい。「私が最後の1人だ」と老人は静かに言う。「そして、ここにある、祭壇の大きな石の下に彼女が葬られたことを知っているのは、今となって私しかいない。大地の子を産むことは、普通の人間には困難だことだ。だから、彼女の心は破裂した。そして君の父親が、幼いお前を連れて行った......」",
+			"description": "老人が去った後も私は聖域に留まった。素焼きの窓の外に星が瞬き、夜の空気が苦しくなるまで、動けずにいた。彼は去る前に贈り物を私の手に押し付けてきた。それは、私がこの世に生まれた時に身に着けていた肉の切れ端だった。「お前は粉々になった剣の下に生まれた」と、彼は言う。「だから我々は反抗してくれることを望んでいた。反乱の後には、もちろん、もっと難しい選択が待っているがな」",
+			"warmup": 30,
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"memento.grail.lantern": 1,
+				"grief": 1
+			},
+			"burnimage": "pentiment",
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.tripoli.pentiment.after",
+			"actionId": "travel",
+			"requirements": {
+				"loc.shrine.lionsmith.tripoli": 1,
+				"contact.retainer": 1
+			},
+			"extantreqs": {
+				"memento.grail.lantern": 1
+			},
+			"burnimage": "pentiment",
+			"label": "アンテウムで",
+			"startdescription": "今日は老人の気配がない。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.serapeum.peristasis.obscure",
+			"actionId": "travel",
+			"requirements": {
+				"temptation.obscurity": 1
+			},
+			"label": "ブラックウッド博士との会話",
+			"startdescription": "「そう言えばそうね。私たちは、余計な注目を避ける方法をよく知っていたわね」[これによって不明瞭が3枚分増加する。]",
+			"effects": {
+				"vault.serapeum.completed": -1,
+				"obscurity": 3
+			}
+		},
+		{
+			"id": "travel.visit.shrine.colonel.blocked.hint",
+			"actionId": "travel",
+			"label": "敵の祠？",
+			"startdescription": "私は、大佐の永遠の敵、ライオンスミスに忠誠を誓っている。ここでは歓迎されないだろう。",
+			"extantreqs": {
+				"defiance.consecration.lionsmith": 1
+			},
+			"requirements": {
+				"shrine.colonel": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.blocked.hint",
+			"actionId": "travel",
+			"label": "敵の祠？",
+			"startdescription": "私は、ライオンスミスの永遠の敵、大佐に忠誠を誓っている。ここでは歓迎されないだろう。",
+			"extantreqs": {
+				"defiance.consecration.colonel": 1
+			},
+			"requirements": {
+				"shrine.lionsmith": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.shrine.blocked.tranquillity",
+			"actionId": "travel",
+			"label": "平和の対極にあるもの",
+			"startdescription": "今日早めておこう。忘れたと思っていた曲を口ずさみながら歩く。[盤面に「静寂」を置いている間は、ライオンスミスの祠も大佐の祠も使えない。]",
+			"extantreqs": {
+				"tranquillity": 1
+			},
+			"requirements": {
+				"shrine.edge": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.shrine.abandonobscurity.hint",
+			"actionId": "travel",
+			"label": "生贄の可能性？",
+			"startdescription": "ここに祀られている神は、特定の誓いを受け入れるかもしれないが、今はそれから何かを得ることはできない。[反抗心の誘惑を盤面に置いてから、もう一度試してみよう。]",
+			"requirements": {
+				"shrine.edge": 1,
+				"temptation.obscurity": 1
+			},
+			"extantreqs": {
+				"temptation.defiance": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.shrine.consecration.hint",
+			"actionId": "travel",
+			"label": "奉献される",
+			"startdescription": "紛争の力への奉献は傷跡や裏切りと同様に、取り返しがつかない。[奉献できるのは1度だけである。]",
+			"comments": "This should trigger only if neither Consecration recipe does.",
+			"requirements": {
+				"shrine.edge": 1,
+				"temptation.defiance": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.shrine.colonel.upgrade.hint",
+			"actionId": "travel",
+			"label": "鉄の祠を参拝する？",
+			"startdescription": "私は何十年も時の神々の邪魔をしないようにしてきた。それを変える時が来たのかもしれない。",
+			"requirements": {
+				"shrine.colonel": 1,
+				"lore": -1
+			},
+			"extantreqs": {
+				"tranquillity": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.shrine.colonel.consecrated.weapon",
+			"actionId": "travel",
+			"label": "鉄の祠を参拝して遺物を取りに行く",
+			"startdescription": "大佐の祠は時に火薬の匂いがしたり、雪の匂いがしたりする。私は彼の謎を解き明かした。彼の祠で瞑想すれば、私のために残されたものを見つけられるかももしれない。[大佐の瞑想は傷を生む。]",
+			"description": "祭壇の下にある空間に、ずっと前から自分のために残されていた物があった。",
+			"requirements": {
+				"shrine.colonel": 1,
+				"fragmentedgeg.colonel": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.colonel": 1,
+				"tranquillity": -1,
+				"weakness.foe.unknown": -1
+			},
+			"effects": {
+				"location": -1,
+				"wound.exile": 1
+			},
+			"aspects": {
+				"epiphany.colonel": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.colonel.consecrated.revelation",
+			"actionId": "travel",
+			"label": "啓示を求めて、鉄の祠を参拝する",
+			"startdescription": "大佐の祠は時に火薬の匂いがしたり、雪の匂いがしたりする。私は彼の謎を解き明かした。彼の祠で瞑想すれば大佐の声が聞こえるかもしれない。[大佐の瞑想は傷を生む。]",
+			"description": "祠の影が濃くなる。大佐のように目の前が暗くなった。双頭槍を持つ「名を持つ者」、クイリヌスが目の前に立っているが、それさえも見えない。「大地の子よ、お前に知恵を授けよう」と、彼が囁いた。[敵の弱点を学んだ。]",
+			"requirements": {
+				"shrine.colonel": 1,
+				"fragmentedgeg.colonel": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.colonel": 1,
+				"tranquillity": -1
+			},
+			"effects": {
+				"location": -1,
+				"wound.exile": 1
+			},
+			"linked": [
+				{
+					"id": "cold.weakness.reveal.colonel",
+					"label": "啓示",
+					"extantreqs": {
+						"rkx.weakness.cold.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.cold.hidden": 1
+					}
+				},
+				{
+					"id": "heat.weakness.reveal.colonel",
+					"label": "啓示",
+					"extantreqs": {
+						"rkx.weakness.heat.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.heat.hidden": 1
+					}
+				},
+				{
+					"id": "sea.weakness.reveal.colonel",
+					"label": "啓示",
+					"extantreqs": {
+						"rkx.weakness.sea.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.sea.hidden": 1
+					}
+				},
+				{
+					"id": "faith.weakness.reveal.colonel",
+					"label": "啓示",
+					"extantreqs": {
+						"rkx.weakness.faith.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.faith.hidden": 1
+					}
+				},
+				{
+					"id": "heights.weakness.reveal.colonel",
+					"label": "啓示",
+					"extantreqs": {
+						"rkx.weakness.heights.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.heights.hidden": 1
+					}
+				},
+				{
+					"id": "cats.weakness.reveal.colonel",
+					"label": "啓示",
+					"extantreqs": {
+						"rkx.weakness.cats.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.cats.hidden": 1
+					}
+				},
+				{
+					"id": "flowermaker.weakness.reveal.colonel",
+					"label": "啓示",
+					"extantreqs": {
+						"rkx.weakness.flowermaker.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.flowermaker.hidden": 1
+					}
+				},
+				{
+					"id": "horned.weakness.reveal.colonel",
+					"label": "啓示",
+					"extantreqs": {
+						"rkx.weakness.horned.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.horned.hidden": 1
+					}
+				},
+				{
+					"id": "wolf.weakness.reveal.colonel",
+					"label": "啓示",
+					"extantreqs": {
+						"rkx.weakness.wolf.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.wolf.hidden": 1
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.colonel.consecrated.upgrade",
+			"actionId": "travel",
+			"label": "鉄の祠を参拝する",
+			"startdescription": "大佐の祠は時に火薬の匂いがしたり、雪の匂いがしたりする。ここでの瞑想は、大佐の名を持つ者たちが教える技の理解を深めることになるだろう。[大佐の瞑想は傷を生む。]",
+			"description": "儀式には毎回血が必要だ。錯乱の中、半分意識を失って祠で横たわっていると、多翼の者が天井裏で囁く声が聞こえてきた気がした。「血は大地に還る。血は大地に......」",
+			"requirements": {
+				"shrine.colonel": 1,
+				"lore": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.colonel": 1,
+				"tranquillity": -1
+			},
+			"aspects": {
+				"epiphany.colonel": 1
+			},
+			"effects": {
+				"location": -1,
+				"wound.exile": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.colonel.upgrade",
+			"actionId": "travel",
+			"label": "鉄の神社を参拝する",
+			"startdescription": "大佐の祠は時に火薬の匂いがしたり、雪の匂いがしたりする。@#fragmentedgeg.exile|ここでは何も学べないが、活力を得て傷を治すことができる。#|ここでは、刃の戦いの謎について、詳しく知ることができる。@",
+			"description": "骨が軋む。聴力が鋭くなった。",
+			"requirements": {
+				"shrine.colonel": 1,
+				"lore": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.lionsmith": -1,
+				"tranquillity": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"effects": {
+				"location": -1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.upgrade.hint",
+			"actionId": "travel",
+			"label": "真鍮の神社を参拝する？",
+			"startdescription": "私は何十年も時の神々の邪魔をしないようにしてきた。それを変える時が来たのかもしれない。",
+			"requirements": {
+				"shrine.lionsmith": 1,
+				"lore": -1
+			},
+			"extantreqs": {
+				"tranquillity": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.consecrated.weapon",
+			"actionId": "travel",
+			"label": "真鍮の祠を参拝して遺物を取りに行く",
+			"startdescription": "ライオンスミスの祠は、熱い真鍮の香りで明るく、大きな猫科動物の臭いが漂う。私は彼の謎を解き明かした。彼の祠で瞑想すれば、私のために残されたものを見つけられるかももしれない。[ライオンスミスの瞑想をするたびに怒りが生まれる。]",
+			"description": "祭壇の下にある空間に、ずっと前から自分のために残されていた物があった。",
+			"requirements": {
+				"shrine.lionsmith": 1,
+				"fragmentedgeg.lionsmith": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.lionsmith": 1,
+				"tranquillity": -1,
+				"weakness.foe.unknown": -1
+			},
+			"effects": {
+				"location": -1,
+				"rage": 1
+			},
+			"aspects": {
+				"epiphany.lionsmith": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.consecrated.revelation",
+			"actionId": "travel",
+			"label": "啓示を求めて、真鍮の祠を参拝する",
+			"startdescription": "ライオンスミスの祠は、熱い真鍮の香りで明るく、大きな猫科動物の臭いが漂う。私は彼の謎を解き明かした。彼の祠で瞑想すれば、彼の声が聞こえるかもしれない。[ライオンスミスの瞑想をするたびに怒りが生まれる。]",
+			"description": "太陽の光が血のように目に落ちてきて、金色しか見えなくなる。光の中で名を持つ者、メンヒットがうなり声をあげて立っている。彼女の姿は見えないが「大地の子よ！聞け！」と彼女は叫ぶ。[敵の弱点の1つを学んだ。] ",
+			"requirements": {
+				"shrine.lionsmith": 1,
+				"fragmentedgeg.lionsmith": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.lionsmith": 1,
+				"tranquillity": -1
+			},
+			"effects": {
+				"location": -1,
+				"rage": 1
+			},
+			"linked": [
+				{
+					"id": "cats.weakness.reveal.lionsmith",
+					"label": "啓示",
+					"extantreqs": {
+						"rkx.weakness.cats.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.cats.hidden": 1
+					}
+				},
+				{
+					"id": "heat.weakness.reveal.lionsmith",
+					"label": "啓示",
+					"extantreqs": {
+						"rkx.weakness.heat.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.heat.hidden": 1
+					}
+				},
+				{
+					"id": "sea.weakness.reveal.lionsmith",
+					"label": "啓示",
+					"extantreqs": {
+						"rkx.weakness.sea.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.sea.hidden": 1
+					}
+				},
+				{
+					"id": "faith.weakness.reveal.lionsmith",
+					"label": "啓示",
+					"extantreqs": {
+						"rkx.weakness.faith.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.faith.hidden": 1
+					}
+				},
+				{
+					"id": "heights.weakness.reveal.lionsmith",
+					"label": "啓示",
+					"extantreqs": {
+						"rkx.weakness.heights.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.heights.hidden": 1
+					}
+				},
+				{
+					"id": "cold.weakness.reveal.lionsmith",
+					"label": "啓示",
+					"extantreqs": {
+						"rkx.weakness.cold.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.cold.hidden": 1
+					}
+				},
+				{
+					"id": "flowermaker.weakness.reveal.lionsmith",
+					"label": "啓示",
+					"extantreqs": {
+						"rkx.weakness.flowermaker.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.flowermaker.hidden": 1
+					}
+				},
+				{
+					"id": "horned.weakness.reveal.lionsmith",
+					"label": "啓示",
+					"extantreqs": {
+						"rkx.weakness.horned.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.horned.hidden": 1
+					}
+				},
+				{
+					"id": "wolf.weakness.reveal.lionsmith",
+					"label": "啓示",
+					"extantreqs": {
+						"rkx.weakness.wolf.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.wolf.hidden": 1
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.consecrated.upgrade",
+			"actionId": "travel",
+			"label": "真鍮の祠を参拝する",
+			"startdescription": "ライオンスミスの祠は、熱い真鍮の香りで明るく、大きな猫科動物の臭いが漂う。ここでの瞑想は、ライオンスミスの名を持つ者たちが教える技の理解を深めることになるだろう。[ライオンスミスの瞑想をするたびに怒りが生まれる。]",
+			"description": "力が思考を圧倒し、私は獣のように唸りながら祠を一周した。怒りの靄の中で、私は天井裏で囁く多翼の者たちの声を聞いた気がする。「大地の力.....大地の......」",
+			"requirements": {
+				"shrine.lionsmith": 1,
+				"lore": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.lionsmith": 1,
+				"tranquillity": -1
+			},
+			"aspects": {
+				"epiphany.lionsmith": 1
+			},
+			"effects": {
+				"location": -1,
+				"rage": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.upgrade",
+			"actionId": "travel",
+			"label": "真鍮の神社を参拝する",
+			"startdescription": "ライオンスミスの祠は、熱い真鍮の香りで明るく、大きな猫科動物の臭いが漂う。@#fragmentedgeg.exile|ここでは何も学べないが、活力を得て傷を治すことができる。#|ここでは、刃の戦いの謎について、詳しく知ることができる。@",
+			"description": "強くなってきた。",
+			"requirements": {
+				"shrine.lionsmith": 1,
+				"lore": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.colonel": -1,
+				"tranquillity": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"effects": {
+				"location": -1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.consecration.colonel",
+			"actionId": "travel",
+			"label": "大佐への献身",
+			"startdescription": "大佐に身を捧げられる。[これはあなたに害を与え、ライオンスミスとの関わり合いを制限するが、反抗力を高め、大佐の謎を解き明かす。]",
+			"description": "私は目を覆い、肌に傷をつけた。私は「九の患者の誓い」で自分を縛った。私は大佐の兵士であり、彼は私を解放しない。",
+			"requirements": {
+				"shrine.colonel": 1,
+				"temptation.defiance": 1,
+				"defiance.consecration.lionsmith": -1,
+				"defiance.consecration.colonel": -1
+			},
+			"extantreqs": {
+				"tranquillity": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.consecration.colonel",
+					"mutationLevel": 1
+				}
+			],
+			"effects": {
+				"location": -1,
+				"wound.exile": 1
+			},
+			"burnimage": "consecration.colonel",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.consecration.lionsmith",
+			"actionId": "travel",
+			"label": "ライオンスミスへの献身",
+			"startdescription": "ライオンスミスに身を捧げられる。[これはあなたを激怒させ、大佐との関わり合いを制限するが、反抗力を高め、ライオンスミスの謎を解き明かす。]",
+			"description": "私は獣の血を流し、肌を焦がし、三度、勇敢な試練を受けた。いつか彼が私を解放しない限りは、私はライオンスミスの戦士だ。",
+			"requirements": {
+				"shrine.lionsmith": 1,
+				"temptation.defiance": 1,
+				"defiance.consecration.lionsmith": -1,
+				"defiance.consecration.colonel": -1
+			},
+			"extantreqs": {
+				"tranquillity": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.consecration.lionsmith",
+					"mutationLevel": 1
+				}
+			],
+			"effects": {
+				"location": -1,
+				"rage": 1
+			},
+			"burnimage": "consecration.lionsmith",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.colonel.abandonobscurity",
+			"actionId": "travel",
+			"label": "ゆるぎない誓い",
+			"startdescription": "何を犠牲にしても粘り強さを求める「ゆるぎない誓い」を選択するかもしれない。[これにより傷口ができ、不明瞭ルートでゲームに勝てなくなるが、反抗心が強まる。]",
+			"description": "「苦悩は教訓であり、傷は武器である。全滅以外の敗北はない」",
+			"requirements": {
+				"shrine.colonel": 1,
+				"temptation.obscurity": 1
+			},
+			"extantreqs": {
+				"temptation.defiance": 1,
+				"defiance.consecration.colonel": 1,
+				"tranquillity": -1
+			},
+			"slots": [
+				{
+					"id": "defiance",
+					"label": "反抗心",
+					"required": {
+						"temptation.defiance": 1
+					},
+					"greedy": true
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"temptation.obscurity": -1,
+				"location": -1,
+				"wound.exile": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.abandonobscurity",
+			"actionId": "travel",
+			"label": "真鍮の誓い",
+			"startdescription": "最も過酷な状況下でも大胆さを求める「大胆な誓い」を選択するかもしれない。[これにより怒りが生まれ、不明瞭ルートでゲームに勝てなくなるが、反抗心が強まる。]",
+			"description": "「勇気から強さを、強さから勇気を。そこにあるのは、敗北ではなく恥だ」",
+			"requirements": {
+				"shrine.lionsmith": 1,
+				"temptation.obscurity": 1
+			},
+			"extantreqs": {
+				"temptation.defiance": 1,
+				"defiance.consecration.lionsmith": 1,
+				"tranquillity": -1
+			},
+			"slots": [
+				{
+					"id": "defiance",
+					"label": "反抗心",
+					"required": {
+						"temptation.defiance": 1
+					},
+					"greedy": true
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"temptation.obscurity": -1,
+				"location": -1,
+				"rage": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.nameless.hint",
+			"actionId": "travel",
+			"label": "怒って立ち去る",
+			"startdescription": "これ以上ここで時間を無駄にはしたくない。[怒りの存在がこの祠の使用を妨げる。]",
+			"requirements": {
+				"loc.shrine.nameless": 1
+			},
+			"extantreqs": {
+				"rage": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment",
+			"actionId": "travel",
+			"label": "名もなき名を持つ者にペンティメントを渡す",
+			"startdescription": "今度こそきちんと忘れ去られていくはず。",
+			"requirements": {
+				"loc.shrine.nameless": 1,
+				"pentiment": 1
+			},
+			"extantreqs": {
+				"rage": -1
+			},
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.ii"
+				},
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.ii",
+			"actionId": "travel",
+			"requirements": {
+				"pentiment": 1
+			},
+			"label": "2つ目のペンティメントを名もなき名を持つ者に渡す",
+			"startdescription": "霧が息を止めている。",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "ペンティメント",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.iii"
+				},
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.iii",
+			"actionId": "travel",
+			"requirements": {
+				"pentiment": 2
+			},
+			"label": "3つ目のペンティメントを名もなき名を持つ者に渡す",
+			"startdescription": "ベルベットが埋めるものが増えた。",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "ペンティメント",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.iv"
+				},
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.iv",
+			"actionId": "travel",
+			"requirements": {
+				"pentiment": 3
+			},
+			"label": "4つ目のペンティメントを名もなき名を持つ者に渡す",
+			"startdescription": "世界の表面を滑らかにする。",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "ペンティメント",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.v"
+				},
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.v",
+			"actionId": "travel",
+			"requirements": {
+				"pentiment": 4
+			},
+			"label": "5つ目のペンティメントを名もなき名を持つ者に渡す",
+			"startdescription": "秘密の犯罪、秘密の悲しみ、秘密の喜び――森で失われる。",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "ペンティメント",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.vi"
+				},
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.vi",
+			"actionId": "travel",
+			"requirements": {
+				"pentiment": 5
+			},
+			"label": "6つ目のペンティメントを名もなき名を持つ者に渡す",
+			"startdescription": "霧の中で、土と黒苔の香りが漂う。",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "ペンティメント",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.vii"
+				},
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.vii",
+			"actionId": "travel",
+			"requirements": {
+				"pentiment": 6
+			},
+			"label": "7つ目のペンティメントを名もなき名を持つ者に渡す",
+			"startdescription": "霧の中で、大きな鎖が低くとどろく。",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "ペンティメント",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.final"
+				},
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.final",
+			"requirements": {
+				"pentiment": 7
+			},
+			"actionId": "travel",
+			"label": "霧の中",
+			"startdescription": "終わった。伸びをして、首を鳴らす。周りでは霧が溶けている...まだまだだ。ベルベットは私の贈り物を気に入ってくれたに違いない。しばらくの間は名もなき名を持つ者の衣の中を歩くことにする。つまり、<i>頑張って</i>私を探してみろってことだ。",
+			"warmup": 30,
+			"effects": {
+				"obscurity": 9,
+				"pentiment": -7,
+				"location": -1,
+				"op.dawn": 1,
+				"trail.false.exile.nameless": 1
+			}
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.break",
+			"actionId": "travel",
+			"label": "夜明けが訪れる",
+			"startdescription": "これが始まりだが、ベルベットの注意を引くにはまだ秘密が足りない。こういうことは大体7回ずつ起こるものだ。周りの霧が溶けてなくなり、祠が消えた。",
+			"effects": {
+				"op.dawn": 1,
+				"location": -1
+			}
+		},
+		{
+			"id": "travel.visit.shrine.nameless.downgrade",
+			"actionId": "travel",
+			"label": "霧に秘密を捧げる",
+			"startdescription": "ロウソクに火をつけて待つ。[これにより、あなたの伝承が恒久的に1レベル分レベルダウンするが、不明瞭と静寂が与えられる。]",
+			"description": "厳密に言うと霧は動かないが、かと言って静止しているわけでもない。とても静かな夜だ。しばらくすると、ろうそくの炎が頭を下げ、一瞬だけ優雅にもどき、蝋の液だまりの中で死んでいく。それ以上は何も起こらない。",
+			"requirements": {
+				"loc.shrine.nameless": 1,
+				"lore": 1
+			},
+			"extantreqs": {
+				"rage": -1
+			},
+			"aspects": {
+				"depiphany": 1
+			},
+			"effects": {
+				"loc.shrine.nameless": -1,
+				"obscurity": 1,
+				"tranquillity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.nameless",
+			"actionId": "travel",
+			"label": "霧の中で一休み",
+			"startdescription": "壁に寄りかかって待つ。[これで静寂が得られる。]",
+			"description": "この霧は動かないが、じっとしているわけでもない。夜はとても静かだ。1時間後、私はベッドに戻り、ぐっすりと深く眠る。",
+			"requirements": {
+				"loc.shrine.nameless": 1
+			},
+			"extantreqs": {
+				"rage": -1
+			},
+			"effects": {
+				"loc.shrine.nameless": -1,
+				"tranquillity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.wilderness.leave",
+			"actionId": "travel",
+			"label": "ここ以外のどこか",
+			"startdescription": "次に進まなくては。[どこか他の場所にたどり着くかもしれない。]",
+			"comments": "You can leave wilderness even if you have outstanding Rage. I'm not a monster.",
+			"requirements": {
+				"wilderness": 1,
+				"domicile": 1,
+				"cash": 1
+			},
+			"effects": {
+				"wilderness": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.bornholm",
+					"end.slettnes",
+					"end.cheko",
+					"end.paro",
+					"end.messana",
+					"end.ghardaia",
+					"end.morbihan",
+					"city.alexandria",
+					"city.algiers",
+					"city.amsterdam",
+					"city.avignon",
+					"city.baghdad",
+					"city.budapest",
+					"city.candia",
+					"city.cluj",
+					"city.granada",
+					"city.istanbul",
+					"city.kaunas",
+					"city.kiev",
+					"city.krakow",
+					"city.london",
+					"city.marrakech",
+					"city.meshad",
+					"city.munich",
+					"city.nizhny",
+					"city.paris",
+					"city.prague",
+					"city.aachen",
+					"city.rostock",
+					"city.samarkand",
+					"city.leningrad",
+					"city.stalingrad",
+					"city.strasbourg",
+					"city.tiflis",
+					"city.tirana",
+					"city.tripoli",
+					"city.valletta",
+					"city.venice",
+					"city.vienna",
+					"city.sverdlovsk"
+				],
+				"draws": 1,
+				"defaultcard": "end.slettnes",
+				"resetonexhaustion": false
+			},
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "travel.depart"
+				}
+			]
+		},
+		{
+			"id": "travel.rage.hint",
+			"actionId": "travel",
+			"label": "いいえ",
+			"startdescription": "<i>もう一度</i>逃げることを考えると血が騒ぎだす。この怒りが収まらない限り、私はただ立ち向かって戦うことしかできない。[怒りを感じている間は、街を出ることはできない。]",
+			"requirements": {
+				"destination": 1
+			},
+			"comments": "This is only a hint, so the Wilderness recipe will override it.",
+			"extantreqs": {
+				"rage": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.ally.duplicate.hint",
+			"actionId": "travel",
+			"label": "大混乱",
+			"startdescription": "[偽りの痕跡を作るために複数の味方を同時に送ることはできない。]",
+			"requirements": {
+				"ally": 1
+			},
+			"extantreqs": {
+				"apx.trail.false.exile": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "travel.ally.hint",
+			"actionId": "travel",
+			"label": "偽りの痕跡を作るために、味方を送る？",
+			"startdescription": "[まだ言ったことのない街を追加する。]",
+			"requirements": {
+				"ally": 1,
+				"exhausted": -1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "travel.ally",
+			"actionId": "travel",
+			"label": "偽りの痕跡を作るために味方を送る",
+			"startdescription": "当てにはならないが、当てになるものなんてないだろう。[偽の足跡がある限り、精算人には見つからないようになる。二度とこの街に行くことはできなくなる。味方は予測不可能な時間をかけて痕跡を作り、予測不可能な期間は味方を使うことができなくなる。そして、二度と戻ってこない可能性は低い。]",
+			"description": "向かってきている.",
+			"requirements": {
+				"ally": 1,
+				"destination": 1,
+				"exhausted": -1,
+				"end": -1,
+				"wilderness": -1
+			},
+			"extantreqs": {
+				"apx.trail.false.exile": -1
+			},
+			"effects": {
+				"apx.trail.false.exile": 1
+			},
+			"alt": [
+				{
+					"id": "ally.trail.false.begin",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"ally": 1,
+							"destination": 1,
+							"apx.trail.false.exile": 1
+						}
+					}
+				}
+			],
+			"craftable": true,
+			"warmup": 60
+		},
+		{
+			"id": "ally.trail.false.begin",
+			"actionId": "ally.trail.false.1",
+			"label": "偽りの痕跡を残す......",
+			"startdescription": "@#ally.barber|ゾルフィアがちょうど良いカオスを起こそうとしている。\n#ally.delver|オルソリーナは几帳面に作業をしている。\n#ally.fivegoer|ヴァシルはパーティーを計画しているようだ。\n#ally.ghoul|ドミニカスは計画を企てている。\n#ally.huntress|ララ・チャイマは有益な混乱を引き起こしている。\n#ally.smuggler|ジョルジュは、向こうの注意を反らしながら、利益を上げようと計画している。\n#ally.visionary|ミレーヤは記憶に残りそうなことを計画している。\n#ally.vivisectionist|ジャニングスは資源を有効活用している。@[毎ターン、わずかな確率で偽の痕跡が生まれる。]",
+			"warmup": 60,
+			"linked": [
+				{
+					"id": "ally.trail.false.create",
+					"chance": 30
+				},
+				{
+					"id": "ally.trail.false.begin"
+				}
+			]
+		},
+		{
+			"id": "ally.trail.false.create",
+			"actionId": "ally.trail.false.1",
+			"label": "偽りの痕跡を作る",
+			"startdescription": "@#ally.barber|ゾルフィアはちょうど良いカオスを引き起こした。\n#ally.delver|オルソリーナは几帳面に作業をこなした。\n#ally.fivegoer|ヴァシルのパーティーは、色々な注目を集めている。\n#ally.ghoul|ドミニカスの計画は完成した。\n#ally.huntress|ララ・チャイマは、有益な混乱を引き起こした。\n#ally.smuggler|ジョルジュは、向こうの注意を反らしながら、利益を上げている。\n#ally.visionary|ミレーヤは、記憶に残るものを手配した。\n#ally.vivisectionist|ジャニングスは、資源を有効活用した。@",
+			"description": "味方が偽りの痕跡を残すことに成功した。自分の痕跡を消して、すぐに戻ってくるだろう。",
+			"alt": [
+				{
+					"id": "ally.trail.false.waiting",
+					"additional": true,
+					"expulsion": {
+						"limit": 2,
+						"filter": {
+							"ally": 1,
+							"destination": 1
+						}
+					}
+				}
+			],
+			"effects": {
+				"trail.false.exile": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "ally.trail.false.waiting",
+			"actionId": "ally.trail.false.2",
+			"label": "待機中...",
+			"startdescription": "もうすぐ帰ってくるはず？",
+			"linked": [
+				{
+					"id": "ally.trail.false.waiting.displaytext"
+				}
+			]
+		},
+		{
+			"id": "ally.trail.false.waiting.displaytext",
+			"actionId": "ally.trail.false.2",
+			"label": "待機中...",
+			"startdescription": "@#ally.barber|ゾルフィアが作業を終わらせた。無事に移動できるようになり次第、戻ってくるだろう。\n#ally.delver|オルソリーナが作業を終わらせた。無事に移動できるようになり次第、戻ってくるだろう。\n#ally.fivegoer|ヴァシルが作業を終わらせた。無事に移動できるようになり次第、戻ってくるだろう。\n#ally.ghoul|ドミニカスが作業を終わらせた。無事に移動できるようになり次第、戻ってくるだろう。\n#ally.huntress|チャイマが作業を終わらせた。無事に移動できるようになり次第、戻ってくるだろう。\n#ally.smuggler|ジョルジュが作業を終わらせた。無事に移動できるようになり次第、戻ってくるだろう。\n#ally.visionary|ミレーヤが作業を終わらせた。無事に移動できるようになり次第、戻ってくるだろう。\n#ally.vivisectionist|@",
+			"warmup": 60,
+			"linked": [
+				{
+					"id": "ally.trail.false.returning",
+					"chance": 30
+				},
+				{
+					"id": "ally.trail.false.lost",
+					"chance": 10
+				},
+				{
+					"id": "ally.trail.false.waiting"
+				}
+			]
+		},
+		{
+			"id": "ally.trail.false.returning",
+			"actionId": "ally.trail.false.2",
+			"label": "帰ってくる......",
+			"startdescription": "@#ally.barber|ゾルフィアが戻ってくる。\n#ally.delver|オルソリーナが戻ってくる。\n#ally.fivegoer|ヴァシルが戻ってくる。\n#ally.ghoul|ドミニカスが戻ってくる。\n#ally.huntress|ララ・チャイマが戻ってくる。\n#ally.smuggler|ジョルジュが戻ってくる。\n#ally.visionary|ミレーヤが戻ってくる。\n#ally.vivisectionist|ジャニングスが戻ってくる。@",
+			"warmup": 60,
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"destination": -1
+			}
+		},
+		{
+			"id": "ally.trail.false.lost",
+			"actionId": "ally.trail.false.2",
+			"label": "行方不明......",
+			"startdescription": "@#ally.barber|ゾルフィアが姿を消した。色んな解釈ができるだろうが、二度と彼女に会える気はしない。\n#ally.delver|いずれにせよ、オルソリーナは地中に戻ったのではないだろか。\n#ally.fivegoer|記事を見逃すところだった。スーツケースの中で発見された遺体に関する記事だ。非常に特徴的な「解剖学的特異性」を持っているらしい。ヴァシルに違いない。\n#ally.ghoul|リトアニアの高官が毒殺されているのが発見されたと記事に書かれている。ドミニカスは「高官」と呼ばれて喜んでいるはずだ。\n#ally.huntress|チャイマの死体は、3人の男性の死体と共に見つかった。男性たちは1人残らず眉間を撃たれていたが、彼女は死ぬまで戦い続けていたようだ。\n#ally.smuggler|ジョルジュには、過去の過ちを精算するときが来てしまったようだ。しかも、精算人ではなく、たくさんいるライバルの中の1人だったようだ。\n#ally.visionary|ミレーヤは「啓示の罪」で逮捕された。\n#ally.vivisectionist|今日読んだ記事によると、ドイツの貴族が無償で発疹チフスの患者の治療を行っていたらしい。しかし、彼も同じ病で命を失ってしまったとのことだ。ジャニングスは複雑な男だった。彼の死は悔やまれる。@",
+			"effects": {
+				"ally": -1,
+				"destination": -1,
+				"grief": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "travel.prepare.end",
+			"actionId": "travel",
+			"label": "最後の旅立ち",
+			"startdescription": "列車は夜明けに出発する。忘れものはないか？[地図の端にある目的地。旅路はここで終わる。到着したら、すぐに問題を解決しなくてはいけない。味方は地図の端まではついてこない。]",
+			"requirements": {
+				"end": 1,
+				"destination": 1,
+				"cash": 2
+			},
+			"extantreqs": {
+				"rage": -1
+			},
+			"craftable": true,
+			"linked": [
+				{
+					"id": "travel.showslot"
+				}
+			]
+		},
+		{
+			"id": "travel.prepare.wilderness",
+			"actionId": "travel",
+			"label": "荒野の中へ",
+			"startdescription": "これは最後の手段だ。人混みに紛れていれば安全だが、そこから出てしまえば追跡しやすくなってしまうだろう。地勢に詳しくない私は、簡単に不名誉な死を遂げることになるかもしれない。[持ち運び可能な資産だけ持っていける。出発は現在進行中の精算人の行動を全て終了させ、全ての痕跡を取り除くが、資産、場所、目的地、現地の連絡先、進行中の作戦も放棄することとなる。]",
+			"requirements": {
+				"wilderness": 1,
+				"destination": 1
+			},
+			"extantreqs": {
+				"rage": -1
+			},
+			"craftable": true,
+			"linked": [
+				{
+					"id": "travel.showslot"
+				}
+			]
+		},
+		{
+			"id": "travel.prepare.remote",
+			"actionId": "travel",
+			"label": "遠隔地への出発準備",
+			"startdescription": "列車は夜明けに出発する。忘れものはないか？[持ち運び可能な資産だけ持っていける。出発は現在進行中の精算人の行動を全て終了させ、全ての痕跡を取り除くが、資産、場所、目的地、現地の連絡先、進行中の作戦も放棄することとなる。]",
+			"requirements": {
+				"remote": 1,
+				"destination": 1,
+				"cash": 2
+			},
+			"extantreqs": {
+				"rage": -1
+			},
+			"craftable": true,
+			"linked": [
+				{
+					"id": "travel.showslot"
+				}
+			]
+		},
+		{
+			"id": "travel.prepare",
+			"actionId": "travel",
+			"label": "出発の準備",
+			"startdescription": "時間だ。忘れものはない？[持ち運び可能な資産だけ持っていける。出発は現在進行中の精算人の行動を全て終了させ、全ての痕跡を取り除くが、資産、場所、目的地、現地の連絡先、進行中の作戦も放棄することとなる。]",
+			"requirements": {
+				"destination": 1,
+				"cash": 1,
+				"remote": -1,
+				"end": -1
+			},
+			"extantreqs": {
+				"rage": -1
+			},
+			"craftable": true,
+			"linked": [
+				{
+					"id": "travel.showslot"
+				}
+			]
+		},
+		{
+			"id": "travel.prepare.remote.hint",
+			"actionId": "travel",
+			"label": "出発の準備？",
+			"startdescription": "この目的地は遠隔地だ。無事たどり着くには現金が必要だ。",
+			"requirements": {
+				"op": -1,
+				"connection": -1,
+				"destination": 1,
+				"remote": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.prepare.hint",
+			"actionId": "travel",
+			"label": "出発の準備？",
+			"startdescription": "無事たどり着くには現金が必要だ。",
+			"requirements": {
+				"op": -1,
+				"connection": -1,
+				"destination": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.showslot",
+			"actionId": "travel",
+			"label": "出発の準備",
+			"startdescription": "時間だ。忘れものはない？[持ち運び可能な資産だけ持っていける。放棄を使うと、持って行きたくない資産を手放せる。出発は現在進行中の精算人の行動を全て終了させ、全ての痕跡を取り除くが、資産、場所、目的地、現地の連絡先、進行中の作戦も放棄することとなる。]",
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "準備",
+					"required": {
+						"portable": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "travel.packing"
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "travel.end.depart"
+				},
+				{
+					"id": "travel.depart"
+				}
+			]
+		},
+		{
+			"id": "travel.packing",
+			"actionId": "travel",
+			"label": "荷造り中......",
+			"startdescription": "これが必要になるかもしれない。[持ち運び可能なものは何でも持って行けるが、その分準備に時間がかかる。]",
+			"requirements": {
+				"asset": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "asset",
+					"mutateAspectId": "asset.packed",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "asset.packed",
+					"mutateAspectId": "asset",
+					"mutationLevel": -1
+				}
+			],
+			"linked": [
+				{
+					"id": "travel.showslot"
+				}
+			]
+		},
+		{
+			"id": "travel.end.depart",
+			"actionId": "travel",
+			"label": "地図の端へ",
+			"startdescription": "味方はここまでしかついてこれない。別れをいう時が来た。",
+			"requirements": {
+				"end": 1
+			},
+			"extantreqs": {
+				"ally": 1
+			},
+			"purge": {
+				"ally": 100
+			},
+			"deleteverb": {
+				"ally.trail.false*": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "travel.depart"
+				}
+			]
+		},
+		{
+			"id": "travel.depart",
+			"actionId": "travel",
+			"label": "出発",
+			"startdescription": "さようなら。",
+			"requirements": {
+				"destination": 1
+			},
+			"haltverb": {
+				"rkx*": 100,
+				"opx*": 100,
+				"scout": 1,
+				"use": 1,
+				"send": 1,
+				"relinquish": 1,
+				"spawn.*": 100,
+				"spit.*": 100
+			},
+			"purge": {
+				"trace": 100,
+				"asset": 100,
+				"op": 100,
+				"location": 100,
+				"destination": 100,
+				"contact.local": 100,
+				"rkx.internal": 100,
+				"damage.underling": 100,
+				"domicile": 1
+			},
+			"comments": "Deleting the rkx verb and then recreating it with the alt works fine because effect execution occurs in turn inside each recipe, and alt additional=true\ngives us another recipe. But keep an eye on this.",
+			"alt": [
+				{
+					"id": "rkx.arrive.ahead",
+					"additional": true
+				}
+			],
+			"warmup": 10,
+			"burnimage": "departure",
+			"linked": [
+				{
+					"id": "travel.enroute"
+				}
+			]
+		},
+		{
+			"id": "travel.enroute",
+			"actionId": "travel",
+			"label": "向かっている",
+			"startdescription": "向かっている......",
+			"mutations": [
+				{
+					"filterOnAspectId": "destination",
+					"mutateAspectId": "lure.foe",
+					"mutationLevel": -1
+				},
+				{
+					"filterOnAspectId": "destination",
+					"mutateAspectId": "rkx.infected",
+					"mutationLevel": -1
+				}
+			],
+			"aspects": {
+				"arriving": 1
+			},
+			"linked": [
+				{
+					"id": "travel.stillenroute.remote"
+				},
+				{
+					"id": "travel.arrive"
+				}
+			]
+		},
+		{
+			"id": "travel.stillenroute.remote",
+			"actionId": "travel",
+			"label": "向かっている......",
+			"startdescription": "暗闇を通り抜けて新しい日を迎える。遠くまで来たから、精算人たちはいつも以上に苦労して、私のことを探すことになるだろう。もうここにいる場合は、別の話だが。",
+			"requirements": {
+				"remote": 1
+			},
+			"effects": {
+				"obscurity": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "travel.arrive"
+				}
+			]
+		},
+		{
+			"id": "travel.arrive",
+			"actionId": "travel",
+			"label": "到着",
+			"startdescription": "@#domicile.aachen|私が以前泊まっていたホテルに、ララ・チャイマがメッセージを残していった。それはたった一言で、「正午」と書いてあった。正午にどこにいる必要があるのかは書いてないが、チャイマは人探しが得意な人だ。\n#domicile.alexandria|透明なセラペウムは、中に入っても透明だ。船を降りた瞬間から中に入ったとみなされるのかもしれない。確信するまでに時間がかかるだろう。\n#domicile.algiers|日当たりの良い波止場に白い家々が並んでいる。M・ジョルジュの息のかかった者の住所を手に入れた。\n#domicile.amsterdam|ステーゲンガの双子たちは町を離れていて（偶然ではないかもしれない）、窓の多い彼らの家は空っぽだ。だが、彼らの世話役が伝言を伝えてくれた。私に手を貸してもらえないかと、影響力のあるクライアントに頼んだらしい。\n#domicile.avignon|M・ジョルジュがパプ宮殿のそばにある部屋で食事をしないかと誘ってくれた。\n#domicile.baghdad|パーシー・スタイルズが駅で待っている。彼の髪は未だに無茶苦茶な縮れ毛だが、年齢とともに白くなってきた。以前にも増して、陽気でふしだらな司教といった風貌だ。「良いタイミングで来たな」と彼は言うと、私の手を握る。「魚心あれば水心」となる機会だ」。\n#domicile.budapest|凍えるような寒さだが、リリはヴァーロシュリゲットのいつもの場所で、いつもの未亡人のような黒服を着て、クライアントとの打ち合わせの合間にチェスをして注目を集めている。「来るんじゃないかって思っていたわ」と、彼女は諦めたように言った。「ここに連れてきてないわよね？」\n#domicile.candia|クレタ島に到着する前夜、地下の神々の夢を見た。目を覚ました私は、甲板へのぼった。夜空に穴が開いたかのように、星は容赦なく輝く。夜は澄んでいて、地平線はメスのように鋭い。背後から女性の掠れた声が聞こえたが、何を言われているか分からなかった。振り向くと、彼女の顔は半分しかなく、残りの半分は蝶の羽のようになっている。そしてその時、私は、誰もいない、鉄のように熱く暗い小屋の中で、本当に目を覚ましたのだった。\n#domicile.cluj|カフェ・オラデアの常連客は、リリの名前を口にすると悲しそうに首を振った。「親切ではなかったが、忍耐強い人だった」と1人が口にする。「ヴァスルイの肉屋とは違う。でも、彼には会うべきだろうな。紹介しよう」。\n#domicile.granada|ミレーヤはアルバイシンに住んでいる。アルバイシンは、アラビア語で「一日中旅をした後にたどり着く、どの道にも灯りがともっていない、すべての丘の一番上にある場所」を意味する。\n#domicile.istanbul|ケマルの名前を言うと、タクシムの汚いコーヒーハウスで鷲のように鋭い目鼻立ちをしたカラコルの退役軍人と会うことになった。口を開けば高確率で、自分たちの大統領が英国に近すぎると文句を言いたがっているようだが、ずっと話を聞いていると、しぶしぶと助けを申し出てくれた。\n#domicile.kiev|列車を降りるとすぐに血の匂いがした。振り向くとそこには、煙と汗以外何も見えない。気のせいだと思ったが、また見えたのだ。赤銅色のそれが。\n#domicile.krakow|イサクが、屋根裏に部屋を用意してくれた。「私は殺されるには年を取り過ぎているよ」と安心させるように彼は言う。そして、「もし奴らが君を追って来たら、テーブルの下に隠れて泣いてやる」と続けた。\n#domicile.leningrad|「アテネ人」のサスキンは、私のことを覚えていてくれた。「君のために莫大な葬儀をしてあげよう」と、彼は嬉しそうに言う。「ティフヴィン地区に墓地を用意してあるんだ。小さなところだが、友人たちが死んだ君の身ぐるみを剥がすだろうからな。いやいや。これは譲れないよ。私にできるのはこれくらいだからね」。\n#domicile.london|オッタヴィオはヴィクトリア駅の外で私を待っていた。行進するデモ隊に悲しげに首を振る。「もちろん、人は稼がないと生きていけない」と彼は嘆いた。「でもここまでする必要はない。競馬場が閉鎖されているんだ、知っていたか？それに警察も！蜂の巣のようだ！俺もストライキをした方が良いのかもな。警察に本物の犯罪者を捕まえさせるべきだ」。\n#domicile.marrakech|私はナビルに気づかなかったが、ナビルは私に気づき、温かく迎えてくれた。「君は鋼の心を持っている」と説明し、「でも鋼は鏡にもなり、鏡の中で栄光を見つけるんだ。何を言ってるか分かっていないだろ？気にするな！私の助けを受け入れて、好きな時に去れば良い。それだけで十分だ」と言った。\n#domicile.meshad|メシャド郊外の村に隠居していた友人がいた。古い宗教を信仰していた彼女は、病にかかると癒しを求めてバゼホールの火の神殿へと向かった。彼女が亡くなったのは日没前のことだ。私が到着した時には、彼女の遺体はすでに儀礼的な肉剥ぎのために塔へと運ばれていた。\n#domicile.munich|傷を負った無言の召使いがジャニングス伯爵から送られてきた。目的は私を彼のもとに連れてくることだ。\n#domicile.nizhny|サスキンの手下は用心深いが、追っ手の話をすると1人が肩を叩いてくれた。彼は精算人について口汚く罵ったが、私は気に障っていないふりをした。\n#domicile.paris|タンテ・アデリーヌの手下は、革エプロンを着た不機嫌でひょろっとした男だ。私とは全く言葉を交わさない。座って犬に生肉を食べさせながら、私の話に耳を傾けてくれる。そして、私が帰ろうとすると、巨大なコルシカ人についていくようにと合図をする。\n#domicile.prague|雀のような目、熊のような首、花のような頬を持つ山のような女性、タンテ・アデリーヌは、釣り合わないくらい甘い声の持ち主だ。「私のために、何個か頭蓋骨をかち割りに来たのよね？」と、彼女が夢中になって尋ねてくる。\n#domicile.rostock|ジャニングスの使用人は、私が来ることを知らされていた。ここには好きなだけいられる。\n#domicile.samarkand|ジャディディストの友人は、悲しみに項垂れている。辛うじて言葉を発している状態だが、彼は助けてくれるはずだ。\n#domicile.stalingrad|焼け野原と化した教会の中にあるバードイーターの隠れ家。大蛇が濡れた革のように輝き、近づくと瓦礫の間を縫ってずるずると這っていく姿が確かに見えたのだ。しかし、ズルフィアたちは、気のせいだと言い張って聞かない。\n#domicile.sverdlovsk|ズルフィヤの友人は今ではコミッサールだ。あまり面倒ごとに巻き込まれない限り、きちんと面倒を見てくれる、と彼は安心させるように言った。\n#domicile.strasbourg|博物館のそばの小さな庭に背の高い人影が待っている。ぼんやりと見れば、毛布に包まれた男にも見える。そうだとしよう。彼が囁きかけてきた時に顔を見たりはしなかったが、ストラスブールの知られざる道を知ることができた。\n#domicile.tiflis|扉をたたくと、ヴァシルの開いた窓から蓄音機して陽気な音楽が漂ってくる。\n#domicile.tirana|ゾギストの友人がしっかりと私の手を握る。「紹介してあげるわ。気に入られるには、何年もかかるけどね」と彼女は言う。\n#domicile.tripoli|電車から足を踏み出すと青空が叫び、金色の石の転げ落ちる。ありえないほどのホームシックが突然の突風のように襲い、私は体を震わせた。\n#domicile.valletta|波止場でケマルが待っている。「できる限りのことはする」と彼は断言した。「総督は私の言うことを聞いてくれる。英国人だからな。とても信頼できる。それほど賢くはないがな」。\n#domicile.venice|オルソリーナはカンナレージョで小さな魚料理店を経営している。「私の悩みを知っているでしょう」と、前回訪問した際に話してくれた。「バッカラは私の弱点なのよ。もし、バッカラを一生味わうことがなかったら、私はまだ土の中で生きていたはずよ」。\n#domicile.vienna|駅を出ると、通りの向こう側から白と黒を着た白髪の女性が私を見ているのが見えた。目の前に人ごみが現れると、彼女は姿を消した。\n#domicile.bornholm|港の上に部屋を見つけた。敵が来たら崖の上で待ちぶせできるだろう。\n#domicile.cheko|ロッジのメインルームで火を灯し、何とかシャッターを修理する。いつまで待つこととなるかわからない。\n#domicile.ghardaia|毎晩空が暗くなると、砂漠の空気は新雪のようにさわやかで、自分がなぜここにいるのかを忘れそうになる。\n#domicile.messana|ここはとても静かだ。どんなに静かに彼が近づいてきても、私には彼の声が聞こえるだろう。だが、彼はプライドが高すぎて忍び寄れないだろう。\n#domicile.morbihan|「ここにいてもいい」と小修道院長は言った。「だが、タダでいい。悪魔が君を迎えに来ている。ここは君の安らぎの場所ではない。地球上のどこにも見つからないだろう」。\n#domicile.paro|長い道のりだが、敵にはそう長くはないだろう。しかし、ここにいれば、彼が来るのを見守ることができる。\n#domicile.slettnes|夕暮れ時に到着した。明かりがチカチカと明滅している。これを見れば、彼もここに引き寄せられるはずだ。\n\n#|到着した。@",
+			"comments": "Converts packed assets back into assets.",
+			"alt": [
+				{
+					"id": "scout.first",
+					"additional": true
+				},
+				{
+					"id": "meeting.navil.chaima",
+					"additional": true
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "asset.packed",
+					"mutateAspectId": "asset",
+					"mutationLevel": 0
+				},
+				{
+					"filterOnAspectId": "asset",
+					"mutateAspectId": "asset.packed",
+					"mutationLevel": 0
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "meeting.navil.chaima",
+			"actionId": "meeting.navil.chaima",
+			"label": "再会",
+			"startdescription": "「チャイマ！」と、ナビルは嬉しそうに叫んだ。「お父様」と、彼女はより慎重に口を開く。二人は抱き合うと、ナヴィルは振り返り、私に向かって笑顔を作った。「娘は大佐のためにモンスターを狩り、私はライオンスミスのためにモンスターを治す。それでも、自分の娘に会えるのは嬉しいことだ。結局のところ、敵同士となる前は、ライオンスミスは大佐の弟子ではなかったか？誰よりも、君がそれを知っているべきではないか？[エキドナから目を離さないこと。チャイマは彼女に興味を持っている]",
+			"extantreqs": {
+				"domicile.marrakech": 1,
+				"ally.huntress": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "turn.begin",
+			"actionId": "time.exile",
+			"label": "車輪は回る",
+			"startdescription": "太陽は空を横切り、夜はそれを追いかける。",
+			"warmup": 60,
+			"comments": "No enemies arrive in the first turn.",
+			"alt": [
+				{
+					"id": "use.first",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "turn.next",
+			"actionId": "time.exile",
+			"label": "車輪は回る",
+			"startdescription": "太陽は空を横切り、夜はそれを追いかける。[各サイクルの終わりには、精算人も街に入ってくることがある。痕跡を生んだ場合はその可能性が高くなり、複数の混成を生んだ場合はその可能性がより高くなる。]",
+			"warmup": 60,
+			"comments": "using linked recipes so we can select just one possible additional trace response",
+			"linked": [
+				{
+					"id": "wounds.exile.danger"
+				},
+				{
+					"id": "turn.check.traces"
+				},
+				{
+					"id": "turn.check.trace"
+				},
+				{
+					"id": "turn.check.no.trace"
+				},
+				{
+					"id": "turn.check.mapedge.traces"
+				},
+				{
+					"id": "turn.check.mapedge.trace"
+				},
+				{
+					"id": "turn.check.mapedge.no.trace"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "turn.check.traces",
+			"actionId": "time.exile",
+			"extantreqs": {
+				"trace": 2,
+				"rkx.underlings.blocker": -1,
+				"diversion.exile": -1,
+				"rkx.foe.defeated": -1
+			},
+			"alt": [
+				{
+					"id": "rkx.arrive.traces",
+					"additional": true,
+					"chance": 70
+				}
+			],
+			"linked": [
+				{
+					"id": "wounds.exile.danger"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "turn.check.trace",
+			"actionId": "time.exile",
+			"extantreqs": {
+				"trace": 1,
+				"rkx.underlings.blocker": -1,
+				"diversion.exile": -1,
+				"rkx.foe.defeated": -1
+			},
+			"alt": [
+				{
+					"id": "rkx.arrive.trace",
+					"additional": true,
+					"chance": 30
+				}
+			],
+			"linked": [
+				{
+					"id": "wounds.exile.danger"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "turn.check.no.trace",
+			"actionId": "time.exile",
+			"extantreqs": {
+				"trace": -1,
+				"rkx.underlings.blocker": -1,
+				"diversion.exile": -1,
+				"rkx.foe.defeated": -1
+			},
+			"alt": [
+				{
+					"id": "rkx.arrive.no.trace",
+					"additional": true,
+					"chance": 10
+				}
+			],
+			"linked": [
+				{
+					"id": "wounds.exile.danger"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "turn.check.mapedge.traces",
+			"actionId": "time.exile",
+			"extantreqs": {
+				"trace": 2,
+				"rkx.foe": -1,
+				"rkx.underlings.blocker": 1,
+				"diversion.exile": -1,
+				"rkx.foe.defeated": -1
+			},
+			"alt": [
+				{
+					"id": "rkx.foe.arrive.mapedge",
+					"additional": true,
+					"chance": 70
+				}
+			],
+			"linked": [
+				{
+					"id": "wounds.exile.danger"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "turn.check.mapedge.trace",
+			"actionId": "time.exile",
+			"extantreqs": {
+				"trace": 1,
+				"rkx.foe": -1,
+				"rkx.underlings.blocker": 1,
+				"diversion.exile": -1,
+				"rkx.foe.defeated": -1
+			},
+			"alt": [
+				{
+					"id": "rkx.foe.arrive.mapedge",
+					"additional": true,
+					"chance": 30
+				}
+			],
+			"linked": [
+				{
+					"id": "wounds.exile.danger"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "turn.check.mapedge.no.trace",
+			"actionId": "time.exile",
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.underlings.blocker": 1,
+				"diversion.exile": -1,
+				"rkx.foe.defeated": -1
+			},
+			"alt": [
+				{
+					"id": "rkx.foe.arrive.mapedge",
+					"additional": true,
+					"chance": 10
+				}
+			],
+			"linked": [
+				{
+					"id": "wounds.exile.danger"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "wounds.exile.danger",
+			"actionId": "time.exile",
+			"label": "報いの訪れ",
+			"startdescription": "空が落ち、そして他のものもすべて落ちていく。[これが終わったときに、まだ傷口が7つあったら、命を失うことになる。]",
+			"extantreqs": {
+				"damage.exile": 7
+			},
+			"warmup": 15,
+			"signalEndingFlavour": "Melancholy",
+			"linked": [
+				{
+					"id": "wounds.exile.ending"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "wounds.exile.ending",
+			"actionId": "time.exile",
+			"label": "報いの訪れ",
+			"extantreqs": {
+				"damage.exile": 7
+			},
+			"ending": "foecaughtup"
+		},
+		{
+			"id": "spawn.obscurity",
+			"actionId": "spawn.obscurity",
+			"label": "時の子",
+			"startdescription": "真実が時間の娘であるならば、忘却は誰の子なのだろうか？[不明瞭を手に入れた。]",
+			"extantreqs": {
+				"rkx.foe": -1
+			},
+			"effects": {
+				"obscurity": 1
+			},
+			"warmup": 5
+		},
+		{
+			"id": "spawn.trace",
+			"actionId": "spawn.trace",
+			"label": "痕跡",
+			"startdescription": "世界を通り抜けて足跡を残さないのは難しい。[精算人は痕跡を利用してあなたを探す。]",
+			"effects": {
+				"trace": 1
+			},
+			"warmup": 5
+		}
+	]
+}

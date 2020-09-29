@@ -1,0 +1,133 @@
+{
+	"elements": [
+		{
+			"id": "thugedgeminor",
+			"label": "大きい人",
+			"aspects": {
+				"mortal": 1,
+				"hireling": 1,
+				"follower": 1,
+				"edge": 3
+			},
+			"description": "「やるべきことはやり遂げる」。[この雇われ人は、一部の遠征で役立つ可能性がある。また、ハンターや頭痛の種の対処をすることもできる。]",
+			"xtriggers": {
+				"hiring": "thugedgeminor",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "generic_p"
+			},
+			"lifetime": 120
+		},
+		{
+			"id": "thugmothminor",
+			"label": "ずる賢い女性",
+			"aspects": {
+				"mortal": 1,
+				"hireling": 1,
+				"follower": 1,
+				"moth": 3
+			},
+			"description": "「やるべきことはやり遂げる」。[この雇われ人は、一部の遠征で役立つ可能性がある。また、ハンターや頭痛の種の対処をすることもできる。]",
+			"xtriggers": {
+				"hiring": "thugmothminor",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "generic_p"
+			},
+			"lifetime": 120
+		},
+		{
+			"id": "thugedge",
+			"label": "プロの力男",
+			"aspects": {
+				"mortal": 1,
+				"hireling": 1,
+				"follower": 1,
+				"edge": 5
+			},
+			"description": "「真っ二つに割ってやる」。[この雇われ人は、一部の遠征で役立つ可能性がある。また、ハンターや頭痛の種の対処をすることもできる。]",
+			"xtriggers": {
+				"hiring": "thugedge",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "generic_p"
+			},
+			"lifetime": 120
+		},
+		{
+			"id": "thugforgeedge",
+			"label": "爆弾屋",
+			"aspects": {
+				"mortal": 1,
+				"hireling": 1,
+				"follower": 1,
+				"forge": 5,
+				"edge": 3
+			},
+			"description": "「政治の話はまだしない方がいいかもしれない」。[この雇われ人は、一部の遠征で役立つ可能性がある。また、ハンターや頭痛の種の対処をすることもできる。]",
+			"xtriggers": {
+				"hiring": "thugforgeedge",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "generic_p"
+			},
+			"lifetime": 120
+		},
+		{
+			"id": "thugknock",
+			"label": "侵入専門家",
+			"aspects": {
+				"mortal": 1,
+				"hireling": 1,
+				"follower": 1,
+				"knock": 5
+			},
+			"description": "「扉の扱いが得意だ」。「この雇い人は一部の遠征で役に立つかもしれない。」",
+			"xtriggers": {
+				"hiring": "thugknock",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "generic_p"
+			},
+			"lifetime": 120
+		},
+		{
+			"id": "thuglanternmoth",
+			"label": "占い師",
+			"aspects": {
+				"mortal": 1,
+				"hireling": 1,
+				"follower": 1,
+				"lantern": 5,
+				"moth": 3
+			},
+			"description": "「私には分かる。あなたは他の人とは違う」[この雇われ人は、一部の遠征で役立つ可能性がある。また、ハンターや頭痛の種の対処をすることもできる。]",
+			"xtriggers": {
+				"hiring": "thuglanternmoth",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "generic_p"
+			},
+			"lifetime": 120
+		},
+		{
+			"id": "thugmoth",
+			"label": "経験豊かな詐欺師",
+			"aspects": {
+				"mortal": 1,
+				"hireling": 1,
+				"follower": 1,
+				"moth": 5,
+				"grail": 1
+			},
+			"description": "「一緒に仕事ができて嬉しいです！」[この雇われ人は、一部の遠征で役立つ可能性がある。また、ハンターや頭痛の種の対処をすることもできる。]",
+			"xtriggers": {
+				"hiring": "thugmoth",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "generic_p"
+			},
+			"lifetime": 120
+		}
+	]
+}

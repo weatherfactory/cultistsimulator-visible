@@ -1,0 +1,363 @@
+{
+	"recipes": [
+		{
+			"id": "explore_vaultcontinent1_setup",
+			"label": "Der Beginn einer Expedition: Chateau Raveline",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultcontinent1": 1
+			},
+			"effects": {
+				"seal_hiddendoor": 1,
+				"curse_dread": 1
+			},
+			"startdescription": "Das abgelegene und verfallende Chateau der Comtes des Raveline wurde schon vor langer Zeit geplündert. Uns liegen aber Hinweise darauf vor, dass es nicht gründlich genug geplündert wurde. Es könnte da noch einen Geheimraum geben. Und einen Fluch. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 10,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultcontinent2_setup",
+			"label": "Der Beginn einer Expedition: Fermier Abbey",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultcontinent2": 1
+			},
+			"effects": {
+				"peril_forest": 1,
+				"guardian_monks": 1
+			},
+			"startdescription": "Fermier Abbey ist in den Wald eingebettet wie ein Schmuckkästchen, das in ein grünes Gewand geschmuggelt wurde. Wenn wir es durch den Wald schaffen, müssen wir immer noch mit den Mönchen fertig werden. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 10,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultcontinent3_setup",
+			"label": "Der Beginn einer Expedition: Orthos-Wald",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultcontinent3": 1
+			},
+			"effects": {
+				"peril_forest": 1,
+				"guardian_watchers": 1
+			},
+			"startdescription": "Im schwarzen Herzen des Orthos-Waldes könnten wir den Baum finden, wo sich die maskierte Krähe mit ihresgleichen trifft. Doch der Wald an sich ist eine Gefahr, ganz zu schweigen von den Kannibalen-Klans, die dort hausen. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 10,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultcontinent4_setup",
+			"label": "Der Beginn einer Expedition: Die Vanderschaaf-Kollektion",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultcontinent4": 1
+			},
+			"effects": {
+				"seal_wardeddoor": 1,
+				"curse_visions": 1
+			},
+			"startdescription": "Die Tür zur Bemalten Kammer der Vanderschaaf-Kollektion ist abgeschlossen und bewacht. Im Gebäude sollen 'Blumen spuken'. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 10,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultcontinent5_setup",
+			"label": "Der Beginn einer Expedition: Forman-Haus",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultcontinent5": 1
+			},
+			"effects": {
+				"guardian_dead": 1,
+				"curse_dread": 1
+			},
+			"startdescription": "Zweifellos spukt es in dieser tristen Villa. Der letzte Besucher sah die Toten und konnte vor ihnen fliehen, bevor sie ihn in ihre verwesenden Finger bekommen konnten. Die Besucherin davor behauptete, sie habe nichts gesehen, doch genau ein Jahr später starb sie aus Verzweiflung. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultcontinent6_setup",
+			"label": "Der Beginn einer Expedition: Die Mansarde des Schlüsseljägers",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultcontinent6": 1
+			},
+			"effects": {
+				"guardian_serpent": 1,
+				"seal_hiddendoor": 1
+			},
+			"startdescription": "In Wien haben wir mal gehört, dass der Schlüsseljäger seit mehreren Tagen nicht mehr gesehen wurde. Ein örtlicher Säufer beharrt darauf, dass eine Riesenschlange in das Haus eingedrungen sei, um ihn zu fressen. Zweifellos ist das Haus unbeleuchtet und mit Brettern vernagelt, und es riecht wie ihm Reptilienhaus. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultcontinentdefault_setup",
+			"label": "Der Beginn einer Expedition: Die Mansarde des Schlüsseljägers",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultcontinentdefault": 1
+			},
+			"effects": {
+				"peril_forest": 1,
+				"seal_hiddendoor": 1,
+				"guardian_watchers": 1
+			},
+			"startdescription": "Schatzsucher, welche die Steine aufsuchen, müssen durch den Wald, in dem sie sich verbergen, mit den Einheimischen klarkommen, die sie verehren, und schließlich bereit sein, ein wenig zu graben, auch wenn sie eine Geheimtür finden sollten. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 10,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcontinent1_success",
+			"label": "Das Ende der Kindheit",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcontinent1": 1
+			},
+			"effects": {
+				"vaultcontinent1": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"ingredientwinterb",
+					"toolforgeb",
+					"highmysterieschurchsolarfucine",
+					"bookoftruebloodlatin",
+					"morphycodexaramaic"
+				],
+				"draws": 5,
+				"defaultcard": "compensationc",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Hinter einem verrottenden Wandteppich, auf dem Wölfe bei der Jagd auf Menschen dargestellt sind, ist eine mit Holz verkleidete Wand. In der mit Holz verkleideten Wand ist eine Geheimtür. Die Feder ist natürlich längst fort. Wir mussten die Tür einschlagen.",
+			"description": "Die letzten Schätze der Comtes des Raveline liegen hier, in einem überraschend luftigen Raum. Die Dachfenster sind längst zerbrochen und der Boden von Blättern und Schutt bedeckt, doch einst war dieser Raum als Kinderzimmer eingerichtet. Hier ist eine Wiege mit dem Skelett eines Welpen.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultcontinent2_success",
+			"label": "Unter den Ästen",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcontinent2": 1
+			},
+			"effects": {
+				"vaultcontinent2": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"againstsisterhoodknotgreek",
+					"ingredientheartb",
+					"thirstingtantrasanskrit",
+					"dehoris2latin",
+					"tantrawormssanskrit",
+					"textbookaramaic"
+				],
+				"draws": 6,
+				"defaultcard": "compensationc",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Wir haben die Mönche und ihr Elend hinter uns gelassen. Hier, im Hof ihrer Kapelle, erhebt sich eine große Eibe neben einem granitenen Altar, der einen Deckel wie ein Sarkophag hat. Was darin ist?",
+			"description": "Der Altar ist mit zerbrochenen Bechern gefüllt, die alle rot angemalt und mit üblem Graffiti und sonstigen Sauereien besudelt sind. Die Mönche müssen große Zeremonien der Abscheu abgehalten und die Überreste als Trophäen behalten haben. Inmitten der Becherleichen finden sich noch weitere Schätze.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultcontinent3_success",
+			"label": "Im Gedenken an Krähen",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcontinent3": 1
+			},
+			"effects": {
+				"vaultcontinent3": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"ingredientmothd",
+					"toolgrailmoth",
+					"toolmothd",
+					"inthemountainsasupontheplainvak"
+				],
+				"draws": 4,
+				"defaultcard": "compensationc",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Dies ist die große Eiche, in der einst die maskierte Krähe ihr Nest hatte. Ein Blitz hat sie von oben bis unten gespalten, und der Baum ist verkohlt und verfault. In ihm wimmeln fingerlange Würmer umher. Etwas glitzert matt im Schwarme toter Wurzeln.",
+			"description": "Eine Wurzel liegt um ein Ei aus Blei von der Größe eines Kindes. Vielleicht war es einst mit einem anderen Metall überzogen, doch das Wetter hat alle Spuren jeglicher Beschichtungen entfernt. Nach kurzem Kampf geben beide Hälften des Eis ihren Inhalt preis.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultcontinent4_success",
+			"label": "In der Bemalten Kammer",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcontinent4": 1
+			},
+			"effects": {
+				"vaultcontinent4": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"toolsecrethistoriesb",
+					"jumble",
+					"influencemothc",
+					"watchfultantrasanskrit",
+					"vinzantinscriptionsphrygian",
+					"geminiadfucine",
+					"textbookaramaic"
+				],
+				"draws": 7,
+				"defaultcard": "compensationc",
+				"resetonexhaustion": false
+			},
+			"startdescription": "An den Wänden der Bemalten Kammer sind Szenen aus Kriegen alle wichtigen Historien zu sehen – Wien wird ein Opfer der Würmer, die Herren der Gefesselten Flamme verbrennen die Märtyrer-Soldaten der Schwesternschaft des Knotens, Alexander trifft auf den Schattenlosen König. An einer Wand ist ein Regal mit Tand und Kuriositäten vollgestopft.",
+			"description": "Ein Buch mit gepressten Blumen gibt einen seltsamen Duft von sich. Drei ältliche Baedeker. Eine Sammlung von Schmetterlingen, die schwarz-weiß angemalt wurden. Und wahre Schätze. Eine Kuriosität in einem Glasschrank und eine emaillierte Büchertruhe.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultcontinent5_success",
+			"label": "Das Gipskabinett",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcontinent5": 1
+			},
+			"effects": {
+				"vaultcontinent5": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"devouredtantrasanskrit",
+					"worlddoesnotweeparamaic",
+					"deedsofthescarredcaptaingreek",
+					"matthiasamethysttransformationaramaic"
+				],
+				"draws": 4,
+				"defaultcard": "compensationc",
+				"resetonexhaustion": false
+			},
+			"startdescription": "In dem Raum, der mit Blick auf das schmierige Glas des zerschlagenen Wintergartens liegt, liegen verdrehte Figuren, blassgelb wie Maden, auf Holzklötzen.  Dies sind die Gipsabdrücke, die Forman von den armen Seele machte, die von den Wesen besessen waren, die er studierte. Bei manchen der Figuren sind noch die Einschlupflöcher in der jeweiligen Oberfläche zu sehen. Bei manchen drangen die Wesen wohl durch Ohren, Mund oder sonstwo ein. ",
+			"description": "Der Raum ist leer. Doch als wir endlich eine der Gipsfiguren zerschlagen, finden wir die Schätze aus Formans Bibliothek in ihrem gelblichen Bauch.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultcontinent6_success",
+			"label": "Oben Asche",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcontinent6": 1
+			},
+			"effects": {
+				"vaultcontinent6": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"onthematterandthedeedsofserpentsvak",
+					"irreproachabletraditionssocietynobleendeavourlatin",
+					"textbookfucinelatin",
+					"serenityofblackwoodgreek"
+				],
+				"draws": 4,
+				"defaultcard": "compensationc",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Der Raum stinkt nach Schlangenmoschus und verbranntem Papier. Jemand hat gründlich alle Aufzeichnungen beseitigt, derer er habhaft werden konnte. Sogar die Wände wurden abgewaschen. Kalte Asche verstopft den Kamin. Keine Spur von der armen Seele, die hier mal Mieter war.",
+			"description": "Eine einzige Ecke feuergekräuselten Papiers hat den Flammen getrotzt. Mit unsteter Handschrift steht dort geschrieben: 'Lady K. Green Chalcedony. Drei Ohrmuscheln. Frühlinglaube in sc–' Doch überraschenderweise hat in einem Koffer neben den Flammen ein kleiner Stapel Bücher überlebt. Wer auch immer die Tagebücher des Schlüsseljägers verbrannt hat, sah keinen Anlasse, diese Bücher zu verbrennen.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultcontinentdefault_success",
+			"label": "Unter dem Stein",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcontinentdefault": 1
+			},
+			"effects": {
+				"vaultcontinentdefault": -1
+			},
+			"deckeffect": {
+				"vaultrewardsc": 3
+			},
+			"startdescription": "Der Mondschein bleicht das Gras im Winter. Überall erheben sich die Steine. Hier, an der Seite eines Hünengrabs ist ein Stein, der sich wie eine Falltür anheben lässt. Wir müssen uns anstrengen. ",
+			"description": "Die Kammer im Inneren des Hünengrabs ist im Laufe der Jahre halb eingestürzt. Fette weiße Spinnen kriechen aus dem Lichtschein unserer Lampe davon, mit dreister Behäbigkeit. Die Steinreliefs sind geborsten und tropfen. Doch dort ist noch immer das Opferloch, inklusive seiner Schätze.",
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "expeditionascensionheartc",
+					"chance": 100
+				},
+				{
+					"id": "expeditionascensionmothc",
+					"chance": 100
+				}
+			]
+		}
+	]
+}

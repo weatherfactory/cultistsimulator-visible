@@ -1,0 +1,151 @@
+{
+	"elements": [
+		{
+			"id": "legacydetectivejob",
+			"label": "Stelle eines Inspektors",
+			"description": "Ich habe einen leitenden Posten bei der Polizei in der Hauptstadt.",
+			"aspects": {
+				"job": 1
+			},
+			"xtriggers": {
+				"careeradvancement": "legacydetectivejob_matured"
+			}
+		},
+		{
+			"id": "legacydetectivejob_matured",
+			"label": "Stelle eines Inspektors",
+			"description": "Ich habe einen leitenden Posten bei der Polizei in der Hauptstadt, wobei ich zum Dezernat für Unterdrückung abgestellt bin.",
+			"aspects": {
+				"job": 1
+			},
+			"slots": [
+				{
+					"id": "target",
+					"label": "Thema",
+					"required": {
+						"suspicious": 1
+					},
+					"description": "Bis ich Beweise habe, muss ich damit anfangen, meine Beute direkt zu beobachten.",
+					"actionId": "work"
+				},
+				{
+					"id": "meticulous",
+					"label": "Akkurat",
+					"description": "Mehr Verstand erhöht die Erfolgschancen meiner Ermittlungen.",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "vigilant",
+					"label": "Wachsam",
+					"description": "Mehr Verstand erhöht die Erfolgschancen meiner Ermittlungen.",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "singleminded",
+					"label": "Unbeirrbar",
+					"description": "Mehr Verstand erhöht die Erfolgschancen meiner Ermittlungen.",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"employment": "legacydetectivejob_matured"
+			},
+			"lifetime": 90,
+			"decayTo": "legacydetectivejob_suspended",
+			"icon": "legacydetectivejob"
+		},
+		{
+			"id": "legacydetectivejob_suspended",
+			"label": "Polizei-Inspektor [Suspendiert]",
+			"description": "Abwesenheit wurde bemerkt. Ich bin suspendiert. [Erkläre dich möglichst bald, sonst verlierst du deinen Posten für immer.]",
+			"slots": [
+				{
+					"id": "passion",
+					"label": "Leidenschaft",
+					"required": {
+						"passion": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"aspects": {
+				"job": 1
+			},
+			"xtriggers": {
+				"plead": "legacydetectivejob_matured"
+			},
+			"lifetime": 90,
+			"decayTo": "legacydetectivejob_disgraced"
+		},
+		{
+			"id": "legacydetectivejob_disgraced",
+			"label": "Polizei-Inspektor [Blamiert]",
+			"description": "Ich habe meinen Job verloren. Und ich kriege ihn wohl kaum wieder. Nun muss ich mich in der Welt der Zivilisten durchschlagen.",
+			"lifetime": 120,
+			"decayTo": "mystique"
+		},
+		{
+			"id": "legacydetective_plotitem",
+			"label": "Verschlussakte des Dezernats",
+			"aspects": {
+				"desire": 1,
+				"legacyplotitem": 1,
+				"detectivetemptation": 1
+			},
+			"description": "Eine Akte über ein rätselhaftes Individuum namens #PREVIOUSCHARACTERNAME#. Ich habe sie selbst versiegelt. Mit dem Inhalt bin ich nur allzu gut vertraut. Sollte ich mir den noch einmal ansehen, kommen vielleicht die Träume wieder."
+		},
+		{
+			"id": "myevidence",
+			"label": "Vorläufige Beweise",
+			"description": "Ich habe einige Beweise für die Aktivitäten meiner Beute.",
+			"lifetime": 300,
+			"aspects": {
+				"suspicious": 1
+			},
+			"xtriggers": {
+				"investigatingsuccess": "myevidenceb"
+			}
+		},
+		{
+			"id": "myevidenceb",
+			"label": "Erdrückende Beweise",
+			"description": "Ich habe bestechende Beweise für die Aktivitäten meiner Beute.",
+			"lifetime": 300,
+			"aspects": {
+				"suspicious": 1
+			}
+		},
+		{
+			"id": "legacydetective_plotitem_burning",
+			"label": "Brennende Akte des Dezernats",
+			"description": "Sie ist fast weg! Ich könnte sie aus den Flammen reißen ... ",
+			"lifetime": 10,
+			"icon": "legacydetective_plotitem",
+			"aspects": {
+				"desire": 1,
+				"legacyplotitem": 1,
+				"detectivetemptation": 1
+			}
+		},
+		{
+			"id": "legacydetective_plotitem_backup",
+			"label": "Beunruhigende Akte des Dezernats",
+			"aspects": {
+				"desire": 1,
+				"legacyplotitem": 1,
+				"detectivetemptation": 1
+			},
+			"icon": "legacydetective_plotitem",
+			"description": "Zu den Beweisen zählen Details, bei denen man sich die Lippen leckt, wenn man an so etwas Interesse hat. Ich sollte mir das nicht noch einmal durchlesen. Die Träume könnten wieder beginnen."
+		}
+	]
+}

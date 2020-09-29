@@ -1,0 +1,621 @@
+{
+	"recipes": [
+		{
+			"id": "work.poison.fascination.longlesson.trap",
+			"actionId": "work",
+			"label": "Ein ewig wachsamer Feind",
+			"startdescription": "Unser Feind beobachtet unsere Operationen von einem hohen Fenster des Mansus aus. Er hat mehr über uns erfahren.",
+			"requirements": {
+				"poison.fascination.longlesson": 1,
+				"fascination": 1
+			},
+			"effects": {
+				"long.lesson.dreamwork": 1
+			},
+			"mutations": [
+				{
+					"filter": "fascination",
+					"mutate": "poison.fascination.longlesson",
+					"level": -1
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"label": "Ruhm des Verstands [Erhaben]",
+			"id": "arcane_lantern_edge_grand",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"lantern": 15,
+				"edge": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Wie oben, so unten: Verstand und Leidenschaft wetteifern um die menschliche Seele, wie der Ruhm die Finsternis des Forstes erhellt. Diese mystische Disziplin verwandelt Leidenschaft zu Verstand. [Du rufst eine Erhabene Stufe der Laterne an, was fast immer von Erfolg gekrönt ist – doch es bleibt stets ein Risiko.] ",
+			"description": "Mein Geist ist vom Lichte durchdrungen. Ich bin ruhiger und fokussierter geworden.  Ich habe mich verändert. [Leidenschaft ist zu Verstand geworden.]",
+			"slots": [
+				{
+					"id": "passion",
+					"label": "Meine Leidenschaft aufgeben",
+					"required": {
+						"passion": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 10,
+					"id": "arcane_lantern_edge_failure"
+				}
+			],
+			"aspects": {
+				"toreason": 1,
+				"fascinating": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"label": "Ruhm des Verstands [Hoch]",
+			"id": "arcane_lantern_edge_major",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"lantern": 10,
+				"edge": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Wie oben, so unten: Verstand und Leidenschaft wetteifern um die menschliche Seele, wie der Ruhm die Finsternis des Forstes erhellt. Diese mystische Disziplin verwandelt Leidenschaft zu Verstand. [Du rufst eine Hohe Stufe der Laterne an, was wahrscheinlich von Erfolg gekrönt sein wird.] Erhöhe Laterne auf mindestens 15, um deine Chancen weiter zu verbessern.] ",
+			"description": "Mein Geist ist vom Lichte durchdrungen. Ich bin ruhiger und fokussierter geworden.  Ich habe mich verändert. [Leidenschaft ist zu Verstand geworden.]",
+			"slots": [
+				{
+					"id": "passion",
+					"label": "Meine Leidenschaft aufgeben",
+					"required": {
+						"passion": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 30,
+					"id": "arcane_lantern_edge_failure"
+				}
+			],
+			"aspects": {
+				"toreason": 1,
+				"fascinating": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"label": "Ruhm des Verstands? [Niedrig]",
+			"id": "arcane_lantern_edge_minor",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"lantern": 5,
+				"edge": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Wie oben, so unten: Verstand und Leidenschaft wetteifern um die menschliche Seele, wie der Ruhm die Finsternis des Forstes erhellt. Diese mystische Disziplin verwandelt Leidenschaft zu Verstand. [Du rufst nur eine Niedrige Stufe der Laterne an, weshalb der Ritus häufig scheitern wird.] Erhöhe Laterne auf mindestens 10, um deine Chancen zu verbessern.] ",
+			"description": "Mein Geist ist vom Lichte durchdrungen. Ich bin ruhiger und fokussierter geworden.  Ich habe mich verändert. [Leidenschaft ist zu Verstand geworden.]",
+			"slots": [
+				{
+					"id": "passion",
+					"label": "Meine Leidenschaft aufgeben",
+					"required": {
+						"passion": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 70,
+					"id": "arcane_lantern_edge_failure"
+				}
+			],
+			"aspects": {
+				"toreason": 1,
+				"fascinating": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "arcane_lantern_edge_failure",
+			"label": "Ruhm des Verstands [Versagt!]",
+			"actionId": "work",
+			"description": "Bei diesem Zauber ist etwas schiefgelaufen. Ein unsichtbares Licht hat mich in die Falle gelockt.",
+			"effects": {
+				"fascination": 1
+			}
+		},
+		{
+			"label": "Wirbel der Leidenschaft [Erhaben]",
+			"id": "arcane_moth_edge_grand",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"moth": 15,
+				"edge": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Wie unten, so oben: Leidenschaft und Verstand wetteifern um die menschliche Seele, wie der Forst das Licht des Ruhms umgibt. Diese ekstatische Praktik verwandelt Verstand zu Leidenschaft ... kann aber aus dem Ruder laufen. [Du rufst eine Erhabene Stufe der Motte an, was fast immer von Erfolg gekrönt ist – doch es bleibt stets ein Risiko.] ",
+			"description": "Meine Leidenschaft erhebt sich wie der Wind, wie die Gezeiten, wie die Flut. Es ist schwer, einen klaren Gedanken zu fassen. Ich habe mich verändert. [Verstand ist zu Leidenschaft geworden.]",
+			"slots": [
+				{
+					"id": "reason",
+					"label": "Meinen Verstand aufgeben",
+					"required": {
+						"reason": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 10,
+					"id": "arcane_moth_edge_failure"
+				}
+			],
+			"aspects": {
+				"topassion": 1,
+				"dreadful": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "arcane_moth_edge_runaway_link",
+					"chance": 30
+				}
+			]
+		},
+		{
+			"label": "Wirbel der Leidenschaft [Hoch]",
+			"id": "arcane_moth_edge_major",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"moth": 10,
+				"edge": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Wie unten, so oben: Leidenschaft und Verstand wetteifern um die menschliche Seele, wie der Forst das Licht des Ruhms umgibt. Diese ekstatische Praktik verwandelt Verstand zu Leidenschaft ... kann aber aus dem Ruder laufen. [Du rufst eine Hohe Stufe der Motte an, was wahrscheinlich von Erfolg gekrönt sein wird.] Erhöhe Motte auf mindestens 15, um deine Chancen weiter zu verbessern.] ",
+			"description": "Meine Leidenschaft erhebt sich wie der Wind, wie die Gezeiten, wie die Flut. Es ist schwer, einen klaren Gedanken zu fassen. Ich habe mich verändert. [Verstand ist zu Leidenschaft geworden.]",
+			"slots": [
+				{
+					"id": "reason",
+					"label": "Meinen Verstand aufgeben",
+					"required": {
+						"reason": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 30,
+					"id": "arcane_moth_edge_failure"
+				}
+			],
+			"aspects": {
+				"topassion": 1,
+				"dreadful": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "arcane_moth_edge_runaway_link",
+					"chance": 30
+				}
+			]
+		},
+		{
+			"label": "Wirbel der Leidenschaft [Niedrig]",
+			"id": "arcane_moth_edge_minor",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"moth": 5,
+				"edge": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Wie unten, so oben: Leidenschaft und Verstand wetteifern um die menschliche Seele, wie der Forst das Licht des Ruhms umgibt. Diese ekstatische Praktik verwandelt Verstand zu Leidenschaft ... kann aber aus dem Ruder laufen. [Du rufst nur eine Niedrige Stufe der Motte an, weshalb der Ritus häufig scheitern wird.] Erhöhe Motte auf mindestens 10, um deine Chancen zu verbessern.] ",
+			"description": "Meine Leidenschaft erhebt sich wie der Wind, wie die Gezeiten, wie die Flut. Es ist schwer, einen klaren Gedanken zu fassen. Ich habe mich verändert. [Verstand ist zu Leidenschaft geworden.]",
+			"slots": [
+				{
+					"id": "reason",
+					"label": "Meinen Verstand aufgeben",
+					"required": {
+						"reason": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 70,
+					"id": "arcane_moth_edge_failure"
+				}
+			],
+			"aspects": {
+				"topassion": 1,
+				"dreadful": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "arcane_moth_edge_runaway_link",
+					"chance": 30
+				}
+			]
+		},
+		{
+			"id": "arcane_moth_edge_failure",
+			"label": "Wirbel der Leidenschaft [Versagt!]",
+			"actionId": "work",
+			"description": "Dieser Zauber ist etwas aus dem Ruder gelaufen. Grauen hat meine Wonne ersäuft.",
+			"effects": {
+				"dread": 1
+			}
+		},
+		{
+			"id": "arcane_moth_edge_runaway_link",
+			"label": "Wirbel der Leidenschaft [RASTLOS!]",
+			"actionId": "work",
+			"warmup": 2,
+			"linked": [
+				{
+					"id": "arcane_moth_edge_runaway",
+					"chance": 30
+				}
+			]
+		},
+		{
+			"id": "arcane_moth_edge_runaway",
+			"label": "Wirbel der Leidenschaft [RASTLOS!]",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"moth": 15,
+				"edge": 1
+			},
+			"startdescription": "Die Motte hat mich! Der Wirbel wird größer! Mein Verstand könnte vollständig untergehen!",
+			"description": "Endlich findet der Wirbel sein Ende, doch es ist schwer, einen klaren Gedanken zu fassen. Ich habe mich verändert. [Verstand ist zu Leidenschaft geworden.]",
+			"slots": [
+				{
+					"id": "reason",
+					"label": "Meinen Verstand aufgeben",
+					"required": {
+						"reason": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 10,
+					"id": "arcane_moth_edge_failure"
+				}
+			],
+			"aspects": {
+				"topassion": 1,
+				"fascinating": 1
+			},
+			"effects": {
+				"influenceheartc": 1
+			},
+			"warmup": 15,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "arcane_moth_edge_runaway",
+					"chance": 30
+				}
+			]
+		},
+		{
+			"label": "Erlösung der Schmiede [Erhaben]",
+			"id": "arcane_forge_grail_grand",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"forge": 15,
+				"grail": 1
+			},
+			"effects": {
+				"notoriety": 1,
+				"fascination": 1
+			},
+			"startdescription": "Die Schmiede der Tage vernichtet und erneuert. Ich rufe sie mit dem Gral an, um mein verfallendes Fleisch mit verbotener Magie zu erneuern. [Du rufst eine Erhabene Stufe des Grals an, was fast immer von Erfolg gekrönt ist – doch es bleibt stets ein Risiko.] ",
+			"description": "Ich bin mit Flammen erneuert, mit Blut gehärtet. Mein Fleisch ist wieder stark, doch das Strahlen der Schmiede hat meine Seele geblendet ... und die Leute werden reden. [Hinfälligkeit ist wieder zu Gesundheit geworden, aber du hast an Faszination und Berüchtigtsein gewonnen.]",
+			"slots": [
+				{
+					"id": "decrepitude",
+					"label": "Hinfälligkeit",
+					"required": {
+						"decrepitude": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 10,
+					"id": "arcane_forge_grail_failure"
+				}
+			],
+			"aspects": {
+				"tohealth": 1,
+				"fascinating": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"label": "Erlösung der Schmiede [Hoch]",
+			"id": "arcane_forge_grail_major",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"forge": 10,
+				"grail": 1
+			},
+			"effects": {
+				"notoriety": 1,
+				"fascination": 1
+			},
+			"startdescription": "Die Schmiede der Tage vernichtet und erneuert. Ich rufe sie mit dem Gral an, um mein verfallendes Fleisch mit verbotener Magie zu erneuern. [Du rufst eine Hohe Stufe des Grals an, was wahrscheinlich von Erfolg gekrönt sein wird.] Erhöhe Schmiede auf mindestens 15, um deine Chancen weiter zu verbessern.] ",
+			"description": "Ich bin mit Flammen erneuert, mit Blut gehärtet. Mein Fleisch ist wieder stark, doch das Strahlen der Schmiede hat meine Seele geblendet ... und die Leute werden reden. [Hinfälligkeit ist wieder zu Gesundheit geworden, aber du hast an Faszination und Berüchtigtsein gewonnen.]",
+			"slots": [
+				{
+					"id": "decrepitude",
+					"label": "Hinfälligkeit",
+					"required": {
+						"decrepitude": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 30,
+					"id": "arcane_forge_grail_failure"
+				}
+			],
+			"aspects": {
+				"tohealth": 1,
+				"fascinating": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"label": "Erlösung der Schmiede [Niedrig]",
+			"id": "arcane_forge_grail_minor",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"forge": 5,
+				"grail": 1
+			},
+			"effects": {
+				"notoriety": 1,
+				"fascination": 1
+			},
+			"startdescription": "Die Schmiede der Tage vernichtet und erneuert. Ich rufe sie mit dem Gral an, um mein verfallendes Fleisch mit verbotener Magie zu erneuern. [Du rufst nur eine Niedrige Stufe des Grals an, weshalb der Ritus häufig scheitern wird.] Erhöhe Schmiede auf mindestens 10, um deine Chancen weiter zu verbessern.] ",
+			"description": "Ich bin mit Flammen erneuert, mit Blut gehärtet. Mein Fleisch ist wieder stark, doch das Strahlen der Schmiede hat meine Seele geblendet ... und die Leute werden reden. [Hinfälligkeit ist wieder zu Gesundheit geworden, aber du hast an Faszination und Berüchtigtsein gewonnen.]",
+			"slots": [
+				{
+					"id": "decrepitude",
+					"label": "Hinfälligkeit",
+					"required": {
+						"decrepitude": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 70,
+					"id": "arcane_forge_grail_failure"
+				}
+			],
+			"aspects": {
+				"tohealth": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "arcane_forge_grail_failure",
+			"label": "Erlösung der Schmiede [Versagt!]",
+			"actionId": "work",
+			"description": "Die Schmiede der Tage hat mich im Stich gelassen, oder ich sie. Dieser Zauber hat mir nur Alpträume und Gefahr eingebracht.",
+			"effects": {
+				"dread": 1,
+				"mystique": 1
+			}
+		},
+		{
+			"label": "Das Ende ist schön [Erhaben]",
+			"id": "arcane_winter_lantern_grand",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"winter": 15,
+				"lantern": 1
+			},
+			"startdescription": "Die Sonne-in-Lumpen beschert uns wunderschöne Enden. Dieser plötzliche und riskante Zauber wird jemandem oder etwas ein Ende machen, aber man weiß niemals, wer oder was genau. Er tötet auch alle Sterblichen oder Geister, die bei dem Ritual helfen. [Du rufst eine Erhabene Stufe des Winters an, was fast immer von Erfolg gekrönt ist – wobei ein Scheitern besser sein könnte.] ",
+			"description": "Schnee hat sich auf alles in meiner Arbeitskammer gelegt. Das Feuer gibt keine Wärme ab, doch ich kann es nicht löschen, auch nicht die Kerzen, die mit einem roten Nimbus und einer goldenen Flamme und einem schwarzen Herzen brennen. Als das Ritual seinen Höhepunkt erreicht, findet irgendjemand, irgendetwas sein Ende.",
+			"slots": [
+				{
+					"id": "conclusion",
+					"label": "Ein Abschluss",
+					"required": {
+						"mortal": 1,
+						"summoned": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 10,
+					"id": "arcane_winter_lantern_failure"
+				}
+			],
+			"aspects": {
+				"killhunter": 1,
+				"killmortal": 1,
+				"killsummoned": 1
+			},
+			"effects": {
+				"dread": 1,
+				"fascination": 1,
+				"notoriety": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"label": "Das Ende ist schön [Hoch]",
+			"id": "arcane_winter_lantern_major",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"winter": 10,
+				"lantern": 1
+			},
+			"startdescription": "Die Sonne-in-Lumpen beschert uns wunderschöne Enden. Dieser plötzliche und riskante Zauber wird jemandem oder etwas ein Ende machen, aber man weiß niemals, wer oder was genau. Er tötet auch alle Sterblichen oder Geister, die bei dem Ritual helfen. [Du rufst eine Hohe Stufe des Winters an, was wahrscheinlich Erfolg haben wird.] Mit mindestens 15 Winter kannst du deine Chancen weiter verbessern – wobei ein Scheitern besser sein könnte.] ",
+			"description": "Schnee hat sich auf alles in meiner Arbeitskammer gelegt. Das Feuer gibt keine Wärme ab, doch ich kann es nicht löschen, auch nicht die Kerzen, die mit einem roten Nimbus und einer goldenen Flamme und einem schwarzen Herzen brennen. Als das Ritual seinen Höhepunkt erreicht, findet irgendjemand, irgendetwas sein Ende.",
+			"slots": [
+				{
+					"id": "conclusion",
+					"label": "Ein Abschluss",
+					"required": {
+						"mortal": 1,
+						"summoned": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 30,
+					"id": "arcane_winter_lantern_failure"
+				}
+			],
+			"aspects": {
+				"killhunter": 1,
+				"killmortal": 1,
+				"killsummoned": 1
+			},
+			"effects": {
+				"dread": 1,
+				"fascination": 1,
+				"notoriety": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"label": "Das Ende ist schön [Niedrig]",
+			"id": "arcane_winter_lantern_minor",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"winter": 5,
+				"lantern": 1
+			},
+			"startdescription": "Die Sonne-in-Lumpen beschert uns wunderschöne Enden. Dieser plötzliche und riskante Zauber wird jemandem oder etwas ein Ende machen, aber man weiß niemals, wer oder was genau. Er tötet auch alle Sterblichen oder Geister, die bei dem Ritual helfen. [Du rufst nur eine Niedrige Stufe des Winters an, weshalb der Ritus häufig scheitern wird.] Mit mindestens 10 Winter kannst du deine Chancen verbessern – wobei ein Scheitern besser sein könnte.] ",
+			"description": "Schnee hat sich auf alles in meiner Arbeitskammer gelegt. Das Feuer gibt keine Wärme ab, doch ich kann es nicht löschen, auch nicht die Kerzen, die mit einem roten Nimbus und einer goldenen Flamme und einem schwarzen Herzen brennen. Als das Ritual seinen Höhepunkt erreicht, findet irgendjemand, irgendetwas sein Ende.",
+			"slots": [
+				{
+					"id": "conclusion",
+					"label": "Ein Abschluss",
+					"required": {
+						"mortal": 1,
+						"summoned": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 30,
+					"id": "arcane_winter_lantern_failure"
+				}
+			],
+			"aspects": {
+				"killhunter": 1,
+				"killmortal": 1,
+				"killsummoned": 1
+			},
+			"effects": {
+				"dread": 1,
+				"fascination": 1,
+				"notoriety": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "arcane_winter_lantern_failure",
+			"label": "Das Ende ist schön [Versagt!]",
+			"actionId": "work",
+			"description": "Die Sonne-in-Lumpen reagiert nicht auf mein Rufen. Dieser Zauber hat mir nur die Vorahnung des Winters gebracht.",
+			"effects": {
+				"dread": 1,
+				"mystique": 1
+			}
+		}
+	]
+}

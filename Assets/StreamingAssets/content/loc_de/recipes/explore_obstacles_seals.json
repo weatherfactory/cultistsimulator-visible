@@ -1,0 +1,418 @@
+{
+	"recipes": [
+		{
+			"id": "explorevaultseal_hiddendoor_encounter",
+			"actionId": "explore",
+			"label": "Eine verborgene Tür",
+			"startdescription": "Es muss hier eine Tür geben. Doch ohne Laterne oder Klopfen können wir sie nicht finden.",
+			"requirements": {
+				"seal_hiddendoor": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "Hilfe",
+					"description": "Geldmittel sind unverzichtbar bei Expeditionen. Anhänger erlauben es mir, Hindernisse zu überwinden.",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultseal_hiddendoor_highlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_highknock",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_midlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_midknock",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_lowlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_lowknock",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultseal_hiddendoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_hiddendoor_highlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 10
+			},
+			"label": "Wir rufen den Wächter an, der erleuchtet",
+			"startdescription": "Es ist so gut wie sicher, dass wir diese verborgene Tür finden.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_hiddendoor_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_hiddendoor_midlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 5
+			},
+			"label": "Wir rufen den Wächter an, der navigiert",
+			"startdescription": "Unsere Sinne sind geschärft. Wir sollten diese verborgene Tür finden.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_hiddendoor_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_hiddendoor_lowlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 1
+			},
+			"label": "Wir rufen den Wächter an, der kein Mitleid kennt",
+			"startdescription": "Wir tragen das Licht. Wir könnten diese verborgene Tür finden. Es wird ein Kampf sein.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_hiddendoor_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_hiddendoor_highknock",
+			"actionId": "explore",
+			"requirements": {
+				"knock": 10
+			},
+			"label": "Wir rufen die Strandkrähe an, die sieht, was verloren wurde",
+			"startdescription": "Wir tragen eine große Macht des Öffnens. Es ist so gut wie sicher, dass wir diese verborgene Tür finden.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_hiddendoor_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_hiddendoor_midknock",
+			"actionId": "explore",
+			"requirements": {
+				"knock": 5
+			},
+			"label": "Wir rufen die Strandkrähe an, welche die Erde öffnet",
+			"startdescription": "Wir verstehen uns darauf, verborgene Wege zu enthüllen. Wir könnten vielleicht diese verborgene Tür finden.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_hiddendoor_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_hiddendoor_lowknock",
+			"actionId": "explore",
+			"requirements": {
+				"knock": 1
+			},
+			"label": "Wir rufen die Strandkrähe an, der gehört, was keinem gehört",
+			"startdescription": "Wir verfügen über einiges an Können, wenn es um das Öffnen geht. Wir könnten diese verborgene Tür finden. Es wird ein Kampf sein.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_hiddendoor_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_hiddendoor_success",
+			"actionId": "explore",
+			"label": "Ein Weg durch die verborgene Tür",
+			"startdescription": "Schwache Linien im Stein. Eine Oberfläche, die unter Druck nachgibt. Wir haben sie gefunden! Die verborgene Tür bewegt sich mit einem scharrenden Schaudern und einem Schauer aus Staub.",
+			"description": ".",
+			"effects": {
+				"seal_hiddendoor": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultseal_hiddendoor_failure",
+			"actionId": "explore",
+			"label": "Eine fruchtlose Suche",
+			"startdescription": "Wo ist sie? Wir könnten mehr Klopfen oder Laterne gebrauchen.",
+			"description": ".",
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultseal_wardeddoor_encounter",
+			"actionId": "explore",
+			"label": "Eine versiegelte Tür",
+			"startdescription": "Diese Tür hat lange Zeit standgehalten. Wenn wir nicht die Schmiede oder das Klopfen einsetzen, wird sie auch uns trotzen.",
+			"requirements": {
+				"seal_wardeddoor": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "Hilfe",
+					"description": "Geldmittel sind unverzichtbar bei Expeditionen. Anhänger erlauben es mir, Hindernisse zu überwinden.",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultseal_wardeddoor_highforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_highknock",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_midforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_midknock",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_lowforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_lowknock",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultseal_wardeddoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_wardeddoor_highforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 10
+			},
+			"label": "Wir rufen die Schmiede der Tage an, die allen Nächten ein Ende macht",
+			"startdescription": "Wir werden diese versiegelte Tür so gut wie sicher zerschmettern.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_wardeddoor_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_wardeddoor_midforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 5
+			},
+			"label": "Wir rufen die Schmiede der Tage an, die allem ein Ende macht, das sich nicht wandeln will",
+			"startdescription": "Unsere Werkzeuge sind bereit. Wir sollten diese versiegelte Tür überwinden können.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_wardeddoor_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_wardeddoor_lowforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 1
+			},
+			"label": "Wir rufen die Schmiede der Tage an, die mit Feuer neu erschafft",
+			"startdescription": "Wir stehen bereit mit dem Feuer der Schmiede. Wir könnten diese versiegelte Tür überwinden. Es wird ein Kampf sein.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_wardeddoor_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_wardeddoor_highknock",
+			"actionId": "explore",
+			"requirements": {
+				"knock": 10
+			},
+			"label": "Wir rufen die Hornaxt an, die an der Schwelle wartet",
+			"startdescription": "Wir tragen eine große Macht des Öffnens. Wir werden diese versiegelte Tür so gut wie sicher zerschmettern.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_wardeddoor_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_wardeddoor_midknock",
+			"actionId": "explore",
+			"requirements": {
+				"knock": 5
+			},
+			"label": "Wir rufen die Hornaxt an, die den Weg freigibt, wenn er freizugeben ist",
+			"startdescription": "Wir verstehen uns darauf, versiegelte Wege freizumachen. Wir könnten vielleicht diese versiegelte Tür überwinden.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_wardeddoor_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_wardeddoor_lowknock",
+			"actionId": "explore",
+			"requirements": {
+				"knock": 1
+			},
+			"label": "Wir rufen die Hornaxt an, die zwei Klingen trägt",
+			"startdescription": "Wir verfügen über einiges an Können, wenn es um das Öffnen geht. Wir könnten diese versiegelte Tür überwinden. Es wird ein Kampf sein.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_wardeddoor_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_wardeddoor_success",
+			"actionId": "explore",
+			"label": "Der Tod einer Tür",
+			"startdescription": "Alle Türen müssen sich öffnen, wie alles Leben enden muss. Diese Tür hat heute hier ihr Ende gefunden.",
+			"description": ".",
+			"effects": {
+				"seal_wardeddoor": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultseal_wardeddoor_failure",
+			"actionId": "explore",
+			"label": "Der Zweck von Türen",
+			"startdescription": "Türen haben zwei Zwecke: sich zu öffnen und geschlossen zu bleiben. Heute erfüllt diese Tür ihren 2. Zweck.",
+			"description": ".",
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		}
+	]
+}

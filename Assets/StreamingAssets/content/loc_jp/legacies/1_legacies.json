@@ -1,0 +1,205 @@
+{
+	"legacies": [
+		{
+			"id": "aspirant",
+			"label": "大志を抱く者",
+			"description": "6月28日、再び。",
+			"startdescription": "役に立たない卒業証書と夢を持って、私は一人でこの寒い街に来た。\nそれで？これから私は優れた人間になれるのだろうか。",
+			"effects": {
+				"introjob": 1
+			},
+			"image": "aspirant",
+			"fromEnding": "default",
+			"availableWithoutEndingMatch": true,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "brightyoungthing",
+			"label": "若き才能",
+			"description": "生まれながらにして豊かさと才能に恵まれ、琥珀色の絨毯のように、気楽で快適で喜びに満ちた生活が広がっている。",
+			"startdescription": "夜明けを見逃してしまった。いつもそうだ。どうせ夜明けはいくらでもあるのだから大丈夫。",
+			"effects": {
+				"legacybytjob": 1,
+				"health": 1
+			},
+			"image": "byt",
+			"fromEnding": "deathofthebody",
+			"availableWithoutEndingMatch": true,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "physician",
+			"label": "医師",
+			"description": "患者が末期の錯乱状態に陥ると、私は大量のメモを取った。夜中の熱気の中で、読み直すと、ようやく、メモの内容が意味を成すようになってきた。",
+			"startdescription": "今日は、研究所の仕事に戻る日だ。私には役職と評判がある。それは何かしらの意味があることなのだろうけれど、私は他のことを夢見始めている。",
+			"effects": {
+				"legacyphysicianjob": 1,
+				"reason": 1
+			},
+			"image": "physician",
+			"fromEnding": "deathofthebody",
+			"availableWithoutEndingMatch": true,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "detective",
+			"label": "探偵",
+			"description": "私は警視庁の警部で、人類が抱える卑劣で極悪な事件の捜査を担当している。",
+			"startdescription": "強盗、殺人犯、恐喝犯、放火犯の経歴に終止符を売ってきた。犯罪者の中には残虐な人間もいて、朝起きたら手が震えていたこともあった。",
+			"effects": {
+				"legacydetectivejob:": 1,
+				"reason": 1,
+				"health": 1
+			},
+			"image": "detective",
+			"fromEnding": "arrest",
+			"availableWithoutEndingMatch": true,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "detectivepostpromotion",
+			"label": "探偵",
+			"description": "私は警視庁の警部で、人類が抱える卑劣で極悪な事件の捜査を担当している。",
+			"startdescription": "強盗、殺人犯、恐喝犯、放火犯の経歴に終止符を売ってきた。犯罪者の中には残虐な人間もいて、朝起きたら手が震えていたこともあった。",
+			"effects": {
+				"legacydetectivejob:": 1,
+				"reason": 1,
+				"health": 1
+			},
+			"image": "detective",
+			"fromEnding": "workvictoryb",
+			"availableWithoutEndingMatch": false,
+			"excludesOnEnding": [
+				"detective"
+			],
+			"startingVerbId": "work"
+		},
+		{
+			"id": "apostleforge",
+			"label": "熱心な使徒",
+			"startdescription": "我々を形作った者は、さらなる高みへと昇っていった...少なくとも一つの歴史の中では。過去は不確かだ。しかし、私は彼らの次の昇天のために、坩堝の手入れをする。",
+			"description": "我々の偉大なる形作る者は強力になり、強力な敵を作った。形作る者は影に隠れ、私は道具として使われることになるだろう。",
+			"effects": {
+				"health": 2,
+				"legacyapostleforgejob:": 1
+			},
+			"image": "apostleforge",
+			"fromEnding": "minorforgevictory",
+			"availableWithoutEndingMatch": false,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "apostlegrail",
+			"label": "宴の使徒",
+			"startdescription": "我々を養ってくれた者は、さらなる高みへと昇っていった...少なくとも一つの歴史の中では。過去は不確かだ。しかし、私は彼らの次の昇天のために宴を準備する。",
+			"description": "我々の喜びの者は強力になり、強力な敵を作った。歓喜は影に隠れ、私は器として使われることになるだろう。",
+			"effects": {
+				"passion": 1,
+				"health": 1,
+				"legacyapostlegrailjob:": 1
+			},
+			"image": "apostlegrail",
+			"fromEnding": "minorgrailvictory",
+			"availableWithoutEndingMatch": false,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "apostlelantern",
+			"label": "啓蒙された使徒",
+			"startdescription": "照らされた者は、太陽の棲む家で待つ。高みを目指す瞬間を待っているのだ。そして、私はそれを助ける手だ。",
+			"description": "何が起こったのか覚えていない。自分が誰なのか覚えていない。でも、夢が何をすべきかを教えてくれた。",
+			"effects": {
+				"reason": 1,
+				"health": 1,
+				"legacyapostlelanternjob:": 1
+			},
+			"image": "apostlelantern",
+			"fromEnding": "minorlanternvictory",
+			"availableWithoutEndingMatch": false,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "apostleforgewithrisen",
+			"label": "熱心な使徒",
+			"startdescription": "我々を形作った者は、さらなる高みへと昇っていった...少なくとも一つの歴史の中では。過去は不確かだ。しかし、私は彼らの次の昇天のために、坩堝の手入れをする。",
+			"description": "我々の偉大なる形作る者は強力になり、強力な敵を作った。形作る者は影に隠れ、私は道具として使われることになるだろう。",
+			"effects": {
+				"health": 2,
+				"legacyapostleforgejob:": 1
+			},
+			"image": "apostleforge",
+			"fromEnding": "minorforgevictorywithrisen",
+			"availableWithoutEndingMatch": false,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "apostlegrailwithrisen",
+			"label": "宴の使徒",
+			"startdescription": "我々を養ってくれた者は、さらなる高みへと昇っていった...少なくとも一つの歴史の中では。過去は不確かだ。しかし、私は彼らの次の昇天のために宴を準備する。",
+			"description": "我々の喜びの者は強力になり、強力な敵を作った。歓喜は影に隠れ、私は器として使われることになるだろう。",
+			"effects": {
+				"passion": 1,
+				"health": 1,
+				"legacyapostlegrailjob:": 1
+			},
+			"image": "apostlegrail",
+			"fromEnding": "minorgrailvictorywithrisen",
+			"availableWithoutEndingMatch": false,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "apostlelanternwithrisen",
+			"label": "啓蒙された使徒",
+			"startdescription": "照らされた者は、太陽の棲む家で待つ。高みを目指す瞬間を待っているのだ。そして、私はそれを助ける手だ。",
+			"description": "何が起こったのか覚えていない。自分が誰なのか覚えていない。でも、夢が何をすべきかを教えてくれた。",
+			"effects": {
+				"reason": 1,
+				"health": 1,
+				"legacyapostlelanternjob:": 1
+			},
+			"image": "apostlelantern",
+			"fromEnding": "minorlanternvictorywithrisen",
+			"availableWithoutEndingMatch": false,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "auctioneer",
+			"label": "競売人",
+			"description": "――",
+			"startdescription": "――",
+			"effects": {
+				"funds": 5
+			},
+			"image": "moth",
+			"fromEnding": "_workvictory",
+			"availableWithoutEndingMatch": false,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "survivor",
+			"label": "生存者",
+			"description": "鏡の中、人ごみの中、故人の顔を見ることがある。",
+			"startdescription": "呪われた始まりの音",
+			"effects": {
+				"introjob": 1
+			},
+			"image": "moth",
+			"fromEnding": "_wintersacrifice",
+			"availableWithoutEndingMatch": false,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "cousin",
+			"label": "従兄弟",
+			"description": "太陽が高く昇り、鏡がすべて封印されている朝、誰かが扉をノックする。灰色の服を着た紳士が「後援者、形見。親戚だとは知らなかったのかもしれない」と言うだろう。",
+			"startdescription": "後継者の始まりの音",
+			"effects": {
+				"introjob": 1
+			},
+			"image": "knock",
+			"fromEnding": "_",
+			"availableWithoutEndingMatch": false,
+			"startingVerbId": "work"
+		}
+	]
+}

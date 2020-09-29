@@ -1,0 +1,1342 @@
+{
+	"recipes": [
+		{
+			"id": "work.priest.first",
+			"actionId": "work",
+			"label": "Meine erste Messe lesen",
+			"startdescription": "Ich habe mir als Text Matthäus 7:7 ausgesucht: 'Bittet, so wird euch gegeben; suchet, so werdet ihr finden; klopfet an, so wird euch aufgetan.' Das Buch ist heruntergefallen und bei dieser Passage geöffnet liegen geblieben. Ich schwöre, dass ich mich sonst anders entschieden hätte.",
+			"description": "Die Predigt lief gut, wobei das Echo an diesem Orte verführerisch ist und ich zum Extemporieren verlockt wurde. Ich kann mich nicht mehr an alles erinnern, was ich gesagt habe, doch es wurde alles gut aufgenommen. Als ich von der Kanzel trat, riss ich mir den Ärmel an einem Nagel auf und eine Frau in der vordersten Reihe stöhnte auf.",
+			"requirements": {
+				"priestjob": 1,
+				"passion": 1
+			},
+			"effects": {
+				"funds": 1,
+				"reason": 1
+			},
+			"warmup": 10,
+			"craftable": true,
+			"maxexecutions": 1,
+			"alt": [
+				{
+					"id": "dream.priest.open",
+					"additional": true
+				},
+				{
+					"id": "study.priest.open",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "work.priest.second",
+			"actionId": "work",
+			"label": "Eine Messe lesen und vom Traum des Kleinschmieds sprechen",
+			"startdescription": "Ich werde erneut davon sprechen, was Matthäus über Türen sagte, aber auch von der Heiligen Agnes und was des Nachts kommt, wenn man einen Schlüssel geformt hat.",
+			"description": "Einige von ihnen hatten auch jenen Traum. Ich kann es an ihren Gesichtern ablesen. Es ist diese Kirche – die Türen hier sind nicht nur die Türen, die wir sehen. Selbst die Herzklappen sind Türen, wenn die Glieder richtig ausgerichtet sind. Das habe ich niemals in meiner Predigt gesagt, doch ihre Herzen haben doch auf diese Wahrheit reagiert.",
+			"requirements": {
+				"priestjob": 1,
+				"reason": 1,
+				"fragmentknock": 1
+			},
+			"effects": {
+				"fervour": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"maxexecutions": 1,
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"additional": true
+				},
+				{
+					"id": "explore.priest.open",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "work.priest.third",
+			"actionId": "work",
+			"label": "Eine Messe lesen",
+			"startdescription": "Die Gemeinde flüstert, während sie wartet, und die Echos sind wie Flügel an einem hohen Orte, wie Äste im Wind. Diakon und Küster schauen zu, wie ich meinen Platz einnehme. Da ist etwas in ihren Augen, was ich nicht ganz erwartet hätte. Ist das ... Stolz?",
+			"description": "Mein Herz ist der Scheideweg meines Blutes. Meine Zunge ist eine geschärfte Flamme. Ich sehe Formen im Buntglas, die nicht immer dort sind. Eine graue Stute, einen gespalteten Baum, eine Zwillingsschlange. Als ich fertig bin, steht die Gemeinde, stampft und johlt, und ihre Augen, ihre Münder, sie sind Türen. Der Küster nimmt vor der gesamten Kirche meine Hand in die verwelkte seinige. Tränen stehen ihm in den Augen. 'Wir warten schon so lange', flüstert er.",
+			"requirements": {
+				"priestjob": 1,
+				"ability": 1,
+				"lore": 1,
+				"fervour": 1
+			},
+			"effects": {
+				"funds": 1,
+				"fervour": -1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"maxexecutions": 1,
+			"alt": [
+				{
+					"id": "talk.priest.open",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "dream.priest.open",
+			"actionId": "dream",
+			"label": "Der Schlaf der Gerechten",
+			"startdescription": "Ich habe meine Hingabe zur Schau gestellt, wie ich es gelehrt wurde. Ich habe die Historien beiseite genommen, die ich nicht hätte lesen sollen. Ich spreche weder vom Knoten noch von der Unbändigen Sonne. Der Sekretär des Bischofs hat bei all dem keinen Raum für Zweifel gelassen. Und dennoch kommt ab und an in meinen Träumen die Heilige Agnes zu mir, und jetzt ist es Nacht.",
+			"description": "Die Heilige Agnes wandelt im Rauch und zerdrückt Veilchen unter ihren schmalen blassen Füßen. Die Heilige Agnes trägt Schlüssel und ein helles Messer und eine scharfe Kerze und, in der letzten ihrer schlanken Hände, ihr eigenes Märtyrerinnenhaupt. Die Heilige Agnes hebt ihr Antlitz über meine Schulter, um mir die Stirn zu küssen, und ich öffne mich ihr, wie eine Tür. Als ich erwache, rast mir das Herz, meine Haut ist gereizt, meine Glieder zittern: Ich habe begonnen auszulaufen.",
+			"effects": {
+				"health": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "study.priest.open",
+			"actionId": "study",
+			"label": "Die Angel in den Worten",
+			"startdescription": "Ich habe begonnen meine Bücher auszupacken ...",
+			"description": "Hier ist eines meiner alten Tagebücher. Ein Seitenbündel rutscht hinter dem Deckblatt hervor und schwebt zu Boden. Etwas, das ich früher einmal kopiert und dann lange Zeit zu vergessen versucht habe.",
+			"effects": {
+				"fragmentknock": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "explore.priest.open",
+			"actionId": "explore",
+			"label": "Alte Steine",
+			"startdescription": "Es gibt einen Dom in dieser Stadt, der vor langer Zeit dem Heiligen Petrus der Schlüssel geweiht wurde. Er fiel vor zwei Jahrhunderten dem Feuer zum Opfer. Ich habe gelesen, dass er insgeheim dem Heiligen Funken geweiht worden war: vielleicht ist das die Erklärung. Als er wiederaufgebaut wurde, stimmte der König widerwillig zu, dass der Heilige Petrus keine Schlüssel mehr haben sollte. Einst wurde auch diese Kirche dem Heiligen Petrus geweiht ...",
+			"description": "Nun hat die Kirche einen anderen Schutzheiligen. Vielleicht wollte ein anderer Bischof ausradieren, was die Steine gesehen hatten. Doch die Steine vergessen nicht. Hier ist einer, der das Zeichen der Strahlensonne trägt. Hier, unter dem Taufbecken, ist ein Knoten. Hier, im Fenster hinter dem Altar, sichtbar nur in der Dämmerung, aufgefächert wie Blumen, die sieben Schlüssel ...",
+			"effects": {
+				"hq.church": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "talk.priest.open",
+			"actionId": "talk",
+			"label": "Ein Willkommen",
+			"startdescription": "Diakon und Küster sind gekommen, um mich in einer privaten Angelegenheit zu sprechen. Sie haben einen Gast mitgebracht, jemanden, den ich nie getroffen habe, der aber nun das Knie beugt, um mir die Ehre zu erweisen. Alle drei erweisen mir nun die Ehre – ",
+			"effects": {
+				"LEVER_LastCult": 1,
+				"LEVER_LastFollower": 1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "talk.priest.open.followup"
+				}
+			]
+		},
+		{
+			"id": "talk.priest.open.followup",
+			"actionId": "talk",
+			"label": "Umwidmung",
+			"startdescription": "Der Küster weint wieder. 'Wir haben auf dich gewartet. #PREVIOUSCHARACTERNAME# lehrte uns @#cultedge_1|die Helle Kante#cultforge_1|die Macht der Gestaltenden Flamme#cultgrail_1|die geheimen Wonnen des Appetits#cultheart_1|den Tanz, der niemals endet#cultknock_1|das Wesen der Schlüssel#cultlantern_1|den Ruhm#cultmoth_1|den Forst#cultsecrethistories_1|viele Historien#cultwinter_1|die Stille#|Farben unter der Haut der Welt@, und wir haben diese Lehren genutzt, um den Weg zu bereiten. Du bist unser Licht. Du bist unsere Schwelle. Wir brauchen dich. Führe uns.'",
+			"mutations": [
+				{
+					"filter": "society",
+					"mutate": "rededicable",
+					"level": 1
+				}
+			]
+		},
+		{
+			"id": "talk.rededicatecult",
+			"actionId": "talk",
+			"label": "Ein neuer Weg",
+			"startdescription": "#PREVIOUSCHARACTERNAME# hat den Weg bereitet, doch ich <i>bin</i> der Weg. Ich könnte die Gestalt dessen wandeln, was etabliert wurde. [Ein einziges Mal kannst du eine andere Art von Wissen in den Mittelpunkt deines Kults rücken. Leite diesen Prozess nur ein, wenn du Wissen deines bevorzugten Aspekts bereit hast.]",
+			"description": "Wir werden dem Weg folgen, den #PREVIOUSCHARACTERNAME# festgelegt hat ... bis auf weiteres.",
+			"requirements": {
+				"society": 1,
+				"rededicable": 1,
+				"mortal": -1,
+				"summoned": -1,
+				"influence": -1,
+				"ability": -1,
+				"tool": -1,
+				"ingredient": -1,
+				"lore": -1
+			},
+			"slots": [
+				{
+					"id": "principle",
+					"label": "Neues Grundprinzip",
+					"required": {
+						"lore": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "talk.rededicatecult.edge",
+					"label": "Kult umwidmen: Kante",
+					"startdescription": "Ich werden eine gleißende Trennlinie ziehen zwischen dem Kult, der war, und dem Kult, der sein wird. Ich werde sie so beugen, dass sie meinem Willen folgen. [Du könntest einen anderen Aufstieg als das Klopfen verfolgen. Du brauchst den Prozess nicht abzuschließen.]",
+					"requirements": {
+						"society": 1,
+						"lore": 1,
+						"edge": 1
+					},
+					"effects": {
+						"society": -1,
+						"cultedge_1": 1,
+						"ascensionpowera": 1
+					},
+					"mutations": [
+						{
+							"filter": "society",
+							"mutate": "rededicable",
+							"level": -1
+						}
+					]
+				},
+				{
+					"id": "talk.rededicatecult.forge",
+					"label": "Kult umwidmen: Schmiede",
+					"startdescription": "Ich werde den Kult zu meinen Zwecken umgestalten. Ich habe eine unerwartete Macht in meinen Händen. [Du könntest einen anderen Aufstieg als das Klopfen verfolgen. Du brauchst den Prozess nicht abzuschließen.]",
+					"requirements": {
+						"society": 1,
+						"lore": 1,
+						"forge": 1
+					},
+					"effects": {
+						"society": -1,
+						"cultforge_1": 1,
+						"ascensionpowera": 1
+					},
+					"mutations": [
+						{
+							"filter": "society",
+							"mutate": "rededicable",
+							"level": -1
+						}
+					]
+				},
+				{
+					"id": "talk.rededicatecult.grail",
+					"label": "Kult umwidmen: Gral",
+					"startdescription": "Ich werde den Kult für mein Verlangen umgestalten. Vielleicht sollte ich mir mehr Gedanken über das Wesen dieses Verlangens machen. [Du könntest einen anderen Aufstieg als das Klopfen verfolgen. Du brauchst den Prozess nicht abzuschließen.]",
+					"requirements": {
+						"society": 1,
+						"lore": 1,
+						"grail": 1
+					},
+					"effects": {
+						"society": -1,
+						"cultgrail_1": 1,
+						"ascensionsensationa": 1
+					},
+					"mutations": [
+						{
+							"filter": "society",
+							"mutate": "rededicable",
+							"level": -1
+						}
+					]
+				},
+				{
+					"id": "talk.rededicatecult.heart",
+					"label": "Kult umwidmen: Herz",
+					"startdescription": "Der alte Kult endet, der neue Kult wird niemals enden. Jetzt höre ich die Trommeln im Blute. [Du könntest einen anderen Aufstieg als das Klopfen verfolgen. Du brauchst den Prozess nicht abzuschließen.]",
+					"requirements": {
+						"society": 1,
+						"lore": 1,
+						"heart": 1
+					},
+					"effects": {
+						"society": -1,
+						"cultheart_1": 1,
+						"ascensionsensationa": 1
+					},
+					"mutations": [
+						{
+							"filter": "society",
+							"mutate": "rededicable",
+							"level": -1
+						}
+					]
+				},
+				{
+					"id": "talk.rededicatecult.knock",
+					"label": "Kult umwidmen: Klopfen",
+					"startdescription": "Nun ist das Siegel erbrochen, und dahinter verbirgt sich der wahre Kult. Es ist die Heilige Agnes, die das Siegel erbricht, doch wer wartet dahinter? [Du könntest einen anderen Aufstieg als das Klopfen verfolgen. Du brauchst den Prozess nicht abzuschließen.] ",
+					"requirements": {
+						"society": 1,
+						"lore": 1,
+						"knock": 1
+					},
+					"effects": {
+						"society": -1,
+						"cultknock_1": 1,
+						"ascensionenlightenmenta": 1
+					},
+					"mutations": [
+						{
+							"filter": "society",
+							"mutate": "rededicable",
+							"level": -1
+						}
+					]
+				},
+				{
+					"id": "talk.rededicatecult.lantern",
+					"label": "Kult umwidmen: Laterne",
+					"startdescription": "Ich werde eine neue Wahrheit offenbaren. Vielleicht sollte ich mir mehr Gedanken über das Wesen dieser Wahrheit machen. [Du könntest einen anderen Aufstieg als das Klopfen verfolgen. Du brauchst den Prozess nicht abzuschließen.]",
+					"requirements": {
+						"society": 1,
+						"lore": 1,
+						"lantern": 1
+					},
+					"effects": {
+						"society": -1,
+						"cultlantern_1": 1,
+						"ascensionenlightenmenta": 1
+					},
+					"mutations": [
+						{
+							"filter": "society",
+							"mutate": "rededicable",
+							"level": -1
+						}
+					]
+				},
+				{
+					"id": "talk.rededicatecult.moth",
+					"label": "Kult umwidmen: Motte",
+					"startdescription": "Sie werden sich wandeln. Oder ich werde sie wandeln. Ich könnte mich sogar noch mehr wandeln, so ich denn wollte. [Du könntest einen anderen Aufstieg als das Klopfen verfolgen. Du brauchst den Prozess nicht abzuschließen.]",
+					"requirements": {
+						"society": 1,
+						"lore": 1,
+						"moth": 1
+					},
+					"effects": {
+						"society": -1,
+						"cultmoth_1": 1,
+						"ascensionsensationa": 1
+					},
+					"mutations": [
+						{
+							"filter": "society",
+							"mutate": "rededicable",
+							"level": -1
+						}
+					]
+				},
+				{
+					"id": "talk.rededicatecult.secrethistories",
+					"label": "Kult umwidmen: Geheime Geschichten",
+					"startdescription": "In einer anderen Historie blieb unser Kult unverändert. Nicht hier. Hier, ich habe unseren Weg geändert ... und ich könnte ihn noch weiter ändern. [Du könntest einen anderen Aufstieg als das Klopfen verfolgen. Du brauchst den Prozess nicht abzuschließen.]",
+					"requirements": {
+						"society": 1,
+						"lore": 1,
+						"secrethistories": 1
+					},
+					"effects": {
+						"society": -1,
+						"cultsecrethistories_1": 1,
+						"ascensionenlightenmenta": 1
+					},
+					"mutations": [
+						{
+							"filter": "society",
+							"mutate": "rededicable",
+							"level": -1
+						}
+					]
+				},
+				{
+					"id": "talk.rededicatecult.winter",
+					"label": "Kult umwidmen: Winter",
+					"startdescription": "Heute Nacht fanden die alten Sitten ihr Ende. Doch zum ersten Male halte ich die Zügel unseres Schicksals in Händen. Sollte ich es wollen ... So könnte ich einen anderen Weg wählen. [Du könntest einen anderen Aufstieg als das Klopfen verfolgen. Du brauchst den Prozess nicht abzuschließen.]",
+					"requirements": {
+						"society": 1,
+						"lore": 1,
+						"winter": 1
+					},
+					"effects": {
+						"society": -1,
+						"cultwinter_1": 1,
+						"ascensionenlightenmenta": 1
+					},
+					"mutations": [
+						{
+							"filter": "society",
+							"mutate": "rededicable",
+							"level": -1
+						}
+					]
+				}
+			],
+			"craftable": true,
+			"warmup": 60
+		},
+		{
+			"id": "work.priest.passion.fervour.lore",
+			"actionId": "work",
+			"label": "Vor einer inbrünstigen Gemeinde auf Grundlage einer geheimen Doktrin improvisieren ",
+			"startdescription": "Die Gemeinde ist bereits in einem Zustand der Entzückung. Jegliches geheimes Wissen wird sie so gut wie sicher völlig entrücken.",
+			"description": "Schließlich ist ihre Inbrunst aufgezehrt.  Was haben sie aus dieser Nacht gemacht? [Inbrunst und Wissen führen zusammen so gut wie sicher zu Entrückung, wobei jedoch die Inbrunst verbraucht wird.]",
+			"requirements": {
+				"priestjob": 1,
+				"passion": 1,
+				"lore": 1,
+				"fervour": 1
+			},
+			"effects": {
+				"funds": 1,
+				"fervour": -1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"chance": 90,
+					"additional": true
+				}
+			],
+			"warmup": 50,
+			"craftable": true
+		},
+		{
+			"id": "work.priest.reason.fervour.lore",
+			"actionId": "work",
+			"label": "Eine Predigt auf Grundlage einer geheimen Doktrin vorbereiten, um sie vor einer inbrünstigen Gemeinde zu halten",
+			"startdescription": "Die Gemeinde ist bereits in einem Zustand der Entzückung. Jegliches geheimes Wissen wird sie so gut wie sicher völlig entrücken.",
+			"description": "Schließlich ist ihre Inbrunst aufgezehrt.  Was haben sie aus dieser Nacht gemacht? [Inbrunst und Wissen führen zusammen so gut wie sicher zu Entrückung, wobei jedoch die Inbrunst verbraucht wird.]",
+			"requirements": {
+				"priestjob": 1,
+				"reason": 1,
+				"lore": 1,
+				"fervour": 1
+			},
+			"effects": {
+				"funds": 1,
+				"fervour": -1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"chance": 90,
+					"additional": true
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work.priest.passion.fervour",
+			"actionId": "work",
+			"label": "Vor einer inbrünstigen Gemeinde eine Predigt improvisieren ",
+			"startdescription": "Die Gemeinde ist bereits in einem Zustand der Entzückung. Jegliches geheimes Wissen wird sie so gut wie sicher völlig entrücken.",
+			"description": "Schließlich ist ihre Inbrunst aufgezehrt.  Was haben sie aus dieser Nacht gemacht? [Inbrunst führt üblicherweise zu Entrückung, wobei jedoch die Inbrunst verbraucht wird.]",
+			"requirements": {
+				"priestjob": 1,
+				"passion": 1,
+				"fervour": 1
+			},
+			"effects": {
+				"funds": 1,
+				"fervour": -1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"chance": 70,
+					"additional": true
+				}
+			],
+			"warmup": 50,
+			"craftable": true
+		},
+		{
+			"id": "work.priest.reason.fervour",
+			"actionId": "work",
+			"label": "Sorgfältig eine Predigt für eine inbrünstige Gemeinde vorbereiten",
+			"startdescription": "Die Gemeinde ist bereits in einem Zustand der Entzückung. Jegliches geheimes Wissen wird sie so gut wie sicher völlig entrücken.",
+			"description": "Schließlich ist ihre Inbrunst aufgezehrt.  Was haben sie aus dieser Nacht gemacht? [Inbrunst führt üblicherweise zu Entrückung, wobei jedoch die Inbrunst verbraucht wird.]",
+			"requirements": {
+				"priestjob": 1,
+				"reason": 1,
+				"fervour": 1
+			},
+			"effects": {
+				"funds": 1,
+				"fervour": -1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"chance": 70,
+					"additional": true
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work.priest.passion.lore",
+			"actionId": "work",
+			"label": "Eine Predigt auf Grundlage einer geheimen Doktrin improvisieren",
+			"startdescription": "Ich werde zu ihren Seelen sprechen, und wenn ich voller Überzeugung spreche, antworten mir ihre Seelen vielleicht. [Wenn du eine geeignete Doktrin mit einer Predigt der Leidenschaft verquickst, erzeugt du eher Inbrunst. Eine improvisierte Predigt geht etwas schneller.]",
+			"requirements": {
+				"priestjob": 1,
+				"passion": 1,
+				"lore": 1
+			},
+			"linked": [
+				{
+					"id": "preach.edge",
+					"challenges": {
+						"edge": "base"
+					}
+				},
+				{
+					"id": "preach.forge",
+					"challenges": {
+						"forge": "base"
+					}
+				},
+				{
+					"id": "preach.grail",
+					"challenges": {
+						"grail": "base"
+					}
+				},
+				{
+					"id": "preach.heart",
+					"challenges": {
+						"heart": "base"
+					}
+				},
+				{
+					"id": "preach.moth",
+					"challenges": {
+						"moth": "base"
+					}
+				},
+				{
+					"id": "work.priest.nolorematch"
+				}
+			],
+			"warmup": 50,
+			"craftable": true
+		},
+		{
+			"id": "work.priest.reason.lore",
+			"actionId": "work",
+			"label": "Eine Predigt auf Grundlage einer geheimen Doktrin vorbereiten",
+			"startdescription": "Ich werde zu ihren Seelen sprechen, und wenn ich voller Präzision spreche, antworten mir ihre Seelen vielleicht. [Wenn du eine geeignete Doktrin mit einer Predigt des Verstands verquickst, erzeugt du eher Inbrunst.",
+			"requirements": {
+				"priestjob": 1,
+				"reason": 1,
+				"lore": 1
+			},
+			"linked": [
+				{
+					"id": "preach.knock",
+					"challenges": {
+						"knock": "base"
+					}
+				},
+				{
+					"id": "preach.secrethistories",
+					"challenges": {
+						"secrethistories": "base"
+					}
+				},
+				{
+					"id": "preach.winter",
+					"challenges": {
+						"winter": "base"
+					}
+				},
+				{
+					"id": "preach.lantern",
+					"challenges": {
+						"lantern": "base"
+					}
+				},
+				{
+					"id": "work.priest.nolorematch"
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work.priest.nolorematch",
+			"actionId": "work",
+			"label": "Eine verhaltene Zeremonie",
+			"startdescription": "Heute Abend hören sie zu ... aber sie hören mich nicht. [Setzt du deinen Verstand mit noch mehr Doktrinen des Verstands ein, oder Leidenschaft mit noch mehr Wissen der Leidenschaft, erzeugst du eher Inbrunst. Je tiefgründiger das Wissen, desto größer die Chance auf Entrückung.]",
+			"effects": {
+				"funds": 1
+			}
+		},
+		{
+			"id": "preach.edge",
+			"actionId": "work",
+			"label": "'Beantworte Stärke mit Stärke.'",
+			"startdescription": "'Das Licht über der Welt scheint nicht gnädig auf diejenigen, die aufgeben. Kämpfe bis zum letzten Atemzug. Wie die hohen Engel des Hauses der Sonne miteinander wetteifern, so sollen auch wir für unermüdlichem Streben erfüllt sein, bis wir endlich erobert sind.' [Je tiefgründiger das Wissen, desto größer die Chance auf Entrückung.]",
+			"effects": {
+				"funds": 1,
+				"fervour": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"challenges": {
+						"edge": "base"
+					},
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "preach.forge",
+			"actionId": "work",
+			"label": "'Der Gedanke an den Forst war umsonst, denn es kam das Feuer und verwandelte ihn zu Asche.'",
+			"startdescription": "'Wir werden alle verändert. Manchmal werden wir zu etwas verändert, das nicht lebt – manchmal zu etwas, das nie gelebt hat – manchmal in etwas Ruhmreiches. Und manchmal verändern wir uns selbst. Dies ist der Scheideweg, an dem der Schatten der Sonne wartet.' [Je tiefgründiger das Wissen, desto größer die Chance auf Entrückung.]",
+			"effects": {
+				"funds": 1,
+				"fervour": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"challenges": {
+						"forge": "base"
+					},
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "preach.grail",
+			"actionId": "work",
+			"label": "'Du bist auf dem Wege unserer Mutter gewandelt, weshalb ich dir ihren Kelch in deine Hand gebe.'",
+			"startdescription": "'Unsere Seelen wohnen in dem Hause, das unser Fleisch ist. Unsere Sinne sind die Fenster, und jeder Sinn hat seinen eigenen Appetit. Wer den Appetit nicht befriedigt, vernachlässigt die Fenster. Und wer will schon in einem Hause mit unansehnlichen Fenstern leben?' [Je tiefgründiger das Wissen, desto größer die Chance auf Entrückung.]",
+			"effects": {
+				"funds": 1,
+				"fervour": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"challenges": "grail",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "preach.heart",
+			"actionId": "work",
+			"label": "'Die Herzen der Falschen werden ihnen genommen, wenn sie vergehen, doch die Herzen der Wahren vergehen nie.'",
+			"startdescription": "'Im Hause der Sonne kennt der Ruhmestanz der Engel kein Ende. Wer nach unten geschleudert wurde, Welle oder Wunde oder Schnee, ist fort aus dem Haus, und solange ihr Part des Tanzes besetzt ist, kehren sie nie wieder zurück. Reichen wir uns also die Händen und tragen unsere kleinen Schritte zum Tanze bei.' [Je tiefgründiger das Wissen, desto größer die Chance auf Entrückung.]",
+			"effects": {
+				"funds": 1,
+				"fervour": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"challenges": "heart",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "preach.knock",
+			"actionId": "work",
+			"label": "'Sehet, er brechet zusammen, und es kann nicht wieder errichtet werden: er öffnete einen Mann, und er soll nicht verschlossen werden.'",
+			"startdescription": "'Du hast die Tür zu diesem Ort geöffnet, und ich bin hindurch geschritten, um hier vor dir zu stehen, doch ich gelobe dies: es wird eine Zeit kommen, in der ich mich öffnen werde, und du sollst durch mich an einen höheren Ort als diesen gelangen.' [Je tiefgründiger das Wissen, desto größer die Chance auf Entrückung.]",
+			"effects": {
+				"funds": 1,
+				"fervour": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"challenges": "knock",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "preach.lantern",
+			"actionId": "work",
+			"label": "'Gnade und Wahrheit erhalten den König, doch das Licht erhält nur die Wahrheit.'",
+			"startdescription": "'Der Ruhm verlangt nach Wahrheit. Wenn wir uns in der Wahrheit gewanden, wird er uns nicht verbrennen.' [Je tiefgründiger das Wissen, desto größer die Chance auf Entrückung.]",
+			"effects": {
+				"funds": 1,
+				"fervour": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"challenges": "lantern",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "preach.moth",
+			"actionId": "work",
+			"label": "'Sie haben mich erst in die Finsternis und dann ins Licht geführt.'",
+			"startdescription": "'Der Ruhm verlangt nach Wahrheit. Wenn wir uns in Lügen gewanden, wird er sie von uns brennen.' [Je tiefgründiger das Wissen, desto größer die Chance auf Entrückung.]",
+			"effects": {
+				"funds": 1,
+				"fervour": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"challenges": "moth",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "preach.secrethistories",
+			"actionId": "work",
+			"label": "'Wenn man einen neuen Flicken auf ein altes Gewand näht und das Gewand dann zerreißt, hat man dann ein Gewand, zwei oder keines?'",
+			"startdescription": "'Ich habe dir diese Worte gesagt. Ich habe dir nicht diese Worte gesagt. Gestern war beides falsch. Wie viel wird morgen davon wahr sein? [Je tiefgründiger das Wissen, desto größer die Chance auf Entrückung.]",
+			"effects": {
+				"funds": 1,
+				"fervour": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"challenges": "secrethistories",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "preach.winter",
+			"actionId": "work",
+			"label": "'Er sitzet allein und schweiget, denn der Winter wartet nicht ewig.'",
+			"startdescription": "'Schließt eure Münder. Schließt eure Ohren. Hört zu. [Je tiefgründiger das Wissen, desto größer die Chance auf Entrückung.]",
+			"effects": {
+				"funds": 1,
+				"fervour": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"challenges": "winter",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "priest.repevent",
+			"actionId": "priest.repevent",
+			"label": "Entrückung",
+			"startdescription": "Manchmal bewegen meine Worte – und jene, die ich mir geliehen habe – meine Gemeinde über die Konzentration hinaus bis zur Entrückung.",
+			"description": "@#reputation|Unsere Hingabe ist nicht unbemerkt geblieben ...\n#funds|Die Gemeinde hat großzügig gespendet, und die Kollekte war nicht allein auf den Kollektenteller beschränkt.@",
+			"slots": [
+				{
+					"id": "society",
+					"label": "Innerer Kreis",
+					"description": "Ich könnte die enthusiastischsten Gläubigen in einen inneren Kreis einladen ...",
+					"required": {
+						"society": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "priest.repevent.devotee.edge",
+					"requirements": {
+						"venerationedge": 1
+					},
+					"deckeffect": {
+						"priest.repevent": 1
+					},
+					"label": "Inspiration",
+					"description": "Ein Gläubiger hat von der Heiligen Agnes der Teilung geträumt! In der Zwischenzeit, @#reputation|ist unsere Hingabe nicht unbemerkt geblieben ...\n#funds|hat die übrige Gemeinde großzügig gespendet, und die Kollekte war nicht allein auf den Kollektenteller beschränkt.@",
+					"effects": {
+						"funds": 2,
+						"devotee_edge": 1
+					}
+				},
+				{
+					"id": "priest.repevent.devotee.forge",
+					"requirements": {
+						"venerationforge": 1
+					},
+					"deckeffect": {
+						"priest.repevent": 1
+					},
+					"label": "Inspiration",
+					"description": "Ein Gläubiger hat von der Heiligen Agnes des Feuers geträumt! In der Zwischenzeit, @#reputation|ist unsere Hingabe nicht unbemerkt geblieben ...\n#funds|hat die übrige Gemeinde großzügig gespendet, und die Kollekte war nicht allein auf den Kollektenteller beschränkt.@",
+					"effects": {
+						"funds": 2,
+						"devotee_forge": 1
+					}
+				},
+				{
+					"id": "priest.repevent.devotee.grail",
+					"requirements": {
+						"venerationgrail": 1
+					},
+					"deckeffect": {
+						"priest.repevent": 1
+					},
+					"label": "Inspiration",
+					"description": "Ein Gläubiger hat von der Heiligen Agnes des Rots geträumt! In der Zwischenzeit, @#reputation|ist unsere Hingabe nicht unbemerkt geblieben ...\n#funds|hat die übrige Gemeinde großzügig gespendet, und die Kollekte war nicht allein auf den Kollektenteller beschränkt.@",
+					"effects": {
+						"funds": 2,
+						"devotee_grail": 1
+					}
+				},
+				{
+					"id": "priest.repevent.devotee.heart",
+					"requirements": {
+						"venerationheart": 1
+					},
+					"deckeffect": {
+						"priest.repevent": 1
+					},
+					"label": "Inspiration",
+					"description": "Ein Gläubiger hat von der Heiligen Agnes der Trommel geträumt! In der Zwischenzeit, @#reputation|ist unsere Hingabe nicht unbemerkt geblieben ...\n#funds|hat die übrige Gemeinde großzügig gespendet, und die Kollekte war nicht allein auf den Kollektenteller beschränkt.@",
+					"effects": {
+						"funds": 2,
+						"devotee_heart": 1
+					}
+				},
+				{
+					"id": "priest.repevent.devotee.knock",
+					"requirements": {
+						"venerationknock": 1
+					},
+					"deckeffect": {
+						"priest.repevent": 1
+					},
+					"label": "Inspiration",
+					"description": "Ein Gläubiger hat von der Heiligen Agnes der Schwelle geträumt! In der Zwischenzeit, @#reputation|ist unsere Hingabe nicht unbemerkt geblieben ...\n#funds|hat die übrige Gemeinde großzügig gespendet, und die Kollekte war nicht allein auf den Kollektenteller beschränkt.@",
+					"effects": {
+						"funds": 2,
+						"devotee_knock": 1
+					}
+				},
+				{
+					"id": "priest.repevent.devotee.lantern",
+					"requirements": {
+						"venerationlantern": 1
+					},
+					"deckeffect": {
+						"priest.repevent": 1
+					},
+					"label": "Inspiration",
+					"description": "Ein Gläubiger hat von der Heiligen Agnes der Kerze geträumt! In der Zwischenzeit, @#reputation|ist unsere Hingabe nicht unbemerkt geblieben ...\n#funds|hat die übrige Gemeinde großzügig gespendet, und die Kollekte war nicht allein auf den Kollektenteller beschränkt.@",
+					"effects": {
+						"funds": 2,
+						"devotee_lantern": 1
+					}
+				},
+				{
+					"id": "priest.repevent.devotee.moth",
+					"requirements": {
+						"venerationmoth": 1
+					},
+					"deckeffect": {
+						"priest.repevent": 1
+					},
+					"label": "Inspiration",
+					"description": "Ein Gläubiger hat von der Heiligen Agnes der Schere geträumt! In der Zwischenzeit, @#reputation|ist unsere Hingabe nicht unbemerkt geblieben ...\n#funds|hat die übrige Gemeinde großzügig gespendet, und die Kollekte war nicht allein auf den Kollektenteller beschränkt.@",
+					"effects": {
+						"funds": 2,
+						"devotee_moth": 1
+					}
+				},
+				{
+					"id": "priest.repevent.devotee.winter",
+					"requirements": {
+						"venerationwinter": 1
+					},
+					"deckeffect": {
+						"priest.repevent": 1
+					},
+					"label": "Inspiration",
+					"description": "Ein Gläubiger ist gekommen, der nicht von seinen Träumen erzählen will – doch das ist auch gar nicht nötig! In der Zwischenzeit, @#reputation|ist unsere Hingabe nicht unbemerkt geblieben ...\n#funds|hat die übrige Gemeinde großzügig gespendet, und die Kollekte war nicht allein auf den Kollektenteller beschränkt.@",
+					"effects": {
+						"funds": 2,
+						"devotee_winter": 1
+					}
+				}
+			],
+			"deckeffect": {
+				"priest.repevent": 1
+			},
+			"effects": {
+				"funds": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "work.priest.passion",
+			"actionId": "work",
+			"label": "Eine Messe lesen",
+			"startdescription": "Ich werde meine Predigt verbessern.",
+			"description": "Die Gemeinde hört aufmerksam zu. Ich habe heute keine geheime Doktrin geteilt.",
+			"requirements": {
+				"priestjob": 1,
+				"passion": 1
+			},
+			"effects": {
+				"funds": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"chance": 90,
+					"additional": true
+				}
+			],
+			"warmup": 50,
+			"craftable": true
+		},
+		{
+			"id": "work.priest.reason",
+			"actionId": "work",
+			"label": "Eine Messe lesen",
+			"startdescription": "Ich werde meine Predigt mit Umsicht vorbereiten.",
+			"description": "Die Gemeinde hört aufmerksam zu. Ich habe heute keine geheime Doktrin geteilt.",
+			"requirements": {
+				"priestjob": 1,
+				"reason": 1
+			},
+			"effects": {
+				"funds": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"chance": 10,
+					"additional": true
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work.openscar",
+			"actionId": "work",
+			"label": "Die Narben öffnen",
+			"startdescription": "Sobald ich sieben Schlösser bin, kann ich geöffnet werden, um meine Leute hindurch zu lassen. Das ist es, was mich die Sehnsucht gelehrt hat, in jenen langen Nächten. Die Gebete meiner Gemeinde werden meine Pein entrücken.",
+			"description": "Der Schmerz lässt nach. Ein Moment der Erleichterung, dann überflutet mich die Verzweiflung. Vielleicht bin ich noch nicht bereit. Vielleicht werde ich das niemals sein.",
+			"requirements": {
+				"ritual": 1,
+				"lockscar": 1,
+				"knock": 24
+			},
+			"effects": {
+				"dread": 1
+			},
+			"aspects": {
+				"unlockscar": 1
+			},
+			"linked": [
+				{
+					"id": "work.openscar.continue"
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "work.openscar.continue",
+			"actionId": "work",
+			"label": "Noch eine Narbe",
+			"startdescription": "Noch eine. Meine schluchzenden Gläubigen spielen auf ihren Instrumenten, kümmern sich um meinen Durst und wischen mir das Blut vom Munde. Vielleicht werde ich wie eine reife Frucht platzen. Vielleicht werde ich wie der Regen fallen.",
+			"description": "Der Schmerz lässt nach. Vielleicht bin ich noch nicht bereit.",
+			"slots": [
+				{
+					"id": "scar",
+					"label": "Mein Schloss",
+					"required": {
+						"lockscar": 1
+					}
+				}
+			],
+			"effects": {
+				"dread": 1
+			},
+			"alt": [
+				{
+					"id": "minorknockvictory"
+				},
+				{
+					"id": "work.openscar.failed"
+				}
+			],
+			"linked": [
+				{
+					"id": "work.openscar.continue"
+				}
+			],
+			"aspects": {
+				"unlockscar": 1
+			},
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "work.openscar.failed",
+			"actionId": "work",
+			"label": "Noch eine Narbe?",
+			"startdescription": "Der Flut der Pein folgt die Ebbe. Ein Moment der Erleichterung, dann überflutet mich die Verzweiflung. Vielleicht bin ich noch nicht bereit. Vielleicht werde ich das niemals sein.",
+			"requirements": {
+				"lockscar": -1
+			},
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "minorknockvictory",
+			"actionId": "work",
+			"label": "Die Schwelle",
+			"startdescription": "Meine Leute ziehen sich von mir zurück, weinen, schreien, lachen. Ich kann in ihren Augen nicht schön sein, nicht nach all dem, was sie getan haben, doch nun schauen sie mich an, als könnte ich ein neuer Himmel sein ...",
+			"requirements": {
+				"openedlockscar": 6,
+				"lockscar": 1
+			},
+			"warmup": 30,
+			"signalEndingFlavour": "Grand",
+			"ending": "minorknockvictory"
+		},
+		{
+			"id": "work.priest.scarhealth.hint",
+			"actionId": "work",
+			"label": "'Eine Schwelle sein?'",
+			"requirements": {
+				"priestjob": 1,
+				"health": 1
+			},
+			"startdescription": "Die Heilige Agnes hat mich hierher gezogen, wo ich mein Potenzial umsetzen kann – nicht nur um Türen zu öffnen, sondern um <i>selbst</i> eine Tür zu werden. [Füge Wissen hinzu, mindestens der 10 Stufe, sowie Inbrunst, um mit dem Prozess der Erschaffung eines Schloss-Narbe zu beginnen.]",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "work.priest.scarhealth",
+			"actionId": "work",
+			"label": "'Eine Schwelle sein'",
+			"requirements": {
+				"priestjob": 1,
+				"health": 1,
+				"lore": 1,
+				"fervour": 1
+			},
+			"startdescription": "Meine Leute stehen vor mir, die Stimmen zum Liede erhoben, die Gesichter nach oben gereckt, entflammt. Es gibt Türen, die wenige jemals sehen – geschweige denn jemals öffnen. Wenn ich bereit bin, die Konsequenzen zu erdulden, könnte ich eines Tages eine dieser Türen werden, durch die meine Gemeinde schreiten kann. 'Klopfe, und dir wird aufgetan werden.'",
+			"description": "Die Gemeinde ist von meinen Kasteiungen befriedigt, doch jener göttliche Funken fehlt. [Um eine Schloss-Narbe zu erschaffen, brauchst du Rastlosigkeit, Wissen der mindestens 10 Stufe und eine besondere Disziplin von Leib oder Geist. Du kannst nur jeweils eine Narbe von jedem Typ haben.]",
+			"aspects": {
+				"damagehealth": 1
+			},
+			"effects": {
+				"fervour": -1,
+				"funds": 1
+			},
+			"alt": [
+				{
+					"id": "priest.repevent",
+					"chance": 90,
+					"additional": true
+				}
+			],
+			"slots": [
+				{
+					"id": "restlessnessfuel",
+					"label": "Sehnsucht",
+					"required": {
+						"restlessness": 1
+					},
+					"greedy": true
+				}
+			],
+			"linked": [
+				{
+					"id": "work.priest.scarhealth.restlessnesspresent"
+				}
+			],
+			"craftable": true,
+			"warmup": 60
+		},
+		{
+			"id": "work.priest.scarhealth.restlessnesspresent",
+			"actionId": "work",
+			"label": "Das Werk der Schwelle",
+			"startdescription": "Der Diakon liest nun aus dem Buche des Heiligen Respicius vor: 'Bronze formt, doch das Herz arbeitet. Der Hunger zeigt den roten Kelch und Krankheit den Schnee. Die Laterne weiß, die Motte versteht. Und das Schwert, wenn es kommt, ist seine eigene Antwort.'",
+			"description": "Ich habe gelitten. Vielleicht nicht genug. Meine Rastlosigkeit ist erleichtert, meine Gemeinde befriedigt, doch das ist alles. [Um eine Schloss-Narbe zu erschaffen, brauchst du Rastlosigkeit, Wissen der mindestens 10 Stufe und eine besondere Disziplin von Leib oder Geist, die dem Wissen entspricht. Du kannst nur jeweils eine Narbe von jedem Typ haben.]",
+			"requirements": {
+				"restlessness": 1
+			},
+			"effects": {
+				"restlessness": -1
+			},
+			"slots": [
+				{
+					"id": "discipline",
+					"label": "Disziplin",
+					"required": {
+						"injury": 1,
+						"compensationb": 1,
+						"hunger": 1,
+						"vitality": 1,
+						"erudition": 1,
+						"glimmering": 1,
+						"affliction": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "a_scarhealth_edge",
+					"chance": 100
+				},
+				{
+					"id": "a_scarhealth_forge",
+					"chance": 100
+				},
+				{
+					"id": "a_scarhealth_grail",
+					"chance": 100
+				},
+				{
+					"id": "a_scarhealth_heart",
+					"chance": 100
+				},
+				{
+					"id": "a_scarhealth_lantern",
+					"chance": 100
+				},
+				{
+					"id": "a_scarhealth_moth",
+					"chance": 100
+				},
+				{
+					"id": "a_scarhealth_winter",
+					"chance": 100
+				},
+				{
+					"id": "a_noscar_secrethistories",
+					"chance": 100
+				},
+				{
+					"id": "a_noscar_knock",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "a_scarhealth_edge",
+			"actionId": "work",
+			"label": "Die Siebenspulige Vision",
+			"startdescription": "In der Vision hat meine Wunde sieben Zweige, jeder Zweige sieben weitere und jeder dieser Zweige sieben Köpfe. In der Vision wird jeder Kopf abgetrennt, einer nach dem anderen, von jemandem, der Narben als Waffen einsetzt. Er gibt jeden Kopf der Heiligen Agnes, die mit ihrer Kerze wartet, um mit jeder Enthauptung wächst meine Agonie.",
+			"description": "Meine Gemeinde hat die ganze Nacht Wache gehalten. Ich bin wach. Meine Wunde ist geschlossen. Die Narbe bleibt. [Gesundheit wurde dauerhaft in eine Narbe umgewandelt. Es gibt immer sieben Zeichen. Du brauchst sieben Schloss-Narben. Es gibt immer einen Weg, wobei der Weg schmal sein kann.]",
+			"requirements": {
+				"edge": 10,
+				"restlessness": 1,
+				"injury": 2
+			},
+			"extantreqs": {
+				"lockscaredge": -1,
+				"openedlockscaredge": -1
+			},
+			"effects": {
+				"injury": -1,
+				"lockscaredge": 1,
+				"fervour": -1,
+				"restlessness": -1
+			},
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "a_scarhealth_forge",
+			"actionId": "work",
+			"label": "Die Vision des Feuersteins",
+			"startdescription": "In der Vision gehe ich durch die kalten Tunnel unter dem Hause der Sonne, im Lichte der Lampen aus Nephrit und schwarzer Jade. Spitzen aus Feuerstein ragen aus den Wänden, die am Ende vor Hitze glühen. Ich lasse meine Hand über jede wandern. Sie sind nicht mehr scharf, und so kommen meine Leute mit ihren Kerzen.",
+			"description": "Meine Gemeinde hat die ganze Nacht Wache gehalten. Ich bin wach. Meine Wunde ist fast verheilt. Die Narbe wird bleiben. [Gesundheit wurde dauerhaft in eine Narbe umgewandelt. Es gibt immer sieben Zeichen. Du brauchst sieben Schloss-Narben. Es gibt immer einen Weg, wobei der Weg schmal sein kann.]",
+			"requirements": {
+				"forge": 16,
+				"restlessness": 1,
+				"compensationb": 1
+			},
+			"extantreqs": {
+				"lockscarforge": -1,
+				"openedlockscarforge": -1
+			},
+			"effects": {
+				"injury": -1,
+				"lockscarforge": 1,
+				"restlessness": -1,
+				"fervour": -1,
+				"compensationb": -1
+			},
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "a_scarhealth_grail",
+			"actionId": "work",
+			"label": "Die Vision des Roten Kelches",
+			"startdescription": "'Hier', sagt die Frau aus Elfenbein in meiner Vision, 'lass mich dir zeigen, dass nicht alle Narben Pein sind.' Sie legt ihren Mund an den Brunnen meines Blutes, bis ihre Blässe mit rosigen Fäden durchzogen ist.",
+			"description": "Meine Gemeinde hat die ganze Nacht Wache gehalten. Ich bin wach. Meine Wunde ist fast unsichtbar. Doch die Narbe wird bleiben. [Gesundheit wurde dauerhaft in eine Narbe umgewandelt. Es gibt immer sieben Zeichen. Du brauchst sieben Schloss-Narben. Es gibt immer einen Weg, wobei der Weg schmal sein kann.]",
+			"requirements": {
+				"grail": 14,
+				"restlessness": 1,
+				"hunger": 1
+			},
+			"extantreqs": {
+				"lockscargrail": -1,
+				"openedlockscargrail": -1
+			},
+			"effects": {
+				"injury": -1,
+				"lockscargrail": 1,
+				"restlessness": -1,
+				"fervour": -1
+			},
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "a_scarhealth_heart",
+			"actionId": "work",
+			"label": "Die Vision der Pinien",
+			"startdescription": "In der Vision werden die Stämme der Pinien vom Feuer erleuchtet, doch die Schatten der Tänzer kommen und gehen wie das Flackern eines Zootrops. Mit jedem Schlage der Trommel bin ich von einem weiteren Streifen Haut befreit, doch es ist nicht die Heilige Agnes, die das Messer hält, und endlich kann ich es nicht mehr ertragen, und alle aufgestauten Schreie brechen aus mir hervor –",
+			"description": "Meine Gemeinde hat die ganze Nacht Wache gehalten. Ich bin wach. Die einzige Wunde, die ich sehen kann, ist die über meinem Herzen, und die wird mit der Zeit verheilen. Doch die Narbe wird bleiben. [Gesundheit wurde dauerhaft in eine Narbe umgewandelt. Es gibt immer sieben Zeichen. Du brauchst sieben Schloss-Narben. Es gibt immer einen Weg, wobei der Weg schmal sein kann]",
+			"requirements": {
+				"heart": 11,
+				"restlessness": 1,
+				"vitality": 1
+			},
+			"extantreqs": {
+				"lockscarheart": -1,
+				"openedlockscarheart": -1
+			},
+			"effects": {
+				"injury": -1,
+				"lockscarheart": 1,
+				"restlessness": -1,
+				"fervour": -1,
+				"vitality": -1
+			},
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "a_scarhealth_lantern",
+			"actionId": "work",
+			"label": "Die Vision des Pfaus",
+			"startdescription": "In der Vision betreten wir die zweite Kammer durch das Zerfleischen der Mauer, und sie schreit wie ein Pfau, doch ihr Blut ist golden. Im Triumphzug ziehen wir von den wolkenverhangenen Hängen zu den hellen Hallen des Hauses der Sonne, und unsere Münder sind offen, damit wir Worte sprechen können, wobei, wie bei allen Geburten, das jüngste Wort ein Schrei ist.",
+			"description": "Meine Gemeinde hat die ganze Nacht Wache gehalten. Ich bin wach. Mein Mund geht in meine Wange über, und obwohl er fast verheilt ist, wird es eine neue Agonie sein zu sprechen. Er wird verheilen. Ich werde wieder sprechen können. Doch die Narbe wird bleiben. [Gesundheit wurde dauerhaft in eine Narbe umgewandelt. Es gibt immer sieben Zeichen. Du brauchst sieben Schloss-Narben. Es gibt immer einen Weg, wobei der Weg schmal sein kann.]",
+			"requirements": {
+				"lantern": 11,
+				"restlessness": 1,
+				"erudition": 1
+			},
+			"extantreqs": {
+				"lockscarlantern": -1,
+				"openedlockscarlantern": -1
+			},
+			"effects": {
+				"injury": -1,
+				"lockscarlantern": 1,
+				"restlessness": -1,
+				"fervour": -1,
+				"erudition": -1
+			},
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "a_scarhealth_moth",
+			"actionId": "work",
+			"label": "Die Vision des Scherens",
+			"startdescription": "In der Vision sehe ich unsere Schwingen und ich höre das Rascheln, als wir sie für die Scheren ausbreiten. Unsere Bäuche sind schwarz-weiß gemustert, wie Bandagen, und unsere Schnäbel scherenscharf. Rolle uns in der Puppe ein und sperre uns in der Finsternis ein. Zerbrich unsere Eier und stiehl unser Haar und suche uns im Inneren.",
+			"description": "Meine Gemeinde hat die ganze Nacht Wache gehalten. Ich bin wach. Die doppelte Wunde auf meinem Rücken wird verheilen. Doch die Narbe wird bleiben. [Gesundheit wurde dauerhaft in eine Narbe umgewandelt. Es gibt immer sieben Zeichen. Du brauchst sieben Schloss-Narben. Es gibt immer einen Weg, wobei der Weg schmal sein kann.]",
+			"requirements": {
+				"moth": 12,
+				"restlessness": 1,
+				"glimmering": 1
+			},
+			"extantreqs": {
+				"lockscarmoth": -1,
+				"openedlockscarmoth": -1
+			},
+			"effects": {
+				"injury": -1,
+				"lockscarmoth": 1,
+				"restlessness": -1,
+				"fervour": -1,
+				"glimmering": -1
+			},
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "a_scarhealth_winter",
+			"actionId": "work",
+			"label": "Die neunjährige Vision",
+			"startdescription": "Warte im Weiß an den Wänden. Schau zu, wie die Sonne langsam wird. Chione geht lautlos durch die Straßen. Ihre Röcke sind der Wind. So weiß ihre Oberfläche. Schau, was im Sturm vergeht.",
+			"description": "Meine Gemeinde wartete bis zum Sonnenaufgang, als ich aus dem weißen Schlaf erwachte. Der Frost hat meine Hand verkrüppelt. Es gibt an sich keine Wunde, doch eine Narbe wird bleiben. [Gesundheit wurde dauerhaft in eine Narbe umgewandelt. Es gibt immer sieben Zeichen. Du brauchst sieben Schloss-Narben. Es gibt immer einen Weg, wobei der Weg schmal sein kann.]",
+			"requirements": {
+				"winter": 12,
+				"restlessness": 1,
+				"affliction": 1
+			},
+			"extantreqs": {
+				"lockscarwinter": -1,
+				"openedlockscarwinter": -1
+			},
+			"effects": {
+				"injury": -1,
+				"lockscarwinter": 1,
+				"restlessness": -1,
+				"fervour": -1
+			},
+			"craftable": false
+		},
+		{
+			"id": "a_noscar_knock",
+			"actionId": "work",
+			"label": "Eine Vision der Heiligen Agnes",
+			"startdescription": "Ich beginne mit meiner Wache. Mein Mund sind offen. Meine Augen sind offen. Durch sie kommt, als die Gemeinde den Choral singt, die Heilige Agnes wie eine suchende Hand herein.",
+			"description": "Die Heilige Agnes entfesselt meine Zunge und ich schmecke Blut. Die Heilige Agnes umkreist die Gefäße meines Herzens und ich spüre einen Moment lang den Schmerz. Die Heilige Agnes verlässt mich durch die erste Wunde von allen, jene in der Höhlung meines Bauches, wo die Schlange meiner Geburt abgetrennt wurde, doch zuerst bekräftigt sie mich und erhebt mich. Dies ist mein Weg, bis ich der Weg bin. Ich werde mich für meine Leute als Tür öffnen, auf dass sie durch mich hindurch schreiten mögen. [Schloss-Narben können nicht mit Klopfen oder Geheimen Geschichten erschaffen werden, nur mit den anderen sieben Aspekten.]",
+			"requirements": {
+				"knock": 3
+			},
+			"effects": {
+				"funds": 1,
+				"restlessness": -1,
+				"fervour": -1,
+				"influenceknockc": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "a_noscar_secrethistories",
+			"actionId": "work",
+			"label": "Eine Vision der Einhundertundacht",
+			"startdescription": "Ich beginne mit meiner Wache. Die Stimmen der Gemeinde erheben sich. Das Licht der Fenster verquickt sich vor dem Altar. In jenem Lichte sehe ich Ereignisse, die noch nicht eingetreten sind.",
+			"description": "Große Prinzen liegen vermummt in schwarz-gelb gestreiften Gewändern, reich verziert mit Gold, auf den Knochenfeldern. Meine Augen sind offen für den Himmel. Ihre Schuppen sind vernarbt und kalt. Nun endlich sind sie sichtbar, und sie anzusehen ist lang verbotenes Wissen. Dies ist nicht geschehen. [Schloss-Narben können nicht mit Klopfen oder Geheimen Geschichten erschaffen werden, nur mit den anderen sieben Aspekten.]",
+			"requirements": {
+				"secrethistories": 2
+			},
+			"effects": {
+				"funds": 1,
+				"restlessness": -1,
+				"fervour": -1,
+				"erudition": 1
+			},
+			"craftable": false
+		}
+	]
+}

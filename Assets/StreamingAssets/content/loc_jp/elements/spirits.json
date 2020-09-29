@@ -1,0 +1,427 @@
+{
+	"elements": [
+		{
+			"id": "spirit_wintera_edge",
+			"label": "砕ける復活者",
+			"aspects": {
+				"follower": 1,
+				"summoned": 1,
+				"winter": 4,
+				"edge": 4,
+				"remnant": 1
+			},
+			"description": "引き裂く力が、この死体を引きずり半死半生の状態まで蘇らせた。動くと、割れたガラスのように体が軋む。その手は骨の欠片でできた爪のように見える。この状態を長い間維持することはできないだろう。",
+			"xtriggers": {
+				"renewshattered": "spirit_wintera_edge",
+				"killsummoned": "influencewinter",
+				"alzabo": "influencewinterc"
+			},
+			"lifetime": 120
+		},
+		{
+			"id": "spirit_wintera_moth",
+			"label": "急成長する復活者",
+			"aspects": {
+				"follower": 1,
+				"summoned": 1,
+				"winter": 4,
+				"moth": 4,
+				"spiritsicknessprotector": 1,
+				"remnant": 1
+			},
+			"description": "森の腫瘍は死体の臓器を包み込み、頭蓋骨をひょうたんのように膨らませ、心臓に絡みついている。目は狡猾で潤んでいて、操り人形のような優雅な動きをしている。その骨は腐った木で、すぐに根を張るようになるが、それまでは素早く巧妙な下僕となるだろう。",
+			"xtriggers": {
+				"renewburgeoning": "spirit_wintera_moth",
+				"killsummoned": "influencemoth",
+				"alzabo": "influencemothc"
+			},
+			"lifetime": 120
+		},
+		{
+			"id": "spirit_winterb_heart",
+			"label": "声なき死者",
+			"aspects": {
+				"follower": 1,
+				"summoned": 1,
+				"winter": 6,
+				"moth": 6,
+				"deceiver": 6,
+				"spiriteatspassion": 1
+			},
+			"description": "時に死者が白い扉からマンサスに入ることがある。その入り口で彼らは永遠に言葉の力を捨てる。現世に呼び戻せば声はでないが、彼らの灰のような皮膚は命令に応えるだろう。",
+			"lifetime": 180,
+			"xtriggers": {
+				"killsummoned": "influencewinter"
+			},
+			"decayTo": "influencewinter"
+		},
+		{
+			"id": "pre.spirit_winterb_heart",
+			"label": "声なき死者",
+			"aspects": {
+				"winter": 6,
+				"moth": 6,
+				"deceiver": 6,
+				"manifesting": 1
+			},
+			"description": "時に死者が白い扉からマンサスに入ることがある。その入り口で彼らは永遠に言葉の力を捨てる。現世に呼び戻せば声はでないが、彼らの灰のような皮膚は命令に応えるだろう。",
+			"lifetime": 1,
+			"xtriggers": {
+				"killsummoned": "influencewinter",
+				"killmanifesting": "influencewinter"
+			},
+			"decayTo": "spirit_winterb_heart",
+			"resaturate": true,
+			"icon": "spirit_winterb_heart"
+		},
+		{
+			"id": "spirit_forgec_winter",
+			"label": "煙霧",
+			"aspects": {
+				"follower": 1,
+				"summoned": 1,
+				"forge": 8,
+				"moth": 8,
+				"deceiver": 8
+			},
+			"description": "マンサスの境界にある、鍛造の隅々では栄光の炎がより原始的な物質を燃やしている。ここに漂う狡猾な蒸気は敵の夢を毒する。",
+			"lifetime": 180,
+			"xtriggers": {
+				"killsummoned": "influenceforge"
+			},
+			"decayTo": "influenceforge"
+		},
+		{
+			"id": "pre.spirit_forgec_winter",
+			"label": "煙霧",
+			"aspects": {
+				"forge": 8,
+				"moth": 8,
+				"deceiver": 8,
+				"manifesting": 1
+			},
+			"description": "マンサスの境界にある、鍛造の隅々では栄光の炎がより原始的な物質を燃やしている。ここに漂う狡猾な蒸気は敵の夢を毒する。",
+			"lifetime": 1,
+			"xtriggers": {
+				"killsummoned": "influenceforge",
+				"killmanifesting": "influenceforge"
+			},
+			"decayTo": "spirit_forgec_winter",
+			"resaturate": true,
+			"icon": "spirit_forgec_winter"
+		},
+		{
+			"id": "spirit_grailc_moth",
+			"label": "未熟な預言者",
+			"aspects": {
+				"follower": 1,
+				"summoned": 1,
+				"grail": 8,
+				"moth": 8,
+				"deceiver": 8,
+				"spiritsicknessprotector": 1,
+				"spiriteatsreason": 1
+			},
+			"description": "ある時は分裂し、ある時は団結し、ある時は彼女が警告の言葉を語り、ある時は彼が欲について助言する。その予言は混乱を招き、その囁きは混乱を招く。",
+			"lifetime": 180,
+			"xtriggers": {
+				"killsummoned": "influencegrail"
+			},
+			"decayTo": "influencegrail"
+		},
+		{
+			"id": "pre.spirit_grailc_moth",
+			"label": "未熟な預言者",
+			"aspects": {
+				"grail": 8,
+				"moth": 8,
+				"deceiver": 8,
+				"manifesting": 1
+			},
+			"description": "ある時は分裂し、ある時は団結し、ある時は彼女が警告の言葉を語り、ある時は彼が欲について助言する。その予言は混乱を招き、その囁きは混乱を招く。",
+			"lifetime": 1,
+			"xtriggers": {
+				"killsummoned": "influencegrail",
+				"killmanifesting": "influencegrail"
+			},
+			"decayTo": "spirit_grailc_moth",
+			"resaturate": true,
+			"icon": "spirit_grailc_moth"
+		},
+		{
+			"id": "spirit_lanternc_edge",
+			"label": "暗示",
+			"aspects": {
+				"follower": 1,
+				"summoned": 1,
+				"lantern": 8,
+				"edge": 8,
+				"devourer": 8
+			},
+			"description": "暗示の精霊は後ろを好む。舞台裏、鏡の後ろ、あなたの後ろ。扉の隙間から忍び込み、ガラスを使って命を奪うが、定命の者の視線は耐えられない。",
+			"lifetime": 180,
+			"xtriggers": {
+				"killsummoned": "influencelantern"
+			},
+			"decayTo": "influencelantern"
+		},
+		{
+			"id": "pre.spirit_lanternc_edge",
+			"label": "暗示",
+			"aspects": {
+				"lantern": 8,
+				"edge": 8,
+				"devourer": 8,
+				"manifesting": 1
+			},
+			"description": "暗示の精霊は後ろを好む。舞台裏、鏡の後ろ、あなたの後ろ。扉の隙間から忍び込み、ガラスを使って命を奪うが、定命の者の視線は耐えられない。",
+			"lifetime": 1,
+			"xtriggers": {
+				"killsummoned": "influencelantern",
+				"killmanifesting": "influencelantern"
+			},
+			"decayTo": "spirit_lanternc_edge",
+			"resaturate": true,
+			"icon": "spirit_lanternc_edge"
+		},
+		{
+			"id": "spirit_heartc_edge",
+			"label": "パーカッシガント",
+			"aspects": {
+				"follower": 1,
+				"summoned": 1,
+				"heart": 8,
+				"edge": 8,
+				"devourer": 8,
+				"spiritsicknessprotector": 1,
+				"spiriteatsreason": 1
+			},
+			"description": "ああ、パーカッシガント！子の精霊は、シストラムの震え、太鼓の鼓動を愛し、マルシュアースの皮剥ぎを懐かしく思いだす。そして、踊り続け\n踊り続け\n踊り止まない。",
+			"lifetime": 180,
+			"xtriggers": {
+				"killsummoned": "influenceheart"
+			},
+			"decayTo": "influenceheart"
+		},
+		{
+			"id": "pre.spirit_heartc_edge",
+			"label": "パーカッシガント",
+			"aspects": {
+				"heart": 8,
+				"edge": 8,
+				"devourer": 8,
+				"manifesting": 1
+			},
+			"description": "ああ、パーカッシガント！子の精霊は、シストラムの震え、太鼓の鼓動を愛し、マルシュアースの皮剥ぎを懐かしく思いだす。そして、踊り続け\n踊り続け\n踊り止まない。",
+			"lifetime": 1,
+			"xtriggers": {
+				"killsummoned": "influenceheart",
+				"killmanifesting": "influenceheart"
+			},
+			"decayTo": "spirit_heartc_edge",
+			"resaturate": true,
+			"icon": "spirit_heartc_edge"
+		},
+		{
+			"id": "spirit_winterd_edge",
+			"label": "鏡の少女",
+			"aspects": {
+				"follower": 1,
+				"summoned": 1,
+				"winter": 10,
+				"edge": 10,
+				"devourer": 10,
+				"spiriteatspassion": 1
+			},
+			"description": "「階段はガラス、壁は刃物、足跡は血まみれ」――新たに割れた鏡の前で休む死者、孔雀の門をくぐる死者、鋭い階段を征服する死者......彼らは「ボロボロの太陽」に迎えられる。",
+			"lifetime": 180,
+			"xtriggers": {
+				"killsummoned": "influencewinter"
+			},
+			"decayTo": "influencewinter"
+		},
+		{
+			"id": "pre.spirit_winterd_edge",
+			"label": "鏡の少女",
+			"aspects": {
+				"winter": 10,
+				"edge": 10,
+				"devourer": 10,
+				"manifesting": 1
+			},
+			"description": "「階段はガラス、壁は刃物、足跡は血まみれ」――新たに割れた鏡の前で休む死者、孔雀の門をくぐる死者、鋭い階段を征服する死者......彼らは「ボロボロの太陽」に迎えられる。",
+			"lifetime": 1,
+			"xtriggers": {
+				"killsummoned": "influencewinter",
+				"killmanifesting": "influencewinter"
+			},
+			"decayTo": "spirit_winterd_edge",
+			"resaturate": true,
+			"icon": "spirit_winterd_edge"
+		},
+		{
+			"id": "spirit_forgee_edge",
+			"label": "坩堝の王",
+			"aspects": {
+				"follower": 1,
+				"summoned": 1,
+				"forge": 12,
+				"edge": 12,
+				"devourer": 12,
+				"tutor": 1,
+				"spirittutormandaic": 1
+			},
+			"description": "「荒れ果てた砂漠で待っている――金属は水となり、石は蝋となり、肉は煙になる――我を迎え入れよ、そして永遠に無となるのだ」",
+			"xtriggers": {
+				"killsummoned": "spirit_forgee_edge.defunct"
+			},
+			"lifetime": 180,
+			"decayTo": "spirit_forgee_edge.defunct",
+			"unique": true,
+			"uniquenessgroup": "uqspirit_forgee_edge"
+		},
+		{
+			"id": "pre.spirit_forgee_edge",
+			"label": "坩堝の王",
+			"aspects": {
+				"forge": 12,
+				"edge": 12,
+				"devourer": 12,
+				"manifesting": 1
+			},
+			"description": "「荒れ果てた砂漠で待っている――金属は水となり、石は蝋となり、肉は煙になる――我を迎え入れよ、そして永遠に無となるのだ」",
+			"xtriggers": {
+				"killsummoned": "spirit_forgee_edge.defunct",
+				"killmanifesting": "influenceforge"
+			},
+			"lifetime": 1,
+			"decayTo": "spirit_forgee_edge",
+			"unique": true,
+			"uniquenessgroup": "uqspirit_forgee_edge",
+			"resaturate": true,
+			"icon": "spirit_forgee_edge"
+		},
+		{
+			"id": "spirit_graile_edge",
+			"label": "第二の渇き、エジーム",
+			"aspects": {
+				"follower": 1,
+				"summoned": 1,
+				"grail": 12,
+				"edge": 12,
+				"devourer": 12,
+				"tutor": 1,
+				"spirittutorphrygian": 1,
+				"spiritsicknessprotector": 1,
+				"spiriteatsreason": 1
+			},
+			"description": "「変えろ。変えろ。私を全力で変えるのだ。さあ、<i>私の</i>出番だ」",
+			"xtriggers": {
+				"killsummoned": "spirit_graile_edge.defunct"
+			},
+			"lifetime": 180,
+			"decayTo": "spirit_graile_edge.defunct",
+			"unique": true,
+			"uniquenessgroup": "uqspirit_graile_edge"
+		},
+		{
+			"id": "pre.spirit_graile_edge",
+			"label": "第二の渇き、エジーム",
+			"aspects": {
+				"grail": 12,
+				"edge": 12,
+				"devourer": 12,
+				"manifesting": 1
+			},
+			"description": "「変えろ。変えろ。私を全力で変えるのだ。さあ、<i>私の</i>出番だ」",
+			"xtriggers": {
+				"killsummoned": "spirit_graile_edge.defunct",
+				"killmanifesting": "influencegrail"
+			},
+			"lifetime": 1,
+			"decayTo": "spirit_graile_edge",
+			"unique": true,
+			"uniquenessgroup": "uqspirit_graile_edge",
+			"resaturate": true,
+			"icon": "spirit_graile_edge"
+		},
+		{
+			"id": "spirit_lanterne_secret",
+			"label": "テレサ",
+			"aspects": {
+				"follower": 1,
+				"summoned": 1,
+				"lantern": 12,
+				"secrethistories": 12,
+				"tutor": 1,
+				"spirittutorfucine": 1,
+				"spiritsicknessprotector": 1,
+				"spiriteatspassion": 1
+			},
+			"description": "「ああ、世界は平らよ、平らなの！長居はしないわ。長居はしてはいけない。秘密を教えて」",
+			"xtriggers": {
+				"killsummoned": "spirit_lanterne_secret.defunct"
+			},
+			"lifetime": 180,
+			"decayTo": "spirit_lanterne_secret.defunct",
+			"unique": true,
+			"uniquenessgroup": "uqspirit_lanterne_secret"
+		},
+		{
+			"id": "pre.spirit_lanterne_secret",
+			"label": "テレサ",
+			"aspects": {
+				"lantern": 12,
+				"secrethistories": 12,
+				"tutor": 1,
+				"manifesting": 1
+			},
+			"description": "「ああ、世界は平らよ、平らなの！長居はしないわ。長居はしてはいけない。秘密を教えて」",
+			"xtriggers": {
+				"killsummoned": "spirit_lanterne_secret.defunct",
+				"killmanifesting": "influencelantern"
+			},
+			"lifetime": 1,
+			"decayTo": "spirit_lanterne_secret",
+			"unique": true,
+			"uniquenessgroup": "uqspirit_lanterne_secret",
+			"resaturate": true,
+			"icon": "spirit_lanterne_secret"
+		},
+		{
+			"id": "spirit_forgee_edge.defunct",
+			"label": "坩堝の王は静かに燃える",
+			"description": "坩堝の王の炎は今のところ弱火となっている。黒くなった痕跡が石炭となった骨のように残っている。",
+			"lifetime": 180,
+			"aspects": {
+				"remnant": 1
+			},
+			"unique": true,
+			"xtriggers": {
+				"alzabo": "memory.golden"
+			}
+		},
+		{
+			"id": "spirit_forgee_edge.consumed",
+			"label": "灰の味",
+			"description": "私は坩堝の王がこの世に残した痕跡を口にした。少なくとも彼を怒らせることになるだろう。激怒して狂うかもしれない。もう二度と召喚しないようにしよう。",
+			"unique": true
+		},
+		{
+			"id": "spirit_graile_edge.defunct",
+			"label": "エジームは拗ねている",
+			"description": "エジームはそのうち機嫌を取り戻すだろう。",
+			"lifetime": 180,
+			"comments": "This shouldn't have any aspects. We don't want it to be removed or used - it's solely a blocker.",
+			"unique": true
+		},
+		{
+			"id": "spirit_lanterne_secret.defunct",
+			"label": "テレサは休息中",
+			"description": "バルドメリアンは、賢者の騎士のロッジで休息をしている。",
+			"lifetime": 180,
+			"comments": "This shouldn't have any aspects. We don't want it to be removed or used - it's solely a blocker.",
+			"unique": true
+		}
+	]
+}

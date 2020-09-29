@@ -1,0 +1,338 @@
+{
+	"elements": [
+		{
+			"id": "ascensionpowera",
+			"label": "Versuchung: Macht",
+			"aspects": {
+				"desire": 1,
+				"powermarks": 1
+			},
+			"description": "Mir ist aufgefallen, dass ich den Schlüssel zur Macht besitze. [Diese Karte ermöglicht dir einen Sieg der Macht, wenn du sie nur genug verbesserst. Träume davon könnten sie verbessern oder verändern.]",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionsensationa",
+			"label": "Versuchung: Gefühl",
+			"aspects": {
+				"desire": 1,
+				"sensationmarks": 1
+			},
+			"description": "Ich könnte Erfahrungen von einer Intensität machen, die sich nur wenige vorstellen können. [Diese Karte ermöglicht dir einen Sieg der Macht, wenn du sie nur genug verbesserst. Träume davon könnten sie verbessern oder verändern.]",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionenlightenmenta",
+			"label": "Versuchung: Erleuchtung",
+			"aspects": {
+				"desire": 1,
+				"enlightenmentmarks": 1
+			},
+			"description": "Mir ist aufgefallen, dass ich den Schlüssel zur Weisheit besitze. [Diese Karte ermöglicht dir einen Sieg der Weisheit, wenn du sie nur genug verbesserst. Träume davon könnten sie verbessern oder verändern.]",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionpowerb",
+			"label": "Hingabe: Macht",
+			"aspects": {
+				"desire": 2,
+				"powermarks": 2
+			},
+			"description": "Ich habe mich dem Erreichen unsterblicher Macht verschrieben, koste es, was es wolle. [Verbessere diese Karte, um dir einen Sieg der Macht zu ermöglichen. Ich muss ein wahrer Initiierter des Mansus sein. Ich muss mit dem Schmiede-Aspekt zusammenarbeiten, um die Schmiede der Tage zu beschwören und mit dem Wandel zu beginnen.]",
+			"slots": [
+				{
+					"id": "Know",
+					"label": "Wissender",
+					"actionId": "work",
+					"required": {
+						"waystag_after": 1
+					},
+					"description": "Nur ein wahrer Adept, ein Wissender, kann diesen Schritt machen. Die Wissenden sind jene, welche die Tür des Hirsches passiert haben. Im Traume."
+				},
+				{
+					"id": "Power",
+					"label": "Macht",
+					"actionId": "work",
+					"required": {
+						"forge": 1
+					},
+					"description": "Ich brauche genug von der wilden Weißglut der Schmiede."
+				}
+			],
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionsensationbm",
+			"label": "Hingabe: Gefühl",
+			"aspects": {
+				"desire": 2,
+				"sensationmarks": 2
+			},
+			"description": "Ich habe mich dem unsterblichen Streben nach dem Gefühl verschrieben. [Verbessere diese Karte, um dir einen Sieg des Gefühls zu ermöglichen. Ich muss ein wahrer Initiierter des Mansus sein. Ich muss mit dem Gral-Aspekt zusammenarbeiten, um mich dem Roten Grale schmackhaft zu machen.]",
+			"slots": [
+				{
+					"id": "Know",
+					"label": "Wissender",
+					"actionId": "work",
+					"required": {
+						"waystag_after": 1
+					},
+					"description": "Nur ein wahrer Adept, ein Wissender, kann diesen Schritt machen. Die Wissenden sind jene, welche die Tür des Hirsches passiert haben. Im Traume."
+				},
+				{
+					"id": "Power",
+					"label": "Macht",
+					"actionId": "work",
+					"required": {
+						"grail": 1
+					},
+					"description": "Ich brauche genug von der pulsierenden des Grals."
+				}
+			],
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionsensationbf",
+			"label": "Hingabe: Gefühl",
+			"aspects": {
+				"desire": 2,
+				"sensationmarks": 2
+			},
+			"description": "Ich habe mich der unsterblichen Jagd nach dem Gefühl verschrieben. [Verbessere diese Karte, um dir einen Sieg des Gefühls zu ermöglichen. Ich muss ein wahrer Initiierter des Mansus sein. Ich muss mit dem Gral-Aspekt zusammenarbeiten, um mich dem Roten Grale schmackhaft zu machen.]",
+			"slots": [
+				{
+					"id": "Know",
+					"label": "Wissender",
+					"actionId": "work",
+					"required": {
+						"waystag_after": 1
+					},
+					"description": "Nur ein wahrer Adept, ein Wissender, kann diesen Schritt machen. Die Wissenden sind jene, welche die Tür des Hirsches passiert haben. Im Traume."
+				},
+				{
+					"id": "Power",
+					"label": "Macht",
+					"actionId": "work",
+					"required": {
+						"grail": 1
+					},
+					"description": "Ich brauche genug von der pulsierenden des Grals."
+				}
+			],
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionenlightenmentb",
+			"label": "Hingabe: Erleuchtung",
+			"aspects": {
+				"desire": 2,
+				"enlightenmentmarks": 2
+			},
+			"description": "Ich habe mich dem Streben nach einer höheren Einsicht verschrieben. Ich muss unter die Haut sehen, koste es, was es wollen. [Dadurch wird ein Sieg der Erleuchtung möglich. Ich muss ein wahrer Initiierter des Mansus sein. Ich muss mit dem Laternen-Aspekt zusammenarbeiten, damit der Wächter mich sehen kann.]",
+			"slots": [
+				{
+					"id": "Know",
+					"actionId": "work",
+					"required": {
+						"waystag_after": 1
+					},
+					"description": "Nur ein wahrer Adept, ein Wissender, kann diesen Schritt machen. Die Wissenden sind jene, welche die Tür des Hirsches passiert haben. Im Traume."
+				},
+				{
+					"id": "Power",
+					"label": "Macht",
+					"actionId": "work",
+					"required": {
+						"lantern": 1
+					},
+					"description": "Ich brauche ein Zeichen des erbarmungslosen Lichtes des Mansus."
+				}
+			],
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionpowerc",
+			"label": "Aufstieg: Macht",
+			"aspects": {
+				"desire": 3,
+				"powermarks": 3
+			},
+			"xtriggers": {
+				"ascend": "ascensionpowerd"
+			},
+			"description": "Die Schmiede hat einen Funken der Antwort in meinem Fleische entzündet. Ich sehne mich voller Verzweiflung nach der Hitze des Feuers. Ich denke, dass ich schon bald anfangen werde, sie im Schlafe zu entzünden. Es ist ein dringendes Verlangen, wie nach Wasser. Ich weiß, dass dies das 3. Zeichen ist.",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionpowerd",
+			"label": "Aufstieg: Macht",
+			"aspects": {
+				"desire": 4,
+				"powermarks": 4
+			},
+			"xtriggers": {
+				"ascend": "ascensionpowere",
+				"descend": "ascensionpowerc"
+			},
+			"description": "Ich bin nun am ganzen Leibe durch das Feuer von Narben gezeichnet, doch jedes Mal wird es schwerer, mein Fleisch zu versengen. Ich beginne, mich an das Feuer zu gewöhnen, wie ein Drache oder ein Stein. Dies ist das 4. Zeichen.",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionpowere",
+			"label": "Aufstieg: Macht",
+			"aspects": {
+				"desire": 5,
+				"powermarks": 5,
+				"murderskill": 1
+			},
+			"xtriggers": {
+				"ascend": "ascensionpowerf",
+				"descend": "ascensionpowerd"
+			},
+			"description": "Das 5. Zeichen: kein Haar mehr an meinem Leibe. Ich bin stark, wie der Teufel. Ich zittere ständig, jeden Moment, den ich nicht beim Feuer sein kann.",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionpowerf",
+			"label": "Aufstieg: Macht",
+			"aspects": {
+				"desire": 6,
+				"powermarks": 6,
+				"murderskill": 1
+			},
+			"xtriggers": {
+				"descend": "ascensionpowere"
+			},
+			"description": "Es fällt mir schwer, meine Glieder zu beugen. Ich habe ja so viele Narben. Ich ziehe es vor, mein Gesicht nicht in der Öffentlichkeit zu zeigen. Ich kann eine heiße Kohle in meiner Hand halten und nichts spüren, wobei man ganz schwach den Geruch und ein ganz leises Brutzeln erahnen kann. Dies ist das 6. Zeichen. ",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionsensationc",
+			"label": "Aufstieg: Gefühl",
+			"aspects": {
+				"desire": 3,
+				"sensationmarks": 3
+			},
+			"xtriggers": {
+				"ascend": "ascensionsensationd"
+			},
+			"description": "Der Rote Gral hat mich gewärmt. Seine Dürste haben begonnen, mir den Mund auszutrocknen und meine Hände jucken zu lassen. Ich weiß, dass dies das 3. Zeichen ist.",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionsensationd",
+			"label": "Aufstieg: Gefühl",
+			"aspects": {
+				"desire": 4,
+				"sensationmarks": 4
+			},
+			"xtriggers": {
+				"ascend": "ascensionsensatione",
+				"descend": "ascensionsensationc"
+			},
+			"description": "Das 4. Zeichen steht für die vorübergehende Verbesserung meiner Haut. An einzelnen Stellen, an meinen Armen oder Schenkeln, ist sie rein, weich und schimmert, wie die Haut eines Kindes, das gerade erst aus dem Frühlingswasser hervorgetreten ist. Aber nur an einzelnen Stellen.",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionsensatione",
+			"label": "Aufstieg: Gefühl",
+			"aspects": {
+				"desire": 5,
+				"sensationmarks": 5
+			},
+			"xtriggers": {
+				"ascend": "ascensionsensationf",
+				"descend": "ascensionsensationd"
+			},
+			"description": "'Auswüchse und Eruptionen' lautet der Spitzname für das 5. Zeichen. Mir sind zwei neue Finger gewachsen, und nur einer davon ist an meiner Hand. Ich habe eine Fistel in der Kniekehle. Drücke ich sie an den Rändern, leuchtet sie sanft vor Genuss. Ich denke, diese Beule im Kreuz ist ein neues Organ.",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionsensationf",
+			"label": "Aufstieg: Gefühl",
+			"aspects": {
+				"desire": 6,
+				"sensationmarks": 6
+			},
+			"xtriggers": {
+				"descend": "ascensionsensatione"
+			},
+			"description": "Das 6. Zeichen markiert den Punkt, an dem ich eine Handbreit größer bin. Ich schwelle an allen Gliedern und in alle Richtungen an. Meine Haut ist leuchtend samtig. Fleischige Gruben polstern meine Augen. Ich bin sehr durstig.",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionenlightenmentc",
+			"label": "Aufstieg: Erleuchtung",
+			"aspects": {
+				"desire": 3,
+				"enlightenmentmarks": 3
+			},
+			"xtriggers": {
+				"ascend": "ascensionenlightenmentd"
+			},
+			"description": "Der Wächter, der die Tür-im-Auge ist, hat mich berührt. Tag für Tag wächst meine Neugier: ein dringendes, körperliches Bedürfnis, wie nagender Hunger. Ich weiß, dass dies das 3. Zeichen ist.",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionenlightenmentd",
+			"label": "Aufstieg: Erleuchtung",
+			"aspects": {
+				"desire": 4,
+				"enlightenmentmarks": 4
+			},
+			"xtriggers": {
+				"ascend": "ascensionenlightenmente",
+				"descend": "ascensionenlightenmentc"
+			},
+			"description": "Das 4. Zeichen ist das Licht, das in den Augen zu finden ist, doch ist es sehr subtil. Die meisten können es nur sehen, wenn die Lampen gelöscht sind oder die Nacht sehr finster ist. Doch wenn ich meine Augen ganz weit aufmache, tritt mehr Licht aus. Ich werde dünner.",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionenlightenmente",
+			"label": "Aufstieg: Erleuchtung",
+			"aspects": {
+				"desire": 5,
+				"enlightenmentmarks": 5
+			},
+			"xtriggers": {
+				"ascend": "ascensionenlightenmentf",
+				"descend": "ascensionenlightenmentd"
+			},
+			"description": "Beim 5. Zeichen tritt das Licht aus, wann immer die Haut gestoßen oder verletzt wird. Und nun hängt mir die Haut lose am Leibe, weil die Verwandlung mir ans Fleisch geht. Ich bin jetzt sehr dünn. Ich bin stets hungrig.",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionenlightenmentf",
+			"label": "Aufstieg: Erleuchtung",
+			"aspects": {
+				"desire": 6,
+				"enlightenmentmarks": 6
+			},
+			"xtriggers": {
+				"descend": "ascensionenlightenmente"
+			},
+			"description": "Das 6. Zeichen soll sich manifestieren, wenn das Fleisch zwischen Finger und Daumen sich über das letzte Fingerglied ziehen lässt. Meine Haut ist jetzt sehr locker. Ich denke, meine Knochen werden nun weich. Meine Augen haben keine menschliche Farbe mehr.",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "temptation.remembrance",
+			"label": "Versuchung: Gedenken",
+			"description": "Der kalte Wind, der wehte, als die Sonne rot war und tief stand. Die Stimme, derer sich einst die Wellen bedienten. Die Formen, die einst neben uns im Schnee galoppierten. Alles zerschlagen hinter dem glatten Glase der Zeit. Ich muss mir erneut ansehen, was einst verloren ging. ",
+			"aspects": {
+				"desire": 1,
+				"remembrancemarks": 1
+			},
+			"xtriggers": {
+				"ascend": "dedication.remembrance"
+			}
+		},
+		{
+			"id": "dedication.remembrance",
+			"label": "Hingabe: Gedenken",
+			"description": "Der kalte Wind, der wehte, als die Sonne rot war und tief stand. Die Stimme, derer sich einst die Wellen bedienten. Die Formen, die einst neben uns im Schnee galoppierten. Alles zerschlagen hinter dem glatten Glase der Zeit. Ich muss mir erneut ansehen, was einst verloren ging ... obschon es reif und seltsame schmecken könnte.",
+			"aspects": {
+				"desire": 1,
+				"remembrancemarks": 2
+			}
+		}
+	]
+}

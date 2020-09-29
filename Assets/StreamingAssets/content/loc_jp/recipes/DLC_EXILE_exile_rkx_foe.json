@@ -1,0 +1,724 @@
+{
+	"recipes": [
+		{
+			"id": "rkx.foe.arrive",
+			"actionId": "rkx.foe",
+			"label": "敵はもうそこまで来ている！",
+			"startdescription": "霜が窓をつまみ、影がろうそくの炎を波立てる。これが何を意味するか、私はよく知っている。",
+			"effects": {
+				"rkx.foe": 1
+			},
+			"extantreqs": {
+				"rkx.foe.defeated": -1
+			},
+			"warmup": 10,
+			"alt": [
+				{
+					"id": "rkx.spawn.escort",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.foe.obscured"
+				},
+				{
+					"id": "rkx.foe.attack"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.arrive.mapedge",
+			"actionId": "rkx.foe",
+			"label": "敵がこちらに向かっている",
+			"startdescription": "ナイフの刃に映る私の姿は、水面のように震えている。マドゥルガーダが好む夜明けの寒さの中、私の影は長く奇妙に延びている。これは敵が近づく前兆だ。名誉か傲慢が、彼を1人でここへ連れてくるだろう。",
+			"effects": {
+				"rkx.foe": 1
+			},
+			"extantreqs": {
+				"rkx.foe.defeated": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.foe.obscured"
+				},
+				{
+					"id": "rkx.foe.attack"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "rkx.foe.arrive.defiance",
+			"actionId": "rkx.foe",
+			"label": "敵をここまで連れてきた！",
+			"startdescription": "後悔しないことを祈ろう。",
+			"effects": {
+				"rkx.foe": 1
+			},
+			"extantreqs": {
+				"rkx.foe.defeated": -1
+			},
+			"alt": [
+				{
+					"id": "foe.weaknesses.generate.backup",
+					"additional": true
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.foe.attack"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.selector",
+			"actionId": "rkx.foe",
+			"label": "敵が追いかけてくる",
+			"startdescription": "見えなくても、そこにいるのが分かる。彼がいつ攻撃してくるかはわからない。",
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "rkx.foe.obscured"
+				},
+				{
+					"id": "rkx.foe.attack",
+					"chance": 30
+				},
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.obscured",
+			"actionId": "rkx.foe",
+			"label": "敵が近くにいる！",
+			"startdescription": "「隠れることなどできない。お前のことをよく知っているからな」",
+			"extantreqs": {
+				"obscurity": 1
+			},
+			"effects": {
+				"obscurity": -1
+			},
+			"slots": [
+				{
+					"id": "obscurity",
+					"label": "不明瞭",
+					"required": {
+						"obscurity": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 20,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.attack",
+			"actionId": "rkx.foe",
+			"label": "敵が攻撃を仕掛けた！",
+			"startdescription": "「もっと走ればよかったのに」\n\n[敵の攻撃は通常当たる。適切なカードを１枚追加すると防御できる。目くらましを使うと猶予ができるが、敵に効く目くらましは限られている。敵の弱点を見つければ、どの目くらましが効くか分かるようになる。敵は時々武器を壊すこともある。]",
+			"slots": [
+				{
+					"id": "defence",
+					"label": "防衛",
+					"required": {
+						"lore": 1,
+						"weapon": 1,
+						"distraction": 1,
+						"associate": 1,
+						"defiance.consecration.lionsmith": 1
+					},
+					"forbidden": {
+						"uq.weapon.profane": 1,
+						"remnant": 1,
+						"exhausted": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "rkx.spawn.escort",
+					"additional": true
+				},
+				{
+					"id": "rkx.foe.mock"
+				}
+			],
+			"warmup": 20,
+			"effects": {
+				"husk": -1
+			},
+			"purge": {
+				"obscurity": 100
+			},
+			"linked": [
+				{
+					"id": "rkx.foe.ligeian"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.cold"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.heat"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.sea"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.faith"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.cats"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.heights"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.horned"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.wolf"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.flowermaker"
+				},
+				{
+					"id": "rkx.foe.attack.success.wrongdistraction"
+				},
+				{
+					"id": "rkx.foe.attack.success",
+					"chance": 70
+				},
+				{
+					"id": "rkx.foe.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.mock",
+			"actionId": "rkx.foe",
+			"label": "ライオンスミスが笑ったように笑う",
+			"startdescription": "古代から使われてきた嘲るような仕草で、敵をからかうことができたが......自分を攻撃の対象にしてしまった。ライオンスミスが、私の大胆さを喜んでくれるだろう。[2つの傷を負うが、反抗のレベルが上がる。]",
+			"requirements": {
+				"defiance.consecration.lionsmith": 1,
+				"defiance.foetaunted": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "defiance.consecration.lionsmith",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"alt": [
+				{
+					"id": "spit.foe.attack.success.mocked",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"desire": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.foe.attack.success.mocked"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.attack.success.mocked",
+			"actionId": "rkx.foe",
+			"label": "狡猾さの前に強さを",
+			"startdescription": "敵が怒りながら威嚇してきた！私が離れられる前に圧殺の一撃を加えてくる。",
+			"linked": [
+				{
+					"id": "rkx.foe.attack"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "spit.foe.attack.success.mocked",
+			"actionId": "spit.foe.attack",
+			"label": "重傷だ！",
+			"startdescription": "大胆なことをしたから、自業自得としか言えない――",
+			"effects": {
+				"wound.exile": 2
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "rkx.foe.ligeian",
+			"actionId": "rkx.foe",
+			"label": "リゲイアの者の妨害",
+			"startdescription": "私の敵でさえリゲイアの者に警戒している。彼は躊躇っているようだ。",
+			"requirements": {
+				"ligeian": 1
+			},
+			"effects": {
+				"ligeian": -1
+			},
+			"warmup": 30,
+			"alt": [
+				{
+					"id": "spit.foe.attack.failure.ligeian",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.cold",
+			"actionId": "rkx.foe",
+			"label": "北風が私の盾だ―― ",
+			"startdescription": "噂は本当だ――雪は私の敵を愚かにし、動きを鈍くする。",
+			"requirements": {
+				"op.cold": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.cold": 1
+			},
+			"purge": {
+				"rkx.weakness.cold.hidden": 1
+			},
+			"effects": {
+				"op.cold": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.heat",
+			"actionId": "rkx.foe",
+			"label": "シロッコが私の盾だ―― ",
+			"startdescription": "噂は本当だ。暑い日が続くと、敵の動きが鈍くなり、愚かになる。",
+			"requirements": {
+				"op.heat": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.heat": 1
+			},
+			"purge": {
+				"rkx.weakness.heat.hidden": 1
+			},
+			"effects": {
+				"op.heat": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.sea",
+			"actionId": "rkx.foe",
+			"label": "海が私の盾だ――",
+			"startdescription": "精算人なら誰でも海に気を付けるものだが、聞いた話は本当だったようだ。私の敵は、その感触を恐れているらしい。",
+			"requirements": {
+				"op.sea": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.sea": 1
+			},
+			"purge": {
+				"rkx.weakness.sea.hidden": 1
+			},
+			"effects": {
+				"op.sea": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.faith",
+			"actionId": "rkx.foe",
+			"label": "古い癖",
+			"startdescription": "疑っていた通り、敵の生い立ちが影響しているようだ。彼は信者ではないが、信仰の形に対する敬意に縛られている。",
+			"requirements": {
+				"op.faith": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.faith": 1
+			},
+			"purge": {
+				"rkx.weakness.faith.hidden": 1
+			},
+			"effects": {
+				"op.faith": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.cats",
+			"actionId": "rkx.foe",
+			"label": "ライオンスミスの最下位の創造物",
+			"startdescription": "本当だ！私の敵は猫を恐れている。昔から「猫」と言った者を殺す勢いだったが、やっとその理由が分かった。",
+			"requirements": {
+				"op.cats": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.cats": 1
+			},
+			"purge": {
+				"rkx.weakness.cats.hidden": 1
+			},
+			"effects": {
+				"op.cats": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.heights",
+			"actionId": "rkx.foe",
+			"label": "重力の脅威",
+			"startdescription": "敵は高いところで目眩を起こし、自信を失う。私はこれを利用した。",
+			"requirements": {
+				"op.heights": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.heights": 1
+			},
+			"purge": {
+				"rkx.weakness.heights.hidden": 1
+			},
+			"effects": {
+				"op.heights": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.horned",
+			"actionId": "rkx.foe",
+			"label": "斧の影",
+			"startdescription": "角斧は私の敵を嫌っている。その影が落ちるところで、彼は躊躇ってしまう。",
+			"requirements": {
+				"op.horned": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.horned": 1
+			},
+			"purge": {
+				"rkx.weakness.horned.hidden": 1
+			},
+			"effects": {
+				"op.horned": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.wolf",
+			"actionId": "rkx.foe",
+			"label": "狼の息",
+			"startdescription": "彼の長く恥べき歴史の中で、私の敵は「分裂した狼」の敵意を特別に煽るようなことをしてしまった。狼の力が強居場所では、彼の警戒心が強まる。",
+			"requirements": {
+				"op.wolf": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.wolf": 1
+			},
+			"purge": {
+				"rkx.weakness.wolf.hidden": 1
+			},
+			"effects": {
+				"op.wolf": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.flowermaker",
+			"actionId": "rkx.foe",
+			"label": "フラワーメーカーの光",
+			"startdescription": "フラワーメーカーの影響力が不思議と私の敵を困惑させる。詳しい理由は一生分からないかもしれない。",
+			"requirements": {
+				"op.flowermaker": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.flowermaker": 1
+			},
+			"purge": {
+				"rkx.weakness.flowermaker.hidden": 1
+			},
+			"effects": {
+				"op.flowermaker": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.attack.success.wrongdistraction",
+			"actionId": "rkx.foe",
+			"label": "耳障りな笑い声",
+			"requirements": {
+				"lore": -1,
+				"weapon": -1,
+				"associate": -1,
+				"distraction": 1
+			},
+			"startdescription": "「@#op.cold|私は雪の中で<i>生まれた</i>」\n#op.heat|「計画を実行するにはちょうど良い天気だ」\n#op.sea|「いい考えだ。残ったものをサメに食べさせる」\n#op.cats|「ほら、子猫ちゃん、おいで」\n#op.heights|「はるか下だ」\n#op.faith|「間違った神だ」\n#op.flowermaker|「いつも私の望みをかなえてくれる、フラワーメーカーに助けを乞う.....」\n#op.horned|「分離し、区別する角斧。ここに来て区別してみろ」\n#op.wolf|「ちょうど良い。面影は全く残らないだろう」[これは敵の弱点の1つではない。]@",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"alt": [
+				{
+					"id": "spit.foe.attack.success",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"lore": 1,
+							"weapon": 1,
+							"distraction": 1
+						}
+					}
+				}
+			],
+			"effects": {
+				"distraction": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "rkx.foe.attack.success",
+			"actionId": "rkx.foe",
+			"label": "防御なし",
+			"startdescription": "「君はいつも動きが遅い――」",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"alt": [
+				{
+					"id": "spit.foe.attack.success",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"lore": 1,
+							"weapon": 1,
+							"distraction": 1
+						}
+					}
+				}
+			],
+			"requirements": {
+				"lore": -1,
+				"weapon": -1,
+				"associate": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "spit.foe.attack.success",
+			"actionId": "spit.foe.attack",
+			"label": "圧倒的な一撃！",
+			"startdescription": "あいつはまだ憎たらしいくらい強い。[7つの傷口を負うと命を失う。]",
+			"effects": {
+				"wound.exile": 2
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "rkx.foe.attack.failure",
+			"actionId": "rkx.foe",
+			"label": "窮境に陥った敵",
+			"startdescription": "彼の攻撃を阻止した―― ",
+			"alt": [
+				{
+					"id": "spit.foe.attack.failure.lore",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"lore": 1
+						}
+					}
+				},
+				{
+					"id": "spit.foe.attack.failure.weapon",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"weapon": 1
+						}
+					}
+				},
+				{
+					"id": "spit.foe.attack.failure.associate",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"associate": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "spit.foe.attack.failure.lore",
+			"actionId": "spit.foe.attack.failure",
+			"requirements": {
+				"lore": 1
+			},
+			"label": "訓練で防御した",
+			"startdescription": "役に立った。",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.foe.attack.failure.weapon",
+			"actionId": "spit.foe.attack.failure",
+			"requirements": {
+				"weapon": 1
+			},
+			"label": "武器で防御した",
+			"startdescription": "役に立った。",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"linked": [
+				{
+					"id": "spit.foe.attack.failure.weapon.broken",
+					"chance": 30
+				}
+			],
+			"warmup": 2
+		},
+		{
+			"id": "spit.foe.attack.failure.weapon.broken",
+			"actionId": "spit.foe.attack.failure",
+			"label": "「お前も壊してやる――」",
+			"startdescription": "@#weapon.b.2.exhausted|近すぎる！彼はライフルをひったくって棒のように折り、脇に投げ捨てた。\n#weapon.b.1.exhausted|近すぎる！彼はライフルをひったくって棒のように折り、脇に投げ捨てた。\n#weapon.d.exhausted|ビエッデの刃が奪われた！彼は、片手で刃を2つに折った。\n#weapon.e.exhausted|覆羽が奪われた！風にさらわれて手の中から消えていく。@",
+			"requirements": {
+				"weapon.c.exhausted": -1
+			},
+			"effects": {
+				"exhausted": -3,
+				"curio": -1,
+				"husk": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.foe.attack.failure.associate",
+			"actionId": "spit.foe.attack.failure",
+			"requirements": {
+				"associate": 1
+			},
+			"label": "助け舟",
+			"startdescription": "仲間がかばってくれた！",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"linked": [
+				{
+					"id": "spit.foe.attack.failure.associate.killed",
+					"chance": 30
+				}
+			],
+			"warmup": 2
+		},
+		{
+			"id": "spit.foe.attack.failure.associate.killed",
+			"actionId": "spit.foe.attack.failure",
+			"label": "予期せぬ犠牲",
+			"startdescription": "苦戦の末、友人が命を落としてしまった！しかし、敵に忘れられない土産を置いていったらしい。[敵との戦いでは、味方や仲間が死ぬこともある。彼らは敵を傷つけることはできても、最後の一撃を与えることはできない。]",
+			"aspects": {
+				"killmortal": 1
+			},
+			"effects": {
+				"wound.foe": 1,
+				"grief": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.foe.attack.failure.ligeian",
+			"actionId": "spit.foe.attack.failure",
+			"label": "さらに偉大なもの",
+			"startdescription": "リゲイアクラブの一員と争った敵は、それ自体を今後悔している。",
+			"effects": {
+				"wound.foe": 1
+			},
+			"warmup": 2
+		}
+	]
+}

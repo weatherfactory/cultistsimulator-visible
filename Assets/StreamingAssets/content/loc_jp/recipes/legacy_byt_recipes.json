@@ -1,0 +1,177 @@
+{
+	"recipes": [
+		{
+			"id": "workbytjobstart",
+			"label": "たまに働くのは楽しい",
+			"actionId": "work",
+			"requirements": {
+				"legacybytjob": 1
+			},
+			"effects": {
+				"funds": 3,
+				"legacybytjob": -1,
+				"legacybytjobmatured": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "bytopenexplore",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "もしかしたら、今日中に何かを達成できるかもしれない。",
+			"description": "順調に進んでいる。父の体調は良くなっていないけれど。[<b>探索</b>がアンロックされた。]",
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "workbytjob",
+			"label": "たまに働くのは楽しい",
+			"actionId": "work",
+			"requirements": {
+				"legacybytjobmatured": 1
+			},
+			"effects": {
+				"funds": 3
+			},
+			"alternativerecipes": [
+				{
+					"id": "workbytjobend",
+					"chance": 30
+				}
+			],
+			"startdescription": "もしかしたら、今日中に何かを達成できるかもしれない。",
+			"description": "順調に進んでいる。父の体調は良くなっていないけれど。",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "workbytjobend",
+			"label": "地平線上の雲",
+			"actionId": "work",
+			"startdescription": "父に呼ばれた！急いで枕元に行かないと。家業のことはしばらくの間保留だ―― ",
+			"craftable": false,
+			"effects": {
+				"legacybytjobmatured": -1,
+				"funds": 2
+			},
+			"alternativerecipes": [
+				{
+					"id": "workbytjobepilogue",
+					"chance": 100,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "workbytjobepilogue",
+			"label": "悲報",
+			"actionId": "legacyeventbad",
+			"alternativerecipes": [
+				{
+					"id": "bytopenstudy",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"effects": {
+				"health": 2,
+				"funds": 20
+			},
+			"startdescription": "父が死んだ！誰も正確な経緯を教えてくれなかった。しかし、財産は滅茶苦茶なことになっている。私の相続分は遺言の検認段階で引っかかっているようだ。請求書が届く前に解決することを願うばかりだ。",
+			"description": "遺言の件は解決したが......しかし、父の財産は、カブトムシに喰いつくされた老木のように粉々になってしまった。何に金を使っていたのか、誰も正確には知らないようだが、弁護士が書類を送ってきてくれるそうだ。",
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "bytopenexplore",
+			"label": "可能性に満ちた世界！",
+			"actionId": "explore",
+			"startdescription": "興味深い人たちが興味深い場所をいくつか紹介してくれた。",
+			"description": "お金の使い道に困った時は、ここにいる人たちが助けてくれるに違いない！",
+			"warmup": 10,
+			"effects": {
+				"locationauctionhouse": 1,
+				"locationcabaret": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "bytopenstudy",
+			"label": "謎めいた書類",
+			"actionId": "study",
+			"startdescription": "父の形見の中から見つかった書類を受け取ることになっている。それを見れば、どこに財産が消えていったのか分かるかもしれない。",
+			"alternativerecipes": [
+				{
+					"id": "bytopendream",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"description": "書類が届いた。かわいそうな、父さん。何ページにも渡って、見えない家、睡眠の色、世界の背後にいる目に見えない神々について走り書きされている.....しかし、読めば読むほど――何と言うか、「意味が分からなくなる」。まったく意味が分からないが、まとまってはいる。そして、これが父の日記だ。",
+			"effects": {
+				"legacydiarylastcharacter": 1,
+				"LEVER_LastBook": 1
+			},
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "bytstudydiary",
+			"label": "悩ましい日記に目を通す",
+			"actionId": "study",
+			"requirements": {
+				"legacydiarylastcharacter": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "bytopentalk",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"effects": {
+				"legacydiarylastcharacter": -1,
+				"reason": 1,
+				"fragmentgrail": 1
+			},
+			"startdescription": "パパの日記だ。夢中になっていたことが書き綴られている。その中に、最近の出来事についても書かれているかもしれない。",
+			"description": "このページには、同じ名前が何度も登場する。#PREVIOUSCHARACTERNAME#は、「不可能の根源」であり、「未来の泉」であり......「目を切った者」であった。そして最後のページには、手紙の書き手の住所と名前が書かれている。",
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "bytopendream",
+			"label": "壁のない家",
+			"actionId": "dream",
+			"alternativerecipes": [
+				{
+					"id": "despairrisk",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "夢が始まった。父が話していた夢と同じだ。祖父も同じように苦しんでいたとと言っていた。我々の血の中には、魂を殺す何かがあるに違いない。",
+			"description": "震える光、雪を役が溶かさない太陽の夢を見る。目が覚めたらいつでも部屋の中は寒い。",
+			"warmup": 30,
+			"effects": {
+				"passion": 1,
+				"influencewinter": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "bytopentalk",
+			"label": "見知らぬ人を呼ぶ",
+			"actionId": "talk",
+			"startdescription": "この厄介な書類に名前が記載されている人物と連絡を取ってみた。以前に起きたことについて教えてくれるとは思えないが、これからのことに手を貸してくれるかもしれない。",
+			"description": "私の新しい知人は、父のことを厳然と語った。父は自分が死にかけていることを知っていた。彼は自分の最期を迎える前に未知の快楽――健全な社会では禁断とされる快楽――を味わいたいと思っていた。私の新しい知人は、父が始めたことを私が終わらせたらどうかと提案してきた。そうすれば一族を悩ませている絶望から自分を救えるかもしれないと......",
+			"effects": {
+				"poppyready": 1,
+				"ascensionsensationa": 1
+			},
+			"warmup": 60,
+			"craftable": false
+		}
+	]
+}
