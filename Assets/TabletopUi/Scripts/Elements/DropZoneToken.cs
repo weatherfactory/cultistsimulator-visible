@@ -187,7 +187,7 @@ namespace Assets.CS.TabletopUI {
 			{
 				// Double-click, so abort any pending single-clicks
 				singleClickPending = false;
-				notifier.HideDetails();
+				Registry.Get<Notifier>().HideDetails();
 				SendStackToNearestValidSlot();
 			}
 			else

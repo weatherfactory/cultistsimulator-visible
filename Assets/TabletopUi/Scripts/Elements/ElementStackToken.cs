@@ -858,18 +858,20 @@ namespace Assets.CS.TabletopUI {
 
 		public override void OnPointerClick(PointerEventData eventData)
         {
-            foreach (var o in observers)
-            {
-                o.OnStackClicked(this,eventData);
-            }
+    
 
 
             if (eventData.clickCount > 1)
 			{
 				// Double-click, so abort any pending single-clicks
 				singleClickPending = false;
-				notifier.HideDetails();
-				SendStackToNearestValidSlot();
+                foreach (var o in observers)
+                {
+                    o.OnStackDoubleClicked(this, eventData, this._element);
+                }
+
+
+                SendStackToNearestValidSlot();
 			}
 			else
 			{
@@ -882,9 +884,11 @@ namespace Assets.CS.TabletopUI {
 
                 if (isFront)
 				{
-					//Debug.Log("LastTablePos: " + lastTablePos.Value.x +", "+ lastTablePos.Value.y);
-					notifier.ShowCardElementDetails(this._element, this);
-					if (TabletopManager.GetStickyDrag())
+                    foreach (var o in observers)
+                    {
+                        o.OnStackClicked(this, eventData, this._element);
+                    }
+                    if (TabletopManager.GetStickyDrag())
 					{
 						if (DraggableToken.itemBeingDragged != null)
 						{
@@ -909,8 +913,7 @@ namespace Assets.CS.TabletopUI {
 				}
 
 				// this moves the clicked sibling on top of any other nearby cards.
-				// NOTE: We shouldn't do this if we're in a RecipeSlot.
-				if (TokenContainer.GetType() != typeof(RecipeSlot))
+				if (TokenContainer.GetType() != typeof(RecipeSlot) && TokenContainer.GetType()!=typeof(ExhibitCards) )
 					transform.SetAsLastSibling();
 			}
         }
@@ -964,7 +967,7 @@ namespace Assets.CS.TabletopUI {
 
             if (stackDroppedOn.Decays)
 			{
-                notifier.ShowNotificationWindow(Registry.Get<ILocStringProvider>().Get("UI_CANTMERGE"), Registry.Get<ILocStringProvider>().Get("UI_DECAYS"), false);
+                Registry.Get<Notifier>().ShowNotificationWindow(Registry.Get<ILocStringProvider>().Get("UI_CANTMERGE"), Registry.Get<ILocStringProvider>().Get("UI_DECAYS"), false);
             }
         }
 

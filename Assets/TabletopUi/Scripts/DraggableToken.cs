@@ -57,7 +57,6 @@ namespace Assets.CS.TabletopUI {
 
         public ITokenContainer TokenContainer;
         protected ITokenContainer OldTokenContainer; // Used to tell OldContainsTokens that this thing was dropped successfully
-        protected INotifier notifier;
         protected Chronicler subscribedChronicler;
 
         bool lastGlowState;
@@ -67,7 +66,6 @@ namespace Assets.CS.TabletopUI {
             RectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
             lastGlowColor = glowImage.currentColor;
-            SubscribeNotifier(Registry.Get<INotifier>());
             SubscribeChronicler(Registry.Get<Chronicler>());
         }
 
@@ -109,9 +107,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public void SubscribeNotifier(INotifier n) {
-            notifier = n;
-        }
+
         public void SubscribeChronicler(Chronicler c)
         {
             subscribedChronicler = c;

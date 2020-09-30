@@ -5,11 +5,12 @@ using System.Text;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.Core.Entities;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 
 namespace Assets.Core.Interfaces
 {
-    public interface INotifier
+    public interface INotifier:ITokenObserver
     {
         void PushTextToLog(string text);
         void HideDetails();

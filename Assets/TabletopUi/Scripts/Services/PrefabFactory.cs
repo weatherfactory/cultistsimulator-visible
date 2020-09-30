@@ -43,7 +43,15 @@ namespace Assets.TabletopUi.Scripts.Services
                 var potentialTokenContainer = destination.gameObject.GetComponent<ITokenContainer>();
 
             if (pf.TabletopManager!=null)
-                    token.SetTokenContainer(pf.TabletopManager._tabletop, new Context(Context.ActionSource.Unknown));
+            {
+                //"treat tokens created on the tabletop differently. T E M P ORARY please
+                token.SetTokenContainer(pf.TabletopManager._tabletop, new Context(Context.ActionSource.Unknown));
+
+                var elementStackToken = token as ElementStackToken;
+                if (elementStackToken != null)
+                    elementStackToken.AddObserver(Registry.Get<INotifier>());
+
+            }
             else
                 potentialTokenContainer.GetElementStacksManager().AcceptStack(token as IElementStack, new Context(Context.ActionSource.Unknown));
 

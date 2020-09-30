@@ -12,6 +12,8 @@ namespace Assets.Core.Entities
     {
         private Dictionary<string, string> _currentIlluminations;
         private const string KEY_MANSUSJOURNAL = "mansusjournal";
+        private const string KEY_CREDITSTEXT = "creditstext";
+
 
 
         public IlluminateLibrarian(Dictionary<string, string> currentIlluminations)
@@ -27,6 +29,18 @@ namespace Assets.Core.Entities
         public Dictionary<string, string> GetCurrentIlluminations()
         {
             return new Dictionary<string, string>(_currentIlluminations);
+        }
+
+        public void AddCreditsText(string value)
+        {
+            _currentIlluminations.Add(KEY_CREDITSTEXT, value);
+        }
+
+        public string GetCreditsText()
+        {
+            if(_currentIlluminations.ContainsKey(KEY_CREDITSTEXT))
+                return _currentIlluminations[KEY_CREDITSTEXT];
+            return "¯\\_(ツ)_/¯";
         }
 
         public void AddMansusJournalEntry(string value)

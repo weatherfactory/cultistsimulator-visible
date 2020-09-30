@@ -571,7 +571,7 @@ public class DebugTools : MonoBehaviour,ITokenObserver
         return File.Exists(GetGameSaveLocation(index));
     }
 
-    public void OnStackClicked(ElementStackToken stack, PointerEventData pointerEventData)
+    public void OnStackClicked(ElementStackToken stack, PointerEventData pointerEventData, Element element)
     {
         if(isActiveAndEnabled)
             SetInput(stack.EntityId);
@@ -587,6 +587,12 @@ public class DebugTools : MonoBehaviour,ITokenObserver
 
     public void OnStackPointerExited(ElementStackToken stack, PointerEventData pointerEventData)
     {
+    }
+
+    public void OnStackDoubleClicked(ElementStackToken stack, PointerEventData eventData, Element element)
+    {
+        if (isActiveAndEnabled)
+            SetInput(stack.EntityId);
     }
 }
 
