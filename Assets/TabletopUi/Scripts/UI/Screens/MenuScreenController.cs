@@ -488,7 +488,7 @@ public class MenuScreenController : LocalNexus {
 
 
 
-        foreach (var culture in Registry.Get<ICompendium>().GetEntitiesAsList<Culture>())
+        foreach (var culture in Registry.Get<ICompendium>().GetEntitiesAsList<Culture>().Where(c=>c.Released))
         {
             var languageChoice =Instantiate(languageChoicePrefab).GetComponent<LanguageChoice>();
             languageChoice.transform.SetParent(LanguagesAvailable,false);
