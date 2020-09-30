@@ -21,7 +21,7 @@ namespace Assets.CS.TabletopUI.Interfaces
 
         IElementStack ProvisionElementStack(string elementId, int quantity, Source stackSource, string locatorId = null);
 
-        void DisplayHere(IElementStack stack, Context context);
+        void DisplayHere(ElementStackToken stack, Context context);
         void DisplayHere(DraggableToken token, Context context);
 
         void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved);

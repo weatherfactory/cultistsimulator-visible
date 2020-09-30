@@ -172,7 +172,7 @@ public class ElementStacksManager : IElementStacksManager {
 
         stack.SetStackManager(this);
         _stacks.Add(stack);
-        _tokenContainer.DisplayHere(stack, context);
+        _tokenContainer.DisplayHere(stack as ElementStackToken, context);
         _catalogue.NotifyStacksChanged();
     }
 

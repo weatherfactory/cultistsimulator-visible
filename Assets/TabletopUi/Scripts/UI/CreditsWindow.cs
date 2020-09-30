@@ -28,6 +28,10 @@ namespace Assets.TabletopUi.Scripts.UI
         private void Initialise()
         {
             CardsExhibit.ProvisionElementStack("reason", 1, Source.Fresh());
+            CardsExhibit.ProvisionElementStack("passion", 1, Source.Fresh());
+            CardsExhibit.ProvisionElementStack("health", 1, Source.Fresh());
+
+
 
 
 

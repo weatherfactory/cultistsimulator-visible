@@ -1195,6 +1195,10 @@ namespace Assets.CS.TabletopUI {
             return true;
         }
 
+        public void Understate()
+        {
+            canvasGroup.alpha = 0.3f;
+        }
 
 
         public void FlipToFaceUp(bool instant = false)

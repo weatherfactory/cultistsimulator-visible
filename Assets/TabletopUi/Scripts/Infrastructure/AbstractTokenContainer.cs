@@ -43,7 +43,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return stack;
         }
         public IElementStack ProvisionElementStack(string elementId, int quantity, Source stackSource, string locatorid = null) {
-            IElementStack stack = PrefabFactory.CreateToken<ElementStackToken>(transform, locatorid);
+            ElementStackToken stack = PrefabFactory.CreateToken<ElementStackToken>(transform, locatorid);
             if (stack == null)
             {
                 string stackInfo = "Can't create elementId" + elementId + " from " + stackSource.SourceType;
@@ -67,7 +67,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             // By default: do nothing right now
         }
 
-        public virtual void DisplayHere(IElementStack stack, Context context) {
+        public virtual void DisplayHere(ElementStackToken stack, Context context) {
             DisplayHere(stack as DraggableToken, context);
         }
 

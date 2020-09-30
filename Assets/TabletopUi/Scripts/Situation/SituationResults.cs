@@ -55,7 +55,7 @@ public class SituationResults : AbstractTokenContainer {
         // we noew reorder on DisplayHere
     }
 
-    public override void DisplayHere(IElementStack stack, Context context) {
+    public override void DisplayHere(ElementStackToken stack, Context context) {
         base.DisplayHere(stack, context);
         cardPos.ReorderCards(_elementStacksManager.GetStacks());
     }
