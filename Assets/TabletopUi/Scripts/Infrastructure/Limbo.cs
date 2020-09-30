@@ -7,14 +7,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public class Limbo : AbstractTokenContainer {
 
-        public void Awake()
-        {
-            var registry=new Registry();
-            registry.Register(this);
-        }
-
+        
         public override void Initialise() {
+            var registry = new Registry();
+            registry.Register(this);
             _elementStacksManager = new ElementStacksManager(this, "Limbo");
+            PersistBetweenScenes = true;
         }
         
         public override string GetSaveLocationInfoForDraggable(DraggableToken draggable) {

@@ -71,8 +71,6 @@ namespace Assets.CS.TabletopUI {
             SubscribeChronicler(Registry.Get<Chronicler>());
         }
 
-        #region -- Basic Getters ------------------------------------
-
         public abstract string EntityId { get; }
         public bool IsBeingAnimated { get; set; }
 
@@ -111,10 +109,6 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        #endregion
-
-        #region -- Basic Setters ------------------------------------
-
         public void SubscribeNotifier(INotifier n) {
             notifier = n;
         }
@@ -136,8 +130,6 @@ namespace Assets.CS.TabletopUI {
         public virtual bool IsInContainer(ITokenContainer compareContainer, Context context) {
             return compareContainer == TokenContainer;
         }
-
-        #endregion
 
         #region -- Begin Drag ------------------------------------
 
@@ -252,8 +244,6 @@ namespace Assets.CS.TabletopUI {
 
         #endregion
 
-        #region -- End Drag ------------------------------------
-
         public static void CancelDrag() {
             if (itemBeingDragged == null)
                 return;
@@ -327,10 +317,6 @@ namespace Assets.CS.TabletopUI {
            }
         }
 
-        #endregion
-
-        #region -- On Drop ------------------------------------
-
         public abstract void OnDrop(PointerEventData eventData);
 
         private bool CanInteractWithTokenDroppedOn(DraggableToken token) {
@@ -347,8 +333,6 @@ namespace Assets.CS.TabletopUI {
 
         public abstract void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn);
         public abstract void InteractWithTokenDroppedOn(IElementStack stackDroppedOn);
-
-        #endregion
 
         #region -- On Click ------------------------------------
 

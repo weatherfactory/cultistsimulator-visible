@@ -37,8 +37,7 @@ namespace Assets.CS.TabletopUI {
 
         [SerializeField] private HighlightLocationsController _highlightLocationsController;
 
-        [SerializeField] private Limbo Limbo;
-
+        
         [Header("Detail Windows")] [SerializeField]
         private AspectDetailsWindow aspectDetailsWindow;
 
@@ -196,7 +195,6 @@ namespace Assets.CS.TabletopUI {
             //register everything used gamewide
             SetupServices(registry, _situationBuilder, _tabletop);
 
-            // This ensures that we have an ElementStackManager in Limbo & Tabletop
             InitializeTokenContainers();
 
             //we hand off board functions to individual controllers
@@ -306,7 +304,6 @@ namespace Assets.CS.TabletopUI {
 
         void InitializeTokenContainers() {
             _tabletop.Initialise();
-            Limbo.Initialise();
             mapTokenContainer.Initialise();
         }
 
@@ -321,15 +318,11 @@ namespace Assets.CS.TabletopUI {
             var choreographer = new Choreographer(container, builder, tableLevelTransform, windowLevelTransform);
             registry.Register(choreographer);
 
-            var chronicler = new Chronicler(Registry.Get<Character>(), Registry.Get<ICompendium>());
-            registry.Register(chronicler);
-
             var situationsCatalogue = new SituationsCatalogue();
             registry.Register(situationsCatalogue);
 
-            var stackManagersCatalogue = new StackManagersCatalogue();
-            stackManagersCatalogue.Subscribe(this);
-            registry.Register(stackManagersCatalogue);
+            Registry.Get<StackManagersCatalogue>().Subscribe(this);
+
 
             var metaInfo = new MetaInfo(new VersionNumber(Application.version));
             registry.Register(metaInfo);
@@ -343,7 +336,7 @@ namespace Assets.CS.TabletopUI {
             
             
 			registry.Register<HighlightLocationsController>(_highlightLocationsController);
-            _highlightLocationsController.Initialise(stackManagersCatalogue);
+            _highlightLocationsController.Initialise(Registry.Get<StackManagersCatalogue>());
 
 
             //element overview needs to be initialised with
@@ -355,7 +348,8 @@ namespace Assets.CS.TabletopUI {
             if(legacy==null)
                 Registry.Get<StageHand>().EndingScreen();
 
-            _elementOverview.Initialise(legacy, stackManagersCatalogue, Registry.Get<ICompendium>());
+            _elementOverview.Initialise(legacy,  Registry.Get<ICompendium>());
+            Registry.Get<StackManagersCatalogue>().Subscribe(_elementOverview);
             tabletopBackground.ShowTabletopFor(legacy);
 
   
@@ -602,7 +596,10 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
             var activeLegacy = Registry.Get<Character>().ActiveLegacy;
 
-            _elementOverview.Initialise(activeLegacy, Registry.Get<StackManagersCatalogue>(), compendium);
+            _elementOverview.Initialise(activeLegacy, compendium);
+
+            Registry.Get<StackManagersCatalogue>().Reset();
+            Registry.Get<StackManagersCatalogue>().Subscribe(_elementOverview);
             tabletopBackground.ShowTabletopFor(activeLegacy);
 
         }

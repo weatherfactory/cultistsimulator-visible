@@ -135,6 +135,11 @@ public class ElementStacksManager : IElementStacksManager {
         return _stacks.Where(s => !s.Defunct).ToList();
     }
 
+    public bool PersistBetweenScenes
+    {
+        get { return _tokenContainer.PersistBetweenScenes; }
+    }
+
     public IElementStack AddAndReturnStack(string elementId, int quantity, Source stackSource, Context context)
     {
         var newStack = _tokenContainer.ProvisionElementStack(elementId, quantity, stackSource);

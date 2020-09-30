@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Entities;
 using Assets.Core.Fucine;
+using Assets.Core.Services;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
@@ -28,6 +29,7 @@ namespace Assets.TabletopUi.Scripts.Services
         [SerializeField] private GraphicsSettingsAdapter graphicsSettingsAdapter;
         [SerializeField] private WindowSettingsAdapter windowSettingsAdapter;
         [SerializeField] private SoundManager soundManager;
+        [SerializeField] private Limbo limbo;
 
         private string initialisedAt = null;
 
@@ -126,7 +128,10 @@ namespace Assets.TabletopUi.Scripts.Services
             concursum.BeforeChangingCulture.AddListener(OnCultureChanged);
 
             //TODO: async
-            LoadCurrentSave(registryAccess);
+            LoadCurrentSaveOrCreateNewCharacter(registryAccess);
+
+            var chronicler = new Chronicler(Registry.Get<Character>(), Registry.Get<ICompendium>());
+            registryAccess.Register(chronicler);
 
             //set up the top-level adapters. We do this here in case we've diverted to the error scene on first load / content fail, in order to avoid spamming the log with messages.
             screenResolutionAdapter.Initialise();
@@ -134,16 +139,20 @@ namespace Assets.TabletopUi.Scripts.Services
             windowSettingsAdapter.Initialise();
             soundManager.Initialise();
 
-            //finally, load the first scne and get the ball rolling.
+            var stackManagersCatalogue = new StackManagersCatalogue();
+            registryAccess.Register(stackManagersCatalogue);
+
+            limbo.Initialise();
+
+            //finally, load the first scene and get the ball rolling.
             stageHand.LoadFirstScene(Registry.Get<Config>().skiplogo);
 
 
         }
 
-        private void LoadCurrentSave(Registry registry)
+        private void LoadCurrentSaveOrCreateNewCharacter(Registry registry)
         {
-
-
+            
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
 
             if (saveGameManager.DoesGameSaveExist())

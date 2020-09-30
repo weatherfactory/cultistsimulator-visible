@@ -14,7 +14,7 @@ namespace Assets.Core.Interfaces
         void PushTextToLog(string text);
         void HideDetails();
         void ShowNotificationWindow(NotificationArgs args);
-        void ShowNotificationWindow(string title,string descirption, bool duplicatesAllowed);
+        void ShowNotificationWindow(string title,string description, bool duplicatesAllowed);
         void ShowCardElementDetails(Element element, ElementStackToken token);
         void ShowElementDetails(Element element, bool fromDetailsWindow = false);
         void ShowSlotDetails(SlotSpecification slot, bool highlightGreedy, bool highlightConsumes);

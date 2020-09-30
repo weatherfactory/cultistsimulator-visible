@@ -245,11 +245,13 @@ namespace Assets.CS.TabletopUI {
         virtual public IAspectsDictionary GetAspects(bool includeSelf = true)
         {
             //if we've somehow failed to populate an element, return empty aspects, just to exception-proof ourselves
-            if(_element==null)
+    
+
+            var tabletop = Registry.Get<TabletopManager>(false) as TabletopManager;
+
+            if (_element == null || tabletop==null)
                 return new AspectsDictionary();
-
-
-			var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
+            
 			if (!tabletop._enableAspectCaching)
 			{
 				_aspectsDirtyInc = true;
@@ -349,7 +351,7 @@ namespace Assets.CS.TabletopUI {
                 dealer.RemoveFromAllDecksIfInUniquenessGroup(_element.UniquenessGroup);
 
             try
-			{
+            {
                 SetQuantity(quantity, new Context(Context.ActionSource.Unknown)); // this also toggles badge visibility through second call
                 SetCardBG(_element.Unique, Decays);
 
@@ -381,10 +383,10 @@ namespace Assets.CS.TabletopUI {
 				{
 					CustomizeDropZone();
 				}
-				#endif
+#endif
             }
             catch (Exception e)
-			{
+            {
                 NoonUtility.Log("Couldn't create element with ID " + elementId + " - " + e.Message + "(This might be an element that no longer exists being referenced in a save file?)");
                 Retire(CardVFX.None);
             }
@@ -793,31 +795,38 @@ namespace Assets.CS.TabletopUI {
 		public override void OnPointerEnter(PointerEventData eventData)
 		{
 			base.OnPointerEnter(eventData);
-			var tabletopManager = Registry.Get<TabletopManager>();
-			if (isFront)
-				tabletopManager.SetHighlightedElement(EntityId, Quantity);
-			else
-				tabletopManager.SetHighlightedElement(null);
+			var tabletopManager = Registry.Get<TabletopManager>(false);
+            if(tabletopManager!=null ) //eg we might have a face down card on the credits page - in the longer term, of course, this should get interfaced
+            {
+                if (isFront)
+                    tabletopManager.SetHighlightedElement(EntityId, Quantity);
+                else
+                    tabletopManager.SetHighlightedElement(null);
 
-            if (DraggableToken.itemBeingDragged==null)
-            { 
-                //Display any HighlightLocations tagged for this element, unless we're currently dragging something else
-                var hlc = Registry.Get<HighlightLocationsController>();
-                hlc.ActivateOnlyMatchingHighlightLocation(_element.Id);
+                if (DraggableToken.itemBeingDragged==null)
+                { 
+                    //Display any HighlightLocations tagged for this element, unless we're currently dragging something else
+                    var hlc = Registry.Get<HighlightLocationsController>();
+                    hlc.ActivateOnlyMatchingHighlightLocation(_element.Id);
+                }
             }
         }
 
 		public override void OnPointerExit(PointerEventData eventData)
 		{
 			base.OnPointerExit(eventData);
-			Registry.Get<TabletopManager>().SetHighlightedElement(null);
+            var ttm = Registry.Get<TabletopManager>(false);
+                if(ttm!=null)
+                {
+                Registry.Get<TabletopManager>().SetHighlightedElement(null);
 
-            //Display any HighlightLocations tagged for this element
-            if(DraggableToken.itemBeingDragged!=this)
-            { 
-                var hlc = Registry.Get<HighlightLocationsController>();
-                hlc.DeactivateMatchingHighlightLocation(_element.Id);
-            }
+                    //Display any HighlightLocations tagged for this element
+                    if(DraggableToken.itemBeingDragged!=this)
+                    { 
+                        var hlc = Registry.Get<HighlightLocationsController>();
+                        hlc.DeactivateMatchingHighlightLocation(_element.Id);
+                    }
+                }
         }
 
 		public override void OnPointerClick(PointerEventData eventData)
@@ -837,7 +846,9 @@ namespace Assets.CS.TabletopUI {
 				singleClickPending = true;
 
 			    // Add the element name to the debug panel if it's active
-			    Registry.Get<DebugTools>().SetInput(_element.Id);
+                var debugTools = Registry.Get<DebugTools>(false);
+                    if(debugTools!=null)
+                        debugTools.SetInput(_element.Id);
 
 
                 if (isFront)
