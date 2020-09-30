@@ -33,17 +33,22 @@ namespace Assets.TabletopUi.Scripts.UI
         {
             CardsExhibit.Initialise();
 
-            List<string> creditCardIds = new List<string> { "reason", "passion", "health" }; 
+            //List<string> creditCardIds = new List<string> { "reason", "passion", "health" }; 
 
-            foreach (var id in creditCardIds)
+            List<Element> creditCards = Registry.Get<ICompendium>().GetEntitiesAsList<Element>()
+                .Where(e => e.Id.StartsWith("credits.")).ToList();
+
+            foreach (var cc in creditCards)
             {
-                var card=CardsExhibit.ProvisionElementStack(id, 1, Source.Fresh());
+                var card=CardsExhibit.ProvisionElementStack(cc.Id, 1, Source.Fresh());
                 card.AddObserver(this);
                
-                card.IlluminateLibrarian.AddCreditsText(id + " lorem ipsum dolor sit amet");
             }
 
-            CardsExhibit.HighlightCardWithId(creditCardIds.First());
+            var firstCard = creditCards[0];
+
+            CardsExhibit.HighlightCardWithId(firstCard.Id);
+            Names.text = firstCard.Description;
 
             Initialised = true;
 
@@ -53,7 +58,7 @@ namespace Assets.TabletopUi.Scripts.UI
         {
             
             CardsExhibit.HighlightCardWithId(stack.EntityId);
-            Names.text= stack.IlluminateLibrarian.GetCreditsText();
+            Names.text = element.Description;
 
         }
 
