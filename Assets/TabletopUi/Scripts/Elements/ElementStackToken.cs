@@ -79,9 +79,29 @@ namespace Assets.CS.TabletopUI {
         private IlluminateLibrarian _illuminateLibrarian;
         private List<Sprite> frames;
 
+        private HashSet<ITokenObserver> observers=new HashSet<ITokenObserver>();
 
         //set true when the Chronicler notices it's been placed on the desktop. This ensures we don't keep spamming achievements / Lever requests. It isn't persisted in saves! which is probably fine.
         public bool PlacementAlreadyChronicled=false;
+
+
+        public bool AddObserver(ITokenObserver observer)
+        {
+            if (observers.Contains(observer))
+                return false;
+
+            observers.Add(observer);
+            return true;
+        }
+
+        public bool RemoveObserver(ITokenObserver observer)
+        {
+            if(!observers.Contains(observer))
+                return false;
+            observers.Remove(observer);
+            return true;
+
+        }
 
         public override string EntityId {
             get { return _element == null ? null : _element.Id; }
@@ -321,6 +341,13 @@ namespace Assets.CS.TabletopUI {
             if (CurrentStacksManager == null)
                 CurrentStacksManager = Registry.Get<Limbo>().GetElementStacksManager(); //a stack must always have a parent stacks manager, or we get a null reference exception
             //when first created, it should be in Limbo
+
+            //add any observers that we can find in the context
+            var debugTools = Registry.Get<DebugTools>(false);
+            if (debugTools != null)
+                AddObserver(debugTools);
+
+
         }
 
 
@@ -831,6 +858,11 @@ namespace Assets.CS.TabletopUI {
 
 		public override void OnPointerClick(PointerEventData eventData)
         {
+            foreach (var o in observers)
+            {
+                o.OnStackClicked(this,eventData);
+            }
+
 
             if (eventData.clickCount > 1)
 			{
@@ -845,10 +877,7 @@ namespace Assets.CS.TabletopUI {
 				// Most of these functions are OK to fire instantly - just the ShowCardDetails we want to wait and confirm it's not a double
 				singleClickPending = true;
 
-			    // Add the element name to the debug panel if it's active
-                var debugTools = Registry.Get<DebugTools>(false);
-                    if(debugTools!=null)
-                        debugTools.SetInput(_element.Id);
+    
 
 
                 if (isFront)
