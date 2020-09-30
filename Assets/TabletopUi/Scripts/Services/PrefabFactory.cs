@@ -44,11 +44,12 @@ namespace Assets.TabletopUi.Scripts.Services
 
             if (pf.TabletopManager!=null)
                     token.SetTokenContainer(pf.TabletopManager._tabletop, new Context(Context.ActionSource.Unknown));
-                else
-                   token.SetTokenContainer(potentialTokenContainer, new Context(Context.ActionSource.Unknown));
+            else
+                potentialTokenContainer.GetElementStacksManager().AcceptStack(token as IElementStack, new Context(Context.ActionSource.Unknown));
 
-                if (saveLocationInfo != null)
-                    token.SaveLocationInfo = saveLocationInfo;
+
+            if (saveLocationInfo != null)
+                token.SaveLocationInfo = saveLocationInfo;
 
 
             return token;

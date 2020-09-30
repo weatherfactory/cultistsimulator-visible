@@ -20,6 +20,7 @@ public class ExhibitCards : AbstractTokenContainer {
     public override bool AllowDrag { get { return false; } }
     public override bool AllowStackMerge { get { return false; } }
 
+
     public override void Initialise()
     {
         _elementStacksManager = new ElementStacksManager(this, "exhibits");
@@ -36,4 +37,17 @@ public class ExhibitCards : AbstractTokenContainer {
         stack.Understate();
     }
 
+    public void HighlightCardWithId(string elementId)
+    {
+        var cards = GetElementStacksManager().GetStacks();
+
+        foreach (var card in cards.Select(c=>c as ElementStackToken))
+        {
+            if (card.EntityId == elementId)
+                card.Emphasise();
+            else
+                card.Understate();
+        }
+
+    }
 }

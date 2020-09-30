@@ -14,8 +14,7 @@ namespace Assets.TabletopUi.Scripts.UI
     {
         [SerializeField] public ElementStackToken ElementStackPrefab;
         [SerializeField] public ExhibitCards CardsExhibit;
-
-
+        
         public bool Initialised { get; }
 
         public void OnEnable()
@@ -27,14 +26,17 @@ namespace Assets.TabletopUi.Scripts.UI
 
         private void Initialise()
         {
-            CardsExhibit.ProvisionElementStack("reason", 1, Source.Fresh());
-            CardsExhibit.ProvisionElementStack("passion", 1, Source.Fresh());
-            CardsExhibit.ProvisionElementStack("health", 1, Source.Fresh());
+            CardsExhibit.Initialise();
 
+            List<string> creditCardIds = new List<string> { "reason", "passion", "health" }; 
 
+            foreach (var id in creditCardIds)
+            {
+                CardsExhibit.ProvisionElementStack(id, 1, Source.Fresh());
+            }
 
-
-
+            CardsExhibit.HighlightCardWithId(creditCardIds.First());
+            
         }
     }
 }

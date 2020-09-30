@@ -1200,6 +1200,11 @@ namespace Assets.CS.TabletopUI {
             canvasGroup.alpha = 0.3f;
         }
 
+        public void Emphasise()
+        {
+            canvasGroup.alpha = 1f;
+        }
+
 
         public void FlipToFaceUp(bool instant = false)
         {
@@ -1341,6 +1346,7 @@ namespace Assets.CS.TabletopUI {
             // remove anim
             artwork.overrideSprite = null;
         }
+
 
     }
 }
