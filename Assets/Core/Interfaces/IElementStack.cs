@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.TabletopUi.Scripts.Interfaces;
 using UnityEngine;
 
 namespace Assets.Core.Interfaces
@@ -52,5 +53,7 @@ namespace Assets.Core.Interfaces
         string UniquenessGroup { get; }
         string Icon { get; }
         Dictionary<string, string> GetCurrentIlluminations();
+        bool AddObserver(ITokenObserver observer);
+        bool RemoveObserver(ITokenObserver observer);
     }
 }

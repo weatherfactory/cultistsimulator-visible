@@ -15,12 +15,13 @@ namespace Assets.CS.TabletopUI.Interfaces
         // Allow tokens to be dragged from here, or merged here
         bool AllowDrag { get; }
         bool AllowStackMerge { get; }
+        bool PersistBetweenScenes { get; }
 
         ElementStacksManager GetElementStacksManager();
 
         IElementStack ProvisionElementStack(string elementId, int quantity, Source stackSource, string locatorId = null);
 
-        void DisplayHere(IElementStack stack, Context context);
+        void DisplayHere(ElementStackToken stack, Context context);
         void DisplayHere(DraggableToken token, Context context);
 
         void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved);

@@ -79,9 +79,29 @@ namespace Assets.CS.TabletopUI {
         private IlluminateLibrarian _illuminateLibrarian;
         private List<Sprite> frames;
 
+        private HashSet<ITokenObserver> observers=new HashSet<ITokenObserver>();
 
         //set true when the Chronicler notices it's been placed on the desktop. This ensures we don't keep spamming achievements / Lever requests. It isn't persisted in saves! which is probably fine.
         public bool PlacementAlreadyChronicled=false;
+
+
+        public bool AddObserver(ITokenObserver observer)
+        {
+            if (observers.Contains(observer))
+                return false;
+
+            observers.Add(observer);
+            return true;
+        }
+
+        public bool RemoveObserver(ITokenObserver observer)
+        {
+            if(!observers.Contains(observer))
+                return false;
+            observers.Remove(observer);
+            return true;
+
+        }
 
         public override string EntityId {
             get { return _element == null ? null : _element.Id; }
@@ -245,11 +265,13 @@ namespace Assets.CS.TabletopUI {
         virtual public IAspectsDictionary GetAspects(bool includeSelf = true)
         {
             //if we've somehow failed to populate an element, return empty aspects, just to exception-proof ourselves
-            if(_element==null)
+    
+
+            var tabletop = Registry.Get<TabletopManager>(false) as TabletopManager;
+
+            if (_element == null || tabletop==null)
                 return new AspectsDictionary();
-
-
-			var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
+            
 			if (!tabletop._enableAspectCaching)
 			{
 				_aspectsDirtyInc = true;
@@ -319,6 +341,13 @@ namespace Assets.CS.TabletopUI {
             if (CurrentStacksManager == null)
                 CurrentStacksManager = Registry.Get<Limbo>().GetElementStacksManager(); //a stack must always have a parent stacks manager, or we get a null reference exception
             //when first created, it should be in Limbo
+
+            //add any observers that we can find in the context
+            var debugTools = Registry.Get<DebugTools>(false);
+            if (debugTools != null)
+                AddObserver(debugTools);
+
+
         }
 
 
@@ -349,7 +378,7 @@ namespace Assets.CS.TabletopUI {
                 dealer.RemoveFromAllDecksIfInUniquenessGroup(_element.UniquenessGroup);
 
             try
-			{
+            {
                 SetQuantity(quantity, new Context(Context.ActionSource.Unknown)); // this also toggles badge visibility through second call
                 SetCardBG(_element.Unique, Decays);
 
@@ -381,10 +410,10 @@ namespace Assets.CS.TabletopUI {
 				{
 					CustomizeDropZone();
 				}
-				#endif
+#endif
             }
             catch (Exception e)
-			{
+            {
                 NoonUtility.Log("Couldn't create element with ID " + elementId + " - " + e.Message + "(This might be an element that no longer exists being referenced in a save file?)");
                 Retire(CardVFX.None);
             }
@@ -793,42 +822,56 @@ namespace Assets.CS.TabletopUI {
 		public override void OnPointerEnter(PointerEventData eventData)
 		{
 			base.OnPointerEnter(eventData);
-			var tabletopManager = Registry.Get<TabletopManager>();
-			if (isFront)
-				tabletopManager.SetHighlightedElement(EntityId, Quantity);
-			else
-				tabletopManager.SetHighlightedElement(null);
+			var tabletopManager = Registry.Get<TabletopManager>(false);
+            if(tabletopManager!=null ) //eg we might have a face down card on the credits page - in the longer term, of course, this should get interfaced
+            {
+                if (isFront)
+                    tabletopManager.SetHighlightedElement(EntityId, Quantity);
+                else
+                    tabletopManager.SetHighlightedElement(null);
 
-            if (DraggableToken.itemBeingDragged==null)
-            { 
-                //Display any HighlightLocations tagged for this element, unless we're currently dragging something else
-                var hlc = Registry.Get<HighlightLocationsController>();
-                hlc.ActivateOnlyMatchingHighlightLocation(_element.Id);
+                if (DraggableToken.itemBeingDragged==null)
+                { 
+                    //Display any HighlightLocations tagged for this element, unless we're currently dragging something else
+                    var hlc = Registry.Get<HighlightLocationsController>();
+                    hlc.ActivateOnlyMatchingHighlightLocation(_element.Id);
+                }
             }
         }
 
 		public override void OnPointerExit(PointerEventData eventData)
 		{
 			base.OnPointerExit(eventData);
-			Registry.Get<TabletopManager>().SetHighlightedElement(null);
+            var ttm = Registry.Get<TabletopManager>(false);
+                if(ttm!=null)
+                {
+                Registry.Get<TabletopManager>().SetHighlightedElement(null);
 
-            //Display any HighlightLocations tagged for this element
-            if(DraggableToken.itemBeingDragged!=this)
-            { 
-                var hlc = Registry.Get<HighlightLocationsController>();
-                hlc.DeactivateMatchingHighlightLocation(_element.Id);
-            }
+                    //Display any HighlightLocations tagged for this element
+                    if(DraggableToken.itemBeingDragged!=this)
+                    { 
+                        var hlc = Registry.Get<HighlightLocationsController>();
+                        hlc.DeactivateMatchingHighlightLocation(_element.Id);
+                    }
+                }
         }
 
 		public override void OnPointerClick(PointerEventData eventData)
         {
+    
+
 
             if (eventData.clickCount > 1)
 			{
 				// Double-click, so abort any pending single-clicks
 				singleClickPending = false;
-				notifier.HideDetails();
-				SendStackToNearestValidSlot();
+                foreach (var o in observers)
+                {
+                    o.OnStackDoubleClicked(this, eventData, this._element);
+                }
+
+
+                SendStackToNearestValidSlot();
 			}
 			else
 			{
@@ -836,15 +879,16 @@ namespace Assets.CS.TabletopUI {
 				// Most of these functions are OK to fire instantly - just the ShowCardDetails we want to wait and confirm it's not a double
 				singleClickPending = true;
 
-			    // Add the element name to the debug panel if it's active
-			    Registry.Get<DebugTools>().SetInput(_element.Id);
+    
 
 
                 if (isFront)
 				{
-					//Debug.Log("LastTablePos: " + lastTablePos.Value.x +", "+ lastTablePos.Value.y);
-					notifier.ShowCardElementDetails(this._element, this);
-					if (TabletopManager.GetStickyDrag())
+                    foreach (var o in observers)
+                    {
+                        o.OnStackClicked(this, eventData, this._element);
+                    }
+                    if (TabletopManager.GetStickyDrag())
 					{
 						if (DraggableToken.itemBeingDragged != null)
 						{
@@ -869,8 +913,7 @@ namespace Assets.CS.TabletopUI {
 				}
 
 				// this moves the clicked sibling on top of any other nearby cards.
-				// NOTE: We shouldn't do this if we're in a RecipeSlot.
-				if (TokenContainer.GetType() != typeof(RecipeSlot))
+				if (TokenContainer.GetType() != typeof(RecipeSlot) && TokenContainer.GetType()!=typeof(ExhibitCards) )
 					transform.SetAsLastSibling();
 			}
         }
@@ -924,7 +967,7 @@ namespace Assets.CS.TabletopUI {
 
             if (stackDroppedOn.Decays)
 			{
-                notifier.ShowNotificationWindow(Registry.Get<ILocStringProvider>().Get("UI_CANTMERGE"), Registry.Get<ILocStringProvider>().Get("UI_DECAYS"), false);
+                Registry.Get<Notifier>().ShowNotificationWindow(Registry.Get<ILocStringProvider>().Get("UI_CANTMERGE"), Registry.Get<ILocStringProvider>().Get("UI_DECAYS"), false);
             }
         }
 
@@ -1155,6 +1198,15 @@ namespace Assets.CS.TabletopUI {
             return true;
         }
 
+        public void Understate()
+        {
+            canvasGroup.alpha = 0.3f;
+        }
+
+        public void Emphasise()
+        {
+            canvasGroup.alpha = 1f;
+        }
 
 
         public void FlipToFaceUp(bool instant = false)
@@ -1297,6 +1349,7 @@ namespace Assets.CS.TabletopUI {
             // remove anim
             artwork.overrideSprite = null;
         }
+
 
     }
 }

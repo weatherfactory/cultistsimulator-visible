@@ -15,6 +15,8 @@ namespace Assets.Core.Interfaces
         AspectsDictionary GetTotalAspects(bool showElementAspects = true);
         IEnumerable<IElementStack> GetStacks();
 
+        bool PersistBetweenScenes { get; }
+
         void AcceptStack(IElementStack stack, Context context);
         void AcceptStacks(IEnumerable<IElementStack> stacks, Context context);
         void RemoveStack(IElementStack stack);

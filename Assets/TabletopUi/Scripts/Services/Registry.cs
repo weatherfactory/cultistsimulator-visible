@@ -21,7 +21,7 @@ namespace Assets.CS.TabletopUI
 
         private static readonly Dictionary<Type, System.Object> registered=new Dictionary<Type, object>();
 
-        public static T Get<T>() where T: class
+        public static T Get<T>(bool logWarningIfNotRegistered=true) where T: class
         {
 
             if (registered.ContainsKey(typeof(T)))
@@ -59,9 +59,10 @@ namespace Assets.CS.TabletopUI
             if (!registered.ContainsKey(typeof(LanguageManager)))
                 return new NullLocStringProvider() as T;
 
-
-            NoonUtility.Log(typeof(T).Name + " wasn't registered: returning null",2);
-                return null;
+            if(logWarningIfNotRegistered)
+                NoonUtility.Log(typeof(T).Name + " wasn't registered: returning null",2);
+                
+            return null;
 
         }
 

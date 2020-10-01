@@ -22,10 +22,8 @@ public class ElementOverview : MonoBehaviour, IStacksChangeSubscriber {
     private ICompendium _compendium;
     private const int MAX_ELEMENTS = 4;
 
-    public void Initialise(Legacy activeLegacy, StackManagersCatalogue elementStacksCatalogue,ICompendium compendium) {
-        //ensure we get updates about stack changes
-        elementStacksCatalogue.Subscribe(this);
-
+    public void Initialise(Legacy activeLegacy, ICompendium compendium) {
+        
         _activeLegacy = activeLegacy;
         _compendium = compendium;
 

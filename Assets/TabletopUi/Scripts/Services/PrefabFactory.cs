@@ -9,6 +9,7 @@ using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using UnityEngine;
 using Assets.TabletopUi.Scripts;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 using Object = UnityEngine.Object;
 
@@ -35,21 +36,29 @@ namespace Assets.TabletopUi.Scripts.Services
         public static T CreateToken<T>(Transform destination, string saveLocationInfo = null) where T : DraggableToken
         {
             var token = PrefabFactory.CreateLocally<T>(destination);
-            try
-            {
-                
+ 
                 var pf = Instance();
 
-                token.SetTokenContainer(pf.TabletopManager._tabletop, new Context(Context.ActionSource.Unknown));
-                if (saveLocationInfo != null)
-                    token.SaveLocationInfo = saveLocationInfo;
 
-                
-            }
-            catch
+                var potentialTokenContainer = destination.gameObject.GetComponent<ITokenContainer>();
+
+            if (pf.TabletopManager!=null)
             {
-                Debug.Log("problem: " + saveLocationInfo);
+                //"treat tokens created on the tabletop differently. T E M P ORARY please
+                token.SetTokenContainer(pf.TabletopManager._tabletop, new Context(Context.ActionSource.Unknown));
+
+                var elementStackToken = token as ElementStackToken;
+                if (elementStackToken != null)
+                    elementStackToken.AddObserver(Registry.Get<INotifier>());
+
             }
+            else
+                potentialTokenContainer.GetElementStacksManager().AcceptStack(token as IElementStack, new Context(Context.ActionSource.Unknown));
+
+
+            if (saveLocationInfo != null)
+                token.SaveLocationInfo = saveLocationInfo;
+
 
             return token;
         }

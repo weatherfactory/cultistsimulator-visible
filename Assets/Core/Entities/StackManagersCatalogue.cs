@@ -33,6 +33,20 @@ namespace Assets.Core.Entities {
             _currentElementStackManagers.Remove(stackManager);
         }
 
+        
+        public void Reset()
+        {
+        _subscribers.Clear();
+                foreach (var sm in GetRegisteredStackManagers())
+                {
+                    if (!sm.PersistBetweenScenes)
+                        _currentElementStackManagers.Remove(sm);
+                }
+
+            
+        }
+
+
         public void Subscribe(IStacksChangeSubscriber subscriber) {
             if(!_subscribers.Contains(subscriber))
                    _subscribers.Add(subscriber);
@@ -43,5 +57,7 @@ namespace Assets.Core.Entities {
             foreach (var s in _subscribers)
                 s.NotifyStacksChanged();
         }
+
+
     }
 }

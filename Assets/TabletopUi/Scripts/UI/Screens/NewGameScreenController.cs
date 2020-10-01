@@ -67,12 +67,6 @@ namespace Assets.CS.TabletopUI {
     
         }
 
-        #if DEBUG
-        // For Debug purposes
-        void OnEnable() {
-            InitLegacyButtons();
-        }
-        #endif
 
 		void FadeIn() {
 			fadeOverlay.gameObject.SetActive(true);
@@ -90,8 +84,6 @@ namespace Assets.CS.TabletopUI {
         void InitLegacyButtons()
         {
 
-   
-          
 
             for (int i = 0; i < AvailableLegaciesForEnding.Count; i++)
             {
@@ -132,7 +124,7 @@ namespace Assets.CS.TabletopUI {
 			
 			FadeOut();
 			canInteract = false;
-			SoundManager.PlaySfx("UIStartgame");
+			SoundManager.PlaySfx("UIStartGame");
 			Invoke("StartGameDelayed", fadeDuration);
         }
 
