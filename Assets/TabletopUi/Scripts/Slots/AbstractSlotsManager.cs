@@ -29,13 +29,7 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         var children = GetComponentsInChildren<RecipeSlot>();
         var allSlots = new List<RecipeSlot>(children);
          validSlots = new List<RecipeSlot>(allSlots.Where(rs => rs.Defunct == false && rs.GoverningSlotSpecification!=null));
-        ////There is a case - on game load, perhaps? where windows have ongoing slots, but where the slot hasn't been initialised
-        ////I saw it happen with the pleasantday recipe, but there may be others.
-        ////the guard clause where we check for a null GoverningSlotSpecification fixes the issue and removes NullReferenceExceptions, but
-        ////it is prolly only masking an underlying weirdness.
-        //// - AK
-
-        //allSlots = new List<RecipeSlot>(GetComponentsInChildren<RecipeSlot>(true));
+   
     }
 
     public virtual IList<RecipeSlot> GetAllSlots() {

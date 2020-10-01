@@ -29,7 +29,6 @@ namespace Assets.Core.Entities
    public string Description { get; set; }
 
         public SlotSpecification Slot { get; set; }
-
-
-}
+        public List<SlotSpecification> Slots { get; set; }
+    }
 }
