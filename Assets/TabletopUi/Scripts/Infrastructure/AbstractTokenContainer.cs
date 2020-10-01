@@ -44,18 +44,21 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return stack;
         }
         public virtual IElementStack ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context, string locatorid = null) {
-            ElementStackToken stack = PrefabFactory.CreateToken<ElementStackToken>(transform, locatorid);
-            if (stack == null)
-            {
-                string stackInfo = "Can't create elementId" + elementId + " from " + stackSource.SourceType;
-                if (locatorid != null)
-                    stackInfo += " with " + locatorid;
+            var stack = PrefabFactory.CreateLocally<ElementStackToken>(transform);
 
-                throw new ApplicationException(stackInfo);
-            }
+
+            var elementStackToken = stack as ElementStackToken;
+                if (elementStackToken != null)
+                    elementStackToken.AddObserver(Registry.Get<INotifier>());
+                
+
+            if (locatorid != null)
+                stack.SaveLocationInfo = locatorid;
 
             stack.Populate(elementId, quantity, stackSource);
-            DisplayHere(stack, context);
+
+            GetElementStacksManager().AcceptStack(stack as IElementStack, context);
+
             return stack;
         }
 
