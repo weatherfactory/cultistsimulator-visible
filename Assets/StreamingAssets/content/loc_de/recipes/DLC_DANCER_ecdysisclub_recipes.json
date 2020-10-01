@@ -1,0 +1,1059 @@
+{
+	"recipes": [
+		{
+			"id": "explorecabaret_meetsulochana",
+			"actionId": "explore",
+			"label": "Sulochana im Ecdysis-Klub treffen",
+			"requirements": {
+				"locationcabaret": 1,
+				"sulochana": 1
+			},
+			"startdescription": "Sulochana Amavasya steht direkt im roten Eingang, raucht eine ihrer eigenartigen importierten Nelken-Zigaretten und spricht mit einem dünnen, sehr hoch Aufgeschossenen, der vielleicht Griechisch spricht. Sie sieht, wie ich mich nähere, ohne mit der Wimper zu zucken oder den Gesichtsausdruck zu ändern.",
+			"slots": [
+				{
+					"id": "Subject",
+					"label": "Thema",
+					"description": "Ich bin hier, weil ich mit dir reden möchte ...",
+					"required": {
+						"desire": 1
+					}
+				}
+			],
+			"description": "'Nein? Vergeude nicht meine Zeit.'",
+			"alternativerecipes": [
+				{
+					"id": "A_ecdysis_beginheart",
+					"chance": 100
+				},
+				{
+					"id": "A_ecdysis_beginmoth",
+					"chance": 100
+				},
+				{
+					"id": "A_ecdysis_switchtochangefromsensation",
+					"chance": 100
+				},
+				{
+					"id": "A_ecdysis_switchtochangefrompower",
+					"chance": 100
+				},
+				{
+					"id": "A_ecdysis_cantswitchtochangefromenlightenment",
+					"chance": 100
+				},
+				{
+					"id": "A_ecdysis_alreadyonchange",
+					"chance": 100
+				},
+				{
+					"id": "A_ecdysis_cantswitch",
+					"chance": 100
+				}
+			],
+			"craftable": true,
+			"warmup": 60
+		},
+		{
+			"id": "A_ecdysis_beginheart",
+			"actionId": "explore",
+			"maxexecutions": 1,
+			"extantreqs": {
+				"dancerjobecdysisa": -1,
+				"dancerjobecdysisb": -1,
+				"dancerjobecdysisc": -1
+			},
+			"requirements": {
+				"desireheart_track": 1
+			},
+			"label": "Die Enthüllung des Fleisches",
+			"startdescription": "'Nun denn', sagt Sulochana, 'ich habe da einen Job für dich. Dies ist ein einmaliges Angebot.' Sie zieht an ihrer Zigarette. 'Du wirst dich ausziehen', fügt sie hinzu. Rauch umwölkt ihr Gesicht. Sie zuckt nicht mit der Wimper. 'Deine äußeren Schichten.'",
+			"description": "Mir wird eine eigene, enge – sehr enge – Garderobe zugewiesen, kaum mehr als ein Schrank. Ich bekomme mein erstes Kostüm. Im Stockwerk darunter ertönt ein Trommelwirbel. Genau in diesem Moment kommt ohne Vorwarnung der lange Grieche herein und beugt sich vor, um mir ein Geheimnis ins Ohr zu flüstern. Sein Name, wie ich erfahren werde, ist Mr. Agdistis.",
+			"effects": {
+				"dancerjobecdysisa": 1,
+				"fragmentheart": 1
+			}
+		},
+		{
+			"id": "A_ecdysis_beginmoth",
+			"actionId": "explore",
+			"maxexecutions": 1,
+			"requirements": {
+				"desiremoth_track": 1
+			},
+			"extantreqs": {
+				"dancerjobecdysisa": -1,
+				"dancerjobecdysisb": -1,
+				"dancerjobecdysisc": -1
+			},
+			"label": "Die Enthüllung des Selbst",
+			"startdescription": "'Nun denn', sagt Sulochana, 'ich habe da einen Job für dich. Dies ist ein einmaliges Angebot.' Sie zieht an ihrer Zigarette. 'Du wirst dich ausziehen', fügt sie hinzu. Sie kommt mir ganz nahe. 'Und das ist noch nicht alles.'",
+			"description": "Mir wird eine eigene, enge – sehr enge – Garderobe zugewiesen, kaum mehr als ein Schrank. Ich bekomme mein erstes Kostüm. Sulochana schneidet mir mit einer kleinen silbernen Schere eine Locke meines Haars ab und flüstert mir ein Geheimnis ins Ohr.",
+			"effects": {
+				"dancerjobecdysisa": 1,
+				"fragmentmoth": 1
+			}
+		},
+		{
+			"id": "A_ecdysis_switchtochangefromsensation",
+			"label": "Nach Wandel streben, nicht nach Gefühl",
+			"requirements": {
+				"ascensionsensationa": 1
+			},
+			"actionId": "explore",
+			"effects": {
+				"ascensionsensationa": -1,
+				"ascensionchangea": 1
+			},
+			"startdescription": "'Du lässt dir den Pfad des Grals noch einmal durch den Kopf gehen, was? Sei versichert: Die Formen sind nicht leichter. Doch wenn du wirklich den Wandel willst –'",
+			"description": "Sulochana kommt näher, studiert mein Gesicht, legt mir die Hand auf die Wange. Ihre Haut ist kalt, ihr Atem ist warm. Ein Lächeln umspielt ihre Mundwinkel. 'Schlaf drüber. Schau wieder bei mir vorbei, wenn der Klub das nächste Mal geöffnet hat. Dann reden wir weiter.'",
+			"linked": [
+				{
+					"id": "L_desire_addmothtrack",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "A_ecdysis_switchtochangefrompower",
+			"label": "Nach Wandel streben, nicht nach Macht",
+			"requirements": {
+				"ascensionpowera": 1
+			},
+			"actionId": "explore",
+			"effects": {
+				"ascensionpowera": -1,
+				"ascensionchangea": 1
+			},
+			"startdescription": "'Du lässt dir den Pfad der Schmiede noch einmal durch den Kopf gehen, was? Sei versichert: Das Feuer ist ein anderes Feuer, doch die Formen sind nicht leichter –'",
+			"description": "Sulochana kommt näher, studiert mein Gesicht. Sie schnippt Asche von ihrer Zigarette. Die Kohle an ihrem Ende glimmt sanft. Sie kichert. 'Schlaf drüber. Schau wieder bei mir vorbei, wenn der Klub das nächste Mal geöffnet hat. Dann reden wir weiter.'",
+			"linked": [
+				{
+					"id": "L_desire_addmothtrack",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "A_ecdysis_cantswitchtochangefromenlightenment",
+			"label": "Nach Wandel streben, nicht nach Erleuchtung",
+			"requirements": {
+				"ascensionenlightenmenta": 1
+			},
+			"actionId": "explore",
+			"startdescription": "'Du lässt dir den Pfad des Wächters noch einmal durch den Kopf gehen, was? Gut. Aber du hast noch einen langen Weg vor dir.'",
+			"description": "Sulochana schüttelt langsam mit dem Kopf, ohne den Blickkontakt zu lösen. 'Erinnere dich zuerst daran, was du bist.' [Träume mit deiner Versuchung, um sie zu wandeln, bevor du mit Sulochana sprichst, wenn du nach dem Wandel strebst.]"
+		},
+		{
+			"id": "A_ecdysis_alreadyonchange",
+			"label": "Die Formen, die da kommen",
+			"actionId": "explore",
+			"requirements": {
+				"changemarks": 1
+			},
+			"startdescription": "'Bist du bereit zu arbeiten? Warum vertun wir dann hier unsere Zeit? [Nutze deinen Kontrakt mit dem Klub um zu tanzen.]'",
+			"description": "'Ja, ich weiß, was du willst.' Sie deutet auf eine hoch gewachsene Gestalt hinter sich. 'Mr. Agdistis auch. Du kommst zu spät, um heute Abend zu tanzen. Sei nächstes Mal pünktlicher.'"
+		},
+		{
+			"id": "A_ecdysis_cantswitch",
+			"label": "Zu spät für den Wandel",
+			"actionId": "explore",
+			"requirements": {
+				"desire": 1
+			},
+			"comments": "Need the desire requirement so we only fall through to this if there's an incompatible desire.",
+			"startdescription": "'Nein. Du bist was du bist. Es ist nicht möglich.'",
+			"description": "'Hörst du? Es ist nicht möglich. Du hast Erfolg oder nicht. Doch du wirst dich nicht wirklich wandeln.' Sie schnippt den glimmenden Stummel ihrer Zigarette in die Finsternis. 'Träume wild.'"
+		},
+		{
+			"id": "ecdysisjobupgradehint_maxedout",
+			"label": "Die weitesten Schritte?",
+			"actionId": "work",
+			"startdescription": "Ich werde bereits für die anspruchsvollsten Tänze angefragt.",
+			"comments": "Hint appears if we have max skill and don't qualify for an ecdysijob upgrade",
+			"requirements": {
+				"ecdysijob": 1,
+				"healthskill": 4
+			},
+			"craftable": true,
+			"hintonly": true
+		},
+		{
+			"id": "ecdysisjobupgrade_toc_hint",
+			"label": "Sulochana meine Fähigkeiten vorführen?",
+			"actionId": "work",
+			"startdescription": "Sulochana schaut sich die Reichweite meiner Glieder, die Drehungen meines Körpers genau an. 'Noch nicht', sagt sie. [Verbessere deine Fertigkeit Gesundheit auf die höchste Stufe und spezialisiere dich auf Anmut, um fortfahren zu können.].",
+			"requirements": {
+				"dancerjobecdysisb": 1,
+				"healthskill": 2
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ecdysisjobupgradehint",
+			"label": "Weitere Schritte?",
+			"actionId": "work",
+			"startdescription": "Ein exklusiveres Publikum verlangt nach anspruchsvolleren Tänzen. Ich muss beweisen, dass ich dazu körperlich in der Lage bin, bevor Mr. Agdistis und Sulochana mir erlauben, den nächsten Schritt zu machen. [Verbessere deine Fertigkeit Gesundheit, um Eindruck zu schinden.]",
+			"requirements": {
+				"ecdysijob": 1,
+				"healthskill": 1
+			},
+			"craftable": true,
+			"hintonly": true
+		},
+		{
+			"id": "ecdysisjobupgrade_tob",
+			"label": "Mr. Agditis meine Fähigkeiten vorführen",
+			"actionId": "work",
+			"startdescription": "Ich bin bereit für anspruchsvollere Tänze, die tiefer im Inneren des Klubs stattfinden, in dem Raum hinter der roten Friestür. Mr. Agdistis wird über meine Eignung befinden.",
+			"description": "Mr. Agdistis faltet seine langen, schönen Hände. Er lächelt freundlich. Er wird mir ein kleines Bisschen Blut abnehmen, nur für alle Fälle, und dann sind wir so weit.",
+			"requirements": {
+				"dancerjobecdysisa": 1,
+				"healthskill": 2
+			},
+			"effects": {
+				"dancerjobecdysisa": -1,
+				"dancerjobecdysisb": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisjobupgrade_toc",
+			"label": "Sulochana meine Fähigkeiten beweisen",
+			"actionId": "work",
+			"startdescription": "Ich glaube, ich bin bereit für die Tänze, die nur durch besonderes Arrangement zur Aufführung kommen. Sulochana wird mich in den obersten Raum des Klubs einladen, den Dachboden mit seinen Mondfenstern, wo sie ihre Schlüssel, ihre Juwelen und ihre Trophäen aufbewahrt, und sie wird mir Wein aus einem Elfenbein-Becher anbieten, bevor ich beginne. Der Wein wird dick und süß sein, und mein Geist wird von neuen Gedanken wimmeln. Die Luft wird flattern wie Flügel, doch selbst wenn ich mich ausgezogen habe, wird mir nicht kalt sein.",
+			"description": "'Du reichst', sagt Sulochana Amawasija. 'Willkommen im Raum des Wandels.' Sie mustert mich von oben bis unten, wie sie es häufig tut. 'Dauert jetzt nicht mehr lange. Nicht mehr lange. Vielleicht ist es an der Zeit, dass ich meine Schwester erwähne.",
+			"requirements": {
+				"dancerjobecdysisb": 1,
+				"skillhealthd_grace": 1
+			},
+			"effects": {
+				"dancerjobecdysisb": -1,
+				"dancerjobecdysisc": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdanceclublantern_generichint",
+			"label": "Nicht hier, nicht das",
+			"actionId": "work",
+			"startdescription": "Mr. Agdistis schüttelt seinen gutaussehenden Kopf. Seine alt-jungen Augen sind fröhlich, wo sie so häufig traurig sind.",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"lantern": 1
+			},
+			"craftable": true,
+			"hintonly": true
+		},
+		{
+			"id": "ecdysisdanceclub_generichint",
+			"label": "Die Bühne wartet.",
+			"actionId": "work",
+			"startdescription": "Mr. Agdistis führt mich von der Garderobe auf die Bühne. Er war früher selbst Tänzer. Man erkennt es noch immer an seinen Gesten. Doch die Wunde an seinem Oberschenkel hält ihn von der Bühne fern.",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1
+			},
+			"craftable": true,
+			"hintonly": true
+		},
+		{
+			"id": "ecdysisdance_generichint",
+			"label": "Die Nacht und die Nacht",
+			"actionId": "work",
+			"startdescription": "Der Ecydsis-Klub öffnet, wie ich erfahren habe, in einem Rhythmus, der vom Wandel der Gestalt des Mondes bestimmt wird. Er ist immer, aber nicht nur, an Nächten mit Neumond geöffnet.",
+			"requirements": {
+				"ecdysijob": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"hintonly": true
+		},
+		{
+			"id": "ecdysisdance_sendingheartg",
+			"label": "Der letzte Tanz",
+			"actionId": "work",
+			"startdescription": "Bei den sehr seltenen Anlässe, bei denen Mr. Agdistis das Wort ergreift, klingt seine Stimme ausgesprochen schön – wie der weiche Klang einer Altflöte. 'Du hast schon fast, was du brauchst,' sagt er, 'um das Königshaut-Tor zu passieren. Jemand wird kommen, um dir den Schlüssel zu geben.' Er schaut dir in die Augen. 'Ich flehe dich an, weder ihre Hand zu nehmen noch ihre Füße anzusehen noch ihr etwas zu trinken anzubieten.' Er fängt an, ganz leise zu weinen. 'Es wird wehtun. Ich liebe sie.'",
+			"description": "Wenn der Tanz vollendet ist, wenn mein Körper geschunden und aufgerieben ist, wenn Mr. Agdistis' Tränen warm auf meinem gemarterten Fleische sind, dann ist mein Schatten der einer großen stoßzahnbewehrten Bestie geworden. 'Geh schnell', sagt Mr. Agdistis. 'Schlaf schnell. Meine Dame Sulochana hat bereits die Dame Marinette gerufen. Sie wird die letzte sein, die dich häutet.'",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"heart": 18,
+				"ascensionchangeg": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingheartg": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"aspects": {
+				"damagehealth": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "ecdysisdance_sendingmothheartg",
+					"chance": 100
+				},
+				{
+					"id": "health_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"fatigue": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_sendingmothg",
+			"label": "Der letzte Tanz",
+			"actionId": "work",
+			"startdescription": "Sulochana ist zu meinem letzten Auftritt erschienen. 'Fast geschafft. Ich habe nicht den Schlüssel für die Tür, die ich passieren muss. Doch meine Schwester, die Älteste unseresgleichen, die noch am Leben ist (nicht, dass sie überhaupt lebendig wäre), wird ihn dir im Traume übergeben. Ich erzähle dir das jetzt, um dir und ihr einen Gefallen zu tun: sieh ihr nicht ins Gesicht.'\n\nSie zündet sich eine Zigarette an. 'Das schmerzt', fügt sie leicht amüsiert hinzu.",
+			"description": "'Ist der Tanz getanzt, mein Geist verwirrt und taumelnd, meine Gefühle wie Schlangen, kann ich nicht mehr so leicht sagen, was noch real ist. Sulochana ist real, denke ich. Meine Reflexion im Spiegel – die Reflexion einer Hirschkuh – all das ist sehr real. 'Geh schnell', sagt Sulochana. Sie fasst mich an der Schulter und küsst mich auf den Mund, weich wie ein Mottenflügel. Ihre Lippen sind kalt. Ihr Atem ist Aas. Ihre Augen sind liebreizende Nacht. Ist das real?",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"moth": 18,
+				"ascensionchangeg": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingmothg": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "ecdysisdance_sendingmothheartg",
+					"chance": 100
+				},
+				{
+					"id": "passion_expel_to_scar",
+					"chance": 100,
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"passionexhausted": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_sendingmothheartg",
+			"label": "Der letzte Tanz",
+			"actionId": "work",
+			"startdescription": "Sulochana und Mr. Agdistis sind beide zu meiner letzten Performance erschienen. 'Fast geschafft', sagt sie. Sie runzelt die Stirn. 'Ich bin mir nicht sicher ... nun, du bist jetzt fest entschlossen. Viel Glück im Forst, schätze ich.' Sie zündet sich eine Zigarette an. 'Das schmerzt', fügt sie leicht amüsiert hinzu. Hinter ihr sagt Mr. Agdistis deinen Namen, einmal, sanft. Seine Stimme klingt ausgesprochen schön – wie der weiche Klang einer Altflöte.",
+			"description": "'Ist der Tanz getanzt, mein Geist verwirrt und taumelnd, meine Gefühle wie Schlangen, kann ich nicht mehr so leicht sagen, was noch real ist. Sulochana ist real, denke ich. Meine Reflexion im Spiegel – die Reflexion einer gehörnten Bestie – all das ist sehr real. 'Geh schnell', sagt Sulochana. Sie fasst mich an der Schulter und küsst mich auf den Mund, weich wie ein Mottenflügel. Ihre Lippen sind kalt. Ihr Atem ist Aas. Ihre Augen sind Spiegel der Nacht. Ist das real?",
+			"requirements": {
+				"desiremoth_track": 3,
+				"desireheart_track": 3
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingmothheartg": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "passion_expel_to_scar",
+					"chance": 100,
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"passionexhausted": 1
+						}
+					}
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "ecdysisdance_sendingheartf",
+			"label": "Arbeit im Ecdysis-Klub: Jenseits aller Grenzen",
+			"actionId": "work",
+			"startdescription": "Dieser Tanz wird nackt aufgeführt. Mr. Agdistis kommt in meine Garderobe, um meinen Körper mit dem nötigen Weiß anzumalen. Er schluchzt.",
+			"description": "Der Publikumsraum ist finster und still. Ein einzelner Scheinwerfer folgt meinen Bewegungen. Es ist möglich, aber unwahrscheinlich, dass mir überhaupt niemand zusieht – niemand das langsame Abblenden des Scheinwerfers und meinen letzten Sturz sieht – niemand den weißen Vogel aus meinem offenen Mund kommen sieht, der bereits vergessen in die Nacht entschwindet.",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"heart": 15,
+				"ascensionchangef": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingheartf": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "health_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"fatigue": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_sendingmothf",
+			"label": "Arbeit im Ecdysis-Klub: Jenseits aller Grenzen",
+			"actionId": "work",
+			"startdescription": "Für diesen Tanz muss ich alles Haar einbüßen, das mir noch geblieben ist – nicht abrasiert, sondern vorsichtig mit der Schere abgeschnitten, überall. Sulochana nimmt sich dieser Aufgabe an. Sollte ich mich bewegen, knurrt sie und piekt mich mit den scharfen Spitzen der Schere. 'Wir sollten wirklich deine Zähne schärfen', sagt sie nachdenklich, 'doch dazu bleibt uns keine Zeit. Beiß einfach fest zu.' Sie gibt mir mit Nachdruck einen Klapps auf meinen geschorenen Hintern, und es ist Zeit.",
+			"description": "Bei diesem Tanz gibt es keinen Partner, und das einzige Publikum ist das Opfer, das heulend hin und her läuft und gegen die Wände trommelt. Ich jage es, schmeiße Stühle um und zerschlage Flaschen. Meine Zähne begegnen sich in seinem Halse. Mein Wolfs-Ich erhebt sich aus dem Blute. Selbst mit geschlossenen Augen sehe ich es, wie man den Sonnenaufgang sieht.",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"moth": 15,
+				"ascensionchangef": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingmothf": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "passion_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"passionexhausted": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_sendinghearte",
+			"label": "Arbeit im Ecdysis-Klub: Neue Höhen",
+			"actionId": "work",
+			"startdescription": "Heute Abend kommt Sulochana selbst um mich in Federn zu gewanden. 'Ich selbst bin nie höher als das hier gegangen, selbst in der Alten Gestalt', gesteht sie. 'Mein Weg zum Hause war am Ende ein wenig anders.' Sie zwickt mich anerkennend in die Hüfte. Aus dieser Nähe kann ich ihre Zähne sehen, gebogen wie die einer Schlange. 'Aber ich denke, du wirst die volle Distanz gehen. Zeit, denke ich, meine Schwestern vor deinem Kommen zu warnen. Und jetzt raus da, mach Eindruck. Der Mansus ist ja schon und gut, aber ich will immer noch bezahlt werden.'",
+			"description": "Heute Abend sitzen hier nur sieben Zuschauer: drei Männer, drei Frauen und Mr. Agdistis, der ihre Bezahlung entgegen nimmt. Ich tanze zur Musik einer mir unbekannten Zedernflöte mit sieben Löchern, gespielt von Sulochana persönlich. Das Dachfenster ist offen – die Nacht ist kalt, doch ich tanze mich weit darüber hinaus. Als mein anderen Ich in die Nacht emporsteigt, gibt es keinen Applaus vom Publikum – es murmelt nur zustimmend.",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"heart": 12,
+				"ascensionchangee": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendinghearte": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "health_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"fatigue": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_sendingmothe",
+			"label": "Arbeit im Ecdysis-Klub: Neue Höhen",
+			"actionId": "work",
+			"startdescription": "Heute Abend kommt Sulochana selbst um mich in Federn zu gewanden. 'So hoch bin ich gekommen, aber nicht höher', gesteht sie. 'Mein Weg zum Hause war am Ende ein wenig anders.' Sie zwickt mich anerkennend in die Hüfte. Aus dieser Nähe kann ich ihre Zähne sehen, gebogen wie die einer Schlange. 'Aber ich denke, du wirst die volle Distanz gehen. Zeit, denke ich, meine Schwestern vor deinem Kommen zu warnen. Und jetzt raus da, mach Eindruck. Der Mansus ist ja schon und gut, aber ich will immer noch bezahlt werden.'",
+			"description": "Heute Abend sitzen hier nur sieben Zuschauer: drei Männer, drei Frauen und Mr. Agdistis, der ihre Bezahlung entgegen nimmt. Ich tanze zur Musik einer mir unbekannten Zedernflöte mit sieben Löchern, gespielt von Sulochana persönlich. Das Dachfenster ist offen – die Nacht ist kalt, doch ich tanze mich weit darüber hinaus. Als mein anderen Ich in die Nacht emporsteigt, gibt es keinen Applaus vom Publikum – es murmelt nur zustimmend.",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"moth": 12,
+				"ascensionchangee": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingmothe": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "passion_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"passionexhausted": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_sendingheartd",
+			"label": "Arbeit im Ecdysis-Klub: Seltenes Streben",
+			"actionId": "work",
+			"startdescription": "Heute Abend bin ich in weiches Rostrot gewandet und trage eine Fuchsmaske. Ein Schwanz baumelt an mir herab: meine Jäger brauchen etwas, um danach zu schnappen. Heute Abend tanze ich allein und nicht allein. Wenn ich hinter den Vorhängen hervorluge, verlassen viele Zuschauer den Raum. Andere sitzen dort geduldig während Assistenten in Rot und Schwarz sie an ihre Plätze fesseln.",
+			"description": "Während die Musik zu einem kecken Quickstep wechselt, springe ich von der Bühne und streife zwischen den Sitzen hindurch. Die Zuschauer schreien auf, greifen nach mir im Vorübergehen und rütteln an ihren Sitzen, um mich zu erreichen. Einer stürzt zu Boden, meine Schwanz-Trophäe zwischen den Fingern ... doch ein anderer packt sie und reißt sie los! Die Assistenten tragen ihn hinter die Bühne, damit er bekommt, was er verdient. Unter wildem Applaus schlüpfe ich aus dem Raum. Nur der Gewinner des Preises sieht mein anderes Ich verschwinden, maskiert und rostbraun wie ich, der herrliche Schwanz intakt.",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"heart": 10,
+				"ascensionchanged": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingheartd": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "health_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"fatigue": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_sendingmothd",
+			"label": "Arbeit im Ecdysis-Klub: Seltenes Streben",
+			"actionId": "work",
+			"startdescription": "Heute Abend bin ich in weiches Rostrot gewandet und trage eine Fuchsmaske. Ein Schwanz baumelt an mir herab: meine Jäger brauchen etwas, um danach zu schnappen. Heute Abend tanze ich allein und nicht allein. Wenn ich hinter den Vorhängen hervorluge, verlassen viele Zuschauer den Raum. Andere sitzen dort geduldig während Assistenten in Rot und Schwarz sie an ihre Plätze fesseln.",
+			"description": "Während die Musik zu einem kecken Quickstep wechselt, springe ich von der Bühne und streife zwischen den Sitzen hindurch. Die Zuschauer schreien auf, greifen nach mir im Vorübergehen und rütteln an ihren Sitzen, um mich zu erreichen. Einer stürzt zu Boden, meine Schwanz-Trophäe zwischen den Fingern ... doch ein anderer packt sie und reißt sie los! Die Assistenten tragen ihn hinter die Bühne, damit er bekommt, was er verdient. Unter wildem Applaus schlüpfe ich aus dem Raum. Nur der Gewinner des Preises sieht mein anderes Ich verschwinden, maskiert und rostbraun wie ich, der herrliche Schwanz intakt.",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"moth": 10,
+				"ascensionchanged": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingmothd": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "passion_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"passionexhausted": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_sendingheartc",
+			"label": "Arbeit im Ecdysis-Klub: Der Schatten der Trennung",
+			"actionId": "work",
+			"startdescription": "Ich tanze mit einem einzigen Partner. Ich trage eine Katzenmaske. Mein Partner ist als Schlange verkleidet. Jede meiner schwarz behandschuhten Hände hat Krallen aus blauem Stahl. Ist mein Schlangenpartner zu langsam, zeichne ich seine Haut, und ich – ich muss mich vor den Fangzähnen der Schlange hüten, wenn wir uns zum Kuss vereinen.",
+			"description": "Vor Anmut gewölbt trete ich aus meinem eigenen Schatten heraus. Ich bin eine schwarze Katze, aufgerollt und zufrieden, und ich werde mich ungesehen bewegen, bis ich wieder bereit bin, zu mir selbst zurückzukehren.",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"heart": 8,
+				"ascensionchangec": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingheartc": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "health_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"fatigue": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_sendingmothc",
+			"label": "Arbeit im Ecdysis-Klub: Der Schatten der Trennung",
+			"actionId": "work",
+			"startdescription": "Ich tanze mit einem einzigen Partner. Ich trage eine Katzenmaske. Mein Partner ist als Schlange verkleidet. Jede meiner schwarz behandschuhten Hände hat Krallen aus blauem Stahl. Ist mein Schlangenpartner zu langsam, zeichne ich seine Haut, und ich – ich muss mich vor den Fangzähnen der Schlange hüten, wenn wir uns zum Kuss vereinen.",
+			"description": "Vor Anmut gewölbt trete ich aus meinem eigenen Schatten heraus. Ich bin eine schwarze Katze, aufgerollt und zufrieden, und ich werde mich ungesehen bewegen, bis ich wieder bereit bin, zu mir selbst zurückzukehren.",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"moth": 8,
+				"ascensionchangec": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingmothc": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "passion_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"passionexhausted": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_sendingheartb",
+			"label": "Arbeit im Ecdysis-Klub: Eine aufstrebende Viper",
+			"actionId": "work",
+			"startdescription": "Heute Abend bringen wir Schlangen mit auf die Bühne, damit sie sich mit uns bewegen, und wir sind schuppenmaskiert und geschmeidig, wie unser Schlangen-Ich. Die Bühne ist von Licht umringt und die Luft ein silberner Nebel, wobei mir der Schweiß den Nacken herunterläuft. Heute Nacht tanzen wir für den Mond.",
+			"description": "Auf dem Höhepunkt des Tanzes überkommt mich der Krampf und ich winde mich in Zuckungen, bis sich die Bewegung in meiner Brust manifestiert – in einer sich erhebenden Viper! Sie ergießt sich aus dem Munde meiner Maske wie eine Krankheit, strömt meinen Leib herab und verschwindet von der Bühne. Das Publikum applaudiert stürmisch! Ich taumle davon, mit bebender Brust. Ich weiß, die Schlange wird auf dem gleichen Weg zurückkehren, wie sie gekommen ist, sobald wir beide bereit sind.",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"heart": 6,
+				"ascensionchangeb": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingheartb": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "health_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"fatigue": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_sendingmothb",
+			"label": "Arbeit im Ecdysis-Klub: Eine aufstrebende Viper",
+			"actionId": "work",
+			"startdescription": "Heute Abend bringen wir Schlangen mit auf die Bühne, damit sie sich mit uns bewegen, und wir sind schuppenmaskiert und geschmeidig, wie unser Schlangen-Ich. Die Bühne ist von Licht umringt und die Luft ein silberner Nebel, wobei mir der Schweiß den Nacken herunterläuft. Heute Nacht tanzen wir für den Mond.",
+			"description": "Auf dem Höhepunkt des Tanzes überkommt mich der Krampf und ich winde mich in Zuckungen, bis sich die Bewegung in meiner Brust manifestiert – in einer sich erhebenden Viper! Sie ergießt sich aus dem Munde meiner Maske wie eine Krankheit, strömt meinen Leib herab und verschwindet von der Bühne. Das Publikum applaudiert stürmisch! Ich taumle davon, mit bebender Brust. Ich weiß, die Schlange wird auf dem gleichen Weg zurückkehren, wie sie gekommen ist, sobald wir beide bereit sind.",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"moth": 6,
+				"ascensionchangeb": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingmothb": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "passion_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"passionexhausted": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_ascensionlessonmotha",
+			"label": "Arbeit im Ecdysis-Klub: Die Vehemenz der Haut",
+			"actionId": "work",
+			"startdescription": "Heute Abend sind wir fest in Schals aus grüner Seide gewickelt. Wir werden uns mit mehr Vehemenz als sonst enthüllen. Bevor ich beginne gibt mir Mr. Agdistis eine mundlose ovale Maske, die so grün wie das Laub im Frühjahr ist. Ich zögere einen Moment, bevor ich sie aufsetze. Er hat ihre Innenseite mit frischem Lehm eingeschmiert.",
+			"description": "Als der erste Schal fällt, ist der Schmerz ein Schock, wie das erneute Aufreißen einer Wunde. Beim nächsten Mal ist es leichter, auch bei dem darauf, doch ich taumle ein wenig. Meine Landsleute sehen mich besorgt an: Ich weiß, dass meine Miene hinter der Maske nicht zu sehen ist. Schließlich winden wir uns zusammen in einem Ring. Als ich den letzten Schal von mir reiße, ist mir, als würde ich wie eine Wurzel aus dem Boden gerissen. Ich wage es nicht, die Maske abzunehmen. Hinterher ist meine Haut makellos.",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"moth": 4,
+				"ascensionchangea": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"ascensionlessonmotha": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "passion_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"passionexhausted": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_ascensionlessonhearta",
+			"label": "Arbeit im Ecdysis-Klub: Die Vehemenz der Haut",
+			"actionId": "work",
+			"startdescription": "Heute Abend sind wir fest in Schals aus grüner Seide gewickelt. Wir werden uns mit mehr Vehemenz als sonst enthüllen. Bevor ich beginne gibt mir Mr. Agdistis eine mundlose ovale Maske, die so grün wie das Laub im Frühjahr ist. Ich zögere einen Moment, bevor ich sie aufsetze. Er hat ihre Innenseite mit frischem Lehm eingeschmiert.",
+			"description": "Als der erste Schal fällt, ist der Schmerz ein Schock, wie das erneute Aufreißen einer Wunde. Beim nächsten Mal ist es leichter, auch bei dem darauf, doch ich taumle ein wenig. Meine Landsleute sehen mich besorgt an: Ich weiß, dass meine Miene hinter der Maske nicht zu sehen ist. Schließlich winden wir uns zusammen in einem Ring. Als ich den letzten Schal von mir reiße, ist mir, als würde ich wie eine Wurzel aus dem Boden gerissen. Ich wage es nicht, die Maske abzunehmen. Hinterher ist meine Haut makellos.",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"heart": 4,
+				"ascensionchangea": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"ascensionlessonhearta": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "health_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"fatigue": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_ascensionlessonheart_fallthrough",
+			"label": "Arbeit im Ecdysis-Klub: Donner. Beinahe.",
+			"actionId": "work",
+			"startdescription": "Heute Abend sind wir maskiert und bewegen uns wie Zelebranten. Mr. Agdistis hat ein scharfes Auge auf uns.",
+			"description": "Heute Abend ist da etwas, das fast geschieht – ein sich sammelnder Donner, ein Moment, in dem der Duft von Latschenkiefern die Luft erfrischt. Doch wir legen alles außer den Masken ab, und alles, was geschieht, ist Applaus. [Füge etwas mehr Herz hinzu, um etwas mehr zu erreichen. Je weiter fortgeschritten dein Verlangen ist, desto mehr Herz brauchst du.]",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"heart": 3,
+				"changemarks": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "health_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"healthexhausted": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_ascensionlessonmoth_fallthrough",
+			"actionId": "work",
+			"label": "Arbeit im Ecdysis-Klub: Unterwerfung. Beinahe.",
+			"startdescription": "Heute Abend sind wir maskiert und bewegen uns wie Zelebranten. Sulochana wartet im Hintergrund, die Augen verborgen.",
+			"description": "Heute Abend ist da etwas, das fast geschieht – ein Geräusch wie vom Wind im Geäst, ein Flackern wie von Feuerschein in den Augen der Zuschauer. Doch wir legen alles außer den Masken ab, und alles, was geschieht, ist Applaus. [Füge etwas mehr Motte hinzu, um etwas mehr zu erreichen. Je weiter fortgeschritten dein Verlangen ist, desto mehr Motte brauchst du.]",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"moth": 3,
+				"changemarks": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "passion_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"passionexhausted": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_genericheart",
+			"label": "Inspirierte Arbeit im Ecdysis-Klub",
+			"actionId": "work",
+			"startdescription": "Die Luft erzittert. Meine Begleiter auf der Bühne sind elektrische Schläge aus Fleisch und Samt. Die Trommel von Mr. Agdistis donnert. Wir beginnen.",
+			"description": "Die Musiker schließen mit einem Tusch. Manche im Publikum zucken zusammen, als würden sie aus tiefem Schlummer erwachen. Andere applaudieren. Jemand bahnt sich durch die Menge den Weg zum Ausgang, das Gesicht verhüllt. So jemanden gibt es immer. Als wir von der Bühne springen, zwinkert Mr. Agdistis mir zu. Und da ist Sulochana, mit ihren gewieften Händen, um die unter uns zu verbinden, die zu weit gegangen sind.",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"heart": 3
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "health_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"fatigue": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_genericmoth",
+			"actionId": "work",
+			"label": "Inspirierte Arbeit im Ecdysis-Klub",
+			"startdescription": "Die Luft ist mit Rauch umwölkt. Meine Begleiter auf der Bühne sind flatternde Erschütterungen aus Fleisch und Samt. Die Trommel von Mr. Agdistis donnert. Wir beginnen.",
+			"description": "Die Musiker schließen mit einem Tusch. Manche im Publikum zucken zusammen, als würden sie aus tiefem Schlummer erwachen. Andere applaudieren. Jemand bahnt sich durch die Menge den Weg zum Ausgang, das Gesicht verhüllt. So jemanden gibt es immer. Als wir von der Bühne springen, zwinkert Mr. Agdistis mir zu. Und da ist Sulochana, mit ihren gewieften Händen, um die unter uns zu verbinden, die zu weit gegangen sind.",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"moth": 3
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "passion_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"passionexhausted": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_genericheart_rote",
+			"label": "Uninspirierte Arbeit im Ecdysis-Klub",
+			"actionId": "work",
+			"startdescription": "Wir treten auf die Bühne, sieben an der Zahl, die Köpfe hoch gereckt, die Schals flatternd. Doch ich weiß bereits, dass etwas fehlt. Durch das Blau des Qualms wenden sich die Gesichter der Zuschauer uns zu, dann wieder ihren Cocktails und Begleitern. Ich unterdrücke ein Husten, während der Qualm über die Bühne treibt.",
+			"description": "Mr. Agdistis sitzt mit seiner Trommel bei den anderen Musikern. Ich spüre, wie sein Blick auf mir ruht, als die Performance ihr Ende findet. Er ist enttäuscht, aber ich weiß, dass er niemals etwas Unfreundliches sagen würde. Wahrscheinlich wird er überhaupt nichts sagen.",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"heart": 2
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "health_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"fatigue": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_genericmoth_rote",
+			"label": "Uninspirierte Arbeit im Ecdysis-Klub",
+			"actionId": "work",
+			"startdescription": "Wir treten auf die Bühne, sieben an der Zahl, die Köpfe hoch gereckt, die Schals gewunden. Doch ich weiß bereits, dass etwas fehlt. Durch das Blau des Qualms wenden sich die Gesichter der Zuschauer uns zu, dann wieder ihren Cocktails und Begleitern. Ich unterdrücke ein Husten, während der Qualm über die Bühne treibt.",
+			"description": "Sulochana steht hinter der Bühne, Ellenbogen in die Hand gestützt, und sieht mich durchdringend an, als ich mich an ihr vorbei schiebe. 'Ich hätte mir mehr erwartet', schnarrt sie.",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"moth": 2
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "passion_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"passion": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work_changedesire",
+			"label": "Folge meinem Verlangen, wohin es auch führen mag",
+			"actionId": "work",
+			"startdescription": "Weg für den Abend ...",
+			"description": "Als die Sonne am nächsten Morgen aufgeht, finde ich mich gegen einen Schornstein gelehnt wieder, mit Blick auf die von der Dämmerung gefilterte Stadt. Mein Haar ist zerzaust, und jemand hat mir die Schuhe gestohlen.",
+			"requirements": {
+				"changemarks": 1,
+				"ecdysijob": -1,
+				"job": -1,
+				"dance": -1,
+				"location": -1
+			},
+			"effects": {
+				"glimmering": 1,
+				"vitality": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "work_changedesire_restlessness",
+					"chance": 70
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work_changedesire_restlessness",
+			"label": "Folge meinem Verlangen, wohin es auch führen mag",
+			"actionId": "work",
+			"description": "Ich habe fahlen Wein mit einem Priester getrunken – habe mir einen Hundekampf am Hafen angesehen – wurde im Profil in einem Raum voller Schaufensterpuppen gezeichnet. Nichts davon hatte ich wirklich gewollt.",
+			"effects": {
+				"restlessness": 1
+			}
+		}
+	]
+}

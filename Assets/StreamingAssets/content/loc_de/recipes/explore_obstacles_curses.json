@@ -1,0 +1,872 @@
+{
+	"recipes": [
+		{
+			"id": "explorevaultcurse_dread_encounter",
+			"actionId": "explore",
+			"label": "Der Fluch der Trockenen Seele",
+			"startdescription": "Die Schätze voraus sind mit einem Fluch der Trockenen Seele belegt. Ohne Laterne oder Herz könnte sie uns nach Hause folgen und den Geist zersetzen.",
+			"requirements": {
+				"curse_dread": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "Hilfe",
+					"description": "Geldmittel sind unverzichtbar bei Expeditionen. Anhänger erlauben es mir, Hindernisse zu überwinden.",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultcurse_dread_highheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_dread_highlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_dread_midheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_dread_midlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_dread_lowheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_dread_lowlantern",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultcurse_dread_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_dread_highheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 10
+			},
+			"label": "Wir rufen die Ringeibe an, die erneuert wird",
+			"startdescription": "Wir sind so stark im Herzen, dass wir gegen den Fluch so gut wie sicher gefeit sind.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_dread_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultcurse_dread_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_dread_midheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 5
+			},
+			"label": "Wir rufen die Ringeibe an, die umschließt",
+			"startdescription": "Wir sind so stark im Herzen, dass wir gegen den Fluch gefeit sind ... vermutlich.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_dread_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultcurse_dread_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_dread_lowheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 1
+			},
+			"label": "Wir rufen die Ringeibe an, die saftig ist",
+			"startdescription": "Vielleicht kann uns die Macht jener alten und fruchtbaren Stunde, der Ringeibe, gegen den Fluch feien. Vielleicht auch nicht.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_dread_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultcurse_dread_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_dread_highlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 10
+			},
+			"label": "Wir rufen den Oberst an, der nicht abzuweisen ist",
+			"startdescription": "Der Oberst ist eine wilde Stunde, aber eine Macht, die das Licht kennt, und er hat schon Schlimmeres überlebt. Seine Macht wird uns so gut wie sicher schützen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_dread_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultcurse_dread_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_dread_midlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 5
+			},
+			"label": "Wir rufen den Oberst an, der vernarbt ist",
+			"startdescription": "Der Oberst ist eine narbige Stunde, aber eine Macht, die das Licht kennt, und er hat schon Schlimmeres überlebt. Seine Macht sollte uns schützen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_dread_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultcurse_dread_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_dread_lowlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 1
+			},
+			"label": "Wir rufen den Oberst an, der blind ist",
+			"startdescription": "Der Oberst ist eine Stunde, welche das Licht kennt, aber erinnert er sich auch daran? Seine Macht könnte uns dennoch schützen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_dread_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultcurse_dread_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_dread_success",
+			"actionId": "explore",
+			"label": "Der Fluch verwelkt",
+			"startdescription": "Unsere Macht ist stärker als die Macht, die hier war. Der Fluch wird uns nichts anhaben.",
+			"description": ".",
+			"effects": {
+				"curse_dread": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultcurse_dread_failure",
+			"actionId": "explore",
+			"label": "Der Fluch bleibt",
+			"startdescription": "Wer in einen Ort wie diesen eindringt, muss dafür bezahlen. Schon bald wird der Fluch über uns kommen.",
+			"description": ".",
+			"effects": {
+				"curse_dread": -1
+			},
+			"alternativerecipes": [
+				{
+					"id": "curse_dread_dormant",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultcurse_visions_encounter",
+			"actionId": "explore",
+			"label": "Der Fluch des 5. Auges",
+			"startdescription": "Die Schätze voraus sind mit einem Fluch des 5. Auges belegt. Ohne Winter oder Herz könnte er uns nach Hause folgen und das Auge der Seele aufreißen.",
+			"requirements": {
+				"curse_visions": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "Hilfe",
+					"description": "Geldmittel sind unverzichtbar bei Expeditionen. Anhänger erlauben es mir, Hindernisse zu überwinden.",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultcurse_visions_highheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_visions_highwinter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_visions_midheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_visions_midwinter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_visions_lowheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_visions_lowwinter",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultcurse_visions_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_visions_highheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 10
+			},
+			"label": "Wir rufen die Ringeibe an, die erneuert wird",
+			"startdescription": "Wir sind so stark im Herzen, dass wir gegen den Fluch so gut wie sicher gefeit sind.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_visions_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultcurse_visions_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_visions_midheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 5
+			},
+			"label": "Wir rufen die Ringeibe an, die umschließt",
+			"startdescription": "Wir sind so stark im Herzen, dass wir gegen den Fluch gefeit sind ... vermutlich.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_visions_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultcurse_visions_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_visions_lowheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 1
+			},
+			"label": "Wir rufen die Ringeibe an, die saftig ist",
+			"startdescription": "Vielleicht kann uns die Macht jener alten und fruchtbaren Stunde, der Ringeibe, gegen den Fluch feien. Vielleicht auch nicht.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_visions_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultcurse_visions_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_visions_highwinter",
+			"actionId": "explore",
+			"requirements": {
+				"winter": 10
+			},
+			"label": "Wir rufen den Elegiker an, dem nichts mehr genommen werden kann",
+			"startdescription": "Der Elegiker weiß, was bereits verloren ist. Seine Macht wird uns so gut wie sicher schützen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_visions_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultcurse_visions_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_visions_midwinter",
+			"actionId": "explore",
+			"requirements": {
+				"winter": 5
+			},
+			"label": "Wir rufen den Elegiker an, der nicht zu täuschen ist",
+			"startdescription": "Der Elegiker scheidet das Erinnerte vom Wahren. Seine Macht sollte uns schützen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_visions_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultcurse_visions_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_visions_lowwinter",
+			"actionId": "explore",
+			"requirements": {
+				"winter": 1
+			},
+			"label": "Wir rufen den Elegiker an, der jeden Toten beim Namen nennt",
+			"startdescription": "Ironie und Sorge des Elegikers könnten immer noch die Visionen eindämmen. Wer weiß?",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_visions_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultcurse_visions_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_visions_success",
+			"actionId": "explore",
+			"label": "Der Fluch verwelkt",
+			"startdescription": "Unsere Macht ist stärker als die Macht, die hier war. Der Fluch wird uns nichts anhaben.",
+			"description": ".",
+			"effects": {
+				"curse_visions": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultcurse_visions_failure",
+			"actionId": "explore",
+			"label": "Der Fluch bleibt",
+			"startdescription": "Wer in einen Ort wie diesen eindringt, muss dafür bezahlen. Schon bald wird der Fluch über uns kommen.",
+			"description": ".",
+			"effects": {
+				"curse_visions": -1
+			},
+			"alternativerecipes": [
+				{
+					"id": "curse_visions_dormant",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultcurse_affliction_encounter",
+			"actionId": "explore",
+			"label": "Der schleichende Odem",
+			"startdescription": "Die Schätze voraus sind mit einem Fluch des Schleichenden Odems. Ohne Gral oder Herz könnte er uns nach Hause folgen und sich wie Sporen in unsere Lunge setzen.",
+			"requirements": {
+				"curse_affliction": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "Hilfe",
+					"description": "Geldmittel sind unverzichtbar bei Expeditionen. Anhänger erlauben es mir, Hindernisse zu überwinden.",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultcurse_affliction_highheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_affliction_highgrail",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_affliction_midheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_affliction_midgrail",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_affliction_lowheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_affliction_lowgrail",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultcurse_affliction_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_affliction_highheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 10
+			},
+			"label": "Wir rufen die Ringeibe an, die erneuert wird",
+			"startdescription": "Wir sind so stark im Herzen, dass wir gegen den Fluch so gut wie sicher gefeit sind.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_affliction_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultcurse_affliction_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_affliction_midheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 5
+			},
+			"label": "Wir rufen die Ringeibe an, die umschließt",
+			"startdescription": "Wir sind so stark im Herzen, dass wir gegen den Fluch gefeit sind ... vermutlich.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_affliction_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultcurse_affliction_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_affliction_lowheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 1
+			},
+			"label": "Wir rufen die Ringeibe an, die saftig ist",
+			"startdescription": "Vielleicht kann uns die Macht jener alten und fruchtbaren Stunde, der Ringeibe, gegen den Fluch feien. Vielleicht auch nicht.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_affliction_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultcurse_affliction_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_affliction_highgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 10
+			},
+			"label": "Wir rufen den Roten Gral an, der Leben schenkt",
+			"startdescription": "Die Vitalität des Roten Grals wird uns so gut wie sicher gegen den Fluch feien.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_affliction_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultcurse_affliction_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_affliction_midgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 5
+			},
+			"label": "Wir rufen den Roten Gral an, der Leben nimmt",
+			"startdescription": "Der Hunger des Roten Grals sollte uns gegen den Fluch feien.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_affliction_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultcurse_affliction_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_affliction_lowgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 1
+			},
+			"label": "Wir rufen den Roten Gral an, der nicht gesättigt ist",
+			"startdescription": "Der Rote Gral könnte uns gegen den Fluch feien. Er ist eine wankelmütige Stunde.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_affliction_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultcurse_affliction_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_affliction_success",
+			"actionId": "explore",
+			"label": "Der Fluch verwelkt",
+			"startdescription": "Unsere Macht ist stärker als die Macht, die hier war. Der Fluch wird uns nichts anhaben.",
+			"description": ".",
+			"effects": {
+				"curse_affliction": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultcurse_affliction_failure",
+			"actionId": "explore",
+			"label": "Der Fluch bleibt",
+			"startdescription": "Wer in einen Ort wie diesen eindringt, muss dafür bezahlen. Schon bald wird der Fluch über uns kommen.",
+			"description": ".",
+			"effects": {
+				"curse_affliction": -1
+			},
+			"alternativerecipes": [
+				{
+					"id": "curse_affliction_dormant",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultcurse_nowhere_encounter",
+			"actionId": "explore",
+			"label": "Fluch aus dem Nirgendwo",
+			"startdescription": "Hier ist ein Ort, wo die Haut der Welt gelb vor Fieber ist. Laterne oder Motte könnten uns schützen. Sonst nichts. ",
+			"requirements": {
+				"curse_nowhere": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "Hilfe",
+					"description": "Geldmittel sind unverzichtbar bei Expeditionen. Anhänger erlauben es mir, Hindernisse zu überwinden.",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultcurse_nowhere_highmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_nowhere_highlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_nowhere_midmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_nowhere_midlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_nowhere_lowmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_nowhere_lowlantern",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultcurse_nowhere_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_nowhere_highmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 10
+			},
+			"label": "Wir rufen die Lachdrossel an, die nicht zu erschöpfen ist",
+			"startdescription": "Wir sind durch die Motte so stark, dass wir gegen den Fluch so gut wie sicher gefeit sind.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_nowhere_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultcurse_nowhere_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_nowhere_midmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 5
+			},
+			"label": "Wir rufen die Lachdrossel an, die nicht aufzuhalten ist",
+			"startdescription": "Die Stunde namens Lachdrossel kann angefleht werden, damit sie diesen Fluch aufhebt. Wahrscheinlich sind wir dann in Sicherheit.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_nowhere_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultcurse_nowhere_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_nowhere_lowmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 1
+			},
+			"label": "Wir rufen die Lachdrossel an, die ihre Geschichte den Willigen und Unwilligen erzählt",
+			"startdescription": "Die Lachdrossel ist eine Macht der Motte und nicht zuverlässig. Vielleicht wird sie uns schützen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_nowhere_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultcurse_nowhere_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_nowhere_highlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 10
+			},
+			"label": "Wir rufen die Sonne-in-Lumpen an, die noch brennt",
+			"startdescription": "Die Sonne-in-Lumpen verleiht das Licht der Laterne. Sie wird so gut wie sicher dem Fluch hier ein Ende machen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_nowhere_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultcurse_nowhere_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_nowhere_midlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 5
+			},
+			"label": "Wir rufen die Sonne-in-Lumpen an, die nicht so ist, wie sie einst war",
+			"startdescription": "Die Sonne-in-Lumpen, jene müde, kühle Macht, kann uns mit Laterne unterstützen. Sie wird diesen Fluch einhegen ... vielleicht.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_nowhere_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultcurse_nowhere_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_nowhere_lowlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 1
+			},
+			"label": "Wir rufen die Sonne-in-Lumpen an, die weit weg ist",
+			"startdescription": "Wir brauchen Laterne, um dem Fluch ein Ende zu machen, doch die Sonne-in-Lumpen kann uns nur wenig bieten.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_nowhere_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultcurse_nowhere_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_nowhere_success",
+			"actionId": "explore",
+			"label": "Der Fluch verwelkt",
+			"startdescription": "Unsere Macht ist stärker als die Macht, die hier war. Der Fluch wird uns nichts anhaben.",
+			"description": ".",
+			"effects": {
+				"curse_nowhere": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultcurse_nowhere_failure",
+			"actionId": "explore",
+			"label": "Der Fluch bleibt",
+			"startdescription": "Wer in einen Ort wie diesen eindringt, muss dafür bezahlen. Schon bald wird der Fluch über uns kommen.",
+			"description": ".",
+			"effects": {
+				"curse_nowhere": -1
+			},
+			"alternativerecipes": [
+				{
+					"id": "curse_nowhere_dormant",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		}
+	]
+}

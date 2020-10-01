@@ -1,0 +1,3057 @@
+{
+	"recipes": [
+		{
+			"id": "send.first",
+			"actionId": "send",
+			"label": "コミュニケーション",
+			"startdescription": "過去の知り合いと連絡を取らない立派な理由はあるが、それもまた変わるかもしれない。",
+			"effects": {
+				"temptation.obscurity": 1
+			},
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "send.op.echidna",
+			"actionId": "send",
+			"label": "チャイマの追跡",
+			"startdescription": "エキドナの気配が噂され始めると......",
+			"description": "何かがチャイマの行く手に現れた。",
+			"slots": [
+				{
+					"id": "chaima",
+					"label": "チャイマ",
+					"description": "チャイマは砂漠の端に用がある。",
+					"required": {
+						"ally.huntress": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.op.echidna.2"
+				}
+			],
+			"requirements": {
+				"op.echidna": 1
+			},
+			"extantreqs": {
+				"ally.huntress": 1
+			},
+			"comments": "Extantreq shouldn't be necessary because the op card is unique, but leaving it here as a safety measure",
+			"aspects": {
+				"renewal.exile": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "send.op.echidna.2",
+			"actionId": "send",
+			"label": "チャイマの獲物",
+			"startdescription": "エキドナの噂が初めて流れ出すと、チャイマは砂漠へと消えていった。残していったメモは、彼女らしく素っ気ないものだった――「狩り。リゲイア狩りではない」。",
+			"description": "チャイマは、並外れた美貌と、くぼんだ目を持つ男を縛り、引きずって戻ってきた。男の皮膚の下には超人的な筋肉が見える。「見つけた」と、チャイマは私に言った。",
+			"requirements": {
+				"ally.huntress": 1
+			},
+			"effects": {
+				"op.echidna": -1,
+				"contact.labhite.fallen": 1
+			}
+		},
+		{
+			"id": "send.op.morgen",
+			"actionId": "send",
+			"label": "マチュティーヌ夫人との対談？",
+			"startdescription": "マチュティーヌ夫人は俗に言うリゲイアの者だ。つまり人間を食べたりする人間ということだが、ベルベットの名もなき名を持つ者を知っているとらしい。「その霧は敗者を慰める」そうだ。今の私に必要なものかもしれない。",
+			"description": "音沙汰無しだ。波止場で待ち続ける私を潮風が叩きつける。",
+			"slots": [
+				{
+					"id": "gift",
+					"label": "贈り物",
+					"description": "マチュティーヌ夫人の興味をそそるもの"
+				}
+			],
+			"alt": [
+				{
+					"id": "send.op.morgen.pentiment"
+				}
+			],
+			"requirements": {
+				"op.morgen": 1
+			},
+			"aspects": {
+				"renewal.exile": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "send.op.morgen.pentiment",
+			"actionId": "send",
+			"label": "マチュティーヌ夫人！",
+			"startdescription": "マチュティーヌ夫人が笑いながら通路を下りてくる。彼女の笑い声は鳥のさえずりのようで、目も鳥に似て、黒く輝く珠のよだった。「面白い。他にはないの？」と彼女は尋ねた。",
+			"requirements": {
+				"pentiment": 1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.ii"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.ii",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 1
+			},
+			"label": "2つ目のペンティメントをマチュティーヌ夫人に見せる",
+			"startdescription": "「幸先いいわね。私に仲裁してほしいのよね？私を納得させるには、もう少し努力してもらうわよ。他には何があるの？」",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "ペンティメント",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.iii"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.iii",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 2
+			},
+			"label": "3つ目のペンティメントをマチュティーヌ夫人に見せる",
+			"startdescription": "「良いわ。その調子よ。名を持つ者は欲張りなの」",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "ペンティメント",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.iv"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.iv",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 3
+			},
+			"label": "4つ目のペンティメントをマチュティーヌ夫人に見せる",
+			"startdescription": "「あらあら、もう1つ？こっちにいらっしゃい。顔を見せて」",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "ペンティメント",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.v"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.v",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 4
+			},
+			"label": "5つ目のペンティメントをマチュティーヌ夫人に見せる",
+			"startdescription": "「珍しい物の匂いがすると思ったのよね。大地の血の匂いね。あなたの家族のためなら、<i>道</i>を手配してあげられると思う。そこの誰かが喜んであなたに会ってくれるはずよ。でも安くはないわ。これが7つ必要」",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "ペンティメント",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.vi"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.vi",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 5
+			},
+			"label": "6つ目のペンティメントをマチュティーヌ夫人に見せる",
+			"startdescription": "「<i>アレ</i>、さあ行くのよ。一緒に頑張りましょう。あともうちょっとよ――」",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "ペンティメント",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.vii"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.vii",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 6
+			},
+			"label": "7つ目のペンティメントをマチュティーヌ夫人に見せる",
+			"startdescription": "マチュティーヌ夫人はわざとらしく息を吸った。「こんなにたくさん！名を持つ者が有頂天になってしまうわ！あともう1つもう1つで、あなたのために鍵を回すわ」",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "ペンティメント",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.final"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.final",
+			"requirements": {
+				"pentiment": 7
+			},
+			"actionId": "send",
+			"label": "頂点の扉",
+			"startdescription": "マチュティーヌ夫人は、宝石を持ち上げる。それは彼女の目のように黒く輝いていた。「<i>ボンボヤージュ</i>」",
+			"warmup": 30,
+			"ending": "victoryvelvet"
+		},
+		{
+			"id": "send.op.morgen.pentiment.break",
+			"actionId": "send",
+			"label": "足りない",
+			"startdescription": "「だめ？」",
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.break.nothing"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break.flute"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.break.nothing",
+			"actionId": "send",
+			"label": "足りない",
+			"startdescription": "「私の時間を無駄にしに来たわけじゃあないわよね。そのことはもう説明したわよ」",
+			"extantreqs": {
+				"curio.morgen": 1
+			}
+		},
+		{
+			"id": "send.op.morgen.pentiment.break.flute",
+			"actionId": "send",
+			"label": "足りない",
+			"startdescription": "マチュティーヌ夫人の青白くて無垢な額に、小さな皺が寄った。「足りないわ。もっと上を目指せるはずよ、<i>ハン</i>？」これをあげる。海辺に着いたら私を呼んで。そうしたら会いに行くわ。一度だけよ。時間を無駄にしたくないの。それじゃあね」",
+			"effects": {
+				"curio.morgen": 1
+			}
+		},
+		{
+			"id": "send.op.medusa",
+			"actionId": "send",
+			"label": "見えないものを探す",
+			"startdescription": "リゲイアの者であるメドゥーサ。ピールはかつて「彼女はまだ生きている同種の中では最高齢かもしれない。だが、彼女は死んでしまった」と言っていた。ピールはよくそのようなことを口にしていたが、今、ブダの雨で半分見えない通りにある、像の見えない目の下で、彼が、メドゥーサのなぞなぞは「見えないものは何だ？」だと言ったことを思い出した。そして、肌がチクチクと痛みだす。",
+			"description": "何もない。雨がコートを伝って、首の後ろを伝ってきた。彼女はまだどこかにいるはずだ。",
+			"slots": [
+				{
+					"id": "medusa",
+					"label": "メドゥーサのなぞなぞ",
+					"description": "「見えないものは何だ？」",
+					"required": {
+						"moth": 1
+					},
+					"consumes": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.op.medusa.pentiment"
+				}
+			],
+			"requirements": {
+				"op.medusa": 1
+			},
+			"extantreqs": {
+				"wound.exile.medusa": -1
+			},
+			"comments": "Extantreq shouldn't be necessary because the op card is unique, but leaving it here as a safety measure",
+			"aspects": {
+				"renewal.exile": 1
+			},
+			"effects": {
+				"dread": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "send.op.medusa.pentiment",
+			"actionId": "send",
+			"label": "出会い",
+			"startdescription": "メドゥーサのなぞなぞの答えを見つけた......それと同時に彼女は私を見つけた気がする。もちろん、彼女には会えなかったが、夜中に時間を無駄にし、その結果、癒えない傷を心臓の上に負ってしまった。\n\nわざわざ危険なことをするとこういうことになるのだ（リゲイアの者に本当に会ったのなら、なぜ彼女は私を見逃したのだろう？不審に思えてしかたない）。",
+			"requirements": {
+				"moth": 1
+			},
+			"effects": {
+				"wound.exile.medusa": 1,
+				"op.medusa": -1
+			},
+			"burnimage": "pentiment",
+			"warmup": 30
+		},
+		{
+			"id": "send.ligeian",
+			"actionId": "send",
+			"label": "リゲイアの者を探す",
+			"requirements": {
+				"ligeian": 1
+			},
+			"startdescription": "私と同じように、リゲイアの者たちは犯罪者で逃亡者だ。私と違うのは、永遠に呪われていることだろう。子宮から生まれたばかりの子供を貪り食ったからだ。それでも共通点を見つけられるかもしれない。",
+			"slots": [
+				{
+					"id": "gift",
+					"label": "贈り物",
+					"required": {
+						"remnant": 1,
+						"decade.stolen": 1,
+						"ally": 1,
+						"associate": 1
+					},
+					"actionId": "send"
+				}
+			],
+			"warmup": 30,
+			"craftable": true,
+			"alt": [
+				{
+					"id": "send.ligeian.risk"
+				}
+			],
+			"effects": {
+				"remnant": -1,
+				"decade.stolen": -1,
+				"ally": -1,
+				"associate": -1
+			},
+			"linked": [
+				{
+					"id": "send.ligeian.reward"
+				}
+			]
+		},
+		{
+			"id": "send.ligeian.risk",
+			"actionId": "send",
+			"label": "長いスプーンの時の神",
+			"requirements": {
+				"remnant": -1,
+				"decade.stolen": -1,
+				"ally": -1,
+				"associate": -1
+			},
+			"startdescription": "贈り物を持たずにリゲイアの者に会うなら、彼女の機嫌が良いことを祈ったほうが良い。[リゲイアの者の機嫌が良いことはめったにない。]",
+			"linked": [
+				{
+					"id": "send.ligeian.reward",
+					"chance": 30
+				},
+				{
+					"id": "send.ligeian.displeased"
+				}
+			]
+		},
+		{
+			"id": "send.ligeian.reward",
+			"actionId": "send",
+			"label": "「リゲイアは忘れない」",
+			"startdescription": "@#op.echidna|「座ってちょうだい。お話しましょう」\n#op.kleidouchos|「今日はまだあなたを食べていないわ。何の用？早くして」\n#op.marinette|「<sprite name=secrethistories>？」\n#op.sulochana|スロチャナはクローブタバコをゆっくりと吸い、「贅沢をしたい気分なの。続けて」と、満足げに言った。@\n\n[未知の敵の弱点を1つ追加して、その性質を知る。そうしないとリゲイアの者は贈り物をくれるか、痕跡を残さずに生産者を食べてしまうが、彼女は密告者には気づかず、敵を追わない。]",
+			"slots": [
+				{
+					"id": "advice",
+					"label": "アドバイス",
+					"description": "リゲイアの者たちは色々なことを耳にするが、とても年を取っている。",
+					"required": {
+						"weakness.foe.unknown": 1
+					},
+					"actionId": "send"
+				}
+			],
+			"alt": [
+				{
+					"id": "send.ligeian.revelation"
+				}
+			],
+			"linked": [
+				{
+					"id": "send.ligeian.ravage"
+				},
+				{
+					"id": "send.ligeian.echidna.reward"
+				},
+				{
+					"id": "send.ligeian.kleidouchos.reward"
+				},
+				{
+					"id": "send.ligeian.marinette.reward"
+				},
+				{
+					"id": "send.ligeian.sulochana.reward"
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "send.ligeian.revelation",
+			"actionId": "send",
+			"label": "知能",
+			"startdescription": "@#op.echidna|「もちろん彼のことは覚えている。あなたのお母さんのことも覚えているわ。彼女にはすごく期待していたのよ......」\n#op.kleidouchos|「ええ。あなたの敵のことは知っていたわ」\n#op.marinette|「<sprite name=lantern>」\n#op.sulochana|「ええ、そうよ。よくここに来てくれていたわ。戦前の話だけどね」@",
+			"requirements": {
+				"weakness.foe.unknown": 1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"effects": {
+				"ligeian": -1
+			}
+		},
+		{
+			"id": "send.ligeian.ravage",
+			"actionId": "send",
+			"label": "一気に",
+			"startdescription": "@#op.echidna|「美味しそうな人間がトラブルを起こしているって？Eおばちゃんに任せて」\n#op.kleidouchos|「あなたの精算人のお友達に、異議を申し立てておいたわ」\n#op.marinette|「<sprite name=edge>、<sprite name=edge>、<sprite name=edge>......<sprite name=grail>」\n#op.sulochana|「バカな男ね。もう二度とやらないはずよ」@",
+			"extantreqs": {
+				"rkx.rank": 1
+			},
+			"deleteverb": {
+				"rkx": 1
+			},
+			"effects": {
+				"ligeian": -1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "send.ligeian.echidna.reward",
+			"actionId": "send",
+			"label": "エキドナからの贈り物",
+			"startdescription": "「ほら、どうぞ。気を変えるべきではなかった人からの贈り物よ」",
+			"requirements": {
+				"op.echidna": 1,
+				"weakness.foe.unknown": -1
+			},
+			"effects": {
+				"memento.edge": 1,
+				"ligeian": -1
+			},
+			"burnimage": "pentiment"
+		},
+		{
+			"id": "send.ligeian.kleidouchos.reward",
+			"actionId": "send",
+			"label": "クライドゥチョスからの贈り物",
+			"startdescription": "「私はもう使わないものだけど、あなたの役に立つかもしれない。飲んではいけないよ」",
+			"requirements": {
+				"op.kleidouchos": 1,
+				"weakness.foe.unknown": -1
+			},
+			"effects": {
+				"rarity.knock.poison": 1,
+				"ligeian": -1
+			}
+		},
+		{
+			"id": "send.ligeian.marinette.reward",
+			"actionId": "send",
+			"label": "マリネットからの贈り物",
+			"startdescription": "<sprite name=mortal>。",
+			"requirements": {
+				"op.marinette": 1,
+				"weakness.foe.unknown": -1
+			},
+			"effects": {
+				"memento.grail": 1,
+				"ligeian": -1
+			},
+			"burnimage": "pentiment"
+		},
+		{
+			"id": "send.ligeian.sulochana.reward",
+			"actionId": "send",
+			"label": "スロチャナからの贈り物",
+			"startdescription": "「顔つなぎができるように段取りを整えておくわ。クラブにはいろんな人がくるのよ」",
+			"requirements": {
+				"op.sulochana": 1,
+				"weakness.foe.unknown": -1
+			},
+			"effects": {
+				"connection.official": 1,
+				"connection.holy": 1,
+				"connection.radicals": 1,
+				"ligeian": -1
+			}
+		},
+		{
+			"id": "send.ligeian.displeased",
+			"actionId": "send",
+			"label": "リゲイアのイラつき",
+			"startdescription": "歯と水かきのある皮膚が現れる冷静さを失うような悪夢！私は身を振りほどこうとした―― ",
+			"description": "やっと街の安全なところまで戻って来れたが、無傷では逃げ切れなかった。居合わせた人たちが振り返って、よろめきながら通り過ぎていく私に目を向けた。",
+			"effects": {
+				"wound.exile.unstanchable": 1,
+				"trace": 1,
+				"ligeian": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "send.defiance.ascend.colonel",
+			"actionId": "send",
+			"label": "不滅の敵意",
+			"startdescription": "大佐は私の決意と腕前に敬意を表している。彼は敵であるライオンスミスに私のことを保証するだろう。",
+			"requirements": {
+				"defiancemarks": 7,
+				"defiance.consecration.colonel": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1,
+				"damage.foe": 6
+			},
+			"warmup": 10,
+			"ending": "ascensioncolonel",
+			"craftable": true
+		},
+		{
+			"id": "send.defiance.ascend.lionsmith",
+			"actionId": "send",
+			"label": "不滅の敵意",
+			"startdescription": "ライオンスミスは私の勇気と強さに敬意を表している。彼は敵である大佐に私のことを保証するだろう。",
+			"requirements": {
+				"defiancemarks": 7,
+				"defiance.consecration.lionsmith": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1,
+				"damage.foe": 6
+			},
+			"warmup": 10,
+			"ending": "ascensionlionsmith",
+			"craftable": true
+		},
+		{
+			"id": "send.defiance.ascend.wolf",
+			"actionId": "send",
+			"label": "不滅の敵意",
+			"startdescription": "分裂した狼は私を自分のものにした。私の項は、彼の息で熱くなっている。",
+			"requirements": {
+				"defiancemarks": 7
+			},
+			"extantreqs": {
+				"rkx.foe": 1,
+				"damage.foe": 6
+			},
+			"warmup": 10,
+			"ending": "ascensionwolf",
+			"craftable": true
+		},
+		{
+			"id": "send.defiance.ascend.morewounds.hint",
+			"actionId": "send",
+			"label": "不滅の敵意？",
+			"startdescription": "これに結末をつけるには......まったく終わらせないという手段も取れる。時計の歯車のように、敵と私は永遠の争いの中に閉じ込められている。あとは鍵を回すだけだ。[刃の時の神を召喚して、敵との決闘を永遠のものに昇華させることができるが、敵に致命的な傷を6回負わせて、どちらも動けなくなるまで戦った場合のみである。]",
+			"requirements": {
+				"defiancemarks": 7
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.ascend.moremarks.hint",
+			"actionId": "send",
+			"label": "不滅の敵意？",
+			"startdescription": "他にもこれを終わらせる方法はあるのかもしれない......全く終わらせないで終わらせる方法とか。[7つ目の反抗心の印で、敵がいれば別の勝利の形が可能となる。]",
+			"requirements": {
+				"defiancemarks": 2
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.lureexists.hint",
+			"actionId": "send",
+			"label": "反抗的な召喚獣：すでに送った",
+			"startdescription": "敵はすでに私の居場所を知っている。",
+			"requirements": {
+				"temptation.defiance": 1,
+				"lure.foe": 1,
+				"domicile": 1
+			},
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.foe.defeated": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.weaponalreadysent.hint",
+			"actionId": "send",
+			"label": "反抗的な贈り物：すでに送った",
+			"startdescription": "すでに敵に武器を送った。",
+			"requirements": {
+				"temptation.defiance": 1,
+				"weapon": 1,
+				"defiance.weaponsent": 1
+			},
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.foe.defeated": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.weaponprofane.hint",
+			"actionId": "send",
+			"label": "反抗的な贈り物：足りない",
+			"startdescription": "野蛮な武器ではだめだ。",
+			"requirements": {
+				"temptation.defiance": 1,
+				"uq.weapon.profane": 1
+			},
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.foe.defeated": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.7",
+			"actionId": "send",
+			"label": "永遠の争い",
+			"startdescription": "どちらも動けなくなるまで敵と戦えれば、永遠の争いの中心に歓迎される準備ができるだろう。そこにたどり着けば、もう二度と平和に苦しむことはないはずだ。",
+			"requirements": {
+				"defiancemarks": 7
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.6",
+			"actionId": "send",
+			"label": "永遠の争い",
+			"startdescription": "私は永遠の争いの軌跡となった。私が通ると恋人たちが喧嘩を始めたり、犬が飼い主に噛みついたりすることもある。炎は明るく燃えるか、消えてしまう。",
+			"requirements": {
+				"defiancemarks": 6
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.5",
+			"actionId": "send",
+			"label": "永遠の争い",
+			"startdescription": "朝目を覚ますと鏡に「愛は戦争」と書かれていた。自分が書いたのかもしれない。自分でなければ心配事が増えてしまう。",
+			"requirements": {
+				"defiancemarks": 5
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.4",
+			"actionId": "send",
+			"label": "永遠の争い",
+			"startdescription": "自分は永遠の争いとは何の関係もないと思っていた頃を覚えているが、もちろんずっと関係のある話だったのだ。すべての時の神々、すべての定命の者、すべての塵が、不滅の争いで役割を果たしている。しかし、半死半生の敵とヨーロッパ中を駆け巡る戦いを繰り広げるということは、永遠の争いで端役を務めるのではなく、重要な役目を担うということだ。",
+			"requirements": {
+				"defiancemarks": 4
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.3",
+			"actionId": "send",
+			"label": "永遠の争い",
+			"startdescription": "木と風の争い、炎と煙の争い、川と大地の争いなど、世界の争いのパターンに気付き始めた。群衆は常に動機の小競り合いをしている。何て美しいんだ。",
+			"requirements": {
+				"defiancemarks": 3
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.2",
+			"actionId": "send",
+			"label": "永遠の争い",
+			"startdescription": "ナイフの夢を見だした。刃の時の神が私に気づいたということかもしれない。",
+			"requirements": {
+				"defiancemarks": 2
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.1",
+			"actionId": "send",
+			"label": "永遠の争い",
+			"startdescription": "「永遠の争い」とは、高僧たちが刃の時の神々と刃の時の神々の終わりなき闘争を意味して使う派手な言葉だ。他の多くの精算人と同じように、私もそのようなことには近づかないようにしてきた。",
+			"requirements": {
+				"defiancemarks": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.summons",
+			"actionId": "send",
+			"label": "反抗的な召喚獣を送る",
+			"startdescription": "封筒に書かれた私の文字は、はっきりとしていて、しっかりしている。私の手は震えていない。[これによりすべての不明瞭が破壊される。]",
+			"description": "敵がもうすぐここに来る。もしかすると、もうここにいるのかもしれない。[反抗心が強まる。]",
+			"requirements": {
+				"temptation.defiance": 1,
+				"domicile": 1,
+				"lure.foe": -1,
+				"defiance.foesummoned": -1
+			},
+			"purge": {
+				"obscurity": 100
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "domicile",
+					"mutateAspectId": "lure.foe",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.foesummoned",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"alt": [
+				{
+					"id": "rkx.foe.arrive.defiance",
+					"additional": true
+				}
+			],
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.foe.defeated": -1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.defiance.summons.again",
+			"actionId": "send",
+			"label": "もう一度、反抗的な召喚獣を送る",
+			"startdescription": "大丈夫だ。やりたいようにやらせてみろ。[これによりすべての不明瞭が破壊される。]",
+			"description": "敵がもうすぐここに来る。もしかすると、もうここにいるのかもしれない。",
+			"requirements": {
+				"temptation.defiance": 1,
+				"domicile": 1,
+				"lure.foe": -1
+			},
+			"purge": {
+				"obscurity": 100
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "domicile",
+					"mutateAspectId": "lure.foe",
+					"mutationLevel": 1
+				}
+			],
+			"alt": [
+				{
+					"id": "rkx.foe.arrive.defiance",
+					"additional": true
+				}
+			],
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.foe.defeated": -1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.defiance.gift",
+			"actionId": "send",
+			"label": "反抗的な贈り物を送る",
+			"startdescription": "<i>本当</i>に憤怒させるだろうから、敵に力の武器を送るつもりだ。",
+			"description": "敵は小包を自分で開けるかもしれないし、罠だと思って他の人に開けさせるかもしれない。どちらにせよ、彼の表情を想像しただけで笑いがこみあげてくる。[反抗心が強まる。]",
+			"requirements": {
+				"temptation.defiance": 1,
+				"weapon": 1,
+				"defiance.weaponsent": -1,
+				"uq.weapon.profane": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.weaponsent",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"weapon": -1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.ahead.cash.hint",
+			"actionId": "send",
+			"label": "現金を先に送る？",
+			"startdescription": "急いで出発しないといけないかもしれない。行く可能性のある場所に、先に資金を送れば、道を確保することができる。もちろん、そこに行かなければ、資金は消えてしまう。",
+			"requirements": {
+				"cash": 1,
+				"destination": -1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "send.ahead.cash",
+			"actionId": "send",
+			"label": "現金を先に送る",
+			"startdescription": "急いで出発しないといけないかもしれない。行く可能性のある場所に、先に資金を送れば、道を確保することができる。もちろん、そこに行かなければ、資金は消えてしまう。",
+			"description": "これで大丈夫だ。もし逃げることになっても、安全を確保しやすくなるだろう。",
+			"requirements": {
+				"cash": 1,
+				"destination": 1
+			},
+			"effects": {
+				"cash": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "destination",
+					"mutateAspectId": "cash.sent",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "send.getsentahead.cash.hint",
+			"actionId": "send",
+			"label": "自分が準備したものを活用する？",
+			"startdescription": "ここに到着したら、先に送った現金を回収できる。",
+			"requirements": {
+				"domicile": -1,
+				"cash.sent": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "send.getsentahead.cash",
+			"actionId": "send",
+			"label": "自分が準備したものを活用する",
+			"startdescription": "先に送った現金を回収しよう。",
+			"requirements": {
+				"domicile": 1,
+				"cash.sent": 1
+			},
+			"warmup": 10,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "send.getsentahead.cash.loop"
+				}
+			]
+		},
+		{
+			"id": "send.getsentahead.cash.loop",
+			"actionId": "send",
+			"label": "やった！",
+			"startdescription": "先に現金を送った。到着したら回収できる。",
+			"requirements": {
+				"cash.sent": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "domicile",
+					"mutateAspectId": "cash.sent",
+					"mutationLevel": -1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"cash": 1
+			},
+			"linked": [
+				{
+					"id": "send.getsentahead.cash.loop"
+				}
+			]
+		},
+		{
+			"id": "send.victory.hint",
+			"actionId": "send",
+			"label": "不明瞭を通して安心感を得る？",
+			"startdescription": "[不明瞭が7に達したら、自分が永遠に消える前に、敵の精算人に挑発的なメッセージを送ることができる。]",
+			"requirements": {
+				"temptation.obscurity": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "send.victory.obscurity.c.begin",
+			"actionId": "send",
+			"label": "稀少な喜びにあふれた人生......",
+			"startdescription": "必要なものは揃っただろうか？[消える瞬間に、快適30枚以上の価値がある資産を持っていれば、大勝利を収められる。]",
+			"requirements": {
+				"temptation.obscurity": 1,
+				"obscurity": 7
+			},
+			"warmup": 60,
+			"extantreqs": {
+				"comfort": 20
+			},
+			"craftable": true,
+			"signalEndingFlavour": "Grand",
+			"linked": [
+				{
+					"id": "send.victory.obscurity.c.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.b.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.a.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.c"
+				},
+				{
+					"id": "send.victory.obscurity.b"
+				},
+				{
+					"id": "send.victory.obscurity.a"
+				}
+			]
+		},
+		{
+			"id": "send.victory.obscurity.b.begin",
+			"actionId": "send",
+			"label": "平和で快適な人生",
+			"startdescription": "必要なものは揃っただろうか？[消える瞬間に、快適30枚以上の価値がある資産を持っていれば、大勝利を収められる。]",
+			"requirements": {
+				"temptation.obscurity": 1,
+				"obscurity": 7
+			},
+			"extantreqs": {
+				"comfort": 10
+			},
+			"warmup": 60,
+			"craftable": true,
+			"signalEndingFlavour": "Grand",
+			"linked": [
+				{
+					"id": "send.victory.obscurity.c.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.b.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.a.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.c"
+				},
+				{
+					"id": "send.victory.obscurity.b"
+				},
+				{
+					"id": "send.victory.obscurity.a"
+				}
+			]
+		},
+		{
+			"id": "send.victory.obscurity.a.begin",
+			"actionId": "send",
+			"label": "忘れ去られた人生",
+			"startdescription": "安全な人生だが、これでいいのだろうか？[消える瞬間に、快適20枚以上の価値がある資産を持っていれば、大勝利を収められる。]",
+			"requirements": {
+				"temptation.obscurity": 1,
+				"obscurity": 7
+			},
+			"warmup": 60,
+			"craftable": true,
+			"signalEndingFlavour": "Pale",
+			"linked": [
+				{
+					"id": "send.victory.obscurity.c.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.b.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.a.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.c"
+				},
+				{
+					"id": "send.victory.obscurity.b"
+				},
+				{
+					"id": "send.victory.obscurity.a"
+				}
+			]
+		},
+		{
+			"id": "send.victory.obscurity.c",
+			"actionId": "send",
+			"label": "喜びの者",
+			"extantreqs": {
+				"comfort": 30
+			},
+			"ending": "obscurityvictoryc"
+		},
+		{
+			"id": "send.victory.obscurity.b",
+			"actionId": "send",
+			"label": "安楽",
+			"extantreqs": {
+				"comfort": 20
+			},
+			"ending": "obscurityvictoryb"
+		},
+		{
+			"id": "send.victory.obscurity.a",
+			"actionId": "send",
+			"label": "静寂",
+			"ending": "obscurityvictorya"
+		},
+		{
+			"id": "send.victory.obscurity.c.foeslain",
+			"actionId": "send",
+			"label": "喜びの者",
+			"extantreqs": {
+				"comfort": 30,
+				"rkx.foe.defeated": 1
+			},
+			"ending": "obscurityvictorycfoeslain"
+		},
+		{
+			"id": "send.victory.obscurity.b.foeslain",
+			"actionId": "send",
+			"label": "安楽",
+			"extantreqs": {
+				"comfort": 20,
+				"rkx.foe.defeated": 1
+			},
+			"ending": "obscurityvictorybfoeslain"
+		},
+		{
+			"id": "send.victory.obscurity.a.foeslain",
+			"actionId": "send",
+			"label": "静寂",
+			"extantreqs": {
+				"rkx.foe.defeated": 1
+			},
+			"ending": "obscurityvictoryafoeslain"
+		},
+		{
+			"id": "send.labhite.fallen.intro",
+			"actionId": "send",
+			"requirements": {
+				"contact.labhite.fallen": 1
+			},
+			"label": "堕落したラビトの運命を決める",
+			"startdescription": "エキドナがラビトを堕落させる前でも、チャイマは大佐の名の下に殺していたはずだ。今では、彼はただの怪物ではなく、堕落した怪物になってしまった。ナビルは、一方で慈悲を説いた。「完璧を装うことは魂の最も重い病気だ」と彼はもったいぶって言う。彼を砂漠に追放させれば、彼は再び太陽を見つけるだろう。\n\nチャイマはあまり良い顔をしていない。それでも、あなたと父親を尊敬しているから、頼めば手を差し伸べてくれるだろう。",
+			"slots": [
+				{
+					"id": "decision",
+					"label": "決断",
+					"required": {
+						"temptation.defiance": 1,
+						"temptation.obscurity": 1,
+						"rage": 1,
+						"tranquillity": 1
+					}
+				}
+			],
+			"description": "堕落したラビトはも少し檻の中で過ごすことができる。",
+			"warmup": 30,
+			"alt": [
+				{
+					"id": "send.labhite.fallen.merciless"
+				},
+				{
+					"id": "send.labhite.fallen.merciful"
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "send.labhite.fallen.merciless",
+			"actionId": "send",
+			"label": "無慈悲",
+			"startdescription": "「彼はライオンスミスの意図を裏切った。死なせてやれ」",
+			"description": "チャイマは、この件を終わらせるために、ラビテを連れ去っていく。大佐への供物を済ませると、彼女は金粉の入った小さな鍋をあなたに差し出す。「記念品よ」と彼女は言う。",
+			"requirements": {
+				"choice.merciless": 1
+			},
+			"burnimage": "pentiment",
+			"effects": {
+				"memento.edge": 1,
+				"contact.labhite.fallen": -1
+			}
+		},
+		{
+			"id": "send.labhite.fallen.merciful",
+			"actionId": "send",
+			"label": "慈悲",
+			"startdescription": "彼はライオンスミスが意図していなかったものだ。他の何になるかなど誰にもわからない。",
+			"description": "チャイマは肩をすくめて背を向ける。ナビルは砂漠の端まであなたの後をついていく。ラビトはまだ何も言わずに、地面から平らな岩を持ち上げ、それにキスをしてあなたに渡す。そして、彼は後ろを振り返ることなく砂丘の中へと走り去っていった。",
+			"requirements": {
+				"choice.merciful": 1
+			},
+			"burnimage": "pentiment",
+			"effects": {
+				"memento.lantern": 1,
+				"contact.labhite.fallen": -1
+			}
+		},
+		{
+			"id": "send.retainer.chat",
+			"actionId": "send",
+			"label": "教訓",
+			"startdescription": "「彼女のことを話そうか？」",
+			"description": "老人は彼女の美しさと知恵と<i>バラカ</i>について言いたいように言っているが、私は、彼が彼女のことをほとんど覚えていないことに気付き始めた。街の揺らめく灯りを眺めながら、私の意識は漂っていく。そして私は、敵がチェスの遊びや、トランプでイカサマをする方法、命の奪い方を教えてくれたこと、これから私が<i>彼</i>に教えることを思い出した。",
+			"requirements": {
+				"contact.retainer": 1,
+				"associate": 1
+			},
+			"effects": {
+				"grief": 1,
+				"rage": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "send.mortal.intro",
+			"actionId": "send",
+			"label": "初めての話し合いの手配",
+			"startdescription": "@#contact.barber|最近では「床屋」として知られるズルフィアとの話し合い。\n#contact.delver|オルソリーナ、「ラ・スカヴァトリス」（探求者を意味する）との話し合い。\n#contact.fivegoer|夢魔の曾孫、ヴァシルとの話し合い。\n#contact.ghoul|パン屋のドミニカスとの話し合い。\n#contact.huntress|罠と呼ばれることもあるララ・チャイマとの話し合い。\n#contact.smuggler|密輸業者M.ジョルジュとの話し合い。\n#contact.visionary|画家ミレヤとの話し合い。\n#contact.vivisectionist|外科医であり、デュエリストであり、生体解剖学者でもあるジャニングス伯爵との話し合い。\n#contact.retainer|「あなたの母親はアンテウムの伝授者だった。女性では珍しいことだが、彼女の<i>バラカ</i>――彼女の光――はとても素晴らしいものだった。あなたの父親は当初、彼女の光を買おうとしていたが、彼女を愛するようになった.....そして彼女は、彼の正体を突き止め、あなたの誕生が近づくと逃げだした。そして、彼は彼女を追いかけたのだ」\n#|紹介――@",
+			"description": "@#contact.barber|ゾルフィアは夢中になって私にしがみつき、「森に来て。ムスビハネホツレの下で飲めるものを持ってきて」、と言った。\n#contact.delver|オルソリーナは私を激しく抱きしめて歓迎し、私の悩みを聞いてくれた。「もちろん助けてあげる」と彼女は言う。「でも、この状態でラグーンを渡るのは簡単ではないわ。を食べ過ぎてしまったのよ。ダリオ宮殿の金庫室に、役に立つものがまだ入っているかもしれない。宮殿は呪われているけど、私たちなら平気......だと思う。\n#contact.fivegoer|ヴァシルは、私がはっきりと覚えているように、骨はないが、抵抗し難い握力で私の手を温かく握った。「もちろん君に借りがある」と彼は言った。「だが、他の人に、それ以上の借りがあるんだ。曾祖母がこの街のとても無愛想な男たちに囚われている。私と解決してくれるなら、一緒に行くこととしよう」\n#contact.ghoul|ドミニカスは私にクワスとスパイス入り蜂蜜ケーキを出してくれ、必要としている「調味料」を手に入れたライバルのことを楽しそうに話してくれた。私にそれを手に入れるのを手伝ってほしいと言い、その後に、もちろん、私に手を貸してくれると続けた。\n#contact.huntress|ララ・チャイマはアーヘンの下水道に潜伏し、酔っぱらいや兵士を食べに現れる陽気な饗宴者の殺害に従事している。フランス軍はもちろん信じていないが、グミエの中には、匂いを嗅げばライオンスミスの仕業だと分かる軍曹もいる。\n#contact.smuggler|ジョルジュは提案をしてきた。タラスコン城には宝物がある。「怪物がいる可能性」もあるが、結局のところ、怪物がいないければ、怪物を発明するのが人間だ、と彼は指摘する。そしてジョルジュは、ヨーロッパの近代史を引き合いに出して、この事について説明し始めたが、幸運なことに、タイミングよく店員がワインをテーブルに持ってきた。\n#contact.visionary|ミレーヤは涙を流し始めた。「神があなたを送ってくれた。私は、大変なことをしてしまったの......大変なことを――」と、彼女は途絶え途絶え言い、泣き崩れてしまった。私の知る限りでは、彼女は絵を描くためにサンダースキンのカルト教団を密かに見張っていた。それを教団が見つけて、狙われることになったらしい。\n#contact.vivisectionist|ジャニングス伯爵は踵をつけてお辞儀をした。「あなたの悩みは聞いている」と伯爵は私に言う。「その前に、社交行事に参加しないか？いやいや、ぜひとも参加してもらいたい」\n#contact.retainer|「彼女は、彼に育てさせるくらいなら、自分の命を捨てて、あなたの命を奪った方がマシだと思ったようだ。しかし、アンテウムで、あなたの父親が大地の子だと判明すると、彼らは彼女にあなたを産むように説得した。おいで。彼女の元へ連れて行ってあげよう」\n#|――これでわかっただろう。@",
+			"requirements": {
+				"mortal": 1,
+				"associate": -1,
+				"ally": -1
+			},
+			"aspects": {
+				"mortal.introduce": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "associate",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.barber.upgrade",
+			"actionId": "send",
+			"label": "ゾルフィアは指を鳴らしながら、そわそわと歩き回る",
+			"startdescription": "「どこ？どこにあるの？？」",
+			"description": "「壁にはたくさんの石があるけれど、私たちが肉でできていることを忘れてはいけない」",
+			"requirements": {
+				"contact.barber": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "べとべとしたもの",
+					"required": {
+						"vault.barber.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.delver.upgrade",
+			"actionId": "send",
+			"label": "オルソリーナが工房のランプの灯りをともした――",
+			"startdescription": "「手間をとらせてしまってごめんなさいね」",
+			"description": "オルソリーナは肩をすくめる。「今でなければ、後で」",
+			"requirements": {
+				"contact.delver": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "赤み",
+					"required": {
+						"vault.delver.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.fivegoer.upgrade",
+			"actionId": "send",
+			"label": "ヴァシルは期待に震えている。",
+			"startdescription": "「で？どうなんだ？」",
+			"description": "「恐怖ももう少しだけ待っても良いと思う」",
+			"requirements": {
+				"contact.fivegoer": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "淫魔",
+					"required": {
+						"vault.fivegoer.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.ghoul.upgrade",
+			"actionId": "send",
+			"label": "ドミニカスは愛想の良い笑顔を見せた。",
+			"startdescription": "「私の蜂蜜ケーキにはまだまだ改善の余地がある」",
+			"description": "「時間が短くなってきているんだ、お互いな」",
+			"requirements": {
+				"contact.ghoul": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "味付け",
+					"required": {
+						"vault.ghoul.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.huntress.upgrade",
+			"actionId": "send",
+			"label": "チャラは契約を履行したいと思っている",
+			"startdescription": "「グミエの友人は不安を募らせている。彼は私の能力を信じていないようだ」",
+			"description": "「時間がない」",
+			"requirements": {
+				"contact.huntress": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "死骸",
+					"required": {
+						"vault.huntress.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.smuggler.upgrade",
+			"actionId": "send",
+			"label": "ジョルジオウは、早くを終わらせたいと思っている",
+			"startdescription": "終わった？",
+			"description": "「不幸中の幸いだな」",
+			"requirements": {
+				"contact.smuggler": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "遺物",
+					"required": {
+						"vault.smuggler.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.visionary.upgrade",
+			"actionId": "send",
+			"label": "ミレヤは水のように震える",
+			"startdescription": "「まだそこにいるの？」",
+			"description": "「お願い急いで」",
+			"requirements": {
+				"contact.visionary": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": " 皮膚",
+					"required": {
+						"vault.visionary.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.vivisectionist.upgrade",
+			"actionId": "send",
+			"label": "ジェニングスが素っ気なく挨拶をする",
+			"startdescription": "「それで？」",
+			"description": "「すぐに時間を見つけてくれると信じているよ」",
+			"requirements": {
+				"contact.vivisectionist": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "決闘の傷",
+					"required": {
+						"vault.vivisectionist.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.associate.upgraded",
+			"actionId": "send",
+			"label": "味方",
+			"requirements": {
+				"vault.completed": 1
+			},
+			"startdescription": "私たちは握手をした。[仲間が、味方となった。街を去ればついてくるだろう。地図の端の最終対決に向かうなら別の話だが......]",
+			"description": "@#ally.barber|ゾルフィアは爪をいじりながら、くだけた様子で言った。「母は突き刺し、魔女は要求し、姉妹は溶解する」\n#ally.delver|「<i>In bocca al lupo!</i>文字通りではない、と思うわ」\n#ally.fivegoer|淫魔に託した奥の部屋から、粘着質な音が聞こえてくる。ヴァシルは呆れた顔をするとこう言った。「家族って面倒くさいよな。30分くれれば彼女にきちんとサヨナラできるから。そうすれば彼女は元気になるはず」\n#ally.ghoul|調味料を4回も盗まれたら、年も盗まれるだろうな」とドミニカスは気さくに言い、あなたを肘で突く。\n#ally.huntress|「一緒に狩りができるのを楽しみにしてるわ」\n#ally.smuggler|「これだけの借りがあるんだ」\n#ally.visionary|「ありがとう。何としてでも恩返しをするわ。射撃の仕方が分からないのが残念だけど」\n#ally.vivisectionist|「君を特徴的な存在にしてしまったな。それでも、とても良いよ。ああ、とても良い」\n#|――@",
+			"aspects": {
+				"recruiting": 1
+			},
+			"comments": "IMPORTANT - this mutation stops them being removed on departure. The Ally mutation won't protect them from purging, and contact.local isn't a mutation so can't be removed with an xtrigger",
+			"mutations": [
+				{
+					"filterOnAspectId": "contact.local",
+					"mutateAspectId": "contact.local",
+					"mutationLevel": -1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"vault.completed": -1
+			}
+		},
+		{
+			"id": "send.ally.upgrade",
+			"actionId": "send",
+			"label": "実現した潜在能力",
+			"startdescription": "味方と学んだことについて話せるはずだ。[これにより味方の属性に1点が追加される。]",
+			"description": "@#ally.barber|「チョキチョキ。チョキ」\n#ally.delver|「昔の自分に戻ったような気がしてきた」\n#ally.fivegoer|「あああ。<i>柔らかい</i>」\n#ally.ghoul|「今まで信じられなかったが、経験が一番のスパイスだ」\n#ally.huntress|「悪くはないでしょ？」\n#ally.smuggler|「「疲れた。もしかしたらいつまでたっても、疲れているのかもしれない......」\r#ally.visionary|「スケッチブックはどこに置いたかな」\n#ally.vivisectionist|「ああ、とても良い」\n#|――@",
+			"requirements": {
+				"mortal": 1,
+				"ally": 1,
+				"experience.exile.ally": 3
+			},
+			"aspects": {
+				"upgrade.exile.ally": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "send.ally.upgrade.hint",
+			"actionId": "send",
+			"label": "潜在能力？",
+			"startdescription": "味方には、私と一緒に旅をする理由がそれぞれあるだろう。中には、新しい経験を求めている者もいる。［味方が経験を3つ獲得すると、その力を高めることができる］",
+			"requirements": {
+				"mortal": 1,
+				"ally": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.investigate.end",
+			"actionId": "send",
+			"label": "行き止まり",
+			"startdescription": "ここは世界の端っこと言っても良いかもしれない。",
+			"requirements": {
+				"end": 1,
+				"domicile": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.investigate.description",
+			"actionId": "send",
+			"label": "前進？",
+			"description": "@#city.aachen|アーヘンから伝言が届いた。マラケッシュの昔からの知り合いが、そこで狩りをしていて、私の助けを求めている。\n#city.alexandria|英国への反乱が起こる前に、アレクサンドリアの透明なセラペウムに招待されたんだ。運が良ければ、まだ迎えてもらえるはずだ。\n#city.algiers|密輸業者のM・ジョルジュは、アルジェに人脈を持っている。その人たちが私をこっそりと入れてくれるかもしれない。\n#city.amsterdam|何年もの間、私はアムステルダムのシュテーゲンガの双子たちのために、いくつもの宝物を見つけてきた。彼らなら、泊まらせてくれるかもしれない。\n#city.avignon|アヴィニョンの密輸業者M・ジョルジュが提案をしたいと言った。\n#city.baghdad|パーシー・スタイルズは、まだバグダードで、委任統治領イラクで英国政府のために色々とやっている。会いに行ったら、まだきっと喜んでくれるはずだ。\n#city.budapest|旧友のリリが闇市の運営をブダペストに移したらしい。\n#city.candia|クレタ島には、しばらく行っていないが、また夢に出てきた。サンザシの香りもだ......\n#city.cluj|旧友のリリのクルジュでの活動は、ハンガリーが街を手放してから苦戦しているが、彼女の名前を出せば、まだ扉が開くかもしれない。\n#city.granada|グラナダにあるギャラリーのオーナーと取引したことがある。去年、彼女は私を彼女の家に招待してくれた。\n#city.istanbul|昔の戦友、カラ・ケマールはイスタンブールのブラックアームの残党と通じている。彼の名前を出せば、まだ扉が開くかもしれない。[現在の街を離れると、二度とアクセスできなくなる。]\n#city.kaunas|パン屋のドミニカスは、カウナスの鉄狼の中でも高レベルのコネを持っている。仲良くはなれなかったが、彼は私に借りがあるし、選り好みをしている場合ではない。\n#city.kiev|リゲイアの者の中で最も飢えたものが、キエフにいるとの噂を聞いた。追っ手は慎重に行動しなくてはいけなくなるだろう――もちろん、私もそうだが。\n#city.krakow|クラクフのイッツチョク・アシュラグは、珍しいカルトの本に関しては何年も私を頼ってくれた。彼は親切な人だ。\n#city.leningrad|ロシアで年を売る「アテナイ人」は、精算人集団の宿敵だが、私は某サスキンと酔うほど酒を飲んだことがある。覚えていてくれることを祈ろう。\n#city.london|ロンドンのオッタビオ・バートンが私の手を借りたいと言ってきた。彼は悪党だが、昔からの知り合いだ。\n#city.marrakech|ナビルという名のマラブーに、ここにいることがなぜか知られてしまった。彼から届いた伝言には「マラケッシュへ来てくれ、栄光のために」としか書かれていない。\n#city.meshad|マシュハドの年寄り詩人は、昔から私のお気に入りのお客さんだった。彼女は私をもてなしくれるだろう。\n#city.munich|ミュンヘンのゴットリーブ・ジャニングス伯爵から、彼がひいきするデュエリング協会の会合にいつでも顔を出すようにと言われている。\n#city.nizhny|「アテナイ人」のサスキンはニジニで輸出入事業を続けているが、ソビエト政権下ではそれも困難なことだ。彼の手下たちは私の助けを喜んでくれるかもしれない。"
+		},
+		{
+			"id": "send.investigate.aachen",
+			"actionId": "send",
+			"label": "アーヘンから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.aachen": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.amsterdam",
+					"city.paris",
+					"city.prague",
+					"city.munich"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.alexandria",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"actionId": "send",
+			"label": "アレクサンドリアから目立たない手紙を送る",
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.alexandria": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.istanbul",
+					"city.baghdad",
+					"end.messana",
+					"city.candia"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.algiers",
+			"actionId": "send",
+			"label": "アルジェから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.algiers": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.avignon",
+					"city.valletta",
+					"city.tripoli",
+					"end.ghardaia",
+					"city.marrakech"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.amsterdam",
+			"actionId": "send",
+			"label": "アムステルダムから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.amsterdam": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.bornholm",
+					"city.aachen",
+					"city.rostock",
+					"city.london"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.avignon",
+			"actionId": "send",
+			"label": "アヴィニョンから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.avignon": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.munich",
+					"city.venice",
+					"city.algiers",
+					"city.granada"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.baghdad",
+			"actionId": "send",
+			"label": "バグダードから目立たない手紙を送る",
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.baghdad": 1
+			},
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"internaldeck": {
+				"spec": [
+					"city.tiflis",
+					"city.meshad",
+					"end.messana",
+					"city.alexandria",
+					"city.istanbul"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.budapest",
+			"actionId": "send",
+			"label": "ブダペストから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.budapest": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.krakow",
+					"city.cluj",
+					"city.tirana",
+					"city.venice"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.candia",
+			"actionId": "send",
+			"label": "カンディア（イラクリオン）から目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人ががいる場所に逃げるべきだ。[これにより、逃げ場を探し始める。痕跡を残す危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。そして、可能性とはかけ離れている。もっと時間がかかるだろう。]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.candia": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.tirana",
+					"city.alexandria",
+					"end.messana",
+					"city.tripoli"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.cluj",
+			"actionId": "send",
+			"label": "クルジュ＝ナポカから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人ががいる場所に逃げるべきだ。[これにより、逃げ場を探し始める。痕跡を残す危険性がが少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.cluj": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.kiev",
+					"city.tiflis",
+					"city.istanbul",
+					"city.budapest"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.granada",
+			"actionId": "send",
+			"label": "グラナダから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.granada": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.strasbourg",
+					"city.avignon",
+					"city.marrakech",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.istanbul",
+			"actionId": "send",
+			"label": "イスタンブールから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.istanbul": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.cluj",
+					"city.baghdad",
+					"city.alexandria",
+					"city.tirana"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.kaunas",
+			"actionId": "send",
+			"label": "カウナスから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.kaunas": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.slettnes",
+					"city.leningrad",
+					"city.krakow",
+					"city.prague",
+					"city.rostock"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.kiev",
+			"actionId": "send",
+			"label": "キエフから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.kiev": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.leningrad",
+					"city.stalingrad",
+					"city.cluj",
+					"city.krakow"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.krakow",
+			"actionId": "send",
+			"label": "クラクフから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.krakow": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.kaunas",
+					"city.kiev",
+					"city.budapest",
+					"city.vienna"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.leningrad",
+			"actionId": "send",
+			"label": "レニングラードから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.leningrad": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.slettnes",
+					"city.nizhny",
+					"city.kiev",
+					"city.kaunas"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.london",
+			"actionId": "send",
+			"label": "ロンドンから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.london": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.bornholm",
+					"city.amsterdam",
+					"city.paris",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.marrakech",
+			"actionId": "send",
+			"label": "マラケッシュから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.marrakech": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.granada",
+					"city.algiers",
+					"end.ghardaia",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.meshad",
+			"actionId": "send",
+			"label": "マシュハドから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。それに、旧知の知人や友人がいそうな場所からは、かけ離れている。もっと時間がかかるだろう。]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.meshad": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.samarkand",
+					"end.paro",
+					"end.messana",
+					"city.baghdad"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.munich",
+			"actionId": "send",
+			"label": "ミュンヘンから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.munich": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.aachen",
+					"city.vienna",
+					"city.avignon",
+					"city.strasbourg"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.nizhny",
+			"actionId": "send",
+			"label": "ニジニから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。それに、旧知の知人や友人がいそうな場所からは、かけ離れている。もっと時間がかかるだろう。]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.nizhny": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.cheko",
+					"city.sverdlovsk",
+					"city.stalingrad",
+					"city.leningrad"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.paris",
+			"actionId": "send",
+			"label": "パリから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.paris": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.london",
+					"city.aachen",
+					"city.strasbourg",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.prague",
+			"actionId": "send",
+			"label": "プラハから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.prague": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.rostock",
+					"city.kaunas",
+					"city.vienna",
+					"city.aachen"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.rostock",
+			"actionId": "send",
+			"label": "ロストックから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.rostock": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.bornholm",
+					"city.amsterdam",
+					"city.kaunas",
+					"city.prague"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.samarkand",
+			"actionId": "send",
+			"label": "サマルカンドから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.samarkand": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.sverdlovsk",
+					"end.paro",
+					"city.meshad",
+					"city.tiflis"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.strasbourg",
+			"actionId": "send",
+			"label": "ストラスブールから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.strasbourg": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.paris",
+					"city.aachen",
+					"city.granada",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.stalingrad",
+			"actionId": "send",
+			"label": "スターリングラードから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。それに、旧知の知人や友人がいそうな場所からは、かけ離れている。もっと時間がかかるだろう。]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.stalingrad": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.nizhny",
+					"city.sverdlovsk",
+					"city.tiflis",
+					"city.kiev"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.sverdlovsk",
+			"actionId": "send",
+			"label": "スヴェルドロフスクから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。それに、旧知の知人や友人がいそうな場所からは、かけ離れている。もっと時間がかかるだろう。]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.sverdlovsk": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.cheko",
+					"end.paro",
+					"city.samarkand",
+					"city.stalingrad",
+					"city.nizhny"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.tiflis",
+			"actionId": "send",
+			"label": "トビリシから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.tiflis": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.stalingrad",
+					"city.samarkand",
+					"city.baghdad",
+					"city.cluj"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.tirana",
+			"actionId": "send",
+			"label": "ティラナから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.tirana": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.budapest",
+					"city.istanbul",
+					"city.candia",
+					"city.valletta"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.tripoli",
+			"actionId": "send",
+			"label": "西トリポリ州から目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.tripoli": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.valletta",
+					"city.candia",
+					"end.ghardaia",
+					"city.algiers"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.valletta",
+			"actionId": "send",
+			"label": "バレッタから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。それに、旧知の知人や友人がいそうな場所からは、かけ離れている。もっと時間がかかるだろう。]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.valletta": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.venice",
+					"city.tirana",
+					"city.tripoli",
+					"city.algiers"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.venice",
+			"actionId": "send",
+			"label": "ヴェネツィアから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.venice": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.vienna",
+					"city.budapest",
+					"city.valletta",
+					"city.avignon"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.vienna",
+			"actionId": "send",
+			"label": "ウィーンから目立たない手紙を送る",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[これにより、逃げ場を見つけることができるが、痕跡の危険性が少しある。最悪の場合、自分よりも先に精算人が到着してしまうかもしれない。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.vienna": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.prague",
+					"city.krakow",
+					"city.venice",
+					"city.munich"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.aachen.turmoil",
+			"actionId": "send",
+			"label": "アーヘンから急ぎのメッセージを送る",
+			"startdescription": "安全な場所を探す必要がある。[街がこの状態では、気付かれずに接触するのは難しい。痕跡の危険性が高い。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.aachen.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.amsterdam",
+					"city.paris",
+					"city.prague",
+					"city.munich"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.algiers.turmoil",
+			"actionId": "send",
+			"label": "アルジェからから急ぎのメッセージを送る",
+			"startdescription": "安全な場所を探す必要がある。[街がこの状態では、気付かれずに接触するのは難しい。痕跡の危険性が高い。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.algiers.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.avignon",
+					"city.valletta",
+					"city.tripoli",
+					"end.ghardaia",
+					"city.marrakech"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.baghdad.turmoil",
+			"actionId": "send",
+			"label": "バグダードからから急ぎのメッセージを送る",
+			"startdescription": "安全な場所を探す必要がある。[街がこの状態では、気付かれずに接触するのは難しい。痕跡の危険性が高い。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.baghdad.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.tiflis",
+					"city.meshad",
+					"end.messana",
+					"city.alexandria",
+					"city.istanbul"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.istanbul.turmoil",
+			"actionId": "send",
+			"label": "イスタンブールから急ぎのメッセージを送る",
+			"startdescription": "安全な場所を探す必要がある。[街がこの状態では、気付かれずに接触するのは難しい。痕跡の危険性が高い。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.istanbul.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.cluj",
+					"city.baghdad",
+					"city.alexandria",
+					"city.tirana"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.kiev.turmoil",
+			"actionId": "send",
+			"label": "キエフから急ぎのメッセージを送る",
+			"startdescription": "安全な場所を探す必要がある。[街がこの状態では、気付かれずに接触するのは難しい。痕跡の危険性が高い。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.kiev.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.leningrad",
+					"city.stalingrad",
+					"city.cluj",
+					"city.krakow"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.leningrad.turmoil",
+			"actionId": "send",
+			"label": "レニングラードから急ぎのメッセージを送る",
+			"startdescription": "安全な場所を探す必要がある。[街がこの状態では、気付かれずに接触するのは難しい。痕跡の危険性が高い。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.leningrad.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.slettnes",
+					"city.nizhny",
+					"city.kiev",
+					"city.kaunas"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.london.turmoil",
+			"actionId": "send",
+			"label": "ロンドンから急ぎのメッセージを送る",
+			"startdescription": "安全な場所を探す必要がある。[街がこの状態では、気付かれずに接触するのは難しい。痕跡の危険性が高い。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.london.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.bornholm",
+					"city.amsterdam",
+					"city.paris",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.munich.turmoil",
+			"actionId": "send",
+			"label": "ミュンヘンから急ぎのメッセージを送る",
+			"startdescription": "安全な場所を探す必要がある。[街がこの状態では、気付かれずに接触するのは難しい。痕跡の危険性が高い。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.munich.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.aachen",
+					"city.vienna",
+					"city.avignon",
+					"city.strasbourg"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.nizhny.turmoil",
+			"actionId": "send",
+			"label": "ニジニ・ノヴゴロドから急ぎのメッセージを送る",
+			"startdescription": "安全な場所を探す必要がある。[街がこの状態では、気付かれずに接触するのは難しい。痕跡の危険性が高い。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.nizhny.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.amsterdam",
+					"city.paris",
+					"city.prague",
+					"city.munich"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.samarkand.turmoil",
+			"actionId": "send",
+			"label": "サマルカンドから急ぎのメッセージを送る",
+			"startdescription": "安全な場所を探す必要がある。[街がこの状態では、気付かれずに接触するのは難しい。痕跡の危険性が高い。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.samarkand.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.sverdlovsk",
+					"end.paro",
+					"city.meshad",
+					"city.tiflis"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.stalingrad.turmoil",
+			"actionId": "send",
+			"label": "スターリングラードから急ぎのメッセージを送る",
+			"startdescription": "安全な場所を探す必要がある。[街がこの状態では、気付かれずに接触するのは難しい。痕跡の危険性が高い。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.stalingrad.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.nizhny",
+					"city.sverdlovsk",
+					"city.tiflis",
+					"city.kiev"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.sverdlovsk.turmoil",
+			"actionId": "send",
+			"label": "スヴェルドロフスクから急ぎのメッセージを送る",
+			"startdescription": "安全な場所を探す必要がある。[街がこの状態では、気付かれずに接触するのは難しい。痕跡の危険性が高い。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.sverdlovsk.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.cheko",
+					"end.paro",
+					"city.samarkand",
+					"city.stalingrad",
+					"city.nizhny"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.tiflis.turmoil",
+			"actionId": "send",
+			"label": "トビリシから急ぎのメッセージを送る",
+			"startdescription": "安全な場所を探す必要がある。[街がこの状態では、気付かれずに接触するのは難しい。痕跡の危険性が高い。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.tiflis.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.stalingrad",
+					"city.samarkand",
+					"city.baghdad",
+					"city.cluj"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.wilderness",
+			"startdescription": "逃げるならば、旧友のいる場所――少なくとも旧知の知人がいる場所に逃げるべきだ。[荒野は危険だ。これを行うたびに傷を負う。」",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"actionId": "send",
+			"label": "どこかの誰かと連絡をとろうとする",
+			"requirements": {
+				"domicile.wilderness": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.aachen",
+					"city.alexandria",
+					"city.algiers",
+					"city.amsterdam",
+					"city.avignon",
+					"city.baghdad",
+					"city.budapest",
+					"city.candia",
+					"city.cluj",
+					"city.granada",
+					"city.istanbul",
+					"city.kaunas",
+					"city.kiev",
+					"city.krakow",
+					"city.leningrad",
+					"city.london",
+					"city.marrakech",
+					"city.meshad",
+					"city.munich",
+					"city.nizhny",
+					"city.paris",
+					"city.prague",
+					"city.rostock",
+					"city.samarkand",
+					"city.stalingrad",
+					"city.strasbourg",
+					"city.sverdlovsk",
+					"city.tiflis",
+					"city.tirana",
+					"city.tripoli",
+					"city.valletta",
+					"city.venice",
+					"city.vienna",
+					"end.bornholm",
+					"end.cheko",
+					"end.ghardaia",
+					"end.messana",
+					"end.morbihan",
+					"end.paro",
+					"end.slettnes"
+				],
+				"draws": 1,
+				"defaultcard": "end.cheko",
+				"resetonexhaustion": false
+			},
+			"effects": {
+				"wound.exile": 1
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		}
+	]
+}

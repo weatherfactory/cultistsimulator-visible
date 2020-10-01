@@ -1,0 +1,517 @@
+{
+	"elements": [
+		{
+			"id": "ritetoolconsumeingredient",
+			"label": "Ritus des Schmauses der See",
+			"aspects": {
+				"ritual": 1
+			},
+			"slots": [
+				{
+					"id": "Invocation",
+					"label": "Anrufung",
+					"actionId": "work",
+					"required": {
+						"lore": 1
+					},
+					"description": "Wie lauten die Worte?"
+				},
+				{
+					"id": "Instrument",
+					"label": "Instrument",
+					"actionId": "work",
+					"required": {
+						"tool": 1
+					},
+					"description": "Was ist unser Instrument?"
+				},
+				{
+					"id": "Offering",
+					"label": "Opfer",
+					"actionId": "work",
+					"required": {
+						"ingredient": 1
+					},
+					"consumes": true,
+					"description": "Was geben wir auf?"
+				},
+				{
+					"id": "Desire",
+					"label": "Verlangen",
+					"actionId": "work",
+					"required": {
+						"desire": 6
+					},
+					"description": "Was könnte ich werden? [Dieses Feld ist nur für die letzte Phase des Aufstiegs gedacht. Hast du das 6. Zeichen erreicht, kannst du deinen Aufstieg auf dieses Feld legen, um ein Großes Werk zu vollenden.]"
+				}
+			],
+			"description": "Dieser Ritus ruft die Hexe-und-Schwester an, um die Lücke zwischen dem zu schließen, was ist und was sein könnte. Der Adept gießt, oder schleudert, ein Opfer ins Wasser: vorzugsweise, aber nicht zwingend, das Meer.",
+			"unique": true
+		},
+		{
+			"id": "ritetoolconsumeinfluence",
+			"label": "Ritus des Kartenrandes",
+			"aspects": {
+				"ritual": 1
+			},
+			"slots": [
+				{
+					"id": "Invocation",
+					"label": "Anrufung",
+					"actionId": "work",
+					"required": {
+						"lore": 1
+					},
+					"description": "Wie lauten die Worte?"
+				},
+				{
+					"id": "Offering",
+					"label": "Opfer",
+					"actionId": "work",
+					"required": {
+						"influence": 1
+					},
+					"description": "Welcher Einfluss wird genommen?",
+					"consumes": true
+				},
+				{
+					"id": "Instrument",
+					"label": "Instrument",
+					"actionId": "work",
+					"required": {
+						"tool": 1
+					},
+					"description": "Was ist unser Instrument?"
+				},
+				{
+					"id": "Desire",
+					"label": "Verlangen",
+					"actionId": "work",
+					"required": {
+						"desire": 6
+					},
+					"description": "Was könnte ich werden? [Dieses Feld ist nur für die letzte Phase des Aufstiegs gedacht. Hast du das 6. Zeichen erreicht, kannst du deinen Aufstieg auf dieses Feld legen, um ein Großes Werk zu vollenden.]"
+				}
+			],
+			"description": "Die Vagabundin ist die einzige Stunde, die niemals den Mansus betritt. Dieser Ritus muss am richtigen Orte und zur richtigen Zeit durchgeführt werden, und die Vagabundin wird die Richtigkeit für sich beanspruchen.",
+			"unique": true
+		},
+		{
+			"id": "ritetoolconsumefollower",
+			"label": "Ritus der Tiegel-Seele",
+			"comments": "endgame rite",
+			"aspects": {
+				"ritual": 1
+			},
+			"slots": [
+				{
+					"id": "Invocation",
+					"label": "Anrufung",
+					"actionId": "work",
+					"required": {
+						"lore": 1
+					},
+					"description": "Wie lauten die Worte?"
+				},
+				{
+					"id": "Victim",
+					"label": "Opfer",
+					"actionId": "work",
+					"required": {
+						"follower": 1,
+						"prisoner": 1
+					},
+					"consumes": true,
+					"description": "Es muss immer williges Blut geben."
+				},
+				{
+					"id": "Instrument",
+					"label": "Instrument",
+					"actionId": "work",
+					"required": {
+						"tool": 1
+					},
+					"description": "Worauf wird Blut vergossen?"
+				},
+				{
+					"id": "Desire",
+					"label": "Verlangen",
+					"actionId": "work",
+					"required": {
+						"desire": 6
+					},
+					"description": "Was könnte ich werden? [Dieses Feld ist nur für die letzte Phase des Aufstiegs gedacht. Hast du das 6. Zeichen erreicht, kannst du deinen Aufstieg auf dieses Feld legen, um ein Großes Werk zu vollenden.]"
+				}
+			],
+			"description": "Dieser Ritus ist ein Instrument der Macht, um das Blut zu entzünden: Feuer ist die Läsion in der Haut der Welt. Der Assistent überlebt nur selten unbeschadet.",
+			"unique": true
+		},
+		{
+			"id": "ritetoolfollowerconsumelore",
+			"label": "Ritus der Sorge des Wächters",
+			"comments": "endgame rite",
+			"aspects": {
+				"ritual": 1
+			},
+			"slots": [
+				{
+					"id": "Sacrifice",
+					"label": "Opfer",
+					"actionId": "work",
+					"required": {
+						"lore": 1
+					},
+					"consumes": true,
+					"description": "Was werden wir vergessen?"
+				},
+				{
+					"id": "Assistant",
+					"label": "Assistent",
+					"actionId": "work",
+					"required": {
+						"follower": 1,
+						"prisoner": 1
+					},
+					"description": "Wer wird die Worte sprechen?"
+				},
+				{
+					"id": "Instrument",
+					"label": "Instrument",
+					"actionId": "work",
+					"required": {
+						"tool": 1
+					},
+					"description": "Was ist unser Instrument?"
+				},
+				{
+					"id": "Desire",
+					"label": "Verlangen",
+					"actionId": "work",
+					"required": {
+						"desire": 6
+					},
+					"description": "Was könnte ich werden? [Dieses Feld ist nur für die letzte Phase des Aufstiegs gedacht. Hast du das 6. Zeichen erreicht, kannst du deinen Aufstieg auf dieses Feld legen, um ein Großes Werk zu vollenden.]"
+				}
+			],
+			"description": "Dieser Ritus erzählt vom Verlust des Wächters, der durch das Haus ohne Mauern wandelt. (Das Licht geht vor ihm und der Schatten folgt ihm. Er darf dich nicht sehen.) Das Instrument der Macht wird benutzt, um ihn zu beschwören, damit er sein Opfer annimmt: kostbares Wissen von der Wurzel deiner Gedacnken. Der Assistent muss die Worte sprechen, die deinen Verstand verankern, also wähle jemanden, dem du vertraust.",
+			"unique": true
+		},
+		{
+			"id": "ritefollowerconsumetool",
+			"label": "Ritus des rebellischen Strebens",
+			"aspects": {
+				"ritual": 1
+			},
+			"slots": [
+				{
+					"id": "Invocation",
+					"label": "Anrufung",
+					"actionId": "work",
+					"required": {
+						"lore": 1
+					},
+					"description": "Wie lauten die Worte?"
+				},
+				{
+					"id": "Assistant",
+					"label": "Assistent",
+					"actionId": "work",
+					"required": {
+						"follower": 1,
+						"prisoner": 1
+					},
+					"description": "Wer wird die Worte sprechen?"
+				},
+				{
+					"id": "Offering",
+					"label": "Opfer",
+					"actionId": "work",
+					"required": {
+						"tool": 1
+					},
+					"consumes": true,
+					"description": "Was geben wir auf?"
+				},
+				{
+					"id": "Desire",
+					"label": "Verlangen",
+					"actionId": "work",
+					"required": {
+						"desire": 6
+					},
+					"description": "Was könnte ich werden? [Dieses Feld ist nur für die letzte Phase des Aufstiegs gedacht. Hast du das 6. Zeichen erreicht, kannst du deinen Aufstieg auf dieses Feld legen, um ein Großes Werk zu vollenden.]"
+				}
+			],
+			"description": "Dieser Ritus setzt die Lehre der Schmiede der Tage ein: der Handwerker kann das höchste Ziel nur erreichen, indem er sein kostbarstes Werkzeug zerstört. Der Löwenschmied wusste dies, als er sein Schwert vor dem Oberst zerschmetterte. Also muss mein Assistent ein ausgewähltes Instrument zerstören.",
+			"unique": true
+		},
+		{
+			"id": "ritefollowerconsumeingredient",
+			"label": "Ritus der Gnade der Mutter",
+			"aspects": {
+				"ritual": 1
+			},
+			"slots": [
+				{
+					"id": "Invocation",
+					"label": "Anrufung",
+					"actionId": "work",
+					"required": {
+						"lore": 1
+					},
+					"description": "Wie lauten die Worte?"
+				},
+				{
+					"id": "Assistant",
+					"label": "Assistent",
+					"actionId": "work",
+					"required": {
+						"follower": 1,
+						"prisoner": 1
+					},
+					"description": "Wer wird die Worte sprechen?"
+				},
+				{
+					"id": "Offering",
+					"label": "Opfer",
+					"actionId": "work",
+					"required": {
+						"ingredient": 1
+					},
+					"description": "Was wird geopfert werden?",
+					"consumes": true
+				},
+				{
+					"id": "Desire",
+					"label": "Verlangen",
+					"actionId": "work",
+					"required": {
+						"desire": 6
+					},
+					"description": "Was könnte ich werden? [Dieses Feld ist nur für die letzte Phase des Aufstiegs gedacht. Hast du das 6. Zeichen erreicht, kannst du deinen Aufstieg auf dieses Feld legen, um ein Großes Werk zu vollenden.]"
+				}
+			],
+			"description": "Der Assistent wird der Mutter der Ameisen als Opfer dargeboten. Doch die Mutter versteht sich auf die Heilung wie auf das Gift, und sie wird gnädig sein und als Ersatz ein geringeres Opfer akzeptieren. Für gewöhnlich. Das Erlebnis ist für den Assistenten nicht gerade beruhigend.",
+			"unique": true
+		},
+		{
+			"id": "riteinfluenceconsumeingredient",
+			"label": "Der Ritus vom Stillen des Dursts der Krähe",
+			"aspects": {
+				"ritual": 1
+			},
+			"slots": [
+				{
+					"id": "Invocation",
+					"label": "Anrufung",
+					"actionId": "work",
+					"required": {
+						"lore": 1
+					},
+					"description": "Wie lauten die Worte?"
+				},
+				{
+					"id": "Influence",
+					"label": "Einfluss",
+					"actionId": "work",
+					"required": {
+						"influence": 1
+					},
+					"description": "Welche Macht ist präsent?"
+				},
+				{
+					"id": "Offering",
+					"label": "Opfer",
+					"actionId": "work",
+					"required": {
+						"ingredient": 1
+					},
+					"description": "Was wird geopfert werden?",
+					"consumes": true
+				},
+				{
+					"id": "Desire",
+					"label": "Verlangen",
+					"actionId": "work",
+					"required": {
+						"desire": 6
+					},
+					"description": "Was könnte ich werden? [Dieses Feld ist nur für die letzte Phase des Aufstiegs gedacht. Hast du das 6. Zeichen erreicht, kannst du deinen Aufstieg auf dieses Feld legen, um ein Großes Werk zu vollenden.]"
+				}
+			],
+			"description": "Dieser Ritus ruft die Strandkrähe bei Sonnen- oder Mondaufgang an. Die Krähe nimmt das Opfer an und gibt die Gaben der Erde zurück.",
+			"unique": true
+		},
+		{
+			"id": "ritefollowerconsumeinfluence",
+			"label": "Ritus des Sonnenuntergangs",
+			"aspects": {
+				"ritual": 1
+			},
+			"slots": [
+				{
+					"id": "Invocation",
+					"label": "Anrufung",
+					"actionId": "work",
+					"required": {
+						"lore": 1
+					},
+					"description": "Wie lauten die Worte?"
+				},
+				{
+					"id": "Assistant",
+					"label": "Assistent",
+					"actionId": "work",
+					"required": {
+						"follower": 1,
+						"prisoner": 1
+					},
+					"description": "Wer wird die Worte sprechen?"
+				},
+				{
+					"id": "Offering",
+					"label": "Opfer",
+					"actionId": "work",
+					"required": {
+						"influence": 1
+					},
+					"consumes": true,
+					"description": "Welcher Einfluss wird verzehrt?"
+				},
+				{
+					"id": "Desire",
+					"label": "Verlangen",
+					"actionId": "work",
+					"required": {
+						"desire": 6
+					},
+					"description": "Was könnte ich werden? [Dieses Feld ist nur für die letzte Phase des Aufstiegs gedacht. Hast du das 6. Zeichen erreicht, kannst du deinen Aufstieg auf dieses Feld legen, um ein Großes Werk zu vollenden.]"
+				}
+			],
+			"description": "Der Assistent muss Tränen wahren Gefühls vergießen, die den Ort benetzen, wo der Einfluss liegt. Wird alles gut gemacht, verzehrt die Sonne-in-Lumpen den Einfluss, erkennt ein Ende an und gewährt ihre Hilfe.",
+			"unique": true
+		},
+		{
+			"id": "riteinfluenceconsumefollower",
+			"label": "Ritus der Teilung der Bestie",
+			"aspects": {
+				"ritual": 1
+			},
+			"slots": [
+				{
+					"id": "Invocation",
+					"label": "Anrufung",
+					"actionId": "work",
+					"required": {
+						"lore": 1
+					},
+					"description": "Wie lauten die Worte?"
+				},
+				{
+					"id": "Victim",
+					"label": "Opfer",
+					"actionId": "work",
+					"required": {
+						"follower": 1,
+						"prisoner": 1
+					},
+					"description": "Was wird geteilt werden?",
+					"consumes": true
+				},
+				{
+					"id": "Influence",
+					"label": "Einfluss",
+					"actionId": "work",
+					"required": {
+						"influence": 1
+					},
+					"description": "Welche Macht ist präsent?"
+				},
+				{
+					"id": "Desire",
+					"label": "Verlangen",
+					"actionId": "work",
+					"required": {
+						"desire": 6
+					},
+					"description": "Was könnte ich werden? [Dieses Feld ist nur für die letzte Phase des Aufstiegs gedacht. Hast du das 6. Zeichen erreicht, kannst du deinen Aufstieg auf dieses Feld legen, um ein Großes Werk zu vollenden.]"
+				}
+			],
+			"description": "Der Name des Assistenten wird ihm an einem Ort oder bei einem Anlass der Macht genommen, und er wird in neun Teile geteilt. Einst wurde er auch wie ein Tier gejagt, doch die Zeiten haben sich gewandelt.",
+			"unique": true
+		},
+		{
+			"id": "riteconsumetoolingredientfollowerinfluence",
+			"label": "Ritus der Interkalierung",
+			"aspects": {
+				"ritual": 1
+			},
+			"slots": [
+				{
+					"id": "Sacrifice",
+					"label": "Opfer",
+					"actionId": "work",
+					"required": {
+						"lore": 1
+					},
+					"description": "Etwas zum Verlieren.",
+					"consumes": true
+				},
+				{
+					"id": "Offering",
+					"label": "Opfer",
+					"actionId": "work",
+					"required": {
+						"follower": 1,
+						"prisoner": 1,
+						"summoned": 1
+					},
+					"description": "Etwas zum Verlieren.",
+					"consumes": true
+				},
+				{
+					"id": "Surrender",
+					"label": "Aufgabe",
+					"actionId": "work",
+					"required": {
+						"tool": 1
+					},
+					"description": "Etwas zum Verlieren.",
+					"consumes": true
+				},
+				{
+					"id": "Dissolution",
+					"label": "Auflösung",
+					"actionId": "work",
+					"required": {
+						"influence": 1
+					},
+					"description": "Etwas zum Verlieren.",
+					"consumes": true
+				},
+				{
+					"id": "Grief",
+					"label": "Trauer",
+					"actionId": "work",
+					"required": {
+						"ingredient": 1
+					},
+					"description": "Etwas zum Verlieren.",
+					"consumes": true
+				},
+				{
+					"id": "Desire",
+					"label": "Verlangen",
+					"actionId": "work",
+					"required": {
+						"desire": 6,
+						"promise": 1
+					},
+					"description": "Was könnte ich werden? [Dieses Feld ist nur für die letzte Phase des Aufstiegs gedacht. Hast du das 6. Zeichen erreicht, kannst du deinen Aufstieg auf dieses Feld legen, um ein Großes Werk zu vollenden.]"
+				}
+			],
+			"description": "Dieser Ritus rekapituliert das abscheuliche Schicksal der Sonne. Er wird in extremen Zeiten von närrischen Adepten eingesetzt.",
+			"unique": true
+		}
+	]
+}

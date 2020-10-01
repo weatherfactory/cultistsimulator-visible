@@ -7,6 +7,7 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Services {

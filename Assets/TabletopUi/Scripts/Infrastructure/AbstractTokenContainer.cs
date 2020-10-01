@@ -14,6 +14,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public virtual bool AllowDrag { get; private set; }
         public virtual bool AllowStackMerge { get; private set; }
+        public virtual bool AlwaysShowHoverGlow { get; private set; }
+        public bool PersistBetweenScenes { get; protected set; }
 
         // This is where the ElementStacksManager is created!
         public abstract void Initialise();
@@ -22,10 +24,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return _elementStacksManager;
         }
 
-        public IElementStack ReprovisionExistingElementStack(ElementStackSpecification stackSpecification, Source stackSource, string locatorid = null)
+        public ElementStackToken ReprovisionExistingElementStack(ElementStackSpecification stackSpecification, Source stackSource, Context context, string locatorid = null)
         {
             var stack = ProvisionElementStack(stackSpecification.ElementId, stackSpecification.ElementQuantity,
-                stackSource, locatorid);
+                stackSource, context, locatorid);
             foreach(var m in stackSpecification.Mutations)
                 stack.SetMutation(m.Key,m.Value,false);
 
@@ -41,20 +43,19 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             return stack;
         }
-        public IElementStack ProvisionElementStack(string elementId, int quantity, Source stackSource, string locatorid = null) {
-            IElementStack stack = PrefabFactory.CreateToken<ElementStackToken>(transform, locatorid);
-            if (stack == null)
-            {
-                string stackInfo = "Can't create elementId" + elementId + " from " + stackSource.SourceType;
-                if (locatorid != null)
-                    stackInfo += " with " + locatorid;
+        public virtual ElementStackToken ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context, string locatorid = null) {
 
-                throw new ApplicationException(stackInfo);
-            }
 
+            var stack = PrefabFactory.CreateLocally<ElementStackToken>(transform);
+            stack.AddObserver(Registry.Get<INotifier>());
+                
+            if (locatorid != null)
+                stack.SaveLocationInfo = locatorid;
 
             stack.Populate(elementId, quantity, stackSource);
-            DisplayHere(stack, new Context(Context.ActionSource.Loading));
+
+            GetElementStacksManager().AcceptStack(stack, context);
+
             return stack;
         }
 
@@ -66,7 +67,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             // By default: do nothing right now
         }
 
-        public virtual void DisplayHere(IElementStack stack, Context context) {
+        public virtual void DisplayHere(ElementStackToken stack, Context context) {
             DisplayHere(stack as DraggableToken, context);
         }
 

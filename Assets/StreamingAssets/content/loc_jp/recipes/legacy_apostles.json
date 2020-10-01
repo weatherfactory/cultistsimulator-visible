@@ -1,0 +1,348 @@
+{
+	"recipes": [
+		{
+			"id": "workapostleforgejob",
+			"label": "自分の資源について考える",
+			"actionId": "work",
+			"requirements": {
+				"legacyapostleforgejob": 1
+			},
+			"effects": {
+				"funds": 7,
+				"legacyapostleforgejob": -1
+			},
+			"alternativerecipes": [
+				{
+					"id": "apostleforgeopentalk",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "我々の組織は資源を蓄えている......",
+			"description": "......しばらくの間はこれで足りるだろうが、他の支援手段を見つける必要があるだろう。",
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "apostleforgeopentalk",
+			"label": "我々の目標",
+			"actionId": "talk",
+			"requirements": {
+				
+			},
+			"startdescription": "私は1人ではない。",
+			"alternativerecipes": [
+				{
+					"id": "apostleforgeopenstudy",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"description": "私の味方、形作る者。",
+			"effects": {
+				"LEVER_LastCult": 1,
+				"LEVER_LastFollower": 1,
+				"apostleforge.mentor": 1
+			},
+			"warmup": 10,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "begincultfoundation",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "apostleforgeopenstudy",
+			"label": "何を覚えている？",
+			"actionId": "study",
+			"startdescription": "私は秘密を授けられた。",
+			"alternativerecipes": [
+				{
+					"id": "apostleforgeopenexplore",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"effects": {
+				"fragmentforgef": 1,
+				"reason": 1,
+				"waywood": 1,
+				"waywhite": 1,
+				"waystag_after": 1
+			},
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "apostleforgeopenexplore",
+			"label": "始める場所",
+			"actionId": "explore",
+			"startdescription": "何だっけ？",
+			"description": "話し合いの場で、与えられた指示を検討する。",
+			"alternativerecipes": [
+				{
+					"id": "apostleforgeopendream",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"effects": {
+				"apostleforge.pillar1": 1,
+				"hq.temporary": 1
+			},
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "apostleforgeopendream",
+			"label": "遠雷",
+			"actionId": "dream",
+			"startdescription": "何が、誰が来るんだ？",
+			"description": "形作る者は、世界の秩序、さらにはマンサスの秩序を変えたいと願っている。反対意見も出てくるだろう。",
+			"warmup": 60,
+			"effects": {
+				"passion": 1
+			},
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "long.spawn.forge",
+					"chance": 100,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "workapostlegrailjob",
+			"label": "自分の資源について考える",
+			"actionId": "work",
+			"requirements": {
+				"legacyapostlegrailjob": 1
+			},
+			"effects": {
+				"funds": 7,
+				"legacyapostlegrailjob": -1,
+				"apostlegrail.pillar2.dormant": 1,
+				"apostlegrail.pillarfuel": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "apostlegrailopentalk",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "我々の組織は資源を蓄えている......",
+			"description": "......しばらくの間はこれで足りるだろうが、他の支援手段を見つける必要があるだろう。それに、私の体調はかなりひどい状態だ。喜びの者が私を支えてくれることを願うばかりだ。",
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "apostlegrailopentalk",
+			"label": "我々の目標",
+			"actionId": "talk",
+			"requirements": {
+				
+			},
+			"startdescription": "私は1人ではない。",
+			"alternativerecipes": [
+				{
+					"id": "apostlegrailopenstudy",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"description": "私の味方、喜びの者。",
+			"effects": {
+				"LEVER_LastCult": 1,
+				"LEVER_LastFollower": 1,
+				"apostlegrail.mentor": 1
+			},
+			"warmup": 10,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "begincultfoundation",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "apostlegrailopenstudy",
+			"label": "何を覚えている？",
+			"actionId": "study",
+			"startdescription": "私は秘密を授けられた。",
+			"alternativerecipes": [
+				{
+					"id": "apostlegrailopenexplore",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"effects": {
+				"fragmentgrailf": 1,
+				"reason": 1,
+				"waywood": 1,
+				"waywhite": 1,
+				"waystag_after": 1
+			},
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "apostlegrailopenexplore",
+			"label": "始める場所",
+			"actionId": "explore",
+			"startdescription": "何だっけ？",
+			"description": "話し合いの場で、与えられた指示を検討する。",
+			"alternativerecipes": [
+				{
+					"id": "apostlegrailopendream",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"effects": {
+				"apostlegrail.pillar1": 1,
+				"hq.temporary": 1
+			},
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "apostlegrailopendream",
+			"label": "遠くの光",
+			"actionId": "dream",
+			"startdescription": "何が、誰が来るんだ？",
+			"description": "喜びの者は、世界の秩序、さらにはマンサスの秩序を変えたいと願っている。反対意見も出てくるだろう。",
+			"warmup": 60,
+			"effects": {
+				"passion": 1
+			},
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "long.spawn.grail",
+					"chance": 100,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "workapostlelanternjob",
+			"label": "私がすべきこと",
+			"actionId": "work",
+			"requirements": {
+				"legacyapostlelanternjob": 1
+			},
+			"effects": {
+				"funds": 7,
+				"legacyapostlelanternjob": -1,
+				"apostlelantern.pillar1": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "apostlelanternopentalk",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "ハッとして我に返る。白昼夢を見ていたのだろうか？",
+			"description": "ここには資金の入った小包がある。スカイブルーのほっそりとした封筒には、私が書いた指示が入っている。もう良いだろう。残りの記憶はもうどうでも良い。",
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "apostlelanternopentalk",
+			"label": "我々の目標",
+			"actionId": "talk",
+			"requirements": {
+				
+			},
+			"startdescription": "聞いたことはないが、これらの名前を覚えている。",
+			"alternativerecipes": [
+				{
+					"id": "apostlelanternopenstudy",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"description": "私の味方、照らされた者。",
+			"effects": {
+				"LEVER_LastCult": 1,
+				"LEVER_LastFollower": 1,
+				"apostlelantern.mentor": 1
+			},
+			"warmup": 10,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "begincultfoundation",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "apostlelanternopenstudy",
+			"label": "何を覚えている？",
+			"actionId": "study",
+			"startdescription": "私は秘密を授けられた。",
+			"alternativerecipes": [
+				{
+					"id": "apostlelanternopenexplore",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"effects": {
+				"fragmentlanternf": 1,
+				"reason": 1,
+				"waywood": 1,
+				"waywhite": 1,
+				"waystag_after": 1
+			},
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "apostlelanternopenexplore",
+			"label": "始める場所",
+			"actionId": "explore",
+			"startdescription": "何だっけ？",
+			"description": "ここは、眠りの淵を照らす光の中で見た場所。",
+			"alternativerecipes": [
+				{
+					"id": "apostlelanternopendream",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"effects": {
+				"hq.temporary": 1
+			},
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "apostlelanternopendream",
+			"label": "遠くの光",
+			"actionId": "dream",
+			"startdescription": "何が、誰が来るんだ？",
+			"description": "夢の中で、照らされた者に反対するものが出てくると警告された。私が見る夢はすべて真実だ。",
+			"warmup": 60,
+			"effects": {
+				"passion": 1
+			},
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "long.spawn.lantern",
+					"chance": 100,
+					"additional": true
+				}
+			]
+		}
+	]
+}

@@ -29,6 +29,8 @@ namespace Assets.Core.Entities
             return new Dictionary<string, string>(_currentIlluminations);
         }
 
+
+
         public void AddMansusJournalEntry(string value)
         {
             _currentIlluminations.Add(KEY_MANSUSJOURNAL, value);

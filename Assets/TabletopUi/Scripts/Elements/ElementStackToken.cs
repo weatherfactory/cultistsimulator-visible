@@ -26,7 +26,7 @@ using Noon;
 // Should inherit from a "TabletopToken" base class same as VerbBox
 
 namespace Assets.CS.TabletopUI {
-    public class ElementStackToken : DraggableToken, IElementStack, IGlowableView,IAnimatable
+    public class ElementStackToken : DraggableToken, IGlowableView,IAnimatable
     {
         public const float SEND_STACK_TO_SLOT_DURATION = 0.2f;
 
@@ -47,7 +47,7 @@ namespace Assets.CS.TabletopUI {
 
         [SerializeField] CardVFX defaultRetireFX = CardVFX.CardBurn;
 
-        protected IElementStacksManager CurrentStacksManager;
+        protected ElementStacksManager CurrentStacksManager;
 
         private Element _element;
         private int _quantity;
@@ -79,9 +79,29 @@ namespace Assets.CS.TabletopUI {
         private IlluminateLibrarian _illuminateLibrarian;
         private List<Sprite> frames;
 
+        private HashSet<ITokenObserver> observers=new HashSet<ITokenObserver>();
 
         //set true when the Chronicler notices it's been placed on the desktop. This ensures we don't keep spamming achievements / Lever requests. It isn't persisted in saves! which is probably fine.
         public bool PlacementAlreadyChronicled=false;
+
+
+        public bool AddObserver(ITokenObserver observer)
+        {
+            if (observers.Contains(observer))
+                return false;
+
+            observers.Add(observer);
+            return true;
+        }
+
+        public bool RemoveObserver(ITokenObserver observer)
+        {
+            if(!observers.Contains(observer))
+                return false;
+            observers.Remove(observer);
+            return true;
+
+        }
 
         public override string EntityId {
             get { return _element == null ? null : _element.Id; }
@@ -245,11 +265,13 @@ namespace Assets.CS.TabletopUI {
         virtual public IAspectsDictionary GetAspects(bool includeSelf = true)
         {
             //if we've somehow failed to populate an element, return empty aspects, just to exception-proof ourselves
-            if(_element==null)
+    
+
+            var tabletop = Registry.Get<TabletopManager>(false) as TabletopManager;
+
+            if (_element == null || tabletop==null)
                 return new AspectsDictionary();
-
-
-			var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
+            
 			if (!tabletop._enableAspectCaching)
 			{
 				_aspectsDirtyInc = true;
@@ -319,6 +341,13 @@ namespace Assets.CS.TabletopUI {
             if (CurrentStacksManager == null)
                 CurrentStacksManager = Registry.Get<Limbo>().GetElementStacksManager(); //a stack must always have a parent stacks manager, or we get a null reference exception
             //when first created, it should be in Limbo
+
+            //add any observers that we can find in the context
+            var debugTools = Registry.Get<DebugTools>(false);
+            if (debugTools != null)
+                AddObserver(debugTools);
+
+
         }
 
 
@@ -349,7 +378,7 @@ namespace Assets.CS.TabletopUI {
                 dealer.RemoveFromAllDecksIfInUniquenessGroup(_element.UniquenessGroup);
 
             try
-			{
+            {
                 SetQuantity(quantity, new Context(Context.ActionSource.Unknown)); // this also toggles badge visibility through second call
                 SetCardBG(_element.Unique, Decays);
 
@@ -381,10 +410,10 @@ namespace Assets.CS.TabletopUI {
 				{
 					CustomizeDropZone();
 				}
-				#endif
+#endif
             }
             catch (Exception e)
-			{
+            {
                 NoonUtility.Log("Couldn't create element with ID " + elementId + " - " + e.Message + "(This might be an element that no longer exists being referenced in a save file?)");
                 Retire(CardVFX.None);
             }
@@ -495,22 +524,17 @@ namespace Assets.CS.TabletopUI {
 		{
 			var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
 			var stacksManager = tabletop._tabletop.GetElementStacksManager();
-			//var newCard = PrefabFactory.CreateToken<DropZoneToken>(transform.parent);
-			var newCard = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
-			newCard.Populate("dropzone", 1, Source.Fresh());
+
+            var dropZone = tabletop._tabletop.ProvisionElementStack("dropzone", 1, Source.Fresh(),
+                new Context(Context.ActionSource.Loading)) as ElementStackToken;
+
+            dropZone.Populate("dropzone", 1, Source.Fresh());
 
             // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
-            newCard.transform.position = Vector3.zero;
-
-            stacksManager.AcceptStack(newCard, new Context(Context.ActionSource.Loading));
-
-			// Show hint message explaining what this new thing is...
-			//notifier.ShowNotificationWindow( LanguageTable.Get("UI_CANTMERGE"), LanguageTable.Get("UI_DECAYS") );
-
-            // Accepting stack may put it to pos Vector3.zero, so this is last
-            //newCard.transform.position = position;
-            newCard.transform.localScale = Vector3.one;
-            return newCard as DraggableToken;
+            dropZone.transform.position = Vector3.zero;
+            
+            dropZone.transform.localScale = Vector3.one;
+            return dropZone as DraggableToken;
 		}
 
 		private void CustomizeDropZone()		// Customises self!
@@ -574,9 +598,14 @@ namespace Assets.CS.TabletopUI {
 
 
         // Called from StacksManager
-        public void SetStackManager(IElementStacksManager manager) {
+        public void SetStackManager(ElementStacksManager newStacksManager)
+        {
+
+            if (CurrentStacksManager == newStacksManager)
+                return;  //we haven't actually changed location.
+
             var oldStacksManager = CurrentStacksManager;
-            CurrentStacksManager = manager;
+            CurrentStacksManager = newStacksManager;
 
             //notify afterwards, in case it counts the things *currently* in its list
             if (oldStacksManager != null)
@@ -598,7 +627,7 @@ namespace Assets.CS.TabletopUI {
 
         protected override void NotifyChroniclerPlacedOnTabletop()
         {
-            subscribedChronicler.TokenPlacedOnTabletop(this);
+            subscribedChronicler?.TokenPlacedOnTabletop(this);
         }
 
         public override bool Retire()
@@ -613,11 +642,13 @@ namespace Assets.CS.TabletopUI {
 			if (Defunct)
 				return false;
 
-            var hlc = Registry.Get<HighlightLocationsController>();
-            hlc.DeactivateMatchingHighlightLocation(_element?.Id);
+            var hlc = Registry.Get<HighlightLocationsController>(false);
+            if(hlc!=null)
+                hlc.DeactivateMatchingHighlightLocation(_element?.Id);
 
-            var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
-			tabletop.NotifyAspectsDirty();	// Notify tabletop that aspects will need recompiling
+            var tabletop = Registry.Get<TabletopManager>(false);
+            if(tabletop!=null)
+			    tabletop.NotifyAspectsDirty();	// Notify tabletop that aspects will need recompiling
             SetStackManager(null);			// Remove it from the StacksManager. It no longer exists in the model.
             
             SetTokenContainer(null, new Context(Context.ActionSource.Retire)); // notify the view container that we're no longer here
@@ -680,9 +711,9 @@ namespace Assets.CS.TabletopUI {
             return isFront && turnCoroutine == null; // no dragging while not front or busy turning
         }
 
-        protected override bool AllowsInteraction() {
+        protected override bool ShouldShowHoverGlow() {
             // interaction is always possible on facedown cards to turn them back up
-            return !isFront || base.AllowsInteraction();
+            return !isFront || base.ShouldShowHoverGlow();
         }
 
         virtual public bool AllowsIncomingMerge() {
@@ -792,43 +823,65 @@ namespace Assets.CS.TabletopUI {
 
 		public override void OnPointerEnter(PointerEventData eventData)
 		{
-			base.OnPointerEnter(eventData);
-			var tabletopManager = Registry.Get<TabletopManager>();
-			if (isFront)
-				tabletopManager.SetHighlightedElement(EntityId, Quantity);
-			else
-				tabletopManager.SetHighlightedElement(null);
+            foreach (var o in observers)
+            {
+                o.OnStackPointerEntered(this, eventData);
+            }
 
-            if (DraggableToken.itemBeingDragged==null)
-            { 
-                //Display any HighlightLocations tagged for this element, unless we're currently dragging something else
-                var hlc = Registry.Get<HighlightLocationsController>();
-                hlc.ActivateOnlyMatchingHighlightLocation(_element.Id);
+            base.OnPointerEnter(eventData);
+			var tabletopManager = Registry.Get<TabletopManager>(false);
+            if(tabletopManager!=null ) //eg we might have a face down card on the credits page - in the longer term, of course, this should get interfaced
+            {
+                if (isFront)
+                    tabletopManager.SetHighlightedElement(EntityId, Quantity);
+                else
+                    tabletopManager.SetHighlightedElement(null);
+
+                if (DraggableToken.itemBeingDragged==null)
+                { 
+                    //Display any HighlightLocations tagged for this element, unless we're currently dragging something else
+                    var hlc = Registry.Get<HighlightLocationsController>();
+                    hlc.ActivateOnlyMatchingHighlightLocation(_element.Id);
+                }
             }
         }
 
 		public override void OnPointerExit(PointerEventData eventData)
 		{
-			base.OnPointerExit(eventData);
-			Registry.Get<TabletopManager>().SetHighlightedElement(null);
-
-            //Display any HighlightLocations tagged for this element
-            if(DraggableToken.itemBeingDragged!=this)
-            { 
-                var hlc = Registry.Get<HighlightLocationsController>();
-                hlc.DeactivateMatchingHighlightLocation(_element.Id);
+            foreach (var o in observers)
+            {
+                o.OnStackPointerExited(this, eventData);
             }
+
+            base.OnPointerExit(eventData);
+            var ttm = Registry.Get<TabletopManager>(false);
+                if(ttm!=null)
+                {
+                Registry.Get<TabletopManager>().SetHighlightedElement(null);
+
+                    //Display any HighlightLocations tagged for this element
+                    if(DraggableToken.itemBeingDragged!=this)
+                    { 
+                        var hlc = Registry.Get<HighlightLocationsController>();
+                        hlc.DeactivateMatchingHighlightLocation(_element.Id);
+                    }
+                }
         }
 
 		public override void OnPointerClick(PointerEventData eventData)
         {
-
+    
             if (eventData.clickCount > 1)
 			{
 				// Double-click, so abort any pending single-clicks
 				singleClickPending = false;
-				notifier.HideDetails();
-				SendStackToNearestValidSlot();
+                foreach (var o in observers)
+                {
+                    o.OnStackDoubleClicked(this, eventData, this._element);
+                }
+
+
+                SendStackToNearestValidSlot();
 			}
 			else
 			{
@@ -836,15 +889,16 @@ namespace Assets.CS.TabletopUI {
 				// Most of these functions are OK to fire instantly - just the ShowCardDetails we want to wait and confirm it's not a double
 				singleClickPending = true;
 
-			    // Add the element name to the debug panel if it's active
-			    Registry.Get<DebugTools>().SetInput(_element.Id);
+    
 
 
                 if (isFront)
 				{
-					//Debug.Log("LastTablePos: " + lastTablePos.Value.x +", "+ lastTablePos.Value.y);
-					notifier.ShowCardElementDetails(this._element, this);
-					if (TabletopManager.GetStickyDrag())
+                    foreach (var o in observers)
+                    {
+                        o.OnStackClicked(this, eventData, this._element);
+                    }
+                    if (TabletopManager.GetStickyDrag())
 					{
 						if (DraggableToken.itemBeingDragged != null)
 						{
@@ -869,22 +923,27 @@ namespace Assets.CS.TabletopUI {
 				}
 
 				// this moves the clicked sibling on top of any other nearby cards.
-				// NOTE: We shouldn't do this if we're in a RecipeSlot.
-				if (TokenContainer.GetType() != typeof(RecipeSlot))
+				if (TokenContainer.GetType() != typeof(RecipeSlot) && TokenContainer.GetType()!=typeof(ExhibitCards) )
 					transform.SetAsLastSibling();
 			}
         }
 
         public override void OnDrop(PointerEventData eventData) {
+            foreach (var o in observers)
+            {
+                o.OnStackDropped(this, eventData);
+            }
+
+
             if (DraggableToken.itemBeingDragged != null)
                 DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
         }
 
-        public override bool CanInteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
+        public override bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn) {
             return CanMergeWith(stackDroppedOn);
         }
 
-        public bool CanMergeWith(IElementStack stack)
+        public bool CanMergeWith(ElementStackToken stack)
 		{
             return	stack.EntityId == this.EntityId &&
 					(stack as ElementStackToken) != this &&
@@ -893,7 +952,7 @@ namespace Assets.CS.TabletopUI {
 					stack.GetCurrentMutations().IsEquivalentTo(GetCurrentMutations());
         }
 
-        public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
+        public override void InteractWithTokenDroppedOn(ElementStackToken stackDroppedOn) {
             if (CanInteractWithTokenDroppedOn(stackDroppedOn)) {
                 stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity,new Context(Context.ActionSource.Unknown));
                 DraggableToken.SetReturn(false, "was merged");
@@ -918,20 +977,21 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        void ShowNoMergeMessage(IElementStack stackDroppedOn) {
+        void ShowNoMergeMessage(ElementStackToken stackDroppedOn) {
             if (stackDroppedOn.EntityId != this.EntityId)
                 return; // We're dropping on a different element? No message needed.
 
             if (stackDroppedOn.Decays)
 			{
-                notifier.ShowNotificationWindow(Registry.Get<ILocStringProvider>().Get("UI_CANTMERGE"), Registry.Get<ILocStringProvider>().Get("UI_DECAYS"), false);
+                Registry.Get<Notifier>().ShowNotificationWindow(Registry.Get<ILocStringProvider>().Get("UI_CANTMERGE"), Registry.Get<ILocStringProvider>().Get("UI_DECAYS"), false);
             }
         }
 
-        public IElementStack SplitAllButNCardsToNewStack(int n, Context context) {
-            if (Quantity > n) {
-                var cardLeftBehind = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
-                cardLeftBehind.Populate(EntityId, Quantity - n, Source.Existing());
+        public ElementStackToken SplitAllButNCardsToNewStack(int n, Context context) {
+            if (Quantity > n)
+            {
+                var cardLeftBehind =
+                    TokenContainer.ProvisionElementStack(EntityId, Quantity - n, Source.Existing(), context) as ElementStackToken;
                 foreach (var m in GetCurrentMutations())
 	                cardLeftBehind.SetMutation(m.Key, m.Value, false); //brand new mutation, never needs to be additive
 
@@ -942,10 +1002,7 @@ namespace Assets.CS.TabletopUI {
 
                 // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
                 cardLeftBehind.transform.position = transform.position;
-
-                var stacksManager = TokenContainer.GetElementStacksManager();
-                stacksManager.AcceptStack(cardLeftBehind, context);
-
+                
                 // Accepting stack may put it to pos Vector3.zero, so this is last
                 cardLeftBehind.transform.position = transform.position;
                 return cardLeftBehind;
@@ -1130,8 +1187,9 @@ namespace Assets.CS.TabletopUI {
             // Save this, since we're retiring and that sets quantity to 0
             int quantity = Quantity;
 
-            var cardLeftBehind = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
-            cardLeftBehind.Populate(elementId, quantity, Source.Existing());
+           var cardLeftBehind= TokenContainer.ProvisionElementStack(elementId, quantity, Source.Existing(),
+                new Context(Context.ActionSource.ChangeTo)) as ElementStackToken;
+
             foreach(var m in this.GetCurrentMutations())
                cardLeftBehind.SetMutation(m.Key,m.Value,false); //brand new mutation, never needs to be additive
             cardLeftBehind.lastTablePos = lastTablePos;
@@ -1143,18 +1201,23 @@ namespace Assets.CS.TabletopUI {
             // Put it behind the card being burned
             cardLeftBehind.transform.SetSiblingIndex(transform.GetSiblingIndex() - 1);
 
-            var stacksManager = TokenContainer.GetElementStacksManager();
-            stacksManager.AcceptStack(cardLeftBehind, new Context(Context.ActionSource.ChangeTo));
-
             // Accepting stack may put it to pos Vector3.zero, so this is last
             cardLeftBehind.transform.position = transform.position;
 
-            // Note, this is a temp effect
             Retire(CardVFX.CardTransformWhite);
 
             return true;
         }
 
+        public void Understate()
+        {
+            canvasGroup.alpha = 0.3f;
+        }
+
+        public void Emphasise()
+        {
+            canvasGroup.alpha = 1f;
+        }
 
 
         public void FlipToFaceUp(bool instant = false)
@@ -1297,6 +1360,7 @@ namespace Assets.CS.TabletopUI {
             // remove anim
             artwork.overrideSprite = null;
         }
+
 
     }
 }

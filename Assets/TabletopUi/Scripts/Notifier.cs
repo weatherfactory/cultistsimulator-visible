@@ -9,6 +9,7 @@ using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
 using Assets.Core.Entities;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 namespace Assets.CS.TabletopUI {
 
@@ -167,6 +168,28 @@ namespace Assets.CS.TabletopUI {
 
         public void ShowImageBurn(string spriteName, DraggableToken token, float duration, float scale, TabletopImageBurner.ImageLayoutConfig alignment) {
             tabletopBurner.ShowImageBurn(spriteName, token, duration, scale, alignment);
+        }
+
+        public void OnStackClicked(ElementStackToken stack, PointerEventData pointerEventData, Element element)
+        {
+            ShowCardElementDetails(element, stack);
+        }
+
+        public void OnStackDropped(ElementStackToken stack, PointerEventData eventData)
+        {
+        }
+
+        public void OnStackPointerEntered(ElementStackToken stack, PointerEventData pointerEventData)
+        {
+        }
+
+        public void OnStackPointerExited(ElementStackToken stack, PointerEventData pointerEventData)
+        {
+        }
+
+        public void OnStackDoubleClicked(ElementStackToken elementStackToken, PointerEventData eventData, Element element)
+        {
+            HideDetails();
         }
     }
 }

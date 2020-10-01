@@ -1,0 +1,101 @@
+{
+	"verbs": [
+		{
+			"id": "scout",
+			"label": "Auskundschaften",
+			"description": "Möglichkeiten erschnüffeln.",
+			"slots": [
+				{
+					"id": "scout",
+					"label": "Auskundschaften",
+					"required": {
+						"domicile": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "use",
+			"label": "Einsetzen",
+			"description": "Etwas nutzen. [Gelegenheiten wahrnehmen, Operationen durchführen oder Jahre zu Geld machen.]",
+			"slots": [
+				{
+					"id": "plan",
+					"label": "Planen",
+					"required": {
+						"connection": 1,
+						"op": 1,
+						"weapon": 1,
+						"lore": 1,
+						"comfort": 1,
+						"proof": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "travel",
+			"label": "Reisen",
+			"atStart": true,
+			"description": "Manche Reisen sollen den Horizont erweitern, manche das eigene Leben verlängern.",
+			"slots": [
+				{
+					"id": "direction",
+					"label": "Intention",
+					"description": "Eine Straße oder ihr Ende?",
+					"required": {
+						"destination": 1,
+						"location": 1,
+						"ally": 1
+					},
+					"forbidden": {
+						"exhausted": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "send",
+			"label": "Kommunizieren",
+			"description": "Nachrichten, Geldmittel und anderes versehen. Vorsicht.",
+			"slots": [
+				{
+					"id": "send",
+					"label": "Senden",
+					"required": {
+						"desire": 1,
+						"domicile": 1,
+						"cash": 1,
+						"mortal": 1,
+						"ligeian": 1
+					},
+					"forbidden": {
+						"exhausted": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "relinquish",
+			"label": "Aufgeben",
+			"description": "Verkaufen, verlassen, ausmerzen, aufgeben.",
+			"slots": [
+				{
+					"id": "relinquish",
+					"label": "Aufgeben",
+					"required": {
+						"asset": 1,
+						"lifespan.stolen": 1,
+						"trace": 1,
+						"wound.exile": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "time.exile",
+			"label": "Zeit",
+			"description": "Der letzte Feind?"
+		}
+	]
+}

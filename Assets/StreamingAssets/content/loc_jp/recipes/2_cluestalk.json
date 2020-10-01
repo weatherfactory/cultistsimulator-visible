@@ -1,0 +1,301 @@
+{
+	"recipes": [
+		{
+			"id": "recruitindependentresentmenthint",
+			"label": "独立した者を勧誘する？",
+			"actionId": "talk",
+			"requirements": {
+				"independent": 1,
+				"mortal": 1,
+				"resentment": 1
+			},
+			"startdescription": "だめだ。まだ過去に起きたことを忘れていない。もしかしたら、いつか、これ以上傷つけなければ、気持ちが変わるのかもしれない。",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "recruitindependenthint",
+			"label": "独立した者を勧誘する？",
+			"actionId": "talk",
+			"requirements": {
+				"independent": 1,
+				"mortal": 1,
+				"resentment": -1
+			},
+			"startdescription": "我らがカルト教団の属性をレベル21まで上げられれば......この者を教団に加えられる。[十分な力を供給できる限り、あなたとは異なる信仰を持つトラブルメーカーを勧誘することができる――しかし、独立者に少なくとも1つの「道具」を贈り物として与えなければなりならない。]",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "promoteto_d_edgehint",
+			"label": "弟子を昇格させる？",
+			"actionId": "talk",
+			"requirements": {
+				"cultedge_1": 1,
+				"follower": 1,
+				"disciple": 1
+			},
+			"startdescription": "弟子を暗殺者に昇格させるには、レベル21の刃が必要となる。いずれにしても、誰よりも血に飢えた者にしかできないことだ。",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_forgehint",
+			"label": "弟子を昇格させる？",
+			"actionId": "talk",
+			"requirements": {
+				"cultforge_1": 1,
+				"follower": 1,
+				"disciple": 1
+			},
+			"startdescription": "弟子を作り変える者に昇格させるには、レベル21の鍛造が必要となる。いずれにしても、誰よりも器用で有能な者にしかできないことだ。",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_grailhint",
+			"label": "弟子を昇格させる？",
+			"actionId": "talk",
+			"requirements": {
+				"cultgrail_1": 1,
+				"follower": 1,
+				"disciple": 1
+			},
+			"startdescription": "弟子をシプリアンに昇格させるには、レベル21の聖杯が必要。いずれにしても、誰よりも底なしの欲望を持つ者にしかできないことだ。",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_hearthint",
+			"label": "弟子を昇格させる？",
+			"actionId": "talk",
+			"requirements": {
+				"cultheart_1": 1,
+				"follower": 1,
+				"disciple": 1
+			},
+			"startdescription": "弟子をタランテリストに昇格させるには、レベル21の心臓が必要となる。いずれにしても、誰よりも活発な者にしかできないことだ。",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_knockhint",
+			"label": "弟子を昇格させる？",
+			"actionId": "talk",
+			"requirements": {
+				"cultknock_1": 1,
+				"follower": 1,
+				"disciple": 1
+			},
+			"startdescription": "弟子を鍵に昇格させるには、レベル21の開錠が必要となる。いずれにしても、誰よりも才能のある者にしかできないことだ。",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_lanternhint",
+			"label": "弟子を昇格させる？",
+			"actionId": "talk",
+			"requirements": {
+				"cultlantern_1": 1,
+				"follower": 1,
+				"disciple": 1
+			},
+			"startdescription": "弟子を預言者に昇格させるには、レベル21の灯りが必要となる。いずれにしても、誰よりも澄んだ目を持つ者にしかできないことだ。",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_mothhint",
+			"label": "弟子を昇格させる？",
+			"actionId": "talk",
+			"requirements": {
+				"cultmoth_1": 1,
+				"follower": 1,
+				"disciple": 1
+			},
+			"startdescription": "弟子をスキンツイスターに昇格させるには、レベル21の蛾が必要となる。いずれにしても、百年に一度の人材にしかできないことだ。",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_winterhint",
+			"label": "弟子を昇格させる？",
+			"actionId": "talk",
+			"requirements": {
+				"venerationwinter": 1,
+				"venerationedge": -1,
+				"venerationforge": -1,
+				"venerationgrail": -1,
+				"venerationheart": -1,
+				"venerationlantern": -1,
+				"venerationknock": -1,
+				"venerationmoth": -1,
+				"follower": 1,
+				"disciple": 1
+			},
+			"startdescription": "弟子を名もなき階層に昇格させるには、レベル21の冬が必要となる。いずれにしても、暗黒の魂だけにしかできないことだ。",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "promotetodisciplehint",
+			"label": "信者を昇格させる？",
+			"actionId": "talk",
+			"requirements": {
+				"society": 1,
+				"follower": 1,
+				"disciple": -1,
+				"summoned": -11
+			},
+			"startdescription": "信者を弟子に昇格させるには、7つ目以上の強さを持つ、カルト教団に相応しい属性が必要だ。",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "talktobenefactorhint",
+			"label": "後援者は用心深い",
+			"actionId": "talk",
+			"requirements": {
+				"benefactor": 1
+			},
+			"startdescription": "「ここでは話せない。2人だけで話そう」",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "recruitacquaintancenoculthint",
+			"label": "新しい信奉者を勧誘する？",
+			"actionId": "talk",
+			"requirements": {
+				"society": -1,
+				"acquaintance": 1
+			},
+			"startdescription": "カルト教団を設立したら、<b>話す</b>を使用して、自分のカルトの階級に知人を勧誘することができる。",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "recruitacquaintancehint",
+			"label": "新しい信奉者を勧誘する？",
+			"actionId": "talk",
+			"requirements": {
+				"society": 1,
+				"acquaintance": 1
+			},
+			"startdescription": "信奉者を募るには、我々が崇める神々の力が必要だ。影響力、道具、素材、または我々の伝承から拾い集めることができるかもしれない。",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "talk_aladim_wantscommission",
+			"label": "依頼？",
+			"actionId": "talk",
+			"requirements": {
+				"aladim": 1
+			},
+			"startdescription": "「依頼はどうなっている？君の意見を楽しみにしているよ」",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "talk_bechet_wantscommission",
+			"label": "依頼？",
+			"actionId": "talk",
+			"requirements": {
+				"bechet": 1
+			},
+			"startdescription": "「あら、何か持ってきたの？依頼はどうなっているの？」",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "talk_jannings_wantscommission",
+			"label": "依頼？",
+			"actionId": "talk",
+			"requirements": {
+				"jannings": 1
+			},
+			"startdescription": "「頼むから、さっさと依頼を終わらせてくれないか？仲間が情報を至急必要としているんだ」",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "talk_poppy_wantscommission",
+			"label": "依頼？",
+			"actionId": "talk",
+			"requirements": {
+				"poppycommission": 1
+			},
+			"startdescription": "「ああ、さっさと依頼を終わらせておくれ！待ちきれないよ」",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "fulfilcommission_aladimhint",
+			"label": "博士の依頼を遂行する？",
+			"actionId": "talk",
+			"requirements": {
+				"commission": 1,
+				"aladim": 1,
+				"article": 1
+			},
+			"startdescription": "「ふむ、これ以上の結果を期待していたんだが」[依頼の詳細を確認する。]",
+			"warmup": 10,
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "fulfilcommission_bechethint",
+			"label": "ベシェ夫人の依頼を遂行する？",
+			"actionId": "talk",
+			"requirements": {
+				"commission": 1,
+				"bechet": 1,
+				"article": 1
+			},
+			"startdescription": "「悪いけど、これではないわ。望んでいたものと違うもの」[依頼の詳細を確認する。]",
+			"warmup": 10,
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "fulfilcommission_janningshint",
+			"label": "伯爵の依頼を遂行する？",
+			"actionId": "talk",
+			"requirements": {
+				"commission": 1,
+				"jannings": 1,
+				"article": 1
+			},
+			"startdescription": "「ダメだ、ダメだ。これでは足りない。私の指示は分かりやすかったはずだ。[依頼の詳細を確認する。]",
+			"warmup": 10,
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "fulfilcommission_poppyhint",
+			"label": "ポピーの依頼を遂行する？",
+			"actionId": "talk",
+			"requirements": {
+				"commission": 1,
+				"poppycommission": 1,
+				"article": 1
+			},
+			"startdescription": "「おやおや、悪いけど、もう少し......有用な情報が必要だわ」[依頼の詳細を確認する。]",
+			"warmup": 10,
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "talk_nointeraction_mortal",
+			"label": "何か言うことは？",
+			"actionId": "talk",
+			"requirements": {
+				"mortal": 1
+			},
+			"startdescription": "「話すことはないと思う」",
+			"craftable": false,
+			"hintonly": true
+		}
+	]
+}

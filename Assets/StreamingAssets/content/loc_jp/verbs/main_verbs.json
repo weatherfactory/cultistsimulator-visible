@@ -1,0 +1,122 @@
+{
+	"verbs": [
+		{
+			"id": "work",
+			"label": "仕事",
+			"description": "生計を立てるか、目に見えない術の教えを実践する。",
+			"atStart": true,
+			"slots": [
+				{
+					"id": "work",
+					"label": "仕事",
+					"description": "自分にできること、自分が知っていること、自分の存在意義。",
+					"required": {
+						"ability": 1,
+						"job": 1,
+						"ritual": 1,
+						"desire": 1,
+						"benefactor": 1
+					},
+					"forbidden": {
+						"reasonskill": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "dream",
+			"label": "夢",
+			"description": "休んだり、優先順位を考えなおしたり、危険を冒して夢の王国を探索できる。",
+			"atStart": false,
+			"slots": [
+				{
+					"id": "dream",
+					"label": "夢",
+					"description": "夢に方向性や、立ち直らなくてはいけない悩みを与える。",
+					"required": {
+						"ability": 1,
+						"desire": 1,
+						"illhealth": 1,
+						"way": 1,
+						"funds": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "study",
+			"label": "学習",
+			"description": "本やその他の宝物を解放する。",
+			"atStart": false,
+			"slots": [
+				{
+					"id": "study",
+					"label": "学習",
+					"description": "目に見えない術を学ぶということは、10回分の人生を費やすということである。",
+					"required": {
+						"text": 1,
+						"lore": 1,
+						"ability": 1,
+						"influence": 1,
+						"tutor": 1,
+						"language": 1,
+						"legacyplotitem": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "talk",
+			"label": "話す",
+			"description": "尋問、脅迫、欺瞞、指導、勧誘。",
+			"atStart": false,
+			"slots": [
+				{
+					"id": "talk",
+					"label": "話す",
+					"description": "味方か敵か、その中間のような存在。",
+					"required": {
+						"mortal": 1,
+						"summoned": 1,
+						"patron": 1,
+						"society": 1,
+						"hq": 1,
+						"lore": 1
+					},
+					"forbidden": {
+						"wary": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "explore",
+			"label": "探索",
+			"description": "体力や信奉者を使って街を探索したり、様々な場所を探索したり、伝承の可能性を調べたりできる。探索は予想不可能な結果を出すことが多い。",
+			"atStart": false,
+			"slots": [
+				{
+					"id": "explore",
+					"label": "探索",
+					"description": "場所、人、位置、秘密。",
+					"required": {
+						"health": 1,
+						"follower": 1,
+						"secrethistories": 1,
+						"location": 1,
+						"ghoul.hunger": 1
+					},
+					"forbidden": {
+						"hireling": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "time",
+			"label": "時間",
+			"description": "日時計の影。",
+			"atStart": false
+		}
+	]
+}

@@ -69,9 +69,9 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         return slot;
     }
 
-    public abstract void RespondToStackRemoved(IElementStack stack, Context context);
+    public abstract void RespondToStackRemoved(ElementStackToken stack, Context context);
 
-    public abstract void RespondToStackAdded(RecipeSlot slot, IElementStack stack, Context context);
+    public abstract void RespondToStackAdded(RecipeSlot slot, ElementStackToken stack, Context context);
 
     /// <summary>
     /// 
@@ -80,7 +80,7 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
     /// <returns></returns>
     public AspectsDictionary GetAspectsFromSlottedCards(bool includeElementAspects) {
         AspectsDictionary currentAspects = new AspectsDictionary();
-        IElementStack stack;
+        ElementStackToken stack;
 
         foreach (IRecipeSlot slot in GetAllSlots()) {
             stack = slot.GetElementStackInSlot();
@@ -92,9 +92,9 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         return currentAspects;
     }
 
-    public IEnumerable<IElementStack> GetStacksInSlots() {
-        IList<IElementStack> stacks = new List<IElementStack>();
-        IElementStack stack;
+    public IEnumerable<ElementStackToken> GetStacksInSlots() {
+        IList<ElementStackToken> stacks = new List<ElementStackToken>();
+        ElementStackToken stack;
 
         foreach (IRecipeSlot slot in GetAllSlots()) {
             stack = slot.GetElementStackInSlot();

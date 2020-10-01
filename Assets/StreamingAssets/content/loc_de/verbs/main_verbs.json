@@ -1,0 +1,122 @@
+{
+	"verbs": [
+		{
+			"id": "work",
+			"label": "Arbeiten",
+			"description": "Den Lebensunterhalt verdienen oder die unsichtbaren Künste praktizieren.",
+			"atStart": true,
+			"slots": [
+				{
+					"id": "work",
+					"label": "Arbeiten",
+					"description": "Etwas, das ich tun kann. Etwas, das ich weiß. Oder etwas, das ich bin.",
+					"required": {
+						"ability": 1,
+						"job": 1,
+						"ritual": 1,
+						"desire": 1,
+						"benefactor": 1
+					},
+					"forbidden": {
+						"reasonskill": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "dream",
+			"label": "Träumen",
+			"description": "Ausruhen, die eigenen Prioritäten überdenken oder das Risiko eingehen, sich selbst bei der Erkundung der Königreiche des Schlafs zu verlieren.",
+			"atStart": false,
+			"slots": [
+				{
+					"id": "dream",
+					"label": "Träumen",
+					"description": "Eine Richtung für meine Träume. Oder etwas, wovon ich mich erholen muss.",
+					"required": {
+						"ability": 1,
+						"desire": 1,
+						"illhealth": 1,
+						"way": 1,
+						"funds": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "study",
+			"label": "Studieren",
+			"description": "Bücher und andere Schätze freischalten.",
+			"atStart": false,
+			"slots": [
+				{
+					"id": "study",
+					"label": "Studieren",
+					"description": "Die unsichtbaren Künste könnten zehn Lebensalter des Studiums in Anspruch nehmen.",
+					"required": {
+						"text": 1,
+						"lore": 1,
+						"ability": 1,
+						"influence": 1,
+						"tutor": 1,
+						"language": 1,
+						"legacyplotitem": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "talk",
+			"label": "Reden",
+			"description": "Verhören, einschüchtern, bezirzen, anleiten, rekrutieren.",
+			"atStart": false,
+			"slots": [
+				{
+					"id": "talk",
+					"label": "Reden",
+					"description": "Einen Verbündeten, einen Feind oder etwas dazwischen.",
+					"required": {
+						"mortal": 1,
+						"summoned": 1,
+						"patron": 1,
+						"society": 1,
+						"hq": 1,
+						"lore": 1
+					},
+					"forbidden": {
+						"wary": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "explore",
+			"label": "Erkunden",
+			"description": "Erkunde die Stadt mit Gesundheit oder Anhängern, erkunde Orte oder Möglichkeiten an Wissen zu gelangen. Erkundungen sind häufig unberechenbar.",
+			"atStart": false,
+			"slots": [
+				{
+					"id": "explore",
+					"label": "Erkunden",
+					"description": "Ein Ort, eine Person, ein Geheimnis.",
+					"required": {
+						"health": 1,
+						"follower": 1,
+						"secrethistories": 1,
+						"location": 1,
+						"ghoul.hunger": 1
+					},
+					"forbidden": {
+						"hireling": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "time",
+			"label": "Zeit",
+			"description": "Dser Schatten der Sonnenuhr.",
+			"atStart": false
+		}
+	]
+}

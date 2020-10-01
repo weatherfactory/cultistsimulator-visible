@@ -1,0 +1,19 @@
+{
+	"legacies": [
+		{
+			"id": "ghoul",
+			"label": "Medium?",
+			"description": "Jeder weiß, dass ich mit den Toten spreche. Ich wurde schon Prophet genannt, und Ghul. Ich habe keinen Grund, ihnen ihre Illusionen zu nehmen.",
+			"startdescription": "Heute Abend ist das Theater rammelvoll und atemlos. Ich habe die lange genug warten lassen.",
+			"effects": {
+				"ghouljob.first": 1,
+				"memory.shameful": 1,
+				"memory.profitable": 1,
+				"memory.joyful": 1
+			},
+			"image": "ghoul",
+			"fromEnding": "despairending",
+			"availableWithoutEndingMatch": true
+		}
+	]
+}

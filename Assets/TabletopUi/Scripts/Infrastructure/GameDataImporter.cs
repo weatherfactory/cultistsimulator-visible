@@ -166,7 +166,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 	
             foreach (var ess in elementStackSpecifications)
             {
-                tabletop.GetElementStacksManager().AcceptStack(tabletop.ReprovisionExistingElementStack(ess,Source.Existing(),ess.LocationInfo),new Context(Context.ActionSource.Loading));
+                var context = new Context(Context.ActionSource.Loading);
+                tabletop.GetElementStacksManager().AcceptStack(tabletop.ReprovisionExistingElementStack(ess,Source.Existing(), context,ess.LocationInfo), context);
             }
 
         }
@@ -263,9 +264,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         }
 
-        private List<IElementStack> ImportOutputStacks(Hashtable htSituationValues, TabletopTokenContainer tabletop)
+        private List<ElementStackToken> ImportOutputStacks(Hashtable htSituationValues, TabletopTokenContainer tabletop)
         {
-            List<IElementStack> outputStacks = new List<IElementStack>();
+            List<ElementStackToken> outputStacks = new List<ElementStackToken>();
 
             if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONOUTPUTSTACKS))
             {
@@ -276,7 +277,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     var stackSpecification = PopulateElementStackSpecificationsList(htSituationOutputStacks);
                     foreach (var ess in stackSpecification)
                     {
-                        outputStacks.Add(tabletop.ReprovisionExistingElementStack(ess,Source.Existing()));
+                        outputStacks.Add(tabletop.ReprovisionExistingElementStack(ess,Source.Existing(),new Context(Context.ActionSource.Loading)));
                     }
 
             }
@@ -337,7 +338,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     //in that case we need to do it from the top down, or the slots won't be there
                 {
                     var stackToPutInSlot =
-                        tabletop.ReprovisionExistingElementStack(ess, Source.Existing());
+                        tabletop.ReprovisionExistingElementStack(ess, Source.Existing(),new Context(Context.ActionSource.Loading));
 
                     //SaveLocationInfo for slots are recorded with an appended Guid. Everything up until the last separator is the slotId
 

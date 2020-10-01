@@ -1,0 +1,1005 @@
+{
+	"recipes": [
+		{
+			"id": "findclericalwork",
+			"label": "Klerikale Arbeit suchen",
+			"actionId": "work",
+			"requirements": {
+				"reason": 1,
+				"ritual": -1,
+				"job": -1
+			},
+			"effects": {
+				"gloverandgloverjuniorjob": 1
+			},
+			"startdescription": "Eine Arbeit suchen, die meinen Leib schont, wenn auch nicht meinen Geist.",
+			"description": "Glover & Glover haben mir eine Assistenzstelle angeboten. Ich fange pünktlich um acht an, morgen früh! ",
+			"warmup": 10,
+			"craftable": true,
+			" maxexecutions": 1,
+			"burnimage": "office"
+		},
+		{
+			"id": "job_plead_hint",
+			"label": "Betteln, um meinen Job zu behalten?",
+			"actionId": "work",
+			"requirements": {
+				"demotion": 1
+			},
+			"aspects": {
+				"plead": 1
+			},
+			"startdescription": "Meine Vorgesetzten müssen mir meine Reue abnehmen. [Setze Leidenschaft ein, um das Management davon zu überzeugen, dich wieder an deine Arbeit zurückkehren zu lassen.]",
+			"hintonly": true,
+			"craftable": true
+		},
+		{
+			"id": "job_plead",
+			"label": "Betteln, um meinen Job zu behalten",
+			"actionId": "work",
+			"requirements": {
+				"passion": 1,
+				"demotion": 1
+			},
+			"aspects": {
+				"plead": 1
+			},
+			"startdescription": "Kein angenehmes Gespräch, aber vielleicht dringend nötig.",
+			"description": "Mir ist eine 2. Chance angeboten worden. Offenbar habe ich dankbar zu sein.",
+			"craftable": true,
+			"warmup": 30
+		},
+		{
+			"id": "gloverandgloverjuniorwork",
+			"label": "Assistenzstelle bei Glover & Glover",
+			"aspects": {
+				"employment": 1
+			},
+			"requirements": {
+				"gloverandgloverjuniorjob": 1,
+				"ritual": -1
+			},
+			"alternativerecipes": [
+				{
+					"id": "gloverandglover_diligence",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"funds": 1
+			},
+			"actionId": "work",
+			"startdescription": "Das Kratzen von Bleistiften, der säuerliche Staub, das Seufzen von Glover jr., das gierige Gurgeln von Glover sen.",
+			"description": "Die Angestellten gehen schweigend hinaus. Für den Moment bin ich frei.",
+			"warmup": 60,
+			"slots": [
+				{
+					"id": "Diligence",
+					"label": "Fleiß",
+					"required": {
+						"reason": 1
+					},
+					"forbidden": {
+						
+					},
+					"description": "Extra-Einsatz. Könnte helfen, zumindest manchmal."
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "gloverandglover_diligence",
+			"label": "Extra-Einsatz bei Glover & Glover",
+			"aspects": {
+				"employment": 1
+			},
+			"requirements": {
+				"reason": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "gloverandgloverjunior_diligence_promotion",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"funds": 1
+			},
+			"actionId": "work",
+			"startdescription": "Ich werde Extra-Einsatz zeigen. Vielleicht wissen die das ja zu schätzen.",
+			"description": "Das Ende des Tages. Mein Nacken ist steif. Morgen ist genau so viel zu tun wie sonst auch.",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "gloverandgloverjunior_diligence_promotion",
+			"label": "Eine Beförderung!",
+			"requirements": {
+				"gloverandgloverjuniorjob": 1,
+				"reason": 1
+			},
+			"effects": {
+				"funds": 1
+			},
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"actionId": "work",
+			"startdescription": "",
+			"description": "Mr. Alden, der Leiter der Registratur, hat mich zu sich in sein Bureau bestellt, um mir für meinen Fleiß Anerkennung zu zollen. Ich beobachte den Leberfleck an seinem Hals während er redet. Und Redet. Und redet. Doch am Ende werde ich befördert!\n   \n   Meine neue Stelle ist besser bezahlt, und mein Schreibtisch steht am Fenster zur Straße. Doch ich arbeite nun direkt für Mr. Alden. Mr. Alden ist dafür bekannt, penibel zu sein.",
+			"warmup": 0
+		},
+		{
+			"id": "gloverandgloverjuniorwork_again",
+			"label": "Assistenzstelle bei Glover & Glover",
+			"aspects": {
+				"employment": 1
+			},
+			"requirements": {
+				"gloverandgloverjuniorjob_nodifficultbossa": 1,
+				"ritual": -1
+			},
+			"alternativerecipes": [
+				{
+					"id": "gloverandglover_diligence_again",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"funds": 1
+			},
+			"actionId": "work",
+			"startdescription": "Das Kratzen von Bleistiften, der säuerliche Staub, das Seufzen von Glover jr., das gierige Gurgeln von Glover sen.",
+			"description": "Die Angestellten gehen schweigend hinaus. Für den Moment bin ich frei.",
+			"warmup": 60,
+			"slots": [
+				{
+					"id": "Diligence",
+					"label": "Fleiß",
+					"required": {
+						"reason": 1
+					},
+					"forbidden": {
+						
+					},
+					"description": "Extra-Einsatz. Könnte helfen, zumindest manchmal."
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "gloverandglover_diligence_again",
+			"label": "Extra-Einsatz bei Glover & Glover",
+			"aspects": {
+				"employment": 1
+			},
+			"requirements": {
+				"reason": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "gloverandgloverjunior_diligence_promotion_again",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"funds": 1
+			},
+			"actionId": "work",
+			"startdescription": "Ich werde Extra-Einsatz zeigen. Vielleicht wissen die das ja zu schätzen. Vielleicht werde ich ja befördert.",
+			"description": "Das Ende des Tages. Mein Nacken ist steif. Morgen ist genau so viel zu tun wie sonst auch.",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "gloverandgloverjunior_diligence_promotion_again",
+			"label": "Eine Beförderung!",
+			"requirements": {
+				"gloverandgloverjuniorjob_nodifficultbossa": 1,
+				"reason": 1
+			},
+			"effects": {
+				"funds": 1
+			},
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"actionId": "work",
+			"startdescription": "",
+			"description": "Ich habe nun eine höhere Position in der Firma.",
+			"warmup": 0
+		},
+		{
+			"id": "gloverandgloverwork_difficultbossa",
+			"actionId": "work",
+			"aspects": {
+				"employment": 1
+			},
+			"label": "Arbeit bei Glover & Glover",
+			"requirements": {
+				"gloverandglover_difficultbossa_job": 1
+			},
+			"startdescription": "Ich werde besser als früher bezahlt. Doch Mr. Alden hat ein Auge auf mich geworfen. Mr. Alden ist sehr speziell. Mr. Alden hat ganz genaue Vorstellungen, wie die Dinge zu erledigen sind. Und Mr. Alden hat nie geglaubt, dass ich für diese Position qualifiziert bin.",
+			"description": ".",
+			"effects": {
+				"funds": 2
+			},
+			"linked": [
+				{
+					"id": "gloverandglover_difficultbossa_overtime_initial",
+					"chance": 100
+				},
+				{
+					"id": "gloverandglover_difficultbossa_overtime",
+					"chance": 70
+				},
+				{
+					"id": "gloverandglover_difficultbossa_no_overtime",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "gloverandglover_difficultbossa_no_overtime",
+			"actionId": "work",
+			"aspects": {
+				"employment": 1
+			},
+			"label": "Arbeit bei Glover & Glover",
+			"startdescription": ".",
+			"description": "Mr. Alden hat heute nichts an meiner Arbeit auszusetzen gehabt. Er schaut nicht auf als ich gehe."
+		},
+		{
+			"id": "gloverandglover_difficultbossa_patienceisavirtue",
+			"actionId": "work",
+			"label": "Mr. Alden geht in Rente!",
+			"startdescription": "'Ich werde Glover & Glover morgen verlassen. Wenn Sie Ihre Arbeit für den Tag erledigt haben, kommen Sie bitte zu mir.'",
+			"description": "'Sie <i>haben</i> sich verbessert, unter meiner Anleitung. Ich habe Sie als meinen Nachfolger empfohlen. Vergessen Sie nicht, was ich Ihnen beigebracht habe, und eines Tages könnten Sie sich für diese Abteilung auszeichen. Sie können gehen.'\n   \n   'Eine Sache noch! Hätte ich fast vergessen – '\n   \n   'Seien Sie bitte morgen besonders pünktlich.'\n   ",
+			"warmup": 30,
+			"craftable": false,
+			"aspects": {
+				"careeradvancement": 1
+			}
+		},
+		{
+			"id": "gloverandglover_difficultbossa_overtime_initial",
+			"comments": "Player will need to go through this minimum ten times. After that, the chance of overtime is reduced, and there is a small possibility Alden will retire.",
+			"actionId": "work",
+			"aspects": {
+				"employment": 1
+			},
+			"label": "Auf Mr. Aldens Drängen hin Überstunden machen",
+			"startdescription": "'Die Arbeit ist fertig, wenn ich sie dazu erklärt haben, vorher nicht. Ich denke, wir verstehen uns.'",
+			"slots": [
+				{
+					"id": "Attention",
+					"label": "Aufmerksamkeit",
+					"required": {
+						"reason": 1
+					},
+					"description": "Extra-Einsatz. Könnte helfen, wenn ich sehr viel Glück habe."
+				}
+			],
+			"description": "'Ich bin zu dem Ergebnis gekommen, dass Ihre Arbeit einen akzeptablen Standard erreicht hat. Sie können gehen. Bitte seien Sie morgen pünktlich.'\n   \n   [Es könnte Mittel und Wege geben, um mit Mr. Alden klarzukommen.]",
+			"alternativerecipes": [
+				{
+					"id": "gloverandglover_difficultbossa_overtime_fail",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			" maxexecutions": 1
+		},
+		{
+			"id": "gloverandglover_difficultbossa_overtime",
+			"actionId": "work",
+			"aspects": {
+				"employment": 1
+			},
+			"label": "Auf Mr. Aldens Drängen hin Überstunden machen",
+			"startdescription": "'Die Arbeit ist fertig, wenn ich sie dazu erklärt haben, vorher nicht. Ich denke, wir verstehen uns.'",
+			"slots": [
+				{
+					"id": "Attention",
+					"label": "Aufmerksamkeit",
+					"required": {
+						"reason": 1,
+						"passion": 1
+					},
+					"description": "Extra-Einsatz. Könnte helfen, wenn ich sehr viel Glück habe."
+				}
+			],
+			"description": "'Ich bin wieder zu dem Ergebnis gekommen, dass Ihre Arbeit einen akzeptablen Standard erreicht hat. Sie können gehen. Bitte seien Sie morgen pünktlich.'\n   \n   [Es könnte Mittel und Wege geben, um mit Mr. Alden klarzukommen.]",
+			"alternativerecipes": [
+				{
+					"id": "gloverandglover_difficultbossa_overtime_fail",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "gloverandglover_difficultbossa_patienceisavirtue",
+					"chance": 2
+				}
+			]
+		},
+		{
+			"id": "gloverandglover_difficultbossa_overtime_fail",
+			"actionId": "work",
+			"aspects": {
+				"employment": 1
+			},
+			"label": "Auf Mr. Aldens Drängen hin Überstunden machen",
+			"startdescription": "'Ich glaube nicht, dass Sie wirklich begriffen haben, wie wichtig unsere Arbeit hier ist. Eine solche Aufgabe braucht Ihre <i>volle</i> Aufmerksamkeit.' [Mit Verstand kannst du Mr. Alden zufriedenstellen.]",
+			"description": "'Ich würde gerne sagen können, ich sei enttäuscht, doch ich hatte ohnehin nicht viel von Ihnen erwartet. Mir bleibt keine andere Wahl als Ihnen einen Teil Ihres Lohns vorzuenthalten. Sie können gehen, aber bitte seien Sie morgen pünktlich.'\n   \n   [Es könnte Mittel und Wege geben, um mit Mr. Alden klarzukommen.]",
+			"requirements": {
+				"reason": -1
+			},
+			"effects": {
+				"funds": -1
+			},
+			"craftable": false
+		},
+		{
+			"id": "gloverandgloverwork_difficultbossa_gone",
+			"actionId": "work",
+			"aspects": {
+				"employment": 1
+			},
+			"label": "Arbeit bei Glover & Glover",
+			"requirements": {
+				"gloverandglover_difficultbossa_gone_job": 1
+			},
+			"startdescription": "Im Bureau gibt es kein anderes Thema als Aldens unerwartete Abwesenheit. Ein dürrer, nervöser Typ aus dem 4. Stock wurde (vorübergehend) zum Leiter der Registratur ernannt. Im Gegensatz zu Alden mischt er sich nicht in meine Arbeit ein.",
+			"description": "Tinte, Papier und das Surren elektrischen Lichts. Das Bureau ist dunkel als ich gehe. Doch ich gehe zur vereinbarten Zeit.",
+			"effects": {
+				"funds": 2,
+				"gloverandglover_difficultbossa_gone_job": -1,
+				"gloverandgloverjob": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "gloverandgloverwork",
+			"label": "Arbeit bei Glover & Glover",
+			"aspects": {
+				"employment": 1
+			},
+			"requirements": {
+				"gloverandgloverjob": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "gloverandglover_diligence_promotion",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"funds": 2
+			},
+			"actionId": "work",
+			"startdescription": "Die Arbeit ist nun anspruchsvoller, aber besser bezahlt.",
+			"description": "Tinte, Papier und das Surren elektrischen Lichts. Das Bureau ist dunkel als ich gehe. Draußen, auf dem Bürgersteig, schlage ich den Kragen hoch.",
+			"warmup": 70,
+			"slots": [
+				{
+					"id": "Devotion",
+					"label": "Hingabe",
+					"required": {
+						"reason": 1
+					},
+					"description": "Extra-Einsatz. Könnte helfen, wenn ich sehr viel Glück habe."
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "gloverandglover_diligence_promotion",
+			"label": "Überstunden bei Glover & Glover",
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"requirements": {
+				"gloverandgloverjob": 1,
+				"reason": 2
+			},
+			"effects": {
+				"funds": 3
+			},
+			"actionId": "work",
+			"startdescription": "",
+			"description": "Glover jr. hat mich zum Mittag in seinen Klub mitgenommen. Ich soll mehr von dem machen, was ich mache, noch sorgfältiger, und dafür gibt er mir etwas mehr von dem Geld, das ich für seinen Vater verdiene.",
+			"warmup": 0
+		},
+		{
+			"id": "gloverandgloverwork_again",
+			"label": "Arbeit bei Glover & Glover",
+			"aspects": {
+				"employment": 1
+			},
+			"requirements": {
+				"gloverandgloverjob_youngerglovergone": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "gloverandglover_diligence_promotion_again",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"funds": 2
+			},
+			"actionId": "work",
+			"startdescription": "Die Arbeit ist nun anspruchsvoller, aber besser bezahlt.",
+			"description": "Tinte, Papier und das Surren elektrischen Lichts. Das Bureau ist dunkel als ich gehe. Draußen, auf dem Bürgersteig, schlage ich den Kragen hoch.",
+			"warmup": 70,
+			"slots": [
+				{
+					"id": "Devotion",
+					"label": "Hingabe",
+					"required": {
+						"reason": 1
+					},
+					"description": "Extra-Einsatz. Könnte helfen, wenn ich sehr viel Glück habe."
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "gloverandglover_diligence_promotion_again",
+			"label": "Überstunden bei Glover & Glover",
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"requirements": {
+				"reason": 2
+			},
+			"effects": {
+				"funds": 2
+			},
+			"actionId": "work",
+			"startdescription": "",
+			"description": "Ich habe wieder meine gehobene Stellung.",
+			"warmup": 0
+		},
+		{
+			"id": "gloverandgloverseniorwork_retirementoption",
+			"label": "Arbeit bei Glover & Glover",
+			"aspects": {
+				"employment": 1
+			},
+			"requirements": {
+				"gloverandgloverseniorjob": 1,
+				"reason": 1
+			},
+			"effects": {
+				"funds": 3
+			},
+			"actionId": "work",
+			"startdescription": "Ich bringe meine Hände in die richtige Form und fange an.",
+			"description": "Ich bin immer der Letzte, der geht, noch nach Glover sen.",
+			"warmup": 70,
+			"slots": [
+				{
+					"id": "Acceptance",
+					"label": "Hinnahme",
+					"required": {
+						"passion": 1
+					},
+					"description": "Ich könnte mein Leben dieser Aufgabe widmen."
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "workvictory",
+					"chance": 100
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "gloverandgloverseniorwork",
+			"label": "Arbeit bei Glover & Glover",
+			"aspects": {
+				"employment": 1
+			},
+			"requirements": {
+				"gloverandgloverseniorjob": 1,
+				"reason": 1
+			},
+			"effects": {
+				"funds": 3
+			},
+			"actionId": "work",
+			"startdescription": "Ich bringe meine Hände in die richtige Form und fange an.",
+			"description": "Ich bin immer der Letzte, der geht, noch nach Glover sen. Ich habe mich mit Glover jr. gut gestellt. Er scherzt gern, dass ich als Nächstes seinen Job bekommen könnte. Was ich natürlich nicht werde. Dafür wird sein Vater schon sorgen. Er scherzt, er werde mich dort selbst installieren. So langsam geht mir das auf den Geist.",
+			"warmup": 70,
+			"craftable": true
+		},
+		{
+			"id": "gloverandgloverseniorwork_hint",
+			"label": "Arbeit bei Glover & Glover?",
+			"actionId": "work",
+			"requirements": {
+				"gloverandgloverseniorjob": 1
+			},
+			"startdescription": "Meine Arbeit ist anspruchsvoll. Ich muss etwas Verstand einsetzen.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "gloverandgloverseniorworkyoungerglovergone",
+			"label": "Arbeit bei Glover & Glover",
+			"aspects": {
+				"employment": 1
+			},
+			"requirements": {
+				"gloverandgloverseniorjob_youngerglovergone": 1,
+				"reason": 1
+			},
+			"effects": {
+				"funds": 3
+			},
+			"actionId": "work",
+			"startdescription": "Ich bringe meine Hände in die richtige Form und fange an.",
+			"description": "Wenn ich die Augen schließen, wandern die Zahlenkolonnen hinter meinen Lidern weiter. Wenn ich sie wieder öffne, tut das Licht weh.",
+			"warmup": 70,
+			"slots": [
+				{
+					"id": "Ambition",
+					"label": "Ambitionen",
+					"required": {
+						"passion": 1
+					},
+					"description": "Der Sitz im Vorstand von Glover jr. bleibt frei ..."
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "gloverandgloversenior_diligence_promotion",
+					"chance": 30
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "gloverandgloverseniorwork_youngerglovergone_hint",
+			"label": "Arbeit bei Glover & Glover?",
+			"actionId": "work",
+			"requirements": {
+				"gloverandgloverseniorjob_youngerglovergone": 1
+			},
+			"startdescription": "Meine Arbeit ist anspruchsvoll. Ich muss etwas von meinem Verstand einsetzen.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "gloverandgloversenior_diligence_promotion",
+			"label": "Eine Beförderung!",
+			"requirements": {
+				"passion": 1
+			},
+			"effects": {
+				"funds": 5
+			},
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"actionId": "work",
+			"startdescription": ".",
+			"description": "'Mein Sohn', gesteht mir Glover sen., 'war ein braver Junge, doch es fehlten ihm die Ambitionen. Sie, wiederum, brennen vor Ambitionen. Ich kann mich selbst in Ihnen wiedererkennen, wissen Sie das? Wirklich. Nun, ich denke, wir finden einen Platz für Sie im Vorstand.'"
+		},
+		{
+			"id": "gloverandglovertopwork",
+			"label": "Arbeit bei Glover & Glover",
+			"aspects": {
+				"employment": 1
+			},
+			"actionId": "work",
+			"requirements": {
+				"gloverandglovertopjob": 1
+			},
+			"slots": [
+				{
+					"id": "Scandal",
+					"label": "Skandal",
+					"required": {
+						"notoriety": 1
+					},
+					"greedy": true,
+					"description": "Dank meiner hohen Position genieße ich einen gewissen Schutz vor Skandalen. Doch wenn die Firma zu viel Anlass zur Sorge hat, könnte ich entlassen werden."
+				}
+			],
+			"startdescription": "Die Stunden des Arbeitstages warten aufgereiht vor mir. Kann sein, dass ich nach dem Mittag einfach nach Hause gehe.",
+			"description": "Hätte Glover & Glover ein Herz, würde es in der Buchhaltung schlagen, wo das Geld wie die Gezeiten des Frühlings fließt. Seine Glieder wären die geschäftigen, fast lautlosen Abteilungsleiter und deren Mitarbeiter.  Doch ich sitze zusammen mit den anderen Direktoren direkt im Schädel, sicher (für den Augenblick) vor Skandalen und finanziellen Sorgen.",
+			"warmup": 50,
+			"effects": {
+				"funds": 4,
+				"notoriety": -1
+			},
+			"craftable": true,
+			"alternativerecipes": [
+				{
+					"id": "gloverandglovertopwork_scandal_a",
+					"chance": 30
+				}
+			]
+		},
+		{
+			"id": "gloverandglovertopwork_scandal_a",
+			"aspects": {
+				"employment": 1
+			},
+			"label": "Ein Ausdruck der Besorgnis",
+			"actionId": "work",
+			"requirements": {
+				"notoriety": 1
+			},
+			"startdescription": ".",
+			"description": "Glover sen. hat mich zu sich bestellt – er ist nun der einzige Glover. Er rutscht nervös auf seinem Sessel herum. 'Ich habe gehört – ', setzt er an. Er zögert. Er schaut mir in die Augen. 'Ich will nichts mehr davon hören – davon. Kein Wort mehr. Kein Wort.'",
+			"effects": {
+				"funds": 4,
+				"notoriety": -1,
+				"gloverandglovertopjob": -1,
+				"gloverandglovertopjob_tainted": 1
+			}
+		},
+		{
+			"id": "gloverandglovertopjob_tainted",
+			"aspects": {
+				"employment": 1
+			},
+			"label": "Arbeit bei Glover & Glover",
+			"actionId": "work",
+			"requirements": {
+				"gloverandglovertopjob_tainted": 1
+			},
+			"slots": [
+				{
+					"id": "Scandal",
+					"label": "Skandal",
+					"required": {
+						"notoriety": 1
+					},
+					"greedy": true,
+					"description": "Meine hohe Stellung könnte mich noch etwas länger schützen. Doch ich laufe nun wirklich Gefahr, meinen Job zu verlieren."
+				}
+			],
+			"startdescription": "Vorbei sind die Tage, an denen ich nach dem Mittag nach Hause gehen konnte. Meine Kollegen haben bereits eine Ahnung, was ich wirklich bin. Die haben ja keine Ahnung, was ich sein könnte.",
+			"description": "Ich gehe saubere Zahlenkolonnen in einem sauberen Raum im 5. Stock durch. Aus dem Fenster meines Bureaus kann ich den Fluss sehen. Mein Sekretär bringt mir alle 59 Minuten ein Heißgetränk. Der Fluss hat die Farbe des Regens.",
+			"warmup": 60,
+			"effects": {
+				"funds": 4,
+				"notoriety": -1
+			},
+			"craftable": true,
+			"alternativerecipes": [
+				{
+					"id": "gloverandglovertopwork_scandal_b",
+					"chance": 70
+				}
+			]
+		},
+		{
+			"id": "gloverandglovertopwork_scandal_b",
+			"label": "Bloßgestellt!",
+			"actionId": "work",
+			"requirements": {
+				"notoriety": 1
+			},
+			"startdescription": ".",
+			"description": "Ich habe einen förmlichen (aber seltsam besorgten) Brief bekommen, per Kurier von Glover & Glover zugestellt. Meine Dienste als Direktor werden nicht länger benötigt, doch mir wurde eine recht großzügige Abfindung zugesprochen. Die Firma hofft sehr, dass wir im Guten auseinandergehen. Die Unterschrift unter dem Brief ist etwas wackelig ... ",
+			"effects": {
+				"funds": 8,
+				"notoriety": -1,
+				"gloverandglovertopjob_tainted": -1
+			}
+		},
+		{
+			"id": "institutephysicianwork",
+			"label": "Arbeit im Institut",
+			"requirements": {
+				"institutephysicianjob": 1,
+				"ritual": -1
+			},
+			"effects": {
+				"funds": 2
+			},
+			"actionId": "work",
+			"startdescription": "Die Gänge des Instituts sind von einem nasskalten und penetranten Geruch erfüllt, den man nie ganz loswird. Vielleicht ist es die Farbe Vielleicht sind es die Patienten. Vielleicht ist es irgendetwas in den Wänden.",
+			"description": "Ich habe gute Arbeit geleistet. Meine Patienten sind ruhiger als zu Beginn meiner Tätigkeit.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "workbeg",
+			"label": "Auf der Straße betteln",
+			"actionId": "work",
+			"requirements": {
+				"decrepitude": 1
+			},
+			"effects": {
+				"funds": 1,
+				"dread": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "workbeg_lucky",
+					"chance": 30
+				}
+			],
+			"startdescription": "Ich werde meine Gebrechen zeigen und auf das Mitleid der Passanten hoffen.",
+			"description": "Ein langer Tag. Manche haben mir Münzen zugeworfen, die meisten haben sich abgewandt. Es ist schwer, so viele Stunden lang auf sich entfernende Rücken zu schauen.",
+			"warmup": 90,
+			"craftable": true
+		},
+		{
+			"id": "workbeg_lucky",
+			"label": "Auf der Straße betteln",
+			"actionId": "work",
+			"requirements": {
+				"decrepitude": 1
+			},
+			"effects": {
+				"funds": 2
+			},
+			"description": "Ein langer Tag. Manche haben mir Münzen zugeworfen, die meisten haben sich abgewandt. Doch da ist ein Goldstück in meiner Schale! Eine großzügige Spende oder ein Versehen?",
+			"warmup": 90
+		},
+		{
+			"id": "workhealthskilld_edge",
+			"label": "Hilfsarbeit: Wie der Berg",
+			"actionId": "work",
+			"requirements": {
+				"health": 1,
+				"skillhealthd_strength": 1,
+				"ritual": -1,
+				"job": -1,
+				"benefactor": -1
+			},
+			"effects": {
+				"funds": 1,
+				"vitality": 1
+			},
+			"aspects": {
+				"employment": 1
+			},
+			"startdescription": "Und wieder trage ich die Kraft meines Leibes zu Markte.",
+			"description": "Man sagt, ich könne die Arbeit für zwei erledigen. Das stimmt nicht, jedenfalls nicht ganz.",
+			"warmup": 40,
+			"craftable": true
+		},
+		{
+			"id": "workhealthskillc",
+			"label": "Hilfsarbeit: Arme aus Stahl",
+			"actionId": "work",
+			"requirements": {
+				"health": 1,
+				"healthskill": 3,
+				"ritual": -1,
+				"job": -1,
+				"benefactor": -1
+			},
+			"effects": {
+				"funds": 1,
+				"vitality": 1
+			},
+			"aspects": {
+				"employment": 1
+			},
+			"startdescription": "Und wieder trage ich die Kraft meines Leibes zu Markte.",
+			"description": "Meine Kraft wird zum Thema. Nicht alle machen mir Komplimente. Ich nehme meinen Lohn entgegen und gehe.",
+			"warmup": 45,
+			"craftable": true
+		},
+		{
+			"id": "workhealthskillb",
+			"label": "Hilfsarbeit: Arme aus Eisen",
+			"actionId": "work",
+			"requirements": {
+				"health": 1,
+				"healthskill": 2,
+				"ritual": -1,
+				"job": -1,
+				"benefactor": -1
+			},
+			"effects": {
+				"funds": 1,
+				"vitality": 1
+			},
+			"aspects": {
+				"employment": 1
+			},
+			"startdescription": "Ich arbeite schnell und lautlos. Vor Verletzungen habe ich keine Angst.",
+			"description": "Die anderen reden kaum mit mir, doch sie nicken, wenn ich vorbeikomme. Da, mein Lohn.",
+			"warmup": 50,
+			"craftable": true
+		},
+		{
+			"id": "workhealthskilla",
+			"label": "Hilfsarbeit: Arme aus Bronze",
+			"alternativerecipes": [
+				{
+					"id": "workhealthinjury",
+					"chance": 10
+				}
+			],
+			"actionId": "work",
+			"requirements": {
+				"health": 1,
+				"healthskill": 1,
+				"ritual": -1,
+				"job": -1,
+				"benefactor": -1
+			},
+			"effects": {
+				"funds": 1,
+				"vitality": 1
+			},
+			"aspects": {
+				"employment": 1
+			},
+			"startdescription": "An die Arbeit, dann.",
+			"description": "Ich bin früher fertig geworden. Da, mein Lohn.",
+			"warmup": 55,
+			"craftable": true
+		},
+		{
+			"id": "workhealth_noinjurychance",
+			"label": "Hilfsarbeit",
+			"actionId": "work",
+			"requirements": {
+				"health": 1,
+				"ritual": -1,
+				"job": -1,
+				"benefactor": -1
+			},
+			"aspects": {
+				"employment": 1
+			},
+			"effects": {
+				"vitality": 1,
+				"funds": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "needs",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "Schinderei für einen Hungerlohn. Fällt mir wirklich nichts Besseres ein?",
+			"description": "Der Tag ist am Ende, und ich auch, doch ich habe mir mein Brot verdient.",
+			"warmup": 60,
+			"craftable": true,
+			" maxexecutions": 3,
+			"comments": "guaranteed three days without injury"
+		},
+		{
+			"id": "workhealth",
+			"label": "Hilfsarbeit",
+			"alternativerecipes": [
+				{
+					"id": "workhealthinjury",
+					"chance": 30
+				}
+			],
+			"actionId": "work",
+			"requirements": {
+				"health": 1,
+				"ritual": -1,
+				"job": -1,
+				"benefactor": -1
+			},
+			"effects": {
+				"funds": 1,
+				"vitality": 1
+			},
+			"aspects": {
+				"employment": 1
+			},
+			"startdescription": "Schinderei für einen Hungerlohn. Fällt mir wirklich nichts Besseres ein?",
+			"description": "Der Tag ist am Ende, und ich auch, doch ich habe mir mein Brot verdient.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "workhealthinjury",
+			"label": "Ein Arbeitsunfall!",
+			"actionId": "work",
+			"requirements": {
+				
+			},
+			"effects": {
+				"health": -1,
+				"injury": 1,
+				"funds": 1
+			},
+			"startdescription": ".",
+			"description": "Ich bin verletzt! Unter Schmerzen hinke ich mit meinem Hungerlohn nach Hause.",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "workinvestmentjobc",
+			"label": "Meine Angelegenheiten regeln",
+			"actionId": "work",
+			"requirements": {
+				"investmentsjobc": 1
+			},
+			"effects": {
+				"funds": 4
+			},
+			"linked": [
+				{
+					"id": "investmentsjobdecline",
+					"chance": 30
+				}
+			],
+			"startdescription": "Mein Anlagevermögen wird gut für mich sorgen, wenn ich es im Auge behalte.",
+			"description": "Ein schöner Scheck in einem schönen weißen Umschlag – mit einem hübschen Sümmchen.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "workinvestmentjobb",
+			"label": "Meine Angelegenheiten regeln",
+			"actionId": "work",
+			"requirements": {
+				"investmentsjobb": 1
+			},
+			"effects": {
+				"funds": 3
+			},
+			"linked": [
+				{
+					"id": "investmentsjobdecline",
+					"chance": 30
+				}
+			],
+			"startdescription": "Mein Anlagevermögen wird ausreichend für mich sorgen, wenn ich es im Auge behalte.",
+			"description": "Ein schöner Scheck in einem schönen weißen Umschlag – mit einem einigermaßen anständigen Betrag.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "workinvestmentjoba",
+			"label": "Meine Angelegenheiten regeln",
+			"actionId": "work",
+			"requirements": {
+				"investmentsjoba": 1
+			},
+			"effects": {
+				"funds": 2
+			},
+			"linked": [
+				{
+					"id": "investmentsjobdecline",
+					"chance": 30
+				}
+			],
+			"startdescription": "Mein Anlagevermögen wird gerade so für mich reichen, wenn ich es im Auge behalte.",
+			"description": "Ein schöner Scheck in einem schönen weißen Umschlag – mit einem bescheidenen Betrag.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "investmentsjobdecline",
+			"label": "Ein finanzieller Abstieg",
+			"aspects": {
+				"decline": 1
+			},
+			"actionId": "work",
+			"startdescription": ".",
+			"description": "Ich habe den üblichen Scheck bekommen, allerdings mit beunruhigenden Neuigkeiten. Mein Anlagevermögen hat gelitten – durch Pech oder, vielleicht, durch die Arglist eines Feindes.",
+			"warmup": 5,
+			"craftable": false
+		}
+	]
+}

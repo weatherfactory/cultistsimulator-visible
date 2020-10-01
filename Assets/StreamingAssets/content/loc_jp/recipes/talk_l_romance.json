@@ -1,0 +1,790 @@
+{
+	"recipes": [
+		{
+			"id": "L_talk_roseopportunity",
+			"label": "情事？",
+			"actionId": "talk",
+			"slots": [
+				{
+					"id": "ascension",
+					"label": "同志？",
+					"required": {
+						"desire": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "A_startrose_power_initiate",
+					"chance": 100
+				},
+				{
+					"id": "A_startrose_sensation_initiate",
+					"chance": 100
+				},
+				{
+					"id": "A_startrose_change_initiate",
+					"chance": 100
+				},
+				{
+					"id": "A_startrose_enlightenment_initiate",
+					"chance": 100
+				}
+			],
+			"startdescription": ".",
+			"description": "今夜は思ってもみなかった方向へと進んでいく。何か間違ったことを言ったのだろうか。それとも私たちは絶望的に合わないのだろうか。",
+			"craftable": false,
+			"warmup": 30
+		},
+		{
+			"id": "A_startrose_power_initiate",
+			"actionId": "rose",
+			"label": "一緒に立ち上がる",
+			"requirements": {
+				"follower_lustpower": 1,
+				"resentment": -1,
+				"powermarks": 1
+			},
+			"startdescription": "@#uqtristan|私が話し終わる前にトリスタンが立ち上がる。「もう行こう」と彼はとても穏やかに言うが、私の肩に置かれた手は震えていた。\n#uqvalciane|話をしているうちに、ヴァルシアーヌは少しずつ近づいてきた。彼女が私の手を握ると、指には機械のような力があり、彼女の肌は炎のように熱かった。「私といるのは簡単ではないわ。許容範囲を決めたほうが良いわね」と彼女は言う。\n#uqelridge|エルリッジは一語一句に耳を傾ける。彼の目は私から離れない。彼は「はい」しか言わないが、私の家に着く頃には、私が質問をしていなくても「はい」と言うようになっていた。\n#uqlaidlaw|私が話すとレイドローの目が輝く。彼は目をそらすことができないようだ。お互いが気づく前に、彼の手は私に触れていた。一瞬だけ競売人がつまづく。注目を集める前に、私たちは一緒にその場を去った。@",
+			"description": ".",
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "romanticinterest",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "forge",
+					"mutationLevel": 1
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "A_startrose_sensation_initiate",
+			"actionId": "rose",
+			"label": "探検家仲間",
+			"requirements": {
+				"follower_lustsensation": 1,
+				"resentment": -1,
+				"sensationmarks": 1
+			},
+			"startdescription": "@#uqrose|ローズは、私の腕の中にもたれかかり、満足そうに微笑み、「昔と全く同じね。いつ家に連れて行ってくれるの？」と言った。\n#uqsaliba|サリバは楽しそうに私の髪の毛に指を絡ませた。「大変なことになりそうだ」と、言った彼は満足げな顔をしていた。\n#uqvictor|テーブルの上では、彼は完璧な紳士のように見えた。ビクターは、手のひらを上に向けてテーブルの上に置く。広げた手のひらの上に蛾が止まると、彼は手のひらを握って潰した。「良い思い出だ。さあ、行こう」と彼は言う。\n#uqviolet|ヴァイオレットはいつの間にか私と向き合った体勢で、一瞬の雪のようにとろけるようなキスをし始めた。「待つつもりはないわ。バカなこと言わないで、家に連れて行って」と彼女は言う。\n#uqrenira|注目を浴びながらレニラは優雅に座る。ダンサーよりも彼女に興味を持ち出した観客もいた。私たちは、溶けたロウソクが混ざりあうように動く。彼女は「バカなことはしないわよね」と、唇が合う前に声を漏らした。@",
+			"description": ".",
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "romanticinterest",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "grail",
+					"mutationLevel": 1
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "A_startrose_enlightenment_initiate",
+			"actionId": "rose",
+			"label": "光を共に",
+			"requirements": {
+				"follower_lustenlightenment": 1,
+				"resentment": -1,
+				"enlightenmentmarks": 1
+			},
+			"startdescription": "@#uqenid|イーニッドは、私の脇にピタリと寄り添うまで、波の花のように段々と近づいてきた。その間も、その後も、彼女は一言も口にはしなかった。\n#uqauclair|オークレールとの会話は通常、フェンシングと会計のようなものだから、彼女が長い間、優美さに欠けた様子で、言葉に迷っているところを見て驚いてしまった。彼女はついに口を割ると、「あなたに触りたくはないけど、一緒に眠りたいの。今夜は」と言った。\n#uqcat|キャット・キャロは、私の話を聞き、私の腕を組むと、「こんなことが起きるなんて夢にも思わなかったわ。でもこれが良いわ」と言う。「あなたを家に連れて行く夢を見ていたけど、代わりに、あなたが私を家に連れて行くべきかも」と、彼女は微笑んで言った。\n#uqclifton|クリフトンは歩み寄るとこう言った。「何も飲んでないのに、酔っ払っているみたいだ。月のせいかもしれない」。そして彼は、私の腰に手を置くと、「君のせいかも。もう帰らないか？」と続けた。\n#uqneville|ネビルは喜びを抑えきれないようで、一心に耳を傾ける。そして彼は、「信じられない――」と言うと、息をした。\n#uqslee|スリーは私のために詩を書いてきてくれた。聞けてよかったが、ひどく長い。彼を止めるにはキスが最適だ。@\n\n ",
+			"description": ".",
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "romanticinterest",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "lantern",
+					"mutationLevel": 1
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "A_startrose_change_initiate",
+			"actionId": "rose",
+			"label": "変わった2人",
+			"requirements": {
+				"follower_lustchange": 1,
+				"resentment": -1,
+				"changemarks": 1
+			},
+			"startdescription": "@#uqporter|ポーターは身動きをとらずに、丸くなって席に座っていた。それでも舞台を見つめる彼の瞳は、私がキスをしようと近づくときと同じように、きらきらと輝いている。「君のセンス」と彼は言い、「僕たちは似た者同士だ」と笑うと、私に触れた。\n#uqysabet|イザベトは舞台が終わるたびに熱狂的に拍手を送り、カクテルを飲むたびに彼女の拍手は激しさを増した。初めてキスをすると、椅子の背にもたれかかり、私のことを考え、もう一度拍手をし始めた。\n#uqclovette|クロベットは興奮して私の腕を掴む。「何かがわかってきたわ。何かはわからないけど、何かよ。それにあなたにも関係あることなの――あなたよ！」彼女はしばらくの間何も言わず、それからずっと後、２人してクラブを去ってからずっと後に、彼女はまた、とても優しく、「あなたもよ」と言った。\n#uqdorothy|音楽に合わせて、ドロシーは鼻歌を歌い、ダンサーの動きに合わせて、無意識に体を揺らしている。私がドロシーにキスをすると、彼女も同じようにキスを返してくれた。唇を離しながら、ドロシーは息を荒くして言った。「私たちは変わっていくのよ」。\n#uqsylvia|舞台を観ながら、シルビアがオリーブを口に放り込び、音を立てながら噛む。彼女にキスをすると、血が出るほど強く上唇を噛まれた。それから何時間たってもオリーブの味が口に残る。「あなたの服の中に入ってあげるわ」と、植えたようにシルビアが言う。「ずっと奥までね。２人で入れるなら」。\n#uqleo|最初は背筋を伸ばして座っていたレオだが、興奮し始めカクテルに酔いだすと、徐々に肩の力が抜け、最後には私に寄りかかってくれた。「自分を変えたいんだ」と彼は囁く。「でもどうしたらいいか分からない」。目を大きく開いたレオの唇は、とても柔らかい。@",
+			"description": ".",
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "romanticinterest",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "heart",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "moth",
+					"mutationLevel": 1
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "L_checkjealousy",
+			"label": "他の人？",
+			"actionId": "rose",
+			"requirements": {
+				"romanticinterest": 1,
+				"summoned": -1,
+				"corpse": -1
+			},
+			"comments": "re requirements: can't be another if there isn't even one. Also people don't *currently* get jealous of the dead. They're either non-viable, or kept somewhere extremely private",
+			"slots": [
+				{
+					"id": "Who?",
+					"label": "誰？",
+					"description": "手と手、目と目。",
+					"required": {
+						"romanticinterest": 1
+					},
+					"forbidden": {
+						"summoned": -1,
+						"corpse": -1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "別の人がいるって言うこと？",
+			"description": ".",
+			"linked": [
+				{
+					"id": "L_activatejealousy",
+					"chance": 100
+				},
+				{
+					"id": "L_roserouter",
+					"chance": 100
+				}
+			],
+			"warmup": 5
+		},
+		{
+			"id": "L_activatejealousy",
+			"label": "ああローズ、汝は病んでいる",
+			"actionId": "rose",
+			"requirements": {
+				"romanticinterest": 2
+			},
+			"comments": "careful: this is a potential weak spot if we ever start making romantic interest additive not binary",
+			"startdescription": "2人の友人が同じ時間に電話をかけてきた。会話がぎこちない。",
+			"description": "夜が進むにつれ、緊張した雰囲気になり、難しい状況になってきた。",
+			"warmup": 10,
+			"effects": {
+				"mystique": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "A_roseend_expulsion",
+					"chance": 100,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"resentment": 3
+						}
+					}
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "A_roseend_expulsion",
+			"actionId": "roseextra",
+			"comments": "allows us to have only one of a jealous lover break up with the player",
+			"label": "結果！",
+			"startdescription": "@#uqauclair|オークレール#uqcat|キャット#uqclovette|クロヴェット#uqclifton|クリフトン#uqdorothy|ドロシー#uqelridge|エルドリッジ\n#uqenid|イーニッド#uqlaidlaw|レイドロー#uqleo|レオ#uqneville|ネビル#uqporter|ポーター#uqrenira|レニラ#uqrose|ローズ\n#uqsaliba|サリバ#uqslee|スリー#uqsylvia|シルビア#uqtristan|トリスタン\n#uqvalciane|ヴァルシアーヌ#uqvictor|ビクター#uqviolet|ヴァイオレット#uqysabet|イザベト#|恋人の@は、これ以上私が無視することを許さない。",
+			"description": "お互いにとって苦い思い出となるだろう。",
+			"slots": [
+				{
+					"id": "glummer",
+					"label": "残るもの",
+					"required": {
+						"contentment": 1
+					},
+					"greedy": true
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "romanticinterest",
+					"mutateAspectId": "romanticinterest",
+					"mutationLevel": -1
+				}
+			],
+			"effects": {
+				"dread": 1,
+				"contentment": -1
+			},
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "L_roserouter",
+			"actionId": "rose",
+			"linked": [
+				{
+					"id": "L_continuerose_corpse",
+					"chance": 100
+				},
+				{
+					"id": "L_continuerose_risen",
+					"chance": 100
+				},
+				{
+					"id": "L_continuerose_power",
+					"chance": 100
+				},
+				{
+					"id": "L_continuerose_sensation",
+					"chance": 100
+				},
+				{
+					"id": "L_continuerose_change",
+					"chance": 100
+				},
+				{
+					"id": "L_continuerose_enlightenment",
+					"chance": 100
+				},
+				{
+					"id": "L_continuerose_noone",
+					"chance": 100
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "L_continuerose_corpse",
+			"actionId": "rose",
+			"label": "寂寥感と古い情熱に病む",
+			"requirements": {
+				"corpse": 1,
+				"romanticinterest": 1
+			},
+			"startdescription": "できない、まだだ。まだ嘆いていたい。",
+			"description": "そのうちに彼らの肉体は今の精神と同じように消え、私は忘れてしまうだろう。\n\nでも、もし......",
+			"effects": {
+				"dread": 1
+			},
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "L_continuerose_risen",
+			"actionId": "rose",
+			"label": "離さないで",
+			"requirements": {
+				"summoned": 1,
+				"romanticinterest": 1
+			},
+			"slots": [
+				{
+					"id": "Blood?",
+					"label": "血？",
+					"description": "体の強さ",
+					"required": {
+						"health": 1
+					}
+				}
+			],
+			"startdescription": "私を愛してくれた人は、変ってしまった。私の血を少しあげれば......本当に少しだけ......しかし欲張りな時もある......少しだけあげると、その時だけ思い出してくれる。",
+			"description": "いや。生きていたのに、死んでしまったんだ。時間が経てば、ただの死人となってしまう。",
+			"alternativerecipes": [
+				{
+					"id": "A_continuerose_risen_success",
+					"chance": 100
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "summoned",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "L_roseend_risen",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "A_continuerose_risen_success",
+			"actionId": "rose",
+			"label": "離さないで",
+			"requirements": {
+				"health": 1
+			},
+			"startdescription": "かつて恋人だった人の体に残る肌の色が、深く濃くなっていく。瞳の中で古い光が再び燃え上がる。",
+			"description": "@#spirit_wintera_edge|痛み、寒さ、不幸。それは私たちに残されたものであり、残されたからこそ尊いのかもしれない。\n#spirit_wintera_moth|手と唇は生命で熟しているが、それはリンゴの皮とユリの花びらの冷たい生命である。それでもそれは彼らの手であり、彼らの唇である。",
+			"effects": {
+				"dread": 1
+			},
+			"deckeffect": {
+				"roserewards": 1
+			},
+			"aspects": {
+				"damagehealth": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "L_continuerose_power",
+			"actionId": "rose",
+			"label": "情事：強さを使う",
+			"requirements": {
+				"follower_lustpower": 1,
+				"romanticinterest": 1
+			},
+			"slots": [
+				{
+					"id": "What?",
+					"label": "体力",
+					"description": "体の強さ",
+					"required": {
+						"health": 1,
+						"dread": 1,
+						"funds": 1
+					}
+				}
+			],
+			"startdescription": "私の恋人は簡単には満足しないが、私もそうだ。",
+			"description": "今は......動けない。",
+			"alternativerecipes": [
+				{
+					"id": "A_rose_binoff_dread",
+					"chance": 100
+				},
+				{
+					"id": "A_rose_binoff_funds",
+					"chance": 100
+				},
+				{
+					"id": "A_continuerose_power_success",
+					"chance": 100
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "L_roseend",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "A_continuerose_power_success",
+			"actionId": "rose",
+			"label": "情事：強さを使う",
+			"requirements": {
+				"health": 1
+			},
+			"startdescription": "終わったら、しっかりと眠れそうだが、まだまだ終わりからは遠い。",
+			"description": "@#uqtristan|トリスタンは私がいないところでは、強い酒は飲まない。私が訪れる日以外は、時計を巻き忘れない。そして、目を閉じるのを怖がる彼だが、私といるとどうしても、目を閉じてしまう時もあるようだ。\n#uqvalciane|ヴァルシアーヌの肌は炉の熱で輝いていた。体力は全く残っていないようだ。私の帰り際には必ず、一緒に階段を下りて別れのキスをしてくれる。\n#uqelridge|エルリッチは私の好みを的確に予測しながら、優雅さと洗練さを兼ね備えた迷いのない行動を取る。\n#uqlaidlaw|レイドローは独創的で疲れ知らずだ。時計仕掛けやリキュール、籠に入った動物など、小さな贈り物を持ってきてくれる。",
+			"effects": {
+				"contentment": 1
+			},
+			"deckeffect": {
+				"roserewards": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "L_continuerose_sensation",
+			"actionId": "rose",
+			"label": "情事：喜びの衝動",
+			"requirements": {
+				"follower_lustsensation": 1,
+				"romanticinterest": 1
+			},
+			"slots": [
+				{
+					"id": "What?",
+					"label": "情熱",
+					"description": "一番重い命令。",
+					"required": {
+						"passion": 1,
+						"dread": 1,
+						"funds": 1
+					}
+				}
+			],
+			"startdescription": "私の恋人は快楽を求めて果てしなく工夫を凝らしている――今のところ、私もついていけている。",
+			"description": "今は......時間がない。",
+			"alternativerecipes": [
+				{
+					"id": "A_rose_binoff_dread",
+					"chance": 100
+				},
+				{
+					"id": "A_rose_binoff_funds",
+					"chance": 100
+				},
+				{
+					"id": "A_continuerose_sensation_success",
+					"chance": 100
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "L_roseend",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "A_continuerose_sensation_success",
+			"actionId": "rose",
+			"label": "情事：喜びの衝動",
+			"requirements": {
+				"passion": 1
+			},
+			"startdescription": "何日も、何日も、この思い出が、夏の夜の雷のように私の思考を遮る。",
+			"description": "@#uqrose|玄関をくぐった瞬間から、ローズは私をむさぼるように絡みつく。一度だけ彼女は私を「ビクター」と呼んだが、その後どちらもそのことを口にしなかった。\n#uqsaliba|サリバは疲れも甘えも知らず、決して微笑まない。そして時折、泣きそうなほど声が震えることがあるが、目は乾いたままだ。\n#uqvictor|ビクターはいつも一輪のバラを持ってきてくれる。それを私に渡すときは必ずためらうが、それが終わると、全くためらいを見せない。\n#uqviolet|ヴァイオレットの情熱は闇の井戸のように深い。彼女の快楽には少し残酷さがあるが、しつこい痛みを与えることはない。\n#uqrenira|私が着くと、レニラは香水に包まれていた。私が帰ろうとすると、彼女は手足を伸ばして横たわっている。これから数日は彼女の香りを身にまとうことになるだろう。",
+			"effects": {
+				"contentment": 1
+			},
+			"deckeffect": {
+				"roserewards": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "L_continuerose_enlightenment",
+			"actionId": "rose",
+			"label": "情事：理解の喜び",
+			"requirements": {
+				"follower_lustenlightenment": 1,
+				"romanticinterest": 1
+			},
+			"slots": [
+				{
+					"id": "What?",
+					"label": "理性",
+					"description": "魂は真の光だ。",
+					"required": {
+						"reason": 1,
+						"dread": 1,
+						"funds": 1
+					}
+				}
+			],
+			"startdescription": "恋人と私は、肉体を超えて競い合う。屈するわけにはいかない。",
+			"description": "今は......考えられない。",
+			"alternativerecipes": [
+				{
+					"id": "A_rose_binoff_dread",
+					"chance": 100
+				},
+				{
+					"id": "A_rose_binoff_funds",
+					"chance": 100
+				},
+				{
+					"id": "A_continuerose_enlightenment_success",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"craftable": false,
+			"linked": [
+				{
+					"id": "L_roseend",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "A_continuerose_enlightenment_success",
+			"actionId": "rose",
+			"label": "情事：理解の喜び",
+			"requirements": {
+				"reason": 1
+			},
+			"startdescription": "一緒にいると明るくなれる。",
+			"description": "@#uqenid|イーニッドは、私を見るより目を閉じている方が好きだ。見るのが辛い、と彼女は言う。心から望むように言われて、私は怒ることができなかった。\n#uqauclair|オークレールはチェス盤を設置した。ルールは毎晩少しずつ変わる。夜が明ける頃には、お互いチェスなんてどうでもよくなっていた。\n#uqcat|キャット・キャロは知っている。キャット・キャロはたくさんの道を知っている。月がカーテンの隙間から顔を覗かせる頃、私たちは一緒に歩きだす。\n#uqclifton|クリフトンの部屋はいつでも、ロウソクやアーク灯、それにオイルランプで明るく照らされている。それが彼のこだわりだ。夜が深まっていくと、灯りが次々と消えていく。そして私たちは真っ暗闇の中で、やるべきことをやり遂げる。\n#uqneville|ネビルはお茶と花束で迎えてくれた。彼は足を組んで私の前に座り、私が話すのを待っている。彼が行動を起こすように仕掛けるのは時間がかかることだが、彼にがっかりさせられたことはない。\n#uqslee|スリーは、いつも詩を持って来る。詩を詠みたい日もあれば、他のことをしたい日もある。@",
+			"effects": {
+				"contentment": 1
+			},
+			"deckeffect": {
+				"roserewards": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "L_continuerose_change",
+			"actionId": "rose",
+			"label": "情事：私たちは――",
+			"requirements": {
+				"follower_lustchange": 1,
+				"romanticinterest": 1
+			},
+			"slots": [
+				{
+					"id": "What?",
+					"description": "緊急事態。",
+					"required": {
+						"passion": 1,
+						"dread": 1,
+						"funds": 1
+					}
+				}
+			],
+			"startdescription": "恋人と私は、まだよく分かっていないかもしれないが、同じ願望を持っている。",
+			"description": "今は......今はダメなんだ。",
+			"alternativerecipes": [
+				{
+					"id": "A_rose_binoff_dread",
+					"chance": 100
+				},
+				{
+					"id": "A_rose_binoff_funds",
+					"chance": 100
+				},
+				{
+					"id": "A_continuerose_change_success",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"craftable": false,
+			"linked": [
+				{
+					"id": "L_roseend",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "A_continuerose_change_success",
+			"actionId": "rose",
+			"label": "情事：私たちは――",
+			"requirements": {
+				"passion": 1
+			},
+			"startdescription": "一緒にいると別のものになれる。",
+			"description": "\n@#uqporter|ポーターは会う前に、わざわざお風呂に入り、丁寧に髭を剃ってくれた。\n#uqysabet|イザベトの動きはとても素早く、繊細だが、一箇所に留まっているようには見えない。でも、どういうわけか、彼女はいつもいるべき場所にいる。\n#uqclovette|クロベットは奇妙な瞬間に笑うが、彼女の笑い声はいつも自然に聞こえる。手にとって分かるように喜ぶ。中毒性のある笑い声には、人を変える力がある。\n#uqdorothy|ドロシーは、会った瞬間から別れの瞬間まで、蓄音機を鳴らさなければならないと言い張る。それが邪魔となることも会ったが、彼女が埋め合わせをしてくれたことで、音楽の記憶は、サテンに織り込まれた明るい糸のように、夜の記憶に織り込まれていくのだった。\n#uqsylvia|シルヴィアは服をハサミで切り落とし、自分の服を切り落とすと、次の場所を選ぶ。都合のいい場所ではない。\n#uqleo|レオは私に会うと嬉しそうな顔をする。時折、嬉しすぎて、嬉しさが形となり繊細な肌から透けて見えるような気がする。私はその形を指でなぞり、彼を興奮させ、落ち着かせると、私たちは1つになった。@",
+			"effects": {
+				"contentment": 1
+			},
+			"deckeffect": {
+				"roserewards": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "L_continuerose_noone",
+			"label": "孤独",
+			"actionId": "rose",
+			"requirements": {
+				
+			},
+			"startdescription": "独りだが、孤独の中にも平和を感じてしまう。",
+			"description": "良い日もあれば悪い日もある。空が汚れたシーツのように見える日もあれば、川が澄んでいる日もある。",
+			"effects": {
+				"contentment": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "L_roseend",
+			"actionId": "rose",
+			"requirements": {
+				"resentment": 3
+			},
+			"label": "結果！",
+			"startdescription": "@#uqauclair|オークレール#uqcat|キャット#uqclovette|クロヴェット#uqclifton|クリフトン#uqdorothy|ドロシー#uqelridge|エルドリッジ#uqenid|イーニッド#uqlaidlaw|レイドロー#uqleo|レオ#uqneville|ネビル#uqporter|ポータ#uqrenira|レニラ#uqrose|ローズ#uqsaliba|サリバ#uqslee|スリー#uqsylvia|シルビア#uqtristan|トリスタン#uqvalciane|ヴヴァルシアーヌ#uqvictor|ビクター#uqviolet|ヴァイオレット#uqysabet|イザベト#uq|恋人の@は、これ以上私が無視することを許さない。",
+			"description": "お互いにとって苦い思い出となるだろう。",
+			"slots": [
+				{
+					"id": "glummer",
+					"label": "残るもの",
+					"required": {
+						"contentment": 1
+					},
+					"greedy": true
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "romanticinterest",
+					"mutateAspectId": "romanticinterest",
+					"mutationLevel": -1
+				}
+			],
+			"effects": {
+				"dread": 1,
+				"contentment": -1
+			},
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "L_roseend_risen",
+			"actionId": "rose",
+			"requirements": {
+				"resentment": 3,
+				"summoned": 1
+			},
+			"label": "結果！",
+			"startdescription": "記憶は死でさえも生き延びる。怒りも侮辱の念もそうだ。愛も？ここではその答えは見つからない。",
+			"description": "これらは、ずっと前に始まった最後の瞬間だ。[死者でも無視は許さない。]",
+			"slots": [
+				{
+					"id": "glummer",
+					"label": "残るもの",
+					"required": {
+						"contentment": 1
+					},
+					"greedy": true
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "romanticinterest",
+					"mutateAspectId": "romanticinterest",
+					"mutationLevel": -1
+				}
+			],
+			"effects": {
+				"dread": 1,
+				"contentment": -1
+			},
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "A_rose_binoff_dread",
+			"actionId": "rose",
+			"requirements": {
+				"dread": 1
+			},
+			"label": "恋人の前で絶望を口に出して、関係を終わらせる。",
+			"startdescription": "「私たちに未来はない。離れていても、一緒にいてもだめ」",
+			"description": "恋人だった人が去り、静けさが深まった。",
+			"effects": {
+				"dread": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "romanticinterest",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 2,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "romanticinterest",
+					"mutateAspectId": "romanticinterest",
+					"mutationLevel": -1
+				}
+			]
+		},
+		{
+			"id": "A_rose_binoff_funds",
+			"actionId": "rose",
+			"requirements": {
+				"funds": 1
+			},
+			"label": "侮辱して関係を終わらせる。",
+			"startdescription": "「ほら。これでいいものを買って」",
+			"description": "元恋人が扉を乱暴に閉める。",
+			"effects": {
+				"funds": -1,
+				"dread": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "romanticinterest",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 2,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "romanticinterest",
+					"mutateAspectId": "romanticinterest",
+					"mutationLevel": -1
+				}
+			]
+		}
+	]
+}

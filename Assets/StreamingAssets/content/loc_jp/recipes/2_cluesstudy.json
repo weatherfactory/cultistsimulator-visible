@@ -1,0 +1,382 @@
+{
+	"recipes": [
+		{
+			"id": "studyupgrade_downgrade_lore_hint",
+			"label": "目に見えない術の知識を磨く？",
+			"actionId": "study",
+			"requirements": {
+				"lore": 1,
+				"edge": -1,
+				"forge": -1,
+				"grail": -1,
+				"heart": -1,
+				"knock": -1,
+				"lantern": -1,
+				"moth": -1,
+				"secrethistories": -1,
+				"winter": -1,
+				"alzabo": -1,
+				"prealzabo": -1
+			},
+			"startdescription": "同じレベルと属性の伝承の断片を2つ持っていれば、それらを一緒に研究して理解を深めることができる。理性を使えば、伝承を低レベルの断片に分解して分析することができる。あるいは、別のタイプの伝承を使ってそれを改変することもできる......",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "studyupgradelore_hint",
+			"label": "目に見えない術の知識を磨く？",
+			"actionId": "study",
+			"requirements": {
+				"lore": 1,
+				"healthskill": -1,
+				"alzabo": -1,
+				"prealzabo": -1
+			},
+			"startdescription": "同じレベルと属性の伝承の断片を2つ持っていれば、それらを一緒に研究して理解を深めることができる。あるいは、別のタイプの伝承を使ってそれを改変することもできる......",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "studyprealzabo_hint",
+			"label": "大胆な実験",
+			"actionId": "study",
+			"requirements": {
+				"prealzabo": 1
+			},
+			"startdescription": "最後に材料をいくつか購入すれば、調合物の準備ができるようになる。勇気を出して......適切な食べ物を見つけなければならない。",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "studyalzabo_hint",
+			"label": "蜂蜜漬け鳩のごちそう",
+			"actionId": "study",
+			"requirements": {
+				"alzabo": 1
+			},
+			"startdescription": "残骸を食べて、彼らの知識のほんの一部を塵から救い出して保存することができる。",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "translatelatinhint",
+			"label": "ラテン語から翻訳する？",
+			"actionId": "study",
+			"requirements": {
+				"textlatin": 1
+			},
+			"startdescription": "ラテン語を少ししか知らないから、この文書は読めない。教科書を探すか、家庭教師を雇えば良いのかもしれない。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "translategreekhint",
+			"label": "ギリシャ語から翻訳する？",
+			"actionId": "study",
+			"requirements": {
+				"textgreek": 1
+			},
+			"startdescription": "ギリシャ語を少ししか知らないから、この文書は読めない。教科書を探すか、家庭教師を雇えば良いのかもしれない。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "translatearamaichint",
+			"label": "アラム語から翻訳する？",
+			"actionId": "study",
+			"requirements": {
+				"textaramaic": 1
+			},
+			"startdescription": "アラム語を少ししか知らないから、この文書は読めない。教科書を探すか、家庭教師を雇えば良いのかもしれない。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "translatesanskrithint",
+			"label": "サンスクリット語から翻訳する？",
+			"actionId": "study",
+			"requirements": {
+				"textsanskrit": 1
+			},
+			"startdescription": "サンスクリット語を少ししか知らないから、この文書は読めない。教科書を探すか、家庭教師を雇えば良いのかもしれない。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "translatefucinehint",
+			"label": "フチーノ語から翻訳する？",
+			"actionId": "study",
+			"requirements": {
+				"textfucine": 1
+			},
+			"startdescription": "私はフチーノ語を知らない。生きている人間で知っている者はいないだろう。ロゼッタストーンがどこかにあるかもしれない.....それか「生きていない」教師を見つけられるかもしれない。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "translatephrygianhint",
+			"label": "フリュギア語から翻訳する？",
+			"actionId": "study",
+			"requirements": {
+				"textphrygian": 1
+			},
+			"startdescription": "私はフリュギア語を知らない。生きている人間で知っている者はいないだろう。ロゼッタストーンがどこかにあるかもしれない.....それか「生きていない」教師を見つけられるかもしれない。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "translatemandaichint",
+			"label": "ディープマンダ語から翻訳する？",
+			"actionId": "study",
+			"requirements": {
+				"textmandaic": 1
+			},
+			"startdescription": "私はディープマンダ語を知らない。生きている人間で知っている者はいないだろう。ロゼッタストーンがどこかにあるかもしれない.....それか「生きていない」教師を見つけられるかもしれない。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "translatevakhint",
+			"label": "ヴャック語から翻訳する？",
+			"actionId": "study",
+			"requirements": {
+				"textvak": 1
+			},
+			"startdescription": "私はヴャック語を知らない。生きている人間で知っている者はいないだろう。ロゼッタストーンがどこかにあるかもしれない.....それか「生きていない」教師を見つけられるかもしれない。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "studyincreasehealthskilld_wronglore",
+			"label": "身体を鍛える：秘密の技？",
+			"actionId": "study",
+			"requirements": {
+				"skillhealthc": 1,
+				"vitalityplus": 4,
+				"lore": 1
+			},
+			"startdescription": "この伝承はここでは全く役に立たない。他のものを選ばねばならない。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasehealthfurtherhint",
+			"label": "体力を高める？",
+			"actionId": "study",
+			"requirements": {
+				"vitality": 2
+			},
+			"startdescription": "体力をつければ、さらに活力が必要になる。[スキル：体躯を使って体力をさらにつける。]",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasereasonfurtherhint",
+			"label": "理性を高める?",
+			"actionId": "study",
+			"requirements": {
+				"erudition": 2
+			},
+			"startdescription": "理性を得れば、さらに博学が必要になる。[スキル：博学を使って理性をさらに得る。]",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasepassionfurtherhint",
+			"label": "情熱を高める?",
+			"actionId": "study",
+			"requirements": {
+				"glimmering": 2
+			},
+			"startdescription": "情熱が増えれば、さらに煌めきが必要になる。[スキル：想像力を使って情熱をさらに高める。]",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "studyupgradeinfluences.apostlelanternhint",
+			"label": "新鮮さの維持",
+			"actionId": "study",
+			"requirements": {
+				"apostlelantern.pillar3": 1
+			},
+			"startdescription": "どんなに魅力的なものでも、時間が経てば、色褪せて灰色になる。私はそれを執着の色で染めなければいけない。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "studyupgradeinfluenceshint2",
+			"label": "影響力を高める？",
+			"actionId": "study",
+			"requirements": {
+				"influence": 2,
+				"lore": -1,
+				"healthskill": -1,
+				"reasonskill": -1,
+				"passionskill": -1
+			},
+			"startdescription": "影響力を適切に組み合わせれば、力を強化することができるかもしれない......だが、そのためには、目に見えない術の知識が必要だ。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasehealthfurtherhintpluswithskillneedslore",
+			"label": "自分のスキルを並外れたレベルに引き上げる？",
+			"actionId": "study",
+			"requirements": {
+				"vitalityplus": 1,
+				"skillhealthc": 1
+			},
+			"startdescription": "十分な学んだ教訓と......もっと何かが必要だ。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasehealthfurtherhintpluswithskill",
+			"label": "体力を高める？",
+			"actionId": "study",
+			"requirements": {
+				"vitalityplus": 1,
+				"healthskill": 1
+			},
+			"startdescription": "もっと学んだ教訓が必要だ。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasehealthfurtherhintplus",
+			"label": "体力を高める？",
+			"actionId": "study",
+			"requirements": {
+				"vitalityplus": 1
+			},
+			"startdescription": "強さのスキルと一緒に使う必要がある。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasehealthfurtherhint1",
+			"label": "体力を高める？",
+			"actionId": "study",
+			"requirements": {
+				"vitality": 1
+			},
+			"startdescription": "もっと必要だ。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasereasonfurtherhintpluswithskillneedslore",
+			"label": "自分のスキルを並外れたレベルに引き上げる？",
+			"actionId": "study",
+			"requirements": {
+				"eruditionplus": 1,
+				"skillreasonc": 1
+			},
+			"startdescription": "十分な学んだ教訓と......もっと何かが必要だ。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasereasonfurtherhintpluswithskill",
+			"label": "理性を高める?",
+			"actionId": "study",
+			"requirements": {
+				"eruditionplus": 1,
+				"reasonskill": 1
+			},
+			"startdescription": "もっと学んだ教訓が必要だ。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasereasonfurtherhintplus",
+			"label": "理性を高める?",
+			"actionId": "study",
+			"requirements": {
+				"eruditionplus": 1
+			},
+			"startdescription": "学識のスキルと一緒に使う必要がある。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasereasonfurtherhint1",
+			"label": "理性を高める?",
+			"actionId": "study",
+			"requirements": {
+				"erudition": 1
+			},
+			"startdescription": "1つ以上は必要だ。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasepassionfurtherhintpluswithskillneedslore",
+			"label": "自分のスキルを並外れたレベルに引き上げる？",
+			"actionId": "study",
+			"requirements": {
+				"glimmeringplus": 1,
+				"skillpassionc": 1
+			},
+			"startdescription": "十分な学んだ教訓と......もっと何かが必要だ。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasepassionfurtherhintpluswithskill",
+			"label": "情熱を高める?",
+			"actionId": "study",
+			"requirements": {
+				"glimmeringplus": 1,
+				"passionskill": 1
+			},
+			"startdescription": "もっと学んだ教訓が必要だ。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasepassionfurtherhintplus",
+			"label": "情熱を高める?",
+			"actionId": "study",
+			"requirements": {
+				"glimmeringplus": 1
+			},
+			"startdescription": "想像力のスキルと一緒に使う必要がある。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasepassionfurtherhint1",
+			"label": "情熱を高める?",
+			"actionId": "study",
+			"requirements": {
+				"glimmering": 1
+			},
+			"startdescription": "1つ以上は必要だ。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "studyrestlessnesshint",
+			"label": "落ち着きのなさを学ぶ？",
+			"actionId": "study",
+			"requirements": {
+				"restlessness": 1
+			},
+			"startdescription": "何かを学ぶには、じっと静かに座っていなければならないことが多い。落ち着きのなさは大抵、邪魔にしかならない。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "studyupgradeinfluenceshint1",
+			"label": "影響力を高める？",
+			"actionId": "study",
+			"requirements": {
+				"influence": 1
+			},
+			"startdescription": "影響力を適切に組み合わせれば、力を強化することができるかもしれない......",
+			"hintonly": true,
+			"craftable": false
+		}
+	]
+}

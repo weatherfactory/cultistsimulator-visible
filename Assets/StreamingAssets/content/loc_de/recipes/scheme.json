@@ -1,0 +1,597 @@
+{
+	"recipes": [
+		{
+			"id": "scheme_murderhunter",
+			"label": "Ein Plan zur Ermordung eines Jägers ist in Vorbereitung",
+			"actionId": "scheme",
+			"requirements": {
+				"schememurder": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Ein Rivale will einem Jäger den Garaus machen. Dies könnte zu meinem Vorteil sein ... doch es könnte auch für Aufmerksamkeit sorgen.",
+			"warmup": 60,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "scheme_murderhunter_grab",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "scheme_murderhunter_grab",
+			"label": "Ein Plan zur Ermordung eines Jägers ist in Vorbereitung",
+			"actionId": "scheme",
+			"slots": [
+				{
+					"id": "victim",
+					"label": "Opfer",
+					"greedy": true,
+					"required": {
+						"hunter": 1
+					}
+				}
+			],
+			"effects": {
+				
+			},
+			"warmup": 60,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "scheme_murderhunter_success",
+					"chance": 30
+				},
+				{
+					"id": "scheme_murderhunter_failure",
+					"chance": 100
+				},
+				{
+					"id": "scheme_murderhunter_nohunterfound",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "scheme_murderhunter_success",
+			"label": "Jemand hat einen Jäger ermordet!",
+			"actionId": "scheme",
+			"requirements": {
+				"hunter": 1
+			},
+			"aspects": {
+				"killhunter": 1
+			},
+			"effects": {
+				"notoriety": 1
+			},
+			"startdescription": "Dies könnte mir eine Atempause verschaffen – doch letzten Ende könnte so das Dezernat für Unterdrückung bis vor meine Tür gelotst werden.",
+			"warmup": 5,
+			"craftable": false
+		},
+		{
+			"id": "scheme_murderhunter_failure",
+			"label": "Jemand ist daran gescheitert, einen Jäger zu ermorden!",
+			"actionId": "scheme",
+			"requirements": {
+				"hunter": 1
+			},
+			"effects": {
+				"notoriety": 1
+			},
+			"startdescription": "Dies könnte das Dezernat für Unterdrückung bis vor meine Tür lotsen.",
+			"warmup": 5,
+			"craftable": false
+		},
+		{
+			"id": "scheme_murderhunter_nohunterfound",
+			"label": "Ein Plan zur Ermordung eines Jägers hat keinerlei Folgen gehabt.",
+			"actionId": "scheme",
+			"effects": {
+				
+			},
+			"startdescription": "Vielleicht ist es so am besten.",
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "scheme_expedition_debug",
+			"label": "FORCE EXP START",
+			"actionId": "scheme",
+			"slots": [
+				{
+					"id": "target",
+					"label": "Akteur",
+					"required": {
+						"independent": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"chance": 100,
+					"id": "scheme_expedition_grab"
+				}
+			]
+		},
+		{
+			"id": "scheme_expedition_grab",
+			"label": "Ein Rivale zieht eine Expedition in Betracht ...",
+			"actionId": "scheme",
+			"requirements": {
+				"schemeexpedition": 1
+			},
+			"slots": [
+				{
+					"id": "target",
+					"label": "Ziel",
+					"greedy": true,
+					"required": {
+						"vault": 1
+					}
+				}
+			],
+			"effects": {
+				
+			},
+			"startdescription": "Mein Rivale strebt nach Werkzeugen und Wissen für seinen eigenen Auftsieg.",
+			"warmup": 60,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "scheme_expedition_prep",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "scheme_expedition_prep",
+			"label": "Eine Gelegenheit um eine Falle einzusetzen",
+			"actionId": "scheme",
+			"slots": [
+				{
+					"id": "snare",
+					"label": "Hinterhalt",
+					"required": {
+						"snare": 1
+					}
+				}
+			],
+			"requirements": {
+				"vault": 1
+			},
+			"startdescription": "Ich habe eine Falle vorbereitet. Ich kann versuchen, meinen Rivalen in einen Hinterhalt zu locken, um seine Expedition zu vereiteln und ihn sogar zu verwunden ...",
+			"warmup": 60,
+			"craftable": false,
+			"linked": [
+				{
+					"chance": 100,
+					"id": "scheme_expedition_snare_great"
+				},
+				{
+					"chance": 100,
+					"id": "scheme_expedition_snare_good"
+				},
+				{
+					"chance": 100,
+					"id": "scheme_expedition_snare_poor"
+				},
+				{
+					"chance": 100,
+					"id": "scheme_expedition_snare_rubbish"
+				},
+				{
+					"chance": 70,
+					"id": "scheme_expedition_success"
+				},
+				{
+					"chance": 100,
+					"id": "scheme_expedition_failure"
+				}
+			]
+		},
+		{
+			"id": "scheme_expedition_snare_great",
+			"actionId": "scheme",
+			"requirements": {
+				"snarelevel": 4
+			},
+			"linked": [
+				{
+					"id": "scheme_expedition_snare_success",
+					"chance": 90
+				},
+				{
+					"id": "scheme_expedition_snare_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "scheme_expedition_snare_good",
+			"actionId": "scheme",
+			"requirements": {
+				"snarelevel": 3
+			},
+			"linked": [
+				{
+					"id": "scheme_expedition_snare_success",
+					"chance": 70
+				},
+				{
+					"id": "scheme_expedition_snare_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "scheme_expedition_snare_poor",
+			"actionId": "scheme",
+			"requirements": {
+				"snarelevel": 2
+			},
+			"linked": [
+				{
+					"id": "scheme_expedition_snare_success",
+					"chance": 30
+				},
+				{
+					"id": "scheme_expedition_snare_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "scheme_expedition_snare_rubbish",
+			"actionId": "scheme",
+			"requirements": {
+				"snarelevel": 1
+			},
+			"linked": [
+				{
+					"id": "scheme_expedition_snare_success",
+					"chance": 10
+				},
+				{
+					"id": "scheme_expedition_snare_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "scheme_expedition_snare_success",
+			"label": "Unsere Falle ist zugeschnappt!",
+			"actionId": "scheme",
+			"effects": {
+				"snare": -1
+			},
+			"startdescription": "Mein Rivale ist uns in die Falle gegangen! Er wird versuchen, sich zurückzuziehen, um sich die Wunden zu lecken.",
+			"mutations": [
+				{
+					"filterOnAspectId": "independent",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 5,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "independent_scar",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "scheme_expedition_snare_failure",
+			"label": "Unsere Falle ist gescheitert!",
+			"actionId": "scheme",
+			"startdescription": "Mein Rivale ist unserer Falle ausgewichen ...",
+			"mutations": [
+				{
+					"filterOnAspectId": "independent",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"snare": -1
+			},
+			"warmup": 5,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "scheme_expedition_success",
+					"chance": 70
+				},
+				{
+					"id": "scheme_expedition_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "scheme_expedition_success",
+			"label": "Mein Rivale hat hier alles geplündert ...",
+			"actionId": "scheme",
+			"requirements": {
+				"vault": 1
+			},
+			"effects": {
+				"vault": -1
+			},
+			"startdescription": "Was auch immer er hier gesucht hat, er ist fündig geworden.",
+			"warmup": 5,
+			"craftable": false,
+			"alt": [
+				{
+					"id": "expedition.corpse.find.vaultcapital5.ransackedbyrival",
+					"additional": true
+				},
+				{
+					"id": "expedition.corpse.find.vaultloneandlevelsands2.ransackedbyrival",
+					"additional": true
+				},
+				{
+					"id": "expedition.corpse.find.vaultrendingmountainsdefault.ransackedbyrival",
+					"additional": true
+				},
+				{
+					"id": "expedition.corpse.find.vaultshires4.ransackedbyrival",
+					"additional": true
+				},
+				{
+					"id": "expedition.corpse.find.vaultcapital5.ransackedbyrival",
+					"additional": true
+				},
+				{
+					"id": "expedition.corpse.find.vaultshires3.ransackedbyrival",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "scheme_promotion",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "scheme_expedition_failure",
+			"label": "Meine Rivale ist mit seiner Expedition gescheitert.",
+			"actionId": "scheme",
+			"requirements": {
+				"vault": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Was auch immer er hier gesucht hat, er ist nicht fündig geworden. Er hat seine Expedition abgebrochen ... für den Augenblick.",
+			"warmup": 5,
+			"craftable": false
+		},
+		{
+			"id": "scheme_activities",
+			"label": "Ein Rivale ist in den Schatten am Werke.",
+			"actionId": "scheme",
+			"requirements": {
+				"schemeactivities": 1
+			},
+			"effects": {
+				"mystique": 1
+			},
+			"startdescription": "Er verbirgt sich noch immer. Was genau führt er im Schilde? [Fast immer führt dies zu nichts, doch gelegentlich wird es einem Rivalen gelingen, insgeheim seine Macht zu vergrößern. Du könntest ihn aus seinem Versteck locken, indem du eine Expedition offen lässt.]",
+			"description": "Mein Rivale hat irgendeinen Schabernack vor. Das Dezernat für Unterdrückung könnte davon erfahren.",
+			"alternativerecipes": [
+				{
+					"id": "scheme_calm",
+					"chance": 10
+				},
+				{
+					"id": "scheme_promotion",
+					"chance": 11
+				}
+			],
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "scheme_calm",
+			"label": "Mein Rivale ist in milderer Stimmung.",
+			"actionId": "scheme",
+			"effects": {
+				"influenceheartc": 1
+			},
+			"description": "Mein Rivale wahrt die professionelle Etikette: Ich habe einen vorsichtig höflichen Brief bekommen, wobei darin nichts von Belang steht ... könnte es vielleicht eines Tages eine Gelegenheit geben, uns zu verbünden? [Gelegentlich kann sich die Missgunst eines Rivalen verringern.]",
+			"mutations": [
+				{
+					"filterOnAspectId": "independent",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				}
+			],
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "scheme_promotion",
+			"label": "Mein Rivale hat seine Sache vorangetrieben.",
+			"actionId": "scheme",
+			"alternativerecipes": [
+				{
+					"chance": 100,
+					"id": "scheme_promotion_ascension"
+				}
+			],
+			"effects": {
+				"mystique": 1
+			},
+			"aspects": {
+				"rival_promotion": 1
+			},
+			"description": "My Rivale hat mehr Wissen, mehr Schätze, mehr Kontakte gesammelt ... und so ist er selbst etwas mehr geworden.",
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "scheme_promotion_ascension",
+			"label": "Mein Rivale will durch das Trikuspidale Tor, um etwas Größeres zu werden.",
+			"actionId": "scheme",
+			"requirements": {
+				"exalted": 1
+			},
+			"effects": {
+				"mystique": 1
+			},
+			"startdescription": "Seinem Ziel einen Schritt näher. Einen Grad höher in der großen Maschinerie des Hauses der Sonne. [Vorsicht: Wenn der Aufstieg deines Rivalen 7 erreicht, gewinnt er statt dir das Spiel.]",
+			"mutations": [
+				{
+					"filterOnAspectId": "independent",
+					"mutateAspectId": "rivalmarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "independent_scar",
+			"label": "Mein Rivale hat eine Narbe davongetragen",
+			"startdescription": "Mein Rivale hatte Pech. Seine Niederlage hat ihm eine Narbe eingebracht. Er wird wütend auf mich sein. [Drei Narben der gleichen Art töten jeden Sterblichen.]",
+			"actionId": "scheme",
+			"linked": [
+				{
+					"id": "independent_givescar_edge",
+					"chance": 30
+				},
+				{
+					"id": "independent_givescar_knock",
+					"chance": 50
+				},
+				{
+					"id": "independent_givescar_winter",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "independent_givescar_edge",
+			"actionId": "scheme",
+			"label": "Ein Rückschlag für einen Rivalen",
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower_scar_edge",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "edge",
+					"mutationLevel": 2,
+					"additive": true
+				}
+			],
+			"linked": [
+				{
+					"id": "independent_deathscar_edge",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "independent_givescar_knock",
+			"label": "Ein Rückschlag für einen Rivalen",
+			"actionId": "scheme",
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower_scar_knock",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "knock",
+					"mutationLevel": 2,
+					"additive": true
+				}
+			],
+			"linked": [
+				{
+					"id": "independent_deathscar_knock",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "independent_givescar_winter",
+			"actionId": "scheme",
+			"label": "Ein Rückschlag für einen Rivalen",
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower_scar_winter",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "winter",
+					"mutationLevel": 2,
+					"additive": true
+				}
+			],
+			"linked": [
+				{
+					"id": "independent_deathscar_winter",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "independent_deathscar_edge",
+			"actionId": "scheme",
+			"label": "Der Tod: Eine Niederlage",
+			"requirements": {
+				"follower_scar_edge": 3
+			},
+			"description": "Hier waren Mut und Standvermögen zu bewundern. Letzten Endes war das nicht genug. [Dein Rivale hat sich drei Kanten-Narben zugezogen und ist gestorben.]",
+			"aspects": {
+				"killmortal": 1
+			}
+		},
+		{
+			"id": "independent_deathscar_knock",
+			"actionId": "scheme",
+			"label": "Der Tod: Eine Öffnung",
+			"requirements": {
+				"follower_scar_knock": 3
+			},
+			"description": "Um effektiv zu funktionieren, muss man sein Inneres auch im Inneren behalten und verhindern, dass das Äußere ins Innere eindringt. Dringt genug vom Inneren ins Äußere, geht es nicht mehr weiter. [Dein Rivale hat sich drei Klopfen-Narben zugezogen und ist gestorben.]",
+			"aspects": {
+				"killmortal": 1
+			}
+		},
+		{
+			"id": "independent_deathscar_winter",
+			"actionId": "scheme",
+			"label": "Der Tod: Ein Ende",
+			"requirements": {
+				"follower_scar_winter": 3
+			},
+			"description": "Leise rieselt der Schnee. Der Sonnenuntergang ist ein Fleck aus Licht. [Dein Rivale hat sich drei Winter-Narben zugezogen und ist gestorben.]",
+			"aspects": {
+				"killmortal": 1
+			}
+		}
+	]
+}

@@ -1,0 +1,1160 @@
+{
+	"recipes": [
+		{
+			"id": "use.first",
+			"actionId": "use",
+			"label": "目の前",
+			"startdescription": "昔の仲間が私を探している。色々なところから口笛と指を鳴らす音が聞こえる。盗んだものを考えれば、当たり前のことかもしれないが、もうたくさんだ。",
+			"requirements": {
+				"ticket.train": 1
+			},
+			"effects": {
+				"ticket.train": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.aachen",
+					"city.prague",
+					"city.munich",
+					"city.london",
+					"city.krakow",
+					"city.avignon",
+					"city.venice",
+					"city.budapest"
+				],
+				" draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"alt": [
+				{
+					"id": "rkx.first",
+					"additional": true
+				},
+				{
+					"id": "turn.begin",
+					"additional": true
+				},
+				{
+					"id": "travel.first",
+					"additional": true
+				}
+			],
+			"warmup": 2,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "use.attack.weapon.underling",
+			"actionId": "use",
+			"label": "追っ手を攻撃する",
+			"startdescription": "追っ手への直接攻撃。[すべての不明瞭を破壊する。]",
+			"comments": "Priority>createdefiance, in case someone is actually under attack from a pursuer",
+			"requirements": {
+				"weapon": 1,
+				"op": -1
+			},
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.rank": 1
+			},
+			"slots": [
+				{
+					"id": "with.lore",
+					"label": "技",
+					"description": "刃の技と武器を両方使った攻撃は、必ず当たる。",
+					"actionId": "use",
+					"required": {
+						"lore": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "use.attack.underling.combo"
+				}
+			],
+			"purge": {
+				"obscurity": 100
+			},
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "use.attack.underling.hit",
+					"chance": 70
+				},
+				{
+					"id": "use.attack.underling.miss",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "use.attack.lore.underling",
+			"actionId": "use",
+			"label": "追っ手を攻撃する",
+			"comments": "Priority>createdefiance, in case someone is actually under attack from a pursuer",
+			"startdescription": "刃の技を使って、追っ手を攻撃する。[すべての不明瞭を破壊する。]",
+			"requirements": {
+				"lore": 1,
+				"op": -1
+			},
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.rank": 1
+			},
+			"slots": [
+				{
+					"id": "with.weapon",
+					"label": "武器",
+					"description": "刃の技と武器を両方使った攻撃は、必ず当たる。",
+					"actionId": "use",
+					"required": {
+						"weapon": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "use.attack.underling.combo"
+				}
+			],
+			"purge": {
+				"obscurity": 100
+			},
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "use.attack.underling.hit",
+					"chance": 70
+				},
+				{
+					"id": "use.attack.underling.miss",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "use.attack.underling.combo",
+			"actionId": "use",
+			"requirements": {
+				"lore": 1,
+				"weapon": 1
+			},
+			"label": "鉄鋼と科学",
+			"purge": {
+				"obscurity": 100
+			},
+			"startdescription": "手も足も出ないだろう。彼らがそれを知る時が来た。[刃の技と武器を両方使った攻撃は、必ず当たる。]",
+			"linked": [
+				{
+					"id": "use.attack.underling.hit.combo"
+				}
+			]
+		},
+		{
+			"id": "use.attack.underling.hit",
+			"actionId": "use",
+			"label": "明白な一撃",
+			"startdescription": "攻撃を仕掛け、街へと後退した！[2つの傷口ができると、ほとんどの精算人が死ぬ。4回でアンダーボスを殺せる。]",
+			"aspects": {
+				"striking.underling": 1,
+				"fatiguing": 1,
+				"tracerisk": 1
+			},
+			"purge": {
+				"obscurity": 100
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "use.attack.underboss.slain"
+				},
+				{
+					"id": "use.attack.underling.slain"
+				}
+			]
+		},
+		{
+			"id": "use.attack.underling.hit.combo",
+			"actionId": "use",
+			"label": "明白な一撃",
+			"startdescription": "攻撃を仕掛け、街へと後退した！[2つの傷口ができると、ほとんどの精算人が死ぬ。4回でアンダーボスを殺せる。]",
+			"comments": "We don't use the base striking aspect because we don't want to generate two wounds",
+			"aspects": {
+				"striking.underling.weapon": 1,
+				"fatiguing": 1,
+				"tracerisk": 1
+			},
+			"purge": {
+				"obscurity": 100
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "use.attack.underboss.slain"
+				},
+				{
+					"id": "use.attack.underling.slain"
+				}
+			]
+		},
+		{
+			"id": "use.attack.underling.miss",
+			"actionId": "use",
+			"label": "不運な出会い",
+			"startdescription": "この人は思っていたよりも優れているか、運が良いのだろう。相手に危害を加えることはできなかった。",
+			"purge": {
+				"obscurity": 100
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "use.attack.underboss.slain",
+			"actionId": "use",
+			"label": "アンダーボスを始末した！",
+			"startdescription": "下級の清算人の主でさえ殺すのは難しい。そうは言っても、私はまだ下級の清算人の主だと思われているのかもしれない。",
+			"description": "下級の清算人の主でさえ殺すのは難しい。そうは言っても、私はまだ下級の清算人の主だと思われているのかもしれない。[追っ手を始末したが、他の者がもうこちらに向かっているだろう。]",
+			"extantreqs": {
+				"rkx.underboss": 1,
+				"damage.underling": 4
+			},
+			"haltverb": {
+				"rkx": 1
+			},
+			"effects": {
+				"trace": 1,
+				"damage.underling": -1
+			},
+			"purge": {
+				"damage.underling": 100,
+				"obscurity": 100
+			},
+			"burnimage": "reckoner.slain",
+			"warmup": 1
+		},
+		{
+			"id": "use.attack.underling.slain",
+			"actionId": "use",
+			"label": "追っ手を始末した！",
+			"startdescription": "精算人たちは不死身ではない。我々は年を売買しているだけだ。それを証明するのが今夜の私の役目だ。",
+			"description": "精算人たちは不死身ではない。我々は年を売買しているだけだ。それを証明するのが今夜の私の役目だ。[追っ手を始末したが、他の者がもうこちらに向かっているだろう。]",
+			"extantreqs": {
+				"rkx.rank": 1,
+				"damage.underling": 2,
+				"rkx.underboss": -1
+			},
+			"haltverb": {
+				"rkx": 1
+			},
+			"effects": {
+				"trace": 1,
+				"damage.underling": -1
+			},
+			"purge": {
+				"damage.underling": 100,
+				"obscurity": 100
+			},
+			"burnimage": "reckoner.slain",
+			"warmup": 1
+		},
+		{
+			"id": "use.attack.weapon.createdefiance",
+			"actionId": "use",
+			"label": "神聖な武器",
+			"startdescription": "私の敵を殺すには銀の弾丸が必要だと言われていた。それを使って失敗したのを見たことがある。それでは、これはどうだ？",
+			"description": "精算人はマンサスの高層部に行くほど愚かなではない。真の長生者やその師匠の注意を引くと、滅亡を招くことになる。しかし、私の敵は目に見えない術を知っていたはずだ。私もそうすべきかもしれない。[大胆さは注目を集める。これにより現在の不明瞭が破壊され、痕跡が生まれる。]",
+			"requirements": {
+				"weapon": 1,
+				"uq.weapon.profane": -1,
+				"op": -1
+			},
+			"extantreqs": {
+				"temptation.defiance": -1
+			},
+			"effects": {
+				"temptation.defiance": 1,
+				"trace": 1
+			},
+			"purge": {
+				"obscurity": 100
+			},
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "foe.weaknesses.generate"
+				}
+			]
+		},
+		{
+			"id": "use.attack.lore.createdefiance",
+			"actionId": "use",
+			"label": "最凶の武器",
+			"startdescription": "精算人はマンサスの高層部に行くほど愚かなではない。真の長生者やその師匠の注意を引くと、滅亡を招くことになる。しかし私の敵は、苦闘と征服の時の神と関わりが会ったはずだ。彼は一定の保護を受けていた。[大胆さは注目を集める。これにより現在の不明瞭が破壊され、痕跡が生まれる。]",
+			"description": "私の敵は「目に見えない術」を知っている。私も習得したほうが良いだろう。",
+			"requirements": {
+				"lore": 1
+			},
+			"extantreqs": {
+				"temptation.defiance": -1
+			},
+			"effects": {
+				"temptation.defiance": 1,
+				"trace": 1
+			},
+			"purge": {
+				"obscurity": 100
+			},
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "foe.weaknesses.generate"
+				}
+			]
+		},
+		{
+			"id": "foe.weaknesses.generate",
+			"actionId": "use",
+			"label": "危険な可能性",
+			"startdescription": "敵にも弱点はあるが、彼はそれをうまく隠している。[敵にどんな目くらましが効くか分かれば、戦う上でもっと有利な場所を選べるようになる。]",
+			"deckeffect": {
+				"rkx.weaknesses.environment": 1,
+				"rkx.weaknesses.quirk": 1,
+				"rkx.weaknesses.disfavour": 1
+			}
+		},
+		{
+			"id": "foe.weaknesses.generate.backup",
+			"actionId": "foe.weaknesses.generate.backup",
+			"label": "危険な可能性",
+			"startdescription": "敵にも弱点はあるが、彼はそれをうまく隠している。[敵にどんな目くらましが効くか分かれば、戦う上でもっと有利な場所を選べるようになる。]",
+			"comments": "To be triggered from Defiance use - just in case weaknesses haven't been generated when meeting the Foe",
+			"extantreqs": {
+				"weakness.foe": -1,
+				"weakness.foe.unknown": -1
+			},
+			"deckeffect": {
+				"rkx.weaknesses.environment": 1,
+				"rkx.weaknesses.quirk": 1,
+				"rkx.weaknesses.disfavour": 1
+			}
+		},
+		{
+			"id": "use.attack.weapon.foe",
+			"actionId": "use",
+			"label": "神聖な武器を使って敵を攻撃する",
+			"startdescription": "私と対峙することで、彼もターゲットとなってしまったが.....簡単には倒せないだろう。[この武器の攻撃は通常は命中するが、必ずしも命中するとは限らない。敵が盤面にいる間は、下級の精算人への攻撃はできない。これによって不明瞭は全て破壊される。]",
+			"requirements": {
+				"weapon": 1,
+				"uq.weapon.profane": -1,
+				"op": -1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"slots": [
+				{
+					"id": "with.lore",
+					"label": "技",
+					"description": "刃の技と武器を両方使った攻撃は、必ず当たる。",
+					"actionId": "use",
+					"required": {
+						"lore": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "use.attack.foe.combo"
+				}
+			],
+			"purge": {
+				"obscurity": 100
+			},
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "use.attack.foe.hit",
+					"chance": 70
+				},
+				{
+					"id": "use.attack.foe.miss",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "use.attack.lore.foe",
+			"actionId": "use",
+			"label": "刃の技を使って敵を攻撃する",
+			"startdescription": "私と対峙することで、彼もターゲットとなってしまったが.....簡単には倒せないだろう。[伝承の攻撃は通常は命中するが、必ずしも命中するとは限らない。敵が盤面にいる間は、下級の精算人への攻撃はできない。これによって不明瞭は全て破壊される。]",
+			"requirements": {
+				"lore": 1,
+				"op": -1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"slots": [
+				{
+					"id": "with.weapon",
+					"label": "武器",
+					"description": "刃の技と武器を両方使った攻撃は、必ず当たる。",
+					"actionId": "use",
+					"required": {
+						"weapon": 1
+					},
+					"forbidden": {
+						"uq.weapon.profane": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "use.attack.foe.combo"
+				}
+			],
+			"purge": {
+				"obscurity": 100
+			},
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "use.attack.foe.hit",
+					"chance": 70
+				},
+				{
+					"id": "use.attack.foe.miss",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "use.attack.foe.combo",
+			"actionId": "use",
+			"requirements": {
+				"lore": 1,
+				"weapon": 1
+			},
+			"label": "鉄鋼と科学",
+			"startdescription": "これは教わったことではない。[刃の技と武器を両方使った攻撃は、必ず当たる。]",
+			"purge": {
+				"obscurity": 100
+			},
+			"linked": [
+				{
+					"id": "use.attack.foe.hit.combo"
+				}
+			]
+		},
+		{
+			"id": "use.attack.foe.hit",
+			"actionId": "use",
+			"label": "怪我をさせた！",
+			"startdescription": "「それで止められると思うなよ――」",
+			"purge": {
+				"obscurity": 100
+			},
+			"aspects": {
+				"striking.foe": 1,
+				"fatiguing": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "use.attack.foe.slain"
+				}
+			]
+		},
+		{
+			"id": "use.attack.foe.hit.combo",
+			"actionId": "use",
+			"label": "怪我をさせた！",
+			"startdescription": "「それで止められると思うなよ――」",
+			"comments": "We don't use the base striking aspect because we don't want to generate two wounds",
+			"purge": {
+				"obscurity": 100
+			},
+			"aspects": {
+				"striking.foe.weapon": 1,
+				"fatiguing": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "use.attack.foe.slain"
+				}
+			]
+		},
+		{
+			"id": "use.attack.foe.miss",
+			"actionId": "use",
+			"label": "攻撃を避けられた―― ",
+			"startdescription": "「もっとちゃんと教えたつもりだったけどな」",
+			"purge": {
+				"obscurity": 100
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "use.attack.foe.slain",
+			"actionId": "use",
+			"label": "血みどろの勝利",
+			"startdescription": "敵の体は、城壁が7つの門で貫かれるように、7つの傷で貫かれている。そしてどの傷も出血が止まっている。彼の心臓は血まみれの私の手の中で震えている。彼は死んだ。もう少しで終わる。私自身の傷は傷跡になるはずだ。運が良ければ、他の追っ手たちは敵の領域についてもめ合い、私の邪魔をしてこないだろう。",
+			"extantreqs": {
+				"damage.foe": 7
+			},
+			"haltverb": {
+				"rkx": 1,
+				"rkx.foe": 1
+			},
+			"burnimage": "foe.slain",
+			"effects": {
+				"trace": 1,
+				"rkx.foe.defeated": 1,
+				"wound.foe": -1
+			},
+			"purge": {
+				"damage.foe": 100,
+				"damage.underling": 100
+			}
+		},
+		{
+			"id": "use.attack.weapon.notarget.hint",
+			"actionId": "use",
+			"label": "神聖な武器？",
+			"startdescription": "敵の防御に対して効果があるかもしれない。一騎打ちで倒せると思える根拠があり、彼が1人なら、決闘できる可能性もある。[敵が来たら攻撃できる。]",
+			"requirements": {
+				"weapon": 1,
+				"uq.weapon.profane": -1,
+				"op": -1,
+				"connection": -1
+			},
+			"extantreqs": {
+				"rkx.foe": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "use.profaneweapon.notarget.hint",
+			"actionId": "use",
+			"label": "武器？",
+			"startdescription": "敵の防御に対しては役に立たないだろうが、残念ながら、他の誰かを撃たなければならない時が来るかもしれない。[精算人が来たら攻撃できる。]",
+			"requirements": {
+				"weapon": 1,
+				"uq.weapon.profane": 1,
+				"op": -1,
+				"connection": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "use.attack.lore.notarget",
+			"actionId": "use",
+			"label": "神聖な技？",
+			"startdescription": "敵が使っている防御術について様々なことが分かってきた。一騎打ちで倒せると思える根拠があり、彼が1人なら、決闘できるかもしれない。",
+			"requirements": {
+				"lore": 1,
+				"edge": 4,
+				"op": -1,
+				"connection": -1
+			},
+			"extantreqs": {
+				"rkx.foe": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "use.attack.lore.notarget.notupgraded",
+			"actionId": "use",
+			"label": "抜け道？",
+			"startdescription": "敵が使っている防御術について様々なことが分かってきたら、彼と決闘できるかもしれない。それも、彼が1人で、一騎打ちで倒せると思える根拠があればの話だが。",
+			"requirements": {
+				"lore": 1,
+				"op": -1,
+				"connection": -1
+			},
+			"extantreqs": {
+				"rkx.foe": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "use.dawn",
+			"actionId": "use",
+			"label": "夜明けを見る",
+			"startdescription": "何か気になることがあるのだろうか？",
+			"requirements": {
+				"op.dawn": 1
+			},
+			"slots": [
+				{
+					"id": "temptation",
+					"label": "誘惑",
+					"required": {
+						"desire": 1
+					}
+				}
+			],
+			"warmup": 10,
+			"alt": [
+				{
+					"id": "tourism.tranquillity"
+				},
+				{
+					"id": "tourism.rage"
+				}
+			],
+			"effects": {
+				"op.dawn": -1,
+				"fascination": 1
+			},
+			"craftable": true
+		},
+		{
+			"id": "use.sunset",
+			"actionId": "use",
+			"label": "夕焼けを見る",
+			"startdescription": "何か気になることがあるのだろうか？",
+			"requirements": {
+				"op.sunset": 1
+			},
+			"slots": [
+				{
+					"id": "temptation",
+					"label": "誘惑",
+					"required": {
+						"desire": 1
+					}
+				}
+			],
+			"warmup": 10,
+			"alt": [
+				{
+					"id": "tourism.tranquillity"
+				},
+				{
+					"id": "tourism.rage"
+				}
+			],
+			"effects": {
+				"op.sunset": -1,
+				"restlessness": 1
+			},
+			"craftable": true
+		},
+		{
+			"id": "use.night",
+			"actionId": "use",
+			"label": "夜道を歩く",
+			"startdescription": "何か気になることがあるのだろうか？",
+			"requirements": {
+				"op.night": 1
+			},
+			"slots": [
+				{
+					"id": "temptation",
+					"label": "誘惑",
+					"required": {
+						"desire": 1
+					}
+				}
+			],
+			"warmup": 10,
+			"alt": [
+				{
+					"id": "tourism.tranquillity"
+				},
+				{
+					"id": "tourism.rage"
+				}
+			],
+			"effects": {
+				"op.night": -1,
+				"dread": 1
+			},
+			"craftable": true
+		},
+		{
+			"id": "tourism.tranquillity",
+			"actionId": "use",
+			"label": "平和への想い",
+			"startdescription": " 久しぶりに平和を感じた。これは再出発になるかもしれない。",
+			"requirements": {
+				"temptation.obscurity": 1
+			},
+			"effects": {
+				"op": -1,
+				"tranquillity": 1
+			}
+		},
+		{
+			"id": "tourism.rage",
+			"actionId": "use",
+			"label": "怒りへの想い",
+			"startdescription": "拳を握りしめ、力強さを感じる。走るのをやめる時が近づいてきている。それは彼らが思うよりも早いはずだ。",
+			"requirements": {
+				"temptation.defiance": 1
+			},
+			"effects": {
+				"op": -1,
+				"rage": 1
+			}
+		},
+		{
+			"id": "use.negotiate.hint",
+			"actionId": "use",
+			"label": "交渉？",
+			"startdescription": "[適切な人脈を追加する。]",
+			"requirements": {
+				"op": 1,
+				"price.connection": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "use.negotiate",
+			"actionId": "use",
+			"label": "交渉",
+			"startdescription": "正しい方法でやる時間はないが、幸運なことに、私には迅速に事を進める人脈がある。",
+			"description": "@#licence.medical|おはようございます、<i>先生</i>」\n#licence.import|「友人同士では、細かいことは気にしなくていい。」\n#And done.|@",
+			"comments": "The slots on the purchaseable item are what restrict to a relevant connection.",
+			"requirements": {
+				"op": 1,
+				"connection": 1
+			},
+			"aspects": {
+				"negotiation": 1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "use.purchase.lifespan.radicals.problem",
+			"actionId": "use",
+			"label": "年で購入する",
+			"startdescription": "この人は「灰の記録」の通貨でしか支払いを受け取らないが、私にはそれを嫌う権力者の友人がいる。[これによって、支配者の人脈が潰される。]",
+			"description": "完了。",
+			"requirements": {
+				"op.connection.radicals": 1,
+				"price.lifespan.stolen": 1,
+				"lifespan.stolen": "price.lifespan.stolen"
+			},
+			"aspects": {
+				"purchase": 1
+			},
+			"extantreqs": {
+				"connection.ruler": 1
+			},
+			"purge": {
+				"connection.ruler": 1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "use.purchase.lifespan.ruler.problem",
+			"actionId": "use",
+			"label": "年で購入する",
+			"startdescription": "この人は「灰の記録」の通貨でしか支払いを受け取らないが、私にはそれを嫌う過激派の友人がいる。[これによって、過激派の人脈が潰される。]",
+			"description": "完了。",
+			"requirements": {
+				"op.connection.ruler": 1,
+				"price.lifespan.stolen": 1,
+				"lifespan.stolen": "price.lifespan.stolen"
+			},
+			"aspects": {
+				"purchase": 1
+			},
+			"extantreqs": {
+				"connection.radicals": 1
+			},
+			"purge": {
+				"connection.radicals": 1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "use.purchase.lifespan",
+			"actionId": "use",
+			"label": "年で購入する",
+			"startdescription": "この人は「灰の記録」の通貨でしか支払いを受け取らない。",
+			"description": "完了。",
+			"requirements": {
+				"op": 1,
+				"price.lifespan.stolen": 1,
+				"lifespan.stolen": "price.lifespan.stolen"
+			},
+			"aspects": {
+				"purchase": 1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "use.purchase.lifespan.hint",
+			"actionId": "use",
+			"label": "年で購入する？",
+			"startdescription": "[価格に見合うだけの年を追加する。]",
+			"requirements": {
+				"op": 1,
+				"price.lifespan.stolen": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "use.purchase.property.tripoli",
+			"actionId": "use",
+			"label": "購入",
+			"startdescription": "便利なものを購入する。",
+			"description": "行商人はビーズのついた帽子を被った老人で、頬には深い縫い目があり、白い無精ひげを生やし、暗く哀愁を帯びた目をしている。私たちは購入を確定するために握手をすると、彼は私の手を両手で包み、私の顔をじっくりと見つめた。そして老人は口を開くと「ああ。あなたは彼女の。よくここに来ていたよ。君にもいつか来てほしいと思っていたんだ」と言った。",
+			"requirements": {
+				"op": 1,
+				"price": 1,
+				"worth": "price",
+				"purchase.property": 1
+			},
+			"effects": {
+				"contact.retainer": 1
+			},
+			"extantreqs": {
+				"domicile.tripoli": 1,
+				"contact.retainer": -1,
+				"contact.retainer.exhausted": -1
+			},
+			"aspects": {
+				"purchase": 1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "use.purchase",
+			"actionId": "use",
+			"label": "購入",
+			"startdescription": "便利なものを購入する。",
+			"description": "@#townhouse|休んだり、感心させたい人を招待するにはちょうど良い場所。口が堅いスタッフを数人雇って、扉の鍵を増やしたが、追っ手を食い止めるには足りないだろう。\n#villa|街から遠く、平和に過ごせそうな場所。回復したり、人目を避けてプロジェクトに取り組んだり、口説き落としたい客人をもてなしたりするには持って来いの場所。もし本当にそうなったら身を守るのは楽ではないだろう。\n#|終わり。@",
+			"requirements": {
+				"op": 1,
+				"price": 1,
+				"worth": "price"
+			},
+			"aspects": {
+				"purchase": 1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "use.purchase.hint",
+			"actionId": "use",
+			"label": "購入？",
+			"startdescription": "[価格に見合った価値のある品を追加する。]",
+			"requirements": {
+				"op": 1,
+				"price": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "use.bookofsuns.restore",
+			"actionId": "use",
+			"label": "太陽の書を復元させる",
+			"startdescription": "どのような内容がここでばらばらにされたんだ？どのくらいこの本は暗闇に眠っていたのだろう。",
+			"description": "貪欲さが強要し、無慈悲さが太陽の書のページの分離を許した、などと言われているが、本当にそれだけが原因だったのだろうか？金色の形が再び一緒に横たわるようになると、空は息を吸い込み、風は止む。多分、私はもっと眠るべきなのだろう。",
+			"requirements": {
+				"curio.lantern": 3,
+				"cash": 1
+			},
+			"effects": {
+				"curio.lantern": -3,
+				"cash": -1,
+				"rarity.lantern": 1,
+				"fascination": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"burnimage": "pentiment",
+			"linked": [
+				{
+					"id": "use.fatiguing"
+				}
+			]
+		},
+		{
+			"id": "use.comfort",
+			"actionId": "use",
+			"label": "リラックス",
+			"startdescription": "＠#domicile.tripoli|この街の空気や光に見覚えがある......\n#|この小さな富を手に入れるために、かなりの危険を冒してきた。せっかくだから、その恩恵にあずかろう。",
+			"description": "永遠に続くものはない。その事実に感謝すべきだ。",
+			"requirements": {
+				"comfort": 1,
+				"price": -1
+			},
+			"effects": {
+				"contentment": "comfort"
+			},
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "use.fatiguing"
+				}
+			]
+		},
+		{
+			"id": "use.renew.op.sea.curio.morgen.used.hint",
+			"actionId": "use",
+			"label": "「一度きり」",
+			"startdescription": "空中で消えてしまう長いさえずりのような震える声",
+			"requirements": {
+				"op.sea": 1,
+				"curio.morgen": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.renew.op.sea.curio.morgen",
+			"actionId": "use",
+			"label": "マチュティーヌ夫人を呼ぶ",
+			"startdescription": "カモメの鳴き声のような長く耳障りな音が響く。フルートを唇から離すとその音大きくなっていった。フルートは全長に渡って割れていく。",
+			"description": "そして、マチュティーヌ夫人のヨット、<i>サファイア号</i>が姿を現した。緑のガラスを切る白いナイフのように、港に入ってくる。",
+			"requirements": {
+				"op.sea": 1,
+				"curio.morgen": 1,
+				"uses.remaining": 1
+			},
+			"effects": {
+				"op.morgen": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "curio.morgen",
+					"mutateAspectId": "uses.remaining",
+					"mutationLevel": -1,
+					"additive": true
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "use.renew.op.cats",
+			"actionId": "use",
+			"label": "追う",
+			"startdescription": "もう少し詳しく調べてみよう。[これで、後で必要になったときのために、機会の寿命が延びる。]",
+			"description": "見つけた。",
+			"requirements": {
+				"op.cats": 1
+			},
+			"slots": [
+				{
+					"id": "light",
+					"label": "光",
+					"description": "「ロウソクが消えると、猫はみんな灰色に見える」",
+					"required": {
+						"lantern": 1
+					},
+					"consumes": true
+				}
+			],
+			"alt": [
+				{
+					"id": "use.find.nameless"
+				}
+			],
+			"aspects": {
+				"renewal.exile": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "use.renew.op.horned.candia",
+			"actionId": "use",
+			"label": "フクロウの羽根に訪れる",
+			"startdescription": "イダ山の麓、廃墟と化した扉のミノアの住居付近に、大きなサンザシの木がある。私が到着するころには、もう夜は深くなっているだろう。田舎ではあちこちで蝉がノコギリのように鳴いているが、フェーンではいつも静かだ。私も声を出すのを躊躇うようになるだろう。これは、前回の訪問――父親の名前を知った夜――で知ったことだ。",
+			"requirements": {
+				"op.horned": 1
+			},
+			"extantreqs": {
+				"domicile.candia": 1,
+				"memento.knock": -1,
+				"rarity.knock.poison": -1
+			},
+			"linked": [
+				{
+					"id": "use.renew.op.horned.candia.2"
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "use.renew.op.horned.candia.2",
+			"actionId": "use",
+			"label": "フクロウの羽根にて",
+			"startdescription": "サンザシの木のフクロウの目が淡い金色に輝く。木の下にも光の閃きが見えた。ヘビ皮のジャケットを着た背の高い男がタバコに火をつける。マッチの灯りに照らされた彼の顔は、細く、暗く、見覚えがある。「また会ったな」と彼は言う。「驚いた。両刃が君をここまで連れてきたのは、言いたいことがあるからか？彼女はこの世に新しい刃の一対を増やそうとは思っていないだろう......何か見せたいものがあるのか？」",
+			"slots": [
+				{
+					"id": "reference",
+					"label": "参考",
+					"description": "参照点",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "use.renew.op.horned.candia.pentiment"
+				}
+			],
+			"linked": [
+				{
+					"id": "use.renew.op.horned.candia.3"
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "use.renew.op.horned.candia.3",
+			"actionId": "use",
+			"label": "フクロウの羽根にて",
+			"startdescription": "男が肩をすくめる。「気にするな。こっちの方が役に立つかもしれない」。彼はガラスの小瓶に整然と唾を吐いて、上部をつまんで閉じた。「このことは誰にも言うなよ」といわくありげに彼は言う。「また厄介なことに巻き込まれるからな」、そう言うと私に小瓶を渡した。男は歩きだすと「絶対に忘れるな。誰かのライオンではないのなら、誰のライオンでもないんだ」と肩越しに付け加えた。",
+			"effects": {
+				"rarity.knock.poison": 1,
+				"op.horned": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "use.renew.op.horned.candia.pentiment",
+			"actionId": "use",
+			"label": "フクロウの羽根にて",
+			"requirements": {
+				"pentiment": 1
+			},
+			"startdescription": "見知らぬ人はうなずき、木の幹にタバコを押し付けた。そして彼は、オレンジの皮を剥き始める。「いつも手遅れになるんだ。でも、それまではそうではない。アレクサンドロスはそれを重要だと思い、ライオンスミスはそう思わなかった」と、オレンジを口いっぱいに含んでその人は言った。そして彼はタバコの残りを私に渡し、「言わない方がいいこともある」と肩越しに付け加えた。「また会えてよかった」。",
+			"effects": {
+				"memento.knock": 1,
+				"op.horned": -1
+			},
+			"burnimage": "pentiment",
+			"warmup": 30
+		},
+		{
+			"id": "use.rkx.foe.defeated",
+			"actionId": "use",
+			"label": "新しい人生を始める",
+			"startdescription": "次へと進む時が来た。やりたかったことを......自由になった今やってみよう。[手持ちの快適さが多いほど、勝利の度合いが大きくなる。]",
+			"requirements": {
+				"rkx.foe.defeated": 1
+			},
+			"linked": [
+				{
+					"id": "send.victory.obscurity.c.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.b.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.a.foeslain"
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "use.renew",
+			"actionId": "use",
+			"label": "見合わせる",
+			"startdescription": "もう少し詳しく調べてみよう。[これで、後で必要になったときのために、機会の寿命が延びる。]",
+			"description": "見つけた。",
+			"requirements": {
+				"op": 1,
+				"asset": -1,
+				"price": -1,
+				"price.connection": -1,
+				"price.lifespan.stolen": -1
+			},
+			"aspects": {
+				"renewal.exile": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "use.find.nameless",
+			"actionId": "use",
+			"label": "追う",
+			"startdescription": "秘密を隠すベルベットには名もなき名を持つ者がいる。敗者はその名を持つ者の霧の中に、慰めを見いだす。名を持つ者は誰にも見つからない。しかし時々、とても灰色な猫たちに見つかることがある。[これによりチャンスと光の今日ほうが吸収される。]",
+			"description": "日没後の街中で、灰色の猫の揺れる尻尾を追いかけていく。",
+			"requirements": {
+				"lantern": 1
+			},
+			"effects": {
+				"loc.shrine.nameless": 1,
+				"op.cats": -1
+			}
+		},
+		{
+			"id": "use.fatiguing",
+			"label": ".",
+			"actionId": "use",
+			"comments": "Follow-on recipe to fatigue resources and tidy up consumables",
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "use.connection.official",
+			"actionId": "use",
+			"label": "可能性",
+			"startdescription": "人脈を頼って新しいチャンスを掴むこともできる。もちろん費用は負担しなくてはいけない。[これにより医療従事者免許証か、輸入承認書が購入できるチャンスが生まれる。]",
+			"description": "役に立つかもしれない。",
+			"requirements": {
+				"connection.official": 1,
+				"worth": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.licence.medical",
+					"op.licence.import"
+				],
+				" draws": 1,
+				"resetonexhaustion": true
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		}
+	]
+}

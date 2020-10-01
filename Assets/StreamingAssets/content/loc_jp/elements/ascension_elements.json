@@ -1,0 +1,338 @@
+{
+	"elements": [
+		{
+			"id": "ascensionpowera",
+			"label": "誘惑：力",
+			"aspects": {
+				"desire": 1,
+				"powermarks": 1
+			},
+			"description": "ふと、自分が力の鍵を握っていることに気がついた。[一定レベルまでアップグレードしていれば、このカードを使って力の勝利を実現できる。夢を見ることで、前進させたり、変化させたりする可能性がある。]",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionsensationa",
+			"label": "誘惑：感性",
+			"aspects": {
+				"desire": 1,
+				"sensationmarks": 1
+			},
+			"description": "想像にもつかないような強烈な衝動を感じることができる。[一定レベルまでアップグレードしていれば、このカードを使って感性の勝利を実現できる。夢を見ることで、前進させたり、変化させたりする可能性がある。]",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionenlightenmenta",
+			"label": "誘惑：悟り",
+			"aspects": {
+				"desire": 1,
+				"enlightenmentmarks": 1
+			},
+			"description": "ふと、自分が知恵の鍵を握っていることに気がついた。[一定レベルまでアップグレードしていれば、このカードを使って悟りの勝利を実現できる。夢を見ることで、前進させたり、変化させたりする可能性がある。]",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionpowerb",
+			"label": "献身：力",
+			"aspects": {
+				"desire": 2,
+				"powermarks": 2
+			},
+			"description": "私は、何としてでも不死の力を手に入れることに身を捧げてきた。[このカードを更にアップグレードすると、力の勝利を実現できる。マンサスの真の伝授者にならなければならない。鍛造属性を使って仕事をして、日々の鍛造を召喚させ、変化を開始する必要がある。]",
+			"slots": [
+				{
+					"id": "Know",
+					"label": "知る者",
+					"actionId": "work",
+					"required": {
+						"waystag_after": 1
+					},
+					"description": "この一歩を踏み出すことができるのは、真の高僧である知る者だけだ。知る者とは夢の中で牡鹿の扉をくぐった者たちである。"
+				},
+				{
+					"id": "Power",
+					"label": "力",
+					"actionId": "work",
+					"required": {
+						"forge": 1
+					},
+					"description": "鍛造の烈火を十分に手に入れなくてはいけない。"
+				}
+			],
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionsensationbm",
+			"label": "献身：感性",
+			"aspects": {
+				"desire": 2,
+				"sensationmarks": 2
+			},
+			"description": "私は、永遠の感性の追求に身を捧げてきた。[このカードを更にアップグレードすると、感性の勝利を実現できる。マンサスの真の伝授者にならなければならない。赤い聖杯に受け入れられるように、聖杯属性を使って仕事をする必要がある。]",
+			"slots": [
+				{
+					"id": "Know",
+					"label": "知る者",
+					"actionId": "work",
+					"required": {
+						"waystag_after": 1
+					},
+					"description": "この一歩を踏み出すことができるのは、真の高僧である知る者だけだ。知る者とは夢の中で牡鹿の扉をくぐった者たちである。"
+				},
+				{
+					"id": "Power",
+					"label": "力",
+					"actionId": "work",
+					"required": {
+						"grail": 1
+					},
+					"description": "聖杯の湧き出る強さを十分に手に入れなくてはいけない。"
+				}
+			],
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionsensationbf",
+			"label": "献身：感性",
+			"aspects": {
+				"desire": 2,
+				"sensationmarks": 2
+			},
+			"description": "私は、永遠の感性の追求に身を捧げてきた。[このカードを更にアップグレードすると、感性の勝利を実現できる。マンサスの真の伝授者にならなければならない。聖杯属性を使って仕事をして、赤い聖杯に受け入れられるように変化する必要がある。]",
+			"slots": [
+				{
+					"id": "Know",
+					"label": "知る者",
+					"actionId": "work",
+					"required": {
+						"waystag_after": 1
+					},
+					"description": "この一歩を踏み出すことができるのは、真の高僧である知る者だけだ。知る者とは夢の中で牡鹿の扉をくぐった者たちである。"
+				},
+				{
+					"id": "Power",
+					"label": "力",
+					"actionId": "work",
+					"required": {
+						"grail": 1
+					},
+					"description": "聖杯の湧き出る強さを十分に手に入れなくてはいけない。"
+				}
+			],
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionenlightenmentb",
+			"label": "献身：悟り",
+			"aspects": {
+				"desire": 2,
+				"enlightenmentmarks": 2
+			},
+			"description": "より高度な理解を追求することに身を捧げてきた。どんな犠牲を払ってでも、この世のありのままの姿を見てみたい。[これにより、悟りの勝利を実現できる。マンサスの真の伝授者にならなければならない。灯り属性を使って仕事をすれば、見張り番が気づいてくれるだろう。]",
+			"slots": [
+				{
+					"id": "Know",
+					"actionId": "work",
+					"required": {
+						"waystag_after": 1
+					},
+					"description": "この一歩を踏み出すことができるのは、真の高僧である知る者だけだ。知る者とは夢の中で牡鹿の扉をくぐった者たちである。"
+				},
+				{
+					"id": "Power",
+					"label": "力",
+					"actionId": "work",
+					"required": {
+						"lantern": 1
+					},
+					"description": "マンサスの無慈悲な光の証が必要だ。"
+				}
+			],
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionpowerc",
+			"label": "昇天：力",
+			"aspects": {
+				"desire": 3,
+				"powermarks": 3
+			},
+			"xtriggers": {
+				"ascend": "ascensionpowerd"
+			},
+			"description": "鍛造は私の肉に答えの火花を灯した。炎の熱さを切望している。もうすぐ、私は、睡眠中に火をつけ始めるのではないだろうか。火は、水と同じくらい必要不可欠なものだ。これは第三の印に違いない。",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionpowerd",
+			"label": "昇天：力",
+			"aspects": {
+				"desire": 4,
+				"powermarks": 4
+			},
+			"xtriggers": {
+				"ascend": "ascensionpowere",
+				"descend": "ascensionpowerc"
+			},
+			"description": "火傷の傷が体中に残っているが、段々と私の肉を焼くのが難しくなってきているようだ。龍や石のように、炎に慣れ始めてきた。これが第四の印だ。",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionpowere",
+			"label": "昇天：力",
+			"aspects": {
+				"desire": 5,
+				"powermarks": 5,
+				"murderskill": 1
+			},
+			"xtriggers": {
+				"ascend": "ascensionpowerf",
+				"descend": "ascensionpowerd"
+			},
+			"description": "第五の印：体に1本も毛は残っていない。私は悪魔のように強くなった。火の側から離れるたびに、寒さに震える。",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionpowerf",
+			"label": "昇天：力",
+			"aspects": {
+				"desire": 6,
+				"powermarks": 6,
+				"murderskill": 1
+			},
+			"xtriggers": {
+				"descend": "ascensionpowere"
+			},
+			"description": "手足を曲げるのが難しく、傷跡が多い。顔を人目にさらしたいとは思わない。手に熱い石炭を握っても、かすかな匂いと肉が焼ける音はするが、痛みすら感じない。これが第六の印だ。",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionsensationc",
+			"label": "昇天：感性",
+			"aspects": {
+				"desire": 3,
+				"sensationmarks": 3
+			},
+			"xtriggers": {
+				"ascend": "ascensionsensationd"
+			},
+			"description": "赤い聖杯が体を温めてくれる。その渇きのせいで、私の喉は渇き、手がかゆくなる。これは、第三の印に違いない。",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionsensationd",
+			"label": "昇天：感性",
+			"aspects": {
+				"desire": 4,
+				"sensationmarks": 4
+			},
+			"xtriggers": {
+				"ascend": "ascensionsensatione",
+				"descend": "ascensionsensationc"
+			},
+			"description": "第四の印のおかげで、途切れとぎれだが肌がなめらかになった。腕や太ももにかけて、所どころだが、透き通るようで柔らかく、健康的で、まるで湧き水から踏み出したばかりの子供の肌のようだ――まばらにしか起こらなかったが。",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionsensatione",
+			"label": "昇天：感性",
+			"aspects": {
+				"desire": 5,
+				"sensationmarks": 5
+			},
+			"xtriggers": {
+				"ascend": "ascensionsensationf",
+				"descend": "ascensionsensationd"
+			},
+			"description": "「拡張・噴火」は、第五の印の愛称。新しい指が2本生えてきたが、手は1本しかない。膝の内側に瘻孔が現れた。その縁を押すと、柔らかな光のような快感を感じる。背中にある小さな膨らみは、新しい臓器だと思う。",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionsensationf",
+			"label": "昇天：感性",
+			"aspects": {
+				"desire": 6,
+				"sensationmarks": 6
+			},
+			"xtriggers": {
+				"descend": "ascensionsensatione"
+			},
+			"description": "手のひらほど背が伸びると、第六の印が訪れたと言える。体のあらゆる部分が、あらゆる方向に膨れていく。肌はベルベットのように輝きで、肉の穴が眼球を包む。とても喉が渇いた。",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionenlightenmentc",
+			"label": "昇天：悟り",
+			"aspects": {
+				"desire": 3,
+				"enlightenmentmarks": 3
+			},
+			"xtriggers": {
+				"ascend": "ascensionenlightenmentd"
+			},
+			"description": "瞳の扉である見張り番に触れられた。今では毎日、好奇心が強まっている。それは、私を苦しめる飢えのような絶望的な肉体的欲求だ。これは第三の印に違いない。",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionenlightenmentd",
+			"label": "昇天：悟り",
+			"aspects": {
+				"desire": 4,
+				"enlightenmentmarks": 4
+			},
+			"xtriggers": {
+				"ascend": "ascensionenlightenmente",
+				"descend": "ascensionenlightenmentc"
+			},
+			"description": "第四の印は目に見える光だが、非常に目立ちにくいものである。たいていの場合、灯りが消えたときや真夜中の暗闇の中でしか見ることができないが、私が瞼を大きく開くと光がさらにこぼれていく。日に日に痩せ始めてた。",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionenlightenmente",
+			"label": "昇天：悟り",
+			"aspects": {
+				"desire": 5,
+				"enlightenmentmarks": 5
+			},
+			"xtriggers": {
+				"ascend": "ascensionenlightenmentf",
+				"descend": "ascensionenlightenmentd"
+			},
+			"description": "第五の印では、皮膚のあざのある部分や擦り切れた部分から、光が漏れることがある。痩せ始めたせいか、皮膚が垂れ下がり始めた。私はかなり痩せてしまい、いつも腹を空かせている。",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionenlightenmentf",
+			"label": "昇天：悟り",
+			"aspects": {
+				"desire": 6,
+				"enlightenmentmarks": 6
+			},
+			"xtriggers": {
+				"descend": "ascensionenlightenmente"
+			},
+			"description": "人差し指と親指の間の皮膚を一番先の関節まで引っ張ることができるようになると、第六の印が起こると言われている。私の皮膚はすごく緩くなってきた。骨も柔らかくなり始めている気がする。目は人間の目の色ではなくなってしまった。",
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "temptation.remembrance",
+			"label": "誘惑：記憶",
+			"description": "太陽が赤く低くなるころ吹く涼しげな風。波がかつて使っていた声。雪の中をゆっくりと駆ける姿。すべては時間のガラスに押しつぶされた。失われたものを見直さねばならない。",
+			"aspects": {
+				"desire": 1,
+				"remembrancemarks": 1
+			},
+			"xtriggers": {
+				"ascend": "dedication.remembrance"
+			}
+		},
+		{
+			"id": "dedication.remembrance",
+			"label": "献身：記憶",
+			"description": "太陽が赤く低くなるころ吹く涼しげな風。波がかつて使っていた声。雪の中をゆっくりと駆ける姿。すべては時間のガラスに押しつぶされた。失われたものを見直さねばならないが......その味は奇妙で熟しきっている。",
+			"aspects": {
+				"desire": 1,
+				"remembrancemarks": 2
+			}
+		}
+	]
+}

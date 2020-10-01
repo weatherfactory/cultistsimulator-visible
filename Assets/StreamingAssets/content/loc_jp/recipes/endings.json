@@ -1,0 +1,58 @@
+{
+	"recipes": [
+		{
+			"id": "deathofthebody",
+			"label": "体力は残っていない",
+			"actionId": "healthend",
+			"requirements": {
+				"health": -1,
+				"fatigue": -1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "私の人生は滑り落ちていく――",
+			"description": "どこで見つけるというのだろう？私はここにいないのに。",
+			"warmup": 0,
+			"craftable": false,
+			"ending": "deathofthebody",
+			"signalEndingFlavour": "Melancholy"
+		},
+		{
+			"id": "forlornblooddeathofthebody",
+			"label": "体力は残っていない",
+			"actionId": "healthend",
+			"requirements": {
+				"health": -1,
+				"fatigue": -1,
+				"apostlegrail.pillar2": -1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "骨の痛みに敵わなくなってきた。私が力を奮い起こすか、喜びの者の血を味わわない限り、全てが終わってしまう。",
+			"description": "どこで見つけるというのだろう？私はここにいないのに。",
+			"warmup": 0,
+			"craftable": false,
+			"ending": "deathofthebody",
+			"signalEndingFlavour": "Melancholy"
+		},
+		{
+			"id": "workvictory",
+			"label": "悠々自適の生活に落ち着く",
+			"actionId": "workwin",
+			"requirements": {
+				"passion": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "私は夢をあきらめた。まともな人生を送るだろう。",
+			"description": "終わったんだ",
+			"warmup": 0,
+			"craftable": false,
+			"ending": "workvictory",
+			"burnimage": "retirement"
+		}
+	]
+}

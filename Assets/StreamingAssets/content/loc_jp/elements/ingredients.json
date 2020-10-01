@@ -1,0 +1,263 @@
+{
+	"elements": [
+		{
+			"id": "ingredientedgeb",
+			"label": "マルテンサイトのペースト",
+			"description": "剣の聖なる聖油。魅力的な銀緑色。",
+			"aspects": {
+				"edge": 4,
+				"auctionable": 2,
+				"ingredient": 1,
+				"pigment": 1
+			}
+		},
+		{
+			"id": "ingredientedged",
+			"label": "ラビトの粉",
+			"description": "ラビトはライオンズスミスの従者の中で最も若い。粉末にすると、その力を維持できるが、美しさは失われてしまう。",
+			"aspects": {
+				"edge": 8,
+				"auctionable": 4,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "ingredientedgef",
+			"label": "スカプトドンの牙",
+			"description": "現在では、ライオンズスミスがスカプトドンを作ることは稀だ。スカプトドンは殺すのが難しく、非常に長生きをする生物だ。",
+			"aspects": {
+				"edge": 12,
+				"auctionable": 6,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "ingredientforgeb",
+			"label": "苦黒の塩",
+			"description": "普通の化学者では、鍛造の助けがなければ、このように黒光りする結晶を作ることはできなかった。",
+			"aspects": {
+				"forge": 4,
+				"auctionable": 2,
+				"ingredient": 1,
+				"pigment": 1
+			}
+		},
+		{
+			"id": "ingredientforged",
+			"label": "黄変のエッセンス",
+			"description": "鍛造の特定の作業では、メニスカーテからマドゥルガーダと抜ける際に、太陽の光が月明かりを凌駕すると言われている。このエッセンスは、かつては水銀だったものだが、今では夏の午後を思わせる金色だ。綺麗な色だ。",
+			"aspects": {
+				"forge": 8,
+				"auctionable": 4,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "ingredientforgef",
+			"label": "赤変のエッセンス",
+			"description": "後の鍛造による働きで、マドゥルガーダは真の日々の鍛造に屈し、エッセンスが赤く染まり始める。いつかそれが止まる日が来るかもしれないが、今のところはまだこれが使える。",
+			"aspects": {
+				"forge": 12,
+				"auctionable": 6,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "ingredientgrailb",
+			"label": "生命の塗料",
+			"description": "このような赤色が、肉体の死後に残っているのは珍しい。",
+			"aspects": {
+				"grail": 4,
+				"auctionable": 2,
+				"ingredient": 1,
+				"pigment": 1
+			}
+		},
+		{
+			"id": "ingredientgraild",
+			"label": "不滅の花の蜜",
+			"description": "フラワーメーカーの数ある贈り物の1つ。今よりも明るかった時代には、永遠の命を与えていたかもしれない。この枯れた歴史の中でも、まだ比類ない甘さを保っている。",
+			"aspects": {
+				"grail": 8,
+				"auctionable": 4,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "ingredientgrailf",
+			"label": "捻じれた胎盤",
+			"description": "ボロボロになった皺に手のひらを当てて、その温もりを感じよう。手のひらを離さなければ、抱擁の可能性を探りだすだろう。",
+			"aspects": {
+				"grail": 12,
+				"auctionable": 6,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "ingredientheartb",
+			"label": "ローズパールの粉",
+			"description": "特にこの色の真珠は、魔女と双子の片割れにとって神聖なものである。この色はとりわけ、保護の儀式で使用されている。",
+			"aspects": {
+				"heart": 4,
+				"auctionable": 2,
+				"ingredient": 1,
+				"pigment": 1
+			}
+		},
+		{
+			"id": "ingredientheartd",
+			"label": "マジカルオイル",
+			"description": "公式はヘカテが十字路に祀られていた時代から変わっていない。",
+			"aspects": {
+				"heart": 8,
+				"auctionable": 4,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "ingredientheartf",
+			"label": "聖ヤヌアリウスの真の血",
+			"description": "サンダースキンはヤヌアリアスと呼ばれる者を過去の危険から守っていた。今でも彼の血は踊り続けている。",
+			"aspects": {
+				"heart": 12,
+				"auctionable": 6,
+				"ingredient": 1,
+				"remnant": 1
+			},
+			"xtriggers": {
+				"alzabo": "memory.endless"
+			}
+		},
+		{
+			"id": "ingredientknockb",
+			"label": "ビザンティンの塗料",
+			"description": "この深い紫色は、歴史の中で皇帝たちが貝紫色に満足しなくなった時にだけ着用されていた。どこであっても、この色を身につけた人々は簡単に出入りできてしまう。",
+			"aspects": {
+				"knock": 4,
+				"auctionable": 2,
+				"ingredient": 1,
+				"pigment": 1
+			}
+		},
+		{
+			"id": "ingredientknockd",
+			"label": "猛毒液",
+			"description": "時折、「蟻の母」は「毒の娘」とも呼ばれる。この物質は、数え切れないほどの場所で体を開く。",
+			"aspects": {
+				"knock": 8,
+				"auctionable": 4,
+				"ingredient": 1,
+				"poison": 2
+			}
+		},
+		{
+			"id": "ingredientknockf",
+			"label": "アゾス",
+			"description": "純粋な素材で作られた容器に保存し、低温を保つこと。錬金術師が求める究極の溶剤ではないかもしれないが、我々の目的を果たすだろう。",
+			"aspects": {
+				"knock": 12,
+				"auctionable": 6,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "ingredientlanternb",
+			"label": "リフルジン",
+			"description": "真っ暗闇の中でも見えるほどの純白。",
+			"aspects": {
+				"lantern": 4,
+				"auctionable": 2,
+				"ingredient": 1,
+				"pigment": 1
+			}
+		},
+		{
+			"id": "ingredientlanternd",
+			"label": "ガラスフィンガーの毒",
+			"description": "「内にあるものは外に、外にあるものは内に」。メニスカーテの信者たちにとって神聖な毒。",
+			"aspects": {
+				"lantern": 8,
+				"auctionable": 4,
+				"ingredient": 1,
+				"poison": 2
+			}
+		},
+		{
+			"id": "ingredientlanternf",
+			"label": "ガラスの霊液",
+			"description": "瞳の扉を開けた時に、時折集められる青白くて警戒心の強い液体。",
+			"aspects": {
+				"lantern": 12,
+				"auctionable": 6,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "ingredientmothb",
+			"label": "白黒まだらの塗料",
+			"description": "希少な鱗翅目の昆虫の羽を砕いて作られた塗料。「黒く塗ろうが白く塗ろうが、この絵の具には限界がない」",
+			"aspects": {
+				"moth": 4,
+				"auctionable": 2,
+				"ingredient": 1,
+				"pigment": 1
+			}
+		},
+		{
+			"id": "ingredientmothd",
+			"label": "忘却の酒",
+			"description": "無名の森の中にある村で好まれている濃くてシロップ状の酒。「舌と目、さあ始めよう！名前を忘れて、肌を忘れよう」",
+			"aspects": {
+				"moth": 8,
+				"auctionable": 4,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "ingredientmothf",
+			"label": "聖なる血リンパ",
+			"description": "ガラス製容器に厳重に封印された謎の物質。はるか昔、犯罪の遂行中にこぼれたもので少量しか残っていない。「床屋の息子を覚えてる人はいないだろう」 ",
+			"aspects": {
+				"moth": 12,
+				"auctionable": 6,
+				"ingredient": 1,
+				"remnant": 1
+			},
+			"xtriggers": {
+				"alzabo": "memory.wildering"
+			}
+		},
+		{
+			"id": "ingredientwinterb",
+			"label": "灰色夜明けの油",
+			"description": "眠れない時間の正確な色。",
+			"aspects": {
+				"winter": 4,
+				"auctionable": 2,
+				"ingredient": 1,
+				"pigment": 1
+			}
+		},
+		{
+			"id": "ingredientwinterd",
+			"label": "狼の雪",
+			"description": "冷たすぎて、一番暑い真昼の太陽以外では溶けない。徐々に人間の肉を食い尽くすだろう。",
+			"aspects": {
+				"winter": 8,
+				"auctionable": 4,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "ingredientwinterf",
+			"label": "見守るワーム",
+			"description": "第一次ワーム大戦の名残りである発育不全で干からびた幼虫の残骸が入った小さな瓶。死んだ時の神々に宿る力と同じ匂いがする。",
+			"aspects": {
+				"winter": 12,
+				"auctionable": 6,
+				"ingredient": 1,
+				"poison": 3
+			}
+		}
+	]
+}

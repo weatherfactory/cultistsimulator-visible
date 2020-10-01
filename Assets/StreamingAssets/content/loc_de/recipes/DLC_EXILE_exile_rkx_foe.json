@@ -1,0 +1,724 @@
+{
+	"recipes": [
+		{
+			"id": "rkx.foe.arrive",
+			"actionId": "rkx.foe",
+			"label": "Mein Feind ist fast da!",
+			"startdescription": "Frost zwickt die Fenster und Schatten machen die Kerzenflammen knackig. Ich weiß nur zu gut, was das bedeutet.",
+			"effects": {
+				"rkx.foe": 1
+			},
+			"extantreqs": {
+				"rkx.foe.defeated": -1
+			},
+			"warmup": 10,
+			"alt": [
+				{
+					"id": "rkx.spawn.escort",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.foe.obscured"
+				},
+				{
+					"id": "rkx.foe.attack"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.arrive.mapedge",
+			"actionId": "rkx.foe",
+			"label": "Mein Feind ist unterwegs",
+			"startdescription": "Meine Reflexion in einer Messerklinge zittert wie eine Spiegelung im Wasser. Mein Schatten ist lang und fremd in den kühlen Stunden der Dämmerung, welche die Madrugada bevorzugt. Dies sind die Omen der Ankunft meines Feindes. Ehre, oder Arroganz, wird ihn allein hierhin führen.",
+			"effects": {
+				"rkx.foe": 1
+			},
+			"extantreqs": {
+				"rkx.foe.defeated": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.foe.obscured"
+				},
+				{
+					"id": "rkx.foe.attack"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "rkx.foe.arrive.defiance",
+			"actionId": "rkx.foe",
+			"label": "Ich habe meinen Feind hierher gebracht!",
+			"startdescription": "Hoffen wir bloß, dass ich das nicht noch bereue.",
+			"effects": {
+				"rkx.foe": 1
+			},
+			"extantreqs": {
+				"rkx.foe.defeated": -1
+			},
+			"alt": [
+				{
+					"id": "foe.weaknesses.generate.backup",
+					"additional": true
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.foe.attack"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.selector",
+			"actionId": "rkx.foe",
+			"label": "Mein Feind folgt mir auf Schritt und Tritt",
+			"startdescription": "Selbst wenn ich ihn nicht sehen kann, weiß ich doch, dass er da ist. Er kann jeden Augenblick angreifen.",
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "rkx.foe.obscured"
+				},
+				{
+					"id": "rkx.foe.attack",
+					"chance": 30
+				},
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.obscured",
+			"actionId": "rkx.foe",
+			"label": "Mein Feind ist nah!",
+			"startdescription": "'Du kannst dich vor mir nicht verstecken. Ich kenne dich zu gut.'",
+			"extantreqs": {
+				"obscurity": 1
+			},
+			"effects": {
+				"obscurity": -1
+			},
+			"slots": [
+				{
+					"id": "obscurity",
+					"label": "Unklarheit",
+					"required": {
+						"obscurity": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 20,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.attack",
+			"actionId": "rkx.foe",
+			"label": "Mein Feind schlägt zu!",
+			"startdescription": "'Du hättest weiter weglaufen sollen.'\n\n[Die Angriffe des Feindes treffen für gewöhnlich. Füge eine passende Karte hinzu, um dich zu verteidigen. Ablenkungen verschaffen die extra Ruhepausen, doch der Feind wird nur einigen wenigen Ablenkungen erliegen – die du kennst, sofern du seine Schwächen enthüllt hast. Manchmal zerstört er sogar Waffen.]",
+			"slots": [
+				{
+					"id": "defence",
+					"label": "Verteidigung",
+					"required": {
+						"lore": 1,
+						"weapon": 1,
+						"distraction": 1,
+						"associate": 1,
+						"defiance.consecration.lionsmith": 1
+					},
+					"forbidden": {
+						"uq.weapon.profane": 1,
+						"remnant": 1,
+						"exhausted": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "rkx.spawn.escort",
+					"additional": true
+				},
+				{
+					"id": "rkx.foe.mock"
+				}
+			],
+			"warmup": 20,
+			"effects": {
+				"husk": -1
+			},
+			"purge": {
+				"obscurity": 100
+			},
+			"linked": [
+				{
+					"id": "rkx.foe.ligeian"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.cold"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.heat"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.sea"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.faith"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.cats"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.heights"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.horned"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.wolf"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.flowermaker"
+				},
+				{
+					"id": "rkx.foe.attack.success.wrongdistraction"
+				},
+				{
+					"id": "rkx.foe.attack.success",
+					"chance": 70
+				},
+				{
+					"id": "rkx.foe.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.mock",
+			"actionId": "rkx.foe",
+			"label": "Lachen wie einst der Löwenschmied",
+			"startdescription": "Ich könnte meinen Feind mit einer uralten Provokation verspotten ... und mich für einen Angriff öffnen. Vielleicht findet die Stunde namens Löwenschmied ja Gefallen an meiner Kühnheit. [Du erleidest 2 Wunden, aber gewinnst eine Stufe Trotz.]",
+			"requirements": {
+				"defiance.consecration.lionsmith": 1,
+				"defiance.foetaunted": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "defiance.consecration.lionsmith",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"alt": [
+				{
+					"id": "spit.foe.attack.success.mocked",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"desire": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.foe.attack.success.mocked"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.attack.success.mocked",
+			"actionId": "rkx.foe",
+			"label": "Stärke vor Gerissenheit ",
+			"startdescription": "Mein Feind zischt vor Wut! Ihm gelingt ein mächtiger Treffer bevor ich ausweichen kann.",
+			"linked": [
+				{
+					"id": "rkx.foe.attack"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "spit.foe.attack.success.mocked",
+			"actionId": "spit.foe.attack",
+			"label": "Schwer verwundet!",
+			"startdescription": "Ich habe den Preis für meine Kühnheit bezahlt –",
+			"effects": {
+				"wound.exile": 2
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "rkx.foe.ligeian",
+			"actionId": "rkx.foe",
+			"label": "Ligeianisches Eingreifen",
+			"startdescription": "Selbst mein Feind hütet sich vor den Ligeianern. Er zögert.",
+			"requirements": {
+				"ligeian": 1
+			},
+			"effects": {
+				"ligeian": -1
+			},
+			"warmup": 30,
+			"alt": [
+				{
+					"id": "spit.foe.attack.failure.ligeian",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.cold",
+			"actionId": "rkx.foe",
+			"label": "Der Nordwind ist mein Schild – ",
+			"startdescription": "Die Gerüchte stimmen – Schnee macht meinen Feind langsam und dumm.",
+			"requirements": {
+				"op.cold": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.cold": 1
+			},
+			"purge": {
+				"rkx.weakness.cold.hidden": 1
+			},
+			"effects": {
+				"op.cold": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.heat",
+			"actionId": "rkx.foe",
+			"label": "Der Scirocco ist mein Schild – ",
+			"startdescription": "Die Gerüchte stimmen – ist das Wetter nur heiß genug, macht es meinen Feind langsam und dumm.",
+			"requirements": {
+				"op.heat": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.heat": 1
+			},
+			"purge": {
+				"rkx.weakness.heat.hidden": 1
+			},
+			"effects": {
+				"op.heat": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.sea",
+			"actionId": "rkx.foe",
+			"label": "Die See ist mein Schild –",
+			"startdescription": "Alle Abrechner begegnen dem Meer mit Vorsicht. Doch es stimmt, was ich gehört habe: mein Feind fürchtet vor allem seine Berührung.",
+			"requirements": {
+				"op.sea": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.sea": 1
+			},
+			"purge": {
+				"rkx.weakness.sea.hidden": 1
+			},
+			"effects": {
+				"op.sea": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.faith",
+			"actionId": "rkx.foe",
+			"label": "Alte Gewohnheiten",
+			"startdescription": "Wie ich schon lange vermutet hatte, hat die Erziehung meines Feindes ihre Spuren hinterlassen. Er ist kein Gläubiger, wohl aber durch seinen Respekt vor den Formen des Glaubens gebunden.",
+			"requirements": {
+				"op.faith": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.faith": 1
+			},
+			"purge": {
+				"rkx.weakness.faith.hidden": 1
+			},
+			"effects": {
+				"op.faith": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.cats",
+			"actionId": "rkx.foe",
+			"label": "Die geringsten Werke des Löwenschmieds",
+			"startdescription": "Es stimmt! Mein Feind hat Angst vor Katzen! Er ist schon lange bereit, jeden umzubringen, der das auch nur andeutet. Jetzt weiß ich auch, warum.",
+			"requirements": {
+				"op.cats": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.cats": 1
+			},
+			"purge": {
+				"rkx.weakness.cats.hidden": 1
+			},
+			"effects": {
+				"op.cats": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.heights",
+			"actionId": "rkx.foe",
+			"label": "Schrecken der Schwerkraft",
+			"startdescription": "Hoch gelegene Orte machen meinen Feind schwindelig und rauben ihm die Moral. Ich habe dies zu meinem Vorteil genutzt.",
+			"requirements": {
+				"op.heights": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.heights": 1
+			},
+			"purge": {
+				"rkx.weakness.heights.hidden": 1
+			},
+			"effects": {
+				"op.heights": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.horned",
+			"actionId": "rkx.foe",
+			"label": "Der Schatten der Axt",
+			"startdescription": "Die Hornaxt schätzt meinen Feind nicht, und wohin ihr Schatten fällt, da zögert er.",
+			"requirements": {
+				"op.horned": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.horned": 1
+			},
+			"purge": {
+				"rkx.weakness.horned.hidden": 1
+			},
+			"effects": {
+				"op.horned": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.wolf",
+			"actionId": "rkx.foe",
+			"label": "Der Odem des Wolfes",
+			"startdescription": "An einem bestimmten Punkt in seiner langen und ruchlosen Karriere hat mein Feind irgendetwas angestellt, das ihm die besondere Feindschaft des Geteilten Wolfes eingetragen hat. Wo sie stark ist, ist er auf der Hut.",
+			"requirements": {
+				"op.wolf": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.wolf": 1
+			},
+			"purge": {
+				"rkx.weakness.wolf.hidden": 1
+			},
+			"effects": {
+				"op.wolf": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.flowermaker",
+			"actionId": "rkx.foe",
+			"label": "Das Licht des Blumenmachers",
+			"startdescription": "Etwas am Einfluss des Blumenmachers verwirrt meinen Feind. Ich werde vielleicht nie erfahren, was genau.",
+			"requirements": {
+				"op.flowermaker": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.flowermaker": 1
+			},
+			"purge": {
+				"rkx.weakness.flowermaker.hidden": 1
+			},
+			"effects": {
+				"op.flowermaker": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.attack.success.wrongdistraction",
+			"actionId": "rkx.foe",
+			"label": "Ein gutturales Kichern",
+			"requirements": {
+				"lore": -1,
+				"weapon": -1,
+				"associate": -1,
+				"distraction": 1
+			},
+			"startdescription": "'@#op.cold|'Ich wurde im Schnee <i>geboren</i>.'\n#op.heat|'Schönes Wetter für mein Vorhaben.'\n#op.sea|'Gute Idee. Die Reste verfüttere ich an die Haie.'\n#op.cats|'Komm, Kätzchen. Komm.'\n#op.heights|'Da geht es tief runter.'\n#op.faith|'Falscher Gott.'\n#op.flowermaker|'Ich rufe den Blumenmacher an, der stets das hat, was ich begehre ...'\n#op.horned|'Die Hornaxt, die teilt und auszeichnet. Komm nun her und lass dich auszeichnen.'\n#op.wolf|'Wie passend. Von dir wird nichts übrig bleiben.' [Dies ist nicht eine der Schwächen deines Feindes.]@",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"alt": [
+				{
+					"id": "spit.foe.attack.success",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"lore": 1,
+							"weapon": 1,
+							"distraction": 1
+						}
+					}
+				}
+			],
+			"effects": {
+				"distraction": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "rkx.foe.attack.success",
+			"actionId": "rkx.foe",
+			"label": "Keine Verteidigung",
+			"startdescription": "'Du warst schon immer zu langsam –'",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"alt": [
+				{
+					"id": "spit.foe.attack.success",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"lore": 1,
+							"weapon": 1,
+							"distraction": 1
+						}
+					}
+				}
+			],
+			"requirements": {
+				"lore": -1,
+				"weapon": -1,
+				"associate": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "spit.foe.attack.success",
+			"actionId": "spit.foe.attack",
+			"label": "Ein verheerender Schlag!",
+			"startdescription": "Der Bastard ist noch immer verflucht stark. [7 Wunden sind dein Tod.]",
+			"effects": {
+				"wound.exile": 2
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "rkx.foe.attack.failure",
+			"actionId": "rkx.foe",
+			"label": "Mein Feind, aufgeschmissen",
+			"startdescription": "Ich habe seinen Angriff abgewehrt – ",
+			"alt": [
+				{
+					"id": "spit.foe.attack.failure.lore",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"lore": 1
+						}
+					}
+				},
+				{
+					"id": "spit.foe.attack.failure.weapon",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"weapon": 1
+						}
+					}
+				},
+				{
+					"id": "spit.foe.attack.failure.associate",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"associate": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "spit.foe.attack.failure.lore",
+			"actionId": "spit.foe.attack.failure",
+			"requirements": {
+				"lore": 1
+			},
+			"label": "Mit Training verteidigt",
+			"startdescription": "Das war nützlich.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.foe.attack.failure.weapon",
+			"actionId": "spit.foe.attack.failure",
+			"requirements": {
+				"weapon": 1
+			},
+			"label": "Mit Waffen verteidigt",
+			"startdescription": "Das war nützlich.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"linked": [
+				{
+					"id": "spit.foe.attack.failure.weapon.broken",
+					"chance": 30
+				}
+			],
+			"warmup": 2
+		},
+		{
+			"id": "spit.foe.attack.failure.weapon.broken",
+			"actionId": "spit.foe.attack.failure",
+			"label": "'Ich werde auch dich brechen –'",
+			"startdescription": "@#weapon.b.2.exhausted|Er ist zu nah! Er schnappt sich das Gewehr, bricht es wie einen Zweig entzwei und wirft es beiseite.\n#weapon.b.1.exhausted|Er ist zu nah! Er schnappt sich das Gewehr, bricht es wie einen Zweig entzwei und wirft es beiseite.\n#weapon.d.exhausted|Er hat sich Bieddes Klinge geholt! Er bricht sie entzwei, mit einer Hand.\n#weapon.e.exhausted|Er hat mir die Tectrix aus der Hand geschlagen! Eine Böe erfasst sie, und sie ist fort.@",
+			"requirements": {
+				"weapon.c.exhausted": -1
+			},
+			"effects": {
+				"exhausted": -3,
+				"curio": -1,
+				"husk": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.foe.attack.failure.associate",
+			"actionId": "spit.foe.attack.failure",
+			"requirements": {
+				"associate": 1
+			},
+			"label": "Ein Freund in Not",
+			"startdescription": "Mein Partner ist mir zur Hilfe gekommen!",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"linked": [
+				{
+					"id": "spit.foe.attack.failure.associate.killed",
+					"chance": 30
+				}
+			],
+			"warmup": 2
+		},
+		{
+			"id": "spit.foe.attack.failure.associate.killed",
+			"actionId": "spit.foe.attack.failure",
+			"label": "Ein unerwartetes Opfer",
+			"startdescription": "Mein Freund ist in einem erbitterten Gefecht gefallen! Doch er hat bei meinem Feind bleibenden Eindruck hinterlassen. [Verbündete und Partner sterben manchmal im Kampf gegen den Feind. Sie können ihn verletzen, aber keinen tödlichen Stoß versetzen.",
+			"aspects": {
+				"killmortal": 1
+			},
+			"effects": {
+				"wound.foe": 1,
+				"grief": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.foe.attack.failure.ligeian",
+			"actionId": "spit.foe.attack.failure",
+			"label": "Etwas Größeres",
+			"startdescription": "Mein Feind hat sich mit einem Mitglied des Ligeia-Klubs angelegt, was er nun bereut.",
+			"effects": {
+				"wound.foe": 1
+			},
+			"warmup": 2
+		}
+	]
+}

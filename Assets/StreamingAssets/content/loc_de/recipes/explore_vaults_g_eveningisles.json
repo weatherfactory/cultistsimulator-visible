@@ -1,0 +1,262 @@
+{
+	"recipes": [
+		{
+			"id": "explore_vaulteveningisles1_setup",
+			"label": "Eine Expedition zur Rabeninsel",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaulteveningisles1": 1
+			},
+			"effects": {
+				"peril_sea": 1,
+				"guardian_soucouyants": 1,
+				"curse_visions": 1
+			},
+			"startdescription": "Die größte Gefahr auf der Rabeninsel geht von den Soucouyants aus, den gefallenen Unsterblichen. Doch der Weg dorthin über das Meer wird beschwerlich sein, und die Insel ist voller Stimmen, die den Fluch von Visionen mit sich tragen. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaulteveningisles2_setup",
+			"label": "Eine Expedition zu Fort Geryk",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaulteveningisles2": 1
+			},
+			"effects": {
+				"peril_sea": 1,
+				"seal_wardeddoor": 1,
+				"guardian_dead": 1
+			},
+			"startdescription": "Eine zerbröckelnde Sandstein-Feste brütet über einer leeren Bucht. Nachts wandeln die Toten. Am Tage warten sie. In einem versiegelten Gewölbe wartet der Schatz des alten Gouverneurs auf Plünderer. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaulteveningisles3_setup",
+			"label": "Eine Expedition zum Wrack der Christabel",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaulteveningisles3": 1
+			},
+			"effects": {
+				"peril_sea": 1,
+				"guardian_serpent": 1,
+				"curse_affliction": 1
+			},
+			"startdescription": "Stürme haben die Christabel aus dem Meer auf ein Riff gehoben, doch ein Wrack mit einem so traurigen Schicksal ist gewiss mit einem Fluch belegt. Und die Bestie, die sie einst liebte, ist noch immer dort. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaulteveningisles4_setup",
+			"label": "Eine Expedition nach St. Tentreto von der Tiefen Tür",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaulteveningisles4": 1
+			},
+			"effects": {
+				"seal_hiddendoor": 1,
+				"guardian_monks": 1,
+				"curse_visions": 1
+			},
+			"startdescription": "Die Mönche von St. Tentreto werden nicht geneigt sein, uns passieren zu lassen. Sie werden ihre Schätze gut verstecken, und sollte es uns gelingen, ihrer habhaft zu werden, setzen sie uns gewiss mit Flüchen nach. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaulteveningislesdefault_setup",
+			"label": "Eine Expedition zum Mittagshafen",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaulteveningislesdefault": 1
+			},
+			"effects": {
+				"peril_sea": 1,
+				"seal_wardeddoor": 1,
+				"guardian_long": 1,
+				"curse_visions": 1
+			},
+			"startdescription": "Wenn wir das Meer zum Mittagshafen queren können, wenn wir die Langen bezwingen können, die nicht sterben, wenn wir in ihre privaten Gewölbe eindringen können, müssen wir immer noch den Versuchungen der Visionen widerstehen. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaulteveningisles1_success",
+			"label": "Rabenfedern",
+			"actionId": "explore",
+			"requirements": {
+				"vaulteveningisles1": 1
+			},
+			"effects": {
+				"vaulteveningisles1": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"manualdeparturevak",
+					"toolgrailf",
+					"fivecreationsvak",
+					"originsofhoursvak"
+				],
+				"draws": 4,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Eine Berghöhle, besudelt von Soucouyants. Die Wände haben sie mit ihren traurigen Chroniken vollgeschmiert, in hundert Sprachen, in bestechend eleganter Schrift: welche Wesen sie waren, welche Historien die ihren waren, welche Kinder sie betrauern.",
+			"description": "Hinten in der Höhle haben die Soucouyants einen Art Museumsnest eingerichtet. Die feinen Kleider, die sie einst trugen, nun von Rabenfedern geziert. Eine kleine Sammlung von Portraits und verrottenden Familienalben. Einige Gegenstände der Macht.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaulteveningisles2_success",
+			"label": "Der letzte Zug des Gouverneurs",
+			"actionId": "explore",
+			"requirements": {
+				"vaulteveningisles2": 1
+			},
+			"effects": {
+				"vaulteveningisles2": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"bighufffucine",
+					"toolforgef",
+					"timedivisionmandaic",
+					"ingredientheartf"
+				],
+				"draws": 4,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Das Gewölbe von Fort Geryk. Ein Mosaik wurde als Spielbrett gigantischer Größe und Komplexität angelegt: eine Karte der Abendinseln. Die Meeresfelder sind aus Lapislazuli, die Insel aus Nephrit und Obsidian. Es sind Spielzeugschiffe und Zinnsoldaten vorhanden. Die Insel St. Thomas wird belagert. Die Rabeninsel ist von schwarzen Schachdamen gekrönt.",
+			"description": "Unter den Spielfiguren sind Objekte wahrer Macht, die als vorübergehende Marker benutzt wurden. War dies ein Versuch, sie zu verbergen? Oder wusste der Gouverneur nichts von ihrem wahren Wert?",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaulteveningisles3_success",
+			"label": "Ein geschlossenes Auge",
+			"actionId": "explore",
+			"requirements": {
+				"vaulteveningisles3": 1
+			},
+			"effects": {
+				"vaulteveningisles3": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"bookextinguishedheartmandaic",
+					"bookwhitecatphrygian",
+					"toolknockf",
+					"ingredientgrailf"
+				],
+				"draws": 4,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Das Schiff stinkt noch immer nach der See. Ein träger Oktopus kriecht weg aus dem Licht unserer Lampen. Das Holz besteht halb aus Korallen. Wo sind die Leichen der Crew? Nur ein Überlebender wurde gemeldet. Hat die Schlange den Rest verschlungen.",
+			"description": "Wir haben die Kabine des Kapitäns entdeckt. Das Logbuch ist da, doch die Seiten sind nur noch eine salzverkrustete Masse. Jemand hat das Symbol eines geschlossenen Auges in den Tisch geritzt, an dem es angekettet war. Unter dem Symbol ist im Tisch eine Geheimschublade, die wir aufbrechen und um ihre Schätze erleichtern können ...",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaulteveningisles4_success",
+			"label": "Das erste Beben",
+			"actionId": "explore",
+			"requirements": {
+				"vaulteveningisles4": 1
+			},
+			"effects": {
+				"vaulteveningisles4": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"scarskyfucine",
+					"toollanternf",
+					"birdsongphrygian",
+					"commandspreservationallexistsmandaic"
+				],
+				"draws": 4,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Hier sind wir in der Höhle des Tiefseebeckens, unter dem Kloster. Dunkles Wasser erzittert im Lichte unserer Lampen. Als wir uns nähern, fällt der Wasserspiegel plötzlich ab. In diesem Meer gibt es keine Gezeiten. Was ist los?",
+			"description": "Wir haben die Höhle entweiht! Schon entziehen uns die Stunden ihren Segen. Das Wasser läuft ab, und zurück bleibt ein leeres Becken. Opfergaben liegen auf dem Grund. Wir müssen sie uns schnell holen. Schon hat das erste Beben begonnen – die Vorläufer des lange erwarteten Erdbebens, das die Mönche so lange hatten in Schach halten können.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaulteveningislesdefault_success",
+			"label": "Den ganzen Weg aus Gallaecia",
+			"actionId": "explore",
+			"requirements": {
+				"vaulteveningislesdefault": 1
+			},
+			"effects": {
+				"vaulteveningislesdefault": -1
+			},
+			"deckeffect": {
+				"vaultrewardsg": 3
+			},
+			"startdescription": "Dies ist ein geheimer Nebenkeller des Hotel Ciervo. Die Wände sind weiß getüncht. Der Boden ist frisch gewischt. Die Regale biegen sich unter den Kuriositäten. Ein Mann mit wirrem Bart in einem Käfig starrt dich verdrossen aus seiner Ecke an. 'Schon wieder?', sagt er. 'Oder gehört ihr nicht zu denen? Nein, ich muss nicht gerettet werden, danke. Da draußen ist es noch viel schlimmer.' ",
+			"description": "'Nehmt euch, was ihr könnt, schnell!', zischt der Mann im Käfig. 'Die sind bald zurück. Nur lasst mir bitte den Gladius. Den habe ich damals den ganzen Weg aus Gallaecia hierher gebracht. Da, das Regal ist gut. Schnell, die kommen! Ihr könnt über die Lieferantentreppe entkommen.'",
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "expeditionascensionheartf",
+					"chance": 100
+				},
+				{
+					"id": "expeditionascensionmothf",
+					"chance": 100
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,422 @@
+{
+	"elements": [
+		{
+			"id": "gloverandgloverjuniorjob",
+			"label": "Assistenzstelle bei Glover & Glover",
+			"aspects": {
+				"job": 1
+			},
+			"description": "Mein Intellekt sollte mehr gefordert werden! Doch die Bezahlung ist besser als bei einem Arbeiter. [Wenn du nicht regelmäßig zu dieser Arbeit erscheinst, musst du mit einer Degradierung rechnen.]",
+			"xtriggers": {
+				"careeradvancement": "gloverandglover_difficultbossa_job",
+				"employment": "gloverandgloverjuniorjob"
+			},
+			"lifetime": 90,
+			"decayTo": "gloverandgloverjuniorjob_demotion"
+		},
+		{
+			"id": "gloverandgloverjuniorjob_nodifficultbossa",
+			"label": "Assistenzstelle bei Glover & Glover",
+			"aspects": {
+				"job": 1
+			},
+			"description": "Mein Intellekt sollte mehr gefordert werden! Doch die Bezahlung ist besser als bei einem Arbeiter. [Wenn du nicht regelmäßig zu dieser Arbeit erscheinst, musst du mit einer Degradierung rechnen.]",
+			"xtriggers": {
+				"careeradvancement": "gloverandgloverjob",
+				"employment": "gloverandgloverjuniorjob_nodifficultbossa"
+			},
+			"lifetime": 90,
+			"decayTo": "gloverandgloverjuniorjob_nodifficultbossa_demotion"
+		},
+		{
+			"id": "gloverandglover_difficultbossa_job",
+			"label": "Eine Stelle bei Glover & Glover",
+			"aspects": {
+				"annoyance": 1,
+				"job": 1
+			},
+			"description": "Eine Stelle im Archiv unter Mr. Alden. Ich verdiene etwas mehr, ich bleibe etwas länger. Mr. Alden hat mich immer genau im Blick. [Wenn du nicht regelmäßig zu dieser Arbeit erscheinst, musst du mit einer Degradierung rechnen.]",
+			"xtriggers": {
+				"endannoyance": "gloverandglover_difficultbossa_gone_job",
+				"careeradvancement": "gloverandgloverseniorjob",
+				"employment": "gloverandglover_difficultbossa_job"
+			},
+			"lifetime": 59,
+			"decayTo": "gloverandgloverjuniorjob_demotion"
+		},
+		{
+			"id": "gloverandglover_difficultbossa_gone_job",
+			"label": "Stelle bei Glover & Glover",
+			"aspects": {
+				"job": 1
+			},
+			"description": "Der Mann namens Alden ist fort. Ich könnte es leichter haben, wenn ich wieder an die Arbeit gehe.",
+			"comments": "interim job that immediately changes to standard one."
+		},
+		{
+			"id": "gloverandgloverjob",
+			"label": "Stelle bei Glover & Glover",
+			"aspects": {
+				"job": 1
+			},
+			"slots": [
+				{
+					"id": "Diligence",
+					"label": "Fleiß",
+					"actionId": "work",
+					"required": {
+						"reason": 1
+					},
+					"description": "Extra-Einsatz. Könnte helfen, wenn ich sehr viel Glück habe."
+				}
+			],
+			"description": "Ich verdiene etwas mehr, ich bleibe etwas länger. Der Neid steht dem Assistenten ins Gesicht geschrieben, der an meinem alten Schreibtisch sitzt. [Wenn du nicht regelmäßig zu dieser Arbeit erscheinst, musst du mit einer Degradierung rechnen.]",
+			"xtriggers": {
+				"careeradvancement": "gloverandgloverseniorjob",
+				"employment": "gloverandgloverjob"
+			},
+			"lifetime": 90,
+			"decayTo": "gloverandgloverjuniorjob_nodifficultbossa_demotion"
+		},
+		{
+			"id": "gloverandgloverjob_youngerglovergone",
+			"label": "Stelle bei Glover & Glover",
+			"aspects": {
+				"job": 1
+			},
+			"slots": [
+				{
+					"id": "Diligence",
+					"label": "Fleiß",
+					"actionId": "work",
+					"required": {
+						"reason": 1
+					},
+					"description": "Extra-Einsatz. Könnte helfen, wenn ich sehr viel Glück habe."
+				}
+			],
+			"description": "Ich verdiene etwas mehr, ich bleibe etwas länger. Der Neid steht dem Assistenten ins Gesicht geschrieben, der an meinem alten Schreibtisch sitzt. [Wenn du nicht regelmäßig zu dieser Arbeit erscheinst, musst du mit einer Degradierung rechnen.]",
+			"xtriggers": {
+				"careeradvancement": "gloverandgloverseniorjob_youngerglovergone",
+				"employment": "gloverandgloverjob_youngerglovergone"
+			},
+			"lifetime": 90,
+			"decayTo": "gloverandgloverjob_youngerglovergone_demotion"
+		},
+		{
+			"id": "gloverandgloverseniorjob",
+			"label": "Leitende Stelle bei Glover & Glover",
+			"aspects": {
+				"annoyance": 1,
+				"job": 1
+			},
+			"slots": [
+				{
+					"id": "Devotion",
+					"label": "Hingabe",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work",
+					"description": "Meine Arbeit ist anspruchsvoll. Ich muss mich konzentrieren."
+				}
+			],
+			"description": "Ich denke, theoretisch könnte ich weiter aufsteigen, wenn jemand stirbt. [Wenn du nicht regelmäßig zu dieser Arbeit erscheinst, musst du mit einer Degradierung rechnen.]",
+			"xtriggers": {
+				"endannoyance": "gloverandgloverseniorjob_youngerglovergone",
+				"employment": "gloverandgloverseniorjob"
+			},
+			"lifetime": 60,
+			"decayTo": "gloverandgloverjob_demotion"
+		},
+		{
+			"id": "gloverandgloverseniorjob_youngerglovergone",
+			"label": "Leitende Stelle bei Glover & Glover",
+			"aspects": {
+				"job": 1
+			},
+			"slots": [
+				{
+					"id": "Devotion",
+					"label": "Hingabe",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work",
+					"description": "Meine Arbeit ist anspruchsvoll. Ich muss mich konzentrieren."
+				}
+			],
+			"description": "Wo der junge Glover fort ist, könnte ich vielleicht noch weiter aufsteigen. [Wenn du nicht regelmäßig zu dieser Arbeit erscheinst, musst du mit einer Degradierung rechnen.]",
+			"xtriggers": {
+				"careeradvancement": "gloverandglovertopjob",
+				"employment": "gloverandgloverseniorjob_youngerglovergone"
+			},
+			"lifetime": 90,
+			"decayTo": "gloverandgloverjob_youngerglovergone_demotion"
+		},
+		{
+			"id": "gloverandglovertopjob",
+			"aspects": {
+				"job": 1
+			},
+			"label": "Vorstandsposten bei Glover & Glover",
+			"description": "Durch das Verschwinden des jungen Glover ist ein Platz im Vorstand frei geworden. Der gehört jetzt mir. [Wenn du nicht regelmäßig zu dieser Arbeit erscheinst, musst du mit einer Degradierung rechnen.]",
+			"lifetime": 100,
+			"decayTo": "gloverandglovertopjob_tainted_demotion",
+			"xtriggers": {
+				"employment": "gloverandglovertopjob"
+			}
+		},
+		{
+			"id": "gloverandglovertopjob_tainted",
+			"aspects": {
+				"job": 1
+			},
+			"label": "Vorstandsposten bei Glover & Glover",
+			"description": "Gerüchte über mein Interesse an Esoterik sind dem alten Glover zu Ohren gekommen. Jetzt steht mein Job auf der Kippe. [Wenn du nicht regelmäßig zu dieser Arbeit erscheinst, musst du mit einer Degradierung rechnen.]",
+			"lifetime": 100,
+			"decayTo": "gloverandglovertopjob_tainted_demotion",
+			"xtriggers": {
+				"employment": "gloverandglovertopjob_tainted"
+			}
+		},
+		{
+			"id": "gloverandgloverjuniorjob_demotion",
+			"aspects": {
+				"job": 1,
+				"demotion": 1
+			},
+			"label": "Ein Problem bei der Arbeit: Degradierung auf eine Assistenzstelle",
+			"slots": [
+				{
+					"id": "passion",
+					"label": "Gutes Zureden",
+					"required": {
+						"passion": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"description": "Meine Abwesenheit im Büro wurde bemerkt. Ich wurde degradiert und muss dem Chef gut zureden, um meinen Job zu behalten.",
+			"xtriggers": {
+				"plead": "gloverandgloverjuniorjob"
+			}
+		},
+		{
+			"id": "gloverandgloverjuniorjob_nodifficultbossa_demotion",
+			"aspects": {
+				"job": 1,
+				"demotion": 1
+			},
+			"label": "Ein Problem bei der Arbeit: Degradierung auf eine Assistenzstelle",
+			"slots": [
+				{
+					"id": "passion",
+					"label": "Gutes Zureden",
+					"required": {
+						"passion": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"description": "Meine Abwesenheit im Büro wurde bemerkt. Ich wurde degradiert und muss dem Chef gut zureden, um meinen Job zu behalten.",
+			"xtriggers": {
+				"plead": "gloverandgloverjuniorjob_nodifficultbossa"
+			}
+		},
+		{
+			"id": "gloverandgloverjob_demotion",
+			"aspects": {
+				"job": 1,
+				"demotion": 1
+			},
+			"label": "Ein Problem bei der Arbeit: Degradierung",
+			"slots": [
+				{
+					"id": "passion",
+					"label": "Gutes Zureden",
+					"required": {
+						"passion": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"description": "Meine Abwesenheit im Büro wurde bemerkt. Ich wurde degradiert und muss dem Chef gut zureden, um meinen Job zu behalten.",
+			"xtriggers": {
+				"plead": "gloverandgloverjob"
+			}
+		},
+		{
+			"id": "gloverandgloverjob_youngerglovergone_demotion",
+			"aspects": {
+				"job": 1,
+				"demotion": 1
+			},
+			"label": "Ein Problem bei der Arbeit: Degradierung",
+			"slots": [
+				{
+					"id": "passion",
+					"label": "Gutes Zureden",
+					"required": {
+						"passion": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"description": "Meine Abwesenheit im Büro wurde bemerkt. Ich wurde degradiert und muss dem Chef gut zureden, um meinen Job zu behalten.",
+			"xtriggers": {
+				"plead": "gloverandgloverjob_youngerglovergone"
+			}
+		},
+		{
+			"id": "gloverandglovertopjob_tainted_demotion",
+			"aspects": {
+				"job": 1,
+				"demotion": 1
+			},
+			"label": "Ein Problem bei der Arbeit: Das Risiko einer Degradierung",
+			"slots": [
+				{
+					"id": "passion",
+					"label": "Gutes Zureden",
+					"required": {
+						"passion": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"description": "Jemand in meiner Position hat eine Menge Spielraum, doch meine Abwesenheit ist aufgefallen. Ich werde den alten Glover umgarnen müssen.",
+			"xtriggers": {
+				"plead": "gloverandglovertopjob_tainted"
+			}
+		},
+		{
+			"id": "institutephysicianjob",
+			"aspects": {
+				"job": 1
+			},
+			"description": "Lange Arbeitszeit, aber gute Bezahlung.",
+			"label": "Eine Stelle am Institut"
+		},
+		{
+			"id": "investmentsjobc",
+			"aspects": {
+				"benign": 1
+			},
+			"label": "Ein üppiges privates Salär",
+			"description": "Ich bin gut versorgt.",
+			"xtriggers": {
+				"decline": "investmentsjobb"
+			},
+			"noartneeded": true
+		},
+		{
+			"id": "investmentsjobb",
+			"label": "Ein substanzielles privates Salär",
+			"description": "Genug Geld, um bequem davon zu leben.",
+			"aspects": {
+				"benign": 1
+			},
+			"xtriggers": {
+				"decline": "investmentsjoba"
+			},
+			"noartneeded": true
+		},
+		{
+			"id": "investmentsjoba",
+			"aspects": {
+				"benign": 1
+			},
+			"label": "Ein bescheidnes privates Salär",
+			"description": "Meine Investitionen werfen mehr als genug ab, um davon zu leben.",
+			"xtriggers": {
+				"decline": "jumble"
+			},
+			"noartneeded": true
+		},
+		{
+			"id": "ghouljob.first",
+			"aspects": {
+				"job": 1
+			},
+			"label": "Eine überzeugende Spiritualisten-Nummer",
+			"description": "Manchmal, wenn ich besonders effektiv bin, fällt die 1. Reihe in Ohnmacht.",
+			"slots": [
+				{
+					"id": "memory",
+					"label": "Information",
+					"actionId": "work",
+					"required": {
+						"memory": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"demotion": "ghouljob"
+			}
+		},
+		{
+			"id": "ghouljob",
+			"aspects": {
+				"job": 1
+			},
+			"label": "Ein Ruf als Medium",
+			"description": "Manchmal spreche ich in Zungen, die ich selbst nicht erwartet hätte.",
+			"slots": [
+				{
+					"id": "memory",
+					"label": "Information",
+					"actionId": "work",
+					"required": {
+						"memory": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "auctioneerjob",
+			"aspects": {
+				"job": 1
+			},
+			"label": "Eine Stelle bei Oriflammes Auktionshaus",
+			"description": "",
+			"noartneeded": true
+		},
+		{
+			"id": "priestjob",
+			"aspects": {
+				"job": 1
+			},
+			"slots": [
+				{
+					"id": "ability",
+					"label": "Fähigkeit",
+					"required": {
+						"passion": 1,
+						"reason": 1,
+						"health": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "doctrine",
+					"label": "Doktrin",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "fervour",
+					"label": "Inbrunst",
+					"required": {
+						"fervour": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"label": "Eine Berufung in eine ruhige Gemeinde",
+			"description": "Solange ich nicht durch Verkommenheit oder Skandale die Aufmerksamkeit des Bischoffs auf mich ziehe, kann ich hier in Ruhe leben."
+		}
+	]
+}

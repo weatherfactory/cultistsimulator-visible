@@ -214,8 +214,8 @@ namespace Assets.CS.TabletopUI {
 		}
 
 
-        public void DisplayStackInMiniSlot(IEnumerable<IElementStack> stacksInOngoingSlots) {
-            IElementStack stack;
+        public void DisplayStackInMiniSlot(IEnumerable<ElementStackToken> stacksInOngoingSlots) {
+            ElementStackToken stack;
 
             if (stacksInOngoingSlots != null)
                 stack = stacksInOngoingSlots.SingleOrDefault(); //THERE CAN BE ONLY ONE (currently)
@@ -308,7 +308,7 @@ namespace Assets.CS.TabletopUI {
             SituationController.CloseWindow();
         }
 
-        public override bool CanInteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
+        public override bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn) {
             return false; // The Sit Token can't be dropped on anything
         }
 
@@ -326,7 +326,7 @@ namespace Assets.CS.TabletopUI {
                 DraggableToken.SetReturn(true);
         }
 
-        public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
+        public override void InteractWithTokenDroppedOn(ElementStackToken stackDroppedOn) {
             bool moveAsideFor = false;
             var stackToken = stackDroppedOn as ElementStackToken;
 

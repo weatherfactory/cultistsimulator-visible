@@ -1,0 +1,56 @@
+{
+	"elements": [
+		{
+			"id": "lunatic",
+			"label": "Ein armer Irrer",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"moth": 3,
+				"grail": 3,
+				"heart": 3
+			},
+			"description": "Irgendein überwältigendes Erlebnis hat dieses Individuum um den Verstand gebracht. Es wird schon bald verschwinden und nie wieder auftauchen.",
+			"lifetime": 60,
+			"xtriggers": {
+				"killmortal": "corpse"
+			}
+		},
+		{
+			"id": "genericprisonerm",
+			"label": "Ein glückloser Gefangener",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3
+			},
+			"description": "Jemand ist in deine Hand geraten. Er wird nicht ewig überleben.",
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			}
+		},
+		{
+			"id": "genericprisonerf",
+			"label": "Ein glückloser Gefangener",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3
+			},
+			"description": "Jemand ist in deine Hand geraten. Er wird nicht ewig überleben.",
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			}
+		}
+	]
+}

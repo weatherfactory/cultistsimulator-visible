@@ -1,0 +1,597 @@
+{
+	"recipes": [
+		{
+			"id": "scheme_murderhunter",
+			"label": "ハンター殺害計画進行中",
+			"actionId": "scheme",
+			"requirements": {
+				"schememurder": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "ハンターの死を望んでいるライバルがいる。それを利用して優位に立てるかもしれないが......同時に注目を集めてしまうかもしれない。",
+			"warmup": 60,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "scheme_murderhunter_grab",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "scheme_murderhunter_grab",
+			"label": "ハンター殺害計画進行中",
+			"actionId": "scheme",
+			"slots": [
+				{
+					"id": "victim",
+					"label": "犠牲者",
+					"greedy": true,
+					"required": {
+						"hunter": 1
+					}
+				}
+			],
+			"effects": {
+				
+			},
+			"warmup": 60,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "scheme_murderhunter_success",
+					"chance": 30
+				},
+				{
+					"id": "scheme_murderhunter_failure",
+					"chance": 100
+				},
+				{
+					"id": "scheme_murderhunter_nohunterfound",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "scheme_murderhunter_success",
+			"label": "誰かがハンターを殺した！",
+			"actionId": "scheme",
+			"requirements": {
+				"hunter": 1
+			},
+			"aspects": {
+				"killhunter": 1
+			},
+			"effects": {
+				"notoriety": 1
+			},
+			"startdescription": "これで一息つけるようになるかもしれないが、結果的に取締局が玄関先までやってくるかもしれない。",
+			"warmup": 5,
+			"craftable": false
+		},
+		{
+			"id": "scheme_murderhunter_failure",
+			"label": "ハンターの殺害に失敗した者がいる！",
+			"actionId": "scheme",
+			"requirements": {
+				"hunter": 1
+			},
+			"effects": {
+				"notoriety": 1
+			},
+			"startdescription": "結果的に取締局が玄関先までやってくるかもしれない。",
+			"warmup": 5,
+			"craftable": false
+		},
+		{
+			"id": "scheme_murderhunter_nohunterfound",
+			"label": "ハンターの殺害計画は、結末を迎えることなく終わった。",
+			"actionId": "scheme",
+			"effects": {
+				
+			},
+			"startdescription": "これで良かったのかもしれない。",
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "scheme_expedition_debug",
+			"label": "FORCE EXP START",
+			"actionId": "scheme",
+			"slots": [
+				{
+					"id": "target",
+					"label": "俳優",
+					"required": {
+						"independent": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"chance": 100,
+					"id": "scheme_expedition_grab"
+				}
+			]
+		},
+		{
+			"id": "scheme_expedition_grab",
+			"label": "ライバルが遠征を検討している......",
+			"actionId": "scheme",
+			"requirements": {
+				"schemeexpedition": 1
+			},
+			"slots": [
+				{
+					"id": "target",
+					"label": "ターゲット",
+					"greedy": true,
+					"required": {
+						"vault": 1
+					}
+				}
+			],
+			"effects": {
+				
+			},
+			"startdescription": "ライバルが、昇天に必要な道具や伝承を求めている。",
+			"warmup": 60,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "scheme_expedition_prep",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "scheme_expedition_prep",
+			"label": "罠を使う機会",
+			"actionId": "scheme",
+			"slots": [
+				{
+					"id": "snare",
+					"label": "奇襲",
+					"required": {
+						"snare": 1
+					}
+				}
+			],
+			"requirements": {
+				"vault": 1
+			},
+			"startdescription": "罠を用意しておけば、ライバルを待ち伏せして彼らの遠征隊を撃破したり、怪我を負わせたりすることもできる......",
+			"warmup": 60,
+			"craftable": false,
+			"linked": [
+				{
+					"chance": 100,
+					"id": "scheme_expedition_snare_great"
+				},
+				{
+					"chance": 100,
+					"id": "scheme_expedition_snare_good"
+				},
+				{
+					"chance": 100,
+					"id": "scheme_expedition_snare_poor"
+				},
+				{
+					"chance": 100,
+					"id": "scheme_expedition_snare_rubbish"
+				},
+				{
+					"chance": 70,
+					"id": "scheme_expedition_success"
+				},
+				{
+					"chance": 100,
+					"id": "scheme_expedition_failure"
+				}
+			]
+		},
+		{
+			"id": "scheme_expedition_snare_great",
+			"actionId": "scheme",
+			"requirements": {
+				"snarelevel": 4
+			},
+			"linked": [
+				{
+					"id": "scheme_expedition_snare_success",
+					"chance": 90
+				},
+				{
+					"id": "scheme_expedition_snare_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "scheme_expedition_snare_good",
+			"actionId": "scheme",
+			"requirements": {
+				"snarelevel": 3
+			},
+			"linked": [
+				{
+					"id": "scheme_expedition_snare_success",
+					"chance": 70
+				},
+				{
+					"id": "scheme_expedition_snare_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "scheme_expedition_snare_poor",
+			"actionId": "scheme",
+			"requirements": {
+				"snarelevel": 2
+			},
+			"linked": [
+				{
+					"id": "scheme_expedition_snare_success",
+					"chance": 30
+				},
+				{
+					"id": "scheme_expedition_snare_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "scheme_expedition_snare_rubbish",
+			"actionId": "scheme",
+			"requirements": {
+				"snarelevel": 1
+			},
+			"linked": [
+				{
+					"id": "scheme_expedition_snare_success",
+					"chance": 10
+				},
+				{
+					"id": "scheme_expedition_snare_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "scheme_expedition_snare_success",
+			"label": "罠が成功した！",
+			"actionId": "scheme",
+			"effects": {
+				"snare": -1
+			},
+			"startdescription": "ライバルが罠にかかった！傷口を癒すために逃げ出そうとするだろう。",
+			"mutations": [
+				{
+					"filterOnAspectId": "independent",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 5,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "independent_scar",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "scheme_expedition_snare_failure",
+			"label": "罠が失敗した！",
+			"actionId": "scheme",
+			"startdescription": "ライバルは我々の罠を回避した......",
+			"mutations": [
+				{
+					"filterOnAspectId": "independent",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"snare": -1
+			},
+			"warmup": 5,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "scheme_expedition_success",
+					"chance": 70
+				},
+				{
+					"id": "scheme_expedition_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "scheme_expedition_success",
+			"label": "ここはライバルに荒らされてしまった......",
+			"actionId": "scheme",
+			"requirements": {
+				"vault": 1
+			},
+			"effects": {
+				"vault": -1
+			},
+			"startdescription": "何を探していたか分からないが、見つけられなかったようだ。",
+			"warmup": 5,
+			"craftable": false,
+			"alt": [
+				{
+					"id": "expedition.corpse.find.vaultcapital5.ransackedbyrival",
+					"additional": true
+				},
+				{
+					"id": "expedition.corpse.find.vaultloneandlevelsands2.ransackedbyrival",
+					"additional": true
+				},
+				{
+					"id": "expedition.corpse.find.vaultrendingmountainsdefault.ransackedbyrival",
+					"additional": true
+				},
+				{
+					"id": "expedition.corpse.find.vaultshires4.ransackedbyrival",
+					"additional": true
+				},
+				{
+					"id": "expedition.corpse.find.vaultcapital5.ransackedbyrival",
+					"additional": true
+				},
+				{
+					"id": "expedition.corpse.find.vaultshires3.ransackedbyrival",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "scheme_promotion",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "scheme_expedition_failure",
+			"label": "ライバルが遠征に失敗した。",
+			"actionId": "scheme",
+			"requirements": {
+				"vault": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "何を探していたかは分からないが、見つけられなかったようだ。ライバルは今のとこ、遠征を放棄した。",
+			"warmup": 5,
+			"craftable": false
+		},
+		{
+			"id": "scheme_activities",
+			"label": "ライバルは陰で活動している。",
+			"actionId": "scheme",
+			"requirements": {
+				"schemeactivities": 1
+			},
+			"effects": {
+				"mystique": 1
+			},
+			"startdescription": "ライバルはまだ隠れている。何を企んでいるのだろうか？[ほとんどの場合、失敗に終わるが、たまにライバルが密かに力を高めてくることがある。遠征を開いたままにして、隠れているライバルをおびき出してみよう。]",
+			"description": "ライバルが悪事を企んでいる。取締局が気づくかもしれない。",
+			"alternativerecipes": [
+				{
+					"id": "scheme_calm",
+					"chance": 10
+				},
+				{
+					"id": "scheme_promotion",
+					"chance": 11
+				}
+			],
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "scheme_calm",
+			"label": "ライバルの雰囲気が和らいだ。",
+			"actionId": "scheme",
+			"effects": {
+				"influenceheartc": 1
+			},
+			"description": "ライバルは礼儀作法を守り、慎重かつ丁寧に書かれた手紙を送ってきた。特に重要な内容は書いていないが......いつか我々が力を合わせる日が来るのかもしれない。[たまにライバルの恨みが薄れることもある。]",
+			"mutations": [
+				{
+					"filterOnAspectId": "independent",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				}
+			],
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "scheme_promotion",
+			"label": "ライバルは目的に向かって前進した。",
+			"actionId": "scheme",
+			"alternativerecipes": [
+				{
+					"chance": 100,
+					"id": "scheme_promotion_ascension"
+				}
+			],
+			"effects": {
+				"mystique": 1
+			},
+			"aspects": {
+				"rival_promotion": 1
+			},
+			"description": "ライバルは、さらに伝承や宝を手に入れ、人脈を広げた......そして徐々に、力を蓄えていった。",
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "scheme_promotion_ascension",
+			"label": "ライバルは三又の扉を通り抜け、さらに力を蓄えた。",
+			"actionId": "scheme",
+			"requirements": {
+				"exalted": 1
+			},
+			"effects": {
+				"mystique": 1
+			},
+			"startdescription": "目標に一歩近づいた。太陽の棲む家の偉大なる階段をもう一歩上る。[注意：ライバルの昇天が７になった場合、相手の勝ちとなる。]",
+			"mutations": [
+				{
+					"filterOnAspectId": "independent",
+					"mutateAspectId": "rivalmarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "independent_scar",
+			"label": "ライバルが傷を負った",
+			"startdescription": "ライバルは災難に見舞われた。敗北に傷つき、私に怒りの怒りの矛先を向けるだろう。[同じ傷を3度負った定命の者は命を失う。]",
+			"actionId": "scheme",
+			"linked": [
+				{
+					"id": "independent_givescar_edge",
+					"chance": 30
+				},
+				{
+					"id": "independent_givescar_knock",
+					"chance": 50
+				},
+				{
+					"id": "independent_givescar_winter",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "independent_givescar_edge",
+			"actionId": "scheme",
+			"label": "ライバルの挫折",
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower_scar_edge",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "edge",
+					"mutationLevel": 2,
+					"additive": true
+				}
+			],
+			"linked": [
+				{
+					"id": "independent_deathscar_edge",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "independent_givescar_knock",
+			"label": "ライバルの挫折",
+			"actionId": "scheme",
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower_scar_knock",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "knock",
+					"mutationLevel": 2,
+					"additive": true
+				}
+			],
+			"linked": [
+				{
+					"id": "independent_deathscar_knock",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "independent_givescar_winter",
+			"actionId": "scheme",
+			"label": "ライバルの挫折",
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower_scar_winter",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "winter",
+					"mutationLevel": 2,
+					"additive": true
+				}
+			],
+			"linked": [
+				{
+					"id": "independent_deathscar_winter",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "independent_deathscar_edge",
+			"actionId": "scheme",
+			"label": "死：敗北",
+			"requirements": {
+				"follower_scar_edge": 3
+			},
+			"description": "この者は勇気と忍耐力を見せたが、それだけでは不十分だった。[ライバルが刃の傷跡を3回負い、死亡した。]",
+			"aspects": {
+				"killmortal": 1
+			}
+		},
+		{
+			"id": "independent_deathscar_knock",
+			"actionId": "scheme",
+			"label": "死：開幕",
+			"requirements": {
+				"follower_scar_knock": 3
+			},
+			"description": "人間が効果的に機能するためには、自分の中にあるものを内に秘め、外にあるものが自分の中に入らないようにしなければならない。内なるものが外に流れ出すぎてしまうと、懸念材料ではなくなる。「ライバルが開錠の傷跡を3回負い、死亡した。]",
+			"aspects": {
+				"killmortal": 1
+			}
+		},
+		{
+			"id": "independent_deathscar_winter",
+			"actionId": "scheme",
+			"label": "死亡：終幕",
+			"requirements": {
+				"follower_scar_winter": 3
+			},
+			"description": "雪はゆっくりと降り、夕焼けがすべてを光に浸していく。[ライバルが冬の傷跡を3回負い、死亡した。]",
+			"aspects": {
+				"killmortal": 1
+			}
+		}
+	]
+}

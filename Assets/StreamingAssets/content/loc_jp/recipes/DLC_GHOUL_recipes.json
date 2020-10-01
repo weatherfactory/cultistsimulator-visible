@@ -1,0 +1,1133 @@
+{
+	"recipes": [
+		{
+			"id": "work.seance.first",
+			"actionId": "work",
+			"label": "劇場霊能者の人気の舞台",
+			"startdescription": "照明に照らされ、1人で舞台に立つ。観客から1つ目の質問を受けた――死者が死んだことを認めない観客は他にもたくさんいる。準備は万端だ。いくつか回答を準備してきた。",
+			"requirements": {
+				"ghouljob.first": 1
+			},
+			"slots": [
+				{
+					"id": "desire",
+					"label": "もっと？",
+					"description": "私は詐欺師......？",
+					"greedy": true,
+					"required": {
+						"desire": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "work.seance.demotion"
+				},
+				{
+					"id": "work.seance.first.shameful"
+				},
+				{
+					"id": "work.seance.first.profitable"
+				},
+				{
+					"id": "work.seance.first.joyful"
+				},
+				{
+					"id": "work.seance.first.fleeting"
+				},
+				{
+					"id": "work.seance.first.nomemory"
+				}
+			],
+			"warmup": 15,
+			"craftable": true
+		},
+		{
+			"id": "work.seance.first.shameful",
+			"actionId": "work",
+			"label": "死者の真似事：恥ずべきこと",
+			"startdescription": "死者の罪の全容を話す分けれ話すわけではない。そんなことをしても誰のためにもならない。だから私は、観客が気づきそうな言葉をいくつか口にする。",
+			"description": "舞台での仕事は終わった。ショーの後、個人的に遺族と仕事をすると、贈り物を渡された――口外しないように、という念押しだ。\n\n(今夜は何か起こりそうな雰囲気が漂っている。雪の香りか？それはなさそうだ。)",
+			"requirements": {
+				"memory.shameful": 1
+			},
+			"effects": {
+				"favour": 1,
+				"funds": 6,
+				"passion": 1,
+				"memory.shameful": -1,
+				"mystique": 1
+			},
+			"alt": [
+				{
+					"id": "open.dream.ghoul",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "work.seance.first.profitable",
+			"actionId": "work",
+			"label": "死者の真似事：有益なこと",
+			"startdescription": "忘れ去られた投資を見つけた。双方に利益をもたらすはずだ。しかし、情報を与えすぎないように気をつけないといけない。生者は死者よりも貪欲だ。",
+			"description": "舞台のあとで会う約束をした。簡単に信用してはくれないだろうが、感謝はしてくれるだろう。情報提供料を稼いだ。\n(今夜は何か起こりそうな雰囲気が漂っている。雪の香りか？それはなさそうだ。)",
+			"requirements": {
+				"memory.profitable": 1
+			},
+			"effects": {
+				"funds": 6,
+				"reason": 1,
+				"memory.profitable": -1,
+				"mystique": 1
+			},
+			"alt": [
+				{
+					"id": "open.dream.ghoul",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "work.seance.first.joyful",
+			"actionId": "work",
+			"label": "死者の真似事：嬉しいこと",
+			"startdescription": "黄金色に輝く午後の写真を見たことがある。忘れてしまうほど昔のことではなく、懐かしくなるくらい昔のことだ。",
+			"description": "その人は席に戻ると涙を流した。別の夜にもう一度戻ってきても、私がその人の質問に答えることはない。私のことを話すとき、きっとこの夜の話をするだろう。(今夜は何か起こりそうな雰囲気が漂っている。雪の香りか？それはなさそうだ。)",
+			"requirements": {
+				"memory.joyful": 1
+			},
+			"effects": {
+				"funds": 4,
+				"health": 1,
+				"memory.joyful": -1,
+				"mystique": 1
+			},
+			"alt": [
+				{
+					"id": "open.dream.ghoul",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "work.seance.first.fleeting",
+			"actionId": "work",
+			"label": "死者の真似事：伝聞と噂",
+			"startdescription": "集めた噂話から、説得力のある内容を作ることができた。",
+			"description": "私は質問に対して質問で答える。夜鳥のように、交互に声をかけあう。彼らは満足しているのだろうか？席についてくれただけでもましだろう。\n\n(今夜は何か起こりそうな雰囲気が漂っている。雪の香りか？それはなさそうだ。)",
+			"requirements": {
+				"fleeting": 1
+			},
+			"effects": {
+				"funds": 2,
+				"fleeting": -1
+			},
+			"alt": [
+				{
+					"id": "open.dream.ghoul",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "work.seance.first.nomemory",
+			"actionId": "work",
+			"label": "全力で死者の真似をする",
+			"startdescription": "何の準備もせずに始めることとなってしまった。即興でやるしかない。",
+			"description": "私の応答は冴えないものだった。暗闇の中でも、観客が幻滅していることが伝わってくる。\n\n(今夜は何か起こりそうな雰囲気が漂っている。雪の香りか？それはなさそうだ。)",
+			"effects": {
+				"funds": 1
+			},
+			"alt": [
+				{
+					"id": "open.dream.ghoul",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "work.seance.demotion",
+			"actionId": "work",
+			"label": "死者",
+			"startdescription": "口を開けて喋ると、雪と銅の味がする――",
+			"requirements": {
+				"ghouljob.first": 1,
+				"temptation.remembrance": 1
+			},
+			"effects": {
+				"funds": 2,
+				"memory": -1,
+				"notoriety": 1
+			},
+			"aspects": {
+				"demotion": 1
+			},
+			"alt": [
+				{
+					"id": "open.explore.ghoul",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "work.seance.demotion.continue"
+				}
+			]
+		},
+		{
+			"id": "work.seance.demotion.continue",
+			"actionId": "work",
+			"label": "予定通りにパフォーマンスが進まない",
+			"startdescription": "遠くから自分の声が聞こえてくる。私は、象牙と古い雪のことを話し、鳥のさえずりを真似ている。観客は、どうしたら良いか分からず笑い始めたが、泣いている者もいる。私は半ば言い慣れた名前を口にした。モンメレンツィ。ナエニア。#PREVIOUSCHARACTERNAME# そしてこれは、永遠と続いていく。 ",
+			"description": "私が建物を去る前に契約は解除されてしまった。支配人は直接私を侮辱することすらしなかった。寒い通りに立ち、ボロボロになった自分の評判について考えていると、劇場の屋根の上から淡い色をした鳩たちが私を見つめている。鳴き声はまるで人間の言葉のようで、「モンメレンツィ。ナエニア。#PREVIOUSCHARACTERNAME#......」と聞こえた。 ",
+			"warmup": 60
+		},
+		{
+			"id": "open.dream.ghoul",
+			"actionId": "dream",
+			"label": "前夜",
+			"startdescription": "舞台上で、青白い色の夢を思い出した......",
+			"description": "舞台の上で、再び見た青白い夢のことをを思い出した。太陽が赤く低くなった時に吹く涼しげな風。波がかつて使っていた声。雪の中を駆ける影......それへの憧れは今、私の心の下で火打ち石の塊のように居座っている。",
+			"effects": {
+				"temptation.remembrance": 1,
+				"health": 1
+			},
+			"warmup": 15
+		},
+		{
+			"id": "open.explore.ghoul",
+			"actionId": "explore",
+			"label": "「モンメレンツィ」",
+			"startdescription": "「モンモレンシー」ではなく、「モンメレンツィ」だ。その名前を、まだ自分のことを<i>画家</i>だと思っていた頃に、聞いたことがある。",
+			"description": "その名に見覚えのある場所だった。灰色の正面部分が未亡人の顔のように閉ざされたギャラリーだ。",
+			"effects": {
+				"location.gallery": 1,
+				"reason": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "explore.location.gallery.ghoul",
+			"actionId": "explore",
+			"label": "ギャラリーを探索する",
+			"startdescription": "私は入場料を払い、暗い階段を登る。これは何か意味があるに違いない。私の気が狂ったことを意味しているのかもしれない。",
+			"description": "論争の的である聖人、解剖図、共同墓地のパステル画。岩に塗られた目のスケッチ。「アビドスの季節」と題された、様々な天候の中で大理石の寺院が並ぶ街並みが描かれた古い油絵。しかし、彼女の名前を見る前から、私はこの絵に惹かれていた。",
+			"requirements": {
+				"location.gallery": 1
+			},
+			"effects": {
+				"location.gallery": -1,
+				"fragmentsecrethistories": 1
+			},
+			"alt": [
+				{
+					"id": "open.talk.ghoul",
+					"additional": true
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "open.talk.ghoul",
+			"actionId": "talk",
+			"label": "「ナエニア嬢」",
+			"startdescription": "絵の中では、ナエニア嬢の肌は暗いが、刈り上げた髪は象牙色で、目は雪の色をしている。毎日、私はここに引き寄せられた理由を知るために戻ってくる。その絵が言葉を発するのを聞いたことはない――絵が話すはずがない！――しかし、後になって私は、彼女が言ったことを思い出す。",
+			"description": "私はナエニア嬢とあの理解ある低く赤い太陽のことを、飛行の淡い喜びのことを話したことを覚えている。私は彼女に記憶の宝物を持ってきて、彼女はその代わりに宝物をくれるのだ信じるようになった。",
+			"requirements": {
+				
+			},
+			"effects": {
+				"naenia": 1,
+				"passion": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "open.study.ghoul",
+			"actionId": "study",
+			"label": "書斎の上段の棚",
+			"startdescription": "ナエニア嬢が、何年も開いていない本のことを思い出させてくれた。まだどこからにあるはずだ。",
+			"description": "ヘーガンとグリストウッド著、『裂け目の山の葬式風習』。ずっと前に、ショーに向けてアイデアが欲しかったから購入した本だ。特に役には立たなかったが、本に記録されていた公式のことを今思いだした。公式自体は不快なものだったが......粉末の象牙の話は興味深かった。",
+			"effects": {
+				"prealzabo": 1,
+				"fragmentgrail": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "ghoul.firsttaste.prologue",
+			"actionId": "study",
+			"label": "最初の味",
+			"requirements": {
+				"prealzabo": 1,
+				"temptation.remembrance": 1,
+				"corpse": 1,
+				"funds": 1
+			},
+			"startdescription": "私は1人で食事をとる――正確には1人ではないが。",
+			"slots": [
+				{
+					"id": "forceofwill",
+					"label": "意志の強さ",
+					"description": "難しい。",
+					"required": {
+						"passion": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "ghoul.firsttaste"
+				}
+			],
+			"description": "無理だ。",
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "ghoul.firsttaste",
+			"actionId": "study",
+			"label": "最初の味",
+			"startdescription": "始めるまでが難しい。石槍の穂先のようなギザギザしたものに、自分の意志を集中させなければならないことに気づく。しかし、口にするたびに段々と楽になってきた。",
+			"description": "「その時は意識していなくても、誰でも物事が永遠に変化する瞬間を覚えているはずだ。世界にもそのような記憶があるのかもしれない」と、ずっと後になって私は日記に書き綴った。その時、ペンを置いて窓の向こうの暗闇を眺めたことを思い出すが、反対側から見たその瞬間は思い出せない。私は、口を拭いていたのかもしれないし、唇を舐めていたのかもしれない。",
+			"requirements": {
+				"prealzabo": 1,
+				"temptation.remembrance": 1,
+				"corpse": 1,
+				"funds": 1,
+				"passion": 1
+			},
+			"effects": {
+				"corpse": -1,
+				"memory.unexpected": 1,
+				"prealzabo": -1,
+				"funds": -1,
+				"alzabo": 1
+			},
+			"aspects": {
+				"ascend": 1
+			},
+			"mutations": [
+				{
+					"filter": "desire",
+					"mutate": "ghoul.hunger",
+					"level": 1
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.hint",
+			"actionId": "talk",
+			"label": "ナエニア嬢と話す？",
+			"startdescription": "ナエニア嬢は、絵画の忍耐力を持って待っている。",
+			"requirements": {
+				"naenia": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "talk.ghoul.consolation",
+			"actionId": "talk",
+			"label": "ナエニア嬢に慰めてもらう",
+			"startdescription": "ナエニア嬢の目は優しい。",
+			"description": "彼女は私の落ち着きのなさを理解してくれている。彼女自身もそれを理解できるのだ。耐え忍ぶものはないことを彼女は思い出させてくれた。",
+			"requirements": {
+				"naenia": 1,
+				"restlessness": 1
+			},
+			"effects": {
+				"restlessness": -1,
+				"fleeting": 1
+			},
+			"alt": [
+				{
+					"id": "open.study.ghoul",
+					"additional": true
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.recollection",
+			"actionId": "talk",
+			"label": "ナエニア嬢に思い出を話す",
+			"startdescription": "ナエニア嬢の目には思いやりがこもっている。",
+			"description": "ナエニア嬢は、すべてが過ぎると言う。記憶でさえも.....しかし記憶は松明や宝のように受け継がれることもある。",
+			"requirements": {
+				"naenia": 1,
+				"fleeting": 1
+			},
+			"effects": {
+				"fleeting": -1,
+				"restlessness": 1
+			},
+			"alt": [
+				{
+					"id": "open.study.ghoul",
+					"additional": true
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.fascination",
+			"actionId": "talk",
+			"label": "自分の幻影をナエニア嬢に話す",
+			"startdescription": "彼女に話しても大丈夫なのか？",
+			"description": "ここの光は私が思っていたよりも明るい。ナエニア嬢の肌の下を色が電気や油のように漂っていく。目をそらそうと思っても動けない。",
+			"requirements": {
+				"naenia": 1,
+				"fascination": 1
+			},
+			"effects": {
+				"fascination": 1
+			},
+			"alt": [
+				{
+					"id": "open.study.ghoul",
+					"additional": true
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.dread",
+			"actionId": "talk",
+			"label": "自分の恐怖について、ナエニア嬢と話す",
+			"startdescription": "本当に彼女に私の恐怖を話すべきなのだろうか？優しい絵ではない気がする。",
+			"description": "ナエニア嬢の笑顔を見つめれば見つめるほど、彼女の歯が気になりだした。",
+			"requirements": {
+				"naenia": 1,
+				"dread": 1
+			},
+			"effects": {
+				"dread": 1
+			},
+			"alt": [
+				{
+					"id": "open.study.ghoul",
+					"additional": true
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.grandmemory",
+			"actionId": "talk",
+			"label": "時を経て落ちる",
+			"startdescription": "ナエニア嬢の前に来ると、口元と目の周りを青白い光が照らしているような気がした。",
+			"description": "後日、私はナエニア嬢と腕を組んで閉館後のギャラリーを歩いたことを思い出した。彼女が持つロウソクの光が、他の絵画の顔を照らしていた。「肖像画が生き残る限り、私たちは忘れ去られることはないでしょう」と彼女は言った。",
+			"requirements": {
+				"naenia": 1,
+				"memory": 5
+			},
+			"effects": {
+				"restlessness": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.memorypassionate",
+			"actionId": "talk",
+			"label": "ナエニア嬢に恋人のことを話す",
+			"startdescription": "彼女に強烈な思い出を話しに来た。",
+			"requirements": {
+				"naenia": 1,
+				"memorypassionate": 1
+			},
+			"alt": [
+				{
+					"id": "dreampassionatememory"
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.memorypleasant",
+			"actionId": "talk",
+			"label": "ナエニア嬢に恋人のことを話す",
+			"startdescription": "彼女に甘い思い出を話しに来た。",
+			"requirements": {
+				"naenia": 1,
+				"memorypleasant": 1
+			},
+			"alt": [
+				{
+					"id": "dreampleasantmemory"
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.memorybittersweet",
+			"actionId": "talk",
+			"label": "ナエニア嬢に恋人のことを話す",
+			"startdescription": "彼女に辛い思い出を話しに来た。",
+			"requirements": {
+				"naenia": 1,
+				"memorybittersweet": 1
+			},
+			"alt": [
+				{
+					"id": "dreambittersweetmemory"
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.memory.menacing",
+			"actionId": "talk",
+			"label": "ナエニア嬢と恐ろしい思い出を共有する",
+			"startdescription": "彼女は用心深く見つめている。",
+			"requirements": {
+				"naenia": 1,
+				"memory.menacing": 1
+			},
+			"warmup": 30,
+			"internaldeck": {
+				"label": "応答",
+				"description": "応答",
+				"spec": [
+					"vitalityplus",
+					"influenceedgec",
+					"influencewinterc",
+					"influenceedgec",
+					"influencewinterc"
+				],
+				"resetonexhaustion": true,
+				"draws": 1
+			},
+			"effects": {
+				"memory.menacing": -1
+			},
+			"description": "@#vitalityplus|ナエニア嬢は何も言わなかったが、後になって、私は彼女の笑顔が冷たい私の体を温めてくれたことを思い出した。\n#influenceedgec|ナエニア嬢は何も言わないが、ずっと後になって、私は彼女の目が光っていたことを思い出した。\n#influencewinterc|ナエニア嬢は何も言わない。ギャラリーのランプの間にある影のように静けさが溜まっていく。@",
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.memory.shameful",
+			"actionId": "talk",
+			"label": "ナエニア嬢と秘密の罪の記憶を共有する",
+			"startdescription": "今日のナエニア嬢は、いたずらな目をしている。",
+			"requirements": {
+				"naenia": 1,
+				"memory.shameful": 1
+			},
+			"warmup": 30,
+			"internaldeck": {
+				"label": "応答",
+				"description": "応答",
+				"spec": [
+					"favour",
+					"contentment",
+					"influencegrailc",
+					"influencegrailc",
+					"influencegrailc"
+				],
+				"resetonexhaustion": true,
+				"draws": 1
+			},
+			"effects": {
+				"memory.shameful": -1
+			},
+			"description": "@#favour|ナエニア嬢は何も言わないが、後になって、2人とも同じことを思ったに違いないと気づいた。これを利用して、取締局の人間を上手く脅すことができるかもしれない。\n#contentment|ナエニア嬢は何も言わないが、その親密さがとても心地よく、穏やかな時間が続く。\n#influencegrailc|ナエニア嬢は何も言わないが、彼女の口元はゆっくりと、ゆっくりと弧を描いた。私は、彼女が唇を開くのを見たことがないことに気づく。",
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.memory.unexpected",
+			"actionId": "talk",
+			"label": "ナエニア嬢と風変わりな思い出を共有する",
+			"startdescription": "今日のナエニア嬢の表情は読みにくい。私は彼女の目、口、顔の輪郭を別々のものとして意識するようになった。誰かが机の上にポケットの中身を出したかのように、偶然近くにあるだけなのだ。",
+			"requirements": {
+				"naenia": 1,
+				"memory.unexpected": 1
+			},
+			"warmup": 30,
+			"deckeffect": {
+				"vaultrewardsb": 1
+			},
+			"effects": {
+				"memory.unexpected": -1
+			},
+			"description": "@#|ナエニア嬢は何も言わないが、ギャラリーの中で私はポケットからペンを取り出し、誰かに耳元で指示を囁かれたかのように、夢中で書き留める。その指示に従えば、貴重なものが見つけられるだろう。@",
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.memory.joyful",
+			"actionId": "talk",
+			"label": "ナエニア嬢と楽しい思い出を共有する",
+			"startdescription": "ナエニア嬢の目は温かい。",
+			"requirements": {
+				"naenia": 1,
+				"memory.joyful": 1
+			},
+			"warmup": 30,
+			"internaldeck": {
+				"label": "応答",
+				"description": "応答",
+				"spec": [
+					"influencehearte",
+					"influenceheartc",
+					"influenceheartc",
+					"contentment",
+					"contentment"
+				],
+				"resetonexhaustion": true,
+				"draws": 1
+			},
+			"effects": {
+				"memory.joyful": -1
+			},
+			"description": "@#influencehearte|ナエニア嬢は何も言わないが、ギャラリーを出た後も、私の心臓はハンマーで叩かれた金床のように鼓動している。\n#influenceheartc|ナエニア嬢は何も言わないが、家に帰るまでの間、彼女のことを思い出させる曲が頭の中で流れる。\n#contentment|ナエニア嬢は何も言わないが、私は彼女の真似をして笑った。@",
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.memory.profitable",
+			"actionId": "talk",
+			"label": "ナエニア嬢と有益な思い出を共有する",
+			"startdescription": "ナエニア嬢の目は鋭い。",
+			"requirements": {
+				"naenia": 1,
+				"memory.profitable": 1
+			},
+			"warmup": 30,
+			"internaldeck": {
+				"label": "応答",
+				"description": "応答",
+				"spec": [
+					"jumble",
+					"funds",
+					"compensation",
+					"funds",
+					"funds"
+				],
+				"resetonexhaustion": true,
+				"draws": 1
+			},
+			"effects": {
+				"memory.profitable": -1
+			},
+			"description": "@#jumble|ナエニア嬢は何も言わないが、その後、ガラクタ屋で買い物をしている時にナエニア嬢のことを思い出し、くだらないものを衝動買いしてしまう。\n#funds|ナエニア嬢は何も言わないが、翌日には思いがけない小包が郵便受けに入っていた。\n#compensation|ナエニア嬢は何も言わないが、その後、街中でソブリン金貨を見つけた。@",
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.painting.palest",
+			"actionId": "talk",
+			"label": "最も青白い絵画をナエニア嬢に見せる",
+			"startdescription": "絵に絵を見せに行くのは、ちょっと馬鹿げた気がする。しかし、通りを曲がりギャラリーへ向かうと、雪が降っていた。その通りだけに雪が降っている。通行人は身を寄せたり、急いだり、驚いて叫んだりしている。茶色の紙にしっかりと包んだ絵を抱きしめ、私はナエニア嬢の部屋に続く階段を登った。",
+			"description": "ナエニア嬢がいなくなった。彼女が吊るされていた場所には、黒い長方形の跡がついている。困惑しながら辺りを見回したが、彼女は見つからない。これ以上できることはない。\n\n何もなかったが、静かな家の中で最も青白い絵画の包装を解くと、絵が変わっているのに気づいた。ぼやけた形が名もなき場所へ続く入り口に立っている。肩越しに見つめて、私が後を追うのを待っているようだ。その形は、ナエニア嬢に似ている。",
+			"requirements": {
+				"naenia": 1,
+				"painting.palest": 1
+			},
+			"warmup": 30,
+			"effects": {
+				"naenia": -1
+			},
+			"mutations": [
+				{
+					"mutate": "way",
+					"filter": "painting.palest",
+					"level": 1
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "dream.ghoul.painting.palest",
+			"actionId": "dream",
+			"label": "塗装された扉をくぐる",
+			"startdescription": "太陽の棲む家には秘密の扉がたくさんある。もちろんすべてに鍵が掛けられているが、今夜、ナエニア嬢がこの扉の鍵を開けてくれる。その扉の向こうでは、哀歌詩人が冬を手にして待っている。",
+			"requirements": {
+				"painting.palest": 1,
+				"way": 1
+			},
+			"linked": [
+				{
+					"id": "dream.ghoul.sacrificeabilities"
+				}
+			],
+			"craftable": true,
+			"warmup": 10
+		},
+		{
+			"id": "dream.ghoul.sacrificeabilities",
+			"actionId": "dream",
+			"label": "死は下にある",
+			"startdescription": "扉の向こうには、黒いネフライトのランプに照らされた螺旋階段がある。そのはるか下には「死者がたどり着く名もなき場所」と呼ばれるところがある。そこでは忘れ去られるものはない。さあ、行こう。",
+			"slots": [
+				{
+					"id": "sacrifice",
+					"label": "絵画の飢え",
+					"description": "止めなければ、塗装された扉にすべてを奪われてしまう。<i>よい子</i>は真似しないこと。",
+					"required": {
+						"health": 1,
+						"passion": 1,
+						"reason": 1,
+						"fatigue": 1,
+						"disillusionment": 1,
+						"concentration": 1,
+						"passionexhausted": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "dream.ghoul.noabilitysacrificed"
+				}
+			],
+			"linked": [
+				{
+					"id": "ending.minorpalestvictory"
+				},
+				{
+					"id": "dream.ghoul.sacrificeabilities"
+				}
+			],
+			"warmup": 30,
+			"effects": {
+				"health": -1,
+				"passion": -1,
+				"reason": -1,
+				"fatigue": -1,
+				"disillusionment": -1,
+				"concentration": -1,
+				"passionexhausted": -1
+			}
+		},
+		{
+			"id": "dream.ghoul.noabilitysacrificed",
+			"actionId": "dream",
+			"label": "これ以上奪われることのない者",
+			"startdescription": "哀歌詩人は不死ではなく、死を超えた存在にしてくれる。最も青白い絵画は、私が許しさえすれば、私に残された命を吸い取ってくれるだろう。",
+			"requirements": {
+				"health": -1,
+				"passion": -1,
+				"reason": -1,
+				"fatigue": -1,
+				"disillusionment": -1,
+				"concentration": -1,
+				"passionexhausted": -1
+			},
+			"description": "目を覚ました。上にある壁に掛けられた絵は、貪欲に待っている。"
+		},
+		{
+			"id": "ending.minorpalestvictory",
+			"actionId": "dream",
+			"label": "名もなき場所",
+			"startdescription": "私は失われた色を見てきたが、その代償として、命を落とし、名もなき場所にたどり着いた。しかし、もし哀歌詩人が私を覚えていたら、おそらく彼は私をマンサスに呼び戻し、定められた最期を迎えるまで世界を歩ませてくれるだろう―― ",
+			"extantreqs": {
+				"health": -1,
+				"passion": -1,
+				"reason": -1,
+				"fatigue": -1,
+				"disillusionment": -1,
+				"concentration": -1,
+				"passionexhausted": -1
+			},
+			"ending": "minorpalestvictory",
+			"signalEndingFlavour": "Pale",
+			"warmup": 30
+		},
+		{
+			"id": "study.alzabo.remnant",
+			"actionId": "study",
+			"label": "残骸を食べる",
+			"startdescription": "@#corpse|またもや食欲が出てきて、吐き気を伴う震えが出てきた。\n#spirit_wintera_moth|頼めば、じっと横たわってくれる。\n#spirit_wintera_edge|頼めば、じっと横たわってくれる。実はジューシーなのかもしれない。\n#corpse.furious|粉末にして飲み込む。\n#corpse.luxurious|噛み応えがある・\n#corpse.liminal|生の調味料を食べているようだ。\n#corpse.horizon|柔らかくなるまで煮込めれば――\n#corpse.splendid|食べやすい食事ではなさそうだ。\n#ingredientheartf|銅の柑橘のように舌を明るく染める。\n#ingredientmothf|どんな味がするのか気になっていたが、<i>ねっとり</i>している、と言うのが私の感想だ。\n#spirit_forgee_edge.defunct|私は皮肉にも、うがいと不慮の火事に備えて水を用意する。\n#decrepitude|とうとうここまで来てしまった。私は死んでいないが、できる限り死に近づいていることを願う。そうすれば、これが期待通りに効果を発揮して、自分の肉体に眠る記憶を解放できるはずだ。\n#|食べられるものであることを願おう。",
+			"description": "@#memory.furious|私には凶暴な記憶がある。幾多の饗宴を知る者から受け継いだ――砂色の記憶。描く準備はできている。\n#memory.liminal|私には入り口の記憶がある。描く準備はできている。\r#memory.splendid|私には「閏月の挿入」以前の世界の記憶がある。描く準備はできている。\n#memory.golden|鍛造に火がつく前の世界の記憶がある。描く準備はできている。\n#memory.horizon|私には継承した王様ですら理解できなかった世界の記憶がある。\n#memory.endless|私には記憶がある。決して絶えるべきではなかった記憶.....消えてはいないのかもしれない記憶が――\n#memory.wildering|車輪が最初に地上に現れた時の狩りの記憶がある......\n#memory.honeyed|ほとんど自分の記憶のように感じられる記憶がある。\r#|何か？@",
+			"requirements": {
+				"remnant": 1,
+				"alzabo": 1,
+				"remembrancemarks": 1
+			},
+			"linked": [
+				{
+					"id": "study.alzabo.remnant.reducehunger"
+				}
+			],
+			"alt": [
+				{
+					"id": "study.alzabo.follower_scar_edge"
+				},
+				{
+					"id": "study.alzabo.follower_scar_knock"
+				},
+				{
+					"id": "study.alzabo.follower_scar_winter"
+				},
+				{
+					"id": "study.alzabo.corpse"
+				},
+				{
+					"id": "study.alzabo.crucible"
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "study.alzabo.remnant.reducehunger",
+			"actionId": "study",
+			"label": "残骸を食べる",
+			"requirements": {
+				"ghoul.hunger": 1
+			},
+			"mutations": [
+				{
+					"filter": "remembrancemarks",
+					"mutate": "ghoul.hunger",
+					"level": -1,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "study.alzabo.corpse",
+			"actionId": "study",
+			"label": "死体を食べる",
+			"startdescription": "もう一度埋めなくてはいけない物が残っていることがあるが、もっと効率的なやり方がある。",
+			"requirements": {
+				"corpse": 1,
+				"alzabo": 1
+			},
+			"linked": [
+				{
+					"id": "study.alzabo.corpse.reducehunger"
+				}
+			],
+			"deckeffect": {
+				"ghoul.memory": 1
+			},
+			"effects": {
+				"corpse": -1
+			}
+		},
+		{
+			"id": "study.alzabo.corpse.reducehunger",
+			"actionId": "study",
+			"label": "死体を食べる",
+			"requirements": {
+				"ghoul.hunger": 1
+			},
+			"mutations": [
+				{
+					"filter": "remembrancemarks",
+					"mutate": "ghoul.hunger",
+					"level": -1,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "study.alzabo.follower_scar_edge",
+			"actionId": "study",
+			"label": "古傷",
+			"startdescription": "残忍な経験が、肉体に強烈な風味を残した。",
+			"requirements": {
+				"follower_scar_edge": 1
+			},
+			"linked": [
+				{
+					"id": "study.alzabo.follower_scar.reducehunger"
+				}
+			],
+			"effects": {
+				"dread": 1,
+				"influenceedge": 1,
+				"memory.menacing": 1,
+				"corpse": -1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "study.alzabo.follower_scar_knock",
+			"actionId": "study",
+			"label": "古傷",
+			"startdescription": "この肉にはあまりにも多くの扉が開いており、その味は恐怖の迷宮となっている。",
+			"requirements": {
+				"follower_scar_knock": 1
+			},
+			"linked": [
+				{
+					"id": "study.alzabo.follower_scar.reducehunger"
+				}
+			],
+			"effects": {
+				"dread": 1,
+				"influenceknock": 1,
+				"memory.menacing": 1,
+				"corpse": -1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "study.alzabo.follower_scar_winter",
+			"actionId": "study",
+			"label": "古傷",
+			"startdescription": "冷たい不幸がこの肉に霜を残し、私の心はそれによって冷えている。",
+			"requirements": {
+				"follower_scar_winter": 1
+			},
+			"linked": [
+				{
+					"id": "study.alzabo.follower_scar.reducehunger"
+				}
+			],
+			"effects": {
+				"dread": 1,
+				"influencewinter": 1,
+				"memory.menacing": 1,
+				"corpse": -1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "study.alzabo.follower_scar.reducehunger",
+			"actionId": "study",
+			"label": "古傷",
+			"requirements": {
+				"ghoul.hunger": 1
+			},
+			"mutations": [
+				{
+					"filter": "remembrancemarks",
+					"mutate": "ghoul.hunger",
+					"level": -1,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "study.alzabo.crucible",
+			"actionId": "study",
+			"label": "坩堝の残骸を食べる",
+			"startdescription": "先にどうぞ。私は少しだけで大丈夫だ。",
+			"description": "火傷はごく軽いもので、すぐに治るだろうが、彼の味は何日も口の中に残ってしまうだろう。",
+			"requirements": {
+				"alzabo": 1,
+				"spirit_forgee_edge.defunct": 1
+			},
+			"effects": {
+				"influenceforgec": 1,
+				"spirit_forgee_edge.consumed": 1
+			},
+			"linked": [
+				{
+					"id": "study.alzabo.crucible.reducehunger"
+				}
+			]
+		},
+		{
+			"id": "study.alzabo.crucible.reducehunger",
+			"actionId": "study",
+			"label": "坩堝の残骸を食べる",
+			"requirements": {
+				"ghoul.hunger": 1
+			},
+			"mutations": [
+				{
+					"filter": "remembrancemarks",
+					"mutate": "ghoul.hunger",
+					"level": -1,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "explore.ghoul.findgraveyard",
+			"actionId": "explore",
+			"requirements": {
+				"ghoul.hunger": 1
+			},
+			"effects": {
+				"location.cemetery": 1,
+				"mystique": 1
+			},
+			"label": "有望な墓地を探す",
+			"startdescription": "近すぎず遠すぎない墓地を求めて街を歩き回る――忙しすぎても静かすぎてもダメだ。",
+			"description": "有望な埋葬地を見つけた。",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "work.seance",
+			"actionId": "work",
+			"label": "内密の相談",
+			"startdescription": "パフォーマーとしての評判は台無しとなったが、神託としての評判は広まり始めたばかりだ。しかし、政府はすでに私を監視し始めている。",
+			"description": "今日は誰も私の部屋に立ち寄らなかった。それが一番だ。話すことは何もない。",
+			"requirements": {
+				"ghouljob": 1
+			},
+			"alt": [
+				{
+					"id": "work.seance.shameful"
+				},
+				{
+					"id": "work.seance.profitable"
+				},
+				{
+					"id": "work.seance.joyful"
+				},
+				{
+					"id": "work.seance.menacing"
+				},
+				{
+					"id": "work.seance.unexpected"
+				},
+				{
+					"id": "work.seance.grandmemory"
+				},
+				{
+					"id": "work.seance.other"
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "work.seance.shameful",
+			"actionId": "work",
+			"label": "死者の追憶：恥ずべきこと",
+			"startdescription": "私の沈黙を買ってくれる人を見つけた。",
+			"description": "みすぼらしい取引だが、儲かる。",
+			"requirements": {
+				"memory.shameful": 1
+			},
+			"effects": {
+				"funds": 3,
+				"memory.shameful": -1
+			}
+		},
+		{
+			"id": "work.seance.profitable",
+			"actionId": "work",
+			"label": "死者の追憶：有益なこと",
+			"startdescription": "この記憶から利益を得られる人を見つけてきた。報酬はたっぷり払ってくれるだろう。",
+			"description": "お互い色々と得をし......私の評判は少し不気味さを増した。",
+			"requirements": {
+				"memory.profitable": 1
+			},
+			"effects": {
+				"funds": 3,
+				"memory.profitable": -1,
+				"mystique": 1
+			}
+		},
+		{
+			"id": "work.seance.joyful",
+			"actionId": "work",
+			"label": "死者の追憶：嬉しいこと",
+			"startdescription": "依頼者の記憶とは限らないかもしれないが、真実だ。",
+			"description": "今のところはこれで十分だ。依頼者が涙を流しているのを見て安心した。依頼者自身もそう思っているようだ。",
+			"requirements": {
+				"memory.joyful": 1
+			},
+			"effects": {
+				"funds": 2,
+				"memory.joyful": -1,
+				"contentment": 1,
+				"mystique": 1
+			}
+		},
+		{
+			"id": "work.seance.menacing",
+			"actionId": "work",
+			"label": "死者の追憶：脅威的なこと",
+			"startdescription": "これは過酷だ。楽しめないかもしれない。",
+			"description": "依頼人は愕然としているが、同時に興奮もしている。このために金を使う人もいれば、何にでも金を出す人もいる。",
+			"requirements": {
+				"memory.menacing": 1
+			},
+			"effects": {
+				"funds": 2,
+				"memory.menacing": -1,
+				"dread": 1,
+				"mystique": 1
+			}
+		},
+		{
+			"id": "work.seance.unexpected",
+			"actionId": "work",
+			"label": "死者の追憶：予期せぬこと",
+			"startdescription": "神託は予測不可能なものであるべきだ。",
+			"description": "後になって、何を言ったかは正確には覚えていないが、唇にはその言葉の味が残っている。",
+			"requirements": {
+				"memory.unexpected": 1
+			},
+			"effects": {
+				"funds": 2,
+				"memory.unexpected": -1,
+				"mystique": 1
+			},
+			"internaldeck": {
+				"label": "予期せぬもの",
+				"description": "予期せぬもの",
+				"spec": [
+					"vitalityplus",
+					"fascination",
+					"dread",
+					"eruditionplus",
+					"glimmeringplus",
+					"influencelanternc",
+					"influencewinterc",
+					"influencemothc",
+					"fragmentsecrethistories",
+					"vitalityplus",
+					"fascination",
+					"dread",
+					"eruditionplus",
+					"glimmeringplus",
+					"influencelanternc",
+					"influencewinterc",
+					"influencemothc",
+					"fragmentsecrethistories",
+					"fragmentsecrethistoriesc",
+					"influencemothe"
+				],
+				"resetonexhaustion": true,
+				"draws": 1
+			}
+		},
+		{
+			"id": "work.seance.grandmemory",
+			"actionId": "work",
+			"label": "濃すぎるワイン",
+			"startdescription": "失われた色のことを本当に話したいのだろうか。",
+			"description": "依頼人は部屋からよろめいて出ていった。私が言ったことの4分の1も理解していなかったと思うが、人に聴かせたい話ができただろう。",
+			"requirements": {
+				"memory": 5
+			},
+			"effects": {
+				"funds": 1,
+				"notoriety": 1
+			}
+		},
+		{
+			"id": "work.seance.other",
+			"actionId": "work",
+			"label": "インスピレーションと絶望",
+			"startdescription": "中途半端な真実を急いでまとめれば、依頼者を満足させることができるだろう。",
+			"description": "報酬をもらった。報酬に見合うことをしたかどうかは分からないが、幸運にも、依頼者も分かっていないようだ。",
+			"comments": "I've decided that Fleeting Rems get eaten and romantic rems, Dread, F all get kept. We can crack this into specifics if we have too.",
+			"requirements": {
+				"memory": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"fleeting": -1
+			}
+		}
+	]
+}

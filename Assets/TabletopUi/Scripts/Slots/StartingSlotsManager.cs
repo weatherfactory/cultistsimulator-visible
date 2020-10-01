@@ -41,7 +41,7 @@ namespace Assets.TabletopUi.SlotsContainers {
             }
         }
 
-        public override void RespondToStackAdded(RecipeSlot slot, IElementStack stack, Context context) {
+        public override void RespondToStackAdded(RecipeSlot slot, ElementStackToken stack, Context context) {
 
 
             situationController.StartingSlotsUpdated();
@@ -55,7 +55,7 @@ namespace Assets.TabletopUi.SlotsContainers {
 
         }
 
-        protected void AddSlotsForStack(IElementStack stack, RecipeSlot parentSlot) {
+        protected void AddSlotsForStack(ElementStackToken stack, RecipeSlot parentSlot) {
 
             foreach (var childSlotSpecification in stack.GetChildSlotSpecificationsForVerb(situationController.GetTokenId()))
             {
@@ -64,7 +64,7 @@ namespace Assets.TabletopUi.SlotsContainers {
             }
         }
 
-        public override void RespondToStackRemoved(IElementStack stack, Context context) {
+        public override void RespondToStackRemoved(ElementStackToken stack, Context context) {
             // startingSlots updated may resize window
             situationController.StartingSlotsUpdated();
 

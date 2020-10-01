@@ -1,0 +1,133 @@
+{
+	"elements": [
+		{
+			"id": "thugedgeminor",
+			"label": "Ein hünenhafter Geselle",
+			"aspects": {
+				"mortal": 1,
+				"hireling": 1,
+				"follower": 1,
+				"edge": 3
+			},
+			"description": "'Ich erledige das.' [Dieser Heuerling könnte bei einigen Expeditionen nützlich sein und kann gegen Jäger und Ärgernisse helfen.]",
+			"xtriggers": {
+				"hiring": "thugedgeminor",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "generic_p"
+			},
+			"lifetime": 120
+		},
+		{
+			"id": "thugmothminor",
+			"label": "Eine zwielichtige Frau",
+			"aspects": {
+				"mortal": 1,
+				"hireling": 1,
+				"follower": 1,
+				"moth": 3
+			},
+			"description": "'Ich erledige das.' [Dieser Heuerling könnte bei einigen Expeditionen nützlich sein und kann gegen Jäger und Ärgernisse helfen.]",
+			"xtriggers": {
+				"hiring": "thugmothminor",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "generic_p"
+			},
+			"lifetime": 120
+		},
+		{
+			"id": "thugedge",
+			"label": "Berufsschläger",
+			"aspects": {
+				"mortal": 1,
+				"hireling": 1,
+				"follower": 1,
+				"edge": 5
+			},
+			"description": "'Ich brech' die in der Mitte durch.' [Dieser Heuerling könnte bei einigen Expeditionen nützlich sein und kann gegen Jäger und Ärgernisse helfen.]",
+			"xtriggers": {
+				"hiring": "thugedge",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "generic_p"
+			},
+			"lifetime": 120
+		},
+		{
+			"id": "thugforgeedge",
+			"label": "Ein Bombenbauer",
+			"aspects": {
+				"mortal": 1,
+				"hireling": 1,
+				"follower": 1,
+				"forge": 5,
+				"edge": 3
+			},
+			"description": "'Vielleicht sollten wir jetzt noch nicht über Politik reden.' [Dieser Heuerling könnte bei einigen Expeditionen nützlich sein und kann gegen Jäger und Ärgernisse helfen.]",
+			"xtriggers": {
+				"hiring": "thugforgeedge",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "generic_p"
+			},
+			"lifetime": 120
+		},
+		{
+			"id": "thugknock",
+			"label": "Ein Eingangsberater",
+			"aspects": {
+				"mortal": 1,
+				"hireling": 1,
+				"follower": 1,
+				"knock": 5
+			},
+			"description": "'Ich kenn' mich mit Türen aus.' [Dieser Heuerling könnte bei einigen Expeditionen nützlich sein.]",
+			"xtriggers": {
+				"hiring": "thugknock",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "generic_p"
+			},
+			"lifetime": 120
+		},
+		{
+			"id": "thuglanternmoth",
+			"label": "Ein Wahrsager",
+			"aspects": {
+				"mortal": 1,
+				"hireling": 1,
+				"follower": 1,
+				"lantern": 5,
+				"moth": 3
+			},
+			"description": "'Ich sehe Dinge. Zum Beispiel, dass du anders bist.' [Dieser Heuerling könnte bei einigen Expeditionen nützlich sein und kann gegen Jäger und Ärgernisse helfen.]",
+			"xtriggers": {
+				"hiring": "thuglanternmoth",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "generic_p"
+			},
+			"lifetime": 120
+		},
+		{
+			"id": "thugmoth",
+			"label": "Ein erfahrener Schwindler",
+			"aspects": {
+				"mortal": 1,
+				"hireling": 1,
+				"follower": 1,
+				"moth": 5,
+				"grail": 1
+			},
+			"description": "'Welch' eine Freude mit dir zu arbeiten!' [Dieser Heuerling könnte bei einigen Expeditionen nützlich sein und kann gegen Jäger und Ärgernisse helfen.]",
+			"xtriggers": {
+				"hiring": "thugmoth",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "generic_p"
+			},
+			"lifetime": 120
+		}
+	]
+}

@@ -1,0 +1,40 @@
+{
+	"elements": [
+		{
+			"id": "bequestintro",
+			"label": "Ein Nachlass",
+			"aspects": {
+				"legacyplotitem": 1
+			},
+			"description": "Ein Paket eigentümlicher Papiere vom Testmentsvorllstrecker meines Korrespondenten. Ich MUSS sie studieren, entweder mit Leidenschaft oder Verstand.",
+			"slots": [
+				{
+					"id": "Approach",
+					"label": "Ansatz",
+					"actionId": "study",
+					"required": {
+						"reason": 1,
+						"passion": 1
+					},
+					"description": "Bin ich ein leidenschaftliches Individuum oder ein vernünftiges?"
+				}
+			]
+		},
+		{
+			"id": "introjob",
+			"label": "Niedere Arbeit",
+			"description": "Ein prekärer Job als Portier im Krankenhaus. Schlimm, aber alles, was du gerade kirgen kannst.",
+			"aspects": {
+				"job": 1
+			}
+		},
+		{
+			"id": "contactintro",
+			"aspects": {
+				"legacyplotitem": 1
+			},
+			"label": "Notizen zu einem möglichen Mitarbeiter",
+			"description": "Mein Korrespondent hat seine Beobachtungen zu mir festgehalten. Er glaubte, ich habe 'Potenzial'. Mein Korrespondent hat auch seine Beobachtungen zu jemand anderem festgehalten. Mit Zeit und Geduld kann ich vielleicht den- oder diejenige finden."
+		}
+	]
+}

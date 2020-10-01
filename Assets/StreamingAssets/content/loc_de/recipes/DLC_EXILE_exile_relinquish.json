@@ -1,0 +1,499 @@
+{
+	"recipes": [
+		{
+			"id": "relinquish.first",
+			"actionId": "relinquish",
+			"label": "Aufgeben",
+			"startdescription": "Jemand hat auf mich geschossen als ich mit den Jahren rauskam. Hätte ich fast vergessen.",
+			"description": "Ich habe den Verband gewechselt. Ich kann mich gut genug bewegen. Ich könnte warten, bis es verheilt, oder es mit gestohlenen Jahren heilen, falls ich es eilig haben sollte – aber ich bräuchte ein ganzes Jahrzehnt, und das würde auf jeden Fall auffallen.",
+			"effects": {
+				"wound.exile": 1
+			},
+			"comments": "opened by initial scout recipe",
+			"alt": [
+				{
+					"id": "send.first",
+					"additional": true
+				}
+			],
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.decade.healwound.foe",
+			"actionId": "relinquish",
+			"label": "Eine Wunde mit einem Gestohlenen Jahrzehnt heilen",
+			"startdescription": "Die Jahre müssen lautlos bei Einbruch der Dämmerung verbrannt und die Wunde mit der Asche verbunden werden. Das ist an jedem Tag schon knifflig genug, aber da mich der Feind durch die Nacht verfolgt, wird das überhaupt keinen Spaß machen. [Du brauchst eine Gelegenheit der Dämmerung, um das hier abzuschließen.]",
+			"description": "Ich konnte nicht genug Zeit oder Ruhe finden. [Sei bereit mit einer Gelegenheit der Dämmerung.]",
+			"slots": [
+				{
+					"id": "dawn",
+					"label": "Dämmerung",
+					"description": "Der Moment",
+					"requirements": {
+						"op.dawn": 1
+					}
+				}
+			],
+			"requirements": {
+				"decade.stolen": 1,
+				"damage.exile": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"alt": [
+				{
+					"id": "relinquish.decade.healwound.success.foe"
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.decade.healwound.success.foe",
+			"actionId": "relinquish",
+			"label": "Eine Wunde mit einem Gestohlenen Jahrzehnt heilen",
+			"startdescription": "Ich habe mir von der Madrugada etwas Zeit zurückgekauft.",
+			"requirements": {
+				"decade.stolen": 1,
+				"damage.exile": 1,
+				"op.dawn": 1
+			},
+			"effects": {
+				"decade.stolen": -1,
+				"damage.exile": -1,
+				"op.dawn": -1
+			}
+		},
+		{
+			"id": "relinquish.decade.healwound",
+			"actionId": "relinquish",
+			"label": "Eine Wunde mit einem Gestohlenen Jahrzehnt heilen",
+			"startdescription": "Die Jahre müssen lautlos bei Einbruch der Dämmerung – die Madrugada ist da sehr penibel – verbrannt und die Wunde mit der Asche verbunden werden. [Du brauchst eine Gelegenheit der Dämmerung, um das hier abzuschließen.]",
+			"description": "Ich konnte nicht genug Zeit oder Ruhe finden. [Sei bereit mit einer Gelegenheit der Dämmerung.]",
+			"slots": [
+				{
+					"id": "dawn",
+					"label": "Dämmerung",
+					"description": "Der Moment",
+					"requirements": {
+						"op.dawn": 1
+					}
+				}
+			],
+			"requirements": {
+				"decade.stolen": 1,
+				"damage.exile": 1
+			},
+			"alt": [
+				{
+					"id": "relinquish.decade.healwound.success"
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.decade.healwound.success",
+			"actionId": "relinquish",
+			"label": "Eine Wunde mit einem Gestohlenen Jahrzehnt heilen",
+			"startdescription": "Die Madrugada ist nicht gnädig. Sie setzt immer durch, was nötig ist. Aber ich war eh noch nie jemand, der um Gnade bettelt. [Die Abrechner, die dich verfolgen, haben brennende Jahre gewittert.]",
+			"requirements": {
+				"decade.stolen": 1,
+				"damage.exile": 1,
+				"op.dawn": 1
+			},
+			"effects": {
+				"decade.stolen": -1,
+				"damage.exile": -1,
+				"trace": 1,
+				"op.dawn": -1
+			}
+		},
+		{
+			"id": "relinquish.vitality.healwound",
+			"actionId": "relinquish",
+			"label": "Eine Wunde mit Vitalität heilen",
+			"startdescription": "Als Abrechner habe ich schon vor langer Zeit gelernt, die plötzlichen Impulse des Lebens umzuleiten.",
+			"description": "Ein Schüler der Unsichtbaren Künste würde jetzt zweifellos zur Donnerhaut beten. Ich bin klüger.",
+			"requirements": {
+				"vitality": 1,
+				"damage.exile": 1
+			},
+			"effects": {
+				"vitality": -1,
+				"damage.exile": -1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.healwound.hint",
+			"actionId": "relinquish",
+			"label": "Eine Wunde heilen?",
+			"startdescription": "Ich könnte meine Wunde mit einem Gestohlenen Jahrzehnt heilen – aber dadurch könnten Abrechner angelockt werden. Oder wenn ich eine Quelle der Vitalität entdecke, könnte auch die benutzen. Natürlich kann ich auch einfach warten, bis meine Wunde von selbst verheilt – so ich denn die Zeit dafür habe.",
+			"requirements": {
+				"damage.exile": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.decade.unpack",
+			"actionId": "relinquish",
+			"label": "Gestohlenes Jahrzehnt zerlegen",
+			"startdescription": "Gestohlenes Leben lässt sich viel leichter in Jahren als in Jahrzehnten verkaufen. Ich habe das Werkzeug für die nötigen Änderungen, doch ich muss mit meinen Pinselstrichen sehr vorsichtig sein.  Sie, die vor der Sonne kommt, zürnt jeder Schlamperei. [Jahrzehnte lassen sich nicht verkaufen. Jahre können zum Heilen von Wunden nicht verwendet werden. Jahre können nicht wieder zu Jahrzehnten zusammengefasst werden.]",
+			"description": "Endlich ist es vollbracht. Ich habe zehn Tratten sorgfältig auf dem Kerbholz festgehalten und die Jahrzehnt-Tratte verbrannt. Jede meiner neuen Tratten ist 42 Millionen menschliche Herzschläge wert. Ich glaube, ich kann sie im Papier zittern hören ...",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"effects": {
+				"decade.stolen": -1,
+				"year.stolen": 10
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.convertyear",
+			"actionId": "relinquish",
+			"label": "Hastig Bargeld auftreiben",
+			"startdescription": "Wenn ich Lebenszeit direkt gegen Bargeld verkaufe, erziele ich einen geringeren Preis und ziehe schneller die Aufmerksamkeit von Abrechnern auf mich. Sobald ich eine bessere Alternative gefunden habe, sollte ich so etwas so selten wie möglich machen.",
+			"description": "Verrauchte Zimmer, zerknüllte Banknoten. Ich bin es leid. [Operationen sind ein sehr viel sichererer Weg, um Jahre zu Bargeld zu machen. Die meisten Operationen erfordern Kontakte.]",
+			"requirements": {
+				"year.stolen": 1
+			},
+			"effects": {
+				"year.stolen": -1,
+				"cash": 1
+			},
+			"aspects": {
+				"terribletracerisk": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.corpse.exile.underling.defiance",
+			"actionId": "relinquish",
+			"label": "Meinen Sieg feiern",
+			"startdescription": "Die Stunden des Kampfes und der Eroberung wissen Siege zu schätzen. Ich kann ihnen diese Trophäe darbringen, um mein Ansehen in ihren Augen zu mehren.",
+			"description": "Es ist vollbracht. In der Stunde, in welcher der Tag gegen die Nacht kämpft, senken sich die Vielgeflügelten herab, um meine Opfer zu begutachten, und wenn sie sich wieder entfernen, lassen sie nur Knochenstücke und Haarbüschel zurück.",
+			"requirements": {
+				"corpse.exile.underling": 1,
+				"temptation.defiance": 1,
+				"defiance.underlingdefeated": -1
+			},
+			"effects": {
+				"corpse.exile.underling": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.underlingdefeated",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.corpse.exile.underling.lore",
+			"actionId": "relinquish",
+			"label": "Von meinem Sieg lernen",
+			"startdescription": "Bestimmte Techniken lassen sich nur im Blute eines Feindes ausdrücken.",
+			"description": "Dies war weder eine saubere noch eine angenehme Angelegenheit ... doch ich habe ein Verständnis für die vielen Arten von Aktionen der Sterblichen entwickelt.",
+			"requirements": {
+				"corpse.exile.underling": 1,
+				"lore": 1
+			},
+			"effects": {
+				"corpse.exile.underling": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.corpse.exile",
+			"actionId": "relinquish",
+			"label": "Eine diskrete Bestattung",
+			"startdescription": "Es wäre unschicklich, jemanden nicht zu bestatten. Doch deswegen braucht man kein Aufhebens machen.",
+			"description": "Wir haben dafür gesorgt, dass diese arme Hülle still und leise aus dem Weg geschafft wurde. Wer danach sucht, findet nur eine Reihe falscher Spuren.",
+			"requirements": {
+				"corpse.exile": 1,
+				"deception": 2
+			},
+			"effects": {
+				"corpse.exile": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.trace.connections",
+			"actionId": "relinquish",
+			"label": "Meine Spuren verwischen",
+			"startdescription": "Meine Verbündeten werden mir helfen, die entsprechenden Akten zu manimulieren.",
+			"description": "'Bücher sind die Erinnerung, die nicht stirbt' ... hat mal jemand gesagt, der noch nie einen kompetenten Fälscher getroffen hat.",
+			"requirements": {
+				"trace": 1,
+				"deception": 2,
+				"connection": 2
+			},
+			"effects": {
+				"trace": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.night.connection",
+			"actionId": "relinquish",
+			"label": "Meine Spuren verwischen",
+			"startdescription": "Wenn der Mond untergeht, setzen wir unsere Pläne in die Tat um.",
+			"description": "Die Sonne wird über einer weiteren verlorenen Historie aufgehen.",
+			"requirements": {
+				"trace": 1,
+				"deception": 2,
+				"connection": 1,
+				"op.night": 1
+			},
+			"effects": {
+				"trace": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.trace.space.connection",
+			"actionId": "relinquish",
+			"label": "Meine Spuren verwischen",
+			"startdescription": "Meine Freunde werden dafür sorgen, dass die Adresse von einem Strohmann besetzt bleibt.",
+			"description": "Ich habe für den Strohmann einen alten Mantel gespendet. Ich hoffe, er wird nicht direkt ermordet.",
+			"requirements": {
+				"trace": 1,
+				"deception": 2,
+				"space": 1,
+				"connection": 1
+			},
+			"effects": {
+				"trace": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.trace.space.night",
+			"actionId": "relinquish",
+			"label": "Meine Spuren verwischen",
+			"startdescription": "Ich schlüpfe nachts raus.",
+			"description": "Keiner wird je erfahren, dass ich von dort verschwunden bin, tagelang nicht ... und dann bin ich schon von woanders wieder verschwunden.",
+			"requirements": {
+				"trace": 1,
+				"deception": 2,
+				"space": 1,
+				"op.night": 1
+			},
+			"effects": {
+				"trace": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.trace.space",
+			"actionId": "relinquish",
+			"label": "Meine Spuren verwischen?",
+			"startdescription": "[Du kannst eine Spur verwischen, indem du eine Behausung mit einer Nacht oder einem Kontakt benutzt, jedoch nicht mit zwei Behausungen.]",
+			"requirements": {
+				"trace": 1,
+				"deception": 2,
+				"space": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.trace",
+			"actionId": "relinquish",
+			"label": "Meine Spuren verwischen",
+			"startdescription": "Ich kann Feinde in die Irre führen, die meiner Spur folgen.",
+			"description": "Als wäre ich Nebel.",
+			"requirements": {
+				"trace": 1,
+				"deception": 2
+			},
+			"effects": {
+				"trace": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.corpse.exile.underling.defiance.already.hint",
+			"actionId": "relinquish",
+			"label": "Bereits erkannt",
+			"startdescription": "Die Vielgeflügelten, welche über die Getöteten richten, haben bereits einen Sieg dieser Art bestätigt. Ich sollte sie nicht noch einmal behelligen.",
+			"requirements": {
+				"corpse.exile.underling": 1,
+				"temptation.defiance": 1,
+				"defiance.underlingdefeated": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.corpse.exile.underling.hint",
+			"actionId": "relinquish",
+			"label": "Der Nutzen Sterblicher?",
+			"startdescription": "Eine menschliche Leiche ist ein unpraktischer Besitz, doch, ab und an, auch ein wertvoller.",
+			"requirements": {
+				"corpse.exile.underling": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.trace.hint.space",
+			"actionId": "relinquish",
+			"label": "Meine Spuren verwischen?",
+			"startdescription": "Irgendwo, wo ich nie wieder hingehen werde ... [Füge noch eine Karte mit Täuschung hinzu, aber keine 2. Adresse.]",
+			"requirements": {
+				"trace": 1,
+				"space": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.trace.hint.connection",
+			"actionId": "relinquish",
+			"label": "Meine Spuren verwischen?",
+			"startdescription": "Mit der Hilfe von Freunden, die sich gut in der Stadt auskennen ... [Füge noch eine Karte mit Täuschung hinzu.]",
+			"requirements": {
+				"trace": 1,
+				"connection": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.trace.hint.night",
+			"actionId": "relinquish",
+			"label": "Meine Spuren verwischen?",
+			"startdescription": "Wenn die Nacht wachsame Augen blendet ... [Füge noch eine Karte mit Täuschung hinzu.]",
+			"requirements": {
+				"trace": 1,
+				"op.night": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.trace.hint",
+			"actionId": "relinquish",
+			"label": "Meine Spuren verwischen?",
+			"startdescription": "Mit den richtigen Ressourcen könnte ich meine Feinde von meiner Spur abbringen. [Benutze 2 Karten mit Täuschung - aber nicht mehr als 1 Adresse.]",
+			"requirements": {
+				"trace": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.sell",
+			"actionId": "relinquish",
+			"label": "Versuchen, ein Aktivum zu Bargeld zu machen",
+			"startdescription": "@#licence.medical|Ich kann in der Regel jemanden auftreiben, der glaubt, er habe es wirklich verdient, ein Doktor zu sein.\n#|Vielleicht brauche ich dringender Bargeld als das hier.@ [Dadurch wird das Aktivum gegen Bargeld in der Höhe seines Werts ausgetauscht.]",
+			"requirements": {
+				"worth": 1,
+				"cash": -1,
+				"trace": -1
+			},
+			"extantreqs": {
+				"asset.packed": -1
+			},
+			"comments": "cash also has worth, but let's not convert it back to cash",
+			"effects": {
+				"cash": "worth",
+				"asset": -1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.abandon",
+			"actionId": "relinquish",
+			"label": "Ein Aktivum abwerfen",
+			"startdescription": "Wenn dir der Teufel im Nacken sitzt, reise mit leichtem Gepäck. [Benutze dies, um Portable Aktiva loszuwerden, die du mangels Zeit nicht mitnehmen möchtest.]",
+			"requirements": {
+				"asset": 1,
+				"trace": -1
+			},
+			"extantreqs": {
+				"asset.packed": 1
+			},
+			"effects": {
+				"asset": -1
+			},
+			"warmup": 1,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.provoke",
+			"actionId": "relinquish",
+			"label": "Meine Kontakte provozieren",
+			"startdescription": "Ich bin nicht der Einzige, der Feinde hat. Wenn ich mich mit diesem Kontakt in der Öffentlichkeit streite, bekomme ich vielleicht @#connection.official|Kontakte zur Unterwelt\n#connection.holy|Kontakte zu Radikalen\n#connection.radicals|Offizielle Kontakte\n#connection.ruler|Kontakte zu Radikalen\n#connection.underworld|Offizielle Kontakte@ stattdessen. Oder vielleicht stoße ich einfach nur meine aktuellen Kontakte vor den Kopf. [Dies funktioniert in der Regel, doch manchmal auch nicht, und dann stehst du ohne Kontakte da, hast aber eine Spur hinterlassen.]",
+			"requirements": {
+				"connection": 1,
+				"trace": -1
+			},
+			"linked": [
+				{
+					"id": "relinquish.provoke.success",
+					"chance": 70
+				},
+				{
+					"id": "relinquish.provoke.failure"
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.provoke.success",
+			"actionId": "relinquish",
+			"label": "Geschafft!",
+			"startdescription": "Neue Freunde.",
+			"aspects": {
+				"provoking": 1
+			}
+		},
+		{
+			"id": "relinquish.provoke.failure",
+			"actionId": "relinquish",
+			"label": "Hoppla –",
+			"startdescription": "Ich wusste doch, dass das ein böses Wort ist, aber mir war nicht klar, <i>wie</i> böse.",
+			"effects": {
+				"connection": -1,
+				"trace": 1
+			}
+		}
+	]
+}

@@ -9,6 +9,7 @@ using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using UnityEngine;
 using Assets.TabletopUi.Scripts;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 using Object = UnityEngine.Object;
 
@@ -32,35 +33,12 @@ namespace Assets.TabletopUi.Scripts.Services
         [SerializeField] TabletopManager TabletopManager = null;
 
 
-        public static T CreateToken<T>(Transform destination, string saveLocationInfo = null) where T : DraggableToken
-        {
-            var token = PrefabFactory.CreateLocally<T>(destination);
-            try
-            {
-                
-                var pf = Instance();
-
-                token.SetTokenContainer(pf.TabletopManager._tabletop, new Context(Context.ActionSource.Unknown));
-                if (saveLocationInfo != null)
-                    token.SaveLocationInfo = saveLocationInfo;
-
-                
-            }
-            catch
-            {
-                Debug.Log("problem: " + saveLocationInfo);
-            }
-
-            return token;
-        }
-
-
         public static T CreateLocally<T>(Transform parent) where T : Component
         {
             var o = GetPrefab<T>();
             try
             { 
-            T c = Object.Instantiate(o, parent, false) as T;
+                var c = Object.Instantiate(o, parent, false) as T;
                 c.transform.localScale = Vector3.one;
 
                 return c;

@@ -1,0 +1,750 @@
+{
+	"recipes": [
+		{
+			"id": "internaldecktest",
+			"actionId": "test",
+			"label": "x",
+			"startdescription": "?",
+			"description": "!",
+			"internaldeck": {
+				"label": "Bekanntschaften auswählen",
+				"description": "Tach",
+				"spec": [
+					"cat_a",
+					"clifton_a",
+					"slee_a",
+					"elridge_a",
+					"laidlaw_a"
+				],
+				"defaultcard": "funds",
+				"draws": 2
+			}
+		},
+		{
+			"id": "bi",
+			"actionId": "bii",
+			"label": "Karte",
+			"startdescription": "Karte",
+			"burnimage": "map",
+			"warmup": 5
+		},
+		{
+			"id": "droo",
+			"actionId": "droo",
+			"label": "Sushi bei Deliveroo bestellen",
+			"startdescription": "So wird köstliches Sushi in nur wenigen Minute direkt an deine Haustür geliefert. Das Beste daran ist, dass du ständig mit Updates zur aktuellen Position deines Sushis versorgt wirst!",
+			"description": "So wird köstliches Sushi in nur wenigen Minute direkt an deine Haustür geliefert. Das Beste daran ist, dass du ständig mit Updates zur aktuellen Position deines Sushis versorgt wirst!",
+			"slots": [
+				{
+					"id": "funds",
+					"label": "Bestellung",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"warmup": 10,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "droo"
+				}
+			]
+		},
+		{
+			"id": "droostart",
+			"actionId": "droo",
+			"requirements": {
+				"funds": 1
+			},
+			"label": "Das Restaurant bereitet deine Bestellung vor",
+			"startdescription": "Mmh, Sushi!",
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "droogo"
+				}
+			]
+		},
+		{
+			"id": "droogo",
+			"actionId": "droo",
+			"deckeffect": {
+				"seasonevents": 1
+			},
+			"linked": [
+				{
+					"id": "droogosickness"
+				},
+				{
+					"id": "droogodespair"
+				},
+				{
+					"id": "droogovisions"
+				},
+				{
+					"id": "droogoambition"
+				},
+				{
+					"id": "droogovisions"
+				},
+				{
+					"id": "droogosuspicion"
+				},
+				{
+					"id": "droogoardours"
+				},
+				{
+					"id": "droogosilence"
+				}
+			]
+		},
+		{
+			"id": "droogosickness",
+			"actionId": "droo",
+			"label": "Dein Fahrer wartet beim Restaurant",
+			"startdescription": "Dauert nicht mehr lange!",
+			"requirements": {
+				"seasonsickness": 1
+			},
+			"effects": {
+				"season": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "droogo"
+				}
+			]
+		},
+		{
+			"id": "droogodespair",
+			"actionId": "droo",
+			"label": "Ein Fahrer wird deiner Bestellung zugewiesen",
+			"startdescription": "Wer das wohl sein wird?",
+			"requirements": {
+				"seasondespair": 1
+			},
+			"effects": {
+				"season": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "droogo"
+				}
+			]
+		},
+		{
+			"id": "droogovisions",
+			"actionId": "droo",
+			"label": "Ein Fahrer wurde deiner Bestellung zugewiesen",
+			"startdescription": "Cool! Sollte schon bald beim Restaurant sein.",
+			"requirements": {
+				"seasonvisions": 1
+			},
+			"effects": {
+				"season": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "droogo"
+				}
+			]
+		},
+		{
+			"id": "droogoambition",
+			"actionId": "droo",
+			"label": "Dein Fahrer wartet beim Restaurant",
+			"startdescription": "Cool! Dürfte fast schon unterwegs sein.",
+			"requirements": {
+				"seasonambitions": 1
+			},
+			"effects": {
+				"season": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "droogo"
+				}
+			]
+		},
+		{
+			"id": "droogoardours",
+			"actionId": "droo",
+			"label": "Ein Anruf vom Deliveroo-Kundendienst?",
+			"startdescription": "Das Restaurant habe gesagt, ich wolle meine Bestellung stornieren? Komisch. Egal – ich hab denen gesagt, ich will nichts stornieren, und ich bin mir sicher, alles wird gut.",
+			"requirements": {
+				"seasonardours": 1
+			},
+			"effects": {
+				"season": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "droogo"
+				}
+			]
+		},
+		{
+			"id": "droogosuspicion",
+			"actionId": "droo",
+			"label": "Ein Fahrer wurde deiner Bestellung zugewiesen",
+			"startdescription": "Cool! Sollte schon bald beim Restaurant sein.",
+			"requirements": {
+				"seasonsuspicion": 1
+			},
+			"effects": {
+				"season": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "droogo"
+				}
+			]
+		},
+		{
+			"id": "droogosilence",
+			"actionId": "droo",
+			"label": "'Deine Bestellung wurde storniert.",
+			"startdescription": "Hier hast du dein Geld zurück!\n\nWir entschuldigen uns für alle etwaigen Unannehmlichkeiten.\n\nWenn du es erneut probieren möchtest, bekommst du 15 EUR Rabatt!'",
+			"requirements": {
+				"seasonsilence": 1
+			},
+			"effects": {
+				"season": -1,
+				"dread": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "debugsnare",
+			"actionId": "x",
+			"label": "Große Fallen erschaffen",
+			"effects": {
+				"snare": 1
+			},
+			"warmup": 1,
+			"linked": [
+				{
+					"id": "debugsnareaddmutation",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "debugsnareaddmutation",
+			"actionId": "x",
+			"label": "Große Fallen+ erschaffen",
+			"mutations": [
+				{
+					"filterOnAspectId": "snare",
+					"mutateAspectId": "snarelevel",
+					"mutationLevel": 3,
+					"additive": true
+				}
+			],
+			"warmup": 1
+		},
+		{
+			"id": "_testexpelled",
+			"actionId": "testexpelled",
+			"startdescription": "Test ausgetrieben",
+			"description": "Test ausgetrieben – Ende",
+			"warmup": 5
+		},
+		{
+			"id": "_testmutations",
+			"label": "Mutation testen",
+			"actionId": "work",
+			"requirements": {
+				"owl": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "owl",
+					"mutateAspectId": "dreadful",
+					"mutationLevel": 10
+				}
+			],
+			"warmup": 1,
+			"craftable": true
+		},
+		{
+			"id": "_adeptskit",
+			"label": "Ausrüstung des Adepten",
+			"actionId": "adeptskit",
+			"warmup": 1,
+			"effects": {
+				"fragmentedge": 1,
+				"fragmentforge": 1,
+				"fragmentgrail": 1,
+				"fragmentheart": 1,
+				"fragmentknock": 1,
+				"fragmentlantern": 1,
+				"fragmentmoth": 1,
+				"fragmentsecrethistories": 1,
+				"fragmentwinter": 1,
+				"fragmentedgeb": 1,
+				"fragmentforgeb": 1,
+				"fragmentgrailb": 1,
+				"fragmentheartb": 1,
+				"fragmentknockb": 1,
+				"fragmentlanternb": 1,
+				"fragmentmothb": 1,
+				"fragmentsecrethistoriesb": 1,
+				"fragmentwinterb": 1,
+				"ingredientedgeb": 1,
+				"ingredientforgeb": 1,
+				"ingredientgrailb": 1,
+				"ingredientheartb": 1,
+				"ingredientknockb": 1,
+				"ingredientlanternb": 1,
+				"ingredientmothb": 1,
+				"ingredientwinterb": 1,
+				"tooledged": 1,
+				"toolforged": 1,
+				"toolgraild": 1,
+				"toolheartd": 1,
+				"toolknockd": 1,
+				"toollanternd": 1,
+				"toolmothd": 1,
+				"toolsecrethistoriesd": 1,
+				"toolwinterd": 1,
+				"ritefollowerconsumeingredient": 1,
+				"ritetoolconsumeingredient": 1
+			}
+		},
+		{
+			"id": "_memoryvault",
+			"label": "Eingelagerte Sachen holen",
+			"actionId": "fictitiousverb",
+			"effects": {
+				"LEVER_LastBook": 1,
+				"LEVER_LastDesire": 1,
+				"LEVER_LastTool": 1,
+				"LEVER_LastSignificantPainting": 1,
+				"LEVER_LastCult": 1,
+				"LEVER_LastHeadquarters": 1,
+				"LEVER_LastPersonKilled": 1
+			},
+			"startdescription": "Dies ist, was wir hatten:",
+			"warmup": 1,
+			"craftable": false
+		},
+		{
+			"id": "_ascensionending",
+			"label": "Aufstieg-Ende anzeigen",
+			"actionId": "fictitiousverb",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": "Los geht's",
+			"description": "Abschlusstext kommt",
+			"warmup": 5,
+			"craftable": false,
+			"ending": "minorgrailvictory"
+		},
+		{
+			"id": "_arrest",
+			"label": "Arrest-Ende anzeigen",
+			"actionId": "fictitiousverb",
+			"requirements": {
+				
+			},
+			"startdescription": "Los geht's",
+			"description": "Abschlusstext kommt",
+			"warmup": 5,
+			"craftable": false,
+			"ending": "arrest"
+		},
+		{
+			"id": "_mansustest",
+			"label": "Mansus-Effekt testen",
+			"actionId": "fictitiousverb",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": "Mansus-Zugang erfolgt bei Abschluss",
+			"description": "Mansus-Zugang erfolgt, wenn dies erscheint",
+			"warmup": 1,
+			"craftable": false,
+			"portaleffect": "Wood"
+		},
+		{
+			"id": "_mansusteststag",
+			"label": "Mansus-Effekt testen",
+			"actionId": "fictitiousverb",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": "Mansus-Zugang erfolgt bei Abschluss",
+			"description": "Mansus-Zugang erfolgt, wenn dies erscheint",
+			"warmup": 1,
+			"craftable": false,
+			"portaleffect": "StagDoor"
+		},
+		{
+			"id": "_mansustestpeacock",
+			"label": "Mansus-Effekt testen",
+			"actionId": "fictitiousverb",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": "Mansus-Zugang erfolgt bei Abschluss",
+			"description": "Mansus-Zugang erfolgt, wenn dies erscheint",
+			"warmup": 1,
+			"craftable": false,
+			"portaleffect": "PeacockDoor"
+		},
+		{
+			"id": "_mansustestgate",
+			"label": "Mansus-Effekt testen",
+			"actionId": "fictitiousverb",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": "Mansus-Zugang erfolgt bei Abschluss",
+			"description": "Mansus-Zugang erfolgt, wenn dies erscheint",
+			"warmup": 1,
+			"craftable": false,
+			"portaleffect": "TricuspidGate"
+		},
+		{
+			"id": "_mansustestspider",
+			"label": "Mansus-Effekt testen",
+			"actionId": "fictitiousverb",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": "Mansus-Zugang erfolgt bei Abschluss",
+			"description": "Mansus-Zugang erfolgt, wenn dies erscheint",
+			"warmup": 1,
+			"craftable": false,
+			"portaleffect": "SpiderDoor"
+		},
+		{
+			"id": "_mansustestwhite",
+			"label": "Mansus-Effekt testen",
+			"actionId": "fictitiousverb",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": "Mansus-Zugang erfolgt bei Abschluss",
+			"description": "Mansus-Zugang erfolgt, wenn dies erscheint",
+			"warmup": 1,
+			"craftable": false,
+			"portaleffect": "WhiteDoor"
+		},
+		{
+			"id": "_mansustest2",
+			"label": "Mansus-Effekt für Tür testen",
+			"actionId": "fictitiousverb2",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": "Mansus-Zugang erfolgt bei Abschluss",
+			"description": "Mansus-Zugang erfolgt, wenn dies erscheint",
+			"warmup": 1,
+			"craftable": false,
+			"portaleffect": "whitedoor"
+		},
+		{
+			"id": "_dream",
+			"label": "Träumen-Marker erstellen",
+			"actionId": "dream",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": ".",
+			"description": "...",
+			"warmup": 1,
+			"craftable": false
+		},
+		{
+			"id": "_study",
+			"label": "Studieren-Marker erstellen",
+			"actionId": "study",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": ".",
+			"description": "...",
+			"warmup": 1,
+			"craftable": false
+		},
+		{
+			"id": "_talk",
+			"label": "Reden-Marker erstellen",
+			"actionId": "talk",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": ".",
+			"description": "...",
+			"warmup": 1,
+			"craftable": false
+		},
+		{
+			"id": "_explore",
+			"label": "Erkunden-Marker erstellen",
+			"actionId": "explore",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": ".",
+			"description": "...",
+			"warmup": 1,
+			"craftable": false
+		},
+		{
+			"id": "testdeathcountdown",
+			"label": "Keine Gesundheit übrig",
+			"actionId": "healthend",
+			"requirements": {
+				"health": -1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Mein Leben entgleitet mir –",
+			"description": "Wo wird man mich finden? Ich bin nicht hier.",
+			"warmup": 10,
+			"craftable": false,
+			"signalEndingFlavour": "Melancholy",
+			"ending": "deathofthebody"
+		},
+		{
+			"id": "testemptyresults",
+			"label": "'In dem Maße, in dem man bestreitet, was ist, ist man besessen von dem, was nicht ist.' – Le Guin",
+			"actionId": "testemptyresults",
+			"effects": {
+				
+			},
+			"startdescription": "Leerer Test demnächst –",
+			"description": "Nichts hier, Verb offen.",
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "wolfatthedooreats_work",
+			"label": "Hier ist der Wolf",
+			"actionId": "work",
+			"requirements": {
+				"wolfatthedoor": 1
+			},
+			"effects": {
+				"wolfatthedoor": -1
+			},
+			"startdescription": "Wir hören ihn heulen ...",
+			"description": "... und dann knurren.",
+			"warmup": 0,
+			"craftable": true
+		},
+		{
+			"id": "wolfatthedooreats_dream",
+			"label": "Hier ist der Wolf",
+			"actionId": "dream",
+			"requirements": {
+				"wolfatthedoor": 1
+			},
+			"effects": {
+				"wolfatthedoor": -1
+			},
+			"startdescription": "Wir hören ihn heulen ...",
+			"description": "... und dann knurren.",
+			"warmup": 0,
+			"craftable": true
+		},
+		{
+			"id": "wolfatthedooreats_study",
+			"label": "Hier ist der Wolf",
+			"actionId": "study",
+			"requirements": {
+				"wolfatthedoor": 1
+			},
+			"effects": {
+				"wolfatthedoor": -1
+			},
+			"startdescription": "Wir hören ihn heulen ...",
+			"description": "... und dann knurren.",
+			"warmup": 0,
+			"craftable": true
+		},
+		{
+			"id": "wolfatthedooreats_explore",
+			"label": "Hier ist der Wolf",
+			"actionId": "explore",
+			"requirements": {
+				"wolfatthedoor": 1
+			},
+			"effects": {
+				"wolfatthedoor": -1
+			},
+			"startdescription": "Wir hören ihn heulen ...",
+			"description": "... und dann knurren.",
+			"warmup": 0,
+			"craftable": true
+		},
+		{
+			"id": "wolfatthedooreats_talk",
+			"label": "Hier ist der Wolf",
+			"actionId": "talk",
+			"requirements": {
+				"wolfatthedoor": 1
+			},
+			"effects": {
+				"wolfatthedoor": -1
+			},
+			"startdescription": "Wir hören ihn heulen ...",
+			"description": "... und dann knurren.",
+			"warmup": 0,
+			"craftable": true
+		},
+		{
+			"id": "_wrap_cultfoundation",
+			"actionId": "_wrap_cultfoundation",
+			"linked": [
+				{
+					"id": "cultfoundation",
+					"chance": 100
+				}
+			],
+			"requirements": {
+				"notaworm": 1
+			},
+			"effects": {
+				"notaworm": -1
+			},
+			"warmup": 0,
+			"craftable": true
+		},
+		{
+			"id": "_wrap_bytopenstudy",
+			"actionId": "_wrap_bytopenstudy",
+			"linked": [
+				{
+					"id": "bytopenstudy",
+					"chance": 100
+				}
+			],
+			"requirements": {
+				"notaworm": 1
+			},
+			"effects": {
+				"notaworm": -1
+			},
+			"warmup": 0,
+			"craftable": true
+		},
+		{
+			"id": "_wrap_ambition",
+			"actionId": "craving",
+			"linked": [
+				{
+					"id": "ambition",
+					"chance": 100
+				}
+			],
+			"requirements": {
+				"notaworm": 1
+			},
+			"effects": {
+				"notaworm": -1,
+				"seasonambitions": 1
+			},
+			"warmup": 0,
+			"craftable": true
+		},
+		{
+			"id": "_long.dreamconfrontation",
+			"actionId": "long",
+			"startdescription": "Kämpfen wir im Mansus",
+			"linked": [
+				{
+					"id": "_long.dreamconfrontation.skillup"
+				}
+			],
+			"effects": {
+				"diarist": 1
+			},
+			"warmup": 1
+		},
+		{
+			"id": "_long.dreamconfrontation.skillup",
+			"actionId": "long",
+			"startdescription": "Verbessern wir erst die Fertigkeiten des Langen",
+			"mutations": [
+				{
+					"filter": "long.enemy",
+					"mutate": "long.dreamwork",
+					"level": 10
+				}
+			],
+			"linked": [
+				{
+					"id": "long.dreams.confrontation"
+				}
+			],
+			"warmup": 1
+		},
+		{
+			"id": "_ghoulmemories",
+			"actionId": "gm",
+			"label": "ERINNERUNGEN",
+			"startdescription": "GANZ ALLEIN IM ABGRUND",
+			"effects": {
+				"memory.furious": 1,
+				"memory.luxurious": 1,
+				"memory.liminal": 1,
+				"memory.horizon": 1,
+				"memory.splendid": 1,
+				"memory.endless": 1,
+				"memory.wildering": 1,
+				"memory.golden": 1,
+				"memory.honeyed": 1
+			},
+			"warmup": 1
+		}
+	]
+}

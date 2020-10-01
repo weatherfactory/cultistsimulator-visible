@@ -44,7 +44,7 @@ public class SituationResults : AbstractTokenContainer {
         // TODO: Clear out the cards that are still here?
     }
 
-    public void SetOutput(List<IElementStack> allStacksToOutput) {
+    public void SetOutput(List<ElementStackToken> allStacksToOutput) {
         if (allStacksToOutput.Any() == false)
             return;
 
@@ -55,7 +55,7 @@ public class SituationResults : AbstractTokenContainer {
         // we noew reorder on DisplayHere
     }
 
-    public override void DisplayHere(IElementStack stack, Context context) {
+    public override void DisplayHere(ElementStackToken stack, Context context) {
         base.DisplayHere(stack, context);
         cardPos.ReorderCards(_elementStacksManager.GetStacks());
     }
@@ -67,7 +67,7 @@ public class SituationResults : AbstractTokenContainer {
         UpdateDumpButtonText();
 
         bool cardsRemaining = false;
-        IEnumerable<IElementStack> stacks = GetOutputStacks();
+        IEnumerable<ElementStackToken> stacks = GetOutputStacks();
 
         // Window is open? Check if it was the last card, then reset automatically
         if (gameObject.activeInHierarchy) {
@@ -89,7 +89,7 @@ public class SituationResults : AbstractTokenContainer {
             cardPos.ReorderCards(stacks);
     }
 
-    public IEnumerable<IElementStack> GetOutputStacks() {
+    public IEnumerable<ElementStackToken> GetOutputStacks() {
         return GetElementStacksManager().GetStacks();
     }
 

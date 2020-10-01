@@ -1,0 +1,756 @@
+{
+	"recipes": [
+		{
+			"id": "despairrisk",
+			"label": "Triste Gedanken",
+			"actionId": "despair",
+			"requirements": {
+				
+			},
+			"effects": {
+				
+			},
+			"slots": [
+				{
+					"id": "Shadows",
+					"label": "Schatten",
+					"required": {
+						"inducesdespair": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "Finstere Tage Ich muss aufpassen, dass in mir keine Zweifel geweckt werden. [Grauen kann zu Verzweiflung führen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "despairactive",
+					"chance": 100
+				},
+				{
+					"id": "despairdefeated",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "despairactive",
+			"label": "VERZWEIFLUNG",
+			"actionId": "despair",
+			"requirements": {
+				"inducesdespair": 1
+			},
+			"startdescription": "Verzweiflung ist der Wolf, der die Gedanken verschlingt. [Du kannst die Verzweiflung besiegen, indem du sie mit Zufriedenheit fütterst, sonst vernichtet sie dich, wenn sie 3 Grauen erreicht.]",
+			"description": ".",
+			"warmup": 60,
+			"slots": [
+				{
+					"id": "Thoughts",
+					"label": "Gedanken",
+					"required": {
+						"contentment": 1,
+						"inducesdespair": 1
+					},
+					"greedy": true,
+					"noanim": true
+				}
+			],
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "despairwarning",
+					"chance": 100
+				}
+			],
+			"linked": [
+				{
+					"id": "despairabate",
+					"chance": 100
+				},
+				{
+					"id": "despairdeath",
+					"chance": 100
+				},
+				{
+					"id": "despairactive",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "despairwarning",
+			"label": "VERZWEIFLUNG",
+			"actionId": "despair",
+			"requirements": {
+				"dread": 2,
+				"contentment": -1
+			},
+			"startdescription": "Die Verzweiflung sitzt mir im Nacken. Der Welt wird das Licht ausgesaugt. [Du kannst die Verzweiflung besiegen, indem du sie mit Zufriedenheit fütterst, sonst vernichtet sie dich, wenn sie 3 Grauen erreicht.]",
+			"description": ".",
+			"comments": "This exists specifically for the burn image at 2 Dread.",
+			"burnimage": "despair",
+			"linked": [
+				{
+					"id": "despairabate",
+					"chance": 100
+				},
+				{
+					"id": "despairdeath",
+					"chance": 100
+				},
+				{
+					"id": "despairactive",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "despairabate",
+			"label": "Die Verzweiflung lässt nach",
+			"actionId": "despair",
+			"requirements": {
+				"contentment": 1
+			},
+			"effects": {
+				"inducesdespair": -1,
+				"contentment": -1
+			},
+			"startdescription": "Erinnerungen an bessere Zeiten halten den Wolf von der Tür fern. [Jede Zufriedenheit zerstört ein Grauen.]",
+			"description": ".",
+			"warmup": 10,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "despairactive",
+					"chance": 100
+				},
+				{
+					"id": "despairdefeated",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "despairdeath",
+			"label": "DIE VERZWEIFLUNG ÜBERWÄLTIGT MICH",
+			"actionId": "despair",
+			"requirements": {
+				"inducesdespair": 3
+			},
+			"slots": [
+				{
+					"id": "Thoughts",
+					"label": "Gedanken",
+					"required": {
+						"contentment": 1
+					},
+					"greedy": true
+				}
+			],
+			"effects": {
+				
+			},
+			"startdescription": "Dies ist nun fast schon das Ende – [Finde jetzt Zufriedenheit, sonst ist es aus.]",
+			"description": "Wo wird man mich finden? Ich bin nicht hier.",
+			"warmup": 60,
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "despairabate",
+					"chance": 100
+				}
+			],
+			"ending": "despairending",
+			"signalEndingFlavour": "Melancholy",
+			"comments": "Consider (1) allowing the threshold to grab Dread too. (2) allowing the active step to have a low-risk possibility of increasing Dread (3) providing a reward when Despair is defeated."
+		},
+		{
+			"id": "despairdefeated",
+			"label": "Die Wolken teilen sich",
+			"actionId": "despair",
+			"effects": {
+				"fleeting": 1
+			},
+			"startdescription": ".",
+			"description": "Der Wolf der Verzweiflung jagt woanders. [Diese Verzweiflung wird von keinem Grauen geschürt. Es ist aus. Für den Augenblick.]",
+			"craftable": false
+		},
+		{
+			"id": "visionsrisk",
+			"label": "Ein Beben in der Luft",
+			"actionId": "visions",
+			"requirements": {
+				
+			},
+			"slots": [
+				{
+					"id": "Shadows",
+					"label": "Schatten",
+					"required": {
+						"fascination": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "Die Sonne flackert wie ein Schatten. Träume machen Wellen hinter der Oberfläche von Spiegeln. Ich muss aufpassen, dass ich mich nicht aus der wachen Welt treiben lasse. [Faszination kann Visionen hervorrufen.]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "visionsactive",
+					"chance": 100
+				},
+				{
+					"id": "visionsdefeated",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "visionsactive",
+			"label": "Ich sehe Dinge",
+			"actionId": "visions",
+			"requirements": {
+				"fascination": 1
+			},
+			"startdescription": "Gemälde flüstern. Fenster zwinkern. Ich weiß, dass diese Dinge nicht wahr sind, doch wie soll ich sicher sein? [Du kannst Visionen nur mit Grauen oder eine Flüchtigen Erinnerung bekämpfen, sonst verlierst du dich selbst komplett bei 3 Faszination.]",
+			"description": ".",
+			"warmup": 60,
+			"slots": [
+				{
+					"id": "Thoughts",
+					"label": "Gedanken",
+					"required": {
+						"dread": 1,
+						"fascination": 1,
+						"fleeting": 1
+					},
+					"greedy": true,
+					"noanim": true
+				}
+			],
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "visionswarning",
+					"chance": 100
+				}
+			],
+			"linked": [
+				{
+					"id": "visionsabate",
+					"chance": 100
+				},
+				{
+					"id": "visionsabatefleeting",
+					"chance": 100
+				},
+				{
+					"id": "visionsdeath",
+					"chance": 100
+				},
+				{
+					"id": "visionsactive",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "visionswarning",
+			"label": "Ich sehe Dinge!",
+			"actionId": "visions",
+			"requirements": {
+				"fascination": 2,
+				"dread": -1,
+				"fleeting": -1
+			},
+			"startdescription": "Die Welt ist gefährlich hell. [Du kannst Visionen nur mit Grauen oder eine Flüchtigen Erinnerung bekämpfen, sonst verlierst du dich selbst komplett bei 3 Faszination.]",
+			"description": ".",
+			"comments": "This exists specifically for the burn image at 2 Fascination.",
+			"burnimage": "visions",
+			"linked": [
+				{
+					"id": "visionsabate",
+					"chance": 100
+				},
+				{
+					"id": "visionsabatefleeting",
+					"chance": 100
+				},
+				{
+					"id": "visionsdeath",
+					"chance": 100
+				},
+				{
+					"id": "visionsactive",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "visionsdeath",
+			"label": "Hilf mir – ",
+			"actionId": "visions",
+			"requirements": {
+				"fascination": 3
+			},
+			"slots": [
+				{
+					"id": "Thoughts",
+					"label": "Gedanken",
+					"required": {
+						"dread": 1,
+						"fleeting": 1
+					},
+					"greedy": true
+				}
+			],
+			"effects": {
+				
+			},
+			"startdescription": "Was ist das für ein Licht, das an der Oberfläche von allem leuchtet? Der Ruhm kommt, doch ich kann nicht hier sein, um ihn zu sehen – [Wenn du weder Grauen noch Flüchtige Erinnerungen auftreiben kannst, war's das.]",
+			"description": "Wo wird man mich finden? Ich bin nicht hier.",
+			"warmup": 60,
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "visionsabate",
+					"chance": 100
+				},
+				{
+					"id": "visionsabatefleeting",
+					"chance": 100
+				}
+			],
+			"signalEndingFlavour": "Melancholy",
+			"ending": "visionsending"
+		},
+		{
+			"id": "visionsabate",
+			"label": "Visionen lassen nach",
+			"actionId": "visions",
+			"requirements": {
+				"dread": 1
+			},
+			"effects": {
+				"fascination": -1,
+				"dread": -1
+			},
+			"startdescription": "Schatten sind eine Zuflucht vor dem Licht. Verzweiflung ist Ballast. Jedes Elend hat seinen Nutzen. [Jedes Grauen beseitigt eine Faszination.]",
+			"description": ".",
+			"warmup": 10,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "visionsactive",
+					"chance": 100
+				},
+				{
+					"id": "visionsdefeated",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "visionsabatefleeting",
+			"label": "Visionen lassen nach",
+			"actionId": "visions",
+			"requirements": {
+				"fleeting": 1
+			},
+			"effects": {
+				"fascination": -1,
+				"fleeting": -1
+			},
+			"startdescription": "Die Einsamkeit des Alltags verbannt Phantome. Ich kette mich an den Alltag. [Jede Flüchtige Erinnerung beseitigt eine Faszination.]",
+			"description": ".",
+			"warmup": 10,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "visionsactive",
+					"chance": 100
+				},
+				{
+					"id": "visionsdefeated",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "visionsdefeated",
+			"label": "Die Welt an sich",
+			"actionId": "visions",
+			"effects": {
+				"fleeting": 1
+			},
+			"startdescription": ".",
+			"description": "Spiegel sind ruhig. Die Sonne ist stetig. Der Ruhm lässt nach. Ich bin bei Verstand, falls das etwas bedeutet. [Keine Faszination treibt deine Visionen an. Es ist aus. Für den Augenblick.]",
+			"craftable": false
+		},
+		{
+			"id": "curse_dread_dormant",
+			"label": "Ruhender Fluch der Trockenen Seele",
+			"actionId": "curse_dread",
+			"startdescription": "Der Fluch der Trockenen Seele zeigt noch keine Wirkung.",
+			"alternativerecipes": [
+				{
+					"id": "curse_dread_active",
+					"chance": 30
+				}
+			],
+			"linked": [
+				{
+					"id": "curse_dread_dormant",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "curse_dread_active",
+			"label": "Fluch der Trockenen Seele",
+			"requirements": {
+				"reason": -1
+			},
+			"actionId": "curse_dread",
+			"startdescription": "Der Fluch der Trockenen Seele senkt sich langsam herab, wie eine verwelkte Hand auf die Schulter.",
+			"slots": [
+				{
+					"id": "Reason",
+					"label": "Verstand",
+					"greedy": true,
+					"required": {
+						"reason": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "curse_dread_active",
+					"chance": 100
+				},
+				{
+					"id": "curse_dread_attempt_mitigation",
+					"chance": 100
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "curse_dread_attempt_mitigation",
+			"label": "Der Fluch der Trockenen Seele: Eine letzte Chance",
+			"actionId": "curse_dread",
+			"slots": [
+				{
+					"id": "Protection",
+					"label": "Schutz",
+					"required": {
+						"influencehearte": 1,
+						"influenceheartg": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "curse_dread_mitigation_successful",
+					"chance": 100
+				}
+			],
+			"startdescription": "Der Fluch hat sich festgesetzt. Nun verengt sich der Tunnel um alles, was ich sehe. [Nur wenn du genug Einfluss des Herzens hast, kannst du den Fluch abwenden.]",
+			"description": "Mein Schädel knirscht. Das Licht ergraut.",
+			"aspects": {
+				"damagereason": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "curse_dread_mitigation_successful",
+			"label": "Die Gunst der Donnerhaut",
+			"actionId": "curse_dread",
+			"requirements": {
+				"influence": 1
+			},
+			"effects": {
+				"influence": -1
+			},
+			"startdescription": "Tippe die Trommel an und sprich die Worte. Halte die Hoffnung am Leben, bis der Gesang vorbei ist.",
+			"description": "Meine Seele schwillt wieder an. Der Fluch hat sich verflüchtigt. Weit entfernt, am Horizont, bewegt sich der Sturm wie eine wachsame Bestie."
+		},
+		{
+			"id": "curse_visions_dormant",
+			"label": "Ruhender Fluch des 5. Auges",
+			"actionId": "curse_visions",
+			"startdescription": "Der Fluch des 5. Auges zeigt noch keine Wirkung.",
+			"alternativerecipes": [
+				{
+					"id": "curse_visions_active",
+					"chance": 30
+				}
+			],
+			"linked": [
+				{
+					"id": "curse_visions_dormant",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "curse_visions_active",
+			"label": "Der Fluch des 5. Auges",
+			"actionId": "curse_visions",
+			"requirements": {
+				"passion": -1
+			},
+			"startdescription": "Das 3. Auge ist ein Mythos, oder die Zirbeldrüse. Das 4. Auge ist ein Zeichen bei gewissen Prozessen des Aufstiegs. Das 5. Auge öffnet sich nun vor mir.",
+			"slots": [
+				{
+					"id": "Passion",
+					"label": "Leidenschaft",
+					"greedy": true,
+					"required": {
+						"passion": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "curse_visions_active",
+					"chance": 100
+				},
+				{
+					"id": "curse_visions_attempt_mitigation",
+					"chance": 100
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "curse_visions_attempt_mitigation",
+			"label": "Der Fluch des 5. Auges: Eine letzte Chance",
+			"actionId": "curse_visions",
+			"slots": [
+				{
+					"id": "Protection",
+					"label": "Schutz",
+					"required": {
+						"influencehearte": 1,
+						"influenceheartg": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "curse_visions_mitigation_successful",
+					"chance": 100
+				}
+			],
+			"startdescription": "Der Fluch hat sich festgesetzt. Nun leckt Licht aus der verrottenden Welt. [Nur wenn du genug Einfluss des Herzens hast, kannst du den Fluch abwenden.]",
+			"description": "Ich kann nicht aufhören zu sehen. Wenn ich lange genug schaue, werde ich es nicht wollen.",
+			"aspects": {
+				"damagepassion": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "curse_visions_mitigation_successful",
+			"label": "Die Gunst der Donnerhaut",
+			"actionId": "curse_visions",
+			"requirements": {
+				"influence": 1
+			},
+			"effects": {
+				"influence": -1
+			},
+			"startdescription": "Tippe die Trommel an und sprich die Worte. Ich werde alle meine Augen schließen bis der Gesang zu Ende ist.",
+			"description": "Meine Augen sind klar. Der Fluch hat sich verflüchtigt. Weit entfernt, am Horizont, bewegt sich der Sturm wie eine wachsame Bestie."
+		},
+		{
+			"id": "curse_affliction_dormant",
+			"label": "Ruhender Fluch des Schleichenden Odems",
+			"actionId": "curse_affliction",
+			"startdescription": "Der Fluch des Schleichenden Odems wirkt noch nicht.",
+			"alternativerecipes": [
+				{
+					"id": "curse_affliction_active",
+					"chance": 30
+				}
+			],
+			"linked": [
+				{
+					"id": "curse_affliction_dormant",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "curse_affliction_active",
+			"label": "Der Fluch des Schleichenden Odems",
+			"actionId": "curse_affliction",
+			"requirements": {
+				"health": -1
+			},
+			"startdescription": "Der Fluch des Schleichenden Odems beginnt mit einem Husten – einem Husten, das im Halse herumlungert wie ein Schuldeneintreiber.",
+			"slots": [
+				{
+					"id": "Health",
+					"label": "Gesundheit",
+					"greedy": true,
+					"required": {
+						"health": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "curse_affliction_active",
+					"chance": 100
+				},
+				{
+					"id": "curse_affliction_attempt_mitigation",
+					"chance": 100
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "curse_affliction_attempt_mitigation",
+			"label": "Der Fluch des Schleichenden Odems: Eine letzte Chance",
+			"actionId": "curse_affliction",
+			"slots": [
+				{
+					"id": "Protection",
+					"label": "Schutz",
+					"required": {
+						"influencehearte": 1,
+						"influenceheartg": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "curse_affliction_mitigation_successful",
+					"chance": 100
+				}
+			],
+			"startdescription": "Der Fluch hat sich festgesetzt. Nun verlangsamt sich der Puls des Lebens. [Nur wenn du genug Einfluss des Herzens hast, kannst du den Fluch abwenden.]",
+			"description": "Jedem Atemzug in diesem Leben ist schwächer als der vorherige, bis wir schließlich beim letzten Atemzug sind. Der Prozess ist so langsam, dass man ihn nicht wahrnimmt ... bis einen der Fluch des Schleichenden Odems berührt.",
+			"aspects": {
+				"destroyhealth": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "curse_affliction_mitigation_successful",
+			"label": "Die Gunst der Donnerhaut",
+			"actionId": "curse_affliction",
+			"requirements": {
+				"influence": 1
+			},
+			"effects": {
+				"influence": -1
+			},
+			"startdescription": "Tippe die Trommel an und sprich die Worte. Den Husten unterdrücken bis der Gesang zu Ende ist.",
+			"description": "Meine Lungen sind frei. Der Fluch hat sich verflüchtigt. Weit entfernt, am Horizont, bewegt sich der Sturm wie eine wachsame Bestie."
+		},
+		{
+			"id": "curse_nowhere_dormant",
+			"label": "Etwas ist mit uns zurückgekommen",
+			"actionId": "curse_nowhere",
+			"startdescription": "Ich erspähe fast unmerkliche Bewegungen in der Welt – wie die Flusen, die manchmal über das Augen wandern, nur gerissener. Manchmal kann ich sie auch hören.",
+			"alternativerecipes": [
+				{
+					"id": "curse_nowhere_active",
+					"chance": 30
+				}
+			],
+			"linked": [
+				{
+					"id": "curse_nowhere_dormant",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "curse_nowhere_active",
+			"label": "Die Würmer in der Welt",
+			"actionId": "curse_nowhere",
+			"requirements": {
+				"mortal": -1
+			},
+			"startdescription": "Es sind Würmer in der Stadt. Man sieht keine Würmer, aber man vergisst sie auch nicht. Sie werden suchen, bis sie jemanden finden, in den sie durch die Räume in der Haut eindringen können. Und dann werden sie tun, was Würmer tun.",
+			"slots": [
+				{
+					"id": "Someone",
+					"label": "Jemand",
+					"greedy": true,
+					"required": {
+						"mortal": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "curse_nowhere_active",
+					"chance": 100
+				},
+				{
+					"id": "curse_nowhere_attempt_mitigation",
+					"chance": 100
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "curse_nowhere_attempt_mitigation",
+			"label": "Die Würmer in der Welt: Eine letzte Chance",
+			"actionId": "curse_nowhere",
+			"slots": [
+				{
+					"id": "Protection",
+					"label": "Schutz",
+					"required": {
+						"influenceheartg": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "curse_nowhere_mitigation_successful",
+					"chance": 100
+				}
+			],
+			"startdescription": "Die Würmer haben sich ihren Weg unter die Haut gebahnt. Dies ist das Ende. [Du kannst dich nur retten, wenn du eine unglaubliche Menge an Herz-Einfluss zur Verfügung hast.]",
+			"description": "Wenn die Würmer im Fleische sind, bleibt nichts mehr übrig als das zu vernichten, was übrig ist – verbrennen und aussieben mit größter Sorgfalt.",
+			"effects": {
+				"mortal": -1,
+				"notoriety": 1,
+				"dread": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "curse_nowhere_mitigation_successful",
+			"label": "Die Gunst der Donnerhaut",
+			"actionId": "curse_nowhere",
+			"requirements": {
+				"influence": 1
+			},
+			"effects": {
+				"influence": -1
+			},
+			"startdescription": "Den Blitz anflehen. Nur der Odem des Sturms kann jenen hier noch retten.",
+			"description": "Das Fehlen der Würmer ist wie ein Vorhang, der hochgeschlagen wird. Die Luft ist Regenduft und Ozon. Unsere Finger tippen noch immer zu den Rhythmen der Donnerhaut."
+		}
+	]
+}

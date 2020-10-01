@@ -1,0 +1,1351 @@
+{
+	"recipes": [
+		{
+			"id": "scout.first",
+			"actionId": "scout",
+			"label": "偵察",
+			"startdescription": "寒くて古い世界だが、私はちょっとしたコツを知っている。",
+			"effects": {
+				"fragmentedge.exile": 1
+			},
+			"alt": [
+				{
+					"id": "relinquish.first",
+					"additional": true
+				}
+			],
+			"warmup": 5,
+			"comments": "opened by initial travel recipe"
+		},
+		{
+			"id": "scout.turmoil",
+			"actionId": "scout",
+			"label": "混乱状態の街",
+			"startdescription": "今すぐ去るべきだ。",
+			"requirements": {
+				"turmoil": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "scout.aachen",
+			"actionId": "scout",
+			"label": "アーヘン偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.aachen": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"loc.shrine.colonel.aachen",
+					"op.connection.radicals",
+					"op.weapon.a",
+					"op.weapon.b",
+					"op.night",
+					"op.dawn"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.alexandria",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"actionId": "scout",
+			"label": "アレクサンドリア偵察",
+			"requirements": {
+				"domicile.alexandria": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.lantern1",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.import",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.weapon.a",
+					"op.weapon.d",
+					"loc.shrine.lionsmith.alexandria",
+					"op.heat",
+					"op.faith",
+					"op.connection.holy",
+					"op.cats",
+					"op.sea",
+					"op.sea",
+					"op.night",
+					"op.dawn"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.algiers",
+			"actionId": "scout",
+			"label": "アルジェ偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.algiers": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.forge",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.import",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.weapon.a",
+					"op.weapon.d",
+					"loc.shrine.lionsmith.algiers",
+					"op.heat",
+					"op.heights",
+					"op.cats",
+					"op.sea",
+					"op.sea",
+					"op.connection.radicals",
+					"op.dawn"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.amsterdam",
+			"actionId": "scout",
+			"label": "アムステルダム偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.amsterdam": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.import",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.morgen",
+					"op.sea",
+					"op.sea",
+					"op.weapon.b",
+					"op.sunset",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.avignon",
+			"actionId": "scout",
+			"label": "アヴィニョン偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.avignon": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.grail",
+					"op.rarity.heart",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.sunset",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.baghdad",
+			"actionId": "scout",
+			"label": "バグダード偵察",
+			"requirements": {
+				"domicile.baghdad": 1
+			},
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"internaldeck": {
+				"spec": [
+					"op.curio.forge",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.heat",
+					"op.faith",
+					"op.connection.holy",
+					"op.connection.ruler",
+					"op.connection.radicals",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.budapest",
+			"actionId": "scout",
+			"label": "ブダペスト偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.budapest": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.grail",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.medusa",
+					"op.connection.underworld",
+					"op.night",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.candia",
+			"actionId": "scout",
+			"label": "カンディア（イラクリオン）偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.candia": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.heart",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.import",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"loc.shrine.colonel.candia",
+					"op.heat",
+					"op.heights",
+					"op.horned",
+					"op.sea",
+					"op.sea",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.cluj",
+			"actionId": "scout",
+			"label": "クルジュ＝ナポカ偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.cluj": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.weapon.b",
+					"op.rarity.winter",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.heights",
+					"op.connection.ruler",
+					"op.sunset",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.granada",
+			"actionId": "scout",
+			"label": "グラナダ偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.granada": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.heart",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.heat",
+					"op.heights",
+					"op.cats",
+					"op.flowermaker",
+					"op.night",
+					"op.dawn",
+					"op.weapon.a",
+					"op.weapon.d"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.istanbul",
+			"actionId": "scout",
+			"label": "イスタンブール偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.istanbul": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.lantern1",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.import",
+					"op.office",
+					"op.warehouse",
+					"op.heat",
+					"op.heights",
+					"op.faith",
+					"op.connection.holy",
+					"op.cats",
+					"op.sea",
+					"op.sea",
+					"op.connection.radicals",
+					"op.sunset",
+					"op.dawn",
+					"op.weapon.a",
+					"op.weapon.d"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.kaunas",
+			"actionId": "scout",
+			"label": "カウナス偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.kaunas": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.forge",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.cold",
+					"op.faith",
+					"op.connection.holy",
+					"op.wolf",
+					"op.connection.ruler",
+					"op.night",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.kiev",
+			"actionId": "scout",
+			"label": "キエフ偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.kiev": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.knock",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.connection.radicals",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.marinette",
+					"op.heights",
+					"op.faith",
+					"op.connection.holy",
+					"op.sunset",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.krakow",
+			"actionId": "scout",
+			"label": "クラクフ偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.krakow": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.lantern2",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.heights",
+					"op.faith",
+					"op.connection.holy",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.leningrad",
+			"actionId": "scout",
+			"label": "レニングラード偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.leningrad": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.weapon.b",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.cold",
+					"loc.shrine.colonel.leningrad",
+					"op.connection.radicals",
+					"op.sunset",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.london",
+			"actionId": "scout",
+			"label": "ロンドン偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.london": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.lantern2",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.import",
+					"op.office",
+					"op.warehouse",
+					"op.sulochana",
+					"op.sea",
+					"op.sea",
+					"op.connection.radicals",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.marrakech",
+			"actionId": "scout",
+			"label": "マラケッシュ偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.marrakech": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.lantern3",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.echidna",
+					"op.heat",
+					"op.faith",
+					"op.connection.holy",
+					"op.cats",
+					"loc.shrine.lionsmith.marrakech",
+					"op.sunset",
+					"op.dawn",
+					"op.weapon.a",
+					"op.weapon.d"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.meshad",
+			"actionId": "scout",
+			"label": "マシュハド偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.meshad": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.forge",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"loc.shrine.lionsmith.meshad",
+					"op.heat",
+					"op.faith",
+					"op.connection.holy",
+					"op.cats",
+					"op.sunset",
+					"op.dawn",
+					"op.weapon.a",
+					"op.weapon.d"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.munich",
+			"actionId": "scout",
+			"label": "ミュンヘン偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.munich": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.connection.radicals",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"loc.shrine.colonel.munich",
+					"op.horned",
+					"op.weapon.b",
+					"op.night",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.nizhny",
+			"actionId": "scout",
+			"label": "ニジニ偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.nizhny": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.forge",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.connection.radicals",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.cold",
+					"loc.shrine.colonel.nizhny",
+					"op.sunset",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.paris",
+			"actionId": "scout",
+			"label": "パリ偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.paris": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.weapon.b",
+					"op.rarity.grail",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.heights",
+					"op.flowermaker",
+					"op.night",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.prague",
+			"actionId": "scout",
+			"label": "プラハ偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.prague": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.knock",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.cold",
+					"op.connection.ruler",
+					"op.night",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.rostock",
+			"actionId": "scout",
+			"label": "ロストック偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.rostock": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.weapon.b",
+					"op.rarity.moth",
+					"op.licence.import",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.cold",
+					"op.sea",
+					"op.sea",
+					"op.night",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.samarkand",
+			"actionId": "scout",
+			"label": "サマルカンド偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.samarkand": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.lantern1",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.connection.radicals",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"loc.shrine.lionsmith.samarkand",
+					"op.faith",
+					"op.connection.holy",
+					"op.cats",
+					"op.dawn",
+					"op.weapon.a",
+					"op.weapon.d"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.stalingrad",
+			"actionId": "scout",
+			"label": "スターリングラード偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.stalingrad": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.moth",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"loc.shrine.colonel.stalingrad",
+					"op.cold",
+					"op.wolf",
+					"op.connection.radicals",
+					"op.night",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.strasbourg",
+			"actionId": "scout",
+			"label": "ストラスブール偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.strasbourg": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.weapon.b",
+					"op.rarity.knock",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.horned",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.sverdlovsk",
+			"actionId": "scout",
+			"label": "スヴェルドロフスク偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.sverdlovsk": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.heart",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.cold",
+					"op.connection.radicals",
+					"op.night",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.tiflis",
+			"actionId": "scout",
+			"label": "トビリシ偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.tiflis": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.lantern2",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.connection.radicals",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.heights",
+					"op.wolf",
+					"op.weapon.b",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.tirana",
+			"actionId": "scout",
+			"label": "ティラナ偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.tirana": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.flowermaker",
+					"op.connection.ruler",
+					"op.sunset",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.tripoli",
+			"actionId": "scout",
+			"label": "西トリポリ州偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.tripoli": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.lantern3",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.import",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.heat",
+					"op.cats",
+					"op.sea",
+					"op.sea",
+					"op.sunset",
+					"op.dawn",
+					"op.weapon.a",
+					"op.weapon.d"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.valletta",
+			"actionId": "scout",
+			"label": "バレッタ偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.valletta": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.forge",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.import",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"loc.shrine.colonel.valletta",
+					"op.sea",
+					"op.sea",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.venice",
+			"actionId": "scout",
+			"label": "ヴェネツィア偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.venice": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.knock",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"loc.shrine.lionsmith.venice",
+					"op.faith",
+					"op.connection.holy",
+					"op.cats",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.vienna",
+			"actionId": "scout",
+			"label": "ウィーン偵察",
+			"startdescription": "チャンスを求めて街を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.vienna": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.weapon.b",
+					"op.rarity.forge",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.kleidouchos",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.end.foe.defeated",
+			"actionId": "scout",
+			"label": "休んで待つ",
+			"startdescription": "@#domicile.bornholm|\n#domicile.cheko|日ごとに日の出が少しずつ早くなっている。風も少しずつ弱くなってきた。もうすぐ春だ。\n#domicile.ghardaia|忍び寄る太陽が、高地の砂漠を甘い静けさでざわめかせる。地元の人たちは相変わらず遠慮して近づいてこないが、すれ違うとうなずいてくれるようになった。\n#domicile.messana|日が経つごとに影が広がっていく。時折、村人が少しばかり食べ物を差し出しに来て、敬礼してくれるようになった。\n#domicile.morbihan|兄弟たちは戦いの残骸を片づけ、太陽の光が差し込む長い広間で、共に断食を破らせてくれた。\n#domicile.paro|毎朝、私は階段を登り、ガタガタした橋を渡って夜明けを眺める。通りすがりの私に僧侶が微笑んでくれる。\n#domicile.slettnes|海は、毎朝、岩にぶつかり灰色のしぶきをあげ、夜になるとゴロゴロと音を唸り声をあげる。眠れない夜は、この音色に耳を傾ける。@",
+			"warmup": 30,
+			"craftable": true,
+			"requirements": {
+				"domicile": 1,
+				"end": 1
+			},
+			"extantreqs": {
+				"rkx.foe.defeated": 1
+			},
+			"effects": {
+				"obscurity": 3
+			}
+		},
+		{
+			"id": "scout.bornholm",
+			"actionId": "scout",
+			"label": "サンシャイン島偵察",
+			"startdescription": "チャンスを求めて島中を歩く。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"craftable": true,
+			"requirements": {
+				"domicile.bornholm": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.cold",
+					"op.flowermaker",
+					"op.sea",
+					"obscurity"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.slettnes",
+			"actionId": "scout",
+			"label": "フォグファイアの岬偵察",
+			"startdescription": "チャンスを求めて海岸を歩き回る。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"craftable": true,
+			"requirements": {
+				"domicile.slettnes": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.cold",
+					"op.wolf",
+					"op.sea",
+					"obscurity",
+					"op.sunset",
+					"op.dawn"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.cheko",
+			"actionId": "scout",
+			"label": "傷ついた月の湖偵察 ",
+			"startdescription": "チャンスを求めて森を歩き回る。[これで痕跡ができることもある。]",
+			"warmup": 30,
+			"craftable": true,
+			"requirements": {
+				"domicile.cheko": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.cold",
+					"op.cats",
+					"op.wolf",
+					"obscurity",
+					"op.night",
+					"op.dawn"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.paro",
+			"actionId": "scout",
+			"label": "トラの巣偵察",
+			"startdescription": "チャンスを求めて山と寺院を歩き回る。[これで痕跡ができることもある。]",
+			"warmup": 60,
+			"craftable": true,
+			"requirements": {
+				"domicile.paro": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.cold",
+					"op.heights",
+					"op.faith",
+					"op.cats",
+					"obscurity",
+					"op.dawn"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.messana",
+			"actionId": "scout",
+			"label": "大鎌の隠れ家偵察",
+			"startdescription": "チャンスを求めて丘を歩く。[これで痕跡ができることもある。]",
+			"warmup": 60,
+			"craftable": true,
+			"requirements": {
+				"domicile.messana": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.heat",
+					"op.heights",
+					"op.horned",
+					"obscurity",
+					"op.sunset",
+					"op.dawn"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.ghardaia",
+			"actionId": "scout",
+			"label": "ペンタポリス偵察",
+			"startdescription": "チャンスを求めて森を歩き回る。[これで痕跡ができることもある。]",
+			"warmup": 60,
+			"craftable": true,
+			"requirements": {
+				"domicile.ghardaia": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.heat",
+					"op.cats",
+					"op.flowermaker",
+					"obscurity",
+					"op.dawn"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.morbihan",
+			"actionId": "scout",
+			"label": "船長の修道院偵察",
+			"startdescription": "チャンスを求めて島中を歩き回る。[これで痕跡ができることもある。]",
+			"warmup": 60,
+			"craftable": true,
+			"requirements": {
+				"domicile.morbihan": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.faith",
+					"op.horned",
+					"op.sea",
+					"obscurity",
+					"op.night",
+					"op.dawn"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.wilderness",
+			"actionId": "scout",
+			"label": "偵察",
+			"startdescription": "ここはどこなんだ？",
+			"description": "@#op.cold|雪に埋もれる場所。\n#op.heat|暑く乾いた風が吹く場所。\n#op.sea|夜のように暗い海辺。\n#|どこだろう？@",
+			"warmup": 60,
+			"craftable": true,
+			"requirements": {
+				"domicile": 1,
+				"wilderness": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.cold",
+					"op.heat",
+					"op.sea"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		}
+	]
+}

@@ -1,0 +1,269 @@
+{
+	"recipes": [
+		{
+			"id": "explore_vaultloneandlevelsands1_setup",
+			"label": "遠征の始まり：星屑の神殿",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultloneandlevelsands1": 1
+			},
+			"effects": {
+				"peril_desert": 1,
+				"seal_hiddendoor": 1,
+				"curse_visions": 1
+			},
+			"startdescription": "深い砂漠に星が落ちたが、神聖な場所を破壊することはできなかった。古い祭壇の宝は、星の墓の下に隠されて残っているかもしれない。しかし、まだ異世界のエネルギーと共鳴している星には、慎重に近づかなければいけない。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultloneandlevelsands2_setup",
+			"label": "遠征の始まり：ラグーンの墓",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultloneandlevelsands2": 1
+			},
+			"effects": {
+				"peril_desert": 1,
+				"seal_wardeddoor": 1,
+				"curse_dread": 1
+			},
+			"startdescription": "ラグーンの墓を砂漠の中で見つけるのは難しいだろう。星を頼りに探さねばならない。その扉は長い間、墓荒らしの襲撃に抵抗してきた。可能な限りの力を 使わねばならない。呪いにかかる可能性もある。覚悟しなければならない。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultloneandlevelsands3_setup",
+			"label": "遠征の始まり：メッサナ",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultloneandlevelsands3": 1
+			},
+			"effects": {
+				"peril_desert": 1,
+				"guardian_watchers": 1,
+				"curse_affliction": 1
+			},
+			"startdescription": "メッサナは、百歳以上を過ぎても村人たちが元気に過ごしている場所。彼らの秘密を探り出そうとすれば抵抗され、呪いをかけられるかもしれない――それもこれも、砂漠を通り抜けて村にたどり着ければの話だが。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultloneandlevelsands4_setup",
+			"label": "遠征の始まり：ナナトグロの寺院",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultloneandlevelsands4": 1
+			},
+			"effects": {
+				"peril_desert": 1,
+				"seal_wardeddoor": 1,
+				"curse_nowhere": 1
+			},
+			"startdescription": "ゼーン・マーク・ジェンティスの日記によると、「その場所には生命は存在しない」らしい。だから、そこに蛇はいないが、呪われているようだ。ジェンティスは遠征隊が開けられなかった扉についても記録している。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultloneandlevelsandsdefault_setup",
+			"label": "遠征の始まり：ミア",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultloneandlevelsandsdefault": 1
+			},
+			"effects": {
+				"peril_desert": 1,
+				"seal_hiddendoor": 1,
+				"guardian_dead": 1,
+				"curse_affliction": 1
+			},
+			"startdescription": "長い間、砂漠に沈んでいる街、ミア。幽霊だけが通りを歩いている。そこに残されたものは全て隠されていて、放浪者の呪いが全てを覆っている。それは、彼女を苦しめた場所への復讐だ。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultloneandlevelsands1_success",
+			"label": "開く石",
+			"actionId": "explore",
+			"requirements": {
+				"vaultloneandlevelsands1": 1
+			},
+			"effects": {
+				"vaultloneandlevelsands1": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"toollanternd",
+					"focusambermandaic",
+					"medusaslamentgreek",
+					"manneralchemistsparedvak"
+				],
+				"draws": 4,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "隕石は崩壊した寺院の中にあり、海の生き物のように隆起し、表面は大気圏を通過して滑らかになっている。古い祭壇は何世紀も前に壊されたようだが、隕石は我々の手に反応し、風に揺れる針金のように音を鳴らす。隕石の表面が動き、目のように開く―― ",
+			"description": "何が起こったのだろう。隕石は冷たく、静かで閉じている。その上には砂が積もっている。何世紀にもわたって手つかずのままなようだが、我々の手には、隕石の中から見つけた宝が握られている。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultloneandlevelsands2_success",
+			"label": "ラグーンの最後",
+			"actionId": "explore",
+			"requirements": {
+				"vaultloneandlevelsands2": 1
+			},
+			"effects": {
+				"vaultloneandlevelsands2": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"toolsecrethistoriesd",
+					"voyagesfofucine",
+					"toolmothf",
+					"ingredientmothf",
+					"ingredientknockf"
+				],
+				"draws": 5,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "中央の部屋では、かつて不死身だった長生者が白檀材で作られた棺台の上に裸で安らかに横たわっている。保存状態は完璧で、細身で健康的な褐色肌の男性の姿をしているが、我々が近づくと、彼の体は落ち葉のように砕け散ってしまった。残骸の中で何かが光る。",
+			"description": "懐中時計、本、アルジェリアの通貨......すべて我々の時代のものだ。彼は生前にこの場所を何度も行き来していたに違いない。時計の裏には、「忘却」と呼ばれる長生者教団の閉ざされた目が刻まれている.......",
+			"warmup": 30,
+			"craftable": false,
+			"alt": [
+				{
+					"id": "expedition.corpse.find.vaultloneandlevelsands2",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "explorevaultloneandlevelsands3_success",
+			"label": "長生者の饗宴",
+			"actionId": "explore",
+			"requirements": {
+				"vaultloneandlevelsands3": 1
+			},
+			"effects": {
+				"vaultloneandlevelsands3": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"toolheartf",
+					"songscarapacecrossmandaic",
+					"sevenfoldslayingsevencoiledfucine"
+				],
+				"draws": 3,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "穀倉の下には、メッサナの最も深い秘密である祭壇があり、そこには防腐処理された遺体が横たわっている。ほとんど残っていないところを見ると、過去にここを訪れた人々が、長年にわたってこれを食べてきたようだ。長生者の肉なのだろうか？彼らが長寿である理由は、これなのかもしれない。",
+			"description": "壁には注目すべき品々が飾られている。愚かな旅人から奪った戦利品かもしれないし、長生者の所有物かもしれない。長生者が進んで犠牲になったのか、先祖なのか、囚人だったのかは不明であり、現時点では村人から情報を得ることはできないだろう。祭壇にはギリシャ語で「大洪水に捧げる」と刻まれている。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultloneandlevelsands4_success",
+			"label": "神のトグロ",
+			"actionId": "explore",
+			"requirements": {
+				"vaultloneandlevelsands4": 1
+			},
+			"effects": {
+				"vaultloneandlevelsands4": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"ingredientwinterf",
+					"influencewintere",
+					"toolknockd",
+					"memoryofgodsfucine",
+					"toolwinterf"
+				],
+				"draws": 5,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "ジェンティスの日記に「7つのトグロ」と書かれているが、その中にある偶像は、奇跡的に積み上げられた石の蛇だ。ぐるぐるとトグロを巻き、結び目を形成し、魂が眩暈を起こす形をしている。邪悪なものが寺院の隅で蠢いている。その影響力に圧倒される前に、速やかにその場所を探るべきだ。",
+			"description": "寺院は掃除をしたばかりのようにきれいだ。敷居の上には砂はなく、恐ろしいほどに渦巻いている石の蛇には埃もなかった。まるでいたずらに置いていったのか、偶像があとから巻きついたかのように、トグロの中に隠されたものを所どころで見つけた。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultloneandlevelsandsdefault_success",
+			"label": "街だった場所",
+			"actionId": "explore",
+			"requirements": {
+				"vaultloneandlevelsandsdefault": 1
+			},
+			"effects": {
+				"vaultloneandlevelsandsdefault": -1
+			},
+			"deckeffect": {
+				"vaultrewardsf": 3
+			},
+			"startdescription": "ミアの風はとても気まぐれだ。愛情に飢えた子供のように我々の服を引っ張り、顔に砂を投げつけ、埃まみれの石の間で泣き叫ぶ。この荒廃した街は単調ではない。柱があり、アーチがあり、砂まみれの像があり、どこへも続かない階段がある。",
+			"description": "廃墟となった部屋で遺物を見つけた。そこは地下室か祠だった可能性もある。壁はひび割れ、砂が流れ込んでいる。地上にに戻ると、風が吹き荒れている。足を引っ張られそうになる。我々を懐かしく思ったのかもしれない。",
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "expeditionascensionmothe",
+					"chance": 100
+				},
+				{
+					"id": "expeditionascensionhearte",
+					"chance": 100
+				}
+			]
+		}
+	]
+}

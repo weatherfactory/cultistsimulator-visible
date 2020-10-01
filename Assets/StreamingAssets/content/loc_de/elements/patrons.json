@@ -1,0 +1,506 @@
+{
+	"elements": [
+		{
+			"id": "aladim",
+			"label": "Dr. Ibn al-Adim",
+			"aspects": {
+				"tutoraramaic": 1,
+				"tutor": 1,
+				"patron": 1
+			},
+			"description": "Dr. Ibn al-Adim, genannt der Aleppiner, interessiert sich für übersehene Geschichte. Er hat dir einen Auftrag angeboten.",
+			"unique": true,
+			"xtriggers": {
+				"commissionfulfilled": "aladimaway",
+				"killmortal": "rumour",
+				"derangemortal": "rumour"
+			},
+			"slots": [
+				{
+					"id": "Commission",
+					"label": "Auftrag",
+					"actionId": "talk",
+					"required": {
+						"commission": 1
+					}
+				},
+				{
+					"id": "Manuscript",
+					"label": "Manuskript",
+					"actionId": "talk",
+					"required": {
+						"article": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "aladimready",
+			"label": "Dr. Ibn al-Adim",
+			"aspects": {
+				"tutoraramaic": 1,
+				"tutor": 1,
+				"patron": 1
+			},
+			"description": "Dr. Ibn al-Adim, genannt der Aleppiner, interessiert sich für übersehene Geschichte. Er könnte deine Hilfe brauchen.",
+			"unique": true,
+			"xtriggers": {
+				"commissiongiven": "aladim",
+				"killmortal": "rumour",
+				"derangemortal": "rumour"
+			}
+		},
+		{
+			"id": "bechet",
+			"label": "Mme Bechet",
+			"aspects": {
+				"mortal": 1,
+				"patron": 1,
+				"tutor": 1,
+				"tutorgreek": 1
+			},
+			"description": "Mme Olympe Bechet gibt das Kerisham Review heraus, in dem Material zur Veröffentlichung gelangt, das für andere literarische Magazine zu grausig oder zu spannend ist. Sie hat dir einen Auftrag angeboten.",
+			"unique": true,
+			"xtriggers": {
+				"commissionfulfilled": "bechetaway",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"slots": [
+				{
+					"id": "Commission",
+					"label": "Auftrag",
+					"actionId": "talk",
+					"required": {
+						"commission": 1
+					}
+				},
+				{
+					"id": "Manuscript",
+					"label": "Manuskript",
+					"actionId": "talk",
+					"required": {
+						"article": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "bechetready",
+			"label": "Mme Bechet",
+			"aspects": {
+				"mortal": 1,
+				"patron": 1,
+				"tutor": 1,
+				"tutorgreek": 1
+			},
+			"description": "Mme Olympe Bechet gibt das Kerisham Review heraus, in dem Material zur Veröffentlichung gelangt, das für andere literarische Magazine zu grausig oder zu spannend ist. Sie könnte deine Hilfe brauchen.",
+			"unique": true,
+			"xtriggers": {
+				"commissiongiven": "bechet",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			}
+		},
+		{
+			"id": "jannings",
+			"label": "Graf Jannings",
+			"aspects": {
+				"mortal": 1,
+				"patron": 1,
+				"tutor": 1,
+				"tutorlatin": 1
+			},
+			"description": "Graf Gottlob Jannings vertritt eine kontinentale Bruderschaft von Ärzten und Duellanten. Er hat dir einen Auftrag angeboten.",
+			"unique": true,
+			"xtriggers": {
+				"commissionfulfilled": "janningsaway",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"slots": [
+				{
+					"id": "Commission",
+					"label": "Auftrag",
+					"actionId": "talk",
+					"required": {
+						"commission": 1
+					}
+				},
+				{
+					"id": "Manuscript",
+					"label": "Manuskript",
+					"actionId": "talk",
+					"required": {
+						"article": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "janningsready",
+			"label": "Graf Jannings",
+			"aspects": {
+				"mortal": 1,
+				"patron": 1,
+				"tutor": 1,
+				"tutorlatin": 1
+			},
+			"description": "Graf Gottlob Jannings vertritt eine kontinentale Bruderschaft von Ärzten und Duellanten. Er könnte deine Hilfe brauchen.",
+			"unique": true,
+			"xtriggers": {
+				"commissiongiven": "jannings",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			}
+		},
+		{
+			"id": "poppyready",
+			"label": "Poppy Lascelles",
+			"aspects": {
+				"mortal": 1,
+				"patron": 1
+			},
+			"description": "Eine liebenswerte wohlhabende Frau. Sie würde dich gern sprechen.",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			}
+		},
+		{
+			"id": "poppy",
+			"label": "Poppy Lascelles",
+			"aspects": {
+				"mortal": 1,
+				"patron": 1
+			},
+			"description": "Eine liebenswerte wohlhabende Frau.",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			}
+		},
+		{
+			"id": "poppycommissionready",
+			"label": "Poppy Lascelles",
+			"aspects": {
+				"mortal": 1,
+				"patron": 1
+			},
+			"description": "Eine liebenswerte wohlhabende Frau. Sie hätte gern deine Hilfe bei einer bestimmten Angelegenheit.",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"commissiongiven": "poppycommission"
+			},
+			"icon": "poppyready"
+		},
+		{
+			"id": "poppycommission",
+			"label": "Poppy Lascelles",
+			"aspects": {
+				"mortal": 1,
+				"patron": 1
+			},
+			"description": "Eine liebenswerte wohlhabende Frau. Sie hat dir einen Auftrag angeboten.",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"commissionfulfilled": "poppyaway"
+			},
+			"slots": [
+				{
+					"id": "Commission",
+					"label": "Auftrag",
+					"actionId": "talk",
+					"required": {
+						"commission": 1
+					}
+				},
+				{
+					"id": "Manuscript",
+					"label": "Manuskript",
+					"actionId": "talk",
+					"required": {
+						"article": 1
+					}
+				}
+			],
+			"icon": "poppy"
+		},
+		{
+			"id": "aladimaway",
+			"label": "Dr. Ibn al-Adim",
+			"description": "Dr. Ibn al-Adim, genannt der Aleppiner, interessiert sich für übersehene Geschichte. Er ist jetzt nicht zu erreichen, kommt aber später wieder.",
+			"lifetime": 120,
+			"decayTo": "aladimready",
+			"icon": "aladim"
+		},
+		{
+			"id": "bechetaway",
+			"label": "Mme Bechet",
+			"description": "Mme Olympe Bechet gibt das Kerisham Review heraus, in dem Material zur Veröffentlichung gelangt, das für andere literarische Magazine zu grausig oder zu spannend ist. Jetzt gerade bereitet sie etwas für die Veröffentlichung vor, doch bald ist sie wieder zu erreichen.",
+			"lifetime": 120,
+			"decayTo": "bechetready",
+			"icon": "bechet"
+		},
+		{
+			"id": "janningsaway",
+			"label": "Graf Jannings",
+			"lifetime": 120,
+			"description": "Graf Gottlob Jannings vertritt eine kontinentale Bruderschaft von Ärzten und Duellanten. Jetzt gerade ist er außer Landes, kommt aber bald wieder.",
+			"decayTo": "janningsready",
+			"icon": "jannings"
+		},
+		{
+			"id": "poppyaway",
+			"label": "Poppy Lascelles",
+			"description": "Eine liebenswerte wohlhabende Frau. Sie empfängt zurzeit keinen Besuch.",
+			"lifetime": 120,
+			"decayTo": "poppycommissionready",
+			"icon": "poppy"
+		},
+		{
+			"id": "benefactorm",
+			"label": "Lord Timothy Munday",
+			"description": "Ein eleganter Gentleman mit traurigen Augen, hoher Stirn und der Neigung zu freundlichem, blökendem, nervösem Lachen. Er rührt keine harten Getränke mehr an.",
+			"animFrames": 1,
+			"uniquenessgroup": "uqbenefactorm",
+			"aspects": {
+				"benefactor": 1,
+				"mortal": 1
+			},
+			"slots": [
+				{
+					"id": "health",
+					"actionId": "work",
+					"label": "Gesundheit",
+					"required": {
+						"health": 1
+					}
+				},
+				{
+					"id": "funds",
+					"actionId": "work",
+					"label": "Glitzer",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"employment": "benefactorm",
+				"rejection": "benefactorm_rejectedplayer",
+				"killmortal": "corpse",
+				"avowal": "benefactorm_proposedtoplayer"
+			},
+			"lifetime": 180,
+			"decayTo": "benefactorm_rejectedplayer"
+		},
+		{
+			"id": "benefactorf",
+			"label": "Nicole, 4. Markgräfin von Stanford",
+			"description": "Eine vorsichtige, clevere Frau mit dicht stehenden Augen und einer für ihr Alter hervorragenden Haut. Sie kümmert sich schon lange selbst um ihre Finanzen und spendet pflichtbewusst für die Wohlfahrt.",
+			"animFrames": 1,
+			"uniquenessgroup": "uqbenefactorf",
+			"aspects": {
+				"benefactor": 1,
+				"mortal": 1
+			},
+			"slots": [
+				{
+					"id": "health",
+					"actionId": "work",
+					"label": "Gesundheit",
+					"required": {
+						"health": 1
+					}
+				},
+				{
+					"id": "funds",
+					"actionId": "work",
+					"label": "Glitzer",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"employment": "benefactorf",
+				"rejection": "benefactorf_rejectedplayer",
+				"killmortal": "corpse",
+				"avowal": "benefactorf_proposedtoplayer"
+			},
+			"lifetime": 180,
+			"decayTo": "benefactorf_rejectedplayer"
+		},
+		{
+			"id": "benefactorm_rejectedplayer",
+			"label": "Lord Timothy Munday",
+			"description": "Lord Timothy schickt mir nicht mehr seine kleinen Mitteilungen.",
+			"uniquenessgroup": "uqbenefactorm",
+			"aspects": {
+				"mortal": 1
+			},
+			"xtriggers": {
+				"killmortal": "corpse"
+			},
+			"icon": "benefactorm"
+		},
+		{
+			"id": "benefactorf_rejectedplayer",
+			"label": "Nicole, 4. Markgräfin von Stanford",
+			"description": "Die Ehrenwerte Markgräfin von Stanford hat dem Vernehmen nach erklärt, sie verstehe nicht so recht, was sie in mir gesehen habe.",
+			"uniquenessgroup": "uqbenefactorf",
+			"aspects": {
+				"mortal": 1
+			},
+			"xtriggers": {
+				"killmortal": "corpse"
+			},
+			"icon": "benefactorf"
+		},
+		{
+			"id": "benefactorm_proposedtoplayer",
+			"label": "Lord Timothy Munday",
+			"description": "In einem Moment der Leidenschaft hat Lord Timothy um meine Hand angehalten. Wenn ich die Gelegenheit beim Schopfe packe und ja sage, verändert sich mein Leben ... und andere Türen schließen sich für immer. [Sprich mit Seiner Lordschaft, bevor sein Enthusiasmus nachlässt, sonst fühlt er sich verschmäht.]",
+			"uniquenessgroup": "uqbenefactorm",
+			"aspects": {
+				"mortal": 1,
+				"benefactor_proposal": 1
+			},
+			"xtriggers": {
+				"killmortal": "benefactorwill"
+			},
+			"lifetime": 180,
+			"decayTo": "benefactorm_rejectedplayer",
+			"icon": "benefactorm"
+		},
+		{
+			"id": "benefactorf_proposedtoplayer",
+			"label": "Nicole, 4. Markgräfin von Stanford",
+			"description": "In einem Moment der Leidenschaft hat die Ehrenwerte Nicole um meine Hand angehalten. Wenn ich die Gelegenheit beim Schopfe packe und ja sage, verändert sich mein Leben ... und andere Türen schließen sich für immer. [Sprich mit der Markgräfin, bevor ihr Enthusiasmus nachlässt, sonst fühlt sie sich verschmäht.]",
+			"uniquenessgroup": "uqbenefactorf",
+			"aspects": {
+				"mortal": 1,
+				"benefactor_proposal": 1
+			},
+			"xtriggers": {
+				"killmortal": "benefactorwill"
+			},
+			"lifetime": 180,
+			"decayTo": "benefactorf_rejectedplayer",
+			"icon": "benefactorf"
+		},
+		{
+			"id": "benefactorwill",
+			"label": "Papiere einer geliebten verstorbenen Person",
+			"description": "Jemand, der mich einst liebte, ist gestorben. Vielleicht bin ich im Testament berücksichtigt. Ich sollte mit einem Notar sprechen. [Du kannst diese Angelegenheit weiter verfolgen ... doch es besteht eine gewisse Chance, dass du Argwohn weckst.]",
+			"slots": [
+				{
+					"id": "lawyerfees",
+					"actionId": "study",
+					"label": "Anwaltsgebühren",
+					"consumes": true,
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"aspects": {
+				"legacyplotitem": 1
+			},
+			"icon": "documentgeneric"
+		},
+		{
+			"id": "sulochana",
+			"label": "Sulochana Amawasija",
+			"description": "Die lakonische, energiegeladene, hellwache und eiskalte Besitzerin des Ecdysis-Klubs.",
+			"animFrames": 1,
+			"unique": true,
+			"aspects": {
+				"tutorsanskrit": 1,
+				"tutor": 1,
+				"patron": 1
+			}
+		},
+		{
+			"id": "echidna.enroute",
+			"label": "Mrs. E. ist unterwegs",
+			"description": "Mrs. E., Sulochanas 'Schwester', trägt den seltsamen Titel 'Mutter der Monster'. Es ist unklar, wo genau sie üblicherweise haust, jedenfalls nicht an diesem Ufer des Meeres. Sie wird eine Weile brauchen, um hierher zu kommen.",
+			"unique": true,
+			"lifetime": 180,
+			"decayTo": "echidna"
+		},
+		{
+			"id": "echidna",
+			"label": "Mrs. E.",
+			"description": "Die selbsternannte Mutter der Monster. Eine fidele, rundliche Frau in einem grün-grauen Gewand, das wie ein sackartiges Dirndl aussieht.",
+			"aspects": {
+				"patron": 1
+			},
+			"animFrames": 1,
+			"unique": true
+		},
+		{
+			"id": "marinette.enroute",
+			"label": "Unsere Dame der Kabel ist unterwegs",
+			"description": "Sulochanas 'Schwester', die man normalerweise nur 'Unsere Dame der Kabel' nennen darf. Sie kommt hierher, bald, nachts.",
+			"unique": true,
+			"lifetime": 180,
+			"decayTo": "marinette"
+		},
+		{
+			"id": "marinette",
+			"label": "Marinette, 'Unsere Dame der Kabel'",
+			"description": "Riecht nach verdorbenem Blut und klappert beim Sprechen mit dem Kiefer.  Vielleicht steckt ja irgendwo unter all den Kleidern und Knochen noch eine Frau. Vielleicht ist das alles auch nur ein Puppenspielertrick.",
+			"aspects": {
+				"patron": 1
+			},
+			"animFrames": 1,
+			"unique": true
+		},
+		{
+			"id": "kleidouchos.enroute",
+			"label": "Frau Schlüssel ist unterwegs",
+			"description": "Teresa Galmiers 'Korrespondentin', Sulochanas 'Schwester', die den Schlüssel der Tage besitzt, ist unterwegs aus Wien. Vielleicht sollte ich sie vom Bahnhof abholen.",
+			"aspects": {
+				"patron": 1
+			},
+			"lifetime": 180,
+			"decayTo": "kleidouchos"
+		},
+		{
+			"id": "kleidouchos",
+			"label": "Frau Schlüssel",
+			"description": "Eine rüstige, energische Frau in strengem Schwarz und Weiß, stark verrunzelt. Man sieht sie nie blinzeln. Eine kleine schwarze Welpe lugt unter ihren Röcken hervor.",
+			"aspects": {
+				"patron": 1
+			}
+		},
+		{
+			"id": "naenia",
+			"label": "'Miss Naenia'",
+			"description": "Ein Gemälde einer dunkelhäutigen Frau mit schneefarbenen Augen und kurz geschnittenem, elfenbeifarbenem Haar. Sie steht vor einem kleinen Marmorgrab, das von Jasmin überwachsen ist. Das Gemälde trägt die Signatur 'Jonas B. Munch, 1811'.",
+			"slots": [
+				{
+					"id": "subject",
+					"label": "Erinnerung",
+					"description": "Miss Naenia spricht nie mit mir – sie ist nur ein Gemälde – doch hinterher kann ich mich immer entsinnen, was sie gesagt hat.",
+					"actionId": "talk",
+					"required": {
+						"memory": 1,
+						"ascension.remembrance.offering": 1
+					}
+				}
+			],
+			"aspects": {
+				"patron": 1
+			}
+		}
+	]
+}

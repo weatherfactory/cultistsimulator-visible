@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Noon;
 using UnityEngine;
@@ -59,6 +60,8 @@ namespace Assets.TabletopUi.Scripts.Services
 
         private async void SceneChange(int sceneToLoad,bool withFadeEffect)
         {
+            Registry.Get<StackManagersCatalogue>().Reset();
+
             //if (currentSceneIndex > 0)
             //    SceneManager.UnloadSceneAsync(currentSceneIndex);
 

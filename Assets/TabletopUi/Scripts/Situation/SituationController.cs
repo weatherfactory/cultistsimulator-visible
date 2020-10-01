@@ -203,12 +203,12 @@ namespace Assets.TabletopUi {
             return situationWindowAsStorage.GetStartingStacks();
         }
 
-        public IEnumerable<IElementStack> GetOngoingStacks()
+        public IEnumerable<ElementStackToken> GetOngoingStacks()
         {
             return situationWindowAsStorage.GetOngoingStacks();
         }
 
-        public IEnumerable<IElementStack> GetStoredStacks()
+        public IEnumerable<ElementStackToken> GetStoredStacks()
         {
             return situationWindowAsStorage.GetStoredStacks();
         }
@@ -265,7 +265,7 @@ namespace Assets.TabletopUi {
 
         }
 
-        public void StoreStacks(IEnumerable<IElementStack> inputStacks)
+        public void StoreStacks(IEnumerable<ElementStackToken> inputStacks)
 		{
           //  var inputStacks = situationWindow.GetOngoingStacks(); //This line looked like a mistake: the parameter for inputStacks was ignored (and it was named differently). Leaving in for now in case of sinister confusion - was there a reason we couldn't accept them?
             var storageStackManager = situationWindowAsStorage.GetStorageStacksManager();
@@ -307,7 +307,7 @@ namespace Assets.TabletopUi {
 
             if (command.AsNewSituation) {
 
-                List<IElementStack> stacksToAddToNewSituation=new List<IElementStack>();
+                List<ElementStackToken> stacksToAddToNewSituation=new List<ElementStackToken>();
                 //if there's an expulsion
                 if (command.Expulsion.Limit>0)
                 {
@@ -483,7 +483,7 @@ namespace Assets.TabletopUi {
                 inducedRecipe.Label, inducedRecipe.Description);
             SituationCreationCommand inducedSituation = new SituationCreationCommand(inductionRecipeVerb,
                 inducedRecipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
-            Registry.Get<TabletopManager>().BeginNewSituation(inducedSituation,new List<IElementStack>());
+            Registry.Get<TabletopManager>().BeginNewSituation(inducedSituation,new List<ElementStackToken>());
         }
 
         public void ResetSituation() {
@@ -521,7 +521,7 @@ namespace Assets.TabletopUi {
             situationToken.DisplayAsClosed();
         }
 
-        public void ShowVisualEffectIfCanTakeDroppedToken(IElementStack stack,bool show)
+        public void ShowVisualEffectIfCanTakeDroppedToken(ElementStackToken stack,bool show)
         {
             situationToken.SetGlowColor(UIStyle.TokenGlowColor.Default);
             situationToken.ShowGlow(show && CanAcceptStackWhenClosed(stack));
@@ -536,7 +536,7 @@ namespace Assets.TabletopUi {
             return false;
         }
 
-        bool HasSuitableStartingSlot(IElementStack forStack) {
+        bool HasSuitableStartingSlot(ElementStackToken forStack) {
             var win = situationWindow as SituationWindow;
             var primarySlot = win.GetPrimarySlot();
 
@@ -573,7 +573,7 @@ namespace Assets.TabletopUi {
             return false;
         }
 
-        bool PushDraggedStackIntoStartingSlots(IElementStack stack) {
+        bool PushDraggedStackIntoStartingSlots(ElementStackToken stack) {
             if (HasSuitableStartingSlot(stack) == false)
                 return false;
 
@@ -583,7 +583,7 @@ namespace Assets.TabletopUi {
             return PushDraggedStackIntoSlot(stack, primarySlot);
         }
 
-        bool PushDraggedStackIntoOngoingSlot(IElementStack stack) {
+        bool PushDraggedStackIntoOngoingSlot(ElementStackToken stack) {
             if (HasEmptyOngoingSlot(stack) == false)
                 return false;
 
@@ -592,7 +592,7 @@ namespace Assets.TabletopUi {
             return PushDraggedStackIntoSlot(stack, ongoingSlots[0]);
         }
 
-        bool PushDraggedStackIntoSlot(IElementStack stack, RecipeSlot slot) {
+        bool PushDraggedStackIntoSlot(ElementStackToken stack, RecipeSlot slot) {
             if (stack == null || slot == null)
                 return false;
 
@@ -709,7 +709,7 @@ namespace Assets.TabletopUi {
             situationWindowAsStorage.ReceiveTextNote(notification);
         }
 
-        public void ShowDestinationsForStack(IElementStack stack, bool show) {
+        public void ShowDestinationsForStack(ElementStackToken stack, bool show) {
             situationWindow.ShowDestinationsForStack(stack, show);
         }
 

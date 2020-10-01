@@ -24,6 +24,9 @@ namespace Assets.Core.Entities
         [FucineValue]
         public bool BoldAllowed { get; set; }
 
+        [FucineValue(DefaultValue = false)]
+        public bool Released { get; set; }
+
 
         [FucineDict]
         public Dictionary<string,string> UILabels { get; set; }

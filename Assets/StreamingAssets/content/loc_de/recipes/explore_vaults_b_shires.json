@@ -1,0 +1,322 @@
+{
+	"recipes": [
+		{
+			"id": "explore_vaultshires1_setup",
+			"label": "Der Beginn einer Expedition: Gladwyn Lake",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultshires1": 1
+			},
+			"effects": {
+				"guardian_serpent": 1
+			},
+			"startdescription": "Unter der Oberfläche des Sees oder in irgendeinem Winkel der Klippen sind vielleicht noch Relikte für uns übrig. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultshires2_setup",
+			"label": "Der Beginn einer Expedition: Lockwood-Sumpf",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultshires2": 1
+			},
+			"effects": {
+				"peril_treacherousground": 1,
+				"guardian_watchers": 1
+			},
+			"startdescription": "Raus ins Moor. Irgendwo, da sind wir uns sicher, gibt es einen Schrein voller kostbarer Seltsamkeiten. Wenn die Einheimischen versuchen uns umzubringen, stimmt die Richtung vermutlich. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultshires3_setup",
+			"label": "Der Beginn einer Expedition: Krähenkusshügel",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultshires3": 1
+			},
+			"effects": {
+				"seal_wardeddoor": 1
+			},
+			"startdescription": "Wer vor uns hierher kam, hat die Tür im Hügel markiert. Und hier könnte sie noch immer sein, doch sie ist mit Felsen und einem Sperrzauber versiegelt. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultshires4_setup",
+			"label": "Der Beginn einer Expedition: Keglins Ritz",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultshires4": 1
+			},
+			"effects": {
+				"peril_treacherousground": 1,
+				"guardian_dead": 1
+			},
+			"startdescription": "Wir bereiten uns auf den Abstieg vor. Wir nehmen Seile, Werkzeug und Lampen mit. Wir wapnnen uns gegen alles, was sich da unten noch regen könnte. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultshires5_setup",
+			"label": "Der Beginn einer Expedition: Das Gwaer Inn",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultshires5": 1
+			},
+			"effects": {
+				"seal_wardeddoor": 1,
+				"guardian_watchers": 1
+			},
+			"startdescription": "Wir können uns ganz einfach Zimmer in diesem Gasthaus reservieren, doch es ist davon auszugehen, dass die Einheimische – wenn sie unsere Absichten erraten – uns feindselig begegnen. Und wenn die Bibliothek noch vorhanden sein sollte, so ist sie gewiss gut versteckt. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultshiresdefault_setup",
+			"label": "Der Beginn einer Expedition: Kerisham",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultshiresdefault": 1
+			},
+			"effects": {
+				"seal_wardeddoor": 1,
+				"guardian_watchers": 1,
+				"curse_visions": 1
+			},
+			"startdescription": "Durch die Straßen zu einem einst feinen Stadthaus schlendern. Heimlich den Garten hinter dem Haus ausspionieren. Seltsame Geschichten kursieren über die Frau, die dort lebt. Sie könnte eine Adeptin sein, eine Sammlerin oder selbst so etwas Seltenes wie eine <i>Empousa</i>. Wir müssen auf der Hut sein. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultshires1_success",
+			"label": "Die Wurzel der Kapelle",
+			"actionId": "explore",
+			"requirements": {
+				"vaultshires1": 1
+			},
+			"effects": {
+				"vaultshires1": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"orchidtransfigurations3latin",
+					"ingredientheartd",
+					"indignitiesobliviatelatin"
+				],
+				"draws": 3,
+				"defaultcard": "compensationb",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Im Wasser ruhen Ruinen – direkt unter der Oberfläche, man kann dorthin waten. Der Wasserspiegel des Sees ist in all den Jahren leicht gestiegen, aber nicht genug, um uns fernzuhalten.",
+			"description": "Die Krypta der Kapelle ist überflutet und das Wasser trüb vor Leichensud, doch endlich fördern wir eine mit Wachs versiegelte Truhe zutage. 18. Jahrhundert? Nicht älter. Mal sehen, was darin ist.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultshires2_success",
+			"label": "Der Schrein der Ringeibe",
+			"actionId": "explore",
+			"requirements": {
+				"vaultshires2": 1
+			},
+			"effects": {
+				"vaultshires2": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"toolmothb",
+					"flayedtantrasanskrit",
+					"ingredientgrailb",
+					"toolknockb"
+				],
+				"draws": 4,
+				"defaultcard": "compensationb",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Hier auf einem flachen Felsen, wenige Zoll über dem Moorwasser, steht ein Thron aus Eibenholz, weich vor Pilzbefall, verziert mit angelaufenem Kupfer. Dies ist der Schrein, den wir suchen.",
+			"description": "In apfelgrüner Farbe sind rituelle Kreise auf den Stein gemalt. Die Überreste von Opfern früherer Zeiten schmatzen unter unseren Füßen als wir den Schrein durchsuchen. In einer kleinen Höhlung im Thron ruht ein öliges Bündel Schätze.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultshires3_success",
+			"label": "Das Ende des Kriegers",
+			"actionId": "explore",
+			"requirements": {
+				"vaultshires3": 1
+			},
+			"effects": {
+				"vaultshires3": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"toolwinterb",
+					"tooledgeb",
+					"influencewinterc",
+					"ingredientwinterb",
+					"ingredientmothb",
+					"bookofcentipedegreek"
+				],
+				"draws": 6,
+				"defaultcard": "compensationb",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Es ist fast möglich, hier aufrecht zu stehen, doch die Luft ist faulig und unsere Lampen glimmen nur schwach. Hier ist der Kriegerkönig, festgepflockt an seinen Grabstein, die Knochen zerschlagen, um ihn am Wandeln zu hindern. Um seinen Schädel trägt er ein Bronzeband.",
+			"description": "Andere waren hier schon – Macht ist noch zu spüren, und zweifellos kam sie bei ihren Zeremonien zum Einsatz. Sie haben einige der Grabbeigaben des Kriegerkönigs mitgenommen, aber selbst etwas zurückgelassen.",
+			"warmup": 30,
+			"craftable": false,
+			"alt": [
+				{
+					"id": "expedition.corpse.find.vaultshires3",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "explorevaultshires4_success",
+			"label": "Einst eine Dame",
+			"actionId": "explore",
+			"requirements": {
+				"vaultshires4": 1
+			},
+			"effects": {
+				"vaultshires4": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"toollanterndcracked",
+					"victoryofcrowns",
+					"tooledged"
+				],
+				"draws": 3,
+				"defaultcard": "compensationb",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Die Luft ist abgestanden und Staub wirbelt besorgniserregend oben von den Felsen herab, doch die Toten ruhen. Diese Kammer mit ihren kreideweißen Gestalten und uralten Flecken, sieht vielversprechend aus.",
+			"description": "In einem mit Blei ausgekleideten Sarkophag liegt das Skelett einer Frau. Sie wurde hier nicht bestattet, vielmehr scheint sie zum Sterben hierher gekrochen zu sein ... irgendetwas hat ihren Schädel deformiert und ihren Kiefer wie das Maul eine Bestie vorgeschoben. Fetzen vergammelten Leinens liegen um ihre Knochen herum. Schätze liegen zwischen den Resten ihrer gefalteten Hände, die auf ihren Rippen ruhen.",
+			"warmup": 30,
+			"craftable": false,
+			"alt": [
+				{
+					"id": "expedition.corpse.find.vaultshires4",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "explorevaultshires5_success",
+			"label": "Die Weiße Bibliothek",
+			"actionId": "explore",
+			"requirements": {
+				"vaultshires5": 1
+			},
+			"effects": {
+				"vaultshires5": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"shavenlocktantrasanskrit",
+					"concursumdiariesphrygian",
+					"thosewhodonotsleepfucine",
+					"matthiasamethystlossaramaic",
+					"textbooklatin"
+				],
+				"draws": 5,
+				"defaultcard": "compensationb",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Der Raum ist kalkweiß und still. Die Stühle sind aus bleichem Holz, der Tisch hat eine Platte aus weißem Marmor. Es zieht ganz schwach durch die zum Meer gewandten Fensterflügel. Im Winter muss es hier unerträglich kalt sein. In einer weiß gestrichenen Vitrine stehen einige Bücher, seltsamerweise in Kupferdraht eingewickelt.",
+			"description": "Bei einigen der Bücher handelt es sich um exotische Pornographie aus dem 18. Jahrhundert. Andere sind botanische Journale. Manche sind allerdings wertvoll für unsere Studien. Eine vergilbte Notiz, die in einem der Bücher steckt, lautet: 'Halt nach mir Ausschau. – JC.'",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultshiresdefault_success",
+			"label": "Der letzte Raum",
+			"actionId": "explore",
+			"requirements": {
+				"vaultshiresdefault": 1
+			},
+			"effects": {
+				"vaultshiresdefault": -1
+			},
+			"deckeffect": {
+				"vaultrewardsb": 3
+			},
+			"startdescription": "Jetzt steht uns nichts mehr im Wege. Erst den Keller durchsuchen, dann die Zimmer oben. Wir wollen nicht eingesperrt werden.",
+			"description": "Im obersten Stock ist ein Altar der Geteilten Sonne – die eine von vielen Stunden sein konnte. Ab mit den Sachen dort in einen Sack, und dann nichts wie weg in die Hinterstraßen.",
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explore.apostleforge.findflaw",
+					"chance": 100
+				},
+				{
+					"id": "expeditionascensionheartb",
+					"chance": 100
+				},
+				{
+					"id": "expeditionascensionmothb",
+					"chance": 100
+				}
+			]
+		}
+	]
+}

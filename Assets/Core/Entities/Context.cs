@@ -17,7 +17,8 @@ public class Context {
 		DoubleClickSend,
         Purge,
         Split,
-        Merge
+        Merge,
+        UI
     }
 
     public ActionSource actionSource;

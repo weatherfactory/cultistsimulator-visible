@@ -1,0 +1,872 @@
+{
+	"recipes": [
+		{
+			"id": "explorevaultcurse_dread_encounter",
+			"actionId": "explore",
+			"label": "乾いた魂の呪い",
+			"startdescription": "この先にある宝物は、乾いた魂の呪いにかかっている。灯りや心臓がなければ、家に帰っても追いかけてきて、魂を衰弱させるかもしれない。",
+			"requirements": {
+				"curse_dread": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "援助",
+					"description": "遠征には資金が欠かせない。信奉者のおかげで障害を乗り越えることができる。",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultcurse_dread_highheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_dread_highlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_dread_midheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_dread_midlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_dread_lowheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_dread_lowlantern",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultcurse_dread_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_dread_highheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 10
+			},
+			"label": "再生したワノイチイに助けを乞う",
+			"startdescription": "心臓の強さが、我々を呪いからほぼ確実に守ってくれる。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_dread_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultcurse_dread_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_dread_midheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 5
+			},
+			"label": "包囲するワノイチイに助けを乞う",
+			"startdescription": "呪いを鎮めるのに十分な心臓の属性を持っている......たぶん。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_dread_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultcurse_dread_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_dread_lowheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 1
+			},
+			"label": "多肉植物のワノイチイに助けを乞う",
+			"startdescription": "古代の、実り豊かな時の神ワノイチイが宿す力が、我々を呪いから守ってくれるかもしれない。期待を裏切られる場合もある。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_dread_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultcurse_dread_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_dread_highlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 10
+			},
+			"label": "絶対服従の大佐に助けを乞う",
+			"startdescription": "大佐は凶暴な時の神だが、光を知る力であり、もっと酷い目に遭っても生き延びた。彼の力はほぼ確実に私たちを守ってくれる。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_dread_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultcurse_dread_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_dread_midlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 5
+			},
+			"label": "傷のある大佐に助けを乞う",
+			"startdescription": "大佐は傷だらけの時の神だが、光を知る力であり、もっと酷い目に遭っても生き延びた。彼の力が私たちを守ってくれるはずだ。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_dread_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultcurse_dread_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_dread_lowlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 1
+			},
+			"label": "盲目の大佐の助けを乞う",
+			"startdescription": "大佐は時の神であり光を知る力であるが、本人はそれを覚えているだろうか？彼の力は、まだ私たちを守れるものではない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_dread_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultcurse_dread_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_dread_success",
+			"actionId": "explore",
+			"label": "弱まる呪い",
+			"startdescription": "我々の力は、ここにあった力よりも強い。呪いは我々に触れられない。",
+			"description": ".",
+			"effects": {
+				"curse_dread": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultcurse_dread_failure",
+			"actionId": "explore",
+			"label": "まとわりつく呪い",
+			"startdescription": "このような場所に侵入すれば、タダでは済まないだろう。近いうちに、呪いが我々の首を絞めるだろう。",
+			"description": ".",
+			"effects": {
+				"curse_dread": -1
+			},
+			"alternativerecipes": [
+				{
+					"id": "curse_dread_dormant",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultcurse_visions_encounter",
+			"actionId": "explore",
+			"label": "第五の目の呪い",
+			"startdescription": "この先にある宝物は、第五の目の呪いにかかっている。冬や心臓がなければ、家に帰っても追いかけてきて、魂の目を引き裂いてしまうかもしれない。",
+			"requirements": {
+				"curse_visions": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "援助",
+					"description": "遠征には資金が欠かせない。信奉者のおかげで障害を乗り越えることができる。",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultcurse_visions_highheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_visions_highwinter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_visions_midheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_visions_midwinter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_visions_lowheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_visions_lowwinter",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultcurse_visions_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_visions_highheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 10
+			},
+			"label": "再生したワノイチイに助けを乞う",
+			"startdescription": "心臓の強さが、我々を呪いからほぼ確実に守ってくれる。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_visions_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultcurse_visions_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_visions_midheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 5
+			},
+			"label": "包囲するワノイチイに助けを乞う",
+			"startdescription": "呪いを鎮めるのに十分な心臓の属性を持っている......たぶん。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_visions_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultcurse_visions_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_visions_lowheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 1
+			},
+			"label": "多肉植物のワノイチイに助けを乞う",
+			"startdescription": "古代の、実り豊かな時の神ワノイチイが宿す力が、我々を呪いから守ってくれるかもしれない。期待を裏切られる場合もある。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_visions_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultcurse_visions_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_visions_highwinter",
+			"actionId": "explore",
+			"requirements": {
+				"winter": 10
+			},
+			"label": "すべてを奪われた哀歌詩人に助けを乞う",
+			"startdescription": "哀歌詩人は何がすでに失われたかを知っている。彼の力はほぼ確実に我々を守ってくれるだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_visions_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultcurse_visions_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_visions_midwinter",
+			"actionId": "explore",
+			"requirements": {
+				"winter": 5
+			},
+			"label": "惑わされない哀歌詩人に助けを乞う",
+			"startdescription": "哀歌詩人は記憶と真実を切り離すことができる。彼の力は私たちを守ってくれるはずだ。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_visions_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultcurse_visions_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_visions_lowwinter",
+			"actionId": "explore",
+			"requirements": {
+				"winter": 1
+			},
+			"label": "死者を名前で呼ぶ哀歌詩人に助けを乞う",
+			"startdescription": "哀歌詩人の嘲笑と悲しみが、幻影を鎮めてくれるかもしれないが、答えを知る者はいない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_visions_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultcurse_visions_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_visions_success",
+			"actionId": "explore",
+			"label": "弱まる呪い",
+			"startdescription": "我々の力は、ここにあった力よりも強い。呪いは我々に触れられない。",
+			"description": ".",
+			"effects": {
+				"curse_visions": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultcurse_visions_failure",
+			"actionId": "explore",
+			"label": "まとわりつく呪い",
+			"startdescription": "このような場所に侵入すれば、タダでは済まないだろう。近いうちに、呪いが我々の首を絞めるだろう。",
+			"description": ".",
+			"effects": {
+				"curse_visions": -1
+			},
+			"alternativerecipes": [
+				{
+					"id": "curse_visions_dormant",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultcurse_affliction_encounter",
+			"actionId": "explore",
+			"label": "這う息",
+			"startdescription": "この先にある宝物は、這う息の呪いにかかっている。聖杯や心臓がなければ、家に帰っても追いかけてきて、胞子のように肺の中に住みつくかもしれない。",
+			"requirements": {
+				"curse_affliction": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "援助",
+					"description": "遠征には資金が欠かせない。信奉者のおかげで障害を乗り越えることができる。",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultcurse_affliction_highheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_affliction_highgrail",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_affliction_midheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_affliction_midgrail",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_affliction_lowheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_affliction_lowgrail",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultcurse_affliction_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_affliction_highheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 10
+			},
+			"label": "再生したワノイチイに助けを乞う",
+			"startdescription": "我々の心臓は、ほぼ間違いなく呪いを恐れない強さを持っている。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_affliction_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultcurse_affliction_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_affliction_midheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 5
+			},
+			"label": "包囲するワノイチイに助けを乞う",
+			"startdescription": "呪いを鎮めるのに十分な心臓の属性を持っている......たぶん。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_affliction_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultcurse_affliction_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_affliction_lowheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 1
+			},
+			"label": "多肉植物のワノイチイに助けを乞う",
+			"startdescription": "古代の、実り豊かな時の神ワノイチイが宿す力が、我々を呪いから守ってくれるかもしれない。期待を裏切られる場合もある。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_affliction_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultcurse_affliction_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_affliction_highgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 10
+			},
+			"label": "命を与える赤い聖杯に助けを乞う",
+			"startdescription": "赤い聖杯の活力が、ほぼ確実に我々を呪いから守ってくれるだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_affliction_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultcurse_affliction_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_affliction_midgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 5
+			},
+			"label": "命を奪う赤い聖杯に助けを乞う",
+			"startdescription": "赤い聖杯の飢えが、ほぼ確実に我々を呪いから守ってくれるだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_affliction_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultcurse_affliction_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_affliction_lowgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 1
+			},
+			"label": "満たされることのない赤い聖杯に助けを乞う",
+			"startdescription": "赤い聖杯が我々を呪いから守ってくれるかもしれないが、気まぐれな時の神だから確実ではない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_affliction_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultcurse_affliction_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_affliction_success",
+			"actionId": "explore",
+			"label": "弱まる呪い",
+			"startdescription": "我々の力は、ここにあった力よりも強い。呪いは我々に触れられない。",
+			"description": ".",
+			"effects": {
+				"curse_affliction": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultcurse_affliction_failure",
+			"actionId": "explore",
+			"label": "まとわりつく呪い",
+			"startdescription": "このような場所に侵入すれば、タダでは済まないだろう。近いうちに、呪いが我々の首を絞めるだろう。",
+			"description": ".",
+			"effects": {
+				"curse_affliction": -1
+			},
+			"alternativerecipes": [
+				{
+					"id": "curse_affliction_dormant",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultcurse_nowhere_encounter",
+			"actionId": "explore",
+			"label": "名もなき場所の呪い",
+			"startdescription": "ここは世界の表面が熱で黄ばんだ場所。灯りや蛾が私たちを守ってくれるかもしれない。他に頼れるものはない。",
+			"requirements": {
+				"curse_nowhere": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "援助",
+					"description": "遠征には資金が欠かせない。信奉者のおかげで障害を乗り越えることができる。",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultcurse_nowhere_highmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_nowhere_highlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_nowhere_midmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_nowhere_midlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_nowhere_lowmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_nowhere_lowlantern",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultcurse_nowhere_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_nowhere_highmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 10
+			},
+			"label": "疲れ知らずのワライツグミに助けを乞う",
+			"startdescription": "我々の蛾は、ほぼ間違いなく呪いを恐れない強さを持っている。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_nowhere_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultcurse_nowhere_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_nowhere_midmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 5
+			},
+			"label": "止まることを知らないワライツグミに助けを乞う",
+			"startdescription": "ワライツグミと呼ばれる時の神に、この呪いを説いてくれるように頼めるかもしれない。おそらく彼女は私たちを守ってくれるだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_nowhere_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultcurse_nowhere_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_nowhere_lowmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 1
+			},
+			"label": "否応なしに語りかけるワライツグミに助けを乞う",
+			"startdescription": "ワライツグミは蛾の力で頼りにはならない。彼女は我々を守ってくれるかもしれない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_nowhere_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultcurse_nowhere_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_nowhere_highlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 10
+			},
+			"label": "未だに燃えているボロボロの太陽に助けを乞う",
+			"startdescription": "ボロボロの太陽は灯りに光を与える。ほぼ確実にここで、この呪いを解いてくれるだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_nowhere_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultcurse_nowhere_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_nowhere_midlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 5
+			},
+			"label": "変わり果てたボロボロの太陽に助けを乞う",
+			"startdescription": "疲れた冷たい力であるボロボロの太陽は、灯りの力を貸してくれるだろう。これで呪いを解くことができる......かもしれない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_nowhere_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultcurse_nowhere_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_nowhere_lowlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 1
+			},
+			"label": "手の届かないボロボロの太陽に助けを乞う",
+			"startdescription": "呪いを解くには灯りが必要だが、ボロボロの太陽は少ししか貸してくれない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultcurse_nowhere_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultcurse_nowhere_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcurse_nowhere_success",
+			"actionId": "explore",
+			"label": "弱まる呪い",
+			"startdescription": "我々の力は、ここにあった力よりも強い。呪いは我々に触れられない。",
+			"description": ".",
+			"effects": {
+				"curse_nowhere": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultcurse_nowhere_failure",
+			"actionId": "explore",
+			"label": "まとわりつく呪い",
+			"startdescription": "このような場所に侵入すれば、タダでは済まないだろう。近いうちに、呪いが我々の首を絞めるだろう。",
+			"description": ".",
+			"effects": {
+				"curse_nowhere": -1
+			},
+			"alternativerecipes": [
+				{
+					"id": "curse_nowhere_dormant",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		}
+	]
+}

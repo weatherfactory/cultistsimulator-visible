@@ -1,0 +1,151 @@
+{
+	"elements": [
+		{
+			"id": "legacydetectivejob",
+			"label": "検査官の役職",
+			"description": "首都警察の上級職に就いている。",
+			"aspects": {
+				"job": 1
+			},
+			"xtriggers": {
+				"careeradvancement": "legacydetectivejob_matured"
+			}
+		},
+		{
+			"id": "legacydetectivejob_matured",
+			"label": "検査官の役職",
+			"description": "首都警察の上級職に就いているが、取締局に出向している。",
+			"aspects": {
+				"job": 1
+			},
+			"slots": [
+				{
+					"id": "target",
+					"label": "話題",
+					"required": {
+						"suspicious": 1
+					},
+					"description": "証拠を掴むまでは、自分のターゲットを直接観察することから始めなければ。",
+					"actionId": "work"
+				},
+				{
+					"id": "meticulous",
+					"label": "几帳面",
+					"description": "理性が多ければ、調査の成功確率が上がる。",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "vigilant",
+					"label": "用心深い",
+					"description": "理性が多ければ、調査の成功確率が上がる。",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "singleminded",
+					"label": "一意専心",
+					"description": "理性が多ければ、調査の成功確率が上がる。",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"employment": "legacydetectivejob_matured"
+			},
+			"lifetime": 90,
+			"decayTo": "legacydetectivejob_suspended",
+			"icon": "legacydetectivejob"
+		},
+		{
+			"id": "legacydetectivejob_suspended",
+			"label": "警部[休職処分]",
+			"description": "欠勤していることを指摘され、結果的に停職となってしまった。[一刻も早く弁明しないと、永久に職を失うこととなる。]",
+			"slots": [
+				{
+					"id": "passion",
+					"label": "情熱",
+					"required": {
+						"passion": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"aspects": {
+				"job": 1
+			},
+			"xtriggers": {
+				"plead": "legacydetectivejob_matured"
+			},
+			"lifetime": 90,
+			"decayTo": "legacydetectivejob_disgraced"
+		},
+		{
+			"id": "legacydetectivejob_disgraced",
+			"label": "警部[懲戒免職]",
+			"description": "職を失ってしまった。復職する可能性は低いと思う。民間人の世界で自分の道を切り開いていかなくてはいけない。",
+			"lifetime": 120,
+			"decayTo": "mystique"
+		},
+		{
+			"id": "legacydetective_plotitem",
+			"label": "封印された取締局のファイル",
+			"aspects": {
+				"desire": 1,
+				"legacyplotitem": 1,
+				"detectivetemptation": 1
+			},
+			"description": "謎に包まれた#PREVIOUSCHARACTERTERNAME#のファイル。自分で封印したものだ。内容はよく覚えている。もう一度読めば、また夢が始まるかもしれない。"
+		},
+		{
+			"id": "myevidence",
+			"label": "仮の証拠",
+			"description": "ターゲットの活動に関する証拠がある。",
+			"lifetime": 300,
+			"aspects": {
+				"suspicious": 1
+			},
+			"xtriggers": {
+				"investigatingsuccess": "myevidenceb"
+			}
+		},
+		{
+			"id": "myevidenceb",
+			"label": "不利な証拠",
+			"description": "ターゲットの活動に関する有力な証拠がある。",
+			"lifetime": 300,
+			"aspects": {
+				"suspicious": 1
+			}
+		},
+		{
+			"id": "legacydetective_plotitem_burning",
+			"label": "燃える取締局のファイル",
+			"description": "もう少しで燃え尽きてしまう！日の中から拾うことができるかも―― ",
+			"lifetime": 10,
+			"icon": "legacydetective_plotitem",
+			"aspects": {
+				"desire": 1,
+				"legacyplotitem": 1,
+				"detectivetemptation": 1
+			}
+		},
+		{
+			"id": "legacydetective_plotitem_backup",
+			"label": "厄介な取締局のファイル",
+			"aspects": {
+				"desire": 1,
+				"legacyplotitem": 1,
+				"detectivetemptation": 1
+			},
+			"icon": "legacydetective_plotitem",
+			"description": "その証拠には、興味がある人間なら唇を舐めたくなるような情報が含まれている。読んではいけない。またあの夢を見てしまうかもしれない。"
+		}
+	]
+}

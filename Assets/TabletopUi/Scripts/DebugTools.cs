@@ -14,15 +14,17 @@ using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using Steamworks;
 using TMPro;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.VR;
 using static Noon.NoonUtility;
 
-public class DebugTools : MonoBehaviour
+public class DebugTools : MonoBehaviour,ITokenObserver
 {
     private const int MaxAutoCompletionSuggestions = 50;
 
@@ -343,7 +345,7 @@ public class DebugTools : MonoBehaviour
                 verbForNewSituation = new CreatedVerb(recipe.ActionId, recipe.Label, recipe.Description);
 
             SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, SituationState.FreshlyStarted);
-        Registry.Get<TabletopManager>().BeginNewSituation(scc,new List<IElementStack>());
+        Registry.Get<TabletopManager>().BeginNewSituation(scc,new List<ElementStackToken>());
         }
         else
         Debug.Log("couldn't find this recipe: " + recipeId);
@@ -567,6 +569,30 @@ public class DebugTools : MonoBehaviour
     private bool CheckDebugSaveExists(int index)
     {
         return File.Exists(GetGameSaveLocation(index));
+    }
+
+    public void OnStackClicked(ElementStackToken stack, PointerEventData pointerEventData, Element element)
+    {
+        if(isActiveAndEnabled)
+            SetInput(stack.EntityId);
+    }
+
+    public void OnStackDropped(ElementStackToken stack, PointerEventData eventData)
+    {
+        }
+
+    public void OnStackPointerEntered(ElementStackToken stack, PointerEventData pointerEventData)
+    {
+    }
+
+    public void OnStackPointerExited(ElementStackToken stack, PointerEventData pointerEventData)
+    {
+    }
+
+    public void OnStackDoubleClicked(ElementStackToken stack, PointerEventData eventData, Element element)
+    {
+        if (isActiveAndEnabled)
+            SetInput(stack.EntityId);
     }
 }
 

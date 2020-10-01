@@ -1,0 +1,51 @@
+{
+	"elements": [
+		{
+			"id": "mystique",
+			"label": "神秘性",
+			"aspects": {
+				"reputation": 1
+			},
+			"description": "薄気味悪さが残る。[神秘性がハンターたちの注意を集めるかもしれない。これを使って訴訟を起こすことはできないだろうが、より一層証拠を探そうと躍起になるだろう。]",
+			"lifetime": 300
+		},
+		{
+			"id": "notoriety",
+			"label": "悪評",
+			"aspects": {
+				"reputation": 2
+			},
+			"description": "すぐに忘れられない行為もある。[悪評のせいで、ハンターが訴訟を起こそうとするかもしれない。]",
+			"lifetime": 300,
+			"xtriggers": {
+				"scandalous": "notoriety"
+			}
+		},
+		{
+			"id": "evidence",
+			"aspects": {
+				"evidencelevel": 1
+			},
+			"label": "仮の証拠",
+			"description": "狩人が私の罪の証拠（現実か想像）を見つけてしまった。[オカルト活動の証拠を持ったハンターの危険度は上がる。証拠は、それを見つけたハンターが死んでも生き延びることがある。]",
+			"xtriggers": {
+				"investigatingsuccess": "evidenceb",
+				"investigatingsetback": "notoriety"
+			},
+			"lifetime": 600
+		},
+		{
+			"id": "evidenceb",
+			"aspects": {
+				"evidencelevel": 2
+			},
+			"label": "不利な証拠",
+			"description": "「大地よ、開け！ああ、ダメだ。匿ってくれないのか」[街中でオカルト活動を行っているという不利な証拠があれば、取締局はあなたに有罪判決を下すことができる。証拠は、それを作ったハンターの死後も残る可能性がある。]",
+			"xtriggers": {
+				"investigatingsetback": "evidence"
+			},
+			"lifetime": 600,
+			"decayTo": "evidence"
+		}
+	]
+}

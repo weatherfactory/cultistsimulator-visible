@@ -1,0 +1,2864 @@
+{
+	"elements": [
+		{
+			"id": "auclair_a",
+			"label": "Auclair, eine Bekanntschaft",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustenlightenment": 1
+			},
+			"description": "Auclair hat einen gelehrten Aspekt und eine morbide Ader. [Du könntest diese Bekanntschaft vielleicht als Anhängerin rekrutieren.]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "auclair_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "auclair_r"
+			},
+			"uniquenessgroup": "uqauclair"
+		},
+		{
+			"id": "auclair_b",
+			"label": "Auclair, eine Gläubige",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"winter": 2,
+				"follower_lustenlightenment": 1
+			},
+			"animFrames": 1,
+			"description": "Auclair ist still, akribisch und ohne Reue.",
+			"xtriggers": {
+				"promotiontodisciple": "auclair_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "auclair_p",
+				"rebellion": "auclair_r"
+			},
+			"uniquenessgroup": "uqauclair"
+		},
+		{
+			"id": "auclair_c",
+			"label": "Auclair, ein Jüngerin",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"winter": 5,
+				"follower_lustenlightenment": 1
+			},
+			"description": "Auclair spricht selten. Sie wählt ihre Worte mit Bedacht. Selbst ihre Bewegungen sind sparsam geworden. Man sieht sie nie blinzeln.",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_winter": "auclair_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "auclair_p",
+				"rebellion": "auclair_r_c"
+			},
+			"uniquenessgroup": "uqauclair"
+		},
+		{
+			"id": "auclair_d",
+			"label": "Eine hagere Frau, die schweigt",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"winter": 10,
+				"follower_lustenlightenment": 1
+			},
+			"description": "Die Luft ist frostig, die Kerzen flackern, die Geräusche von der Straße sind gedämpft. Hier ist jemand.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "auclair_p",
+				"rebellion": "auclair_r_d"
+			},
+			"uniquenessgroup": "uqauclair"
+		},
+		{
+			"id": "cat_a",
+			"label": "Katze Karo, eine Bekanntschaft",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustenlightenment": 1
+			},
+			"description": "'Katze Karo', wie sie sich selbst nennt, verdient ihr Geld als Medium auf der Bühne sowie als Wahrsagerin. Sie könnte noch über tiefergehende Talente verfügen. [Du könntest diese Bekanntschaft vielleicht als Anhängerin rekrutieren.]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "cat_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "cat_r"
+			},
+			"uniquenessgroup": "uqcat"
+		},
+		{
+			"id": "cat_b",
+			"label": "Katze Karo, eine Gläubige",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"lantern": 2,
+				"follower_lustenlightenment": 1
+			},
+			"animFrames": 1,
+			"description": "Eine wachsame Frau mit strahlenden Augen, die sich perfekt an ihre Träume erinnern kann.",
+			"xtriggers": {
+				"promotiontodisciple": "cat_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "cat_p",
+				"rebellion": "cat_r"
+			},
+			"uniquenessgroup": "uqcat"
+		},
+		{
+			"id": "cat_c",
+			"label": "Katze Karo, eine Jüngerin",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"lantern": 5,
+				"follower_lustenlightenment": 1
+			},
+			"description": "Sie tritt noch immer manchmal in Theatern auf. 'Katze Karo', steht auf den Postern, 'findet den Weg. Katze Karo kennt den Weg.'",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_lantern": "cat_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "cat_p",
+				"rebellion": "cat_r_c"
+			},
+			"uniquenessgroup": "uqcat"
+		},
+		{
+			"id": "cat_d",
+			"label": "Katze Karo, eine Seherin",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"lantern": 10,
+				"follower_lustenlightenment": 1
+			},
+			"description": "Archäologen finden Schätze in Grüften. Bauern bringen die Ernte vom Feld ein. Was fördert Katze Karo in Träumen zutage?",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "cat_p",
+				"rebellion": "cat_r_d"
+			},
+			"uniquenessgroup": "uqcat"
+		},
+		{
+			"id": "clifton_a",
+			"label": "'Papst' Clifton, eine Bekanntschaft",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustenlightenment": 1
+			},
+			"description": "Ein lauter und unorthodoxer Katholik mit einer mystischen Ader und einem ungebändigten Bart. [Du könntest diese Bekanntschaft vielleicht als Anhänger rekrutieren.]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "clifton_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqclifton"
+		},
+		{
+			"id": "clifton_b",
+			"label": "'Papst' Clifton, ein Gläubiger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"lantern": 2,
+				"follower_lustenlightenment": 1
+			},
+			"animFrames": 1,
+			"description": "Nun improvisiert Clifton neue Gebete voller Sonnen-Metaphern. Er brüllt noch immer wie ein Soldat und säuft wie ein Seemann.",
+			"xtriggers": {
+				"promotiontodisciple": "clifton_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "clifton_p",
+				"rebellion": "clifton_r"
+			},
+			"uniquenessgroup": "uqclifton"
+		},
+		{
+			"id": "clifton_c",
+			"label": "'Papst' Clifton, ein Jünger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"lantern": 5,
+				"follower_lustenlightenment": 1
+			},
+			"description": "Cliftons Hingabe hat sich komplex entwickelt. Seine Augen sind groß und leuchtend geworden. Seine Stimme ist noch lauter.",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_lantern": "clifton_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "clifton_p",
+				"rebellion": "clifton_r_c"
+			},
+			"uniquenessgroup": "uqclifton"
+		},
+		{
+			"id": "clifton_d",
+			"label": "'Papst' Clifton, ein Seher",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"lantern": 10,
+				"follower_lustenlightenment": 1
+			},
+			"description": "Clifton rezitiert noch immer seine Gedichte, doch sie sind so seltsam wie alte Spiegel geworden. Jeden Morgen steht er auf, um die Dämmerung zu grüßen. Er sieht ihr voll ins Gesicht und sagt dir genau, was er sieht.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "clifton_p",
+				"rebellion": "clifton_r_d"
+			},
+			"uniquenessgroup": "uqclifton"
+		},
+		{
+			"id": "clovette_a",
+			"label": "Clovette, eine Bekanntschaft",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustchange": 1
+			},
+			"description": "Clovette ist auf eine Art glücklich, die kein Gegenargument zulässt. [Du könntest diese Bekanntschaft vielleicht als Anhängerin rekrutieren.]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "clovette_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqclovette"
+		},
+		{
+			"id": "clovette_b",
+			"label": "Clovette, eine Gläubige",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"heart": 2,
+				"follower_lustchange": 1
+			},
+			"animFrames": 1,
+			"description": "Clovettes Entschluss, glücklich zu sein, grenzt nun an Fanatismus.",
+			"xtriggers": {
+				"promotiontodisciple": "clovette_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "clovette_p",
+				"rebellion": "clovette_r"
+			},
+			"uniquenessgroup": "uqclovette"
+		},
+		{
+			"id": "clovette_c",
+			"label": "Clovette, eine Jüngerin",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"heart": 5,
+				"follower_lustchange": 1
+			},
+			"description": "Clovettes Optimismus ist beängstigend. Sie schwingt ihr Glück wie einen Hammer.",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_heart": "clovette_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "clovette_p",
+				"rebellion": "clovette_r_c"
+			},
+			"uniquenessgroup": "uqclovette"
+		},
+		{
+			"id": "clovette_d",
+			"label": "Clovette, eine Tarantellistin",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"heart": 10,
+				"follower_lustchange": 1
+			},
+			"description": "Clovette ist immer in Bewegung. Sie ist leicht zum Lachen zu bringen. Ihr Lächeln ist der Sichelmond am Rande des Mondes.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "clovette_p",
+				"rebellion": "clovette_r_d"
+			},
+			"uniquenessgroup": "uqclovette"
+		},
+		{
+			"id": "connie_c",
+			"label": "Connie, eine Jüngerin",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"edge": 5,
+				"grail": 4
+			},
+			"description": "Connie hat einen letzten Schachzug entdeckt, dem sie nicht widerstehen konnte ... oder vielleicht genießt sie einfach nur ihr Leben.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"promotionto_d_edge": "connie_d",
+				"derangemortal": "lunatic",
+				"capturefollower": "genericprisonerf",
+				"rebellion": "connie_r_c"
+			},
+			"uniquenessgroup": "uqconnie",
+			"icon": "connie_r"
+		},
+		{
+			"id": "connie_d",
+			"label": "Connie, eine Eroberin",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"edge": 10,
+				"grail": 7
+			},
+			"description": "Es liegt nicht in Connies Wesen zu dienen. Eines Tages wird sie sich erheben wie ein Fluss. Doch für den Moment beugt sie sich um zu erobern.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "genericprisonerf",
+				"rebellion": "connie_r_d"
+			},
+			"uniquenessgroup": "uqconnie",
+			"icon": "connie_r"
+		},
+		{
+			"id": "dorothy_a",
+			"label": "Dorothy, eine Bekanntschaft",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustchange": 1
+			},
+			"description": "Dorothy ist eine Enthusiastin mit eklektischen Lesegewohnheiten. Sie ist fasziniert von meinen Andeutungen zu den Formen unter der Haut der Welt. [Du könntest diese Bekanntschaft vielleicht als Anhängerin rekrutieren.]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "dorothy_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqdorothy"
+		},
+		{
+			"id": "dorothy_b",
+			"label": "Dorothy, eine Gläubige",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"heart": 2,
+				"follower_lustchange": 1
+			},
+			"animFrames": 1,
+			"description": "Dorothy ist von der enthusiastischen Sorte, und ich habe ihren Enthusiasmus zu unserem Vorteil genutzt.",
+			"xtriggers": {
+				"promotiontodisciple": "dorothy_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "dorothy_p",
+				"rebellion": "dorothy_r"
+			},
+			"uniquenessgroup": "uqdorothy"
+		},
+		{
+			"id": "dorothy_c",
+			"label": "Dorothy, eine Jüngerin",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"heart": 5,
+				"follower_lustchange": 1
+			},
+			"description": "Dorothys Enthusiasmus ist zu einer Besessenheit geworden. Sie gibt keine Ruhe. Und wie sie das Tanzen liebt.",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_heart": "dorothy_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "dorothy_p",
+				"rebellion": "dorothy_r_c"
+			},
+			"uniquenessgroup": "uqdorothy"
+		},
+		{
+			"id": "dorothy_d",
+			"label": "Dorothy, eine Tarantellistin",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"heart": 10,
+				"follower_lustchange": 1
+			},
+			"description": "Wenn sie Dorothy bewegt, hören wir die Trommel. Wenn sie spricht, sehen wir den Tanz. Ihre Entschlossenheit ist ihr Schild und ihre Waffe.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "dorothy_p",
+				"rebellion": "dorothy_r_d"
+			},
+			"uniquenessgroup": "uqdorothy"
+		},
+		{
+			"id": "douglas_b",
+			"label": "Douglas, ein Gläubiger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"forge": 2
+			},
+			"animFrames": 1,
+			"description": "Douglas hat den Dienst gegen die Schmiede eingetauscht.",
+			"xtriggers": {
+				"promotiontodisciple": "douglas_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "douglas_p",
+				"rebellion": "douglas_r"
+			},
+			"uniquenessgroup": "uqdouglas",
+			"icon": "douglas_r"
+		},
+		{
+			"id": "douglas_c",
+			"label": "Douglas, ein Jünger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"forge": 5
+			},
+			"description": "Douglas mag keine Hämmer. Sie erinnern ihn an einen Vorfall. Doch er benutzt, was auch immer für Werkzeuge er benutzen muss.",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_forge": "douglas_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "douglas_p",
+				"rebellion": "douglas_r_c"
+			},
+			"uniquenessgroup": "uqdouglas",
+			"icon": "douglas_r"
+		},
+		{
+			"id": "douglas_d",
+			"label": "Douglas, ein Umformer",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"forge": 10
+			},
+			"description": "Douglas hat so viel verändert. Seine Augen glühen wie Schmiedefenster im Nebel. Seine Stimme ist das Rasseln der Kohlen im Schacht. Sein Arm ist lang.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "douglas_p",
+				"rebellion": "douglas_r_d"
+			},
+			"uniquenessgroup": "uqdouglas",
+			"icon": "douglas_r"
+		},
+		{
+			"id": "elridge_a",
+			"label": "Elridge, eine Bekanntschaft",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustpower": 1
+			},
+			"description": "Ein eleganter Herr mit uneleganten Gewohnheiten. [Du könntest diese Bekanntschaft vielleicht als Anhänger rekrutieren.]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "elridge_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqelridge"
+		},
+		{
+			"id": "elridge_b",
+			"label": "Elridge, ein Gläubiger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 2,
+				"follower_lustpower": 1
+			},
+			"animFrames": 1,
+			"description": "Elridge hat es fast schon gelernt, sich im Gespräch nicht die Zähne mit dem Messer zu reinigen. Er hat noch nicht gelernt, sein Messer im Stiefel zu lassen.",
+			"xtriggers": {
+				"promotiontodisciple": "elridge_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "elridge_p",
+				"rebellion": "elridge_r"
+			},
+			"uniquenessgroup": "uqelridge"
+		},
+		{
+			"id": "elridge_c",
+			"label": "Elridge, ein Jünger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"edge": 5,
+				"follower_lustpower": 1
+			},
+			"description": "Elridge wartet geduldig, bis es an der Zeit ist, jemanden erneut zu durchbohren.",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_edge": "elridge_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "elridge_p",
+				"rebellion": "elridge_r_c"
+			},
+			"uniquenessgroup": "uqelridge"
+		},
+		{
+			"id": "elridge_d",
+			"label": "Elridge, ein Meuchelmörder",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"edge": 10,
+				"follower_lustpower": 1
+			},
+			"description": "Elridge lässt sich nie mit einem Blutfleck sehen. Nicht mit dem kleinsten.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "elridge_p",
+				"rebellion": "elridge_r_d"
+			},
+			"uniquenessgroup": "uqelridge"
+		},
+		{
+			"id": "enid_a",
+			"label": "Enid, eine Bekanntschaft",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustenlightenment": 1
+			},
+			"description": "Enid hat eine sanfte Stimme, und manchmal liegt ihr Blick auf nichts, was man sehen könnte. Es könnte sein, dass ihr die gleichen Träume geträumt habt. [Du könntest diese Bekanntschaft vielleicht als Anhängerin rekrutieren.]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "enid_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqenid"
+		},
+		{
+			"id": "enid_b",
+			"label": "Enid, eine Gläubige",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"knock": 2,
+				"follower_lustenlightenment": 1
+			},
+			"animFrames": 1,
+			"description": "Enid hat eine sanfte Stimme, und manchmal liegt ihr Blick auf nichts, was man sehen könnte. Sie sieht Dinge, die andere nicht sehen.",
+			"xtriggers": {
+				"promotiontodisciple": "enid_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "enid_p",
+				"rebellion": "enid_r_c"
+			},
+			"uniquenessgroup": "uqenid"
+		},
+		{
+			"id": "enid_c",
+			"label": "Enid, eine Jüngerin",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"knock": 5,
+				"follower_lustenlightenment": 1
+			},
+			"description": "Enid sieht, was andere nicht sehen. Es wird schwierig für sie, doch es ist sehr nützlich.",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_knock": "enid_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "enid_p",
+				"rebellion": "enid_r_d"
+			},
+			"uniquenessgroup": "uqenid"
+		},
+		{
+			"id": "enid_d",
+			"label": "Enid, ein Schlüssel",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"knock": 10,
+				"follower_lustenlightenment": 1
+			},
+			"description": "Enid sieht die Lücken zwischen den Dingen, und die Künste, die sie sich angeeignet hat, gestatten es ihr manchmal, ihre Finger in eine solche Lücke zu stecken.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "enid_p",
+				"rebellion": "enid_r"
+			},
+			"uniquenessgroup": "uqenid"
+		},
+		{
+			"id": "laidlaw_a",
+			"label": "Laidlaw, eine Bekanntschaft",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustpower": 1
+			},
+			"description": "Laidlaw ist ein Tüftler und ein Mechaniker von verblüffendem Können. [Du könntest diese Bekanntschaft vielleicht als Anhänger rekrutieren.]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "laidlaw_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqlaidlaw"
+		},
+		{
+			"id": "laidlaw_b",
+			"label": "Laidlaw, ein Gläubiger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"forge": 2,
+				"follower_lustpower": 1
+			},
+			"animFrames": 1,
+			"description": "Laidlaw erfasst so langsam die Grenzen der Raffinesse und die Macht des Opfers.",
+			"xtriggers": {
+				"promotiontodisciple": "laidlaw_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "laidlaw_p",
+				"rebellion": "laidlaw_r"
+			},
+			"uniquenessgroup": "uqlaidlaw"
+		},
+		{
+			"id": "laidlaw_c",
+			"label": "Laidlaw, ein Jünger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"forge": 5,
+				"follower_lustpower": 1
+			},
+			"description": "Laidlaw hat gelernt, wie sich Feuer und Kupfer, Wachs und Säure noch cleverer einsetzen können.",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_forge": "laidlaw_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "laidlaw_p",
+				"rebellion": "laidlaw_r_c"
+			},
+			"uniquenessgroup": "uqlaidlaw"
+		},
+		{
+			"id": "laidlaw_d",
+			"label": "Laidlaw, ein Umformer",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"forge": 10,
+				"follower_lustpower": 1
+			},
+			"description": "Laidlaw kann das, was kaputt ist, umformen in etwas, das benötigt wird.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "laidlaw_p",
+				"rebellion": "laidlaw_r_d"
+			},
+			"uniquenessgroup": "uqlaidlaw"
+		},
+		{
+			"id": "leo_a",
+			"label": "Leo, eine Bekanntschaft",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustchange": 1
+			},
+			"description": "Leo ist ein ernster Typ, der sich für das Okkulte interessiert. Er hört dir begierig zu, wenn du Andeutungen zu den unsichtbaren Künsten machst. [Du könntest diese Bekanntschaft vielleicht als Anhänger rekrutieren.]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "leo_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqleo"
+		},
+		{
+			"id": "leo_b",
+			"label": "Leo, ein Gläubiger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"heart": 2,
+				"follower_lustchange": 1
+			},
+			"animFrames": 1,
+			"description": "Leo ist von der ernsten Sorte, doch er ist bereit, das zu tun, was er tun muss.",
+			"xtriggers": {
+				"promotiontodisciple": "leo_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "leo_p",
+				"rebellion": "leo_r"
+			},
+			"uniquenessgroup": "uqleo"
+		},
+		{
+			"id": "leo_c",
+			"label": "Leo, ein Jünger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"heart": 5,
+				"follower_lustchange": 1
+			},
+			"description": "Leo möchte immer noch bewahren, was gut und wertvoll ist, doch ihm ist klar, dass man, wenn man seine Ideale schützen will, manchmal auch Fragwürdiges tun muss.",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_heart": "leo_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "leo_p",
+				"rebellion": "leo_r_c"
+			},
+			"uniquenessgroup": "uqleo"
+		},
+		{
+			"id": "leo_d",
+			"label": "Leo, ein Tarantellist",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"heart": 10,
+				"follower_lustchange": 1
+			},
+			"description": "Leo wird die Dinge bewahren, koste es, was es wolle. Er wird nicht nachlassen.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "leo_p",
+				"rebellion": "leo_r_d"
+			},
+			"uniquenessgroup": "uqleo"
+		},
+		{
+			"id": "natalia_c",
+			"label": "Natalia, eine Jüngerin",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"lantern": 5,
+				"forge": 4
+			},
+			"description": "Natalia folgt niemandem ohne Fragen zu stellen – doch für den Moment folgt sie dir.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"promotionto_d_lantern": "natalia_d",
+				"derangemortal": "lunatic",
+				"capturefollower": "genericprisonerf",
+				"rebellion": "natalia_r_c"
+			},
+			"uniquenessgroup": "uqnatalia",
+			"icon": "natalia_r"
+		},
+		{
+			"id": "natalia_d",
+			"label": "Natalia, eine Weise",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"lantern": 10,
+				"forge": 7
+			},
+			"description": "Natalia hat den hellsten Weg eingeschlagen, den sie finden konnte.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "genericprisonerf",
+				"rebellion": "natalia_r_d"
+			},
+			"uniquenessgroup": "uqnatalia",
+			"icon": "natalia_r"
+		},
+		{
+			"id": "neville_a",
+			"label": "Neville, eine Bekanntschaft",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustenlightenment": 1
+			},
+			"description": "Neville hält inne, bevor er spricht, und er zuckt schnell zusammen. Er lacht wann immer er meint, du hast einen Witz gemacht. [Du könntest diese Bekanntschaft vielleicht als Anhänger rekrutieren.]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "neville_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqneville"
+		},
+		{
+			"id": "neville_b",
+			"label": "Neville, ein Gläubiger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"knock": 2,
+				"follower_lustenlightenment": 1
+			},
+			"animFrames": 1,
+			"description": "Neville hält inne, bevor er spricht, und er zuckt schnell zusammen. Er hat einen Sinn für tiefgründigere Angelegenheiten.",
+			"xtriggers": {
+				"promotiontodisciple": "neville_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "neville_p",
+				"rebellion": "neville_r"
+			},
+			"uniquenessgroup": "uqneville"
+		},
+		{
+			"id": "neville_c",
+			"label": "Neville, ein Jünger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"knock": 5,
+				"follower_lustenlightenment": 1
+			},
+			"description": "Nevilles Blick ist verstohlen geworden, und seine Stimme klingt manchmal schrill. Er spricht ganz offen über seine Träume.",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_knock": "neville_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "neville_p",
+				"rebellion": "neville_r_c"
+			},
+			"uniquenessgroup": "uqneville"
+		},
+		{
+			"id": "neville_d",
+			"label": "Neville, ein Schlüssel",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"knock": 10,
+				"follower_lustenlightenment": 1
+			},
+			"description": "In seinen Träumen sieht Neville die Schwachstellen, an denen sich die Welt und ihre Wege öffnen lassen.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "neville_p",
+				"rebellion": "neville_r_d"
+			},
+			"uniquenessgroup": "uqneville"
+		},
+		{
+			"id": "porter_a",
+			"label": "Porter, eine Bekanntschaft",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustchange": 1
+			},
+			"description": "Porter war Barbier, bis es zum Prozess kam. [Du könntest diese Bekanntschaft vielleicht als Anhänger rekrutieren.]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "porter_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqporter"
+		},
+		{
+			"id": "porter_b",
+			"label": "Porter, ein Gläubiger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"moth": 2,
+				"follower_lustchange": 1
+			},
+			"animFrames": 1,
+			"description": "Porter setzt sein Rasiermesser und seine Schere ein, sehr zum Vorteil seiner Freunde.",
+			"xtriggers": {
+				"promotiontodisciple": "porter_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "porter_p",
+				"rebellion": "porter_r"
+			},
+			"uniquenessgroup": "uqporter"
+		},
+		{
+			"id": "porter_c",
+			"label": "Porter, ein Jünger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"moth": 5,
+				"follower_lustchange": 1
+			},
+			"description": "Porter fällt nicht auf, bis er bereit ist.",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_moth": "porter_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "porter_p",
+				"rebellion": "porter_r_c"
+			},
+			"uniquenessgroup": "uqporter"
+		},
+		{
+			"id": "porter_d",
+			"label": "Porter, ein Zwicker",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"moth": 10,
+				"follower_lustchange": 1
+			},
+			"description": "Porter ist, wie eine Spinne, immer dort zu finden, wo man ihn am wenigsten erwartet.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "porter_p",
+				"rebellion": "porter_r_d"
+			},
+			"uniquenessgroup": "uqporter"
+		},
+		{
+			"id": "renira_a",
+			"label": "Renira, eine Bekanntschaft",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustsensation": 1
+			},
+			"description": "Renira wurde dreimal in drei verschiedenen Jurisdiktionen für nicht schuldig befunden. Wahrscheinlich wird man sie nie für irgendetwas schuldig sprechen. [Du könntest diese Bekanntschaft vielleicht als Anhängerin rekrutieren.]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "renira_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqrenira"
+		},
+		{
+			"id": "renira_b",
+			"label": "Renira, eine Gläubige",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"grail": 2,
+				"follower_lustsensation": 1
+			},
+			"animFrames": 1,
+			"description": "Renira stillt ihren Appetit auch weiterhin diskret, wobei sie schon ambitionierter geworden ist. ",
+			"xtriggers": {
+				"promotiontodisciple": "renira_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "renira_p",
+				"rebellion": "renira_r"
+			},
+			"uniquenessgroup": "uqrenira"
+		},
+		{
+			"id": "renira_c",
+			"label": "Renira, eine Jüngerin",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"grail": 5,
+				"follower_lustsensation": 1
+			},
+			"description": "Renira wird bewundert, wohin sie auch geht. Sie bedenkt nur diejenigen mit ihrer Aufmerksamkeit, die sie wiederum mit Bewunderung bedenken.",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_grail": "renira_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "renira_p",
+				"rebellion": "renira_r_c"
+			},
+			"uniquenessgroup": "uqrenira"
+		},
+		{
+			"id": "renira_d",
+			"label": "Renira, eine Cyprianin",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"grail": 10,
+				"follower_lustsensation": 1
+			},
+			"description": "Renira bekommt fast täglich Geschenke von ihren Verehrern. Manchmal sind es Blumen, manchmal Gedichte. Manchmal bekommt sie Juwelen, manchmal Geschenke aus Verzweiflung, eingewickelt in blutbeflecktes Krepppapier.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "renira_p",
+				"rebellion": "renira_r_d"
+			},
+			"uniquenessgroup": "uqrenira"
+		},
+		{
+			"id": "rose_a",
+			"label": "Rose, eine Bekanntschaft",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustsensation": 1
+			},
+			"description": "Rose ist ein gerissenes Fräulein, und sie weiß, dass du ungewöhnlich bist. [Du könntest diese Bekanntschaft vielleicht als Anhängerin rekrutieren.]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "rose_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqrose"
+		},
+		{
+			"id": "rose_b",
+			"label": "Rose, eine Gläubige",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 2,
+				"follower_lustsensation": 1
+			},
+			"animFrames": 1,
+			"description": "Rose ist ein gerissenes Fräulein, aber loyal.",
+			"xtriggers": {
+				"promotiontodisciple": "rose_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "rose_p",
+				"rebellion": "rose_r"
+			},
+			"uniquenessgroup": "uqrose"
+		},
+		{
+			"id": "rose_c",
+			"label": "Rose, eine Jüngerin",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"edge": 5,
+				"follower_lustsensation": 1
+			},
+			"description": "Rose hat ihre Gerissenheit wie einen Degen angespitzt.",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_edge": "rose_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "rose_p",
+				"rebellion": "rose_r_c"
+			},
+			"uniquenessgroup": "uqrose"
+		},
+		{
+			"id": "rose_d",
+			"label": "Rose, eine Meuchelmörderin",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"edge": 10,
+				"follower_lustsensation": 1
+			},
+			"description": "In der Nacht bevor Rose auf ihr Opfer trifft, bekommt jenes Opfer ein Paket mit einer einzelnen gelben Rose.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "rose_p",
+				"rebellion": "rose_r_d"
+			},
+			"uniquenessgroup": "uqrose"
+		},
+		{
+			"id": "saliba_a",
+			"label": "Saliba, eine Bekanntschaft",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustsensation": 1
+			},
+			"description": "Saliba ist ein Mann von unersättlichem Appetit. Dessen Befriedigung bereitet ihm schon längst keine Freude mehr. Doch er hat ja so viel gelernt. [Du könntest diese Bekanntschaft vielleicht als Anhänger rekrutieren.]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "saliba_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqsaliba"
+		},
+		{
+			"id": "saliba_b",
+			"label": "Saliba, ein Gläubiger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"grail": 2,
+				"follower_lustsensation": 1
+			},
+			"animFrames": 1,
+			"description": "Saliba versteht das Blut. Doch er versteht nicht die Geburt.",
+			"xtriggers": {
+				"promotiontodisciple": "saliba_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "saliba_p",
+				"rebellion": "saliba_r"
+			},
+			"uniquenessgroup": "uqsaliba"
+		},
+		{
+			"id": "saliba_c",
+			"label": "Saliba, ein Jünger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"grail": 5,
+				"follower_lustsensation": 1
+			},
+			"description": "Salibas genießt in einem Raum ohne Fenster. Seine Gesellschafter kehren wieder und wieder zu ihm zurück, wobei jedes Mal etwas weniger von ihnen übrig ist.",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_grail": "saliba_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "saliba_p",
+				"rebellion": "saliba_r_c"
+			},
+			"uniquenessgroup": "uqsaliba"
+		},
+		{
+			"id": "saliba_d",
+			"label": "Saliba, ein Cyprian",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"grail": 10,
+				"follower_lustsensation": 1
+			},
+			"description": "Salibas Charisma schlägt mit der Wucht eines Hammers zu. Es ist schrecklich schwer, seinem Verlangen nicht nachzugeben.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "saliba_p",
+				"rebellion": "saliba_r_d"
+			},
+			"uniquenessgroup": "uqsaliba"
+		},
+		{
+			"id": "slee_a",
+			"label": "Slee, eine Bekanntschaft",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustenlightenment": 1
+			},
+			"description": "Craig Slee, seines Zeichens Astronom und Avantgarde-Poet, hat mit nachlassender Gesundheit Interesse an der Esoterik gefunden. [Du könntest diese Bekanntschaft vielleicht als Anhänger rekrutieren.]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "slee_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqslee"
+		},
+		{
+			"id": "slee_b",
+			"label": "Slee, ein Gläubiger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"lantern": 2,
+				"follower_lustenlightenment": 1
+			},
+			"animFrames": 1,
+			"description": "Slee legt allen voller Ernst seine Theorien dar, die ihm nur zuhören: die Sterne seien winzige Wunden und die Sonne ein Bluterguss des Ruhms. Seine Dichtung ist exzentrischer denn je.",
+			"xtriggers": {
+				"promotiontodisciple": "slee_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "slee_p",
+				"rebellion": "slee_r"
+			},
+			"uniquenessgroup": "uqslee"
+		},
+		{
+			"id": "slee_c",
+			"label": "Slee, ein Jünger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"lantern": 5,
+				"follower_lustenlightenment": 1
+			},
+			"description": "Slees Kopfschmerzen sind unerträglich geworden, doch seine Theorien nähern sich täglich weiter der Praxis an. Auch seine Dichtung wird besser.",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_lantern": "slee_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "slee_p",
+				"rebellion": "slee_r_c"
+			},
+			"uniquenessgroup": "uqslee"
+		},
+		{
+			"id": "slee_d",
+			"label": "Slee, ein Seher",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"lantern": 10,
+				"follower_lustenlightenment": 1
+			},
+			"description": "Slee verständigt sich ausschließlich über Mathematik und Dichtung. Beides ist faszinierend, und es fällt immer schwerer, beides voneinander zu trennen.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "slee_p",
+				"rebellion": "slee_r_d"
+			},
+			"uniquenessgroup": "uqslee"
+		},
+		{
+			"id": "spencer_c",
+			"label": "Spencer, ein Jünger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"knock": 5,
+				"moth": 4
+			},
+			"description": "Spencer trägt eine winzige Ikone der Heiligen Agnes an einer Kette um den Hals, direkt auf der Narbe über seinem Herzen.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"promotionto_d_lantern": "spencer_d",
+				"derangemortal": "lunatic",
+				"capturefollower": "genericprisonerm",
+				"rebellion": "spencer_r_c"
+			},
+			"uniquenessgroup": "uqspencer",
+			"icon": "spencer_r"
+		},
+		{
+			"id": "spencer_d",
+			"label": "Spencer, ein Herold",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"knock": 10,
+				"moth": 7
+			},
+			"description": "Manche folgen dem Weg, manche sind der Weg für andere. Spencer erzählt uns nicht mehr, er habe einen Entschluss gefasst: stattdessen deutet er an, der Entschluss habe ihn gefasst.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "genericprisonerm",
+				"rebellion": "spencer_r_d"
+			},
+			"uniquenessgroup": "uqspencer",
+			"icon": "spencer_r"
+		},
+		{
+			"id": "sylvia_a",
+			"label": "Sylvia, eine Bekanntschaft",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustchange": 1
+			},
+			"description": "Sylvia hat mit neun Jahren ihr Auge im Wald verloren. Jedes Jahr zu Mariä Lichtmess kehrt sie an die Stelle zurück, wo sie es einst begrub. [Du könntest diese Bekanntschaft vielleicht als Anhängerin rekrutieren.]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "sylvia_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqsylvia"
+		},
+		{
+			"id": "sylvia_b",
+			"label": "Sylvia, eine Gläubige",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"moth": 2,
+				"follower_lustchange": 1
+			},
+			"animFrames": 1,
+			"description": "Sylvia kennt sich mit Dachfirsten aus, mit dem Fluss bei Ebbe, mit irischem Whiskey und Zaubertricks.",
+			"xtriggers": {
+				"promotiontodisciple": "sylvia_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "sylvia_p",
+				"rebellion": "sylvia_r"
+			},
+			"uniquenessgroup": "uqsylvia"
+		},
+		{
+			"id": "sylvia_c",
+			"label": "Sylvia, eine Jüngerin",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"moth": 5,
+				"follower_lustchange": 1
+			},
+			"description": "Sylvias bevorzugte Taktik besteht darin, zu lächeln und ihr Auge zu schließen. Es ist bemerkenswert, wie häufig derjenige, den sie gerade verhört, genau das ausplaudert, was ihm durch den Kopf geht.",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_moth": "sylvia_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "sylvia_p",
+				"rebellion": "sylvia_r_c"
+			},
+			"uniquenessgroup": "uqsylvia"
+		},
+		{
+			"id": "sylvia_d",
+			"label": "Sylvia, eine Zwickerin",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"moth": 10,
+				"follower_lustchange": 1
+			},
+			"description": "Sylvia hat gelernt zu verschwinden, fast schon bevor sie überhaupt angekommen ist. Manchmal hinterlässt sie tote Blätter unter dem Fenstersims. Manchmal schreibt sie ihren Namen dorthin, wo er nicht zu finden ist.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "sylvia_p",
+				"rebellion": "sylvia_r_d"
+			},
+			"uniquenessgroup": "uqsylvia"
+		},
+		{
+			"id": "tristan_a",
+			"label": "Tristan, eine Bekanntschaft",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustpower": 1
+			},
+			"description": "Tristan mag keine Ablenkungen. Tristan erledigt Sachen. [Du könntest diese Bekanntschaft vielleicht als Anhänger rekrutieren.]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "tristan_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqtristan"
+		},
+		{
+			"id": "tristan_b",
+			"label": "Tristan, ein Gläubiger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"forge": 2,
+				"follower_lustpower": 1
+			},
+			"animFrames": 1,
+			"description": "Tristan mag keine Ablenkungen. Tristan mag Ergebnisse.",
+			"xtriggers": {
+				"promotiontodisciple": "tristan_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "tristan_p",
+				"rebellion": "tristan_r"
+			},
+			"uniquenessgroup": "uqtristan"
+		},
+		{
+			"id": "tristan_c",
+			"label": "Tristan, ein Jünger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"forge": 5,
+				"follower_lustpower": 1
+			},
+			"description": "Tristan tut, was nötig ist. Um etwas zu erschaffen, muss man manchmal zunächst etwas zerstören.",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_forge": "tristan_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "tristan_p",
+				"rebellion": "tristan_r_c"
+			},
+			"uniquenessgroup": "uqtristan"
+		},
+		{
+			"id": "tristan_d",
+			"label": "Tristan, ein Umformer",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"forge": 10,
+				"follower_lustpower": 1
+			},
+			"description": "In einem anderen Zeitalter wäre Tristan vielleicht ein Schmied gewesen. In einem anderen Leben wäre er vielleicht ein Bombenbauer gewesen.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "tristan_p",
+				"rebellion": "tristan_r_d"
+			},
+			"uniquenessgroup": "uqtristan"
+		},
+		{
+			"id": "valciane_a",
+			"label": "Valciane, eine Bekanntschaft",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustpower": 1
+			},
+			"description": "Valciane betreibt ihr Etablissement seit fast 20 Jahren. Sie hatte noch nie einen Assistenten. Ihre Hände sind furchtbar kräftig. [Du könntest diese Bekanntschaft vielleicht als Anhängerin rekrutieren.]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "valciane_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqvalciane"
+		},
+		{
+			"id": "valciane_b",
+			"label": "Valciane, eine Gläubige",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"forge": 2,
+				"follower_lustpower": 1
+			},
+			"animFrames": 1,
+			"description": "Valcianes Erfindungsreichtum kennt keine Grenzen, und sie kann fester zupacken als ein Hufschmied.",
+			"xtriggers": {
+				"promotiontodisciple": "valciane_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "valciane_p",
+				"rebellion": "valciane_r"
+			},
+			"uniquenessgroup": "uqvalciane"
+		},
+		{
+			"id": "valciane_c",
+			"label": "Valciane, eine Jüngerin",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"forge": 5,
+				"follower_lustpower": 1
+			},
+			"description": "Valciane ist keine Maschine. Wir sind uns dessen relativ sicher, weil ab und zu beobachtet werden konnte, dass sie durchaus menschliche Fehler macht.",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_forge": "valciane_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "valciane_p",
+				"rebellion": "valciane_r_c"
+			},
+			"uniquenessgroup": "uqvalciane"
+		},
+		{
+			"id": "valciane_d",
+			"label": "Valciane, eine Umformerin",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"forge": 10,
+				"follower_lustpower": 1
+			},
+			"description": "Valciane hat begonnen, ohne Werkzeug zu arbeiten. 'Das ist nur im Wege', behauptet sie.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "valciane_p",
+				"rebellion": "valciane_r_d"
+			},
+			"uniquenessgroup": "uqvalciane"
+		},
+		{
+			"id": "victor_a",
+			"label": "Victor, eine Bekanntschaft",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustsensation": 1
+			},
+			"description": "Victor ist ein gerissener Kerl, und er weiß, wann sich ihm eine ungewöhnliche Gelegenheit bietet. [Du könntest diese Bekanntschaft vielleicht als Anhänger rekrutieren.]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "victor_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqvictor"
+		},
+		{
+			"id": "victor_b",
+			"label": "Victor, ein Gläubiger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 2,
+				"follower_lustsensation": 1
+			},
+			"animFrames": 1,
+			"description": "Victor ist ein gerissener Kerl, aber loyal.",
+			"xtriggers": {
+				"promotiontodisciple": "victor_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "victor_p",
+				"rebellion": "victor_r"
+			},
+			"uniquenessgroup": "uqvictor"
+		},
+		{
+			"id": "victor_c",
+			"label": "Victor, ein Jünger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"edge": 5,
+				"follower_lustsensation": 1
+			},
+			"description": "Victor hat seine Gerissenheit wie einen Dolch zugespitzt.",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_edge": "victor_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "victor_p",
+				"rebellion": "victor_r_c"
+			},
+			"uniquenessgroup": "uqvictor"
+		},
+		{
+			"id": "victor_d",
+			"label": "Victor, ein Meuchelmörder",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"edge": 10,
+				"follower_lustsensation": 1
+			},
+			"description": "Victor macht sich gern mit seinen Opfern bekannt, damit er sich persönlich bei ihnen entschuldigen kann, wenn es fast vorbei ist.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "victor_p",
+				"rebellion": "victor_r_d"
+			},
+			"uniquenessgroup": "uqvictor"
+		},
+		{
+			"id": "violet_a",
+			"label": "Violet, eine Bekanntschaft",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustsensation": 1
+			},
+			"description": "Violet war immer großzügig mit ihrer Zeit, wenn es darum ging, die Leiden der Sterbenden zu lindern. [Du könntest diese Bekanntschaft vielleicht als Anhängerin rekrutieren.]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "violet_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqviolet"
+		},
+		{
+			"id": "violet_b",
+			"label": "Violet, eine Gläubige",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"winter": 2,
+				"follower_lustsensation": 1
+			},
+			"animFrames": 1,
+			"description": "Violet mal gern. Sie hat Talent, wobei sie in dieser Hinsicht immer sehr bescheiden ist. Sie stellt in ihren Gemälden niemals Menschen dar. Es gibt bereits genug Menschen auf der Welt.",
+			"xtriggers": {
+				"promotiontodisciple": "violet_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "violet_p",
+				"rebellion": "violet_r"
+			},
+			"uniquenessgroup": "uqviolet"
+		},
+		{
+			"id": "violet_c",
+			"label": "Victor, eine Jüngerin",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"winter": 5,
+				"follower_lustsensation": 1
+			},
+			"description": "Violet ist stets sehr vorsichtig.",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_winter": "violet_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "violet_p",
+				"rebellion": "violet_r_c"
+			},
+			"uniquenessgroup": "uqviolet"
+		},
+		{
+			"id": "violet_d",
+			"label": "Eine Frau mit freundlichem Gesicht, die schweigt",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"winter": 10,
+				"follower_lustsensation": 1
+			},
+			"description": "Schlafe jetzt. Mach dir keine Sorgen.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "violet_p",
+				"rebellion": "violet_r_d"
+			},
+			"uniquenessgroup": "uqviolet"
+		},
+		{
+			"id": "ysabet_a",
+			"label": "Ysabet, eine Bekanntschaft",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustchange": 1
+			},
+			"description": "Ysabet hat sich schon immer im Mondschein am wohlsten gefühlt. Sie kann hervorragend im Dunkeln sehen. Bei Tage wird sie oft übersehen. [Du könntest diese Bekanntschaft vielleicht als Anhängerin rekrutieren.]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "ysabet_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqysabet"
+		},
+		{
+			"id": "ysabet_b",
+			"label": "Ysabet, eine Gläubige",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"moth": 2,
+				"follower_lustchange": 1
+			},
+			"animFrames": 1,
+			"description": "Ysabet hat einen unruhigen Schlaf. Sie steht bei Einbruch der Dämmerung auf, um das zu tun, was eine Ysabet tut.",
+			"xtriggers": {
+				"promotiontodisciple": "ysabet_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "ysabet_p",
+				"rebellion": "ysabet_r"
+			},
+			"uniquenessgroup": "uqysabet"
+		},
+		{
+			"id": "ysabet_c",
+			"label": "Ysabet, eine Jüngerin",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"moth": 5,
+				"follower_lustchange": 1
+			},
+			"description": "Ysabet war soeben hier, vor einem Augenblick. Gleich hier. So gut wie sicher.",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_moth": "ysabet_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "ysabet_p",
+				"rebellion": "ysabet_r_c"
+			},
+			"uniquenessgroup": "uqysabet"
+		},
+		{
+			"id": "ysabet_d",
+			"label": "Ysabet, eine Zwickerin",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"moth": 10,
+				"follower_lustchange": 1
+			},
+			"description": "Ysabet lügt jetzt nicht. Braucht sie nicht.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "ysabet_p",
+				"rebellion": "ysabet_r_d"
+			},
+			"uniquenessgroup": "uqysabet"
+		},
+		{
+			"id": "zachary_c",
+			"label": "Zachary, ein Jünger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"winter": 5,
+				"lantern": 4
+			},
+			"description": "Zacharys Logik ist so sattelfest wie eh und je, doch jetzt etwas unterkühlter.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"promotionto_d_winter": "zachary_d",
+				"derangemortal": "lunatic",
+				"capturefollower": "genericprisonerm",
+				"rebellion": "zachary_r_c"
+			},
+			"uniquenessgroup": "uqzachary",
+			"icon": "zachary_r"
+		},
+		{
+			"id": "zachary_d",
+			"label": "Zachary, ein Ende",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"winter": 10,
+				"lantern": 7
+			},
+			"description": "Zachary hat sein Ende gewählt.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "genericprisonerm",
+				"rebellion": "zachary_r_d"
+			},
+			"uniquenessgroup": "uqzachary",
+			"icon": "zachary_r"
+		},
+		{
+			"id": "auclair_p",
+			"label": "Auclair, ein Gefangener",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"winter": 5,
+				"grail": 3,
+				"heart": 3
+			},
+			"description": "Auclair spricht und isst nicht.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqauclair"
+		},
+		{
+			"id": "cat_p",
+			"label": "Katze Karo, eine Gefangene",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 5,
+				"grail": 3,
+				"heart": 3
+			},
+			"description": "Eine Frau, die sich 'Katze Karo' nannte, schläft, wann immer sie nur kann.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqcat"
+		},
+		{
+			"id": "clifton_p",
+			"label": "'Papst' Clifton, ein Gefangener",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 5,
+				"grail": 3,
+				"heart": 3
+			},
+			"description": "Clifton brüllt und flucht, doch die Gitterstäbe halten und die Mauern sind dick.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqclifton"
+		},
+		{
+			"id": "clovette_p",
+			"label": "Clovette, eine Gefangene",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 5
+			},
+			"description": "Clovette wartet darauf, dass die Dinge eine Wendung nehmen.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqclovette"
+		},
+		{
+			"id": "dorothy_p",
+			"label": "Dorothy, eine Gefangene",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 5
+			},
+			"description": "Dorothys ständige Vorhaltungen zehren an den Nerven.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqdorothy"
+		},
+		{
+			"id": "douglas_p",
+			"label": "Douglas, ein Gefangener",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"forge": 5
+			},
+			"description": "Douglas schüttelt traurig den Kopf. 'Hätte nie gedacht, mal auf der falschen Seite der Gitterstäbe zu landen. Hätte mal lieber auf meine Mutti hören sollen.'",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqdouglas",
+			"icon": "defaulthunterprisoner"
+		},
+		{
+			"id": "enid_p",
+			"label": "Enid, eine Gefangene",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"knock": 5
+			},
+			"description": "Enid spricht nicht mehr.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqenid"
+		},
+		{
+			"id": "elridge_p",
+			"label": "Elridge, ein Gefangener",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"edge": 5
+			},
+			"description": "Elridge darf weder Löffel noch Teller haben. Es wäre vermutlich sogar unklug, ihm schärferes Gemüse zu geben.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqelridge"
+		},
+		{
+			"id": "laidlaw_p",
+			"label": "Laidlaw, ein Gefangener",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"forge": 5
+			},
+			"description": "Laidlaws Tür ist mit Bolzen verriegelt, nicht bloß abgeschlossen. Dafür kennen wir ihn zu gut.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqlaidlaw"
+		},
+		{
+			"id": "leo_p",
+			"label": "Leo, ein Gefangener",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 5
+			},
+			"description": "Leo versteht nicht, was er verbrochen haben soll.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqleo"
+		},
+		{
+			"id": "neville_p",
+			"label": "Neville, ein Gefangener",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"knock": 5
+			},
+			"description": "Neville weint.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqneville"
+		},
+		{
+			"id": "porter_p",
+			"label": "Porter, ein Gefangener",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"moth": 5
+			},
+			"description": "Porter wartet, still wie eine Eidechse.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqporter"
+		},
+		{
+			"id": "renira_p",
+			"label": "Renira, eine Gefangene",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 5,
+				"heart": 3
+			},
+			"description": "Renira findet immer einen Weg, sich die Zeit zu vertreiben.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqrenira"
+		},
+		{
+			"id": "rose_p",
+			"label": "Rose, eine Gefangene",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"edge": 5
+			},
+			"description": "Rose hat noch nicht aufgegeben. Ich vermute, sie versteckt ihr Besteck.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqrose"
+		},
+		{
+			"id": "slee_p",
+			"label": "Slee, ein Gefangener",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 5,
+				"grail": 3,
+				"heart": 3
+			},
+			"description": "Slee schreibt wie besessen Gedichte an die Wände. Wenn wir ihm keine Tinte geben, nimmt er, was er nur kriegen kann.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqslee"
+		},
+		{
+			"id": "tristan_p",
+			"label": "Tristan, ein Gefangener",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"forge": 5
+			},
+			"description": "Tristan wird das Beste aus seiner Lage machen.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqtristan"
+		},
+		{
+			"id": "saliba_p",
+			"label": "Saliba, eine Gefangene",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 5,
+				"heart": 3
+			},
+			"description": "Salibas Zorn lodert wie verschüttete Lava.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqsaliba"
+		},
+		{
+			"id": "sylvia_p",
+			"label": "Sylvia, eine Gefangene",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"moth": 5
+			},
+			"description": "Wir schauen stündlich nach Sylvia, nur für alle Fälle.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqsylvia"
+		},
+		{
+			"id": "valciane_p",
+			"label": "Valciane, eine Gefangene",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"forge": 5
+			},
+			"description": "Es ist sehr wichtig, sich Valciane niemals auf Armeslänge zu nähern.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqvalciane"
+		},
+		{
+			"id": "victor_p",
+			"label": "Victor, ein Gefangener",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"edge": 5
+			},
+			"description": "Victors Augen sind Brunnen der Wut.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqvictor"
+		},
+		{
+			"id": "violet_p",
+			"label": "Violet, eine Gefangene",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"winter": 5
+			},
+			"description": "Violet beharrt darauf, dass es ihr gut gehe. Es geht ihr gut.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqviolet"
+		},
+		{
+			"id": "ysabet_p",
+			"label": "Ysabet, eine Gefangene",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"moth": 5
+			},
+			"description": "Wenn Ysabet weint, dann trockenen Auges.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqysabet"
+		},
+		{
+			"id": "generic_a",
+			"label": "Ein Mitläufer",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1
+			},
+			"description": "Schön manipulierbar, aber nur wenig Potenzial. [Du könntest diese Bekanntschaft vielleicht als Anhänger rekrutieren.]",
+			"animFrames": 1,
+			"comments": "legacy element to keep saves valid",
+			"xtriggers": {
+				"recruiting": "generic_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r"
+			}
+		},
+		{
+			"id": "generic_a_edge",
+			"label": "Ein Mitläufer",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1
+			},
+			"animFrames": 1,
+			"description": "Schön manipulierbar, aber nur wenig Potenzial. [Du könntest diese Bekanntschaft vielleicht als Anhänger rekrutieren.]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"recruiting": "generic_b_edge"
+			}
+		},
+		{
+			"id": "generic_a_forge",
+			"label": "Ein Mitläufer",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1
+			},
+			"animFrames": 1,
+			"description": "Schön manipulierbar, aber nur wenig Potenzial. [Du könntest diese Bekanntschaft vielleicht als Anhänger rekrutieren.]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"recruiting": "generic_b_forge"
+			}
+		},
+		{
+			"id": "generic_a_grail",
+			"label": "Ein Mitläufer",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1
+			},
+			"animFrames": 1,
+			"description": "Schön manipulierbar, aber nur wenig Potenzial. [Du könntest diese Bekanntschaft vielleicht als Anhänger rekrutieren.]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"recruiting": "generic_b_grail"
+			}
+		},
+		{
+			"id": "generic_a_heart",
+			"label": "Ein Mitläufer",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1
+			},
+			"animFrames": 1,
+			"description": "Schön manipulierbar, aber nur wenig Potenzial. [Du könntest diese Bekanntschaft vielleicht als Anhänger rekrutieren.]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"recruiting": "generic_b_heart"
+			}
+		},
+		{
+			"id": "generic_a_knock",
+			"label": "Ein Mitläufer",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1
+			},
+			"animFrames": 1,
+			"description": "Schön manipulierbar, aber nur wenig Potenzial. [Du könntest diese Bekanntschaft vielleicht als Anhänger rekrutieren.]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"recruiting": "generic_b_knock"
+			}
+		},
+		{
+			"id": "generic_a_lantern",
+			"label": "Ein Mitläufer",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1
+			},
+			"animFrames": 1,
+			"description": "Schön manipulierbar, aber nur wenig Potenzial. [Du könntest diese Bekanntschaft vielleicht als Anhänger rekrutieren.]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"recruiting": "generic_b_lantern"
+			}
+		},
+		{
+			"id": "generic_a_moth",
+			"label": "Ein Mitläufer",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1
+			},
+			"animFrames": 1,
+			"description": "Schön manipulierbar, aber nur wenig Potenzial. [Du könntest diese Bekanntschaft vielleicht als Anhänger rekrutieren.]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"recruiting": "generic_b_moth"
+			}
+		},
+		{
+			"id": "generic_a_winter",
+			"label": "Ein Mitläufer",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1
+			},
+			"animFrames": 1,
+			"description": "Schön manipulierbar, aber nur wenig Potenzial. [Du könntest diese Bekanntschaft vielleicht als Anhänger rekrutieren.]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"recruiting": "generic_b_winter"
+			}
+		},
+		{
+			"id": "generic_b",
+			"label": "Eine Marionette ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 1
+			},
+			"animFrames": 1,
+			"description": "Loyal, aber ohne eigene Initiative.",
+			"comments": "This is a legacy element to support older saves.",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"promotiontodisciple": "generic_c_knock"
+			}
+		},
+		{
+			"id": "generic_b_edge",
+			"label": "Eine Marionette ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 1
+			},
+			"animFrames": 1,
+			"description": "Loyal, aber ohne eigene Initiative.",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"promotiontodisciple": "generic_c_edge"
+			}
+		},
+		{
+			"id": "generic_b_forge",
+			"label": "Eine Marionette ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 1
+			},
+			"animFrames": 1,
+			"description": "Loyal, aber ohne eigene Initiative.",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"promotiontodisciple": "generic_c_forge"
+			}
+		},
+		{
+			"id": "generic_b_grail",
+			"label": "Eine Marionette ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 1
+			},
+			"animFrames": 1,
+			"description": "Loyal, aber ohne eigene Initiative.",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"promotiontodisciple": "generic_c_grail"
+			}
+		},
+		{
+			"id": "generic_b_heart",
+			"label": "Eine Marionette ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 1
+			},
+			"animFrames": 1,
+			"description": "Loyal, aber ohne eigene Initiative.",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"promotiontodisciple": "generic_c_heart"
+			}
+		},
+		{
+			"id": "generic_b_knock",
+			"label": "Eine Marionette ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 1
+			},
+			"animFrames": 1,
+			"description": "Loyal, aber ohne eigene Initiative.",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"promotiontodisciple": "generic_c_knock"
+			}
+		},
+		{
+			"id": "generic_b_lantern",
+			"label": "Eine Marionette ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 1
+			},
+			"animFrames": 1,
+			"description": "Loyal, aber ohne eigene Initiative.",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"promotiontodisciple": "generic_c_lantern"
+			}
+		},
+		{
+			"id": "generic_b_moth",
+			"label": "Eine Marionette ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 1
+			},
+			"animFrames": 1,
+			"description": "Loyal, aber ohne eigene Initiative.",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"promotiontodisciple": "generic_c_moth"
+			}
+		},
+		{
+			"id": "generic_b_winter",
+			"label": "Eine Marionette ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 1
+			},
+			"animFrames": 1,
+			"description": "Loyal, aber ohne eigene Initiative.",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"promotiontodisciple": "generic_c_winter"
+			}
+		},
+		{
+			"id": "generic_c_edge",
+			"label": "Ein kräftiger Jünger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"edge": 2
+			},
+			"animFrames": 1,
+			"description": "Treue und Muskeln.",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p"
+			}
+		},
+		{
+			"id": "generic_c_forge",
+			"label": "Ein praktisch veranlagter Jünger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"edge": 1,
+				"forge": 2
+			},
+			"animFrames": 1,
+			"description": "Loyal und handwerklich begabt.",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p"
+			}
+		},
+		{
+			"id": "generic_c_grail",
+			"label": "Ein eifriger Jünger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"edge": 1,
+				"grail": 2
+			},
+			"animFrames": 1,
+			"description": "Loyal, aber gierig.",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p"
+			}
+		},
+		{
+			"id": "generic_c_heart",
+			"label": "Ein lebhafter Jünger ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"edge": 1,
+				"heart": 2
+			},
+			"animFrames": 1,
+			"description": "Loyal und immer mit einem Lied auf den Lippen.",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p"
+			}
+		},
+		{
+			"id": "generic_c_knock",
+			"label": "Ein gewandter Jünger ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"edge": 1,
+				"knock": 2
+			},
+			"animFrames": 1,
+			"description": "Loyal und geschickt im Umgang mit Schlössern.",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p"
+			}
+		},
+		{
+			"id": "generic_c_lantern",
+			"label": "Ein scharfsichtiger Jünger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"edge": 1,
+				"lantern": 2
+			},
+			"animFrames": 1,
+			"description": "Loyal und mit scharfem Blick gesegnet.",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p"
+			}
+		},
+		{
+			"id": "generic_c_moth",
+			"label": "Ein fahriger Jünger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"edge": 1,
+				"moth": 2
+			},
+			"animFrames": 1,
+			"description": "Loyal, aber speziell, selbst für unseresgleichen.",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p"
+			},
+			"lifetime": 600,
+			"decayTo": "lunatic"
+		},
+		{
+			"id": "generic_c_winter",
+			"label": "Ein stiller Jünger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"edge": 1,
+				"winter": 2
+			},
+			"animFrames": 1,
+			"description": "Loyal und still wie herabfallender Schnee.",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p"
+			}
+		},
+		{
+			"id": "generic_p",
+			"label": "Ein verratener Anhänger",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3
+			},
+			"description": "Hadert kraftlos mit dem Schicksal.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse"
+		}
+	]
+}

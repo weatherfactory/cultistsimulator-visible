@@ -453,23 +453,6 @@ MonoBehaviour:
   maxAcceleration: 2000
   maxVelocity: 4000
   timeout: 0.1
---- !u!1 &65
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 191}
-  - component: {fileID: 68}
-  m_Layer: 0
-  m_Name: Limbo
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &66
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,18 +490,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &68
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 65}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 876e8111ed625f3429f5283925fdf384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &72
 GameObject:
   m_ObjectHideFlags: 0
@@ -1149,7 +1120,6 @@ Transform:
   - {fileID: 1514115095}
   - {fileID: 937582877}
   - {fileID: 186}
-  - {fileID: 191}
   - {fileID: 188}
   - {fileID: 192}
   - {fileID: 193}
@@ -1168,7 +1138,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 187}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -15, y: 0, z: 0}
 --- !u!4 &190
 Transform:
@@ -1183,20 +1153,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 187}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &191
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 65}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -122.148315, y: -140.98444, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 187}
-  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &192 stripped
 Transform:
@@ -2974,7 +2930,6 @@ MonoBehaviour:
   _tabletop: {fileID: 730}
   tabletopBackground: {fileID: 577}
   _highlightLocationsController: {fileID: 1525472693}
-  Limbo: {fileID: 68}
   aspectDetailsWindow: {fileID: 566079818}
   tokenDetailsWindow: {fileID: 114111364633692442}
   cardHoverDetail: {fileID: 5265435531635378363}
@@ -15624,7 +15579,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00005221367, y: 0.00017356873}
+  m_AnchoredPosition: {x: 0.000024080276, y: -0.0000667572}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &512707587
@@ -28756,7 +28711,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -5.0000305}
+  m_AnchoredPosition: {x: 0, y: -5}
   m_SizeDelta: {x: 0, y: 80}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1243788745
@@ -33593,7 +33548,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4362718938660750, guid: 1a6b760ab60ff74419b14dfad6d9e625, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 82184059112683796, guid: 1a6b760ab60ff74419b14dfad6d9e625,
         type: 3}
@@ -38744,7 +38699,7 @@ PrefabInstance:
     - target: {fileID: 1784779315677875502, guid: 84fe65b9f68047a42939ba2a4bcab9f8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -15.0000305
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 1784779315865869679, guid: 84fe65b9f68047a42939ba2a4bcab9f8,
         type: 3}
@@ -39721,7 +39676,7 @@ PrefabInstance:
     - target: {fileID: 7304243792921196564, guid: 29eccfcddd7c3c74ea1dc8232bad828a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7304243792921196564, guid: 29eccfcddd7c3c74ea1dc8232bad828a,
         type: 3}

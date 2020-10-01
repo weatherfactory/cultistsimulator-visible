@@ -1,0 +1,427 @@
+{
+	"elements": [
+		{
+			"id": "spirit_wintera_edge",
+			"label": "Zerschlagener Erhobener",
+			"aspects": {
+				"follower": 1,
+				"summoned": 1,
+				"winter": 4,
+				"edge": 4,
+				"remnant": 1
+			},
+			"description": "Eine zerfleischende Macht hat diese Leiche wieder in die Nähe des Lebens gezerrt. Bewegt sie sich, knistert und knackt es wie zerbrochenes Glas Ihre Fäuste sind Klauennester aus Knochensplittern. Lange wird sie nicht zusammenhalten.",
+			"xtriggers": {
+				"renewshattered": "spirit_wintera_edge",
+				"killsummoned": "influencewinter",
+				"alzabo": "influencewinterc"
+			},
+			"lifetime": 120
+		},
+		{
+			"id": "spirit_wintera_moth",
+			"label": "Wachsender Erhobener",
+			"aspects": {
+				"follower": 1,
+				"summoned": 1,
+				"winter": 4,
+				"moth": 4,
+				"spiritsicknessprotector": 1,
+				"remnant": 1
+			},
+			"description": "Die Gewächse des Forstes haben die Organe der Leiche umschlungen, ihren Kopf wie einen Kürbis anschwellen lassen und ihr Herz umfangen. Ihre Augen sich feucht von Gerissenheit und sie bewegt sich mit der zuckenden Anmut einer Marionette. Ihre Knochen sind morsches Holz und sie wird schon bald Wurzeln schlagen, doch bis dahin wird sie ein flinker und diskreter Diener sein.",
+			"xtriggers": {
+				"renewburgeoning": "spirit_wintera_moth",
+				"killsummoned": "influencemoth",
+				"alzabo": "influencemothc"
+			},
+			"lifetime": 120
+		},
+		{
+			"id": "spirit_winterb_heart",
+			"label": "Stummer Toter",
+			"aspects": {
+				"follower": 1,
+				"summoned": 1,
+				"winter": 6,
+				"moth": 6,
+				"deceiver": 6,
+				"spiriteatspassion": 1
+			},
+			"description": "Zuweilen betreten die Toten den Mansus durch die Weiße Tür. Auf ihrer Schwelle legen sie ihre Macht zu Sprechen für immer ab. Rufe sie zurück in die Welt und sie werden keine Stimme haben, doch ihre Häute von Staub werden dir zu Diensten sein.",
+			"lifetime": 180,
+			"xtriggers": {
+				"killsummoned": "influencewinter"
+			},
+			"decayTo": "influencewinter"
+		},
+		{
+			"id": "pre.spirit_winterb_heart",
+			"label": "Stummer Toter",
+			"aspects": {
+				"winter": 6,
+				"moth": 6,
+				"deceiver": 6,
+				"manifesting": 1
+			},
+			"description": "Zuweilen betreten die Toten den Mansus durch die Weiße Tür. Auf ihrer Schwelle legen sie ihre Macht zu Sprechen für immer ab. Rufe sie zurück in die Welt und sie werden keine Stimme haben, doch ihre Häute von Staub werden dir zu Diensten sein.",
+			"lifetime": 1,
+			"xtriggers": {
+				"killsummoned": "influencewinter",
+				"killmanifesting": "influencewinter"
+			},
+			"decayTo": "spirit_winterb_heart",
+			"resaturate": true,
+			"icon": "spirit_winterb_heart"
+		},
+		{
+			"id": "spirit_forgec_winter",
+			"label": "Caligine",
+			"aspects": {
+				"follower": 1,
+				"summoned": 1,
+				"forge": 8,
+				"moth": 8,
+				"deceiver": 8
+			},
+			"description": "An den Ecken der Schmiede, innerhalb der Grenzen des Mansus, trifft das Feuer des Ruhms auf niedere Elemente. Hier ist ein gerissener Brodem um die Träume deines Feindes zu infizieren.",
+			"lifetime": 180,
+			"xtriggers": {
+				"killsummoned": "influenceforge"
+			},
+			"decayTo": "influenceforge"
+		},
+		{
+			"id": "pre.spirit_forgec_winter",
+			"label": "Caligine",
+			"aspects": {
+				"forge": 8,
+				"moth": 8,
+				"deceiver": 8,
+				"manifesting": 1
+			},
+			"description": "An den Ecken der Schmiede, innerhalb der Grenzen des Mansus, trifft das Feuer des Ruhms auf niedere Elemente. Hier ist ein gerissener Brodem um die Träume deines Feindes zu infizieren.",
+			"lifetime": 1,
+			"xtriggers": {
+				"killsummoned": "influenceforge",
+				"killmanifesting": "influenceforge"
+			},
+			"decayTo": "spirit_forgec_winter",
+			"resaturate": true,
+			"icon": "spirit_forgec_winter"
+		},
+		{
+			"id": "spirit_grailc_moth",
+			"label": "Roher Prophet",
+			"aspects": {
+				"follower": 1,
+				"summoned": 1,
+				"grail": 8,
+				"moth": 8,
+				"deceiver": 8,
+				"spiritsicknessprotector": 1,
+				"spiriteatsreason": 1
+			},
+			"description": "Manchmal teilt es, manchmal eint es, manchmal spricht sie Worte der Warnung, manchmal gibt er Rat zum Appetit. Seine Prophezeiungen sind Verwirrung, ihr Flüstern verwirrt.",
+			"lifetime": 180,
+			"xtriggers": {
+				"killsummoned": "influencegrail"
+			},
+			"decayTo": "influencegrail"
+		},
+		{
+			"id": "pre.spirit_grailc_moth",
+			"label": "Roher Prophet",
+			"aspects": {
+				"grail": 8,
+				"moth": 8,
+				"deceiver": 8,
+				"manifesting": 1
+			},
+			"description": "Manchmal teilt es, manchmal eint es, manchmal spricht sie Worte der Warnung, manchmal gibt er Rat zum Appetit. Seine Prophezeiungen sind Verwirrung, ihr Flüstern verwirrt.",
+			"lifetime": 1,
+			"xtriggers": {
+				"killsummoned": "influencegrail",
+				"killmanifesting": "influencegrail"
+			},
+			"decayTo": "spirit_grailc_moth",
+			"resaturate": true,
+			"icon": "spirit_grailc_moth"
+		},
+		{
+			"id": "spirit_lanternc_edge",
+			"label": "Hinter",
+			"aspects": {
+				"follower": 1,
+				"summoned": 1,
+				"lantern": 8,
+				"edge": 8,
+				"devourer": 8
+			},
+			"description": "Die Hinter fühlen sich im Hintergrund am wohlsten: hinter den Kulissen, hinter den Spiegeln, hinter dir. Sie kriechen unter Türen durch und töten mit Glas, doch sie können den Blick eines lebendigen Sterblichen nicht überleben.",
+			"lifetime": 180,
+			"xtriggers": {
+				"killsummoned": "influencelantern"
+			},
+			"decayTo": "influencelantern"
+		},
+		{
+			"id": "pre.spirit_lanternc_edge",
+			"label": "Hinter",
+			"aspects": {
+				"lantern": 8,
+				"edge": 8,
+				"devourer": 8,
+				"manifesting": 1
+			},
+			"description": "Die Hinter fühlen sich im Hintergrund am wohlsten: hinter den Kulissen, hinter den Spiegeln, hinter dir. Sie kriechen unter Türen durch und töten mit Glas, doch sie können den Blick eines lebendigen Sterblichen nicht überleben.",
+			"lifetime": 1,
+			"xtriggers": {
+				"killsummoned": "influencelantern",
+				"killmanifesting": "influencelantern"
+			},
+			"decayTo": "spirit_lanternc_edge",
+			"resaturate": true,
+			"icon": "spirit_lanternc_edge"
+		},
+		{
+			"id": "spirit_heartc_edge",
+			"label": "Percussigant",
+			"aspects": {
+				"follower": 1,
+				"summoned": 1,
+				"heart": 8,
+				"edge": 8,
+				"devourer": 8,
+				"spiritsicknessprotector": 1,
+				"spiriteatsreason": 1
+			},
+			"description": "Der Percussigant! Er liebt das Erschaudern der Handrassel, er liebt das Rumoren der Handtrommel, mit Freuden erinnert er sich an die Häutung des Marsyas, und so wird er niemals\nniemals\nniemals mit dem Tanzen aufhören.",
+			"lifetime": 180,
+			"xtriggers": {
+				"killsummoned": "influenceheart"
+			},
+			"decayTo": "influenceheart"
+		},
+		{
+			"id": "pre.spirit_heartc_edge",
+			"label": "Percussigant",
+			"aspects": {
+				"heart": 8,
+				"edge": 8,
+				"devourer": 8,
+				"manifesting": 1
+			},
+			"description": "Der Percussigant! Er liebt das Erschaudern der Handrassel, er liebt das Rumoren der Handtrommel, mit Freuden erinnert er sich an die Häutung des Marsyas, und so wird er niemals\nniemals\nniemals mit dem Tanzen aufhören.",
+			"lifetime": 1,
+			"xtriggers": {
+				"killsummoned": "influenceheart",
+				"killmanifesting": "influenceheart"
+			},
+			"decayTo": "spirit_heartc_edge",
+			"resaturate": true,
+			"icon": "spirit_heartc_edge"
+		},
+		{
+			"id": "spirit_winterd_edge",
+			"label": "Maid-im-Spiegel",
+			"aspects": {
+				"follower": 1,
+				"summoned": 1,
+				"winter": 10,
+				"edge": 10,
+				"devourer": 10,
+				"spiriteatspassion": 1
+			},
+			"description": "'Der Aufstieg ist Glas. Die Wände sind Messer. Jeder Schritt ist Blut.' Die Toten, die vor einem jüngst gesprungenen Spiegel ruhen, die durch das Pfauentor gehen, welche die Scharfe Treppe meistern: jene Toten gehen in den Dienst der Sonne-in-Lumpen.",
+			"lifetime": 180,
+			"xtriggers": {
+				"killsummoned": "influencewinter"
+			},
+			"decayTo": "influencewinter"
+		},
+		{
+			"id": "pre.spirit_winterd_edge",
+			"label": "Maid-im-Spiegel",
+			"aspects": {
+				"winter": 10,
+				"edge": 10,
+				"devourer": 10,
+				"manifesting": 1
+			},
+			"description": "'Der Aufstieg ist Glas. Die Wände sind Messer. Jeder Schritt ist Blut.' Die Toten, die vor einem jüngst gesprungenen Spiegel ruhen, die durch das Pfauentor gehen, welche die Scharfe Treppe meistern: jene Toten gehen in den Dienst der Sonne-in-Lumpen.",
+			"lifetime": 1,
+			"xtriggers": {
+				"killsummoned": "influencewinter",
+				"killmanifesting": "influencewinter"
+			},
+			"decayTo": "spirit_winterd_edge",
+			"resaturate": true,
+			"icon": "spirit_winterd_edge"
+		},
+		{
+			"id": "spirit_forgee_edge",
+			"label": "König Tiegel",
+			"aspects": {
+				"follower": 1,
+				"summoned": 1,
+				"forge": 12,
+				"edge": 12,
+				"devourer": 12,
+				"tutor": 1,
+				"spirittutormandaic": 1
+			},
+			"description": "'IN DER WÜSTE WARTE ICH IN DEN RUINEN BRENNE ICH – METALL IST WASSER – STEIN IST WACHS – FLEISCH IST RAUCH – KOMM IN MICH UND SEI NICHT MEHR.'",
+			"xtriggers": {
+				"killsummoned": "spirit_forgee_edge.defunct"
+			},
+			"lifetime": 180,
+			"decayTo": "spirit_forgee_edge.defunct",
+			"unique": true,
+			"uniquenessgroup": "uqspirit_forgee_edge"
+		},
+		{
+			"id": "pre.spirit_forgee_edge",
+			"label": "König Tiegel",
+			"aspects": {
+				"forge": 12,
+				"edge": 12,
+				"devourer": 12,
+				"manifesting": 1
+			},
+			"description": "'IN DER WÜSTE WARTE ICH IN DEN RUINEN BRENNE ICH – METALL IST WASSER – STEIN IST WACHS – FLEISCH IST RAUCH – KOMM IN MICH UND SEI NICHT MEHR.'",
+			"xtriggers": {
+				"killsummoned": "spirit_forgee_edge.defunct",
+				"killmanifesting": "influenceforge"
+			},
+			"lifetime": 1,
+			"decayTo": "spirit_forgee_edge",
+			"unique": true,
+			"uniquenessgroup": "uqspirit_forgee_edge",
+			"resaturate": true,
+			"icon": "spirit_forgee_edge"
+		},
+		{
+			"id": "spirit_graile_edge",
+			"label": "Ezeem, der Zweite Dürstliche",
+			"aspects": {
+				"follower": 1,
+				"summoned": 1,
+				"grail": 12,
+				"edge": 12,
+				"devourer": 12,
+				"tutor": 1,
+				"spirittutorphrygian": 1,
+				"spiritsicknessprotector": 1,
+				"spiriteatsreason": 1
+			},
+			"description": "'Wandle mich. Wandle mich. Wandle mich stärker. Nun: <i>mein</i> Zug.'",
+			"xtriggers": {
+				"killsummoned": "spirit_graile_edge.defunct"
+			},
+			"lifetime": 180,
+			"decayTo": "spirit_graile_edge.defunct",
+			"unique": true,
+			"uniquenessgroup": "uqspirit_graile_edge"
+		},
+		{
+			"id": "pre.spirit_graile_edge",
+			"label": "Ezeem, der Zweite Dürstliche",
+			"aspects": {
+				"grail": 12,
+				"edge": 12,
+				"devourer": 12,
+				"manifesting": 1
+			},
+			"description": "'Wandle mich. Wandle mich. Wandle mich stärker. Nun: <i>mein</i> Zug.'",
+			"xtriggers": {
+				"killsummoned": "spirit_graile_edge.defunct",
+				"killmanifesting": "influencegrail"
+			},
+			"lifetime": 1,
+			"decayTo": "spirit_graile_edge",
+			"unique": true,
+			"uniquenessgroup": "uqspirit_graile_edge",
+			"resaturate": true,
+			"icon": "spirit_graile_edge"
+		},
+		{
+			"id": "spirit_lanterne_secret",
+			"label": "Teresa",
+			"aspects": {
+				"follower": 1,
+				"summoned": 1,
+				"lantern": 12,
+				"secrethistories": 12,
+				"tutor": 1,
+				"spirittutorfucine": 1,
+				"spiritsicknessprotector": 1,
+				"spiriteatspassion": 1
+			},
+			"description": "'Oh, die Welt ist flach. Oh, aber sie ist flach! Ich werde nicht lange bleiben. Ich sollte nicht lange bleiben. Sag mir ein Geheimnis.'",
+			"xtriggers": {
+				"killsummoned": "spirit_lanterne_secret.defunct"
+			},
+			"lifetime": 180,
+			"decayTo": "spirit_lanterne_secret.defunct",
+			"unique": true,
+			"uniquenessgroup": "uqspirit_lanterne_secret"
+		},
+		{
+			"id": "pre.spirit_lanterne_secret",
+			"label": "Teresa",
+			"aspects": {
+				"lantern": 12,
+				"secrethistories": 12,
+				"tutor": 1,
+				"manifesting": 1
+			},
+			"description": "'Oh, die Welt ist flach. Oh, aber sie ist flach! Ich werde nicht lange bleiben. Ich sollte nicht lange bleiben. Sag mir ein Geheimnis.'",
+			"xtriggers": {
+				"killsummoned": "spirit_lanterne_secret.defunct",
+				"killmanifesting": "influencelantern"
+			},
+			"lifetime": 1,
+			"decayTo": "spirit_lanterne_secret",
+			"unique": true,
+			"uniquenessgroup": "uqspirit_lanterne_secret",
+			"resaturate": true,
+			"icon": "spirit_lanterne_secret"
+		},
+		{
+			"id": "spirit_forgee_edge.defunct",
+			"label": "König Tiegel brennt schwach",
+			"description": "König Tiegels Feuer sind für den Moment weniger heiß. Geschwärzte Spuren bleiben, wie die Knochen von Kohle.",
+			"lifetime": 180,
+			"aspects": {
+				"remnant": 1
+			},
+			"unique": true,
+			"xtriggers": {
+				"alzabo": "memory.golden"
+			}
+		},
+		{
+			"id": "spirit_forgee_edge.consumed",
+			"label": "Ein aschenes Aroma",
+			"description": "Ich habe die Spuren verzehrt, die Tiegel in der Welt hinterlassen hat. Zumindest wird er beleidigt sein. Er könnte erzürnt sein. Ich sollte ihn nicht noch einmal beschwören.",
+			"unique": true
+		},
+		{
+			"id": "spirit_graile_edge.defunct",
+			"label": "Ezeem schmollt",
+			"description": "Ezeem wird damit klarkommen. Irgendwann.",
+			"lifetime": 180,
+			"comments": "This shouldn't have any aspects. We don't want it to be removed or used - it's solely a blocker.",
+			"unique": true
+		},
+		{
+			"id": "spirit_lanterne_secret.defunct",
+			"label": "Teresa ruht",
+			"description": "Die Baldomeranerin hat sich zum Ausruhen in die Hütte des Weisen-Ritters zurückgezogen.",
+			"lifetime": 180,
+			"comments": "This shouldn't have any aspects. We don't want it to be removed or used - it's solely a blocker.",
+			"unique": true
+		}
+	]
+}

@@ -1,0 +1,322 @@
+{
+	"recipes": [
+		{
+			"id": "explore_vaultshires1_setup",
+			"label": "遠征の始まり：グラッドウィン湖",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultshires1": 1
+			},
+			"effects": {
+				"guardian_serpent": 1
+			},
+			"startdescription": "湖の下や崖側の洞窟には、遺物がまた残っているかもしれない。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultshires2_setup",
+			"label": "遠征の始まり：ロックウッド沼地",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultshires2": 1
+			},
+			"effects": {
+				"peril_treacherousground": 1,
+				"guardian_watchers": 1
+			},
+			"startdescription": "沼地に来た。どこかに、貴重な装飾品で飾られた祠があるはずだ。地元の人たちが殺そうとしてきたら、正しい方向に進んでいるはずだ。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultshires3_setup",
+			"label": "遠征の始まり：クラウキスの丘",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultshires3": 1
+			},
+			"effects": {
+				"seal_wardeddoor": 1
+			},
+			"startdescription": "我々の前にここに来た者が丘の中腹にある扉に印を付けた。扉はまだここにあるかもしれないが、石と呪文で封印されている。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultshires4_setup",
+			"label": "遠征の始まり：ケグリンの傷",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultshires4": 1
+			},
+			"effects": {
+				"peril_treacherousground": 1,
+				"guardian_dead": 1
+			},
+			"startdescription": "下降の準備をした。下でまだ生きているかもしれない何かに備えてロープ、道具、灯りを持って行く。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultshires5_setup",
+			"label": "遠征の始まり：宿屋グウェール",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultshires5": 1
+			},
+			"effects": {
+				"seal_wardeddoor": 1,
+				"guardian_watchers": 1
+			},
+			"startdescription": "簡単に宿屋で部屋を予約することができるが、地物と人たちが我々の目的を知ったら、厄介なことになるだろう。まだそこに図書室があるなら、うまく隠れられるはずだ。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultshiresdefault_setup",
+			"label": "遠征の始まり：ケリシャム",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultshiresdefault": 1
+			},
+			"effects": {
+				"seal_wardeddoor": 1,
+				"guardian_watchers": 1,
+				"curse_visions": 1
+			},
+			"startdescription": "は豪華だった豪邸にこっそりと足を踏み入れ、忍び足で裏庭を覗く。ここに住んでいる女性の奇妙な噂を聞いたことがある。彼女は、高僧かもしれないし、コレクターかもしれない。あるいは<i>エンプーサ</i>と呼ばれる珍しい生き物の可能性もある。用心しなければないけない。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultshires1_success",
+			"label": "礼拝堂の原点",
+			"actionId": "explore",
+			"requirements": {
+				"vaultshires1": 1
+			},
+			"effects": {
+				"vaultshires1": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"orchidtransfigurations3latin",
+					"ingredientheartd",
+					"indignitiesobliviatelatin"
+				],
+				"draws": 3,
+				"defaultcard": "compensationb",
+				"resetonexhaustion": false
+			},
+			"startdescription": "水の下に廃墟がある――ちょうど水に隠れる、歩いて渡れるくらいの深さだ。ここ数年で湖の水位が少し上がっているが、まだ中には入れる。",
+			"description": "礼拝堂の地下室は水浸しになり、濁った水は古代の死体のかけらで沈んでいるが、ついに蝋で封じられた箱を見つけた。18世紀のものだろうか？それ以前のものではないだろう。中身を見てみよう。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultshires2_success",
+			"label": "ワノイチイの祠",
+			"actionId": "explore",
+			"requirements": {
+				"vaultshires2": 1
+			},
+			"effects": {
+				"vaultshires2": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"toolmothb",
+					"flayedtantrasanskrit",
+					"ingredientgrailb",
+					"toolknockb"
+				],
+				"draws": 4,
+				"defaultcard": "compensationb",
+				"resetonexhaustion": false
+			},
+			"startdescription": "沼地から数センチだけ顔を出す平らな岩の上に、イチイの木で作られた玉座があり、キノコや錆びた銅の装飾品で覆われている。これが我々が探していた祠だ。",
+			"description": "アップルグリーン色の絵の具が岩の上に描かれた魔法円に塗られている。祠を探す我々の足元で、過去の生け贄の残骸がギシギシと音を立てる。玉座の小さな窪みには油まみれの宝物が置かれている。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultshires3_success",
+			"label": "戦士の末路",
+			"actionId": "explore",
+			"requirements": {
+				"vaultshires3": 1
+			},
+			"effects": {
+				"vaultshires3": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"toolwinterb",
+					"tooledgeb",
+					"influencewinterc",
+					"ingredientwinterb",
+					"ingredientmothb",
+					"bookofcentipedegreek"
+				],
+				"draws": 6,
+				"defaultcard": "compensationb",
+				"resetonexhaustion": false
+			},
+			"startdescription": "ほぼ真っすぐ立てるくらい天井は高いが、悪臭が漂い、ランプの火は薄れていく。墓石の上には、戦士王が横たわっている。遺体には杭が打たれ、もう二度と歩けないように骨は粉々に砕かれ、頭蓋骨の眼窩は青銅で覆われている。",
+			"description": "我々の前にここに訪れた者がいる――力がまだ漂っているから、儀式で使ったに違いない。戦士王の葬儀の宝をいくつか盗んでいったが、同時に自分たちの宝を忘れていったようだ。",
+			"warmup": 30,
+			"craftable": false,
+			"alt": [
+				{
+					"id": "expedition.corpse.find.vaultshires3",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "explorevaultshires4_success",
+			"label": "女性の遺体",
+			"actionId": "explore",
+			"requirements": {
+				"vaultshires4": 1
+			},
+			"effects": {
+				"vaultshires4": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"toollanterndcracked",
+					"victoryofcrowns",
+					"tooledged"
+				],
+				"draws": 3,
+				"defaultcard": "compensationb",
+				"resetonexhaustion": false
+			},
+			"startdescription": "空気は臭く、頭上の岩から降ってくる埃は不穏でしかないが、横たわっている死者は動かない。チョークで描かれた人物や古いシミがあるこの部屋は、かなり有望だと思う。",
+			"description": "鉛で裏打ちされた石棺の中に女性の骨格が横たわっている。彼女はここに埋葬されたのではなく、死ぬために這って入ったようだ......頭蓋骨に何かが起きたに違いない。獣の鼻口部のように顎が押し出されている。腐った麻の切れ端が彼女の骨を覆っていた。肋骨の間にある握りしめられた手の残骸の中には、宝物が眠っている。",
+			"warmup": 30,
+			"craftable": false,
+			"alt": [
+				{
+					"id": "expedition.corpse.find.vaultshires4",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "explorevaultshires5_success",
+			"label": "白い図書館",
+			"actionId": "explore",
+			"requirements": {
+				"vaultshires5": 1
+			},
+			"effects": {
+				"vaultshires5": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"shavenlocktantrasanskrit",
+					"concursumdiariesphrygian",
+					"thosewhodonotsleepfucine",
+					"matthiasamethystlossaramaic",
+					"textbooklatin"
+				],
+				"draws": 5,
+				"defaultcard": "compensationb",
+				"resetonexhaustion": false
+			},
+			"startdescription": "部屋は真っ白で静かだ。椅子は薄色の木材で作られていて、テーブルの上には白い大理石が飾られている。海に面した窓からは、隙間風が吹き抜ける。冬には寒くてたまらないだろう。白塗りのガラスケースには、銅線のコイルに妙に包まれた本の棚が隠されていた。",
+			"description": "珍しい18世紀の好色文学もあれば、植物学者の日記もある。我々の研究に役立つ本も見つかった。「待っててくれ――JC」と書かれた黄ばんだメモが、1冊の背表紙に挟まっていた。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultshiresdefault_success",
+			"label": "最後の部屋",
+			"actionId": "explore",
+			"requirements": {
+				"vaultshiresdefault": 1
+			},
+			"effects": {
+				"vaultshiresdefault": -1
+			},
+			"deckeffect": {
+				"vaultrewardsb": 3
+			},
+			"startdescription": "邪魔になるものは何も残っていない。まず地下室を探してから上の部屋を探そう。罠にはまりたくない。",
+			"description": "最上階には、多くの時の神々の1人である「分裂した太陽」の祭壇がある。そこに飾られているものを絨毯の袋に入れて、急いで裏通りに出よう。",
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explore.apostleforge.findflaw",
+					"chance": 100
+				},
+				{
+					"id": "expeditionascensionheartb",
+					"chance": 100
+				},
+				{
+					"id": "expeditionascensionmothb",
+					"chance": 100
+				}
+			]
+		}
+	]
+}

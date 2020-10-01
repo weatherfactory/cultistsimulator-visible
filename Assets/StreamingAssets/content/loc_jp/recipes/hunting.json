@@ -1,0 +1,643 @@
+{
+	"recipes": [
+		{
+			"id": "suspicion",
+			"label": "迷惑な注目",
+			"actionId": "suspicion",
+			"requirements": {
+				"seasonsuspicion": 1
+			},
+			"slots": [
+				{
+					"id": "Suspicion",
+					"label": "敵？",
+					"required": {
+						"hunter": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "この街には、記者や探偵やお節介者がたくさんいる。どのくらい放っといてくれるのだろうか。",
+			"description": "今のところは安全だ。お節介者たちは他のことに気をとられているはずだ。安心した。",
+			"warmup": 10,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "suspiciongrabreputation",
+					"chance": 100
+				},
+				{
+					"id": "suspiciontrycreatehunter",
+					"chance": 70
+				}
+			]
+		},
+		{
+			"id": "suspiciongrabreputation",
+			"label": "手がかり探し......",
+			"actionId": "suspicion",
+			"requirements": {
+				"hunter": 1
+			},
+			"startdescription": "敵が私の活動について聞いて回っている。",
+			"description": "",
+			"slots": [
+				{
+					"id": "Clues",
+					"label": "手がかり",
+					"required": {
+						"reputation": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "suspicion_searchlongerforevidence",
+					"chance": 100
+				},
+				{
+					"id": "suspiciongrabevidence",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "suspiciongrabevidence",
+			"actionId": "suspicion",
+			"label": "証拠の検討......",
+			"startdescription": "ハンターが悪評を見つけたら、それを使って証拠を作ったり、改良しようとするはずだ。几帳面なハンターは必ず成功し、不安定なハンターであれば失敗する可能性が高くなるが、悪評がなくても証拠を生み出せるときもある。",
+			"description": "今のところ、安全なはずだ。敵は私に対して訴訟を起こすほどの証拠を持っていないし、新しい手がかりも見つけていない。",
+			"slots": [
+				{
+					"id": "Evidence",
+					"label": "証拠",
+					"required": {
+						"evidenceb": 1,
+						"evidence": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "suspicionpretrial",
+					"chance": 100
+				},
+				{
+					"id": "suspicionerratic_alwaysfail",
+					"chance": 10
+				},
+				{
+					"id": "suspicionpromoteevidencemeticulous",
+					"chance": 100
+				},
+				{
+					"id": "suspicionpromoteevidence",
+					"chance": 70
+				},
+				{
+					"id": "suspicioncreateevidencemeticulous",
+					"chance": 100
+				},
+				{
+					"id": "suspicioncreateevidence",
+					"chance": 70
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "suspicionerratic_alwayssucceed",
+					"chance": 10
+				}
+			]
+		},
+		{
+			"id": "suspicionerratic_alwaysfail",
+			"actionId": "suspicion",
+			"label": "奇妙な行動",
+			"requirements": {
+				"erratic": 1,
+				"reputation": 1
+			},
+			"startdescription": "敵が奇妙なことをしだした。[たまにしか起こらないこと。]",
+			"description": "私の敵は捜査を追う代わりに楽器の練習をしていたのか？コルクボードにダーツを投げつけていたとか？あるいは、ずっと昼寝をしていたとか？報告書は矛盾しているし、行動自体もそうだ。何の進展もしていない。",
+			"effects": {
+				"reputation": -1
+			}
+		},
+		{
+			"id": "suspicionerratic_alwayssucceed",
+			"actionId": "suspicion",
+			"label": "目まぐるしいほどの成功",
+			"requirements": {
+				"erratic": 1,
+				"reputation": -1
+			},
+			"effects": {
+				"notoriety": 1
+			},
+			"startdescription": "噂では私の敵は易経を使って神託を唱えていると言う。彼らが。夢の中で答えを探していると言う噂も聞いた。さらに別の噂ではサイコロを振ってどの質問を問うか選ぶと言われている。彼らは、見つけるべき証拠がないところで、証拠を見つけている。[たまにしか起こらない。]",
+			"linked": [
+				{
+					"id": "suspicionpromoteevidence",
+					"chance": 100
+				},
+				{
+					"id": "suspicioncreateevidence",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "suspicion_searchlongerforevidence",
+			"actionId": "suspicion",
+			"requirements": {
+				"mystique": 1
+			},
+			"label": "名声の危険",
+			"startdescription": "私の神秘性がこのハンターの注意も引いた。まだ何も証明できないが、時間をかけて探し続けるようになるだろう。",
+			"effects": {
+				"mystique": -1
+			},
+			"slots": [
+				{
+					"id": "Clues",
+					"label": "手がかり",
+					"required": {
+						"reputation": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 60,
+			"linked": [
+				{
+					"id": "suspicion_searchlongerforevidence",
+					"chance": 100
+				},
+				{
+					"id": "suspiciongrabevidence",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "suspicionpromoteevidencemeticulous",
+			"actionId": "suspicion",
+			"label": "不利な証拠を作る",
+			"requirements": {
+				"evidence": 1,
+				"reputation": 1,
+				"meticulous": 1
+			},
+			"linked": [
+				{
+					"id": "suspicionpromoteevidence",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "suspicionpromoteevidence",
+			"actionId": "suspicion",
+			"requirements": {
+				"evidence": 1,
+				"reputation": 1
+			},
+			"label": "不利な証拠を作る",
+			"startdescription": "このハンターは捜査の仕上げをしている。",
+			"description": "もしこれが裁判になったら、私は重大な危険にさらされる。たとえこのハンターが処分されたとしても、他のハンターがメモを見つけるかもしれない。",
+			"effects": {
+				"evidence": -1,
+				"evidenceb": 1,
+				"reputation": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "suspicioncreateevidencemeticulous",
+			"actionId": "suspicion",
+			"label": "手がかりを証拠に変える",
+			"requirements": {
+				"reputation": 1,
+				"meticulous": 1
+			},
+			"linked": [
+				{
+					"id": "suspicioncreateevidence",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "suspicioncreateevidence",
+			"actionId": "suspicion",
+			"requirements": {
+				"reputation": 1
+			},
+			"label": "手がかりを証拠に変える",
+			"startdescription": "噂が渦巻いて、街の隅々まで飛び散っている。ハンターの調査は順調に進んでいるようだ。",
+			"description": "敵がメモを印刷したものを、弁護士や上司、それに新聞社にまで渡したと、私は確信している。厄介なことになりそうだ。",
+			"effects": {
+				"reputation": -1,
+				"evidence": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "suspiciontrycreatehunter",
+			"label": "好奇心旺盛な少数派",
+			"actionId": "suspicion",
+			"startdescription": "好ましくない評判は、好奇心旺盛な者や厳格な者、復讐に燃える者の興味を呼び覚ますかもしれない。[評判のせいで、敵対者が出現する可能性もある。]",
+			"slots": [
+				{
+					"id": "Clues",
+					"label": "手がかり",
+					"required": {
+						"reputation": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "suspicioncreatefirsthunter",
+					"chance": 100
+				},
+				{
+					"id": "suspicioncreatehunter",
+					"chance": 100
+				}
+			],
+			"description": "今のところ、私の評判はまだきれいなままだ。守護者たちは、物陰に身を寄せて待っている。",
+			"effects": {
+				"contentment": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "suspicioncreatefirsthunter",
+			"actionId": "suspicion",
+			"label": "敵だ！",
+			"requirements": {
+				"reputation": 1
+			},
+			"startdescription": "お節介なことをしている人がいる。",
+			"description": "理解できない者や、理解できすぎる者は必ずいる。このトラブルメーカーは、証拠を手に入れて、私を晒し者にしようとしているのか？",
+			"effects": {
+				"reputation": -1,
+				"defaulthunter": 1
+			},
+			"maxexecutions": 1,
+			"warmup": 0
+		},
+		{
+			"id": "suspicioncreatehunter",
+			"actionId": "suspicion",
+			"label": "敵だ！",
+			"requirements": {
+				"reputation": 1
+			},
+			"startdescription": "お節介なことをしている人がいる。",
+			"description": "理解できない者や、理解できすぎる者は必ずいる。このトラブルメーカーは、証拠を手に入れて、私を晒し者にしようとしているのか？",
+			"deckeffect": {
+				"hunters": 1
+			},
+			"effects": {
+				"reputation": -1
+			},
+			"warmup": 0
+		},
+		{
+			"id": "suspicionpretrial",
+			"label": "取締局が私の事件を捜査している",
+			"actionId": "suspicion",
+			"requirements": {
+				"evidenceb": 1
+			},
+			"startdescription": "敵が取締局に私の事件を捜査するように説得した。取締局は、夢の中でしか存在しない犯罪を犯した稀有な犯罪者の処罰を担当している。",
+			"description": ".",
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "suspicion_attemptmitigation_me",
+					"chance": 30
+				},
+				{
+					"id": "suspicion_questionfollower",
+					"chance": 100
+				}
+			],
+			"burnimage": "beforetrial"
+		},
+		{
+			"id": "suspicion_questionme",
+			"label": "法廷で裁かれることになった！",
+			"actionId": "suspicion",
+			"startdescription": "取締局に連行されて尋問された。",
+			"description": ".",
+			"craftable": false,
+			"linked": [
+				{
+					"chance": 100,
+					"id": "suspicion_attemptmitigation_me"
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "suspicion_questionfollower",
+			"label": "裁判！",
+			"actionId": "suspicion",
+			"slots": [
+				{
+					"id": "Suspect",
+					"label": "容疑者",
+					"required": {
+						"follower": 1,
+						"independent": 1
+					},
+					"forbidden": {
+						"summoned": 1,
+						"hireling": 1
+					},
+					"description": "取締局は容疑者を求めている。",
+					"greedy": true
+				}
+			],
+			"startdescription": "取締局が尋問を行うために、私の仲間を探している。見つけられなかったら、私のもとに来るだろう。",
+			"description": ".",
+			"craftable": false,
+			"linked": [
+				{
+					"chance": 100,
+					"id": "suspicion_attemptmitigation_follower"
+				},
+				{
+					"chance": 100,
+					"id": "suspicion_attemptmitigation_rival"
+				},
+				{
+					"chance": 100,
+					"id": "suspicion_attemptmitigation_me"
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "suspicion_attemptmitigation_me",
+			"actionId": "suspicion",
+			"label": "取締局が私を裁判にかけようとしている！",
+			"startdescription": "世界には国家が公に認めない犯罪がある。私が告発されているのは、その類の犯罪行為だ。取締局は、密室裁判を行っている。彼らは血も涙もない人間たちだ。自分の人脈をうまく利用できない限り、刑務所行きになってしまうかもしれない！",
+			"description": ".",
+			"slots": [
+				{
+					"id": "favour",
+					"label": "お願い",
+					"required": {
+						"favour": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"chance": 100,
+					"id": "suspicion_favourused"
+				},
+				{
+					"chance": 70,
+					"id": "suspicion_meimprisoned"
+				},
+				{
+					"chance": 100,
+					"id": "suspicion_meexonerated"
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "suspicion_attemptmitigation_follower",
+			"label": "取締局が仲間を裁判にかけようとしている！",
+			"actionId": "suspicion",
+			"requirements": {
+				"follower": 1
+			},
+			"startdescription": "世界には国家が公に認めない犯罪がある。私の仲間が告発されているのは、その類の犯罪行為だ。取締局は、非公開裁判を行っている。彼らは無慈悲な集まりだ。自分の人脈をうまく利用できない限り、永遠に仲間を失ってしまうかもしれない......",
+			"description": ".",
+			"slots": [
+				{
+					"id": "favour",
+					"label": "お願い",
+					"required": {
+						"favour": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"chance": 100,
+					"id": "suspicion_favourused"
+				},
+				{
+					"chance": 70,
+					"id": "suspicion_followerimprisoned"
+				},
+				{
+					"chance": 100,
+					"id": "suspicion_followerexonerated"
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "suspicion_attemptmitigation_rival",
+			"label": "取締局がライバルを裁判にかけようとしている！",
+			"actionId": "suspicion",
+			"requirements": {
+				"independent": 1
+			},
+			"startdescription": "世界には国家が公に認めない犯罪がある。私のライバルが告発されているのは、その類の犯罪行為だ。取締局は、非公開裁判を行っている。彼らは無慈悲な集まりだ。これが私のライバルの終点なのかもしれない......私が助けてやることもできるが。",
+			"description": ".",
+			"slots": [
+				{
+					"id": "favour",
+					"label": "お願い",
+					"required": {
+						"favour": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"chance": 100,
+					"id": "suspicion_favourused"
+				},
+				{
+					"chance": 70,
+					"id": "suspicion_rivalimprisoned"
+				},
+				{
+					"chance": 100,
+					"id": "suspicion_rivalexonerated"
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "suspicion_favourused",
+			"actionId": "suspicion",
+			"label": "影の味方",
+			"requirements": {
+				"favour": 1
+			},
+			"effects": {
+				"favour": -1
+			},
+			"startdescription": "名士に助けを求めた。きっと私を守ってくれるが、どうなるかは分からない。",
+			"description": ".",
+			"warmup": 30,
+			"linked": [
+				{
+					"chance": 70,
+					"id": "suspicion_followerexonerated"
+				},
+				{
+					"chance": 70,
+					"id": "suspicion_meexonerated"
+				},
+				{
+					"chance": 100,
+					"id": "suspicion_favourused_failure"
+				}
+			]
+		},
+		{
+			"id": "suspicion_favourused_failure",
+			"actionId": "suspicion",
+			"label": "足りない！",
+			"startdescription": "できる限りのことはしたが、それでも足りなかったようだ。取締局は冷酷だ。別のコネがあれば、それを利用できるかもしれないが、そうでなければ、裁判で勝負するしかない。",
+			"description": ".",
+			"warmup": 30,
+			"linked": [
+				{
+					"chance": 100,
+					"id": "suspicion_attemptmitigation_follower"
+				},
+				{
+					"chance": 100,
+					"id": "suspicion_attemptmitigation_me"
+				}
+			]
+		},
+		{
+			"id": "suspicion_followerimprisoned",
+			"actionId": "suspicion",
+			"label": "取締局の勝利",
+			"description": "私の仲間は、面会が許されない刑務所に入れられて、出所日すら曖昧だ。今のところ、取締局は満足しているだろうが、何か新しいことが分かったのだろうか。",
+			"aspects": {
+				"investigatingsetback": 1
+			},
+			"effects": {
+				"follower": -1
+			}
+		},
+		{
+			"id": "suspicion_meimprisoned",
+			"actionId": "suspicion",
+			"label": "取締局の勝利",
+			"startdescription": "有罪判決が下された！私の計画はここで終わる。準備をしなければ。",
+			"description": ".",
+			"warmup": 10,
+			"signalEndingFlavour": "Melancholy",
+			"ending": "arrest"
+		},
+		{
+			"id": "suspicion_followerexonerated",
+			"actionId": "suspicion",
+			"requirements": {
+				"follower": 1
+			},
+			"label": "取締局の怒り",
+			"startdescription": "仲間が無罪放免となった！有罪であると判決するには証拠が足りなかったようで、釈放されたが......私を恨んでいるかもしれない。取締局は当分の間、足止めを食らうだろう。",
+			"aspects": {
+				"investigatingsetback": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "suspicion_meexonerated",
+			"actionId": "suspicion",
+			"label": "取締局の怒り",
+			"startdescription": "無罪放免となった！私を有罪であると判決するには証拠が足りなかったようで、釈放された。",
+			"requirements": {
+				"follower": -1
+			},
+			"aspects": {
+				"evidencelevel": -1
+			}
+		},
+		{
+			"id": "suspiciontrial",
+			"comments": "Here for legacy compatibility",
+			"actionId": "suspicion",
+			"description": "逮捕！",
+			"warmup": 0,
+			"linked": [
+				{
+					"id": "suspicionpretrial",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "suspicion_rivalimprisoned",
+			"actionId": "suspicion",
+			"label": "取締局の勝利",
+			"description": "ライバルが外に出てくることはないだろう。今のところ、取締局は満足しているだろうが、何か新しいことが分かったのだろうか。",
+			"aspects": {
+				"investigatingsetback": 1
+			},
+			"effects": {
+				"independent": -1
+			}
+		},
+		{
+			"id": "suspicion_rivalexonerated",
+			"actionId": "suspicion",
+			"requirements": {
+				"independent": 1
+			},
+			"label": "取締局の怒り",
+			"startdescription": "ライバルは無罪放免となった！有罪であると判決するには証拠が足りず、釈放されたようだが.....自分の苦難を私のせいにするに違いない。",
+			"aspects": {
+				"investigatingsetback": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "independent",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "scapegoat",
+			"actionId": "suspicion",
+			"comments": "Here for legacy compatibility",
+			"warmup": 0
+		}
+	]
+}

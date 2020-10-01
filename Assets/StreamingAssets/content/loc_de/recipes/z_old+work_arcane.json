@@ -1,0 +1,126 @@
+{
+	"recipes": [
+		{
+			"id": "conjurationpower",
+			"label": "Der Schlüssel zu meinem Herzen",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"follower": 1,
+				"ascensionpowera": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Ich kann vermittels dieses Ritus einer Stunde Einlass in meinen Leib gewähren? Die Macht umweht sie wie ein Duft. Natürlich ... Ich weiß nicht, welche Stunde kommen mag.",
+			"description": "Der Ritus ist abgeschlossen. Die Tür öffnet sich.",
+			"warmup": 30,
+			"craftable": false,
+			"comments": "legacy",
+			"burnimage": "flammarion"
+		},
+		{
+			"id": "conjurationpowerclue",
+			"label": "Der Schlüssel zu meinem Herzen?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"ascensionpowera": 1
+			},
+			"effects": {
+				"mystique": 1
+			},
+			"startdescription": "Kann ich vermittels dieses Ritus einer Stunde Einlass in meinen Leib gewähren? Die Macht umweht sie wie ein Duft.",
+			"description": "Es hat nicht funktioniert. Ich brauche auch noch eine Anrufung – etwas, um den Weg zu öffnen. Und ich brauche ein williges Opfer.",
+			"warmup": 30,
+			"craftable": false,
+			"comments": "legacy",
+			"burnimage": "flammarion"
+		},
+		{
+			"id": "conjurationenlightenment",
+			"label": "Die Tür in meinen Träumen",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"funds": 1,
+				"ascensionenlightenmenta": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Mithilfe dieses Ritus kann ich in die Fußstapfen des Wächters treten und vom Haus ohne Mauern erfahren.",
+			"description": "Der Ritus ist abgeschlossen. Die Tür öffnet sich.",
+			"warmup": 30,
+			"craftable": false,
+			"comments": "legacy",
+			"burnimage": "flammarion"
+		},
+		{
+			"id": "conjurationenlightenmentclue",
+			"label": "Die Tür in meinen Träumen?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"ascensionenlightenmenta": 1
+			},
+			"startdescription": "Kann ich mithilfe dieses Ritus kann ich in die Fußstapfen des Wächters treten und vom Haus ohne Mauern erfahren?",
+			"description": "Es hat nicht funktioniert. Ich muss auch eine andere Macht anrufen – eine Macht der Öffnung. Und ich brauche Geld, um die Kerzen aus seltenem Wachs zu kaufen, die den Pfad des Wächters erleuchten werden.",
+			"warmup": 30,
+			"craftable": false,
+			"comments": "legacy",
+			"burnimage": "flammarion"
+		},
+		{
+			"id": "ascensionpowerapromotion",
+			"label": "DER ROTE GRAL KOMMT",
+			"actionId": "grailminorpromotion",
+			"requirements": {
+				
+			},
+			"slots": [
+				{
+					"id": "Dedication",
+					"label": "Hingabe",
+					"required": {
+						"passion": 1
+					}
+				}
+			],
+			"startdescription": "Mein Herz schwillt an, mein Blut brennt. Ich bin ganz nahe dran. Ich muss mich noch inbrünstiger hingeben.",
+			"description": "Der Ritus ist gescheitert! Ich war nah dran – so nah wie die Flamme der Kerze, wie das Blut dem Herzen. Ich muss es erneut versuchen.",
+			"warmup": 60,
+			"craftable": false,
+			"comments": "legacy",
+			"burnimage": "flammarion"
+		},
+		{
+			"id": "ascensionenlightenmentapromotion",
+			"label": "ICH HÖRE DIE SCHRITTE DES WÄCHTERS",
+			"actionId": "watchmanminorpromotion",
+			"requirements": {
+				
+			},
+			"effects": {
+				"mystique": 1
+			},
+			"slots": [
+				{
+					"id": "Dedication",
+					"label": "Hingabe",
+					"required": {
+						"reason": 1
+					}
+				}
+			],
+			"startdescription": "Die Mauern der Welt erbeben wie Seide. Ich bin ganz nahe dran. All meine Gedanken müssen zusammenlaufen.",
+			"description": "Ich habe es mit den Fingerspitzen berührt, das Verständnis, nach dem ich strebe. So nahe. Ich muss es erneut versuchen.",
+			"warmup": 60,
+			"craftable": false,
+			"comments": "legacy",
+			"burnimage": "flammarion"
+		}
+	]
+}

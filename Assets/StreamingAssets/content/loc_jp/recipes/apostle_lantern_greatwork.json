@@ -1,0 +1,275 @@
+{
+	"recipes": [
+		{
+			"id": "ambition.apostlelantern.emitfuel",
+			"actionId": "work",
+			"label": "照らされた者の幻影",
+			"requirements": {
+				"apostlelantern.mentor": 1
+			},
+			"startdescription": "夢、再び。",
+			"effects": {
+				"apostlelantern.pillarfuel": 1
+			}
+		},
+		{
+			"id": "work.apostlelantern.majorvictory.postbetrayal",
+			"actionId": "work",
+			"label": "それでも、門は外に向かって開く",
+			"extantreqs": {
+				"apostlelantern.mentor": -1
+			},
+			"startdescription": "見張り番はここでもナイフのような光を放っているが、彼でさえも日々の鍵に道を譲らなければならない。私は瞳の中で扉を閉めたが、忘れることはない。真の光を見る前に、私の進むべき道は決まっていた。目撃者と私の準備は整っている。栄光がマンサスの向こう側から入る準備はできている。しかし、無垢な人たちの夢はまだ終わっていない。何百人もの魂が目を覚ますことは二度とないだろう。支払うべき代償はあるだろうが、重要なのは、照らされた者が道を導き、暗闇を照らし、慈悲を示さないことだ。",
+			"requirements": {
+				"apostlelantern.pillar3": 1,
+				"apostlelantern.pillar4": 1,
+				"ingredientlanternf": 1,
+				"fragmentmothe": 1,
+				"toollanternf": 1,
+				"kleidouchos": 1,
+				"promise": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"ending": "majorlanternvictory"
+		},
+		{
+			"id": "work.apostlelantern.majorvictory",
+			"actionId": "work",
+			"label": "門は外に向かって開く",
+			"extantreqs": {
+				"apostlelantern.mentor": 1
+			},
+			"startdescription": "見張り番はここでもナイフのような光を放っているが、彼でさえも日々の鍵に道を譲らなければならない。目撃者と私の準備は整っている。栄光がマンサスの向こう側から入る準備はできている。しかし、無垢な人たちの夢はまだ終わっていない。何百人もの魂が目を覚ますことは二度とないだろう。支払うべき代償はあるだろうが、重要なのは、照らされた者が道を導き、暗闇を照らし、慈悲を示さないことだ。",
+			"requirements": {
+				"apostlelantern.pillar3": 1,
+				"apostlelantern.pillar4": 1,
+				"ingredientlanternf": 1,
+				"fragmentmothe": 1,
+				"toollanternf": 1,
+				"kleidouchos": 1,
+				"promise": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"ending": "majorlanternvictory"
+		},
+		{
+			"id": "apostlelantern.createpillar2",
+			"actionId": "dream",
+			"label": "十字路を探す",
+			"startdescription": "孔雀の扉の向こう、道の部屋のワームの方向に、樫の影の下で2つの道が交差している。",
+			"description": "ここではマンサスの青い光が夕空の青のように深まる。道は霧の壁の中へと伸び忘れ去られているが、交差するここでは樫の影の中を飛ぶ鴉の影が覚えている。",
+			"requirements": {
+				"waypeacock": 1,
+				"apostlelantern.pillarfuel": 1
+			},
+			"effects": {
+				"apostlelantern.pillar2": 1,
+				"apostlelantern.pillarfuel": -1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "apostlelantern.createpillar3.hint2",
+			"actionId": "dream",
+			"label": "魅惑を植える？",
+			"startdescription": "鍵の夢を十字路のやわらかい土に押し込み、集められる限りの鋭い光を浴びさせる。何が育つのだろう？",
+			"requirements": {
+				"apostlelantern.pillar2": 1,
+				"apostlelantern.pillarfuel": 1
+			},
+			"hintonly": true
+		},
+		{
+			"id": "apostlelantern.createpillar3.hint1",
+			"actionId": "dream",
+			"label": "魅惑を植える？",
+			"startdescription": "次に鍵の夢が来たら、十字路に持っていく。",
+			"requirements": {
+				"apostlelantern.pillar2": 1
+			},
+			"hintonly": true
+		},
+		{
+			"id": "apostlelantern.createpillar3",
+			"actionId": "dream",
+			"label": "魅惑を植える",
+			"startdescription": "鍵の夢を十字路のやわらかい土に押し込み、見張り番の光を浴びさせる。輝く木が芽を出し、その枝には光り輝く実がなる。",
+			"description": "これは、我々の照らされた者が見張り番の役目を果たすために必要な光だが、他にも使い道がある。ロウソクが蛾を、餌が魚を引き付けるように、光は魂を引き付ける。",
+			"requirements": {
+				"apostlelantern.pillar2": 1,
+				"apostlelantern.pillarfuel": 1,
+				"influencelanterng": 1
+			},
+			"effects": {
+				"apostlelantern.pillar3": 1,
+				"apostlelantern.pillarfuel": -1,
+				"influencelanterng": -1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "apostlelantern.maintainpillar3.hint",
+			"actionId": "study",
+			"label": "魅惑を維持する？",
+			"startdescription": "正しい色をやらないかぎり......魅惑は枯れてしまう。",
+			"requirements": {
+				"apostlelantern.pillar3": 1
+			},
+			"hintonly": true
+		},
+		{
+			"id": "apostlelantern.maintainpillar3",
+			"actionId": "study",
+			"label": "魅惑を維持する",
+			"startdescription": "マンサスの青い夢の中では、両手に光を持って別の場所に運ぶこともある",
+			"description": "私は、土に根を張った魅惑の根茎に手を広げた。枝に新しい実がつき、十字路の色がまた薄くなった。",
+			"requirements": {
+				"apostlelantern.pillar3": 1,
+				"fascination": 1
+			},
+			"effects": {
+				"fascination": -1
+			},
+			"aspects": {
+				"renew.apostlelantern.pillar3": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "apostlelantern.usepillar3",
+			"actionId": "talk",
+			"label": "鏡の少女を送って目撃者をおびき寄せる",
+			"startdescription": "私が送った少女は、眠る魂を白い扉へと導き、魂の残りが十字路で魅惑を見るまで、刃物の階段を昇らせる。",
+			"requirements": {
+				"spirit_winterd_edge": 1,
+				"apostlelantern.pillar3": 1
+			},
+			"linked": [
+				{
+					"id": "apostlelantern.trycreatepillar4"
+				}
+			]
+		},
+		{
+			"id": "apostlelantern.trycreatepillar4",
+			"actionId": "talk",
+			"label": "鏡の少女を送って目撃者をおびき寄せる",
+			"startdescription": "少女は上昇の真言の断片を唱えると、慎重に青白い足を道に敷かれた石の上に落とす。目撃者の足は血で染まっていた。",
+			"description": "少女は出発し、目撃者は木の影のように揺れ、目は魅惑にくぎ付けになり、口はそっと結ばれている。7人の内1人。目を覚まさないだろう。そしてそれが取締局の興味をひくだろう。",
+			"effects": {
+				"spirit_winterd_edge": -1,
+				"apostlelantern.pillar4.inprogress1": 1,
+				"notoriety": 1
+			},
+			"slots": [
+				{
+					"id": "pillar4",
+					"label": "目撃者",
+					"required": {
+						"uqthirdwaywitnesses": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "apostlelantern.upgradepillar4"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "apostlelantern.upgradepillar4",
+			"actionId": "talk",
+			"label": "鏡の少女を送って目撃者をおびき寄せる",
+			"startdescription": "少女は上昇の真言の断片を唱えると、慎重に青白い足を道に敷かれた石の上に落とす。目撃者の足は血で染まっていた。",
+			"description": "少女は出発し、目撃者は木の影のように揺れ、目は魅惑にくぎ付けになり、口はそっと結ばれている。もう1人。目を覚まさないだろう。そしてそれが取締局の興味をひくだろう。",
+			"requirements": {
+				"uqthirdwaywitnesses": 1
+			},
+			"aspects": {
+				"cloudwitnessesupgrade": 1
+			},
+			"effects": {
+				"spirit_winterd_edge": -1,
+				"notoriety": 1
+			}
+		},
+		{
+			"id": "apostlelantern.pillar4.chat",
+			"actionId": "talk",
+			"label": "目撃者と話す",
+			"startdescription": "口は閉じているが、耳は開いている。",
+			"description": "時には私を見ることもあるが、大抵は光を見ている。ため息をついたり、優しく触れ合ったりしているところを見ることもある。彼らはまだ人間だ。光は彼らの中に、そして私の中に染み込んでいく。おそらく、私は彼らの注意を引き付けておくのに役立っている。",
+			"requirements": {
+				"uqthirdwaywitnesses": 1
+			},
+			"effects": {
+				"fascination": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "apostlelantern.attemptrecruitkleidouchos.sulochana",
+			"actionId": "talk",
+			"label": "スロチャナに鍵のことを聞く",
+			"startdescription": "「日々の鍵」。スロチャナは唇を噛みながら言った。彼女の刃がランプの明かりでわずかに光った。「ええ、ちょうど良い姉がいるわ。でも、紹介しないわよ。森の向こう側にいる誰かに頼んで――栄光のことを気にかけてる誰かに」",
+			"requirements": {
+				"sulochana": 1,
+				"apostlelantern.pillarfuel": 1
+			}
+		},
+		{
+			"id": "apostlelantern.recruitkleidouchos.teresa",
+			"actionId": "talk",
+			"label": "テレサに夢の鍵のことを聞く",
+			"startdescription": "「昇天仲間はさらに上を目指したのね？後悔するかもしれないわ」。そう言うと、テレサは手に持った架空の鍵を回した。「日々の鍵の夢。夢は偽物だけど、鍵は本物よ。だけどあなたや私が触れていいものではないわ」",
+			"description": "「あなたが探している鍵の持ち主を知っているわ。彼女とはしばらく話をしていないけど――私はリゲイアの者とあまり話さないから――でも、灯りの長生者として、あなたの師匠には礼儀を尽くさねばならない。鍵の持ち主を呼びに行かせるわ」",
+			"requirements": {
+				"spirit_lanterne_secret": 1,
+				"apostlelantern.pillarfuel": 1
+			},
+			"effects": {
+				"kleidouchos.enroute": 1,
+				"apostlelantern.pillarfuel": -1,
+				"spirit_lanterne_secret": -1
+			}
+		},
+		{
+			"id": "apostlelantern.persuadekleidouchos",
+			"actionId": "talk",
+			"label": "黒と白を着た女性に話しかける",
+			"startdescription": "「三又の扉の件で私の助けが必要なのね？違うの？究極の状態で？私の日々の鍵で？はい、はい、わかっているわ。無知のまま旅をするのは好きではないの」",
+			"description": "「これは滅多にない貴重な機会よ。長生者の昇天を喜んで拝見させていただくわ、お人形さん。どこに何時に行けば良いか教えて。それまであなたの街を楽しませてもらうわ」",
+			"requirements": {
+				"kleidouchos": 1,
+				"promise": -1
+			},
+			"mutations": [
+				{
+					"filter": "kleidouchos",
+					"mutate": "promise",
+					"level": 1
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "apostlelantern.kleidouchos.persuaded.hint",
+			"actionId": "talk",
+			"label": "黒と白を着た女性に話しかける",
+			"startdescription": "「慌てる必要はないわ。ゆっくりで大丈夫。集めなくちゃいけない皮膚がまだあるから」",
+			"requirements": {
+				"kleidouchos": 1,
+				"promise": 1
+			},
+			"hintonly": true
+		}
+	]
+}

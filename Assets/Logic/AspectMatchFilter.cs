@@ -17,9 +17,9 @@ namespace Assets.Logic
             _filterCriteria = filterCriteria;
         }
 
-        public IEnumerable<IElementStack> FilterElementStacks(IEnumerable<IElementStack> stacks)
+        public IEnumerable<ElementStackToken> FilterElementStacks(IEnumerable<ElementStackToken> stacks)
         {
-            IList<IElementStack> filteredElementStacks=new List<IElementStack>();
+            IList<ElementStackToken> filteredElementStacks=new List<ElementStackToken>();
             foreach (var stack in stacks)
             {
 

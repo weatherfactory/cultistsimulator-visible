@@ -1,0 +1,551 @@
+{
+	"recipes": [
+		{
+			"id": "summoning_haunt_devourer",
+			"actionId": "haunting",
+			"requirements": {
+				"devourer": 1
+			},
+			"startdescription": "Es ist frei!",
+			"warmup": 0,
+			"linked": [
+				{
+					"id": "summoning_haunt_devourer_eatsmortal",
+					"chance": 50
+				},
+				{
+					"id": "summoning_haunt_devourer_damages_health",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "summoning_haunt_devourer_eatsmortal",
+			"label": "Ein lauernder Verschlinger",
+			"actionId": "haunting",
+			"startdescription": "Das von dir beschworene Wesen macht den Bezirk unsicher und sucht nach Sterblichen, die es verschlingen kann. [Je höher der Aspekt des Verschlingers, desto wahrscheinlicher vergreift er sich an einem Sterblichen.]",
+			"description": "Das Ding, das du beschworen hattest, ist zu seiner Heimstatt zurückgekehrt. Es wird dir keinen Schaden mehr zufügen. Für den Augenblick.",
+			"slots": [
+				{
+					"id": "Consuming",
+					"label": "Verzehren",
+					"required": {
+						"mortal": 1
+					},
+					"greedy": true
+				}
+			],
+			"comments": "This isn't currently in use. We only allow devourers to destroy evidence, not haunt investigators, so summoners might be understandably annoyed.",
+			"alternativerecipes": [
+				{
+					"id": "devourer_haunting_mortal_highdevourer",
+					"chance": 100
+				},
+				{
+					"id": "devourer_haunting_mortal_middevourer",
+					"chance": 100
+				},
+				{
+					"id": "devourer_haunting_mortal_lowdevourer",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "devourer_haunting_mortal_highdevourer",
+			"label": "Ein entsprungenes beschworenes Wesen nähert sich seinem Opfer",
+			"actionId": "haunting",
+			"startdescription": "Mit jedem Ticken der Uhr immer näher, wie ein umzingelnder Wind, wie die Windung eines Flusses.",
+			"description": "Der Tod kommt ungesehen, aber nicht ungehört.",
+			"requirements": {
+				"mortal": 1,
+				"devourer": 10
+			},
+			"warmup": 15,
+			"linked": [
+				{
+					"id": "devourer_haunting_mortal_success",
+					"chance": 100
+				},
+				{
+					"id": "devourer_haunting_mortal_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "devourer_haunting_mortal_middevourer",
+			"label": "Ein entsprungenes beschworenes Wesen nähert sich seinem Opfer",
+			"actionId": "haunting",
+			"startdescription": "Mittlerweile wird das Opfer wissen, dass etwas fehlt. Es wird auf die Geräusche in der Nacht achten und versuchen, Vorbereitungen zu treffen.",
+			"description": ". devourer_haunting_mortal_middevourer",
+			"requirements": {
+				"mortal": 1,
+				"devourer": 5
+			},
+			"warmup": 15,
+			"linked": [
+				{
+					"id": "devourer_haunting_mortal_success",
+					"chance": 70
+				},
+				{
+					"id": "devourer_haunting_mortal_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "devourer_haunting_mortal_lowdevourer",
+			"label": "Ein entsprungenes beschworenes Wesen nähert sich seinem Opfer",
+			"actionId": "haunting",
+			"startdescription": "Dieses Ding ist nur eine moderate Bedrohung, doch selbst eine moderate Bedrohung kann zuweilen tödlich sein.",
+			"description": ". devourer_haunting_mortal_lowdevourer",
+			"requirements": {
+				"mortal": 1
+			},
+			"comments": "Leaving 'Devourer' requirement out of here allows us to catch old-style hauntings where a spirit is not present in the verb. otherwise they loop forever!",
+			"warmup": 15,
+			"linked": [
+				{
+					"id": "devourer_haunting_mortal_success",
+					"chance": 30
+				},
+				{
+					"id": "devourer_haunting_mortal_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "devourer_haunting_mortal_success",
+			"label": "Ein entsprungenes beschworenes Wesen hat sich ihr Opfer geholt",
+			"actionId": "haunting",
+			"startdescription": ".",
+			"description": "Die ersten Strahlen der Sonne am heutigen Tage werden auf die offenen Augen einer Leiche treffen. Oft hat eine törichte Beschwörung ihren Preis: doch nicht immer hat ihn der Beschwörer zu zahlen.",
+			"aspects": {
+				"killmortal": 1,
+				"killsummoned": 1
+			},
+			"effects": {
+				"notoriety": 1
+			}
+		},
+		{
+			"id": "devourer_haunting_mortal_failure",
+			"label": "Ein entsprungenes beschworenes Wesen hat ihr Opfer mit Grauen erfüllt",
+			"actionId": "haunting",
+			"startdescription": ".",
+			"description": "Das Opfer hat doch überlebt! Doch die Geschichte dieser Nacht wird sich wie ein Lauffeuer verbreiten.",
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"killsummoned": 1
+			}
+		},
+		{
+			"id": "summoning_haunt_devourer_damages_health",
+			"label": "Ein lauernder Verschlinger",
+			"actionId": "haunting",
+			"startdescription": "Die von dir beschworene Kreatur wird versuchen, dir etwas zu nehmen, bevor sie an ihre Heimstatt unter der Haut der Erde zurückkehrt. [Je höher der Aspekt des Verschlingers, desto wahrscheinlicher vergreift sie sich an dir.]",
+			"description": "Das Ding, das du beschworen hattest, ist zu seiner Heimstatt zurückgekehrt. Es wird dir keinen Schaden mehr zufügen. Für den Augenblick.",
+			"slots": [
+				{
+					"id": "consuming",
+					"label": "Verzehren",
+					"required": {
+						"health": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 30,
+			"alternativerecipes": [
+				{
+					"id": "devourer_haunting_damageshealth_highdevourer",
+					"chance": 100
+				},
+				{
+					"id": "devourer_haunting_damageshealth_middevourer",
+					"chance": 100
+				},
+				{
+					"id": "devourer_haunting_damageshealth_lowdevourer",
+					"chance": 100
+				}
+			],
+			"linked": [
+				{
+					"id": "summoning_haunt_devourer_damages_health"
+				}
+			]
+		},
+		{
+			"id": "devourer_haunting_damageshealth_highdevourer",
+			"label": "Ein entsprungenes beschworenes Wesen wartet auf seinen Augenblick",
+			"actionId": "haunting",
+			"startdescription": "Spielt es mit mir?",
+			"description": ".",
+			"requirements": {
+				"health": 1,
+				"devourer": 10
+			},
+			"warmup": 15,
+			"linked": [
+				{
+					"id": "devourer_haunting_damageshealth_success",
+					"chance": 100
+				},
+				{
+					"id": "devourer_haunting_damageshealth_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "devourer_haunting_damageshealth_middevourer",
+			"label": "Ein entsprungenes beschworenes Wesen wartet auf dich",
+			"actionId": "haunting",
+			"startdescription": "Es gibt so viele Arten und Weisen, einen menschlichen Leib zuzurichten. Meine Haut fühlt sich so verletzlich wie eine offene Tür an.",
+			"description": ". devourer_haunting_damageshealth_middevourer",
+			"requirements": {
+				"health": 1,
+				"devourer": 5
+			},
+			"warmup": 15,
+			"linked": [
+				{
+					"id": "devourer_haunting_damageshealth_success",
+					"chance": 70
+				},
+				{
+					"id": "devourer_haunting_damageshealth_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "devourer_haunting_damageshealth_lowdevourer",
+			"label": "Ein entsprungenes beschworenes Wesen wartet auf dich",
+			"actionId": "haunting",
+			"startdescription": "Ich werde die Fenster im Auge behalten, die Türen verriegeln und Eiche und Silber am Bett behalten. Das könnte reichen.",
+			"description": ". devourer_haunting_damageshealth_lowdevourer",
+			"requirements": {
+				"health": 1
+			},
+			"comments": "Leaving 'Devourer' requirement out of here allows us to catch old-style hauntings where a spirit is not present in the verb. otherwise they loop forever!",
+			"warmup": 15,
+			"linked": [
+				{
+					"id": "devourer_haunting_damageshealth_success",
+					"chance": 30
+				},
+				{
+					"id": "devourer_haunting_damageshealth_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "devourer_haunting_damageshealth_success",
+			"label": "Ein entsprungenes beschworenes Wesen hat dich heimgesucht",
+			"actionId": "haunting",
+			"startdescription": ".",
+			"description": "Ich werde eine Narbe zurückbehalten, von der Sorte, wie sie eines Tages für ein Museum fotografiert werden wird. Und die Nachbarn werden reden. Was werden die reden.",
+			"aspects": {
+				"damagehealth": 1,
+				"killsummoned": 1
+			},
+			"effects": {
+				"notoriety": 1
+			}
+		},
+		{
+			"id": "devourer_haunting_damageshealth_failure",
+			"label": "Ein entsprungenes beschworenes Wesen hatte gegen dich keine Chance.",
+			"actionId": "haunting",
+			"startdescription": ".",
+			"description": "Ich war zu viel für das Ding! Aber leise konnte ich nicht mit ihm fertig werden. Die Leute werden reden.",
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"killsummoned": 1
+			}
+		},
+		{
+			"id": "summoning_haunt_deceiver",
+			"actionId": "haunting",
+			"requirements": {
+				"deceiver": 1
+			},
+			"startdescription": "Es ist frei!",
+			"warmup": 0,
+			"linked": [
+				{
+					"id": "summoning_haunt_deceiver_derangesreason",
+					"chance": 100
+				}
+			],
+			"comments": "Currently doesn't call summoning_haunt_deceiver_derangesmortal, because Deceivers don't attack directly."
+		},
+		{
+			"id": "summoning_haunt_deceiver_derangesreason",
+			"label": "Ein lauernder Blender",
+			"actionId": "haunting",
+			"startdescription": "Dein entsprungenes beschworenes Wesen sucht dich heim und will dich zur Verzweiflung bringen –",
+			"description": "Das Ding, das du beschworen hattest, ist zu seiner Heimstatt zurückgekehrt. Es wird dir keinen Schaden mehr zufügen. Für den Augenblick.",
+			"slots": [
+				{
+					"id": "Consuming",
+					"label": "Verzehren",
+					"required": {
+						"reason": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 30,
+			"alternativerecipes": [
+				{
+					"id": "deceiver_haunting_reason_highdeceiver",
+					"chance": 100
+				},
+				{
+					"id": "deceiver_haunting_reason_middeceiver",
+					"chance": 100
+				},
+				{
+					"id": "deceiver_haunting_reason_lowdeceiver",
+					"chance": 100
+				}
+			],
+			"linked": [
+				{
+					"id": "summoning_haunt_deceiver_derangesreason"
+				}
+			]
+		},
+		{
+			"id": "deceiver_haunting_reason_highdeceiver",
+			"label": "Ein entsprungenes beschworenes Wesen wartet auf dich",
+			"actionId": "haunting",
+			"startdescription": "Der menschliche Verstand ist fragil, und dieses Ding ist praktisch unwiderstehlich.",
+			"description": ".",
+			"requirements": {
+				"reason": 1,
+				"deceiver": 10
+			},
+			"linked": [
+				{
+					"id": "deceiver_haunting_reason_success",
+					"chance": 100
+				},
+				{
+					"id": "deceiver_haunting_reason_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "deceiver_haunting_reason_middeceiver",
+			"label": "Ein entsprungenes beschworenes Wesen wartet auf dich",
+			"actionId": "haunting",
+			"startdescription": "Der menschliche Verstand ist fragil, und dieses Ding ist mächtig.",
+			"description": ". deceiver_haunting_reason_middeceiver",
+			"requirements": {
+				"reason": 1,
+				"deceiver": 5
+			},
+			"linked": [
+				{
+					"id": "deceiver_haunting_reason_success",
+					"chance": 70
+				},
+				{
+					"id": "deceiver_haunting_reason_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "deceiver_haunting_reason_lowdeceiver",
+			"label": "Ein entsprungenes beschworenes Wesen wartet auf dich",
+			"actionId": "haunting",
+			"startdescription": "Der menschliche Verstand ist fragil, doch vielleicht richtet dieses Ding mehr Verwirrung als Schaden an.",
+			"description": ". deceiver_haunting_reason_lowedge",
+			"requirements": {
+				"reason": 1
+			},
+			"comments": "Leaving 'Deceiver' requirement out of here allows us to catch old-style hauntings where a spirit is not present in the verb. otherwise they loop forever!",
+			"linked": [
+				{
+					"id": "deceiver_haunting_reason_success",
+					"chance": 30
+				},
+				{
+					"id": "deceiver_haunting_reason_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "deceiver_haunting_reason_success",
+			"label": "Ein entsprungenes beschworenes Wesen hat deine Träume heimgesucht",
+			"actionId": "haunting",
+			"startdescription": ".",
+			"description": "Die Ereignisse jener Nacht werden dir noch lange im Gedächtnis bleiben und noch tagelang löchern die Zeitungen die Anwohner mit ihren Fragen.",
+			"aspects": {
+				"damagereason": 1,
+				"killsummoned": 1
+			},
+			"effects": {
+				"notoriety": 1
+			}
+		},
+		{
+			"id": "deceiver_haunting_reason_failure",
+			"label": "Ein entsprungenes beschworenes Wesen hat es nicht geschafft, dir deine Entschlossenheit zu nehmen",
+			"actionId": "haunting",
+			"startdescription": ".",
+			"description": "Die Ereignisse jener Nacht werden dir noch lange im Gedächtnis bleiben, doch dieses Ding ist dir nicht gewachsen. Allerdings löchern noch tagelang die Zeitungen die Anwohner mit ihren Fragen.",
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"killsummoned": 1
+			}
+		},
+		{
+			"id": "summoning_haunt_deceiver_derangesmortal",
+			"label": "Ein lauernder Blender",
+			"actionId": "haunting",
+			"startdescription": "Das von dir beschworene Wesen macht den Bezirk unsicher und sucht nach Sterblichen, die es verderben kann.",
+			"description": "Das Ding, das du beschworen hattest, ist zu seiner Heimstatt zurückgekehrt. Es wird dir keinen Schaden mehr zufügen. Für den Augenblick.",
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"derangemortal": 1
+			},
+			"slots": [
+				{
+					"id": "Consuming",
+					"label": "Verzehren",
+					"required": {
+						"mortal": 1
+					},
+					"greedy": true
+				}
+			],
+			"comments": "This isn't currently in use. We only allow Deceivers to destroy evidence, not haunt investigators, so summoners might be understandably annoyed.",
+			"alternativerecipes": [
+				{
+					"id": "deceiver_haunting_mortal_highedge",
+					"chance": 100
+				},
+				{
+					"id": "deceiver_haunting_mortal_midedge",
+					"chance": 100
+				},
+				{
+					"id": "deceiver_haunting_mortal_lowedge",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "deceiver_haunting_mortal_highedge",
+			"label": "Ein entsprungenes beschworenes Wesen nähert sich seinem Opfer",
+			"actionId": "haunting",
+			"startdescription": "Der menschliche Verstand ist fragil, und dieses Ding ist praktisch unwiderstehlich.",
+			"description": ".",
+			"requirements": {
+				"mortal": 1,
+				"edge": 10
+			},
+			"linked": [
+				{
+					"id": "deceiver_haunting_mortal_success",
+					"chance": 100
+				},
+				{
+					"id": "deceiver_haunting_mortal_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "deceiver_haunting_mortal_midedge",
+			"label": "Ein entsprungenes beschworenes Wesen nähert sich seinem Opfer",
+			"actionId": "haunting",
+			"startdescription": "Der menschliche Verstand ist fragil, und dieses Ding ist mächtig.",
+			"description": ". deceiver_haunting_mortal_midedge",
+			"requirements": {
+				"mortal": 1,
+				"edge": 5
+			},
+			"linked": [
+				{
+					"id": "deceiver_haunting_mortal_success",
+					"chance": 70
+				},
+				{
+					"id": "deceiver_haunting_mortal_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "deceiver_haunting_mortal_lowedge",
+			"label": "Ein entsprungenes beschworenes Wesen nähert sich seinem Opfer",
+			"actionId": "haunting",
+			"startdescription": "Der menschliche Verstand ist fragil, doch vielleicht richtet dieses Ding mehr Verwirrung als Schaden an.",
+			"description": ". deceiver_haunting_mortal_lowedge",
+			"requirements": {
+				"mortal": 1,
+				"edge": 1
+			},
+			"linked": [
+				{
+					"id": "deceiver_haunting_mortal_success",
+					"chance": 30
+				},
+				{
+					"id": "deceiver_haunting_mortal_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "deceiver_haunting_mortal_success",
+			"label": "Ein entsprungenes beschworenes Wesen hat ihr Opfer mit Grauen erfüllt",
+			"actionId": "haunting",
+			"startdescription": ".",
+			"description": "Nur der stärkste Geist könnte so etwas überleben. Da haben die Zeitungen ja einiges zu berichten.",
+			"aspects": {
+				"derangemortal": 1,
+				"killsummoned": 1
+			},
+			"effects": {
+				"notoriety": 1
+			}
+		},
+		{
+			"id": "deceiver_haunting_mortal_failure",
+			"label": "Ein entsprungenes beschworenes Wesen hat ihr Opfer mit Grauen erfüllt",
+			"actionId": "haunting",
+			"startdescription": ".",
+			"description": "Die Entschlossenheit des Opfers bleibt ungebrochen. Da haben die Zeitungen ja einiges zu berichten.",
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"killsummoned": 1
+			}
+		}
+	]
+}

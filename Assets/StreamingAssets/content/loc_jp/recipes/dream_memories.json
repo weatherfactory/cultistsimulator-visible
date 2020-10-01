@@ -1,0 +1,57 @@
+{
+	"recipes": [
+		{
+			"id": "dreampleasantmemory",
+			"label": "楽しい思い出に浸る",
+			"actionId": "dream",
+			"requirements": {
+				"memorypleasant": 1
+			},
+			"effects": {
+				"memorypleasant": -1,
+				"contentment": 1,
+				"fleeting": 1
+			},
+			"startdescription": "意思疎通の甘き静けさ？冬の光のひと時？",
+			"description": "これが私を支えてくれるかもしれない。",
+			"craftable": true,
+			"warmup": 10
+		},
+		{
+			"id": "dreampassionatememory",
+			"label": "情熱的な思い出に浸る",
+			"actionId": "dream",
+			"requirements": {
+				"memorypassionate": 1
+			},
+			"effects": {
+				"memorypassionate": -1,
+				"restlessness": 1,
+				"contentment": 1,
+				"vitality": 1
+			},
+			"startdescription": "共鳴し合う吐息、絡まり合う手足？秘密の暗闇の中の熱？",
+			"description": "気が散るかもしれない。",
+			"craftable": true,
+			"warmup": 10
+		},
+		{
+			"id": "dreambittersweetmemory",
+			"label": "ほろ苦い記憶に浸る",
+			"actionId": "dream",
+			"requirements": {
+				"memorybittersweet": 1
+			},
+			"effects": {
+				"memorybittersweet": -1,
+				"dread": 1,
+				"contentment": 1,
+				"glimmering": 1
+			},
+			"startdescription": "どちらも声を上げて言えないような意見？口論とその余波？",
+			"description": "躊躇しても大丈夫かもしれない。",
+			"craftable": true,
+			"warmup": 10
+		}
+	]
+}

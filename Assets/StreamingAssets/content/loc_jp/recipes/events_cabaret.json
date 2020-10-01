@@ -1,0 +1,164 @@
+{
+	"recipes": [
+		{
+			"id": "explorecabaret",
+			"actionId": "explore",
+			"label": "エクディシスクラブに訪れる",
+			"requirements": {
+				"locationcabaret": 1,
+				"funds": 1
+			},
+			"startdescription": "入り口は、緋色、鮮赤色、肉色の柔らかなカーテンの下に隠されている。扉の上には、クラブのモットーである「IN GI RUM IMUS NOC TE ET CON SUMI MUR IGNI」が掲げられている。この文は「火が私たちを飲み込むまで、夜の輪に飛び込む」と訳されることが多い。",
+			"description": ".",
+			"effects": {
+				"funds": -1
+			},
+			"craftable": true,
+			"deckeffect": {
+				"cabaretevents": 1
+			},
+			"linked": [
+				{
+					"id": "cabaretpleasure",
+					"chance": 100
+				},
+				{
+					"id": "cabaretallure",
+					"chance": 100
+				},
+				{
+					"id": "cabareteducation",
+					"chance": 100
+				},
+				{
+					"id": "cabaretglimpse",
+					"chance": 100
+				},
+				{
+					"id": "cabaretharm",
+					"chance": 100
+				},
+				{
+					"id": "cabaretexposure",
+					"chance": 100
+				},
+				{
+					"id": "cabarethunger",
+					"chance": 100
+				},
+				{
+					"id": "cabaretfey",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cabaretpleasure",
+			"label": "キャバレークラブでの夜の快楽",
+			"actionId": "explore",
+			"requirements": {
+				"contentment": 1
+			},
+			"startdescription": "酒、歌、光、アーチ状の壁、灰色がかった青色の煙、服を着た者と着ていない者の絡み合う肉体。",
+			"description": "金を払って快楽を手に入れた。深夜によろめきながら家に帰り、ベッドに倒れ込む。",
+			"warmup": 15,
+			"craftable": false
+		},
+		{
+			"id": "cabaretallure",
+			"label": "エクディシスクラブの魅惑",
+			"actionId": "explore",
+			"requirements": {
+				"fascination": 1
+			},
+			"startdescription": "今夜のパフォーマンス「アメジスト」では、網を振り回すハンターが、葉っぱをまとったダンサーたちのささやきの迷路の中で、翼のようなベールをつけた女性を追う。それぞれの動きは水中にいるかのようにゆっくりとしている。",
+			"description": "舞台が終わると、とてもゆっくりと照明が消えていった。拍手は1つも聞こえない。私たちは、それぞれ夢を持って、1人ひとり、街の中へと漂っていく。",
+			"effects": {
+				"contentment": 1
+			},
+			"warmup": 15,
+			"craftable": false
+		},
+		{
+			"id": "cabareteducation",
+			"label": "キャバレークラブの教育",
+			"actionId": "explore",
+			"requirements": {
+				"erudition": 1
+			},
+			"startdescription": "今夜のパフォーマンスでは、はばたくスカーフと誠実な肉体が支離滅裂に動き回る。観客は舞台より会話を楽しむ。",
+			"description": "ペテン師たちや気取り屋たち、そして――おそらく――伝授者たちと意見を交換しながら夜を過ごした。その中には真実も隠れているかもしれない。",
+			"effects": {
+				"contentment": 1
+			},
+			"warmup": 15,
+			"craftable": false
+		},
+		{
+			"id": "cabaretglimpse",
+			"label": "エクディシスクラブで何かを垣間見る",
+			"actionId": "explore",
+			"requirements": {
+				"glimmering": 1
+			},
+			"startdescription": "今夜の舞台の背景幕には、ピラネージの広大で不可能な設計の地下牢獄が描かれている。ダンサーたちは怪物の仮面をつけ、火のように素早く動く。どの動きにも悪意が込められていた。",
+			"description": "ダンサーたちが背景の向こう側を通り過ぎると、階段や跳ね橋の上を移動しているように見える。彼らの体は背景絵の具で汚れている。観客からうなり声が上がる。「家の壁が......」",
+			"warmup": 15,
+			"craftable": false
+		},
+		{
+			"id": "cabaretharm",
+			"label": "エクディシスクラブの傷口の仕上げ",
+			"actionId": "explore",
+			"requirements": {
+				"vitality": 1
+			},
+			"startdescription": "今夜、パフォーマーたちは観客の間を通り、ナイフや赤いガラス瓶を操ったり、屈んで囁いたり、贈り物を贈ったりしている。",
+			"description": "ダンサーが赤いグラスを私の口に押し付けた。その縁は鋭かった。口から血が出ている。しかし、そのグラスの中身は強いワインだった――",
+			"effects": {
+				"contentment": 1
+			},
+			"warmup": 15,
+			"craftable": false
+		},
+		{
+			"id": "cabaretexposure",
+			"label": "エクディシスクラブでの中断",
+			"actionId": "explore",
+			"requirements": {
+				"notoriety": 1
+			},
+			"startdescription": "舞台が始まったばかりの頃に、客席から恐怖のうめき声が聞こえてきた！",
+			"description": "舞台はすぐに終わり、照明が点き、私たちは席から案内されて路上へと導かれた。何が起こったのかはっきりしないが、クラブの従業員たちは、同じことを過去に経験したことがあるかのように、準備万端だった。近くの窓に灯りが輝き、夜の暗闇の中に散っていく客たちを通行人たちが呆然と見つめている。",
+			"warmup": 15,
+			"craftable": false
+		},
+		{
+			"id": "cabarethunger",
+			"label": "エクシディシスクラブの飢え",
+			"actionId": "explore",
+			"requirements": {
+				"influencegrail": 1
+			},
+			"startdescription": "腱のようにきつく巻かれた赤い包帯を身に着けて、ダンサーが舞台の上手から現れる。そして彼女はその1枚を剥がし、もう1枚、もう1枚と剥がしていく―― ",
+			"description": "これは仕掛けに違いない。人間は皮膚の下の骨が見えるほどそっと衣服を脱ぐことはできないはずだ。骨は桃の果肉のようなピンク色で、内臓はブドウのように密集している。照明が消え、薄暗くなり、完全に消え、舞台の赤い星も一緒に消えていく。私たちの唇は乾燥していた。",
+			"warmup": 15,
+			"craftable": false
+		},
+		{
+			"id": "cabaretfey",
+			"label": "エクシディシスクラブの謎",
+			"actionId": "explore",
+			"requirements": {
+				"influencemoth": 1
+			},
+			"startdescription": "「冠！」と司会者が告げると、ダンサーが両手を大きく広げて舞台上へと蠢く。生きた蛾が彼女の口から飛び出してきた！",
+			"description": "白い蛾の群れがホールを飛び回る。蛾がワイングラスの縁で止まり、一口飲むと観客から拍手が湧いた。舞台上の女性は手足が多すぎるかのように動く。蛾が私の腕に群がり、肩に寄り添う。しばらくしてから外に出て、澄み切った冷たい星を見上げて、私はすべてが夢だったと思うだろう。クラブの煙は危険だ。",
+			"effects": {
+				"contentment": 1
+			},
+			"warmup": 15,
+			"craftable": false
+		}
+	]
+}

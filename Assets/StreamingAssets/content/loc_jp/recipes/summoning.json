@@ -1,0 +1,542 @@
+{
+	"recipes": [
+		{
+			"id": "summon_spirit_wintera_edge",
+			"label": "傷跡の製図家を召喚し、死体を半死半生の状態にさせる",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"corpse": 1,
+				"winter": 4,
+				"edge": 2,
+				"desire": -1
+			},
+			"aspects": {
+				"raiseshattered": 1
+			},
+			"startdescription": "砕けるような力がこの肉に染み込み、砕ける復活者と化す。始めなければ。ハンマーが必要だ。",
+			"description": "死体はうめき声をあげ、よろめく足（と言うよりは足の残骸）で立ち上がった。砕ける復活者の召喚に成功した。",
+			"warmup": 60,
+			"craftable": true,
+			"comments": "it's possible for a corpse to have a negative follower mutation - eg, if the follower is wounded. Let's strip it out, just in case. We could add a mutation to lose any outstanding wounds too, but I'm leery of messing too much.",
+			"mutations": [
+				{
+					"filterOnAspectId": "corpse",
+					"mutateAspectId": "follower",
+					"mutationLevel": 0
+				}
+			]
+		},
+		{
+			"id": "summon_spirit_wintera_moth",
+			"label": "ワノイチイを召喚し、死体を半死半生の状態にさせる",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"corpse": 1,
+				"winter": 4,
+				"moth": 2,
+				"desire": -1
+			},
+			"aspects": {
+				"raiseburgeoning": 1
+			},
+			"startdescription": "まず、死体のまぶたの下、舌の下、すべての隠れた開口部に種を植えなければならない。それは、急成長する復活者として覚醒するだろう。",
+			"description": "死体はふらふらと立ち上がった。必死で瞼を開こうとし、口から樹液が滴り落ちている。死者は芽を出し、生まれ変わったのだ。",
+			"warmup": 60,
+			"craftable": true,
+			"comments": "it's possible for a corpse to have a negative follower mutation - eg, if the follower is wounded. Let's strip it out, just in case. We could add a mutation to lose any outstanding wounds too, but I'm leery of messing too much.",
+			"mutations": [
+				{
+					"filterOnAspectId": "corpse",
+					"mutateAspectId": "follower",
+					"mutationLevel": 0
+				}
+			]
+		},
+		{
+			"id": "renew_spirit_wintera_edge",
+			"label": "傷跡の製図家を召喚し、半死半生の死体を復活してもらう",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"spirit_wintera_edge": 1,
+				"winter": 8,
+				"edge": 8,
+				"desire": -1
+			},
+			"aspects": {
+				"renewshattered": 1
+			},
+			"startdescription": "これは修復の儀式と言うよりは、延期の儀式だ。冬を遅らせることはできるが、拒否することはできない。",
+			"description": "腐敗の過程が遅れている――エネルギーが再注入される。この死体はあと1000歩ほど歩かなければ倒れないだろう。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "renew_spirit_wintera_moth",
+			"label": "ワノイチイを召喚し、半死半生状態の死体を蘇らせる",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"spirit_wintera_moth": 1,
+				"winter": 8,
+				"moth": 8,
+				"desire": -1
+			},
+			"aspects": {
+				"renewburgeoning": 1
+			},
+			"startdescription": "死体の中の新しい命は、自由になろうともがいている。もう少しだけ封じ込めよう。",
+			"description": "死体の目の光は、落ち着きを見せ始めた。体から伸びる蔓も大人しい。一瞬だが、この死体が話始めるかとと思った。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "summon_spirit_forgee_edge",
+			"label": "日々の鍛造から生まれた名を持つ者を1体召喚する",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 5,
+				"forge": 10,
+				"lantern": 2,
+				"desire": -1
+			},
+			"extantreqs": {
+				"spirit_forgee_edge": -1,
+				"pre.spirit_forgee_edge": -1,
+				"spirit_forgee_edge.defunct": -1,
+				"spirit_forgee_edge.consumed": -1
+			},
+			"effects": {
+				"pre.spirit_forgee_edge": 1
+			},
+			"startdescription": "坩堝の王は、部屋が鍛造と呼ばれる属性で輝いている時にのみ姿を見せる。栄光の光を知っていると言い張っている彼を呼び出すには、灯りも必要だ。",
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "summoninglosingcontrol",
+					"chance": 30
+				},
+				{
+					"id": "summon_spirit_forgee_edge.success"
+				}
+			]
+		},
+		{
+			"id": "summon_spirit_forgee_edge.success",
+			"label": "日々の鍛造から生まれた名を持つ者を1体召喚する",
+			"actionId": "work",
+			"description": "必要ならば、彼はロウソクの光の中に隠れることができるが、今は焚き火のような姿をしている。彼と話をした後、顔や手の皮膚が日に焼けすぎたように赤くなる。",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "summon_spirit_graile_edge",
+			"label": "赤い聖杯から生まれた名を持つ者を1体召喚する",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 5,
+				"grail": 10,
+				"forge": 2,
+				"desire": -1
+			},
+			"extantreqs": {
+				"spirit_graile_edge": -1,
+				"pre.spirit_graile_edge": -1,
+				"spirit_graile_edge.defunct": -1
+			},
+			"effects": {
+				"pre.spirit_graile_edge": 1
+			},
+			"startdescription": "エジームは、聖杯の力が強い場所にしか入ることができず、何度も戯れてきた鍛造と共に召喚された時だけ姿を現す。",
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "summoninglosingcontrol",
+					"chance": 30
+				},
+				{
+					"id": "summon_spirit_graile_edge.success"
+				}
+			]
+		},
+		{
+			"id": "summon_spirit_graile_edge.success",
+			"label": "赤い聖杯から生まれた名を持つ者を1体召喚する",
+			"actionId": "work",
+			"description": "上空で宴を催しているかのように、豊かな香りが混ざりあっている。しかし、何よりも血の匂いがする。",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "summon_spirit_lanterne_secret",
+			"label": "バルドメリアンと呼ばれる謎の名を持つ者を召喚する",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 5,
+				"lantern": 10,
+				"secrethistories": 2,
+				"desire": -1
+			},
+			"extantreqs": {
+				"spirit_lanterne_secret": -1,
+				"pre.spirit_lanterne_secret": -1,
+				"spirit_lanterne_secret.defunct": -1
+			},
+			"effects": {
+				"pre.spirit_lanterne_secret": 1
+			},
+			"startdescription": "灯りの力でバルドメリアンの注意を引きつけ、秘密を匂わせて彼女に近づく。",
+			"description": "バルドメリアンの背中は学者のように丸まり、声は学校の先生のように澄んでいる。そして彼女の顔には、大陸を旅する旅人のようなそばかすがある。彼女には影がない。",
+			"warmup": 60,
+			"craftable": true,
+			"comments": "Teresa doesn't struggle; she's always up for a chat"
+		},
+		{
+			"id": "summon_spirit_forgec_winter",
+			"label": "煙のようなクリーチャーを召喚する",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"forge": 6,
+				"winter": 2,
+				"desire": -1
+			},
+			"effects": {
+				"pre.spirit_forgec_winter": 1
+			},
+			"startdescription": "鍛造を使って煙のような精霊を、それを拘束するために冬を使う。支配するものが誰かはっきりさせなければいけない。",
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "summoninglosingcontrol",
+					"chance": 30
+				},
+				{
+					"id": "summon_spirit_forgec_winter.success"
+				}
+			]
+		},
+		{
+			"id": "summon_spirit_forgec_winter.success",
+			"label": "煙のようなクリーチャーを召喚する",
+			"actionId": "work",
+			"description": "鍛冶屋の子供たちがみんな明るいわけではない。鍛冶屋の床の割れ目に転がる鍛造剥片のように、切れ端や私生児が境界に集まってくる。これが良い例だ。",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "summon_spirit_grailc_moth",
+			"label": "赤い聖杯の不思議なクリーチャーを1体召喚する",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"grail": 6,
+				"moth": 2,
+				"desire": -1
+			},
+			"effects": {
+				"pre.spirit_grailc_moth": 1
+			},
+			"startdescription": "未熟な預言者の源を使って聖杯を召喚し、混沌中毒を抑えるために、少しだけ蛾を使う。",
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "summoninglosingcontrol",
+					"chance": 30
+				},
+				{
+					"id": "summon_spirit_grailc_moth.success"
+				}
+			]
+		},
+		{
+			"id": "summon_spirit_grailc_moth.success",
+			"label": "赤い聖杯の不思議なクリーチャーを1体召喚する",
+			"actionId": "work",
+			"description": "蛇のように探り、鴉のように騒ぎ、静脈のように鼓動しながら、1本ずつ手足を進めて世界に入っていく。足にしがみついてきて、それを止めなければ、靴を捨てなくてはいけなくなる。",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "summon_spirit_lanternc_edge",
+			"label": "鋭利な灯りを召喚する",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"lantern": 6,
+				"edge": 2,
+				"desire": -1
+			},
+			"effects": {
+				"pre.spirit_lanternc_edge": 1
+			},
+			"startdescription": "暗示はかつて生きた定命の者だった。そして死者となり、今は別のものとなった。暗示を召喚するには、マンサスにおびき寄せる灯りと、鏡の中で耐えてきた奮闘の刃が必要だ。",
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "summoninglosingcontrol",
+					"chance": 30
+				},
+				{
+					"id": "summon_spirit_lanternc_edge.success"
+				}
+			]
+		},
+		{
+			"id": "summon_spirit_lanternc_edge.success",
+			"label": "鋭利な灯りを召喚する",
+			"actionId": "work",
+			"description": "暗示は派手な登場を好まない。生者の視線は彼らを打ち砕くだろう。ここにいることは分かっている。今はそれだけで十分だ。",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "summon_spirit_heartc_edge",
+			"label": "サンダースキンのクリーチャーを召喚する",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"heart": 6,
+				"edge": 2,
+				"desire": -1
+			},
+			"effects": {
+				"pre.spirit_heartc_edge": 1
+			},
+			"startdescription": "パーカッシガント、残酷で陽気！心臓はそれをもたらし、刃はそれを抑える。",
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "summoninglosingcontrol",
+					"chance": 30
+				},
+				{
+					"id": "summon_spirit_heartc_edge.success"
+				}
+			]
+		},
+		{
+			"id": "summon_spirit_heartc_edge.success",
+			"label": "サンダースキンのクリーチャーを召喚する",
+			"actionId": "work",
+			"description": "最初は、ドスンドスンやガラガラという音に混ざって鳴き声が森の儀式から鳴り響く。今やそれは、獣のような爪を生やした冷酷な叔父や、首のない熊がバタバタと動き回るように、世界の地表を押し進んでいる。",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "summon_spirit_winterd_edge",
+			"label": "ボロボロの太陽の従者を召喚する",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"winter": 8,
+				"edge": 2,
+				"desire": -1
+			},
+			"effects": {
+				"pre.spirit_winterd_edge": 1
+			},
+			"startdescription": "冬の耐え難い寒さで、鏡の少女の名を呼び、召喚し、刃で彼女の飽くなき残酷さを満たす。",
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "summoninglosingcontrol",
+					"chance": 30
+				},
+				{
+					"id": "summon_spirit_winterd_edge.success"
+				}
+			]
+		},
+		{
+			"id": "summon_spirit_winterd_edge.success",
+			"label": "ボロボロの太陽の従者を召喚する",
+			"actionId": "work",
+			"description": "かつて女性であった物には、自分の表情がない。彼女の目と口の動きは、まるで鏡を見ているかのように、いつも私の表情と一致している。彼女の爪はガラスのように鋭い。",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "summon_spirit_winterb_heart",
+			"label": "声なき死者を1体召喚する",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"winter": 4,
+				"heart": 2,
+				"desire": -1
+			},
+			"effects": {
+				"pre.spirit_winterb_heart": 1
+			},
+			"startdescription": "これは下降も上昇もせず、マンサスに残り、冬の夢を見る死者たちだ。冬の力と心臓の暖かさが、彼らをここに引き寄せる。",
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "summoninglosingcontrol",
+					"chance": 30
+				},
+				{
+					"id": "summon_spirit_winterb_heart.success"
+				}
+			]
+		},
+		{
+			"id": "summon_spirit_winterb_heart.success",
+			"label": "声なき死者を1体召喚する",
+			"actionId": "work",
+			"description": "冬の光で照らされた暗い形。喋らないが、その目は熱心に見つめているる。死者はいずれ現世に希望を持つようになるだろう。",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "summoninglosingcontrol",
+			"label": "召喚獣：反骨の精霊",
+			"actionId": "work",
+			"requirements": {
+				
+			},
+			"startdescription": "召喚獣が私のコントロールに抵抗している！確実なのは、理性を使って安全に排除する方法だが、情熱を使ってコントロールを取り戻すこともできる（この方法は確実ではない）。あるいは、自然の摂理に身を任せることもできる。",
+			"description": "召喚獣が私の支配から逃げた！",
+			"alternativerecipes": [
+				{
+					"id": "summoningshutitdown",
+					"chance": 100
+				},
+				{
+					"id": "summoningfightformastery",
+					"chance": 100
+				}
+			],
+			"slots": [
+				{
+					"id": "Effort",
+					"label": "努力",
+					"description": "確実なのは、理性を使って安全に排除する方法だが、情熱を使ってコントロールを取り戻すこともできる（この方法は確実ではない）。あるいは、自然の摂理に身を任せることもできる。",
+					"required": {
+						"passion": 1,
+						"reason": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "summoningescaped",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "summoningshutitdown",
+			"label": "召喚獣：送り返す",
+			"actionId": "work",
+			"requirements": {
+				"reason": 1
+			},
+			"effects": {
+				
+			},
+			"aspects": {
+				"fatiguing": 1,
+				"killmanifesting": 1
+			},
+			"startdescription": "解放の言葉を発し、魔法陣をしっかりと封印し、すべての痕跡を消す。",
+			"description": "消えた。これで安全なはずだ。",
+			"warmup": 10
+		},
+		{
+			"id": "summoningfightformastery",
+			"label": "召喚獣：覇権争い",
+			"actionId": "work",
+			"startdescription": "外の世界から訪れるものは、ナイフや謎、火や絶望など、様々な武器を持っている。武器なら私も持っている。[通常効果があるが、必ず効くわけではない。]",
+			"description": "",
+			"requirements": {
+				"passion": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "summoningmasteryregained",
+					"chance": 70
+				},
+				{
+					"id": "summoningescaped",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "summoningescaped",
+			"label": "召喚獣：脱出",
+			"actionId": "work",
+			"requirements": {
+				
+			},
+			"startdescription": "逃げられた！",
+			"description": "召喚獣が私の制御を逃れた。間違いなく大混乱をもたらすだろう―― ",
+			"warmup": 5,
+			"alternativerecipes": [
+				{
+					"id": "summoning_haunt_devourer",
+					"chance": 100,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"manifesting": 1
+						}
+					}
+				},
+				{
+					"id": "summoning_haunt_deceiver",
+					"chance": 100,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"manifesting": 1
+						}
+					}
+				}
+			]
+		},
+		{
+			"id": "summoningmasteryregained",
+			"label": "召喚獣：支配を取り戻した！",
+			"actionId": "work",
+			"requirements": {
+				
+			},
+			"effects": {
+				
+			},
+			"startdescription": "成功！",
+			"description": "召喚獣は――今のところは――私の命令に従うだろう。",
+			"warmup": 10
+		}
+	]
+}

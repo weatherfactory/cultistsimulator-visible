@@ -1,0 +1,1522 @@
+{
+	"recipes": [
+		{
+			"id": "explorevaultguardian_serpent_encounter",
+			"actionId": "explore",
+			"label": "Eine jüngere Schwester: eine Schlange",
+			"startdescription": "Die Schlange beobachtet uns ganz genau und wiegt ihren großen Kopf hin und her. Ohne Kante oder Klopfen können wir nicht gegen sie bestehen.",
+			"requirements": {
+				"guardian_serpent": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "Hilfe",
+					"description": "Geldmittel sind unverzichtbar bei Expeditionen. Anhänger erlauben es mir, Hindernisse zu überwinden.",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultguardian_serpent_highknock",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_serpent_highedge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_serpent_midknock",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_serpent_midedge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_serpent_lowknock",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_serpent_lowedge",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultguardian_serpent_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_serpent_highedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 10
+			},
+			"label": "Unsere Kraft ist ohne Gleichen.",
+			"startdescription": "Augen wie Gaslampen. Schuppen wie schwarze Jade. Eine Schlange ist ein mächtiger Gegner, aber nichts gegen uns.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_serpent_success_edge",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_serpent_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_serpent_midedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 5
+			},
+			"label": "Unsere Kraft ist beträchtlich.",
+			"startdescription": "Augen wie Gaslampen. Fangzähne wie Stalaktiten. Eine große Schlange ist ein mächtiger Gegner, wir aber auch.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_serpent_success_edge",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_serpent_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_serpent_lowedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 1
+			},
+			"label": "Unsere Kraft könnte nicht ausreichen.",
+			"startdescription": "Augen wie Gaslampen. Ein Maul, in das man sich hocken könnte. Wir könnten diese Schlange bezwingen. Wir könnten es bereuen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_serpent_success_edge",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_serpent_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_serpent_highknock",
+			"actionId": "explore",
+			"requirements": {
+				"knock": 10
+			},
+			"label": "Wir rufen die Mutter der Ameisen an, die sich aus Wunden erhebet",
+			"startdescription": "Das Maul der Schlange ist groß genug, um sich darin zu hocken. Ihre Zunge ist so breit wie die Schultern eines Mannes. Doch es ist so gut wie sicher, dass sie unsere Macht respektieren wird.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_serpent_success_knock",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_serpent_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_serpent_midknock",
+			"actionId": "explore",
+			"requirements": {
+				"knock": 5
+			},
+			"label": "Wir rufen die Mutter der Ameisen an, die umkreiset",
+			"startdescription": "Die Schlange ist lang genug, um sich um eine Hütte zu wickeln. Ihre Fangzähne funkeln wie Eis. Vielleicht wird sie unsere Macht respektieren.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_serpent_success_knock",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_serpent_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_serpent_lowknock",
+			"actionId": "explore",
+			"requirements": {
+				"knock": 1
+			},
+			"label": "Wir rufen die Mutter der Ameisen an, die sich öffnet",
+			"startdescription": "Die Schlange erhebt sich wie ein anschwellender Fluss. Ihre Augen sind geschlitzte Gruben des Hungers. Vielleicht wird die Schlange unsere Macht respektieren.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_serpent_success_knock",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_serpent_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_serpent_success_edge",
+			"actionId": "explore",
+			"label": "Der Kampf der Schlange",
+			"startdescription": "Die Schlange wälzt sich umher und brüllt! Ihr Todeskampf erschüttert die Erde! Doch sie stirbt. Wir kommen durch.",
+			"description": ".",
+			"effects": {
+				"guardian_serpent": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_serpent_success_knock",
+			"actionId": "explore",
+			"label": "Die Sorge der Schlange",
+			"startdescription": "Sie senkt ihren großen Kopf. Feuchtigkeit rinnt aus ihren lidlosen Augen. Weint sie? Was weiß sie noch von ihrer ältesten Schwester, deren Macht wir anrufen?",
+			"description": ".",
+			"effects": {
+				"guardian_serpent": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_serpent_failure",
+			"actionId": "explore",
+			"label": "Die Stärke der Schlange",
+			"startdescription": "Zurück. Zurück! Das ist zu viel für uns!",
+			"description": ".",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty",
+					"chance": 70,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"follower": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_watchers_encounter",
+			"actionId": "explore",
+			"label": "Betrachter",
+			"startdescription": "Einheimische mit einem Groll, einer Pflicht oder einem Söldner-Kontrakt. Wir könnten sie mit der Motte austricksen, mit dem Gral verführen oder mit der Kante bekämpfen.",
+			"requirements": {
+				"guardian_watchers": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "Hilfe",
+					"description": "Geldmittel sind unverzichtbar bei Expeditionen. Anhänger erlauben es mir, Hindernisse zu überwinden.",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultguardian_watchers_highgrail",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_watchers_highmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_watchers_highedge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_watchers_midgrail",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_watchers_midmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_watchers_midedge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_watchers_lowgrail",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_watchers_lowmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_watchers_lowedge",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultguardian_watchers_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_watchers_highedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 10
+			},
+			"label": "Unsere Kraft ist ohne Gleichen.",
+			"startdescription": "Die Betrachter werden es so gut wie sicher bereuen, sich gegen uns gestellt zu haben.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_watchers_success_edge",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_watchers_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_watchers_midedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 5
+			},
+			"label": "Unsere Kraft ist beträchtlich.",
+			"startdescription": "Die Betrachter sind auf uns nicht gefasst. Wir sollten sie in die Knie zwingen können.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_watchers_success_edge",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_watchers_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_watchers_lowedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 1
+			},
+			"label": "Unsere Kraft könnte nicht ausreichen.",
+			"startdescription": "Die Betrachter könnten zu viel für uns sein – doch wir haben eine Chance.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_watchers_success_edge",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_watchers_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_watchers_highgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 10
+			},
+			"label": "Gegen die Betrachter: Die Verführungskünste des Grals",
+			"startdescription": "'Komm näher, ihr Lieben. Wir haben etwas Besonderes für euch.'",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_watchers_success_grail",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_watchers_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_watchers_midgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 5
+			},
+			"label": "Gegen die Betrachter: Die Verlockungen des Grals",
+			"startdescription": "Unsere Verlockungen sollten die Betrachter uns gewogen machen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_watchers_success_grail",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_watchers_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_watchers_lowgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 1
+			},
+			"label": "Gegen die Betrachter: Die Ablenkungen des Grals",
+			"startdescription": "Vielleicht können wir die Betrachter von ihrem Ansinnen abbringen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_watchers_success_grail",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_watchers_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_watchers_highmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 10
+			},
+			"label": "Gegen die Betrachter: Eine mächtige Täuschung",
+			"startdescription": "'Kommt näher. Noch näher. Näher! Weiter hersehen. Näher. Jetzt die Augen zu ...'",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_watchers_success_moth",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_watchers_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_watchers_midmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 5
+			},
+			"label": "Gegen die Betrachter: Eine wahrscheinliche Täuschung",
+			"startdescription": "'Aufwachen! Aufwachen! Die sind hinter uns her! Dort entlang, schnell!'",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_watchers_success_moth",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_watchers_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_watchers_lowmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 1
+			},
+			"label": "Gegen die Betrachter: Eine verzweifelte Täuschung",
+			"startdescription": "'Die sind ... dort entlang?'",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_watchers_success_moth",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_watchers_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_watchers_success_edge",
+			"actionId": "explore",
+			"label": "Das Ende der Betrachter",
+			"startdescription": "Ihr Blut pulsiert hell, dann dunkel. Sie hätten sich uns nicht in den Weg stellen sollen. Wir ziehen weiter.",
+			"description": ".",
+			"effects": {
+				"guardian_watchers": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_watchers_success_grail",
+			"actionId": "explore",
+			"label": "Der Niedergang der Betrachter",
+			"startdescription": "Das Schwelgen im Genuss wird ihr Untergang sein. Vielleicht denken sie ja, dass es das wert ist. In der Zwischenzeit können wir vorbei.",
+			"description": ".",
+			"effects": {
+				"guardian_watchers": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_watchers_success_moth",
+			"actionId": "explore",
+			"label": "Der Verwirrung der Betrachter",
+			"startdescription": "Ihre Konsternation ist unsere Chance. Wir kommen still und ungesehen vorbei.",
+			"description": ".",
+			"effects": {
+				"guardian_watchers": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_watchers_failure",
+			"actionId": "explore",
+			"label": "Der Sieg der Betrachter",
+			"startdescription": "Sie sind gerissener und zahlreicher als wir erwartet hätten! Dies wird für uns mit Blut enden –",
+			"description": ".",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty",
+					"chance": 70,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"follower": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_monks_encounter",
+			"actionId": "explore",
+			"label": "Mönche",
+			"startdescription": "Ein Orden von Wächtern, die an Gelübde und Sitten gebunden sind. Sie sind zu standhaft für die Verführungskünste des Grals – wir müssen sie mit der Kante besiegen oder mit der Motte verwirren.",
+			"requirements": {
+				"guardian_monks": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "Hilfe",
+					"description": "Geldmittel sind unverzichtbar bei Expeditionen. Anhänger erlauben es mir, Hindernisse zu überwinden.",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultguardian_monks_highmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_monks_highedge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_monks_midmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_monks_midedge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_monks_lowmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_monks_lowedge",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultguardian_monks_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_monks_highedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 10
+			},
+			"label": "Unsere Kraft ist praktisch unwiderstehlich.",
+			"startdescription": "Wir werden die Erde mit gebenedeitem Blute tränken.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_monks_success_edge",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_monks_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_monks_midedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 5
+			},
+			"label": "Unsere Kraft ist beträchtlich.",
+			"startdescription": "Wir sollten diesen gebenedeiten Narren mehr als ebenbürtig sein.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_monks_success_edge",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_monks_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_monks_lowedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 1
+			},
+			"label": "Unsere Kraft könnte nicht ausreichen.",
+			"startdescription": "Das sind nur Mönche. Doch es sind viele, viele Mönche. Wir könnten obsiegen, so wir denn Glück haben.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_monks_success_edge",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_monks_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_monks_highmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 10
+			},
+			"label": "Die Mönche: Eine wirkmächtige Täuschung",
+			"startdescription": "'Wir haben hier einige gebenedeite Schriften, deren Bedeutung sich sich nur im Mondschein offenbart –'",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_monks_success_moth",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_monks_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_monks_midmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 5
+			},
+			"label": "Die Mönche: Eine wahrscheinliche Täuschung",
+			"startdescription": "'Dieser Passierschein trägt das Siegel der höchste Autorität. Stellt euch uns nicht in den Weg –'",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_monks_success_moth",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_monks_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_monks_lowmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 1
+			},
+			"label": "Die Mönche: Eine verzweifelte Täuschung",
+			"startdescription": "'Wir haben ... Reliquien. *Uralte* Reliquien.'",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_monks_success_moth",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_monks_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_monks_success_edge",
+			"actionId": "explore",
+			"label": "Das Schweigen der Mönche",
+			"startdescription": "Ihre Leiber liegen in gewandeten Haufen, keiner vom anderen zu unterscheiden. Hinübersteigen, weitergehen.",
+			"description": ".",
+			"effects": {
+				"guardian_monks": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_monks_success_moth",
+			"actionId": "explore",
+			"label": "Die Verblendung der Mönche",
+			"startdescription": "Der Glaube ist eine zweischneidige Waffe. Diese Mönche besitzen großes Talent, wenn es um den Glauben geht, also haben sie auch unseren Lügen Glauben geschenkt.",
+			"description": ".",
+			"effects": {
+				"guardian_monks": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_monks_failure",
+			"actionId": "explore",
+			"label": "Der Zorn der Mönche",
+			"startdescription": "Sie sind stärker und weiser als wir gedacht hätten. Und nun haben ihre Schläge ihr Ziel gefunden _ ",
+			"description": ".",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty",
+					"chance": 70,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"follower": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_dead_encounter",
+			"actionId": "explore",
+			"label": "Die verdrießlichen Toten",
+			"startdescription": "Die Toten stauen sich in der Luft um uns herum wie abgestandenes Leichenlicht. Ohne Kante oder Winter haben wir keine Chance gegen sie.",
+			"requirements": {
+				"guardian_dead": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "Hilfe",
+					"description": "Geldmittel sind unverzichtbar bei Expeditionen. Anhänger erlauben es mir, Hindernisse zu überwinden.",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultguardian_dead_highwinter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_dead_highedge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_dead_midwinter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_dead_midedge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_dead_lowwinter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_dead_lowedge",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultguardian_dead_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_dead_highedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 10
+			},
+			"label": "Unsere Kraft ist ohne Gleichen.",
+			"startdescription": "Die Toten sind so blass wie umgekehrte Schatten. Sie bewegen sich wie Spinnweben im Wind. Es ist so gut wie sicher, dass sie gegen uns nicht bestehen können. Wir werden sie murmelnd in die Schatten des Forstes zurückschicken.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_dead_success_edge",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_dead_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_dead_midedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 5
+			},
+			"label": "Unsere Kraft ist beträchtlich.",
+			"startdescription": "Diese Toten mit ihren lebhaften, sorgenvollen Augen sind bereits einmal gestorben. Ihr Halt in der wachenden Welt ist schwach. Wir sollten sie in die Finsternis zurückschicken können, doch wir müssen aufpassen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_dead_success_edge",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_dead_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_dead_lowedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 1
+			},
+			"label": "Unsere Kraft könnte nicht ausreichen.",
+			"startdescription": "Die Toten bewegen sich so langsam wie der Zeiger einer Sonnenuhr – langsam, aber unaufhörlich. Sie erinnern sich an Schmerz und Angst, aber nicht deutlich. Wir kennen beide Gefühle nur zu gut. Sie könnten zu viel für uns sein.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_dead_success_edge",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_dead_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_dead_highwinter",
+			"actionId": "explore",
+			"requirements": {
+				"winter": 10
+			},
+			"label": "Wir rufen den Elfenbeintäuber an, der die Namen aller Toten kennt",
+			"startdescription": "Die Toten umkreisen unser Sichtfeld wie zerfledderte Träume. Die Luft um uns herum ist kühl vom Schatten des Winters. Sie müssen das erkennen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_dead_success_winter",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_dead_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_dead_midwinter",
+			"actionId": "explore",
+			"requirements": {
+				"winter": 5
+			},
+			"label": "Wir rufen den Elfenbeintäuber an, der nicht zu täuschen ist",
+			"startdescription": "Die Toten beobachten uns genau, ausdruckslos wie Heiligenstatuen. Doch in uns ist die Macht der Winters. Vielleicht erkennen die Toten das.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_dead_success_winter",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_dead_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_dead_lowwinter",
+			"actionId": "explore",
+			"requirements": {
+				"winter": 1
+			},
+			"label": "Wir rufen den Elfenbeintäuber an, dem nichts mehr genommen werden kann",
+			"startdescription": "Die Toten kochen und rumoren in der Finsternis, doch wir wurden von den Stunden des Winters angerührt. Vielleicht erkennen sie das.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_dead_success_winter",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_dead_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_dead_success_edge",
+			"actionId": "explore",
+			"label": "Die elendigen Toten",
+			"startdescription": "Wenn die Toten zu uns zurückkehren, benutzen sie jede Materie, derer sie habhaft werden können, falls ihre Leiber fort sind: Staub, Rost, Spinnweben, Fetzen und Lumpen. Nun, da wir sie gebrochen haben, sind nur noch diese Lumpen übrig.",
+			"description": ".",
+			"effects": {
+				"guardian_dead": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_dead_success_winter",
+			"actionId": "explore",
+			"label": "Die argwöhnischen Toten",
+			"startdescription": "Die Toten ziehen sich zurück, ihre Beinahe-Gesichter sind stumpf und wachsam. Sie werden uns keinen Ärger machen.",
+			"description": ".",
+			"effects": {
+				"guardian_dead": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_dead_failure",
+			"actionId": "explore",
+			"label": "Der Zorn der Toten",
+			"startdescription": "Die Toten sind mehr Wind als Fleisch, doch man sollte den Wind lieber nicht unterschätzen. Jetzt gerade sind sie ein schreckensbewehrter Hurrikan bleichen Schattens. Rückzug. Rückzug!",
+			"description": ".",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty",
+					"chance": 70,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"follower": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_soucouyants_encounter",
+			"actionId": "explore",
+			"label": "Soucouyants in der Finsternis",
+			"startdescription": "Die Nachtluft klappert durch sie. Tief ducken. Sie sind viel zu stark, als dass man gegen sie kämpfen könnte, doch vielleicht können wir sie täuschen oder mit dem Lichte des Mansus vertreiben.",
+			"requirements": {
+				"guardian_soucouyants": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "Hilfe",
+					"description": "Geldmittel sind unverzichtbar bei Expeditionen. Anhänger erlauben es mir, Hindernisse zu überwinden.",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultguardian_soucouyants_highmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_highlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_midmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_midlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_lowmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_lowlantern",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultguardian_soucouyants_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_soucouyants_highlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 10
+			},
+			"label": "Wir rufen den Wächter an, der erleuchtet",
+			"startdescription": "Wir haben so gut wie sicher genug Kraft, um ihn auf Distanz zu halten.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_soucouyants_success_lantern",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_soucouyants_midlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 5
+			},
+			"label": "Wir rufen den Wächter an, der kein Mitleid kennt",
+			"startdescription": "Unsere Macht sollte reichen, um sie in Schach zu halten – doch sie werden jeden Mangel an Wachsamkeit auszunutzen wissen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_soucouyants_success_lantern",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_soucouyants_lowlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 1
+			},
+			"label": "Wir rufen den Wächter an, der navigiert",
+			"startdescription": "Es ist möglich, dass unsere Macht ausreicht, um uns sicher durch die überfüllte Nacht zu bringen. Es ist definitiv möglich.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_soucouyants_success_lantern",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_soucouyants_highmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 10
+			},
+			"label": "Wir rufen die Motte an, die zwischen den Bäumen im Forst sucht",
+			"startdescription": "Die Motte hat Macht in dieser gedrängten Nacht im Walde. Wir werden sicher durchkommen ... es sei denn, wir haben großes Pech.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_soucouyants_success_moth",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_soucouyants_midmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 5
+			},
+			"label": "Wir rufen die Motte an, die den Schädel schlägt",
+			"startdescription": "Wir sollten genug Macht haben, um diese dürstenden Nachtschwingen zu täuschen und zu erschrecken.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_soucouyants_success_moth",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_soucouyants_lowmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 1
+			},
+			"label": "Wir rufen die Motte an, die gescheckt ist",
+			"startdescription": "Die Motte wird uns in den gescheckten Schatten des Waldes eine Chance geben – aber nur eine Chance.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_soucouyants_success_moth",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_soucouyants_success_lantern",
+			"actionId": "explore",
+			"label": "Die Zuflucht der Soucouyants",
+			"startdescription": "Sie werden uns nicht nahe kommen. Sie provozieren uns mit den Stimmen von Aasvögeln und Kindern. Sie rumoren in den Wipfeln. Sie werden Steine aus dem Dunkeln. Doch sie kommen nicht näher. Wir kommen durch.",
+			"description": ".",
+			"effects": {
+				"guardian_soucouyants": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_soucouyants_success_moth",
+			"actionId": "explore",
+			"label": "Die Frustration der Soucouyants",
+			"startdescription": "Vom Schatten in noch tieferen Schatten eilen. Gesichter in die schwammige Erde drücken. Sie wissen, dass wir hier sind, doch nicht wo. Ihre Schreie verhallen hinter uns.",
+			"description": ".",
+			"effects": {
+				"guardian_soucouyants": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_soucouyants_failure",
+			"actionId": "explore",
+			"label": "Der Hunger der Soucouyants",
+			"startdescription": "Die sind hinter uns her! Mit einem ledernen Knacken von Flügeln erhebt sich ein kreischender Leib in die Finsternis – ",
+			"description": ".",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty",
+					"chance": 70,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"follower": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_long_encounter",
+			"actionId": "explore",
+			"label": "Die Langen",
+			"startdescription": "Der Mittagshafen wurde am Ort einer berüchtigten Quelle gegründet: wer aus ihr trinkt, wird von der Welt vergessen. Manche unter den Langen haben sich dort von den weltlichen Angelegenheiten zurückgezogen. Sie gehen nicht zimperlich mit Eindringlingen um, und es wäre Narretei, sie anzugreifen. Doch sie könnten für die Amüsements der Motte oder die Verführungen des Grals empfänglich sein.",
+			"requirements": {
+				"guardian_long": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "Hilfe",
+					"description": "Geldmittel sind unverzichtbar bei Expeditionen. Anhänger erlauben es mir, Hindernisse zu überwinden.",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultguardian_long_highmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_long_highgrail",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_long_midmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_long_midgrail",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_long_lowmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_long_lowgrail",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultguardian_long_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_long_highgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 10
+			},
+			"label": "'Wir sind zu eurem Vergnügen hier.'",
+			"startdescription": "Selbst die Langen kennen das Verlangen. Vielleicht gerade die Langen. Dieser wird so gut wie sicher von unserer Zuwendung gefügig gemacht.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_long_success_grail",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_long_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_long_midgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 5
+			},
+			"label": "'Wir sind zu eurer Zerstreuung hier.'",
+			"startdescription": "Dieser Lange weiß unsere Verlockungen zu schätzen, bleibt aber skeptisch. Vielleicht haben wir ja Erfolg.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_long_success_grail",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_long_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_long_lowgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 1
+			},
+			"label": "'Wir ... hoffen, dass wir dich amüsieren können?",
+			"startdescription": "Die Langen haben den gleichen Appetit wie die Sterblichen, doch tausend Erfahrungen haben sie vorsichtig gemacht. Wir könnten wir dennoch einen genug unterhalten, so wir denn Glück haben.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_long_success_grail",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_long_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_long_highmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 10
+			},
+			"label": "'Neuigkeiten! Neuigkeiten aus dem Alten Land! Aus allen Alten Landen!'",
+			"startdescription": "Die Langen gieren nach Neuigkeiten. Wir werden das zu unserem Vorteil nutzen, und wenn alles gut geht, sind wir fort, bevor sie etwas merken.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_long_success_moth",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_long_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_long_midmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 5
+			},
+			"label": "'Nun gut: eine Wette.'",
+			"startdescription": "Spielt der hier mit uns? Schwer zu sagen. Doch selbst wenn dies ein Spiel sein sollte, können wir vielleicht gehen. Wahrscheinlich sind wir dann in Sicherheit. ",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_long_success_moth",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_long_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_long_lowmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 1
+			},
+			"label": "'Das, äh, ist eine, äh, witzige Geschichte ...'",
+			"startdescription": "Die Augen dieses Langen sind starr und so weit weg wie der Horizont. Sein ganzer Leib ist eidechsenstill. Hört er überhaupt zu?",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_long_success_moth",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_long_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_long_success_grail",
+			"actionId": "explore",
+			"label": "Ein langer und goldener Nachmittag",
+			"startdescription": "Ist dieser Lange wirklich auf die Verführungskünste des Grals hereingefallen? Oder wusste er genau, was wir tun? Wie auch immer, wir haben genug Platz und Zeit gewonnen –",
+			"description": ".",
+			"effects": {
+				"guardian_long": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_long_success_moth",
+			"actionId": "explore",
+			"label": "Die Täuschung des Langen",
+			"startdescription": "Die unsterblichen Bewohner des Mittags werden getäuscht, amüsiert oder gefangen von den Knoten eines noch größeren Plans. Diesmal legt sich niemand mit uns an.",
+			"description": ".",
+			"effects": {
+				"guardian_long": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_long_failure",
+			"actionId": "explore",
+			"label": "Die Agonie des Langen",
+			"startdescription": "Ein Unsterblicher zürnt. Er könnte jemanden niederstrecken oder seinen Zorn verbergen. Schwer zu sagen, bei Unsterblichen ... ",
+			"description": ".",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty",
+					"chance": 70,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"follower": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		}
+	]
+}

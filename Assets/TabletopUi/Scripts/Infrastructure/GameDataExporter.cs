@@ -5,6 +5,7 @@ using System.Linq;
 
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
 using UnityEngine;
@@ -16,7 +17,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     {
         Hashtable GetSaveHashTable(MetaInfo metaInfo, ITableSaveState tableSaveState, Character character);
 
-        Hashtable GetHashTableForStacks(IEnumerable<IElementStack> stacks);
+        Hashtable GetHashTableForStacks(IEnumerable<ElementStackToken> stacks);
 
         Hashtable GetHashTableForSituationNotes(IEnumerable<ISituationNote> notes);
         Hashtable GetHashtableForExtragameState(Legacy withActiveLegacy);
@@ -147,7 +148,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         /// NOTE: stacks *in situations* are *not* handled by this function
         /// </summary>
         /// <returns></returns>
-        public Hashtable GetHashTableForStacks(IEnumerable<IElementStack> stacks)
+        public Hashtable GetHashTableForStacks(IEnumerable<ElementStackToken> stacks)
         {
             var htElementStacks = new Hashtable();
             foreach (var e in stacks)
@@ -190,7 +191,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return null;
         }
 
-		private Hashtable GetHashtableForThisStack(IElementStack stack)
+		private Hashtable GetHashtableForThisStack(ElementStackToken stack)
         {
             var htStackProperties = new Hashtable();
             htStackProperties.Add(SaveConstants.SAVE_ELEMENTID, stack.EntityId);
@@ -242,7 +243,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-		public void AnalyticsReport( bool success, MetaInfo metaInfo, Character character,IEnumerable<IElementStack> stacks, IEnumerable<SituationController> situationControllers,IEnumerable<IDeckInstance> deckInstances )
+		public void AnalyticsReport( bool success, MetaInfo metaInfo, Character character,IEnumerable<ElementStackToken> stacks, IEnumerable<SituationController> situationControllers,IEnumerable<IDeckInstance> deckInstances )
 		{
 			// Report very basic info	- success/failure (so we can measure failure %)
 			//							- Data counts so we can see what is going missing (0 == empty, -1 == null ref)

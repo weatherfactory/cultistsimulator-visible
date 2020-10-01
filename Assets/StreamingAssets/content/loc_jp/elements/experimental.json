@@ -1,0 +1,67 @@
+{
+	"elements": [
+		{
+			"id": "owl",
+			"label": "帽子のないフクロウ",
+			"aspects": {
+				"job": 1
+			},
+			"description": "フクロウによると、最後のキャラクターは#PREVIOUSCHARACTERNAME#、最後の願望は#LAST_DESIRE#、最も忠実な信奉者は#LAST_FOLLOWER#、最後の本は#LAST_BOOK#だそうだ。",
+			"noartneeded": true
+		},
+		{
+			"id": "wolfatthedoor",
+			"label": "大きな家に住む狼",
+			"aspects": {
+				"ability": 1,
+				"location": 1,
+				"acquaintance": 1
+			},
+			"slots": [
+				{
+					"id": "Meal5",
+					"consumes": true,
+					"actionId": "explore"
+				}
+			],
+			"icon": "violet_p",
+			"description": "狼は何でも受け入れて、何があっても全てをむさぼる。",
+			"noartneeded": true
+		},
+		{
+			"id": "wolf",
+			"lifetime": 1,
+			"decayTo": "wolfatthedoor",
+			"description": "",
+			"noartneeded": true
+		},
+		{
+			"id": "lionweb",
+			"label": "蜘蛛の巣のライオン",
+			"comments": "Information lives in the sky.",
+			"icon": "valciane_p",
+			"noartneeded": true
+		},
+		{
+			"id": "boarwords",
+			"label": "言葉のイノシシ",
+			"comments": "Titles are criminal.",
+			"icon": "victor_p",
+			"noartneeded": true
+		},
+		{
+			"id": "worldbull",
+			"label": "牡牛の世界",
+			"comments": "The crime At the beginning",
+			"icon": "clifton_p",
+			"noartneeded": true
+		},
+		{
+			"id": "notaworm",
+			"label": "鳥の可能性",
+			"comments": "We Await S.T.E.",
+			"icon": "clovette_p",
+			"noartneeded": true
+		}
+	]
+}

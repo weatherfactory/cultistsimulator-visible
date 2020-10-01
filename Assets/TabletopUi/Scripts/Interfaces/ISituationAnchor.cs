@@ -27,7 +27,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
         void DisplayMiniSlot(IList<SlotSpecification> ongoingSlots);
         void DisplayTimeRemaining(float duration, float timeRemaining, EndingFlavour signalEndingFlavour);
-        void DisplayStackInMiniSlot(IEnumerable<IElementStack> getStacksInOngoingSlots);
+        void DisplayStackInMiniSlot(IEnumerable<ElementStackToken> getStacksInOngoingSlots);
         void DisplayComplete();
         bool Retire();
 

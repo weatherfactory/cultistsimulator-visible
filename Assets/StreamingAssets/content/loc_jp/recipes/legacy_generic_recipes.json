@@ -1,0 +1,44 @@
+{
+	"recipes": [
+		{
+			"id": "studymapbookdealer",
+			"label": "モーランドの店を見つける",
+			"actionId": "study",
+			"requirements": {
+				"mapbookdealer": 1
+			},
+			"effects": {
+				"mapbookdealer": -1,
+				"locationbookdealer": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "openexplore",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "モーランドの店への道のりは謎めいている。手紙の書き手が研究したような本を扱う時は慎重にならざるを得ない。",
+			"description": "小川の曲がり角にある、薄暗い道。ほこりっぽい窓から、やわらかい黄色の光が差し込む。モーランド嬢は私が入ると頷いたが、立ち上がらなかった。彼女は私の自己紹介を待たずに「依頼人の名前は聞かない」と言った。\n\n[<b>探索</b>がアンロックされた。]",
+			"warmup": 30,
+			"craftable": true,
+			"comments": "This is one way the Explore verb may be opened."
+		},
+		{
+			"id": "openexplore",
+			"label": "探索",
+			"actionId": "explore",
+			"requirements": {
+				
+			},
+			"effects": {
+				"fragmentsecrethistories": 1
+			},
+			"startdescription": ".",
+			"description": "場所を見つけたから、探索できるようになった。",
+			"warmup": 0,
+			"maxexecutions": 1,
+			"craftable": false
+		}
+	]
+}

@@ -1,0 +1,494 @@
+{
+	"elements": [
+		{
+			"id": "apostleforge.mentor",
+			"label": "#PREVIOUSCHARACTERNAME#, unser Gestalter",
+			"description": "Hat uns groß gezogen, hat uns zu dem gemacht, was wir sind, erwartet uns im Exil und erhebt sich, wenn wir die Dämmerung bringen.",
+			"comments": "Is an acquaintance so we can hijack the cult foundation recipe.",
+			"aspects": {
+				"mentor": 1
+			}
+		},
+		{
+			"id": "legacyapostleforgejob",
+			"label": "Ein Lieblingsort",
+			"description": "So lange habe ich zur Linken unseres Gestalters gewartet. Nun ist es an der Zeit, das Große Werk anzuführen.",
+			"aspects": {
+				"job": 1
+			},
+			"icon": "apostleforge.pillar1"
+		},
+		{
+			"id": "apostleforge.pillarfuel",
+			"label": "Rechtleitung unseres Gestalters",
+			"description": "Wir brauchen die Rechtleitung unseres Gestalters, um den Dämmerungsbrecher-Kern aus einem Kadaver-Funken zu schmieden, die Bestandteile der Schmiede zu ihrer endgültigen Form zu verfeinern, den Kompass des Gestalters als Gefolge zu gewinnen, vom Schlüssel Sulochanas, der Ligeianerin, zu erfahren, und das Werk zu vollenden. Doch wenn wir ihn nicht schnell zu Diensten sind, folgt das Grauen.",
+			"aspects": {
+				"influence": 1
+			},
+			"lifetime": 60,
+			"decayTo": "dread",
+			"icon": "mentorguidance"
+		},
+		{
+			"id": "apostleforge.pillar1",
+			"label": "Dämmerungsbrecher-Technik",
+			"description": "DER GESTALTER SPRICHT: 'Ich muss die Schmiede wecken. Setzt einen Kadaver-Funken ins Zentrum der Maschine. Erweckt ihn mit den höchsten Mysterien. Bereitet die wildest Alchemie vor, um ihn zu speisen. Findet den Makel an dem Ort an der Kante des Landes, der in jeder Historie den gleichen Namen trägt. Bringt das Gerät hierher, mitsamt dem Beißenden Schlüssel, den Sulochana die Ligeianerin kennt. Erweckt die Schmiede zu größter Hitze, setzt die mächtigsten Mysterien der Öffnung ein, und ich werde eurer Auflösung beiwohnen.'"
+		},
+		{
+			"id": "apostleforge.pillar2.dormant",
+			"label": "Ruhender Dämmerungsbrecher-Kern",
+			"description": "Ein funkelnder Käfig aus gebogenem Metall, der ein weich leuchtendes Fragment uralten Lichts umschließt. Es könnte unsere Dämmerung sein, so wir sie mit der wildesten Alchemie neu entzünden und läutern können.",
+			"aspects": {
+				"tool": 1,
+				"greatwork": 1
+			}
+		},
+		{
+			"id": "apostleforge.pillar2",
+			"label": "Dämmerungsbrecher-Kern",
+			"description": "Ein strahlender Käfig aus gebogenem Metall, der eine gleißendes Stäubchen des Sonnenfeuers umschließt. Schaffen wir es zu dem Ort, wo der Makel der Welt die Luft färbt, können wir die Dämmerung einläuten.",
+			"aspects": {
+				"tool": 1,
+				"greatwork": 1
+			},
+			"xtriggers": {
+				"sabotage": "apostleforge.pillar2.sabotaged"
+			}
+		},
+		{
+			"id": "apostleforge.pillar3",
+			"label": "Blaues Gold",
+			"description": "Dies ist der wilde Gipfel der Alchemie: das tödliche Blau, wenn Feuer das Licht überholt. Berühr's und stirb.",
+			"aspects": {
+				"ingredient": 1,
+				"greatwork": 1
+			},
+			"xtriggers": {
+				"sabotage": "apostleforge.pillar3.sabotaged"
+			}
+		},
+		{
+			"id": "apostleforge.pillar5",
+			"label": "Hilfe von Mrs. E.",
+			"description": "Ein kleiner Chimären-Kopf aus Messing, Geschenk von Mrs. E.  Wenn wir den passenden Ritus vorbereitet haben, trägt sie ihren Schlüssel zum Makel der Welt, damit sich der Mansus für unseren Gestalter öffnet, wenn ich die Dämmerung bringe. Doch sie wird nicht ewig warten.",
+			"aspects": {
+				"promise": 1
+			},
+			"unique": true,
+			"lifetime": 600
+		},
+		{
+			"id": "apostleforge.pillar2.dormant.sabotaged",
+			"label": "Sabotierter ruhender Dämmerungsbrecher-Kern",
+			"description": "Ein zerschlagenes Gewirr aus verbogenem Metall, in dem ein Stäubchen trunken taumelnden Lichts ruht. Wir müssen es reparieren, bevor es komplett zusammenbricht!",
+			"aspects": {
+				"tool": 1,
+				"greatwork.sabotaged": 1
+			},
+			"xtriggers": {
+				"sabotage.repair": "apostleforge.pillar2.dormant"
+			}
+		},
+		{
+			"id": "apostleforge.pillar2.sabotaged",
+			"label": "Sabotierter Dämmerungsbrecher-Kern",
+			"description": "Ein gleißendes Gewirr verbogenen Metalls. Ein grelles Stäubchen des Sonnenfeuers zittert wild darin umher. Wir müssen es reparieren, bevor es komplett zusammenbricht!",
+			"aspects": {
+				"tool": 1,
+				"greatwork.sabotaged": 1
+			},
+			"xtriggers": {
+				"sabotage.repair": "apostleforge.pillar2"
+			}
+		},
+		{
+			"id": "apostleforge.pillar3.sabotaged",
+			"label": "Instabiles blaues Gold",
+			"description": "Ein vergifteter, stotternder Barren energetischer Alchemie. Wir müssen sein Mütchen kühlen, und zwar schnell!",
+			"aspects": {
+				"ingredient": 1,
+				"greatwork.sabotaged": 1
+			},
+			"xtriggers": {
+				"sabotage.repair": "apostleforge.pillar3"
+			}
+		},
+		{
+			"id": "apostlegrail.mentor",
+			"label": "#PREVIOUSCHARACTERNAME#, unsere Wonne",
+			"description": "Unsere Quelle, unser Glück, das im Exil verweilt, bis das größte Gelage anbricht: die Vitulation. ",
+			"comments": "Is an acquaintance so we can hijack the cult foundation recipe.",
+			"aspects": {
+				"mentor": 1
+			}
+		},
+		{
+			"id": "legacyapostlegrailjob",
+			"label": "Pflicht und Wonne",
+			"description": "Unsere Wonne hat mich vor dem Tode bewahrt, und auch vor der Langeweile. Wir werden alles geben.",
+			"aspects": {
+				"job": 1
+			},
+			"icon": "apostlegrail.pillar1"
+		},
+		{
+			"id": "apostlegrail.pillarfuel",
+			"label": "Köstliches Blut",
+			"description": "Ich habe ein kleine Phiole des Bluts unserer Wonne bekommen, per Kurier. Die Anweisungen unserer Wonne stehen hier, in dem winzigen Gewirr zellularen Skripts. Wir können sie kosten, wie sie uns kosten werden. Vergeuden wir dies, wird unsere Wonne zürnen.",
+			"aspects": {
+				"ingredient": 1,
+				"grail": 3,
+				"auctionable": 1
+			},
+			"lifetime": 240,
+			"decayTo": "dread",
+			"icon": "mentorguidance"
+		},
+		{
+			"id": "apostlegrail.pillar1",
+			"label": "Vitulationsrezept",
+			"description": "'Die Wonne möge Leben geben, die Wonne möge Leben nehmen, die Wonne möge nicht satt werden. Wir müssen die geheimen Aromen kaufen und sie mit den Gaben der Stunden anreichern, uns bei der Menge versammeln, im günstigsten Moment den unwiderstehlichen Schrei der Endlosen Mysterien anstimmen und aus dem Murmelnden Kelche trinken.'",
+			"aspects": {
+				"lore": 1
+			}
+		},
+		{
+			"id": "apostlegrail.pillar2.dormant",
+			"label": "Elendes Blut",
+			"description": "Ich habe eine Krankheit. Mein Blut ist falsch. Meine Knochen sind krank. Ich werde sterben. Doch vielleicht kann ich mich lange genug mit dem gebenedeiten Blute unserer Wonne am Leben halten.",
+			"aspects": {
+				"illhealth": 1
+			},
+			"slots": [
+				{
+					"id": "blood",
+					"actionId": "dream",
+					"label": "Blut",
+					"required": {
+						"apostlegrail.pillarfuel": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "apostlegrail.pillar2",
+			"label": "Köstliches Blut",
+			"description": "Ich bin nun vom gleichen Blute wie die Wonne. Solange sie in meinen Adern weilt, kann mir meine Krankheit nichts anhaben. Ohne ihren Segen sterbe ich.",
+			"aspects": {
+				"promise": 1
+			},
+			"lifetime": 600,
+			"decayTo": "apostlegrail.pillar2.dormant"
+		},
+		{
+			"id": "apostlegrail.pillar3",
+			"label": "Die Sieben Grazien",
+			"description": "Die Abteilung für Gewürze und Aromen des exzentrischen Unternehmens T.R.N. Ltd kümmert sich um Anliegen wie das unsrige. Von dort stammen diese verlockenden Ornamente, mit denen wir uns herausputzen und vorbereiten werden ... sobald sie in einer versiegelten und abgedunkelten Küche richtig zubereitet wurden.",
+			"aspects": {
+				"ingredient": 1,
+				"job": 1,
+				"grail": 2
+			}
+		},
+		{
+			"id": "apostlegrail.pillar4.inprogress1",
+			"label": "Die Ersten Fragmente der Menge  ",
+			"description": "Wir haben einige wenige Gourmets und Perverse angelockt. Sie werden ein Fest für die Sinne erwarten.",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqvitulation",
+			"lifetime": 120,
+			"xtriggers": {
+				"vitulationupgrade": "apostlegrail.pillar4.inprogress2",
+				"sabotage": "notoriety"
+			}
+		},
+		{
+			"id": "apostlegrail.pillar4.inprogress2",
+			"label": "Die Zweiten Fragmente der Menge ",
+			"description": "Es spricht sich herum. Neugier und Appetit werden Fremde zu unserer Vitulation bringen.",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqvitulation",
+			"lifetime": 120,
+			"decayTo": "apostlegrail.pillar4.inprogress1",
+			"xtriggers": {
+				"vitulationupgrade": "apostlegrail.pillar4.inprogress3",
+				"sabotage": "notoriety"
+			}
+		},
+		{
+			"id": "apostlegrail.pillar4.inprogress3",
+			"label": "Die Dritten Fragmente der Menge ",
+			"description": "Widerwärtiger Dreck der Morbiden und Neugierigen.",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqvitulation",
+			"lifetime": 120,
+			"decayTo": "apostlegrail.pillar4.inprogress2",
+			"xtriggers": {
+				"vitulationupgrade": "apostlegrail.pillar4.inprogress4",
+				"sabotage": "notoriety"
+			}
+		},
+		{
+			"id": "apostlegrail.pillar4.inprogress4",
+			"label": "Die Vierten Fragmente der Menge ",
+			"description": "Die Hungrigen, die Gierigen, die Neugierigen: alle haben unsere Einladung bekommen.",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqvitulation",
+			"lifetime": 120,
+			"decayTo": "apostlegrail.pillar4.inprogress3",
+			"xtriggers": {
+				"vitulationupgrade": "apostlegrail.pillar4.inprogress5",
+				"sabotage": "apostlegrail.pillar4.inprogress1"
+			}
+		},
+		{
+			"id": "apostlegrail.pillar4.inprogress5",
+			"label": "Die Fünften Fragmente der Menge",
+			"description": "Nun wird der Name der Vitulation geflüstert, wo auch immer sich ein Mund dem Fleische hingibt.",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqvitulation",
+			"lifetime": 120,
+			"decayTo": "apostlegrail.pillar4.inprogress4",
+			"xtriggers": {
+				"vitulationupgrade": "apostlegrail.pillar4.inprogress6",
+				"sabotage": "apostlegrail.pillar4.inprogress2"
+			}
+		},
+		{
+			"id": "apostlegrail.pillar4.inprogress6",
+			"label": "Die Sechsten Fragmente der Menge",
+			"description": "Wenn die Zeit reif ist, werden unsere Gäste wie die Ratten kommen.",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqvitulation",
+			"lifetime": 120,
+			"decayTo": "apostlegrail.pillar4.inprogress5",
+			"xtriggers": {
+				"vitulationupgrade": "apostlegrail.pillar4.inprogress7",
+				"sabotage": "apostlegrail.pillar4.inprogress3"
+			}
+		},
+		{
+			"id": "apostlegrail.pillar4.inprogress7",
+			"label": "Die Menge, versammelt",
+			"description": "Wir warten nur auf den Schlüsselträger, der das Königshaut-Tor öffnen muss, wenn unsere Wonne den Gral erweckt.",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqvitulation",
+			"lifetime": 120,
+			"decayTo": "apostlegrail.pillar4.inprogress6",
+			"xtriggers": {
+				"sabotage": "apostlegrail.pillar4.inprogress4"
+			}
+		},
+		{
+			"id": "apostlegrail.pillar4",
+			"label": "Die Menge und die Gäste",
+			"description": "Auf das Signal hin wird sich eine große Menge versammeln, die Augen so groß, die Münder so weit, um zu schmausen und der Schmaus zu sein, um von mir das Blut der Wonne zu trinken. Unsere Wonne selbst soll sie geleiten und die Dame der Kabel wird ihren Schlüssel umdrehen.",
+			"aspects": {
+				"summoned": 1
+			}
+		},
+		{
+			"id": "apostlelantern.mentor",
+			"label": "#PREVIOUSCHARACTERNAME#, unsere Erleuchtung",
+			"description": "Unsere Quelle, unsere Inspiration, die nun im Mansus weilt.",
+			"comments": "Is an acquaintance so we can hijack the cult foundation recipe.",
+			"aspects": {
+				"mentor": 1
+			}
+		},
+		{
+			"id": "legacyapostlelanternjob",
+			"label": "Der Erste Traum",
+			"description": "Die Träume haben mich wie eine alte Eiche ausgehöhlt, und nun bin ich fast so weit.",
+			"aspects": {
+				"job": 1
+			},
+			"icon": "apostlelantern.pillar1"
+		},
+		{
+			"id": "apostlelantern.pillarfuel",
+			"label": "Ein Traum von einem Schlüssel",
+			"description": "Wieder der Traum. Anweisungen für mich und für noch jemanden, so ich ihn finden kann. So finde ich zum Mansus. So werde ich wissen, was zu tun ist. Ein Vorgeschmack auf den wahren Schlüssel, für alle, die etwas vom Ruhme wissen.",
+			"lifetime": 60,
+			"aspects": {
+				"tool": 1
+			},
+			"decayTo": "fascination",
+			"icon": "mentorguidance"
+		},
+		{
+			"id": "apostlelantern.pillar1",
+			"label": "Der Dritte Modus",
+			"description": "'Wir werden navigieren, wir werden erleuchten, wir werden kein Mitleid zeigen. Suche den Scheideweg hinter der Tür der Augen. Wecke dort den Reiz. Entsende die versilberten Toten, auf dass sie dir die schlafenden Seelen von Sterblichen bringen. Gibt es genug Zeugen, schicke nach dem Schlüssel der Tage, um das dreilappige Tor nach draußen in seinem 3. Modus zu öffnen.'",
+			"aspects": {
+				"tool": 1
+			}
+		},
+		{
+			"id": "apostlelantern.pillar2",
+			"label": "Der Niedere Scheideweg",
+			"slots": [
+				{
+					"id": "keydream",
+					"label": "Ein Traum von einem Schlüssel",
+					"required": {
+						"apostlelantern.pillarfuel": 1
+					},
+					"actionId": "dream"
+				},
+				{
+					"id": "lanterninfluence",
+					"label": "Ein Traum von Licht",
+					"required": {
+						"influencelanterng": 1
+					},
+					"actionId": "dream"
+				}
+			],
+			"description": "Ein paar verknotete Straßen unter dem Schatten eines Baumes und das Auge des Trikuspidalen Tors nahe dem Kopf des Aufstiegs der Messer. Der Schatten des Concursums? Seine Reflexion? Seine Schwester?",
+			"aspects": {
+				"way": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "apostlelantern.pillar3",
+			"label": "Der Reiz",
+			"slots": [
+				{
+					"id": "fascination",
+					"label": "Der Köder",
+					"required": {
+						"fascination": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Einmal gesehen hält der Reiz an. Wenige lebende Seelen werden jemals so weit in den Mansus vordringen. Ich muss eine Maid-im-Spiegel einsetzen und ihr den Reiz zeigen, damit sie sie hierher holt.",
+			"aspects": {
+				"influence": 1
+			},
+			"xtriggers": {
+				"renew.apostlelantern.pillar3": "apostlelantern.pillar3"
+			},
+			"lifetime": 180
+		},
+		{
+			"id": "apostlelantern.pillar4.inprogress1",
+			"label": "Die Zeugen: Einer von Sieben",
+			"description": "Eine einzelne Figur, die am Scheideweg im goldenen Lichte des Reizes, im blauen des Mansus schwankt.",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqthirdwaywitnesses",
+			"lifetime": 120,
+			"xtriggers": {
+				"cloudwitnessesupgrade": "apostlelantern.pillar4.inprogress2",
+				"sabotage": "fascination"
+			},
+			"icon": "apostlelantern.pillar4"
+		},
+		{
+			"id": "apostlelantern.pillar4.inprogress2",
+			"label": "Die Zeugen: Zwei von Sieben",
+			"description": "Ein Zeugenpaar, das am Scheideweg im goldenen Lichte des Reizes, im blauen des Mansus schwankt.",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqthirdwaywitnesses",
+			"lifetime": 120,
+			"decayTo": "apostlelantern.pillar4.inprogress1",
+			"xtriggers": {
+				"cloudwitnessesupgrade": "apostlelantern.pillar4.inprogress3",
+				"sabotage": "fascination"
+			},
+			"icon": "apostlelantern.pillar4"
+		},
+		{
+			"id": "apostlelantern.pillar4.inprogress3",
+			"label": "Die Zeugen: Drei von Sieben",
+			"description": "Ihre Gesichter sind leerer denn je, doch sie haben einander bei der Hand genommen.",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqthirdwaywitnesses",
+			"lifetime": 120,
+			"decayTo": "apostlelantern.pillar4.inprogress2",
+			"xtriggers": {
+				"cloudwitnessesupgrade": "apostlelantern.pillar4.inprogress4",
+				"sabotage": "fascination"
+			},
+			"icon": "apostlelantern.pillar4"
+		},
+		{
+			"id": "apostlelantern.pillar4.inprogress4",
+			"label": "Die Zeugen: Vier von Sieben",
+			"description": "Das Licht bleicht sie, doch von Natur aus werden sie gesprenkelt werden, wenn der Moment näher rückt.",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqthirdwaywitnesses",
+			"lifetime": 120,
+			"decayTo": "apostlelantern.pillar4.inprogress3",
+			"xtriggers": {
+				"cloudwitnessesupgrade": "apostlelantern.pillar4.inprogress5",
+				"sabotage": "apostlelantern.pillar4.inprogress1"
+			},
+			"icon": "apostlelantern.pillar4"
+		},
+		{
+			"id": "apostlelantern.pillar4.inprogress5",
+			"label": "Die Zeugen: Fünf von Sieben",
+			"description": "Fünf Zeugen warten auf die Frucht, die anschwillen, aber niemals reifen wird.",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqthirdwaywitnesses",
+			"lifetime": 120,
+			"decayTo": "apostlelantern.pillar4.inprogress4",
+			"xtriggers": {
+				"cloudwitnessesupgrade": "apostlelantern.pillar4.inprogress6",
+				"sabotage": "apostlelantern.pillar4.inprogress2"
+			},
+			"icon": "apostlelantern.pillar4"
+		},
+		{
+			"id": "apostlelantern.pillar4.inprogress6",
+			"label": "Die Zeugen: Sechs von Sieben",
+			"description": "Sie umgibt die Pein. Sie können nicht wegsehen.",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqthirdwaywitnesses",
+			"lifetime": 120,
+			"decayTo": "apostlelantern.pillar4.inprogress5",
+			"xtriggers": {
+				"cloudwitnessesupgrade": "apostlelantern.pillar4",
+				"sabotage": "apostlelantern.pillar4.inprogress3"
+			},
+			"icon": "apostlelantern.pillar4"
+		},
+		{
+			"id": "apostlelantern.pillar4",
+			"label": "Die Wolke der Zeugen",
+			"description": "Sieben stumme Seelen flehen die schimmernde Quelle an.",
+			"aspects": {
+				"summoned": 1
+			}
+		}
+	]
+}

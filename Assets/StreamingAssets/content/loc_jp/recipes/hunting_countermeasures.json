@@ -1,0 +1,1006 @@
+{
+	"recipes": [
+		{
+			"id": "huntermysticsurvives",
+			"actionId": "talk",
+			"label": "保護と封印",
+			"requirements": {
+				"mystic": 1,
+				"summoned": 1
+			},
+			"description": "「我々の敵は、知識と言う最も危険な武器を持っている」\n\n召喚獣が敵の対抗策の犠牲となった。神秘のハンターたちは通常、身の守り方を知っていて、召喚された子分たちの攻撃を生き延びることができる。だが、遅かれ早かれ、彼らは間違いを犯すだろう。",
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"killsummoned": 1
+			}
+		},
+		{
+			"id": "huntertenacioussurvives",
+			"actionId": "talk",
+			"label": "頑強",
+			"requirements": {
+				"tenacious": 1
+			},
+			"description": "「でも――あんな攻撃を生き残れた人はいないはずだ！」\n\n頑強なハンターが、時々、命取りになりそうな攻撃を生き延びることがある。しかし、最後には運も尽きてしまう。それに、ハンターを倒す方法は、身体的な攻撃以外にもあるのだ。",
+			"effects": {
+				"notoriety": 1
+			}
+		},
+		{
+			"id": "huntersurvives_becomestenacious",
+			"actionId": "talk",
+			"label": "傷跡",
+			"requirements": {
+				"tenacious": -1
+			},
+			"description": "「見た目よりタフだ」\n\n身体的な攻撃を生き延びたハンターが、頑強になることがある。頑強なハンターは殺しにくい。",
+			"mutations": [
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "tenacious",
+					"mutationLevel": 1
+				}
+			],
+			"effects": {
+				"notoriety": 1,
+				"follower": -1
+			}
+		},
+		{
+			"id": "huntersurvives_becomesmystic",
+			"actionId": "talk",
+			"label": "厳しい教訓",
+			"requirements": {
+				"summoned": 1,
+				"mystic": -1
+			},
+			"description": "「苦労が自分を強くする」\n\nハンターが、召喚獣の攻撃を生き延びると、マンサスのものに対する対抗策を学び、神秘になる。神秘のハンターは通常、召喚獣の攻撃を受けても生き延びる確率が高い。",
+			"mutations": [
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "mystic",
+					"mutationLevel": 1
+				}
+			],
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"killsummoned": 1
+			}
+		},
+		{
+			"id": "hunterfitewithextraswole",
+			"label": "敵への奇襲",
+			"actionId": "talk",
+			"requirements": {
+				"murderskill": 1
+			},
+			"startdescription": "敵は公共の場で会うと言って聞かなかった。必要な安全対策はしていると言うが、私のような人間を止められる対策はない。直接攻撃はかなりのリスクを伴うが......それ以外に方法はないのかもしれない。[確率は低いが、成功するかもしれない。]",
+			"description": "彼らの頭を両手で挟み首をへし折る。体が地面に叩きつけられる前に、私は消える。",
+			"alternativerecipes": [
+				{
+					"id": "hunterfitewithswole_failure",
+					"chance": 70
+				},
+				{
+					"id": "huntertenacioussurvives",
+					"chance": 30
+				}
+			],
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"killhunter": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "hunterfitewithswole",
+			"label": "敵への奇襲",
+			"actionId": "talk",
+			"requirements": {
+				"healthskill": 1
+			},
+			"startdescription": "敵は公共の場で会うと言って聞かなかった。必要な安全対策はしていると言う。それに直接攻撃はかなりのリスクを伴うが......それ以外に方法はないのかもしれない。[成功する確率は非常に低い。]",
+			"description": "彼らの頭を両手で挟み首をへし折る。体が地面に叩きつけられる前に、私は消える。",
+			"alternativerecipes": [
+				{
+					"id": "hunterfitewithswole_failure",
+					"chance": 90
+				},
+				{
+					"id": "huntertenacioussurvives",
+					"chance": 30
+				}
+			],
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"killhunter": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "hunterfitewithswole_failure",
+			"label": "奇襲は失敗に終わった！",
+			"actionId": "talk",
+			"startdescription": ".",
+			"description": "叫び声を上げながら、敵はテーブルを蹴り倒して、後ろに飛び退いた。周りの人たちが振り向く。誰も私が動くところを見ていない。唯一の目撃者は敵だ。それでも、今すぐにここを去るべきだろう。",
+			"craftable": false,
+			"effects": {
+				"notoriety": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "wary",
+					"mutationLevel": 1
+				}
+			]
+		},
+		{
+			"id": "hunterspeakpoison_glassfinger",
+			"label": "ハンターに対してガラスフィンガーの毒を使用する",
+			"actionId": "talk",
+			"requirements": {
+				"ingredientlanternd": 1
+			},
+			"startdescription": "「お茶は口に合う？」",
+			"description": "最期はきれいではないが、あっという間に終わり、ほとんど痛みを伴わない。溶解が完了すると、目に見えるものは何も残らない。",
+			"alternativerecipes": [
+				{
+					"id": "huntertenacioussurvives",
+					"chance": 30
+				}
+			],
+			"effects": {
+				"ingredientlanternd": -1
+			},
+			"aspects": {
+				"dissolution": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "hunterspeakpoison",
+			"label": "ハンターに対して、驚異的な毒を使用する",
+			"actionId": "talk",
+			"requirements": {
+				"poison": 1
+			},
+			"startdescription": "「お茶は口に合う？」",
+			"description": "最期はきれいではないが、あっという間に終わり、ほとんど痛みを伴わない。これより残酷な死に方もある。",
+			"alternativerecipes": [
+				{
+					"id": "huntertenacioussurvives",
+					"chance": 30
+				}
+			],
+			"effects": {
+				"poison": -1,
+				"notoriety": 1
+			},
+			"aspects": {
+				"killhunter": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "hunterattackhighwinter",
+			"label": "ハンターを片付けるために、無言の手下を送り込む",
+			"actionId": "talk",
+			"startdescription": "これでハンターはもう邪魔してこないだろう。[これは刃の攻撃よりも成功する可能性が低く、成功しても失敗しても注目を集めるが、手下はたいてい生き残る]。",
+			"requirements": {
+				"hunter": 1,
+				"winter": 10,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "hunterstealthattacksuccess",
+					"chance": 70
+				},
+				{
+					"id": "hunterstealthattackfailure",
+					"chance": 100
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "hunterattackmidwinter",
+			"label": "ハンターを片付けるために、静かな手下を送り込む",
+			"actionId": "talk",
+			"startdescription": "手下は頃合いを見計らっている。運が良ければ敵を片づけるチャンスが訪れるだろう。[これは刃の攻撃よりも成功する可能性が低く、成功しても失敗しても注目を集めるが、手下はたいてい生き残る]。",
+			"description": ".",
+			"requirements": {
+				"hunter": 1,
+				"winter": 5,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "hunterstealthattacksuccess",
+					"chance": 30
+				},
+				{
+					"id": "hunterstealthattackfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterattacklowwinter",
+			"label": "ハンターを片付けるために、用心深い手下を送り込む",
+			"actionId": "talk",
+			"startdescription": "手下は頃合いを見計らっているが、その機会が訪れることはないだろう。[これは刃の攻撃よりも成功する可能性が低く、成功しても失敗しても注目を集めるが、手下はたいてい生き残る]。",
+			"description": ".",
+			"requirements": {
+				"hunter": 1,
+				"winter": 1,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "hunterstealthattacksuccess",
+					"chance": 10
+				},
+				{
+					"id": "hunterstealthattackfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterstealthattacksuccess",
+			"label": "辛抱だ......",
+			"actionId": "talk",
+			"startdescription": "知らせを待っている......",
+			"description": "手下が、トロフィーを持って帰ってきた。",
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"killhunter": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "huntertenacioussurvives",
+					"chance": 30
+				},
+				{
+					"id": "huntermysticsurvives",
+					"chance": 70
+				}
+			],
+			"comments": "No summoned creatures currently attack with Winter. This is in case I add one later.",
+			"warmup": 10
+		},
+		{
+			"id": "hunterstealthattackfailure",
+			"label": "辛抱だ......",
+			"actionId": "talk",
+			"startdescription": "知らせを待っている......",
+			"description": "手下が戻ってきた。ハンターの命を絶つ機会はなかったようだ。これで、危険を察知してしまったかもしれない。",
+			"effects": {
+				"notoriety": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "hunterattackhighedge",
+			"label": "止めようのない力を送り込んで、ハンターを殺害する",
+			"actionId": "talk",
+			"startdescription": "異常なほどの防御力がない限り、ハンターは死んだようなものだ。しかし、その死は注目を集めるだろう。",
+			"description": ".",
+			"requirements": {
+				"hunter": 1,
+				"edge": 10,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "hunterattacksuccess",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterattackmidedge",
+			"label": "有能な手下を送り込んで、ハンターを殺害する",
+			"actionId": "talk",
+			"startdescription": "私の手下は強力だ。このハンターが生き残る可能性は低いが、試みれば注目を集めてしまうだろう。[失敗すると手下が死ぬ。]",
+			"description": ".",
+			"requirements": {
+				"hunter": 1,
+				"edge": 5,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "hunterattacksuccess",
+					"chance": 70
+				},
+				{
+					"id": "hunterattackfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterattacklowedge",
+			"label": "手下を送り込んで、ハンターを殺害する",
+			"actionId": "talk",
+			"startdescription": "手下のスキルは限られている。このハンターはおそらく生き残り、試みれば、注目を集めてしまうだろう。 [失敗すると手下が死ぬ。]",
+			"description": ".",
+			"requirements": {
+				"hunter": 1,
+				"edge": 1,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "hunterattacksuccess",
+					"chance": 30
+				},
+				{
+					"id": "hunterattackfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterattacknoedge",
+			"label": "不向きな人を送り込んで、ハンターを殺害する",
+			"actionId": "talk",
+			"startdescription": "手下は刃の属性を持っていないし、ハンターへの攻撃には向いていない。成功する可能性は低い。[失敗すると手下が死ぬ。]",
+			"description": ".",
+			"requirements": {
+				"hunter": 1,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "hunterattacksuccess",
+					"chance": 10
+				},
+				{
+					"id": "hunterattackfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterattacksuccess",
+			"label": "ハンターを狩る......",
+			"actionId": "talk",
+			"startdescription": "知らせを待っている......",
+			"description": "手下が、トロフィーを持って帰ってきた。",
+			"effects": {
+				"hunter": -1,
+				"corpse": 1,
+				"notoriety": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "huntertenacioussurvives",
+					"chance": 30
+				},
+				{
+					"id": "huntermysticsurvives",
+					"chance": 70
+				},
+				{
+					"id": "huntercapturesuccess",
+					"chance": 30
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "huntercapturesuccess",
+			"label": "ハンターを狩る......",
+			"actionId": "talk",
+			"startdescription": "知らせを待っている......",
+			"description": "手下が、囚人を連れて帰ってきた！",
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"capturehunter": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "hunterattackfailure",
+			"label": "ハンターを狩る......",
+			"actionId": "talk",
+			"startdescription": "知らせを待っている......",
+			"description": "手下が戻ってこない。失敗したに違いない。",
+			"effects": {
+				"follower": -1,
+				"notoriety": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "huntersurvives_becomesmystic",
+					"chance": 30
+				},
+				{
+					"id": "huntersurvives_becomestenacious",
+					"chance": 10
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "evidencedestroymidmoth",
+			"label": "邪悪な手下を送り込んで、証拠を隠滅する",
+			"actionId": "talk",
+			"startdescription": "私の陰謀はほぼ確実に成功する。それでも、失敗する可能性がないわけではない。",
+			"description": ".",
+			"requirements": {
+				"follower": 1,
+				"moth": 5,
+				"evidencelevel": 1
+			},
+			"linked": [
+				{
+					"id": "evidencedestroysuccess",
+					"chance": 70
+				},
+				{
+					"id": "evidencedestroyfailure_mortalfollower",
+					"chance": 100
+				},
+				{
+					"id": "evidencedestroyfailure",
+					"chance": 100
+				}
+			],
+			"comments": "We don't want a 100% chance because there's no downside. This could easily change later."
+		},
+		{
+			"id": "evidencedestroylowmoth",
+			"label": "手下を送り込んで、証拠を隠滅する",
+			"actionId": "talk",
+			"startdescription": "手下には詐欺の才能がないから、ひどく苦労するだろう。失敗する可能性が高い。",
+			"description": ".",
+			"requirements": {
+				"follower": 1,
+				"moth": 1,
+				"evidencelevel": 1
+			},
+			"linked": [
+				{
+					"id": "evidencedestroysuccess",
+					"chance": 30
+				},
+				{
+					"id": "evidencedestroyfailure_mortalfollower",
+					"chance": 100
+				},
+				{
+					"id": "evidencedestroyfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "evidencedestroynomoth",
+			"label": "不向きな人を送り込んで、証拠を隠滅する",
+			"actionId": "talk",
+			"startdescription": "手下には蛾の属性がないから、歯が立たなくなるだろう。成功する可能性は低い。",
+			"description": ".",
+			"requirements": {
+				"evidencelevel": 1
+			},
+			"linked": [
+				{
+					"id": "evidencedestroysuccess",
+					"chance": 10
+				},
+				{
+					"id": "evidencedestroyfailure_mortalfollower",
+					"chance": 100
+				},
+				{
+					"id": "evidencedestroyfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "evidencedestroysuccess",
+			"label": "記録の改ざん......",
+			"actionId": "talk",
+			"startdescription": "知らせを待っている......",
+			"description": "手下が帰ってきた。証拠は隠滅された。これで少しは安心できる。",
+			"effects": {
+				"evidencelevel": -1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "evidencedestroyfailure",
+			"label": "記録の改ざん......",
+			"actionId": "talk",
+			"startdescription": "知らせを待っている......",
+			"description": "手下が返ってきた。失敗だ。失態を晒したせいで注目を集めてしまった......",
+			"effects": {
+				"follower": -1,
+				"notoriety": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "evidencedestroyfailure_mortalfollower",
+			"label": "記録の改ざん......",
+			"actionId": "talk",
+			"requirements": {
+				"summoned": -1
+			},
+			"startdescription": "知らせを待っている......",
+			"description": "不格好に包帯を巻いた手下が、ブツブツと独り言を言い、よろけながら帰ってきた。自分の計画に罠にはまってしまったようだ。[倒れた信奉者を「話す」で治癒する。]",
+			"effects": {
+				"notoriety": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower_wound",
+					"mutationLevel": 1,
+					"additive": false
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower",
+					"mutationLevel": -1,
+					"additive": false
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "hunterspeakwinterg",
+			"actionId": "talk",
+			"label": "ボロボロの伝承の恐るべき謎を共有する",
+			"startdescription": "「鍛造が冷たく、栄光が暗闇に包まれ、森が塵となれば、分裂した狼は休むだろう。だがそれも、自らを食い尽くし始めるまでの話だ。今から言うことは......」[これを使うとハンターを迷わすだろうが、必ず自分の恐怖心が高まってしまう。]",
+			"requirements": {
+				"winter": 14,
+				"lore": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "grim",
+					"mutationLevel": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "hunterspeakdread_resistant",
+					"chance": 100
+				},
+				{
+					"id": "hunterspeakdread_vulnerable_demoralised",
+					"chance": 70
+				},
+				{
+					"id": "hunterspeakdread_demoralised",
+					"chance": 70
+				},
+				{
+					"id": "hunterspeakdread_survives",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterspeakwinterd",
+			"actionId": "talk",
+			"label": "ボロボロの伝承の冷たい召喚文を共有する",
+			"startdescription": "「奪われることはなく、惑わされることのない、記念と悲しみの力がある。この力の名前を教えてあげよう。それは......」[特にハンターが既に冷酷な場合、これを使うとハンターを迷わすかもしれないが、必ず自分の恐怖心が高まってしまう。]",
+			"requirements": {
+				"winter": 8,
+				"lore": 1
+			},
+			"linked": [
+				{
+					"id": "hunterspeakdread_resistant",
+					"chance": 100
+				},
+				{
+					"id": "hunterspeakdread_vulnerable_demoralised",
+					"chance": 70
+				},
+				{
+					"id": "hunterspeakdread_demoralised",
+					"chance": 30
+				},
+				{
+					"id": "hunterspeakdread_survives",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterspeakwinter",
+			"actionId": "talk",
+			"label": "ボロボロの伝承を仄めかす",
+			"startdescription": "「終わりの話をしよう。衰退する太陽の話をしよう。死んでもいないもの、死にきれないものの話をしよう......」[これを使うとハンターを迷わせてしまうかもしれないが、必ず自分の恐怖心が高まってしまう。]",
+			"requirements": {
+				"winter": 1,
+				"lore": 1
+			},
+			"linked": [
+				{
+					"id": "hunterspeakdread_resistant",
+					"chance": 100
+				},
+				{
+					"id": "hunterspeakdread_vulnerable_demoralised",
+					"chance": 30
+				},
+				{
+					"id": "hunterspeakdread_demoralised",
+					"chance": 30
+				},
+				{
+					"id": "hunterspeakdread_survives",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterspeakdread",
+			"actionId": "talk",
+			"label": "敵を待ち受ける恐怖について語る",
+			"requirements": {
+				"dread": 1
+			},
+			"startdescription": "「目を閉じるたびに考えること」[これを使うとハンターを迷わせてしまうかもしれないが、必ず自分の恐怖心が高まってしまう。]",
+			"description": "",
+			"linked": [
+				{
+					"id": "hunterspeakdread_resistant",
+					"chance": 100
+				},
+				{
+					"id": "hunterspeakdread_vulnerable_demoralised",
+					"chance": 30
+				},
+				{
+					"id": "hunterspeakdread_demoralised",
+					"chance": 30
+				},
+				{
+					"id": "hunterspeakdread_survives",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterspeakdread_resistant",
+			"actionId": "talk",
+			"requirements": {
+				"idealist": 1
+			},
+			"label": "世界の表面下に潜む恐怖",
+			"startdescription": "「ああ、私にとっては悪い結末となるかもしれないが、犠牲となるだけの価値はある。そして、他の者たちが私の闘いを続けるだろう。また会おう」[理想家の士気をくじくことはできない。]",
+			"effects": {
+				"notoriety": 1,
+				"dread": 1
+			}
+		},
+		{
+			"id": "hunterspeakdread_vulnerable_demoralised",
+			"actionId": "talk",
+			"requirements": {
+				"grim": 1
+			},
+			"label": "世界の表面下に潜む恐怖",
+			"startdescription": "ハンターには手に負えないような話だったようだ。ハンターの目は腫れ、口は固く結ばれている。命綱となる新しい真実を見つけなければ......近い将来、絶望へと沈んでいくだろう。",
+			"description": "",
+			"effects": {
+				"dread": 1
+			},
+			"aspects": {
+				"derangemortal": 1
+			}
+		},
+		{
+			"id": "hunterspeakdread_demoralised",
+			"actionId": "talk",
+			"requirements": {
+				"grim": -1
+			},
+			"label": "世界の表面下に潜む恐怖",
+			"startdescription": "ハンターは反抗して唸り声をあげているが、自分の言葉が的を射たのがわかる。 [このハンターは冷酷になった。] ",
+			"description": "",
+			"mutations": [
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "grim",
+					"mutationLevel": 1
+				}
+			],
+			"effects": {
+				"notoriety": 1,
+				"dread": 1
+			}
+		},
+		{
+			"id": "hunterspeakdread_survives",
+			"actionId": "talk",
+			"label": "世界の表面下に潜む恐怖",
+			"alternativerecipes": [
+				{
+					"id": "hunterspeakdread_survives_becometenacious",
+					"chance": 100
+				}
+			],
+			"startdescription": "",
+			"description": "「ああ、世の中には恐ろしいことがあるが、だからこそ抵抗するべきなのだ。私のすべきことを教えてくれたあなたには、お礼を言わないと」 [このハンターは理想家になった。]",
+			"mutations": [
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "idealist",
+					"mutationLevel": 1
+				}
+			],
+			"effects": {
+				"notoriety": 1,
+				"dread": 1
+			}
+		},
+		{
+			"id": "hunterspeakdread_survives_becometenacious",
+			"actionId": "talk",
+			"label": "世界の表面下に潜む恐怖",
+			"requirements": {
+				"tenacious": -1
+			},
+			"startdescription": "",
+			"description": "「ああ、世の中には恐ろしいことがあるが、だからこそ抵抗するべきなのだ。私のすべきことを教えてくれたあなたには、お礼を言わないと」[このハンターは頑強な理想家になった。]",
+			"mutations": [
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "tenacious",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "idealist",
+					"mutationLevel": 1
+				}
+			],
+			"effects": {
+				"notoriety": 1,
+				"dread": 1
+			}
+		},
+		{
+			"id": "hunterspeaklanterng",
+			"actionId": "talk",
+			"label": "栄光の伝承の恐るべき謎を共有する",
+			"startdescription": "「これが瞳の扉の秘密教義だ。耳を開け......」[これを使うとハンターを誘いだせるだろうが、必ず自分の魅了が高まってしまう。]",
+			"requirements": {
+				"lantern": 14,
+				"lore": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "idealist",
+					"mutationLevel": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "hunterspeakfascination_resistant",
+					"chance": 100
+				},
+				{
+					"id": "hunterspeakfascination_vulnerable_fascinated",
+					"chance": 70
+				},
+				{
+					"id": "hunterspeakfascination_fascinated",
+					"chance": 70
+				},
+				{
+					"id": "hunterspeakfascination_survives",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterspeaklanternd",
+			"actionId": "talk",
+			"label": "栄光の伝承の明るい召喚文を共有する",
+			"startdescription": "「瞳の扉は案内をする。慈悲深いわけではないが、何よりも先に彼は照らしてくれる。さあ、話を聞いて、照らされるのだ......」[特にハンターが既に理想家の場合、これを使うとハンターを誘いだせるかもしれないが、必ず自分の魅了が高まってしまう。]",
+			"requirements": {
+				"lantern": 8,
+				"lore": 1
+			},
+			"linked": [
+				{
+					"id": "hunterspeakfascination_resistant",
+					"chance": 100
+				},
+				{
+					"id": "hunterspeakfascination_vulnerable_fascinated",
+					"chance": 70
+				},
+				{
+					"id": "hunterspeakfascination_fascinated",
+					"chance": 30
+				},
+				{
+					"id": "hunterspeakfascination_survives",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterspeaklantern",
+			"actionId": "talk",
+			"label": "栄光の伝承を仄めかす",
+			"startdescription": "「世の中には目に見えるものよりも美しいものがある。まずはそれを感じなければいけない。永遠の可能性を考慮して......」[これを使うとハンターを誘いだせるかもしれないが、必ず自分の魅了が高まってしまう。]",
+			"requirements": {
+				"lantern": 1,
+				"lore": 1
+			},
+			"linked": [
+				{
+					"id": "hunterspeakfascination_resistant",
+					"chance": 100
+				},
+				{
+					"id": "hunterspeakfascination_vulnerable_fascinated",
+					"chance": 30
+				},
+				{
+					"id": "hunterspeakfascination_fascinated",
+					"chance": 30
+				},
+				{
+					"id": "hunterspeakfascination_survives",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterspeakfascination",
+			"actionId": "talk",
+			"label": "敵に自分の理想像を語る",
+			"requirements": {
+				"fascination": 1
+			},
+			"startdescription": "上に行けば行くほど見えてくるものがある。[これを使うとハンターを誘いだせるかもしれないが、必ず自分の魅力が高まってしまう。]",
+			"description": "",
+			"linked": [
+				{
+					"id": "hunterspeakfascination_resistant",
+					"chance": 100
+				},
+				{
+					"id": "hunterspeakfascination_vulnerable_fascinated",
+					"chance": 30
+				},
+				{
+					"id": "hunterspeakfascination_fascinated",
+					"chance": 30
+				},
+				{
+					"id": "hunterspeakfascination_survives",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "hunterspeakfascination_resistant",
+			"actionId": "talk",
+			"requirements": {
+				"grim": 1
+			},
+			"label": "栄光の幻影",
+			"startdescription": "「良い話だけど、私にはやるべきことがあるんだ。また連絡するよ」[冷酷なハンターを魅了することはできない。]",
+			"effects": {
+				"notoriety": 1,
+				"fascination": 1
+			}
+		},
+		{
+			"id": "hunterspeakfascination_vulnerable_fascinated",
+			"actionId": "talk",
+			"requirements": {
+				"idealist": 1
+			},
+			"label": "栄光の幻影",
+			"startdescription": "ハンターには手に負えないような話だったようだ。目を大きく開輝かせたハンターは、うっとりとした笑顔を浮かべている。近い将来、かつて知っていたすべてのことを捨てるだろう。",
+			"description": "",
+			"effects": {
+				"fascination": 1
+			},
+			"aspects": {
+				"derangemortal": 1
+			}
+		},
+		{
+			"id": "hunterspeakfascination_fascinated",
+			"actionId": "talk",
+			"requirements": {
+				"idealist": -1
+			},
+			"label": "栄光の幻影",
+			"startdescription": "ハンターはあざ笑うが、緊迫感のあるあなたの話がひらめきのきっかけになったのがわかる。[このハンターは理想家になった。] ",
+			"description": "",
+			"mutations": [
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "idealist",
+					"mutationLevel": 1
+				}
+			],
+			"effects": {
+				"notoriety": 1,
+				"fascination": 1
+			}
+		},
+		{
+			"id": "hunterspeakfascination_survives",
+			"actionId": "talk",
+			"label": "栄光の幻影",
+			"alternativerecipes": [
+				{
+					"id": "hunterspeakfascination_survives_becometenacious",
+					"chance": 100
+				}
+			],
+			"description": "「ああ、私はもっと立派な人間になれるかもしれないが、我々の存在よりも重要なのは、我々の行動だ。世界は我々が生きる場所だ。私は死ぬまでこの世界を守る。理想像はいらない」[このハンターは冷酷になった。]",
+			"mutations": [
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "grim",
+					"mutationLevel": 1
+				}
+			],
+			"effects": {
+				"notoriety": 1,
+				"fascination": 1
+			}
+		},
+		{
+			"id": "hunterspeakfascination_survives_becometenacious",
+			"actionId": "talk",
+			"label": "栄光の幻影",
+			"requirements": {
+				"tenacious": -1
+			},
+			"description": "「ああ、私はもっと立派な人間になれるかもしれないが、我々の存在よりも重要なのは、我々の行動だ。世界は我々が生きる場所だ。私は死ぬまでこの世界を守る。理想像はいらない」[このハンターは冷酷で頑強になった。]",
+			"mutations": [
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "grim",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "hunter",
+					"mutateAspectId": "tenacious",
+					"mutationLevel": 1
+				}
+			],
+			"effects": {
+				"notoriety": 1,
+				"fascination": 1
+			}
+		}
+	]
+}

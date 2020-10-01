@@ -1,0 +1,494 @@
+{
+	"elements": [
+		{
+			"id": "apostleforge.mentor",
+			"label": "#PREVIOUSCHARACTERNAME#、形作る者",
+			"description": "我々を育ててくれた方、今の我々を創り上げてくれた方、行方をくらまし待つ者は、我々が夜明けをもたらすときに立ち上がるだろう。",
+			"comments": "Is an acquaintance so we can hijack the cult foundation recipe.",
+			"aspects": {
+				"mentor": 1
+			}
+		},
+		{
+			"id": "legacyapostleforgejob",
+			"label": "好ましい場所",
+			"description": "長い間、私は形作る者の左手で待っていた。そして今、大いなる業を導くときが来たのだ。",
+			"aspects": {
+				"job": 1
+			},
+			"icon": "apostleforge.pillar1"
+		},
+		{
+			"id": "apostleforge.pillarfuel",
+			"label": "形作る者の指導",
+			"description": "死体の火花からドーンブレイカーコアを作りだすには形作る者の指導が必要だ。信奉者に形作る者の羅針盤を持たせ、リゲイアの者であるスロチャナから鍵を学び、大いなる業を完成させる。しかし、彼らの指示に迅速に応じなければ、恐怖が後を追うことになるだろう。",
+			"aspects": {
+				"influence": 1
+			},
+			"lifetime": 60,
+			"decayTo": "dread",
+			"icon": "mentorguidance"
+		},
+		{
+			"id": "apostleforge.pillar1",
+			"label": "ドーンブレイカーの技",
+			"description": "形作る者が言う：「私は鍛造の役目を果たさなければならない。エンジンの心臓部に死体の火花を設置し、最高の神秘で目覚めさせるのだ。猛烈な錬金術を使い、その燃料とする。全ての歴史で同じ名前がついているの地の果てにある割れ目を見つける。そこにリゲイアのスロチャナが知っている「噛む鍵」と、装置を持って行く。鍛造の猛烈な熱を召喚し、最も強力な開封の秘訣を使う。そして、私があなたの溶解を見届けるだろう」"
+		},
+		{
+			"id": "apostleforge.pillar2.dormant",
+			"label": "休眠状態のドーンブレーカーコア",
+			"description": "曲がった金属でできた輝く檻の中に、古代の柔らかな光の断片を閉じ込められている。獰猛な錬金素材で再燃させて浄化できれば、夜明けの出発点になるかもしれない。",
+			"aspects": {
+				"tool": 1,
+				"greatwork": 1
+			}
+		},
+		{
+			"id": "apostleforge.pillar2",
+			"label": "ドーンブレーカーコア",
+			"description": "曲がった金属でできた輝く檻の中に、太陽の炎の燃え盛る粒子が閉じ込められている。世界の割れ目が空気を彩る場所に運べば、夜明けをもたらすことができる。",
+			"aspects": {
+				"tool": 1,
+				"greatwork": 1
+			},
+			"xtriggers": {
+				"sabotage": "apostleforge.pillar2.sabotaged"
+			}
+		},
+		{
+			"id": "apostleforge.pillar3",
+			"label": "青金",
+			"description": "最も凶暴な錬金素材。光を覆う致命的な青色の炎。触ると死ぬ。",
+			"aspects": {
+				"ingredient": 1,
+				"greatwork": 1
+			},
+			"xtriggers": {
+				"sabotage": "apostleforge.pillar3.sabotaged"
+			}
+		},
+		{
+			"id": "apostleforge.pillar5",
+			"label": "E夫人の援助",
+			"description": "E夫人からもらったキマイラの小さな真鍮の頭。儀式の準備が整ったら、彼女は世界の割れ目への鍵を持ってきてくれるはずだ。そして私が夜明けをもたらせば、マンサスが形作る者のために開くだろう。しかし、彼女はいつまでも待っているような人ではない。",
+			"aspects": {
+				"promise": 1
+			},
+			"unique": true,
+			"lifetime": 600
+		},
+		{
+			"id": "apostleforge.pillar2.dormant.sabotaged",
+			"label": "妨害された休眠状態のドーンブレーカーコア",
+			"description": "ボロボロに絡まった金属の檻の中で、一粒の光が無造作に舞う。崩壊する前に修理しなければならない。",
+			"aspects": {
+				"tool": 1,
+				"greatwork.sabotaged": 1
+			},
+			"xtriggers": {
+				"sabotage.repair": "apostleforge.pillar2.dormant"
+			}
+		},
+		{
+			"id": "apostleforge.pillar2.sabotaged",
+			"label": "妨害されたドーンブレーカーコア",
+			"description": "折り曲げられた金属が絡み合い、燃えている。その中で、太陽の炎の粒子が不規則に震え、燃え盛る。崩壊する前に修理しなければならない。",
+			"aspects": {
+				"tool": 1,
+				"greatwork.sabotaged": 1
+			},
+			"xtriggers": {
+				"sabotage.repair": "apostleforge.pillar2"
+			}
+		},
+		{
+			"id": "apostleforge.pillar3.sabotaged",
+			"label": "不安定な青金",
+			"description": "毒を盛られ、不規則な動きをする強力な錬金素材の塊。一刻も早く怒りを鎮めなければいけない。",
+			"aspects": {
+				"ingredient": 1,
+				"greatwork.sabotaged": 1
+			},
+			"xtriggers": {
+				"sabotage.repair": "apostleforge.pillar3"
+			}
+		},
+		{
+			"id": "apostlegrail.mentor",
+			"label": "#PREVIOUSCHARACTERNAME#、我々の喜びの者",
+			"description": "我々の泉、我々の喜び......最も偉大な饗宴、謝肉祭まで流浪の地で休む者。",
+			"comments": "Is an acquaintance so we can hijack the cult foundation recipe.",
+			"aspects": {
+				"mentor": 1
+			}
+		},
+		{
+			"id": "legacyapostlegrailjob",
+			"label": "義務と喜び",
+			"description": "我々の喜びの者は私を死から救い、退屈からも救ってくれた。我々が身を、すべてを捧げる番だ。",
+			"aspects": {
+				"job": 1
+			},
+			"icon": "apostlegrail.pillar1"
+		},
+		{
+			"id": "apostlegrail.pillarfuel",
+			"label": "喜びの血",
+			"description": "喜びの者の血が入った小瓶と、細胞で書かれた小さな指示書を受け取った。喜びの者が私たちを味わうように、私たちも喜びの者を味わうことができる。この血を無駄にしたら激怒するだろう。",
+			"aspects": {
+				"ingredient": 1,
+				"grail": 3,
+				"auctionable": 1
+			},
+			"lifetime": 240,
+			"decayTo": "dread",
+			"icon": "mentorguidance"
+		},
+		{
+			"id": "apostlegrail.pillar1",
+			"label": "謝肉祭のレシピ",
+			"description": "「喜びは命を与え、喜びは命を奪い、喜びが満たされることはない。我々は秘密の味を調達し、時の神々の贈り物に注ぎ込み、宴の主を集め、最も縁起の良い時に抑えることのできない神秘の叫びを上げ、騒めきの聖杯から分け与えなければならない」",
+			"aspects": {
+				"lore": 1
+			}
+		},
+		{
+			"id": "apostlegrail.pillar2.dormant",
+			"label": "孤独な血",
+			"description": "私は病にかかっている。血も骨も病んでいる。私は死ぬだろう。喜びの者の聖なる血があれば、長く生きられるかもしれない。",
+			"aspects": {
+				"illhealth": 1
+			},
+			"slots": [
+				{
+					"id": "blood",
+					"actionId": "dream",
+					"label": "血",
+					"required": {
+						"apostlegrail.pillarfuel": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "apostlegrail.pillar2",
+			"label": "美味しい血",
+			"description": "今の私には、喜びの者と同じ血が流れている。その味が私の静脈を彩っている限り、病気にかかることはないが、その恵みがなければ、私は死ぬ。",
+			"aspects": {
+				"promise": 1
+			},
+			"lifetime": 600,
+			"decayTo": "apostlegrail.pillar2.dormant"
+		},
+		{
+			"id": "apostlegrail.pillar3",
+			"label": "七つの恵み",
+			"description": "株式会社T.R.N.という風変わりな会社の香辛料・調味料部門は、我々の需要に応えてくれる。今回は美味しそうな食材を提供してくれた。自分たちで飾り付けをして、皿に盛り付けよう.....しかし、その前に密閉された真っ暗なキッチンできちんと調理しなくてはいけない。",
+			"aspects": {
+				"ingredient": 1,
+				"job": 1,
+				"grail": 2
+			}
+		},
+		{
+			"id": "apostlegrail.pillar4.inprogress1",
+			"label": "宴の主の最初の断片",
+			"description": "大食漢や変質者が集まってきた。彼らは五感の饗宴を期待している。",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqvitulation",
+			"lifetime": 120,
+			"xtriggers": {
+				"vitulationupgrade": "apostlegrail.pillar4.inprogress2",
+				"sabotage": "notoriety"
+			}
+		},
+		{
+			"id": "apostlegrail.pillar4.inprogress2",
+			"label": "宴の主の2つ目の断片",
+			"description": "噂は広まり、好奇心と食欲が、見知らぬ人たちを謝肉祭に参加させる。",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqvitulation",
+			"lifetime": 120,
+			"decayTo": "apostlegrail.pillar4.inprogress1",
+			"xtriggers": {
+				"vitulationupgrade": "apostlegrail.pillar4.inprogress3",
+				"sabotage": "notoriety"
+			}
+		},
+		{
+			"id": "apostlegrail.pillar4.inprogress3",
+			"label": "宴の主の3つ目の断片",
+			"description": "病人や詮索好きの中から選ばれた不潔なクズ。",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqvitulation",
+			"lifetime": 120,
+			"decayTo": "apostlegrail.pillar4.inprogress2",
+			"xtriggers": {
+				"vitulationupgrade": "apostlegrail.pillar4.inprogress4",
+				"sabotage": "notoriety"
+			}
+		},
+		{
+			"id": "apostlegrail.pillar4.inprogress4",
+			"label": "宴の主の4つ目の断片",
+			"description": "飢えた者、貪欲な者、好奇心旺盛な者、すべてが我々の招待を受けた。",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqvitulation",
+			"lifetime": 120,
+			"decayTo": "apostlegrail.pillar4.inprogress3",
+			"xtriggers": {
+				"vitulationupgrade": "apostlegrail.pillar4.inprogress5",
+				"sabotage": "apostlegrail.pillar4.inprogress1"
+			}
+		},
+		{
+			"id": "apostlegrail.pillar4.inprogress5",
+			"label": "宴の主の5つ目の断片",
+			"description": "今では肉が唇に触れるたびに肉謝祭の名前が囁いている。",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqvitulation",
+			"lifetime": 120,
+			"decayTo": "apostlegrail.pillar4.inprogress4",
+			"xtriggers": {
+				"vitulationupgrade": "apostlegrail.pillar4.inprogress6",
+				"sabotage": "apostlegrail.pillar4.inprogress2"
+			}
+		},
+		{
+			"id": "apostlegrail.pillar4.inprogress6",
+			"label": "宴の主の6つ目の断片",
+			"description": "時が来れば、客はネズミのように群がってくる。",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqvitulation",
+			"lifetime": 120,
+			"decayTo": "apostlegrail.pillar4.inprogress5",
+			"xtriggers": {
+				"vitulationupgrade": "apostlegrail.pillar4.inprogress7",
+				"sabotage": "apostlegrail.pillar4.inprogress3"
+			}
+		},
+		{
+			"id": "apostlegrail.pillar4.inprogress7",
+			"label": "集められた宴の主",
+			"description": "我々が今できるのは、喜びの者が聖杯の性質を実行したときにキングスキンゲートを開く、鍵の持ち主を待つことである。",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqvitulation",
+			"lifetime": 120,
+			"decayTo": "apostlegrail.pillar4.inprogress6",
+			"xtriggers": {
+				"sabotage": "apostlegrail.pillar4.inprogress4"
+			}
+		},
+		{
+			"id": "apostlegrail.pillar4",
+			"label": "宴の主と客",
+			"description": "合図が下されると、宴の主が集まる。目を大きく見開き、口を大きく開けて、食べ、食べられ、私から喜びの者の血を引き出そうとするだろう。我らが喜びの者が彼らをご馳走へと導き、操り人形の聖母が鍵を回す。",
+			"aspects": {
+				"summoned": 1
+			}
+		},
+		{
+			"id": "apostlelantern.mentor",
+			"label": "#PREVIOUSCHARACTERNAME#、照らされた者",
+			"description": "我々の源であり、インスピレーションの源である者は、今マンサスに宿っている。",
+			"comments": "Is an acquaintance so we can hijack the cult foundation recipe.",
+			"aspects": {
+				"mentor": 1
+			}
+		},
+		{
+			"id": "legacyapostlelanternjob",
+			"label": "最初の夢",
+			"description": "夢は枯れた樫のように、私を抉った。そして今、私はほとんど準備が整った。",
+			"aspects": {
+				"job": 1
+			},
+			"icon": "apostlelantern.pillar1"
+		},
+		{
+			"id": "apostlelantern.pillarfuel",
+			"label": "鍵の夢",
+			"description": "またこの夢だ。これは、私と他の誰かのための指示だ。その人を見つけられればの話だが。私をマンサスへと導いてくれるはずだ。何をしなくてはいけないか教えてくれるはず。栄光を知っている者にとっては、真の鍵の前振りである。",
+			"lifetime": 60,
+			"aspects": {
+				"tool": 1
+			},
+			"decayTo": "fascination",
+			"icon": "mentorguidance"
+		},
+		{
+			"id": "apostlelantern.pillar1",
+			"label": "第3形態",
+			"description": "「我々は道を導き、闇を照らす。我々には慈悲はない。目の扉の後ろにある十字路を求め、そこに誘惑を仕込み、銀色の死者を送り込み、眠る定命の者の魂を連れてくるのだ。目撃者の数が十分になったら、日々の鍵を呼び出して、3重の扉を外側に、つまり第3形態になるように開いてくのだ」",
+			"aspects": {
+				"tool": 1
+			}
+		},
+		{
+			"id": "apostlelantern.pillar2",
+			"label": "小さな十字路",
+			"slots": [
+				{
+					"id": "keydream",
+					"label": "鍵の夢",
+					"required": {
+						"apostlelantern.pillarfuel": 1
+					},
+					"actionId": "dream"
+				},
+				{
+					"id": "lanterninfluence",
+					"label": "光の夢",
+					"required": {
+						"influencelanterng": 1
+					},
+					"actionId": "dream"
+				}
+			],
+			"description": "木の影の下に織りなす2本の道、刃物の階段付近にある三又の扉の目。啓示の間の影？反射した姿？それとも妹？",
+			"aspects": {
+				"way": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "apostlelantern.pillar3",
+			"label": "魅惑",
+			"slots": [
+				{
+					"id": "fascination",
+					"label": "おとり",
+					"required": {
+						"fascination": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "一度見たら、魅惑は離れない。生きている魂の中で、ここまでマンサスに踏み込む者はほとんどいないだろう。鏡の少女に魅惑を見せなくてはいけない。そうすれば魂たちを、ここまで連れてきてくれるだろう。",
+			"aspects": {
+				"influence": 1
+			},
+			"xtriggers": {
+				"renew.apostlelantern.pillar3": "apostlelantern.pillar3"
+			},
+			"lifetime": 180
+		},
+		{
+			"id": "apostlelantern.pillar4.inprogress1",
+			"label": "目撃者：7人のうちの1人",
+			"description": "魅惑の黄金の光とマンサスの青い光の中、十字路で揺れる孤高の人物。",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqthirdwaywitnesses",
+			"lifetime": 120,
+			"xtriggers": {
+				"cloudwitnessesupgrade": "apostlelantern.pillar4.inprogress2",
+				"sabotage": "fascination"
+			},
+			"icon": "apostlelantern.pillar4"
+		},
+		{
+			"id": "apostlelantern.pillar4.inprogress2",
+			"label": "目撃者：7人のうちの2人",
+			"description": "魅惑の黄金の光とマンサスの青い光の中、十字路で揺れる1組の目撃者。",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqthirdwaywitnesses",
+			"lifetime": 120,
+			"decayTo": "apostlelantern.pillar4.inprogress1",
+			"xtriggers": {
+				"cloudwitnessesupgrade": "apostlelantern.pillar4.inprogress3",
+				"sabotage": "fascination"
+			},
+			"icon": "apostlelantern.pillar4"
+		},
+		{
+			"id": "apostlelantern.pillar4.inprogress3",
+			"label": "目撃者：7人のうちの3人",
+			"description": "今まで以上に無表情な顔をしているが、それでもお互いの手を握りあっている。",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqthirdwaywitnesses",
+			"lifetime": 120,
+			"decayTo": "apostlelantern.pillar4.inprogress2",
+			"xtriggers": {
+				"cloudwitnessesupgrade": "apostlelantern.pillar4.inprogress4",
+				"sabotage": "fascination"
+			},
+			"icon": "apostlelantern.pillar4"
+		},
+		{
+			"id": "apostlelantern.pillar4.inprogress4",
+			"label": "目撃者：7人のうちの4人",
+			"description": "光が彼らの色を抜くが、性質上、その瞬間が近づくにつれ彼らはまだら模様になっていく。",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqthirdwaywitnesses",
+			"lifetime": 120,
+			"decayTo": "apostlelantern.pillar4.inprogress3",
+			"xtriggers": {
+				"cloudwitnessesupgrade": "apostlelantern.pillar4.inprogress5",
+				"sabotage": "apostlelantern.pillar4.inprogress1"
+			},
+			"icon": "apostlelantern.pillar4"
+		},
+		{
+			"id": "apostlelantern.pillar4.inprogress5",
+			"label": "目撃者：7人のうちの5人",
+			"description": "5人の目撃者が、膨らむが熟すことのない果実を待っている。",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqthirdwaywitnesses",
+			"lifetime": 120,
+			"decayTo": "apostlelantern.pillar4.inprogress4",
+			"xtriggers": {
+				"cloudwitnessesupgrade": "apostlelantern.pillar4.inprogress6",
+				"sabotage": "apostlelantern.pillar4.inprogress2"
+			},
+			"icon": "apostlelantern.pillar4"
+		},
+		{
+			"id": "apostlelantern.pillar4.inprogress6",
+			"label": "目撃者：7人のうちの6人",
+			"description": "悶々とした空気が漂っている。彼らは目をそらすことができない。",
+			"aspects": {
+				"summoned": 1
+			},
+			"uniquenessgroup": "uqthirdwaywitnesses",
+			"lifetime": 120,
+			"decayTo": "apostlelantern.pillar4.inprogress5",
+			"xtriggers": {
+				"cloudwitnessesupgrade": "apostlelantern.pillar4",
+				"sabotage": "apostlelantern.pillar4.inprogress3"
+			},
+			"icon": "apostlelantern.pillar4"
+		},
+		{
+			"id": "apostlelantern.pillar4",
+			"label": "大勢の目撃者",
+			"description": "7つの静かな魂が、そっと光の源に祈りを捧げる。",
+			"aspects": {
+				"summoned": 1
+			}
+		}
+	]
+}

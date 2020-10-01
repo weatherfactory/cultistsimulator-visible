@@ -1,0 +1,327 @@
+{
+	"elements": [
+		{
+			"id": "welland_unknown",
+			"label": "Eine schattenhafte Präsenz",
+			"description": "Ihre Macht ist formidabel, ihre Identität noch unbekannt. [Sobald Macht, Kontakte oder Sternenlicht eines Langen 3 erreichen, könnte er entlarvt werden.]",
+			"aspects": {
+				"long.enemy": 1,
+				"long.preference.assault": 1
+			},
+			"xtriggers": {
+				"revealidentity": "welland"
+			}
+		},
+		{
+			"id": "tryphon_unknown",
+			"label": "Eine schattenhafte Präsenz",
+			"description": "Ihre Macht ist formidabel, ihre Identität noch unbekannt. [Sobald Macht, Kontakte oder Sternenlicht eines Langen 3 erreichen, könnte er entlarvt werden.]",
+			"aspects": {
+				"long.enemy": 1,
+				"long.preference.intrigue": 1
+			},
+			"xtriggers": {
+				"revealidentity": "tryphon"
+			}
+		},
+		{
+			"id": "diarist_unknown",
+			"label": "Eine schattenhafte Präsenz",
+			"description": "Ihre Macht ist formidabel, ihre Identität noch unbekannt. [Sobald Macht, Kontakte oder Sternenlicht eines Langen 3 erreichen, könnte er entlarvt werden.]",
+			"aspects": {
+				"long.enemy": 1,
+				"long.preference.dreamwork": 1
+			},
+			"xtriggers": {
+				"revealidentity": "diarist"
+			}
+		},
+		{
+			"id": "julian_unknown",
+			"label": "Eine schattenhafte Präsenz",
+			"description": "Ihre Macht ist formidabel, ihre Identität noch unbekannt. [Sobald Macht, Kontakte oder Sternenlicht eines Langen 3 erreichen, könnte er entlarvt werden.]",
+			"aspects": {
+				"long.enemy": 1,
+				"long.preference.winter": 1
+			},
+			"xtriggers": {
+				"revealidentity": "julian"
+			}
+		},
+		{
+			"id": "welland",
+			"label": "Kapitän Welland",
+			"description": "'Dies ist kein edelmütiges Unterfangen. Wir mögen hier keine Emporkömmlinge.' [Es ist wahrscheinlicher, dass Welland angreift.]",
+			"aspects": {
+				"long.enemy": 1,
+				"long.preference.assault": 1
+			},
+			"verbicon": "long-forge",
+			"xtriggers": {
+				"longded": "welland.defeated"
+			}
+		},
+		{
+			"id": "tryphon",
+			"label": "Lady Tryphon",
+			"description": "'Nein, er kann dir nichts anhaben, er kann dich nicht finden. Doch ich unterliege keiner solchen Beschränkung.' [Tryphon wird wahrscheinlicher im Kampf zu einer Intrige greifen.]",
+			"aspects": {
+				"long.enemy": 1,
+				"long.preference.intrigue": 1
+			},
+			"verbicon": "long-grail",
+			"xtriggers": {
+				"longded": "tryphon.defeated"
+			}
+		},
+		{
+			"id": "diarist",
+			"label": "Der Tagebuchschreiber",
+			"description": "'Dein Prätendent wird eine verdammt gute Fußnote abgeben. Aber mehr würde ich da nicht erwarten.' [Der Tagebuchschreiber wird wahrscheinlicher im Kampf Sternenlicht einsetzen.]",
+			"aspects": {
+				"long.enemy": 1,
+				"long.preference.dreamwork": 1
+			},
+			"verbicon": "long-lantern",
+			"xtriggers": {
+				"longded": "diarist.defeated"
+			}
+		},
+		{
+			"id": "julian",
+			"label": "J.C.",
+			"description": "'Keine Namen mehr. Das war's, bedaure. Ich habe keine Zeit, um Konversation zu machen.' [Julian wird häufiger Pausen nutzen, um seine Fähigkeiten zu verbessern.]",
+			"aspects": {
+				"long.enemy": 1,
+				"long.preference.winter": 1
+			},
+			"verbicon": "long-winter",
+			"xtriggers": {
+				"longded": "julian.defeated"
+			}
+		},
+		{
+			"id": "welland.defeated",
+			"label": "Ein Brief von Welland",
+			"description": "'SIR – (es scheint Welland nicht in den Sinn gekommen zu sein, dass er von allem anderen als einem 'Sir' besiegt worden sein könnte)\n\nIch bin der gefährlichste Feind, den du jemals habn wirst, und ich habe schon weitaus Größere als dich erledigt. Du hast etwas besseres verdient als auf dem Scheiterhaufen verheizt zu werden. Ich flehe dich an, zerbrich deine Ketten, wie einst der Löwenschmied vor so langer Zeit, und erhebe dich, um deinen Platz als Langer einzunehmen.\n\nIch füge das Geheimnis bei, das Darius Alexander in Issos anvertraute. Nutze es mit Bedacht.\n\nHochachtungsvoll,\n\nW. '\n\n[Das Geheimnis ist beigefügt. Du kannst es benutzen, um dich von deinem Mentor zu befreien.]",
+			"slots": [
+				{
+					"id": "mentor",
+					"label": "Gestalter",
+					"required": {
+						"apostleforge.mentor": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"aspects": {
+				"legacyplotitem": 1
+			}
+		},
+		{
+			"id": "tryphon.defeated",
+			"label": "Ein Brief von Lady Tryphon",
+			"description": "'Mein Schatz,\n\nich bin besiegt und hast mich vernichtet und dir meine Hingabe verdient. Ich füge einen noch verbliebenen Fetzen von mir selbst bei und harre meines Ablebens.\n\nVerzehre, was von mir übrig ist, und wir werden eins sein, wie es der Blumenmacher immer vorgesehen hatte. Weise deine 'Wonne' zurück. Dir ist weitaus Größeres bestimmt.\n\nDu fragst nun sicher: Ist das ein letzter Trick? Ein verzweifelter Dreh, um deinen Verrat zu garantieren? Ich kann nur antworten: koste mich, und du wirst sehen.\n\nIch verbleibe,\n\ndeine köstliche Freundin,\n\nT.E.'\n\n[Wenn du den beigefügten Krümel von Lady Tryphon verzehrst, kannst du dich von deinem Mentor befreien.]",
+			"slots": [
+				{
+					"id": "mentor",
+					"label": "Wonne",
+					"required": {
+						"apostlegrail.mentor": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"aspects": {
+				"legacyplotitem": 1
+			}
+		},
+		{
+			"id": "diarist.defeated",
+			"label": "Ein Traum des Tagebuchschreibers",
+			"description": "Das Sonnenlicht, das durch das westliche Fenster des Scriptoriums fällt, wird schwächer. Als der Tagebuchschreiber seinen letzten Eintrag verfasst, kühlt die Kammer von Gold zu Grau ab. Mit einem Schnappen schließt er sein kleines Buch. 'Der Tod ist unten', erklärt er, 'und ich verliere bereits an Höhe. Ich hege keinen Groll gegen dich. Aber ich will dir was sagen: Ich hoffe, deine Erleuchtung stolpert und fällt den Aufstieg hinab.' Das Gesicht des Tagebuchschreibers löscht sich selbst aus, als würde ein Mann sich entschreiben, und seine Augen sind bereits fort. Er gibt dir sein kleines Buch. 'Dies ist deine letzte Chance. Du kannst dorthin gehen, wo ich war, oder wohin du gerade gehst. Ich weiß, was besser ist.' Sein Mund rollt sich auf, als würde man einen Reißverschluss öffnen, und schon ist er ein weißes Blatt Papier.\n\n[Ziehst du den Traum im Tagebuch in Erwägung, kannst du dich von deinem Mentor befreien.]",
+			"slots": [
+				{
+					"id": "mentor",
+					"label": "Erleuchtung",
+					"required": {
+						"apostlelantern.mentor": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"aspects": {
+				"legacyplotitem": 1
+			},
+			"lifetime": 120
+		},
+		{
+			"id": "julian.defeated",
+			"label": "Ein Brief von Julian Coseley",
+			"description": "'Feind,\n\nso leicht lasse ich mich nicht vernichten. Doch ich gebe zu, dass du mich besiegt hast, weshalb ich dich mit meinem Ratschluss belohnen möchte.\n\nDu bist ein Narr, den ein Narr dazu verleitet hat, noch einen Stein in die Mauern des Mansus zu stecken. Du könntest, so du denn willst, jenen Stein in die Nacht schleudern.\n\nTust du das, stirbst du leer und allein, wie alle, selbst die Langen. Du könntest frei sterben.\n\n- Julian'\n\n[Nimmst du dir Julians Lektion zu Herzen, kannst du dich von deinem Mentor befreien.]",
+			"slots": [
+				{
+					"id": "mentor",
+					"label": "Gründer",
+					"required": {
+						"apostleforge.mentor": 1,
+						"apostlegrail.mentor": 1,
+						"apostlelantern.mentor": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"aspects": {
+				"legacyplotitem": 1
+			}
+		},
+		{
+			"id": "strategy.prep",
+			"label": "Laufende Vorbereitungen",
+			"description": "Unser unsterblicher Feind bereitet eine weitere Aktion vor. [Der Lange braucht drei Vorbereitungen, um eine weitere Aktion einzuleiten.]",
+			"lifetime": 1
+		},
+		{
+			"id": "strategy.prep.delayed",
+			"label": "Vorbereitungen verdorben!",
+			"description": "Unser Spion hat einen Teil der Vorbereitungen unseres Feindes vereitelt. [Der Lange hat aufgrund deiner Sabotage ein Vorbereitungszeichen eingebüßt.]",
+			"lifetime": 1
+		},
+		{
+			"id": "strategy.assault.concealed",
+			"label": "Die Pläne des Langen",
+			"description": "Der Lange schmiedet seinen nächsten Plan gegen uns. Wenn wir einen Spion entsenden, könnten wir mehr darüber herausfinden, was er vorhat.",
+			"aspects": {
+				"intention.assault": 1
+			},
+			"xtriggers": {
+				"revealstrategy": "strategy.assault.revealed"
+			},
+			"lifetime": 1,
+			"icon": "strategy.unknown"
+		},
+		{
+			"id": "strategy.intrigue.concealed",
+			"label": "Die Pläne des Langen",
+			"description": "Der Lange schmiedet seinen nächsten Plan gegen uns. Wenn wir einen Spion entsenden, könnten wir mehr darüber herausfinden, was er vorhat.",
+			"aspects": {
+				"intention.intrigue": 1
+			},
+			"xtriggers": {
+				"revealstrategy": "strategy.intrigue.revealed"
+			},
+			"lifetime": 1,
+			"icon": "strategy.unknown"
+		},
+		{
+			"id": "strategy.dreams.concealed",
+			"label": "Die Pläne des Langen",
+			"description": "Der Lange schmiedet seinen nächsten Plan gegen uns. Wenn wir einen Spion entsenden, könnten wir mehr darüber herausfinden, was er vorhat.",
+			"aspects": {
+				"intention.dreams": 1
+			},
+			"xtriggers": {
+				"revealstrategy": "strategy.dreams.revealed"
+			},
+			"lifetime": 1,
+			"icon": "strategy.unknown"
+		},
+		{
+			"id": "strategy.downtime.concealed",
+			"label": "Die Pläne des Langen",
+			"description": "Der Lange schmiedet seinen nächsten Plan gegen uns. Wenn wir einen Spion entsenden, könnten wir mehr darüber herausfinden, was er vorhat.",
+			"aspects": {
+				"intention.downtime": 1
+			},
+			"xtriggers": {
+				"revealstrategy": "strategy.downtime.revealed"
+			},
+			"lifetime": 1,
+			"icon": "strategy.unknown"
+		},
+		{
+			"id": "strategy.assault.revealed",
+			"label": "Die Pläne des Langen enthüllt: Angriff",
+			"description": "Unser Feind plant diesmal irgendeinen direkten Angriff.",
+			"aspects": {
+				"intention.assault": 1,
+				"strategy.revealed": 1
+			},
+			"xtriggers": {
+				"revealstrategy": "strategy.assault.revealed"
+			},
+			"lifetime": 1
+		},
+		{
+			"id": "strategy.intrigue.revealed",
+			"label": "Die Pläne des Langen enthüllt: Intrige",
+			"description": "Unser Feind will uns diesmal austricksen.",
+			"aspects": {
+				"intention.intrigue": 1,
+				"strategy.revealed": 1
+			},
+			"xtriggers": {
+				"revealstrategy": "strategy.intrigue.revealed"
+			},
+			"lifetime": 1
+		},
+		{
+			"id": "strategy.dreams.revealed",
+			"label": "Die Pläne des Langen enthüllt: Träume",
+			"description": "Unser Feind will uns diesmal mithilfe des Mansus finden.",
+			"aspects": {
+				"intention.dreams": 1,
+				"strategy.revealed": 1
+			},
+			"xtriggers": {
+				"revealstrategy": "strategy.dreams.revealed"
+			},
+			"lifetime": 1
+		},
+		{
+			"id": "strategy.downtime.revealed",
+			"label": "Die Pläne des Langen enthüllt: Verschnaufpause",
+			"description": "Unser Feind will diesmal nichts gegen uns unternehmen. Er wird sich ausruhen ... und so vielleicht noch stärker werden.",
+			"aspects": {
+				"intention.downtime": 1,
+				"strategy.revealed": 1
+			},
+			"xtriggers": {
+				"revealstrategy": "strategy.downtime.revealed"
+			},
+			"lifetime": 1
+		},
+		{
+			"id": "strategy.dreams.preference",
+			"label": "Eine Vorahnung: Die Lektionen der Seele",
+			"description": "Für seine nächste Aktion wird der Lange wahrscheinlich versuchen, durch Träume von unseren Schwächen zu erfahren – selbst wenn seine Pläne normalerweise auf das Gegenteil hindeuteten.",
+			"comments": "This is currently unused - it became less relevant once tablereqs came in.",
+			"lifetime": 1,
+			"noartneeded": true
+		},
+		{
+			"id": "long.lesson.might",
+			"label": "Mehr Macht",
+			"aspects": {
+				"long.lesson": 1
+			},
+			"description": "Unser unsterblicher Feind nimmt uns ernster und setzt mehr Ressourcen ein. [Die Macht eines feindlichen Langen wird sich erhöhen, was ihm mächtigere Angriffe ermöglicht.]"
+		},
+		{
+			"id": "long.lesson.connections",
+			"label": "Mehr Kontakte",
+			"aspects": {
+				"long.lesson": 1
+			},
+			"description": "Unser unsterblicher Feind nimmt uns ernster und setzt mehr Ressourcen ein. [Die Verbindungen eines feindlichen Langen werden zahlreicher, was ihm ausgefeiltere Intrigen ermöglicht.]"
+		},
+		{
+			"id": "long.lesson.dreamwork",
+			"label": "Blicke in die Seele",
+			"aspects": {
+				"long.lesson": 1
+			},
+			"description": "Unser unsterblicher Feind hat etwas über uns erfahren. [Das Sternenlicht eines feindlichen Langen erhöht sich, wodurch er noch mehr Macht in unseren Träumen hat.]"
+		}
+	]
+}

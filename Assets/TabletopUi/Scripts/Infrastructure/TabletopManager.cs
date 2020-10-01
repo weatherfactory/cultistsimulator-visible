@@ -37,8 +37,7 @@ namespace Assets.CS.TabletopUI {
 
         [SerializeField] private HighlightLocationsController _highlightLocationsController;
 
-        [SerializeField] private Limbo Limbo;
-
+        
         [Header("Detail Windows")] [SerializeField]
         private AspectDetailsWindow aspectDetailsWindow;
 
@@ -196,7 +195,6 @@ namespace Assets.CS.TabletopUI {
             //register everything used gamewide
             SetupServices(registry, _situationBuilder, _tabletop);
 
-            // This ensures that we have an ElementStackManager in Limbo & Tabletop
             InitializeTokenContainers();
 
             //we hand off board functions to individual controllers
@@ -306,7 +304,6 @@ namespace Assets.CS.TabletopUI {
 
         void InitializeTokenContainers() {
             _tabletop.Initialise();
-            Limbo.Initialise();
             mapTokenContainer.Initialise();
         }
 
@@ -321,15 +318,11 @@ namespace Assets.CS.TabletopUI {
             var choreographer = new Choreographer(container, builder, tableLevelTransform, windowLevelTransform);
             registry.Register(choreographer);
 
-            var chronicler = new Chronicler(Registry.Get<Character>(), Registry.Get<ICompendium>());
-            registry.Register(chronicler);
-
             var situationsCatalogue = new SituationsCatalogue();
             registry.Register(situationsCatalogue);
 
-            var stackManagersCatalogue = new StackManagersCatalogue();
-            stackManagersCatalogue.Subscribe(this);
-            registry.Register(stackManagersCatalogue);
+            Registry.Get<StackManagersCatalogue>().Subscribe(this);
+
 
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
             registry.Register<IDraggableHolder>(draggableHolder);
@@ -340,7 +333,7 @@ namespace Assets.CS.TabletopUI {
             
             
 			registry.Register<HighlightLocationsController>(_highlightLocationsController);
-            _highlightLocationsController.Initialise(stackManagersCatalogue);
+            _highlightLocationsController.Initialise(Registry.Get<StackManagersCatalogue>());
 
 
             //element overview needs to be initialised with
@@ -352,7 +345,8 @@ namespace Assets.CS.TabletopUI {
             if(legacy==null)
                 Registry.Get<StageHand>().EndingScreen();
 
-            _elementOverview.Initialise(legacy, stackManagersCatalogue, Registry.Get<ICompendium>());
+            _elementOverview.Initialise(legacy,  Registry.Get<ICompendium>());
+            Registry.Get<StackManagersCatalogue>().Subscribe(_elementOverview);
             tabletopBackground.ShowTabletopFor(legacy);
 
   
@@ -405,9 +399,12 @@ namespace Assets.CS.TabletopUI {
             AspectsDictionary startingElements = new AspectsDictionary();
             startingElements.CombineAspects(chosenLegacy.Effects);  //note: we don't reset the chosen legacy. We assume it remains the same until someone dies again.
 
-            foreach (var e in startingElements) {
-                ElementStackToken token = _tabletop.ProvisionElementStack(e.Key, e.Value, Source.Existing()) as ElementStackToken;
-                choreographer.ArrangeTokenOnTable(token, new Context(Context.ActionSource.Loading));
+            foreach (var e in startingElements)
+            {
+                var context = new Context(Context.ActionSource.Loading);
+
+                ElementStackToken token = _tabletop.ProvisionElementStack(e.Key, e.Value, Source.Existing(),context) as ElementStackToken;
+                choreographer.ArrangeTokenOnTable(token, context);
             }
         }
 
@@ -599,7 +596,10 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
             var activeLegacy = Registry.Get<Character>().ActiveLegacy;
 
-            _elementOverview.Initialise(activeLegacy, Registry.Get<StackManagersCatalogue>(), compendium);
+            _elementOverview.Initialise(activeLegacy, compendium);
+
+            Registry.Get<StackManagersCatalogue>().Reset();
+            Registry.Get<StackManagersCatalogue>().Subscribe(_elementOverview);
             tabletopBackground.ShowTabletopFor(activeLegacy);
 
         }
@@ -745,7 +745,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             return true;
         }
 
-        private IElementStack FindStackForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
+        private ElementStackToken FindStackForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
 
             var rnd = new Random();
             var stacks = _tabletop.GetElementStacksManager().GetStacks().OrderBy(x=>rnd.Next());
@@ -793,7 +793,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             return slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay;
         }
 
-        private IElementStack FindStackForSlotSpecificationInSituations(SlotSpecification slotSpec, out SituationController sit) {
+        private ElementStackToken FindStackForSlotSpecificationInSituations(SlotSpecification slotSpec, out SituationController sit) {
             var rnd = new Random();
 
             // Nothing on the table? Look at the Situations.
@@ -1061,7 +1061,7 @@ public ElementStacksManager GetTabletopStacksManager()
             mansusSituation = null;
         }
 
-        public void BeginNewSituation(SituationCreationCommand scc,List<IElementStack> withStacksInStorage) {
+        public void BeginNewSituation(SituationCreationCommand scc,List<ElementStackToken> withStacksInStorage) {
             Registry.Get<Choreographer>().BeginNewSituation(scc,withStacksInStorage);
         }
 
@@ -1152,7 +1152,7 @@ public ElementStacksManager GetTabletopStacksManager()
 				var allSituations = Registry.Get<SituationsCatalogue>();
 				foreach (var s in allSituations.GetRegisteredSituations())
                 {
-                    var stacksInSituation = new List<IElementStack>();
+                    var stacksInSituation = new List<ElementStackToken>();
                     stacksInSituation.AddRange(s.GetStartingStacks());
                     stacksInSituation.AddRange(s.GetOngoingStacks());
                     stacksInSituation.AddRange(s.GetStoredStacks());

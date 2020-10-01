@@ -1,0 +1,472 @@
+{
+	"elements": [
+		{
+			"id": "cultedge_1",
+			"label": "Kirche der Hellen Kante",
+			"aspects": {
+				"society": 1,
+				"venerationedge": 1
+			},
+			"slots": [
+				{
+					"id": "Associate",
+					"label": "Mitglied",
+					"actionId": "talk",
+					"required": {
+						"mortal": 1
+					},
+					"forbidden": {
+						"hunter": 1,
+						"hireling": 1,
+						"prisoner": 1
+					},
+					"description": "Ein neuer Rekrut oder ein erfahrener Jünger."
+				},
+				{
+					"id": "Ceremony",
+					"label": "Zeremonie",
+					"actionId": "talk",
+					"required": {
+						"lore": 1
+					},
+					"description": "Um einen Novizen zu rekrutieren, brauche ich nur ein kleines Geheimnis. Die höheren Mysterien verlangen nach tiefgründigeren Schwüren."
+				},
+				{
+					"id": "Trappings",
+					"label": "Putz",
+					"actionId": "talk",
+					"required": {
+						"tool": 1,
+						"ingredient": 1,
+						"influence": 1
+					},
+					"description": "Für den angemessenen Rahmen. Verbraucht Zutaten und Einflüsse. Benutzt Werkzeuge, verbraucht sie aber nicht."
+				}
+			],
+			"description": "Eine okkulte Gesellschaft, die sich den Stunden des Kampfes und der Eroberung gewidmet hat. [Du kannst Kulte mit dem Verb 'Reden' benutzen, um Anhänger zu rekrutieren oder zu befördern und sie zum Sammeln von Ressourcen zu entsenden. Ein Gläubiger kann zum Jünger befördert werden, einige wenige begnadete Jünger können sogar noch weiter entrücken und zu Meuchelmördern werden.]",
+			"unique": true
+		},
+		{
+			"id": "cultforge_1",
+			"label": "Unverzagter Orden",
+			"aspects": {
+				"society": 1,
+				"venerationforge": 1
+			},
+			"slots": [
+				{
+					"id": "Associate",
+					"label": "Mitglied",
+					"actionId": "talk",
+					"required": {
+						"mortal": 1
+					},
+					"forbidden": {
+						"hunter": 1,
+						"hireling": 1,
+						"prisoner": 1
+					},
+					"description": "Ein neuer Rekrut oder ein erfahrener Jünger."
+				},
+				{
+					"id": "Ceremony",
+					"label": "Zeremonie",
+					"actionId": "talk",
+					"required": {
+						"lore": 1
+					},
+					"description": "Um einen Novizen zu rekrutieren, brauche ich nur ein kleines Geheimnis. Die höheren Mysterien verlangen nach tiefgründigeren Schwüren."
+				},
+				{
+					"id": "Trappings",
+					"label": "Putz",
+					"actionId": "talk",
+					"required": {
+						"tool": 1,
+						"ingredient": 1,
+						"influence": 1
+					},
+					"description": "Für den angemessenen Rahmen. Verbraucht Zutaten und Einflüsse. Benutzt Werkzeuge, verbraucht sie aber nicht."
+				}
+			],
+			"description": "Eine okkulte Gesellschaft, die sich dem Feuer, das wandelt und neu erschafft, gewidmet hat. [Du kannst Kulte mit dem Verb 'Reden' benutzen, um Anhänger zu rekrutieren oder zu befördern und sie zum Sammeln von Ressourcen zu entsenden. Ein Gläubiger kann zum Jünger befördert werden, einige wenige begnadete Jünger können sogar noch weiter entrücken und zu Umformern werden.]",
+			"unique": true
+		},
+		{
+			"id": "cultgrail_1",
+			"label": "Orden des Blutigen Kelches",
+			"aspects": {
+				"society": 1,
+				"venerationgrail": 1
+			},
+			"slots": [
+				{
+					"id": "Associate",
+					"label": "Mitglied",
+					"actionId": "talk",
+					"required": {
+						"mortal": 1
+					},
+					"forbidden": {
+						"hunter": 1,
+						"hireling": 1,
+						"prisoner": 1
+					},
+					"description": "Ein neuer Rekrut oder ein erfahrener Jünger."
+				},
+				{
+					"id": "Ceremony",
+					"label": "Zeremonie",
+					"actionId": "talk",
+					"required": {
+						"lore": 1
+					},
+					"description": "Um einen Novizen zu rekrutieren, brauche ich nur ein kleines Geheimnis. Die höheren Mysterien verlangen nach tiefgründigeren Schwüren."
+				},
+				{
+					"id": "Trappings",
+					"label": "Putz",
+					"actionId": "talk",
+					"required": {
+						"tool": 1,
+						"ingredient": 1,
+						"influence": 1
+					},
+					"description": "Für den angemessenen Rahmen. Verbraucht Zutaten und Einflüsse. Benutzt Werkzeuge, verbraucht sie aber nicht."
+				}
+			],
+			"description": "Eine okkulte Gesellschaft, die sich den Mysterien der Geburt, des Blutes und des Appetits gewidmet hat. [Du kannst Kulte mit dem Verb 'Reden' benutzen, um Anhänger zu rekrutieren oder zu befördern und sie zum Sammeln von Ressourcen zu entsenden. Ein Gläubiger kann zum Jünger befördert werden, einige wenige begnadete Jünger können sogar noch weiter entrücken und zu Cyprianen werden.]",
+			"unique": true
+		},
+		{
+			"id": "cultheart_1",
+			"label": "Der rastlose Tempel",
+			"aspects": {
+				"society": 1,
+				"venerationheart": 1
+			},
+			"slots": [
+				{
+					"id": "Associate",
+					"label": "Mitglied",
+					"actionId": "talk",
+					"required": {
+						"mortal": 1
+					},
+					"forbidden": {
+						"hunter": 1,
+						"hireling": 1,
+						"prisoner": 1
+					},
+					"description": "Ein neuer Rekrut oder ein erfahrener Jünger."
+				},
+				{
+					"id": "Ceremony",
+					"label": "Zeremonie",
+					"actionId": "talk",
+					"required": {
+						"lore": 1
+					},
+					"description": "Um einen Novizen zu rekrutieren, brauche ich nur ein kleines Geheimnis. Die höheren Mysterien verlangen nach tiefgründigeren Schwüren."
+				},
+				{
+					"id": "Trappings",
+					"label": "Putz",
+					"actionId": "talk",
+					"required": {
+						"tool": 1,
+						"ingredient": 1,
+						"influence": 1
+					},
+					"description": "Für den angemessenen Rahmen. Verbraucht Zutaten und Einflüsse. Benutzt Werkzeuge, verbraucht sie aber nicht."
+				}
+			],
+			"description": "Eine okkulte Gesellschaft, die sich dem Paukenschlag gewidmet hat, der niemals enden kann. [Du kannst Kulte mit dem Verb 'Reden' benutzen, um Anhänger zu rekrutieren oder zu befördern und sie zum Sammeln von Ressourcen zu entsenden. Ein Gläubiger kann zum Jünger befördert werden, einige wenige begnadete Jünger können sogar noch weiter entrücken und zu Tarantellisten werden.]",
+			"unique": true
+		},
+		{
+			"id": "cultknock_1",
+			"label": "Gesellschaft der Gebenedeiten Wunde",
+			"aspects": {
+				"society": 1,
+				"venerationknock": 1
+			},
+			"slots": [
+				{
+					"id": "Associate",
+					"label": "Mitglied",
+					"actionId": "talk",
+					"required": {
+						"mortal": 1
+					},
+					"forbidden": {
+						"hunter": 1,
+						"hireling": 1,
+						"prisoner": 1
+					},
+					"description": "Ein neuer Rekrut oder ein erfahrener Jünger."
+				},
+				{
+					"id": "Ceremony",
+					"label": "Zeremonie",
+					"actionId": "talk",
+					"required": {
+						"lore": 1
+					},
+					"description": "Um einen Novizen zu rekrutieren, brauche ich nur ein kleines Geheimnis. Die höheren Mysterien verlangen nach tiefgründigeren Schwüren."
+				},
+				{
+					"id": "Trappings",
+					"label": "Putz",
+					"actionId": "talk",
+					"required": {
+						"tool": 1,
+						"ingredient": 1,
+						"influence": 1
+					},
+					"description": "Für den angemessenen Rahmen. Verbraucht Zutaten und Einflüsse. Benutzt Werkzeuge, verbraucht sie aber nicht."
+				}
+			],
+			"description": "Eine okkulte Gesellschaft, die sich den Stunden gewidmet hat, die Türen öffnen. [Du kannst Kulte mit dem Verb 'Reden' benutzen, um Anhänger zu rekrutieren oder zu befördern und sie zum Sammeln von Ressourcen zu entsenden. Ein Gläubiger kann zum Jünger befördert werden, einige wenige begnadete Jünger können sogar noch weiter entrücken und zu Schlüsseln werden.]",
+			"unique": true
+		},
+		{
+			"id": "cultlantern_1",
+			"label": "Spiegel des Ruhms",
+			"aspects": {
+				"society": 1,
+				"venerationlantern": 1
+			},
+			"slots": [
+				{
+					"id": "Associate",
+					"label": "Mitglied",
+					"actionId": "talk",
+					"required": {
+						"mortal": 1
+					},
+					"forbidden": {
+						"hunter": 1,
+						"hireling": 1,
+						"prisoner": 1
+					},
+					"description": "Ein neuer Rekrut oder ein erfahrener Jünger."
+				},
+				{
+					"id": "Ceremony",
+					"label": "Zeremonie",
+					"actionId": "talk",
+					"required": {
+						"lore": 1
+					},
+					"description": "Um einen Novizen zu rekrutieren, brauche ich nur ein kleines Geheimnis. Die höheren Mysterien verlangen nach tiefgründigeren Schwüren."
+				},
+				{
+					"id": "Trappings",
+					"label": "Putz",
+					"actionId": "talk",
+					"required": {
+						"tool": 1,
+						"ingredient": 1,
+						"influence": 1
+					},
+					"description": "Für den angemessenen Rahmen. Verbraucht Zutaten und Einflüsse. Benutzt Werkzeuge, verbraucht sie aber nicht."
+				}
+			],
+			"description": "Eine okkulte Gesellschaft, die sich dem Verständnis des Lichts gewidmet hat, das von einem wilderen Orte durchscheint. [Du kannst Kulte mit dem Verb 'Reden' benutzen, um Anhänger zu rekrutieren oder zu befördern und sie zum Sammeln von Ressourcen zu entsenden. Ein Gläubiger kann zum Jünger befördert werden, einige wenige begnadete Jünger können sogar noch weiter entrücken und zu Sehern werden.]",
+			"unique": true
+		},
+		{
+			"id": "cultmoth_1",
+			"label": "Wildwald-Klub",
+			"aspects": {
+				"society": 1,
+				"venerationmoth": 1
+			},
+			"slots": [
+				{
+					"id": "Associate",
+					"label": "Mitglied",
+					"actionId": "talk",
+					"required": {
+						"mortal": 1
+					},
+					"forbidden": {
+						"hunter": 1,
+						"hireling": 1,
+						"prisoner": 1
+					},
+					"description": "Ein neuer Rekrut oder ein erfahrener Jünger."
+				},
+				{
+					"id": "Ceremony",
+					"label": "Zeremonie",
+					"actionId": "talk",
+					"required": {
+						"lore": 1
+					},
+					"description": "Um einen Novizen zu rekrutieren, brauche ich nur ein kleines Geheimnis. Die höheren Mysterien verlangen nach tiefgründigeren Schwüren."
+				},
+				{
+					"id": "Trappings",
+					"label": "Putz",
+					"actionId": "talk",
+					"required": {
+						"tool": 1,
+						"ingredient": 1,
+						"influence": 1
+					},
+					"description": "Für den angemessenen Rahmen. Verbraucht Zutaten und Einflüsse. Benutzt Werkzeuge, verbraucht sie aber nicht."
+				}
+			],
+			"description": "Eine okkulte Gesellschaft, die sich dem Chaos und den unerwarteten Stunden gewidmet hat. [Du kannst Kulte mit dem Verb 'Reden' benutzen, um Anhänger zu rekrutieren oder zu befördern und sie zum Sammeln von Ressourcen zu entsenden. Ein Gläubiger kann zum Jünger befördert werden, einige wenige begnadete Jünger können sogar noch weiter entrücken und zu Zwickern werden.]",
+			"unique": true
+		},
+		{
+			"id": "cultsecrethistories_1",
+			"label": "Gesellschaft von St. Hydra",
+			"aspects": {
+				"society": 1,
+				"venerationedge": 1,
+				"venerationforge": 1,
+				"venerationgrail": 1,
+				"venerationheart": 1,
+				"venerationlantern": 1,
+				"venerationknock": 1,
+				"venerationmoth": 1,
+				"venerationwinter": 1
+			},
+			"slots": [
+				{
+					"id": "Associate",
+					"label": "Mitglied",
+					"actionId": "talk",
+					"required": {
+						"mortal": 1
+					},
+					"forbidden": {
+						"hunter": 1,
+						"hireling": 1,
+						"prisoner": 1
+					},
+					"description": "Ein neuer Rekrut oder ein erfahrener Jünger."
+				},
+				{
+					"id": "Ceremony",
+					"label": "Zeremonie",
+					"actionId": "talk",
+					"required": {
+						"lore": 1
+					},
+					"description": "Die höheren Mysterien verlangen nach tiefgründigeren Schwüren."
+				},
+				{
+					"id": "Trappings",
+					"label": "Putz",
+					"actionId": "talk",
+					"required": {
+						"tool": 1,
+						"ingredient": 1,
+						"influence": 1
+					},
+					"description": "Für den angemessenen Rahmen. Verbraucht Zutaten und Einflüsse. Benutzt Werkzeuge, verbraucht sie aber nicht."
+				}
+			],
+			"description": "Eine okkulte Gesellschaft, die sich dem Studium der fünf Historien und ihrer tausend demi-realen Zweige gewidmet hat. [St. Hydra gestattet dir, ungewöhnlicherweise, jeden Aspekt zu benutzen, um Anhänger zu befördern, hat dafür aber keine entrückten Spezialisten.",
+			"unique": true
+		},
+		{
+			"id": "cultwinter_1",
+			"label": "Kinder der Stille",
+			"aspects": {
+				"society": 1,
+				"venerationwinter": 1
+			},
+			"slots": [
+				{
+					"id": "Associate",
+					"label": "Mitglied",
+					"actionId": "talk",
+					"required": {
+						"mortal": 1
+					},
+					"forbidden": {
+						"hunter": 1,
+						"hireling": 1,
+						"prisoner": 1
+					},
+					"description": "Ein neuer Rekrut oder ein erfahrener Jünger."
+				},
+				{
+					"id": "Ceremony",
+					"label": "Zeremonie",
+					"actionId": "talk",
+					"required": {
+						"lore": 1
+					},
+					"description": "Um einen Novizen zu rekrutieren, brauche ich nur ein kleines Geheimnis. Die höheren Mysterien verlangen nach tiefgründigeren Schwüren."
+				},
+				{
+					"id": "Trappings",
+					"label": "Putz",
+					"actionId": "talk",
+					"required": {
+						"tool": 1,
+						"ingredient": 1,
+						"influence": 1
+					},
+					"description": "Für den angemessenen Rahmen. Verbraucht Zutaten und Einflüsse. Benutzt Werkzeuge, verbraucht sie aber nicht."
+				}
+			],
+			"description": "Eine okkulte Gesellschaft, die sich der Stille gewidmet hat, die kommt, und der Kälte, die endet. [Du kannst Kulte mit dem Verb 'Reden' benutzen, um Anhänger zu rekrutieren oder zu befördern und sie zum Sammeln von Ressourcen zu entsenden. Ein Gläubiger kann zum Jünger befördert werden, einige wenige begnadete Jünger können sogar noch weiter entrücken – unter der Bedingung tödlicher Stille.]",
+			"unique": true
+		},
+		{
+			"id": "cultwinter_2",
+			"label": "Türme der Taube",
+			"aspects": {
+				"society": 1,
+				"venerationwinter": 1
+			},
+			"slots": [
+				{
+					"id": "Associate",
+					"label": "Mitglied",
+					"actionId": "talk",
+					"required": {
+						"mortal": 1
+					},
+					"forbidden": {
+						"hunter": 1,
+						"hireling": 1,
+						"prisoner": 1
+					},
+					"description": "Ein neuer Rekrut oder ein erfahrener Jünger."
+				},
+				{
+					"id": "Ceremony",
+					"label": "Zeremonie",
+					"actionId": "talk",
+					"required": {
+						"lore": 1
+					},
+					"description": "Um einen Novizen zu rekrutieren, brauche ich nur ein kleines Geheimnis. Die höheren Mysterien verlangen nach tiefgründigeren Schwüren."
+				},
+				{
+					"id": "Trappings",
+					"label": "Putz",
+					"actionId": "talk",
+					"required": {
+						"tool": 1,
+						"ingredient": 1,
+						"influence": 1
+					},
+					"description": "Für den angemessenen Rahmen. Verbraucht Zutaten und Einflüsse. Benutzt Werkzeuge, verbraucht sie aber nicht."
+				}
+			],
+			"description": "Eine okkulte Gesellschaft, die sich allem gewidmet hat, das verloren ging, und dem, was noch zurückkehren könnte. [Du kannst Kulte mit dem Verb 'Reden' benutzen, um Anhänger zu rekrutieren oder zu befördern und sie zum Sammeln von Ressourcen zu entsenden. Ein Gläubiger kann zum Jünger befördert werden, einige wenige begnadete Jünger können sogar noch weiter entrücken – unter der Bedingung tödlicher Stille.]",
+			"unique": true,
+			"icon": "cultwinter_1"
+		}
+	]
+}

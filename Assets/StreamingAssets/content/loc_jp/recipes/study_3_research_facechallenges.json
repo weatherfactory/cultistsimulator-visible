@@ -1,0 +1,1093 @@
+{
+	"recipes": [
+		{
+			"id": "studyresearch.entrypoint",
+			"actionId": "study",
+			"label": "夜の中へ",
+			"startdescription": "知恵は国であり、これらはその地図である。[研究タスクを完了させるには、伝承の2つの断片にある課題をすべて解決させる必要がある。失敗しても後から課題に戻ることができる。]",
+			"description": ".",
+			"requirements": {
+				"lore": 2
+			},
+			"effects": {
+				
+			},
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearch.attemptsolve",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearch.attemptsolve",
+			"actionId": "study",
+			"label": "夜の中へ",
+			"startdescription": "知恵は国であり、これらはその地図である。[研究タスクを完了させるには、伝承の2つの断片にある課題をすべて解決させる必要がある。失敗しても後から課題に戻ることができる。]",
+			"linked": [
+				{
+					"id": "studyresearch.nochallengesremaining"
+				},
+				{
+					"id": "studyresearch.attemptsolve.challenge.knowledge"
+				},
+				{
+					"id": "studyresearch.attemptsolve.challenge.intuition"
+				},
+				{
+					"id": "studyresearch.attemptsolve.challenge.grim"
+				},
+				{
+					"id": "studyresearch.attemptsolve.challenge.obsessive"
+				},
+				{
+					"id": "studyresearch.attemptsolve.challenge.paradox"
+				},
+				{
+					"id": "studyresearch.attemptsolve.challenge.illumination"
+				},
+				{
+					"id": "studyresearch.attemptsolve.challenge.practical"
+				}
+			]
+		},
+		{
+			"id": "studyresearch.attemptsolve.challenge.knowledge",
+			"actionId": "study",
+			"label": "課題：知識",
+			"requirements": {
+				"challenge.knowledge": 1
+			},
+			"startdescription": "これはピースが足りないパズルだ。学問の海の片隅で見つけられるかもしれない。[博学を加えるか、図書館を使う。]",
+			"slots": [
+				{
+					"id": "solvechallenge",
+					"label": "解決策",
+					"required": {
+						"erudition": 1,
+						"library": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearch.failed.challenge.knowledge"
+				},
+				{
+					"id": "studyresearch.solved.challenge.knowledge"
+				}
+			]
+		},
+		{
+			"id": "studyresearch.failed.challenge.knowledge",
+			"actionId": "study",
+			"label": "期待外れ！",
+			"startdescription": "研究は一時的に保留となった。",
+			"requirements": {
+				"erudition": -1,
+				"library": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "studyresearch.solved.challenge.knowledge",
+			"actionId": "study",
+			"label": "嗚呼！",
+			"startdescription": " ――できた。これでいいのか？[知識の課題を解決した。]",
+			"mutations": [
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.knowledge",
+					"level": -1
+				}
+			],
+			"warmup": 30,
+			"effects": {
+				"erudition": -1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.attemptsolve",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearch.attemptsolve.challenge.intuition",
+			"actionId": "study",
+			"label": "課題：直観",
+			"requirements": {
+				"challenge.intuition": 1
+			},
+			"startdescription": "これはピースが足りないパズルだ。学問の海の片隅で見つけられるかもしれない。[煌めきを加えるか、聖域を使う。]",
+			"slots": [
+				{
+					"id": "solvechallenge",
+					"label": "解決策",
+					"required": {
+						"glimmering": 1,
+						"sanctuary": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearch.failed.challenge.intuition"
+				},
+				{
+					"id": "studyresearch.solved.challenge.intuition"
+				}
+			]
+		},
+		{
+			"id": "studyresearch.failed.challenge.intuition",
+			"actionId": "study",
+			"label": "期待外れ！",
+			"startdescription": "研究は一時的に保留となった。",
+			"requirements": {
+				"glimmering": -1,
+				"sanctuary": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "studyresearch.solved.challenge.intuition",
+			"actionId": "study",
+			"label": "嗚呼！",
+			"startdescription": " ――できた。これでいいのか？[直観の課題を解決した。]",
+			"mutations": [
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.intuition",
+					"level": -1
+				}
+			],
+			"warmup": 30,
+			"effects": {
+				"glimmering": -1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.attemptsolve",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearch.attemptsolve.challenge.grim",
+			"actionId": "study",
+			"label": "課題：過酷な学習",
+			"requirements": {
+				"challenge.grim": 1
+			},
+			"startdescription": "これはピースが足りないパズルだ。学問の海の片隅で見つけられるかもしれない。[恐怖、暗い穴、または静かな緊張感のスキルを使う。恐怖は増加する可能性がある。]",
+			"slots": [
+				{
+					"id": "solvechallenge",
+					"label": "解決策",
+					"required": {
+						"dread": 1,
+						"pit": 1,
+						"skillreasond_concentration": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearch.failed.challenge.grim"
+				},
+				{
+					"id": "studyresearch.solved.challenge.grim"
+				}
+			]
+		},
+		{
+			"id": "studyresearch.failed.challenge.grim",
+			"actionId": "study",
+			"label": "期待外れ！",
+			"startdescription": "研究は一時的に保留となった。",
+			"requirements": {
+				"dread": -1,
+				"pit": -1,
+				"skillreasond_concentration": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "studyresearch.solved.challenge.grim",
+			"actionId": "study",
+			"label": "嗚呼！",
+			"startdescription": " ――できた。これでいいのか？[過酷な課題を解決した。]",
+			"mutations": [
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.grim",
+					"level": -1
+				}
+			],
+			"warmup": 30,
+			"alt": [
+				{
+					"id": "dreadinduction_ifdread",
+					"chance": 70,
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "studyresearch.attemptsolve",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearch.attemptsolve.challenge.obsessive",
+			"actionId": "study",
+			"label": "課題：過剰な研究",
+			"requirements": {
+				"challenge.obsessive": 1
+			},
+			"startdescription": "これはピースが足りないパズルだ。学問の海の片隅で見つけられるかもしれない。「時折、永久的なダメージを受けることがある理性を放棄するか、図書館、または「留まること知らず」のスキルを使う。]",
+			"slots": [
+				{
+					"id": "solvechallenge",
+					"label": "解決策",
+					"required": {
+						"reason": 1,
+						"library": 1,
+						"skillpassiond_unreason": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearch.failed.challenge.obsessive"
+				},
+				{
+					"id": "studyresearch.solved.challenge.obsessive"
+				}
+			]
+		},
+		{
+			"id": "studyresearch.failed.challenge.obsessive",
+			"actionId": "study",
+			"label": "期待外れ！",
+			"startdescription": "研究は一時的に保留となった。",
+			"requirements": {
+				"reason": -1,
+				"library": -1,
+				"skillpassiond_unreason": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "studyresearch.solved.challenge.obsessive",
+			"actionId": "study",
+			"label": "嗚呼！",
+			"startdescription": " ――できた。これでいいのか？[過剰な研究を解決した。]",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.obsessive",
+					"level": -1
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "studyresearch.damagereason",
+					"chance": 10
+				},
+				{
+					"id": "studyresearch.attemptsolve",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearch.damagereason",
+			"actionId": "study",
+			"label": "執着心の負担",
+			"startdescription": "思考を刃のように研ぎ澄ましていた。しかし、その刃の先端が折れてしまった。[理性が永久的にダメージを受けた。]",
+			"requirements": {
+				"concentration": 1
+			},
+			"aspects": {
+				"damagereason": 1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "studyresearch.attemptsolve",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearch.attemptsolve.challenge.paradox",
+			"actionId": "study",
+			"label": "課題：逆説的な解決策",
+			"requirements": {
+				"challenge.paradox": 1
+			},
+			"startdescription": "これはピースが足りないパズルだ。学問の海の片隅で見つけられるかもしれない。「時折、永久的なダメージを受けることがある情熱を放棄するか、聖域、または「むき出しの魂」のスキルを使う。]",
+			"slots": [
+				{
+					"id": "solvechallenge",
+					"label": "解決策",
+					"required": {
+						"passion": 1,
+						"sanctuary": 1,
+						"skillpassiond_folly": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearch.failed.challenge.paradox"
+				},
+				{
+					"id": "studyresearch.solved.challenge.paradox"
+				}
+			]
+		},
+		{
+			"id": "studyresearch.failed.challenge.paradox",
+			"actionId": "study",
+			"label": "期待外れ！",
+			"startdescription": "研究は一時的に保留となった。",
+			"requirements": {
+				"passion": -1,
+				"sanctuary": -1,
+				"skillpassiond_folly": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "studyresearch.solved.challenge.paradox",
+			"actionId": "study",
+			"label": "嗚呼！",
+			"startdescription": " ――できた。これでいいのか？[逆説的な課題を解決した。]",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.paradox",
+					"level": -1
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "studyresearch.damagepassion",
+					"chance": 10
+				},
+				{
+					"id": "studyresearch.attemptsolve",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearch.damagepassion",
+			"actionId": "study",
+			"label": "迷宮の心",
+			"startdescription": "迷宮の中で情熱を追いかけ、その中心部にたどり着いた。迷宮の中心部は、焦げた木のような、暗くて空っぽな場所だ。[情熱が永久的にダメージを受けた。]",
+			"requirements": {
+				"passionexhausted": 1
+			},
+			"aspects": {
+				"damagepassion": 1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "studyresearch.attemptsolve",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearch.attemptsolve.challenge.illumination",
+			"actionId": "study",
+			"label": "課題：光",
+			"requirements": {
+				"challenge.illumination": 1
+			},
+			"startdescription": "これはピースが足りないパズルだ。学問の海の片隅で見つけられるかもしれない。[増加する可能性のある魅了を提供し、図書館、または、高尚な心のスキルを使う。]",
+			"slots": [
+				{
+					"id": "solvechallenge",
+					"label": "解決策",
+					"required": {
+						"fascination": 1,
+						"library": 1,
+						"skillreasond_illumination": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearch.failed.challenge.illumination"
+				},
+				{
+					"id": "studyresearch.solved.challenge.illumination"
+				}
+			]
+		},
+		{
+			"id": "studyresearch.failed.challenge.illumination",
+			"actionId": "study",
+			"label": "期待外れ！",
+			"startdescription": "研究は一時的に保留となった。",
+			"requirements": {
+				"fascination": -1,
+				"library": -1,
+				"skillreasond_illumination": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "studyresearch.solved.challenge.illumination",
+			"actionId": "study",
+			"label": "嗚呼！",
+			"startdescription": " ――できた。これでいいのか？[光の課題を解決した。]",
+			"mutations": [
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.illumination",
+					"level": -1
+				}
+			],
+			"warmup": 30,
+			"alt": [
+				{
+					"id": "fascinationinduction_iffascination",
+					"chance": 70,
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "studyresearch.attemptsolve",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearch.attemptsolve.challenge.practical",
+			"actionId": "study",
+			"label": "課題：実証実験",
+			"requirements": {
+				"challenge.practical": 1
+			},
+			"startdescription": "これはピースが足りないパズルだ。学問の海の片隅で見つけられるかもしれない。[体力を危険にさらすか、囚人を使う。]",
+			"slots": [
+				{
+					"id": "solvechallenge",
+					"label": "解決策",
+					"required": {
+						"health": 1,
+						"prisoner": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearch.failed.challenge.practical"
+				},
+				{
+					"id": "studyresearch.solved.challenge.practical"
+				}
+			]
+		},
+		{
+			"id": "studyresearch.failed.challenge.practical",
+			"actionId": "study",
+			"label": "期待外れ！",
+			"startdescription": "研究は一時的に保留となった。",
+			"requirements": {
+				"health": -1,
+				"prisoner": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "studyresearch.solved.challenge.practical",
+			"actionId": "study",
+			"label": "嗚呼！",
+			"startdescription": " ――できた。これでいいのか？[実践的な課題を解決した。]",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"mutations": [
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.practical",
+					"level": -1
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "studyresearch.damagehealth",
+					"chance": 30
+				},
+				{
+					"id": "studyresearch.attemptsolve",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearch.damagehealth",
+			"actionId": "study",
+			"label": "ダメージ",
+			"startdescription": "痛みは教師である、と特に痛みを感じていない人間は言う。[健康を害した。]",
+			"requirements": {
+				"fatigue": 1
+			},
+			"aspects": {
+				"damagehealth": 1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "studyresearch.attemptsolve",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearch.nochallengesremaining",
+			"actionId": "study",
+			"label": "光の中で瞬きをする",
+			"startdescription": "今――今やっと理解できた！",
+			"description": "",
+			"warmup": 30,
+			"requirements": {
+				"challenge.knowledge": -1,
+				"challenge.intuition": -1,
+				"challenge.grim": -1,
+				"challenge.obsessive": -1,
+				"challenge.paradox": -1,
+				"challenge.illumination": -1,
+				"challenge.practical": -1
+			},
+			"mutations": [
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.knowledge",
+					"level": 0
+				},
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.intuition",
+					"level": 0
+				},
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.grim",
+					"level": 0
+				},
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.obsessive",
+					"level": 0
+				},
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.paradox",
+					"level": 0
+				},
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.illumination",
+					"level": 0
+				},
+				{
+					"filter": "lore",
+					"mutateAspectId": "challenge.practical",
+					"level": 0
+				}
+			],
+			"linked": [
+				{
+					"id": "studyproject_upgrade_edge",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_forge",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_grail",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_heart",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_lantern",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_moth",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_secrethistories",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_winter",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_edgetowinter",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_forgetoedge",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_grailtomoth",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_hearttograil",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_lanterntoforge",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_mothtolantern",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_wintertoheart",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_subvert_knock",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearchtick",
+			"comments": "The lore 2 requirement means this is only available when someone has paired two lore fragments with an earlier recipe. This routes to opportunities to increase Insight.",
+			"label": "有望な研究",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2
+			},
+			"startdescription": "このプロジェクトには可能性がある。研究要件が出てきたら、それを満たして洞察力を得なければいけない。洞察力を3枚得られれば成功、そうでなければ失敗となる可能性がある。",
+			"description": ".",
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "studyresearchearlyconclusion",
+					"chance": 100
+				},
+				{
+					"id": "studyresearchneedsreason",
+					"chance": 50
+				},
+				{
+					"id": "studyresearchneedserudition",
+					"chance": 50
+				},
+				{
+					"id": "studyresearchneedsglimmering",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearchneedsreason",
+			"label": "混乱の影",
+			"actionId": "study",
+			"requirements": {
+				
+			},
+			"effects": {
+				
+			},
+			"slots": [
+				{
+					"id": "Reason",
+					"required": {
+						"reason": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "studyresearchreasonsuccess",
+					"chance": 100
+				}
+			],
+			"startdescription": "混乱が道を覆い隠している。私は理性をもっと使うべきだ。",
+			"description": "研究に自分の理性を役立てたい。",
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearchconclusion",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearchreasonsuccess",
+			"label": "知性の光がはじけた！",
+			"actionId": "study",
+			"requirements": {
+				"reason": 1
+			},
+			"effects": {
+				"insight": 1
+			},
+			"craftable": false,
+			"startdescription": "仕事に追われているが、私の努力は報われている。[洞察力を得た]。",
+			"linked": [
+				{
+					"id": "studyresearchtick",
+					"chance": 100
+				}
+			],
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "studyresearchneedserudition",
+			"label": "パズルのピース",
+			"actionId": "study",
+			"requirements": {
+				
+			},
+			"effects": {
+				
+			},
+			"slots": [
+				{
+					"id": "Erudition",
+					"required": {
+						"erudition": 1
+					},
+					"consumes": true,
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "studyresearcheruditionsuccess",
+					"chance": 100
+				}
+			],
+			"startdescription": "私の研究には博学が必要だ。",
+			"description": "私の研究には博学が必要だ。",
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearchconclusion",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearcheruditionsuccess",
+			"label": "パズルのピースがはまる",
+			"actionId": "study",
+			"requirements": {
+				"erudition": 1
+			},
+			"effects": {
+				"insight": 1
+			},
+			"craftable": false,
+			"startdescription": "知識は知識を育む。[洞察力を得た。]",
+			"linked": [
+				{
+					"id": "studyresearchtick",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearchneedsglimmering",
+			"label": "直感の扉",
+			"actionId": "study",
+			"requirements": {
+				
+			},
+			"effects": {
+				
+			},
+			"slots": [
+				{
+					"id": "Glimmering",
+					"required": {
+						"glimmering": 1
+					},
+					"consumes": true,
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "studyresearchglimmeringsuccess",
+					"chance": 100
+				}
+			],
+			"startdescription": "私の研究には煌めきが必要だ。",
+			"description": ".",
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearchconclusion",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearchglimmeringsuccess",
+			"label": "直観の扉が開かれた！",
+			"actionId": "study",
+			"requirements": {
+				"glimmering": 1
+			},
+			"effects": {
+				"insight": 1
+			},
+			"startdescription": "洞察力は思わぬところで見つかることがある。[洞察力を得た。]",
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyresearchtick",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearchearlyconclusion",
+			"actionId": "study",
+			"comments": "this is a passthrough / router for if Insight reaches 3,which routes directly to the conclusion",
+			"requirements": {
+				"insight": 3
+			},
+			"alternativerecipes": [
+				{
+					"id": "studyresearchconclusion",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearchconclusion",
+			"actionId": "study",
+			"comments": "this is a passthrough / router which the player sees if they don't satisfy a research requirement.",
+			"alternativerecipes": [
+				{
+					"id": "studyresearchmaxinsight",
+					"chance": 100
+				},
+				{
+					"id": "studyresearchmoderateinsight",
+					"chance": 100
+				},
+				{
+					"id": "studyresearchminimalinsight",
+					"chance": 100
+				},
+				{
+					"id": "studyresearchconsolation",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyresearchmaxinsight",
+			"label": "Research complete, max insight",
+			"alternativerecipes": [
+				{
+					"id": "studyresearchsuccess",
+					"chance": 100
+				}
+			],
+			"actionId": "study",
+			"requirements": {
+				"insight": 3
+			},
+			"effects": {
+				
+			},
+			"startdescription": "BEGIN studyresearchmaxinsight",
+			"description": "COMPLETE studyresearchmaxinsight",
+			"warmup": 0,
+			"comments": "This is currently a pass-through only; including for consistency."
+		},
+		{
+			"id": "studyresearchmoderateinsight",
+			"label": "Research complete, some insight",
+			"alternativerecipes": [
+				{
+					"id": "studyresearchsuccess",
+					"chance": 70
+				},
+				{
+					"id": "studyresearchconsolation",
+					"chance": 100
+				}
+			],
+			"actionId": "study",
+			"requirements": {
+				"insight": 2
+			},
+			"effects": {
+				
+			},
+			"startdescription": "BEGIN studyresearchsomeinsight",
+			"description": "COMPLETE studyresearchsomeinsight",
+			"warmup": 0
+		},
+		{
+			"id": "studyresearchminimalinsight",
+			"label": "Research complete, minimal insight",
+			"actionId": "study",
+			"requirements": {
+				
+			},
+			"alternativerecipes": [
+				{
+					"id": "studyresearchsuccess",
+					"chance": 30
+				},
+				{
+					"id": "studyresearchconsolation",
+					"chance": 100
+				}
+			],
+			"effects": {
+				
+			},
+			"startdescription": "BEGIN studyresearchnoinsight",
+			"description": "COMPLETE studyresearchnoinsight",
+			"warmup": 0
+		},
+		{
+			"id": "studyresearchsuccess",
+			"label": "成功！",
+			"actionId": "study",
+			"requirements": {
+				
+			},
+			"aspects": {
+				"restore": 1
+			},
+			"effects": {
+				"insight": -100
+			},
+			"startdescription": ".",
+			"description": "新しいことを学んだ。",
+			"warmup": 0,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "studyproject_upgrade_edge",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_forge",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_grail",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_heart",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_lantern",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_moth",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_secrethistories",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_winter",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_edgetowinter",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_forgetoedge",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_grailtomoth",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_hearttograil",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_lanterntoforge",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_mothtolantern",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_subvert_wintertoheart",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_upgrade_subvert_knock",
+					"chance": 100
+				}
+			]
+		}
+	]
+}

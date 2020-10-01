@@ -1,0 +1,119 @@
+{
+	"recipes": [
+		{
+			"id": "temptationremembrancehintdream",
+			"label": "誘惑？",
+			"actionId": "dream",
+			"requirements": {
+				"temptation.remembrance": 1
+			},
+			"startdescription": "世界には色があり、マンサスには色があり、そして失われた色がある。色の欠乏は、私が手放すことのできないナイフである。[記憶の誘惑があなたに歯を食い込ませ、他の誘惑には負けないようになる。]",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "vitalityhintdream",
+			"label": "活力",
+			"actionId": "dream",
+			"requirements": {
+				"vitality": 1
+			},
+			"startdescription": "これによって夢は引き起こされないが、学んで自分の体力を高めることはできる。",
+			"craftable": false,
+			"hintonly": true,
+			"comments": "Not currently possible with restrictions on Dream primary slot"
+		},
+		{
+			"id": "eruditionhintdream",
+			"label": "博学",
+			"actionId": "dream",
+			"requirements": {
+				"erudition": 1
+			},
+			"startdescription": "これによって夢は引き起こされないが、学んで自分の理性を高めることはできる。",
+			"craftable": false,
+			"hintonly": true,
+			"comments": "Not currently possible with restrictions on Dream primary slot"
+		},
+		{
+			"id": "glimmeringhintdream",
+			"label": "煌めき",
+			"actionId": "dream",
+			"requirements": {
+				"glimmering": 1
+			},
+			"startdescription": "これによって夢は引き起こされないが、学んで自分の情熱を高めることはできる。",
+			"craftable": false,
+			"hintonly": true,
+			"comments": "Not currently possible with restrictions on Dream primary slot"
+		},
+		{
+			"id": "contentmenthintdream",
+			"label": "満足感",
+			"actionId": "dream",
+			"requirements": {
+				"contentment": 1
+			},
+			"startdescription": "夢は時に私を満足させてくれるかもしれないが、満足感は夢への鍵ではない。",
+			"craftable": false,
+			"hintonly": true,
+			"comments": "Not currently possible with restrictions on Dream primary slot"
+		},
+		{
+			"id": "dedicationtoobsession_power_hint",
+			"label": "次の一歩",
+			"actionId": "dream",
+			"requirements": {
+				"ascensionpowerb": 1
+			},
+			"startdescription": "夢の世界で手の届くところまで来てしまった。<b>仕事</b>を始めなければならない。",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "dedicationtoobsession_enlightenment_hint",
+			"label": "次の一歩",
+			"actionId": "dream",
+			"requirements": {
+				"ascensionenlightenmentb": 1
+			},
+			"startdescription": "夢の世界で手の届くところまで来てしまった。<b>仕事</b>を始めなければならない。",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "tryreducefascination",
+			"label": "冷静さを求める？",
+			"actionId": "dream",
+			"requirements": {
+				"fascination": 1
+			},
+			"startdescription": "幻想の扉が開いた。小さな闇が私の光を丸め込む。恐怖にも使い道がある。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "tryrecoverreason",
+			"label": "心を空っぽにする？",
+			"actionId": "dream",
+			"requirements": {
+				"dread": 1
+			},
+			"startdescription": "自分が変わったことは覚えているが、どうやって変わったかはまだ思い出せない。[恐怖は適切な資源を使って鎮めることができる。]",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "tryrecoverillhealth",
+			"label": "回復？",
+			"actionId": "dream",
+			"requirements": {
+				"illhealth": 1
+			},
+			"startdescription": "休息すれば回復できる――必要な資源があればの話だが。",
+			"craftable": false,
+			"hintonly": true,
+			"comments": "This one's generic."
+		}
+	]
+}

@@ -54,8 +54,9 @@ public class MenuScreenController : LocalNexus {
     public TextMeshProUGUI VersionNumber;
     public Animation versionAnim;
     public MenuSubtitle Subtitle;
+    [SerializeField] public Notifier notifier;
 
-    [Header("DLC & Mods)")]
+    [Header("DLC & Mods")]
     public Transform legacyStartEntries;
     public MenuLegacyStartEntry LegacyStartEntryPrefab;
     public GameObject modEntryPrefab;
@@ -168,6 +169,8 @@ public class MenuScreenController : LocalNexus {
         BuildLegacyStartsPanel(store);
         BuildModsPanel(store);
         BuildLanguagesAvailablePanel();
+
+        new Registry().Register(notifier); //we register a different notifier in the later tabletop scene
 
     }
 
@@ -391,6 +394,7 @@ public class MenuScreenController : LocalNexus {
         
     }
 
+
     private void BuildLegacyStartsPanel(Storefront store)
     {
         foreach (Transform legacyStartEntry in legacyStartEntries)
@@ -468,7 +472,7 @@ public class MenuScreenController : LocalNexus {
 
 
 
-        foreach (var culture in Registry.Get<ICompendium>().GetEntitiesAsList<Culture>())
+        foreach (var culture in Registry.Get<ICompendium>().GetEntitiesAsList<Culture>().Where(c=>c.Released))
         {
             var languageChoice =Instantiate(languageChoicePrefab).GetComponent<LanguageChoice>();
             languageChoice.transform.SetParent(LanguagesAvailable,false);

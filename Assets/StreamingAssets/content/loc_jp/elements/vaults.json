@@ -1,0 +1,2055 @@
+{
+	"elements": [
+		{
+			"id": "vaultcapital1",
+			"label": "ストラスコイン邸",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcapital": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "珍品収集家、ストラスコイン氏の家。ストラスコイン氏が彼の宝物を売ってくれることはないだろうが、狡猾な仲間なら中に侵入できるかもしれない。",
+			"unique": true
+		},
+		{
+			"id": "vaultcapital2",
+			"label": "忘れ去られたミトラ神殿",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcapital": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "好奇心旺盛な者たちが、すでにこの古代の寺院を漁っていったが、どこかに隠し扉があるかもしれない。",
+			"unique": true
+		},
+		{
+			"id": "vaultcapital3",
+			"label": "有限会社ケーター&ヒーロ",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcapital": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "所有者の2人の命を奪った爆発の後、敷地は放棄されてきた。機械はそのまま音もたてずに立っていて、建物は崩れた殻のようになっている。ケーター氏は、オフィスに奇妙な置物を飾ることで知られていた。中にはまだいくつか残っているものがあるかもしれない。",
+			"unique": true
+		},
+		{
+			"id": "vaultcapital4",
+			"label": "聖アグネス病院",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcapital": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "ここの病院には、かつて優秀な医者たちが働いていた。確かに、切断術の数は多すぎたが、街中を歩きまわらない方が良さそうな人間もいるから仕方ない。",
+			"unique": true
+		},
+		{
+			"id": "vaultcapital5",
+			"label": "シューレンの聖フェリックスの会の会衆",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcapital": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "カルヴァン派の異端宗派の隠れ家。街の一角にひっそりと佇んでいる。彼らは、ラテン語とは似ても似つかない言語と、不謹慎な高揚感をもって賛美歌を歌う。",
+			"unique": true
+		},
+		{
+			"id": "vaultcapitaldefault",
+			"label": "忘れられた川岸",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcapital": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "朽ち果てた川の灰色の土手に沿って、倉庫が並んでいる。珍しい荷物が保管されていた倉庫を見つけたのかもしれない。[首都のすべての遠征を達成したが、何度でも川岸を見つけて訪問できる。]"
+		},
+		{
+			"id": "vaultshires1",
+			"label": "グラッドウィン湖",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultshires": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "丘陵地帯の荒涼とした斜面の下には、霧に包まれた湖面が広がっている。ローマ人が到着するまで、ここには一対の祭壇があった。伝説によると、その祭壇を汚すために蛇が送り込まれたらしい。",
+			"unique": true
+		},
+		{
+			"id": "vaultshires2",
+			"label": "ロックウッド沼地",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultshires": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "悪臭が漂う濁った沼地には、不吉な生命が宿っている。祈りを<i>叶えてくれる</i>小さな秘密の神々のために、無口な地元の人たちは今でも聖地を見守っている。",
+			"unique": true
+		},
+		{
+			"id": "vaultshires3",
+			"label": "クラウキスの丘",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultshires": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "古代の部族はこの安息の地を、最終的に人間というよりも傷跡のような存在となる、ある冷酷な時の神に仕えた人物に託したのである。彼らは束縛の歌とモルタルに混ぜた血で入り口を封印した。",
+			"unique": true
+		},
+		{
+			"id": "vaultshires4",
+			"label": "ケグリンの傷",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultshires": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "ローマ人は、名を持つ者たちが日の目を見てはいけないものを隠した立ち入り禁止の空間に達するまで、ここで銀を採掘したそれ以来、トンネルが崩壊しても、多くの人がここを訪れた。その中には去らなかった者たちもいる。",
+			"unique": true
+		},
+		{
+			"id": "vaultshires5",
+			"label": "宿屋グウェール",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultshires": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "灰色の海の上にある、崩れかけた崖に立つ宿屋グウェールは、海に流されるまで佇んでいるだろう。この宿にはほとんど客が来ない。店主が、有名な図書室に学者たちが出入りすることを禁じて以来、客の数はさらに減った。",
+			"unique": true
+		},
+		{
+			"id": "vaultshiresdefault",
+			"label": "ケリシャム",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultshires": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "sending",
+					"label": "派遣",
+					"description": "時々、遠征には別の目的があることもある。",
+					"required": {
+						"sendingheartb": 1,
+						"sendingmothb": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "丘陵地を通り、灰色の大地と大西洋の灰色の海が出会う海岸へと車を走らせると、道路沿いにケリシャム町への標識が見えてくる。訪れたことがあってもなかなか見つけられない場所である。住人たちは、呪い、こん棒、差し錠で絞められた扉で秘密を守っている。[州のすべての遠征を達成したが、何度でもケリシャムを見つけて訪問できる。]"
+		},
+		{
+			"id": "vaultcontinent1",
+			"label": "ラヴェリン城",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcontinent": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "ラヴェリン伯爵家については、<i>初代</i>太陽王の子孫であるという噂が流行っているが、狼の姿で森を徘徊したという話もある。朽ち果てた一族の城を除けば、まだ危険な秘密が残っているはずだ。",
+			"unique": true
+		},
+		{
+			"id": "vaultcontinent2",
+			"label": "フェルミエール修道院",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcontinent": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "ロバート・フェルミルは、鬱蒼とした森の中にあるこの壮大な修道院に、彼の不正に得た富の多くを寄付した。ここの僧侶たちは訪問者を嫌う。彼らの教義は正統派ではなく、特定の収穫祭を恐ろしく興奮しながら祝う。",
+			"unique": true
+		},
+		{
+			"id": "vaultcontinent3",
+			"label": "オルトロスの森",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcontinent": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "松の木が犬の背中の毛のように濃く生えている。森の奥の空気は、樹皮と埃が混ざり合い、どんよりとして息苦しい。あなたをここまで導いてきた情報源によると、毎晩夜明けになると、仮面を被った巨大な鴉が、森の暗い深みにある一番大きな大樹の上に鎮座するという。",
+			"unique": true
+		},
+		{
+			"id": "vaultcontinent4",
+			"label": "ヴァンダーシャーフ・コレクション",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcontinent": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "地方の町にある小さな博物館。押し花を保管している部屋で奇妙な歓喜の嵐が起きて以来、長い間一般公開されていない。好奇心旺盛な人だけがこの場所と、不吉な宝物が厳重に守られた倉庫に興味を持つだろう。",
+			"unique": true
+		},
+		{
+			"id": "vaultcontinent5",
+			"label": "フォアマンの家",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcontinent": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "フィリップ・フォアマンは蠕虫学者であり、古物収集者でもある。被験者が逃げだすまで、彼は実家で研究を行っていた。蔓延していたものは駆除されたが、フォアマンは今でも廊下を歩き、自分の図書室と恥を守っているのだという。",
+			"unique": true
+		},
+		{
+			"id": "vaultcontinent6",
+			"label": "鍵ハンターの屋根裏部屋",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcontinent": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "ウィーンは歴史上ずっと同じ名前を持つ数少ない都市の一つであるが、専門家は「白い都」、あるいは「白の都」と呼んでいる。雪の降る通りにある、曲がりくねった家の中の、高くガタガタと音を鳴らす屋根裏部屋で、我々は、架空の鍵を探す風変わりなハンターが、奇妙な本の宝庫を作っていたことを知った。",
+			"unique": true
+		},
+		{
+			"id": "vaultcontinentdefault",
+			"label": "無数の石",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcontinent": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "sending",
+					"label": "派遣",
+					"description": "時々、遠征には別の目的があることもある。",
+					"required": {
+						"sendingheartc": 1,
+						"sendingmothc": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "遠い昔に死んだ司祭によって、1ミリのずれもなく真っすぐと並べられたメガリス。長生者時が経ち元の血痕は消えてしまったが、月月のない夜には、地元の人たちが血痕を補う。隠された部屋には秘密の宝物が隠されているかもしれない。[大陸のすべての遠征を達成したが、何度でも石を見つけて訪問できる。]"
+		},
+		{
+			"id": "vaultlandbeyondforest1",
+			"label": "ロウソクの洞窟",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultlandbeyondforest": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "7回夕暮れが訪れるたびに、狡猾な男が下の村から蝋燭を新調しにやってくる。洞窟の入り口の地面は悪臭を放つ蝋でべっとりとしている。彼は、その光が下の生き物たちを怖がらせると言っているが、彼が持ってくる生贄に満足して出てこない可能性が高い。",
+			"unique": true
+		},
+		{
+			"id": "vaultlandbeyondforest2",
+			"label": "ヴォイヴォダの城塞",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultlandbeyondforest": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "トルコ人が偉大な権力を握っていた時代、ある権力者がここを支配していた。長い間、彼は自分の渇きが彼を飲み干すまで、多くの欲望を潤してきた。彼の宝物や生贄は、まだ城の下にある手つかずの金庫室の中にあるかもしれないと言われている。",
+			"unique": true
+		},
+		{
+			"id": "vaultlandbeyondforest3",
+			"label": "グリューネヴァルトの常設サーカス",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultlandbeyondforest": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "白塗りの農場の周りには、テントが張り巡らされた小さな街がある。雨に濡れた団員たちが、ガタガタと震えている。グルーネヴァルト夫人は、この施設の維持にかなりの財産をつぎ込んでいるが、その理由を知る者はいない。サーカス団員たちは、不法侵入者を嫌うのだ。",
+			"unique": true
+		},
+		{
+			"id": "vaultlandbeyondforest4",
+			"label": "レヴェック塔",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultlandbeyondforest": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "哀れな廃墟。空気が臭う。塔を破壊した力は、今もここまとわりついている。地上には1階分しか残っていないが、下にはまだ何かあるはずだ。",
+			"unique": true
+		},
+		{
+			"id": "vaultlandbeyondforest5",
+			"label": "クスネツォフの寄贈建物",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultlandbeyondforest": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "クスネツォフ王子は、血まみれの財産の4分の1を地元の大学に寄付して終末論学部を設立した。職員は今では正気を失い、建物は凍った沼で朽ち果てている。クスネツォフの遺贈の一部は宝物を買うために使われたのかもしれない。",
+			"unique": true
+		},
+		{
+			"id": "vaultlandbeyondforestdefault",
+			"label": "ふぉくすリリー草原",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultlandbeyondforest": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "sending",
+					"label": "派遣",
+					"description": "時々、遠征には別の目的があることもある。",
+					"required": {
+						"sendingheartd": 1,
+						"sendingmothd": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "フォックスリリーの香りは猛烈に欲望を掻き立る。この高地にしか生えていないのは幸運なことなのかもしれない。地元の百姓は宝探しをする者たちを遠ざけようとするが、それでもこの花のの被害に遭う者はいる。彼らの宝物は、骨の横に落ちている。そして、このサイクルは続いていくのだ。。[森の向こうの大地のすべての遠征を達成したが、何度でも草地を見つけて訪問できる。]"
+		},
+		{
+			"id": "vaultrendingmountains1",
+			"label": "ハンターの洞窟",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultrendingmountains": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "引き裂き部族はこの洞窟を拡大して、穴を掘ったり、罠を設置したりした。それは、処刑や加入儀式に使われていたのかもしれない。どちらにしても、神聖な場所であるため、我々は歓迎されないだろう。生き残れたとしても、狭いトンネルの中にはもう1つ恐ろしいものが待ち受けている。",
+			"unique": true
+		},
+		{
+			"id": "vaultrendingmountains2",
+			"label": "雪の守り人",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultrendingmountains": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "山頂にある不吉な佇まいの寺院。雪の中でキノコが宝石のように輝く。何世代にも渡って誰もここを訪れていないが、」中で何かが動いている。",
+			"unique": true
+		},
+		{
+			"id": "vaultrendingmountains3",
+			"label": "イキルマウィの瞳",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultrendingmountains": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "800年前に存在した、星の下でしか眠れなかったスルターンの話を読んだ。寝室の天井に正確に星を描けるように、この天文台を作らせたらしい。残念ながら、彼らが見た星は、無防備な人間の心を脅かすものだった。スルターンの後継者は展望台の封鎖を命じた。",
+			"unique": true
+		},
+		{
+			"id": "vaultrendingmountains4",
+			"label": "狼の霊廟",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultrendingmountains": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "ローマが陥落するずっと前に建てられた寒々しい建物。石の狼が扉を見張っている。中には、予言された葬列で太陽の断片を待つために、岩をくり抜いて作った部屋がある。その葬列がここにたどり着くことはなかったが、今でも死者はここに引き寄せられてくる。",
+			"unique": true
+		},
+		{
+			"id": "vaultrendingmountainsdefault",
+			"label": "影のない王たちの墓",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultrendingmountains": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "労働者たちは、この地の最初の王たちの墓をライオン色の岩に彫った。王たちは不老不死を望んでいた。おそらくそのうちの1人はその夢をかなえただろう。他の王たちは...装飾品に囲まれて横たわっている。そして彼らを見守るのは先祖代々の守護者たちだ。[裂け目の山のすべての遠征を達成したが、何度でも墓を見つけて訪問できる。]"
+		},
+		{
+			"id": "vaultloneandlevelsands1",
+			"label": "星屑の神殿",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultloneandlevelsands": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "ここは、冬の夜に隕石が落ちるまでは、地上の神々にとって神聖な場所だった。やがて、崇拝者たちは壊れた遺跡に忍び寄り、隕石は夢をもたらすものとして崇拝されるようになった。古い祭壇が、まだ隕石の隠れ家の下に残っているかもしれない。",
+			"unique": true
+		},
+		{
+			"id": "vaultloneandlevelsands2",
+			"label": "ラグーンの墓",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultloneandlevelsands": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "砂漠の奥まった場所に、傾斜のある長方形の泥レンガの墓がある。目立たないとはいえ、ラグーンは不死の長生者であり、その墓にたどり着いた強盗は一人もいなかった。",
+			"unique": true
+		},
+		{
+			"id": "vaultloneandlevelsands3",
+			"label": "メッサナ",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultloneandlevelsands": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "川の湾曲部に、静かで豊かな村がある。砂地に驚くほど鮮やかな緑が映える。村人は自然の限界を超えるほど長い気をする。どんな秘密を隠しているのだろう？",
+			"unique": true
+		},
+		{
+			"id": "vaultloneandlevelsands4",
+			"label": "ナナトグロの寺院",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultloneandlevelsands": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "影に覆われた隘路に立つ崩れかけた寺院。この建物は、後にワームがヨーロッパに蔓延っていた第三史の中に建てられたようだが、今では全ての史実で存在する。",
+			"unique": true
+		},
+		{
+			"id": "vaultloneandlevelsandsdefault",
+			"label": "ミア",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultloneandlevelsands": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "sending",
+					"label": "派遣",
+					"description": "時々、遠征には別の目的があることもある。",
+					"required": {
+						"sendinghearte": 1,
+						"sendingmothe": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "ここに都市があった。古い骨をジャッカルのように拾い集めることができる。宮殿の壁、埋もれた道、粉々になった噴水。死者の知識を見つけることもあれば死が我々を見つけることもある。[砂地のすべての遠征を達成したが、何度でもミアを見つけて訪問できる。]"
+		},
+		{
+			"id": "vaulteveningisles1",
+			"label": "鴉の島",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaulteveningisles": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "エメラルド色のジャングルの中から死火山が姿を現した。卑劣な犯罪に堕ちた不死人たちは追放され、ここでねぐらにつき、血を飲み、不用心な旅人の骨を砕く。何年もかけて面白いおもちゃを捕まえてきたに違いない。",
+			"unique": true
+		},
+		{
+			"id": "vaulteveningisles2",
+			"label": "ゲリク要塞",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaulteveningisles": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "300年前、強欲な帝国がトルマリン鉱山のある島を占領した。この帝国とこの島は、正史には一切出てこない。しかし、総督の要塞が残っており、彼の宝物も残っているかもしれない。そうであれば、彼自身もいるのかもしれない。",
+			"unique": true
+		},
+		{
+			"id": "vaulteveningisles3",
+			"label": "クリスタベル号の残骸",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaulteveningisles": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "海獣はこの船を愛していたが、彼女が愛情を返さないと分かると、この船を潰した。今でも海獣が沈没船から離れることを拒み、カルトの宝物のように飾っている。慎重に潜ったほうが良いだろう。",
+			"unique": true
+		},
+		{
+			"id": "vaulteveningisles4",
+			"label": "深淵の門の聖テントレット修道院",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaulteveningisles": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "崖の端に不気味にぶら下がっている修道院。海に落ちても不思議ではないが、双子の片割れと魔女の保護を受けるために、1年、また1年と、僧侶たちが犠牲者を海へと沈め続けているらしい。",
+			"unique": true
+		},
+		{
+			"id": "vaulteveningislesdefault",
+			"label": "正午の港",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaulteveningisles": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "sending",
+					"label": "派遣",
+					"description": "時々、遠征には別の目的があることもある。",
+					"required": {
+						"sendingheartf": 1,
+						"sendingmothf": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "不死身の者は誰でも選択をしなくてはいけない。時の神々に使えるか、もう一度定命の者になるか、消滅するかだ。正午と呼ばれる日当たりの良い小さな島の港は、すべての選択肢を拒否した不死身の者の流刑地だ。[夕方の島のすべての遠征を達成したが、何度でも正午の港を見つけて訪問できる。]"
+		},
+		{
+			"id": "vaultfloating1",
+			"label": "ヘベ・スタントン号",
+			"aspects": {
+				"vault": 1,
+				"location": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "リーダー",
+					"description": "遠征を始めるには最低でも1人の信奉者が必要だ。後からでも追加できる。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "助手",
+					"description": "役に立ちそうなら、今から信奉者を追加しても良い。",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "資金",
+					"description": "遠征を始めるには1つ以上の資金が必要だ。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "追加資金",
+					"description": "資金切れが心配なら、今から資金を追加することができる。",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "スキャンダルから逃れようとしている俳優や内気な大富豪、流れる水の上にいる方が安全だと感じるオカルト学者がよく使う、ボロボロだが驚くほど豪華な汽船。そして一度だけ、リゲイアクラブが船全体を貸し切り、7部屋だけを使った。",
+			"unique": true
+		}
+	]
+}

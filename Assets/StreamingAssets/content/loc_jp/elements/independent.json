@@ -1,0 +1,1562 @@
+{
+	"elements": [
+		{
+			"id": "generic_r",
+			"label": "トラブルメーカー",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "バランス感覚を完全に失った人。",
+			"animFrames": 1,
+			"icon": "generic_c_edge",
+			"xtriggers": {
+				"rival_promotion": "generic_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "generic_c_edge"
+			}
+		},
+		{
+			"id": "auclair_r",
+			"icon": "auclair_r",
+			"label": "トラブルメーカーのオークレール",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "オークレールは今まで以上にチェスを楽しんでいる。白、黒。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "auclair_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "auclair_b"
+			},
+			"uniquenessgroup": "uqauclair"
+		},
+		{
+			"id": "cat_r",
+			"icon": "cat_r",
+			"label": "トラブルメーカーのキャット・キャロ",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "彼女は自分のことを「キャット・キャロ」と呼んでいる。かつては占い師だった。今の彼女が何者なのかは、誰も正確には知らない。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "cat_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "cat_b"
+			},
+			"uniquenessgroup": "uqcat"
+		},
+		{
+			"id": "clifton_r",
+			"icon": "clifton_r",
+			"label": "トラブルメーカーのクリフトン「教皇」",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "クリフトンは「聖下」と呼ばれることを好む。他の呼び方をすると、醜態をさらすこともある。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "clifton_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "clifton_b"
+			},
+			"uniquenessgroup": "uqclifton"
+		},
+		{
+			"id": "clovette_r",
+			"icon": "clovette_r",
+			"label": "トラブルメーカーのクロヴェット",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "クロヴェットが何をしたかはわかっていても、嫌いになるのは難しい。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "clovette_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "clovette_b"
+			},
+			"uniquenessgroup": "uqclovette"
+		},
+		{
+			"id": "dorothy_r",
+			"icon": "dorothy_r",
+			"label": "トラブルメーカーのドロシー",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "ドロシーは止まらない。絶対に。そう誓ったのだ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "dorothy_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "dorothy_b"
+			},
+			"uniquenessgroup": "uqdorothy"
+		},
+		{
+			"id": "douglas_r",
+			"icon": "defaulthunter",
+			"label": "トラブルメーカーのダグラス",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "ダグラスはうんざりしていた。そろそろ何の騒ぎか見に行くべきだ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "douglas_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "douglas_b"
+			},
+			"uniquenessgroup": "uqdouglas"
+		},
+		{
+			"id": "elridge_r",
+			"icon": "elridge_r",
+			"label": "トラブルメーカーのエルリッジ",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "エルリッジの靴にはよく血が付いている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "elridge_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "elridge_b"
+			}
+		},
+		{
+			"id": "enid_r",
+			"icon": "enid_r",
+			"label": "トラブルメーカーのイーニッド",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "イーニッドは常に先回りして敵の動きを読んでいる。毎回だ。",
+			"xtriggers": {
+				"rival_promotion": "enid_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "enid_b"
+			},
+			"uniquenessgroup": "uqenid"
+		},
+		{
+			"id": "laidlaw_r",
+			"icon": "laidlaw_r",
+			"label": "トラブルメーカーのレイドロー",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "レイドローの計画はシダの影のように複雑だ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "laidlaw_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "laidlaw_b"
+			},
+			"uniquenessgroup": "uqlaidlaw"
+		},
+		{
+			"id": "leo_r",
+			"icon": "leo_r",
+			"label": "トラブルメーカーのレオ",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "どちら側につくか選んだレオは、それを守るためなら何でもするだろう。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "leo_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "leo_b"
+			},
+			"uniquenessgroup": "uqleo"
+		},
+		{
+			"id": "neville_r",
+			"icon": "neville_r",
+			"label": "トラブルメーカーのネビル",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "ネビルは、これが長くは続かないと分かってるが、続いている間は、神に誓って、目の前に現れたどのような扉でも開くだろう。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "neville_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "neville_b"
+			},
+			"uniquenessgroup": "uqneville"
+		},
+		{
+			"id": "porter_r",
+			"icon": "porter_r",
+			"label": "トラブルメーカーのポーター",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "ポーターが名前を集め始めた。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "porter_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "porter_b"
+			},
+			"uniquenessgroup": "uqporter"
+		},
+		{
+			"id": "renira_r",
+			"icon": "renira_r",
+			"label": "トラブルメーカーのレニラ",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "レニラは賛美者を崇拝者に変えるのが好きだ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "renira_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "renira_b"
+			},
+			"uniquenessgroup": "uqrenira"
+		},
+		{
+			"id": "rose_r",
+			"icon": "rose_r",
+			"label": "トラブルメーカーのローズ",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "ローズが敵を恐れなくなってから、ずいぶん時が経つ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "rose_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "rose_b"
+			},
+			"uniquenessgroup": "uqrose"
+		},
+		{
+			"id": "saliba_r",
+			"icon": "saliba_r",
+			"label": "トラブルメーカーのサリバ",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "サリバは退屈を許さない。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "saliba_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "saliba_b"
+			},
+			"uniquenessgroup": "uqsaliba"
+		},
+		{
+			"id": "slee_r",
+			"icon": "slee_r",
+			"label": "トラブルメーカーのスリー",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "スレーはいつでも自分の理論を追求するための資源に飢えている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "slee_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "slee_b"
+			},
+			"uniquenessgroup": "uqslee"
+		},
+		{
+			"id": "sylvia_r",
+			"icon": "sylvia_r",
+			"label": "トラブルメーカーのシルヴィア",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "シルヴィアの意図は明確ではない。シルヴィア自身も知らないのではないか、と疑う者もいる。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "sylvia_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "sylvia_b"
+			},
+			"uniquenessgroup": "uqsylvia"
+		},
+		{
+			"id": "tristan_r",
+			"icon": "tristan_r",
+			"label": "トラブルメーカーのトリスタン",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "トリスタンは小さな王国を作っている。火が必要になれば、彼は火を使う。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "tristan_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "tristan_b"
+			},
+			"uniquenessgroup": "uqtristan"
+		},
+		{
+			"id": "valciane_r",
+			"icon": "valciane_r",
+			"label": "トラブルメーカーのヴァルシアーヌ",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "ヴァルシアーヌは瓶をたたき割る若者の勢いで、相手を迎え撃つ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "valciane_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "valciane_b"
+			},
+			"uniquenessgroup": "uqvalciane"
+		},
+		{
+			"id": "victor_r",
+			"icon": "victor_r",
+			"label": "トラブルメーカーのビクター",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "ビクターは迎え撃つ準備ができている。彼のナイフはすべて、新兵のように鋭い。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "victor_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "victor_b"
+			},
+			"uniquenessgroup": "uqvictor"
+		},
+		{
+			"id": "violet_r",
+			"icon": "violet_r",
+			"label": "トラブルメーカーのヴァイオレット",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "ヴァイオレットは新しい趣味を見つけた。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "violet_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "violet_b"
+			},
+			"uniquenessgroup": "uqviolet"
+		},
+		{
+			"id": "ysabet_r",
+			"icon": "ysabet_r",
+			"label": "トラブルメーカーのイザベト",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "イザベトは見えない所で待っている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "ysabet_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "ysabet_b"
+			},
+			"uniquenessgroup": "uqysabet"
+		},
+		{
+			"id": "generic_r_c",
+			"label": "ライバル",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "バランス感覚を完全に失った人。",
+			"animFrames": 1,
+			"icon": "generic_c_edge",
+			"xtriggers": {
+				"rival_promotion": "generic_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "generic_c_edge"
+			}
+		},
+		{
+			"id": "auclair_r_c",
+			"icon": "auclair_r",
+			"label": "ライバルのオークレール",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "オークレールは今まで以上にチェスを楽しんでいる。白、黒。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "auclair_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "auclair_c"
+			},
+			"uniquenessgroup": "uqauclair"
+		},
+		{
+			"id": "cat_r_c",
+			"icon": "cat_r",
+			"label": "ライバルのキャット・キャロ",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "彼女は自分のことを「キャット・キャロ」と呼んでいる。かつては占い師だった。今の彼女が何者なのかは、誰も正確には知らない。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "cat_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "cat_c"
+			},
+			"uniquenessgroup": "uqcat"
+		},
+		{
+			"id": "clifton_r_c",
+			"icon": "clifton_r",
+			"label": "ライバルのクリフトン「教皇」",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "クリフトンは「聖下」と呼ばれることを好む。他の呼び方をすると、醜態をさらすこともある。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "clifton_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "clifton_c"
+			},
+			"uniquenessgroup": "uqclifton"
+		},
+		{
+			"id": "clovette_r_c",
+			"icon": "clovette_r",
+			"label": "ライバルのクロヴェット",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "クロヴェットが何をしたかはわかっていても、嫌いになるのは難しい。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "clovette_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "clovette_c"
+			},
+			"uniquenessgroup": "uqclovette"
+		},
+		{
+			"id": "connie_r_c",
+			"icon": "connie_r",
+			"label": "反逆者のコニー",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "コニーは......コニーはじっくりと考えている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "connie_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "connie_c"
+			},
+			"uniquenessgroup": "uqconnie"
+		},
+		{
+			"id": "dorothy_r_c",
+			"icon": "dorothy_r",
+			"label": "ライバルのドロシー",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "ドロシーは止まらない。絶対に。そう誓ったのだ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "dorothy_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "dorothy_c"
+			},
+			"uniquenessgroup": "uqdorothy"
+		},
+		{
+			"id": "douglas_r_c",
+			"icon": "douglas_r",
+			"label": "ライバルのダグラス",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "ダグラスはうんざりしていた。そろそろ何の騒ぎか見に行くべきだ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "douglas_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "douglas_c"
+			},
+			"uniquenessgroup": "uqdouglas"
+		},
+		{
+			"id": "elridge_r_c",
+			"icon": "elridge_r",
+			"label": "ライバルのエルリッジ",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "エルリッジの靴にはよく血が付いている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "elridge_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "elridge_c"
+			}
+		},
+		{
+			"id": "enid_r_c",
+			"icon": "enid_r",
+			"label": "ライバルのイーニッド",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "イーニッドは常に先回りして敵の動きを読んでいる。毎回だ。",
+			"xtriggers": {
+				"rival_promotion": "enid_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "enid_c"
+			},
+			"uniquenessgroup": "uqenid"
+		},
+		{
+			"id": "laidlaw_r_c",
+			"icon": "laidlaw_r",
+			"label": "ライバルのレイドロー",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "レイドローの計画はシダの影のように複雑だ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "laidlaw_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "laidlaw_c"
+			},
+			"uniquenessgroup": "uqlaidlaw"
+		},
+		{
+			"id": "leo_r_c",
+			"icon": "leo_r",
+			"label": "ライバルのレオ",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "どちら側につくか選んだレオは、それを守るためなら何でもするだろう。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "leo_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "leo_c"
+			},
+			"uniquenessgroup": "uqleo"
+		},
+		{
+			"id": "natalia_r_c",
+			"icon": "natalia_r",
+			"label": "反逆者のナタリア",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "ナタリアは、あまりにも長い間隠されていた真実を学んだ。その結果、彼女は予定を調節した。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "natalia_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "natalia_c"
+			},
+			"uniquenessgroup": "uqnatalia"
+		},
+		{
+			"id": "neville_r_c",
+			"icon": "neville_r",
+			"label": "ライバルのネビル",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "ネビルは、これが長くは続かないと分かってるが、続いている間は、神に誓って、目の前に現れたどのような扉でも開くだろう。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "neville_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "neville_c"
+			},
+			"uniquenessgroup": "uqneville"
+		},
+		{
+			"id": "porter_r_c",
+			"icon": "porter_r",
+			"label": "ライバルのポーター",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "ポーターが名前を集め始めた。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "porter_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "porter_c"
+			},
+			"uniquenessgroup": "uqporter"
+		},
+		{
+			"id": "renira_r_c",
+			"icon": "renira_r",
+			"label": "ライバルのレニラ",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "レニラは賛美者を崇拝者に変えるのが好きだ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "renira_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "renira_c"
+			},
+			"uniquenessgroup": "uqrenira"
+		},
+		{
+			"id": "rose_r_c",
+			"icon": "rose_r",
+			"label": "ライバルのローズ",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "ローズが敵を恐れなくなってから、ずいぶん時が経つ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "rose_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "rose_c"
+			},
+			"uniquenessgroup": "uqrose"
+		},
+		{
+			"id": "saliba_r_c",
+			"icon": "saliba_r",
+			"label": "ライバルのサリバ",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "サリバは退屈を許さない。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "saliba_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "saliba_c"
+			},
+			"uniquenessgroup": "uqsaliba"
+		},
+		{
+			"id": "slee_r_c",
+			"icon": "slee_r",
+			"label": "ライバルのスリー",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "スレーはいつでも自分の理論を追求するための資源に飢えている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "slee_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "slee_c"
+			},
+			"uniquenessgroup": "uqslee"
+		},
+		{
+			"id": "spencer_r_c",
+			"icon": "spencer_r",
+			"label": "反逆者のスペンサー",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "スペンサーは長いこと、可能性の間で揺れ動いていた......そして今、彼は決断を下した。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "spencer_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "spencer_c"
+			},
+			"uniquenessgroup": "uqspencer"
+		},
+		{
+			"id": "sylvia_r_c",
+			"icon": "sylvia_r",
+			"label": "ライバルのシルヴィア",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "シルヴィアの意図は明確ではない。シルヴィア自身も知らないのではないか、と疑う者もいる。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "sylvia_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "sylvia_c"
+			},
+			"uniquenessgroup": "uqsylvia"
+		},
+		{
+			"id": "tristan_r_c",
+			"icon": "tristan_r",
+			"label": "ライバルのトリスタン",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "トリスタンは小さな王国を作っている。火が必要になれば、彼は火を使う。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "tristan_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "tristan_c"
+			},
+			"uniquenessgroup": "uqtristan"
+		},
+		{
+			"id": "valciane_r_c",
+			"icon": "valciane_r",
+			"label": "ライバルのヴァルシアーヌ",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "ヴァルシアーヌは瓶をたたき割る若者の勢いで、相手を迎え撃つ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "valciane_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "valciane_c"
+			},
+			"uniquenessgroup": "uqvalciane"
+		},
+		{
+			"id": "victor_r_c",
+			"icon": "victor_r",
+			"label": "ライバルのビクター",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "ビクターは迎え撃つ準備ができている。彼のナイフはすべて、新兵のように鋭い。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "victor_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "victor_c"
+			},
+			"uniquenessgroup": "uqvictor"
+		},
+		{
+			"id": "violet_r_c",
+			"icon": "violet_r",
+			"label": "ライバルのヴァイオレット",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "ヴァイオレットは新しい趣味を見つけた。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "violet_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "violet_c"
+			},
+			"uniquenessgroup": "uqviolet"
+		},
+		{
+			"id": "ysabet_r_c",
+			"icon": "ysabet_r",
+			"label": "ライバルのイザベト",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "イザベトは見えない所で待っている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "ysabet_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "ysabet_c"
+			},
+			"uniquenessgroup": "uqysabet"
+		},
+		{
+			"id": "zachary_r_c",
+			"icon": "zachary_r",
+			"label": "反逆者のザッカリー",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "ザッカリーはいつも自分の理性に従ってきたが、今ではそれが彼を取締局から、厳しい夜明けへと導いていた。",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "zachary_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "zachary_c"
+			},
+			"uniquenessgroup": "uqzachary"
+		},
+		{
+			"id": "generic_r_d",
+			"label": "長生者の卵",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "バランス感覚を完全に失った人。",
+			"animFrames": 1,
+			"icon": "generic_c_edge",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "generic_c_edge"
+			}
+		},
+		{
+			"id": "auclair_r_d",
+			"icon": "auclair_r",
+			"label": "長生者の卵、オークレール",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "オークレールは今まで以上にチェスを楽しんでいる。白、黒。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "auclair_d"
+			},
+			"uniquenessgroup": "uqauclair"
+		},
+		{
+			"id": "cat_r_d",
+			"icon": "cat_r",
+			"label": "長生者の卵、キャット・キャロ",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "彼女は自分のことを「キャット・キャロ」と呼んでいる。かつては占い師だった。今の彼女が何者なのかは、誰も正確には知らない。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "cat_d"
+			},
+			"uniquenessgroup": "uqcat"
+		},
+		{
+			"id": "clifton_r_d",
+			"icon": "clifton_r",
+			"label": "長生者の卵、クリフトン「教皇」",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "クリフトンは「聖下」と呼ばれることを好む。他の呼び方をすると、醜態をさらすこともある。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "clifton_d"
+			},
+			"uniquenessgroup": "uqclifton"
+		},
+		{
+			"id": "clovette_r_d",
+			"icon": "clovette_r",
+			"label": "長生者の卵、クロヴェット",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "クロヴェットが何をしたかはわかっていても、嫌いになるのは難しい。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "clovette_d"
+			},
+			"uniquenessgroup": "uqclovette"
+		},
+		{
+			"id": "connie_r_d",
+			"icon": "connie_r",
+			"label": "長生者の卵、コニー",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "コニーは挑戦には目がなかった。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "connie_d"
+			},
+			"uniquenessgroup": "uqconnie"
+		},
+		{
+			"id": "dorothy_r_d",
+			"icon": "dorothy_r",
+			"label": "長生者の卵、ドロシー",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "ドロシーは止まらない。絶対に。そう誓ったのだ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "dorothy_d"
+			},
+			"uniquenessgroup": "uqdorothy"
+		},
+		{
+			"id": "douglas_r_d",
+			"icon": "douglas_r",
+			"label": "長生者の卵、ダグラス",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "ダグラスは火を見つけた。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "douglas_d"
+			},
+			"uniquenessgroup": "uqdouglas"
+		},
+		{
+			"id": "elridge_r_d",
+			"icon": "elridge_r",
+			"label": "長生者の卵、エルリッジ",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "エルリッジの靴にはよく血が付いている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "elridge_d"
+			}
+		},
+		{
+			"id": "enid_r_d",
+			"icon": "enid_r",
+			"label": "長生者の卵、イーニッド",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "イーニッドは常に先回りして敵の動きを読んでいる。毎回だ。",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "enid_d"
+			},
+			"uniquenessgroup": "uqenid"
+		},
+		{
+			"id": "laidlaw_r_d",
+			"icon": "laidlaw_r",
+			"label": "長生者の卵、レイドロー",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "レイドローの計画はシダの影のように複雑だ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "laidlaw_d"
+			},
+			"uniquenessgroup": "uqlaidlaw"
+		},
+		{
+			"id": "leo_r_d",
+			"icon": "leo_r",
+			"label": "長生者の卵、レオ",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "どちら側につくか選んだレオは、それを守るためなら何でもするだろう。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "leo_d"
+			},
+			"uniquenessgroup": "uqleo"
+		},
+		{
+			"id": "natalia_r_d",
+			"icon": "natalia_r",
+			"label": "長生者の卵、ナタリア",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "ナタリアはを多くのことを学んできた。それも多くの犠牲を払ってだ。今や彼女を止められるものはない。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "natalia_d"
+			},
+			"uniquenessgroup": "uqnatalia"
+		},
+		{
+			"id": "neville_r_d",
+			"icon": "neville_r",
+			"label": "長生者の卵、ネビル",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "ネビルは、これが長くは続かないと分かってるが、続いている間は、神に誓って、目の前に現れたどのような扉でも開くだろう。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "neville_d"
+			},
+			"uniquenessgroup": "uqneville"
+		},
+		{
+			"id": "porter_r_d",
+			"icon": "porter_r",
+			"label": "長生者の卵、ポーター",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "ポーターが名前を集め始めた。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "porter_d"
+			},
+			"uniquenessgroup": "uqporter"
+		},
+		{
+			"id": "renira_r_d",
+			"icon": "renira_r",
+			"label": "長生者の卵、レニラ",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "レニラは賛美者を崇拝者に変えるのが好きだ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "renira_d"
+			},
+			"uniquenessgroup": "uqrenira"
+		},
+		{
+			"id": "rose_r_d",
+			"icon": "rose_r",
+			"label": "長生者の卵、ローズ",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "ローズが敵を恐れなくなってから、ずいぶん時が経つ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "rose_d"
+			},
+			"uniquenessgroup": "uqrose"
+		},
+		{
+			"id": "saliba_r_d",
+			"icon": "saliba_r",
+			"label": "長生者の卵、サリバ",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "サリバは退屈を許さない。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "saliba_d"
+			},
+			"uniquenessgroup": "uqsaliba"
+		},
+		{
+			"id": "slee_r_d",
+			"icon": "slee_r",
+			"label": "長生者の卵、スリー",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "スレーはいつでも自分の理論を追求するための資源に飢えている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "slee_d"
+			},
+			"uniquenessgroup": "uqslee"
+		},
+		{
+			"id": "spencer_r_d",
+			"icon": "spencer_r",
+			"label": "長生者の卵、スペンサー",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "スペンサーは隠し事を許さないようになるだろう。彼は今、最後の入口に近づいている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "spencer_d"
+			},
+			"uniquenessgroup": "uqspencer"
+		},
+		{
+			"id": "sylvia_r_d",
+			"icon": "sylvia_r",
+			"label": "長生者の卵、シルヴィア",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "シルヴィアの意図は明確ではない。シルヴィア自身も知らないのではないか、と疑う者もいる。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "sylvia_d"
+			},
+			"uniquenessgroup": "uqsylvia"
+		},
+		{
+			"id": "tristan_r_d",
+			"icon": "tristan_r",
+			"label": "長生者の卵、トリスタン",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "トリスタンは小さな王国を作っている。火が必要になれば、彼は火を使う。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "tristan_d"
+			},
+			"uniquenessgroup": "uqtristan"
+		},
+		{
+			"id": "valciane_r_d",
+			"icon": "valciane_r",
+			"label": "長生者の卵、ヴァルシアーヌ",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "ヴァルシアーヌは瓶をたたき割る若者の勢いで、相手を迎え撃つ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "valciane_d"
+			},
+			"uniquenessgroup": "uqvalciane"
+		},
+		{
+			"id": "victor_r_d",
+			"icon": "victor_r",
+			"label": "長生者の卵、ビクター",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "ビクターは迎え撃つ準備ができている。彼のナイフはすべて、新兵のように鋭い。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "victor_d"
+			},
+			"uniquenessgroup": "uqvictor"
+		},
+		{
+			"id": "violet_r_d",
+			"icon": "violet_r",
+			"label": "長生者の卵、ヴァイオレット",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "ヴァイオレットは新しい趣味を見つけた。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "violet_d"
+			},
+			"uniquenessgroup": "uqviolet"
+		},
+		{
+			"id": "ysabet_r_d",
+			"icon": "ysabet_r",
+			"label": "長生者の卵、イザベト",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "イザベトは見えない所で待っている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "ysabet_d"
+			},
+			"uniquenessgroup": "uqysabet"
+		},
+		{
+			"id": "zachary_r_d",
+			"icon": "zachary_r",
+			"label": "長生者の卵、ザッカリー",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "ザッカリーは避けられない結論に近づいている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "zachary_d"
+			},
+			"uniquenessgroup": "uqzachary"
+		}
+	]
+}

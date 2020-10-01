@@ -1,0 +1,493 @@
+{
+	"recipes": [
+		{
+			"id": "writeedgec",
+			"label": "刃の信仰とそれを支配する時の神々に関する広範な論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleedgec": 1,
+				"lore": 1,
+				"edge": 6,
+				"reason": 2
+			},
+			"effects": {
+				"articleedgec": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writeforgec",
+			"label": "鍛造と呼ばれる信条の伝承に関する広範な論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleforgec": 1,
+				"lore": 1,
+				"forge": 6,
+				"reason": 2
+			},
+			"effects": {
+				"articleforgec": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writegrailc",
+			"label": "赤い聖杯の伝承に関する広範な論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlegrailc": 1,
+				"lore": 1,
+				"grail": 6,
+				"reason": 1,
+				"passion": 1
+			},
+			"effects": {
+				"articlegrailc": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writeheartc",
+			"label": "心臓の伝承に関する広範な論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleheartc": 1,
+				"lore": 1,
+				"heart": 6,
+				"reason": 1,
+				"passion": 1
+			},
+			"effects": {
+				"articleheartc": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writeknockc",
+			"label": "開錠の伝承に関する広範な論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleknockc": 1,
+				"lore": 1,
+				"knock": 6,
+				"reason": 2
+			},
+			"effects": {
+				"articleknockc": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writelanternc",
+			"label": "灯りの伝承に関する広範な論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlelanternc": 1,
+				"lore": 1,
+				"lantern": 6,
+				"reason": 2
+			},
+			"effects": {
+				"articlelanternc": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writemothc",
+			"label": "蛾の伝承に関する広範な論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlemothc": 1,
+				"lore": 1,
+				"moth": 6,
+				"reason": 1,
+				"passion": 1
+			},
+			"effects": {
+				"articlemothc": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writesecrethistoriesc",
+			"label": "秘史に関する広範な論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlesecrethistoriesc": 1,
+				"lore": 1,
+				"secrethistories": 6,
+				"reason": 2
+			},
+			"effects": {
+				"articlesecrethistoriesc": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writewinterc",
+			"label": "白の伝承に関する広範な論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlewinterc": 1,
+				"lore": 1,
+				"winter": 6,
+				"reason": 2
+			},
+			"effects": {
+				"articlewinterc": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writeedgeb",
+			"label": "刃の伝承について詳しい論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleedgeb": 1,
+				"lore": 1,
+				"edge": 4,
+				"reason": 1
+			},
+			"effects": {
+				"articleedgeb": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writeforgeb",
+			"label": "鍛造の信条について詳しい論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleforgeb": 1,
+				"lore": 1,
+				"forge": 4,
+				"reason": 1
+			},
+			"effects": {
+				"articleforgeb": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writegrailb",
+			"label": "赤い聖杯の儀式について詳しい論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlegrailb": 1,
+				"lore": 1,
+				"grail": 4,
+				"reason": 1
+			},
+			"effects": {
+				"articlegrailb": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writeheartb",
+			"label": "心臓の伝承について詳しい論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleheartb": 1,
+				"lore": 1,
+				"heart": 4,
+				"reason": 1
+			},
+			"effects": {
+				"articleheartb": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writeknockb",
+			"label": "開錠の開放の儀式について詳しい論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleknockb": 1,
+				"lore": 1,
+				"knock": 4,
+				"reason": 1
+			},
+			"effects": {
+				"articleknockb": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writelanternb",
+			"label": "灯りに関して詳しい論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlelanternb": 1,
+				"lore": 1,
+				"lantern": 4,
+				"reason": 1
+			},
+			"effects": {
+				"articlelanternb": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writemothb",
+			"label": "蛾について詳しい論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlemothb": 1,
+				"lore": 1,
+				"moth": 4,
+				"reason": 1
+			},
+			"effects": {
+				"articlemothb": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writesecrethistoriesb",
+			"label": "秘史について詳しい論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlesecrethistoriesb": 1,
+				"lore": 1,
+				"secrethistories": 4,
+				"reason": 1
+			},
+			"effects": {
+				"articlesecrethistoriesb": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writewinterb",
+			"label": "白の伝承について詳しい論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlewinterb": 1,
+				"lore": 1,
+				"winter": 4,
+				"reason": 1
+			},
+			"effects": {
+				"articlewinterb": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writeedgea",
+			"label": "刃の信条に関して簡単な論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleedge": 1,
+				"lore": 1,
+				"edge": 2,
+				"reason": 1
+			},
+			"effects": {
+				"articleedgea": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writeforgea",
+			"label": "鍛造の信条に関して簡単な論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleforge": 1,
+				"lore": 1,
+				"forge": 2,
+				"reason": 1
+			},
+			"effects": {
+				"articleforgea": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writegraila",
+			"label": "赤い聖杯の伝承に関して簡単な論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlegrail": 1,
+				"lore": 1,
+				"grail": 2,
+				"reason": 1
+			},
+			"effects": {
+				"articlegraila": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writehearta",
+			"label": "心臓の伝承に関して簡単な論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleheart": 1,
+				"lore": 1,
+				"heart": 2,
+				"reason": 1
+			},
+			"effects": {
+				"articlehearta": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writeknocka",
+			"label": "開錠の信条と開放の儀式に関して簡単な論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleknock": 1,
+				"lore": 1,
+				"knock": 2,
+				"reason": 1
+			},
+			"effects": {
+				"articleknocka": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writelanterna",
+			"label": "灯りの伝承に関する簡単な論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlelantern": 1,
+				"lore": 1,
+				"lantern": 2,
+				"reason": 1
+			},
+			"effects": {
+				"articlelanterna": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writemotha",
+			"label": "蛾に関して簡単な論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlemoth": 1,
+				"lore": 1,
+				"moth": 2,
+				"reason": 1
+			},
+			"effects": {
+				"articlemotha": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writesecrethistoriesa",
+			"label": "秘史について簡単論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlesecrethistories": 1,
+				"lore": 1,
+				"secrethistories": 2,
+				"reason": 1
+			},
+			"effects": {
+				"articlesecrethistoriesa": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writewintera",
+			"label": "白の伝承に関して簡単な論説を書く",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlewinter": 1,
+				"lore": 1,
+				"winter": 2,
+				"reason": 1
+			},
+			"effects": {
+				"articlewintera": 1
+			},
+			"startdescription": "依頼に使える可能性がある。",
+			"description": "原稿を仕上げた。",
+			"warmup": 60,
+			"craftable": true
+		}
+	]
+}

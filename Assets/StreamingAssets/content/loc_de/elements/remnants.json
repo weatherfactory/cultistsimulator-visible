@@ -1,0 +1,77 @@
+{
+	"elements": [
+		{
+			"id": "corpse",
+			"label": "Eine menschliche Leiche",
+			"description": "Der Geist zieht davon. Ab einem gewissen Punkt wird der Gestank so schlimm, dass du sie loswerden musst, doch hier ist sie für den Moment. Sie könnte Aufmerksamkeit erregen. Sie könnte benutzt werden, um die Beeindruckbaren zu beeindrucken. [Selbst wenn die Leiche fort ist, bleibt das Berüchtigtsein.]",
+			"aspects": {
+				"winter": 3,
+				"grail": 3,
+				"ingredient": 1,
+				"reputation": 2,
+				"remnant": 1
+			},
+			"xtriggers": {
+				"raiseburgeoning": "spirit_wintera_moth",
+				"raiseshattered": "spirit_wintera_edge"
+			},
+			"lifetime": 60,
+			"decayTo": "notoriety"
+		},
+		{
+			"id": "corpse.furious",
+			"label": "Narbiger Knochensplitter",
+			"aspects": {
+				"remnant": 1
+			},
+			"xtriggers": {
+				"alzabo": "memory.furious"
+			},
+			"description": "In diesem Splitter ruhen Erinnerungen an eine ältere Stunde."
+		},
+		{
+			"id": "corpse.luxurious",
+			"label": "Ledernes Überbleibsel",
+			"aspects": {
+				"remnant": 1
+			},
+			"xtriggers": {
+				"alzabo": "memory.luxurious"
+			},
+			"description": "Sinn-Erinnerungen und Sehnsüchte, die Geheimnisse des Knotens, in einem wenig vielversprechenden Fetzen eines alten Selbst."
+		},
+		{
+			"id": "corpse.liminal",
+			"label": "Langen-Flocke",
+			"aspects": {
+				"remnant": 1
+			},
+			"xtriggers": {
+				"alzabo": "memory.liminal"
+			},
+			"description": "Nur sehr wenig ist übrig, aber das Aroma – das nicht angekündigte Aroma – "
+		},
+		{
+			"id": "corpse.horizon",
+			"label": "Schattenloses Segment",
+			"aspects": {
+				"remnant": 1
+			},
+			"xtriggers": {
+				"alzabo": "memory.horizon"
+			},
+			"description": "Kannten die Könige jemals wahren Ruhm?"
+		},
+		{
+			"id": "corpse.splendid",
+			"label": "Wolfskopf",
+			"aspects": {
+				"remnant": 1
+			},
+			"xtriggers": {
+				"alzabo": "memory.splendid"
+			},
+			"description": "Kannte sie die Sonne wie sie war?"
+		}
+	]
+}

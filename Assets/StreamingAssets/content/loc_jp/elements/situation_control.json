@@ -1,0 +1,46 @@
+{
+	"elements": [
+		{
+			"id": "insight",
+			"label": "洞察力",
+			"description": "この謎に迫る洞察力。",
+			"lifetime": 1
+		},
+		{
+			"id": "bid",
+			"label": "入札",
+			"description": "オークションハウスでの入札。",
+			"xtriggers": {
+				"restore": "funds"
+			}
+		},
+		{
+			"id": "abductioninprogress",
+			"label": "守られた監房",
+			"description": "思考は自由だというが、思考は肉体に鎖でつながれている。",
+			"lifetime": 1,
+			"icon": "seal_wardeddoor"
+		},
+		{
+			"id": "assassinationinprogress.player",
+			"label": "暗殺",
+			"description": "誰かの死で終わる。自分の死かもしれない。",
+			"lifetime": 1,
+			"icon": "dread"
+		},
+		{
+			"id": "assassinationinprogress.follower",
+			"label": "暗殺",
+			"description": "誰かの死で終わる――誰かのか、我々の死で。",
+			"lifetime": 1,
+			"icon": "dread"
+		},
+		{
+			"id": "scandalinprogress",
+			"label": "悪の噂話",
+			"description": "彼らの言うことは真実の影に過ぎないが、影によって我々は発見される。",
+			"lifetime": 1,
+			"icon": "notoriety"
+		}
+	]
+}

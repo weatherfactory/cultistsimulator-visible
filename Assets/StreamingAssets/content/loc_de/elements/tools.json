@@ -1,0 +1,464 @@
+{
+	"elements": [
+		{
+			"id": "dropzone",
+			"label": "Abwurfzone",
+			"description": "",
+			"aspects": {
+				
+			},
+			"noartneeded": true
+		},
+		{
+			"id": "tooledgeb",
+			"label": "Meteorkugel",
+			"description": "Kugeln aus Taenit-Eisen werden gelegentlich aus den Skeletten ungewöhnlicher Bestien geholt, in Europa, dem Nahen und Mittleren Osten und Indien. Jemand hat Monster gejagt.",
+			"aspects": {
+				"edge": 4,
+				"auctionable": 3,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "tooledged",
+			"label": "Bieddes Klinge",
+			"description": "Ein Schnitt durch diese Klinge wird erst aufhören zu bluten, wenn die Wunde geheilt wird. Einem Bericht zufolge war Biedde ein messersammelnder Chirurg und Wegelagerer im Toulouse des 18. Jahrhunderts. Ein anderer behauptet, Biedde sei nur die Verballhornung des arabischen Worts für 'Mücke'.",
+			"aspects": {
+				"edge": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "tooledgef",
+			"label": "Zorniges Silber",
+			"description": "Als sich der Löwenschmied gegen den Oberst wandte, zerquetschte er sein eigenes Schwert in seiner Faust. Auch noch das winzigste Fragment jener Waffe steckt noch voller Wut.",
+			"aspects": {
+				"edge": 12,
+				"auctionable": 6,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolforgeb",
+			"label": "Zinnober-Amulett",
+			"description": "Scharlachrot ist die Farbe der Hitze. Quecksilber hat einen Schlüssel zu einer ultimativen Auflösung.",
+			"aspects": {
+				"forge": 4,
+				"auctionable": 3,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolforged",
+			"label": "Malleus Imperativus",
+			"description": "Ein winziger Ohrknochen, geschwärzt von starker Hitze. Richtig eingesetzt kann er Steine spalten.",
+			"aspects": {
+				"forge": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolforgef",
+			"label": "Kadaver-Funken",
+			"description": "Ein Überbleibsel eines großen Strahlens, das so sanft wie Zerfall leuchtet. Möglicherweise ein Stäubchen der Geteilten Sonne.",
+			"aspects": {
+				"forge": 12,
+				"auctionable": 6,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolgrailmoth",
+			"label": "Wisperndes Amulett",
+			"description": "Ich weiß, wonach es mich verlangt. Oder ich bilde es mir ein.",
+			"aspects": {
+				"grail": 2,
+				"moth": 2,
+				"auctionable": 2,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolgrailb",
+			"label": "Befleckte Handschuhe",
+			"description": "Welchen Zweck haben sie gekannt? Welche Lektionen könnten sie meinen Händen erteilen?",
+			"aspects": {
+				"grail": 4,
+				"auctionable": 3,
+				"tool": 1
+			},
+			"comments": "Not unique; we can get an extra one from the Dancer legacy."
+		},
+		{
+			"id": "toolgraild",
+			"label": "Ausgehöhlte Polos",
+			"description": "Die Ringkrone einer wilden Mutter, befleckt mit Essenz, durchwebt mit Haarsträhnen und gesegnet mit Hautfetzen.",
+			"aspects": {
+				"grail": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolgrailf",
+			"label": "Murmelnder Kelch",
+			"description": "In jenen Nächten, wenn wir aus dem Kelche trinken, sind wir, hinterher, nicht sicher, was wir getan haben. Doch, so seien wir versichert, es ist, was wir immer getan haben, und wenn wir uns nicht erinnern, dann unsere Kinder, in ihre rötesten Träumen.",
+			"aspects": {
+				"grail": 12,
+				"auctionable": 6,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolheartb",
+			"label": "Marruvinischer Götze",
+			"description": "Die Marruvii fertigten kleine hölzerne Götzen an, um die Hexen-Zwillinge zu besänftigen, die sie in ihrem See fürchteten. Der See ist nun fast ausgetrocknet, doch die Götzen und die Hexen-Zwillingen sind noch da, wenn auch beschattet vom Aspekt des Herzens.",
+			"aspects": {
+				"heart": 4,
+				"auctionable": 3,
+				"tool": 1
+			},
+			"comments": "Not unique; we can get an extra one from the Dancer legacy."
+		},
+		{
+			"id": "toolheartd",
+			"label": "Schlafloses Trommelfell",
+			"description": "Im Haine, wo sie den Donner häuteten, klapperten sie mit ihren Instrumenten, um die Ekstase zu befeuern. Diese Macht verweilt dort noch immer, wie ein Duft.",
+			"aspects": {
+				"heart": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolheartf",
+			"label": "Königshaut Bodhrán",
+			"description": "In den tiefen Wäldern gab der Monarch das Letzte auf, was er noch geben konnte, und so wurde das Werkzeug geformt, mit dem das Land auf ewig sicher sein sollte. Dann entwendete es natürlich ein Imperium, wie es Imperien zu tun pflegen.",
+			"aspects": {
+				"heart": 12,
+				"auctionable": 6,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolknockb",
+			"label": "Ikone der Heiligen Agnes",
+			"description": "Die Heilige Agnes von Böhmen war für ihre fromme Hingabe zur Kasteiung des Fleisches bekannt. Diese Ikone ist schaurig anzusehen.",
+			"aspects": {
+				"knock": 4,
+				"auctionable": 3,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolknockd",
+			"label": "Geweihter Türsturz",
+			"description": "Dies ist der Schädel einer Tür, durch die Macht hindurchgegangen ist.",
+			"aspects": {
+				"knock": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolknockf",
+			"label": "Frangiklave",
+			"description": "Es gibt Schlüssel, die Türen öffnen. Und dann gibt es Schlüssel, die sie zerstören.",
+			"aspects": {
+				"knock": 12,
+				"auctionable": 6,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toollanternb",
+			"label": "Mittagsstein",
+			"description": "Der Mittag, so sagt man, ist nicht mehr das, was er mal war. Doch dieser polierte Stein hat immer noch den Glanz des Sonnenuntergangs.",
+			"aspects": {
+				"lantern": 4,
+				"auctionable": 3,
+				"tool": 1
+			},
+			"xtriggers": {
+				"crackmirror": "toollanternbcracked"
+			},
+			"comments": "Not unique; we can get multiples if cracked ones are supplied."
+		},
+		{
+			"id": "toollanternd",
+			"label": "Verwirrender Spiegel",
+			"description": "Eine Vielzahl von Aussichten! Eine visuelle Verwirrung! Schau mich an und genieße die Auflösung deiner Sinne!",
+			"aspects": {
+				"lantern": 8,
+				"auctionable": 5,
+				"tool": 1,
+				"mirror": 1
+			},
+			"xtriggers": {
+				"crackmirror": "toollanterndcracked"
+			},
+			"comments": "Not unique; we can get multiples if cracked ones are supplied."
+		},
+		{
+			"id": "toollanternf",
+			"label": "Glas des Wächters",
+			"description": "Dies ist der Spiegel, in den man nicht zweimal schaut.",
+			"aspects": {
+				"lantern": 12,
+				"auctionable": 6,
+				"tool": 1,
+				"mirror": 1
+			},
+			"xtriggers": {
+				"crackmirror": "toollanternfcracked"
+			},
+			"comments": "Not unique; we can get multiples if cracked ones are supplied.",
+			"animFrames": 1
+		},
+		{
+			"id": "toolmothb",
+			"label": "Geflügelte Puppe",
+			"description": "Auf einem Dachboden über einem Skeletthaus gab es ein Fenster. Neben dem Fenster stand eine Kiste. In der Kiste lag ein Verband. In dem Verband war ein Büschel verfilzter Haare. In die Haare war eine Puppe eingewickelt, weil das Fenster nie geöffnet worden war.",
+			"aspects": {
+				"moth": 4,
+				"auctionable": 3,
+				"tool": 1
+			}
+		},
+		{
+			"id": "toolmothd",
+			"label": "Scheckige Maske",
+			"description": "Im Wald, wo der Mond nicht durchdringen konnte, waren die Äste der Bäume miteinander verwoben wie Bandagen oder Verliebte. Der Mond könnte sich in eine Ameise verwandeln oder einen Vogel oder seine Schwester, doch der Wald würde seinem Drängen nicht nachgeben, wie sehr er ihn auch liebkoste. Eines Tages kamen wir mit unserer Schere und trennten die Äste ab, bis der Mond und das Blut die verwesenden Blätter auf dem Boden des Waldes befleckte.",
+			"aspects": {
+				"moth": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolmothf",
+			"label": "Alakapurin-Schere",
+			"description": "Im Norden gibt es eine Stadt großen Reichtums, wo ein Beschützer der Wet hauste. Eines Tages verstummte er. Diese Schere diente dazu, ihm zuerst das Haar zu nehmen, dann seine Finger und dann den Rest.",
+			"aspects": {
+				"moth": 12,
+				"auctionable": 6,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolsecrethistoriesb",
+			"label": "Paradoxes Kuriosum",
+			"description": "Manchmal ist es schwer Gewissheit darüber zu haben, ob ein Pfeil die Kaiserin Herodias oder die Kaiserin Eudokia tötete. Manchmal ist es möglich, dass eine Malergold-Uhr bei der Plünderung Wiens gestohlen wurde, auch wenn sie wohlbehalten in einem Tresor in Rom ruht.",
+			"aspects": {
+				"secrethistories": 4,
+				"auctionable": 3,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolsecrethistoriesd",
+			"label": "Atlas der Träume",
+			"description": "Die Form der Welt ändert sich in jeder Vergangenheit, doch die Form des Mansus wird von allen widergespiegelt. Man kann den Mansus nicht kartografieren, aber man kann versuchen, seine Reflexionen zu kartografieren.",
+			"aspects": {
+				"secrethistories": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolwinterb",
+			"label": "Knochenflöte",
+			"description": "Ihr Klang wird verhallen.",
+			"aspects": {
+				"winter": 4,
+				"auctionable": 3,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolwinterd",
+			"label": "Elagabalin-Fessel",
+			"description": "Sie lässt nicht locker.",
+			"aspects": {
+				"winter": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolwinterf",
+			"label": "Trennungsglocke",
+			"description": "Erst ihre Stimme, dann nichts.",
+			"aspects": {
+				"winter": 12,
+				"auctionable": 6,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toollanternbcracked",
+			"label": "Geborstener Mittagsstein",
+			"description": "Der Mittag, so sagt man, ist nicht mehr das, was er mal war. Doch dieser Stein hat immer noch einen funkengleichen Glanz. Er ist geborsten. Ein Anhänger vom Aspekt der Schmiede könnte ihn mit ausreichenden Ressourcen wiederherstellen – oder ich könnte die Kraft nutzen, die noch in ihm steckt.",
+			"aspects": {
+				"lantern": 1,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "toollanterndcracked",
+			"label": "Gesprungener verwirrender Spiegel",
+			"description": "Ein tiefer Riss läuft über das schimmernde Metall. Ein Anhänger vom Aspekt der Schmiede könnte ihn mit ausreichenden Ressourcen reparieren – oder ich könnte die Kraft nutzen, die noch in ihm steckt.",
+			"aspects": {
+				"lantern": 2,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "toollanternfcracked",
+			"label": "Gesprungenes Glas des Wächters",
+			"description": " Ein Anhänger vom Aspekt der Schmiede könnte es reparieren, doch der Preis wäre hoch – oder ich könnte die Kraft nutzen, die noch in ihm steckt.",
+			"aspects": {
+				"lantern": 3,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "paintingmasteredge",
+			"label": "'Oberst und Löwenschmied'",
+			"description": "Seit Issos haben sie so gekämpft.",
+			"aspects": {
+				"edge": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "paintingmasterforge",
+			"label": "'Die Schmiede der Tage'",
+			"description": "Wenn die Schmiede reuen könnte, dann die Interkalierung, doch bei all ihren anderen Werken kennt sie nur Glück.",
+			"aspects": {
+				"forge": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "paintingmastergrail",
+			"label": "'Der Rote Gral'",
+			"description": "Sie spaltete nicht die Sonne, doch hier können wir uns vorstellen, wie sehr sie es sich gewünscht haben mag.",
+			"aspects": {
+				"grail": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "paintingmasterheart",
+			"label": "'Die Schwester-und-Hexe'",
+			"description": "Sie war einige Begräbnisvögel, doch hier scheint sie sich zu wünschen, sie möge ertrinken.",
+			"aspects": {
+				"heart": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "paintingmasterknock",
+			"label": "'Die Mutter der Ameisen'",
+			"description": "Selbst in den Tagen von Elam hatte sie begonnen so zu erscheinen.",
+			"aspects": {
+				"knock": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "paintingmasterlantern",
+			"label": "'Die Tür im Auge'",
+			"description": "Er kam aus dem Ruhme. Wir können nicht anders als ihn zu sehen.",
+			"aspects": {
+				"lantern": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "paintingmastermoth",
+			"label": "'Die Motte'",
+			"description": "In den Wäldern des ersten Kontinents verfluchten sich unsere Ahnen mit ihrem eigenen Gott.",
+			"aspects": {
+				"moth": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "paintingmastersecrethistories",
+			"label": "'Teresa und Christopher'",
+			"description": "Liebe trotzt, wie der Mansus, allen Grenzen.",
+			"aspects": {
+				"secrethistories": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "paintingmasterwinter",
+			"label": "'Der Geteilte Wolf'",
+			"description": "CAPUT GERAT LUPINUM. Die Sonne wurde geteilt, und dies ist ihre Wunde.",
+			"aspects": {
+				"winter": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "canvas.pale",
+			"label": "Eine blasse Leinwand",
+			"description": "Ich muss sehr vorsichtig gehen. Die Erinnerungen, die ich schildern muss, fliehen von der Leinwand, wenn ich sie zu stark darstelle. Ich werde jene Erinnerungen im Fleische der Toten finden ... und vielleicht sogar, so ich denn muss, in meinem eigenen sterbenden Fleische.",
+			"aspects": {
+				
+			}
+		},
+		{
+			"id": "painting.palest",
+			"label": "Das blasseste Gemälde",
+			"description": "'Sechs gingen verloren, dreißig bleiben.' Die Leinwand ist nicht weiß. Schau genau hin, und du siehst die angedeuteten Formen der längst verlorenen Stunden, wie sie auf dem gewundenen Pfade zur Tür ins Nirgendwo wandeln. Schaust du zu genau hin, wirst du dich in Tränen verloren wiederfinden.",
+			"aspects": {
+				"ascension.remembrance.offering": 1
+			}
+		}
+	]
+}

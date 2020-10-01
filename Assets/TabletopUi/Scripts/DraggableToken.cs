@@ -57,7 +57,6 @@ namespace Assets.CS.TabletopUI {
 
         public ITokenContainer TokenContainer;
         protected ITokenContainer OldTokenContainer; // Used to tell OldContainsTokens that this thing was dropped successfully
-        protected INotifier notifier;
         protected Chronicler subscribedChronicler;
 
         bool lastGlowState;
@@ -67,11 +66,8 @@ namespace Assets.CS.TabletopUI {
             RectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
             lastGlowColor = glowImage.currentColor;
-            SubscribeNotifier(Registry.Get<INotifier>());
             SubscribeChronicler(Registry.Get<Chronicler>());
         }
-
-        #region -- Basic Getters ------------------------------------
 
         public abstract string EntityId { get; }
         public bool IsBeingAnimated { get; set; }
@@ -84,8 +80,8 @@ namespace Assets.CS.TabletopUI {
             return !IsBeingAnimated;
         }
 
-        protected virtual bool AllowsInteraction() {
-            return !Defunct && TokenContainer != null && !IsBeingAnimated && TokenContainer.AllowDrag && AllowsDrag();
+        protected virtual bool ShouldShowHoverGlow() {
+            return !Defunct && TokenContainer != null && !IsBeingAnimated && (TokenContainer.AllowDrag || TokenContainer.AlwaysShowHoverGlow) && AllowsDrag();
         }
 
 		public bool IsGlowing()
@@ -111,13 +107,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        #endregion
 
-        #region -- Basic Setters ------------------------------------
-
-        public void SubscribeNotifier(INotifier n) {
-            notifier = n;
-        }
         public void SubscribeChronicler(Chronicler c)
         {
             subscribedChronicler = c;
@@ -136,8 +126,6 @@ namespace Assets.CS.TabletopUI {
         public virtual bool IsInContainer(ITokenContainer compareContainer, Context context) {
             return compareContainer == TokenContainer;
         }
-
-        #endregion
 
         #region -- Begin Drag ------------------------------------
 
@@ -252,8 +240,6 @@ namespace Assets.CS.TabletopUI {
 
         #endregion
 
-        #region -- End Drag ------------------------------------
-
         public static void CancelDrag() {
             if (itemBeingDragged == null)
                 return;
@@ -327,14 +313,10 @@ namespace Assets.CS.TabletopUI {
            }
         }
 
-        #endregion
-
-        #region -- On Drop ------------------------------------
-
         public abstract void OnDrop(PointerEventData eventData);
 
         private bool CanInteractWithTokenDroppedOn(DraggableToken token) {
-            var element = token as IElementStack;
+            var element = token as ElementStackToken;
 
             if (element != null)
                 return CanInteractWithTokenDroppedOn(element);
@@ -343,12 +325,10 @@ namespace Assets.CS.TabletopUI {
         }
 
         public abstract bool CanInteractWithTokenDroppedOn(SituationToken tokenDroppedOn);
-        public abstract bool CanInteractWithTokenDroppedOn(IElementStack stackDroppedOn);
+        public abstract bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn);
 
         public abstract void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn);
-        public abstract void InteractWithTokenDroppedOn(IElementStack stackDroppedOn);
-
-        #endregion
+        public abstract void InteractWithTokenDroppedOn(ElementStackToken stackDroppedOn);
 
         #region -- On Click ------------------------------------
 
@@ -438,7 +418,7 @@ namespace Assets.CS.TabletopUI {
                     show = false;
                 }
                 // If we can not interact, don't show the hover highlight
-                else if (!AllowsInteraction()) {
+                else if (!ShouldShowHoverGlow()) {
                     show = false;
                 }
             }

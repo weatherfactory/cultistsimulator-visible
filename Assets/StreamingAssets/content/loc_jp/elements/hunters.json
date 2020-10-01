@@ -1,0 +1,199 @@
+{
+	"elements": [
+		{
+			"id": "investigator1",
+			"label": "ウェイクフィールド警部",
+			"aspects": {
+				"hunter": 1,
+				"mortal": 1,
+				"meticulous": 1,
+				"grim": 1
+			},
+			"description": "ふさぎ込みがちだが冷酷な警部。最近は取締局に出向している。",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"killhunter": "corpse",
+				"derangemortal": "zachary_r_c",
+				"capturehunter": "investigator1prisoner",
+				"dissolution": "influencewintere"
+			}
+		},
+		{
+			"id": "investigator2",
+			"label": "スペンサー・ホブソン",
+			"aspects": {
+				"hunter": 1,
+				"mortal": 1,
+				"mystic": 1,
+				"erratic": 1
+			},
+			"description": "ホブソンは、記者や私立探偵をして、短い間、司祭でもあったが、今は取締局のエージェントである。",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"killhunter": "corpse",
+				"derangemortal": "spencer_r_c",
+				"capturehunter": "investigator2prisoner",
+				"dissolution": "influenceknocke"
+			}
+		},
+		{
+			"id": "investigator3",
+			"label": "コニー・リー",
+			"aspects": {
+				"hunter": 1,
+				"mortal": 1,
+				"tenacious": 1,
+				"mystic": 1
+			},
+			"description": "跡取り娘、婦人参政権論者、冒険家。彼女は最近、非現実的な熱意と莫大な財産を取締局につぎ込んでいる。",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"killhunter": "corpse",
+				"derangemortal": "connie_r_c",
+				"capturehunter": "investigator3prisoner",
+				"dissolution": "influenceedgee"
+			}
+		},
+		{
+			"id": "investigator4",
+			"label": "ナタリア・ドラゴン博士",
+			"aspects": {
+				"hunter": 1,
+				"mortal": 1,
+				"idealist": 1,
+				"meticulous": 1
+			},
+			"description": "歴史改変の分析が原因で、学界から笑いものにされたが、それが彼女の決意を強めることになった。現在は取締局で働いている。",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"killhunter": "corpse",
+				"derangemortal": "natalia_r_c",
+				"capturehunter": "investigator4prisoner",
+				"dissolution": "influencelanterne"
+			}
+		},
+		{
+			"id": "defaulthunter",
+			"label": "疲れた探偵",
+			"aspects": {
+				"hunter": 1,
+				"mortal": 1
+			},
+			"description": "ひとりでパイプタバコをふかしながら、『絵入りロンドン新聞』を読んでいたほうがマシだ、とこの男性は思っているが.....悲しくもその願いは叶わなかった。<i>どうやら</i>狂犬のように捕まえなければいけない迷惑者がいるようで、<i>どうやら</i>他にそんな暇がある人はいないようだ。",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"killhunter": "corpse",
+				"derangemortal": "douglas_r",
+				"capturehunter": "defaulthunterprisoner",
+				"dissolution": "influenceforgec"
+			}
+		},
+		{
+			"id": "investigator1prisoner",
+			"label": "ウェイクフィールド警部：身柄拘束！",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"winter": 4
+			},
+			"description": "ザッカリー・ウェイクフィールド：ふさぎ込みがちだが冷酷な警部。死ぬまで刑務所で過ごしてもらおう。",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "zachary_r_c",
+				"dissolution": "influencewintere"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse"
+		},
+		{
+			"id": "investigator2prisoner",
+			"label": "スペンサー・ホブソン：身柄拘束！",
+			"aspects": {
+				"prisoner": 1,
+				"mortal": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"knock": 3
+			},
+			"description": "ホブソンは、記者や私立探偵をして、短い間、司祭でもあった。死ぬまで刑務所で過ごしてもらおう。",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "spencer_r_c",
+				"dissolution": "influenceknocke"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse"
+		},
+		{
+			"id": "investigator3prisoner",
+			"label": "コニー・リー：身柄拘束！",
+			"aspects": {
+				"prisoner": 1,
+				"mortal": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"edge": 3
+			},
+			"description": "跡取り娘、婦人参政権論者、冒険家。死ぬまで刑務所で過ごしてもらおう。",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "connie_r_c",
+				"dissolution": "influenceedgee"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse"
+		},
+		{
+			"id": "investigator4prisoner",
+			"label": "ナタリア・ドラゴン博士：身柄拘束！",
+			"aspects": {
+				"prisoner": 1,
+				"mortal": 1,
+				"lantern": 5,
+				"grail": 3,
+				"heart": 3
+			},
+			"description": "歴史改変の分析が原因で、学界から笑いものにされたが、それが彼女の決意を強めることになった。死ぬまで刑務所で過ごしてもらおう。",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "natalia_r_c",
+				"dissolution": "influencelanterne"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse"
+		},
+		{
+			"id": "defaulthunterprisoner",
+			"label": "疲れた探偵：身柄拘束！",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 5,
+				"grail": 3,
+				"heart": 3
+			},
+			"description": "ひとりでパイプタバコをふかしながら、『絵入りロンドン新聞』を読んでいたほうがマシだ、と思っているこの男性は、今、不幸にも地面の穴に閉じ込められている。",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "douglas_r",
+				"capturehunter": "defaulthunterprisoner",
+				"dissolution": "influenceforgec"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse"
+		}
+	]
+}

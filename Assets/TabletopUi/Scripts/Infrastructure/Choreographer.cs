@@ -422,7 +422,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
 
-        public void BeginNewSituation(SituationCreationCommand scc,List<IElementStack> withStacksInStorage) {
+        public void BeginNewSituation(SituationCreationCommand scc,List<ElementStackToken> withStacksInStorage) {
             if (scc.Recipe == null)
                 throw new ApplicationException("DON'T PASS AROUND SITUATIONCREATIONCOMMANDS WITH RECIPE NULL");
             if(withStacksInStorage==null)
@@ -493,7 +493,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public void PrepareElementForSendAnim(ElementStackToken stack, SituationToken ownerSituation)
 		{
             _tabletop.GetElementStacksManager().AcceptStack(stack, new Context(Context.ActionSource.DoubleClickSend)); // this reparents, sets container
-            //_tabletop.DisplayHere(stack as Core.Interfaces.IElementStack); // this reparents, sets container
+            //_tabletop.DisplayHere(stack as Core.Interfaces.ElementStackToken); // this reparents, sets container
             //stack.transform.position = ownerSituation.transform.position;
             stack.FlipToFaceUp(true);
         }
@@ -501,7 +501,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public void PrepareElementForGreedyAnim(ElementStackToken stack, SituationToken ownerSituation)
 		{
             _tabletop.GetElementStacksManager().AcceptStack(stack, new Context(Context.ActionSource.GreedySlot)); // this reparents, sets container
-            //_tabletop.DisplayHere(stack as Core.Interfaces.IElementStack); // this reparents, sets container
+            //_tabletop.DisplayHere(stack as Core.Interfaces.ElementStackToken); // this reparents, sets container
             stack.transform.position = ownerSituation.transform.position;
             stack.FlipToFaceUp(true);
         }

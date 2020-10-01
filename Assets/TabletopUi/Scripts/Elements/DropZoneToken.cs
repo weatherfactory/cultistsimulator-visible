@@ -22,7 +22,7 @@ using Noon;
 // Should inherit from a "TabletopToken" base class same as VerbBox
 
 namespace Assets.CS.TabletopUI {
-    public class DropZoneToken : ElementStackToken, IElementStack, IGlowableView
+    public class DropZoneToken : ElementStackToken, IGlowableView
     {
 
         protected override void Awake()
@@ -187,7 +187,7 @@ namespace Assets.CS.TabletopUI {
 			{
 				// Double-click, so abort any pending single-clicks
 				singleClickPending = false;
-				notifier.HideDetails();
+				Registry.Get<Notifier>().HideDetails();
 				SendStackToNearestValidSlot();
 			}
 			else
@@ -211,16 +211,16 @@ namespace Assets.CS.TabletopUI {
 //                DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
         }
 
-        public override bool CanInteractWithTokenDroppedOn(IElementStack stackDroppedOn)
+        public override bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn)
 		{
             return false;
         }
 
-        public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn)
+        public override void InteractWithTokenDroppedOn(ElementStackToken stackDroppedOn)
 		{
         }
 
-        void ShowNoMergeMessage(IElementStack stackDroppedOn)
+        void ShowNoMergeMessage(ElementStackToken stackDroppedOn)
 		{
         }
 

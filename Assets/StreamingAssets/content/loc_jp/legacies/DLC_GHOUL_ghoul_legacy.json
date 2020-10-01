@@ -1,0 +1,19 @@
+{
+	"legacies": [
+		{
+			"id": "ghoul",
+			"label": "霊能者？",
+			"description": "私が死者と話せることは、誰もが知っていることだ。私を預言者と呼ぶ者もいれば、グールと呼ぶ者もいる。彼らの思い込みを解く理由はない。",
+			"startdescription": "今夜の劇場は満員で、息が詰まるほどだ。これ以上観客を待たせてはいけない。",
+			"effects": {
+				"ghouljob.first": 1,
+				"memory.shameful": 1,
+				"memory.profitable": 1,
+				"memory.joyful": 1
+			},
+			"image": "ghoul",
+			"fromEnding": "despairending",
+			"availableWithoutEndingMatch": true
+		}
+	]
+}

@@ -1,0 +1,262 @@
+{
+	"recipes": [
+		{
+			"id": "explore_vaulteveningisles1_setup",
+			"label": "鴉の島への遠征",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaulteveningisles1": 1
+			},
+			"effects": {
+				"peril_sea": 1,
+				"guardian_soucouyants": 1,
+				"curse_visions": 1
+			},
+			"startdescription": "鴉の島の最大の危険は、ソーコーヤントと呼ばれる堕落した不死身の者たちだ。しかし、海を渡ってそこへたどり着くのは簡単な話ではなく、島には幻影の呪いを伝える声が響く。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaulteveningisles2_setup",
+			"label": "ゲリク要塞への遠征",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaulteveningisles2": 1
+			},
+			"effects": {
+				"peril_sea": 1,
+				"seal_wardeddoor": 1,
+				"guardian_dead": 1
+			},
+			"startdescription": "崩れ落ちた砂岩の要塞が空っぽの湾を覆っている。死者は夜を歩き、昼には眠る。封印された金庫の中で、旧総督の宝が次の略奪者を待っている。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaulteveningisles3_setup",
+			"label": "クリスタベル号の残骸への遠征",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaulteveningisles3": 1
+			},
+			"effects": {
+				"peril_sea": 1,
+				"guardian_serpent": 1,
+				"curse_affliction": 1
+			},
+			"startdescription": "嵐によって海から持ち上げられたクリスタベル号は、岩礁に乗り上げた。このような悲しい最期を迎えた難破船には呪いがかかっているものだ。かつてそれを愛した獣は、まだそこに残っている。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaulteveningisles4_setup",
+			"label": "深淵の門の聖テントレット修道院への遠征",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaulteveningisles4": 1
+			},
+			"effects": {
+				"seal_hiddendoor": 1,
+				"guardian_monks": 1,
+				"curse_visions": 1
+			},
+			"startdescription": "聖トレントの僧侶たちは、我々の通行を許さないだろう。彼らは宝物を隠すはずだ。万が一、我々がそれを奪うことができても、呪いをかけて追いかけてくるだろう。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaulteveningislesdefault_setup",
+			"label": "正午の港への遠征",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaulteveningislesdefault": 1
+			},
+			"effects": {
+				"peril_sea": 1,
+				"seal_wardeddoor": 1,
+				"guardian_long": 1,
+				"curse_visions": 1
+			},
+			"startdescription": "正午の港まで海を渡ることができたとしても、死なない長生者を倒すことができたとしても、彼らの秘密の金庫を破ることができたとしても、幻影の誘惑に抵抗しなければならない。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaulteveningisles1_success",
+			"label": "鴉の羽根",
+			"actionId": "explore",
+			"requirements": {
+				"vaulteveningisles1": 1
+			},
+			"effects": {
+				"vaulteveningisles1": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"manualdeparturevak",
+					"toolgrailf",
+					"fivecreationsvak",
+					"originsofhoursvak"
+				],
+				"draws": 4,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "ソーコーヤントたちに荒らされた山の洞窟。壁には、誰がここにいたのか、彼らの歴史、失った子供たちなど、百種類の言語で書かれた悲しい物語が、優雅な筆跡で書き込まれている。",
+			"description": "洞窟の奥深くには、ソーコーヤントが作った展示用の巣のようなものを見つけた。かつて彼らが身にまとっていた上質な服は、今では鴉の羽根で飾られている。小さな肖像画や朽ちかけた家族の写真アルバムが山積みになっていた。力を宿す物もいくつか見つかった。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaulteveningisles2_success",
+			"label": "総督の最後の一手",
+			"actionId": "explore",
+			"requirements": {
+				"vaulteveningisles2": 1
+			},
+			"effects": {
+				"vaulteveningisles2": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"bighufffucine",
+					"toolforgef",
+					"timedivisionmandaic",
+					"ingredientheartf"
+				],
+				"draws": 4,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "ゲリク要塞の金庫室。モザイク細工が巨大で複雑なボードゲームのように敷き詰められている。これは、夕方の島の地図に違いない。海のタイルは瑠璃色で、島々はネフライトと黒曜石で作られていて、おもちゃの船やブリキの兵隊さんもある。聖トーマス島が包囲され、鴉の島にはチェスのクイーンが群がっている。",
+			"description": "駒の中には、真の力を持つ物が仮の目印として使われている。これを隠そうとしたのか？それとも総督はその真の価値を知らなかったのか？",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaulteveningisles3_success",
+			"label": "閉ざされた目",
+			"actionId": "explore",
+			"requirements": {
+				"vaulteveningisles3": 1
+			},
+			"effects": {
+				"vaulteveningisles3": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"bookextinguishedheartmandaic",
+					"bookwhitecatphrygian",
+					"toolknockf",
+					"ingredientgrailf"
+				],
+				"draws": 4,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "船はまだ海の匂いがする。のんびりと動くタコがランプの灯りに誘われて這い出てきた。木材は半分くらい珊瑚となっている。船員たちの遺体はどこだ？生き延びたのは1人だけだったと記録されていた。蛇が残りを食い尽くしたのだろうか。",
+			"description": "船長室を見つけた。航海日誌はあるが、中身は海水で腐食している。日誌が繋がれた机の上に、閉じた目が彫られている。そのシンボルの下には秘密の引き出しがあり、中には宝が入っている......",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaulteveningisles4_success",
+			"label": "始めの震動",
+			"actionId": "explore",
+			"requirements": {
+				"vaulteveningisles4": 1
+			},
+			"effects": {
+				"vaulteveningisles4": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"scarskyfucine",
+					"toollanternf",
+					"birdsongphrygian",
+					"commandspreservationallexistsmandaic"
+				],
+				"draws": 4,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "修道院の下にある洞窟にたどり着いた。海水が洞窟の中まで入ってきている。暗い水がランプの光に照らされて震えている。近づいていくと、急に水位が下がった。この海域に潮汐はないはずだ。何が起きているのだろう。",
+			"description": "この洞窟を冒涜してしまった！時の神々は皆、祝福を撤回している。水面が下がっていき、洞窟から水が消えていく。供え物が底に落ちた。急いで取りに行かなければならない。すでに最初の揺れが始まった。僧侶たちが何度も抑えてきた地震が起こる前触れだ。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaulteveningislesdefault_success",
+			"label": "ガラエキアからはるばる",
+			"actionId": "explore",
+			"requirements": {
+				"vaulteveningislesdefault": 1
+			},
+			"effects": {
+				"vaulteveningislesdefault": -1
+			},
+			"deckeffect": {
+				"vaultrewardsg": 3
+			},
+			"startdescription": "ここはホテル・シエルヴォの秘密の小部屋だ。壁は真っ白に塗られ、床は磨きたてで、棚には奇妙なものがぎっしりと並んでいる。檻の中に入った髭の男が、隅から不機嫌そうに見つめている。そして口を開くと、「またか？それとも違う団体か？いや、助けは要らないよ、ありがとう。中よりも外の方がずっとひどいんだから」と言った。 ",
+			"description": "「持って行けるだけ持って行け、早く！」と、檻の中の男は小声で言った。「やつらはすぐに戻ってくる。ああ、グラディウスだけは置いていってくれ。それは俺が、昔、ガラエキアから持ってきたものだ。ほら、あの棚はいいぞ。急げ、やつらが来るぞ！配達用の階段を使って逃げろ」",
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "expeditionascensionheartf",
+					"chance": 100
+				},
+				{
+					"id": "expeditionascensionmothf",
+					"chance": 100
+				}
+			]
+		}
+	]
+}

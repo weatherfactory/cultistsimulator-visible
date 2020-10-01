@@ -33,7 +33,21 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
     public interface ISituationStorage
     {
-        void SetOutput(List<IElementStack> stacks);
+
+    }
+
+
+    public interface ISituationDetails {
+        
+
+        void Initialise(IVerb verb,SituationController controller);
+
+        
+
+        IAspectsDictionary GetAspectsFromAllSlottedElements(bool showElementAspects = true);
+        IRecipeSlot GetStartingSlotBySaveLocationInfoPath(string locationInfo);
+
+        void SetOutput(List<ElementStackToken> stacks);
         void SetUnstarted();
         void SetOngoing(Recipe forRecipe);
         IAspectsDictionary GetAspectsFromAllSlottedElements(bool showElementAspects = true);

@@ -1,0 +1,327 @@
+{
+	"elements": [
+		{
+			"id": "welland_unknown",
+			"label": "影のような存在",
+			"description": "彼らの力は恐るべきものであり、正体はまだ不明である。[長生者の力、人脈、星明かりがレベル３に達した時点で、その正体を明かすことができる。]",
+			"aspects": {
+				"long.enemy": 1,
+				"long.preference.assault": 1
+			},
+			"xtriggers": {
+				"revealidentity": "welland"
+			}
+		},
+		{
+			"id": "tryphon_unknown",
+			"label": "影のような存在",
+			"description": "彼らの力は恐るべきものであり、正体はまだ不明である。[長生者の力、人脈、星明かりがレベル３に達した時点で、その正体を明かすことができる。]",
+			"aspects": {
+				"long.enemy": 1,
+				"long.preference.intrigue": 1
+			},
+			"xtriggers": {
+				"revealidentity": "tryphon"
+			}
+		},
+		{
+			"id": "diarist_unknown",
+			"label": "影のような存在",
+			"description": "彼らの力は恐るべきものであり、正体はまだ不明である。[長生者の力、人脈、星明かりがレベル３に達した時点で、その正体を明かすことができる。]",
+			"aspects": {
+				"long.enemy": 1,
+				"long.preference.dreamwork": 1
+			},
+			"xtriggers": {
+				"revealidentity": "diarist"
+			}
+		},
+		{
+			"id": "julian_unknown",
+			"label": "影のような存在",
+			"description": "彼らの力は恐るべきものであり、正体はまだ不明である。[長生者の力、人脈、星明かりがレベル３に達した時点で、その正体を明かすことができる。]",
+			"aspects": {
+				"long.enemy": 1,
+				"long.preference.winter": 1
+			},
+			"xtriggers": {
+				"revealidentity": "julian"
+			}
+		},
+		{
+			"id": "welland",
+			"label": "ウェランド大尉",
+			"description": "「高貴な試みの会ではないんだ。努力もせずに昇格できるはずがない」[ウェランドは攻撃を使う可能性が高い。]",
+			"aspects": {
+				"long.enemy": 1,
+				"long.preference.assault": 1
+			},
+			"verbicon": "long-forge",
+			"xtriggers": {
+				"longded": "welland.defeated"
+			}
+		},
+		{
+			"id": "tryphon",
+			"label": "トライフォン夫人",
+			"description": "「いいえ、彼はあなたを傷つけることはできないし、見つけることもできないわ。でも、私はそのような制限に悩まされていないの」。[トライフォンは「陰謀」で攻撃することを好む。]",
+			"aspects": {
+				"long.enemy": 1,
+				"long.preference.intrigue": 1
+			},
+			"verbicon": "long-grail",
+			"xtriggers": {
+				"longded": "tryphon.defeated"
+			}
+		},
+		{
+			"id": "diarist",
+			"label": "日記作家",
+			"description": "「ふりをする者について、かなりの脚注を書くこととなりそうだ。しかし、それ以上のことは期待していない」[日記作家は星明り攻撃を使う可能性が高い。]",
+			"aspects": {
+				"long.enemy": 1,
+				"long.preference.dreamwork": 1
+			},
+			"verbicon": "long-lantern",
+			"xtriggers": {
+				"longded": "diarist.defeated"
+			}
+		},
+		{
+			"id": "julian",
+			"label": "J.C.",
+			"description": "「名を持つ者たちはもういい。そこまでだ。悪いが、会話をしている暇はない。」[ジュリアンは休息を利用して、より頻繁にスキルアップする。]",
+			"aspects": {
+				"long.enemy": 1,
+				"long.preference.winter": 1
+			},
+			"verbicon": "long-winter",
+			"xtriggers": {
+				"longded": "julian.defeated"
+			}
+		},
+		{
+			"id": "welland.defeated",
+			"label": "ウェランドからの手紙",
+			"description": "「拝啓、紳士殿（ウェランドは、自分を負かしたのが「紳士」ではないことに気づいていないようだ）\n\n私より危険な敵に出会うことなどないだろう。これまでに君より手ごわい敵を倒してきた。君は火の粉になるよりも、価値がある人間だ。ライオンスミスが過去にそうしたように、鎖を解いて、長生者として地位を手に入れるために立ち上がれ。\n\nダリウスがアレクサンダーに話した秘密を同封する。賢く使ってくれ。\n\n敬意を込めて。\n\nWより」\n\n[秘密は同封されている。使うと、指導者の支配から解放される。]",
+			"slots": [
+				{
+					"id": "mentor",
+					"label": "形作る者",
+					"required": {
+						"apostleforge.mentor": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"aspects": {
+				"legacyplotitem": 1
+			}
+		},
+		{
+			"id": "tryphon.defeated",
+			"label": "トリフォン夫人からの手紙",
+			"description": "「ダーリン、\n\n私の負けよ。私を征服したあなたに身を捧げることにしたの。自分の一部をこの手紙に同封して、死を迎えに行くわ。\n\n私の残骸を食べれば、フラワーメーカーが求めていたように、私たちは1つになれる。「快楽」を捨てて。運命ははるかに偉大よ。\n\nこれが最後のトリック？って思うわよね？裏切りを確実にするための必死の策略？「私を食べれば分かるわよ」としか答えられないわ。\n\n永遠に\n\n美味しい恋人\n\nT.Eより」\n\n[同封されているトリフォン夫人の一部を一口食べれば、指導者の支配から解放される。]",
+			"slots": [
+				{
+					"id": "mentor",
+					"label": "喜びの者",
+					"required": {
+						"apostlegrail.mentor": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"aspects": {
+				"legacyplotitem": 1
+			}
+		},
+		{
+			"id": "diarist.defeated",
+			"label": "日記作家の夢",
+			"description": "聖書館の西の窓から漏れる日差しが弱くなってきた。日記作者が最後の文章を書くと、部屋中が金色から灰色へと冷えていく。彼はパタン、と本を閉じた。「死が降りてきた。私はすでに高度を失っている。君を恨んでいるわけではないんだ。だが、君の照らされた者がつまずいて墜落してしまえばいいと願っている」と、口にした。日記作者の顔は、文字を消していくかのように消えていく。彼の目はすでに消えてしまった。本を手渡すと彼は言う。「これが最後のチャンスだ。私がいたところでも、自分が行こうとしていたところにでも行けばいい。どちらが良いかは明白だがな」。ファスナーを開けるかのように口が巻いていき、日記作者は真っ白な紙になった。\n\n[日記の夢を考えれば、指導者の支配から解放される。]",
+			"slots": [
+				{
+					"id": "mentor",
+					"label": "照らされた者",
+					"required": {
+						"apostlelantern.mentor": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"aspects": {
+				"legacyplotitem": 1
+			},
+			"lifetime": 120
+		},
+		{
+			"id": "julian.defeated",
+			"label": "ジュリアン・コーズリーからの手紙",
+			"description": "「敵よ、\n\n私はそう簡単には滅びない。しかし、あなたが私を打ち負かしたことを認め、私の助言であなたに報いよう。\n\nあなたは、マンサスの壁にまた一石を投じようとする愚か者に、騙された愚か者だ。その石を夜に投げ込むこともできるだろう。\n\n石を投げ捨てれば、孤独と虚無に包まれて死ぬだろう。長生者でさえもそうだ。自由に死ねるかもしれない。\n\n―― ジュリアン\n\n[ジュリアンの教えを心に留めれば、 師匠の支配から解放される。]",
+			"slots": [
+				{
+					"id": "mentor",
+					"label": "創造者",
+					"required": {
+						"apostleforge.mentor": 1,
+						"apostlegrail.mentor": 1,
+						"apostlelantern.mentor": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"aspects": {
+				"legacyplotitem": 1
+			}
+		},
+		{
+			"id": "strategy.prep",
+			"label": "準備中",
+			"description": "不死身の敵は別の作戦の準備をしている。[長生者が新たな攻撃を仕掛けるには、3つの準備カードが必要だ。]",
+			"lifetime": 1
+		},
+		{
+			"id": "strategy.prep.delayed",
+			"label": "準備していたものが台無しになってしまった！",
+			"description": "我々のスパイは敵が準備していたものの一部を破壊した。[あなたの妨害のせいで、長生者は準備トークンを1つ失った。]",
+			"lifetime": 1
+		},
+		{
+			"id": "strategy.assault.concealed",
+			"label": "長生者の計画",
+			"description": "長生者は我々に対する次の行動を計画している。スパイを送れば、彼らの意図が分かるかもしれない。",
+			"aspects": {
+				"intention.assault": 1
+			},
+			"xtriggers": {
+				"revealstrategy": "strategy.assault.revealed"
+			},
+			"lifetime": 1,
+			"icon": "strategy.unknown"
+		},
+		{
+			"id": "strategy.intrigue.concealed",
+			"label": "長生者の計画",
+			"description": "長生者は我々に対する次の行動を計画している。スパイを送れば、彼らの意図が分かるかもしれない。",
+			"aspects": {
+				"intention.intrigue": 1
+			},
+			"xtriggers": {
+				"revealstrategy": "strategy.intrigue.revealed"
+			},
+			"lifetime": 1,
+			"icon": "strategy.unknown"
+		},
+		{
+			"id": "strategy.dreams.concealed",
+			"label": "長生者の計画",
+			"description": "長生者は我々に対する次の行動を計画している。スパイを送れば、彼らの意図が分かるかもしれない。",
+			"aspects": {
+				"intention.dreams": 1
+			},
+			"xtriggers": {
+				"revealstrategy": "strategy.dreams.revealed"
+			},
+			"lifetime": 1,
+			"icon": "strategy.unknown"
+		},
+		{
+			"id": "strategy.downtime.concealed",
+			"label": "長生者の計画",
+			"description": "長生者は我々に対する次の行動を計画している。スパイを送れば、彼らの意図が分かるかもしれない。",
+			"aspects": {
+				"intention.downtime": 1
+			},
+			"xtriggers": {
+				"revealstrategy": "strategy.downtime.revealed"
+			},
+			"lifetime": 1,
+			"icon": "strategy.unknown"
+		},
+		{
+			"id": "strategy.assault.revealed",
+			"label": "長生者の計画が明らかになる：攻撃",
+			"description": "今回の敵は何かしらの直接攻撃を計画している。",
+			"aspects": {
+				"intention.assault": 1,
+				"strategy.revealed": 1
+			},
+			"xtriggers": {
+				"revealstrategy": "strategy.assault.revealed"
+			},
+			"lifetime": 1
+		},
+		{
+			"id": "strategy.intrigue.revealed",
+			"label": "長生者の計画が明らかになる：謀略",
+			"description": "敵は今回、我々に対して策略を使うつもりだ。",
+			"aspects": {
+				"intention.intrigue": 1,
+				"strategy.revealed": 1
+			},
+			"xtriggers": {
+				"revealstrategy": "strategy.intrigue.revealed"
+			},
+			"lifetime": 1
+		},
+		{
+			"id": "strategy.dreams.revealed",
+			"label": "長生者の計画が明らかになる：夢",
+			"description": "敵は今回、マンサスを通じて我々を見つけるだろう。",
+			"aspects": {
+				"intention.dreams": 1,
+				"strategy.revealed": 1
+			},
+			"xtriggers": {
+				"revealstrategy": "strategy.dreams.revealed"
+			},
+			"lifetime": 1
+		},
+		{
+			"id": "strategy.downtime.revealed",
+			"label": "長生者の計画が明らかになる：休息",
+			"description": "敵は今回、攻撃を仕掛けてこないだろう。休み......休むことで強さを増すはずだ。",
+			"aspects": {
+				"intention.downtime": 1,
+				"strategy.revealed": 1
+			},
+			"xtriggers": {
+				"revealstrategy": "strategy.downtime.revealed"
+			},
+			"lifetime": 1
+		},
+		{
+			"id": "strategy.dreams.preference",
+			"label": "虫の知らせ：魂の教訓",
+			"description": "次の作戦では、この長生者は夢の中で我々の弱点を知ろうとするだろう――彼らの計画に沿わない場合でも。",
+			"comments": "This is currently unused - it became less relevant once tablereqs came in.",
+			"lifetime": 1,
+			"noartneeded": true
+		},
+		{
+			"id": "long.lesson.might",
+			"label": "力の増加",
+			"aspects": {
+				"long.lesson": 1
+			},
+			"description": "不死身の敵が我々を以前より真剣に受け止め、より強力な戦力を投入してきた。[敵の長生者の力が強まり、より強力な攻撃を仕掛けてくる。]"
+		},
+		{
+			"id": "long.lesson.connections",
+			"label": "人脈を広げる",
+			"aspects": {
+				"long.lesson": 1
+			},
+			"description": "不死身の敵が我々を以前より真剣に受け止め、より強力な戦力を投入してきた。[敵の長生者の人脈が広がり、より邪悪な陰謀を仕掛けてくる。]"
+		},
+		{
+			"id": "long.lesson.dreamwork",
+			"label": "魂の片鱗",
+			"aspects": {
+				"long.lesson": 1
+			},
+			"description": "不死の敵が我々に関する何かを学んだ。[敵の長生者の星明かりが増えて、夢の中で力を発揮する。]"
+		}
+	]
+}
