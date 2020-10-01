@@ -345,7 +345,7 @@ public class DebugTools : MonoBehaviour,ITokenObserver
                 verbForNewSituation = new CreatedVerb(recipe.ActionId, recipe.Label, recipe.Description);
 
             SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, SituationState.FreshlyStarted);
-        Registry.Get<TabletopManager>().BeginNewSituation(scc,new List<IElementStack>());
+        Registry.Get<TabletopManager>().BeginNewSituation(scc,new List<ElementStackToken>());
         }
         else
         Debug.Log("couldn't find this recipe: " + recipeId);

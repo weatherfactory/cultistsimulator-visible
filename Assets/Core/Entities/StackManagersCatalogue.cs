@@ -13,23 +13,23 @@ namespace Assets.Core.Entities {
 
     public class StackManagersCatalogue {
 
-        private readonly List<IElementStacksManager> _currentElementStackManagers;
+        private readonly List<ElementStacksManager> _currentElementStackManagers;
         private readonly List<IStacksChangeSubscriber> _subscribers;
 
         public StackManagersCatalogue() {
-            _currentElementStackManagers = new List<IElementStacksManager>();
+            _currentElementStackManagers = new List<ElementStacksManager>();
             _subscribers = new List<IStacksChangeSubscriber>();
         }
 
-        public List<IElementStacksManager> GetRegisteredStackManagers() {
+        public List<ElementStacksManager> GetRegisteredStackManagers() {
             return _currentElementStackManagers.ToList();
         }
 
-        public void RegisterStackManager(IElementStacksManager stackManager) {
+        public void RegisterStackManager(ElementStacksManager stackManager) {
             _currentElementStackManagers.Add(stackManager);
         }
 
-        public void DeregisterStackManager(IElementStacksManager stackManager) {
+        public void DeregisterStackManager(ElementStacksManager stackManager) {
             _currentElementStackManagers.Remove(stackManager);
         }
 

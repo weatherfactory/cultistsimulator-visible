@@ -18,10 +18,10 @@ using Assets.CS.TabletopUI.Interfaces;
 /// IContainsTokens objects should never have direct access to the ITokenPhysicalLocation (though it references them) because everything needs to be filtered through
 /// the StacksManager for model management purposes
 /// </summary>
-public class ElementStacksManager : IElementStacksManager {
+public class ElementStacksManager {
 
     private readonly ITokenContainer _tokenContainer;
-    private List<IElementStack> _stacks;
+    private List<ElementStackToken> _stacks;
     private StackManagersCatalogue _catalogue;
 
     public string Name { get; set; }
@@ -31,7 +31,7 @@ public class ElementStacksManager : IElementStacksManager {
         Name = name;
         _tokenContainer = container;
 
-        _stacks = new List<IElementStack>();
+        _stacks = new List<ElementStackToken>();
         _catalogue = Registry.Get<StackManagersCatalogue>();
         _catalogue.RegisterStackManager(this);
     }
@@ -60,7 +60,7 @@ public class ElementStacksManager : IElementStacksManager {
 
         int unsatisfiedChange = quantityChange;
         while (unsatisfiedChange < 0) {
-            IElementStack stackToAffect = _stacks.FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(elementId));
+            ElementStackToken stackToAffect = _stacks.FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(elementId));
 
             if (stackToAffect == null) //we haven't found either a concrete matching element, or an element with that ID.
                 //so end execution here, and return the unsatisfied change amount
@@ -87,7 +87,7 @@ public class ElementStacksManager : IElementStacksManager {
         if (quantityChange <= 0)
             throw new ArgumentException("Tried to call IncreaseElement for " + elementId + " with a <=0 change (" + quantityChange + ")");
 
-        var newStack = _tokenContainer.ProvisionElementStack(elementId, quantityChange, stackSource, locatorid);
+        var newStack = _tokenContainer.ProvisionElementStack(elementId, quantityChange, stackSource, context, locatorid);
         AcceptStack(newStack, context);
         return quantityChange;
     }
@@ -131,7 +131,7 @@ public class ElementStacksManager : IElementStacksManager {
         return totals;
     }
 
-    public IEnumerable<IElementStack> GetStacks() {
+    public IEnumerable<ElementStackToken> GetStacks() {
         return _stacks.Where(s => !s.Defunct).ToList();
     }
 
@@ -140,9 +140,9 @@ public class ElementStacksManager : IElementStacksManager {
         get { return _tokenContainer.PersistBetweenScenes; }
     }
 
-    public IElementStack AddAndReturnStack(string elementId, int quantity, Source stackSource, Context context)
+    public ElementStackToken AddAndReturnStack(string elementId, int quantity, Source stackSource, Context context)
     {
-        var newStack = _tokenContainer.ProvisionElementStack(elementId, quantity, stackSource);
+        var newStack = _tokenContainer.ProvisionElementStack(elementId, quantity, stackSource,context);
         AcceptStack(newStack,context);
         return newStack;
 
@@ -153,7 +153,7 @@ public class ElementStacksManager : IElementStacksManager {
     /// </summary>
     /// <param name="stack"></param>
     /// <param name="context">How did it get transferred?</param>
-    public void AcceptStack(IElementStack stack, Context context) {
+    public void AcceptStack(ElementStackToken stack, Context context) {
         if (stack == null)
             return;
 
@@ -176,12 +176,12 @@ public class ElementStacksManager : IElementStacksManager {
         _catalogue.NotifyStacksChanged();
     }
 
-    void RemoveDuplicates(IElementStack incomingStack) {
+    void RemoveDuplicates(ElementStackToken incomingStack) {
       
         if (!incomingStack.Unique && string.IsNullOrEmpty(incomingStack.UniquenessGroup))
             return;
         
-        foreach (var existingStack in new List<IElementStack>(_stacks)) {
+        foreach (var existingStack in new List<ElementStackToken>(_stacks)) {
             
             if (existingStack != incomingStack && existingStack.EntityId == incomingStack.EntityId) {
                 NoonUtility.Log("Not the stack that got accepted, but has the same ID as the stack that got accepted? It's a copy!");
@@ -198,22 +198,21 @@ public class ElementStacksManager : IElementStacksManager {
         }
     }
 
-    public void AcceptStacks(IEnumerable<IElementStack> stacks, Context context) {
+    public void AcceptStacks(IEnumerable<ElementStackToken> stacks, Context context) {
         foreach (var eachStack in stacks) {
             AcceptStack(eachStack, context);
         }
     }
 
-    public void RemoveStack(IElementStack stack) {
+    public void RemoveStack(ElementStackToken stack) {
         _stacks.Remove(stack);
         _catalogue.NotifyStacksChanged();
     }
 
     public void RemoveAllStacks()
     {
-        var stacksListCopy=new List<IElementStack>(_stacks);
-        foreach (IElementStack s in stacksListCopy)
-        {
+        var stacksListCopy=new List<ElementStackToken>(_stacks);
+        foreach (ElementStackToken s in stacksListCopy)
             RemoveStack(s);
             (s as ElementStackToken).Retire(CardVFX.None);
         }
@@ -231,9 +230,9 @@ public class ElementStacksManager : IElementStacksManager {
     /// </summary>
     /// <param name="requirement"></param>
     /// <returns></returns>
-    public List<IElementStack> GetStacksWithAspect(KeyValuePair<string,int> requirement)
+    public List<ElementStackToken> GetStacksWithAspect(KeyValuePair<string,int> requirement)
     {
-        List<IElementStack> matchingStacks = new List<IElementStack>();
+        List<ElementStackToken> matchingStacks = new List<ElementStackToken>();
         var candidateStacks = GetStacks(); //room here for caching
         foreach (var stack in candidateStacks)
         {
@@ -260,7 +259,7 @@ public class ElementStacksManager : IElementStacksManager {
             {
                 
                 //nb: if we transform a stack of >1, it's possible maxToPurge/Transform will be less than the stack total - iwc it'll transform the whole stack. Probably fine.
-                IElementStack stackToAffect = _stacks.FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(element.Id));
+                ElementStackToken stackToAffect = _stacks.FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(element.Id));
 
                 if (stackToAffect == null) //we haven't found either a concrete matching element, or an element with that ID.
                     //so end execution here, and return the unsatisfied change amount

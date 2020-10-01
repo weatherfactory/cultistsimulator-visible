@@ -16,14 +16,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public interface ITableSaveState
     {
-        IEnumerable<IElementStack> TableStacks { get; }
+        IEnumerable<ElementStackToken> TableStacks { get; }
         List<SituationController> Situations { get; }
         bool IsTableActive();
     }
 
     public class TableSaveState : ITableSaveState
     {
-        public IEnumerable<IElementStack> TableStacks { get; private set; }
+        public IEnumerable<ElementStackToken> TableStacks { get; private set; }
         public List<SituationController> Situations { get; private set; }
         public bool IsTableActive()
         {
@@ -31,7 +31,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-        public TableSaveState(IEnumerable<IElementStack> tableStacks, List<SituationController> situations)
+        public TableSaveState(IEnumerable<ElementStackToken> tableStacks, List<SituationController> situations)
         {
             TableStacks = tableStacks;
             Situations = situations;
@@ -40,7 +40,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
     public class InactiveTableSaveState : ITableSaveState
     {
-        public IEnumerable<IElementStack> TableStacks { get; private set; }
+        public IEnumerable<ElementStackToken> TableStacks { get; private set; }
         public List<SituationController> Situations { get; private set; }
 
         public bool IsTableActive()
@@ -50,7 +50,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public InactiveTableSaveState()
         {
-            TableStacks = new List<IElementStack>();
+            TableStacks = new List<ElementStackToken>();
             Situations = new List<SituationController>();
         }
 

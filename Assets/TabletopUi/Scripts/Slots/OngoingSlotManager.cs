@@ -55,11 +55,11 @@ namespace Assets.CS.TabletopUI {
             ongoingSlot.Initialise(slotSpec);
         }
 
-        public override void RespondToStackAdded(RecipeSlot slot, IElementStack stack, Context context) {
+        public override void RespondToStackAdded(RecipeSlot slot, ElementStackToken stack, Context context) {
             situationController.OngoingSlotsOrStorageUpdated();
         }
 
-        public override void RespondToStackRemoved(IElementStack stack, Context context) {
+        public override void RespondToStackRemoved(ElementStackToken stack, Context context) {
             situationController.OngoingSlotsOrStorageUpdated();
         }
 
@@ -88,7 +88,7 @@ namespace Assets.CS.TabletopUI {
             countdownText.richText = true;
         }
 
-        public void ShowStoredAspects(IEnumerable<IElementStack> stacks) {
+        public void ShowStoredAspects(IEnumerable<ElementStackToken> stacks) {
             int i = 0;
 
             var aspectFrames = storedCardsLayout.GetComponentsInChildren<ElementFrame>();

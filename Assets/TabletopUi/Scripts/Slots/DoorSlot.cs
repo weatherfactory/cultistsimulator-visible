@@ -18,7 +18,7 @@ namespace Assets.CS.TabletopUI {
     [ExecuteInEditMode]
     public class DoorSlot : AbstractTokenContainer, IDropHandler, IGlowableView, IPointerEnterHandler, IPointerExitHandler {
 
-        public event System.Action<IElementStack> onCardDropped;
+        public event System.Action<ElementStackToken> onCardDropped;
 
         public PortalEffect portalType;
         public Transform[] cardPositions;
@@ -127,7 +127,7 @@ namespace Assets.CS.TabletopUI {
             if (!isActive || DraggableToken.itemBeingDragged == null)
                 return;
 
-            IElementStack stack = DraggableToken.itemBeingDragged as IElementStack;
+            ElementStackToken stack = DraggableToken.itemBeingDragged as ElementStackToken;
 
             if (stack == null) { //it's not an element stack; just put it down
                 DraggableToken.itemBeingDragged.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
@@ -140,7 +140,7 @@ namespace Assets.CS.TabletopUI {
             SoundManager.PlaySfx("CardPutInSlot");
         }
 
-        public void AcceptStack(IElementStack stack, Context context) {
+        public void AcceptStack(ElementStackToken stack, Context context) {
             GetElementStacksManager().AcceptStack(stack, context);
             // ReSharper disable once PossibleNullReferenceException
 
@@ -152,8 +152,8 @@ namespace Assets.CS.TabletopUI {
             return GetComponentInChildren<DraggableToken>();
         }
 
-        public IElementStack GetElementStackInSlot() {
-            return GetComponentInChildren<IElementStack>();
+        public ElementStackToken GetElementStackInSlot() {
+            return GetComponentInChildren<ElementStackToken>();
         }
 
         public override string GetSaveLocationInfoForDraggable(DraggableToken draggable) {

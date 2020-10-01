@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.TabletopUi;
@@ -30,6 +31,18 @@ public class ExhibitCards : AbstractTokenContainer {
     public override string GetSaveLocationInfoForDraggable(DraggableToken draggable)
     {
         return string.Empty;
+    }
+
+    public override ElementStackToken ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context, string locatorid = null)
+    {
+        var token = PrefabFactory.CreateLocally<ElementStackToken>(transform);
+
+        token.Populate(elementId,quantity,stackSource);
+
+         GetElementStacksManager().AcceptStack(token as ElementStackToken, context);
+
+
+         return token;
     }
 
     public override void DisplayHere(ElementStackToken stack, Context context)

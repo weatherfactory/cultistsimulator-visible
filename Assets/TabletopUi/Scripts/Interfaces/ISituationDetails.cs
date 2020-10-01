@@ -41,7 +41,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         IAspectsDictionary GetAspectsFromAllSlottedElements(bool showElementAspects = true);
         IRecipeSlot GetStartingSlotBySaveLocationInfoPath(string locationInfo);
 
-        void SetOutput(List<IElementStack> stacks);
+        void SetOutput(List<ElementStackToken> stacks);
         void SetUnstarted();
         void SetOngoing(Recipe forRecipe);
         void UpdateTextForPrediction(RecipePrediction recipePrediction);
@@ -49,16 +49,16 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void DumpAllStartingCardsToDesktop();
         void DumpAllResultingCardsToDesktop();
 
-        IEnumerable<IElementStack> GetStartingStacks();
-        IEnumerable<IElementStack> GetOngoingStacks();
-        IEnumerable<IElementStack> GetStoredStacks();
-        IEnumerable<IElementStack> GetOutputStacks();
+        IEnumerable<ElementStackToken> GetStartingStacks();
+        IEnumerable<ElementStackToken> GetOngoingStacks();
+        IEnumerable<ElementStackToken> GetStoredStacks();
+        IEnumerable<ElementStackToken> GetOutputStacks();
 
-        void StoreStacks(IEnumerable<IElementStack> stacksToStore);
+        void StoreStacks(IEnumerable<ElementStackToken> stacksToStore);
         void DisplayStoredElements();
 
-        IElementStacksManager GetStorageStacksManager();
-        IElementStacksManager GetResultsStacksManager();
+        ElementStacksManager GetStorageStacksManager();
+        ElementStacksManager GetResultsStacksManager();
 
         IEnumerable<ISituationNote> GetNotes();
 
@@ -72,7 +72,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void Retire();
         void SetComplete();
 
-        void ShowDestinationsForStack(IElementStack stack, bool show);
+        void ShowDestinationsForStack(ElementStackToken stack, bool show);
 
         void DisplayTimeRemaining(float duration, float timeRemaining, EndingFlavour endingFlavour);
         void DisplayNoRecipeFound();
@@ -86,7 +86,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 		// Added to allow saving of window positions. Better than inserting save code into the SituationDetails IMHO - CP
 		Vector3 Position { get; set; }
         void SetWindowSize(bool wide);
-        IElementStack ReprovisionExistingElementStackInStorage(ElementStackSpecification stackSpecification, Source stackSource, string locatorid = null);
+        ElementStackToken ReprovisionExistingElementStackInStorage(ElementStackSpecification stackSpecification, Source stackSource, string locatorid = null);
         void DisplayIcon(string icon);
     }
 }

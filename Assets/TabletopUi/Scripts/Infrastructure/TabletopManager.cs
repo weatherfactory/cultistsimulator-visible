@@ -402,9 +402,12 @@ namespace Assets.CS.TabletopUI {
             AspectsDictionary startingElements = new AspectsDictionary();
             startingElements.CombineAspects(chosenLegacy.Effects);  //note: we don't reset the chosen legacy. We assume it remains the same until someone dies again.
 
-            foreach (var e in startingElements) {
-                ElementStackToken token = _tabletop.ProvisionElementStack(e.Key, e.Value, Source.Existing()) as ElementStackToken;
-                choreographer.ArrangeTokenOnTable(token, new Context(Context.ActionSource.Loading));
+            foreach (var e in startingElements)
+            {
+                var context = new Context(Context.ActionSource.Loading);
+
+                ElementStackToken token = _tabletop.ProvisionElementStack(e.Key, e.Value, Source.Existing(),context) as ElementStackToken;
+                choreographer.ArrangeTokenOnTable(token, context);
             }
         }
 
@@ -745,7 +748,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             return true;
         }
 
-        private IElementStack FindStackForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
+        private ElementStackToken FindStackForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
 
             var rnd = new Random();
             var stacks = _tabletop.GetElementStacksManager().GetStacks().OrderBy(x=>rnd.Next());
@@ -793,7 +796,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             return slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay;
         }
 
-        private IElementStack FindStackForSlotSpecificationInSituations(SlotSpecification slotSpec, out SituationController sit) {
+        private ElementStackToken FindStackForSlotSpecificationInSituations(SlotSpecification slotSpec, out SituationController sit) {
             var rnd = new Random();
 
             // Nothing on the table? Look at the Situations.
@@ -1061,7 +1064,7 @@ public ElementStacksManager GetTabletopStacksManager()
             mansusSituation = null;
         }
 
-        public void BeginNewSituation(SituationCreationCommand scc,List<IElementStack> withStacksInStorage) {
+        public void BeginNewSituation(SituationCreationCommand scc,List<ElementStackToken> withStacksInStorage) {
             Registry.Get<Choreographer>().BeginNewSituation(scc,withStacksInStorage);
         }
 
@@ -1152,7 +1155,7 @@ public ElementStacksManager GetTabletopStacksManager()
 				var allSituations = Registry.Get<SituationsCatalogue>();
 				foreach (var s in allSituations.GetRegisteredSituations())
                 {
-                    var stacksInSituation = new List<IElementStack>();
+                    var stacksInSituation = new List<ElementStackToken>();
                     stacksInSituation.AddRange(s.GetStartingStacks());
                     stacksInSituation.AddRange(s.GetOngoingStacks());
                     stacksInSituation.AddRange(s.GetStoredStacks());

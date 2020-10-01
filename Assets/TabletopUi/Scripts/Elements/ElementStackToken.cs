@@ -26,7 +26,7 @@ using Noon;
 // Should inherit from a "TabletopToken" base class same as VerbBox
 
 namespace Assets.CS.TabletopUI {
-    public class ElementStackToken : DraggableToken, IElementStack, IGlowableView,IAnimatable
+    public class ElementStackToken : DraggableToken, IGlowableView,IAnimatable
     {
         public const float SEND_STACK_TO_SLOT_DURATION = 0.2f;
 
@@ -47,7 +47,7 @@ namespace Assets.CS.TabletopUI {
 
         [SerializeField] CardVFX defaultRetireFX = CardVFX.CardBurn;
 
-        protected IElementStacksManager CurrentStacksManager;
+        protected ElementStacksManager CurrentStacksManager;
 
         private Element _element;
         private int _quantity;
@@ -524,22 +524,17 @@ namespace Assets.CS.TabletopUI {
 		{
 			var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
 			var stacksManager = tabletop._tabletop.GetElementStacksManager();
-			//var newCard = PrefabFactory.CreateToken<DropZoneToken>(transform.parent);
-			var newCard = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
-			newCard.Populate("dropzone", 1, Source.Fresh());
+
+            var dropZone = tabletop._tabletop.ProvisionElementStack("dropzone", 1, Source.Fresh(),
+                new Context(Context.ActionSource.Loading)) as ElementStackToken;
+
+            dropZone.Populate("dropzone", 1, Source.Fresh());
 
             // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
-            newCard.transform.position = Vector3.zero;
-
-            stacksManager.AcceptStack(newCard, new Context(Context.ActionSource.Loading));
-
-			// Show hint message explaining what this new thing is...
-			//notifier.ShowNotificationWindow( LanguageTable.Get("UI_CANTMERGE"), LanguageTable.Get("UI_DECAYS") );
-
-            // Accepting stack may put it to pos Vector3.zero, so this is last
-            //newCard.transform.position = position;
-            newCard.transform.localScale = Vector3.one;
-            return newCard as DraggableToken;
+            dropZone.transform.position = Vector3.zero;
+            
+            dropZone.transform.localScale = Vector3.one;
+            return dropZone as DraggableToken;
 		}
 
 		private void CustomizeDropZone()		// Customises self!
@@ -603,7 +598,7 @@ namespace Assets.CS.TabletopUI {
 
 
         // Called from StacksManager
-        public void SetStackManager(IElementStacksManager manager) {
+        public void SetStackManager(ElementStacksManager manager) {
             var oldStacksManager = CurrentStacksManager;
             CurrentStacksManager = manager;
 
@@ -627,7 +622,7 @@ namespace Assets.CS.TabletopUI {
 
         protected override void NotifyChroniclerPlacedOnTabletop()
         {
-            subscribedChronicler.TokenPlacedOnTabletop(this);
+            subscribedChronicler?.TokenPlacedOnTabletop(this);
         }
 
         public override bool Retire()
@@ -938,11 +933,11 @@ namespace Assets.CS.TabletopUI {
                 DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
         }
 
-        public override bool CanInteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
+        public override bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn) {
             return CanMergeWith(stackDroppedOn);
         }
 
-        public bool CanMergeWith(IElementStack stack)
+        public bool CanMergeWith(ElementStackToken stack)
 		{
             return	stack.EntityId == this.EntityId &&
 					(stack as ElementStackToken) != this &&
@@ -951,7 +946,7 @@ namespace Assets.CS.TabletopUI {
 					stack.GetCurrentMutations().IsEquivalentTo(GetCurrentMutations());
         }
 
-        public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
+        public override void InteractWithTokenDroppedOn(ElementStackToken stackDroppedOn) {
             if (CanInteractWithTokenDroppedOn(stackDroppedOn)) {
                 stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity,new Context(Context.ActionSource.Unknown));
                 DraggableToken.SetReturn(false, "was merged");
@@ -976,7 +971,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        void ShowNoMergeMessage(IElementStack stackDroppedOn) {
+        void ShowNoMergeMessage(ElementStackToken stackDroppedOn) {
             if (stackDroppedOn.EntityId != this.EntityId)
                 return; // We're dropping on a different element? No message needed.
 
@@ -986,10 +981,11 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public IElementStack SplitAllButNCardsToNewStack(int n, Context context) {
-            if (Quantity > n) {
-                var cardLeftBehind = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
-                cardLeftBehind.Populate(EntityId, Quantity - n, Source.Existing());
+        public ElementStackToken SplitAllButNCardsToNewStack(int n, Context context) {
+            if (Quantity > n)
+            {
+                var cardLeftBehind =
+                    TokenContainer.ProvisionElementStack(EntityId, Quantity - n, Source.Existing(), context) as ElementStackToken;
                 foreach (var m in GetCurrentMutations())
 	                cardLeftBehind.SetMutation(m.Key, m.Value, false); //brand new mutation, never needs to be additive
 
@@ -1000,10 +996,7 @@ namespace Assets.CS.TabletopUI {
 
                 // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
                 cardLeftBehind.transform.position = transform.position;
-
-                var stacksManager = TokenContainer.GetElementStacksManager();
-                stacksManager.AcceptStack(cardLeftBehind, context);
-
+                
                 // Accepting stack may put it to pos Vector3.zero, so this is last
                 cardLeftBehind.transform.position = transform.position;
                 return cardLeftBehind;
@@ -1188,8 +1181,9 @@ namespace Assets.CS.TabletopUI {
             // Save this, since we're retiring and that sets quantity to 0
             int quantity = Quantity;
 
-            var cardLeftBehind = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
-            cardLeftBehind.Populate(elementId, quantity, Source.Existing());
+           var cardLeftBehind= TokenContainer.ProvisionElementStack(elementId, quantity, Source.Existing(),
+                new Context(Context.ActionSource.ChangeTo)) as ElementStackToken;
+
             foreach(var m in this.GetCurrentMutations())
                cardLeftBehind.SetMutation(m.Key,m.Value,false); //brand new mutation, never needs to be additive
             cardLeftBehind.lastTablePos = lastTablePos;
@@ -1201,13 +1195,9 @@ namespace Assets.CS.TabletopUI {
             // Put it behind the card being burned
             cardLeftBehind.transform.SetSiblingIndex(transform.GetSiblingIndex() - 1);
 
-            var stacksManager = TokenContainer.GetElementStacksManager();
-            stacksManager.AcceptStack(cardLeftBehind, new Context(Context.ActionSource.ChangeTo));
-
             // Accepting stack may put it to pos Vector3.zero, so this is last
             cardLeftBehind.transform.position = transform.position;
 
-            // Note, this is a temp effect
             Retire(CardVFX.CardTransformWhite);
 
             return true;

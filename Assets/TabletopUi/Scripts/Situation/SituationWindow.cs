@@ -110,10 +110,10 @@ namespace Assets.CS.TabletopUI {
 
         public void Retire()
         {
-            var startingStacks = new List<IElementStack>(GetStartingStacks());
+            var startingStacks = new List<ElementStackToken>(GetStartingStacks());
             foreach (var s in startingStacks)
                 s.Retire(CardVFX.None);
-            var ongoingStacks=new List<IElementStack>(GetOngoingStacks());
+            var ongoingStacks=new List<ElementStackToken>(GetOngoingStacks());
            foreach (var o in ongoingStacks)
                o.Retire(CardVFX.None);
 
@@ -186,7 +186,7 @@ namespace Assets.CS.TabletopUI {
 
         // Results State
 
-        public void SetOutput(List<IElementStack> stacks) {
+        public void SetOutput(List<ElementStackToken> stacks) {
             results.SetOutput(stacks);
         }
 
@@ -295,7 +295,7 @@ namespace Assets.CS.TabletopUI {
             startButtonText.GetComponent<Babelfish>().UpdateLocLabel(string.IsNullOrEmpty(text) ? buttonDefault : text);
         }
 
-        public void ShowDestinationsForStack(IElementStack stack, bool show) {
+        public void ShowDestinationsForStack(ElementStackToken stack, bool show) {
             IList<RecipeSlot> slots;
 
             slots = startingSlots.gameObject.activeInHierarchy ? startingSlots.GetAllSlots() : null;
@@ -305,7 +305,7 @@ namespace Assets.CS.TabletopUI {
             HighlightSlots(slots, show ? stack : null);
         }
 
-        void HighlightSlots(IList<RecipeSlot> slots, IElementStack stack) {
+        void HighlightSlots(IList<RecipeSlot> slots, ElementStackToken stack) {
             if (slots == null)
                 return;
 
@@ -317,7 +317,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        bool CanHighlightSlot(RecipeSlot slot, IElementStack stack) {
+        bool CanHighlightSlot(RecipeSlot slot, ElementStackToken stack) {
             if (stack == null || slot == null)
                 return false; 
             if (slot.GetElementStackInSlot() != null)
@@ -361,7 +361,7 @@ namespace Assets.CS.TabletopUI {
                 DumpToDesktop(GetStartingStacks(), new Context(Context.ActionSource.PlayerDumpAll));
         }
 
-        void DumpToDesktop(IEnumerable<IElementStack> stacks, Context context) {
+        void DumpToDesktop(IEnumerable<ElementStackToken> stacks, Context context) {
             DraggableToken token;
 
             foreach (var item in stacks) {
@@ -381,36 +381,36 @@ namespace Assets.CS.TabletopUI {
 
         // ISituationDetails
 
-        public IEnumerable<IElementStack> GetStartingStacks() {
+        public IEnumerable<ElementStackToken> GetStartingStacks() {
             return startingSlots.GetStacksInSlots();
         }
 
-        public IEnumerable<IElementStack> GetOngoingStacks() {
+        public IEnumerable<ElementStackToken> GetOngoingStacks() {
             return ongoing.GetStacksInSlots();
         }
 
-        public IEnumerable<IElementStack> GetStoredStacks() {
+        public IEnumerable<ElementStackToken> GetStoredStacks() {
             return GetStorageStacksManager().GetStacks();
         }
 
-        public IEnumerable<IElementStack> GetOutputStacks() {
+        public IEnumerable<ElementStackToken> GetOutputStacks() {
             return results.GetOutputStacks();
         }
 
 
-        public IElementStacksManager GetStorageStacksManager() {
+        public ElementStacksManager GetStorageStacksManager() {
             return storage.GetElementStacksManager();
         }
-        public IElementStack ReprovisionExistingElementStackInStorage(ElementStackSpecification stackSpecification, Source stackSource, string locatorid = null)
+        public ElementStackToken ReprovisionExistingElementStackInStorage(ElementStackSpecification stackSpecification, Source stackSource, string locatorid = null)
         {
-            return storage.ReprovisionExistingElementStack(stackSpecification, stackSource, locatorid);
+            return storage.ReprovisionExistingElementStack(stackSpecification, stackSource, new Context(Context.ActionSource.Loading), locatorid);
         }
 
-        public IElementStacksManager GetResultsStacksManager() {
+        public ElementStacksManager GetResultsStacksManager() {
             return results.GetElementStacksManager();
         }
 
-        public void StoreStacks(IEnumerable<IElementStack> stacksToStore) {
+        public void StoreStacks(IEnumerable<ElementStackToken> stacksToStore) {
             GetStorageStacksManager().AcceptStacks(stacksToStore, new Context(Context.ActionSource.SituationStoreStacks));
             // Now that we've stored stacks, make sure we update the starting slots
             startingSlots.RemoveAnyChildSlotsWithEmptyParent(new Context(Context.ActionSource.SituationStoreStacks)); 
