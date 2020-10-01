@@ -175,7 +175,7 @@ namespace Assets.CS.TabletopUI {
             ShowCardElementDetails(element, stack);
         }
 
-        public void OnStackDropped(ElementStackToken stack, EventArgs eventData)
+        public void OnStackDropped(ElementStackToken stack, PointerEventData eventData)
         {
         }
 

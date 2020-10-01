@@ -577,7 +577,7 @@ public class DebugTools : MonoBehaviour,ITokenObserver
             SetInput(stack.EntityId);
     }
 
-    public void OnStackDropped(ElementStackToken stack, EventArgs eventData)
+    public void OnStackDropped(ElementStackToken stack, PointerEventData eventData)
     {
         }
 

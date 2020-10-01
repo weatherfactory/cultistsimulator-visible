@@ -17,6 +17,7 @@ namespace Assets.TabletopUi.Scripts.UI
     {
         [SerializeField] public ElementStackToken ElementStackPrefab;
         [SerializeField] public ExhibitCards CardsExhibit;
+        [SerializeField] public TextMeshProUGUI Responsibilities;
         [SerializeField] public TextMeshProUGUI Names;
 
 
@@ -48,6 +49,7 @@ namespace Assets.TabletopUi.Scripts.UI
             var firstCard = creditCards[0];
 
             CardsExhibit.HighlightCardWithId(firstCard.Id);
+            Responsibilities.text = firstCard.Label;
             Names.text = firstCard.Description;
 
             Initialised = true;
@@ -58,20 +60,24 @@ namespace Assets.TabletopUi.Scripts.UI
         {
             
             CardsExhibit.HighlightCardWithId(stack.EntityId);
+            Responsibilities.text = element.Label;
             Names.text = element.Description;
 
         }
 
-        public void OnStackDropped(ElementStackToken stack, EventArgs eventData)
+        public void OnStackDropped(ElementStackToken stack, PointerEventData eventData)
         {
         }
 
         public void OnStackPointerEntered(ElementStackToken stack, PointerEventData pointerEventData)
         {
+            stack.Emphasise();
         }
 
         public void OnStackPointerExited(ElementStackToken stack, PointerEventData pointerEventData)
         {
+            if(Responsibilities.text!=stack.Label) // don't remove the highlight if the card is currently selected
+            stack.Understate();
         }
 
         public void OnStackDoubleClicked(ElementStackToken elementStackToken, PointerEventData eventData, Element element)

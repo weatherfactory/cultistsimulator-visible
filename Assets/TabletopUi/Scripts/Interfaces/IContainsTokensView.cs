@@ -15,6 +15,7 @@ namespace Assets.CS.TabletopUI.Interfaces
         // Allow tokens to be dragged from here, or merged here
         bool AllowDrag { get; }
         bool AllowStackMerge { get; }
+        bool AlwaysShowHoverGlow { get;}
         bool PersistBetweenScenes { get; }
 
         ElementStacksManager GetElementStacksManager();

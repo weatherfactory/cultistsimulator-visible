@@ -12,7 +12,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
     public interface ITokenObserver
     {
         void OnStackClicked(ElementStackToken stack, PointerEventData pointerEventData, Element element);
-        void OnStackDropped(ElementStackToken stack, EventArgs eventData);
+        void OnStackDropped(ElementStackToken stack, PointerEventData eventData);
 
         void OnStackPointerEntered(ElementStackToken stack, PointerEventData pointerEventData);
         void OnStackPointerExited(ElementStackToken stack, PointerEventData pointerEventData);

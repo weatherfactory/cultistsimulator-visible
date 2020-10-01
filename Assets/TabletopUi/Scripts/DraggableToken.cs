@@ -80,8 +80,8 @@ namespace Assets.CS.TabletopUI {
             return !IsBeingAnimated;
         }
 
-        protected virtual bool AllowsInteraction() {
-            return !Defunct && TokenContainer != null && !IsBeingAnimated && TokenContainer.AllowDrag && AllowsDrag();
+        protected virtual bool ShouldShowHoverGlow() {
+            return !Defunct && TokenContainer != null && !IsBeingAnimated && (TokenContainer.AllowDrag || TokenContainer.AlwaysShowHoverGlow) && AllowsDrag();
         }
 
 		public bool IsGlowing()
@@ -418,7 +418,7 @@ namespace Assets.CS.TabletopUI {
                     show = false;
                 }
                 // If we can not interact, don't show the hover highlight
-                else if (!AllowsInteraction()) {
+                else if (!ShouldShowHoverGlow()) {
                     show = false;
                 }
             }

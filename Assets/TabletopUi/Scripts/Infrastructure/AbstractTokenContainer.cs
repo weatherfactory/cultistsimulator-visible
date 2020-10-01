@@ -14,6 +14,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public virtual bool AllowDrag { get; private set; }
         public virtual bool AllowStackMerge { get; private set; }
+        public virtual bool AlwaysShowHoverGlow { get; private set; }
         public bool PersistBetweenScenes { get; protected set; }
 
         // This is where the ElementStacksManager is created!

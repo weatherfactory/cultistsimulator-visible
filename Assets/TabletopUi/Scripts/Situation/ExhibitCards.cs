@@ -19,6 +19,7 @@ public class ExhibitCards : AbstractTokenContainer {
 
     public override bool AllowDrag { get { return false; } }
     public override bool AllowStackMerge { get { return false; } }
+    public override bool AlwaysShowHoverGlow { get { return true; } }
 
 
     public override void Initialise()

@@ -709,9 +709,9 @@ namespace Assets.CS.TabletopUI {
             return isFront && turnCoroutine == null; // no dragging while not front or busy turning
         }
 
-        protected override bool AllowsInteraction() {
+        protected override bool ShouldShowHoverGlow() {
             // interaction is always possible on facedown cards to turn them back up
-            return !isFront || base.AllowsInteraction();
+            return !isFront || base.ShouldShowHoverGlow();
         }
 
         virtual public bool AllowsIncomingMerge() {
@@ -821,7 +821,12 @@ namespace Assets.CS.TabletopUI {
 
 		public override void OnPointerEnter(PointerEventData eventData)
 		{
-			base.OnPointerEnter(eventData);
+            foreach (var o in observers)
+            {
+                o.OnStackPointerEntered(this, eventData);
+            }
+
+            base.OnPointerEnter(eventData);
 			var tabletopManager = Registry.Get<TabletopManager>(false);
             if(tabletopManager!=null ) //eg we might have a face down card on the credits page - in the longer term, of course, this should get interfaced
             {
@@ -841,7 +846,12 @@ namespace Assets.CS.TabletopUI {
 
 		public override void OnPointerExit(PointerEventData eventData)
 		{
-			base.OnPointerExit(eventData);
+            foreach (var o in observers)
+            {
+                o.OnStackPointerExited(this, eventData);
+            }
+
+            base.OnPointerExit(eventData);
             var ttm = Registry.Get<TabletopManager>(false);
                 if(ttm!=null)
                 {
@@ -859,8 +869,6 @@ namespace Assets.CS.TabletopUI {
 		public override void OnPointerClick(PointerEventData eventData)
         {
     
-
-
             if (eventData.clickCount > 1)
 			{
 				// Double-click, so abort any pending single-clicks
@@ -919,6 +927,12 @@ namespace Assets.CS.TabletopUI {
         }
 
         public override void OnDrop(PointerEventData eventData) {
+            foreach (var o in observers)
+            {
+                o.OnStackDropped(this, eventData);
+            }
+
+
             if (DraggableToken.itemBeingDragged != null)
                 DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
         }
