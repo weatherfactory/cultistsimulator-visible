@@ -7,6 +7,7 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Services {
@@ -38,7 +39,17 @@ namespace Assets.TabletopUi.Scripts.Services {
 
         public SituationToken CreateTokenWithAttachedControllerAndSituation(SituationCreationCommand situationCreationCommand, string locatorInfo = null) {
             var situationController = new SituationController(Registry.Get<ICompendium>(), Registry.Get<Character>());
-            var newToken = PrefabFactory.CreateToken<SituationToken>(tableLevel, locatorInfo);
+            
+            var newToken = PrefabFactory.CreateLocally<SituationToken>(tableLevel);
+
+
+           newToken.SetTokenContainer(tableLevel.GetComponent<AbstractTokenContainer>(), new Context(Context.ActionSource.Unknown));
+                
+            
+            if (locatorInfo != null)
+                newToken.SaveLocationInfo = locatorInfo;
+
+            
             newToken.SetParticleSimulationSpace(tableLevel);
 
             var window = BuiltSituationWindow(newToken);
