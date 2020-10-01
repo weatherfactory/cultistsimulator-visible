@@ -986,9 +986,10 @@ namespace Assets.CS.TabletopUI {
         }
 
         public IElementStack SplitAllButNCardsToNewStack(int n, Context context) {
-            if (Quantity > n) {
-                var cardLeftBehind = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
-                cardLeftBehind.Populate(EntityId, Quantity - n, Source.Existing());
+            if (Quantity > n)
+            {
+                var cardLeftBehind =
+                    TokenContainer.ProvisionElementStack(EntityId, Quantity - n, Source.Existing(), context) as ElementStackToken;
                 foreach (var m in GetCurrentMutations())
 	                cardLeftBehind.SetMutation(m.Key, m.Value, false); //brand new mutation, never needs to be additive
 
@@ -999,10 +1000,7 @@ namespace Assets.CS.TabletopUI {
 
                 // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
                 cardLeftBehind.transform.position = transform.position;
-
-                var stacksManager = TokenContainer.GetElementStacksManager();
-                stacksManager.AcceptStack(cardLeftBehind, context);
-
+                
                 // Accepting stack may put it to pos Vector3.zero, so this is last
                 cardLeftBehind.transform.position = transform.position;
                 return cardLeftBehind;
