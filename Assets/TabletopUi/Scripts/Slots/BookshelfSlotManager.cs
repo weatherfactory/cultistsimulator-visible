@@ -10,12 +10,12 @@ namespace Assets.TabletopUi.Scripts.Slots
 {
    public class BookshelfSlotManager: AbstractSlotsManager
     {
-        public override void RespondToStackRemoved(IElementStack stack, Context context)
+        public override void RespondToStackRemoved(ElementStackToken stack, Context context)
         {
             throw new NotImplementedException();
         }
 
-        public override void RespondToStackAdded(RecipeSlot slot, IElementStack stack, Context context)
+        public override void RespondToStackAdded(RecipeSlot slot, ElementStackToken stack, Context context)
         {
             throw new NotImplementedException();
         }

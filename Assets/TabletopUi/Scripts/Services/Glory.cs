@@ -37,7 +37,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         public Glory(ScreenResolutionAdapter screenResolutionAdapter)
         {
-            this._screenResolutionAdapter = screenResolutionAdapter;
+            this.screenResolutionAdapter = screenResolutionAdapter;
         }
 
 
@@ -142,10 +142,10 @@ namespace Assets.TabletopUi.Scripts.Services
             registryAccess.Register(chronicler);
 
             //set up the top-level adapters. We do this here in case we've diverted to the error scene on first load / content fail, in order to avoid spamming the log with messages.
-            _screenResolutionAdapter.Initialise();
-            _graphicsSettingsAdapter.Initialise();
-            _windowSettingsAdapter.Initialise();
-            _soundManager.Initialise();
+            screenResolutionAdapter.Initialise();
+            graphicsSettingsAdapter.Initialise();
+            windowSettingsAdapter.Initialise();
+            soundManager.Initialise();
 
             var stackManagersCatalogue = new StackManagersCatalogue();
             registryAccess.Register(stackManagersCatalogue);

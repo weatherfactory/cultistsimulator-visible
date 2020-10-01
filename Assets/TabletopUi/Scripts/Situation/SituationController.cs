@@ -195,11 +195,11 @@ namespace Assets.TabletopUi {
             return situationWindowAsStorage.GetOngoingSlots();
         }
 
-        public IEnumerable<IElementStack> GetOutputStacks() {
+        public IEnumerable<ElementStackToken> GetOutputStacks() {
             return situationWindowAsStorage.GetOutputStacks();
         }
 
-        public IEnumerable<IElementStack> GetStartingStacks() {
+        public IEnumerable<ElementStackToken> GetStartingStacks() {
             return situationWindowAsStorage.GetStartingStacks();
         }
 
@@ -527,7 +527,7 @@ namespace Assets.TabletopUi {
             situationToken.ShowGlow(show && CanAcceptStackWhenClosed(stack));
         }
 
-        public bool CanAcceptStackWhenClosed(IElementStack stack) {
+        public bool CanAcceptStackWhenClosed(ElementStackToken stack) {
             if (Situation.State == SituationState.Unstarted)
                 return HasSuitableStartingSlot(stack);
             if (Situation.State == SituationState.Ongoing)
@@ -549,7 +549,7 @@ namespace Assets.TabletopUi {
 
         }
 
-        bool HasEmptyOngoingSlot(IElementStack stack) {
+        bool HasEmptyOngoingSlot(ElementStackToken stack) {
             var ongoingSlots = situationWindowAsStorage.GetOngoingSlots();
 
             if (ongoingSlots.Count == 0)
@@ -562,7 +562,7 @@ namespace Assets.TabletopUi {
             return ongoingSlots[0].IsGreedy == false && ongoingSlots[0].GetSlotMatchForStack(stack).MatchType == SlotMatchForAspectsType.Okay;
         }
 
-        public bool PushDraggedStackIntoToken(IElementStack stack) {
+        public bool PushDraggedStackIntoToken(ElementStackToken stack) {
             if (Situation.State == SituationState.Unstarted)
                 return PushDraggedStackIntoStartingSlots(stack);
             if (Situation.State == SituationState.Ongoing)
@@ -614,7 +614,7 @@ namespace Assets.TabletopUi {
                 return;
 
             // Get all aspects and find a recipe
-            IAspectsDictionary allAspectsInSituation = situationWindowAsStorage.GetAspectsFromAllSlottedElements();
+            IAspectsDictionary allAspectsInSituation = situationWindowAsStorage.GetAspectsFromAllSlottedElements(true);
             var tabletopManager = Registry.Get<TabletopManager>();
             var aspectsInContext = tabletopManager.GetAspectsInContext(allAspectsInSituation);
         
@@ -701,7 +701,7 @@ namespace Assets.TabletopUi {
 
         }
 
-        public void SetOutput(List<IElementStack> stacksForOutput) {
+        public void SetOutput(List<ElementStackToken> stacksForOutput) {
             situationWindowAsStorage.SetOutput(stacksForOutput);
         }
 
@@ -738,7 +738,7 @@ namespace Assets.TabletopUi {
             if (Situation.State != SituationState.Unstarted)
                 return;
 
-            var aspects = situationWindowAsStorage.GetAspectsFromAllSlottedElements();
+            var aspects = situationWindowAsStorage.GetAspectsFromAllSlottedElements(true);
             var tabletopManager = Registry.Get<TabletopManager>();
             var aspectsInContext = tabletopManager.GetAspectsInContext(aspects);
 

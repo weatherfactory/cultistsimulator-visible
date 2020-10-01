@@ -12,7 +12,7 @@ namespace Assets.TabletopUi.Scripts.Slots
 {
     public class MindSlot : MonoBehaviour, IRecipeSlot
     {
-        public IElementStack GetElementStackInSlot()
+        public ElementStackToken GetElementStackInSlot()
         {
             throw new NotImplementedException();
         }
@@ -22,13 +22,13 @@ namespace Assets.TabletopUi.Scripts.Slots
             throw new NotImplementedException();
         }
 
-        public SlotMatchForAspects GetSlotMatchForStack(IElementStack stack)
+        public SlotMatchForAspects GetSlotMatchForStack(ElementStackToken stack)
         {
             throw new NotImplementedException();
         }
 
         public SlotSpecification GoverningSlotSpecification { get; set; }
-        public void AcceptStack(IElementStack s, Context context)
+        public void AcceptStack(ElementStackToken s, Context context)
         {
             throw new NotImplementedException();
         }
