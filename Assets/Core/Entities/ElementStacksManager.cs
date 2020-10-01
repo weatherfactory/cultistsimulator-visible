@@ -213,7 +213,10 @@ public class ElementStacksManager : IElementStacksManager {
     {
         var stacksListCopy=new List<IElementStack>(_stacks);
         foreach (IElementStack s in stacksListCopy)
+        {
             RemoveStack(s);
+            (s as ElementStackToken).Retire(CardVFX.None);
+        }
     }
 
     public void NotifyStacksChanged() {

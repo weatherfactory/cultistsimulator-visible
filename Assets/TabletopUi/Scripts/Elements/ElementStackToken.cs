@@ -643,6 +643,7 @@ namespace Assets.CS.TabletopUI {
 				return false;
 
             var hlc = Registry.Get<HighlightLocationsController>();
+            if(hlc!=null)
             hlc.DeactivateMatchingHighlightLocation(_element?.Id);
 
             var tabletop = Registry.Get<TabletopManager>() as TabletopManager;

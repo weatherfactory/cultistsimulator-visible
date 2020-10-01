@@ -15,35 +15,21 @@ namespace Assets.TabletopUi.Scripts.UI
 {
     public class CreditsWindow: MonoBehaviour,ITokenObserver
     {
-        [SerializeField] public ElementStackToken ElementStackPrefab;
         [SerializeField] public ExhibitCards CardsExhibit;
         [SerializeField] public TextMeshProUGUI Responsibilities;
         [SerializeField] public TextMeshProUGUI Names;
 
 
-        public bool Initialised { get; private set; }
-
         public void OnEnable()
         {
-            Debug.Log("starting");
-            if (!Initialised)
-                Initialise();
-        }
-
-        private void Initialise()
-        {
-            CardsExhibit.Initialise();
-
-            //List<string> creditCardIds = new List<string> { "reason", "passion", "health" }; 
-
             List<Element> creditCards = Registry.Get<ICompendium>().GetEntitiesAsList<Element>()
                 .Where(e => e.Id.StartsWith("credits.")).ToList();
 
             foreach (var cc in creditCards)
             {
-                var card=CardsExhibit.ProvisionElementStack(cc.Id, 1, Source.Fresh());
+                var card = CardsExhibit.ProvisionElementStack(cc.Id, 1, Source.Fresh());
                 card.AddObserver(this);
-               
+
             }
 
             var firstCard = creditCards[0];
@@ -51,10 +37,15 @@ namespace Assets.TabletopUi.Scripts.UI
             CardsExhibit.HighlightCardWithId(firstCard.Id);
             Responsibilities.text = firstCard.Label;
             Names.text = firstCard.Description;
+        }
 
-            Initialised = true;
+        public void OnDisable()
+        {
+         CardsExhibit.GetElementStacksManager().RemoveAllStacks();
 
         }
+
+
 
         public void OnStackClicked(ElementStackToken stack, PointerEventData pointerEventData, Element element)
         {
@@ -77,7 +68,7 @@ namespace Assets.TabletopUi.Scripts.UI
         public void OnStackPointerExited(ElementStackToken stack, PointerEventData pointerEventData)
         {
             if(Responsibilities.text!=stack.Label) // don't remove the highlight if the card is currently selected
-            stack.Understate();
+             stack.Understate();
         }
 
         public void OnStackDoubleClicked(ElementStackToken elementStackToken, PointerEventData eventData, Element element)
