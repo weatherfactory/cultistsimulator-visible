@@ -525,21 +525,16 @@ namespace Assets.CS.TabletopUI {
 			var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
 			var stacksManager = tabletop._tabletop.GetElementStacksManager();
 
-			var newCard = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
-			newCard.Populate("dropzone", 1, Source.Fresh());
+            var dropZone = tabletop._tabletop.ProvisionElementStack("dropzone", 1, Source.Fresh(),
+                new Context(Context.ActionSource.Loading)) as ElementStackToken;
+
+            dropZone.Populate("dropzone", 1, Source.Fresh());
 
             // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
-            newCard.transform.position = Vector3.zero;
-
-            stacksManager.AcceptStack(newCard, new Context(Context.ActionSource.Loading));
-
-			// Show hint message explaining what this new thing is...
-			//notifier.ShowNotificationWindow( LanguageTable.Get("UI_CANTMERGE"), LanguageTable.Get("UI_DECAYS") );
-
-            // Accepting stack may put it to pos Vector3.zero, so this is last
-            //newCard.transform.position = position;
-            newCard.transform.localScale = Vector3.one;
-            return newCard as DraggableToken;
+            dropZone.transform.position = Vector3.zero;
+            
+            dropZone.transform.localScale = Vector3.one;
+            return dropZone as DraggableToken;
 		}
 
 		private void CustomizeDropZone()		// Customises self!
