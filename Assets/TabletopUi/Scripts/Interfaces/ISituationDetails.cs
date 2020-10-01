@@ -55,7 +55,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void DumpAllStartingCardsToDesktop();
         IAspectsDictionary GetAspectsFromStoredElements(bool includeElementAspects);
         void SetOutput(List<ElementStackToken> stacksForOutput);
-        RecipeSlot GetUnfilledGreedySlot();
+        IRecipeSlot GetUnfilledGreedySlot();
         void StoreStacks(IEnumerable<ElementStackToken> getStartingStacks);
         IList<RecipeSlot> GetOngoingSlots();
     }

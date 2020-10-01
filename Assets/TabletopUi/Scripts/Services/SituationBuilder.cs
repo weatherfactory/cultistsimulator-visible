@@ -51,7 +51,17 @@ namespace Assets.TabletopUi.Scripts.Services {
 
         public SituationToken CreateToken(SituationCreationCommand situationCreationCommandl)
         {
+
             var newToken = PrefabFactory.CreateLocally<SituationToken>(tableLevel);
+
+
+            newToken.SetTokenContainer(tableLevel.GetComponent<AbstractTokenContainer>(), new Context(Context.ActionSource.Unknown));
+
+
+            if (situationCreationCommandl.LocationInfo != null)
+                newToken.SaveLocationInfo = situationCreationCommandl.LocationInfo;
+
+
             newToken.SetParticleSimulationSpace(tableLevel);
             return newToken;
         }
