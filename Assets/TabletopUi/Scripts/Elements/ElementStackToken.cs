@@ -47,7 +47,7 @@ namespace Assets.CS.TabletopUI {
 
         [SerializeField] CardVFX defaultRetireFX = CardVFX.CardBurn;
 
-        protected ElementStackTokensManager CurrentStacksManager;
+        protected ElementStacksManager CurrentStacksManager;
 
         private Element _element;
         private int _quantity;
@@ -598,7 +598,7 @@ namespace Assets.CS.TabletopUI {
 
 
         // Called from StacksManager
-        public void SetStackManager(ElementStackTokensManager manager) {
+        public void SetStackManager(ElementStacksManager manager) {
             var oldStacksManager = CurrentStacksManager;
             CurrentStacksManager = manager;
 

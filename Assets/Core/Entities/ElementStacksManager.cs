@@ -18,7 +18,7 @@ using Assets.CS.TabletopUI.Interfaces;
 /// IContainsTokens objects should never have direct access to the ITokenPhysicalLocation (though it references them) because everything needs to be filtered through
 /// the StacksManager for model management purposes
 /// </summary>
-public class ElementStacksManager : ElementStackTokensManager {
+public class ElementStacksManager {
 
     private readonly ITokenContainer _tokenContainer;
     private List<ElementStackToken> _stacks;

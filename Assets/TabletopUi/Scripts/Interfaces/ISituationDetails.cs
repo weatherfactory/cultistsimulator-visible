@@ -57,8 +57,8 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void StoreStacks(IEnumerable<ElementStackToken> stacksToStore);
         void DisplayStoredElements();
 
-        ElementStackTokensManager GetStorageStacksManager();
-        ElementStackTokensManager GetResultsStacksManager();
+        ElementStacksManager GetStorageStacksManager();
+        ElementStacksManager GetResultsStacksManager();
 
         IEnumerable<ISituationNote> GetNotes();
 

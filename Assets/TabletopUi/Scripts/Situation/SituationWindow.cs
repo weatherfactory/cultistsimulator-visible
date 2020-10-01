@@ -398,7 +398,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public ElementStackTokensManager GetStorageStacksManager() {
+        public ElementStacksManager GetStorageStacksManager() {
             return storage.GetElementStacksManager();
         }
         public ElementStackToken ReprovisionExistingElementStackInStorage(ElementStackSpecification stackSpecification, Source stackSource, string locatorid = null)
@@ -406,7 +406,7 @@ namespace Assets.CS.TabletopUI {
             return storage.ReprovisionExistingElementStack(stackSpecification, stackSource, new Context(Context.ActionSource.Loading), locatorid);
         }
 
-        public ElementStackTokensManager GetResultsStacksManager() {
+        public ElementStacksManager GetResultsStacksManager() {
             return results.GetElementStacksManager();
         }
 

@@ -105,7 +105,7 @@ namespace Assets.Core.Services
 			}
 		}
 
-        public void ChronicleGameEnd(List<SituationController> situations, List<ElementStackTokensManager> stacksManagers,Ending ending)
+        public void ChronicleGameEnd(List<SituationController> situations, List<ElementStacksManager> stacksManagers,Ending ending)
         {
             //a lot of the stuff in TokenPlacedOnTabletop might be better here, actually
             SetAchievementsForEnding(ending);
