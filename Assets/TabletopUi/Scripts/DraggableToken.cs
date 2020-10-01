@@ -316,7 +316,7 @@ namespace Assets.CS.TabletopUI {
         public abstract void OnDrop(PointerEventData eventData);
 
         private bool CanInteractWithTokenDroppedOn(DraggableToken token) {
-            var element = token as IElementStack;
+            var element = token as ElementStackToken;
 
             if (element != null)
                 return CanInteractWithTokenDroppedOn(element);
@@ -325,10 +325,10 @@ namespace Assets.CS.TabletopUI {
         }
 
         public abstract bool CanInteractWithTokenDroppedOn(SituationToken tokenDroppedOn);
-        public abstract bool CanInteractWithTokenDroppedOn(IElementStack stackDroppedOn);
+        public abstract bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn);
 
         public abstract void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn);
-        public abstract void InteractWithTokenDroppedOn(IElementStack stackDroppedOn);
+        public abstract void InteractWithTokenDroppedOn(ElementStackToken stackDroppedOn);
 
         #region -- On Click ------------------------------------
 

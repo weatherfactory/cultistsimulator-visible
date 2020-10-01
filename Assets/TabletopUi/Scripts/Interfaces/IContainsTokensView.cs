@@ -20,7 +20,7 @@ namespace Assets.CS.TabletopUI.Interfaces
 
         ElementStacksManager GetElementStacksManager();
 
-        IElementStack ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context, string locatorId = null);
+        ElementStackToken ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context, string locatorId = null);
 
         void DisplayHere(ElementStackToken stack, Context context);
         void DisplayHere(DraggableToken token, Context context);

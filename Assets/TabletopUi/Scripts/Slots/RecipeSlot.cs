@@ -19,11 +19,11 @@ using UnityEngine.UI;
 namespace Assets.CS.TabletopUI {
 
     public interface IRecipeSlot {
-        IElementStack GetElementStackInSlot();
+        ElementStackToken GetElementStackInSlot();
         DraggableToken GetTokenInSlot();
-        SlotMatchForAspects GetSlotMatchForStack(IElementStack stack);
+        SlotMatchForAspects GetSlotMatchForStack(ElementStackToken stack);
         SlotSpecification GoverningSlotSpecification { get; set; }
-        void AcceptStack(IElementStack s, Context context);
+        void AcceptStack(ElementStackToken s, Context context);
         string AnimationTag { get; set; }
         IRecipeSlot ParentSlot { get; set; }
         string SaveLocationInfoPath { get; }
@@ -34,8 +34,8 @@ namespace Assets.CS.TabletopUI {
 
     public class RecipeSlot : AbstractTokenContainer, IDropHandler, IRecipeSlot, IPointerClickHandler, IGlowableView, IPointerEnterHandler, IPointerExitHandler {
 
-        public event System.Action<RecipeSlot, IElementStack, Context> onCardDropped;
-        public event System.Action<IElementStack, Context> onCardRemoved;
+        public event System.Action<RecipeSlot, ElementStackToken, Context> onCardDropped;
+        public event System.Action<ElementStackToken, Context> onCardRemoved;
 
         // DATA ACCESS
         public SlotSpecification GoverningSlotSpecification { get; set; }
@@ -110,7 +110,7 @@ namespace Assets.CS.TabletopUI {
             if (lastGlowState == false || token == null) // we're not hoverable? Don't worry
                 return false;
 
-            var stack = token as IElementStack;
+            var stack = token as ElementStackToken;
 
             if (stack == null)
                 return false; // we only accept stacks
@@ -203,7 +203,7 @@ namespace Assets.CS.TabletopUI {
                 return;
 
             NoonUtility.Log("Dropping into " + name + " obj " + DraggableToken.itemBeingDragged,0,VerbosityLevel.Trivia);
-            IElementStack stack = DraggableToken.itemBeingDragged as IElementStack;
+            ElementStackToken stack = DraggableToken.itemBeingDragged as ElementStackToken;
 
             //it's not an element stack; just put it down
             if (stack == null)
@@ -254,7 +254,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public void AcceptStack(IElementStack stack, Context context) {
+        public void AcceptStack(ElementStackToken stack, Context context) {
             _elementStacksManager.AcceptStack(stack, context);
 
             Assert.IsNotNull(onCardDropped, "no delegate set for cards dropped on recipe slots");
@@ -276,7 +276,7 @@ namespace Assets.CS.TabletopUI {
             return GetComponentInChildren<DraggableToken>();
         }
 
-        public IElementStack GetElementStackInSlot()
+        public ElementStackToken GetElementStackInSlot()
         {
             if (_elementStacksManager.GetStacks().Count() > 1)
             {
@@ -289,7 +289,7 @@ namespace Assets.CS.TabletopUI {
             return _elementStacksManager.GetStacks().SingleOrDefault();
         }
 
-        public SlotMatchForAspects GetSlotMatchForStack(IElementStack stack)
+        public SlotMatchForAspects GetSlotMatchForStack(ElementStackToken stack)
         {
 			//no multiple stack is ever permitted in a slot  EDIT: removed this because we have support for splitting the stack to get a single card out - CP
 //			if (stack.Quantity > 1)

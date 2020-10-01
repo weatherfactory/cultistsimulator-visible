@@ -132,7 +132,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             cards = null;
         }
 
-        void HandleOnSlotFilled(IElementStack stack) {
+        void HandleOnSlotFilled(ElementStackToken stack) {
             var activeDoor = _mapTokenContainer.GetActiveDoor();
             HideMansusMap(activeDoor.transform, stack);
         }
@@ -183,7 +183,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 			DraggableToken.draggingEnabled = true;
         }
 
-        public void HideMansusMap(Transform effectCenter, IElementStack stack)
+        public void HideMansusMap(Transform effectCenter, ElementStackToken stack)
         {
             Registry.Get<TabletopManager>().ReturnFromMansus(effectCenter, (ElementStackToken)stack);
         }

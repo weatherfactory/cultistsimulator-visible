@@ -26,7 +26,7 @@ using Noon;
 // Should inherit from a "TabletopToken" base class same as VerbBox
 
 namespace Assets.CS.TabletopUI {
-    public class ElementStackToken : DraggableToken, IElementStack, IGlowableView,IAnimatable
+    public class ElementStackToken : DraggableToken, IGlowableView,IAnimatable
     {
         public const float SEND_STACK_TO_SLOT_DURATION = 0.2f;
 
@@ -47,7 +47,7 @@ namespace Assets.CS.TabletopUI {
 
         [SerializeField] CardVFX defaultRetireFX = CardVFX.CardBurn;
 
-        protected IElementStacksManager CurrentStacksManager;
+        protected ElementStackTokensManager CurrentStacksManager;
 
         private Element _element;
         private int _quantity;
@@ -598,7 +598,7 @@ namespace Assets.CS.TabletopUI {
 
 
         // Called from StacksManager
-        public void SetStackManager(IElementStacksManager manager) {
+        public void SetStackManager(ElementStackTokensManager manager) {
             var oldStacksManager = CurrentStacksManager;
             CurrentStacksManager = manager;
 
@@ -932,11 +932,11 @@ namespace Assets.CS.TabletopUI {
                 DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
         }
 
-        public override bool CanInteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
+        public override bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn) {
             return CanMergeWith(stackDroppedOn);
         }
 
-        public bool CanMergeWith(IElementStack stack)
+        public bool CanMergeWith(ElementStackToken stack)
 		{
             return	stack.EntityId == this.EntityId &&
 					(stack as ElementStackToken) != this &&
@@ -945,7 +945,7 @@ namespace Assets.CS.TabletopUI {
 					stack.GetCurrentMutations().IsEquivalentTo(GetCurrentMutations());
         }
 
-        public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
+        public override void InteractWithTokenDroppedOn(ElementStackToken stackDroppedOn) {
             if (CanInteractWithTokenDroppedOn(stackDroppedOn)) {
                 stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity,new Context(Context.ActionSource.Unknown));
                 DraggableToken.SetReturn(false, "was merged");
@@ -970,7 +970,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        void ShowNoMergeMessage(IElementStack stackDroppedOn) {
+        void ShowNoMergeMessage(ElementStackToken stackDroppedOn) {
             if (stackDroppedOn.EntityId != this.EntityId)
                 return; // We're dropping on a different element? No message needed.
 
@@ -980,7 +980,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public IElementStack SplitAllButNCardsToNewStack(int n, Context context) {
+        public ElementStackToken SplitAllButNCardsToNewStack(int n, Context context) {
             if (Quantity > n)
             {
                 var cardLeftBehind =

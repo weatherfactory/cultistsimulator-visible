@@ -203,20 +203,20 @@ namespace Assets.TabletopUi {
             return situationWindow.GetOngoingSlots();
         }
 
-        public IEnumerable<IElementStack> GetOutputStacks() {
+        public IEnumerable<ElementStackToken> GetOutputStacks() {
             return situationWindow.GetOutputStacks();
         }
 
-        public IEnumerable<IElementStack> GetStartingStacks() {
+        public IEnumerable<ElementStackToken> GetStartingStacks() {
             return situationWindow.GetStartingStacks();
         }
 
-        public IEnumerable<IElementStack> GetOngoingStacks()
+        public IEnumerable<ElementStackToken> GetOngoingStacks()
         {
             return situationWindow.GetOngoingStacks();
         }
 
-        public IEnumerable<IElementStack> GetStoredStacks()
+        public IEnumerable<ElementStackToken> GetStoredStacks()
         {
             return situationWindow.GetStoredStacks();
         }
@@ -273,7 +273,7 @@ namespace Assets.TabletopUi {
 
         }
 
-        public void StoreStacks(IEnumerable<IElementStack> inputStacks)
+        public void StoreStacks(IEnumerable<ElementStackToken> inputStacks)
 		{
           //  var inputStacks = situationWindow.GetOngoingStacks(); //This line looked like a mistake: the parameter for inputStacks was ignored (and it was named differently). Leaving in for now in case of sinister confusion - was there a reason we couldn't accept them?
             var storageStackManager = situationWindow.GetStorageStacksManager();
@@ -315,7 +315,7 @@ namespace Assets.TabletopUi {
 
             if (command.AsNewSituation) {
 
-                List<IElementStack> stacksToAddToNewSituation=new List<IElementStack>();
+                List<ElementStackToken> stacksToAddToNewSituation=new List<ElementStackToken>();
                 //if there's an expulsion
                 if (command.Expulsion.Limit>0)
                 {
@@ -491,7 +491,7 @@ namespace Assets.TabletopUi {
                 inducedRecipe.Label, inducedRecipe.Description);
             SituationCreationCommand inducedSituation = new SituationCreationCommand(inductionRecipeVerb,
                 inducedRecipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
-            Registry.Get<TabletopManager>().BeginNewSituation(inducedSituation,new List<IElementStack>());
+            Registry.Get<TabletopManager>().BeginNewSituation(inducedSituation,new List<ElementStackToken>());
         }
 
         public void ResetSituation() {
@@ -529,13 +529,13 @@ namespace Assets.TabletopUi {
             situationToken.DisplayAsClosed();
         }
 
-        public void ShowVisualEffectIfCanTakeDroppedToken(IElementStack stack,bool show)
+        public void ShowVisualEffectIfCanTakeDroppedToken(ElementStackToken stack,bool show)
         {
             situationToken.SetGlowColor(UIStyle.TokenGlowColor.Default);
             situationToken.ShowGlow(show && CanAcceptStackWhenClosed(stack));
         }
 
-        public bool CanAcceptStackWhenClosed(IElementStack stack) {
+        public bool CanAcceptStackWhenClosed(ElementStackToken stack) {
             if (SituationClock.State == SituationState.Unstarted)
                 return HasSuitableStartingSlot(stack);
             if (SituationClock.State == SituationState.Ongoing)
@@ -544,7 +544,7 @@ namespace Assets.TabletopUi {
             return false;
         }
 
-        bool HasSuitableStartingSlot(IElementStack forStack) {
+        bool HasSuitableStartingSlot(ElementStackToken forStack) {
             var win = situationWindow as SituationWindow;
             var primarySlot = win.GetPrimarySlot();
 
@@ -557,7 +557,7 @@ namespace Assets.TabletopUi {
 
         }
 
-        bool HasEmptyOngoingSlot(IElementStack stack) {
+        bool HasEmptyOngoingSlot(ElementStackToken stack) {
             var ongoingSlots = situationWindow.GetOngoingSlots();
 
             if (ongoingSlots.Count == 0)
@@ -570,7 +570,7 @@ namespace Assets.TabletopUi {
             return ongoingSlots[0].IsGreedy == false && ongoingSlots[0].GetSlotMatchForStack(stack).MatchType == SlotMatchForAspectsType.Okay;
         }
 
-        public bool PushDraggedStackIntoToken(IElementStack stack) {
+        public bool PushDraggedStackIntoToken(ElementStackToken stack) {
             if (SituationClock.State == SituationState.Unstarted)
                 return PushDraggedStackIntoStartingSlots(stack);
             if (SituationClock.State == SituationState.Ongoing)
@@ -581,7 +581,7 @@ namespace Assets.TabletopUi {
             return false;
         }
 
-        bool PushDraggedStackIntoStartingSlots(IElementStack stack) {
+        bool PushDraggedStackIntoStartingSlots(ElementStackToken stack) {
             if (HasSuitableStartingSlot(stack) == false)
                 return false;
 
@@ -591,7 +591,7 @@ namespace Assets.TabletopUi {
             return PushDraggedStackIntoSlot(stack, primarySlot);
         }
 
-        bool PushDraggedStackIntoOngoingSlot(IElementStack stack) {
+        bool PushDraggedStackIntoOngoingSlot(ElementStackToken stack) {
             if (HasEmptyOngoingSlot(stack) == false)
                 return false;
 
@@ -600,7 +600,7 @@ namespace Assets.TabletopUi {
             return PushDraggedStackIntoSlot(stack, ongoingSlots[0]);
         }
 
-        bool PushDraggedStackIntoSlot(IElementStack stack, RecipeSlot slot) {
+        bool PushDraggedStackIntoSlot(ElementStackToken stack, RecipeSlot slot) {
             if (stack == null || slot == null)
                 return false;
 
@@ -709,7 +709,7 @@ namespace Assets.TabletopUi {
 
         }
 
-        public void SetOutput(List<IElementStack> stacksForOutput) {
+        public void SetOutput(List<ElementStackToken> stacksForOutput) {
             situationWindow.SetOutput(stacksForOutput);
         }
 
@@ -717,7 +717,7 @@ namespace Assets.TabletopUi {
             situationWindow.ReceiveTextNote(notification);
         }
 
-        public void ShowDestinationsForStack(IElementStack stack, bool show) {
+        public void ShowDestinationsForStack(ElementStackToken stack, bool show) {
             situationWindow.ShowDestinationsForStack(stack, show);
         }
 

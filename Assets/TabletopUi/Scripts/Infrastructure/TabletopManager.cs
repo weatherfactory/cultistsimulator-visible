@@ -748,7 +748,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             return true;
         }
 
-        private IElementStack FindStackForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
+        private ElementStackToken FindStackForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
 
             var rnd = new Random();
             var stacks = _tabletop.GetElementStacksManager().GetStacks().OrderBy(x=>rnd.Next());
@@ -796,7 +796,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             return slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay;
         }
 
-        private IElementStack FindStackForSlotSpecificationInSituations(SlotSpecification slotSpec, out SituationController sit) {
+        private ElementStackToken FindStackForSlotSpecificationInSituations(SlotSpecification slotSpec, out SituationController sit) {
             var rnd = new Random();
 
             // Nothing on the table? Look at the Situations.
@@ -1064,7 +1064,7 @@ public ElementStacksManager GetTabletopStacksManager()
             mansusSituation = null;
         }
 
-        public void BeginNewSituation(SituationCreationCommand scc,List<IElementStack> withStacksInStorage) {
+        public void BeginNewSituation(SituationCreationCommand scc,List<ElementStackToken> withStacksInStorage) {
             Registry.Get<Choreographer>().BeginNewSituation(scc,withStacksInStorage);
         }
 
@@ -1155,7 +1155,7 @@ public ElementStacksManager GetTabletopStacksManager()
 				var allSituations = Registry.Get<SituationsCatalogue>();
 				foreach (var s in allSituations.GetRegisteredSituations())
                 {
-                    var stacksInSituation = new List<IElementStack>();
+                    var stacksInSituation = new List<ElementStackToken>();
                     stacksInSituation.AddRange(s.GetStartingStacks());
                     stacksInSituation.AddRange(s.GetOngoingStacks());
                     stacksInSituation.AddRange(s.GetStoredStacks());

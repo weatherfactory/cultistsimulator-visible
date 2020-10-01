@@ -33,37 +33,6 @@ namespace Assets.TabletopUi.Scripts.Services
         [SerializeField] TabletopManager TabletopManager = null;
 
 
-        public static T CreateToken<T>(Transform destination, string saveLocationInfo = null) where T : DraggableToken
-        {
-            var token = PrefabFactory.CreateLocally<T>(destination);
- 
-                var pf = Instance();
-
-
-                var potentialTokenContainer = destination.gameObject.GetComponent<ITokenContainer>();
-
-            if (pf.TabletopManager!=null)
-            {
-                //"treat tokens created on the tabletop differently. T E M P ORARY please
-                token.SetTokenContainer(pf.TabletopManager._tabletop, new Context(Context.ActionSource.Unknown));
-
-                var elementStackToken = token as ElementStackToken;
-                if (elementStackToken != null)
-                    elementStackToken.AddObserver(Registry.Get<INotifier>());
-
-            }
-            else
-                potentialTokenContainer.GetElementStacksManager().AcceptStack(token as IElementStack, new Context(Context.ActionSource.Unknown));
-
-
-            if (saveLocationInfo != null)
-                token.SaveLocationInfo = saveLocationInfo;
-
-
-            return token;
-        }
-
-
         public static T CreateLocally<T>(Transform parent) where T : Component
         {
             var o = GetPrefab<T>();

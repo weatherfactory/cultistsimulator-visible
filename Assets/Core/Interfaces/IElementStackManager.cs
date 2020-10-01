@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
+using Assets.CS.TabletopUI;
 
 namespace Assets.Core.Interfaces
 {
-    public interface IElementStacksManager
+    public interface ElementStackTokensManager
     {
         
 
         int GetCurrentElementQuantity(string elementId);
         IDictionary<string, int> GetCurrentElementTotals();
         AspectsDictionary GetTotalAspects(bool showElementAspects = true);
-        IEnumerable<IElementStack> GetStacks();
+        IEnumerable<ElementStackToken> GetStacks();
 
         bool PersistBetweenScenes { get; }
 
-        void AcceptStack(IElementStack stack, Context context);
-        void AcceptStacks(IEnumerable<IElementStack> stacks, Context context);
-        void RemoveStack(IElementStack stack);
+        void AcceptStack(ElementStackToken stack, Context context);
+        void AcceptStacks(IEnumerable<ElementStackToken> stacks, Context context);
+        void RemoveStack(ElementStackToken stack);
 
         void ModifyElementQuantity(string elementId, int quantityChange, Source stackSource, Context context);
 
@@ -32,7 +33,7 @@ namespace Assets.Core.Interfaces
         int IncreaseElement(string elementId, int quantityChange, Source stackSource, Context context, string locatorId = null);
         int ReduceElement(string elementId, int quantityChange, Context context);
         int PurgeElement(Element element, int maxToPurge);
-        IElementStack AddAndReturnStack(string elementId, int quantity, Source stackSource, Context context);
+        ElementStackToken AddAndReturnStack(string elementId, int quantity, Source stackSource, Context context);
         void NotifyStacksChanged();
     }
 }

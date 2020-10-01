@@ -78,7 +78,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public void ShowDestinationsForStack(IElementStack stack, bool show) {
+        public void ShowDestinationsForStack(ElementStackToken stack, bool show) {
             if (activeSlot != null)
                 activeSlot.ShowGlow(show, false);
         }

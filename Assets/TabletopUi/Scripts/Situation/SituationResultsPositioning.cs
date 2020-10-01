@@ -18,7 +18,7 @@ namespace Assets.CS.TabletopUI {
         //float moveDuration = 0.2f;
         float availableSpace;
         float xStart;
-        //IEnumerable<IElementStack> elements
+        //IEnumerable<ElementStackToken> elements
 
         void SetAvailableSpace() {
             availableSpace = rect.rect.width - margin.x - margin.x;
@@ -40,7 +40,7 @@ namespace Assets.CS.TabletopUI {
         }
         */
 
-        public void ReorderCards(IEnumerable<IElementStack> elementStacks) {
+        public void ReorderCards(IEnumerable<ElementStackToken> elementStacks) {
             var sortedStacks = SortStacks(elementStacks);
 
             ElementStackToken token;
@@ -78,10 +78,10 @@ namespace Assets.CS.TabletopUI {
             NoonUtility.Log(debugText);
         }
 
-        List<IElementStack> SortStacks(IEnumerable<IElementStack> elementStacks) {
-			var hiddenStacks = new List<IElementStack>();	// Hidden fresh cards
-            var freshStacks = new List<IElementStack>();	// Face-up fresh cards
-            var existingStacks = new List<IElementStack>(); // Face-up existing cards
+        List<ElementStackToken> SortStacks(IEnumerable<ElementStackToken> elementStacks) {
+			var hiddenStacks = new List<ElementStackToken>();	// Hidden fresh cards
+            var freshStacks = new List<ElementStackToken>();	// Face-up fresh cards
+            var existingStacks = new List<ElementStackToken>(); // Face-up existing cards
 
             foreach (var stack in elementStacks)
 			{

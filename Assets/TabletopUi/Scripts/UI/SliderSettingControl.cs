@@ -60,8 +60,6 @@ namespace Assets.TabletopUi.Scripts.UI
                 return;
             }
 
-            SliderSettingControlStrategy sliderStrategy;
-
             if (settingToBind.Id == NoonConstants.RESOLUTION)
                 strategy = new ResolutionSliderSettingControlStrategy();
             else

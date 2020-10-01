@@ -24,7 +24,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return _elementStacksManager;
         }
 
-        public IElementStack ReprovisionExistingElementStack(ElementStackSpecification stackSpecification, Source stackSource, Context context, string locatorid = null)
+        public ElementStackToken ReprovisionExistingElementStack(ElementStackSpecification stackSpecification, Source stackSource, Context context, string locatorid = null)
         {
             var stack = ProvisionElementStack(stackSpecification.ElementId, stackSpecification.ElementQuantity,
                 stackSource, context, locatorid);
@@ -43,7 +43,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             return stack;
         }
-        public virtual IElementStack ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context, string locatorid = null) {
+        public virtual ElementStackToken ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context, string locatorid = null) {
 
 
             var stack = PrefabFactory.CreateLocally<ElementStackToken>(transform);
