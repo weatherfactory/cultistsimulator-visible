@@ -69,7 +69,7 @@ namespace Assets.TabletopUi.Scripts.Services
             var o = GetPrefab<T>();
             try
             { 
-            T c = Object.Instantiate(o, parent, false) as T;
+                var c = Object.Instantiate(o, parent, false) as T;
                 c.transform.localScale = Vector3.one;
 
                 return c;

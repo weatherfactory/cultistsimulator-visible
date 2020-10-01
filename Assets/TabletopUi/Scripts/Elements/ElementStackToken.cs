@@ -1187,8 +1187,9 @@ namespace Assets.CS.TabletopUI {
             // Save this, since we're retiring and that sets quantity to 0
             int quantity = Quantity;
 
-            var cardLeftBehind = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
-            cardLeftBehind.Populate(elementId, quantity, Source.Existing());
+           var cardLeftBehind= TokenContainer.ProvisionElementStack(elementId, quantity, Source.Existing(),
+                new Context(Context.ActionSource.ChangeTo)) as ElementStackToken;
+
             foreach(var m in this.GetCurrentMutations())
                cardLeftBehind.SetMutation(m.Key,m.Value,false); //brand new mutation, never needs to be additive
             cardLeftBehind.lastTablePos = lastTablePos;
@@ -1200,13 +1201,9 @@ namespace Assets.CS.TabletopUI {
             // Put it behind the card being burned
             cardLeftBehind.transform.SetSiblingIndex(transform.GetSiblingIndex() - 1);
 
-            var stacksManager = TokenContainer.GetElementStacksManager();
-            stacksManager.AcceptStack(cardLeftBehind, new Context(Context.ActionSource.ChangeTo));
-
             // Accepting stack may put it to pos Vector3.zero, so this is last
             cardLeftBehind.transform.position = transform.position;
 
-            // Note, this is a temp effect
             Retire(CardVFX.CardTransformWhite);
 
             return true;
