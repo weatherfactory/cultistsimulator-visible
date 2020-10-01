@@ -622,7 +622,7 @@ namespace Assets.CS.TabletopUI {
 
         protected override void NotifyChroniclerPlacedOnTabletop()
         {
-            subscribedChronicler.TokenPlacedOnTabletop(this);
+            subscribedChronicler?.TokenPlacedOnTabletop(this);
         }
 
         public override bool Retire()

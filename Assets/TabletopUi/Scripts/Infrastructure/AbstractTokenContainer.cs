@@ -44,20 +44,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return stack;
         }
         public virtual IElementStack ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context, string locatorid = null) {
+
+
             var stack = PrefabFactory.CreateLocally<ElementStackToken>(transform);
-
-
-            var elementStackToken = stack as ElementStackToken;
-                if (elementStackToken != null)
-                    elementStackToken.AddObserver(Registry.Get<INotifier>());
+            stack.AddObserver(Registry.Get<INotifier>());
                 
-
             if (locatorid != null)
                 stack.SaveLocationInfo = locatorid;
 
             stack.Populate(elementId, quantity, stackSource);
 
-            GetElementStacksManager().AcceptStack(stack as IElementStack, context);
+            GetElementStacksManager().AcceptStack(stack, context);
 
             return stack;
         }

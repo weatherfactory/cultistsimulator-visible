@@ -101,18 +101,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-        ElementStackToken BuildCard(Vector3 position, string id,PortalEffect portalType,string mansusJournalEntryMessage) {
-            var newCard = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
-            newCard.Populate(id, 1, Source.Fresh());
+        ElementStackToken BuildCard(Vector3 position, string id,PortalEffect portalType,string mansusJournalEntryMessage)
+        {
+            var newCard =
+                _mapTokenContainer.ProvisionElementStack(id, 1, Source.Fresh(),
+                    new Context(Context.ActionSource.Loading)) as ElementStackToken;
+            
 
             newCard.IlluminateLibrarian.AddMansusJournalEntry(mansusJournalEntryMessage);
 
             // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
             newCard.transform.position = position;
-
-            var stacksManager = _mapTokenContainer.GetElementStacksManager();
-            stacksManager.AcceptStack(newCard, new Context(Context.ActionSource.Loading));
-
+            
             // Accepting stack may put it to pos Vector3.zero, so this is last
             newCard.transform.position = position;
             newCard.transform.localScale = Vector3.one;
