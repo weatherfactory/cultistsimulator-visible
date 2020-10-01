@@ -402,9 +402,12 @@ namespace Assets.CS.TabletopUI {
             AspectsDictionary startingElements = new AspectsDictionary();
             startingElements.CombineAspects(chosenLegacy.Effects);  //note: we don't reset the chosen legacy. We assume it remains the same until someone dies again.
 
-            foreach (var e in startingElements) {
-                ElementStackToken token = _tabletop.ProvisionElementStack(e.Key, e.Value, Source.Existing()) as ElementStackToken;
-                choreographer.ArrangeTokenOnTable(token, new Context(Context.ActionSource.Loading));
+            foreach (var e in startingElements)
+            {
+                var context = new Context(Context.ActionSource.Loading);
+
+                ElementStackToken token = _tabletop.ProvisionElementStack(e.Key, e.Value, Source.Existing(),context) as ElementStackToken;
+                choreographer.ArrangeTokenOnTable(token, context);
             }
         }
 

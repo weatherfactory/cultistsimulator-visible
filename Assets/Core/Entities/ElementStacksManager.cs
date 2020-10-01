@@ -87,7 +87,7 @@ public class ElementStacksManager : IElementStacksManager {
         if (quantityChange <= 0)
             throw new ArgumentException("Tried to call IncreaseElement for " + elementId + " with a <=0 change (" + quantityChange + ")");
 
-        var newStack = _tokenContainer.ProvisionElementStack(elementId, quantityChange, stackSource, locatorid);
+        var newStack = _tokenContainer.ProvisionElementStack(elementId, quantityChange, stackSource, context, locatorid);
         AcceptStack(newStack, context);
         return quantityChange;
     }
@@ -142,7 +142,7 @@ public class ElementStacksManager : IElementStacksManager {
 
     public IElementStack AddAndReturnStack(string elementId, int quantity, Source stackSource, Context context)
     {
-        var newStack = _tokenContainer.ProvisionElementStack(elementId, quantity, stackSource);
+        var newStack = _tokenContainer.ProvisionElementStack(elementId, quantity, stackSource,context);
         AcceptStack(newStack,context);
         return newStack;
 

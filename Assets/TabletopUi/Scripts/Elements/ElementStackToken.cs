@@ -524,7 +524,7 @@ namespace Assets.CS.TabletopUI {
 		{
 			var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
 			var stacksManager = tabletop._tabletop.GetElementStacksManager();
-			//var newCard = PrefabFactory.CreateToken<DropZoneToken>(transform.parent);
+
 			var newCard = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
 			newCard.Populate("dropzone", 1, Source.Fresh());
 

@@ -403,7 +403,7 @@ namespace Assets.CS.TabletopUI {
         }
         public IElementStack ReprovisionExistingElementStackInStorage(ElementStackSpecification stackSpecification, Source stackSource, string locatorid = null)
         {
-            return storage.ReprovisionExistingElementStack(stackSpecification, stackSource, locatorid);
+            return storage.ReprovisionExistingElementStack(stackSpecification, stackSource, new Context(Context.ActionSource.Loading), locatorid);
         }
 
         public IElementStacksManager GetResultsStacksManager() {

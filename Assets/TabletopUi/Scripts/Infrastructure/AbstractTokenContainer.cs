@@ -24,10 +24,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return _elementStacksManager;
         }
 
-        public IElementStack ReprovisionExistingElementStack(ElementStackSpecification stackSpecification, Source stackSource, string locatorid = null)
+        public IElementStack ReprovisionExistingElementStack(ElementStackSpecification stackSpecification, Source stackSource, Context context, string locatorid = null)
         {
             var stack = ProvisionElementStack(stackSpecification.ElementId, stackSpecification.ElementQuantity,
-                stackSource, locatorid);
+                stackSource, context, locatorid);
             foreach(var m in stackSpecification.Mutations)
                 stack.SetMutation(m.Key,m.Value,false);
 
@@ -43,7 +43,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             return stack;
         }
-        public IElementStack ProvisionElementStack(string elementId, int quantity, Source stackSource, string locatorid = null) {
+        public virtual IElementStack ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context, string locatorid = null) {
             ElementStackToken stack = PrefabFactory.CreateToken<ElementStackToken>(transform, locatorid);
             if (stack == null)
             {
@@ -54,9 +54,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 throw new ApplicationException(stackInfo);
             }
 
-
             stack.Populate(elementId, quantity, stackSource);
-            DisplayHere(stack, new Context(Context.ActionSource.Loading));
+            DisplayHere(stack, context);
             return stack;
         }
 
