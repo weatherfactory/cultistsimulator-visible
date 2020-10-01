@@ -598,9 +598,14 @@ namespace Assets.CS.TabletopUI {
 
 
         // Called from StacksManager
-        public void SetStackManager(ElementStacksManager manager) {
+        public void SetStackManager(ElementStacksManager newStacksManager)
+        {
+
+            if (CurrentStacksManager == newStacksManager)
+                return;  //we haven't actually changed location.
+
             var oldStacksManager = CurrentStacksManager;
-            CurrentStacksManager = manager;
+            CurrentStacksManager = newStacksManager;
 
             //notify afterwards, in case it counts the things *currently* in its list
             if (oldStacksManager != null)
@@ -637,12 +642,13 @@ namespace Assets.CS.TabletopUI {
 			if (Defunct)
 				return false;
 
-            var hlc = Registry.Get<HighlightLocationsController>();
+            var hlc = Registry.Get<HighlightLocationsController>(false);
             if(hlc!=null)
-            hlc.DeactivateMatchingHighlightLocation(_element?.Id);
+                hlc.DeactivateMatchingHighlightLocation(_element?.Id);
 
-            var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
-			tabletop.NotifyAspectsDirty();	// Notify tabletop that aspects will need recompiling
+            var tabletop = Registry.Get<TabletopManager>(false);
+            if(tabletop!=null)
+			    tabletop.NotifyAspectsDirty();	// Notify tabletop that aspects will need recompiling
             SetStackManager(null);			// Remove it from the StacksManager. It no longer exists in the model.
             
             SetTokenContainer(null, new Context(Context.ActionSource.Retire)); // notify the view container that we're no longer here

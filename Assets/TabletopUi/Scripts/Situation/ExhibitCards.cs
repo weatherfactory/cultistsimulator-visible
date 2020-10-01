@@ -39,8 +39,7 @@ public class ExhibitCards : AbstractTokenContainer {
 
         token.Populate(elementId,quantity,stackSource);
 
-         GetElementStacksManager().AcceptStack(token as ElementStackToken, context);
-
+         GetElementStacksManager().AcceptStack(token, context);
 
          return token;
     }

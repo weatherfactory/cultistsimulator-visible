@@ -25,6 +25,8 @@ namespace Assets.TabletopUi.Scripts.UI
             List<Element> creditCards = Registry.Get<ICompendium>().GetEntitiesAsList<Element>()
                 .Where(e => e.Id.StartsWith("credits.")).ToList();
 
+            CardsExhibit.Initialise();
+
             foreach (var cc in creditCards)
             {
                 var card=CardsExhibit.ProvisionElementStack(cc.Id, 1, Source.Fresh(),new Context(Context.ActionSource.UI));
@@ -41,7 +43,7 @@ namespace Assets.TabletopUi.Scripts.UI
 
         public void OnDisable()
         {
-         CardsExhibit.GetElementStacksManager().RemoveAllStacks();
+         CardsExhibit.GetElementStacksManager().RetireAllStacks();
 
         }
 

@@ -204,18 +204,30 @@ public class ElementStacksManager {
         }
     }
 
+    /// <summary>
+    /// removes the stack from this stack manager; doesn't retire the stack
+    /// </summary>
+    /// <param name="stack"></param>
     public void RemoveStack(ElementStackToken stack) {
         _stacks.Remove(stack);
         _catalogue.NotifyStacksChanged();
     }
 
+    /// <summary>
+    /// removes the stacks from this stack manager; doesn't retire the stack
+    /// </summary>
     public void RemoveAllStacks()
     {
         var stacksListCopy=new List<ElementStackToken>(_stacks);
         foreach (ElementStackToken s in stacksListCopy)
             RemoveStack(s);
-            (s as ElementStackToken).Retire(CardVFX.None);
-        }
+    }
+
+    public void RetireAllStacks()
+    {
+        var stacksListCopy = new List<ElementStackToken>(_stacks);
+        foreach (ElementStackToken s in stacksListCopy)
+            s.Retire(CardVFX.None);
     }
 
     public void NotifyStacksChanged() {
