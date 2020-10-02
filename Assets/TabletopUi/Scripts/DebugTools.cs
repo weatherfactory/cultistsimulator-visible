@@ -340,7 +340,7 @@ public class DebugTools : MonoBehaviour,ITokenObserver
         var recipe = compendium.GetEntityById<Recipe>(recipeId.Trim());
         if (recipe!=null)
         {
-            IVerb verbForNewSituation = compendium.GetEntityById<BasicVerb>(recipe.Id);
+            IVerb verbForNewSituation = compendium.GetEntityById<BasicVerb>(recipe.ActionId);
             if(verbForNewSituation==null)
                 verbForNewSituation = new CreatedVerb(recipe.ActionId, recipe.Label, recipe.Description);
 
