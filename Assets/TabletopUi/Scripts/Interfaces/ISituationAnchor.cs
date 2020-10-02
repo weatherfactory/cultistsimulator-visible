@@ -8,13 +8,12 @@ using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Interfaces
 {
-    public interface ISituationAnchor
+    public interface ISituationAnchor: IAnimatable
     {
-        string EntityId { get; }
-
         SituationController SituationController { get; }
 
         string SaveLocationInfo { get; set; }
@@ -36,5 +35,8 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void SetGlowColor(UIStyle.TokenGlowColor colorType);
         void ShowGlow(bool glowState, bool instant = false);
         void DisplayOverrideIcon(string icon);
+
+        void SetParticleSimulationSpace(Transform transform);
+
     }
 }

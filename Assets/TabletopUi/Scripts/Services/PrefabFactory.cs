@@ -10,6 +10,7 @@ using Assets.CS.TabletopUI.Interfaces;
 using UnityEngine;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
 using Object = UnityEngine.Object;
 
@@ -21,12 +22,23 @@ namespace Assets.TabletopUi.Scripts.Services
         [Header("Prefabs")]
         public ElementFrame ElementFrame = null;
         public SituationToken SituationToken = null;
+        public BookshelfToken BookshelfToken = null;
         public ElementStackToken ElementStackToken = null;
         public SituationWindow SituationWindow = null;
         public RecipeSlot RecipeSlot = null;
         public NotificationWindow NotificationWindow = null;
         public SituationNote SituationNote = null;
-     
+
+
+        public ISituationAnchor CreateSituationAnchorForVerb(IVerb verb,Transform t)
+        {
+            if(verb.Species==NoonConstants.ANCHOR_BOOKSHELF)
+                return CreateLocally<BookshelfToken>(t);
+            else
+                return CreateLocally<SituationToken>(t);
+        }
+
+
         public T CreateLocally<T>(Transform parent) where T : Component
         {
             var o = GetPrefab<T>();

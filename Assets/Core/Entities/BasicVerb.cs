@@ -20,6 +20,9 @@ namespace Assets.Core.Entities
         [FucineValue(DefaultValue = ".", Localise = true)]
         public string Description { get; set; }
 
+        [FucineValue]
+        public string Species { get; set; }
+
         [FucineSubEntity(typeof(SlotSpecification),Localise = true)]
         public SlotSpecification Slot { get; set; }
 

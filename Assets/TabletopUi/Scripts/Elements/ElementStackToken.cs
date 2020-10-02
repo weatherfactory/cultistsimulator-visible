@@ -744,7 +744,7 @@ namespace Assets.CS.TabletopUI {
 					// Create token/slot pair
 					var tokenSlotPair = new TabletopUi.TokenAndSlot()
 					{
-						Token = situation.situationToken as SituationToken,
+						Token = situation.situationAnchor as SituationToken,
 						RecipeSlot = slot as RecipeSlot
 					};
 
@@ -774,7 +774,7 @@ namespace Assets.CS.TabletopUI {
 						var ongoingSlots = situ.GetOngoingSlots();
 						targetSlots.AddRange( FindValidSlot( ongoingSlots, situ ) );
 					}
-					else if (!situ.situationToken.IsTransient && situ.Situation.State == SituationState.Unstarted)
+					else if (!situ.situationAnchor.IsTransient && situ.Situation.State == SituationState.Unstarted)
 					{
 						// Look for starting slots (most common case)
 						var startSlots = situ.situationWindow.GetStartingSlots();
@@ -1290,7 +1290,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public bool CanAnimate()
+        public override bool CanAnimate()
         {
             if (gameObject == null)
                 return false;
@@ -1310,7 +1310,7 @@ namespace Assets.CS.TabletopUI {
         /// <param name="duration">Determines how long the animation runs. Time is spent equally on all frames</param>
         /// <param name="frameCount">How many frames to show. Default is 1</param>
         /// <param name="frameIndex">At which frame to start. Default is 0</param>
-        public void StartArtAnimation() {
+        public override void StartArtAnimation() {
             if (!CanAnimate())
                 return;
 
@@ -1325,7 +1325,7 @@ namespace Assets.CS.TabletopUI {
             animCoroutine = StartCoroutine(DoAnim(duration, frameCount, frameIndex));
         }
 
-       public IEnumerator DoAnim(float duration, int frameCount, int frameIndex) {
+       public override IEnumerator DoAnim(float duration, int frameCount, int frameIndex) {
             Sprite[] animSprites = new Sprite[frameCount];
 
             for (int i = 0; i < animSprites.Length; i++)

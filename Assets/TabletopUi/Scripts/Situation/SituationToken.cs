@@ -24,7 +24,7 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI {
 
-    public class SituationToken : DraggableToken, ISituationAnchor,IAnimatable {
+    public class SituationToken : DraggableToken, ISituationAnchor {
 
         [SerializeField] Image artwork;
 
@@ -193,7 +193,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public Vector3 GetOngoingSlotPosition() {
-            return RectTransform.anchoredPosition3D + ongoingSlotImage.rectTransform.anchoredPosition3D;
+            return rectTransform.anchoredPosition3D + ongoingSlotImage.rectTransform.anchoredPosition3D;
         }
 
         public void DisplayMiniSlot(IList<SlotSpecification> ongoingSlots) {
@@ -344,7 +344,7 @@ namespace Assets.CS.TabletopUI {
         /// <param name="duration">Determines how long the animation runs. Time is spent equally on all frames</param>
         /// <param name="frameCount">How many frames to show. Default is 1</param>
         /// <param name="frameIndex">At which frame to start. Default is 0</param>
-        public void StartArtAnimation()
+        public override void StartArtAnimation()
         {
             if (!CanAnimate())
                 return;
@@ -360,7 +360,7 @@ namespace Assets.CS.TabletopUI {
             animCoroutine = StartCoroutine(DoAnim(duration, frameCount, frameIndex));
         }
 
-        public IEnumerator DoAnim(float duration, int frameCount, int frameIndex)
+        public override IEnumerator DoAnim(float duration, int frameCount, int frameIndex)
         {
             
             float time = 0f;
@@ -393,7 +393,7 @@ namespace Assets.CS.TabletopUI {
             artwork.overrideSprite = null;
         }
 
-        public bool CanAnimate()
+        public override bool CanAnimate()
         {
             if (gameObject == null)
                 return false;

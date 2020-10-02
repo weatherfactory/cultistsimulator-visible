@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.CS.TabletopUI;
 
 namespace Assets.TabletopUi.Scripts.Interfaces
 {
-    public interface IAnimatable
+    public interface IAnimatable:IToken
     {
         /// Trigger an animation on the card
         /// </summary>
@@ -18,6 +19,5 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
         IEnumerator DoAnim(float duration, int frameCount, int frameIndex);
         bool CanAnimate();
-        string EntityId { get; }
     }
 }

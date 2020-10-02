@@ -14,8 +14,10 @@ namespace Assets.Core.Entities
             Label = label;
             Description = description;
             Startable = false;
-
+            Species = string.Empty;
         }
+
+        public string Species { get; private set; }
 
         public  bool Transient
         {

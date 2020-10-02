@@ -325,7 +325,7 @@ public class DebugTools : MonoBehaviour,ITokenObserver
     void RemoveItem(string itemId)
     {
         //do we have an inactive empty verb with this id?
-       var possibleEmptyVerb= Registry.Get<SituationsCatalogue>().GetRegisteredSituations().FirstOrDefault(s => s.situationToken.EntityId==itemId);
+       var possibleEmptyVerb= Registry.Get<SituationsCatalogue>().GetRegisteredSituations().FirstOrDefault(s => s.situationAnchor.EntityId==itemId);
         if(possibleEmptyVerb!=null)
         { if(!possibleEmptyVerb.situationWindow.GetOutputStacks().Any() && !possibleEmptyVerb.IsOngoing)
             possibleEmptyVerb.Retire();

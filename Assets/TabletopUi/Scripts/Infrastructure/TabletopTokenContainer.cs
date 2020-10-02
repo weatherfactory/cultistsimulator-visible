@@ -53,7 +53,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
 
 
 
-    public override void DisplayHere(DraggableToken token, Context context) {
+    public override void DisplayHere(IToken token, Context context) {
         // We're not setting the location; this is used to display a token dragged and dropped to an arbitrary position
         // (or loaded and added to an arbitrary position)
         token.transform.SetParent(transform, true);
@@ -64,7 +64,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
     }
 
     // Tabletop specific
-    public void CheckOverlappingTokens(DraggableToken token) {
+    public void CheckOverlappingTokens(IToken token) {
         // Verify if we are overlapping with anything. If so: move it.
         choreo.MoveAllTokensOverlappingWith(token);
     }
@@ -90,10 +90,10 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         return choreo.GetFreePosWithDebug(incumbent, currentPos);
     }
 
-    public void DisplaySituationTokenOnTable(SituationToken token, Context context) {
-        DisplayHere(token, context);
-        CheckOverlappingTokens(token);
-        token.DisplayAtTableLevel();
+    public void DisplaySituationTokenOnTable(ISituationAnchor anchor, Context context) {
+        DisplayHere(anchor, context);
+        CheckOverlappingTokens(anchor);
+        anchor.DisplayAtTableLevel();
     }
 
     public override string GetSaveLocationInfoForDraggable(DraggableToken draggable) {

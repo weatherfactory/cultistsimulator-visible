@@ -23,7 +23,7 @@ namespace Assets.CS.TabletopUI.Interfaces
         ElementStackToken ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context, string locatorId = null);
 
         void DisplayHere(ElementStackToken stack, Context context);
-        void DisplayHere(DraggableToken token, Context context);
+        void DisplayHere(IToken token, Context context);
 
         void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved);
         void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved);

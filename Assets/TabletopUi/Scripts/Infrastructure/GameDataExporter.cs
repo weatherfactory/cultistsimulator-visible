@@ -135,10 +135,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htSituations = new Hashtable();
             foreach (var s in situationControllers)
             {
-				if (s.situationToken != null && s.situationToken.SaveLocationInfo != null)
+				if (s.situationAnchor != null && s.situationAnchor.SaveLocationInfo != null)
 				{
 					var htSituationProperties = s.GetSaveData();
-					htSituations.Add(s.situationToken.SaveLocationInfo, htSituationProperties);
+					htSituations.Add(s.situationAnchor.SaveLocationInfo, htSituationProperties);
 				}
             }
             return htSituations;

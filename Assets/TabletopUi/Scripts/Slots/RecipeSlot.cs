@@ -262,7 +262,7 @@ namespace Assets.CS.TabletopUI {
             onCardDropped(this, stack, context);
         }
 
-        public override void DisplayHere(DraggableToken token, Context context) {
+        public override void DisplayHere(IToken token, Context context) {
             base.DisplayHere(token, context);
             var stack = token as ElementStackToken;
 

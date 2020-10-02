@@ -10,10 +10,11 @@ namespace Assets.Core.Interfaces
         string Id { get; }
         string Label { get; }
         string Description { get; }
+        string Species { get; }
         bool Transient { get; }
       SlotSpecification Slot { get; set; }
       List<SlotSpecification> Slots { get; set; }
-      bool Startable { get; set; }
+      bool Startable { get; }
     }
 
 }

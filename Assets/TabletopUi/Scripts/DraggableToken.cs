@@ -11,11 +11,27 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Assets.CS.TabletopUI {
-    [RequireComponent(typeof(RectTransform))]
+
+    public interface IToken
+    {
+        string EntityId { get; }
+        void SetTokenContainer(ITokenContainer newContainer, Context context);
+        string name { get; }
+        Transform transform { get; }
+        RectTransform RectTransform { get; }
+        GameObject gameObject { get; }
+        void DisplayAtTableLevel();
+        void SnapToGrid();
+        bool NoPush { get; }
+
+    }
+
+
+        [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(CanvasGroup))]
     public abstract class DraggableToken : MonoBehaviour,
         IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler,
-        IGlowableView, IPointerEnterHandler, IPointerExitHandler {
+        IGlowableView, IPointerEnterHandler, IPointerExitHandler,IToken,IAnimatable {
 
         // STATIC FIELDS
 
@@ -39,7 +55,7 @@ namespace Assets.CS.TabletopUI {
 
         // INSTANCE FIELDS
 
-        [HideInInspector] public RectTransform RectTransform;
+        [HideInInspector] public RectTransform rectTransform;
         [SerializeField] protected bool useDragOffset = true;
         [SerializeField] protected bool rotateOnDrag = true;
         [SerializeField] protected GraphicFader glowImage;
@@ -59,15 +75,26 @@ namespace Assets.CS.TabletopUI {
         protected ITokenContainer OldTokenContainer; // Used to tell OldContainsTokens that this thing was dropped successfully
         protected Chronicler subscribedChronicler;
 
+        public RectTransform RectTransform
+        {
+            get { return rectTransform; }
+        }
+
         bool lastGlowState;
         Color lastGlowColor;
 
         protected virtual void Awake() {
-            RectTransform = GetComponent<RectTransform>();
+            rectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
             lastGlowColor = glowImage.currentColor;
             SubscribeChronicler(Registry.Get<Chronicler>());
         }
+
+        public abstract void StartArtAnimation();
+
+        public abstract IEnumerator DoAnim(float duration, int frameCount, int frameIndex);
+
+        public abstract bool CanAnimate();
 
         public abstract string EntityId { get; }
         public bool IsBeingAnimated { get; set; }
@@ -100,7 +127,7 @@ namespace Assets.CS.TabletopUI {
                 var locs = value.Split('_');
                 var x = float.Parse(locs[0]);
                 var y = float.Parse(locs[1]);
-                RectTransform.localPosition = new Vector3(x, y);
+                rectTransform.localPosition = new Vector3(x, y);
             }
             get {
                 return TokenContainer.GetSaveLocationInfoForDraggable(this) + "_" + Guid.NewGuid();
@@ -164,17 +191,17 @@ namespace Assets.CS.TabletopUI {
 
             DisplayInAir();
 
-            startPosition = RectTransform.localPosition;
-            startParent = RectTransform.parent;
-            startSiblingIndex = RectTransform.GetSiblingIndex();
+            startPosition = rectTransform.localPosition;
+            startParent = rectTransform.parent;
+            startSiblingIndex = rectTransform.GetSiblingIndex();
 
-			if (RectTransform.anchoredPosition.sqrMagnitude > 0.0f)	// Never store 0,0 as that's a slot position and we never auto-return to slots - CP
+			if (rectTransform.anchoredPosition.sqrMagnitude > 0.0f)	// Never store 0,0 as that's a slot position and we never auto-return to slots - CP
 			{
-	            lastTablePos = RectTransform.anchoredPosition;
+	            lastTablePos = rectTransform.anchoredPosition;
 			}
 
-            RectTransform.SetParent(Registry.Get<IDraggableHolder>().RectTransform);
-            RectTransform.SetAsLastSibling();
+            rectTransform.SetParent(Registry.Get<IDraggableHolder>().RectTransform);
+            rectTransform.SetAsLastSibling();
 
             if (useDragOffset) {
                 Vector3 pressPos;
@@ -228,7 +255,7 @@ namespace Assets.CS.TabletopUI {
             RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Get<IDraggableHolder>().RectTransform, eventData.position, DraggableToken.dragCamera, out dragPos);
 
             // Potentially change this so it is using UI coords and the RectTransform?
-            RectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);
+            rectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);
 
             // rotate object slightly based on pointer Delta
             if (rotateOnDrag && eventData.delta.sqrMagnitude > 10f) {
@@ -306,10 +333,10 @@ namespace Assets.CS.TabletopUI {
                 ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
             }
             else {
-                RectTransform.localRotation = Quaternion.identity;
-                RectTransform.SetParent(startParent);
-                RectTransform.SetSiblingIndex(startSiblingIndex);
-                RectTransform.localPosition = startPosition;
+                rectTransform.localRotation = Quaternion.identity;
+                rectTransform.SetParent(startParent);
+                rectTransform.SetSiblingIndex(startSiblingIndex);
+                rectTransform.localPosition = startPosition;
            }
         }
 
@@ -345,10 +372,10 @@ namespace Assets.CS.TabletopUI {
         }
 
         public virtual void DisplayAtTableLevel() {
-            RectTransform.anchoredPosition3D = new Vector3(RectTransform.anchoredPosition3D.x, RectTransform.anchoredPosition3D.y, 0f);
-            RectTransform.localRotation = Quaternion.identity;
-            RectTransform.localScale = Vector3.one;
-			lastTablePos = RectTransform.anchoredPosition3D;
+            rectTransform.anchoredPosition3D = new Vector3(rectTransform.anchoredPosition3D.x, rectTransform.anchoredPosition3D.y, 0f);
+            rectTransform.localRotation = Quaternion.identity;
+            rectTransform.localScale = Vector3.one;
+			lastTablePos = rectTransform.anchoredPosition3D;
             IsInAir = false;
             NotifyChroniclerPlacedOnTabletop();
         }

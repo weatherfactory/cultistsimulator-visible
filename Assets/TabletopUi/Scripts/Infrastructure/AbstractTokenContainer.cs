@@ -71,7 +71,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             DisplayHere(stack as DraggableToken, context);
         }
 
-        public virtual void DisplayHere(DraggableToken token, Context context) {
+        public virtual void DisplayHere(IToken token, Context context) {
             token.transform.SetParent(transform);
             token.transform.localPosition = Vector3.zero;
             token.transform.localRotation = Quaternion.identity;

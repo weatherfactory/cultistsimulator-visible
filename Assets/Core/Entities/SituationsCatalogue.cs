@@ -40,7 +40,7 @@ namespace Assets.Core.Entities
 
         public IEnumerable<IAnimatable> GetAnimatables()
         {
-            var situationTokens = GetRegisteredSituations().Select(s => s.situationToken as IAnimatable);
+            var situationTokens = GetRegisteredSituations().Select(s => s.situationAnchor as IAnimatable);
 
             return situationTokens.Where(s => s.CanAnimate());
         }

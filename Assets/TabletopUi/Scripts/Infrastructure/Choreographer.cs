@@ -51,7 +51,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         #region -- PUBLIC POSITIONING METHODS ----------------------------
 
-        public void ArrangeTokenOnTable(SituationToken token, Context context) {
+        public void ArrangeTokenOnTable(ISituationAnchor token, Context context) {
             token.RectTransform.anchoredPosition = GetFreePosWithDebug(token, Vector2.zero);
 
             _tabletop.DisplaySituationTokenOnTable(token, context);
@@ -76,7 +76,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 pos = GetFreePosWithDebug(stack, pos != null ? pos.Value : Vector2.zero, -1, stackBothSides);
             }
 
-            stack.RectTransform.anchoredPosition = pos.Value;
+            stack.rectTransform.anchoredPosition = pos.Value;
             stack.lastTablePos = pos.Value;
             stack.transform.localRotation = Quaternion.identity;
      
@@ -92,7 +92,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         #region -- POSITIONING HELP METHODS ----------------------------
 
-        public void MoveAllTokensOverlappingWith(DraggableToken pushingToken)
+        public void MoveAllTokensOverlappingWith(IToken pushingToken)
 		{
 			if (pushingToken.NoPush)
 			{
@@ -109,15 +109,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 if (CanTokenBeIgnored(token, pushingToken))
                     continue;
 
-				pushedRect = GetCenterPosRect(token.RectTransform);
+				pushedRect = GetCenterPosRect(token.rectTransform);
 
 				if (!pushedRect.Overlaps(targetRect))
                     continue;
 
                 AnimateTokenTo(token,
                     duration: 0.2f,
-                    startPos: token.RectTransform.anchoredPosition3D,
-                    endPos: GetFreePosWithDebug(token, token.RectTransform.anchoredPosition));
+                    startPos: token.rectTransform.anchoredPosition3D,
+                    endPos: GetFreePosWithDebug(token, token.rectTransform.anchoredPosition));
             }
         }
 
@@ -134,7 +134,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         #region -- GET FREE POSITION ----------------------------
 
-        public Vector2 GetFreePosWithDebug(DraggableToken token, Vector2 centerPos, int startIteration = -1, bool stackBothSides = true)
+        public Vector2 GetFreePosWithDebug(IToken token, Vector2 centerPos, int startIteration = -1, bool stackBothSides = true)
 		{
 #if DEBUG
             _currentDebug = new GameObject("ChoreoDebugInfo_" + token.name).AddComponent<ChoreographerDebugView>();
@@ -156,7 +156,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 #endif
         }
 
-        Vector2 GetFreeTokenPosition(DraggableToken token, Vector2 centerPos, int startIteration = -1, bool stackBothSides = true)
+        Vector2 GetFreeTokenPosition(IToken token, Vector2 centerPos, int startIteration = -1, bool stackBothSides = true)
 		{
             //Debug.Log("Trying to find FREE POS for " + token.Id);
             centerPos = GetPosClampedToTable(centerPos);
@@ -228,7 +228,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return pos;
         }
 
-        bool IsLegalPosition(Rect rect,  DraggableToken ignoreToken = null)
+        bool IsLegalPosition(Rect rect,  IToken ignoreToken = null)
 		{
             if (tableRect.Contains(rect.position + rect.size / 2f) == false)
                 return false;
@@ -237,7 +237,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             //Debug.Log("Checking if " + rect + " is a legal position");
 
             foreach (var token in _tabletop.GetTokens()) {
-                rectCheck = GetCenterPosRect(token.RectTransform);
+                rectCheck = GetCenterPosRect(token.rectTransform);
 
                 if (CanTokenBeIgnored(token, ignoreToken))
                     continue;
@@ -257,7 +257,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return true;
         }
 
-        bool CanTokenBeIgnored(DraggableToken token, DraggableToken ignoreToken) {
+        bool CanTokenBeIgnored(DraggableToken token, IToken ignoreToken) {
             if (token == ignoreToken)
                 return true;
             if (token.IsBeingAnimated)
@@ -440,12 +440,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             // We don't have a source token, then get us the first token with the appopriate id.
             else { 
                 var registeredSits = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
-                existingSituation = registeredSits.Find(sc => sc.situationToken.EntityId == scc.Recipe.ActionId);
+                existingSituation = registeredSits.Find(sc => sc.situationAnchor.EntityId == scc.Recipe.ActionId);
             }
 
             //grabbing existingtoken: just in case some day I want to, e.g., add additional tokens to an ongoing one rather than silently fail the attempt.
             if (existingSituation != null) {
-                if (existingSituation.Situation.State == SituationState.Complete && existingSituation.situationToken.IsTransient) {
+                if (existingSituation.Situation.State == SituationState.Complete && existingSituation.situationAnchor.IsTransient) {
                     //verb exists already, but it's completed. We don't want to block new temp verbs executing if the old one is complete, because
                     //otherwise there's an exploit to, e.g., leave hazard finished but unresolved to block new ones appearing.
                     //So nothing happens in this branch except logging.
@@ -467,22 +467,22 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             //if token has been spawned from an existing token, animate its appearance
             if (scc.SourceToken != null) {
-                AnimateTokenTo(situationController.situationToken,
+                AnimateTokenTo(situationController.situationAnchor,
                     duration: 1f,
-                    startPos: scc.SourceToken.RectTransform.anchoredPosition3D,
-                    endPos: GetFreePosWithDebug(situationController.situationToken, scc.SourceToken.RectTransform.anchoredPosition, 3),
+                    startPos: scc.SourceToken.rectTransform.anchoredPosition3D,
+                    endPos: GetFreePosWithDebug(situationController.situationAnchor, scc.SourceToken.rectTransform.anchoredPosition, 3),
                     startScale: 0f,
                     endScale: 1f);
             }
             else {
-                Registry.Get<Choreographer>().ArrangeTokenOnTable(situationController.situationToken, null);
+                Registry.Get<Choreographer>().ArrangeTokenOnTable(situationController.situationAnchor, null);
             }
         }
 
 
         #region -- ANIMATIONS ------------------------
 
-        void AnimateTokenTo(DraggableToken token, float duration, Vector3 startPos, Vector3 endPos, float startScale = 1f, float endScale = 1f) {
+        void AnimateTokenTo(IAnimatable token, float duration, Vector3 startPos, Vector3 endPos, float startScale = 1f, float endScale = 1f) {
             var tokenAnim = token.gameObject.AddComponent<TokenAnimation>();
             tokenAnim.onAnimDone += SituationAnimDone;
             tokenAnim.SetPositions(startPos, endPos);
@@ -508,7 +508,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public void MoveElementToSituationSlot(ElementStackToken stack, TokenAndSlot tokenSlotPair, Action<ElementStackToken, TokenAndSlot> callOnAnimDone, float durationOverride = -1.0f)
 		{
-            var startPos = stack.RectTransform.anchoredPosition3D;
+            var startPos = stack.rectTransform.anchoredPosition3D;
             var endPos = tokenSlotPair.Token.GetOngoingSlotPosition();
             float distance = Vector3.Distance(startPos, endPos);
             float duration = durationOverride>0.0f ? durationOverride : Mathf.Max(0.3f, distance * 0.001f);

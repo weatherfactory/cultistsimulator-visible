@@ -543,7 +543,7 @@ namespace Assets.CS.TabletopUI {
         
 
             
-            _endGameAnimController.TriggerEnd((SituationToken)endingSituation.situationToken, ending);
+            _endGameAnimController.TriggerEnd((SituationToken)endingSituation.situationAnchor, ending);
         }
 
 
@@ -713,7 +713,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
                 if (stack != null) {
                     stack.SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.GreedySlot));
-                    choreo.PrepareElementForGreedyAnim(stack, sit.situationToken as SituationToken); // this reparents the card so it can animate properly
+                    choreo.PrepareElementForGreedyAnim(stack, sit.situationAnchor as SituationToken); // this reparents the card so it can animate properly
                     choreo.MoveElementToSituationSlot(stack, tokenSlotPair, choreo.ElementGreedyAnimDone);
                     continue; // we found a stack, we're done here
                 }

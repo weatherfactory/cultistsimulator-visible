@@ -21,7 +21,7 @@ using Object = UnityEngine.Object;
 namespace Assets.TabletopUi {
     public class SituationController : ISituationSubscriber, ISaveable {
 
-        public SituationToken situationToken;
+        public ISituationAnchor situationAnchor;
         public SituationWindow situationWindow;
         public ISituationView situationWindowAsView;
         public ISituationStorage situationWindowAsStorage;
@@ -59,12 +59,12 @@ namespace Assets.TabletopUi {
             currentCharacter = ch;
         }
 
-        public void Initialise(Situation situation, SituationToken t, SituationWindow w) {
+        public void Initialise(Situation situation, ISituationAnchor a, SituationWindow w) {
             Registry.Get<SituationsCatalogue>().RegisterSituation(this);
             Situation = situation;
             Situation.AddSubscriber(this);
 
-            situationToken = t;
+            situationAnchor = a;
             
 
 
@@ -106,8 +106,8 @@ namespace Assets.TabletopUi {
 
             situationWindowAsStorage.SetOngoing(Situation.currentPrimaryRecipe);
 
-            situationToken.DisplayMiniSlot(Situation.currentPrimaryRecipe.Slots);
-            situationToken.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, CurrentEndingFlavourToSignal);
+            situationAnchor.DisplayMiniSlot(Situation.currentPrimaryRecipe.Slots);
+            situationAnchor.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, CurrentEndingFlavourToSignal);
             situationWindowAsView.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, CurrentEndingFlavourToSignal);
 
             //this is a little ugly here; but it makes the intent clear. The best way to deal with it is probably to pass the whole Command down to the situationwindow for processing.
@@ -130,7 +130,7 @@ namespace Assets.TabletopUi {
 
             //NOTE: only on Complete state. Completioncount shouldn't show on other states. This is fragile tho.
             if (Situation.CompletionCount >= 0)
-                situationToken.SetCompletionCount(Situation.CompletionCount);
+                situationAnchor.SetCompletionCount(Situation.CompletionCount);
         }
         // Called from importer
         public void ModifyStoredElementStack(string elementId, int quantity, Context context)
@@ -149,7 +149,7 @@ namespace Assets.TabletopUi {
 
         public void Retire() {
             situationWindowAsStorage.Retire();
-            situationToken.Retire();
+            situationAnchor.Retire();
             Registry.Get<SituationsCatalogue>().DeregisterSituation(this);
         }
 
@@ -157,7 +157,7 @@ namespace Assets.TabletopUi {
 
 
         public string GetTokenId() {
-            return situationToken.EntityId;
+            return situationAnchor.EntityId;
         }
 
         public IAspectsDictionary GetAspectsAvailableToSituation(bool showElementAspects) {
@@ -227,7 +227,7 @@ namespace Assets.TabletopUi {
             // only pull in something if we've got a second remaining
             if (Situation.State == SituationState.Ongoing && Situation.TimeRemaining > HOUSEKEEPING_CYCLE_BEATS) {
                 var tokenAndSlot = new TokenAndSlot() {
-                    Token = situationToken as SituationToken,
+                    Token = situationAnchor as SituationToken,
                     RecipeSlot = situationWindowAsStorage.GetUnfilledGreedySlot() as RecipeSlot
                 };
 
@@ -241,8 +241,8 @@ namespace Assets.TabletopUi {
         }
 
         public void SituationBeginning(Recipe withRecipe) {
-            situationToken.DisplayStackInMiniSlot(null); // Hide content of miniSlotDisplay - looping recipes never go by complete which would do that
-            situationToken.DisplayMiniSlot(withRecipe.Slots);
+            situationAnchor.DisplayStackInMiniSlot(null); // Hide content of miniSlotDisplay - looping recipes never go by complete which would do that
+            situationAnchor.DisplayMiniSlot(withRecipe.Slots);
             situationWindowAsStorage.SetOngoing(withRecipe);
             StoreStacks(situationWindowAsStorage.GetStartingStacks());
 
@@ -259,9 +259,9 @@ namespace Assets.TabletopUi {
         {
             var tabletopManager = Registry.Get<TabletopManager>();
             if (endingFlavour != EndingFlavour.None)
-                tabletopManager.SignalImpendingDoom(situationToken);
+                tabletopManager.SignalImpendingDoom(situationAnchor);
             else
-                tabletopManager.NoMoreImpendingDoom(situationToken);
+                tabletopManager.NoMoreImpendingDoom(situationAnchor);
 
         }
 
@@ -285,7 +285,7 @@ namespace Assets.TabletopUi {
         public void SituationOngoing()
 		{
             //var currentRecipe = compendium.GetRecipeById(SituationClock.RecipeId);
-            situationToken.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, CurrentEndingFlavourToSignal);
+            situationAnchor.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, CurrentEndingFlavourToSignal);
             situationWindowAsView.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, CurrentEndingFlavourToSignal);
         }
 
@@ -337,7 +337,7 @@ namespace Assets.TabletopUi {
 
          
 
-                var scc = new SituationCreationCommand(verbForNewSituation, command.Recipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
+                var scc = new SituationCreationCommand(verbForNewSituation, command.Recipe, SituationState.FreshlyStarted, situationAnchor as DraggableToken);
                 tabletopManager.BeginNewSituation(scc,stacksToAddToNewSituation);
                 situationWindowAsView.DisplayStoredElements();             //in case expulsions have removed anything
                 return;
@@ -367,7 +367,7 @@ namespace Assets.TabletopUi {
             string overrideIcon = compendium.GetVerbIconOverrideFromAspects(forAspects);
             if (!string.IsNullOrEmpty(overrideIcon))
             { 
-                situationToken.DisplayOverrideIcon(overrideIcon);
+                situationAnchor.DisplayOverrideIcon(overrideIcon);
                 situationWindowAsView.DisplayIcon(overrideIcon);
             }
         }
@@ -406,9 +406,9 @@ namespace Assets.TabletopUi {
             situationWindowAsStorage.SetComplete();
 
             // Now update the token based on the current stacks in the window
-            situationToken.DisplayComplete();
-            situationToken.SetCompletionCount(GetNumOutputCards());
-            situationToken.DisplayStackInMiniSlot(situationWindowAsStorage.GetOngoingStacks());
+            situationAnchor.DisplayComplete();
+            situationAnchor.SetCompletionCount(GetNumOutputCards());
+            situationAnchor.DisplayStackInMiniSlot(situationWindowAsStorage.GetOngoingStacks());
 
             AttemptAspectInductions();
 
@@ -417,7 +417,7 @@ namespace Assets.TabletopUi {
             if (currentRecipe.PortalEffect != PortalEffect.None)
             {
                 // Add a check to see if this is actually running in the game
-                var behaviour = situationToken as MonoBehaviour;
+                var behaviour = situationAnchor as MonoBehaviour;
                 if (behaviour != null)
                     Registry.Get<TabletopManager>().ShowMansusMap(this, behaviour.transform,
                         currentRecipe.PortalEffect);
@@ -482,7 +482,7 @@ namespace Assets.TabletopUi {
             var inductionRecipeVerb = new CreatedVerb(inducedRecipe.ActionId,
                 inducedRecipe.Label, inducedRecipe.Description);
             SituationCreationCommand inducedSituation = new SituationCreationCommand(inductionRecipeVerb,
-                inducedRecipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
+                inducedRecipe, SituationState.FreshlyStarted, situationAnchor as DraggableToken);
             Registry.Get<TabletopManager>().BeginNewSituation(inducedSituation,new List<ElementStackToken>());
         }
 
@@ -490,21 +490,21 @@ namespace Assets.TabletopUi {
             Situation.ResetIfComplete();
 
             //if this was a transient verb, clean up everything and finish.
-            if (situationToken.IsTransient) {
+            if (situationAnchor.IsTransient) {
                 Retire();
             }
             else {
                 situationWindowAsStorage.SetUnstarted();
-                situationToken.SetCompletionCount(-1);
+                situationAnchor.SetCompletionCount(-1);
             }
         }
 
         public void OpenWindow( Vector3 targetPosOverride )
 		{
             IsOpen = true;
-            situationToken.DisplayAsOpen();
+            situationAnchor.DisplayAsOpen();
             situationWindowAsView.Show( targetPosOverride );
-            Registry.Get<TabletopManager>().CloseAllSituationWindowsExcept(situationToken.EntityId);
+            Registry.Get<TabletopManager>().CloseAllSituationWindowsExcept(situationAnchor.EntityId);
         }
 
 		public void OpenWindow()
@@ -518,13 +518,13 @@ namespace Assets.TabletopUi {
             situationWindowAsStorage.DumpAllStartingCardsToDesktop(); // only dumps if it can, obv.
             situationWindowAsView.Hide();
 
-            situationToken.DisplayAsClosed();
+            situationAnchor.DisplayAsClosed();
         }
 
         public void ShowVisualEffectIfCanTakeDroppedToken(ElementStackToken stack,bool show)
         {
-            situationToken.SetGlowColor(UIStyle.TokenGlowColor.Default);
-            situationToken.ShowGlow(show && CanAcceptStackWhenClosed(stack));
+            situationAnchor.SetGlowColor(UIStyle.TokenGlowColor.Default);
+            situationAnchor.ShowGlow(show && CanAcceptStackWhenClosed(stack));
         }
 
         public bool CanAcceptStackWhenClosed(ElementStackToken stack) {
@@ -618,7 +618,7 @@ namespace Assets.TabletopUi {
             var tabletopManager = Registry.Get<TabletopManager>();
             var aspectsInContext = tabletopManager.GetAspectsInContext(allAspectsInSituation);
         
-            Recipe matchingRecipe = compendium.GetFirstMatchingRecipe(aspectsInContext,  situationToken.EntityId, currentCharacter, false);
+            Recipe matchingRecipe = compendium.GetFirstMatchingRecipe(aspectsInContext,  situationAnchor.EntityId, currentCharacter, false);
 
             // Update the aspects in the window
             IAspectsDictionary aspectsNoElementsSelf = situationWindowAsStorage.GetAspectsFromAllSlottedElements(false);
@@ -633,7 +633,7 @@ namespace Assets.TabletopUi {
             }
 
             //if we can't find a matching craftable recipe, check for matching hint recipes
-            Recipe matchingHintRecipe = compendium.GetFirstMatchingRecipe(aspectsInContext, situationToken.EntityId, currentCharacter, true); ;
+            Recipe matchingHintRecipe = compendium.GetFirstMatchingRecipe(aspectsInContext, situationAnchor.EntityId, currentCharacter, true); ;
 
             //perhaps we didn't find an executable recipe, but we did find a hint recipe to display
             if (matchingHintRecipe != null)
@@ -677,7 +677,7 @@ namespace Assets.TabletopUi {
 
             }
 
-            situationToken.DisplayStackInMiniSlot(situationWindowAsStorage.GetOngoingStacks());
+            situationAnchor.DisplayStackInMiniSlot(situationWindowAsStorage.GetOngoingStacks());
 
             TryOverrideVerbIcon(situationWindowAsStorage.GetAspectsFromStoredElements(true));
         }
@@ -748,7 +748,7 @@ namespace Assets.TabletopUi {
             var aspectsInContext = tabletopManager.GetAspectsInContext(aspects);
 
 
-            var recipe = compendium.GetFirstMatchingRecipe(aspectsInContext, situationToken.EntityId, currentCharacter, false);
+            var recipe = compendium.GetFirstMatchingRecipe(aspectsInContext, situationAnchor.EntityId, currentCharacter, false);
 
             //no recipe found? get outta here
             if (recipe == null)
@@ -800,12 +800,12 @@ namespace Assets.TabletopUi {
         // Update Visuals
 
         public void UpdateTokenResultsCountBadge() {
-            situationToken.SetCompletionCount(GetNumOutputCards());
+            situationAnchor.SetCompletionCount(GetNumOutputCards());
         }
 
         private void BurnImageUnderToken(string burnImage) {
             Registry.Get<INotifier>()
-                .ShowImageBurn(burnImage, situationToken as DraggableToken, 20f, 2f,
+                .ShowImageBurn(burnImage, situationAnchor as DraggableToken, 20f, 2f,
                     TabletopImageBurner.ImageLayoutConfig.CenterOnToken);
         }
 
@@ -828,7 +828,7 @@ namespace Assets.TabletopUi {
 			situationSaveData.Add(SaveConstants.SAVE_SITUATION_WINDOW_Y, pos.y);
 			situationSaveData.Add(SaveConstants.SAVE_SITUATION_WINDOW_Z, pos.z);
 
-            situationSaveData.Add(SaveConstants.SAVE_VERBID, situationToken.EntityId);
+            situationSaveData.Add(SaveConstants.SAVE_VERBID, situationAnchor.EntityId);
             if (Situation != null) {
                 situationSaveData.Add(SaveConstants.SAVE_TITLE, situationWindowAsView.Title);
                 situationSaveData.Add(SaveConstants.SAVE_RECIPEID, Situation.RecipeId);

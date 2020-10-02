@@ -113,6 +113,9 @@ namespace Noon
         public const string SCREENCANVASSIZE = "ScreenCanvasSize";
         public const string AUTOSAVEINTERVAL = "AutosaveInterval";
         public const string GRIDSNAPSIZE = "GridSnapSize";
+
+    public const string ANCHOR_BOOKSHELF = "bookshelf";
+
     }
 
     public enum VerbosityLevel

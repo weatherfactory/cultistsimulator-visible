@@ -365,7 +365,7 @@ namespace Assets.CS.TabletopUI {
 			// Note: If we collect all from the window we also get the default button sound in any case.
 			if (results.Count() > 0)
 				SoundManager.PlaySfx("SituationCollectAll");
-			else if (situationController.situationToken.IsTransient)
+			else if (situationController.situationAnchor.IsTransient)
 				SoundManager.PlaySfx("SituationTokenRetire");
 			else 
 				SoundManager.PlaySfx("UIButtonClick");

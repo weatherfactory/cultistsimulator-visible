@@ -1,6 +1,7 @@
 ﻿using Assets.CS.TabletopUI;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.TabletopUi.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,7 +12,7 @@ namespace Assets.CS.TabletopUI {
     public class SituationWindowPositioner : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
 
         public bool canDrag = true;
-        Transform token;
+        ISituationAnchor anchor;
 
         static SituationWindowPositioner windowBeingDragged;
         
@@ -23,8 +24,8 @@ namespace Assets.CS.TabletopUI {
 
         Vector3 dragOffset;
 
-        public void Initialise(Transform token) {
-            this.token = token;
+        public void Initialise(ISituationAnchor anchor) {
+            this.anchor = anchor;
             this.rectTrans = GetComponent<RectTransform>();
             this.canvasGroup = GetComponent<CanvasGroup>();
             this.parentTrans = GetComponentInParent<RectTransform>();
@@ -41,7 +42,7 @@ namespace Assets.CS.TabletopUI {
 
         public void Show(float duration, Vector3 targetPosOverride) {
             StopAllCoroutines();
-			Vector3 pos = token.position;
+			Vector3 pos = anchor.transform.position;
 			if (targetPosOverride.sqrMagnitude > 0.0f)	// Ugly, but no way to pass a null Vector3 reference in C#, so using zero vec as "invalid" - CP
 				pos = targetPosOverride;
             StartCoroutine(DoShowAnim(duration, pos));
@@ -52,7 +53,7 @@ namespace Assets.CS.TabletopUI {
 			TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.WindowAnim, true );
             var time = 0f;
             var targetPos = GetBoundCorrectedWorldPos(targetPosition);
-            var startPos = token.position;
+            var startPos = anchor.transform.position;
             float lerp;
 
             while (time < duration) {
@@ -71,7 +72,7 @@ namespace Assets.CS.TabletopUI {
         // GENERAL MOVE BEHAVIOR
 
         public void SetToTokenPos() {
-            SetToWorldPosInScreenBounds(token.position);
+            SetToWorldPosInScreenBounds(anchor.transform.position);
         }
 
         void SetToWorldPosInScreenBounds(Vector3 worldPos) {
@@ -80,7 +81,7 @@ namespace Assets.CS.TabletopUI {
 
         Vector3 GetBoundCorrectedWorldPos(Vector3 worldPos) {
             // Check if one of our corners would be outside the bounds
-            var outOfBoundsOffset = GetScreenPosOffsetForCornerOverlap(token.position);
+            var outOfBoundsOffset = GetScreenPosOffsetForCornerOverlap(anchor.transform.position);
 
             // We have an offset? Shift the window position!
             if (outOfBoundsOffset.x != 0f || outOfBoundsOffset.y != 0f) {
