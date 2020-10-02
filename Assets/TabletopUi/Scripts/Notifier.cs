@@ -166,7 +166,7 @@ namespace Assets.CS.TabletopUI {
 
         // TabletopImageBurner
 
-        public void ShowImageBurn(string spriteName, DraggableToken token, float duration, float scale, TabletopImageBurner.ImageLayoutConfig alignment) {
+        public void ShowImageBurn(string spriteName, AbstractToken token, float duration, float scale, TabletopImageBurner.ImageLayoutConfig alignment) {
             tabletopBurner.ShowImageBurn(spriteName, token, duration, scale, alignment);
         }
 

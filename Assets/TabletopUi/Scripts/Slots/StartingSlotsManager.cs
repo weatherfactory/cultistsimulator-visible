@@ -129,7 +129,7 @@ namespace Assets.TabletopUi.SlotsContainers {
             if (context != null && context.actionSource == Context.ActionSource.SituationStoreStacks)
                 return; // Don't return the tokens to tabletop if we
 
-            DraggableToken tokenContained = slot.GetTokenInSlot();
+            AbstractToken tokenContained = slot.GetTokenInSlot();
 
             if (tokenContained != null)
                 tokenContained.ReturnToTabletop(context);

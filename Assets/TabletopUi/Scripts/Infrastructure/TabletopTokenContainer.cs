@@ -41,14 +41,14 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         // Init Listeners to pre-existing DisplayHere Objects
         _background.onDropped += HandleOnTableDropped;
         _background.onClicked += HandleOnTableClicked;
-        DraggableToken.onChangeDragState += HandleDragStateChanged;
+        HornedAxe.onChangeDragState += HandleDragStateChanged;
     }
 
     public override void OnDestroy() {
         base.OnDestroy();
 
         // Static event so make sure to de-init once this object is destroyed
-        DraggableToken.onChangeDragState -= HandleDragStateChanged;
+        HornedAxe.onChangeDragState -= HandleDragStateChanged;
     }
 
 
@@ -69,13 +69,13 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         choreo.MoveAllTokensOverlappingWith(token);
     }
 
-    public override void TryMoveAsideFor(VerbAnchor potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
+    public override void TryMoveAsideFor(VerbAnchor potentialUsurper, AbstractToken incumbent, out bool incumbentMoved) {
         //incumbent.RectTransform.anchoredPosition = GetFreeTokenPos(incumbent);
         incumbentMoved = true;
         DisplaySituationTokenOnTable(potentialUsurper, new Context(Context.ActionSource.PlayerDrag));
     }
 
-    public override void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
+    public override void TryMoveAsideFor(ElementStackToken potentialUsurper, AbstractToken incumbent, out bool incumbentMoved) {
         // We don't merge here. We assume if we end up here no merge was possible
         //incumbent.RectTransform.anchoredPosition = GetFreeTokenPos(incumbent);
         incumbentMoved = true;
@@ -83,7 +83,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         CheckOverlappingTokens(potentialUsurper);
     }
 
-    Vector2 GetFreeTokenPos(DraggableToken incumbent) {
+    Vector2 GetFreeTokenPos(AbstractToken incumbent) {
         var choreo = Registry.Get<Choreographer>();
         var currentPos = incumbent.RectTransform.anchoredPosition;
 
@@ -96,11 +96,11 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         anchor.DisplayAtTableLevel();
     }
 
-    public override string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
+    public override string GetSaveLocationInfoForDraggable(AbstractToken @abstract) {
         try
         {
 
-        return (draggable.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + draggable.RectTransform.localPosition.y).ToString();
+        return (@abstract.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + @abstract.RectTransform.localPosition.y).ToString();
         }
         catch (Exception)
         {
@@ -114,21 +114,21 @@ public class TabletopTokenContainer : AbstractTokenContainer {
 
   
     void HandleOnTableDropped() {
-        if (DraggableToken.itemBeingDragged != null) {
-            DraggableToken.SetReturn(false, "dropped on the background");
+        if (HornedAxe.itemBeingDragged != null) {
+            HornedAxe.SetReturn(false, "dropped on the background");
 
-            if (DraggableToken.itemBeingDragged is VerbAnchor) {
-                DisplaySituationTokenOnTable((VerbAnchor)DraggableToken.itemBeingDragged, new Context(Context.ActionSource.PlayerDrag));
+            if (HornedAxe.itemBeingDragged is VerbAnchor) {
+                DisplaySituationTokenOnTable((VerbAnchor)HornedAxe.itemBeingDragged, new Context(Context.ActionSource.PlayerDrag));
             }
-            else if (DraggableToken.itemBeingDragged is ElementStackToken) {
-                GetElementStacksManager().AcceptStack(((ElementStackToken)DraggableToken.itemBeingDragged),
+            else if (HornedAxe.itemBeingDragged is ElementStackToken) {
+                GetElementStacksManager().AcceptStack(((ElementStackToken)HornedAxe.itemBeingDragged),
                     new Context(Context.ActionSource.PlayerDrag));
             }
             else {
                 throw new NotImplementedException("Tried to put something weird on the table");
             }
 
-            CheckOverlappingTokens(DraggableToken.itemBeingDragged);
+            CheckOverlappingTokens(HornedAxe.itemBeingDragged);
             SoundManager.PlaySfx("CardDrop");
         }
     }
@@ -136,7 +136,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
     void HandleOnTableClicked() {
         //Close all open windows if we're not dragging (multi tap stuff)
         // Situation windows get closed first, then details windows.
-        if (DraggableToken.itemBeingDragged == null)
+        if (HornedAxe.itemBeingDragged == null)
         {
             var tabletopManager = Registry.Get<TabletopManager>();
             if (tabletopManager.IsSituationWindowOpen())
@@ -147,7 +147,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
     }
 
     private void HandleDragStateChanged(bool isDragging) {
-        var draggedElement = DraggableToken.itemBeingDragged as ElementStackToken;
+        var draggedElement = HornedAxe.itemBeingDragged as ElementStackToken;
 
         if (draggedElement != null)
             ShowDestinationsForStack(draggedElement, isDragging);
@@ -196,8 +196,8 @@ public class TabletopTokenContainer : AbstractTokenContainer {
     }
 
     // Returns all visual tokens for use by the Choreographer
-    public virtual IEnumerable<DraggableToken> GetTokens() {
-        return transform.GetComponentsInChildren<DraggableToken>();
+    public virtual IEnumerable<AbstractToken> GetTokens() {
+        return transform.GetComponentsInChildren<AbstractToken>();
     }
 
     // Hide / Show for use with Mansus Map transition

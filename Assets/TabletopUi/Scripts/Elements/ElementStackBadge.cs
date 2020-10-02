@@ -11,6 +11,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using Assets.TabletopUi.Scripts.Infrastructure;
 
 // Should inherit from a "TabletopToken" base class same as VerbBox
 
@@ -34,7 +35,7 @@ namespace Assets.CS.TabletopUI {
 			SoundManager.PlaySfx("TokenHover");
 
             // only highlight if we're not dragging anything
-            if (!token.Defunct && DraggableToken.itemBeingDragged == null)
+            if (!token.Defunct && HornedAxe.itemBeingDragged == null)
                 image.overrideSprite = badgeHoverSprite;
         }
 

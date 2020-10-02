@@ -102,7 +102,7 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
             pointerEnterEdgeTime = timeout;
         }
         // Pointer is in our rect? Then move
-        else if (Assets.CS.TabletopUI.DraggableToken.itemBeingDragged!=null)
+        else if (HornedAxe.itemBeingDragged!=null)
 		{
 			// point ranging from (-0.5, -0.5) to (0.5, 0.5)
 			mousePos = new Vector2(Input.mousePosition.x / Screen.width - 0.5f, Input.mousePosition.y / Screen.height - 0.5f);

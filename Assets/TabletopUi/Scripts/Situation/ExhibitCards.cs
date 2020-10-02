@@ -28,7 +28,7 @@ public class ExhibitCards : AbstractTokenContainer {
         _elementStacksManager = new ElementStacksManager(this, "exhibits");
     }
 
-    public override string GetSaveLocationInfoForDraggable(DraggableToken draggable)
+    public override string GetSaveLocationInfoForDraggable(AbstractToken @abstract)
     {
         return string.Empty;
     }

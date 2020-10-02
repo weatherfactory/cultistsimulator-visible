@@ -13,7 +13,7 @@ namespace Assets.Core.Commands
     public class SituationCreationCommand
     {
 
-		public DraggableToken SourceToken { get; set; } // this may not be set if no origin is known or needed
+		public AbstractToken SourceToken { get; set; } // this may not be set if no origin is known or needed
         public IVerb Verb { get; set; }
         public Recipe Recipe { get; set; }
         public SituationState State { get; set; }
@@ -22,7 +22,7 @@ namespace Assets.Core.Commands
         public int CompletionCount { get; set; }
         public string LocationInfo { get; set; }
 
-        public SituationCreationCommand(IVerb verb,Recipe recipe, SituationState situationState, DraggableToken sourceToken = null)
+        public SituationCreationCommand(IVerb verb,Recipe recipe, SituationState situationState, AbstractToken sourceToken = null)
 		{
 			if (recipe==null && verb==null)
 				throw new ArgumentException("Must specify either a recipe or a verb (or both");

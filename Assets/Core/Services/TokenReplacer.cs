@@ -13,7 +13,7 @@ namespace Assets.Core.Services
     {
         private Character _character;
         private ICompendium _compendium;
-        //'token' as in text-to-be-replaced, not as in DraggableToken
+        //'token' as in text-to-be-replaced, not as in AbstractToken
         public TokenReplacer(Character ch,ICompendium co)
         {
             _character = ch;

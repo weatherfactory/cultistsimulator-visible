@@ -106,7 +106,7 @@ namespace Assets.CS.TabletopUI {
                 return;
 
             // We're NOT dragging something and our last state was not "this is a legal drop target" glow, then don't show
-            if (DraggableToken.itemBeingDragged == null && !lastGlowState)
+            if (HornedAxe.itemBeingDragged == null && !lastGlowState)
                 return;
 
             if (show)
@@ -124,18 +124,18 @@ namespace Assets.CS.TabletopUI {
         // IOnDrop Implementation
 
         public void OnDrop(PointerEventData eventData) {
-            if (!isActive || DraggableToken.itemBeingDragged == null)
+            if (!isActive || HornedAxe.itemBeingDragged == null)
                 return;
 
-            ElementStackToken stack = DraggableToken.itemBeingDragged as ElementStackToken;
+            ElementStackToken stack = HornedAxe.itemBeingDragged as ElementStackToken;
 
             if (stack == null) { //it's not an element stack; just put it down
-                DraggableToken.itemBeingDragged.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
+                HornedAxe.itemBeingDragged.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
                 return;
             }
 
             //now we put the token in the slot.
-            DraggableToken.SetReturn(false, "has gone in slot"); // This tells the draggable to not reset its pos "onEndDrag", since we do that here. (Martin)
+            HornedAxe.SetReturn(false, "has gone in slot"); // This tells the draggable to not reset its pos "onEndDrag", since we do that here. (Martin)
             AcceptStack(stack, new global::Context(Context.ActionSource.PlayerDrag));
             SoundManager.PlaySfx("CardPutInSlot");
         }
@@ -148,15 +148,15 @@ namespace Assets.CS.TabletopUI {
                 onCardDropped(stack);
         }
 
-        public DraggableToken GetTokenInSlot() {
-            return GetComponentInChildren<DraggableToken>();
+        public AbstractToken GetTokenInSlot() {
+            return GetComponentInChildren<AbstractToken>();
         }
 
         public ElementStackToken GetElementStackInSlot() {
             return GetComponentInChildren<ElementStackToken>();
         }
 
-        public override string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
+        public override string GetSaveLocationInfoForDraggable(AbstractToken draggable) {
             throw new NotImplementedException();
         }
 

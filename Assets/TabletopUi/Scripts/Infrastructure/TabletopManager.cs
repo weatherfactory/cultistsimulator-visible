@@ -139,7 +139,7 @@ namespace Assets.CS.TabletopUI {
                 return; //still setting up
 
             // Failsafe to ensure that NonSaveableType.Drag never gets left on due to unusual exits from drag state - CP
-            if (DraggableToken.itemBeingDragged == null)
+            if (HornedAxe.itemBeingDragged == null)
                 TabletopManager.RequestNonSaveableState(TabletopManager.NonSaveableType.Drag, false);
 
             housekeepingTimer += Time.deltaTime;
@@ -206,7 +206,7 @@ namespace Assets.CS.TabletopUI {
             InitialiseListeners();
 
             // Make sure dragging is reenabled
-            DraggableToken.draggingEnabled = true;
+            HornedAxe.draggingEnabled = true;
 
             _initialised = true;
 
@@ -292,13 +292,13 @@ namespace Assets.CS.TabletopUI {
 
         private void InitialiseListeners() {
             // Init Listeners to pre-existing DisplayHere Objects
-            DraggableToken.onChangeDragState += HandleDragStateChanged;
+            HornedAxe.onChangeDragState += HandleDragStateChanged;
             mapBackground.onDropped += HandleOnMapBackgroundDropped;
         }
 
         private void OnDestroy() {
             // Static event so make sure to de-init once this object is destroyed
-            DraggableToken.onChangeDragState -= HandleDragStateChanged;
+            HornedAxe.onChangeDragState -= HandleDragStateChanged;
             mapBackground.onDropped -= HandleOnMapBackgroundDropped;
         }
 
@@ -754,10 +754,10 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
                 if (CanPullCardToGreedySlot(stack as ElementStackToken, slotSpec))
                 {
 #pragma warning disable CS0253 // Possible unintended reference comparison; right hand side needs cast
-                    if (DraggableToken.itemBeingDragged == stack)
+                    if (HornedAxe.itemBeingDragged == stack)
 #pragma warning restore CS0253 // Possible unintended reference comparison; right hand side needs cast
                     {
-                        DraggableToken.SetReturn(false,"Drag aborted by greedy slot"); DraggableToken.itemBeingDragged = null;
+                        HornedAxe.SetReturn(false,"Drag aborted by greedy slot"); HornedAxe.itemBeingDragged = null;
                     }
                 
                     return stack;
@@ -785,7 +785,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
                 if (allowExploits!=null || allowExploits > 0)
                 {
                     Debug.Log("exploits on");
-                    if (DraggableToken.itemBeingDragged == stack)
+                    if (HornedAxe.itemBeingDragged == stack)
                         return false; // don't pull cards being dragged if Worm is set On}
                 }
             
@@ -887,11 +887,11 @@ public ElementStacksManager GetTabletopStacksManager()
         }
         
         void HandleOnMapBackgroundDropped() {
-            if (DraggableToken.itemBeingDragged != null) {
+            if (HornedAxe.itemBeingDragged != null) {
 
-                DraggableToken.SetReturn(false, "dropped on the map background");
-                DraggableToken.itemBeingDragged.DisplayAtTableLevel();
-                mapTokenContainer.DisplayHere(DraggableToken.itemBeingDragged, new Context(Context.ActionSource.PlayerDrag));
+                HornedAxe.SetReturn(false, "dropped on the map background");
+                HornedAxe.itemBeingDragged.DisplayAtTableLevel();
+                mapTokenContainer.DisplayHere(HornedAxe.itemBeingDragged, new Context(Context.ActionSource.PlayerDrag));
 
                 SoundManager.PlaySfx("CardDrop");
             }
@@ -923,7 +923,7 @@ public ElementStacksManager GetTabletopStacksManager()
             if (_tabletop == null)
                 return;
 
-            var draggedElement = DraggableToken.itemBeingDragged as ElementStackToken;
+            var draggedElement = HornedAxe.itemBeingDragged as ElementStackToken;
 
             if (mapTokenContainer != null)
                 mapTokenContainer.ShowDestinationsForStack(draggedElement, isDragging);
@@ -1005,7 +1005,7 @@ public ElementStacksManager GetTabletopStacksManager()
         public void ShowMansusMap(SituationController situation, Transform origin, PortalEffect effect) {
             CloseAllSituationWindowsExcept(null);
 
-            DraggableToken.CancelDrag();
+            HornedAxe.CancelDrag();
 
             Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 3,GameSpeed=GameSpeed.Paused,WithSFX =false});
             RequestNonSaveableState( NonSaveableType.Mansus, true );
@@ -1030,7 +1030,7 @@ public ElementStacksManager GetTabletopStacksManager()
 
         public void ReturnFromMansus(Transform origin, ElementStackToken mansusCard)
 		{
-            DraggableToken.CancelDrag();
+            HornedAxe.CancelDrag();
 
             FlushNonSaveableState();	// On return from Mansus we can't possibly be overlapping with any other non-autosave state so force a reset for safety - CP
 

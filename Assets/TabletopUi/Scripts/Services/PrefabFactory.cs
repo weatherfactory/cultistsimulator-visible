@@ -22,7 +22,7 @@ namespace Assets.TabletopUi.Scripts.Services
         [Header("Prefabs")]
         public ElementFrame ElementFrame = null;
         public VerbAnchor VerbAnchor = null;
-        public BookshelfToken BookshelfToken = null;
+        public BookshelfAnchor BookshelfAnchor = null;
         public ElementStackToken ElementStackToken = null;
         public SituationWindow SituationWindow = null;
         public RecipeSlot RecipeSlot = null;
@@ -33,7 +33,7 @@ namespace Assets.TabletopUi.Scripts.Services
         public ISituationAnchor CreateSituationAnchorForVerb(IVerb verb,Transform t)
         {
             if(verb.Species==NoonConstants.ANCHOR_BOOKSHELF)
-                return CreateLocally<BookshelfToken>(t);
+                return CreateLocally<BookshelfAnchor>(t);
             else
                 return CreateLocally<VerbAnchor>(t);
         }

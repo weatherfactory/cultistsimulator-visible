@@ -1,4 +1,5 @@
 ﻿using Assets.Core.Entities;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -19,7 +20,7 @@ namespace Assets.CS.TabletopUI
 
 
         public void OnDrop(PointerEventData eventData) {
-            if (DraggableToken.itemBeingDragged == null)
+            if (HornedAxe.itemBeingDragged == null)
                 return;
 
             onDropped?.Invoke();

@@ -93,7 +93,7 @@ public class SituationResults : AbstractTokenContainer {
         return GetElementStacksManager().GetStacks();
     }
 
-    public override string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
+    public override string GetSaveLocationInfoForDraggable(AbstractToken draggable) {
         return (draggable.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + draggable.RectTransform.localPosition.y).ToString();
     }
 

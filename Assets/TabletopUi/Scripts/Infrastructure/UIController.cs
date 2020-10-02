@@ -186,7 +186,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             // Check if the player tried to start a recipe while *not* holding on to a card stack or verb
             // This is to ensure the player doesn't drag an item from a recipe slot before attempting to start a
             // situation, which can lead to strange behaviour
-            var elementStack = DraggableToken.itemBeingDragged as ElementStackToken;
+            var elementStack = HornedAxe.itemBeingDragged as ElementStackToken;
             if (elementStack == null || !elementStack.IsInRecipeSlot())
             {
                 var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();

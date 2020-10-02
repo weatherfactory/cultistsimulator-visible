@@ -207,8 +207,8 @@ namespace Assets.CS.TabletopUI {
 
         public override void OnDrop(PointerEventData eventData)
 		{
-//            if (DraggableToken.itemBeingDragged != null)
-//                DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
+//            if (AbstractToken.itemBeingDragged != null)
+//                AbstractToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
         }
 
         public override bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn)
@@ -232,7 +232,7 @@ namespace Assets.CS.TabletopUI {
         public override void InteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn)
 		{
 			// We can't interact? Then dump us on the tabletop
-			DraggableToken.SetReturn(false, "Tried to drop on non-compatible token, return to tabletop");
+			HornedAxe.SetReturn(false, "Tried to drop on non-compatible token, return to tabletop");
 			ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
         }
 

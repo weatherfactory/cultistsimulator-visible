@@ -68,7 +68,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
         public virtual void DisplayHere(ElementStackToken stack, Context context) {
-            DisplayHere(stack as DraggableToken, context);
+            DisplayHere(stack as AbstractToken, context);
         }
 
         public virtual void DisplayHere(IToken token, Context context) {
@@ -79,17 +79,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             token.SetTokenContainer(this, context);
         }
 
-        public virtual void TryMoveAsideFor(VerbAnchor potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
+        public virtual void TryMoveAsideFor(VerbAnchor potentialUsurper, AbstractToken incumbent, out bool incumbentMoved) {
             // By default: do no move-aside
             incumbentMoved = false;
         }
 
-        public virtual void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
+        public virtual void TryMoveAsideFor(ElementStackToken potentialUsurper, AbstractToken incumbent, out bool incumbentMoved) {
             // By default: do no move-aside
             incumbentMoved = false;
         }
 
-        abstract public string GetSaveLocationInfoForDraggable(DraggableToken draggable);
+        abstract public string GetSaveLocationInfoForDraggable(AbstractToken @abstract);
 
         public virtual void OnDestroy() {
             if (_elementStacksManager != null)

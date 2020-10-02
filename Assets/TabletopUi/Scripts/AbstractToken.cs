@@ -29,28 +29,14 @@ namespace Assets.CS.TabletopUI {
 
         [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(CanvasGroup))]
-    public abstract class DraggableToken : MonoBehaviour,
+    public abstract class AbstractToken : MonoBehaviour,
         IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler,
         IGlowableView, IPointerEnterHandler, IPointerExitHandler,IToken,IAnimatable {
 
         // STATIC FIELDS
 
-        public static event System.Action<bool> onChangeDragState;
-
-        private static Camera dragCamera;
-        public static DraggableToken itemBeingDragged;
-        public static bool draggingEnabled = true;
-        private static bool resetToStartPos = false;
         // ReSharper disable once NotAccessedField.Local
-        private static string resetToStartPosReason = null;	// For debug purposes only - CP
         // This is used in DelayedEndDrag, which occurs one frame after EndDrag. If it's set to true, the token will be returned to where it began the drag (default is false).
-
-        public static void SetReturn(bool value, string reason = "") {
-            resetToStartPos = value;
-			resetToStartPosReason = reason;	// So that we can see why this variable was last changed... - CP
-			NoonUtility.Log( "DraggableToken::SetReturn( " + value + ", " + reason + " )",0,VerbosityLevel.Trivia );
-            //log here if necessary
-        }
 
 
         // INSTANCE FIELDS
@@ -154,11 +140,9 @@ namespace Assets.CS.TabletopUI {
             return compareContainer == TokenContainer;
         }
 
-        #region -- Begin Drag ------------------------------------
 
         public void OnBeginDrag(PointerEventData eventData) {
-            if (itemBeingDragged != null)
-                itemBeingDragged.DelayedEndDrag();
+            if (HornedAxe.itemBeingDragged != null) HornedAxe.itemBeingDragged.DelayedEndDrag();
 
             if (CanDrag(eventData))
                 StartDrag(eventData);
@@ -168,8 +152,8 @@ namespace Assets.CS.TabletopUI {
             if (!TokenContainer.AllowDrag || !AllowsDrag())
                 return false;
 
-            if (itemBeingDragged != null || draggingEnabled == false) {
-                Debug.LogWarningFormat("DraggableToken: Can not Drag.\nDragging Enabled: {0}, Item Being Dragged: {1}", draggingEnabled, itemBeingDragged != null ? itemBeingDragged.name : "NULL");
+            if (HornedAxe.itemBeingDragged != null || HornedAxe.draggingEnabled == false) {
+                Debug.LogWarningFormat("AbstractToken: Can not Drag.\nDragging Enabled: {0}, Item Being Dragged: {1}", HornedAxe.draggingEnabled, HornedAxe.itemBeingDragged != null ? HornedAxe.itemBeingDragged.name : "NULL");
                 return false;
             }
 
@@ -184,9 +168,9 @@ namespace Assets.CS.TabletopUI {
             if (rectCanvas == null)
                 rectCanvas = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
 
-            DraggableToken.itemBeingDragged = this;
-            DraggableToken.dragCamera = eventData.pressEventCamera;
-			SetReturn( true, "start drag" );
+            HornedAxe.itemBeingDragged = this;
+            HornedAxe.dragCamera = eventData.pressEventCamera;
+            HornedAxe.SetReturn( true, "start drag" );
             canvasGroup.blocksRaycasts = false;
 
             DisplayInAir();
@@ -205,7 +189,7 @@ namespace Assets.CS.TabletopUI {
 
             if (useDragOffset) {
                 Vector3 pressPos;
-                RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Get<IDraggableHolder>().RectTransform, eventData.pressPosition, DraggableToken.dragCamera, out pressPos);
+                RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Get<IDraggableHolder>().RectTransform, eventData.pressPosition, HornedAxe.dragCamera, out pressPos);
                 dragOffset = (startPosition + startParent.position) - pressPos;
             }
             else {
@@ -215,20 +199,17 @@ namespace Assets.CS.TabletopUI {
             SoundManager.PlaySfx("CardPickup");
 			TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.Drag, true );
 
-            if (onChangeDragState != null)
-                onChangeDragState(true);
+            HornedAxe.ChangeDragState(true);
         }
 
-        #endregion
         
-        #region -- Do Drag ------------------------------------
 
         public void OnDrag(PointerEventData eventData)
 		{
-            if (itemBeingDragged != this)
+            if (HornedAxe.itemBeingDragged != this)
                 return;
 
-            if (draggingEnabled)
+            if (HornedAxe.draggingEnabled)
 			{
                 MoveObject(eventData);
             }
@@ -243,7 +224,7 @@ namespace Assets.CS.TabletopUI {
 		{
 			if (TabletopManager.GetStickyDrag())
 			{
-				if (DraggableToken.itemBeingDragged == this)
+				if (HornedAxe.itemBeingDragged == this)
 				{
 					OnDrag(eventData);
 				}
@@ -252,7 +233,7 @@ namespace Assets.CS.TabletopUI {
 
         public void MoveObject(PointerEventData eventData) {
             Vector3 dragPos;
-            RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Get<IDraggableHolder>().RectTransform, eventData.position, DraggableToken.dragCamera, out dragPos);
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Get<IDraggableHolder>().RectTransform, eventData.position, HornedAxe.dragCamera, out dragPos);
 
             // Potentially change this so it is using UI coords and the RectTransform?
             rectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);
@@ -265,20 +246,11 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        #endregion
-
-        public static void CancelDrag() {
-            if (itemBeingDragged == null)
-                return;
-
-            if (itemBeingDragged.gameObject.activeInHierarchy)
-                itemBeingDragged.DelayedEndDrag();
-        }
 
         public virtual void OnEndDrag(PointerEventData eventData) {
             // This delays by one frame, because disabling and setting parent in the same frame causes issues
             // Also helps to avoid dropping and picking up in the same click
-            if (itemBeingDragged == this) {
+            if (HornedAxe.itemBeingDragged == this) {
                 if (eventData != null)
                     Invoke("DelayedEndDrag", 0f);
                 else // if we don't have event data, we're forcing this, so don't wait the frame.
@@ -287,17 +259,16 @@ namespace Assets.CS.TabletopUI {
         }
 
         // Also called directly if we start a new drag while we have a drag going
-        protected virtual void DelayedEndDrag() {
+        public virtual void DelayedEndDrag() {
             canvasGroup.blocksRaycasts = true;
 
-            if (DraggableToken.resetToStartPos)
+            if (HornedAxe.resetToStartPos)
                 ReturnToStartPosition();
 
-            if (onChangeDragState != null)
-                onChangeDragState(false);
+            HornedAxe.ChangeDragState(false);
 
             // Last call so that when the event hits it's still available
-            DraggableToken.itemBeingDragged = null;
+            HornedAxe.itemBeingDragged = null;
 
 			TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.Drag, false );	// There is also a failsafe to catch unexpected aborts of Drag state - CP
 
@@ -307,14 +278,13 @@ namespace Assets.CS.TabletopUI {
 
         // In case the object is destroyed 
         protected virtual void AbortDrag() {
-            if (itemBeingDragged != this)
+            if (HornedAxe.itemBeingDragged != this)
                 return;
 
-            if (onChangeDragState != null)
-                onChangeDragState(false);
+            HornedAxe.ChangeDragState(false);
 
             // Last call so that when the event hits it's still available
-            DraggableToken.itemBeingDragged = null;
+            HornedAxe.itemBeingDragged = null;
         }
 
         public void ReturnToStartPosition() {
@@ -342,7 +312,7 @@ namespace Assets.CS.TabletopUI {
 
         public abstract void OnDrop(PointerEventData eventData);
 
-        private bool CanInteractWithTokenDroppedOn(DraggableToken token) {
+        private bool CanInteractWithTokenDroppedOn(AbstractToken token) {
             var element = token as ElementStackToken;
 
             if (element != null)
@@ -393,8 +363,8 @@ namespace Assets.CS.TabletopUI {
         #region -- Hover & Glow ------------------------------------
 
         public virtual void OnPointerEnter(PointerEventData eventData) {
-            if (DraggableToken.itemBeingDragged != null && DraggableToken.itemBeingDragged.CanInteractWithTokenDroppedOn(this))
-                DraggableToken.itemBeingDragged.ShowHoveringGlow(true);
+            if (HornedAxe.itemBeingDragged != null && HornedAxe.itemBeingDragged.CanInteractWithTokenDroppedOn(this))
+                HornedAxe.itemBeingDragged.ShowHoveringGlow(true);
 
             // TODO: actual check if need to show the glow - is there a possible action?
 
@@ -402,8 +372,8 @@ namespace Assets.CS.TabletopUI {
         }
 
         public virtual void OnPointerExit(PointerEventData eventData) {
-            if (DraggableToken.itemBeingDragged != null)
-                DraggableToken.itemBeingDragged.ShowHoveringGlow(false);
+            if (HornedAxe.itemBeingDragged != null)
+                HornedAxe.itemBeingDragged.ShowHoveringGlow(false);
 
             ShowHoverGlow(false);
         }
@@ -437,11 +407,11 @@ namespace Assets.CS.TabletopUI {
         // Separate method from ShowGlow so we can restore the last state when unhovering
         protected virtual void ShowHoverGlow(bool show, bool playSFX = true, Color? hoverColor = null) {
             if (show) {
-                if (DraggableToken.itemBeingDragged == this) {
+                if (HornedAxe.itemBeingDragged == this) {
                     // If we're trying to glow the dragged token, then let's just allow us to show it if we want.
                 }
                 // We're dragging something and our last state was not "this is a legal drop target" glow, then don't show
-                else if (DraggableToken.itemBeingDragged != null && !lastGlowState) {
+                else if (HornedAxe.itemBeingDragged != null && !lastGlowState) {
                     show = false;
                 }
                 // If we can not interact, don't show the hover highlight

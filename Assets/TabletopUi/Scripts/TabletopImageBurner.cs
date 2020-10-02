@@ -19,7 +19,7 @@ namespace Assets.CS.TabletopUI {
         List<Image> imagePool = new List<Image>();
         List<BurnImage> activeImages = new List<BurnImage>();
         
-        public void ShowImageBurn(string spriteName, DraggableToken token, float duration, float scale, ImageLayoutConfig config) { 
+        public void ShowImageBurn(string spriteName, AbstractToken token, float duration, float scale, ImageLayoutConfig config) { 
             var sprite = LoadBurnSprite(spriteName);
 
             if (sprite == null) {

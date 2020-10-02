@@ -17,7 +17,7 @@ namespace Assets.TabletopUi.Scripts.Slots
             throw new NotImplementedException();
         }
 
-        public DraggableToken GetTokenInSlot()
+        public AbstractToken GetTokenInSlot()
         {
             throw new NotImplementedException();
         }

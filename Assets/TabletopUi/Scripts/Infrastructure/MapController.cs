@@ -164,7 +164,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 _mapTokenContainer.Show(false);
 
             // Lock interface. No zoom, no tabletop interaction? Check EndGameAnim for ideas
-			DraggableToken.draggingEnabled = false;
+			HornedAxe.draggingEnabled = false;
 
             _mapAnimation.onAnimDone += OnMansusMapAnimDone;
             _mapAnimation.SetCenterForEffect(effectCenter);
@@ -180,7 +180,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 _mapTokenContainer.Show(true);
 
             // Unlock interface. No zoom, no tabletop interaction
-			DraggableToken.draggingEnabled = true;
+			HornedAxe.draggingEnabled = true;
         }
 
         public void HideMansusMap(Transform effectCenter, ElementStackToken stack)

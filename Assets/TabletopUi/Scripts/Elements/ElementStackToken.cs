@@ -26,7 +26,7 @@ using Noon;
 // Should inherit from a "TabletopToken" base class same as VerbBox
 
 namespace Assets.CS.TabletopUI {
-    public class ElementStackToken : DraggableToken, IGlowableView,IAnimatable
+    public class ElementStackToken : AbstractToken, IGlowableView,IAnimatable
     {
         public const float SEND_STACK_TO_SLOT_DURATION = 0.2f;
 
@@ -495,12 +495,12 @@ namespace Assets.CS.TabletopUI {
 			var existingStacks = stackManager.GetStacks();
 
 			Vector2 spawnPos = Vector2.zero;
-			DraggableToken	dropZoneObject = null;
+			AbstractToken	dropZoneObject = null;
 			Vector3			dropZoneOffset = new Vector3(0f,0f,0f);
 
 			foreach (var stack in existingStacks)
 			{
-				DraggableToken tok = stack as DraggableToken;
+				AbstractToken tok = stack as AbstractToken;
 				if (tok!=null && tok.EntityId == "dropzone")
 				{
 					dropZoneObject = tok;
@@ -520,7 +520,7 @@ namespace Assets.CS.TabletopUI {
 			return spawnPos;	
 		}
 
-		private DraggableToken CreateDropZone()
+		private AbstractToken CreateDropZone()
 		{
 			var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
 			var stacksManager = tabletop._tabletop.GetElementStacksManager();
@@ -534,7 +534,7 @@ namespace Assets.CS.TabletopUI {
             dropZone.transform.position = Vector3.zero;
             
             dropZone.transform.localScale = Vector3.one;
-            return dropZone as DraggableToken;
+            return dropZone as AbstractToken;
 		}
 
 		private void CustomizeDropZone()		// Customises self!
@@ -837,7 +837,7 @@ namespace Assets.CS.TabletopUI {
                 else
                     tabletopManager.SetHighlightedElement(null);
 
-                if (DraggableToken.itemBeingDragged==null)
+                if (HornedAxe.itemBeingDragged==null)
                 { 
                     //Display any HighlightLocations tagged for this element, unless we're currently dragging something else
                     var hlc = Registry.Get<HighlightLocationsController>();
@@ -860,7 +860,7 @@ namespace Assets.CS.TabletopUI {
                 Registry.Get<TabletopManager>().SetHighlightedElement(null);
 
                     //Display any HighlightLocations tagged for this element
-                    if(DraggableToken.itemBeingDragged!=this)
+                    if(HornedAxe.itemBeingDragged!=this)
                     { 
                         var hlc = Registry.Get<HighlightLocationsController>();
                         hlc.DeactivateMatchingHighlightLocation(_element.Id);
@@ -900,7 +900,7 @@ namespace Assets.CS.TabletopUI {
                     }
                     if (TabletopManager.GetStickyDrag())
 					{
-						if (DraggableToken.itemBeingDragged != null)
+						if (HornedAxe.itemBeingDragged != null)
 						{
 
                             OnEndDrag( eventData );
@@ -935,8 +935,8 @@ namespace Assets.CS.TabletopUI {
             }
 
 
-            if (DraggableToken.itemBeingDragged != null)
-                DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
+            if (HornedAxe.itemBeingDragged != null)
+                HornedAxe.itemBeingDragged.InteractWithTokenDroppedOn(this);
         }
 
         public override bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn) {
@@ -955,10 +955,10 @@ namespace Assets.CS.TabletopUI {
         public override void InteractWithTokenDroppedOn(ElementStackToken stackDroppedOn) {
             if (CanInteractWithTokenDroppedOn(stackDroppedOn)) {
                 stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity,new Context(Context.ActionSource.Unknown));
-                DraggableToken.SetReturn(false, "was merged");
+                HornedAxe.SetReturn(false, "was merged");
                 SoundManager.PlaySfx("CardPutOnStack");
 
-                var token = stackDroppedOn as DraggableToken;
+                var token = stackDroppedOn as AbstractToken;
 
                 if (token != null) // make sure the glow is done in case we highlighted this
                     token.ShowGlow(false, true);
@@ -968,12 +968,12 @@ namespace Assets.CS.TabletopUI {
             else {
                 ShowNoMergeMessage(stackDroppedOn);
 
-                var droppedOnToken = stackDroppedOn as DraggableToken;
+                var droppedOnToken = stackDroppedOn as AbstractToken;
                 bool moveAsideFor = false;
                 droppedOnToken.TokenContainer.TryMoveAsideFor(this, droppedOnToken, out moveAsideFor);
 
                 if (moveAsideFor)
-                    DraggableToken.SetReturn(false, "was moved aside for");
+                    HornedAxe.SetReturn(false, "was moved aside for");
             }
         }
 
@@ -1014,7 +1014,7 @@ namespace Assets.CS.TabletopUI {
         protected override void StartDrag(PointerEventData eventData)
 		{
             // to ensure these are set before we split the cards
-            DraggableToken.itemBeingDragged = this;
+            HornedAxe.itemBeingDragged = this;
             IsInAir = true; // This makes sure we don't consider it when checking for overlap
             ShowCardShadow(true); // Ensure we always have a shadow when dragging
 
@@ -1051,7 +1051,7 @@ namespace Assets.CS.TabletopUI {
             }
 
 			// We can't interact? Then dump us on the tabletop
-			DraggableToken.SetReturn(false, "Tried to drop on non-compatible token, return to tabletop");
+			HornedAxe.SetReturn(false, "Tried to drop on non-compatible token, return to tabletop");
 			ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
 
 			/*
@@ -1059,9 +1059,9 @@ namespace Assets.CS.TabletopUI {
             tokenDroppedOn.TokenContainer.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
 
             if (moveAsideFor)
-                DraggableToken.SetReturn(false, "was moved aside for");
+                AbstractToken.SetReturn(false, "was moved aside for");
             else
-                DraggableToken.SetReturn(true);
+                AbstractToken.SetReturn(true);
             */
         }
 
@@ -1086,11 +1086,11 @@ namespace Assets.CS.TabletopUI {
 
             if (LifetimeRemaining <= 0 || interval<0) {
                 // We're dragging this thing? Then return it?
-                if (DraggableToken.itemBeingDragged == this) {
+                if (HornedAxe.itemBeingDragged == this) {
                     // Set our table pos based on our current world pos
                     lastTablePos = Registry.Get<Choreographer>().GetTablePosForWorldPos(transform.position);
                     // Then cancel our drag, which will return us to our new pos
-                    DraggableToken.CancelDrag();
+                    HornedAxe.CancelDrag();
                 }
 
                 // If we DecayTo, then do that. Otherwise straight up retire the card
@@ -1117,7 +1117,7 @@ namespace Assets.CS.TabletopUI {
             if (LifetimeRemaining < _element.Lifetime / 2)
                 ShowCardDecayTimer(true);
 			else
-				ShowCardDecayTimer(IsGlowing() || itemBeingDragged==this);	// Allow timer to show when hovering over card
+				ShowCardDecayTimer(IsGlowing() || HornedAxe.itemBeingDragged==this);	// Allow timer to show when hovering over card
 
 			// This handles moving the alpha value towards the desired target
 			float cosmetic_dt = Mathf.Max(interval,Time.deltaTime) * 2.0f;	// This allows us to call AdvanceTime with 0 delta and still get animation

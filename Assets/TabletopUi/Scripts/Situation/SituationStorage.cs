@@ -17,7 +17,7 @@ public class SituationStorage : AbstractTokenContainer {
         _elementStacksManager = new ElementStacksManager(this, "storage");
     }
 
-    public override string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
+    public override string GetSaveLocationInfoForDraggable(AbstractToken draggable) {
         return "slot_storage";
     }
 

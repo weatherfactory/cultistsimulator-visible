@@ -15,7 +15,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             PersistBetweenScenes = true;
         }
         
-        public override string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
+        public override string GetSaveLocationInfoForDraggable(AbstractToken draggable) {
             return "limbo";
         }
 

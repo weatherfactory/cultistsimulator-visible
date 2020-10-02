@@ -18,6 +18,7 @@ using System.Linq;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Core.Services;
+using Assets.TabletopUi.Scripts.Infrastructure;
 
 namespace Assets.CS.TabletopUI {
     [RequireComponent(typeof(SituationWindowPositioner))]
@@ -377,16 +378,16 @@ namespace Assets.CS.TabletopUI {
         }
 
         void DumpToDesktop(IEnumerable<ElementStackToken> stacks, Context context) {
-            DraggableToken token;
+            AbstractToken token;
 
             foreach (var item in stacks) {
-                token = item as DraggableToken;
+                token = item as AbstractToken;
 
                 if (token != null)
                 {       
-                    if(token == DraggableToken.itemBeingDragged)
+                    if(token == HornedAxe.itemBeingDragged)
                     {
-                        DraggableToken.CancelDrag();
+                        HornedAxe.CancelDrag();
                     }
 
                     token.ReturnToTabletop(context);

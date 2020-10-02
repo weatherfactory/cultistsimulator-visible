@@ -24,7 +24,7 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI {
 
-    public class VerbAnchor : DraggableToken, ISituationAnchor {
+    public class VerbAnchor : AbstractToken, ISituationAnchor {
 
         [SerializeField] Image artwork;
 
@@ -281,8 +281,8 @@ namespace Assets.CS.TabletopUI {
             // None of this should do view changes here. We're deferring to the SitController or TokenContainer
 
         public override void OnDrop(PointerEventData eventData) {
-            if (DraggableToken.itemBeingDragged != null)
-                DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
+            if (HornedAxe.itemBeingDragged != null)
+                HornedAxe.itemBeingDragged.InteractWithTokenDroppedOn(this);
         }
 
         public override void OnPointerClick(PointerEventData eventData) {
@@ -321,9 +321,9 @@ namespace Assets.CS.TabletopUI {
             tokenDroppedOn.TokenContainer.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
 
             if (moveAsideFor)
-                DraggableToken.SetReturn(false, "was moved aside for");
+                HornedAxe.SetReturn(false, "was moved aside for");
             else
-                DraggableToken.SetReturn(true);
+                HornedAxe.SetReturn(true);
         }
 
         public override void InteractWithTokenDroppedOn(ElementStackToken stackDroppedOn) {
@@ -333,9 +333,9 @@ namespace Assets.CS.TabletopUI {
             stackToken.TokenContainer.TryMoveAsideFor(this, stackToken, out moveAsideFor);
 
             if (moveAsideFor)
-                DraggableToken.SetReturn(false, "was moved aside for");
+                HornedAxe.SetReturn(false, "was moved aside for");
             else
-                DraggableToken.SetReturn(true);
+                HornedAxe.SetReturn(true);
         }
 
 

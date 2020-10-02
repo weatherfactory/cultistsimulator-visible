@@ -337,7 +337,7 @@ namespace Assets.TabletopUi {
 
          
 
-                var scc = new SituationCreationCommand(verbForNewSituation, command.Recipe, SituationState.FreshlyStarted, situationAnchor as DraggableToken);
+                var scc = new SituationCreationCommand(verbForNewSituation, command.Recipe, SituationState.FreshlyStarted, situationAnchor as AbstractToken);
                 tabletopManager.BeginNewSituation(scc,stacksToAddToNewSituation);
                 situationWindowAsView.DisplayStoredElements();             //in case expulsions have removed anything
                 return;
@@ -482,7 +482,7 @@ namespace Assets.TabletopUi {
             var inductionRecipeVerb = new CreatedVerb(inducedRecipe.ActionId,
                 inducedRecipe.Label, inducedRecipe.Description);
             SituationCreationCommand inducedSituation = new SituationCreationCommand(inductionRecipeVerb,
-                inducedRecipe, SituationState.FreshlyStarted, situationAnchor as DraggableToken);
+                inducedRecipe, SituationState.FreshlyStarted, situationAnchor as AbstractToken);
             Registry.Get<TabletopManager>().BeginNewSituation(inducedSituation,new List<ElementStackToken>());
         }
 
@@ -805,7 +805,7 @@ namespace Assets.TabletopUi {
 
         private void BurnImageUnderToken(string burnImage) {
             Registry.Get<INotifier>()
-                .ShowImageBurn(burnImage, situationAnchor as DraggableToken, 20f, 2f,
+                .ShowImageBurn(burnImage, situationAnchor as AbstractToken, 20f, 2f,
                     TabletopImageBurner.ImageLayoutConfig.CenterOnToken);
         }
 

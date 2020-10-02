@@ -257,7 +257,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return true;
         }
 
-        bool CanTokenBeIgnored(DraggableToken token, IToken ignoreToken) {
+        bool CanTokenBeIgnored(AbstractToken token, IToken ignoreToken) {
             if (token == ignoreToken)
                 return true;
             if (token.IsBeingAnimated)

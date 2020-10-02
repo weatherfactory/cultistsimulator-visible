@@ -8,7 +8,7 @@ public class TokenAnimation : MonoBehaviour {
 
 	public event System.Action<VerbAnchor> onAnimDone;
 
-	protected DraggableToken token;
+	protected AbstractToken token;
 
 	private Vector3 startPosition;
 	private Vector3 endPosition;
@@ -53,7 +53,7 @@ public class TokenAnimation : MonoBehaviour {
 		this.duration = duration;
 		this.timeSpent = 0f;
 
-		token = GetComponent<DraggableToken>();
+		token = GetComponent<AbstractToken>();
 		token.enabled = false;
         token.IsBeingAnimated = true;
         token.RectTransform.localScale = Vector3.one * scaleStart;

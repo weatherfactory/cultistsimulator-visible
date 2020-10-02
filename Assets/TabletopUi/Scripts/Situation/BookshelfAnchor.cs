@@ -10,11 +10,12 @@ using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Interfaces;
+using Assets.TabletopUi.Scripts.Situation;
 using UnityEngine;
 
 namespace Assets.CS.TabletopUI
 {
-   public class BookshelfToken: MonoBehaviour, ISituationAnchor
+   public class BookshelfAnchor: AbstractSituationAnchor, ISituationAnchor
     {
         public void StartArtAnimation()
         {

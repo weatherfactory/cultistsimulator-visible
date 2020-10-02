@@ -1,6 +1,7 @@
 ﻿using Assets.CS.TabletopUI;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -150,7 +151,7 @@ namespace Assets.CS.TabletopUI {
             else if (eventData.pointerId < -1)
                 return false;
             // Is the player dragging another draggable token?
-            else if (DraggableToken.itemBeingDragged != null)
+            else if (HornedAxe.itemBeingDragged != null)
                 return false;
             // Is the player dragging another draggable window?
             else if (windowBeingDragged != null)

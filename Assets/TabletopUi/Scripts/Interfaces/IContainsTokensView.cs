@@ -25,13 +25,13 @@ namespace Assets.CS.TabletopUI.Interfaces
         void DisplayHere(ElementStackToken stack, Context context);
         void DisplayHere(IToken token, Context context);
 
-        void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved);
-        void TryMoveAsideFor(VerbAnchor potentialUsurper, DraggableToken incumbent, out bool incumbentMoved);
+        void TryMoveAsideFor(ElementStackToken potentialUsurper, AbstractToken incumbent, out bool incumbentMoved);
+        void TryMoveAsideFor(VerbAnchor potentialUsurper, AbstractToken incumbent, out bool incumbentMoved);
 
         void SignalStackAdded(ElementStackToken elementStackToken, Context context);
         void SignalStackRemoved(ElementStackToken elementStackToken, Context context);
 
-        string GetSaveLocationInfoForDraggable(DraggableToken draggable);
+        string GetSaveLocationInfoForDraggable(AbstractToken @abstract);
 
     }
 }

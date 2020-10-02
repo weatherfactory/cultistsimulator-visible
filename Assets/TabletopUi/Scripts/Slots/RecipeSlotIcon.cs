@@ -1,4 +1,5 @@
 ﻿#pragma warning disable 0649
+using Assets.TabletopUi.Scripts.Infrastructure;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -21,7 +22,7 @@ namespace Assets.CS.TabletopUI {
             isHovering = true;
 
             // only highlight if we're not dragging anything
-            if (DraggableToken.itemBeingDragged == null)
+            if (HornedAxe.itemBeingDragged == null)
                 image.color = UIStyle.hoverWhite;
         }
 

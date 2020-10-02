@@ -23,7 +23,7 @@ namespace Assets.Core.Entities {
 		public string RecipeId { get { return currentPrimaryRecipe == null ? null : currentPrimaryRecipe.Id; } }
         public readonly IVerb Verb;
         private List<ISituationSubscriber> subscribers=new List<ISituationSubscriber>();
-        public DraggableToken SourceToken { get; set; }
+        public AbstractToken SourceToken { get; set; }
         public string OverrideTitle { get; set; }
         public int CompletionCount { get; set; }
 
