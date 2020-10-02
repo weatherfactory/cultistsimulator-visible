@@ -25,7 +25,10 @@ namespace Assets.TabletopUi.SlotsContainers {
             base.Initialise(verb,sc);
             
             var primarySlotSpecification = verb.Slot;
-            primarySlot = BuildSlot(primarySlotSpecification.Label, primarySlotSpecification, null);
+            if(primarySlotSpecification!=null)
+                primarySlot = BuildSlot(primarySlotSpecification.Label, primarySlotSpecification, null);
+            else
+                primarySlot = BuildSlot("Primary recipe slot", new SlotSpecification(), null);
 
             var otherslots = verb.Slots;
             foreach (var s in otherslots)
