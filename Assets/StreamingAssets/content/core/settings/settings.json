@@ -121,18 +121,25 @@
 		    "tabid": "UI_GAMEPLAY",
 		    "hint": "UI_OPT_INFODURATION",
 		    "minvalue": -3,
-		    "maxvalue": 2,
+		    "maxvalue": 10,
 		    "defaultvalue": "0",
 		    "datatype": "Single",
-		    "valuelabels": 
-		    {
-				"-3": "$4 {UI_SECONDS_POSTFIX}",
-				"-2": "$6 {UI_SECONDS_POSTFIX}",
-				"-1": "$8 {UI_SECONDS_POSTFIX}",
-				"0": "$10 {UI_SECONDS_POSTFIX}",
-				"1": "$12 {UI_SECONDS_POSTFIX}",
-				"2": "$14 {UI_SECONDS_POSTFIX}",
-		    }
+				"valuelabels": {
+					"-3": "$4 {UI_SECONDS_POSTFIX}",
+					"-2": "$6 {UI_SECONDS_POSTFIX}",
+					"-1": "$8 {UI_SECONDS_POSTFIX}",
+					"0": "$10 {UI_SECONDS_POSTFIX}",
+					"1": "$12 {UI_SECONDS_POSTFIX}",
+					"2": "$14 {UI_SECONDS_POSTFIX}",
+					"3": "$16 {UI_SECONDS_POSTFIX}",
+					"4": "$18 {UI_SECONDS_POSTFIX}",
+					"5": "$20 {UI_SECONDS_POSTFIX}",
+					"6": "$22 {UI_SECONDS_POSTFIX}",
+					"7": "$24 {UI_SECONDS_POSTFIX}",
+					"8": "$26 {UI_SECONDS_POSTFIX}",
+					"9": "$28 {UI_SECONDS_POSTFIX}",
+          "10": "$30 {UI_SECONDS_POSTFIX}"
+				}
 			
 	    },
 

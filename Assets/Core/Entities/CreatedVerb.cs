@@ -13,6 +13,7 @@ namespace Assets.Core.Entities
             Id = id;
             Label = label;
             Description = description;
+            Startable = false;
 
         }
 
@@ -30,5 +31,6 @@ namespace Assets.Core.Entities
 
         public SlotSpecification Slot { get; set; }
         public List<SlotSpecification> Slots { get; set; }
+        public bool Startable { get; set; }
     }
 }

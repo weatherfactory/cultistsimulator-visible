@@ -13,7 +13,7 @@ namespace Assets.Core.Interfaces
         bool Transient { get; }
       SlotSpecification Slot { get; set; }
       List<SlotSpecification> Slots { get; set; }
-
+      bool Startable { get; set; }
     }
 
 }

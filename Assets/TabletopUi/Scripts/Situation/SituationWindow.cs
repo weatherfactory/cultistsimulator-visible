@@ -76,8 +76,12 @@ namespace Assets.CS.TabletopUI {
         // INIT & LIFECYCLE
 
         void OnEnable()
-		{
-			startButton.onClick.AddListener(HandleStartButton);
+        {
+
+                startButton.onClick.AddListener(HandleStartButton);
+
+
+
             dumpResultsButton.onClick.AddListener(DumpAllResultingCardsToDesktop);
 
             buttonDefault = "VERB_START";
@@ -101,6 +105,17 @@ namespace Assets.CS.TabletopUI {
 			Verb = verb;
             name = "Window_" + verb.Id;
             DisplayIcon(verb.Id);
+
+            if (Verb.Startable)
+            {
+                startButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                startButton.gameObject.SetActive(false);
+            }
+
+
 
             startingSlots.Initialise(Verb, sc);
             ongoing.Initialise(Verb,sc);

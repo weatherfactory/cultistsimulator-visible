@@ -657,19 +657,24 @@ namespace Assets.TabletopUi {
 
             var context = ttm.GetAspectsInContext(allAspects);
 
-            var rp = GetNextRecipePrediction(context);
-
-            if (rp != null)
+            if(Situation.currentPrimaryRecipe!=null)
             {
-                CurrentEndingFlavourToSignal = rp.SignalEndingFlavour;
-                if ( rp.BurnImage != null)
-                BurnImageUnderToken(rp.BurnImage);
-                PossiblySignalImpendingDoom(rp.SignalEndingFlavour);
-                //Check for possible text refinements based on the aspects in context
-                var aspectsInSituation = GetAspectsAvailableToSituation(true);
-                TextRefiner tr=new TextRefiner(aspectsInSituation);
-                rp.DescriptiveText = tr.RefineString(rp.DescriptiveText);
-                situationWindowAsView.UpdateTextForPrediction(rp);
+
+                var rp = GetNextRecipePrediction(context);
+
+                if (rp != null)
+                {
+                    CurrentEndingFlavourToSignal = rp.SignalEndingFlavour;
+                    if ( rp.BurnImage != null)
+                        BurnImageUnderToken(rp.BurnImage);
+                    PossiblySignalImpendingDoom(rp.SignalEndingFlavour);
+                    //Check for possible text refinements based on the aspects in context
+                    var aspectsInSituation = GetAspectsAvailableToSituation(true);
+                    TextRefiner tr=new TextRefiner(aspectsInSituation);
+                    rp.DescriptiveText = tr.RefineString(rp.DescriptiveText);
+                    situationWindowAsView.UpdateTextForPrediction(rp);
+                }
+
             }
 
             situationToken.DisplayStackInMiniSlot(situationWindowAsStorage.GetOngoingStacks());

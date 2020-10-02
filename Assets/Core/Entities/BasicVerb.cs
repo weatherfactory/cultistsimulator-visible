@@ -31,6 +31,8 @@ namespace Assets.Core.Entities
             get { return false; }
         }
         
+        [FucineValue(DefaultValue = true)]
+        public bool Startable { get; set; }
 
         public BasicVerb(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
