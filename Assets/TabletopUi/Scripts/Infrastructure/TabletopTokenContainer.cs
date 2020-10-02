@@ -41,15 +41,13 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         // Init Listeners to pre-existing DisplayHere Objects
         _background.onDropped += HandleOnTableDropped;
         _background.onClicked += HandleOnTableClicked;
-        HornedAxe.onChangeDragState += HandleDragStateChanged;
     }
 
     public override void OnDestroy() {
         base.OnDestroy();
 
         // Static event so make sure to de-init once this object is destroyed
-        HornedAxe.onChangeDragState -= HandleDragStateChanged;
-    }
+        }
 
 
 
@@ -146,7 +144,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         }
     }
 
-    private void HandleDragStateChanged(bool isDragging) {
+    public void HandleDragStateChanged(bool isDragging) {
         var draggedElement = HornedAxe.itemBeingDragged as ElementStackToken;
 
         if (draggedElement != null)

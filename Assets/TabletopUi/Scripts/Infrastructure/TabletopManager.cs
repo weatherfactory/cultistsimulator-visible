@@ -292,13 +292,11 @@ namespace Assets.CS.TabletopUI {
 
         private void InitialiseListeners() {
             // Init Listeners to pre-existing DisplayHere Objects
-            HornedAxe.onChangeDragState += HandleDragStateChanged;
             mapBackground.onDropped += HandleOnMapBackgroundDropped;
         }
 
         private void OnDestroy() {
             // Static event so make sure to de-init once this object is destroyed
-            HornedAxe.onChangeDragState -= HandleDragStateChanged;
             mapBackground.onDropped -= HandleOnMapBackgroundDropped;
         }
 
@@ -918,7 +916,7 @@ public ElementStacksManager GetTabletopStacksManager()
               //  d.Decay(interval);
         }
 
-        private void HandleDragStateChanged(bool isDragging) {
+        public void HandleDragStateChanged(bool isDragging) {
             // not dragging a stack? then do nothing. _tabletop was destroyed (end of game?)
             if (_tabletop == null)
                 return;

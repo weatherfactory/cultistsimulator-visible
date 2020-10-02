@@ -199,7 +199,7 @@ namespace Assets.CS.TabletopUI {
             SoundManager.PlaySfx("CardPickup");
 			TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.Drag, true );
 
-            HornedAxe.ChangeDragState(true);
+            Registry.Get<LocalNexus>().OnChangeDragStateEvent.Invoke(true);
         }
 
         
@@ -265,7 +265,7 @@ namespace Assets.CS.TabletopUI {
             if (HornedAxe.resetToStartPos)
                 ReturnToStartPosition();
 
-            HornedAxe.ChangeDragState(false);
+            Registry.Get<LocalNexus>().OnChangeDragStateEvent.Invoke(false);
 
             // Last call so that when the event hits it's still available
             HornedAxe.itemBeingDragged = null;
@@ -281,7 +281,7 @@ namespace Assets.CS.TabletopUI {
             if (HornedAxe.itemBeingDragged != this)
                 return;
 
-            HornedAxe.ChangeDragState(false);
+            Registry.Get<LocalNexus>().OnChangeDragStateEvent.Invoke(false);
 
             // Last call so that when the event hits it's still available
             HornedAxe.itemBeingDragged = null;

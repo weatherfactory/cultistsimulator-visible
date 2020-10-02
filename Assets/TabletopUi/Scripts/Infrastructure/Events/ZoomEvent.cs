@@ -3,8 +3,6 @@ using UnityEngine.Events;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
-    
-
     public class ZoomEventArgs
     {
         public static float ZOOM_CLOSE = 0.01f;
@@ -17,35 +15,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public float AbsoluteTargetZoomLevel { get; set; }
     }
 
+
     [Serializable]
     public class ZoomEvent : UnityEvent<ZoomEventArgs>
     {
     }
 
-    public class TruckEventArgs
-    {
-
-        public float CurrentTruckInput { get; set; }
-
-    }
-
-    [Serializable]
-    public class TruckEvent : UnityEvent<TruckEventArgs>
-    {
-    }
 
 
-    public class PedestalEventArgs
-    {
-
-        public float CurrentPedestalInput { get; set; }
-
-    }
-
-    [Serializable]
-    public class PedestalEvent : UnityEvent<PedestalEventArgs>
-    {
-    }
 
 
 }

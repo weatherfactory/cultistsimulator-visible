@@ -274,7 +274,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 return false;
             }
 			
-                return false;
+            return false;
         }
 
         public bool IsPressingAbortHotkey()
