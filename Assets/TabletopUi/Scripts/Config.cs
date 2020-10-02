@@ -251,7 +251,13 @@ public class Config
             case SystemLanguage.ChineseSimplified:
             case SystemLanguage.ChineseTraditional:
                 return "zh-hans";
-                
+
+            case SystemLanguage.Japanese:
+                return "jp";
+
+            case SystemLanguage.German:
+                return "de";
+
             default:
                 switch (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName)
                 {
