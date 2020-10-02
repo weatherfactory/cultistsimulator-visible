@@ -24,7 +24,7 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI {
 
-    public class SituationToken : DraggableToken, ISituationAnchor {
+    public class VerbAnchor : DraggableToken, ISituationAnchor {
 
         [SerializeField] Image artwork;
 
@@ -53,10 +53,10 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] SituationTokenDumpButton dumpButton;
 
 
-        private bool _transient=false;
         private string _entityid;
         private Coroutine animCoroutine;
         private List<Sprite> frames;
+        private bool _transient;
 
         public SituationController SituationController {
             get; private set;
@@ -312,11 +312,11 @@ namespace Assets.CS.TabletopUI {
             return false; // The Sit Token can't be dropped on anything
         }
 
-        public override bool CanInteractWithTokenDroppedOn(SituationToken tokenDroppedOn) {
+        public override bool CanInteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn) {
             return false; // The Sit Token can't be dropped on anything
         }
 
-        public override void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn) {
+        public override void InteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn) {
             bool moveAsideFor = false;
             tokenDroppedOn.TokenContainer.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
 

@@ -23,8 +23,8 @@ namespace Assets.TabletopUi.Scripts.Services {
         }
 
         public void CreateInitialTokensOnTabletop(Legacy legacy) {
-            float sTokenHorizSpace = (Registry.Get<PrefabFactory>().GetPrefab<SituationToken>().transform as RectTransform).rect.width + 20f;
-            float sTokenVertiSpace = (Registry.Get<PrefabFactory>().GetPrefab<SituationToken>().transform as RectTransform).rect.height + 50f;
+            float sTokenHorizSpace = (Registry.Get<PrefabFactory>().GetPrefab<VerbAnchor>().transform as RectTransform).rect.width + 20f;
+            float sTokenVertiSpace = (Registry.Get<PrefabFactory>().GetPrefab<VerbAnchor>().transform as RectTransform).rect.height + 50f;
 
             // build verbs
             IVerb v = Registry.Get<ICompendium>().GetEntityById<BasicVerb>(legacy.StartingVerbId);
@@ -39,7 +39,7 @@ namespace Assets.TabletopUi.Scripts.Services {
 
         public SituationController CreateSituation(SituationCreationCommand command)
         {
-            Situation situation = new Situation(command);
+            Core.Entities.Situation situation = new Core.Entities.Situation(command);
             var newToken = CreateAnchor(command);
             var newWindow = CreateSituationWindow(newToken);
             var situationController = new SituationController(Registry.Get<ICompendium>(), Registry.Get<Character>());

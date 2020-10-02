@@ -744,7 +744,7 @@ namespace Assets.CS.TabletopUI {
 					// Create token/slot pair
 					var tokenSlotPair = new TabletopUi.TokenAndSlot()
 					{
-						Token = situation.situationAnchor as SituationToken,
+						Token = situation.situationAnchor as VerbAnchor,
 						RecipeSlot = slot as RecipeSlot
 					};
 
@@ -1030,11 +1030,11 @@ namespace Assets.CS.TabletopUI {
             base.StartDrag(eventData); // To ensure all events fire at the end
         }
 
-        public override bool CanInteractWithTokenDroppedOn(SituationToken tokenDroppedOn) {
+        public override bool CanInteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn) {
             return tokenDroppedOn.SituationController.CanAcceptStackWhenClosed(this);
         }
 
-        public override void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn) {
+        public override void InteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn) {
             if (CanInteractWithTokenDroppedOn(tokenDroppedOn)) {
                 // This will put it into the ongoing or the starting slot, token determines
                 tokenDroppedOn.SituationController.PushDraggedStackIntoToken(this);

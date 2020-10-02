@@ -8,7 +8,7 @@ namespace Assets.TabletopUi
 {
     public class TokenAndSlot
     {
-        public SituationToken Token { get; set; } 
+        public VerbAnchor Token { get; set; } 
         public RecipeSlot RecipeSlot { get; set; }
     }
 }

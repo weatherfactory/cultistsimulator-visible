@@ -6,7 +6,7 @@ using Assets.CS.TabletopUI;
 
 public class TokenAnimation : MonoBehaviour {
 
-	public event System.Action<SituationToken> onAnimDone;
+	public event System.Action<VerbAnchor> onAnimDone;
 
 	protected DraggableToken token;
 
@@ -101,7 +101,7 @@ public class TokenAnimation : MonoBehaviour {
 
 	protected virtual void FireCompleteEvent() {
         if (onAnimDone != null) {
-            var sitToken = token as SituationToken;
+            var sitToken = token as VerbAnchor;
 
             if (sitToken != null)
                 onAnimDone(sitToken);

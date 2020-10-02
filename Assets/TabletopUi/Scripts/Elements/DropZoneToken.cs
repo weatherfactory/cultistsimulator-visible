@@ -224,12 +224,12 @@ namespace Assets.CS.TabletopUI {
 		{
         }
 
-        public override bool CanInteractWithTokenDroppedOn(SituationToken tokenDroppedOn)
+        public override bool CanInteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn)
 		{
             return false;
         }
 
-        public override void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn)
+        public override void InteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn)
 		{
 			// We can't interact? Then dump us on the tabletop
 			DraggableToken.SetReturn(false, "Tried to drop on non-compatible token, return to tabletop");

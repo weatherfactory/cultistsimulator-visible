@@ -348,13 +348,13 @@ namespace Assets.CS.TabletopUI {
             if (element != null)
                 return CanInteractWithTokenDroppedOn(element);
             else
-                return CanInteractWithTokenDroppedOn(token as SituationToken);
+                return CanInteractWithTokenDroppedOn(token as VerbAnchor);
         }
 
-        public abstract bool CanInteractWithTokenDroppedOn(SituationToken tokenDroppedOn);
+        public abstract bool CanInteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn);
         public abstract bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn);
 
-        public abstract void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn);
+        public abstract void InteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn);
         public abstract void InteractWithTokenDroppedOn(ElementStackToken stackDroppedOn);
 
         #region -- On Click ------------------------------------

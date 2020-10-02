@@ -227,7 +227,7 @@ namespace Assets.TabletopUi {
             // only pull in something if we've got a second remaining
             if (Situation.State == SituationState.Ongoing && Situation.TimeRemaining > HOUSEKEEPING_CYCLE_BEATS) {
                 var tokenAndSlot = new TokenAndSlot() {
-                    Token = situationAnchor as SituationToken,
+                    Token = situationAnchor as VerbAnchor,
                     RecipeSlot = situationWindowAsStorage.GetUnfilledGreedySlot() as RecipeSlot
                 };
 

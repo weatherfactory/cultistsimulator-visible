@@ -31,7 +31,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             fadeOverlay.gameObject.SetActive(false);
         }
 
-        public void TriggerEnd(SituationToken culpableVerb, Ending ending) {
+        public void TriggerEnd(ISituationAnchor culpableVerb, Ending ending) {
             if (isEnding)
                 return;
 
@@ -39,7 +39,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             StartCoroutine(DoEndGameAnim(culpableVerb, ending));
         }
 
-        IEnumerator DoEndGameAnim(SituationToken culpableVerb, Ending ending) {
+        IEnumerator DoEndGameAnim(ISituationAnchor culpableVerb, Ending ending) {
             const float zoomDuration = 5f;
             const float fadeDuration = 2f;
 

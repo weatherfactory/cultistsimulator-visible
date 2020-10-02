@@ -69,7 +69,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         choreo.MoveAllTokensOverlappingWith(token);
     }
 
-    public override void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
+    public override void TryMoveAsideFor(VerbAnchor potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
         //incumbent.RectTransform.anchoredPosition = GetFreeTokenPos(incumbent);
         incumbentMoved = true;
         DisplaySituationTokenOnTable(potentialUsurper, new Context(Context.ActionSource.PlayerDrag));
@@ -117,8 +117,8 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         if (DraggableToken.itemBeingDragged != null) {
             DraggableToken.SetReturn(false, "dropped on the background");
 
-            if (DraggableToken.itemBeingDragged is SituationToken) {
-                DisplaySituationTokenOnTable((SituationToken)DraggableToken.itemBeingDragged, new Context(Context.ActionSource.PlayerDrag));
+            if (DraggableToken.itemBeingDragged is VerbAnchor) {
+                DisplaySituationTokenOnTable((VerbAnchor)DraggableToken.itemBeingDragged, new Context(Context.ActionSource.PlayerDrag));
             }
             else if (DraggableToken.itemBeingDragged is ElementStackToken) {
                 GetElementStacksManager().AcceptStack(((ElementStackToken)DraggableToken.itemBeingDragged),

@@ -79,7 +79,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             token.SetTokenContainer(this, context);
         }
 
-        public virtual void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
+        public virtual void TryMoveAsideFor(VerbAnchor potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
             // By default: do no move-aside
             incumbentMoved = false;
         }

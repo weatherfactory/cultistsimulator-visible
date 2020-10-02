@@ -432,7 +432,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             //oh: I could have an scc property which is a MUST CREATE override
 
             SituationController existingSituation;
-            var sitToken = scc.SourceToken as SituationToken;
+            var sitToken = scc.SourceToken as VerbAnchor;
 
             if (sitToken != null && sitToken.EntityId==scc.Recipe.ActionId) { 
                 existingSituation = sitToken.SituationController;
@@ -490,7 +490,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             tokenAnim.StartAnim(duration);
         }
 
-        public void PrepareElementForSendAnim(ElementStackToken stack, SituationToken ownerSituation)
+        public void PrepareElementForSendAnim(ElementStackToken stack, VerbAnchor ownerSituation)
 		{
             _tabletop.GetElementStacksManager().AcceptStack(stack, new Context(Context.ActionSource.DoubleClickSend)); // this reparents, sets container
             //_tabletop.DisplayHere(stack as Core.Interfaces.ElementStackToken); // this reparents, sets container
@@ -498,7 +498,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             stack.FlipToFaceUp(true);
         }
 
-        public void PrepareElementForGreedyAnim(ElementStackToken stack, SituationToken ownerSituation)
+        public void PrepareElementForGreedyAnim(ElementStackToken stack, VerbAnchor ownerSituation)
 		{
             _tabletop.GetElementStacksManager().AcceptStack(stack, new Context(Context.ActionSource.GreedySlot)); // this reparents, sets container
             //_tabletop.DisplayHere(stack as Core.Interfaces.ElementStackToken); // this reparents, sets container
@@ -561,7 +561,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             tokenSlotPair.RecipeSlot.IsBeingAnimated = false;
         }
 
-        void SituationAnimDone(SituationToken token) {
+        void SituationAnimDone(VerbAnchor token) {
             _tabletop.DisplaySituationTokenOnTable(token, new Context(Context.ActionSource.AnimEnd));
         }
 
