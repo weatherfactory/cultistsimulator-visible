@@ -104,7 +104,7 @@ namespace Assets.CS.TabletopUI {
                     if (i < aspectFrames.Length)
                         frame = aspectFrames[i];
                     else
-                        frame = PrefabFactory.CreateLocally<ElementFrame>(storedCardsLayout.transform);
+                        frame = Registry.Get<PrefabFactory>().CreateLocally<ElementFrame>(storedCardsLayout.transform);
 
                     frame.PopulateDisplay(element,1, stack as ElementStackToken);
                     frame.gameObject.SetActive(true);

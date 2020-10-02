@@ -35,7 +35,7 @@ public class ExhibitCards : AbstractTokenContainer {
 
     public override ElementStackToken ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context, string locatorid = null)
     {
-        var token = PrefabFactory.CreateLocally<ElementStackToken>(transform);
+        var token = Registry.Get<PrefabFactory>().CreateLocally<ElementStackToken>(transform);
 
         token.Populate(elementId,quantity,stackSource);
 

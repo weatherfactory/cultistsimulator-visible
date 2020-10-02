@@ -16,7 +16,7 @@ using Object = UnityEngine.Object;
 
 namespace Assets.TabletopUi.Scripts.Services
 {
-    class PrefabFactory : MonoBehaviour
+   public class PrefabFactory : MonoBehaviour
     {
         [Header("Prefabs")]
         public ElementFrame ElementFrame = null;
@@ -26,14 +26,8 @@ namespace Assets.TabletopUi.Scripts.Services
         public RecipeSlot RecipeSlot = null;
         public NotificationWindow NotificationWindow = null;
         public SituationNote SituationNote = null;
-		public DropZoneToken DropZoneToken = null;	// Bit of a hack - selection is done by type but I wanted DropZone to be a customised ElementStackToken
-        
-
-        [Header("Token Subscribers")]
-        [SerializeField] TabletopManager TabletopManager = null;
-
-
-        public static T CreateLocally<T>(Transform parent) where T : Component
+     
+        public T CreateLocally<T>(Transform parent) where T : Component
         {
             var o = GetPrefab<T>();
             try
@@ -51,30 +45,21 @@ namespace Assets.TabletopUi.Scripts.Services
 
         }
 
-        public static T GetPrefab<T>() where T : Component
+        public T GetPrefab<T>() where T : Component
         {
-            var pf = Instance();
 
             string prefabFieldName = typeof(T).Name;
 
-            FieldInfo field = pf.GetType().GetField(prefabFieldName);
+            FieldInfo field = GetType().GetField(prefabFieldName);
             if (field == null)
                 throw new ApplicationException(prefabFieldName +
                                                " not registered in prefab factory; must have field name and type both '" +
                                                prefabFieldName + "', must have field populated in editor");
 
-            T prefab = field.GetValue(pf) as T;
+            T prefab = field.GetValue(this) as T;
             return prefab;
         }
 
 
-        private static PrefabFactory Instance()
-        {
-            var instance = FindObjectOfType<PrefabFactory>();
-            if (instance == null)
-                throw new ApplicationException("No prefab factory in scene");
-
-            return instance;
-        }
     }
 }

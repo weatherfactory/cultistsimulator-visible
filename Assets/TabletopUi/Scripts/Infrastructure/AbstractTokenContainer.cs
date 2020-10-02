@@ -46,7 +46,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public virtual ElementStackToken ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context, string locatorid = null) {
 
 
-            var stack = PrefabFactory.CreateLocally<ElementStackToken>(transform);
+            var stack = Registry.Get<PrefabFactory>().CreateLocally<ElementStackToken>(transform);
             stack.AddObserver(Registry.Get<INotifier>());
                 
             if (locatorid != null)

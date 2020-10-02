@@ -49,7 +49,7 @@ namespace Assets.TabletopUi.Scripts
             if (aspect.IsHidden)
                 return; //...because it's hidden
 
-            ElementFrame newElementFrame = PrefabFactory.CreateLocally<ElementFrame>(transform);
+            ElementFrame newElementFrame = Registry.Get<PrefabFactory>().CreateLocally<ElementFrame>(transform);
             newElementFrame.PopulateDisplay(aspect, quantity, null,hasBrightBackground);
 
             if (isWithinDetailsWindow)

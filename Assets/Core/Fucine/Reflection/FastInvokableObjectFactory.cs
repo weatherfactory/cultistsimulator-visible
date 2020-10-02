@@ -27,7 +27,7 @@ namespace Assets.Core.Fucine
             {
                 return _fastInvokeConstructor();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 NoonUtility.Log($"Can't use a fastinvokeconstructor. This might mean a FucineSubEntity is missing a parameterless constructor.",2,VerbosityLevel.Essential);
                 throw;

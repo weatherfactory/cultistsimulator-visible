@@ -76,7 +76,7 @@ namespace TabletopUi.Scripts.Elements
             if (aspect.IsHidden)
                 return; //...because it's hidden
 
-            ElementFrame newElementFrame = PrefabFactory.CreateLocally<ElementFrame>(aspectsDisplay);
+            ElementFrame newElementFrame = Registry.Get<PrefabFactory>().CreateLocally<ElementFrame>(aspectsDisplay);
             newElementFrame.PopulateDisplay(aspect, quantity, null, hasBrightBackground);
 
             if (isWithinDetailsWindow)

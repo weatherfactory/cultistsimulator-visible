@@ -44,7 +44,7 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
     }
 
     protected virtual RecipeSlot BuildSlot(string slotName, SlotSpecification slotSpecification, RecipeSlot parentSlot, bool wideLabel = false) {
-        var slot = PrefabFactory.CreateLocally<RecipeSlot>(transform);
+        var slot = Registry.Get<PrefabFactory>().CreateLocally<RecipeSlot>(transform);
 
         slot.name = slotName + (slotSpecification != null ? " - " + slotSpecification.Id : "");
         slot.ParentSlot = parentSlot;

@@ -73,7 +73,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         private NotificationWindow BuildNotificationWindow(float duration) {
-            var notification = PrefabFactory.CreateLocally<NotificationWindow>(notificationHolder);
+            var notification = Registry.Get<PrefabFactory>().CreateLocally<NotificationWindow>(notificationHolder);
             notification.SetDuration(duration);
             return notification;
         }

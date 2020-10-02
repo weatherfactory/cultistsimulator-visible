@@ -19,19 +19,19 @@ namespace Assets.TabletopUi.Scripts.Services
 {
     public class Glory: MonoBehaviour
     {
-        [SerializeField]
         public LanguageManager languageManager;
-        [SerializeField]
         public StageHand stageHand;
+        public PrefabFactory prefabFactory;
 
-        [SerializeField] public Concursum concursum;
-        [SerializeField] public SecretHistory SecretHistory;
+        public Concursum concursum;
+        public SecretHistory SecretHistory;
 
         [SerializeField] private ScreenResolutionAdapter screenResolutionAdapter;
         [SerializeField] private GraphicsSettingsAdapter graphicsSettingsAdapter;
         [SerializeField] private WindowSettingsAdapter windowSettingsAdapter;
         [SerializeField] private SoundManager soundManager;
         [SerializeField] private Limbo limbo;
+
 
         private string initialisedAt = null;
 
@@ -96,6 +96,9 @@ namespace Assets.TabletopUi.Scripts.Services
 
             //stagehand is used to load scenes
             registryAccess.Register<StageHand>(stageHand);
+
+            //prefabFactory means we don't have to rely on magic strings prefab names
+            registryAccess.Register<PrefabFactory>(prefabFactory);
 
             //why here? why not? this whole thing needs fixing
             registryAccess.Register<IDice>(new Dice());

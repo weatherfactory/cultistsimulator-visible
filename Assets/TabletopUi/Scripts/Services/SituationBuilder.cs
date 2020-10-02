@@ -22,8 +22,8 @@ namespace Assets.TabletopUi.Scripts.Services {
         }
 
         public void CreateInitialTokensOnTabletop(Legacy legacy) {
-            float sTokenHorizSpace = (PrefabFactory.GetPrefab<SituationToken>().transform as RectTransform).rect.width + 20f;
-            float sTokenVertiSpace = (PrefabFactory.GetPrefab<SituationToken>().transform as RectTransform).rect.height + 50f;
+            float sTokenHorizSpace = (Registry.Get<PrefabFactory>().GetPrefab<SituationToken>().transform as RectTransform).rect.width + 20f;
+            float sTokenVertiSpace = (Registry.Get<PrefabFactory>().GetPrefab<SituationToken>().transform as RectTransform).rect.height + 50f;
 
             // build verbs
             IVerb v = Registry.Get<ICompendium>().GetEntityById<BasicVerb>(legacy.StartingVerbId);
@@ -52,7 +52,7 @@ namespace Assets.TabletopUi.Scripts.Services {
         public SituationToken CreateToken(SituationCreationCommand situationCreationCommandl)
         {
 
-            var newToken = PrefabFactory.CreateLocally<SituationToken>(tableLevel);
+            var newToken = Registry.Get<PrefabFactory>().CreateLocally<SituationToken>(tableLevel);
 
 
             newToken.SetTokenContainer(tableLevel.GetComponent<AbstractTokenContainer>(), new Context(Context.ActionSource.Unknown));
@@ -68,7 +68,7 @@ namespace Assets.TabletopUi.Scripts.Services {
 
    
         public SituationWindow CreateSituationWindow(Transform  startingPosition) {
-            var situationWindow = PrefabFactory.CreateLocally<SituationWindow>(windowLevel);
+            var situationWindow = Registry.Get<PrefabFactory>().CreateLocally<SituationWindow>(windowLevel);
             situationWindow.gameObject.SetActive(false);
             situationWindow.positioner.Initialise(startingPosition);
             return situationWindow;
