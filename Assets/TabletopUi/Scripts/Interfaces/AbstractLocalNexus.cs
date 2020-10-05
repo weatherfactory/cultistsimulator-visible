@@ -28,14 +28,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
        [SerializeField] public ZoomEvent ZoomEvent;
        [SerializeField] public TruckEvent TruckEvent;
        [SerializeField] public PedestalEvent PedestalEvent;
-       public UnityEvent<bool> OnChangeDragStateEvent;
 
-       public event System.Action<bool> onChangeDragState;
-       public Camera dragCamera;
-       public AbstractToken itemBeingDragged;
-       public bool draggingEnabled = true;
-       public bool resetToStartPos = false;
-       private string resetToStartPosReason = null;	// For debug purposes only - CP
 
         public void Awake()
         {
@@ -45,25 +38,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         }
 
         
-        public void SetReturn(bool value, string reason = "")
-        {
-            resetToStartPos = value;
-            resetToStartPosReason = reason;	// So that we can see why this variable was last changed... - CP
-            NoonUtility.Log("AbstractToken::SetReturn( " + value + ", " + reason + " )", 0, VerbosityLevel.Trivia);
-            //log here if necessary
-        }
 
-        public void ChangeDragState(bool newValue)
-        {
-            onChangeDragState?.Invoke(newValue);
-        }
-
-        public void CancelDrag()
-        {
-            if (itemBeingDragged == null)
-                return;
-
-            if (itemBeingDragged.gameObject.activeInHierarchy) itemBeingDragged.DelayedEndDrag();
-        }
     }
 }

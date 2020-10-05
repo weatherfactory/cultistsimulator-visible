@@ -127,7 +127,7 @@ namespace Assets.CS.TabletopUI {
 			if (GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
 				return;
 
-            if (HornedAxe.itemBeingDragged == null) {
+            if (!eventData.dragging) {
                 if (GetTokenInSlot() == null) // Only glow if the slot is empty
                     ShowHoverGlow(true);
             }
@@ -199,7 +199,7 @@ namespace Assets.CS.TabletopUI {
 			if (GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
 				return;
 
-            if (IsBeingAnimated || HornedAxe.itemBeingDragged == null || !(HornedAxe.itemBeingDragged is ElementStackToken))
+            if (IsBeingAnimated || !eventData.dragging || !(HornedAxe.itemBeingDragged is ElementStackToken))
                 return;
 
             NoonUtility.Log("Dropping into " + name + " obj " + HornedAxe.itemBeingDragged,0,VerbosityLevel.Trivia);

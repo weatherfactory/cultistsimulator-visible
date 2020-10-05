@@ -35,8 +35,9 @@ namespace Assets.CS.TabletopUI {
 			SoundManager.PlaySfx("TokenHover");
 
             // only highlight if we're not dragging anything
-            if (!token.Defunct && HornedAxe.itemBeingDragged == null)
+            if (!token.Defunct && !eventData.dragging)
                 image.overrideSprite = badgeHoverSprite;
+            
         }
 
         public void OnPointerExit(PointerEventData eventData) {

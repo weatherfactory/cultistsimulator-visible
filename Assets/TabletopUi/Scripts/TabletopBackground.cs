@@ -9,8 +9,8 @@ namespace Assets.CS.TabletopUI
 {
     public class TabletopBackground : MonoBehaviour, IDropHandler, IPointerClickHandler {
 
-        public event System.Action onDropped;
-        public event System.Action onClicked;
+        public event System.Action<PointerEventData> onDropped;
+        public event System.Action<PointerEventData> onClicked;
 
 #pragma warning disable 649
         [SerializeField] private Image Cover;
@@ -20,15 +20,15 @@ namespace Assets.CS.TabletopUI
 
 
         public void OnDrop(PointerEventData eventData) {
-            if (HornedAxe.itemBeingDragged == null)
+            if (!eventData.dragging)
                 return;
 
-            onDropped?.Invoke();
+            onDropped?.Invoke(eventData);
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            onClicked?.Invoke();
+            onClicked?.Invoke(eventData);
         }
 
         public void ShowTabletopFor(Legacy characterActiveLegacy)

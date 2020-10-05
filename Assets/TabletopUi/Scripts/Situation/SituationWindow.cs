@@ -378,20 +378,10 @@ namespace Assets.CS.TabletopUI {
         }
 
         void DumpToDesktop(IEnumerable<ElementStackToken> stacks, Context context) {
-            AbstractToken token;
 
             foreach (var item in stacks) {
-                token = item as AbstractToken;
-
-                if (token != null)
-                {       
-                    if(token == HornedAxe.itemBeingDragged)
-                    {
-                        HornedAxe.CancelDrag();
-                    }
-
-                    token.ReturnToTabletop(context);
-                }
+                item.ReturnToTabletop(context);
+                
             }
         }
 

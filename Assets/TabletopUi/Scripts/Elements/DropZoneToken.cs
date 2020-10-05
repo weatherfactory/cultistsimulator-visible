@@ -232,7 +232,7 @@ namespace Assets.CS.TabletopUI {
         public override void InteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn)
 		{
 			// We can't interact? Then dump us on the tabletop
-			HornedAxe.SetReturn(false, "Tried to drop on non-compatible token, return to tabletop");
+			SetReturn(false, "Tried to drop on non-compatible token, return to tabletop");
 			ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
         }
 

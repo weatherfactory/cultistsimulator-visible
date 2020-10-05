@@ -280,9 +280,10 @@ namespace Assets.CS.TabletopUI {
 
             // None of this should do view changes here. We're deferring to the SitController or TokenContainer
 
-        public override void OnDrop(PointerEventData eventData) {
-            if (HornedAxe.itemBeingDragged != null)
-                HornedAxe.itemBeingDragged.InteractWithTokenDroppedOn(this);
+        public override void OnDrop(PointerEventData eventData)
+        {
+
+            InteractWithTokenDroppedOn(eventData.pointerDrag);
         }
 
         public override void OnPointerClick(PointerEventData eventData) {
@@ -309,11 +310,11 @@ namespace Assets.CS.TabletopUI {
         }
 
         public override bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn) {
-            return false; // The Sit Token can't be dropped on anything
+            return false; // a verb anchorn can't be dropped on anything
         }
 
         public override bool CanInteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn) {
-            return false; // The Sit Token can't be dropped on anything
+            return false; // a verb anchor can't be dropped on anything
         }
 
         public override void InteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn) {
@@ -321,9 +322,9 @@ namespace Assets.CS.TabletopUI {
             tokenDroppedOn.TokenContainer.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
 
             if (moveAsideFor)
-                HornedAxe.SetReturn(false, "was moved aside for");
+                SetReturn(false, "was moved aside for");
             else
-                HornedAxe.SetReturn(true);
+                SetReturn(true);
         }
 
         public override void InteractWithTokenDroppedOn(ElementStackToken stackDroppedOn) {
@@ -333,9 +334,9 @@ namespace Assets.CS.TabletopUI {
             stackToken.TokenContainer.TryMoveAsideFor(this, stackToken, out moveAsideFor);
 
             if (moveAsideFor)
-                HornedAxe.SetReturn(false, "was moved aside for");
+                SetReturn(false, "was moved aside for");
             else
-                HornedAxe.SetReturn(true);
+                SetReturn(true);
         }
 
 

@@ -102,20 +102,20 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
             pointerEnterEdgeTime = timeout;
         }
         // Pointer is in our rect? Then move
-        else if (HornedAxe.itemBeingDragged!=null)
-		{
+       // else if (HornedAxe.itemBeingDragged!=null) <-- commented out this and the next bit; may bneed to revisit
+		//{
 			// point ranging from (-0.5, -0.5) to (0.5, 0.5)
 			mousePos = new Vector2(Input.mousePosition.x / Screen.width - 0.5f, Input.mousePosition.y / Screen.height - 0.5f);
 			SetMagnitudeFromMouse();
-		}
+	//	}
 		// We got neither a button nor a pointer? Nothing.
-		else
-		{
-			blockScrolling = false; // enable scrolling starting with the next frame
-			return;
-		}
+	//	else
+	//	{
+		//	blockScrolling = false; // enable scrolling starting with the next frame
+		//	return;
+	//	}
 
-		// We are not in a zone? Then stop doing athis and unblock us if needed
+		// We are not in a zone? Then stop doing this and unblock us if needed
 		if (Mathf.Approximately(magnitude, 0f))
 		{
 			blockScrolling = false; // enable scrolling starting with the next frame

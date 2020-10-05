@@ -22,7 +22,7 @@ namespace Assets.CS.TabletopUI {
             isHovering = true;
 
             // only highlight if we're not dragging anything
-            if (HornedAxe.itemBeingDragged == null)
+            if (!eventData.dragging)
                 image.color = UIStyle.hoverWhite;
         }
 

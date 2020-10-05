@@ -182,13 +182,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (IsEditingText())
                 return;
 
-
-            // Check if the player tried to start a recipe while *not* holding on to a card stack or verb
-            // This is to ensure the player doesn't drag an item from a recipe slot before attempting to start a
-            // situation, which can lead to strange behaviour
-            var elementStack = HornedAxe.itemBeingDragged as ElementStackToken;
-            if (elementStack == null || !elementStack.IsInRecipeSlot())
-            {
                 var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 
                 foreach (var controller in situationControllers)
@@ -199,7 +192,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                         break;
                     }
                 }
-            }
         }
         public void Input_CollectAll(InputAction.CallbackContext context)
         {

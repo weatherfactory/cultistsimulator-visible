@@ -120,7 +120,6 @@ namespace Assets.CS.TabletopUI {
 
         private static bool highContrastMode = false;
         private static bool accessibleCards = false;
-        private static bool stickyDragMode = false;
         private List<string> currentDoomTokens = new List<string>();
 
         public void ForceAutosave() // Useful for forcing autosave to happen at tricky moments for debugging - CP
@@ -138,9 +137,6 @@ namespace Assets.CS.TabletopUI {
             if (!_initialised)
                 return; //still setting up
 
-            // Failsafe to ensure that NonSaveableType.Drag never gets left on due to unusual exits from drag state - CP
-            if (HornedAxe.itemBeingDragged == null)
-                TabletopManager.RequestNonSaveableState(TabletopManager.NonSaveableType.Drag, false);
 
             housekeepingTimer += Time.deltaTime;
             if (housekeepingTimer >= AUTOSAVE_INTERVAL && IsSafeToAutosave()
@@ -990,20 +986,10 @@ public ElementStacksManager GetTabletopStacksManager()
 			return accessibleCards;
 		}
 
-		public static void SetStickyDrag( bool on )
-		{
-			stickyDragMode = on;
-		}
-
-		public static bool GetStickyDrag()
-		{
-			return stickyDragMode;
-		}
 
         public void ShowMansusMap(SituationController situation, Transform origin, PortalEffect effect) {
             CloseAllSituationWindowsExcept(null);
 
-            HornedAxe.CancelDrag();
 
             Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 3,GameSpeed=GameSpeed.Paused,WithSFX =false});
             RequestNonSaveableState( NonSaveableType.Mansus, true );
@@ -1028,7 +1014,7 @@ public ElementStacksManager GetTabletopStacksManager()
 
         public void ReturnFromMansus(Transform origin, ElementStackToken mansusCard)
 		{
-            HornedAxe.CancelDrag();
+  
 
             FlushNonSaveableState();	// On return from Mansus we can't possibly be overlapping with any other non-autosave state so force a reset for safety - CP
 

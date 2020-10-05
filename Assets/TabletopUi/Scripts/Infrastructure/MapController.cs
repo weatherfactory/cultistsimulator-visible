@@ -163,9 +163,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (!show) // hide the container
                 _mapTokenContainer.Show(false);
 
-            // Lock interface. No zoom, no tabletop interaction? Check EndGameAnim for ideas
-			HornedAxe.draggingEnabled = false;
-
             _mapAnimation.onAnimDone += OnMansusMapAnimDone;
             _mapAnimation.SetCenterForEffect(effectCenter);
             _mapAnimation.Show(show); // starts coroutine that calls onManusMapAnimDone when done
@@ -179,8 +176,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (show) // show the container
                 _mapTokenContainer.Show(true);
 
-            // Unlock interface. No zoom, no tabletop interaction
-			HornedAxe.draggingEnabled = true;
         }
 
         public void HideMansusMap(Transform effectCenter, ElementStackToken stack)

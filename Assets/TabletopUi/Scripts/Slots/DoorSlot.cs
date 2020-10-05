@@ -105,9 +105,6 @@ namespace Assets.CS.TabletopUI {
             if (!isActive)
                 return;
 
-            // We're NOT dragging something and our last state was not "this is a legal drop target" glow, then don't show
-            if (HornedAxe.itemBeingDragged == null && !lastGlowState)
-                return;
 
             if (show)
                 slotGlow.SetColor(UIStyle.hoverWhite);
@@ -124,20 +121,18 @@ namespace Assets.CS.TabletopUI {
         // IOnDrop Implementation
 
         public void OnDrop(PointerEventData eventData) {
-            if (!isActive || HornedAxe.itemBeingDragged == null)
+            if (!isActive || !eventData.dragging)
                 return;
 
-            ElementStackToken stack = HornedAxe.itemBeingDragged as ElementStackToken;
+            ElementStackToken stack = eventData.pointerDrag.GetComponent<ElementStackToken>();
 
-            if (stack == null) { //it's not an element stack; just put it down
-                HornedAxe.itemBeingDragged.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
-                return;
-            }
+if(stack!=null)
+{
 
             //now we put the token in the slot.
-            HornedAxe.SetReturn(false, "has gone in slot"); // This tells the draggable to not reset its pos "onEndDrag", since we do that here. (Martin)
             AcceptStack(stack, new global::Context(Context.ActionSource.PlayerDrag));
             SoundManager.PlaySfx("CardPutInSlot");
+}
         }
 
         public void AcceptStack(ElementStackToken stack, Context context) {

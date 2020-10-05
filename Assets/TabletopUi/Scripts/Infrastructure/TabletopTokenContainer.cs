@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
@@ -13,8 +14,9 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
+using UnityEngine.EventSystems;
 
-public class TabletopTokenContainer : AbstractTokenContainer {
+public class TabletopTokenContainer : AbstractTokenContainer,IBeginDragHandler,IEndDragHandler {
 #pragma warning disable 649
     [SerializeField] TabletopBackground _background;
     [SerializeField] protected CanvasGroupFader canvasGroupFader;
@@ -111,44 +113,65 @@ public class TabletopTokenContainer : AbstractTokenContainer {
 
 
   
-    void HandleOnTableDropped() {
-        if (HornedAxe.itemBeingDragged != null) {
-            HornedAxe.SetReturn(false, "dropped on the background");
+    void HandleOnTableDropped(PointerEventData eventData)
+    {
+        var potentialVerbToken = eventData.pointerDrag.GetComponent<VerbAnchor>();
 
-            if (HornedAxe.itemBeingDragged is VerbAnchor) {
-                DisplaySituationTokenOnTable((VerbAnchor)HornedAxe.itemBeingDragged, new Context(Context.ActionSource.PlayerDrag));
-            }
-            else if (HornedAxe.itemBeingDragged is ElementStackToken) {
-                GetElementStacksManager().AcceptStack(((ElementStackToken)HornedAxe.itemBeingDragged),
+        var potentialElementStack = eventData.pointerDrag.GetComponent<ElementStackToken>();
+
+
+        if (potentialVerbToken != null)
+        {
+            potentialVerbToken.SetReturn(false, "dropped on the background");
+            DisplaySituationTokenOnTable(potentialVerbToken,
+                new Context(Context.ActionSource.PlayerDrag));
+            CheckOverlappingTokens(potentialVerbToken);
+            SoundManager.PlaySfx("CardDrop");
+
+        }
+        else if (potentialElementStack!=null) {
+            potentialElementStack.SetReturn(false, "dropped on the background");
+
+            GetElementStacksManager().AcceptStack(potentialElementStack,
                     new Context(Context.ActionSource.PlayerDrag));
-            }
-            else {
-                throw new NotImplementedException("Tried to put something weird on the table");
-            }
-
-            CheckOverlappingTokens(HornedAxe.itemBeingDragged);
+            CheckOverlappingTokens(potentialElementStack);
             SoundManager.PlaySfx("CardDrop");
         }
+
+        else 
+            NoonUtility.Log("Tried to put something weird on the table",1);
+        
+
+        
+
+        
     }
 
-    void HandleOnTableClicked() {
+    void HandleOnTableClicked(PointerEventData eventData) {
         //Close all open windows if we're not dragging (multi tap stuff)
         // Situation windows get closed first, then details windows.
-        if (HornedAxe.itemBeingDragged == null)
-        {
+
             var tabletopManager = Registry.Get<TabletopManager>();
             if (tabletopManager.IsSituationWindowOpen())
                 tabletopManager.CloseAllSituationWindowsExcept(null);
             else
                 tabletopManager.CloseAllDetailsWindows();
-        }
+        
     }
 
-    public void HandleDragStateChanged(bool isDragging) {
-        var draggedElement = HornedAxe.itemBeingDragged as ElementStackToken;
+    public void OnBeginDrag(PointerEventData eventData) {
+        var draggedElement =eventData.pointerDrag.GetComponent<ElementStackToken>();
 
         if (draggedElement != null)
-            ShowDestinationsForStack(draggedElement, isDragging);
+            ShowDestinationsForStack(draggedElement, true);
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        var draggedElement = eventData.pointerDrag.GetComponent<ElementStackToken>();
+
+        if (draggedElement != null)
+            ShowDestinationsForStack(draggedElement, false);
     }
 
     private void ShowDestinationsForStack(ElementStackToken draggedElement, bool show)
