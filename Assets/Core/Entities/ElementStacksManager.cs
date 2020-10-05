@@ -171,7 +171,11 @@ public class ElementStacksManager {
         }
 
         stack.SetStackManager(this);
-        _stacks.Add(stack);
+
+        //sometimes, we reassign a stack to a container where it already lives. Don't add it again!
+        if(!_stacks.Contains(stack))
+            _stacks.Add(stack);
+
         _tokenContainer.DisplayHere(stack as ElementStackToken, context);
         _catalogue.NotifyStacksChanged();
     }
