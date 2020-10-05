@@ -105,6 +105,7 @@ namespace Assets.CS.TabletopUI {
             GreedyIcon.SetActive(slotSpecification.Greedy);
             ConsumingIcon.SetActive(slotSpecification.Consumes);
         }
+        
 
 		bool CanInteractWithDraggedObject(AbstractToken token) {
             if (lastGlowState == false || token == null) // we're not hoverable? Don't worry
@@ -131,9 +132,9 @@ namespace Assets.CS.TabletopUI {
                 if (GetTokenInSlot() == null) // Only glow if the slot is empty
                     ShowHoverGlow(true);
             }
-            else if (CanInteractWithDraggedObject(HornedAxe.itemBeingDragged)) {
+            else if (CanInteractWithDraggedObject(eventData.pointerDrag.GetComponent<AbstractToken>())) {
                 if (lastGlowState)
-                    HornedAxe.itemBeingDragged.ShowHoveringGlow(true);
+                    eventData.pointerDrag.GetComponent<AbstractToken>().ShowHoveringGlow(true);
 
                 if (GetTokenInSlot() == null) // Only glow if the slot is empty
                     ShowHoverGlow(true);
@@ -144,8 +145,10 @@ namespace Assets.CS.TabletopUI {
 			if (GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
 				return;
 
-            if (lastGlowState && HornedAxe.itemBeingDragged != null)
-                HornedAxe.itemBeingDragged.ShowHoveringGlow(false);
+            var potentialDragToken = eventData.pointerDrag.GetComponent<AbstractToken>();
+
+            if (lastGlowState && potentialDragToken != null)
+                potentialDragToken.ShowHoveringGlow(false);
 
             ShowHoverGlow(false);
         }
@@ -195,27 +198,25 @@ namespace Assets.CS.TabletopUI {
             return childSlots.Count > 0;
         }
 
-		public void OnDrop(PointerEventData eventData) {
+		public void OnDrop(PointerEventData eventData)
+        {
+
+            var stackDropped = eventData.pointerDrag.GetComponent<ElementStackToken>();
+
 			if (GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
 				return;
 
-            if (IsBeingAnimated || !eventData.dragging || !(HornedAxe.itemBeingDragged is ElementStackToken))
+            if (IsBeingAnimated || !eventData.dragging || stackDropped==null)
                 return;
 
-            NoonUtility.Log("Dropping into " + name + " obj " + HornedAxe.itemBeingDragged,0,VerbosityLevel.Trivia);
-            ElementStackToken stack = HornedAxe.itemBeingDragged as ElementStackToken;
-
-            //it's not an element stack; just put it down
-            if (stack == null)
-                HornedAxe.itemBeingDragged.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
-
+            
             //does the token match the slot? Check that first
-            SlotMatchForAspects match = GetSlotMatchForStack(stack);
+            SlotMatchForAspects match = GetSlotMatchForStack(stackDropped);
 
             if (match.MatchType != SlotMatchForAspectsType.Okay)
             {
-                HornedAxe.SetReturn(true, "Didn't match recipe slot values");
-                HornedAxe.itemBeingDragged.ReturnToStartPosition();
+                stackDropped.SetReturn(true, "Didn't match recipe slot values");
+                stackDropped.ReturnToStartPosition();
 
                 var notifier = Registry.Get<INotifier>();
 
@@ -224,12 +225,12 @@ namespace Assets.CS.TabletopUI {
                 if (notifier != null)
                     notifier.ShowNotificationWindow(Registry.Get<ILocStringProvider>().Get("UI_CANTPUT"), match.GetProblemDescription(compendium), false);
             }
-            else if (stack.Quantity != 1) {
+            else if (stackDropped.Quantity != 1) {
                 // We're dropping more than one?
                 // So make sure the card we're dropping that is being returned to it's position
-                HornedAxe.SetReturn(true);
+                stackDropped.SetReturn(true);
                 // And we split a new one that's 1 (leaving the returning card to be n-1)
-                var newStack = stack.SplitAllButNCardsToNewStack(stack.Quantity - 1, new Context(Context.ActionSource.PlayerDrag));
+                var newStack = stackDropped.SplitAllButNCardsToNewStack(stackDropped.Quantity - 1, new Context(Context.ActionSource.PlayerDrag));
                 // And we put that into the slot
                 AcceptStack(newStack, new Context(Context.ActionSource.PlayerDrag));
             }
@@ -238,18 +239,18 @@ namespace Assets.CS.TabletopUI {
                 var currentOccupant = GetElementStackInSlot();
 
                 // if we drop in the same slot where we came from, do nothing.
-                if (currentOccupant == stack) {
-                    HornedAxe.SetReturn(true);
+                if (currentOccupant == stackDropped) {
+                    stackDropped.SetReturn(true);
                     return;
                 }
 
                 if (currentOccupant != null)
                     throw new NotImplementedException("There's still a card in the slot when this reaches the slot; it wasn't intercepted by being dropped on the current occupant. Rework.");
-                    //currentOccupant.ReturnToTabletop();
+                //currentOccupant.ReturnToTabletop();
 
                 //now we put the token in the slot.
-                HornedAxe.SetReturn(false, "has gone in slot"); // This tells the draggable to not reset its pos "onEndDrag", since we do that here. (Martin)
-                AcceptStack(stack, new Context(Context.ActionSource.PlayerDrag));
+                stackDropped.SetReturn(false, "has gone in slot"); // This tells the draggable to not reset its pos "onEndDrag", since we do that here. (Martin)
+                AcceptStack(stackDropped, new Context(Context.ActionSource.PlayerDrag));
                 SoundManager.PlaySfx("CardPutInSlot");
             }
         }

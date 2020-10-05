@@ -22,6 +22,7 @@ using Assets.TabletopUi.UI;
 using Noon;
 using TabletopUi.Scripts.Elements;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Random = System.Random;
 
@@ -200,9 +201,6 @@ namespace Assets.CS.TabletopUI {
             );
 
             InitialiseListeners();
-
-            // Make sure dragging is reenabled
-            HornedAxe.draggingEnabled = true;
 
             _initialised = true;
 
@@ -747,11 +745,11 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             foreach (var stack in stacks)
                 if (CanPullCardToGreedySlot(stack as ElementStackToken, slotSpec))
                 {
-#pragma warning disable CS0253 // Possible unintended reference comparison; right hand side needs cast
-                    if (HornedAxe.itemBeingDragged == stack)
-#pragma warning restore CS0253 // Possible unintended reference comparison; right hand side needs cast
+
+                    if (stack._currentlyBeingDragged)
                     {
-                        HornedAxe.SetReturn(false,"Drag aborted by greedy slot"); HornedAxe.itemBeingDragged = null;
+                        stack.SetReturn(false,"Drag aborted by greedy slot");
+                        stack.AbortDrag();
                     }
                 
                     return stack;
@@ -775,13 +773,13 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
                 return false; // don't pull animated cards
 
 
-             var allowExploits = Registry.Get<Config>().GetConfigValueAsInt(NoonConstants.BIRDWORMSLIDER);
-                if (allowExploits!=null || allowExploits > 0)
-                {
-                    Debug.Log("exploits on");
-                    if (HornedAxe.itemBeingDragged == stack)
-                        return false; // don't pull cards being dragged if Worm is set On}
-                }
+            var allowExploits = Registry.Get<Config>().GetConfigValueAsInt(NoonConstants.BIRDWORMSLIDER);
+            if (allowExploits!=null || allowExploits > 0)
+            {
+                Debug.Log("exploits on");
+                if (stack._currentlyBeingDragged)
+                    return false; // don't pull cards being dragged if Worm is set On}
+            }
             
 
             return slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay;
@@ -880,12 +878,15 @@ public ElementStacksManager GetTabletopStacksManager()
 	        cardHoverDetail.Show();
         }
         
-        void HandleOnMapBackgroundDropped() {
-            if (HornedAxe.itemBeingDragged != null) {
+        void HandleOnMapBackgroundDropped(PointerEventData eventData)
+        {
+            var stack = eventData.pointerDrag.GetComponent<ElementStackToken>();
 
-                HornedAxe.SetReturn(false, "dropped on the map background");
-                HornedAxe.itemBeingDragged.DisplayAtTableLevel();
-                mapTokenContainer.DisplayHere(HornedAxe.itemBeingDragged, new Context(Context.ActionSource.PlayerDrag));
+            if (stack!=null) {
+
+                stack.SetReturn(false, "dropped on the map background");
+                stack.DisplayAtTableLevel();
+                mapTokenContainer.DisplayHere(stack, new Context(Context.ActionSource.PlayerDrag));
 
                 SoundManager.PlaySfx("CardDrop");
             }
@@ -912,16 +913,22 @@ public ElementStacksManager GetTabletopStacksManager()
               //  d.Decay(interval);
         }
 
-        public void HandleDragStateChanged(bool isDragging) {
-            // not dragging a stack? then do nothing. _tabletop was destroyed (end of game?)
-            if (_tabletop == null)
-                return;
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            var draggedElement = eventData.pointerDrag.GetComponent<ElementStackToken>();
 
-            var draggedElement = HornedAxe.itemBeingDragged as ElementStackToken;
-
-            if (mapTokenContainer != null)
-                mapTokenContainer.ShowDestinationsForStack(draggedElement, isDragging);
+            if (draggedElement != null)
+                mapTokenContainer.ShowDestinationsForStack(draggedElement, true);
         }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            var draggedElement = eventData.pointerDrag.GetComponent<ElementStackToken>();
+
+            if (draggedElement != null)
+                mapTokenContainer.ShowDestinationsForStack(draggedElement, false);
+        }
+
 
 		static public void RequestNonSaveableState( NonSaveableType type, bool forbidden )
 		{

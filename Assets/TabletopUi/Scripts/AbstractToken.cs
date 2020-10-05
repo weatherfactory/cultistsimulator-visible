@@ -89,7 +89,7 @@ namespace Assets.CS.TabletopUI {
         public bool IsInAir { protected set; get; }
 		public bool NoPush { protected set; get; }
 
-        protected bool _currentlyBeingDragged { get; set; }
+        public bool _currentlyBeingDragged { get; protected set; }
 
         protected bool _draggingEnabled = true;
 
@@ -280,8 +280,7 @@ namespace Assets.CS.TabletopUI {
             ShowGlow(false, false);
         }
 
-        // In case the object is destroyed 
-        protected virtual void AbortDrag() {
+        public virtual void AbortDrag() {
             if (_currentlyBeingDragged)
                 DelayedEndDrag();
         }

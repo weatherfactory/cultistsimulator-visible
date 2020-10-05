@@ -22,6 +22,7 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.UI;
 using Noon;
+using UnityEngine.InputSystem;
 
 // Should inherit from a "TabletopToken" base class same as VerbBox
 
@@ -1007,8 +1008,7 @@ namespace Assets.CS.TabletopUI {
 			// Now also allowing both shift keys to drag entire stack - CP
             if (stackBadge != null &&
 				stackBadge.IsHovering() == false &&
-				Input.GetKey(KeyCode.LeftShift) == false &&
-				Input.GetKey(KeyCode.RightShift) == false)
+                !Keyboard.current.shiftKey.wasPressedThisFrame)
 			{
                 SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.PlayerDrag));
 			}

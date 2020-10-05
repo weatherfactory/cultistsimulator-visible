@@ -150,9 +150,7 @@ namespace Assets.CS.TabletopUI {
             // pointerID n-0 are touches, -1 is LMB. This prevents drag from RMB, MMB and other mouse buttons (-2, -3...)
             else if (eventData.pointerId < -1)
                 return false;
-            // Is the player dragging another draggable token?
-            else if (HornedAxe.itemBeingDragged != null)
-                return false;
+
             // Is the player dragging another draggable window?
             else if (windowBeingDragged != null)
                 return false;

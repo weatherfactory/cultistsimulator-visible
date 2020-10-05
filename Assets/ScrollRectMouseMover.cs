@@ -85,7 +85,8 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 
 
 	void Update()
-	{
+    {
+        return;
 		// We are dragging manually? then block this thing and stop
 		if (isManualDragActive)
 		{
