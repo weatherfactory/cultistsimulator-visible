@@ -9,6 +9,7 @@ using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.UI
@@ -100,7 +101,7 @@ namespace Assets.TabletopUi.Scripts.UI
         public override void Update()
         {
             //eg: we don't want to change  resolution until the mouse button is released
-            if (!Input.GetMouseButton(0) && newSettingValueQueued != null)
+            if (!Pointer.current.press.isPressed && newSettingValueQueued != null)
             {
                 strategy.OnSliderValueChangeComplete((float)newSettingValueQueued);
                 newSettingValueQueued = null;

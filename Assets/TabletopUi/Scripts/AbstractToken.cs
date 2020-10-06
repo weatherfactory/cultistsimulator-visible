@@ -305,12 +305,21 @@ namespace Assets.CS.TabletopUI {
                 rectTransform.SetParent(startParent);
                 rectTransform.SetSiblingIndex(startSiblingIndex);
                 rectTransform.localPosition = startPosition;
-           }
+            }
         }
 
         public abstract void OnDrop(PointerEventData eventData);
 
-        private bool CanInteractWithTokenDroppedOn(AbstractToken token) {
+
+        public bool CanInteractWithTokenDroppedOn(GameObject objectDroppedOn)
+        {
+            var token = objectDroppedOn.GetComponent<AbstractToken>();
+            if (token == null)
+                return false;
+            return CanInteractWithTokenDroppedOn(token);
+        }
+
+        public bool CanInteractWithTokenDroppedOn(AbstractToken token) {
             var element = token as ElementStackToken;
 
             if (element != null)
@@ -319,19 +328,26 @@ namespace Assets.CS.TabletopUI {
                 return CanInteractWithTokenDroppedOn(token as VerbAnchor);
         }
 
-        public bool CanInteractWithTokenDroppedOn(GameObject objectDroppedOn)
-        {
-            return false;
-        }
+
 
         public abstract bool CanInteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn);
         public abstract bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn);
 
-        public void InteractWithTokenDroppedOn(GameObject gameObject)
+        public void InteractWithTokenDroppedOn(GameObject objectDroppedOn)
         {
-            //do nothing
+            var token = objectDroppedOn.GetComponent<AbstractToken>();
+            if (token != null)
+                 InteractWithTokenDroppedOn(token);
         }
-        
+        public void InteractWithTokenDroppedOn(AbstractToken token)
+        {
+            var element = token as ElementStackToken;
+
+            if (element != null)
+                InteractWithTokenDroppedOn(element);
+            else
+                InteractWithTokenDroppedOn(token as VerbAnchor);
+        }
 
         public abstract void InteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn);
         public abstract void InteractWithTokenDroppedOn(ElementStackToken stackDroppedOn);
