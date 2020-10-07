@@ -5,6 +5,7 @@ using Assets.Core.Interfaces;
 using Assets.Core.Services;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Infrastructure.Events;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
 using UnityEngine;
@@ -159,8 +160,11 @@ namespace Assets.CS.TabletopUI {
         public void OnBeginDrag(PointerEventData eventData)
         {
             if (CanDrag(eventData))
+            {
+                Registry.Get<LocalNexus>().SignalTokenBeginDrag(this, eventData);
                 StartDrag(eventData);
-          
+            }
+
         }
 
         bool CanDrag(PointerEventData eventData) {
@@ -179,6 +183,8 @@ namespace Assets.CS.TabletopUI {
         }
 
         protected virtual void StartDrag(PointerEventData eventData) {
+            
+            
             if (rectCanvas == null)
                 rectCanvas = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
 
@@ -252,8 +258,8 @@ namespace Assets.CS.TabletopUI {
 
 
         public virtual void OnEndDrag(PointerEventData eventData) {
-            if (_currentlyBeingDragged)
-                FinishDrag();
+            Registry.Get<LocalNexus>().SignalTokenBeginDrag(this,eventData);
+
         }
 
 
@@ -269,6 +275,7 @@ namespace Assets.CS.TabletopUI {
                 TabletopManager.RequestNonSaveableState(TabletopManager.NonSaveableType.Drag, false);   // There is also a failsafe to catch unexpected aborts of Drag state - CP
 
                 ShowGlow(false, false);
+
             }
         }
 

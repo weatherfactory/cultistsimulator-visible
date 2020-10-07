@@ -9,6 +9,7 @@ using Assets.TabletopUi.Scripts.Infrastructure.Events;
 using Noon;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace Assets.TabletopUi.Scripts.Interfaces
@@ -29,6 +30,8 @@ namespace Assets.TabletopUi.Scripts.Interfaces
        [SerializeField] public TruckEvent TruckEvent;
        [SerializeField] public PedestalEvent PedestalEvent;
 
+       [SerializeField] public TokenInteractionEvent TokenInteractionEvent;
+
 
         public void Awake()
         {
@@ -37,7 +40,16 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
         }
 
-        
+        public void SignalTokenBeginDrag(IToken token, PointerEventData pointerEventData)
+        {
+            TokenInteractionEvent.Invoke(new TokenInteractionEventArgs{Token=token,PointerEventData = pointerEventData,TokenInteractionType = TokenInteractionType.BeginDrag});
+        }
+
+        public void SignalTokenEndDrag(IToken token, PointerEventData pointerEventData)
+        {
+            TokenInteractionEvent.Invoke(new TokenInteractionEventArgs { Token = token, PointerEventData = pointerEventData, TokenInteractionType = TokenInteractionType.EndDrag });
+        }
+
 
     }
 }
