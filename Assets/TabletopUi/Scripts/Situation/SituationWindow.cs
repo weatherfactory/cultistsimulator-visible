@@ -311,43 +311,6 @@ namespace Assets.CS.TabletopUI {
             startButtonText.GetComponent<Babelfish>().UpdateLocLabel(string.IsNullOrEmpty(text) ? buttonDefault : text);
         }
 
-        public void ShowDestinationsForStack(ElementStackToken stack, bool show) {
-            IList<RecipeSlot> slots;
-
-            slots = startingSlots.gameObject.activeInHierarchy ? startingSlots.GetAllSlots() : null;
-            HighlightSlots(slots, show ? stack : null);
-
-            slots = ongoing.gameObject.activeInHierarchy ? ongoing.GetAllSlots() : null;
-            HighlightSlots(slots, show ? stack : null);
-        }
-
-        void HighlightSlots(IList<RecipeSlot> slots, ElementStackToken stack) {
-            if (slots == null)
-                return;
-
-            foreach (var s in slots) {
-                if (CanHighlightSlot(s, stack))
-                    s.ShowGlow(true, false);
-                else
-                    s.ShowGlow(false, false);
-            }
-        }
-
-        bool CanHighlightSlot(RecipeSlot slot, ElementStackToken stack) {
-            if (stack == null || slot == null)
-                return false; 
-            if (slot.GetElementStackInSlot() != null)
-                return false; // Slot is filled? Don't highlight it as interactive
-            if (slot.IsBeingAnimated)
-                return false; // Slot is being animated? Don't highlight
-			if (slot.IsGreedy)
-				return false; // Slot is greedy? It can never take anything.
-            if (stack.EntityId == "dropzone")
-                return false; // Dropzone can never be put in a slot
-
-            return slot.GetSlotMatchForStack(stack).MatchType == SlotMatchForAspectsType.Okay;
-        }
-
         // ACTIONS
 
         void HandleStartButton() {

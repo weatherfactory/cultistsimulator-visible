@@ -201,9 +201,7 @@ public class TabletopTokenContainer : AbstractTokenContainer,IBeginDragHandler,I
 
         foreach (var sit in situations)
 		{
-            if (sit.IsOpen)
-                sit.ShowDestinationsForStack(draggedElement, show);
-
+            
             sit.ShowVisualEffectIfCanTakeDroppedToken(draggedElement,show);
 
         }

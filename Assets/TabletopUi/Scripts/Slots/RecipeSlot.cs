@@ -8,6 +8,8 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Infrastructure.Events;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
 using TMPro;
 using UnityEditor;
@@ -86,6 +88,7 @@ namespace Assets.CS.TabletopUI {
 
         void Start() {
             ShowGlow(false, false);
+            Registry.Get<LocalNexus>().TokenInteractionEvent.AddListener(ReactToDraggedToken);
         }
 
         public override void Initialise() {
@@ -106,9 +109,39 @@ namespace Assets.CS.TabletopUI {
             GreedyIcon.SetActive(slotSpecification.Greedy);
             ConsumingIcon.SetActive(slotSpecification.Consumes);
         }
-        
 
-		bool CanInteractWithDraggedObject(AbstractToken token) {
+
+        void ReactToDraggedToken(TokenInteractionEventArgs args)
+        {
+
+            if (args.TokenInteractionType == TokenInteractionType.BeginDrag)
+            {
+
+                var stack = args.Token as ElementStackToken;
+
+                if (stack == null)
+                    return;
+                if (GetElementStackInSlot() != null)
+                    return; // Slot is filled? Don't highlight it as interactive
+                if (IsBeingAnimated)
+                    return; // Slot is being animated? Don't highlight
+                if (IsGreedy)
+                    return; // Slot is greedy? It can never take anything.
+                if (stack.EntityId == "dropzone")
+                    return; // Dropzone can never be put in a slot
+
+                if (GetSlotMatchForStack(stack).MatchType == SlotMatchForAspectsType.Okay)
+                    ShowGlow(true,false);
+            }
+
+
+            else if (args.TokenInteractionType == TokenInteractionType.EndDrag)
+                    ShowGlow(false, false);
+
+
+        }
+
+        bool CanInteractWithDraggedObject(AbstractToken token) {
             if (lastGlowState == false || token == null)
                 return false;
 
@@ -125,9 +158,9 @@ namespace Assets.CS.TabletopUI {
 
         // IGlowableView implementation
 
-		public virtual void OnPointerEnter(PointerEventData eventData) {
-			if (GoverningSlotSpecification.Greedy) // never show glow for greedy slots
-				return;
+        public virtual void OnPointerEnter(PointerEventData eventData) {
+            if (GoverningSlotSpecification.Greedy) // never show glow for greedy slots
+                return;
 
             //if we're not dragging anything, and the slot is empty, glow the slot.
             if (!eventData.dragging) {
@@ -143,9 +176,9 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-		public virtual void OnPointerExit(PointerEventData eventData) {
-			if (GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
-				return;
+        public virtual void OnPointerExit(PointerEventData eventData) {
+            if (GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
+                return;
 
             if(eventData.dragging)
             {
@@ -256,13 +289,13 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-		public void OnDrop(PointerEventData eventData)
+        public void OnDrop(PointerEventData eventData)
         {
 
             var stack = eventData.pointerDrag.GetComponent<ElementStackToken>();
 
-			if (GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
-				return;
+            if (GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
+                return;
 
             if (IsBeingAnimated || !eventData.dragging || stack==null)
                 return;
@@ -308,7 +341,7 @@ namespace Assets.CS.TabletopUI {
 
         public SlotMatchForAspects GetSlotMatchForStack(ElementStackToken stack)
         {
-			//no multiple stack is ever permitted in a slot  EDIT: removed this because we have support for splitting the stack to get a single card out - CP
+            //no multiple stack is ever permitted in a slot  EDIT: removed this because we have support for splitting the stack to get a single card out - CP
 //			if (stack.Quantity > 1)
 //				return new SlotMatchForAspects(new List<string>{"Too many!"}, SlotMatchForAspectsType.ForbiddenAspectPresent);
 
@@ -321,7 +354,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public override void SignalStackRemoved(ElementStackToken elementStackToken, Context context)
-		{
+        {
             onCardRemoved(elementStackToken, context);
         }
 
@@ -370,7 +403,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public bool Retire() {
-          UnityEngine.Object.Destroy(gameObject);
+            UnityEngine.Object.Destroy(gameObject);
 
             if (Defunct)
                 return false;

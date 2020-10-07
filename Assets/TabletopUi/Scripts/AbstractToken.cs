@@ -161,6 +161,7 @@ namespace Assets.CS.TabletopUI {
         {
             if (CanDrag(eventData))
             {
+                _currentlyBeingDragged = true;
                 Registry.Get<LocalNexus>().SignalTokenBeginDrag(this, eventData);
                 StartDrag(eventData);
             }
@@ -175,9 +176,6 @@ namespace Assets.CS.TabletopUI {
             if (!TokenContainer.AllowDrag || !AllowsDrag())
                 return false;
 
-            // pointerID n-0 are touches, -1 is LMB. This prevents drag from RMB, MMB and other mouse buttons (-2, -3...)
-            if (eventData != null && eventData.pointerId < -1)
-                return false;
 
             return true;
         }
@@ -258,8 +256,8 @@ namespace Assets.CS.TabletopUI {
 
 
         public virtual void OnEndDrag(PointerEventData eventData) {
-            Registry.Get<LocalNexus>().SignalTokenBeginDrag(this,eventData);
-
+            Registry.Get<LocalNexus>().SignalTokenEndDrag(this,eventData);
+            FinishDrag();
         }
 
 

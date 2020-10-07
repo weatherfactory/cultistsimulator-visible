@@ -714,10 +714,6 @@ namespace Assets.TabletopUi {
             situationWindowAsStorage.ReceiveTextNote(notification);
         }
 
-        public void ShowDestinationsForStack(ElementStackToken stack, bool show) {
-            situationWindow.ShowDestinationsForStack(stack, show);
-        }
-
         //also called from hotkey
         public void DumpAllResults() {
             if (Situation.State == SituationState.Complete)
