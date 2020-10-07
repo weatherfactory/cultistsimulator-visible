@@ -19,6 +19,7 @@ using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Logic;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Infrastructure.Events;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.UI;
 using Noon;
@@ -728,7 +729,7 @@ namespace Assets.CS.TabletopUI {
             if (Decays || _element.Unique || IsBeingAnimated)
                 return false;
             else
-                return true;	// If outgoing, it doesn't matter what it's current container is - CP
+                return true;	// If outgoing, it doesn't matter what its current container is - CP
         }
         
 
@@ -869,7 +870,30 @@ namespace Assets.CS.TabletopUI {
                 }
         }
 
-		public override void OnPointerClick(PointerEventData eventData)
+        public override void ReactToDraggedToken(TokenInteractionEventArgs args)
+        {
+            if(args.TokenInteractionType==TokenInteractionType.BeginDrag)
+            {
+                ElementStackToken stack = args.Token as ElementStackToken;
+                ;
+                if (Defunct || stack == null)
+                    return;
+
+                
+                if (stack.CanMergeWith(this))
+                {
+                    SetGlowColor(UIStyle.TokenGlowColor.Default);
+                    ShowGlow(true, false);
+                }
+            }
+            else if (args.TokenInteractionType == TokenInteractionType.EndDrag)
+            {
+                ShowGlow(false,false);
+            }
+            
+        }
+
+        public override void OnPointerClick(PointerEventData eventData)
         {
     
             if (eventData.clickCount > 1)
@@ -927,13 +951,13 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public bool CanMergeWith(ElementStackToken stack)
+        public bool CanMergeWith(ElementStackToken intoStack)
 		{
-            return	stack.EntityId == this.EntityId &&
-					(stack as ElementStackToken) != this &&
-					stack.AllowsIncomingMerge() &&
+            return	intoStack.EntityId == this.EntityId &&
+					(intoStack as ElementStackToken) != this &&
+					intoStack.AllowsIncomingMerge() &&
 					this.AllowsOutgoingMerge() &&
-					stack.GetCurrentMutations().IsEquivalentTo(GetCurrentMutations());
+					intoStack.GetCurrentMutations().IsEquivalentTo(GetCurrentMutations());
         }
 
         public override bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn)

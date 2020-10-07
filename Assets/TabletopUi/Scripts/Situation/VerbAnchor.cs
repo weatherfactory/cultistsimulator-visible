@@ -78,11 +78,6 @@ namespace Assets.CS.TabletopUI {
 
         private bool isNew; // used for sound and SFX purposes
 
-        public void Start()
-        {
-            Registry.Get<LocalNexus>().TokenInteractionEvent.AddListener(ReactToDraggedToken);
-
-        }
 
 
         public void Initialise(IVerb verb, SituationController sc) {
@@ -157,7 +152,7 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public void ReactToDraggedToken(TokenInteractionEventArgs args)
+        public override void ReactToDraggedToken(TokenInteractionEventArgs args)
         {
             if (args.TokenInteractionType == TokenInteractionType.BeginDrag)
             {
@@ -171,8 +166,8 @@ namespace Assets.CS.TabletopUI {
                     ShowGlow(true, false);
                 }
             }
-            else
-              ShowGlow(false,false);
+            if (args.TokenInteractionType == TokenInteractionType.EndDrag)
+                ShowGlow(false,false);
 
         }
 

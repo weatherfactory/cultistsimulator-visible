@@ -95,7 +95,14 @@ namespace Assets.CS.TabletopUI {
         protected bool _draggingEnabled = true;
 
         public bool resetToStartPos = false;
-        private string resetToStartPosReason = null;	// For debug purposes only - CP
+        private string resetToStartPosReason = null;    // For debug purposes only - CP
+
+        public void Start()
+        {
+            Registry.Get<LocalNexus>().TokenInteractionEvent.AddListener(ReactToDraggedToken);
+
+        }
+
 
         protected virtual bool AllowsDrag() {
             return !IsBeingAnimated;
@@ -390,7 +397,8 @@ namespace Assets.CS.TabletopUI {
             lastGlowColor = color;
         }
 
-
+        public abstract void ReactToDraggedToken(TokenInteractionEventArgs args);
+        
 
 
         public virtual void ShowGlow(bool glowState, bool instant = false) {

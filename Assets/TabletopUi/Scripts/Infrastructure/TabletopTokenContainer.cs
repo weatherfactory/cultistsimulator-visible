@@ -168,29 +168,7 @@ public class TabletopTokenContainer : AbstractTokenContainer,IBeginDragHandler,I
         //can we make the table draggable rather than do the rect scroll thing?
     }
 
-    private void ShowDestinationsForStack(ElementStackToken draggedElement, bool show)
-	{
-        // Stacks on Tabletop
-        var tabletopStacks = GetElementStacksManager().GetStacks();
-        ElementStackToken token;
 
-        foreach (var card in tabletopStacks)
-		{
-            if (card.EntityId != draggedElement.EntityId || card.Defunct)
-                continue;
-
-            if (!show || card.AllowsIncomingMerge())
-			{
-                token = card as ElementStackToken;
-
-                if (token != null && draggedElement.CanMergeWith(token)) {
-                    token.SetGlowColor(UIStyle.TokenGlowColor.Default);
-                    token.ShowGlow(show, false);
-                }
-            }
-        }
-
-    }
 
 
     // Returns a rect for use by the Choreographer
