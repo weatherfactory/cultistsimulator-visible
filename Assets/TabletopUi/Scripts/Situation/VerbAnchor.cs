@@ -310,16 +310,43 @@ namespace Assets.CS.TabletopUI {
         }
 
         public override bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn) {
-            return false; // a verb anchorn can't be dropped on anything
+            //element stack dropped on verb - FIXED
+            return SituationController.CanAcceptStackWhenClosed(stackDroppedOn);
+        }
+
+        public override void InteractWithTokenDroppedOn(ElementStackToken stackDroppedOn)
+        {
+            //element stack dropped on verb - FIXED
+            if (CanInteractWithTokenDroppedOn(stackDroppedOn))
+            {
+                // This will put it into the ongoing or the starting slot, token determines
+                SituationController.PushDraggedStackIntoToken(stackDroppedOn);
+
+                // Then we open the situation (cause this closes other situations and this may return the stack we try to move
+                // back onto the tabletop - if it was in its starting slots. - Martin
+                if (!SituationController.IsOpen)
+                    OpenSituation();
+                else
+                    DisplayAsOpen(); // This will turn off any unneeded hover effects
+                return;
+            }
+
+            // We can't interact? Then dump us on the tabletop
+            SetReturn(false, "Tried to drop on non-compatible token, return to tabletop");
+            ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
+
+            
         }
 
         public override bool CanInteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn) {
+            //verb dropped on verb - OK
             return false; // a verb anchor can't be dropped on anything
         }
 
         public override void InteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn) {
-            bool moveAsideFor = false;
-            tokenDroppedOn.TokenContainer.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
+            //verb dropped on verb - OK
+            
+            tokenDroppedOn.TokenContainer.TryMoveAsideFor(this, tokenDroppedOn, out bool moveAsideFor);
 
             if (moveAsideFor)
                 SetReturn(false, "was moved aside for");
@@ -327,17 +354,7 @@ namespace Assets.CS.TabletopUI {
                 SetReturn(true);
         }
 
-        public override void InteractWithTokenDroppedOn(ElementStackToken stackDroppedOn) {
-            bool moveAsideFor = false;
-            var stackToken = stackDroppedOn as ElementStackToken;
 
-            stackToken.TokenContainer.TryMoveAsideFor(this, stackToken, out moveAsideFor);
-
-            if (moveAsideFor)
-                SetReturn(false, "was moved aside for");
-            else
-                SetReturn(true);
-        }
 
 
         /// Trigger an animation on the card

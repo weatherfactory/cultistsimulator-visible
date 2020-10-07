@@ -145,11 +145,13 @@ namespace Assets.CS.TabletopUI {
 			if (GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
 				return;
 
-            var potentialDragToken = eventData.pointerDrag.GetComponent<AbstractToken>();
+            if(eventData.dragging)
+            {
+                var potentialDragToken = eventData.pointerDrag.GetComponent<AbstractToken>();
 
-            if (lastGlowState && potentialDragToken != null)
-                potentialDragToken.ShowHoveringGlow(false);
-
+                if (lastGlowState && potentialDragToken != null)
+                    potentialDragToken.ShowHoveringGlow(false);
+            }
             ShowHoverGlow(false);
         }
 
@@ -198,25 +200,16 @@ namespace Assets.CS.TabletopUI {
             return childSlots.Count > 0;
         }
 
-		public void OnDrop(PointerEventData eventData)
+        public bool TryPutElementStackInSlot(ElementStackToken stack)
         {
 
-            var stackDropped = eventData.pointerDrag.GetComponent<ElementStackToken>();
-
-			if (GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
-				return;
-
-            if (IsBeingAnimated || !eventData.dragging || stackDropped==null)
-                return;
-
-            
             //does the token match the slot? Check that first
-            SlotMatchForAspects match = GetSlotMatchForStack(stackDropped);
+            SlotMatchForAspects match = GetSlotMatchForStack(stack);
 
             if (match.MatchType != SlotMatchForAspectsType.Okay)
             {
-                stackDropped.SetReturn(true, "Didn't match recipe slot values");
-                stackDropped.ReturnToStartPosition();
+                stack.SetReturn(true, "Didn't match recipe slot values");
+                stack.ReturnToStartPosition();
 
                 var notifier = Registry.Get<INotifier>();
 
@@ -225,23 +218,26 @@ namespace Assets.CS.TabletopUI {
                 if (notifier != null)
                     notifier.ShowNotificationWindow(Registry.Get<ILocStringProvider>().Get("UI_CANTPUT"), match.GetProblemDescription(compendium), false);
             }
-            else if (stackDropped.Quantity != 1) {
+            else if (stack.Quantity != 1)
+            {
                 // We're dropping more than one?
                 // So make sure the card we're dropping that is being returned to it's position
-                stackDropped.SetReturn(true);
+                stack.SetReturn(true);
                 // And we split a new one that's 1 (leaving the returning card to be n-1)
-                var newStack = stackDropped.SplitAllButNCardsToNewStack(stackDropped.Quantity - 1, new Context(Context.ActionSource.PlayerDrag));
+                var newStack = stack.SplitAllButNCardsToNewStack(stack.Quantity - 1, new Context(Context.ActionSource.PlayerDrag));
                 // And we put that into the slot
                 AcceptStack(newStack, new Context(Context.ActionSource.PlayerDrag));
             }
-            else  {
+            else
+            {
                 //it matches. Now we check if there's a token already there, and replace it if so:
                 var currentOccupant = GetElementStackInSlot();
 
                 // if we drop in the same slot where we came from, do nothing.
-                if (currentOccupant == stackDropped) {
-                    stackDropped.SetReturn(true);
-                    return;
+                if (currentOccupant == stack)
+                {
+                    stack.SetReturn(true);
+                    return false;
                 }
 
                 if (currentOccupant != null)
@@ -249,10 +245,28 @@ namespace Assets.CS.TabletopUI {
                 //currentOccupant.ReturnToTabletop();
 
                 //now we put the token in the slot.
-                stackDropped.SetReturn(false, "has gone in slot"); // This tells the draggable to not reset its pos "onEndDrag", since we do that here. (Martin)
-                AcceptStack(stackDropped, new Context(Context.ActionSource.PlayerDrag));
+                stack.SetReturn(false, "has gone in slot"); // This tells the draggable to not reset its pos "onEndDrag", since we do that here. (Martin)
+                AcceptStack(stack, new Context(Context.ActionSource.PlayerDrag));
                 SoundManager.PlaySfx("CardPutInSlot");
             }
+
+            return true;
+        }
+
+
+		public void OnDrop(PointerEventData eventData)
+        {
+
+            var stack = eventData.pointerDrag.GetComponent<ElementStackToken>();
+
+			if (GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
+				return;
+
+            if (IsBeingAnimated || !eventData.dragging || stack==null)
+                return;
+
+            TryPutElementStackInSlot(stack);
+
         }
 
         public void AcceptStack(ElementStackToken stack, Context context) {

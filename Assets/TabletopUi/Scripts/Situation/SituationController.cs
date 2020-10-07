@@ -602,7 +602,7 @@ namespace Assets.TabletopUi {
                 targetElement.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
 
             // On drop pushes the currently dragged stack into this slot, with all the movement and parenting
-            slot.OnDrop(null);
+            slot.TryPutElementStackInSlot(stack);
 
             return true;
         }

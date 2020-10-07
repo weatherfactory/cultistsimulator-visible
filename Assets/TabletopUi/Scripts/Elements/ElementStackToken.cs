@@ -925,9 +925,7 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        public override bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn) {
-            return CanMergeWith(stackDroppedOn);
-        }
+
 
         public bool CanMergeWith(ElementStackToken stack)
 		{
@@ -938,7 +936,14 @@ namespace Assets.CS.TabletopUI {
 					stack.GetCurrentMutations().IsEquivalentTo(GetCurrentMutations());
         }
 
+        public override bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn)
+        {
+            //element dropped on element
+            return CanMergeWith(stackDroppedOn);
+        }
+
         public override void InteractWithTokenDroppedOn(ElementStackToken stackDroppedOn) {
+            //element dropped on element
             if (CanInteractWithTokenDroppedOn(stackDroppedOn)) {
                 stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity,new Context(Context.ActionSource.Unknown));
                 SetReturn(false, "was merged");
@@ -962,6 +967,26 @@ namespace Assets.CS.TabletopUI {
                     SetReturn(false, "was moved aside for");
             }
         }
+
+        public override bool CanInteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn)
+        {
+            //verb dropped on element - FIXED
+            return false; // a verb anchor can't be dropped on anything
+        }
+
+        public override void InteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn)
+        {
+            //Verb dropped on element - FIXED
+            
+            this.TokenContainer.TryMoveAsideFor(this, tokenDroppedOn, out bool  moveAsideFor);
+
+            if (moveAsideFor)
+                SetReturn(false, "was moved aside for");
+            else
+                SetReturn(true);
+        }
+
+
 
         void ShowNoMergeMessage(ElementStackToken stackDroppedOn) {
             if (stackDroppedOn.EntityId != this.EntityId)
@@ -1015,41 +1040,7 @@ namespace Assets.CS.TabletopUI {
             base.StartDrag(eventData); // To ensure all events fire at the end
         }
 
-        public override bool CanInteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn) {
-            return tokenDroppedOn.SituationController.CanAcceptStackWhenClosed(this);
-        }
-
-        public override void InteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn) {
-            if (CanInteractWithTokenDroppedOn(tokenDroppedOn)) {
-                // This will put it into the ongoing or the starting slot, token determines
-                tokenDroppedOn.SituationController.PushDraggedStackIntoToken(this);
-
-                // Then we open the situation (cause this closes other situations and this may return the stack we try to move
-                // back onto the tabletop - if it was in its starting slots. - Martin
-                if (!tokenDroppedOn.SituationController.IsOpen)
-                    tokenDroppedOn.OpenSituation();
-                else
-                    tokenDroppedOn.DisplayAsOpen(); // This will turn off any uneeded hover effects
-
-
-                return;
-            }
-
-			// We can't interact? Then dump us on the tabletop
-			SetReturn(false, "Tried to drop on non-compatible token, return to tabletop");
-			ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
-
-			/*
-            bool moveAsideFor = false;
-            tokenDroppedOn.TokenContainer.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
-
-            if (moveAsideFor)
-                AbstractToken.SetReturn(false, "was moved aside for");
-            else
-                AbstractToken.SetReturn(true);
-            */
-        }
-
+      
 
 
         public void Decay(float interval) {
