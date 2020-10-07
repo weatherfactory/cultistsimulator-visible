@@ -157,6 +157,9 @@ public class ElementStacksManager {
         if (stack == null)
             return;
 
+        if(stack.TokenContainer==null)
+            stack.SetTokenContainer(_tokenContainer,context); //the SetTokenCOntainer and AcceptStack call should really be in the same place all the time. But I don't want to mess too much with the live branch.
+
         NoonUtility.Log("Reassignment: " + stack.EntityId + " to " + this.Name,0,VerbosityLevel.Trivia);
 
         // Check if we're dropping a unique stack? Then kill all other copies of it on the tabletop
