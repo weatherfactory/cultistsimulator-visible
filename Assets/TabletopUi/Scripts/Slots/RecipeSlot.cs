@@ -16,6 +16,7 @@ using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+
 namespace Assets.CS.TabletopUI {
 
     public interface IRecipeSlot {
@@ -108,7 +109,7 @@ namespace Assets.CS.TabletopUI {
         
 
 		bool CanInteractWithDraggedObject(AbstractToken token) {
-            if (lastGlowState == false || token == null) // we're not hoverable? Don't worry
+            if (lastGlowState == false || token == null)
                 return false;
 
             var stack = token as ElementStackToken;
@@ -125,11 +126,12 @@ namespace Assets.CS.TabletopUI {
         // IGlowableView implementation
 
 		public virtual void OnPointerEnter(PointerEventData eventData) {
-			if (GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
+			if (GoverningSlotSpecification.Greedy) // never show glow for greedy slots
 				return;
 
+            //if we're not dragging anything, and the slot is empty, glow the slot.
             if (!eventData.dragging) {
-                if (GetTokenInSlot() == null) // Only glow if the slot is empty
+                if (GetTokenInSlot() == null)
                     ShowHoverGlow(true);
             }
             else if (CanInteractWithDraggedObject(eventData.pointerDrag.GetComponent<AbstractToken>())) {

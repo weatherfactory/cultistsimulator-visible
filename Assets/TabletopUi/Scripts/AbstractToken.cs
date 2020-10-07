@@ -158,16 +158,9 @@ namespace Assets.CS.TabletopUI {
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-
-
-          if(_currentlyBeingDragged)
-              DelayedEndDrag();
-          else
-          {
-              
             if (CanDrag(eventData))
                 StartDrag(eventData);
-          }
+          
         }
 
         bool CanDrag(PointerEventData eventData) {
@@ -259,30 +252,24 @@ namespace Assets.CS.TabletopUI {
 
 
         public virtual void OnEndDrag(PointerEventData eventData) {
-            // This delays by one frame, because disabling and setting parent in the same frame causes issues
-            // Also helps to avoid dropping and picking up in the same click
             if (_currentlyBeingDragged)
-                    Invoke("DelayedEndDrag", 0f);
-            
+                FinishDrag();
         }
 
-        // Also called directly if we start a new drag while we have a drag going
-        public virtual void DelayedEndDrag()
-        {
-            _currentlyBeingDragged = false;
-            canvasGroup.blocksRaycasts = true;
 
-            if (resetToStartPos)
-                ReturnToStartPosition();
-            
-			TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.Drag, false );	// There is also a failsafe to catch unexpected aborts of Drag state - CP
-
-            ShowGlow(false, false);
-        }
-
-        public virtual void AbortDrag() {
+        public virtual void FinishDrag() {
             if (_currentlyBeingDragged)
-                DelayedEndDrag();
+            {
+                _currentlyBeingDragged = false;
+                canvasGroup.blocksRaycasts = true;
+
+                if (resetToStartPos)
+                    ReturnToStartPosition();
+
+                TabletopManager.RequestNonSaveableState(TabletopManager.NonSaveableType.Drag, false);   // There is also a failsafe to catch unexpected aborts of Drag state - CP
+
+                ShowGlow(false, false);
+            }
         }
 
         public void ReturnToStartPosition() {

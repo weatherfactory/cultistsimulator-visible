@@ -749,7 +749,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
                     if (stack._currentlyBeingDragged)
                     {
                         stack.SetReturn(false,"Drag aborted by greedy slot");
-                        stack.AbortDrag();
+                        stack.FinishDrag();
                     }
                 
                     return stack;

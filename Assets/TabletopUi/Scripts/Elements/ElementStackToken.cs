@@ -657,7 +657,7 @@ namespace Assets.CS.TabletopUI {
             //now take care of the Unity side of things.
 
             Defunct = true;
-            AbortDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex)
+            FinishDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex)
 
 
             if (vfxName ==CardVFX.CardHide || vfxName == CardVFX.CardHide) {
@@ -1066,7 +1066,7 @@ namespace Assets.CS.TabletopUI {
                     // Set our table pos based on our current world pos
                     lastTablePos = Registry.Get<Choreographer>().GetTablePosForWorldPos(transform.position);
                     // Then cancel our drag, which will return us to our new pos
-                    AbortDrag();
+                    FinishDrag();
                 }
 
                 // If we DecayTo, then do that. Otherwise straight up retire the card
