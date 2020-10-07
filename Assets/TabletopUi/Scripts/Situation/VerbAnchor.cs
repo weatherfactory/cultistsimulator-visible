@@ -11,6 +11,7 @@ using Assets.Logic;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Infrastructure.Events;
 #pragma warning disable 0649
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
@@ -24,33 +25,36 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI {
 
-    public class VerbAnchor : AbstractToken, ISituationAnchor {
+    public class VerbAnchor : AbstractToken, ISituationAnchor
+    {
 
         [SerializeField] Image artwork;
 
-        [Header("Token Body")]
-        [SerializeField] Image tokenBody;
+        [Header("Token Body")] [SerializeField]
+        Image tokenBody;
+
         [SerializeField] Sprite lightweightSprite;
 
-        [Header("Countdown")]
-        [SerializeField] GameObject countdownCanvas;
+        [Header("Countdown")] [SerializeField] GameObject countdownCanvas;
         [SerializeField] Image countdownBar;
         [SerializeField] Image countdownBadge;
         [SerializeField] TextMeshProUGUI countdownText;
         [SerializeField] ParticleSystem[] particles;
 
-        [Header("Ongoing Slot")]
-        [SerializeField] Image ongoingSlotImage;
+        [Header("Ongoing Slot")] [SerializeField]
+        Image ongoingSlotImage;
+
         [SerializeField] Image ongoingSlotArtImage;
         [SerializeField] GameObject ongoingSlotGreedyIcon;
-		[SerializeField] ParticleSystem ongoingSlotAppearFX;
+        [SerializeField] ParticleSystem ongoingSlotAppearFX;
 
-        [Header("Completion")]
-        [SerializeField] Image completionBadge;
+        [Header("Completion")] [SerializeField]
+        Image completionBadge;
+
         [SerializeField] TextMeshProUGUI completionText;
 
-        [Header("DumpButton")]
-        [SerializeField] SituationTokenDumpButton dumpButton;
+        [Header("DumpButton")] [SerializeField]
+        SituationTokenDumpButton dumpButton;
 
 
         private string _entityid;
@@ -58,23 +62,28 @@ namespace Assets.CS.TabletopUI {
         private List<Sprite> frames;
         private bool _transient;
 
-        public SituationController SituationController {
-            get; private set;
-        }
+        public SituationController SituationController { get; private set; }
 
         public bool IsTransient
         {
             get { return _transient; }
         }
 
-        
+
 
         public override string EntityId
         {
             get { return _entityid; }
         }
 
-		private bool isNew; // used for sound and SFX purposes
+        private bool isNew; // used for sound and SFX purposes
+
+        public void Start()
+        {
+            Registry.Get<LocalNexus>().TokenInteractionEvent.AddListener(ReactToDraggedToken);
+
+        }
+
 
         public void Initialise(IVerb verb, SituationController sc) {
             
@@ -145,6 +154,28 @@ namespace Assets.CS.TabletopUI {
             tokenBody.overrideSprite = lightweightSprite;
             
         }
+
+
+
+        public void ReactToDraggedToken(TokenInteractionEventArgs args)
+        {
+            if (args.TokenInteractionType == TokenInteractionType.BeginDrag)
+            {
+
+                var stack = args.Token as ElementStackToken;
+                if (stack == null)
+                    return;
+                if (SituationController.CanAcceptStackWhenClosed(stack))
+                {
+                    SetGlowColor(UIStyle.TokenGlowColor.Default);
+                    ShowGlow(true, false);
+                }
+            }
+            else
+              ShowGlow(false,false);
+
+        }
+
 
         public void DisplayAsOpen() {
             ShowGlow(false);

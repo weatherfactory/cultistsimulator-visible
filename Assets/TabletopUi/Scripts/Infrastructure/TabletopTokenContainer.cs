@@ -160,18 +160,12 @@ public class TabletopTokenContainer : AbstractTokenContainer,IBeginDragHandler,I
     }
 
     public void OnBeginDrag(PointerEventData eventData) {
-        var draggedElement =eventData.pointerDrag.GetComponent<ElementStackToken>();
-
-        if (draggedElement != null)
-            ShowDestinationsForStack(draggedElement, true);
+ //can we make the table draggable rather than do the rect scroll thing?
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        var draggedElement = eventData.pointerDrag.GetComponent<ElementStackToken>();
-
-        if (draggedElement != null)
-            ShowDestinationsForStack(draggedElement, false);
+        //can we make the table draggable rather than do the rect scroll thing?
     }
 
     private void ShowDestinationsForStack(ElementStackToken draggedElement, bool show)
@@ -196,15 +190,6 @@ public class TabletopTokenContainer : AbstractTokenContainer,IBeginDragHandler,I
             }
         }
 
-        // Situations on Tabletop
-        var situations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
-
-        foreach (var sit in situations)
-		{
-            
-            sit.ShowVisualEffectIfCanTakeDroppedToken(draggedElement,show);
-
-        }
     }
 
 

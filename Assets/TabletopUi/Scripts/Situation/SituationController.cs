@@ -521,11 +521,6 @@ namespace Assets.TabletopUi {
             situationAnchor.DisplayAsClosed();
         }
 
-        public void ShowVisualEffectIfCanTakeDroppedToken(ElementStackToken stack,bool show)
-        {
-            situationAnchor.SetGlowColor(UIStyle.TokenGlowColor.Default);
-            situationAnchor.ShowGlow(show && CanAcceptStackWhenClosed(stack));
-        }
 
         public bool CanAcceptStackWhenClosed(ElementStackToken stack) {
             if (Situation.State == SituationState.Unstarted)

@@ -390,6 +390,9 @@ namespace Assets.CS.TabletopUI {
             lastGlowColor = color;
         }
 
+
+
+
         public virtual void ShowGlow(bool glowState, bool instant = false) {
             lastGlowState = glowState;
 
