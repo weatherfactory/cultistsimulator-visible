@@ -7,6 +7,8 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Infrastructure.Events;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
 using TMPro;
 using UnityEngine;
@@ -33,6 +35,31 @@ namespace Assets.CS.TabletopUI {
 
         public override bool AllowDrag { get { return false; } }
         public override bool AllowStackMerge { get { return false; } }
+
+        public void Start()
+        {
+            Registry.Get<LocalNexus>().TokenInteractionEvent.AddListener(ReactToDraggedToken);
+        }
+
+        void ReactToDraggedToken(TokenInteractionEventArgs args)
+        {
+
+            if (args.TokenInteractionType == TokenInteractionType.BeginDrag)
+            {
+
+                var stack = args.Token as ElementStackToken;
+
+                if (stack == null)
+                    return;
+                ShowGlow(true, false);
+            }
+
+
+            else if (args.TokenInteractionType == TokenInteractionType.EndDrag)
+                ShowGlow(false, false);
+
+
+        }
 
         public override void Initialise() {
             ShowGlow(false, true);
@@ -90,13 +117,6 @@ namespace Assets.CS.TabletopUI {
                 slotGlow.Hide(instant);
             }
 
-            // Setting initial slot hover color
-            /*
-            if (instant)
-                doorColor.canvasRenderer.SetColor( glowState ? dropBackgroundColor : Color.white );
-            else
-                doorColor.CrossFadeColor(glowState ? dropBackgroundColor : Color.white, 0.2f, false, false);
-            */
             lastGlowState = glowState;
         }
 

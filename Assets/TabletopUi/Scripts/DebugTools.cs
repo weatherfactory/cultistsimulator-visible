@@ -20,6 +20,7 @@ using Noon;
 using Steamworks;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.VR;
 using static Noon.NoonUtility;
@@ -157,7 +158,7 @@ public class DebugTools : MonoBehaviour,ITokenObserver
             return false;
 
         // If the user has right-clicked, close the suggestions box
-        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Return))
+        if (Mouse.current.rightButton.wasPressedThisFrame || Keyboard.current.escapeKey.wasPressedThisFrame || Keyboard.current.enterKey.wasPressedThisFrame)
         {
             AttemptAutoCompletion(null);
             return true;
@@ -174,7 +175,7 @@ public class DebugTools : MonoBehaviour,ITokenObserver
             return false;
 
         // Check if the user is tab-completing
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Keyboard.current.tabKey.wasPressedThisFrame)
         {
             currentAutoCompletionSuggestion = 0;
             AutoCompletionSuggestion suggestion = suggestions.First();
@@ -184,14 +185,14 @@ public class DebugTools : MonoBehaviour,ITokenObserver
         }
 
         // Check if the user is navigating suggestions with the arrow keys
-        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.UpArrow))
+        if (Keyboard.current.downArrowKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame)
         {
             // Get the next suggestion based on what was previously used
             if (currentAutoCompletionSuggestion < 0)
                 currentAutoCompletionSuggestion = 0;
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            else if (Keyboard.current.downArrowKey.wasPressedThisFrame)
                 currentAutoCompletionSuggestion++;
-            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            else if (Keyboard.current.upArrowKey.wasPressedThisFrame)
                 currentAutoCompletionSuggestion--;
 
             // Fold back to beginning and end of the suggestions if we overflow

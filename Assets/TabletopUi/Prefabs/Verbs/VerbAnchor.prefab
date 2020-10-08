@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 114000011782136268}
   - component: {fileID: 225000012001114436}
   m_Layer: 5
-  m_Name: SituationToken
+  m_Name: VerbAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,10 +58,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba448243f65d5e54988ec2715e2f8ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RectTransform: {fileID: 224000012250353942}
+  rectTransform: {fileID: 224000012250353942}
   useDragOffset: 0
   rotateOnDrag: 1
   glowImage: {fileID: 114569693807412304}
+  resetToStartPos: 0
   artwork: {fileID: 114000010823524724}
   tokenBody: {fileID: 114049641112244420}
   lightweightSprite: {fileID: 21300000, guid: 4ad73a08864fa9541961ac78c0864e50, type: 3}

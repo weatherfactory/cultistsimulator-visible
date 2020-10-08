@@ -909,22 +909,6 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
               //  d.Decay(interval);
         }
 
-        public void OnBeginDrag(PointerEventData eventData)
-        {
-            var draggedElement = eventData.pointerDrag.GetComponent<ElementStackToken>();
-
-            if (draggedElement != null)
-                mapTokenContainer.ShowDestinationsForStack(draggedElement, true);
-        }
-
-        public void OnEndDrag(PointerEventData eventData)
-        {
-            var draggedElement = eventData.pointerDrag.GetComponent<ElementStackToken>();
-
-            if (draggedElement != null)
-                mapTokenContainer.ShowDestinationsForStack(draggedElement, false);
-        }
-
 
 		static public void RequestNonSaveableState( NonSaveableType type, bool forbidden )
 		{

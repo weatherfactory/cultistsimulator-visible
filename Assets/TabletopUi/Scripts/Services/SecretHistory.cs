@@ -47,7 +47,7 @@ namespace Assets.TabletopUi.Scripts.Services
             if(message.MessageLevel>1)
             {
                 SetVisible(true);
-             //   if(!Application.isEditor)
+                if(!Application.isEditor)
                     Registry.Get<StageHand>().LoadInfoScene();
 
             }

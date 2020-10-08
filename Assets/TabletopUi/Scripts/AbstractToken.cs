@@ -42,7 +42,7 @@ namespace Assets.CS.TabletopUI {
 
         // INSTANCE FIELDS
 
-        [HideInInspector] public RectTransform rectTransform;
+        public RectTransform rectTransform;
         [SerializeField] protected bool useDragOffset = true;
         [SerializeField] protected bool rotateOnDrag = true;
         [SerializeField] protected GraphicFader glowImage;
