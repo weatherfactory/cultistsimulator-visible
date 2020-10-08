@@ -11,7 +11,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public override void Initialise() {
             var registry = new Registry();
             registry.Register(this);
-            _elementStacksManager = new ElementStacksManager(this, "Limbo");
             PersistBetweenScenes = true;
         }
         

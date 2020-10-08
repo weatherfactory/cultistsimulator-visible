@@ -134,8 +134,8 @@ namespace Assets.CS.TabletopUI {
                o.Retire(CardVFX.None);
 
 
-           storage._elementStacksManager.RemoveAllStacks();
-            results._elementStacksManager.RemoveAllStacks();
+           storage.RemoveAllStacks();
+            results.RemoveAllStacks();
             Destroy(gameObject);
         }
 
@@ -376,7 +376,7 @@ namespace Assets.CS.TabletopUI {
 
         public void StoreStacks(IEnumerable<ElementStackToken> stacksToStore)
         {
-            storage._elementStacksManager.AcceptStacks(stacksToStore, new Context(Context.ActionSource.SituationStoreStacks));
+            storage.AcceptStacks(stacksToStore, new Context(Context.ActionSource.SituationStoreStacks));
             // Now that we've stored stacks, make sure we update the starting slots
             startingSlots.RemoveAnyChildSlotsWithEmptyParent(new Context(Context.ActionSource.SituationStoreStacks)); 
         }

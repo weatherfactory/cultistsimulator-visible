@@ -96,7 +96,6 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void Initialise(SlotSpecification slotSpecification) {
-            _elementStacksManager = new ElementStacksManager(this, "slot");
             GoverningSlotSpecification = slotSpecification;
             //we need to do this first. Code checks if an ongoing slot is active by checking whether it has a slotspecification
             //slots with null slotspecification are inactive.
@@ -305,11 +304,9 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void AcceptStack(ElementStackToken stack, Context context) {
-            _elementStacksManager.AcceptStack(stack, context);
-
-            Assert.IsNotNull(onCardDropped, "no delegate set for cards dropped on recipe slots");
-            // ReSharper disable once PossibleNullReferenceException
-            onCardDropped(this, stack, context);
+        base.AcceptStack(stack,context);
+        
+        onCardDropped(this, stack, context);
         }
 
         public override void DisplayHere(IToken token, Context context) {

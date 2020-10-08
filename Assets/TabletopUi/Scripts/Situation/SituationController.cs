@@ -143,7 +143,7 @@ namespace Assets.TabletopUi {
         public void ReprovisionStoredElementStack(ElementStackSpecification stackSpecification, Source stackSource, string locatorid = null)
         {
             var stack=situationWindow.ReprovisionExistingElementStackInStorage(stackSpecification, stackSource, locatorid);
-            situationWindowAsStorage.GetStorageContainer()._elementStacksManager.AcceptStack(stack,new Context(Context.ActionSource.Loading));
+            situationWindowAsStorage.GetStorageContainer().AcceptStack(stack,new Context(Context.ActionSource.Loading));
             situationWindowAsView.DisplayStoredElements();
         }
 
@@ -268,14 +268,14 @@ namespace Assets.TabletopUi {
         public void StoreStacks(IEnumerable<ElementStackToken> inputStacks)
 		{
           //  var inputStacks = situationWindow.GetOngoingStacks(); //This line looked like a mistake: the parameter for inputStacks was ignored (and it was named differently). Leaving in for now in case of sinister confusion - was there a reason we couldn't accept them?
-            var storageStackManager = situationWindowAsStorage.GetStorageContainer().GetElementStacksManager();
-            storageStackManager.AcceptStacks(inputStacks, new Context(Context.ActionSource.SituationStoreStacks));
+            
+            situationWindowAsStorage.GetStorageContainer().AcceptStacks(inputStacks, new Context(Context.ActionSource.SituationStoreStacks));
             situationWindowAsView.DisplayStoredElements(); //displays the miniversion of the cards.
         }
 
         public void AddToResults(ElementStackToken stack, Context context)
 		{
-            situationWindowAsStorage.GetResultsContainer()._elementStacksManager.AcceptStack(stack, context);
+            situationWindowAsStorage.GetResultsContainer().AcceptStack(stack, context);
             UpdateTokenResultsCountBadge();
 
 			var tabletop = Registry.Get<TabletopManager>() as TabletopManager;

@@ -32,8 +32,7 @@ public class TabletopTokenContainer : AbstractTokenContainer,IBeginDragHandler,I
     public virtual bool IsTabletop { get { return true; } }
 
     public override void Initialise() {
-        _elementStacksManager = new ElementStacksManager(this, "tabletop");
-        _elementStacksManager.EnforceUniqueStacksInThisStackManager = true; // Martin: This ensures that this stackManager kills other copies when a unique is dropped in
+        EnforceUniqueStacksInThisContainer = true; // Martin: This ensures that this stackManager kills other copies when a unique is dropped in
 
         choreo = Registry.Get<Choreographer>();
         InitialiseListeners();
@@ -79,7 +78,7 @@ public class TabletopTokenContainer : AbstractTokenContainer,IBeginDragHandler,I
         // We don't merge here. We assume if we end up here no merge was possible
         //incumbent.RectTransform.anchoredPosition = GetFreeTokenPos(incumbent);
         incumbentMoved = true;
-        _elementStacksManager.AcceptStack(potentialUsurper, new Context(Context.ActionSource.PlayerDrag));
+        AcceptStack(potentialUsurper, new Context(Context.ActionSource.PlayerDrag));
         CheckOverlappingTokens(potentialUsurper);
     }
 
@@ -132,7 +131,7 @@ public class TabletopTokenContainer : AbstractTokenContainer,IBeginDragHandler,I
         else if (potentialElementStack!=null) {
             potentialElementStack.SetReturn(false, "dropped on the background");
 
-            GetElementStacksManager().AcceptStack(potentialElementStack,
+            AcceptStack(potentialElementStack,
                     new Context(Context.ActionSource.PlayerDrag));
             CheckOverlappingTokens(potentialElementStack);
             SoundManager.PlaySfx("CardDrop");

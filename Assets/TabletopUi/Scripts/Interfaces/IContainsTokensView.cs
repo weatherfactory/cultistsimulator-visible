@@ -18,8 +18,6 @@ namespace Assets.CS.TabletopUI.Interfaces
         bool AlwaysShowHoverGlow { get;}
         bool PersistBetweenScenes { get; }
 
-        ElementStacksManager GetElementStacksManager();
-
         ElementStackToken ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context, string locatorId = null);
 
         void DisplayHere(ElementStackToken stack, Context context);
@@ -53,5 +51,30 @@ namespace Assets.CS.TabletopUI.Interfaces
         AspectsDictionary GetTotalAspects(bool includingSelf = true);
 
         int PurgeElement(Element element, int maxToPurge);
+        void AcceptStack(ElementStackToken stack, Context context);
+        void RemoveDuplicates(ElementStackToken incomingStack);
+        void AcceptStacks(IEnumerable<ElementStackToken> stacks, Context context);
+
+        /// <summary>
+        /// removes the stack from this stack manager; doesn't retire the stack
+        /// </summary>
+        /// <param name="stack"></param>
+        void RemoveStack(ElementStackToken stack);
+
+        /// <summary>
+        /// removes the stacks from this stack manager; doesn't retire the stack
+        /// </summary>
+        void RemoveAllStacks();
+
+        void RetireAllStacks();
+        void NotifyStacksChanged();
+
+        /// <summary>
+        /// This was relevant for a refactoring of the greedy slot code; I decided to do something else
+        /// but this code might still be useful elsewhere!
+        /// </summary>
+        /// <param name="requirement"></param>
+        /// <returns></returns>
+        List<ElementStackToken> GetStacksWithAspect(KeyValuePair<string, int> requirement);
     }
 }

@@ -65,7 +65,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public void ArrangeTokenOnTable(ElementStackToken stack, Context context, Vector2? pos = null, bool pushOthers = false, bool stackBothSides = true)
 		{
-            _tabletop.GetElementStacksManager().AcceptStack(stack, context);  // this does parenting. Needs to happen before we position
+            _tabletop.AcceptStack(stack, context);  // this does parenting. Needs to happen before we position
 
             if (pushOthers && pos != null)
 			{ 
@@ -492,7 +492,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public void PrepareElementForSendAnim(ElementStackToken stack, VerbAnchor ownerSituation)
 		{
-            _tabletop.GetElementStacksManager().AcceptStack(stack, new Context(Context.ActionSource.DoubleClickSend)); // this reparents, sets container
+            _tabletop.AcceptStack(stack, new Context(Context.ActionSource.DoubleClickSend)); // this reparents, sets container
             //_tabletop.DisplayHere(stack as Core.Interfaces.ElementStackToken); // this reparents, sets container
             //stack.transform.position = ownerSituation.transform.position;
             stack.FlipToFaceUp(true);
@@ -500,7 +500,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public void PrepareElementForGreedyAnim(ElementStackToken stack, VerbAnchor ownerSituation)
 		{
-            _tabletop.GetElementStacksManager().AcceptStack(stack, new Context(Context.ActionSource.GreedySlot)); // this reparents, sets container
+            _tabletop.AcceptStack(stack, new Context(Context.ActionSource.GreedySlot)); // this reparents, sets container
             //_tabletop.DisplayHere(stack as Core.Interfaces.ElementStackToken); // this reparents, sets container
             stack.transform.position = ownerSituation.transform.position;
             stack.FlipToFaceUp(true);

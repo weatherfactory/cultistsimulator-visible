@@ -207,7 +207,7 @@ namespace Assets.Logic
                                     }
                                     else if (morph.MorphEffect == MorphEffectType.Spawn)
                                     {
-                                        tokenContainer.GetElementStacksManager().AddAndReturnStack(newElementId, morph.Level,
+                                        tokenContainer.ProvisionElementStack(newElementId, morph.Level,
                                             Source.Existing(),
                                             new Context(Context.ActionSource.ChangeTo));
                                         NoonUtility.Log(
@@ -260,7 +260,7 @@ namespace Assets.Logic
                             }
                             else if (morph.MorphEffect == MorphEffectType.Spawn)
                             {
-                              tokenContainer.GetElementStacksManager().AddAndReturnStack(newElementId, morph.Level,
+                              tokenContainer.ProvisionElementStack(newElementId, morph.Level,
                                     Source.Existing(),
                                     new Context(Context.ActionSource.ChangeTo));
                                 NoonUtility.Log(

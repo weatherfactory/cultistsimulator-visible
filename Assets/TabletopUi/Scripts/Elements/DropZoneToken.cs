@@ -40,8 +40,8 @@ namespace Assets.CS.TabletopUI {
             if (_illuminateLibrarian == null)
                 _illuminateLibrarian = new IlluminateLibrarian();
 */
-            if (CurrentStacksManager == null)
-                CurrentStacksManager = Registry.Get<Limbo>().GetElementStacksManager(); //a stack must always have a parent stacks manager, or we get a null reference exception
+            if (TokenContainer == null)
+                TokenContainer = Registry.Get<Limbo>(); //a stack must always have a parent stacks manager, or we get a null reference exception
             //when first created, it should be in Limbo
         }
 

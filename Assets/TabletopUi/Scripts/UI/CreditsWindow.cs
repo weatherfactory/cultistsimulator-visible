@@ -43,7 +43,7 @@ namespace Assets.TabletopUi.Scripts.UI
 
         public void OnDisable()
         {
-         CardsExhibit.GetElementStacksManager().RetireAllStacks();
+         CardsExhibit.RetireAllStacks();
 
         }
 

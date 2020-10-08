@@ -26,12 +26,12 @@ namespace Assets.Core.Entities {
             return _currentTokenContainers.ToList();
         }
 
-        public void RegisterTokenContainer(ITokenContainer stackManager) {
-            _currentTokenContainers.Add(stackManager);
+        public void RegisterTokenContainer(ITokenContainer tokenContainer) {
+            _currentTokenContainers.Add(tokenContainer);
         }
 
-        public void DeregisterTokenContainer(ITokenContainer stackManager) {
-            _currentTokenContainers.Remove(stackManager);
+        public void DeregisterTokenContainer(ITokenContainer tokenContainer) {
+            _currentTokenContainers.Remove(tokenContainer);
         }
 
         

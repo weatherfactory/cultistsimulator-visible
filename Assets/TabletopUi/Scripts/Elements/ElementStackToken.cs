@@ -49,7 +49,6 @@ namespace Assets.CS.TabletopUI {
 
         [SerializeField] CardVFX defaultRetireFX = CardVFX.CardBurn;
 
-        protected ElementStacksManager CurrentStacksManager;
 
         private Element _element;
         private int _quantity;
@@ -212,7 +211,7 @@ namespace Assets.CS.TabletopUI {
 			_aspectsDirtyInc = true;
 			DisplayInfo();
 
-            CurrentStacksManager.NotifyStacksChanged();
+            TokenContainer.NotifyStacksChanged();
         }
 
         public void ModifyQuantity(int change,Context context) {
@@ -340,10 +339,9 @@ namespace Assets.CS.TabletopUI {
                 _currentMutations = new Dictionary<string, int>();
             if (_illuminateLibrarian == null)
                 _illuminateLibrarian = new IlluminateLibrarian();
-            if (CurrentStacksManager == null)
-                CurrentStacksManager = Registry.Get<Limbo>().GetElementStacksManager(); //a stack must always have a parent stacks manager, or we get a null reference exception
-            //when first created, it should be in Limbo
-
+            if (TokenContainer == null)
+                TokenContainer = Registry.Get<Limbo>();//a stack must always have a container
+            
             //add any observers that we can find in the context
             var debugTools = Registry.Get<DebugTools>(false);
             if (debugTools != null)
@@ -523,7 +521,6 @@ namespace Assets.CS.TabletopUI {
 		private AbstractToken CreateDropZone()
 		{
 			var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
-			var stacksManager = tabletop._tabletop.GetElementStacksManager();
 
             var dropZone = tabletop._tabletop.ProvisionElementStack("dropzone", 1, Source.Fresh(),
                 new Context(Context.ActionSource.Loading)) as ElementStackToken;
@@ -586,31 +583,12 @@ namespace Assets.CS.TabletopUI {
             return transform.parent.GetComponent<TabletopTokenContainer>() != null;
         }
 
-        public bool IsInRecipeSlot()
-        {
-	        return CurrentStacksManager.Name == "slot";
-        }
-
         public void MergeIntoStack(ElementStackToken merge) {
             SetQuantity(Quantity + merge.Quantity,new Context(Context.ActionSource.Merge));
             merge.Retire(CardVFX.None);
         }
 
 
-        // Called from StacksManager
-        public void SetStackManager(ElementStacksManager newStacksManager)
-        {
-
-            if (CurrentStacksManager == newStacksManager)
-                return;  //we haven't actually changed location.
-
-            var oldStacksManager = CurrentStacksManager;
-            CurrentStacksManager = newStacksManager;
-
-            //notify afterwards, in case it counts the things *currently* in its list
-            if (oldStacksManager != null)
-                oldStacksManager.RemoveStack(this);
-        }
 
         // Called from TokenContainer, usually after StacksManager told it to
         public override void SetTokenContainer(ITokenContainer newTokenContainer, Context context) {
@@ -649,7 +627,6 @@ namespace Assets.CS.TabletopUI {
             var tabletop = Registry.Get<TabletopManager>(false);
             if(tabletop!=null)
 			    tabletop.NotifyAspectsDirty();	// Notify tabletop that aspects will need recompiling
-            SetStackManager(null);			// Remove it from the StacksManager. It no longer exists in the model.
             
             SetTokenContainer(null, new Context(Context.ActionSource.Retire)); // notify the view container that we're no longer here
 
@@ -717,7 +694,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         virtual public bool AllowsIncomingMerge() {
-            if (Decays || _element.Unique || IsBeingAnimated || IsInAir || IsInRecipeSlot())
+            if (Decays || _element.Unique || IsBeingAnimated || IsInAir || TokenContainer.GetType()==typeof(RecipeSlot))
                 return false;
             else
                 return TokenContainer.AllowStackMerge;
@@ -758,7 +735,7 @@ namespace Assets.CS.TabletopUI {
 		{
 			if (TabletopManager.IsInMansus())	// Prevent SendTo while in Mansus
 				return;
-			if (!CurrentStacksManager.Name.Equals("tabletop"))
+			if (!(TokenContainer.GetType()==typeof(TabletopTokenContainer)))
 				return;
 
 			// Compile list of valid slots

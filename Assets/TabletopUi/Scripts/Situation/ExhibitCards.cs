@@ -25,7 +25,7 @@ public class ExhibitCards : AbstractTokenContainer {
 
     public override void Initialise()
     {
-        _elementStacksManager = new ElementStacksManager(this, "exhibits");
+
     }
 
     public override string GetSaveLocationInfoForDraggable(AbstractToken @abstract)
@@ -39,7 +39,7 @@ public class ExhibitCards : AbstractTokenContainer {
 
         token.Populate(elementId,quantity,stackSource);
 
-         GetElementStacksManager().AcceptStack(token, context);
+         AcceptStack(token, context);
 
          return token;
     }

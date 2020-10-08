@@ -167,7 +167,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             foreach (var ess in elementStackSpecifications)
             {
                 var context = new Context(Context.ActionSource.Loading);
-                tabletop.GetElementStacksManager().AcceptStack(tabletop.ReprovisionExistingElementStack(ess,Source.Existing(), context,ess.LocationInfo), context);
+                tabletop.AcceptStack(tabletop.ReprovisionExistingElementStack(ess,Source.Existing(), context,ess.LocationInfo), context);
             }
 
         }

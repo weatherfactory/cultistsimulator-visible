@@ -4,28 +4,29 @@ using System.Linq;
 using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
+using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
+using Noon;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure {
-    public abstract class AbstractTokenContainer : MonoBehaviour, ITokenContainer {
 
-        public ElementStacksManager _elementStacksManager;
+    
+    public abstract class AbstractTokenContainer : MonoBehaviour, ITokenContainer {
 
         public virtual bool AllowDrag { get; private set; }
         public virtual bool AllowStackMerge { get; private set; }
         public virtual bool AlwaysShowHoverGlow { get; private set; }
         public bool PersistBetweenScenes { get; protected set; }
+        public bool EnforceUniqueStacksInThisContainer { get; set; }
 
+        private List<ElementStackToken> _stacks=new List<ElementStackToken>();
+        
         // This is where the ElementStacksManager is created!
         public abstract void Initialise();
-
-        public ElementStacksManager GetElementStacksManager() {
-            return _elementStacksManager;
-        }
 
         public ElementStackToken ReprovisionExistingElementStack(ElementStackSpecification stackSpecification, Source stackSource, Context context, string locatorid = null)
         {
@@ -57,7 +58,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             stack.Populate(elementId, quantity, stackSource);
 
-            GetElementStacksManager().AcceptStack(stack, context);
+            AcceptStack(stack, context);
 
             return stack;
         }
@@ -95,8 +96,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         abstract public string GetSaveLocationInfoForDraggable(AbstractToken @abstract);
 
         public virtual void OnDestroy() {
-            if (_elementStacksManager != null)
-                _elementStacksManager.Deregister();
+            Registry.Get<TokenContainersCatalogue>().DeregisterTokenContainer(this);
         }
 
         public void ModifyElementQuantity(string elementId, int quantityChange, Source stackSource, Context context)
@@ -120,7 +120,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             int unsatisfiedChange = quantityChange;
             while (unsatisfiedChange < 0)
             {
-                ElementStackToken stackToAffect = _elementStacksManager._stacks.FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(elementId));
+                ElementStackToken stackToAffect = _stacks.FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(elementId));
 
                 if (stackToAffect == null) //we haven't found either a concrete matching element, or an element with that ID.
                                            //so end execution here, and return the unsatisfied change amount
@@ -149,13 +149,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 throw new ArgumentException("Tried to call IncreaseElement for " + elementId + " with a <=0 change (" + quantityChange + ")");
 
             var newStack = ProvisionElementStack(elementId, quantityChange, stackSource, context, locatorid);
-            _elementStacksManager.AcceptStack(newStack, context);
+            AcceptStack(newStack, context);
             return quantityChange;
         }
 
         public IEnumerable<ElementStackToken> GetStacks()
         {
-            return _elementStacksManager._stacks.Where(s => !s.Defunct).ToList();
+            return _stacks.Where(s => !s.Defunct).ToList();
         }
 
 
@@ -167,7 +167,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         {
             AspectsDictionary totals = new AspectsDictionary();
 
-            foreach (var elementCard in _elementStacksManager._stacks)
+            foreach (var elementCard in _stacks)
             {
                 var aspects = elementCard.GetAspects(includingSelf);
 
@@ -199,7 +199,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 {
 
                     //nb: if we transform a stack of >1, it's possible maxToPurge/Transform will be less than the stack total - iwc it'll transform the whole stack. Probably fine.
-                    ElementStackToken stackToAffect = _elementStacksManager._stacks.FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(element.Id));
+                    ElementStackToken stackToAffect = _stacks.FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(element.Id));
 
                     if (stackToAffect == null) //we haven't found either a concrete matching element, or an element with that ID.
                         //so end execution here, and return the unsatisfied change amount
@@ -217,6 +217,122 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
 
 
+        }
+
+        public void AcceptStack(ElementStackToken stack, Context context)
+        {
+            if (stack == null)
+                return;
+
+            if (stack.TokenContainer == null)
+                stack.SetTokenContainer(this, context); //the SetTokenCOntainer and AcceptStack call should really be in the same place all the time. But I don't want to mess too much with the live branch.
+
+
+            NoonUtility.Log("Reassignment: " + stack.EntityId + " to " + this.gameObject.name , 0, VerbosityLevel.Trivia);
+
+            // Check if we're dropping a unique stack? Then kill all other copies of it on the tabletop
+            if (EnforceUniqueStacksInThisContainer)
+                RemoveDuplicates(stack);
+
+            // Check if the stack's elements are decaying, and split them if they are
+            // Decaying stacks should not be allowed
+            while (stack.Decays && stack.Quantity > 1)
+            {
+                AcceptStack(stack.SplitAllButNCardsToNewStack(stack.Quantity - 1, context), context);
+            }
+
+
+            //sometimes, we reassign a stack to a container where it already lives. Don't add it again!
+            if (!_stacks.Contains(stack))
+                _stacks.Add(stack);
+
+            DisplayHere(stack as ElementStackToken, context);
+Registry.Get<TokenContainersCatalogue>().NotifyStacksChanged();
+        }
+
+        public void RemoveDuplicates(ElementStackToken incomingStack)
+        {
+
+            if (!incomingStack.Unique && string.IsNullOrEmpty(incomingStack.UniquenessGroup))
+                return;
+
+            foreach (var existingStack in new List<ElementStackToken>(_stacks))
+            {
+
+                if (existingStack != incomingStack && existingStack.EntityId == incomingStack.EntityId)
+                {
+                    NoonUtility.Log("Not the stack that got accepted, but has the same ID as the stack that got accepted? It's a copy!");
+                    existingStack.Retire(CardVFX.CardHide);
+                    return; // should only ever be one stack to retire!
+                            // Otherwise this crashes because Retire changes the collection we are looking at
+                }
+                else if (existingStack != incomingStack && !string.IsNullOrEmpty(incomingStack.UniquenessGroup))
+                {
+                    if (existingStack.UniquenessGroup == incomingStack.UniquenessGroup)
+                        existingStack.Retire(CardVFX.CardHide);
+
+                }
+            }
+        }
+
+        public void AcceptStacks(IEnumerable<ElementStackToken> stacks, Context context)
+        {
+            foreach (var eachStack in stacks)
+            {
+                AcceptStack(eachStack, context);
+            }
+        }
+
+        /// <summary>
+        /// removes the stack from this stack manager; doesn't retire the stack
+        /// </summary>
+        /// <param name="stack"></param>
+        public void RemoveStack(ElementStackToken stack)
+        {
+            _stacks.Remove(stack);
+            NotifyStacksChanged();
+        }
+
+        /// <summary>
+        /// removes the stacks from this stack manager; doesn't retire the stack
+        /// </summary>
+        public void RemoveAllStacks()
+        {
+            var stacksListCopy = new List<ElementStackToken>(_stacks);
+            foreach (ElementStackToken s in stacksListCopy)
+                RemoveStack(s);
+        }
+
+        public void RetireAllStacks()
+        {
+            var stacksListCopy = new List<ElementStackToken>(_stacks);
+            foreach (ElementStackToken s in stacksListCopy)
+                s.Retire(CardVFX.None);
+        }
+
+        public void NotifyStacksChanged()
+        {
+            Registry.Get<TokenContainersCatalogue>().NotifyStacksChanged();
+        }
+
+        /// <summary>
+        /// This was relevant for a refactoring of the greedy slot code; I decided to do something else
+        /// but this code might still be useful elsewhere!
+        /// </summary>
+        /// <param name="requirement"></param>
+        /// <returns></returns>
+        public List<ElementStackToken> GetStacksWithAspect(KeyValuePair<string, int> requirement)
+        {
+            List<ElementStackToken> matchingStacks = new List<ElementStackToken>();
+            var candidateStacks = new List<ElementStackToken>(_stacks); //room here for caching
+            foreach (var stack in candidateStacks)
+            {
+                int aspectAtValue = stack.GetAspects(true).AspectValue(requirement.Key);
+                if (aspectAtValue >= requirement.Value)
+                    matchingStacks.Add(stack);
+            }
+
+            return matchingStacks;
         }
 
     }

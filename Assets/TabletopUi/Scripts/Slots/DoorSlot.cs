@@ -64,8 +64,7 @@ namespace Assets.CS.TabletopUI {
         public override void Initialise() {
             ShowGlow(false, true);
             slotGlow.Hide(true);
-            //will this be called as necessary? we might need an Initialise()
-            _elementStacksManager = new ElementStacksManager(this, "door-"+portalType);
+
         }
 
         public string GetDeckName(int cardPosition)
@@ -156,8 +155,7 @@ if(stack!=null)
         }
 
         public void AcceptStack(ElementStackToken stack, Context context) {
-            GetElementStacksManager().AcceptStack(stack, context);
-            // ReSharper disable once PossibleNullReferenceException
+            base.AcceptStack(stack,context);
 
             if (onCardDropped != null)
                 onCardDropped(stack);

@@ -35,7 +35,6 @@ public class SituationResults : AbstractTokenContainer {
 
     public void Initialise(SituationController sc) {
         controller = sc;
-        _elementStacksManager = new ElementStacksManager(this, "situationresults");
         buttonClearResultsDefault = "VERB_COLLECT";
         buttonClearResultsNone = "VERB_ACCEPT";
     }
@@ -48,7 +47,7 @@ public class SituationResults : AbstractTokenContainer {
         if (allStacksToOutput.Any() == false)
             return;
 
-        GetElementStacksManager().AcceptStacks(allStacksToOutput, new Context(Context.ActionSource.SituationResults));
+        AcceptStacks(allStacksToOutput, new Context(Context.ActionSource.SituationResults));
 
         //currently, if the first stack is fresh, we'll turn it over anyway. I think that's OK for now.
         //cardPos.ReorderCards(allStacksToOutput);
