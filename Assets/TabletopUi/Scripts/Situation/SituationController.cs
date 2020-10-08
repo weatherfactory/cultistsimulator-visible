@@ -24,7 +24,7 @@ namespace Assets.TabletopUi {
         public ISituationAnchor situationAnchor;
         public SituationWindow situationWindow;
         public ISituationView situationWindowAsView;
-        public ISituationStorage situationWindowAsStorage;
+        public ISituationWindowAsStorage situationWindowAsStorage;
         public Situation Situation;
 
         private readonly ICompendium compendium;
@@ -135,7 +135,7 @@ namespace Assets.TabletopUi {
         // Called from importer
         public void ModifyStoredElementStack(string elementId, int quantity, Context context)
         {
-            situationWindowAsStorage.GetStorageStacksManager().ModifyElementQuantity(elementId, quantity, Source.Existing(), context);
+            situationWindowAsStorage.GetStorageContainer().ModifyElementQuantity(elementId, quantity, Source.Existing(), context);
             situationWindowAsView.DisplayStoredElements();
         }
 
@@ -143,7 +143,7 @@ namespace Assets.TabletopUi {
         public void ReprovisionStoredElementStack(ElementStackSpecification stackSpecification, Source stackSource, string locatorid = null)
         {
             var stack=situationWindow.ReprovisionExistingElementStackInStorage(stackSpecification, stackSource, locatorid);
-            situationWindowAsStorage.GetStorageStacksManager().AcceptStack(stack,new Context(Context.ActionSource.Loading));
+            situationWindowAsStorage.GetStorageContainer()._elementStacksManager.AcceptStack(stack,new Context(Context.ActionSource.Loading));
             situationWindowAsView.DisplayStoredElements();
         }
 
@@ -268,14 +268,14 @@ namespace Assets.TabletopUi {
         public void StoreStacks(IEnumerable<ElementStackToken> inputStacks)
 		{
           //  var inputStacks = situationWindow.GetOngoingStacks(); //This line looked like a mistake: the parameter for inputStacks was ignored (and it was named differently). Leaving in for now in case of sinister confusion - was there a reason we couldn't accept them?
-            var storageStackManager = situationWindowAsStorage.GetStorageStacksManager();
+            var storageStackManager = situationWindowAsStorage.GetStorageContainer().GetElementStacksManager();
             storageStackManager.AcceptStacks(inputStacks, new Context(Context.ActionSource.SituationStoreStacks));
             situationWindowAsView.DisplayStoredElements(); //displays the miniversion of the cards.
         }
 
         public void AddToResults(ElementStackToken stack, Context context)
 		{
-            situationWindowAsStorage.GetResultsStacksManager().AcceptStack(stack, context);
+            situationWindowAsStorage.GetResultsContainer()._elementStacksManager.AcceptStack(stack, context);
             UpdateTokenResultsCountBadge();
 
 			var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
@@ -345,7 +345,7 @@ namespace Assets.TabletopUi {
 
             currentCharacter.AddExecutionsToHistory(command.Recipe.Id, 1);
             var executor = new SituationEffectExecutor(tabletopManager);
-            executor.RunEffects(command, situationWindowAsStorage.GetStorageStacksManager(), currentCharacter, Registry.Get<IDice>());
+            executor.RunEffects(command, situationWindowAsStorage.GetStorageContainer(), currentCharacter, Registry.Get<IDice>());
 
             if (!string.IsNullOrEmpty(command.Recipe.Ending)) {
                 var ending = compendium.GetEntityById<Ending>(command.Recipe.Ending);

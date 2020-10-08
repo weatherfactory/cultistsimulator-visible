@@ -130,7 +130,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
         void RetireAllStacks(CardVFX anim) {
-            var stacks = _tabletopManager._tabletop.GetElementStacksManager().GetStacks();
+            var stacks = _tabletopManager._tabletop.GetStacks();
 
             foreach (var item in stacks)
                 item.Retire(anim);

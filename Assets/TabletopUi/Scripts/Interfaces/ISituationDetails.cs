@@ -31,7 +31,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void DisplayHintRecipeFound(Recipe r);
     }
 
-    public interface ISituationStorage
+    public interface ISituationWindowAsStorage
     {
         void SetUnstarted();
         void SetOngoing(Recipe situationCurrentPrimaryRecipe);
@@ -43,7 +43,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         IEnumerable<ElementStackToken> GetOutputStacks();
         IEnumerable<ElementStackToken> GetStartingStacks();
         void Retire();
-        ElementStacksManager GetStorageStacksManager();
         void SetSlotConsumptions();
         IRecipeSlot GetStartingSlotBySaveLocationInfoPath(string locationInfo);
         IEnumerable<ISituationNote> GetNotes();
@@ -51,13 +50,14 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void DumpAllResultingCardsToDesktop();
         void ReceiveTextNote(INotification notification);
         IEnumerable<ElementStackToken> GetStoredStacks();
-        ElementStacksManager GetResultsStacksManager();
         void DumpAllStartingCardsToDesktop();
         IAspectsDictionary GetAspectsFromStoredElements(bool includeElementAspects);
         void SetOutput(List<ElementStackToken> stacksForOutput);
         IRecipeSlot GetUnfilledGreedySlot();
         void StoreStacks(IEnumerable<ElementStackToken> getStartingStacks);
         IList<RecipeSlot> GetOngoingSlots();
+        SituationStorage GetStorageContainer();
+        SituationResults GetResultsContainer();
     }
 
 

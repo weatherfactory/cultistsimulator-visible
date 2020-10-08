@@ -6,6 +6,7 @@ using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Services;
@@ -105,7 +106,7 @@ namespace Assets.Core.Services
 			}
 		}
 
-        public void ChronicleGameEnd(List<SituationController> situations, List<ElementStacksManager> stacksManagers,Ending ending)
+        public void ChronicleGameEnd(List<SituationController> situations, List<ITokenContainer> tokenContainers,Ending ending)
         {
             //a lot of the stuff in TokenPlacedOnTabletop might be better here, actually
             SetAchievementsForEnding(ending);
@@ -121,9 +122,9 @@ namespace Assets.Core.Services
              
             }
 
-            foreach (var sm in stacksManagers)
+            foreach (var tc in tokenContainers)
             {
-                allStacksInGame.AddRange(sm.GetStacks());
+                allStacksInGame.AddRange(tc.GetStacks());
             }
 
             var rnd=new Random();

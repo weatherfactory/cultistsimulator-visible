@@ -52,7 +52,7 @@ public class ExhibitCards : AbstractTokenContainer {
 
     public void HighlightCardWithId(string elementId)
     {
-        var cards = GetElementStacksManager().GetStacks();
+        var cards = GetStacks();
 
         foreach (var card in cards.Select(c=>c as ElementStackToken))
         {

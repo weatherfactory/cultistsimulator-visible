@@ -150,7 +150,7 @@ namespace Assets.TabletopUi.Scripts.Services
             windowSettingsAdapter.Initialise();
             soundManager.Initialise();
 
-            var stackManagersCatalogue = new StackManagersCatalogue();
+            var stackManagersCatalogue = new TokenContainersCatalogue();
             registryAccess.Register(stackManagersCatalogue);
 
             limbo.Initialise();

@@ -22,7 +22,7 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 
 namespace Assets.CS.TabletopUI {
     [RequireComponent(typeof(SituationWindowPositioner))]
-    public class SituationWindow : MonoBehaviour,ISituationView,ISituationStorage {
+    public class SituationWindow : MonoBehaviour,ISituationView,ISituationWindowAsStorage {
 
         string buttonDefault;
         string buttonBusy;
@@ -134,8 +134,8 @@ namespace Assets.CS.TabletopUI {
                o.Retire(CardVFX.None);
 
 
-            GetStorageStacksManager().RemoveAllStacks();
-            GetResultsStacksManager().RemoveAllStacks();
+           storage._elementStacksManager.RemoveAllStacks();
+            results._elementStacksManager.RemoveAllStacks();
             Destroy(gameObject);
         }
 
@@ -359,7 +359,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public IEnumerable<ElementStackToken> GetStoredStacks() {
-            return GetStorageStacksManager().GetStacks();
+            return storage.GetStacks();
         }
 
         public IEnumerable<ElementStackToken> GetOutputStacks() {
@@ -367,20 +367,16 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public ElementStacksManager GetStorageStacksManager() {
-            return storage.GetElementStacksManager();
-        }
         public ElementStackToken ReprovisionExistingElementStackInStorage(ElementStackSpecification stackSpecification, Source stackSource, string locatorid = null)
         {
             return storage.ReprovisionExistingElementStack(stackSpecification, stackSource, new Context(Context.ActionSource.Loading), locatorid);
         }
 
-        public ElementStacksManager GetResultsStacksManager() {
-            return results.GetElementStacksManager();
-        }
 
-        public void StoreStacks(IEnumerable<ElementStackToken> stacksToStore) {
-            GetStorageStacksManager().AcceptStacks(stacksToStore, new Context(Context.ActionSource.SituationStoreStacks));
+
+        public void StoreStacks(IEnumerable<ElementStackToken> stacksToStore)
+        {
+            storage._elementStacksManager.AcceptStacks(stacksToStore, new Context(Context.ActionSource.SituationStoreStacks));
             // Now that we've stored stacks, make sure we update the starting slots
             startingSlots.RemoveAnyChildSlotsWithEmptyParent(new Context(Context.ActionSource.SituationStoreStacks)); 
         }
@@ -417,6 +413,16 @@ namespace Assets.CS.TabletopUI {
             return ongoing.GetAllSlots();
         }
 
+        public SituationStorage GetStorageContainer()
+        {
+            return storage;
+        }
+
+        public SituationResults GetResultsContainer()
+        {
+            return results;
+        }
+
         public IRecipeSlot GetUnfilledGreedySlot() {
             return ongoing.GetUnfilledGreedySlot();
         }
@@ -433,7 +439,7 @@ namespace Assets.CS.TabletopUI {
 
         public void TryDecayResults(float interval)
         {
-            var stacksToDecay = GetResultsStacksManager().GetStacks();
+            var stacksToDecay = results.GetStacks();
             foreach(var s in stacksToDecay)
                 s.Decay(interval);
         }
@@ -450,11 +456,11 @@ namespace Assets.CS.TabletopUI {
         }
 
         public IAspectsDictionary GetAspectsFromStoredElements(bool includeElementAspects) {
-            return GetStorageStacksManager().GetTotalAspects(includeElementAspects);
+            return storage.GetTotalAspects(includeElementAspects);
         }
 
         public IAspectsDictionary GetAspectsFromOutputElements(bool includeElementAspects) {
-            return GetResultsStacksManager().GetTotalAspects(includeElementAspects);
+            return results.GetTotalAspects(includeElementAspects);
         }
 
 

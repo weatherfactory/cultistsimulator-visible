@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi;
 
 namespace Assets.Core.Entities {
@@ -11,36 +12,36 @@ namespace Assets.Core.Entities {
         void NotifyStacksChanged();
     }
 
-    public class StackManagersCatalogue {
+    public class TokenContainersCatalogue {
 
-        private readonly List<ElementStacksManager> _currentElementStackManagers;
+        private readonly List<ITokenContainer> _currentTokenContainers;
         private readonly List<IStacksChangeSubscriber> _subscribers;
 
-        public StackManagersCatalogue() {
-            _currentElementStackManagers = new List<ElementStacksManager>();
+        public TokenContainersCatalogue() {
+            _currentTokenContainers = new List<ITokenContainer>();
             _subscribers = new List<IStacksChangeSubscriber>();
         }
 
-        public List<ElementStacksManager> GetRegisteredStackManagers() {
-            return _currentElementStackManagers.ToList();
+        public List<ITokenContainer> GetRegisteredTokenContainers() {
+            return _currentTokenContainers.ToList();
         }
 
-        public void RegisterStackManager(ElementStacksManager stackManager) {
-            _currentElementStackManagers.Add(stackManager);
+        public void RegisterTokenContainer(ITokenContainer stackManager) {
+            _currentTokenContainers.Add(stackManager);
         }
 
-        public void DeregisterStackManager(ElementStacksManager stackManager) {
-            _currentElementStackManagers.Remove(stackManager);
+        public void DeregisterTokenContainer(ITokenContainer stackManager) {
+            _currentTokenContainers.Remove(stackManager);
         }
 
         
         public void Reset()
         {
         _subscribers.Clear();
-                foreach (var sm in GetRegisteredStackManagers())
+                foreach (var tc in GetRegisteredTokenContainers())
                 {
-                    if (!sm.PersistBetweenScenes)
-                        _currentElementStackManagers.Remove(sm);
+                    if (!tc.PersistBetweenScenes)
+                        _currentTokenContainers.Remove(tc);
                 }
 
             

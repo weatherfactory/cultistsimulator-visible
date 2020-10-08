@@ -60,7 +60,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         private async void SceneChange(int sceneToLoad,bool withFadeEffect)
         {
-            Registry.Get<StackManagersCatalogue>().Reset();
+            Registry.Get<TokenContainersCatalogue>().Reset();
 
             //if (currentSceneIndex > 0)
             //    SceneManager.UnloadSceneAsync(currentSceneIndex);

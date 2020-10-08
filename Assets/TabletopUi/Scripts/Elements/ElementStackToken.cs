@@ -459,9 +459,8 @@ namespace Assets.CS.TabletopUI {
             }
             else
 			{
-                var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
-                var stackManager = tabletop._tabletop.GetElementStacksManager();
-                var existingStacks = stackManager.GetStacks();
+                var tabletop = Registry.Get<TabletopManager>()._tabletop;
+                var existingStacks = tabletop.GetStacks();
 
 				if (!_element.Unique)            // If we're not unique, auto-merge us!
 				{
@@ -492,9 +491,8 @@ namespace Assets.CS.TabletopUI {
 
 		public Vector2 GetDropZoneSpawnPos()
 		{
-			var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
-			var stackManager = tabletop._tabletop.GetElementStacksManager();
-			var existingStacks = stackManager.GetStacks();
+			var tabletop = Registry.Get<TabletopManager>()._tabletop;
+			var existingStacks = tabletop.GetStacks();
 
 			Vector2 spawnPos = Vector2.zero;
 			AbstractToken	dropZoneObject = null;

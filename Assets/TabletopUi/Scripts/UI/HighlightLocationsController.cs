@@ -22,7 +22,7 @@ namespace Assets.TabletopUi.Scripts.UI
           highlightLocations = new HashSet<HighlightLocation>();
       }
 
-      public void Initialise(StackManagersCatalogue smc)
+      public void Initialise(TokenContainersCatalogue smc)
       {
             smc.Subscribe(this);
 

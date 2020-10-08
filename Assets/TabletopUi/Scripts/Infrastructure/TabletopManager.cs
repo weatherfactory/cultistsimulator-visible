@@ -313,7 +313,7 @@ namespace Assets.CS.TabletopUI {
             var situationsCatalogue = new SituationsCatalogue();
             registry.Register(situationsCatalogue);
 
-            Registry.Get<StackManagersCatalogue>().Subscribe(this);
+            Registry.Get<TokenContainersCatalogue>().Subscribe(this);
 
 
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
@@ -325,7 +325,7 @@ namespace Assets.CS.TabletopUI {
             
             
 			registry.Register<HighlightLocationsController>(_highlightLocationsController);
-            _highlightLocationsController.Initialise(Registry.Get<StackManagersCatalogue>());
+            _highlightLocationsController.Initialise(Registry.Get<TokenContainersCatalogue>());
 
 
             //element overview needs to be initialised with
@@ -338,7 +338,7 @@ namespace Assets.CS.TabletopUI {
                 Registry.Get<StageHand>().EndingScreen();
 
             _elementOverview.Initialise(legacy,  Registry.Get<ICompendium>());
-            Registry.Get<StackManagersCatalogue>().Subscribe(_elementOverview);
+            Registry.Get<TokenContainersCatalogue>().Subscribe(_elementOverview);
             tabletopBackground.ShowTabletopFor(legacy);
 
   
@@ -408,7 +408,7 @@ namespace Assets.CS.TabletopUI {
             Element purgedElement = compendium.GetEntityById<Element>(elementId);
             //I don't think MaxToPurge is being usefully decremented here - should return int
 
-           _tabletop.GetElementStacksManager().PurgeElement(purgedElement, maxToPurge);
+           _tabletop.PurgeElement(purgedElement, maxToPurge);
 
            var situationsCatalogue = Registry.Get<SituationsCatalogue>();
            foreach (var s in situationsCatalogue.GetRegisteredSituations())
@@ -425,7 +425,7 @@ namespace Assets.CS.TabletopUI {
                //If the situation has finished, purge any matching elements in the results.
                 else if (s.Situation.State==SituationState.Complete)
                 { 
-                   s.situationWindow.GetResultsStacksManager()
+                   s.situationWindow.GetResultsContainer()
                        .PurgeElement(purgedElement, maxToPurge);
 
                 }
@@ -524,7 +524,7 @@ namespace Assets.CS.TabletopUI {
             var character = Registry.Get<Character>();
             var chronicler = Registry.Get<Chronicler>();
 
-            chronicler.ChronicleGameEnd(Registry.Get<SituationsCatalogue>().GetRegisteredSituations(), Registry.Get<StackManagersCatalogue>().GetRegisteredStackManagers(),ending);
+            chronicler.ChronicleGameEnd(Registry.Get<SituationsCatalogue>().GetRegisteredSituations(), Registry.Get<TokenContainersCatalogue>().GetRegisteredTokenContainers(),ending);
             character.Reset(null,ending);
             
 
@@ -590,8 +590,8 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
             _elementOverview.Initialise(activeLegacy, compendium);
 
-            Registry.Get<StackManagersCatalogue>().Reset();
-            Registry.Get<StackManagersCatalogue>().Subscribe(_elementOverview);
+            Registry.Get<TokenContainersCatalogue>().Reset();
+            Registry.Get<TokenContainersCatalogue>().Subscribe(_elementOverview);
             tabletopBackground.ShowTabletopFor(activeLegacy);
 
         }
@@ -623,7 +623,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             {
 	            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
 
-                ITableSaveState tableSaveState=new TableSaveState(_tabletop.GetElementStacksManager().GetStacks(), Registry.Get<SituationsCatalogue>().GetRegisteredSituations());
+                ITableSaveState tableSaveState=new TableSaveState(_tabletop.GetStacks(), Registry.Get<SituationsCatalogue>().GetRegisteredSituations());
                  var   saveTask = saveGameManager.SaveActiveGameAsync(tableSaveState,  Registry.Get<Character>(), source);
                  NoonUtility.Log("Beginning save", 0,VerbosityLevel.SystemChatter);
                bool    success = await saveTask;
@@ -740,7 +740,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
         private ElementStackToken FindStackForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
 
             var rnd = new Random();
-            var stacks = _tabletop.GetElementStacksManager().GetStacks().OrderBy(x=>rnd.Next());
+            var stacks = _tabletop.GetStacks().OrderBy(x=>rnd.Next());
 
             foreach (var stack in stacks)
                 if (CanPullCardToGreedySlot(stack as ElementStackToken, slotSpec))
@@ -835,10 +835,6 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
 #endregion
 
-public ElementStacksManager GetTabletopStacksManager()
-{
-    return _tabletop.GetElementStacksManager();
-}
 
 		public void CloseAllDetailsWindows()
 		{
@@ -893,7 +889,7 @@ public ElementStacksManager GetTabletopStacksManager()
         }
 
         public void DecayStacksOnTable(float interval) {
-            var decayingStacks = _tabletop.GetElementStacksManager().GetStacks().Where(s => s.Decays);
+            var decayingStacks = _tabletop.GetStacks().Where(s => s.Decays);
 
             foreach (var d in decayingStacks)
                 d.Decay(interval);
@@ -1105,7 +1101,7 @@ public ElementStacksManager GetTabletopStacksManager()
 					_tabletopAspects.Clear();
 
 
-				var tabletopStacks = _tabletop.GetElementStacksManager()?.GetStacks();
+				var tabletopStacks = _tabletop.GetStacks();
                 if(tabletopStacks!=null)
                 { 
                     foreach(var tabletopStack in tabletopStacks)
@@ -1180,7 +1176,7 @@ public ElementStacksManager GetTabletopStacksManager()
 
         public void GroupAllStacks()
         {
-	        var stacks = _tabletop.GetElementStacksManager().GetStacks();
+	        var stacks = _tabletop.GetStacks();
 	        var groups = stacks.OfType<ElementStackToken>()
 		        .GroupBy(e => e.EntityWithMutationsId, e => e)
 		        .Select(group => group.OrderByDescending(e => e.Quantity).ToList());
@@ -1208,7 +1204,7 @@ public ElementStacksManager GetTabletopStacksManager()
 
 		private List<ElementStackToken> FindAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
 			var stackList = new List<ElementStackToken>();
-			var stacks = _tabletop.GetElementStacksManager().GetStacks();
+			var stacks = _tabletop.GetStacks();
 			ElementStackToken stackToken;
 
 			foreach (var stack in stacks) {

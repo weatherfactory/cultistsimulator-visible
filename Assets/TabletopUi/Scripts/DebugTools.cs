@@ -283,8 +283,8 @@ public class DebugTools : MonoBehaviour,ITokenObserver
 
     void AddCard(string elementId)
     {
-        var stackManager = tabletop.GetElementStacksManager();
-        var existingStacks = stackManager.GetStacks();
+       
+        var existingStacks = tabletop.GetStacks();
 
         var element = Registry.Get<ICompendium>().GetEntityById<Element>(elementId);
 
@@ -306,10 +306,10 @@ public class DebugTools : MonoBehaviour,ITokenObserver
         }
         //if we didn't jump out of loop with return, above
 		Context debugContext = new Context(Context.ActionSource.Debug);
-        stackManager.ModifyElementQuantity(elementId,1, Source.Fresh(), debugContext);
+        tabletop.ModifyElementQuantity(elementId,1, Source.Fresh(), debugContext);
 
 		// Find the card we just added and move it to the dropzone
-		existingStacks = stackManager.GetStacks();
+		existingStacks = tabletop.GetStacks();
 		foreach (var stack in existingStacks)
         {
             if(stack.EntityId==elementId && !stack.GetCurrentMutations().Any())
@@ -331,7 +331,7 @@ public class DebugTools : MonoBehaviour,ITokenObserver
             possibleEmptyVerb.Retire();
         }
         else
-        tabletop.GetElementStacksManager().ModifyElementQuantity(itemId, -1, Source.Existing(), new Context(Context.ActionSource.Debug));
+        tabletop.ModifyElementQuantity(itemId, -1, Source.Existing(), new Context(Context.ActionSource.Debug));
     }
 
     void BeginSituation(string recipeId)

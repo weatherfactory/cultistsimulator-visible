@@ -21,7 +21,7 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI {
 
-    public interface IRecipeSlot {
+    public interface IRecipeSlot:ITokenContainer {
         ElementStackToken GetElementStackInSlot();
         AbstractToken GetTokenInSlot();
         SlotMatchForAspects GetSlotMatchForStack(ElementStackToken stack);
@@ -328,15 +328,15 @@ namespace Assets.CS.TabletopUI {
 
         public ElementStackToken GetElementStackInSlot()
         {
-            if (_elementStacksManager.GetStacks().Count() > 1)
+            if (GetStacks().Count() > 1)
             {
                 NoonUtility.Log("Something weird in slot " + GoverningSlotSpecification.Id +
                                 ": it has more than one stack, so we're just returning the first.");
-                return _elementStacksManager.GetStacks().First();
+                return GetStacks().First();
 
             }
 
-            return _elementStacksManager.GetStacks().SingleOrDefault();
+            return GetStacks().SingleOrDefault();
         }
 
         public SlotMatchForAspects GetSlotMatchForStack(ElementStackToken stack)

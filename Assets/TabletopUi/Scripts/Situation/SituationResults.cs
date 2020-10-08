@@ -57,7 +57,7 @@ public class SituationResults : AbstractTokenContainer {
 
     public override void DisplayHere(ElementStackToken stack, Context context) {
         base.DisplayHere(stack, context);
-        cardPos.ReorderCards(_elementStacksManager.GetStacks());
+        cardPos.ReorderCards(GetStacks());
     }
 
     public override void SignalStackRemoved(ElementStackToken elementStackToken, Context context) {
@@ -90,7 +90,7 @@ public class SituationResults : AbstractTokenContainer {
     }
 
     public IEnumerable<ElementStackToken> GetOutputStacks() {
-        return GetElementStacksManager().GetStacks();
+        return GetStacks();
     }
 
     public override string GetSaveLocationInfoForDraggable(AbstractToken draggable) {
