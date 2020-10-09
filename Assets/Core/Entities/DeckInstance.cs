@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
+using UnityEngine;
+using Random = System.Random;
 
 namespace Assets.Core.Entities
 {
-    public class DeckInstance : IDeckInstance
+    public class DeckInstance : MonoBehaviour, ISaveable
     {
         private IDeckSpec _deckSpec;
         private Stack<string> _cards;
@@ -19,20 +23,17 @@ namespace Assets.Core.Entities
             get { return _deckSpec.Id; }
         }
 
-        protected DeckInstance()
+        public void PopulateWithDeckSpec(IDeckSpec spec)
         {
-            
-        }
 
-        public DeckInstance(IDeckSpec spec)
-        {
             if (spec == null)
                 throw new ApplicationException("Can't initialise a deckinstance with a null deckspec");
 
+            name = spec.Id;
+
             _deckSpec = spec;
             _cards = new Stack<string>();
-            _eliminatedCards=new List<string>();
-
+            _eliminatedCards = new List<string>();
         }
 
 
@@ -170,5 +171,6 @@ namespace Assets.Core.Entities
 
             return cardsHashtable;
         }
+
     }
 }

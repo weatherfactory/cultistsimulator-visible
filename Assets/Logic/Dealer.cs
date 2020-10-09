@@ -4,34 +4,38 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
 using Noon;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Assets.Logic
 {
     public class Dealer
     {
-        private Character _storage;
-        public Dealer(Character storage)
+        private Character _character;
+        public Dealer(Character character)
         {
-            _storage = storage;
+            _character = character;
         }
         //if passed an element id, return it;
         //if passed a deck id, return a (recursive) draw from that deck
-        public string Deal(IDeckInstance deck)
+        public string Deal(DeckInstance deck)
         {
             var drawnId = deck.Draw();
             if (drawnId.StartsWith(NoonConstants.DECK_PREFIX))
             {
                 var deckId = drawnId.Replace(NoonConstants.DECK_PREFIX, "");
-                var subDeck = _storage.GetDeckInstanceById(deckId);
+                var subDeck = _character.GetDeckInstanceById(deckId);
                 return Deal(subDeck);
             }
             else
                 return drawnId;
         }
 
-        public DrawWithMessage DealWithMessage(IDeckInstance deck)
+
+
+        public DrawWithMessage DealWithMessage(DeckInstance deck)
         {
             var drawnCard = Deal(deck);
             var drawWithMessage = new DrawWithMessage {DrawnCard = drawnCard};
@@ -50,7 +54,7 @@ namespace Assets.Logic
 
         public void IndicateUniqueCardManifested(string elementId)
         {
-            foreach (var d in _storage.DeckInstances)
+            foreach (var d in _character.GetAllDecks())
             { 
                 d.EliminateCardWithId(elementId);
             }
@@ -59,7 +63,7 @@ namespace Assets.Logic
 
         public void RemoveFromAllDecksIfInUniquenessGroup(string elementUniquenessGroup)
         {
-            foreach (var d in _storage.DeckInstances)
+            foreach (var d in _character.GetAllDecks())
             {
                 d.EliminateCardsInUniquenessGroup(elementUniquenessGroup);
             }

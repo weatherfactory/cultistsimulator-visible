@@ -42,7 +42,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 			htMeta = GetHashTableForMetaInfo(metaInfo);
             htChar = GetHashTableForCharacter(character);
             if (character.State==CharacterState.Viable)
-                htDecks = GetHashTableForDecks(character.DeckInstances);
+                htDecks = GetHashTableForDecks(character.GetAllDecks());
             else
             {
                 htDecks = new Hashtable();
@@ -164,7 +164,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return htElementStacks;
         }
 
-        public Hashtable GetHashTableForDecks(IEnumerable<IDeckInstance> deckInstances)
+        public Hashtable GetHashTableForDecks(IEnumerable<DeckInstance> deckInstances)
         {
             var htDecks=new Hashtable();
             foreach (var d in deckInstances)
@@ -243,7 +243,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-		public void AnalyticsReport( bool success, MetaInfo metaInfo, Character character,IEnumerable<ElementStackToken> stacks, IEnumerable<SituationController> situationControllers,IEnumerable<IDeckInstance> deckInstances )
+		public void AnalyticsReport( bool success, MetaInfo metaInfo, Character character,IEnumerable<ElementStackToken> stacks, IEnumerable<SituationController> situationControllers,IEnumerable<DeckInstance> deckInstances )
 		{
 			// Report very basic info	- success/failure (so we can measure failure %)
 			//							- Data counts so we can see what is going missing (0 == empty, -1 == null ref)

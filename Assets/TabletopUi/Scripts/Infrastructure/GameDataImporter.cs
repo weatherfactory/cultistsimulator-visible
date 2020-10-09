@@ -180,23 +180,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 if (spec == null)
                     NoonUtility.Log("no deckspec found for saved deckinstance " + k.ToString());
                 else
-                { 
-                    IDeckInstance deckInstance =  new DeckInstance(spec);
-                    if (htEachDeck.ContainsKey(SaveConstants.SAVE_ELIMINATEDCARDS))
-                    { 
-                        ArrayList alEliminated = htEachDeck.GetArrayList(SaveConstants.SAVE_ELIMINATEDCARDS);
-                        htEachDeck.Remove(SaveConstants.SAVE_ELIMINATEDCARDS);
-
-                       foreach(var e in alEliminated)
-                           deckInstance.TryAddToEliminatedCardsList(e.ToString() );
-                    }
-
-
-                    //Now we assume that the remaining keys are contiguous integers starting at 1
-                    for (int i=1;i<=htEachDeck.Count;i++)
-                    deckInstance.Add(htEachDeck[i.ToString()].ToString());
-
-                character.OverwriteDeckInstance(deckInstance);
+                {
+                    character.OverwriteDeckInstance(spec, htEachDeck);
                 }
             }
 

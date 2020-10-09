@@ -354,9 +354,12 @@ namespace Assets.CS.TabletopUI {
 
             ProvisionStartingElements(_character.ActiveLegacy, Registry.Get<Choreographer>());
             SetStartingCharacterInfo(_character.ActiveLegacy);
+            
             StatusBar.UpdateCharacterDetailsView(Registry.Get<Character>());
 
-            DealStartingDecks();
+
+
+            
 
             _notifier.ShowNotificationWindow(_character.ActiveLegacy.Label, _character.ActiveLegacy.StartDescription);
         }
@@ -369,15 +372,7 @@ namespace Assets.CS.TabletopUI {
             newCharacter.Profession = chosenLegacy.Label;
         }
 
-        private void DealStartingDecks() {
-            Character character = Registry.Get<Character>();
-            var compendium = Registry.Get<ICompendium>();
-            foreach (var ds in compendium.GetEntitiesAsList<DeckSpec>()) {
-                IDeckInstance di = new DeckInstance(ds);
-                character.DeckInstances.Add(di);
-                di.Reset();
-            }
-        }
+
 
         public void ProvisionStartingElements(Legacy chosenLegacy, Choreographer choreographer) {
             AspectsDictionary startingElements = new AspectsDictionary();

@@ -409,17 +409,7 @@ public class DebugTools : MonoBehaviour,ITokenObserver
         Log("Total time to import: " + (DateTime.Now-startImport));
 
         // Populate current decks with new cards (this will shuffle the deck)
-        Character storage = Registry.Get<Character>();
-        foreach (var ds in existingCompendium.GetEntitiesAsList<DeckSpec>())
-        {
-               
-            if (storage.GetDeckInstanceById(ds.Id) == null)
-            {
-                IDeckInstance di = new DeckInstance(ds);
-                storage.DeckInstances.Add(di);
-                di.Reset();
-            }
-        }
+        Registry.Get<Character>().ResetStartingDecks();
 
     }
 
@@ -490,14 +480,7 @@ public class DebugTools : MonoBehaviour,ITokenObserver
     void ResetDecks()
     {
         var character= Registry.Get<Character>();
-        foreach(var di in character.DeckInstances)
-        {di.Reset();
-            Log("Reset " + di.Id + " - now contains ");
-            foreach (var card in di.GetCurrentCardsAsList())
-            {
-                Log(card + "\n" );
-            }
-        }
+        character.ResetStartingDecks();
     }
 
     void QueueRoll(string roll)

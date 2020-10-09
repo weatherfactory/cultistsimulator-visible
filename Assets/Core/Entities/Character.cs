@@ -7,8 +7,11 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
 using Assets.CS.TabletopUI;
+using Assets.Logic;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using JetBrains.Annotations;
 using Noon;
+using OrbCreationExtensions;
 using UnityEngine;
 
 public enum LegacyEventRecordId
@@ -28,6 +31,9 @@ public enum LegacyEventRecordId
 public class Character:MonoBehaviour
 {
     private string _name="[unnamed]";
+
+    public Transform CurrentDecks;
+    public DeckInstance DeckPrefab;
 
     public CharacterState State
     {
@@ -52,7 +58,6 @@ public class Character:MonoBehaviour
 
     public string Profession { get; set; }
 
-
     public Dictionary<string, string> GetInProgressHistoryRecords()
     {
         return new Dictionary<string, string>(_inProgressHistoryRecords);
@@ -63,14 +68,13 @@ public class Character:MonoBehaviour
         return new Dictionary<string, string>(_previousCharacterHistoryRecords);
     }
 
-    public List<IDeckInstance> DeckInstances { get; set; } 
+    
     private Dictionary<string, string> _inProgressHistoryRecords;
     private Dictionary<string, string> _previousCharacterHistoryRecords;
     public Legacy ActiveLegacy { get; set; }
     public Ending EndingTriggered { get; set; }
 
     private Dictionary<string, int> recipeExecutions;
-
 
 
 
@@ -91,16 +95,27 @@ public class Character:MonoBehaviour
         
         _inProgressHistoryRecords = new Dictionary<string, string>();
         recipeExecutions= new Dictionary<string, int>();
-        DeckInstances = new List<IDeckInstance>();
-        
-        //hmm re Compendium
-        foreach (var ds in Registry.Get<ICompendium>().GetEntitiesAsList<DeckSpec>())
-        {
-                IDeckInstance di = new DeckInstance(ds);
-                DeckInstances.Add(di);
-                di.Reset();
-        }
+        ResetStartingDecks();
 
+    }
+
+
+    public void ResetStartingDecks()
+    {
+
+        foreach (Transform deck in CurrentDecks)
+            Destroy(deck);
+
+        
+        var compendium = Registry.Get<ICompendium>();
+        foreach (var ds in compendium.GetEntitiesAsList<DeckSpec>())
+        {
+            DeckInstance di=Instantiate(DeckPrefab, CurrentDecks);
+            di.PopulateWithDeckSpec(ds);
+            
+            di.Reset();
+
+        }
     }
 
 
@@ -142,10 +157,10 @@ public class Character:MonoBehaviour
     {
 if(string.IsNullOrEmpty(value))
     throw new ApplicationException("Error in LegacyEventRecord overwrite: shouldn't overwrite with an empty value, trying to erase the past for " + id.ToString());
-        if (_previousCharacterHistoryRecords.ContainsKey(id))
-            _previousCharacterHistoryRecords[id] = value;
-        else
-            _previousCharacterHistoryRecords.Add(id, value);
+if (_previousCharacterHistoryRecords.ContainsKey(id))
+    _previousCharacterHistoryRecords[id] = value;
+else
+    _previousCharacterHistoryRecords.Add(id, value);
     }
 
 
@@ -173,12 +188,28 @@ if(string.IsNullOrEmpty(value))
             return null;
     }
 
-    public IDeckInstance GetDeckInstanceById(string id)
+    public List<DeckInstance> GetAllDecks()
+    {
+        List<DeckInstance> decks=new List<DeckInstance>();
+        foreach (Transform d in CurrentDecks)
+            decks.Add(d.GetComponent<DeckInstance>());
+
+        return decks;
+    }
+
+    public DeckInstance GetDeckInstanceById(string id)
     {
         try
         {
+            foreach (Transform d in CurrentDecks)
+            {
+                var deck = d.GetComponent<DeckInstance>();
+                if (deck.Id == id)
+                    return deck;
+            }
 
-            return  DeckInstances.SingleOrDefault(d => d.Id == id);
+            return null;
+                
         }
         catch (Exception e)
         {
@@ -187,22 +218,31 @@ if(string.IsNullOrEmpty(value))
         }
     }
 
-    public bool OverwriteDeckInstance(IDeckInstance newDeckInstance)
+    public void OverwriteDeckInstance(IDeckSpec ds,Hashtable htEachDeck)
     {
-        //TODO: this should be a dictionary, obv
-        var existingDeckInstance = DeckInstances.SingleOrDefault(di => di.Id == newDeckInstance.Id);
 
-        if(existingDeckInstance==null)
+        DeckInstance deckToOverwrite = GetDeckInstanceById(ds.Id);
+        if(deckToOverwrite!=null)
+            Destroy(deckToOverwrite.gameObject);
+
+        DeckInstance replacementDeck = Instantiate(DeckPrefab, CurrentDecks);
+        replacementDeck.PopulateWithDeckSpec(ds);
+
+
+        if (htEachDeck.ContainsKey(SaveConstants.SAVE_ELIMINATEDCARDS))
         {
-            DeckInstances.Add(newDeckInstance);
-            return false;
+            ArrayList alEliminated = htEachDeck.GetArrayList(SaveConstants.SAVE_ELIMINATEDCARDS);
+            htEachDeck.Remove(SaveConstants.SAVE_ELIMINATEDCARDS);
+
+            foreach (var e in alEliminated)
+                replacementDeck.TryAddToEliminatedCardsList(e.ToString());
         }
-        else
-        {
-            DeckInstances.Remove(existingDeckInstance);
-            DeckInstances.Add(newDeckInstance);
-            return true;
-        }
+
+
+        //Now we assume that the remaining keys are contiguous integers starting at 1
+        for (int i = 1; i <= htEachDeck.Count; i++)
+            replacementDeck.Add(htEachDeck[i.ToString()].ToString());
+
 
     }
 

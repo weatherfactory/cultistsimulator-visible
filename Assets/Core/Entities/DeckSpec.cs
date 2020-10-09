@@ -31,23 +31,6 @@ namespace Assets.Core.Entities
     }
 
 
-    public interface IDeckInstance:ISaveable
-    {
-        /// <summary>
-        /// resets deckSpec (with up to date version of each stack). Use this when first creating the deckSpec
-        /// </summary>
-        void Reset();
-
-        string Id { get; }
-        string Draw();
-        void Add(string elementId);
-        List<string> GetCurrentCardsAsList();
-        void EliminateCardWithId(string elementId);
-        Dictionary<string, string> GetDefaultDrawMessages();
-        Dictionary<string, string> GetDrawMessages();
-        void TryAddToEliminatedCardsList(string elementId);
-        void EliminateCardsInUniquenessGroup(string elementUniquenessGroup);
-    }
 
     [FucineImportable("decks")]
  public class DeckSpec : AbstractEntity<DeckSpec>, IDeckSpec,IEntityWithId

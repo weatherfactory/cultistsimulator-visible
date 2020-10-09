@@ -55,17 +55,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var dealer=new Dealer(character);
 
             string doorDeckId = activeDoor.GetDeckName(0);
-            IDeckInstance doorDeck =character.GetDeckInstanceById(doorDeckId);
+            DeckInstance doorDeck =character.GetDeckInstanceById(doorDeckId);
             if (doorDeck==null)
                 throw new ApplicationException("MapController couldn't find a mansus deck for the specified door with ID " + doorDeckId);
 
             string subLocationDeck1Id = activeDoor.GetDeckName(1);
-            IDeckInstance subLocationDeck1 = character.GetDeckInstanceById(subLocationDeck1Id);
+            DeckInstance subLocationDeck1 = character.GetDeckInstanceById(subLocationDeck1Id);
             if (doorDeck == null)
                 throw new ApplicationException("MapController couldn't find a mansus deck for location1 with ID " + subLocationDeck1Id);
 
             string subLocationDeck2Id = activeDoor.GetDeckName(2);
-            IDeckInstance subLocationDeck2 = character.GetDeckInstanceById(subLocationDeck2Id);
+            DeckInstance subLocationDeck2 = character.GetDeckInstanceById(subLocationDeck2Id);
             if (doorDeck == null)
                 throw new ApplicationException("MapController couldn't find a mansus deck for location2 with ID " + subLocationDeck2Id);
 
