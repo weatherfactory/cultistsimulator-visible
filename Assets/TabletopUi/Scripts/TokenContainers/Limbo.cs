@@ -16,7 +16,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             base.Start();
         }
         
-        public override string GetSaveLocationInfoForDraggable(AbstractToken draggable) {
+        public override string GetSaveLocationForToken(AbstractToken token) {
             return "limbo";
         }
 

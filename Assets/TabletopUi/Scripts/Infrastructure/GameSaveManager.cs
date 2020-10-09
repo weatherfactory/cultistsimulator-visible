@@ -205,10 +205,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             dataImporter.ImportTableState(tabletop,htSave);
         }
 
-        public Character LoadCharacterState(SourceForGameState source)
+        public void LoadCharacterState(SourceForGameState source,Character character)
         {
             var htSave = RetrieveHashedSaveFromFile(source);
-           return dataImporter.ImportCharacter(htSave);
+           dataImporter.ImportCharacter(htSave,character);
         }
 
 

@@ -63,7 +63,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] public GameObject _dropZoneTemplate;
 
 
-        [Header("Options Bar & Notes")] [SerializeField]
+        [Header("Status Bar & Notes")] [SerializeField]
         private StatusBar StatusBar;
 
         [SerializeField] private BackgroundMusic backgroundMusic;
@@ -72,12 +72,10 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] private AutosaveWindow _autosaveNotifier;
         [SerializeField] private ElementOverview _elementOverview;
 
+
         private SituationBuilder _situationBuilder;
 
-
-
-
-
+        
 
         private bool disabled;
         private bool _initialised;
@@ -533,8 +531,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-
-
+      
 
         public void LoadGame(SourceForGameState gameStateSource) {
             ICompendium compendium = Registry.Get<ICompendium>();
@@ -548,8 +545,11 @@ namespace Assets.CS.TabletopUI {
             {
 	            //var htSave = saveGameManager.RetrieveHashedSaveFromFile(index);
 	        //    ClearGameState(_heart, character, _tabletop);
-            var registry=new Registry();
-           registry.Register(saveGameManager.LoadCharacterState(gameStateSource));
+            
+            saveGameManager.LoadCharacterState(gameStateSource, Registry.Get<Character>());
+           
+
+
             saveGameManager.LoadTabletopState(_tabletop,gameStateSource);
                 //saveGameManager.ImportHashedSaveToState(_tabletop, null, htSave);
 
@@ -589,6 +589,8 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             tabletopBackground.ShowTabletopFor(activeLegacy);
 
         }
+
+
 
         public async Task<bool> SaveGameAsync(bool withNotification, SourceForGameState source)
 		{

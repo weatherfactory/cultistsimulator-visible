@@ -9,6 +9,7 @@ using Assets.Core.Services;
 using Assets.CS.TabletopUI;
 using JetBrains.Annotations;
 using Noon;
+using UnityEngine;
 
 public enum LegacyEventRecordId
 {
@@ -24,7 +25,7 @@ public enum LegacyEventRecordId
 
 }
 
-public class Character
+public class Character:MonoBehaviour
 {
     private string _name="[unnamed]";
 
@@ -65,29 +66,12 @@ public class Character
     public List<IDeckInstance> DeckInstances { get; set; } 
     private Dictionary<string, string> _inProgressHistoryRecords;
     private Dictionary<string, string> _previousCharacterHistoryRecords;
-    public Legacy ActiveLegacy { get; private set; }
-    public Ending EndingTriggered { get; private set; }
+    public Legacy ActiveLegacy { get; set; }
+    public Ending EndingTriggered { get; set; }
 
     private Dictionary<string, int> recipeExecutions;
 
 
-
-
-    public Character():this(null)
-    {
-        
-    }
-
-    public Character(Legacy activeLegacy) : this(activeLegacy, null)
-    {
-
-    }
-
-    public Character(Legacy activeLegacy,Ending endingTriggered)
-    {
-        Reset(activeLegacy, endingTriggered);
-
-    }
 
 
     public void Reset(Legacy activeLegacy,Ending endingTriggered)

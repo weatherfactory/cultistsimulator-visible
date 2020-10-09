@@ -89,8 +89,8 @@ public class SituationResults : AbstractTokenContainer {
         return GetStacks();
     }
 
-    public override string GetSaveLocationInfoForDraggable(AbstractToken draggable) {
-        return (draggable.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + draggable.RectTransform.localPosition.y).ToString();
+    public override string GetSaveLocationForToken(AbstractToken token) {
+        return (token.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + token.RectTransform.localPosition.y).ToString();
     }
 
     public void UpdateDumpButtonText() {

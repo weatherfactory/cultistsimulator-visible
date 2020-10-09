@@ -24,7 +24,7 @@ public class ExhibitCards : AbstractTokenContainer {
 
 
 
-    public override string GetSaveLocationInfoForDraggable(AbstractToken @abstract)
+    public override string GetSaveLocationForToken(AbstractToken token)
     {
         return string.Empty;
     }

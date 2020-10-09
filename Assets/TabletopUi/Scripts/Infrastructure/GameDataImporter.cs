@@ -18,7 +18,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public interface IGameDataImporter
     {
-        Character ImportCharacter(Hashtable htSave);
+        void ImportCharacter(Hashtable htSave,Character character);
         void ImportTableState(TabletopTokenContainer tabletop,Hashtable htSave);
     }
 
@@ -48,7 +48,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         }
 
-        private Character OldFormatSave_TryRetrieveDefunctCharacter(Hashtable htSave)
+        private void OldFormatSave_TryRetrieveDefunctCharacter(Hashtable htSave, Character character)
         {
           var  htCharacter = htSave.GetHashtable("defunctCharacterDetails");
           
@@ -58,22 +58,21 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
           var endingTriggered = compendium.GetEntityById<Ending>(endingTriggeredForCharacterId);
 
 
-          var character = new Character(null, endingTriggered);
 
           character.Reset(null, endingTriggered);
 
-          return character;
         }
 
-        public Character ImportCharacter(Hashtable htSave)
+        public void ImportCharacter(Hashtable htSave,Character character)
         {
             
 
             var htCharacter = htSave.GetHashtable(SaveConstants.SAVE_CHARACTER_DETAILS);
             if(htCharacter==null)
-
-                return OldFormatSave_TryRetrieveDefunctCharacter(htSave);
-
+            {
+                 OldFormatSave_TryRetrieveDefunctCharacter(htSave, character);
+                 return;
+            }
             var htDecks = htSave.GetHashtable(SaveConstants.SAVE_DECKS);
             
 
@@ -99,7 +98,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             else
                endingTriggered = compendium.GetEntityById<Ending>(endingTriggeredForCharacterId);
 
-            var character = new Character(activeLegacy, endingTriggered);
+            
 
             character.Reset(activeLegacy,endingTriggered);
 
@@ -150,8 +149,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             ImportDecks(character, htDecks);
 
-
-            return character;
 
         }
 

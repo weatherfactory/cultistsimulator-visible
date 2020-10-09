@@ -168,7 +168,7 @@ if(stack!=null)
             return GetComponentInChildren<ElementStackToken>();
         }
 
-        public override string GetSaveLocationInfoForDraggable(AbstractToken draggable) {
+        public override string GetSaveLocationForToken(AbstractToken token) {
             throw new NotImplementedException();
         }
 

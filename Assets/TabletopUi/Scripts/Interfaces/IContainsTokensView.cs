@@ -29,7 +29,7 @@ namespace Assets.CS.TabletopUI.Interfaces
         void SignalStackAdded(ElementStackToken elementStackToken, Context context);
         void SignalStackRemoved(ElementStackToken elementStackToken, Context context);
 
-        string GetSaveLocationInfoForDraggable(AbstractToken @abstract);
+        string GetSaveLocationForToken(AbstractToken token);
 
         void ModifyElementQuantity(string elementId, int quantityChange, Source stackSource, Context context);
 

@@ -382,7 +382,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public override string GetSaveLocationInfoForDraggable(AbstractToken @abstract) {
+        public override string GetSaveLocationForToken(AbstractToken token) {
             return SaveLocationInfoPath; //we don't currently care about the actual draggable
         }
 

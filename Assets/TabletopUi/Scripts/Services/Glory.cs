@@ -25,6 +25,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         public Concursum concursum;
         public SecretHistory SecretHistory;
+        public Character Character;
 
         [SerializeField] private ScreenResolutionAdapter screenResolutionAdapter;
         [SerializeField] private GraphicsSettingsAdapter graphicsSettingsAdapter;
@@ -162,14 +163,16 @@ namespace Assets.TabletopUi.Scripts.Services
 
         private void LoadCurrentSaveOrCreateNewCharacter(Registry registry)
         {
-            
+            registry.Register(Character);
+
+
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
 
             if (saveGameManager.DoesGameSaveExist())
-                registry.Register(saveGameManager.LoadCharacterState(SourceForGameState.DefaultSave));
-            else
-                registry.Register(new Character());
+                saveGameManager.LoadCharacterState(SourceForGameState.DefaultSave,Character);
+            
 
+            
 
         }
 

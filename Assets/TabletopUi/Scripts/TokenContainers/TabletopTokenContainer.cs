@@ -97,11 +97,11 @@ public class TabletopTokenContainer : AbstractTokenContainer,IBeginDragHandler,I
         anchor.DisplayAtTableLevel();
     }
 
-    public override string GetSaveLocationInfoForDraggable(AbstractToken @abstract) {
+    public override string GetSaveLocationForToken(AbstractToken token) {
         try
         {
 
-        return (@abstract.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + @abstract.RectTransform.localPosition.y).ToString();
+        return (token.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + token.RectTransform.localPosition.y).ToString();
         }
         catch (Exception)
         {

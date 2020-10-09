@@ -99,7 +99,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             incumbentMoved = false;
         }
 
-        abstract public string GetSaveLocationInfoForDraggable(AbstractToken @abstract);
+        abstract public string GetSaveLocationForToken(AbstractToken token);
 
         public virtual void OnDestroy() {
             Registry.Get<TokenContainersCatalogue>().DeregisterTokenContainer(this);

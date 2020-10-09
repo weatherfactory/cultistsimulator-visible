@@ -142,7 +142,7 @@ namespace Assets.CS.TabletopUI {
 
             }
             get {
-                return TokenContainer.GetSaveLocationInfoForDraggable(this) + "_" + Guid.NewGuid();
+                return TokenContainer.GetSaveLocationForToken(this) + "_" + Guid.NewGuid();
             }
         }
 
