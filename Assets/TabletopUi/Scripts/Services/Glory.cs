@@ -153,7 +153,6 @@ namespace Assets.TabletopUi.Scripts.Services
             var stackManagersCatalogue = new TokenContainersCatalogue();
             registryAccess.Register(stackManagersCatalogue);
 
-            limbo.Initialise();
 
             //finally, load the first scene and get the ball rolling.
             stageHand.LoadFirstScene(Registry.Get<Config>().skiplogo);

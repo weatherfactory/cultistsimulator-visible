@@ -31,11 +31,13 @@ public class TabletopTokenContainer : AbstractTokenContainer,IBeginDragHandler,I
     // Needed because the MapTokenContainer inherits from TabletopTokenContainer but is not the Tabletop
     public virtual bool IsTabletop { get { return true; } }
 
-    public override void Initialise() {
+    public override void Start() {
         EnforceUniqueStacksInThisContainer = true; // Martin: This ensures that this stackManager kills other copies when a unique is dropped in
 
         choreo = Registry.Get<Choreographer>();
         InitialiseListeners();
+
+        base.Start();
     }
 
     private void InitialiseListeners() {

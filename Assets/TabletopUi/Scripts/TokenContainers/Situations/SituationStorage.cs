@@ -13,8 +13,6 @@ public class SituationStorage : AbstractTokenContainer {
     public override bool AllowDrag { get { return false; } }
     public override bool AllowStackMerge { get { return false; } }
 
-    public override void Initialise() {
-    }
 
     public override string GetSaveLocationInfoForDraggable(AbstractToken draggable) {
         return "slot_storage";

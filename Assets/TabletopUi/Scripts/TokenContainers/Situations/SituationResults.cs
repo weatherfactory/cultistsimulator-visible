@@ -29,9 +29,6 @@ public class SituationResults : AbstractTokenContainer {
     public override bool AllowDrag { get { return true; } }
     public override bool AllowStackMerge { get { return false; } }
 
-    public override void Initialise() {
-        throw new NotImplementedException(); // We have a separate init function here.
-    }
 
     public void Initialise(SituationController sc) {
         controller = sc;

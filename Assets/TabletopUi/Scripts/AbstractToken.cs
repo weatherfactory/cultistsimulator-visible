@@ -134,9 +134,12 @@ namespace Assets.CS.TabletopUI {
         public string SaveLocationInfo {
             set {
                 var locs = value.Split('_');
-                var x = float.Parse(locs[0]);
-                var y = float.Parse(locs[1]);
-                rectTransform.localPosition = new Vector3(x, y);
+                if (float.TryParse(locs[0], out float x) && float.TryParse(locs[1], out float y))
+                {
+                    rectTransform.localPosition = new Vector3(x, y);
+                }
+            //if not, then we specified the location as eg 'slot'
+
             }
             get {
                 return TokenContainer.GetSaveLocationInfoForDraggable(this) + "_" + Guid.NewGuid();

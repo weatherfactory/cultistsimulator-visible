@@ -26,7 +26,6 @@ namespace Assets.CS.TabletopUI {
         AbstractToken GetTokenInSlot();
         SlotMatchForAspects GetSlotMatchForStack(ElementStackToken stack);
         SlotSpecification GoverningSlotSpecification { get; set; }
-        void AcceptStack(ElementStackToken s, Context context);
         string AnimationTag { get; set; }
         IRecipeSlot ParentSlot { get; set; }
         string SaveLocationInfoPath { get; }
@@ -86,13 +85,10 @@ namespace Assets.CS.TabletopUI {
             childSlots = new List<RecipeSlot>();
         }
 
-        void Start() {
+        public override void Start() {
             ShowGlow(false, false);
             Registry.Get<LocalNexus>().TokenInteractionEvent.AddListener(ReactToDraggedToken);
-        }
-
-        public override void Initialise() {
-            throw new NotImplementedException(); // We have a separate init function here.
+            base.Start();
         }
 
         public void Initialise(SlotSpecification slotSpecification) {
@@ -303,7 +299,7 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        public void AcceptStack(ElementStackToken stack, Context context) {
+        public override void AcceptStack(ElementStackToken stack, Context context) {
         base.AcceptStack(stack,context);
         
         onCardDropped(this, stack, context);

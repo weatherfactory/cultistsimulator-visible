@@ -192,8 +192,6 @@ namespace Assets.CS.TabletopUI {
             //register everything used gamewide
             SetupServices(registry, _situationBuilder, _tabletop);
 
-            InitializeTokenContainers();
-
             //we hand off board functions to individual controllers
             InitialiseSubControllers(
                 _mapController,
@@ -294,10 +292,6 @@ namespace Assets.CS.TabletopUI {
             mapBackground.onDropped -= HandleOnMapBackgroundDropped;
         }
 
-        void InitializeTokenContainers() {
-            _tabletop.Initialise();
-            mapTokenContainer.Initialise();
-        }
 
 
 

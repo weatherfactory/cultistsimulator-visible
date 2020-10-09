@@ -23,10 +23,6 @@ public class ExhibitCards : AbstractTokenContainer {
     public override bool AlwaysShowHoverGlow { get { return true; } }
 
 
-    public override void Initialise()
-    {
-
-    }
 
     public override string GetSaveLocationInfoForDraggable(AbstractToken @abstract)
     {

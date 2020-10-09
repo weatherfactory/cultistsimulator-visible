@@ -16,14 +16,11 @@ namespace Assets.CS.TabletopUI {
         public override bool AllowStackMerge { get { return false; } }
         public override bool IsTabletop { get { return false; } }
 
-        public override void Initialise() {
+        public override void Start() {
 
             choreo = Registry.Get<Choreographer>();
 
-            allSlots = GetComponentsInChildren<DoorSlot>();
-
-            for (int i = 0; i < allSlots.Length; i++) 
-                allSlots[i].Initialise();
+            base.Start();
         }
 
         public void SetActiveDoor(PortalEffect effect) {

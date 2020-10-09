@@ -36,9 +36,12 @@ namespace Assets.CS.TabletopUI {
         public override bool AllowDrag { get { return false; } }
         public override bool AllowStackMerge { get { return false; } }
 
-        public void Start()
+        public override void Start()
         {
+            ShowGlow(false, true);
+            slotGlow.Hide(true);
             Registry.Get<LocalNexus>().TokenInteractionEvent.AddListener(ReactToDraggedToken);
+            base.Start();
         }
 
         void ReactToDraggedToken(TokenInteractionEventArgs args)
@@ -61,11 +64,7 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        public override void Initialise() {
-            ShowGlow(false, true);
-            slotGlow.Hide(true);
-
-        }
+        
 
         public string GetDeckName(int cardPosition)
         {
@@ -154,7 +153,7 @@ if(stack!=null)
 }
         }
 
-        public void AcceptStack(ElementStackToken stack, Context context) {
+        public override void AcceptStack(ElementStackToken stack, Context context) {
             base.AcceptStack(stack,context);
 
             if (onCardDropped != null)

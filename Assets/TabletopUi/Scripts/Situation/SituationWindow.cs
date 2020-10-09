@@ -81,8 +81,6 @@ namespace Assets.CS.TabletopUI {
 
                 startButton.onClick.AddListener(HandleStartButton);
 
-
-
             dumpResultsButton.onClick.AddListener(DumpAllResultingCardsToDesktop);
 
             buttonDefault = "VERB_START";
@@ -121,7 +119,6 @@ namespace Assets.CS.TabletopUI {
             startingSlots.Initialise(Verb, sc);
             ongoing.Initialise(Verb,sc);
             results.Initialise(sc);
-            storage.Initialise();
 		}
 
         public void Retire()

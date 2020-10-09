@@ -23,10 +23,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public bool PersistBetweenScenes { get; protected set; }
         public bool EnforceUniqueStacksInThisContainer { get; set; }
 
+        private TokenContainersCatalogue _catalogue;
         private List<ElementStackToken> _stacks=new List<ElementStackToken>();
-        
-        // This is where the ElementStacksManager is created!
-        public abstract void Initialise();
+
+        public virtual void Start()
+        {
+            _catalogue = Registry.Get<TokenContainersCatalogue>();
+            _catalogue.RegisterTokenContainer(this);
+        }
+
+
 
         public ElementStackToken ReprovisionExistingElementStack(ElementStackSpecification stackSpecification, Source stackSource, Context context, string locatorid = null)
         {
@@ -219,7 +225,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         }
 
-        public void AcceptStack(ElementStackToken stack, Context context)
+        public virtual void AcceptStack(ElementStackToken stack, Context context)
         {
             if (stack == null)
                 return;

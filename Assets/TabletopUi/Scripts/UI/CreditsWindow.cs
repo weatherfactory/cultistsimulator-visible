@@ -25,7 +25,6 @@ namespace Assets.TabletopUi.Scripts.UI
             List<Element> creditCards = Registry.Get<ICompendium>().GetEntitiesAsList<Element>()
                 .Where(e => e.Id.StartsWith("credits.")).ToList();
 
-            CardsExhibit.Initialise();
 
             foreach (var cc in creditCards)
             {
