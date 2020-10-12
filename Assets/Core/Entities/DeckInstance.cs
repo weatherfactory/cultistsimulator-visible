@@ -6,6 +6,7 @@ using System.Text;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.TokenContainers;
 using Noon;
 using UnityEngine;
 using Random = System.Random;
@@ -14,27 +15,20 @@ namespace Assets.Core.Entities
 {
     public class DeckInstance : MonoBehaviour, ISaveable
     {
-        private IDeckSpec _deckSpec;
-        private Stack<string> _cards;
-        private List<string> _eliminatedCards;
+        private DeckSpec _deckSpec;
+      [SerializeField]  private CardsPile _drawPile;
+      [SerializeField] private CardsPile _forbiddenCards;
+        
 
-        public string Id
-        {
-            get
-            {
-                if(_deckSpec == null)
-                    return String.Empty;
-                
-                return _deckSpec.Id;
-            }
-        }
+
+      public string Id => _deckSpec?.Id;
 
 
         /// <summary>
         /// Resets with a deckspec, but *does* not yet populate the cards list
         /// </summary>
         /// <param name="spec"></param>
-        public void SetSpec(IDeckSpec spec)
+        public void SetSpec(DeckSpec spec)
         {
 
             if (spec == null)
@@ -43,30 +37,19 @@ namespace Assets.Core.Entities
             name = spec.Id;
 
             _deckSpec = spec;
-            _cards = new Stack<string>();
-            _eliminatedCards = new List<string>();
+            _drawPile.SetSpec(spec);
         }
 
-        /// <summary>
-        /// shuffles *non-eliminated* cards
-        /// </summary>
+
         public void Shuffle()
         {
-            var rnd = new Random();
-            var unshuffledStack = new Stack<string>();
-            foreach (var eId in _deckSpec.Spec)
-            {
-                if(!_eliminatedCards.Contains(eId))
-                 unshuffledStack.Push(eId);
-            }
-
-            _cards = new Stack<string>(unshuffledStack.OrderBy(x => rnd.Next()));
+        _drawPile.Shuffle(_forbiddenCards.GetUniqueStackElementIds());
         }
 
 
         public string Draw()
         {
-            if (!_cards.Any())
+            if (_drawPile.GetTotalStacksCount()==0)
             {
                 //if the deck is exhausted:
                 //--some decks reset, so we can have an infinite supply of whatevers.
@@ -75,21 +58,10 @@ namespace Assets.Core.Entities
             }
             //Conceivably, resetting the deck might still not have given us a card,
             //so let's test again
-            if (_cards.Any())
+            if (_drawPile.GetTotalStacksCount() > 0)
             {
-                var result = _cards.First();
-                //decks can contain subdecks. If this is a subdeck,don't pop the result, just return it - but do shuffle the deck, so
-                //we don't keep getting the same result (unless it's the last one anyway)
-                //btw, this does mean that subdeck reset / default settings take precedence over top deck ones.
-                if (result.Contains(NoonConstants.DECK_PREFIX))
-                {
-                    var rnd = new Random();
-                    _cards = new Stack<string>(_cards.OrderBy(x => rnd.Next()));
-                    return result;
-                }
-                else
-                    return _cards.Pop();
-
+                var cardDrawn = _drawPile.GetStacks().First();
+                return cardDrawn.EntityId;
             }
 
             
@@ -102,7 +74,7 @@ namespace Assets.Core.Entities
 
         public void Add(string elementId)
         {
-            _cards.Push(elementId);
+            _drawPile.ProvisionElementStack(elementId, 1, Source.Existing(), new Context(Context.ActionSource.Unknown));
         }
         /// <summary>
         /// This card is unique and has been drawn elsewhere, or belongs to the same uniqueness group as one that has been drawn elsewhere
@@ -110,31 +82,11 @@ namespace Assets.Core.Entities
         /// <param name="elementId"></param>
         public void EliminateCardWithId(string elementId)
         {
-            var cardsList = new List<string>(_cards);
-            if(cardsList.Contains(elementId))
-            {
-                RemoveCardFromDeckInstance(elementId, cardsList);
-            }
+            _drawPile.RetireWith(x=>x.EntityId==elementId);
 
-            if(_deckSpec.Spec.Contains(elementId))
-                TryAddToEliminatedCardsList(elementId); //if the card isn't in the list, it's either (a) already been drawn or (b) isn't in the deck to begin with. If it's already been drawn, then it itself should be the sole non-eliminated card.
+            if (_deckSpec.Spec.Contains(elementId))
+                _forbiddenCards.ProvisionElementStack(elementId, 1);
 
-        }
-        ///remove this from the undrawn cards. This won't affect default draws.
-        private void RemoveCardFromDeckInstance(string elementId, List<string> cardsList)
-        {
-            NoonUtility.Log("Removing " + elementId + " from " + _deckSpec.Id);
-            cardsList.RemoveAll(c => c == elementId);
-            _cards = new Stack<string>(cardsList);
-        }
-        /// <summary>
-        /// add this to a list of permanently eliminated cards, so it doesn't appear on reshuffles.
-        /// </summary>
-        /// <param name="elementId"></param>
-        public  void TryAddToEliminatedCardsList(string elementId)
-        {
-            if(!_eliminatedCards.Contains(elementId))
-                _eliminatedCards.Add(elementId);
         }
 
         public void EliminateCardsInUniquenessGroup(string elementUniquenessGroup)
@@ -148,9 +100,8 @@ namespace Assets.Core.Entities
 
         public List<string> GetCurrentCardsAsList()
         {
-            var cardsList = new List<string>(_cards);
-            cardsList.Reverse(); //it's a stack, so it goes from the top down
-            return cardsList;
+            return new List<string>(_drawPile.GetStackElementIds());
+            
         }
 
 
@@ -176,7 +127,7 @@ namespace Assets.Core.Entities
             }
 
             var alEliminatedCards=new ArrayList();
-            foreach (var e in _eliminatedCards)
+            foreach (var e in _forbiddenCards.GetUniqueStackElementIds())
             {
                 alEliminatedCards.Add(e);
             }

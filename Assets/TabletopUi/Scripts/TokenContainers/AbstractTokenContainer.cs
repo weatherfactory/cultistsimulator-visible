@@ -8,6 +8,7 @@ using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.Logic;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using UnityEngine;
@@ -25,6 +26,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         private TokenContainersCatalogue _catalogue;
         private List<ElementStackToken> _stacks=new List<ElementStackToken>();
+        protected List<INotifier> _notifiersForContainer=new List<INotifier>();
 
         public virtual void Start()
         {
@@ -32,7 +34,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             _catalogue.RegisterTokenContainer(this);
         }
 
-
+        
 
         public ElementStackToken ReprovisionExistingElementStack(ElementStackSpecification stackSpecification, Source stackSource, Context context, string locatorid = null)
         {
@@ -53,11 +55,25 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             return stack;
         }
-        public virtual ElementStackToken ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context, string locatorid = null) {
+
+        public virtual ElementStackToken ProvisionElementStack(string elementId, int quantity)
+        {
+            return ProvisionElementStack(elementId, quantity, Source.Existing(),
+                new Context(Context.ActionSource.Unknown));
+        }
 
 
-            var stack = Registry.Get<PrefabFactory>().CreateLocally<ElementStackToken>(transform);
-            stack.AddObserver(Registry.Get<INotifier>());
+        public virtual ElementStackToken ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context, string locatorid = null)
+        {
+
+            var limbo = Registry.Get<Limbo>();
+            var stack = Registry.Get<PrefabFactory>().CreateLocally<ElementStackToken>(limbo.transform);
+            stack.SetTokenContainer(limbo,context);
+
+            
+
+    foreach(INotifier notifier in _notifiersForContainer)
+                  stack.AddObserver(notifier);
                 
             if (locatorid != null)
                 stack.SaveLocationInfo = locatorid;
@@ -99,7 +115,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             incumbentMoved = false;
         }
 
-        abstract public string GetSaveLocationForToken(AbstractToken token);
+        public abstract string GetSaveLocationForToken(AbstractToken token);
 
         public virtual void OnDestroy() {
             Registry.Get<TokenContainersCatalogue>().DeregisterTokenContainer(this);
@@ -164,6 +180,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return _stacks.Where(s => !s.Defunct).ToList();
         }
 
+        public List<string> GetUniqueStackElementIds()
+        {
+            return _stacks.Select(s => s.EntityId).Distinct().ToList();
+        }
+
+        public List<string> GetStackElementIds()
+        {
+            return _stacks.Select(s => s.EntityId).ToList();
+        }
+
 
         /// <summary>
         /// All the aspects in all the stacks, summing the aspects
@@ -189,6 +215,29 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return totals;
         }
 
+
+        public int GetTotalStacksCount()
+        {
+            return GetTotalElementsCount(x=>true);
+        }
+
+        public int GetTotalStacksCountWith(Func<ElementStackToken, bool> filter)
+        {
+            
+            return _stacks.Count(filter);
+        }
+
+        public int GetTotalElementsCount()
+        {
+            return GetTotalElementsCount(x => true);
+
+        }
+
+        public int GetTotalElementsCount(Func<ElementStackToken,bool> filter)
+        {
+            return _stacks.Where(filter).Sum(stack => stack.Quantity);
+
+        }
 
         public int PurgeElement(Element element, int maxToPurge)
         {
@@ -221,8 +270,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
 
 
-
-
         }
 
         public virtual void AcceptStack(ElementStackToken stack, Context context)
@@ -231,8 +278,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 return;
 
             if (stack.TokenContainer == null)
-                stack.SetTokenContainer(this, context); //the SetTokenCOntainer and AcceptStack call should really be in the same place all the time. But I don't want to mess too much with the live branch.
+                stack.SetTokenContainer(this, context);
 
+            if (EnforceUniqueStacksInThisContainer)
+            {
+                var dealer = new Dealer(Registry.Get<Character>());
+                if (!String.IsNullOrEmpty(stack.UniquenessGroup))
+                    dealer.RemoveFromAllDecksIfInUniquenessGroup(stack.UniquenessGroup);
+                if (stack.Unique)
+                    dealer.IndicateUniqueCardManifested(stack.EntityId);
+
+
+            }
 
             NoonUtility.Log("Reassignment: " + stack.EntityId + " to " + this.gameObject.name , 0, VerbosityLevel.Trivia);
 
@@ -253,7 +310,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 _stacks.Add(stack);
 
             DisplayHere(stack as ElementStackToken, context);
-Registry.Get<TokenContainersCatalogue>().NotifyStacksChanged();
+        Registry.Get<TokenContainersCatalogue>().NotifyStacksChanged();
         }
 
         public void RemoveDuplicates(ElementStackToken incomingStack)
@@ -313,6 +370,13 @@ Registry.Get<TokenContainersCatalogue>().NotifyStacksChanged();
         {
             var stacksListCopy = new List<ElementStackToken>(_stacks);
             foreach (ElementStackToken s in stacksListCopy)
+                s.Retire(CardVFX.None);
+        }
+
+        public void RetireWith(Func<ElementStackToken,bool> filter)
+        {
+            var stacksToRetire = new List<ElementStackToken>(_stacks).Where(filter);
+            foreach (ElementStackToken s in stacksToRetire)
                 s.Retire(CardVFX.None);
         }
 

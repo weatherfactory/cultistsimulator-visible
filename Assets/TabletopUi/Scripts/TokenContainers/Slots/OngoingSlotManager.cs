@@ -125,7 +125,7 @@ namespace Assets.CS.TabletopUI {
             UnityEngine.Assertions.Assert.IsTrue(deckEffects.Count <= deckEffectViews.Length);
 
             int i = 0;
-            IDeckSpec deckSpec;
+            DeckSpec deckSpec;
 
             // Populate those we need
             foreach (var item in deckEffects) {

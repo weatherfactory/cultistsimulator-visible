@@ -98,6 +98,15 @@ namespace Assets.TabletopUi.Scripts.Services
             //stagehand is used to load scenes
             registryAccess.Register<StageHand>(stageHand);
 
+
+            //we're about to create our first tokencontainer, Limbo: so we need to create the token containers catalogue first.
+            var stackManagersCatalogue = new TokenContainersCatalogue();
+            registryAccess.Register(stackManagersCatalogue);
+
+
+            //limbo is where all newly created elements are placed before they're moved to their starting tokencontainer
+            registryAccess.Register<Limbo>(limbo);
+
             //prefabFactory means we don't have to rely on magic strings prefab names
             registryAccess.Register<PrefabFactory>(prefabFactory);
 
@@ -151,8 +160,7 @@ namespace Assets.TabletopUi.Scripts.Services
             windowSettingsAdapter.Initialise();
             soundManager.Initialise();
 
-            var stackManagersCatalogue = new TokenContainersCatalogue();
-            registryAccess.Register(stackManagersCatalogue);
+
 
 
             //finally, load the first scene and get the ball rolling.

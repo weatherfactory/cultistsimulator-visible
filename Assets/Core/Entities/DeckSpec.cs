@@ -12,28 +12,10 @@ using UnityEngine.SocialPlatforms;
 
 namespace Assets.Core.Entities
 {
-    public interface IDeckSpec
-    {
-        /// <summary>
-        /// resets deckSpec (with up to date version of each stack). Use this when first creating the deckSpec
-        /// </summary>
-
-        string Id { get; }
-        List<string> Spec { get; set; }
-        string DefaultCard { get; set; }
-        bool ResetOnExhaustion { get; set; }
-        string Label { get; set; }
-        string Description { get; set; }
-        Dictionary<string, string> DrawMessages { get; set; }
-        Dictionary<string, string> DefaultDrawMessages { get; set; }
-        void RegisterUniquenessGroups(ICompendium compendium);
-        List<string> CardsInUniquenessGroup(string uniquenessGroupId);
-    }
-
 
 
     [FucineImportable("decks")]
- public class DeckSpec : AbstractEntity<DeckSpec>, IDeckSpec,IEntityWithId
+ public class DeckSpec : AbstractEntity<DeckSpec>
     {
 
         [FucineValue("")]

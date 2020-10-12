@@ -88,6 +88,7 @@ namespace Assets.CS.TabletopUI {
         public override void Start() {
             ShowGlow(false, false);
             Registry.Get<LocalNexus>().TokenInteractionEvent.AddListener(ReactToDraggedToken);
+            _notifiersForContainer.Add(Registry.Get<INotifier>());
             base.Start();
         }
 

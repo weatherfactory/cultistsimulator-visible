@@ -60,7 +60,6 @@ namespace Assets.CS.TabletopUI {
 
         public ITokenContainer TokenContainer;
         protected ITokenContainer OldTokenContainer; // Used to tell OldContainsTokens that this thing was dropped successfully
-        protected Chronicler subscribedChronicler;
 
         public RectTransform RectTransform
         {
@@ -74,7 +73,6 @@ namespace Assets.CS.TabletopUI {
             rectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
             lastGlowColor = glowImage.currentColor;
-            SubscribeChronicler(Registry.Get<Chronicler>());
         }
 
         public abstract void StartArtAnimation();
@@ -147,10 +145,6 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void SubscribeChronicler(Chronicler c)
-        {
-            subscribedChronicler = c;
-        }
 
 		public virtual void SnapToGrid()
 		{

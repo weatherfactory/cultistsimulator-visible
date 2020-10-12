@@ -15,10 +15,10 @@ public class DeckEffectView : MonoBehaviour, IPointerClickHandler, IPointerEnter
     [SerializeField] private Image deckBack;
     [SerializeField] private TextMeshProUGUI deckQuantity;
 
-    private IDeckSpec deckSpec;
+    private DeckSpec deckSpec;
     private int quantity;
 
-    public void PopulateDisplay(IDeckSpec deckSpeck, int quantity) {
+    public void PopulateDisplay(DeckSpec deckSpeck, int quantity) {
         this.deckSpec = deckSpeck;
         this.quantity = quantity;
 

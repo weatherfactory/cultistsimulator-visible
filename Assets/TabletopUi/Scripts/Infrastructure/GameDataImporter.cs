@@ -175,13 +175,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             {
                 var htEachDeck = htDeckInstances.GetHashtable(k);
 
-                IDeckSpec spec = compendium.GetEntityById<DeckSpec>(k.ToString());
+                DeckSpec spec = compendium.GetEntityById<DeckSpec>(k.ToString());
 
                 if (spec == null)
                     NoonUtility.Log("no deckspec found for saved deckinstance " + k.ToString());
                 else
                 {
-                    character.OverwriteDeckInstance(spec, htEachDeck);
+                    character.UpdateDeckInstanceFromSave(spec, htEachDeck);
                 }
             }
 

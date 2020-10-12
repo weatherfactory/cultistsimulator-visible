@@ -95,7 +95,6 @@ namespace Noon
         public const string GRAPHICSLEVEL = "GraphicsLevel";
 
 
-        public const string DECK_PREFIX = "deck:";
         public const string LEVER_PREFIX = "lever_";
         public const string MANSUS_DECKID_PREFIX = "mansus_";
         public const string SupportEmail = "support@weatherfactory.biz";

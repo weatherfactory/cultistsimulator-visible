@@ -45,7 +45,7 @@ namespace Assets.CS.TabletopUI {
 
         SlotSpecification slotSpec;
 
-        IDeckSpec deckSpec;
+        DeckSpec deckSpec;
         int deckQuantity;
 
         public void ShowElementDetails(Element element, ElementStackToken token = null) {
@@ -89,7 +89,7 @@ namespace Assets.CS.TabletopUI {
             Show();
         }
 
-        public void ShowDeckDetails(IDeckSpec deckSpec, int numCards) {
+        public void ShowDeckDetails(DeckSpec deckSpec, int numCards) {
 			/*
             // Check if we'd show the same, if so: do nothing
             if (this.deckSpec == deckSpec && this.deckQuantity == numCards && gameObject.activeSelf)
@@ -198,7 +198,7 @@ namespace Assets.CS.TabletopUI {
             aspectsDisplayRequiredAndForbidden.AddAspectSet(1, slotSpec.Forbidden);
         }
 
-        void SetDeck(IDeckSpec deckId, int deckQuantity) {
+        void SetDeck(DeckSpec deckId, int deckQuantity) {
             var sprite = ResourcesManager.GetSpriteForCardBack(deckId.Id);
 
             SetImageNarrow(true);

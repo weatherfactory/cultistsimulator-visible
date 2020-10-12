@@ -18,26 +18,12 @@ namespace Assets.Logic
         {
             _character = character;
         }
-        //if passed an element id, return it;
-        //if passed a deck id, return a (recursive) draw from that deck
-        public string Deal(DeckInstance deck)
-        {
-            var drawnId = deck.Draw();
-            if (drawnId.StartsWith(NoonConstants.DECK_PREFIX))
-            {
-                var deckId = drawnId.Replace(NoonConstants.DECK_PREFIX, "");
-                var subDeck = _character.GetDeckInstanceById(deckId);
-                return Deal(subDeck);
-            }
-            else
-                return drawnId;
-        }
 
-
+        
 
         public DrawWithMessage DealWithMessage(DeckInstance deck)
         {
-            var drawnCard = Deal(deck);
+            var drawnCard = deck.Draw();
             var drawWithMessage = new DrawWithMessage {DrawnCard = drawnCard};
             if (deck.GetDrawMessages().ContainsKey(drawnCard))
                 drawWithMessage.WithMessage = deck.GetDrawMessages()[drawnCard];

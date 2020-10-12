@@ -41,6 +41,7 @@ namespace Assets.CS.TabletopUI {
             ShowGlow(false, true);
             slotGlow.Hide(true);
             Registry.Get<LocalNexus>().TokenInteractionEvent.AddListener(ReactToDraggedToken);
+            _notifiersForContainer.Add(Registry.Get<INotifier>());
             base.Start();
         }
 

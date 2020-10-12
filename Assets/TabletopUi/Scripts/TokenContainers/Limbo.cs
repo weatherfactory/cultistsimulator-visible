@@ -9,10 +9,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         
         public override void Start() {
-            var registry = new Registry();
-            registry.Register(this);
-            PersistBetweenScenes = true;
 
+            PersistBetweenScenes = true;
             base.Start();
         }
         

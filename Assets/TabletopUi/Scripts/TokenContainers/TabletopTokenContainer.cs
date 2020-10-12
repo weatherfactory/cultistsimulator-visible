@@ -36,7 +36,7 @@ public class TabletopTokenContainer : AbstractTokenContainer,IBeginDragHandler,I
 
         choreo = Registry.Get<Choreographer>();
         InitialiseListeners();
-
+        _notifiersForContainer.Add(Registry.Get<INotifier>());
         base.Start();
     }
 

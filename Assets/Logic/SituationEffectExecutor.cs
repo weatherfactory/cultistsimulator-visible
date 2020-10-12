@@ -123,7 +123,7 @@ namespace Assets.Logic
                     {
                         for (int i = 1; i <= deckIds[deckId]; i++)
                         {
-                            var drawnCardId = dealer.Deal(deck);
+                            var drawnCardId = deck.Draw();
 
                             if (!string.IsNullOrEmpty(drawnCardId))
                             {

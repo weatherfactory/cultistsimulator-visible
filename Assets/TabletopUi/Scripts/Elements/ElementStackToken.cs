@@ -17,6 +17,7 @@ using System.Linq;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.Core.Services;
 using Assets.Logic;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
@@ -339,8 +340,6 @@ namespace Assets.CS.TabletopUI {
                 _currentMutations = new Dictionary<string, int>();
             if (_illuminateLibrarian == null)
                 _illuminateLibrarian = new IlluminateLibrarian();
-            if (TokenContainer == null)
-                TokenContainer = Registry.Get<Limbo>();//a stack must always have a container
             
             //add any observers that we can find in the context
             var debugTools = Registry.Get<DebugTools>(false);
@@ -370,12 +369,6 @@ namespace Assets.CS.TabletopUI {
 
             InitialiseIfStackIsNew();
 
-            Character character = Registry.Get<Character>();
-            var dealer = new Dealer(character);
-            if (_element.Unique)
-                dealer.IndicateUniqueCardManifested(_element.Id);
-            if (!String.IsNullOrEmpty(_element.UniquenessGroup))
-                dealer.RemoveFromAllDecksIfInUniquenessGroup(_element.UniquenessGroup);
 
             try
             {
@@ -605,7 +598,7 @@ namespace Assets.CS.TabletopUI {
 
         protected override void NotifyChroniclerPlacedOnTabletop()
         {
-            subscribedChronicler?.TokenPlacedOnTabletop(this);
+            Registry.Get<Chronicler>()?.TokenPlacedOnTabletop(this);
         }
 
         public override bool Retire()

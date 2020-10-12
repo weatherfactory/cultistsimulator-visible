@@ -120,7 +120,7 @@ namespace Assets.CS.TabletopUI {
             aspectDetails.Hide();
         }
 
-        public void ShowDeckDetails(IDeckSpec deckSpec, int quantity) {
+        public void ShowDeckDetails(DeckSpec deckSpec, int quantity) {
             tokenDetails.ShowDeckDetails(deckSpec, quantity);
             aspectDetails.Hide();
         }

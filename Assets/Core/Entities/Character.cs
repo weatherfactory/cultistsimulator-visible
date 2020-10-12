@@ -112,7 +112,7 @@ public class Character:MonoBehaviour
         {
             DeckInstance di=Instantiate(DeckPrefab, CurrentDecks);
             di.SetSpec(ds);
-            di.Shuffle();
+           di.Shuffle();
 
         }
     }
@@ -217,21 +217,18 @@ else
         }
     }
 
-    public void OverwriteDeckInstance(IDeckSpec ds,Hashtable htEachDeck)
+    public void UpdateDeckInstanceFromSave(DeckSpec ds,Hashtable htEachDeck)
     {
 
-        DeckInstance deckToOverwrite;
+        DeckInstance deckToUpdate;
             
-        deckToOverwrite= GetDeckInstanceById(ds.Id);
-        if (deckToOverwrite == null)
+        deckToUpdate= GetDeckInstanceById(ds.Id);
+        if (deckToUpdate == null)
         {
-            deckToOverwrite = Instantiate(DeckPrefab, CurrentDecks);
-            deckToOverwrite.SetSpec(ds);
+            deckToUpdate = Instantiate(DeckPrefab, CurrentDecks);
+            deckToUpdate.SetSpec(ds);
         }
 
-
-        DeckInstance replacementDeck = Instantiate(DeckPrefab, CurrentDecks);
-        replacementDeck.SetSpec(ds);
 
         foreach (string key in htEachDeck.Keys)
         {
@@ -239,11 +236,11 @@ else
             {
                 ArrayList alEliminated = htEachDeck.GetArrayList(key);
                 foreach (string eliminatedCard in alEliminated)
-                    deckToOverwrite.TryAddToEliminatedCardsList(eliminatedCard);
+                    deckToUpdate.EliminateCardWithId(eliminatedCard);
             }
             else
             {
-                deckToOverwrite.Add(htEachDeck[key].ToString());
+                deckToUpdate.Add(htEachDeck[key].ToString());
             }
         }
 
