@@ -37,6 +37,7 @@ public interface ICompendium
     void SupplyElementIdsForValidation(object validateThis);
 
 
+    List<T> GetEntitiesAsAlphabetisedList<T>() where T : class, IEntityWithId;
 }
 
 public class Compendium : ICompendium
@@ -149,6 +150,15 @@ public class Compendium : ICompendium
 
         return entityStore.GetAllAsList<T>();
     }
+
+
+    public List<T> GetEntitiesAsAlphabetisedList<T>() where T : class, IEntityWithId
+    {
+        EntityStore entityStore = entityStores[typeof(T)];
+
+        return entityStore.GetAllAsAlphabetisedList<T>();
+    }
+
 
 
 

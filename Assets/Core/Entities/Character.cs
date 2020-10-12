@@ -104,16 +104,15 @@ public class Character:MonoBehaviour
     {
 
         foreach (Transform deck in CurrentDecks)
-            Destroy(deck);
+            Destroy(deck.gameObject);
 
         
         var compendium = Registry.Get<ICompendium>();
-        foreach (var ds in compendium.GetEntitiesAsList<DeckSpec>())
+        foreach (var ds in compendium.GetEntitiesAsAlphabetisedList<DeckSpec>())
         {
             DeckInstance di=Instantiate(DeckPrefab, CurrentDecks);
-            di.PopulateWithDeckSpec(ds);
-            
-            di.Reset();
+            di.SetSpec(ds);
+            di.Shuffle();
 
         }
     }
@@ -221,27 +220,32 @@ else
     public void OverwriteDeckInstance(IDeckSpec ds,Hashtable htEachDeck)
     {
 
-        DeckInstance deckToOverwrite = GetDeckInstanceById(ds.Id);
-        if(deckToOverwrite!=null)
-            Destroy(deckToOverwrite.gameObject);
-
-        DeckInstance replacementDeck = Instantiate(DeckPrefab, CurrentDecks);
-        replacementDeck.PopulateWithDeckSpec(ds);
-
-
-        if (htEachDeck.ContainsKey(SaveConstants.SAVE_ELIMINATEDCARDS))
+        DeckInstance deckToOverwrite;
+            
+        deckToOverwrite= GetDeckInstanceById(ds.Id);
+        if (deckToOverwrite == null)
         {
-            ArrayList alEliminated = htEachDeck.GetArrayList(SaveConstants.SAVE_ELIMINATEDCARDS);
-            htEachDeck.Remove(SaveConstants.SAVE_ELIMINATEDCARDS);
-
-            foreach (var e in alEliminated)
-                replacementDeck.TryAddToEliminatedCardsList(e.ToString());
+            deckToOverwrite = Instantiate(DeckPrefab, CurrentDecks);
+            deckToOverwrite.SetSpec(ds);
         }
 
 
-        //Now we assume that the remaining keys are contiguous integers starting at 1
-        for (int i = 1; i <= htEachDeck.Count; i++)
-            replacementDeck.Add(htEachDeck[i.ToString()].ToString());
+        DeckInstance replacementDeck = Instantiate(DeckPrefab, CurrentDecks);
+        replacementDeck.SetSpec(ds);
+
+        foreach (string key in htEachDeck.Keys)
+        {
+            if (key==SaveConstants.SAVE_ELIMINATEDCARDS)
+            {
+                ArrayList alEliminated = htEachDeck.GetArrayList(key);
+                foreach (string eliminatedCard in alEliminated)
+                    deckToOverwrite.TryAddToEliminatedCardsList(eliminatedCard);
+            }
+            else
+            {
+                deckToOverwrite.Add(htEachDeck[key].ToString());
+            }
+        }
 
 
     }

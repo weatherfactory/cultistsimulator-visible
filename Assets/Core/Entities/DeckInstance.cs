@@ -20,10 +20,21 @@ namespace Assets.Core.Entities
 
         public string Id
         {
-            get { return _deckSpec.Id; }
+            get
+            {
+                if(_deckSpec == null)
+                    return String.Empty;
+                
+                return _deckSpec.Id;
+            }
         }
 
-        public void PopulateWithDeckSpec(IDeckSpec spec)
+
+        /// <summary>
+        /// Resets with a deckspec, but *does* not yet populate the cards list
+        /// </summary>
+        /// <param name="spec"></param>
+        public void SetSpec(IDeckSpec spec)
         {
 
             if (spec == null)
@@ -36,8 +47,10 @@ namespace Assets.Core.Entities
             _eliminatedCards = new List<string>();
         }
 
-
-        public void Reset()
+        /// <summary>
+        /// shuffles *non-eliminated* cards
+        /// </summary>
+        public void Shuffle()
         {
             var rnd = new Random();
             var unshuffledStack = new Stack<string>();
@@ -58,7 +71,7 @@ namespace Assets.Core.Entities
                 //if the deck is exhausted:
                 //--some decks reset, so we can have an infinite supply of whatevers.
                 if (_deckSpec.ResetOnExhaustion)
-                    Reset();
+                    Shuffle();
             }
             //Conceivably, resetting the deck might still not have given us a card,
             //so let's test again

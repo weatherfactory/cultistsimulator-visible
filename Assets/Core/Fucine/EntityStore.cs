@@ -63,6 +63,14 @@ public class EntityStore
         return new List<T>(_entities.Values.Cast<T>().ToList());
     }
 
+    public List<T> GetAllAsAlphabetisedList<T>() where T : class, IEntityWithId
+    {
+        //if we order here, we don't have to cast to list twice
+
+        return new List<T>(_entities.Values.Cast<T>().OrderBy(e=>e.Id).ToList());
+    }
+
+
     public Dictionary<string, IEntityWithId> GetAll()
     {
         return new Dictionary<string, IEntityWithId>(_entities);
