@@ -211,7 +211,7 @@ namespace Assets.CS.TabletopUI {
 				_quantity = 1;
 			}
 			_aspectsDirtyInc = true;
-            if(TokenContainer.ContentsVisible)
+            if(!TokenContainer.ContentsHidden)
 			    DisplayInfo();
 
             TokenContainer.NotifyStacksChanged();
@@ -383,7 +383,7 @@ namespace Assets.CS.TabletopUI {
                 if (_element == null)
                     NoonUtility.Log("Tried to populate token with unrecognised elementId:" + elementId);
 
-                if(TokenContainer.ContentsVisible) 
+                if(!TokenContainer.ContentsHidden) 
                     DisplayInfo();
                 
                 DisplayIcon();
@@ -590,7 +590,7 @@ namespace Assets.CS.TabletopUI {
             if (OldTokenContainer != null && OldTokenContainer != newTokenContainer)
             {
                 OldTokenContainer.SignalStackRemoved(this, context);
-                if(!OldTokenContainer.ContentsVisible && newTokenContainer.ContentsVisible)
+                if(OldTokenContainer.ContentsHidden && !newTokenContainer.ContentsHidden)
                     DisplayInfo();
             }
 

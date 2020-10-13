@@ -181,7 +181,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     NoonUtility.Log("no deckspec found for saved deckinstance " + k.ToString());
                 else
                 {
-                    character.UpdateDeckInstanceFromSave(spec, htEachDeck);
+                //    character.UpdateDeckInstanceFromSave(spec, htEachDeck);
                 }
             }
 

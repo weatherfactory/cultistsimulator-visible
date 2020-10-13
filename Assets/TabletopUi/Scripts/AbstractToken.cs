@@ -7,6 +7,7 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
 using Assets.TabletopUi.Scripts.Interfaces;
+using Assets.TabletopUi.Scripts.TokenContainers;
 using Noon;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -97,7 +98,8 @@ namespace Assets.CS.TabletopUI {
 
         public void Start()
         {
-            Registry.Get<LocalNexus>().TokenInteractionEvent.AddListener(ReactToDraggedToken);
+            if(TokenContainer.GetType()!=typeof(CardsPile))
+               Registry.Get<LocalNexus>().TokenInteractionEvent.AddListener(ReactToDraggedToken);
 
         }
 

@@ -16,7 +16,7 @@ namespace Assets.CS.TabletopUI.Interfaces
         bool AlwaysShowHoverGlow { get;}
         bool PersistBetweenScenes { get; }
         bool EnforceUniqueStacksInThisContainer { get; set; }
-        bool ContentsVisible { get; }
+        bool ContentsHidden { get; }
 
         ElementStackToken ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context, string locatorId = null);
 

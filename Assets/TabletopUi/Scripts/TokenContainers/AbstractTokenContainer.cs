@@ -23,7 +23,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public virtual bool AlwaysShowHoverGlow { get; private set; }
         public bool PersistBetweenScenes { get; protected set; }
         public bool EnforceUniqueStacksInThisContainer { get; set; }
-        public bool ContentsVisible { get; protected set; }
+        public bool ContentsHidden { get; protected set; }
 
 
         private TokenContainersCatalogue _catalogue;
