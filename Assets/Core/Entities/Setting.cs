@@ -40,9 +40,11 @@ namespace Assets.Core.Entities
         public string DataType { get; set; }
 
 
-        
         [FucineDict]
         public Dictionary<string,string> ValueLabels { get; set; }
+
+        private readonly HashSet<ISettingSubscriber> _subscribers = new HashSet<ISettingSubscriber>();
+
 
         private object _currentValue;
         public object CurrentValue
@@ -85,8 +87,6 @@ namespace Assets.Core.Entities
             return readableString.ToUpperInvariant();
         }
 
-
-        private readonly List<ISettingSubscriber> _subscribers=new List<ISettingSubscriber>();
 
 
         
@@ -137,22 +137,14 @@ namespace Assets.Core.Entities
 
 
 
-        public void AddSubscriber(ISettingSubscriber subscriber)
+        public bool AddSubscriber(ISettingSubscriber subscriber)
         {
-            if(_subscribers.Contains(subscriber))
-                NoonUtility.Log($"Trying to add the same subscriber twice to Setting {Id}",(int)VerbosityLevel.Trivia);
-            else
-            {
-                _subscribers.Add(subscriber);
-            }
+               return _subscribers.Add(subscriber);
         }
 
-        public void RemoveSubscriber(ISettingSubscriber subscriber)
+        public bool RemoveSubscriber(ISettingSubscriber subscriber)
         {
-            if (!_subscribers.Contains(subscriber))
-                NoonUtility.Log($"Trying to remove a nonexistent subscriber from Setting {Id}");
-            else
-                _subscribers.Remove(subscriber);
+            return _subscribers.Remove(subscriber);
         }
 
     }

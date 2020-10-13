@@ -8,8 +8,6 @@ using Assets.Core.Interfaces;
 
 namespace Assets.CS.TabletopUI.Interfaces
 {
-    //strategy pattern to make TokenContainers (transformwrappers in Unity implementation) behave differently
-    //This is a firmly Unity-level implementation at the moment, but we could tease out the concrete Token classes into more general interfaces if we needed to
     public interface ITokenContainer {
 
         // Allow tokens to be dragged from here, or merged here
@@ -17,6 +15,8 @@ namespace Assets.CS.TabletopUI.Interfaces
         bool AllowStackMerge { get; }
         bool AlwaysShowHoverGlow { get;}
         bool PersistBetweenScenes { get; }
+        bool EnforceUniqueStacksInThisContainer { get; set; }
+        bool ContentsVisible { get; }
 
         ElementStackToken ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context, string locatorId = null);
 

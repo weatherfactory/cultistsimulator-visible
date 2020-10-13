@@ -210,7 +210,8 @@ namespace Assets.CS.TabletopUI {
 				_quantity = 1;
 			}
 			_aspectsDirtyInc = true;
-			DisplayInfo();
+            if(TokenContainer.ContentsVisible)
+			    DisplayInfo();
 
             TokenContainer.NotifyStacksChanged();
         }
@@ -379,11 +380,12 @@ namespace Assets.CS.TabletopUI {
                 if (_element == null)
                     NoonUtility.Log("Tried to populate token with unrecognised elementId:" + elementId);
 
-                DisplayInfo();
+                if(TokenContainer.ContentsVisible) 
+                    DisplayInfo();
+                
                 DisplayIcon();
                 frames = ResourcesManager.GetAnimFramesForElement(elementId);
                 ShowGlow(false, false);
-                ShowCardDecayTimer(false);
                 SetCardDecay(0f);
                 LifetimeRemaining = _element.Lifetime;
                 PlacementAlreadyChronicled = false; //element has changed, so we want to relog placement
@@ -588,12 +590,19 @@ namespace Assets.CS.TabletopUI {
             OldTokenContainer = TokenContainer;
 
             if (OldTokenContainer != null && OldTokenContainer != newTokenContainer)
+            {
                 OldTokenContainer.SignalStackRemoved(this, context);
+                if(!OldTokenContainer.ContentsVisible && newTokenContainer.ContentsVisible)
+                    DisplayInfo();
+            }
 
             TokenContainer = newTokenContainer;
 
             if (newTokenContainer != null)
                 newTokenContainer.SignalStackAdded(this, context);
+
+      
+
         }
 
         protected override void NotifyChroniclerPlacedOnTabletop()

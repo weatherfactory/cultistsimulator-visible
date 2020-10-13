@@ -16,6 +16,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
       public override void Start()
       {
           EnforceUniqueStacksInThisContainer = false;
+          ContentsVisible = false;
         base.Start();
       }
 

@@ -14,16 +14,16 @@ namespace Assets.Core.Entities {
 
     public class TokenContainersCatalogue {
 
-        private readonly List<ITokenContainer> _currentTokenContainers;
-        private readonly List<IStacksChangeSubscriber> _subscribers;
+        private readonly HashSet<ITokenContainer> _currentTokenContainers;
+        private readonly HashSet<IStacksChangeSubscriber> _subscribers;
 
         public TokenContainersCatalogue() {
-            _currentTokenContainers = new List<ITokenContainer>();
-            _subscribers = new List<IStacksChangeSubscriber>();
+            _currentTokenContainers = new HashSet<ITokenContainer>();
+            _subscribers = new HashSet<IStacksChangeSubscriber>();
         }
 
-        public List<ITokenContainer> GetRegisteredTokenContainers() {
-            return _currentTokenContainers.ToList();
+        public HashSet<ITokenContainer> GetRegisteredTokenContainers() {
+            return _currentTokenContainers;
         }
 
         public void RegisterTokenContainer(ITokenContainer tokenContainer) {
@@ -38,13 +38,7 @@ namespace Assets.Core.Entities {
         public void Reset()
         {
         _subscribers.Clear();
-                foreach (var tc in GetRegisteredTokenContainers())
-                {
-                    if (!tc.PersistBetweenScenes)
-                        _currentTokenContainers.Remove(tc);
-                }
-
-            
+        _currentTokenContainers.RemoveWhere(tc => !tc.PersistBetweenScenes);
         }
 
 

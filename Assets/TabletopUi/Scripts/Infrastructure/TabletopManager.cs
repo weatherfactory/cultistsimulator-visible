@@ -538,12 +538,7 @@ namespace Assets.CS.TabletopUI {
             var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());
             try
             {
-	            //var htSave = saveGameManager.RetrieveHashedSaveFromFile(index);
-	        //    ClearGameState(_heart, character, _tabletop);
-            
-            saveGameManager.LoadCharacterState(gameStateSource, Registry.Get<Character>());
-           
-
+        
 
             saveGameManager.LoadTabletopState(_tabletop,gameStateSource);
                 //saveGameManager.ImportHashedSaveToState(_tabletop, null, htSave);

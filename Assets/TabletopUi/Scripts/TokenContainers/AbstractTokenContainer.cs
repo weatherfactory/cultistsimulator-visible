@@ -23,6 +23,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public virtual bool AlwaysShowHoverGlow { get; private set; }
         public bool PersistBetweenScenes { get; protected set; }
         public bool EnforceUniqueStacksInThisContainer { get; set; }
+        public bool ContentsVisible { get; protected set; }
+
 
         private TokenContainersCatalogue _catalogue;
         private List<ElementStackToken> _stacks=new List<ElementStackToken>();
@@ -290,9 +292,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
 
             }
-
-            NoonUtility.Log("Reassignment: " + stack.EntityId + " to " + this.gameObject.name , 0, VerbosityLevel.Trivia);
-
+            
             // Check if we're dropping a unique stack? Then kill all other copies of it on the tabletop
             if (EnforceUniqueStacksInThisContainer)
                 RemoveDuplicates(stack);
