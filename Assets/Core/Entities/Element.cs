@@ -117,6 +117,11 @@ namespace Assets.Core.Entities
             }
         }
 
+        public bool Decays
+        {
+            get { return Lifetime > 0; }
+        }
+
 
         public Element(EntityData importDataForEntity, ContentImportLog log):base(importDataForEntity, log)
         {

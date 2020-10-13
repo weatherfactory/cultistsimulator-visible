@@ -5,6 +5,8 @@ using System.Text;
 using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.TabletopUi.Scripts.Elements;
+using Assets.TabletopUi.Scripts.Elements.Manifestations;
 
 namespace Assets.CS.TabletopUI.Interfaces
 {
@@ -76,5 +78,7 @@ namespace Assets.CS.TabletopUI.Interfaces
         /// <param name="requirement"></param>
         /// <returns></returns>
         List<ElementStackToken> GetStacksWithAspect(KeyValuePair<string, int> requirement);
+
+        IElementManifestation CreateManifestation(ElementStackToken elementStackToken);
     }
 }

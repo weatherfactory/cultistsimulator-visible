@@ -9,6 +9,8 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
+using Assets.TabletopUi.Scripts.Elements;
+using Assets.TabletopUi.Scripts.Elements.Manifestations;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using UnityEngine;
@@ -69,10 +71,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         {
 
             var limbo = Registry.Get<Limbo>();
+            
             var stack = Registry.Get<PrefabFactory>().CreateLocally<ElementStackToken>(transform);
             stack.SetTokenContainer(limbo,context);
-
-            
 
          foreach(INotifier notifier in _notifiersForContainer)
                   stack.AddObserver(notifier);
@@ -405,6 +406,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return matchingStacks;
         }
 
+        public IElementManifestation CreateManifestation(ElementStackToken elementStackToken)
+        {
+         return  Registry.Get<PrefabFactory>().CreateLocally<CardManifestation>(elementStackToken.transform);
+        }
     }
 }
 
