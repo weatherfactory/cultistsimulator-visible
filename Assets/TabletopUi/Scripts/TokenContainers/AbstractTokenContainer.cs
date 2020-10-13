@@ -69,12 +69,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         {
 
             var limbo = Registry.Get<Limbo>();
-            var stack = Registry.Get<PrefabFactory>().Create<ElementStackToken>();
+            var stack = Registry.Get<PrefabFactory>().CreateLocally<ElementStackToken>(transform);
             stack.SetTokenContainer(limbo,context);
 
             
 
-    foreach(INotifier notifier in _notifiersForContainer)
+         foreach(INotifier notifier in _notifiersForContainer)
                   stack.AddObserver(notifier);
                 
             if (locatorid != null)
