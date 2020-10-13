@@ -219,6 +219,7 @@ else
 
     public void UpdateDeckInstanceFromSave(DeckSpec ds,Hashtable htEachDeck)
     {
+      
 
         DeckInstance deckToUpdate;
             
@@ -229,7 +230,7 @@ else
             deckToUpdate.SetSpec(ds);
         }
 
-
+  
         foreach (string key in htEachDeck.Keys)
         {
             if (key==SaveConstants.SAVE_ELIMINATEDCARDS)
