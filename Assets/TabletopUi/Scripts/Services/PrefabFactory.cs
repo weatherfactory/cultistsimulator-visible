@@ -43,6 +43,24 @@ namespace Assets.TabletopUi.Scripts.Services
         }
 
 
+        public T Create<T>() where T : Component
+        {
+            var o = GetPrefab<T>();
+            try
+            {
+                var c = Object.Instantiate(o) as T;
+                c.transform.localScale = Vector3.one;
+
+                return c;
+            }
+            catch (Exception e)
+            {
+                NoonUtility.Log("Couldn't instantiate prefab " + typeof(T) + "\n" + e);
+                return null;
+            }
+
+        }
+
         public T CreateLocally<T>(Transform parent) where T : Component
         {
             var o = GetPrefab<T>();

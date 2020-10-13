@@ -56,6 +56,7 @@ namespace Assets.CS.TabletopUI {
         [Header("DumpButton")] [SerializeField]
         SituationTokenDumpButton dumpButton;
 
+        [SerializeField] public GraphicFader glowImage;
 
         private string _entityid;
         private Coroutine animCoroutine;
@@ -169,6 +170,16 @@ namespace Assets.CS.TabletopUI {
             if (args.TokenInteractionType == TokenInteractionType.EndDrag)
                 ShowGlow(false,false);
 
+        }
+
+
+        public override void ShowGlow(bool glowState, bool instant = false)
+        {
+
+            if (glowState)
+                glowImage.Show(instant);
+            else
+                glowImage.Hide(instant);
         }
 
 
@@ -446,6 +457,51 @@ namespace Assets.CS.TabletopUI {
                 return false; // can not animate if deactivated
 
             return frames.Any();
+        }
+
+        public bool IsGlowing()
+        {
+            if (glowImage == null)
+                return false;
+            return glowImage.gameObject.activeSelf;
+        }
+
+        public override void SetGlowColor(Color color) {
+            glowImage.SetColor(color);
+        }
+
+        public override void SetGlowColor(UIStyle.TokenGlowColor colorType) {
+            SetGlowColor(UIStyle.GetGlowColor(colorType));
+        }
+
+        public override void ShowHoverGlow(bool show, bool playSFX = true, Color? hoverColor = null) {
+            if (show) {
+                if (_currentlyBeingDragged) {
+                    // If we're trying to glow the dragged token, then let's just allow us to show it if we want.
+                }
+                //// We're dragging something and our last state was not "this is a legal drop target" glow, then don't show
+                /// <<totally confused by this, though it sounds necessary. I'll come back to it. - AK
+                //else if (HornedAxe.itemBeingDragged != null && !lastGlowState) {
+                //    show = false;
+                //}
+                // If we can not interact, don't show the hover highlight
+                else if (!ShouldShowHoverGlow()) {
+                    show = false;
+                }
+            }
+
+            if (show) {
+                if (playSFX)
+                    SoundManager.PlaySfx("TokenHover");
+
+                glowImage.SetColor(hoverColor == null ? UIStyle.GetGlowColor(UIStyle.TokenGlowColor.OnHover) : hoverColor.Value);
+                glowImage.Show();
+            }
+            else {
+                //if (playSFX)
+                //    SoundManager.PlaySfx("TokenHoverOff");
+                glowImage.Hide();
+            }
         }
     }
 }

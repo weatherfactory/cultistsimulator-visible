@@ -46,7 +46,7 @@ namespace Assets.CS.TabletopUI {
         public RectTransform rectTransform;
         [SerializeField] protected bool useDragOffset = true;
         [SerializeField] protected bool rotateOnDrag = true;
-        [SerializeField] protected GraphicFader glowImage;
+        
         [HideInInspector] public Vector2? lastTablePos = null; // if it was pulled from the table, save that position
 
         protected Transform startParent;
@@ -67,13 +67,11 @@ namespace Assets.CS.TabletopUI {
             get { return rectTransform; }
         }
 
-        bool lastGlowState;
-        Color lastGlowColor;
+  
 
         protected virtual void Awake() {
             rectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
-            lastGlowColor = glowImage.currentColor;
         }
 
         public abstract void StartArtAnimation();
@@ -111,13 +109,6 @@ namespace Assets.CS.TabletopUI {
         protected virtual bool ShouldShowHoverGlow() {
             return !Defunct && TokenContainer != null && !IsBeingAnimated && (TokenContainer.AllowDrag || TokenContainer.AlwaysShowHoverGlow) && AllowsDrag();
         }
-
-		public bool IsGlowing()
-		{
-		    if (glowImage == null)
-		        return false;
-			return glowImage.gameObject.activeSelf;
-		}
 
         public void SetReturn(bool value, string reason = "")
         {
@@ -375,6 +366,8 @@ namespace Assets.CS.TabletopUI {
             return true;
         }
 
+        public abstract void ShowHoverGlow(bool show, bool playSFX = true, Color? hoverColor = null);
+
 
         public virtual void OnPointerEnter(PointerEventData eventData) {
             ShowHoverGlow(true);
@@ -387,27 +380,14 @@ namespace Assets.CS.TabletopUI {
             ShowHoverGlow(false);
         }
 
-        public virtual void SetGlowColor(UIStyle.TokenGlowColor colorType) {
-            SetGlowColor(UIStyle.GetGlowColor(colorType));
-        }
-
-        public virtual void SetGlowColor(Color color) {
-            glowImage.SetColor(color);
-            lastGlowColor = color;
-        }
-
         public abstract void ReactToDraggedToken(TokenInteractionEventArgs args);
-        
 
 
-        public virtual void ShowGlow(bool glowState, bool instant = false) {
-            lastGlowState = glowState;
+        public abstract void SetGlowColor(UIStyle.TokenGlowColor colorType);
 
-            if (glowState)
-                glowImage.Show(instant);
-            else
-                glowImage.Hide(instant);
-        }
+        public abstract void SetGlowColor(Color color);
+
+        public abstract void ShowGlow(bool glowState, bool instant = false);
 
         // Used when a dragged object is hovering something
         public virtual void ShowHoveringGlow(bool show) {
@@ -418,42 +398,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         // Separate method from ShowGlow so we can restore the last state when unhovering
-        protected virtual void ShowHoverGlow(bool show, bool playSFX = true, Color? hoverColor = null) {
-            if (show) {
-                if (_currentlyBeingDragged) {
-                    // If we're trying to glow the dragged token, then let's just allow us to show it if we want.
-                }
-                //// We're dragging something and our last state was not "this is a legal drop target" glow, then don't show
-                /// <<totally confused by this, though it sounds necessary. I'll come back to it. - AK
-                //else if (HornedAxe.itemBeingDragged != null && !lastGlowState) {
-                //    show = false;
-                //}
-                // If we can not interact, don't show the hover highlight
-                else if (!ShouldShowHoverGlow()) {
-                    show = false;
-                }
-            }
 
-            if (show) {
-                if (playSFX)
-                    SoundManager.PlaySfx("TokenHover");
-
-                glowImage.SetColor(hoverColor == null ? UIStyle.GetGlowColor(UIStyle.TokenGlowColor.OnHover) : hoverColor.Value);
-                glowImage.Show();
-            }
-            else {
-                //if (playSFX)
-                //    SoundManager.PlaySfx("TokenHoverOff");
-
-                glowImage.SetColor(lastGlowColor);
-
-                if (lastGlowState) 
-                    glowImage.Show();
-                else  
-                    glowImage.Hide();
-            }
-        }
-        
         public IEnumerator PulseGlow()
         {
             ShowHoverGlow(true, false, Color.white);

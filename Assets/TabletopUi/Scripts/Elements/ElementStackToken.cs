@@ -37,20 +37,7 @@ namespace Assets.CS.TabletopUI {
         public event System.Action<ElementStackToken> onTurnFaceUp; // only used in the map to hide the other cards
         public event System.Action<float> onDecay;
 
-        [SerializeField] Image artwork;
-        [SerializeField] Image backArtwork;
-        [SerializeField] Image textBackground;
-        [SerializeField] TextMeshProUGUI text;
-        [SerializeField] ElementStackBadge stackBadge;
-        [SerializeField] TextMeshProUGUI stackCountText;
-        [SerializeField] GameObject decayView;
-        [SerializeField] TextMeshProUGUI decayCountText;
-        [SerializeField] Sprite spriteDecaysTextBG;
-        [SerializeField] Sprite spriteUniqueTextBG;
-        [SerializeField] GameObject shadow;
-
-        [SerializeField] CardVFX defaultRetireFX = CardVFX.CardBurn;
-
+ 
         private CardManifestation _cardManifestation;
         private Element _element;
         private int _quantity;
@@ -182,7 +169,7 @@ namespace Assets.CS.TabletopUI {
         protected void OnDisable()
 		{
             // this resets any animation frames so we don't get stuck when deactivating mid-anim
-            artwork.overrideSprite = null;
+           _cardManifestation.artwork.overrideSprite = null;
 
             // we're turning? Just set us to the garget
             if (turnCoroutine != null) {
@@ -223,11 +210,11 @@ namespace Assets.CS.TabletopUI {
 
         void SetCardBG(bool unique, bool decays) {
             if (unique)
-                textBackground.overrideSprite = spriteUniqueTextBG;
+                _cardManifestation.textBackground.overrideSprite =_cardManifestation.spriteUniqueTextBG;
             else if (decays)
-                textBackground.overrideSprite = spriteDecaysTextBG;
+                _cardManifestation.textBackground.overrideSprite = _cardManifestation.spriteDecaysTextBG;
             else
-                textBackground.overrideSprite = null;
+                _cardManifestation.textBackground.overrideSprite = null;
         }
 
         virtual public Dictionary<string, int> GetCurrentMutations()
@@ -348,9 +335,7 @@ namespace Assets.CS.TabletopUI {
             if (debugTools != null)
                 AddObserver(debugTools);
 
-           // _cardManifestation = Registry.Get<PrefabFactory>().CreateLocally<CardManifestation>(this.transform);
-
-
+            _cardManifestation = Registry.Get<PrefabFactory>().CreateLocally<CardManifestation>(this.transform);
         }
 
 
@@ -393,7 +378,7 @@ namespace Assets.CS.TabletopUI {
                 LifetimeRemaining = _element.Lifetime;
                 PlacementAlreadyChronicled = false; //element has changed, so we want to relog placement
                 MarkedForConsumption = false; //If a stack has just been transformed into another element, all sins are forgiven. It won't be consumed.
-				decayBackgroundImage = decayView.GetComponent<Image>();
+				decayBackgroundImage = _cardManifestation.decayView.GetComponent<Image>();
 				cachedDecayBackgroundColor = decayBackgroundImage.color;
 				_aspectsDirtyExc = true;
 				_aspectsDirtyInc = true;
@@ -419,20 +404,20 @@ namespace Assets.CS.TabletopUI {
 
 
         private void DisplayInfo() {
-            text.text = _element.Label;
-            stackBadge.gameObject.SetActive(Quantity > 1);
-            stackCountText.text = Quantity.ToString();
+            _cardManifestation.text.text = _element.Label;
+            _cardManifestation.stackBadge.gameObject.SetActive(Quantity > 1);
+            _cardManifestation.stackCountText.text = Quantity.ToString();
 
         }
 
         private void DisplayIcon() {
             Sprite sprite = ResourcesManager.GetSpriteForElement(_element.Icon);
-            artwork.sprite = sprite;
+            _cardManifestation.artwork.sprite = sprite;
 
             if (sprite == null)
-                artwork.color = Color.clear;
+                _cardManifestation.artwork.color = Color.clear;
             else
-                artwork.color = Color.white;
+                _cardManifestation.artwork.color = Color.white;
         }
 
 
@@ -557,9 +542,9 @@ namespace Assets.CS.TabletopUI {
 			Transform newglow = zoneobj.transform.Find( "Glow" );
 			Transform newshadow = zoneobj.transform.Find( "Shadow" );
 
-			glowImage = newglow.gameObject.GetComponent<GraphicFader>() as GraphicFader;
+			_cardManifestation.glowImage = newglow.gameObject.GetComponent<GraphicFader>() as GraphicFader;
 			newglow.gameObject.SetActive( false );
-			shadow = newshadow.gameObject;
+            _cardManifestation.shadow = newshadow.gameObject;
 
 			// Modify original card settings
 			useDragOffset = true;	// It's huge and we can only grab it at the corner
@@ -610,7 +595,7 @@ namespace Assets.CS.TabletopUI {
 
         public override bool Retire()
 		{
-            return Retire(defaultRetireFX);
+            return Retire(_cardManifestation.defaultRetireFX);
    
         }
 
@@ -868,6 +853,15 @@ namespace Assets.CS.TabletopUI {
             
         }
 
+        public override void ShowGlow(bool glowState, bool instant = false)
+        {
+
+            if (glowState)
+                _cardManifestation.glowImage.Show(instant);
+            else
+                _cardManifestation.glowImage.Hide(instant);
+        }
+
         public override void OnPointerClick(PointerEventData eventData)
         {
     
@@ -1030,8 +1024,8 @@ namespace Assets.CS.TabletopUI {
 
             // A bit hacky, but it works: DID NOT start dragging from badge? Split cards
 			// Now also allowing both shift keys to drag entire stack - CP
-            if (stackBadge != null &&
-				stackBadge.IsHovering() == false &&
+            if (_cardManifestation.stackBadge != null &&
+                _cardManifestation.stackBadge.IsHovering() == false &&
                 !Keyboard.current.shiftKey.wasPressedThisFrame)
 			{
                 SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.PlayerDrag));
@@ -1075,8 +1069,8 @@ namespace Assets.CS.TabletopUI {
                     ChangeThisCardOnDesktopTo(_element.DecayTo);
             }
 
-            decayCountText.text = GetCardDecayTime();
-			decayCountText.richText = true;
+            _cardManifestation.decayCountText.text = GetCardDecayTime();
+            _cardManifestation.decayCountText.richText = true;
 
 			UpdateDecayVisuals( interval );
 
@@ -1102,17 +1096,17 @@ namespace Assets.CS.TabletopUI {
 				decayAlpha = Mathf.MoveTowards( decayAlpha, 0.0f, cosmetic_dt );
 			if (LifetimeRemaining <= 0.0f)
 				decayAlpha = 0.0f;
-			if (decayView && decayView.gameObject)
+			if (_cardManifestation.decayView && _cardManifestation.decayView.gameObject)
 			{
-				decayView.gameObject.SetActive( decayAlpha > 0.0f );
+                _cardManifestation.decayView.gameObject.SetActive( decayAlpha > 0.0f );
 			}
 
 			// Set the text and background alpha so it fades on and off smoothly
-			if (decayCountText && decayBackgroundImage)
+			if (_cardManifestation.decayCountText && decayBackgroundImage)
 			{
-				Color col = decayCountText.color;
+				Color col = _cardManifestation.decayCountText.color;
 				col.a = decayAlpha;
-				decayCountText.color = col;
+                _cardManifestation.decayCountText.color = col;
 				col = cachedDecayBackgroundColor;	// Caching the color so that we can multiply with the non-1 alpha - CP
 				col.a *= decayAlpha;
 				decayBackgroundImage.color = col;
@@ -1124,8 +1118,8 @@ namespace Assets.CS.TabletopUI {
 		{
 			if (Decays)
 				decayVisible = showTimer;
-			if(decayView!=null)
-			decayView.gameObject.SetActive( showTimer );
+			if(_cardManifestation.decayView !=null)
+                _cardManifestation.decayView.gameObject.SetActive( showTimer );
         }
 
         // Public so TokenWindow can access this
@@ -1141,18 +1135,18 @@ namespace Assets.CS.TabletopUI {
             if(_element.Resaturate)
             {
                 float reversePercentage = 1f - percentage;
-                artwork.color = new Color(1f - reversePercentage, 1f - reversePercentage, 1f - reversePercentage, 1f);
+                _cardManifestation.artwork.color = new Color(1f - reversePercentage, 1f - reversePercentage, 1f - reversePercentage, 1f);
             }
             else
             {
-                artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1f);
+                _cardManifestation.artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1f);
             }
 
         }
 
         public void ShowCardShadow(bool show)
 		{
-            shadow.gameObject.SetActive(show);
+            _cardManifestation.shadow.gameObject.SetActive(show);
         }
         
 
@@ -1261,7 +1255,7 @@ namespace Assets.CS.TabletopUI {
             else
                 sprite = ResourcesManager.GetSpriteForCardBack(backId);
 
-            backArtwork.overrideSprite = sprite;
+            _cardManifestation.backArtwork.overrideSprite = sprite;
         }
 
 
@@ -1324,18 +1318,62 @@ namespace Assets.CS.TabletopUI {
                     lastSpriteIndex = spriteIndex;
                     if (spriteIndex < frames.Count)
                     {
-                        artwork.overrideSprite = frames[spriteIndex];
+                        _cardManifestation.artwork.overrideSprite = frames[spriteIndex];
                     }
                     else
-                        artwork.overrideSprite = null;
+                        _cardManifestation.artwork.overrideSprite = null;
                 }
                 yield return null;
             }
 
             // remove anim
-            artwork.overrideSprite = null;
+            _cardManifestation.artwork.overrideSprite = null;
         }
 
 
+       public bool IsGlowing()
+       {
+           if (_cardManifestation.glowImage == null)
+               return false;
+           return _cardManifestation.glowImage.gameObject.activeSelf;
+       }
+
+       public override void SetGlowColor(Color color) {
+          _cardManifestation.glowImage.SetColor(color);
+       }
+
+       public override void SetGlowColor(UIStyle.TokenGlowColor colorType) {
+           SetGlowColor(UIStyle.GetGlowColor(colorType));
+       }
+
+       public override void ShowHoverGlow(bool show, bool playSFX = true, Color? hoverColor = null) {
+           if (show) {
+               if (_currentlyBeingDragged) {
+                   // If we're trying to glow the dragged token, then let's just allow us to show it if we want.
+               }
+               //// We're dragging something and our last state was not "this is a legal drop target" glow, then don't show
+               /// <<totally confused by this, though it sounds necessary. I'll come back to it. - AK
+               //else if (HornedAxe.itemBeingDragged != null && !lastGlowState) {
+               //    show = false;
+               //}
+               // If we can not interact, don't show the hover highlight
+               else if (!ShouldShowHoverGlow()) {
+                   show = false;
+               }
+           }
+
+           if (show) {
+               if (playSFX)
+                   SoundManager.PlaySfx("TokenHover");
+
+               _cardManifestation.glowImage.SetColor(hoverColor == null ? UIStyle.GetGlowColor(UIStyle.TokenGlowColor.OnHover) : hoverColor.Value);
+               _cardManifestation.glowImage.Show();
+           }
+           else {
+                //if (playSFX)
+                //    SoundManager.PlaySfx("TokenHoverOff");
+                _cardManifestation.glowImage.Hide();
+           }
+       }
     }
 }

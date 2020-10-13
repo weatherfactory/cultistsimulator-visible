@@ -69,7 +69,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         {
 
             var limbo = Registry.Get<Limbo>();
-            var stack = Registry.Get<PrefabFactory>().CreateLocally<ElementStackToken>(limbo.transform);
+            var stack = Registry.Get<PrefabFactory>().Create<ElementStackToken>();
             stack.SetTokenContainer(limbo,context);
 
             
