@@ -199,7 +199,7 @@ namespace Assets.CS.TabletopUI {
 			}
 			_aspectsDirtyInc = true;
             if(!TokenContainer.ContentsHidden)
-			    DisplayInfo();
+			    _cardManifestation.DisplayInfo(_element,quantity);
 
             TokenContainer.NotifyStacksChanged();
         }
@@ -368,10 +368,10 @@ namespace Assets.CS.TabletopUI {
                 if (_element == null)
                     NoonUtility.Log("Tried to populate token with unrecognised elementId:" + elementId);
 
-                if(!TokenContainer.ContentsHidden) 
-                    DisplayInfo();
+                if(!TokenContainer.ContentsHidden)
+                   _cardManifestation.DisplayInfo(_element,quantity);
                 
-                DisplayIcon();
+               _cardManifestation.DisplayArt(_element);
                 frames = ResourcesManager.GetAnimFramesForElement(elementId);
                 ShowGlow(false, false);
                 SetCardDecay(0f);
@@ -403,22 +403,9 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        private void DisplayInfo() {
-            _cardManifestation.text.text = _element.Label;
-            _cardManifestation.stackBadge.gameObject.SetActive(Quantity > 1);
-            _cardManifestation.stackCountText.text = Quantity.ToString();
 
-        }
 
-        private void DisplayIcon() {
-            Sprite sprite = ResourcesManager.GetSpriteForElement(_element.Icon);
-            _cardManifestation.artwork.sprite = sprite;
 
-            if (sprite == null)
-                _cardManifestation.artwork.color = Color.clear;
-            else
-                _cardManifestation.artwork.color = Color.white;
-        }
 
 
 
@@ -576,7 +563,7 @@ namespace Assets.CS.TabletopUI {
             {
                 OldTokenContainer.SignalStackRemoved(this, context);
                 if(OldTokenContainer.ContentsHidden && !newTokenContainer.ContentsHidden)
-                    DisplayInfo();
+                 _cardManifestation.DisplayInfo(_element,Quantity);
             }
 
             TokenContainer = newTokenContainer;
