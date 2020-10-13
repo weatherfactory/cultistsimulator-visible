@@ -19,6 +19,7 @@ using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Core.Services;
 using Assets.Logic;
+using Assets.TabletopUi.Scripts.Elements;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
 using Assets.TabletopUi.Scripts.Interfaces;
@@ -50,7 +51,7 @@ namespace Assets.CS.TabletopUI {
 
         [SerializeField] CardVFX defaultRetireFX = CardVFX.CardBurn;
 
-
+        private CardManifestation _cardManifestation;
         private Element _element;
         private int _quantity;
 
@@ -347,6 +348,8 @@ namespace Assets.CS.TabletopUI {
             if (debugTools != null)
                 AddObserver(debugTools);
 
+          
+
 
         }
 
@@ -414,11 +417,6 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        private void CullTextBackface() {
-            decayCountText.enableCulling = true;
-            stackCountText.enableCulling = true;
-            text.enableCulling = true;
-        }
 
         private void DisplayInfo() {
             text.text = _element.Label;

@@ -9,6 +9,8 @@ using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using UnityEngine;
 using Assets.TabletopUi.Scripts;
+using Assets.TabletopUi.Scripts.Elements;
+using Assets.TabletopUi.Scripts.Elements.Manifestations;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
@@ -24,6 +26,8 @@ namespace Assets.TabletopUi.Scripts.Services
         public VerbAnchor VerbAnchor = null;
         public BookshelfAnchor BookshelfAnchor = null;
         public ElementStackToken ElementStackToken = null;
+        public CardManifestation CardManifestation = null;
+        public MinimalManifestation MinimalManifestation = null;
         public SituationWindow SituationWindow = null;
         public RecipeSlot RecipeSlot = null;
         public NotificationWindow NotificationWindow = null;
