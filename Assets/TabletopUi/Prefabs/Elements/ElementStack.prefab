@@ -32,6 +32,7 @@ RectTransform:
   - {fileID: 224000010611767824}
   - {fileID: 224205152803893472}
   - {fileID: 224151202649298252}
+  - {fileID: 224297987856985500}
   m_Father: {fileID: 3622161781266734524}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -298,7 +299,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000011408653646}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0008724676}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3622161781266734524}
@@ -306,7 +307,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2, y: -2.0002272}
+  m_AnchoredPosition: {x: -2, y: -2}
   m_SizeDelta: {x: 75, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222000013217457704
@@ -399,7 +400,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -88.00017, y: 110.0001}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 75, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222000011707310424
@@ -499,7 +500,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000013806990338}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0008945244}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3622161781266734524}
@@ -507,8 +508,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00022888184}
-  m_SizeDelta: {x: -1, y: 39}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 24, y: 24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222000013835475580
 CanvasRenderer:
@@ -725,16 +726,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313012663693904}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0008945244}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3622161781266734524}
-  m_RootOrder: 3
+  m_Father: {fileID: 224000010789524368}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00022888184}
-  m_SizeDelta: {x: -25, y: 15}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222768869204820554
 CanvasRenderer:
@@ -956,7 +957,7 @@ RectTransform:
   m_Children:
   - {fileID: 224504432105543190}
   m_Father: {fileID: 3622161781266734524}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1352,15 +1353,14 @@ RectTransform:
   - {fileID: 224000013083219016}
   - {fileID: 224000014090703794}
   - {fileID: 224000010789524368}
-  - {fileID: 224297987856985500}
   - {fileID: 224747729959211940}
   m_Father: {fileID: 224000011999988054}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 24, y: -16}
+  m_SizeDelta: {x: 75, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &826470556
 MonoBehaviour:
@@ -1374,3 +1374,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe9c40177c3ad546a00ce86ff4f75c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  artwork: {fileID: 0}
+  backArtwork: {fileID: 0}
+  textBackground: {fileID: 0}
+  text: {fileID: 0}
+  stackBadge: {fileID: 0}
+  stackCountText: {fileID: 0}
+  decayView: {fileID: 0}
+  decayCountText: {fileID: 0}
+  spriteDecaysTextBG: {fileID: 0}
+  spriteUniqueTextBG: {fileID: 0}
+  shadow: {fileID: 0}
+  defaultRetireFX: 0
