@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
-    public interface IManifestation
+    public interface IElementManifestation
     {
     }
 }

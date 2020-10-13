@@ -348,7 +348,7 @@ namespace Assets.CS.TabletopUI {
             if (debugTools != null)
                 AddObserver(debugTools);
 
-          
+           // _cardManifestation = Registry.Get<PrefabFactory>().CreateLocally<CardManifestation>(this.transform);
 
 
         }
