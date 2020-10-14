@@ -34,6 +34,10 @@ namespace Assets.TabletopUi.Scripts.Elements
         private Image decayBackgroundImage;
         private Color cachedDecayBackgroundColor;
         private CardVFX retirementVfx = CardVFX.CardBurn;
+        private bool decayVisible = false;
+        private float decayAlpha = 0.0f;
+        private Coroutine animCoroutine;
+        private List<Sprite> frames;
 
 
         public void DisplayVisuals(Element element)
@@ -52,9 +56,71 @@ namespace Assets.TabletopUi.Scripts.Elements
             decayBackgroundImage = decayView.GetComponent<Image>();
             cachedDecayBackgroundColor = decayBackgroundImage.color;
 
+            frames = ResourcesManager.GetAnimFramesForElement(element.Id);
+
         }
 
-       private void SetCardBackground(bool unique, bool decays)
+      public void UpdateDecayVisuals(float lifetimeRemaining, Element element, float interval,bool currentlyBeingDragged)
+        {
+
+            string cardDecayTime= Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(lifetimeRemaining);
+            decayCountText.text = cardDecayTime;
+            decayCountText.richText = true;
+
+            // Decide whether timer should be visible or not
+            if (lifetimeRemaining < element.Lifetime / 2)
+                ShowCardDecayTimer(true);
+            else
+                ShowCardDecayTimer(IsGlowing() || currentlyBeingDragged);  // Allow timer to show when hovering over card
+
+            // This handles moving the alpha value towards the desired target
+            float cosmetic_dt = Mathf.Max(interval, Time.deltaTime) * 2.0f; // This allows us to call AdvanceTime with 0 delta and still get animation
+            if (decayVisible)
+                decayAlpha = Mathf.MoveTowards(decayAlpha, 1.0f, cosmetic_dt);
+            else
+                decayAlpha = Mathf.MoveTowards(decayAlpha, 0.0f, cosmetic_dt);
+            if (lifetimeRemaining <= 0.0f)
+                decayAlpha = 0.0f;
+            if (decayView && decayView.gameObject)
+            {
+                decayView.gameObject.SetActive(decayAlpha > 0.0f);
+            }
+
+            // Set the text and background alpha so it fades on and off smoothly
+            if (decayCountText && decayBackgroundImage)
+            {
+                Color col = decayCountText.color;
+                col.a = decayAlpha;
+                decayCountText.color = col;
+                col = cachedDecayBackgroundColor;   // Caching the color so that we can multiply with the non-1 alpha - CP
+                col.a *= decayAlpha;
+                decayBackgroundImage.color = col;
+            }
+
+            float percentage = (1 - lifetimeRemaining / element.Lifetime);
+
+            percentage = Mathf.Clamp01(percentage);
+
+            if (element.Resaturate)
+            {
+                float reversePercentage = 1f - percentage;
+                artwork.color = new Color(1f - reversePercentage, 1f - reversePercentage, 1f - reversePercentage, 1f);
+            }
+            else
+            {
+                artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1f);
+            }
+
+        }
+
+      private void ShowCardDecayTimer(bool showTimer)
+      {
+          if (decayView != null)
+              decayView.gameObject.SetActive(showTimer);
+      }
+
+
+        private void SetCardBackground(bool unique, bool decays)
         {
             if (unique)
                 textBackground.overrideSprite = spriteUniqueTextBG;
@@ -83,6 +149,59 @@ namespace Assets.TabletopUi.Scripts.Elements
             retirementVfx = vfx;
         }
 
+        public bool IsGlowing()
+        {
+            if (glowImage == null)
+                return false;
+            return glowImage.gameObject.activeSelf;
+        }
+
+        public void SetGlowColor(Color color)
+        {
+            glowImage.SetColor(color);
+        }
+
+        public void SetGlowColor(UIStyle.TokenGlowColor colorType)
+        {
+            SetGlowColor(UIStyle.GetGlowColor(colorType));
+        }
+
+        public override void ShowHoverGlow(bool show, bool playSFX = true, Color? hoverColor = null)
+        {
+            if (show)
+            {
+                if (_currentlyBeingDragged)
+                {
+                    // If we're trying to glow the dragged token, then let's just allow us to show it if we want.
+                }
+                //// We're dragging something and our last state was not "this is a legal drop target" glow, then don't show
+                /// <<totally confused by this, though it sounds necessary. I'll come back to it. - AK
+                //else if (HornedAxe.itemBeingDragged != null && !lastGlowState) {
+                //    show = false;
+                //}
+                // If we can not interact, don't show the hover highlight
+                else if (!ShouldShowHoverGlow())
+                {
+                    show = false;
+                }
+            }
+
+            if (show)
+            {
+                if (playSFX)
+                    SoundManager.PlaySfx("TokenHover");
+
+                glowImage.SetColor(hoverColor == null ? UIStyle.GetGlowColor(UIStyle.TokenGlowColor.OnHover) : hoverColor.Value);
+                glowImage.Show();
+            }
+            else
+            {
+                //if (playSFX)
+                //    SoundManager.PlaySfx("TokenHoverOff");
+                glowImage.Hide();
+            }
+        }
+
         public bool Retire(CanvasGroup canvasGroup)
         {
             if (retirementVfx == CardVFX.CardHide || retirementVfx == CardVFX.CardHide)
@@ -106,6 +225,14 @@ namespace Assets.TabletopUi.Scripts.Elements
             }
 
             return true;
+        }
+
+        public void ShowGlow(bool glowState, bool instant = false)
+        {
+            if (glowState)
+                glowImage.Show(instant);
+            else
+                glowImage.Hide(instant);
         }
 
         private CardEffectRemove InstantiateEffect(string effectName)
@@ -135,6 +262,68 @@ namespace Assets.TabletopUi.Scripts.Elements
             }
 
             Destroy(gameObject);
+        }
+
+        private void SetBackface(string backId)
+        {
+            Sprite sprite;
+
+            if (string.IsNullOrEmpty(backId))
+                sprite = null;
+            else
+                sprite = ResourcesManager.GetSpriteForCardBack(backId);
+
+            backArtwork.overrideSprite = sprite;
+        }
+
+        public void BeginArtAnimation(Element element)
+        {
+            if (animCoroutine != null)
+                StopCoroutine(animCoroutine);
+
+            // TODO: pull data from element itself and use that to drive the values below
+            float duration = 0.2f;
+            int frameCount = frames.Count;
+            int frameIndex = 0;
+
+            animCoroutine = StartCoroutine(DoAnim(duration, frameCount, frameIndex,element));
+        }
+
+        private IEnumerator DoAnim(float duration, int frameCount, int frameIndex, Element element)
+        {
+            Sprite[] animSprites = new Sprite[frameCount];
+
+            for (int i = 0; i < animSprites.Length; i++)
+                animSprites[i] = ResourcesManager.GetSpriteForElement(element.Icon, frameIndex + i);
+
+            float time = 0f;
+            int lastSpriteIndex = -1;
+
+            while (time < duration)
+            {
+                time += Time.deltaTime;
+                int spriteIndex;
+                if (frameCount == 1)
+                    spriteIndex = 0;
+                else
+                    spriteIndex = Mathf.FloorToInt(time / duration * frameCount);
+
+
+                if (spriteIndex != lastSpriteIndex)
+                {
+                    lastSpriteIndex = spriteIndex;
+                    if (spriteIndex < frames.Count)
+                    {
+                        artwork.overrideSprite = frames[spriteIndex];
+                    }
+                    else
+                        artwork.overrideSprite = null;
+                }
+                yield return null;
+            }
+
+            // remove anim
+            artwork.overrideSprite = null;
         }
     }
 }

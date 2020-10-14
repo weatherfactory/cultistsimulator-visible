@@ -5,42 +5,40 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
-using Assets.CS.TabletopUI;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
-   public class MinimalManifestation:MonoBehaviour,IElementManifestation
+   public class DropzoneManifestation: IElementManifestation
     {
         public void DisplayVisuals(Element element)
         {
-            //do nothing
+            throw new NotImplementedException();
         }
 
         public void UpdateText(Element element, int quantity)
         {
-            //do nothing
+            throw new NotImplementedException();
         }
 
         public void ResetAnimations()
         {
-            //do nothing
+            throw new NotImplementedException();
         }
 
         public bool Retire(CanvasGroup canvasGroup)
         {
-            Destroy(gameObject);
-            return true;
+            throw new NotImplementedException();
         }
 
         public void SetVfx(CardVFX vfxName)
         {
-            
+            throw new NotImplementedException();
         }
 
         public void ShowGlow(bool glowState, bool instant = false)
         {
-            
+            throw new NotImplementedException();
         }
     }
 }

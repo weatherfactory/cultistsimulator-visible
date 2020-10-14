@@ -16,5 +16,8 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         void ResetAnimations();
         bool Retire(CanvasGroup canvasGroup);
         void SetVfx(CardVFX vfxName);
+        void ShowGlow(bool glowState, bool instant = false);
+        void UpdateDecayVisuals(float lifetimeRemaining, Element element, float interval,bool currentlyBeingDragged);
+        
     }
 }

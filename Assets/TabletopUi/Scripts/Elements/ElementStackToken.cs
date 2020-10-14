@@ -49,10 +49,7 @@ namespace Assets.CS.TabletopUI {
 		private bool _aspectsDirtyInc = true;
 		private bool _aspectsDirtyExc = true;
 
-		private bool decayVisible = false;
-		private float decayAlpha = 0.0f;
-
-		// Interaction handling - CP
+        // Interaction handling - CP
 		protected bool singleClickPending = false;
 
         public float LifetimeRemaining { get; set; }
@@ -60,12 +57,12 @@ namespace Assets.CS.TabletopUI {
         public Source StackSource { get; set; }
 
         private Coroutine turnCoroutine;
-        private Coroutine animCoroutine;
+        
 
         private ElementStackToken originStack = null; // if it was pulled from a stack, save that stack!
         private Dictionary<string,int> _currentMutations; //not strictly an aspects dictionary; it can contain negatives
         private IlluminateLibrarian _illuminateLibrarian;
-        private List<Sprite> frames;
+    
 
         private HashSet<ITokenObserver> observers=new HashSet<ITokenObserver>();
 
@@ -360,7 +357,7 @@ namespace Assets.CS.TabletopUI {
                 _manifestation.UpdateText(_element,quantity);
                 
            
-                frames = ResourcesManager.GetAnimFramesForElement(elementId);
+          
                 ShowGlow(false, false);
                 SetCardDecay(0f);
                 LifetimeRemaining = _element.Lifetime;
@@ -786,11 +783,8 @@ namespace Assets.CS.TabletopUI {
 
         public override void ShowGlow(bool glowState, bool instant = false)
         {
-
-            if (glowState)
-                _manifestation.glowImage.Show(instant);
-            else
-                _manifestation.glowImage.Hide(instant);
+            _manifestation.ShowGlow(glowState,instant);
+    
         }
 
         public override void OnPointerClick(PointerEventData eventData)
@@ -979,8 +973,6 @@ namespace Assets.CS.TabletopUI {
 				return;	// Do not decay while being dragged into greedy slot (#1335) - CP
 			}
 
-            if(!isFront)
-                FlipToFaceUp(true); //never leave a decaying card face down.
 
             LifetimeRemaining = LifetimeRemaining - interval;
 
@@ -997,83 +989,24 @@ namespace Assets.CS.TabletopUI {
                 if (string.IsNullOrEmpty(_element.DecayTo))
                     Retire(CardVFX.CardBurn);
                 else
-                    ChangeThisCardOnDesktopTo(_element.DecayTo);
+                    DecayTo(_element.DecayTo);
             }
 
-            _manifestation.decayCountText.text = GetCardDecayTime();
-            _manifestation.decayCountText.richText = true;
+            if (!isFront)
+                FlipToFaceUp(true); //never leave a decaying card face down.
 
-			UpdateDecayVisuals( interval );
 
-            SetCardDecay(1 - LifetimeRemaining / _element.Lifetime);
+		    _manifestation.UpdateDecayVisuals(LifetimeRemaining,_element,interval,_currentlyBeingDragged );
 
-            if (onDecay != null)
+          if (onDecay != null)
                 onDecay(LifetimeRemaining);
         }
 
-		void UpdateDecayVisuals( float interval )
-		{
-			// Decide whether timer should be visible or not
-            if (LifetimeRemaining < _element.Lifetime / 2)
-                ShowCardDecayTimer(true);
-			else
-				ShowCardDecayTimer(IsGlowing() || _currentlyBeingDragged);	// Allow timer to show when hovering over card
+		
 
-			// This handles moving the alpha value towards the desired target
-			float cosmetic_dt = Mathf.Max(interval,Time.deltaTime) * 2.0f;	// This allows us to call AdvanceTime with 0 delta and still get animation
-			if (decayVisible)
-				decayAlpha = Mathf.MoveTowards( decayAlpha, 1.0f, cosmetic_dt );
-			else
-				decayAlpha = Mathf.MoveTowards( decayAlpha, 0.0f, cosmetic_dt );
-			if (LifetimeRemaining <= 0.0f)
-				decayAlpha = 0.0f;
-			if (_manifestation.decayView && _manifestation.decayView.gameObject)
-			{
-                _manifestation.decayView.gameObject.SetActive( decayAlpha > 0.0f );
-			}
 
-			// Set the text and background alpha so it fades on and off smoothly
-			if (_manifestation.decayCountText && decayBackgroundImage)
-			{
-				Color col = _manifestation.decayCountText.color;
-				col.a = decayAlpha;
-                _manifestation.decayCountText.color = col;
-				col = cachedDecayBackgroundColor;	// Caching the color so that we can multiply with the non-1 alpha - CP
-				col.a *= decayAlpha;
-				decayBackgroundImage.color = col;
-			}
-		}
 
-        // Card Decay Timer
-        public void ShowCardDecayTimer(bool showTimer)
-		{
-			if (Decays)
-				decayVisible = showTimer;
-			if(_manifestation.decayView !=null)
-                _manifestation.decayView.gameObject.SetActive( showTimer );
-        }
-
-        // Public so TokenWindow can access this
-        public string GetCardDecayTime()
-		{
-			return Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage( LifetimeRemaining );
-        }
-
-        public void SetCardDecay(float percentage)
-		{
-            percentage = Mathf.Clamp01(percentage);
-
-            if(_element.Resaturate)
-            {
-                float reversePercentage = 1f - percentage;
-                _manifestation.artwork.color = new Color(1f - reversePercentage, 1f - reversePercentage, 1f - reversePercentage, 1f);
-            }
-            else
-            {
-                _manifestation.artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1f);
-            }
-
-        }
+ 
 
         public void ShowCardShadow(bool show)
 		{
@@ -1082,7 +1015,7 @@ namespace Assets.CS.TabletopUI {
         
 
 
-        public bool ChangeThisCardOnDesktopTo(string elementId)
+        public bool DecayTo(string elementId)
 		{
             // Save this, since we're retiring and that sets quantity to 0
             int quantity = Quantity;
@@ -1178,16 +1111,7 @@ namespace Assets.CS.TabletopUI {
             turnCoroutine = null;
         }
 
-        public void SetBackface(string backId) {
-            Sprite sprite;
-
-            if (string.IsNullOrEmpty(backId))
-                sprite = null;
-            else
-                sprite = ResourcesManager.GetSpriteForCardBack(backId);
-
-            _manifestation.backArtwork.overrideSprite = sprite;
-        }
+ 
 
 
         public override bool CanAnimate()
@@ -1213,98 +1137,11 @@ namespace Assets.CS.TabletopUI {
         public override void StartArtAnimation() {
             if (!CanAnimate())
                 return;
-
-            if (animCoroutine != null)
-                StopCoroutine(animCoroutine);
-
-            // TODO: pull data from element itself and use that to drive the values below
-            float duration = 0.2f;
-            int frameCount = frames.Count;
-            int frameIndex = 0;
-
-            animCoroutine = StartCoroutine(DoAnim(duration, frameCount, frameIndex));
+            _manifestation.BeginArtAnimation();
+           
         }
 
-       public override IEnumerator DoAnim(float duration, int frameCount, int frameIndex) {
-            Sprite[] animSprites = new Sprite[frameCount];
+      
 
-            for (int i = 0; i < animSprites.Length; i++)
-                animSprites[i] = ResourcesManager.GetSpriteForElement(_element.Icon, frameIndex + i);
-
-            float time = 0f;
-            int lastSpriteIndex = -1;
-
-            while (time < duration)
-            {
-                time += Time.deltaTime;
-                int spriteIndex;
-                if (frameCount == 1)
-                    spriteIndex = 0;
-                else
-                    spriteIndex = Mathf.FloorToInt(time / duration * frameCount);
-
-
-                if (spriteIndex != lastSpriteIndex)
-                {
-                    lastSpriteIndex = spriteIndex;
-                    if (spriteIndex < frames.Count)
-                    {
-                        _manifestation.artwork.overrideSprite = frames[spriteIndex];
-                    }
-                    else
-                        _manifestation.artwork.overrideSprite = null;
-                }
-                yield return null;
-            }
-
-            // remove anim
-            _manifestation.artwork.overrideSprite = null;
-        }
-
-
-       public bool IsGlowing()
-       {
-           if (_manifestation.glowImage == null)
-               return false;
-           return _manifestation.glowImage.gameObject.activeSelf;
-       }
-
-       public override void SetGlowColor(Color color) {
-          _manifestation.glowImage.SetColor(color);
-       }
-
-       public override void SetGlowColor(UIStyle.TokenGlowColor colorType) {
-           SetGlowColor(UIStyle.GetGlowColor(colorType));
-       }
-
-       public override void ShowHoverGlow(bool show, bool playSFX = true, Color? hoverColor = null) {
-           if (show) {
-               if (_currentlyBeingDragged) {
-                   // If we're trying to glow the dragged token, then let's just allow us to show it if we want.
-               }
-               //// We're dragging something and our last state was not "this is a legal drop target" glow, then don't show
-               /// <<totally confused by this, though it sounds necessary. I'll come back to it. - AK
-               //else if (HornedAxe.itemBeingDragged != null && !lastGlowState) {
-               //    show = false;
-               //}
-               // If we can not interact, don't show the hover highlight
-               else if (!ShouldShowHoverGlow()) {
-                   show = false;
-               }
-           }
-
-           if (show) {
-               if (playSFX)
-                   SoundManager.PlaySfx("TokenHover");
-
-               _manifestation.glowImage.SetColor(hoverColor == null ? UIStyle.GetGlowColor(UIStyle.TokenGlowColor.OnHover) : hoverColor.Value);
-               _manifestation.glowImage.Show();
-           }
-           else {
-                //if (playSFX)
-                //    SoundManager.PlaySfx("TokenHoverOff");
-                _manifestation.glowImage.Hide();
-           }
-       }
     }
 }
