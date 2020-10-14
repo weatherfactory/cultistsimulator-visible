@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using Assets.TabletopUi.Scripts.Infrastructure;
 
 [RequireComponent(typeof(ScrollRect))]
-public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler  {
+public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler  {
 	
 	ScrollRect scrollRect;
     // Vector4 order is Top, Right, Bottom, Left
@@ -86,7 +86,7 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 
 	void Update()
     {
-        return;
+        
 		// We are dragging manually? then block this thing and stop
 		if (isManualDragActive)
 		{
@@ -102,6 +102,8 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
             magnitude = KEY_MOVEMENT_EFFECT_MULTIPLIER;
             pointerEnterEdgeTime = timeout;
         }
+
+        return;
         // Pointer is in our rect? Then move
        // else if (HornedAxe.itemBeingDragged!=null) <-- commented out this and the next bit; may bneed to revisit
 		//{

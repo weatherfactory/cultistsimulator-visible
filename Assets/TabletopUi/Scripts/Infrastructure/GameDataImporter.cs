@@ -181,14 +181,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     NoonUtility.Log("no deckspec found for saved deckinstance " + k.ToString());
                 else
                 {
-                //    character.UpdateDeckInstanceFromSave(spec, htEachDeck);
+                  //  character.UpdateDeckInstanceFromSave(spec, htEachDeck);
                 }
             }
-
-            //That's all the saved decks;          
-            //But it's possible a deck spec has been added since the game was saved, in a new version of the game.
-            //Create and reset any new deckspecs
-
         
         }
 
