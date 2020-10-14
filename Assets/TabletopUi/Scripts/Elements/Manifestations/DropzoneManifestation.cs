@@ -16,6 +16,8 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         private GameObject shadow;
         private GraphicFader glowImage;
 
+        public bool RequestingNoDrag => false;
+
         public void DisplayVisuals(Element element)
         {
             // Customize appearance of card to make it distinctive
@@ -115,5 +117,14 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         }
 
         public bool NoPush => true;
+        public void DoRevealEffect(bool instant)
+        {
+        }
+
+        public void DoShroudEffect(bool instant)
+        {
+        }
+
+        
     }
 }

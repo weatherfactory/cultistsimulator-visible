@@ -16,6 +16,82 @@ using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.Elements
 {
+
+    public class FlipHelper
+    {
+        public enum TargetOrientation
+        {
+            FaceUp=0,
+            FaceDown=180
+        }
+
+        private readonly MonoBehaviour _flippee;
+        private Coroutine _turnCoroutine;
+        private TargetOrientation? _targetOrientation;
+
+        public bool FlipInProgress => _turnCoroutine != null;
+
+        public FlipHelper(MonoBehaviour flippee)
+        {
+            _flippee = flippee;
+        }
+
+        public void Flip(TargetOrientation targetOrientation, bool instant)
+        {
+            if (!instant)
+                SoundManager.PlaySfx("CardTurnOver");
+
+            _targetOrientation = targetOrientation;
+
+  
+            if (_flippee.gameObject.activeInHierarchy == false || instant)
+            {
+               FinishFlip();
+            }
+
+            if (_turnCoroutine != null)
+              _flippee.StopCoroutine(_turnCoroutine);
+
+            _turnCoroutine = _flippee.StartCoroutine(DoTurn());
+        }
+
+
+        public void FinishFlip()
+        {
+            if (_targetOrientation == null)
+                return;
+
+            _flippee.transform.localRotation = Quaternion.Euler(0f, (float)_targetOrientation, 0f);
+            _turnCoroutine = null;
+
+            _targetOrientation = null;
+        }
+
+
+            private IEnumerator DoTurn()
+            {
+                if (_targetOrientation != null)
+                {
+                float time = 0f;
+                
+                float currentAngle = _flippee.transform.localEulerAngles.y;
+                float duration = Mathf.Abs((float)_targetOrientation - currentAngle) / 900f;
+                
+
+                    while (time < duration && _targetOrientation!=null)
+                    {
+                        time += Time.deltaTime;
+                        _flippee.transform.localRotation = Quaternion.Euler(0f, Mathf.Lerp(currentAngle, (float)_targetOrientation, time / duration), 0f);
+                        yield return null;
+                    }
+                }
+
+            FinishFlip();
+        }
+
+   
+    }
+
     public class CardManifestation : MonoBehaviour, IElementManifestation
     {
 
@@ -39,9 +115,15 @@ namespace Assets.TabletopUi.Scripts.Elements
         private bool decayVisible = false;
         private float decayAlpha = 0.0f;
         private Coroutine animCoroutine;
-        private Coroutine turnCoroutine;
         private List<Sprite> frames;
+        private FlipHelper flipHelper;
 
+        public bool RequestingNoDrag => flipHelper.FlipInProgress;
+
+        public void Start()
+        {
+            flipHelper=new FlipHelper(this);
+        }
 
         public void DisplayVisuals(Element element)
         {
@@ -219,7 +301,6 @@ namespace Assets.TabletopUi.Scripts.Elements
         }
 
 
-
         public void SetVfx(CardVFX vfx)
         {
             //room here to specify the vfx type / change to args
@@ -273,55 +354,18 @@ namespace Assets.TabletopUi.Scripts.Elements
             if (!instant)
                 SoundManager.PlaySfx("CardTurnOver");
 
-            Flip(true, instant);
+            flipHelper.Flip(FlipHelper.TargetOrientation.FaceUp,instant);
+
+
         }
 
         public void DoShroudEffect(bool instant)
         {
-            Flip(false, instant);
+            flipHelper.Flip(FlipHelper.TargetOrientation.FaceDown, instant);
         }
 
-        public virtual void Flip(bool state, bool instant = false)
-        {
-            if (isFront == state && !instant) // if we're instant, ignore this to allow forcing of pos
-                return;
+        
 
-            ShowGlow(!state,true); // disable face-down hover-effect
-
-            
-            //if a card has just been turned face up in a situation, it's now an existing, established card
-            if (isFront && StackSource.SourceType == SourceType.Fresh)
-                StackSource = Source.Existing();
-
-            if (gameObject.activeInHierarchy == false || instant)
-            {
-                transform.localRotation = GetFrontRotation(isFront);
-                return;
-            }
-
-            if (turnCoroutine != null)
-                StopCoroutine(turnCoroutine);
-
-            turnCoroutine = StartCoroutine(DoTurn());
-        }
-
-        IEnumerator DoTurn()
-        {
-            float time = 0f;
-            float targetAngle = revealed ? 0f : 180f;
-            float currentAngle = transform.localEulerAngles.y;
-            float duration = Mathf.Abs(targetAngle - currentAngle) / 900f;
-
-            while (time < duration)
-            {
-                time += Time.deltaTime;
-                transform.localRotation = Quaternion.Euler(0f, Mathf.Lerp(currentAngle, targetAngle, time / duration), 0f);
-                yield return null;
-            }
-
-            transform.localRotation = Quaternion.Euler(0f, targetAngle, 0f);
-            turnCoroutine = null;
-        }
 
         public bool Retire(CanvasGroup canvasGroup)
         {
@@ -395,11 +439,7 @@ namespace Assets.TabletopUi.Scripts.Elements
         {
             artwork.overrideSprite = null;
             // we're turning? Just set us to the target
-            if (turnCoroutine != null)
-            {
-                turnCoroutine = null;
-                Flip(isFront, true); // instant to set where it wants to go
-            }
+            flipHelper.FinishFlip();
         }
 
         public bool CanAnimate()

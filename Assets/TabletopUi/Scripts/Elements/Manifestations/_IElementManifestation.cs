@@ -38,5 +38,6 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         bool NoPush { get; }
         void DoRevealEffect(bool instant);
         void DoShroudEffect(bool instant);
+        bool RequestingNoDrag { get; }
     }
 }

@@ -12,6 +12,8 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
    public class MinimalManifestation:MonoBehaviour,IElementManifestation
     {
+        public bool RequestingNoDrag => false;
+
         public void DisplayVisuals(Element element)
         {
             //do nothing
@@ -72,6 +74,12 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         }
 
         public bool NoPush => true;
+        public void DoRevealEffect(bool instant)
+        {
+        }
 
+        public void DoShroudEffect(bool instant)
+        {
+        }
     }
 }

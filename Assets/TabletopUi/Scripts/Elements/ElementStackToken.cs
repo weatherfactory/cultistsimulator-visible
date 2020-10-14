@@ -540,8 +540,9 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        protected override bool AllowsDrag() {
-            return !shrouded && turnCoroutine == null; // no dragging while not front or busy turning
+        protected override bool AllowsDrag()
+        {
+            return !shrouded && !_manifestation.RequestingNoDrag;
         }
 
         protected override bool ShouldShowHoverGlow() {
@@ -992,7 +993,11 @@ namespace Assets.CS.TabletopUI {
         {
             shrouded = false;
             _manifestation.DoRevealEffect(instant);
- 
+
+            //if a card has just been turned face up in a situation, it's now an existing, established card
+            if (StackSource.SourceType == SourceType.Fresh)
+                StackSource = Source.Existing();
+
         }
 
         public void Shroud(bool instant = false) {
@@ -1000,12 +1005,6 @@ namespace Assets.CS.TabletopUI {
             _manifestation.DoShroudEffect(instant);
 
         
-        }
-
-        
-
-        Quaternion GetFrontRotation(bool isFront) {
-            return Quaternion.Euler(0f, isFront ? 0f : 180f, 0f);
         }
 
         public bool Shrouded() {
