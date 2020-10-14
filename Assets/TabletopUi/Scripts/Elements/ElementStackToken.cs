@@ -663,7 +663,16 @@ namespace Assets.CS.TabletopUI {
 			}
 		}
 
-		public override void OnPointerEnter(PointerEventData eventData)
+        public override void HighlightPotentialInteractionWithToken(bool show)
+        {
+            if(show)
+                _manifestation.Highlight(HighlightType.CanInteractWithOtherToken);
+            else
+                _manifestation.Unhighlight(HighlightType.CanInteractWithOtherToken);
+
+        }
+
+        public override void OnPointerEnter(PointerEventData eventData)
 		{
             foreach (var o in observers)
             {

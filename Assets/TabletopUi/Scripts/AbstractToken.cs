@@ -365,16 +365,7 @@ namespace Assets.CS.TabletopUI {
 
         public abstract void ReactToDraggedToken(TokenInteractionEventArgs args);
 
-
-        // Used when a dragged object is hovering something
-        public virtual void ShowHoveringGlow(bool show) {
-            // always use default color for the "draggable-item-can-be-dropped" hover glow
-            // never trigger SFX, since the token you're hovering over already does that, 
-            // since that allows us to use the default hover glow for click-hover with sound too
-            ShowHoverGlow(show, false, UIStyle.brightPink);
-        }
-
-        // Separate method from ShowGlow so we can restore the last state when unhovering
+        public abstract void HighlightPotentialInteractionWithToken(bool show);
 
 
 

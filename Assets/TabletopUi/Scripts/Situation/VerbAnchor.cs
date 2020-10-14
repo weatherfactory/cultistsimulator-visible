@@ -172,6 +172,12 @@ namespace Assets.CS.TabletopUI {
 
         }
 
+        public override void HighlightPotentialInteractionWithToken(bool show)
+        {
+            ShowHoverGlow(show, false, UIStyle.brightPink);
+
+        }
+
         public override void OnPointerEnter(PointerEventData eventData)
         {
             ShowHoverGlow(true);

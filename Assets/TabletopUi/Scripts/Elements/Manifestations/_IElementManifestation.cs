@@ -15,7 +15,8 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         CanMerge,
         All,
         Hover,
-        AttentionPls
+        AttentionPls,
+        CanInteractWithOtherToken
     }
 
 

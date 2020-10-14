@@ -165,7 +165,7 @@ namespace Assets.CS.TabletopUI {
             }
             else if (CanInteractWithDraggedObject(eventData.pointerDrag.GetComponent<AbstractToken>())) {
                 if (lastGlowState)
-                    eventData.pointerDrag.GetComponent<AbstractToken>().ShowHoveringGlow(true);
+                    eventData.pointerDrag.GetComponent<AbstractToken>().HighlightPotentialInteractionWithToken(true);
 
                 if (GetTokenInSlot() == null) // Only glow if the slot is empty
                     ShowHoverGlow(true);
@@ -181,7 +181,7 @@ namespace Assets.CS.TabletopUI {
                 var potentialDragToken = eventData.pointerDrag.GetComponent<AbstractToken>();
 
                 if (lastGlowState && potentialDragToken != null)
-                    potentialDragToken.ShowHoveringGlow(false);
+                    potentialDragToken.HighlightPotentialInteractionWithToken(false);
             }
             ShowHoverGlow(false);
         }

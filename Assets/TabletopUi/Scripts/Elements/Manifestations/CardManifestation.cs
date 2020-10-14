@@ -138,13 +138,17 @@ namespace Assets.TabletopUi.Scripts.Elements
 
         public void Highlight(HighlightType highlightType)
         {
-            if(highlightType== HighlightType.CanMerge)
+            if (highlightType == HighlightType.CanMerge)
             {
                 SetGlowColor(UIStyle.TokenGlowColor.Default);
             }
             else if (highlightType == HighlightType.AttentionPls)
             {
                 StartCoroutine(PulseGlow());
+            }
+            else if (highlightType == HighlightType.CanInteractWithOtherToken)
+            {
+                ShowHoverGlow(true, false, UIStyle.brightPink);
             }
             else if (highlightType == HighlightType.Hover)
             {
@@ -158,6 +162,10 @@ namespace Assets.TabletopUi.Scripts.Elements
         if (highlightType == HighlightType.Hover)
         {
             ShowHoverGlow(false);
+        }
+        else if (highlightType == HighlightType.CanInteractWithOtherToken)
+        {
+            ShowHoverGlow(false, false);
         }
         else if(highlightType==HighlightType.CanMerge || highlightType==HighlightType.CanFitSlot)
             ShowGlow(false,false);
