@@ -11,12 +11,16 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
     public enum HighlightType
     {
-        Hover,
         CanFitSlot,
         CanMerge,
-        None
+        All,
+        Hover,
+        AttentionPls
     }
-    public interface IElementManifestation
+
+
+
+        public interface IElementManifestation
     {
         void DisplayVisuals(Element element);
         void UpdateText(Element element, int quantity);
@@ -29,6 +33,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         void OnBeginDragVisuals();
         void OnEndDragVisuals();
         void Highlight(HighlightType highlightType);
+        void Unhighlight(HighlightType highlightType);
         bool NoPush { get; }
     }
 }

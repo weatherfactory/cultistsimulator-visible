@@ -32,6 +32,11 @@ namespace Assets.TabletopUi.Scripts.Elements
         [SerializeField] public GameObject shadow;
         [SerializeField] public GraphicFader glowImage;
 
+        public bool NoPush
+        {
+            get { return false; }
+        }
+
         private Image decayBackgroundImage;
         private Color cachedDecayBackgroundColor;
         private CardVFX retirementVfx = CardVFX.CardBurn;
@@ -136,20 +141,39 @@ namespace Assets.TabletopUi.Scripts.Elements
             if(highlightType== HighlightType.CanMerge)
             {
                 SetGlowColor(UIStyle.TokenGlowColor.Default);
-                ShowGlow(true, false);
             }
-            else if (highlightType == HighlightType.None)
+            else if (highlightType == HighlightType.AttentionPls)
             {
-                ShowGlow(false,false);
+                StartCoroutine(PulseGlow());
             }
+            else if (highlightType == HighlightType.Hover)
+            {
+                ShowHoverGlow(true);
+            }
+
         }
 
-        public bool NoPush
+        public void Unhighlight(HighlightType highlightType)
         {
-            get { return false; }
+        if (highlightType == HighlightType.Hover)
+        {
+            ShowHoverGlow(false);
+        }
+        else if(highlightType==HighlightType.CanMerge || highlightType==HighlightType.CanFitSlot)
+            ShowGlow(false,false);
+
         }
 
-        private void ShowGlow(bool glowState, bool instant = false)
+        public IEnumerator PulseGlow()
+        {
+            ShowHoverGlow(true, false, Color.white);
+            yield return new WaitForSeconds(0.5f);
+            ShowHoverGlow(false);
+        }
+
+        
+
+        private void ShowGlow(bool glowState, bool instant)
         {
             if (glowState)
                 glowImage.Show(instant);
@@ -165,10 +189,10 @@ namespace Assets.TabletopUi.Scripts.Elements
 
 
         private void ShowCardDecayTimer(bool showTimer)
-      {
-          if (decayView != null)
-              decayView.gameObject.SetActive(showTimer);
-      }
+        {
+            if (decayView != null)
+                decayView.gameObject.SetActive(showTimer);
+        }
 
 
         private void SetCardBackground(bool unique, bool decays)
@@ -214,26 +238,9 @@ namespace Assets.TabletopUi.Scripts.Elements
             SetGlowColor(UIStyle.GetGlowColor(colorType));
         }
 
-        public override void ShowHoverGlow(bool show, bool playSFX = true, Color? hoverColor = null)
+        public void ShowHoverGlow(bool show, bool playSFX = true, Color? hoverColor = null)
         {
-            if (show)
-            {
-                if (_currentlyBeingDragged)
-                {
-                    // If we're trying to glow the dragged token, then let's just allow us to show it if we want.
-                }
-                //// We're dragging something and our last state was not "this is a legal drop target" glow, then don't show
-                /// <<totally confused by this, though it sounds necessary. I'll come back to it. - AK
-                //else if (HornedAxe.itemBeingDragged != null && !lastGlowState) {
-                //    show = false;
-                //}
-                // If we can not interact, don't show the hover highlight
-                else if (!ShouldShowHoverGlow())
-                {
-                    show = false;
-                }
-            }
-
+            
             if (show)
             {
                 if (playSFX)

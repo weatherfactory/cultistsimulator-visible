@@ -61,57 +61,57 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         public void UpdateText(Element element, int quantity)
         {
-            throw new NotImplementedException();
-        }
+            }
 
         public void ResetAnimations()
         {
-            throw new NotImplementedException();
+            
         }
 
         public bool Retire(CanvasGroup canvasGroup)
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public void SetVfx(CardVFX vfxName)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void ShowGlow(bool glowState, bool instant = false)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void UpdateDecayVisuals(float lifetimeRemaining, Element element, float interval, bool currentlyBeingDragged)
         {
-            throw new NotImplementedException();
+
         }
 
         public void BeginArtAnimation(string icon)
         {
-            throw new NotImplementedException();
         }
 
         public bool CanAnimate()
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public void OnBeginDragVisuals()
         {
-            throw new NotImplementedException();
         }
 
         public void OnEndDragVisuals()
         {
-            throw new NotImplementedException();
         }
 
         public void Highlight(HighlightType highlightType)
         {
-            throw new NotImplementedException();
+        }
+
+        public void Unhighlight(HighlightType highlightType)
+        {
+            
         }
 
         public bool NoPush => true;

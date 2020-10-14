@@ -311,7 +311,6 @@ namespace Assets.CS.TabletopUI {
             var stack = token as ElementStackToken;
 
             if (stack != null) {
-                stack.ShowCardShadow(false); // no shadow in slots
                 slotIconHolder.transform.SetAsLastSibling();
             }
         }

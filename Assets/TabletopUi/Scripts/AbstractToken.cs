@@ -361,7 +361,6 @@ namespace Assets.CS.TabletopUI {
             return true;
         }
 
-        public abstract void ShowHoverGlow(bool show, bool playSFX = true, Color? hoverColor = null);
 
 
         public abstract void ReactToDraggedToken(TokenInteractionEventArgs args);
@@ -377,12 +376,7 @@ namespace Assets.CS.TabletopUI {
 
         // Separate method from ShowGlow so we can restore the last state when unhovering
 
-        public IEnumerator PulseGlow()
-        {
-            ShowHoverGlow(true, false, Color.white);
-            yield return new WaitForSeconds(0.5f);
-            ShowHoverGlow(false);
-        }
+
 
         public abstract void OnPointerEnter(PointerEventData eventData);
 

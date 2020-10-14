@@ -66,6 +66,11 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         {
         }
 
+        public void Unhighlight(HighlightType highlightType)
+        {
+            
+        }
+
         public bool NoPush => true;
 
     }

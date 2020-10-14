@@ -361,9 +361,10 @@ namespace Assets.CS.TabletopUI {
                 LifetimeRemaining = _element.Lifetime;
                 _manifestation.UpdateDecayVisuals(LifetimeRemaining, _element,0,_currentlyBeingDragged);
            
-            _manifestation.Highlight(HighlightType.None);
-                
-                
+            _manifestation.Unhighlight(HighlightType.CanMerge);
+            _manifestation.Unhighlight(HighlightType.CanFitSlot);
+
+
                 PlacementAlreadyChronicled = false; //element has changed, so we want to relog placement
                 MarkedForConsumption = false; //If a stack has just been transformed into another element, all sins are forgiven. It won't be consumed.
 			
@@ -481,9 +482,11 @@ namespace Assets.CS.TabletopUI {
             return transform.parent.GetComponent<TabletopTokenContainer>() != null;
         }
 
-        public void MergeIntoStack(ElementStackToken merge) {
-            SetQuantity(Quantity + merge.Quantity,new Context(Context.ActionSource.Merge));
-            merge.Retire(CardVFX.None);
+        public void MergeIntoStack(ElementStackToken stackMergedIntoThisOne) {
+            SetQuantity(Quantity + stackMergedIntoThisOne.Quantity,new Context(Context.ActionSource.Merge));
+            stackMergedIntoThisOne.Retire(CardVFX.None);
+
+            _manifestation.Highlight(HighlightType.AttentionPls);
         }
 
 
@@ -666,8 +669,8 @@ namespace Assets.CS.TabletopUI {
             {
                 o.OnStackPointerEntered(this, eventData);
             }
-
-            ShowHoverGlow(true);
+            _manifestation.Highlight(HighlightType.Hover);
+            
 			var tabletopManager = Registry.Get<TabletopManager>(false);
             if(tabletopManager!=null ) //eg we might have a face down card on the credits page - in the longer term, of course, this should get interfaced
             {
@@ -692,7 +695,7 @@ namespace Assets.CS.TabletopUI {
                 o.OnStackPointerExited(this, eventData);
             }
 
-            ShowHoverGlow(false);
+            _manifestation.Unhighlight(HighlightType.Hover);
 
             var ttm = Registry.Get<TabletopManager>(false);
                 if(ttm!=null)
@@ -726,7 +729,7 @@ namespace Assets.CS.TabletopUI {
             }
             else if (args.TokenInteractionType == TokenInteractionType.EndDrag)
             {
-               _manifestation.Highlight(HighlightType.None);
+               _manifestation.Unhighlight(HighlightType.CanMerge);
             }
             
         }

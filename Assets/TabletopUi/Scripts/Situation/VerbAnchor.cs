@@ -485,7 +485,7 @@ namespace Assets.CS.TabletopUI {
             SetGlowColor(UIStyle.GetGlowColor(colorType));
         }
 
-        public override void ShowHoverGlow(bool show, bool playSFX = true, Color? hoverColor = null) {
+        public void ShowHoverGlow(bool show, bool playSFX = true, Color? hoverColor = null) {
             if (show) {
                 if (_currentlyBeingDragged) {
                     // If we're trying to glow the dragged token, then let's just allow us to show it if we want.
