@@ -445,7 +445,7 @@ namespace Assets.TabletopUi {
 
             foreach (var os in outputStacks)
             {
-               if(os.IsFront())
+               if(!os.Shrouded())
                    inducingAspects.CombineAspects(os.GetAspects());
             }
 

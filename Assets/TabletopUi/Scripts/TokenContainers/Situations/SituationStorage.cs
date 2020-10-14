@@ -22,7 +22,7 @@ public class SituationStorage : AbstractTokenContainer {
         base.DisplayHere(stack, context);
 
         // We ensure all stored cards are always face down
-        stack.FlipToFaceDown(true);
+        stack.Shroud(true);
     }
 
 }

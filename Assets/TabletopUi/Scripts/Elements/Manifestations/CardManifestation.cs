@@ -32,17 +32,14 @@ namespace Assets.TabletopUi.Scripts.Elements
         [SerializeField] public GameObject shadow;
         [SerializeField] public GraphicFader glowImage;
 
-        public bool NoPush
-        {
-            get { return false; }
-        }
-
+     
         private Image decayBackgroundImage;
         private Color cachedDecayBackgroundColor;
         private CardVFX retirementVfx = CardVFX.CardBurn;
         private bool decayVisible = false;
         private float decayAlpha = 0.0f;
         private Coroutine animCoroutine;
+        private Coroutine turnCoroutine;
         private List<Sprite> frames;
 
 
@@ -172,7 +169,7 @@ namespace Assets.TabletopUi.Scripts.Elements
 
         }
 
-        public IEnumerator PulseGlow()
+        private IEnumerator PulseGlow()
         {
             ShowHoverGlow(true, false, Color.white);
             yield return new WaitForSeconds(0.5f);
@@ -229,24 +226,24 @@ namespace Assets.TabletopUi.Scripts.Elements
             retirementVfx = vfx;
         }
 
-        public bool IsGlowing()
+        private bool IsGlowing()
         {
             if (glowImage == null)
                 return false;
             return glowImage.gameObject.activeSelf;
         }
 
-        public void SetGlowColor(Color color)
+        private void SetGlowColor(Color color)
         {
             glowImage.SetColor(color);
         }
 
-        public void SetGlowColor(UIStyle.TokenGlowColor colorType)
+        private void SetGlowColor(UIStyle.TokenGlowColor colorType)
         {
             SetGlowColor(UIStyle.GetGlowColor(colorType));
         }
 
-        public void ShowHoverGlow(bool show, bool playSFX = true, Color? hoverColor = null)
+        private void ShowHoverGlow(bool show, bool playSFX = true, Color? hoverColor = null)
         {
             
             if (show)
@@ -263,6 +260,67 @@ namespace Assets.TabletopUi.Scripts.Elements
                 //    SoundManager.PlaySfx("TokenHoverOff");
                 glowImage.Hide();
             }
+        }
+
+
+        public bool NoPush
+        {
+            get { return false; }
+        }
+
+        public void DoRevealEffect(bool instant)
+        {
+            if (!instant)
+                SoundManager.PlaySfx("CardTurnOver");
+
+            Flip(true, instant);
+        }
+
+        public void DoShroudEffect(bool instant)
+        {
+            Flip(false, instant);
+        }
+
+        public virtual void Flip(bool state, bool instant = false)
+        {
+            if (isFront == state && !instant) // if we're instant, ignore this to allow forcing of pos
+                return;
+
+            ShowGlow(!state,true); // disable face-down hover-effect
+
+            
+            //if a card has just been turned face up in a situation, it's now an existing, established card
+            if (isFront && StackSource.SourceType == SourceType.Fresh)
+                StackSource = Source.Existing();
+
+            if (gameObject.activeInHierarchy == false || instant)
+            {
+                transform.localRotation = GetFrontRotation(isFront);
+                return;
+            }
+
+            if (turnCoroutine != null)
+                StopCoroutine(turnCoroutine);
+
+            turnCoroutine = StartCoroutine(DoTurn());
+        }
+
+        IEnumerator DoTurn()
+        {
+            float time = 0f;
+            float targetAngle = revealed ? 0f : 180f;
+            float currentAngle = transform.localEulerAngles.y;
+            float duration = Mathf.Abs(targetAngle - currentAngle) / 900f;
+
+            while (time < duration)
+            {
+                time += Time.deltaTime;
+                transform.localRotation = Quaternion.Euler(0f, Mathf.Lerp(currentAngle, targetAngle, time / duration), 0f);
+                yield return null;
+            }
+
+            transform.localRotation = Quaternion.Euler(0f, targetAngle, 0f);
+            turnCoroutine = null;
         }
 
         public bool Retire(CanvasGroup canvasGroup)
@@ -336,6 +394,12 @@ namespace Assets.TabletopUi.Scripts.Elements
         public void ResetAnimations()
         {
             artwork.overrideSprite = null;
+            // we're turning? Just set us to the target
+            if (turnCoroutine != null)
+            {
+                turnCoroutine = null;
+                Flip(isFront, true); // instant to set where it wants to go
+            }
         }
 
         public bool CanAnimate()

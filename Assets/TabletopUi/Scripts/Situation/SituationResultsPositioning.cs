@@ -66,9 +66,9 @@ namespace Assets.CS.TabletopUI {
 
                 //if any stacks are fresh, flip them face down, otherwise face up
                 if (token.StackSource.SourceType == SourceType.Fresh)
-                    token.FlipToFaceDown(true); // flip down instantly
+                    token.Shroud(true); // flip down instantly
                 else
-                    token.FlipToFaceUp(gameObject.activeInHierarchy); // flip up with anim, if we're visible 
+                    token.Unshroud(gameObject.activeInHierarchy); // flip up with anim, if we're visible 
 
                 debugText += stack.EntityId + " (" + token.StackSource.SourceType + ") ";
 

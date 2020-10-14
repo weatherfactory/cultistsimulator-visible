@@ -81,7 +81,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             stack.transform.localRotation = Quaternion.identity;
      
             stack.DisplayAtTableLevel();
-            stack.FlipToFaceUp(true);
+            stack.Unshroud(true);
 			stack.SnapToGrid();
 
             if (pushOthers)
@@ -495,7 +495,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             _tabletop.AcceptStack(stack, new Context(Context.ActionSource.DoubleClickSend)); // this reparents, sets container
             //_tabletop.DisplayHere(stack as Core.Interfaces.ElementStackToken); // this reparents, sets container
             //stack.transform.position = ownerSituation.transform.position;
-            stack.FlipToFaceUp(true);
+            stack.Unshroud(true);
         }
 
         public void PrepareElementForGreedyAnim(ElementStackToken stack, VerbAnchor ownerSituation)
@@ -503,7 +503,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             _tabletop.AcceptStack(stack, new Context(Context.ActionSource.GreedySlot)); // this reparents, sets container
             //_tabletop.DisplayHere(stack as Core.Interfaces.ElementStackToken); // this reparents, sets container
             stack.transform.position = ownerSituation.transform.position;
-            stack.FlipToFaceUp(true);
+            stack.Unshroud(true);
         }
 
         public void MoveElementToSituationSlot(ElementStackToken stack, TokenAndSlot tokenSlotPair, Action<ElementStackToken, TokenAndSlot> callOnAnimDone, float durationOverride = -1.0f)

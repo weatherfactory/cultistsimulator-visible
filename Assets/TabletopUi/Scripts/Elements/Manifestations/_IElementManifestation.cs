@@ -36,5 +36,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         void Highlight(HighlightType highlightType);
         void Unhighlight(HighlightType highlightType);
         bool NoPush { get; }
+        void DoRevealEffect(bool instant);
+        void DoShroudEffect(bool instant);
     }
 }

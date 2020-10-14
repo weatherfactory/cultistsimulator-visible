@@ -56,11 +56,8 @@ namespace Assets.CS.TabletopUI {
         {
             get { return _manifestation.NoPush; }
         }
-        private bool isFront = true;
+        private bool shrouded = false;
         public Source StackSource { get; set; }
-
-        private Coroutine turnCoroutine;
-        
 
         private ElementStackToken originStack = null; // if it was pulled from a stack, save that stack!
         private Dictionary<string,int> _currentMutations; //not strictly an aspects dictionary; it can contain negatives
@@ -167,14 +164,8 @@ namespace Assets.CS.TabletopUI {
         protected void OnDisable()
 		{
             // this resets any animation frames so we don't get stuck when deactivating mid-anim
-         
-           _manifestation.ResetAnimations();
+            _manifestation.ResetAnimations();
 
-            // we're turning? Just set us to the target
-            if (turnCoroutine != null) {
-                turnCoroutine = null;
-                Flip(isFront, true); // instant to set where it wants to go
-            }
         }
 
 
@@ -550,12 +541,12 @@ namespace Assets.CS.TabletopUI {
 
 
         protected override bool AllowsDrag() {
-            return isFront && turnCoroutine == null; // no dragging while not front or busy turning
+            return !shrouded && turnCoroutine == null; // no dragging while not front or busy turning
         }
 
         protected override bool ShouldShowHoverGlow() {
             // interaction is always possible on facedown cards to turn them back up
-            return !isFront || base.ShouldShowHoverGlow();
+            return shrouded || base.ShouldShowHoverGlow();
         }
 
         virtual public bool AllowsIncomingMerge() {
@@ -683,7 +674,7 @@ namespace Assets.CS.TabletopUI {
 			var tabletopManager = Registry.Get<TabletopManager>(false);
             if(tabletopManager!=null ) //eg we might have a face down card on the credits page - in the longer term, of course, this should get interfaced
             {
-                if (isFront)
+                if (!shrouded)
                     tabletopManager.SetHighlightedElement(EntityId, Quantity);
                 else
                     tabletopManager.SetHighlightedElement(null);
@@ -767,23 +758,21 @@ namespace Assets.CS.TabletopUI {
 				singleClickPending = true;
 
     
+                if (shrouded)
+				{
+                    Unshroud(false);
 
+                    if (onTurnFaceUp != null)
+                        onTurnFaceUp(this);
 
-                if (isFront)
+                }
+				else
 				{
                     foreach (var o in observers)
                     {
                         o.OnStackClicked(this, eventData, this._element);
                     }
-
-				}
-				else
-				{
-					FlipToFaceUp(false);
-
-					if (onTurnFaceUp != null)
-						onTurnFaceUp(this);
-				}
+                }
 
 				// this moves the clicked sibling on top of any other nearby cards.
 				if (TokenContainer.GetType() != typeof(RecipeSlot) && TokenContainer.GetType()!=typeof(ExhibitCards) )
@@ -947,8 +936,8 @@ namespace Assets.CS.TabletopUI {
                     DecayTo(_element.DecayTo);
             }
 
-            if (!isFront)
-                FlipToFaceUp(true); //never leave a decaying card face down.
+            if (shrouded)
+                Unshroud(true); //never leave a decaying card face down.
 
 
 		    _manifestation.UpdateDecayVisuals(LifetimeRemaining,_element,interval,_currentlyBeingDragged );
@@ -999,65 +988,30 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void FlipToFaceUp(bool instant = false)
+        public void Unshroud(bool instant = false)
         {
-            if (!instant)
-                SoundManager.PlaySfx("CardTurnOver");
-
-            Flip(true, instant);
+            shrouded = false;
+            _manifestation.DoRevealEffect(instant);
+ 
         }
 
-        public void FlipToFaceDown(bool instant = false) {
-            Flip(false, instant);
+        public void Shroud(bool instant = false) {
+            shrouded = true;
+            _manifestation.DoShroudEffect(instant);
+
+        
         }
 
-        virtual public void Flip(bool state, bool instant = false) {
-            if (isFront == state && !instant) // if we're instant, ignore this to allow forcing of pos
-                return;
-
-            ShowGlow(!state); // disable face-down hover-effect
-
-            isFront = state;
-            //if a card has just been turned face up in a situation, it's now an existing, established card
-            if (isFront && StackSource.SourceType == SourceType.Fresh)
-                StackSource = Source.Existing();
-
-            if (gameObject.activeInHierarchy == false || instant) {
-                transform.localRotation = GetFrontRotation(isFront);
-                return;
-            }
-
-            if (turnCoroutine != null)
-                StopCoroutine(turnCoroutine);
-
-            turnCoroutine = StartCoroutine(DoTurn());
-        }
+        
 
         Quaternion GetFrontRotation(bool isFront) {
             return Quaternion.Euler(0f, isFront ? 0f : 180f, 0f);
         }
 
-        public bool IsFront() {
-            return isFront;
+        public bool Shrouded() {
+            return shrouded;
         }
 
-        IEnumerator DoTurn() {
-            float time = 0f;
-            float targetAngle = isFront ? 0f : 180f;
-            float currentAngle = transform.localEulerAngles.y;
-            float duration = Mathf.Abs(targetAngle - currentAngle) / 900f;
-
-            while (time < duration) {
-                time += Time.deltaTime;
-                transform.localRotation = Quaternion.Euler(0f, Mathf.Lerp(currentAngle, targetAngle, time / duration), 0f);
-                yield return null;
-            }
-
-            transform.localRotation = Quaternion.Euler(0f, targetAngle, 0f);
-            turnCoroutine = null;
-        }
-
- 
 
 
         public override bool CanAnimate()

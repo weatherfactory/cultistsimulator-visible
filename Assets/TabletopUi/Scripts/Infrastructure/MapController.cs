@@ -71,7 +71,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 			DrawWithMessage dwm0 = dealer.DealWithMessage(doorDeck);
             cards[0] = BuildCard(activeDoor.cardPositions[0].transform.position, dwm0.DrawnCard,activeDoor.portalType, dwm0.WithMessage);
-            cards[0].FlipToFaceUp(true);
+            cards[0].Unshroud(true);
 
             // Display face down cards next to locations
 			int counter = 0;
@@ -83,7 +83,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 				Debug.Assert( counter<10, "SetupMap() : Unlikely number of retries. Could be stuck in while loop?" );
 			}
             cards[1] = BuildCard(activeDoor.cardPositions[1].transform.position, dwm1.DrawnCard, activeDoor.portalType,  dwm1.WithMessage);
-            cards[1].FlipToFaceDown(true);
+            cards[1].Shroud(true);
 
 			counter = 0;
             DrawWithMessage dwm2 = dealer.DealWithMessage(subLocationDeck2);
@@ -94,7 +94,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 				Debug.Assert( counter<10, "SetupMap() : Unlikely number of retries. Could be stuck in while loop?" );
 			}
             cards[2] = BuildCard(activeDoor.cardPositions[2].transform.position, dwm2.DrawnCard, activeDoor.portalType, dwm2.WithMessage);
-            cards[2].FlipToFaceDown(true);
+            cards[2].Shroud(true);
 
             // When one face-down card is turned, remove all face up cards.
             // On droping on door: Return
@@ -125,7 +125,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 for (int i = 0; i < cards.Length; i++)
                     if (cards[i] != cardTurned)
                     {
-                        cards[i].FlipToFaceUp();
+                        cards[i].Unshroud();
                         cards[i].Retire(CardVFX.CardLightDramatic);
                     }
 
