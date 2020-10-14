@@ -27,6 +27,7 @@ namespace Assets.TabletopUi.Scripts.Services
         public BookshelfAnchor BookshelfAnchor = null;
         public ElementStackToken ElementStackToken = null;
         public CardManifestation CardManifestation = null;
+        public DropzoneManifestation DropzoneManifestation = null;
         public MinimalManifestation MinimalManifestation = null;
         public SituationWindow SituationWindow = null;
         public RecipeSlot RecipeSlot = null;

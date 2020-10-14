@@ -15517,7 +15517,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000744462, y: -0.0005912781}
+  m_AnchoredPosition: {x: -0.000022172928, y: 0.00017738342}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &512707587
@@ -31146,7 +31146,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1706259581}
   m_HandleRect: {fileID: 1706259580}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -38479,9 +38479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rectTransform: {fileID: 224000011908250321}
-  useDragOffset: 0
   rotateOnDrag: 1
-  glowImage: {fileID: 114946547503546729}
   resetToStartPos: 0
   PlacementAlreadyChronicled: 0
 --- !u!114 &114111364633692442 stripped
@@ -38494,18 +38492,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8516cb24dea15d84b9646d1c1204a1e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114946547503546729 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1914689603901066308, guid: 5639b0e91525fcd49a44b2b5a698e9ba,
-    type: 3}
-  m_PrefabInstance: {fileID: 1948377805275483437}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 426e830583461414fa5ee98e610699d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!222 &222000011582001887
