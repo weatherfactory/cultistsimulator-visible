@@ -186,19 +186,25 @@ namespace Assets.TabletopUi.Scripts.Elements
                 decayBackgroundImage.color = col;
             }
 
-            float percentage = (1 - lifetimeRemaining / element.Lifetime);
-
-            percentage = Mathf.Clamp01(percentage);
-
-            if (element.Resaturate)
+    
+            if(element.Decays)
             {
-                float reversePercentage = 1f - percentage;
-                artwork.color = new Color(1f - reversePercentage, 1f - reversePercentage, 1f - reversePercentage, 1f);
+                float percentageDecayed = 1 - lifetimeRemaining / element.Lifetime;
+                percentageDecayed = Mathf.Clamp01(percentageDecayed);
+                if (element.Resaturate)
+                {
+                    float reversePercentage = 1f - percentageDecayed;
+                    artwork.color = new Color(1f - reversePercentage, 1f - reversePercentage, 1f - reversePercentage, 1f);
+                }
+                else
+                {
+                    artwork.color = new Color(1f - percentageDecayed, 1f - percentageDecayed, 1f - percentageDecayed, 1f);
+                }
             }
             else
-            {
-                artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1f);
-            }
+                artwork.color = new Color(1f, 1f, 1f, 1f);
+
+
 
         }
 
