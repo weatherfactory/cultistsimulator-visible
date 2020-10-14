@@ -32,8 +32,7 @@ namespace Assets.CS.TabletopUI {
         [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(CanvasGroup))]
     public abstract class AbstractToken : MonoBehaviour,
-        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler,
-        IGlowableView, IPointerEnterHandler, IPointerExitHandler,IToken,IAnimatable {
+        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IToken,IAnimatable {
 
         // STATIC FIELDS
 
@@ -44,7 +43,6 @@ namespace Assets.CS.TabletopUI {
         // INSTANCE FIELDS
 
         public RectTransform rectTransform;
-        [SerializeField] protected bool useDragOffset = true;
         [SerializeField] protected bool rotateOnDrag = true;
         
         [HideInInspector] public Vector2? lastTablePos = null; // if it was pulled from the table, save that position
@@ -75,9 +73,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public abstract void StartArtAnimation();
-
-        public abstract IEnumerator DoAnim(float duration, int frameCount, int frameIndex);
-
+        
         public abstract bool CanAnimate();
 
         public abstract string EntityId { get; }
@@ -85,7 +81,7 @@ namespace Assets.CS.TabletopUI {
 
         public bool Defunct { get; protected set; }
         public bool IsInAir { protected set; get; }
-		public bool NoPush { protected set; get; }
+		public virtual bool NoPush { protected set; get; }
 
         public bool _currentlyBeingDragged { get; protected set; }
 
@@ -202,14 +198,15 @@ namespace Assets.CS.TabletopUI {
             rectTransform.SetParent(Registry.Get<IDraggableHolder>().RectTransform);
             rectTransform.SetAsLastSibling();
 
-            if (useDragOffset) {
-                Vector3 pressPos;
-                RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Get<IDraggableHolder>().RectTransform, eventData.pressPosition, eventData.pressEventCamera, out pressPos);
-                dragOffset = (startPosition + startParent.position) - pressPos;
-            }
-            else {
+            //commented out because I *might* not need it; but if I do, we can probably calculate it on the fly.
+            //if (useDragOffset) {
+            //    Vector3 pressPos;
+            //    RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Get<IDraggableHolder>().RectTransform, eventData.pressPosition, eventData.pressEventCamera, out pressPos);
+            //    dragOffset = (startPosition + startParent.position) - pressPos;
+            //}
+            //else {
                 dragOffset = Vector3.zero;
-            }
+            //}
 
             SoundManager.PlaySfx("CardPickup");
 			TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.Drag, true );
@@ -268,9 +265,7 @@ namespace Assets.CS.TabletopUI {
                     ReturnToStartPosition();
 
                 TabletopManager.RequestNonSaveableState(TabletopManager.NonSaveableType.Drag, false);   // There is also a failsafe to catch unexpected aborts of Drag state - CP
-
-                ShowGlow(false, false);
-
+                
             }
         }
 
@@ -369,25 +364,8 @@ namespace Assets.CS.TabletopUI {
         public abstract void ShowHoverGlow(bool show, bool playSFX = true, Color? hoverColor = null);
 
 
-        public virtual void OnPointerEnter(PointerEventData eventData) {
-            ShowHoverGlow(true);
-
-
-   
-        }
-
-        public virtual void OnPointerExit(PointerEventData eventData) {
-            ShowHoverGlow(false);
-        }
-
         public abstract void ReactToDraggedToken(TokenInteractionEventArgs args);
 
-
-        public abstract void SetGlowColor(UIStyle.TokenGlowColor colorType);
-
-        public abstract void SetGlowColor(Color color);
-
-        public abstract void ShowGlow(bool glowState, bool instant = false);
 
         // Used when a dragged object is hovering something
         public virtual void ShowHoveringGlow(bool show) {
@@ -405,6 +383,10 @@ namespace Assets.CS.TabletopUI {
             yield return new WaitForSeconds(0.5f);
             ShowHoverGlow(false);
         }
+
+        public abstract void OnPointerEnter(PointerEventData eventData);
+
+        public abstract void OnPointerExit(PointerEventData eventData);
 
     }
 }

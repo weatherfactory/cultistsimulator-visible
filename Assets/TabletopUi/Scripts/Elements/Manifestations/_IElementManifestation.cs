@@ -9,6 +9,13 @@ using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
+    public enum HighlightType
+    {
+        Hover,
+        CanFitSlot,
+        CanMerge,
+        None
+    }
     public interface IElementManifestation
     {
         void DisplayVisuals(Element element);
@@ -16,8 +23,12 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         void ResetAnimations();
         bool Retire(CanvasGroup canvasGroup);
         void SetVfx(CardVFX vfxName);
-        void ShowGlow(bool glowState, bool instant = false);
         void UpdateDecayVisuals(float lifetimeRemaining, Element element, float interval,bool currentlyBeingDragged);
-        
+        void BeginArtAnimation(string icon);
+        bool CanAnimate();
+        void OnBeginDragVisuals();
+        void OnEndDragVisuals();
+        void Highlight(HighlightType highlightType);
+        bool NoPush { get; }
     }
 }

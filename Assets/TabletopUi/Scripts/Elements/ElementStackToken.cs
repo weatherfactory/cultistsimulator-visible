@@ -1,5 +1,4 @@
 ﻿#pragma warning disable 0649
-#define DROPZONE
 
 using System;
 using System.Collections.Generic;
@@ -31,7 +30,7 @@ using UnityEngine.InputSystem;
 // Should inherit from a "TabletopToken" base class same as VerbBox
 
 namespace Assets.CS.TabletopUI {
-    public class ElementStackToken : AbstractToken, IGlowableView,IAnimatable
+    public class ElementStackToken : AbstractToken, IAnimatable
     {
         public const float SEND_STACK_TO_SLOT_DURATION = 0.2f;
 
@@ -53,6 +52,10 @@ namespace Assets.CS.TabletopUI {
 		protected bool singleClickPending = false;
 
         public float LifetimeRemaining { get; set; }
+        public override bool NoPush
+        {
+            get { return _manifestation.NoPush; }
+        }
         private bool isFront = true;
         public Source StackSource { get; set; }
 
@@ -355,12 +358,12 @@ namespace Assets.CS.TabletopUI {
 
                 _manifestation.DisplayVisuals(_element);
                 _manifestation.UpdateText(_element,quantity);
-                
-           
-          
-                ShowGlow(false, false);
-                SetCardDecay(0f);
                 LifetimeRemaining = _element.Lifetime;
+                _manifestation.UpdateDecayVisuals(LifetimeRemaining, _element,0,_currentlyBeingDragged);
+           
+            _manifestation.Highlight(HighlightType.None);
+                
+                
                 PlacementAlreadyChronicled = false; //element has changed, so we want to relog placement
                 MarkedForConsumption = false; //If a stack has just been transformed into another element, all sins are forgiven. It won't be consumed.
 			
@@ -369,15 +372,6 @@ namespace Assets.CS.TabletopUI {
 
                 StackSource = source;
 
-				#if DROPZONE
-				// Refactored for safety. Custom class was crashing all over the shop because it didn't reliably inherit from ElementStackToken
-				// and many card properties are just expected to be valid. Instead, we create a normal but useless card ("dropzone" in tools.json)
-				// and just customise it's appearance.
-				if (elementId == "dropzone")
-				{
-					CustomizeDropZone();
-				}
-#endif
             }
             catch (Exception e)
             {
@@ -425,12 +419,10 @@ namespace Assets.CS.TabletopUI {
 			
 				if (lastTablePos == null)	// If we've never been on the tabletop, use the drop zone
 				{
-				#if DROPZONE
-					// If we get here we have a new card that won't stack with anything else. Place it in the "in-tray"
+				// If we get here we have a new card that won't stack with anything else. Place it in the "in-tray"
 					lastTablePos = GetDropZoneSpawnPos();
 					stackBothSides = false;
-				#endif
-				}
+                }
 			}
 
             Registry.Get<Choreographer>().ArrangeTokenOnTable(this, context, lastTablePos, false, stackBothSides);	// Never push other cards aside - CP
@@ -483,50 +475,7 @@ namespace Assets.CS.TabletopUI {
             return dropZone as AbstractToken;
 		}
 
-		private void CustomizeDropZone()		// Customises self!
-		{
-			// Customize appearance of card to make it distinctive
-			// First hide normal card elements
-			Transform oldcard = transform.Find( "Card" );
-			Transform oldglow = transform.Find( "Glow" );
-			Transform oldshadow = transform.Find( "Shadow" );
-			if (oldcard)
-			{
-				oldcard.gameObject.SetActive( false );
-			}
-			if (oldglow)
-			{
-				oldglow.gameObject.SetActive( false );
-			}
-			if (oldshadow)
-			{
-				oldshadow.gameObject.SetActive( false );
-			}
 
-			// Now create an instance of the dropzone prefab parented to this card
-			// This way any unused references are still pointing at the original card data, so no risk of null refs.
-			// It's a bit hacky, but it's now a live project so refactoring the entire codebase to make it safe is high-risk.
-			TabletopManager tabletop = Registry.Get<TabletopManager>() as TabletopManager;
-
-			GameObject zoneobj = GameObject.Instantiate( tabletop._dropZoneTemplate, transform );
-			Transform newcard = zoneobj.transform.Find( "Card" );
-			Transform newglow = zoneobj.transform.Find( "Glow" );
-			Transform newshadow = zoneobj.transform.Find( "Shadow" );
-
-			_manifestation.glowImage = newglow.gameObject.GetComponent<GraphicFader>() as GraphicFader;
-			newglow.gameObject.SetActive( false );
-            _manifestation.shadow = newshadow.gameObject;
-
-			// Modify original card settings
-			useDragOffset = true;	// It's huge and we can only grab it at the corner
-			LayoutElement lay = GetComponent<LayoutElement>() as LayoutElement;
-			if (lay)
-			{
-				lay.preferredWidth = 0f;	// Do not want this zone to interact with cards at all
-				lay.preferredHeight = 0f;
-			}
-			NoPush = true;
-		}
 
         private bool IsOnTabletop() {
             return transform.parent.GetComponent<TabletopTokenContainer>() != null;
@@ -567,24 +516,24 @@ namespace Assets.CS.TabletopUI {
         public override bool Retire()
 		{
             		if (Defunct)
-				return false;
+                        return false;
 
-            var hlc = Registry.Get<HighlightLocationsController>(false);
-            if(hlc!=null)
-                hlc.DeactivateMatchingHighlightLocation(_element?.Id);
+                    var hlc = Registry.Get<HighlightLocationsController>(false);
+                    if(hlc!=null)
+                        hlc.DeactivateMatchingHighlightLocation(_element?.Id);
 
-            var tabletop = Registry.Get<TabletopManager>(false);
-            if(tabletop!=null)
-			    tabletop.NotifyAspectsDirty();	// Notify tabletop that aspects will need recompiling
+                    var tabletop = Registry.Get<TabletopManager>(false);
+                    if(tabletop!=null)
+                        tabletop.NotifyAspectsDirty();	// Notify tabletop that aspects will need recompiling
             
-            SetTokenContainer(null, new Context(Context.ActionSource.Retire)); // notify the view container that we're no longer here
+                    SetTokenContainer(null, new Context(Context.ActionSource.Retire)); // notify the view container that we're no longer here
 
-            //now take care of the Unity side of things.
+                    //now take care of the Unity side of things.
 
-            Defunct = true;
-            FinishDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex)
+                    Defunct = true;
+                    FinishDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex)
 
-            return _manifestation.Retire(canvasGroup);
+                    return _manifestation.Retire(canvasGroup);
         }
 
 
@@ -718,7 +667,7 @@ namespace Assets.CS.TabletopUI {
                 o.OnStackPointerEntered(this, eventData);
             }
 
-            base.OnPointerEnter(eventData);
+            ShowHoverGlow(true);
 			var tabletopManager = Registry.Get<TabletopManager>(false);
             if(tabletopManager!=null ) //eg we might have a face down card on the credits page - in the longer term, of course, this should get interfaced
             {
@@ -743,7 +692,8 @@ namespace Assets.CS.TabletopUI {
                 o.OnStackPointerExited(this, eventData);
             }
 
-            base.OnPointerExit(eventData);
+            ShowHoverGlow(false);
+
             var ttm = Registry.Get<TabletopManager>(false);
                 if(ttm!=null)
                 {
@@ -770,22 +720,18 @@ namespace Assets.CS.TabletopUI {
                 
                 if (stack.CanMergeWith(this))
                 {
-                    SetGlowColor(UIStyle.TokenGlowColor.Default);
-                    ShowGlow(true, false);
+                    _manifestation.Highlight(HighlightType.CanMerge);
+                   
                 }
             }
             else if (args.TokenInteractionType == TokenInteractionType.EndDrag)
             {
-                ShowGlow(false,false);
+               _manifestation.Highlight(HighlightType.None);
             }
             
         }
 
-        public override void ShowGlow(bool glowState, bool instant = false)
-        {
-            _manifestation.ShowGlow(glowState,instant);
-    
-        }
+
 
         public override void OnPointerClick(PointerEventData eventData)
         {
@@ -867,11 +813,7 @@ namespace Assets.CS.TabletopUI {
                 SetReturn(false, "was merged");
                 SoundManager.PlaySfx("CardPutOnStack");
 
-                var token = stackDroppedOn as AbstractToken;
-
-                if (token != null) // make sure the glow is done in case we highlighted this
-                    token.ShowGlow(false, true);
-
+                
                 this.Retire(CardVFX.None);
             }
             else {
@@ -945,19 +887,20 @@ namespace Assets.CS.TabletopUI {
             _currentlyBeingDragged = true;
 
             IsInAir = true; // This makes sure we don't consider it when checking for overlap
-            ShowCardShadow(true); // Ensure we always have a shadow when dragging
+ _manifestation.OnBeginDragVisuals();
 
-            // A bit hacky, but it works: DID NOT start dragging from badge? Split cards
-			// Now also allowing both shift keys to drag entire stack - CP
-            if (_manifestation.stackBadge != null &&
-                _manifestation.stackBadge.IsHovering() == false &&
-                !Keyboard.current.shiftKey.wasPressedThisFrame)
+            if (!Keyboard.current.shiftKey.wasPressedThisFrame)
 			{
                 SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.PlayerDrag));
 			}
             base.StartDrag(eventData); // To ensure all events fire at the end
         }
 
+        public override void OnEndDrag(PointerEventData eventData)
+        {
+            base.OnEndDrag(eventData);
+
+        }
       
 
 
@@ -1002,16 +945,7 @@ namespace Assets.CS.TabletopUI {
                 onDecay(LifetimeRemaining);
         }
 
-		
-
-
-
- 
-
-        public void ShowCardShadow(bool show)
-		{
-            _manifestation.shadow.gameObject.SetActive(show);
-        }
+        
         
 
 
@@ -1125,19 +1059,14 @@ namespace Assets.CS.TabletopUI {
             if (_element == null)
                 return false;
 
-            return frames.Any();
+            return _manifestation.CanAnimate();
         }
 
-        /// <summary>
-        /// Trigger an animation on the card
-        /// </summary>
-        /// <param name="duration">Determines how long the animation runs. Time is spent equally on all frames</param>
-        /// <param name="frameCount">How many frames to show. Default is 1</param>
-        /// <param name="frameIndex">At which frame to start. Default is 0</param>
+
         public override void StartArtAnimation() {
             if (!CanAnimate())
                 return;
-            _manifestation.BeginArtAnimation();
+            _manifestation.BeginArtAnimation(_element.Icon);
            
         }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.Elements
 {
-    public class CardManifestation: MonoBehaviour,IElementManifestation
+    public class CardManifestation : MonoBehaviour, IElementManifestation
     {
 
         [SerializeField] public Image artwork;
@@ -60,10 +61,12 @@ namespace Assets.TabletopUi.Scripts.Elements
 
         }
 
-      public void UpdateDecayVisuals(float lifetimeRemaining, Element element, float interval,bool currentlyBeingDragged)
+        public void UpdateDecayVisuals(float lifetimeRemaining, Element element, float interval,
+            bool currentlyBeingDragged)
         {
 
-            string cardDecayTime= Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(lifetimeRemaining);
+            string cardDecayTime =
+                Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(lifetimeRemaining);
             decayCountText.text = cardDecayTime;
             decayCountText.richText = true;
 
@@ -71,10 +74,12 @@ namespace Assets.TabletopUi.Scripts.Elements
             if (lifetimeRemaining < element.Lifetime / 2)
                 ShowCardDecayTimer(true);
             else
-                ShowCardDecayTimer(IsGlowing() || currentlyBeingDragged);  // Allow timer to show when hovering over card
+                ShowCardDecayTimer(IsGlowing() || currentlyBeingDragged); // Allow timer to show when hovering over card
 
             // This handles moving the alpha value towards the desired target
-            float cosmetic_dt = Mathf.Max(interval, Time.deltaTime) * 2.0f; // This allows us to call AdvanceTime with 0 delta and still get animation
+            float cosmetic_dt =
+                Mathf.Max(interval, Time.deltaTime) *
+                2.0f; // This allows us to call AdvanceTime with 0 delta and still get animation
             if (decayVisible)
                 decayAlpha = Mathf.MoveTowards(decayAlpha, 1.0f, cosmetic_dt);
             else
@@ -92,7 +97,7 @@ namespace Assets.TabletopUi.Scripts.Elements
                 Color col = decayCountText.color;
                 col.a = decayAlpha;
                 decayCountText.color = col;
-                col = cachedDecayBackgroundColor;   // Caching the color so that we can multiply with the non-1 alpha - CP
+                col = cachedDecayBackgroundColor; // Caching the color so that we can multiply with the non-1 alpha - CP
                 col.a *= decayAlpha;
                 decayBackgroundImage.color = col;
             }
@@ -113,7 +118,53 @@ namespace Assets.TabletopUi.Scripts.Elements
 
         }
 
-      private void ShowCardDecayTimer(bool showTimer)
+        public void OnBeginDragVisuals()
+        {
+            ShowCardShadow(true); // Ensure we always have a shadow when dragging
+
+        }
+
+
+        public void OnEndDragVisuals()
+        {
+            ShowCardShadow(false);
+
+        }
+
+        public void Highlight(HighlightType highlightType)
+        {
+            if(highlightType== HighlightType.CanMerge)
+            {
+                SetGlowColor(UIStyle.TokenGlowColor.Default);
+                ShowGlow(true, false);
+            }
+            else if (highlightType == HighlightType.None)
+            {
+                ShowGlow(false,false);
+            }
+        }
+
+        public bool NoPush
+        {
+            get { return false; }
+        }
+
+        private void ShowGlow(bool glowState, bool instant = false)
+        {
+            if (glowState)
+                glowImage.Show(instant);
+            else
+                glowImage.Hide(instant);
+        }
+
+        private  void ShowCardShadow(bool show)
+        {
+            shadow.gameObject.SetActive(show);
+        }
+
+
+
+        private void ShowCardDecayTimer(bool showTimer)
       {
           if (decayView != null)
               decayView.gameObject.SetActive(showTimer);
@@ -138,10 +189,7 @@ namespace Assets.TabletopUi.Scripts.Elements
 
         }
 
-        public void ResetAnimations()
-        {
-            artwork.overrideSprite = null;
-        }
+
 
         public void SetVfx(CardVFX vfx)
         {
@@ -227,13 +275,7 @@ namespace Assets.TabletopUi.Scripts.Elements
             return true;
         }
 
-        public void ShowGlow(bool glowState, bool instant = false)
-        {
-            if (glowState)
-                glowImage.Show(instant);
-            else
-                glowImage.Hide(instant);
-        }
+
 
         private CardEffectRemove InstantiateEffect(string effectName)
         {
@@ -276,25 +318,38 @@ namespace Assets.TabletopUi.Scripts.Elements
             backArtwork.overrideSprite = sprite;
         }
 
-        public void BeginArtAnimation(Element element)
+        public void ResetAnimations()
+        {
+            artwork.overrideSprite = null;
+        }
+
+        public bool CanAnimate()
+        {
+            return frames.Any();
+        }
+
+        public void BeginArtAnimation(string icon)
         {
             if (animCoroutine != null)
                 StopCoroutine(animCoroutine);
+      
 
-            // TODO: pull data from element itself and use that to drive the values below
             float duration = 0.2f;
             int frameCount = frames.Count;
             int frameIndex = 0;
 
-            animCoroutine = StartCoroutine(DoAnim(duration, frameCount, frameIndex,element));
+            animCoroutine = StartCoroutine(DoAnim(duration, frameCount, frameIndex, icon));
         }
 
-        private IEnumerator DoAnim(float duration, int frameCount, int frameIndex, Element element)
+        /// <param name="duration">Determines how long the animation runs. Time is spent equally on all frames</param>
+        /// <param name="frameCount">How many frames to show. Default is 1</param>
+        /// <param name="frameIndex">At which frame to start. Default is 0</param>
+        private IEnumerator DoAnim(float duration, int frameCount, int frameIndex, string icon)
         {
             Sprite[] animSprites = new Sprite[frameCount];
 
             for (int i = 0; i < animSprites.Length; i++)
-                animSprites[i] = ResourcesManager.GetSpriteForElement(element.Icon, frameIndex + i);
+                animSprites[i] = ResourcesManager.GetSpriteForElement(icon, frameIndex + i);
 
             float time = 0f;
             int lastSpriteIndex = -1;

@@ -38,9 +38,35 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             
         }
 
-        public void ShowGlow(bool glowState, bool instant = false)
+        public void UpdateDecayVisuals(float lifetimeRemaining, Element element, float interval, bool currentlyBeingDragged)
+        {
+            }
+
+        public void BeginArtAnimation(string icon)
         {
             
         }
+
+        public bool CanAnimate()
+        {
+            return false;
+        }
+
+        public void OnBeginDragVisuals()
+        {
+            
+        }
+
+        public void OnEndDragVisuals()
+        {
+            
+        }
+
+        public void Highlight(HighlightType highlightType)
+        {
+        }
+
+        public bool NoPush => true;
+
     }
 }

@@ -408,7 +408,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public IElementManifestation CreateManifestation(ElementStackToken elementStackToken)
         {
-         return  Registry.Get<PrefabFactory>().CreateLocally<CardManifestation>(elementStackToken.transform);
+
+				if (elementStackToken.EntityId == "dropzone")
+				
+                    return Registry.Get<PrefabFactory>().CreateLocally<DropzoneManifestation>(elementStackToken.transform);
+
+                else
+                    return Registry.Get<PrefabFactory>().CreateLocally<CardManifestation>(elementStackToken.transform);
         }
     }
 }

@@ -172,8 +172,19 @@ namespace Assets.CS.TabletopUI {
 
         }
 
+        public override void OnPointerEnter(PointerEventData eventData)
+        {
+            ShowHoverGlow(true);
+        }
 
-        public override void ShowGlow(bool glowState, bool instant = false)
+        public override void OnPointerExit(PointerEventData eventData)
+        {
+            ShowHoverGlow(false);
+
+        }
+
+
+        public void ShowGlow(bool glowState, bool instant = false)
         {
 
             if (glowState)
@@ -415,7 +426,7 @@ namespace Assets.CS.TabletopUI {
             animCoroutine = StartCoroutine(DoAnim(duration, frameCount, frameIndex));
         }
 
-        public override IEnumerator DoAnim(float duration, int frameCount, int frameIndex)
+        public IEnumerator DoAnim(float duration, int frameCount, int frameIndex)
         {
             
             float time = 0f;
@@ -466,11 +477,11 @@ namespace Assets.CS.TabletopUI {
             return glowImage.gameObject.activeSelf;
         }
 
-        public override void SetGlowColor(Color color) {
+        public void SetGlowColor(Color color) {
             glowImage.SetColor(color);
         }
 
-        public override void SetGlowColor(UIStyle.TokenGlowColor colorType) {
+        public void SetGlowColor(UIStyle.TokenGlowColor colorType) {
             SetGlowColor(UIStyle.GetGlowColor(colorType));
         }
 
