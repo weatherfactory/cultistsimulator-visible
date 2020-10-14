@@ -125,7 +125,7 @@ namespace Assets.CS.TabletopUI {
 
         void HandleOnTokenDecay(float timeRemaining) {
             if(_token!=null) //seeing some nullreference errors in the Unity analytics; maybe this is being called after the token is no longer in the window?
-                ShowImageDecayTimer(true, _token.GetCardDecayTime());
+                ShowImageDecayTimer(true, Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(_token.LifetimeRemaining));
         }
 
         protected override void UpdateContent() {
@@ -157,7 +157,8 @@ namespace Assets.CS.TabletopUI {
 
             if (token != null)
             {
-                ShowImageDecayTimer(token.Decays, token.GetCardDecayTime());
+                ShowImageDecayTimer(token.Decays,
+                    Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(token.LifetimeRemaining));
                 aspectsDisplayFlat.DisplayAspects(
                     token.GetAspects(false)); //token, not _element: cater for possible mutations
             }
