@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections;
+using System.Threading.Tasks;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Noon;
@@ -25,13 +26,16 @@ namespace Assets.TabletopUi.Scripts.Services
         DevSlot10=10
     }
 
+    
     public class StageHand:MonoBehaviour
     {
         [Header("Fade Visuals")]
         public Image fadeOverlay;
         public float fadeDuration = 0.25f;
 
-        
+        //we don't want to load it more than once, and checking if it's in loaded scenes doesn't seem to work - because they're not loaded when we do the pass again?
+        private bool loadedInfoScene = false;
+
 
         public int StartingSceneNumber;
 
@@ -60,10 +64,11 @@ namespace Assets.TabletopUi.Scripts.Services
 
         private async void SceneChange(int sceneToLoad,bool withFadeEffect)
         {
-            Registry.Get<StackManagersCatalogue>().Reset();
+            var stackManagersCatalogue = Registry.Get<StackManagersCatalogue>();
 
-            //if (currentSceneIndex > 0)
-            //    SceneManager.UnloadSceneAsync(currentSceneIndex);
+            if(stackManagersCatalogue!=null)
+                Registry.Get<StackManagersCatalogue>().Reset();
+
 
             if(SceneManager.sceneCount > 2)
                 NoonUtility.Log("More than 2 scenes loaded",2);
@@ -90,7 +95,11 @@ namespace Assets.TabletopUi.Scripts.Services
 
         public void LoadInfoScene()
         {
-           SceneChange(SceneNumber.InfoScene,false);
+            if(!loadedInfoScene)
+            {
+                SceneChange(SceneNumber.InfoScene,false);
+                loadedInfoScene = true;
+            }
         }
 
         public void LoadGameOnTabletop(SourceForGameState source)
