@@ -140,7 +140,7 @@ public class TabletopTokenContainer : AbstractTokenContainer,IBeginDragHandler,I
         }
 
         else 
-            NoonUtility.Log("Tried to put something weird on the table",1);
+            NoonUtility.Log("Tried to put something weird on the table: " + eventData.pointerDrag.name,1);
         
 
         
