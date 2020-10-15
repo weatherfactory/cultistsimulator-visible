@@ -29,7 +29,7 @@ def ExtractCharSet( filename ):
 gcharset = ''
 print("Extracting unique chars...")
 print("NOTE: easiest way to extract UI strings is to make a temp copy of content/strings.csv in the target folder, and remove all the unwanted language columns.")
-cjklocs=("../StreamingAssets/content/loc_zh-hans","../StreamingAssets/content/loc_jp")
+cjklocs=("../StreamingAssets/content/core/cultures","../StreamingAssets/content/loc_zh-hans","../StreamingAssets/content/loc_jp")
 for root, dirs, files in chain.from_iterable(os.walk(cjkloc) for cjkloc in cjklocs):
 	path = root.split(os.sep)
 	print((len(path) - 1) * '---', os.path.basename(root))

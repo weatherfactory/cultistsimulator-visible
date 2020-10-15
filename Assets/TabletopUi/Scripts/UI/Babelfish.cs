@@ -29,16 +29,17 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
 
     private bool _initialised = false;
 
-    protected TMP_Text tmpText
+    protected TMP_Text GetTextComponent()
     {
-        get 
-    {
-        if(_tmpText==null)
+        if (_tmpText == null)
+        {
             _tmpText = GetComponent<TMP_Text>();
+            defaultColor = _tmpText.color;
+            defaultStyle = _tmpText.fontStyle;
+        }
         return _tmpText;
     }
 
-    }
     private bool HighContrastEnabledInGlobalSettings=false;
 
     private void OnEnable()
@@ -49,8 +50,7 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
 
     private void Initialise()
     {
-        defaultColor = tmpText.color;
-        defaultStyle = tmpText.fontStyle;
+
 
         var concursum = Registry.Get<Concursum>();
 
@@ -66,8 +66,8 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
         else
             NoonUtility.Log("Missing setting entity: " + NoonConstants.HIGHCONTRAST);
 
-
         _initialised = true;
+
     }
 
     
@@ -83,6 +83,7 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
 
     public void SetValuesFromCulture(Culture culture)
     {
+        
 
         ILocStringProvider lm = Registry.Get<ILocStringProvider>();
 
@@ -101,7 +102,7 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
         TMP_FontAsset font = lm.GetFont(fontStyle, fontscript);
         if (font != null)
         {
-            tmpText.font = font;
+            GetTextComponent().font = font;
         }
 
         // If using a specific font material, map the material to the
@@ -109,14 +110,14 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
         Material fontMaterial = lm.GetFontMaterial(fontStyle);
         if (fontMaterial != null)
         {
-            fontMaterial.SetTexture("_MainTex", tmpText.font.material.mainTexture);
-            tmpText.fontMaterial = fontMaterial;
+            fontMaterial.SetTexture("_MainTex", GetTextComponent().font.material.mainTexture);
+            GetTextComponent().fontMaterial = fontMaterial;
         }
 
         // Localization label: only applies if set.
         if (locLabel != "")
         {
-            tmpText.text = lm.Get(locLabel);
+            GetTextComponent().text = lm.Get(locLabel);
         }
 
         SetFontStyle(culture, lm);
@@ -151,15 +152,15 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
                 Color dark = lm.HighContrastDark;
                 light.a = 1.0f; // ensure color is opaque
                 dark.a = 1.0f;
-                tmpText.color = defaultColor.grayscale > 0.5f ? light : dark;
+                GetTextComponent().color = defaultColor.grayscale > 0.5f ? light : dark;
                 if (highContrastBold)
-                    tmpText.fontStyle |= FontStyles.Bold;
+                    GetTextComponent().fontStyle |= FontStyles.Bold;
             }
             else
             {
-                tmpText.color = defaultColor;
+                GetTextComponent().color = defaultColor;
                 if (highContrastBold)
-                    tmpText.fontStyle = defaultStyle;
+                    GetTextComponent().fontStyle = defaultStyle;
             }
         }
 
@@ -167,18 +168,19 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
         // unreadable
         if (!culture.BoldAllowed)
         {
-            tmpText.fontStyle &= ~FontStyles.Bold;
+            GetTextComponent().fontStyle &= ~FontStyles.Bold;
         }
 
         if (forceBold)
         {
-            tmpText.fontStyle |= FontStyles.Bold;
+            GetTextComponent().fontStyle |= FontStyles.Bold;
         }
     }
 
 
     public void UpdateLocLabel( string label )	
 	{
+        
 		locLabel = label;
         SetValuesForCurrentCulture();
 	}
