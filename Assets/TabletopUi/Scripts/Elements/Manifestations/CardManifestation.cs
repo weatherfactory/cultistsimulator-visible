@@ -44,7 +44,7 @@ namespace Assets.TabletopUi.Scripts.Elements
 
         public bool RequestingNoDrag => flipHelper.FlipInProgress;
 
-        public void Start()
+        public void Awake()
         {
             flipHelper=new FlipHelper(this);
         }

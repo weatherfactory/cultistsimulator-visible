@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(ScrollRect))]
 public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler  {
@@ -35,7 +36,7 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 
     private float currentTruckInput;
     private float currentPedestalInput;
-    private const float KEY_MOVEMENT_EFFECT_MULTIPLIER=6f;
+    private const float KEY_MOVEMENT_EFFECT_MULTIPLIER=90f;
 
 
     void Start() {
@@ -65,11 +66,13 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 	}
 
 	public void OnBeginDrag(PointerEventData eventData) {
+		//OnBeginDrag fired on the scrollrect itself: we're dragging it directly
 		if (scrollRect.isActiveAndEnabled)
 			isManualDragActive = true;
 	}
 
 	public void OnEndDrag(PointerEventData eventData) {
+		//OnEndDrag fired on the scrollrect itself: we've stopped dragging it directly.
 		isManualDragActive = false;
 	}
 
@@ -86,80 +89,82 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 
 	void Update()
     {
-        
+     
+        //Move camera with mouse or keys?
+
 		// We are dragging manually? then block this thing and stop
 		if (isManualDragActive)
 		{
 			blockScrolling = true;
 			return;
 		}
-        // We're pressing a hotkey? Then move!
+        // We're pressing a hotkey? Then move.
         if (currentTruckInput < 0 || currentTruckInput > 0 || currentPedestalInput<0 || currentPedestalInput>0)
 		{
 			Debug.Log($"Truck: {currentTruckInput} Pedestal: {currentPedestalInput} ");
 
-            mousePos = new Vector2(currentTruckInput*15,currentPedestalInput * 15);
+            mousePos = new Vector2(currentTruckInput,currentPedestalInput);
             magnitude = KEY_MOVEMENT_EFFECT_MULTIPLIER;
             pointerEnterEdgeTime = timeout;
         }
 
-        return;
-        // Pointer is in our rect? Then move
-       // else if (HornedAxe.itemBeingDragged!=null) <-- commented out this and the next bit; may bneed to revisit
-		//{
-			// point ranging from (-0.5, -0.5) to (0.5, 0.5)
-			mousePos = new Vector2(Input.mousePosition.x / Screen.width - 0.5f, Input.mousePosition.y / Screen.height - 0.5f);
-			SetMagnitudeFromMouse();
-	//	}
-		// We got neither a button nor a pointer? Nothing.
-	//	else
-	//	{
-		//	blockScrolling = false; // enable scrolling starting with the next frame
-		//	return;
-	//	}
+        
+        // check if the mouse is in the scroll zone near the edge of the screen.
+       else if (Mouse.current.leftButton.isPressed) //...but only if the mouse button is down - ie we're dragging something else
+        {
+            // point ranging from (-0.5, -0.5) to (0.5, 0.5)
+            mousePos = new Vector2(Pointer.current.position.x.ReadValue()/ Screen.width - 0.5f, Pointer.current.position.y.ReadValue() / Screen.height - 0.5f);
+            SetMagnitudeFromMouse();
+        }
+        // We got neither a button nor a pointer? Nothing.
+       	else
+        {
+            blockScrolling = false; // enable scrolling starting with the next frame
+            return;
+        }
 
-		// We are not in a zone? Then stop doing this and unblock us if needed
-		if (Mathf.Approximately(magnitude, 0f))
-		{
-			blockScrolling = false; // enable scrolling starting with the next frame
-			pointerEnterEdgeTime = 0f;	
-			return;
-		}
-		// We are blocked - IE we had a manual drag and we're still in the scroll-zone?
-		else if (blockScrolling)
-		{
-			return;
-		}
+        // We are not in a zone? Then stop doing this and unblock us if needed
+        if (Mathf.Approximately(magnitude, 0f))
+        {
+            blockScrolling = false; // enable scrolling starting with the next frame
+            pointerEnterEdgeTime = 0f;	
+            return;
+        }
+        // We are blocked - IE we had a manual drag and we're still in the scroll-zone?
+        else if (blockScrolling)
+        {
+            return;
+        }
 
-		// Increment our edgeTimer if we're not over the timeout
-		if (pointerEnterEdgeTime < timeout)
-		{
-			pointerEnterEdgeTime += Time.deltaTime;
+        // Increment our edgeTimer if we're not over the timeout
+        if (pointerEnterEdgeTime < timeout)
+        {
+            pointerEnterEdgeTime += Time.deltaTime;
 
-			// Still not enough, then get us out of here
-			if (pointerEnterEdgeTime < timeout) 
-				return;
-		}
+            // Still not enough, then get us out of here
+            if (pointerEnterEdgeTime < timeout) 
+                return;
+        }
 
-		magnitude = Mathf.Lerp(minAcceleration, maxAcceleration, magnitude);
+        magnitude = Mathf.Lerp(minAcceleration, maxAcceleration, magnitude);
 
-		// -1f to invert the vector 
-		var vector = mousePos.normalized * magnitude * -1f * Time.deltaTime;
+        // -1f to invert the vector 
+        var vector = mousePos.normalized * magnitude * -1f * Time.deltaTime;
 
-		// Set horizontal velocity
-		// if we change direction, do so immediately! Otherwise add on top up to our max speed.
-		if (Mathf.Sign(vector.x) != Mathf.Sign(scrollRect.velocity.x))
-			vector.x = Mathf.Min(vector.x, maxVelocity);
-		else 
-			vector.x = Mathf.Min(scrollRect.velocity.x + vector.x, maxVelocity);
+        // Set horizontal velocity
+        // if we change direction, do so immediately! Otherwise add on top up to our max speed.
+        if (Mathf.Sign(vector.x) != Mathf.Sign(scrollRect.velocity.x))
+            vector.x = Mathf.Min(vector.x, maxVelocity);
+        else 
+            vector.x = Mathf.Min(scrollRect.velocity.x + vector.x, maxVelocity);
 
-		if (Mathf.Sign(vector.y) != Mathf.Sign(scrollRect.velocity.y))
-			vector.y = Mathf.Min(vector.y, maxVelocity);
-		else 
-			vector.y = Mathf.Min(scrollRect.velocity.y + vector.y, maxVelocity);
+        if (Mathf.Sign(vector.y) != Mathf.Sign(scrollRect.velocity.y))
+            vector.y = Mathf.Min(vector.y, maxVelocity);
+        else 
+            vector.y = Mathf.Min(scrollRect.velocity.y + vector.y, maxVelocity);
 
-		// Push the velocity into the scrollRect
-		scrollRect.velocity = vector;
+        // Push the velocity into the scrollRect
+        scrollRect.velocity = vector;
 	}
 
 

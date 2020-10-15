@@ -199,14 +199,16 @@ namespace Assets.CS.TabletopUI {
             rectTransform.SetAsLastSibling();
 
             //commented out because I *might* not need it; but if I do, we can probably calculate it on the fly.
-            //if (useDragOffset) {
+            //if (this.EntityId=="dropzone")
+            //{
             //    Vector3 pressPos;
             //    RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Get<IDraggableHolder>().RectTransform, eventData.pressPosition, eventData.pressEventCamera, out pressPos);
             //    dragOffset = (startPosition + startParent.position) - pressPos;
             //}
-            //else {
+            //else
+            //{
                 dragOffset = Vector3.zero;
-            //}
+          //  }
 
             SoundManager.PlaySfx("CardPickup");
 			TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.Drag, true );
