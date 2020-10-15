@@ -67,17 +67,7 @@ public class NullLocStringProvider : ILocStringProvider
 
 public class LanguageManager : MonoBehaviour,ILocStringProvider
 {
-
-
-	public enum eLanguage
-	{
-		en,
-		ru,
-		zh,
-
-		maxLanguages
-	};
-
+    
 	public enum eFontStyle
 	{
 		BodyText,
