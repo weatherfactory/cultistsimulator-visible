@@ -26,7 +26,7 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 	bool pointerInRect;
 #pragma warning restore 414
 	float pointerEnterEdgeTime = 0f;
-	bool isManualDragActive;
+	bool ManualScrollRectDragIsActive;
 	bool blockScrolling;
 
 	Vector2 mousePos;
@@ -68,12 +68,12 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 	public void OnBeginDrag(PointerEventData eventData) {
 		//OnBeginDrag fired on the scrollrect itself: we're dragging it directly
 		if (scrollRect.isActiveAndEnabled)
-			isManualDragActive = true;
+			ManualScrollRectDragIsActive = true;
 	}
 
 	public void OnEndDrag(PointerEventData eventData) {
 		//OnEndDrag fired on the scrollrect itself: we've stopped dragging it directly.
-		isManualDragActive = false;
+		ManualScrollRectDragIsActive = false;
 	}
 
     public void OnTruckEvent(TruckEventArgs args)
@@ -93,7 +93,7 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         //Move camera with mouse or keys?
 
 		// We are dragging manually? then block this thing and stop
-		if (isManualDragActive)
+		if (ManualScrollRectDragIsActive)
 		{
 			blockScrolling = true;
 			return;
@@ -110,7 +110,7 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 
         
         // check if the mouse is in the scroll zone near the edge of the screen.
-       else if (Mouse.current.leftButton.isPressed) //...but only if the mouse button is down - ie we're dragging something else
+       else if (Mouse.current.leftButton.isPressed) //...but only if the mouse button is down - ie we're dragging something else. It would be better to check if we're actually dragging, though. Event?
         {
             // point ranging from (-0.5, -0.5) to (0.5, 0.5)
             mousePos = new Vector2(Pointer.current.position.x.ReadValue()/ Screen.width - 0.5f, Pointer.current.position.y.ReadValue() / Screen.height - 0.5f);

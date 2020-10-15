@@ -4,6 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 namespace TabletopUi.Scripts.UI
 {
@@ -27,45 +28,43 @@ namespace TabletopUi.Scripts.UI
 
             _camera = _canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : _canvas.worldCamera;
 
-         
-
         }
 
         private void LateUpdate()
         {
-            //var isHoveringOver =
-            //    TMP_TextUtilities.IsIntersectingRectTransform(_text.rectTransform, Input.mousePosition, _camera);
-            //int linkIndex;
-            //try
-            //{
-            //    linkIndex = isHoveringOver
-            //        ? TMP_TextUtilities.FindIntersectingLink(_text, Input.mousePosition, _camera)
-            //        : -1;
-            //}
-            //catch (IndexOutOfRangeException)
-            //{
-            //    linkIndex = -1;
-            //}
+            var isHoveringOver =
+                TMP_TextUtilities.IsIntersectingRectTransform(_text.rectTransform, Mouse.current.position.ReadValue(), _camera);
+            int linkIndex;
+            try
+            {
+                linkIndex = isHoveringOver
+                    ? TMP_TextUtilities.FindIntersectingLink(_text, Mouse.current.position.ReadValue(), _camera)
+                    : -1;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                linkIndex = -1;
+            }
 
-            //if (_currentLink != -1 && linkIndex != _currentLink)
-            //{
-            //    SetLinkToColor(_currentLink, (linkIdx, vertIdx) => _originalVertexColors[linkIdx][vertIdx]);
-            //    _originalVertexColors.Clear();
-            //    _currentLink = -1;
-            //}
+            if (_currentLink != -1 && linkIndex != _currentLink)
+            {
+                SetLinkToColor(_currentLink, (linkIdx, vertIdx) => _originalVertexColors[linkIdx][vertIdx]);
+                _originalVertexColors.Clear();
+                _currentLink = -1;
+            }
 
-            //if (linkIndex != -1 && linkIndex != _currentLink)
-            //{
-            //    _currentLink = linkIndex;
-            //    if (doesColorChangeOnHover)
-            //        _originalVertexColors = SetLinkToColor(linkIndex, (linkIdx, vertIdx) => hoverColor);
-            //}
+            if (linkIndex != -1 && linkIndex != _currentLink)
+            {
+                _currentLink = linkIndex;
+                if (doesColorChangeOnHover)
+                    _originalVertexColors = SetLinkToColor(linkIndex, (linkIdx, vertIdx) => hoverColor);
+            }
         }
 
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            int linkIndex = TMP_TextUtilities.FindIntersectingLink(_text, Input.mousePosition, _camera);
+            int linkIndex = TMP_TextUtilities.FindIntersectingLink(_text, Mouse.current.position.ReadValue(), _camera);
             if (linkIndex == -1) 
                 return;
             TMP_LinkInfo linkInfo = _text.textInfo.linkInfo[linkIndex];
