@@ -122,10 +122,10 @@ public class MenuScreenController : LocalNexus {
             "UI_DLC_TITLE_EXILE",
             new Dictionary<Storefront, string>
             {
-                {Storefront.Steam, "https://weatherfactory.biz/mar-1-edmund/"},
-                {Storefront.Gog, "https://weatherfactory.biz/mar-1-edmund/"},
-                {Storefront.Humble, "https://weatherfactory.biz/mar-1-edmund/"},
-                {Storefront.Unknown, "https://weatherfactory.biz/mar-1-edmund/" }
+                {Storefront.Steam, "https://store.steampowered.com/app/1259930/Cultist_Simulator_The_Exile"},
+                {Storefront.Gog, "https://www.gog.com/game/cultist_simulator_the_exile"},
+                {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-the-exile"},
+                {Storefront.Unknown,"https://www.cultistsimulator.com" }
             },
             true,
             null
