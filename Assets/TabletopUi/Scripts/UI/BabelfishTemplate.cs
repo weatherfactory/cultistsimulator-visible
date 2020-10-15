@@ -25,9 +25,9 @@ namespace TabletopUi.Scripts.UI
 
         private void UpdateTextFromTemplate()
         {
-            if (template != null && tmpText != null)
+            if (template != null && GetTextComponent() != null)
             {
-                tmpText.text = ParameterPattern.Replace(template, match => Registry.Get<ILocStringProvider>().Get(match.Groups[1].Value));
+                GetTextComponent().text = ParameterPattern.Replace(template, match => Registry.Get<ILocStringProvider>().Get(match.Groups[1].Value));
             }
         }
     }

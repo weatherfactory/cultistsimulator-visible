@@ -18,7 +18,7 @@ namespace TabletopUi.Scripts.UI
         private Camera _camera;
 
         private int _currentLink = -1;
-        private List<Color32[]> _originalVertexColors = new List<Color32[]>();
+         public List<Color32[]> _originalVertexColors = new List<Color32[]>();
 
         protected void Awake()
         {
@@ -26,6 +26,9 @@ namespace TabletopUi.Scripts.UI
             _canvas = GetComponentInParent<Canvas>();
 
             _camera = _canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : _canvas.worldCamera;
+
+         
+
         }
 
         private void LateUpdate()
