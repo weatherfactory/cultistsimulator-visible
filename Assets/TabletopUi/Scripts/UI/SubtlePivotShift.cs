@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(RectTransform))]
 public class SubtlePivotShift : MonoBehaviour {
@@ -57,15 +58,17 @@ public class SubtlePivotShift : MonoBehaviour {
 	}
 
 	void SetTargetFromMouse() {
-		//if (moveHorizontal) { 
-		//	targetPivot.x = (Input.mousePosition.x - mouseScreenCornerPadding.x) / (Screen.width - mouseScreenCornerPadding.x * 2f);
-  //          targetPivot.x = minPivot.x + (targetPivot.x * (maxPivot.x - minPivot.x));
-  //      }
+        if (moveHorizontal)
+        {
+            targetPivot.x = (Mouse.current.position.x.ReadValue() - mouseScreenCornerPadding.x) / (Screen.width - mouseScreenCornerPadding.x * 2f);
+            targetPivot.x = minPivot.x + (targetPivot.x * (maxPivot.x - minPivot.x));
+        }
 
-  //      if (moveVertical) {
-  //          targetPivot.y = (Input.mousePosition.y - mouseScreenCornerPadding.y) / (Screen.height - mouseScreenCornerPadding.y * 2f);
-  //          targetPivot.y = minPivot.y + (targetPivot.y * (maxPivot.y - minPivot.y));
-  //      }
+        if (moveVertical)
+        {
+            targetPivot.y = (Mouse.current.position.y.ReadValue() - mouseScreenCornerPadding.y) / (Screen.height - mouseScreenCornerPadding.y * 2f);
+            targetPivot.y = minPivot.y + (targetPivot.y * (maxPivot.y - minPivot.y));
+        }
     }
 
 	void ClampTargetPos() {
