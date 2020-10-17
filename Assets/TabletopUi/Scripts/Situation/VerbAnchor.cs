@@ -386,7 +386,7 @@ namespace Assets.CS.TabletopUI {
             }
 
             // We can't interact? Then dump us on the tabletop
-            SetReturn(false, "Tried to drop on non-compatible token, return to tabletop");
+            SetXNess(TokenXNess.ElementDroppedOnTokenButCannotInteractWithIt);
             ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
 
             
@@ -403,9 +403,10 @@ namespace Assets.CS.TabletopUI {
             tokenDroppedOn.TokenContainer.TryMoveAsideFor(this, tokenDroppedOn, out bool moveAsideFor);
 
             if (moveAsideFor)
-                SetReturn(false, "was moved aside for");
+                SetXNess(TokenXNess.DroppedOnTokenWhichMovedAside);
             else
-                SetReturn(true);
+                SetXNess(TokenXNess.DroppedOnTokenWhichWontMoveAside);
+
         }
 
 

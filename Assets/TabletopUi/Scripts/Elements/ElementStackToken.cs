@@ -812,7 +812,7 @@ namespace Assets.CS.TabletopUI {
             //element dropped on element
             if (CanInteractWithTokenDroppedOn(stackDroppedOn)) {
                 stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity,new Context(Context.ActionSource.Unknown));
-                SetReturn(false);
+                SetXNess(TokenXNess.MergedIntoStack);
                 SoundManager.PlaySfx("CardPutOnStack");
 
                 
@@ -826,7 +826,7 @@ namespace Assets.CS.TabletopUI {
                 droppedOnToken.TokenContainer.TryMoveAsideFor(this, droppedOnToken, out moveAsideFor);
 
                 if (moveAsideFor)
-                    SetReturn(false);
+                    SetXNess(TokenXNess.DroppedOnTokenWhichMovedAside);
             }
         }
 
@@ -840,12 +840,12 @@ namespace Assets.CS.TabletopUI {
         {
             //Verb dropped on element - FIXED
             
-            this.TokenContainer.TryMoveAsideFor(this, tokenDroppedOn, out bool  moveAsideFor);
+            this.TokenContainer.TryMoveAsideFor(this,tokenDroppedOn, out bool  moveAsideFor);
 
             if (moveAsideFor)
-                SetReturn(false);
+                SetXNess(TokenXNess.DroppedOnTokenWhichMovedAside);
             else
-                SetReturn(true);
+                SetXNess(TokenXNess.DroppedOnTokenWhichWontMoveAside);
         }
 
 

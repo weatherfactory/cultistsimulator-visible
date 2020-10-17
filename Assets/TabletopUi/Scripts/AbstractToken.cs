@@ -28,6 +28,21 @@ namespace Assets.CS.TabletopUI {
 
     }
 
+    public enum TokenXNess
+    {
+        NoValidDestination,
+        ValidDestination,
+        DivertedByGreedySlot,
+        DoesntMatchSlotRequirements,
+        DroppedOnTableContainer,
+        ReturningSplitStack,
+        ReturnedToStartingSlot,
+        PlacedInSlot,
+        ElementDroppedOnTokenButCannotInteractWithIt,
+        DroppedOnTokenWhichMovedAside,
+        DroppedOnTokenWhichWontMoveAside,
+        MergedIntoStack
+    }
 
         [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(CanvasGroup))]
@@ -87,15 +102,31 @@ namespace Assets.CS.TabletopUI {
 
         protected bool _draggingEnabled = true;
 
-        public bool resetToStartPosition = false;
+     private TokenXNess TokenXNess { get; set; }
 
-        public void Start()
+            public void Start()
         {
             if(TokenContainer.GetType()!=typeof(CardsPile))
                Registry.Get<LocalNexus>().TokenInteractionEvent.AddListener(ReactToDraggedToken);
 
+            SetXNess(TokenXNess.NoValidDestination);
+
         }
 
+        public void SetXNess(TokenXNess xness)
+        {
+            TokenXNess = xness;
+        }
+
+
+        public bool ShouldReturnToStart()
+        {
+            return TokenXNess == TokenXNess.NoValidDestination ||
+                TokenXNess==TokenXNess.DivertedByGreedySlot ||
+                TokenXNess==TokenXNess.ReturningSplitStack ||
+                TokenXNess == TokenXNess.ReturnedToStartingSlot ||
+                TokenXNess==TokenXNess.DroppedOnTokenWhichWontMoveAside;
+        }
 
         protected virtual bool AllowsDrag() {
             return !IsBeingAnimated;
@@ -105,11 +136,6 @@ namespace Assets.CS.TabletopUI {
             return !Defunct && TokenContainer != null && !IsBeingAnimated && (TokenContainer.AllowDrag || TokenContainer.AlwaysShowHoverGlow) && AllowsDrag();
         }
 
-        public void SetReturn(bool value)
-        {
-            resetToStartPosition = value;
-            //log here if necessary
-        }
 
         /// <summary>
         /// This is an underscore-separated x, y localPosition in the current transform/containsTokens
@@ -178,7 +204,7 @@ namespace Assets.CS.TabletopUI {
 
             _currentlyBeingDragged = true;
 
-            SetReturn( true);
+            TokenXNess = TokenXNess.NoValidDestination;
             canvasGroup.blocksRaycasts = false;
 
             DisplayInAir();
@@ -260,7 +286,7 @@ namespace Assets.CS.TabletopUI {
                 _currentlyBeingDragged = false;
                 canvasGroup.blocksRaycasts = true;
 
-                if (resetToStartPosition)
+                if (ShouldReturnToStart())
                     ReturnToStartPosition();
 
                 TabletopManager.RequestNonSaveableState(TabletopManager.NonSaveableType.Drag, false);   // There is also a failsafe to catch unexpected aborts of Drag state - CP

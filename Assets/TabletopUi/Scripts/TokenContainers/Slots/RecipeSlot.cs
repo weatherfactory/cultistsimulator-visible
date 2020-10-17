@@ -34,7 +34,7 @@ namespace Assets.CS.TabletopUI {
         bool IsPrimarySlot();
     }
 
-    public class RecipeSlot : AbstractTokenContainer, IDropHandler, IRecipeSlot, IPointerClickHandler, IGlowableView, IPointerEnterHandler, IPointerExitHandler {
+    public class RecipeSlot : AbstractTokenContainer, IDropHandler, IRecipeSlot, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
 
         public event System.Action<RecipeSlot, ElementStackToken, Context> onCardDropped;
         public event System.Action<ElementStackToken, Context> onCardRemoved;
@@ -239,7 +239,7 @@ namespace Assets.CS.TabletopUI {
 
             if (match.MatchType != SlotMatchForAspectsType.Okay)
             {
-                stack.SetReturn(true);
+                stack.SetXNess(TokenXNess.DoesntMatchSlotRequirements);
                 stack.ReturnToStartPosition();
 
                 var notifier = Registry.Get<INotifier>();
@@ -252,8 +252,8 @@ namespace Assets.CS.TabletopUI {
             else if (stack.Quantity != 1)
             {
                 // We're dropping more than one?
-                // So make sure the card we're dropping that is being returned to it's position
-                stack.SetReturn(true);
+                // set main stack to be returned to start position
+                stack.SetXNess( TokenXNess.ReturningSplitStack);
                 // And we split a new one that's 1 (leaving the returning card to be n-1)
                 var newStack = stack.SplitAllButNCardsToNewStack(stack.Quantity - 1, new Context(Context.ActionSource.PlayerDrag));
                 // And we put that into the slot
@@ -267,7 +267,7 @@ namespace Assets.CS.TabletopUI {
                 // if we drop in the same slot where we came from, do nothing.
                 if (currentOccupant == stack)
                 {
-                    stack.SetReturn(true);
+                    stack.SetXNess(TokenXNess.ReturnedToStartingSlot);
                     return false;
                 }
 
@@ -276,7 +276,7 @@ namespace Assets.CS.TabletopUI {
                 //currentOccupant.ReturnToTabletop();
 
                 //now we put the token in the slot.
-                stack.SetReturn(false); // This tells the draggable to not reset its pos "onEndDrag", since we do that here. (Martin)
+                stack.SetXNess(TokenXNess.PlacedInSlot);
                 AcceptStack(stack, new Context(Context.ActionSource.PlayerDrag));
                 SoundManager.PlaySfx("CardPutInSlot");
             }
