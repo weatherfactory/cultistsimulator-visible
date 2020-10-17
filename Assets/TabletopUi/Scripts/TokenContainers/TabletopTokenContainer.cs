@@ -123,7 +123,7 @@ public class TabletopTokenContainer : AbstractTokenContainer,IBeginDragHandler,I
 
         if (potentialVerbToken != null)
         {
-            potentialVerbToken.SetReturn(false, "dropped on the background");
+            potentialVerbToken.SetReturn(false);
             DisplaySituationTokenOnTable(potentialVerbToken,
                 new Context(Context.ActionSource.PlayerDrag));
             CheckOverlappingTokens(potentialVerbToken);
@@ -131,7 +131,7 @@ public class TabletopTokenContainer : AbstractTokenContainer,IBeginDragHandler,I
 
         }
         else if (potentialElementStack!=null) {
-            potentialElementStack.SetReturn(false, "dropped on the background");
+            potentialElementStack.SetReturn(false);
 
             AcceptStack(potentialElementStack,
                     new Context(Context.ActionSource.PlayerDrag));

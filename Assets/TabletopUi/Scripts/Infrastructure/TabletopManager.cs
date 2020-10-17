@@ -734,7 +734,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
                     if (stack._currentlyBeingDragged)
                     {
-                        stack.SetReturn(false,"Drag aborted by greedy slot");
+                        stack.SetReturn(false);
                         stack.FinishDrag();
                     }
                 
@@ -866,7 +866,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
             if (stack!=null) {
 
-                stack.SetReturn(false, "dropped on the map background");
+                stack.SetReturn(false);
                 stack.DisplayAtTableLevel();
                 mapTokenContainer.DisplayHere(stack, new Context(Context.ActionSource.PlayerDrag));
 

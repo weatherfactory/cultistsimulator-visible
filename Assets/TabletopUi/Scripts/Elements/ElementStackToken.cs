@@ -812,7 +812,7 @@ namespace Assets.CS.TabletopUI {
             //element dropped on element
             if (CanInteractWithTokenDroppedOn(stackDroppedOn)) {
                 stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity,new Context(Context.ActionSource.Unknown));
-                SetReturn(false, "was merged");
+                SetReturn(false);
                 SoundManager.PlaySfx("CardPutOnStack");
 
                 
@@ -826,7 +826,7 @@ namespace Assets.CS.TabletopUI {
                 droppedOnToken.TokenContainer.TryMoveAsideFor(this, droppedOnToken, out moveAsideFor);
 
                 if (moveAsideFor)
-                    SetReturn(false, "was moved aside for");
+                    SetReturn(false);
             }
         }
 
@@ -843,7 +843,7 @@ namespace Assets.CS.TabletopUI {
             this.TokenContainer.TryMoveAsideFor(this, tokenDroppedOn, out bool  moveAsideFor);
 
             if (moveAsideFor)
-                SetReturn(false, "was moved aside for");
+                SetReturn(false);
             else
                 SetReturn(true);
         }

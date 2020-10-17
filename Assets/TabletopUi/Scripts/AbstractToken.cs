@@ -87,8 +87,7 @@ namespace Assets.CS.TabletopUI {
 
         protected bool _draggingEnabled = true;
 
-        public bool resetToStartPos = false;
-        private string resetToStartPosReason = null;    // For debug purposes only - CP
+        public bool resetToStartPosition = false;
 
         public void Start()
         {
@@ -106,11 +105,9 @@ namespace Assets.CS.TabletopUI {
             return !Defunct && TokenContainer != null && !IsBeingAnimated && (TokenContainer.AllowDrag || TokenContainer.AlwaysShowHoverGlow) && AllowsDrag();
         }
 
-        public void SetReturn(bool value, string reason = "")
+        public void SetReturn(bool value)
         {
-            resetToStartPos = value;
-            resetToStartPosReason = reason;	// So that we can see why this variable was last changed... - CP
-            NoonUtility.Log("AbstractToken::SetReturn( " + value + ", " + reason + " )", 0, VerbosityLevel.Trivia);
+            resetToStartPosition = value;
             //log here if necessary
         }
 
@@ -125,7 +122,7 @@ namespace Assets.CS.TabletopUI {
                 {
                     rectTransform.localPosition = new Vector3(x, y);
                 }
-            //if not, then we specified the location as eg 'slot'
+                //if not, then we specified the location as eg 'slot'
 
             }
             get {
@@ -145,7 +142,7 @@ namespace Assets.CS.TabletopUI {
             TokenContainer = newContainer;
         }
 
-        public virtual bool IsInContainer(ITokenContainer compareContainer, Context context) {
+        public bool IsInContainer(ITokenContainer compareContainer, Context context) {
             return compareContainer == TokenContainer;
         }
 
@@ -181,7 +178,7 @@ namespace Assets.CS.TabletopUI {
 
             _currentlyBeingDragged = true;
 
-            SetReturn( true, "start drag" );
+            SetReturn( true);
             canvasGroup.blocksRaycasts = false;
 
             DisplayInAir();
@@ -263,7 +260,7 @@ namespace Assets.CS.TabletopUI {
                 _currentlyBeingDragged = false;
                 canvasGroup.blocksRaycasts = true;
 
-                if (resetToStartPos)
+                if (resetToStartPosition)
                     ReturnToStartPosition();
 
                 TabletopManager.RequestNonSaveableState(TabletopManager.NonSaveableType.Drag, false);   // There is also a failsafe to catch unexpected aborts of Drag state - CP

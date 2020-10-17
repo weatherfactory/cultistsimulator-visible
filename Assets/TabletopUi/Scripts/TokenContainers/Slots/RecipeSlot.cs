@@ -239,7 +239,7 @@ namespace Assets.CS.TabletopUI {
 
             if (match.MatchType != SlotMatchForAspectsType.Okay)
             {
-                stack.SetReturn(true, "Didn't match recipe slot values");
+                stack.SetReturn(true);
                 stack.ReturnToStartPosition();
 
                 var notifier = Registry.Get<INotifier>();
@@ -276,7 +276,7 @@ namespace Assets.CS.TabletopUI {
                 //currentOccupant.ReturnToTabletop();
 
                 //now we put the token in the slot.
-                stack.SetReturn(false, "has gone in slot"); // This tells the draggable to not reset its pos "onEndDrag", since we do that here. (Martin)
+                stack.SetReturn(false); // This tells the draggable to not reset its pos "onEndDrag", since we do that here. (Martin)
                 AcceptStack(stack, new Context(Context.ActionSource.PlayerDrag));
                 SoundManager.PlaySfx("CardPutInSlot");
             }
