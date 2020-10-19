@@ -79,6 +79,8 @@ namespace Assets.CS.TabletopUI.Interfaces
         /// <returns></returns>
         List<ElementStackToken> GetStacksWithAspect(KeyValuePair<string, int> requirement);
 
-        IElementManifestation CreateManifestation(ElementStackToken elementStackToken);
+        IElementManifestation CreateElementManifestation(ElementStackToken elementStackToken);
+
+        IAnchorManifestation CreateAnchorManifestation(VerbAnchor anchorToken);
     }
 }

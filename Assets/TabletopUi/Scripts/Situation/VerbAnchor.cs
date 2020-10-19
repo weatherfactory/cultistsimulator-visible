@@ -10,6 +10,7 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
+using Assets.TabletopUi.Scripts.Elements.Manifestations;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
 #pragma warning disable 0649
@@ -58,6 +59,10 @@ namespace Assets.CS.TabletopUI {
 
         [SerializeField] public GraphicFader glowImage;
 
+
+        private IVerb _verb;
+        private IAnchorManifestation _manifestation;
+
         private string _entityid;
         private Coroutine animCoroutine;
         private List<Sprite> frames;
@@ -81,8 +86,11 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public void Initialise(IVerb verb, SituationController sc) {
-            
+        public void Initialise(IVerb verb, SituationController sc)
+        {
+
+            _manifestation = TokenContainer.CreateAnchorManifestation(this);
+
             SituationController = sc;
             _entityid = verb.Id;
             name = "Verb_" + EntityId;
@@ -100,28 +108,11 @@ namespace Assets.CS.TabletopUI {
             DisplayStackInMiniSlot(null);
         }
 
-        #region -- Token positioning --------------------------
 
         public override void ReturnToTabletop(Context context) {
             Registry.Get<Choreographer>().ArrangeTokenOnTable(this, context);
         }
 
-        /*
-        // CountdownCanvas no longer has a Canvas component - sorting was shitty
-        public override void DisplayInAir() {
-            base.DisplayInAir();
-            countdownCanvas.overrideSorting = false;
-        }
-
-        public override void DisplayAtTableLevel() {
-            base.DisplayAtTableLevel();
-            countdownCanvas.overrideSorting = true;
-        }
-        */
-
-        #endregion
-
-        #region -- Token Visuals --------------------------
 
         public void SetParticleSimulationSpace(Transform transform) {
             ParticleSystem.MainModule mainSettings;
@@ -329,10 +320,8 @@ namespace Assets.CS.TabletopUI {
             go.SetActive(true);
         }
 
-        #endregion
 
-
-            // None of this should do view changes here. We're deferring to the SitController or TokenContainer
+        // None of this should do view changes here. We're deferring to the SitController or TokenContainer
 
         public override void OnDrop(PointerEventData eventData)
         {

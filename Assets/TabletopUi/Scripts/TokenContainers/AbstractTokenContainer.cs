@@ -406,7 +406,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return matchingStacks;
         }
 
-        public IElementManifestation CreateManifestation(ElementStackToken elementStackToken)
+        public IElementManifestation CreateElementManifestation(ElementStackToken elementStackToken)
         {
 
 				if (elementStackToken.EntityId == "dropzone")
@@ -415,6 +415,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
                 else
                     return Registry.Get<PrefabFactory>().CreateLocally<CardManifestation>(elementStackToken.transform);
+        }
+
+        public IAnchorManifestation CreateAnchorManifestation(VerbAnchor anchorToken)
+        {
+            return Registry.Get<PrefabFactory>().CreateLocally<VerbManifestation>(anchorToken.transform);
+
         }
     }
 }

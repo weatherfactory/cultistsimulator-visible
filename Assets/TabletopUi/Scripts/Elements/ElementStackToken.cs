@@ -318,7 +318,7 @@ namespace Assets.CS.TabletopUI {
             if (debugTools != null)
                 AddObserver(debugTools);
 
-            _manifestation = TokenContainer.CreateManifestation(this);
+            _manifestation = TokenContainer.CreateElementManifestation(this);
         }
 
 
