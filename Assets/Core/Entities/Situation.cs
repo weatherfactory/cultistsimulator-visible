@@ -187,7 +187,7 @@ namespace Assets.Core.Entities {
 				currentPrimaryRecipe = recipeExecutionCommands.First().Recipe;
 
 			foreach (var c in recipeExecutionCommands) {
-				ISituationEffectCommand ec = new SituationEffectCommand(c.Recipe, c.Recipe.ActionId != currentPrimaryRecipe.ActionId,c.Expulsion);
+				SituationEffectCommand ec = new SituationEffectCommand(c.Recipe, c.Recipe.ActionId != currentPrimaryRecipe.ActionId,c.Expulsion);
                 foreach (var subscriber in subscribers)
 
 					subscriber.SituationExecutingRecipe(ec);

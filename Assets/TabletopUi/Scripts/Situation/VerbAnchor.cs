@@ -5,6 +5,7 @@ using System.Linq;
 using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
+using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
@@ -29,61 +30,25 @@ namespace Assets.CS.TabletopUI {
     public class VerbAnchor : AbstractToken, ISituationAnchor
     {
 
-        [SerializeField] Image artwork;
-
-        [Header("Token Body")] [SerializeField]
-        Image tokenBody;
-
-        [SerializeField] Sprite lightweightSprite;
-
-        [Header("Countdown")] [SerializeField] GameObject countdownCanvas;
-        [SerializeField] Image countdownBar;
-        [SerializeField] Image countdownBadge;
-        [SerializeField] TextMeshProUGUI countdownText;
-        [SerializeField] ParticleSystem[] particles;
-
-        [Header("Ongoing Slot")] [SerializeField]
-        Image ongoingSlotImage;
-
-        [SerializeField] Image ongoingSlotArtImage;
-        [SerializeField] GameObject ongoingSlotGreedyIcon;
-        [SerializeField] ParticleSystem ongoingSlotAppearFX;
-
-        [Header("Completion")] [SerializeField]
-        Image completionBadge;
-
-        [SerializeField] TextMeshProUGUI completionText;
-
-        [Header("DumpButton")] [SerializeField]
-        SituationTokenDumpButton dumpButton;
-
-        [SerializeField] public GraphicFader glowImage;
-
 
         private IVerb _verb;
         private IAnchorManifestation _manifestation;
 
-        private string _entityid;
-        private Coroutine animCoroutine;
-        private List<Sprite> frames;
-        private bool _transient;
+        private AnchorDurability _durability;
 
         public SituationController SituationController { get; private set; }
 
-        public bool IsTransient
+        public AnchorDurability Durability
         {
-            get { return _transient; }
+            get { return _durability; }
         }
 
 
 
         public override string EntityId
         {
-            get { return _entityid; }
+            get { return _verb.Id; }
         }
-
-        private bool isNew; // used for sound and SFX purposes
-
 
 
         public void Initialise(IVerb verb, SituationController sc)
@@ -91,21 +56,15 @@ namespace Assets.CS.TabletopUI {
 
             _manifestation = TokenContainer.CreateAnchorManifestation(this);
 
+            if (verb.Transient)
+                _durability = AnchorDurability.Transient;
+            else
+                _durability = AnchorDurability.Enduring;
+
             SituationController = sc;
-            _entityid = verb.Id;
             name = "Verb_" + EntityId;
-			isNew = true;
+    _manifestation.DisplayStackInMiniSlot(null);            
 
-            displayIcon(verb.Id);
-            if(verb.Transient)
-                SetTransient();
-            SetTimerVisibility(false);
-            SetCompletionCount(-1);
-            ShowGlow(false, false);
-            ShowDumpButton(false);
-
-            ongoingSlotImage.gameObject.SetActive(false);
-            DisplayStackInMiniSlot(null);
         }
 
 
@@ -114,34 +73,15 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void SetParticleSimulationSpace(Transform transform) {
-            ParticleSystem.MainModule mainSettings;
-
-            for (int i = 0; i < particles.Length; i++) {
-                mainSettings = particles[i].main;
-                mainSettings.customSimulationSpace = transform;
-            }
-        }
-
-        
         public void DisplayOverrideIcon(string icon)
         {
             displayIcon(icon);
         }
 
-        private void displayIcon(string icon)
+        public void SetParticleSimulationSpace(Transform transform)
         {
-            Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(icon);
-            frames = ResourcesManager.GetAnimFramesForVerb(icon);
-            artwork.sprite = sprite;
+            throw new NotImplementedException();
         }
-
-        private void SetTransient() {
-            _transient = true;
-            tokenBody.overrideSprite = lightweightSprite;
-            
-        }
-
 
 
         public override void ReactToDraggedToken(TokenInteractionEventArgs args)
@@ -154,12 +94,11 @@ namespace Assets.CS.TabletopUI {
                     return;
                 if (SituationController.CanAcceptStackWhenClosed(stack))
                 {
-                    SetGlowColor(UIStyle.TokenGlowColor.Default);
-                    ShowGlow(true, false);
+                    _manifestation.Highlight(HighlightType.CanInteractWithOtherToken);
                 }
             }
             if (args.TokenInteractionType == TokenInteractionType.EndDrag)
-                ShowGlow(false,false);
+               _manifestation.Unhighlight(HighlightType.CanInteractWithOtherToken);
 
         }
 
@@ -171,129 +110,41 @@ namespace Assets.CS.TabletopUI {
 
         public override void OnPointerEnter(PointerEventData eventData)
         {
-            ShowHoverGlow(true);
+            _manifestation.Highlight(HighlightType.Hover);
         }
 
         public override void OnPointerExit(PointerEventData eventData)
         {
-            ShowHoverGlow(false);
+            _manifestation.Unhighlight(HighlightType.Hover);
 
         }
 
 
-        public void ShowGlow(bool glowState, bool instant = false)
-        {
-
-            if (glowState)
-                glowImage.Show(instant);
-            else
-                glowImage.Hide(instant);
-        }
-
-
+        
         public void DisplayAsOpen() {
-            ShowGlow(false);
+            _manifestation.Unhighlight(HighlightType.All);
         }
 
         public void DisplayAsClosed() {
-            ShowGlow(false);
-        }
-
-        void ShowDumpButton(bool showButton) {
-            dumpButton.gameObject.SetActive(showButton && _transient);
+            _manifestation.Unhighlight(HighlightType.All);
         }
 
 
-        private void SetTimerVisibility(bool show) {
-            // If we're changing the state, change the particles
-            if (show != countdownCanvas.gameObject.activeSelf) {
-                if (show)
-                    particles[0].Play(); // only need to hit play on the first one
-                else
-                    particles[0].Stop();
-            }
-
-            countdownCanvas.gameObject.SetActive(show);
-        }
-
-        public void DisplayTimeRemaining(float duration, float timeRemaining, EndingFlavour signalEndingFlavour)
-		{
-			if (timeRemaining > 0.0f)
-			{
-				SetTimerVisibility(true);
-
-				Color barColor = UIStyle.GetColorForCountdownBar(signalEndingFlavour, timeRemaining);
-
-				timeRemaining = Mathf.Max(0f, timeRemaining);
-				countdownBar.color = barColor;
-				countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (timeRemaining / duration));
-				countdownText.color = barColor;
-				countdownText.text = Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage( timeRemaining );
-				countdownText.richText = true;
-			}
-			else
-			{
-				SetTimerVisibility(false);
-			}
-        }
 
         public Vector3 GetOngoingSlotPosition() {
             return rectTransform.anchoredPosition3D + ongoingSlotImage.rectTransform.anchoredPosition3D;
         }
 
-        public void DisplayMiniSlot(IList<SlotSpecification> ongoingSlots) {
-            ongoingSlotImage.gameObject.SetActive(ongoingSlots != null && ongoingSlots.Count > 0);
-
-            if (ongoingSlots == null || ongoingSlots.Count == 0)
-                return;
-            if (ongoingSlots.Count > 1)
-                throw new InvalidOperationException("More than one ongoing slot specified for this recipe, and we don't currently know how to deal with that");
-
-			// We're not a no-anim slot? Then show the anim!
-			if (!ongoingSlots[0].NoAnim && !isNew) {
-				ongoingSlotAppearFX.Play();
-				SoundManager.PlaySfx("SituationTokenShowOngoingSlot");
-			}
-
-			ongoingSlotGreedyIcon.gameObject.SetActive(ongoingSlots[0].Greedy);
-		}
 
 
-        public void DisplayStackInMiniSlot(IEnumerable<ElementStackToken> stacksInOngoingSlots) {
-            ElementStackToken stack;
-
-            if (stacksInOngoingSlots != null)
-                stack = stacksInOngoingSlots.SingleOrDefault(); //THERE CAN BE ONLY ONE (currently)
-            else
-                stack = null;
-
-            if (stack == null) {
-                ongoingSlotArtImage.sprite = null;
-                ongoingSlotArtImage.color = Color.black;
-            }
-            else {
-                ongoingSlotArtImage.sprite = ResourcesManager.GetSpriteForElement(stack.Icon);
-                ongoingSlotArtImage.color = Color.white;
-            }
+        public void DisplayTimeRemaining(float duration, float timeRemaining, EndingFlavour signalEndingFlavour)
+        {
+            throw new NotImplementedException();
         }
 
-        public void DisplayComplete() {
-            SetTimerVisibility(false);
-            DisplayMiniSlot(null);
-			isNew = false;
-        }
 
-        public void SetCompletionCount(int newCount) {
-            // count == -1 ? No badge
-            // count ==  0 ? badge, no text
-            // count >=  1 ? badge and text
 
-            completionBadge.gameObject.SetActive(newCount >= 0);
-            completionText.gameObject.SetActive(newCount > 0);
-            completionText.text = newCount.ToString();
 
-            ShowDumpButton(newCount >= 0);
-        }
 
 
         protected override void NotifyChroniclerPlacedOnTabletop()
@@ -410,50 +261,11 @@ namespace Assets.CS.TabletopUI {
         {
             if (!CanAnimate())
                 return;
+            _manifestation.BeginArtAnimation();
 
-            if (animCoroutine != null)
-                StopCoroutine(animCoroutine);
-
-            //verb animations are long-duration!
-            float duration = 0.8f;
-            int frameCount = frames.Count;
-            int frameIndex = 0;
-
-            animCoroutine = StartCoroutine(DoAnim(duration, frameCount, frameIndex));
         }
 
-        public IEnumerator DoAnim(float duration, int frameCount, int frameIndex)
-        {
-            
-            float time = 0f;
-            int lastSpriteIndex = -1;
-
-            while (time < duration)
-            {
-                time += Time.deltaTime;
-                int spriteIndex;
-                if (frameCount == 1)
-                    spriteIndex = 0;
-                else
-                    spriteIndex = Mathf.FloorToInt(time / duration * frameCount);
-
-
-                if (spriteIndex != lastSpriteIndex)
-                {
-                    lastSpriteIndex = spriteIndex;
-                    if (spriteIndex < frames.Count)
-                    { 
-                        artwork.overrideSprite = frames[spriteIndex];
-                    }
-                    else
-                        artwork.overrideSprite = null;
-                }
-                yield return null;
-            }
-
-            // remove anim
-            artwork.overrideSprite = null;
-        }
+      
 
         public override bool CanAnimate()
         {
@@ -463,52 +275,65 @@ namespace Assets.CS.TabletopUI {
             if (gameObject.activeInHierarchy == false)
                 return false; // can not animate if deactivated
 
-            return frames.Any();
+            return _manifestation.CanAnimate();
         }
 
-        public bool IsGlowing()
+
+        public void SituationBeginning(SituationEvent e)
         {
-            if (glowImage == null)
-                return false;
-            return glowImage.gameObject.activeSelf;
+          _manifestation.DisplayStackInMiniSlot(null);
+          if(e.CurrentRecipe.Slots.Count==1)
+              _manifestation.ShowMiniSlot(e.CurrentRecipe.Slots[0].Greedy);
+            
         }
 
-        public void SetGlowColor(Color color) {
-            glowImage.SetColor(color);
+        public void SituationOngoing(SituationEvent e)
+        {
+        _manifestation.UpdateTimerVisuals(e.Warmup, e.TimeRemaining, e.CurrentRecipe.SignalEndingFlavour);
         }
 
-        public void SetGlowColor(UIStyle.TokenGlowColor colorType) {
-            SetGlowColor(UIStyle.GetGlowColor(colorType));
+        public void SituationExecutingRecipe(SituationEvent e)
+        {
+          //
         }
 
-        public void ShowHoverGlow(bool show, bool playSFX = true, Color? hoverColor = null) {
-            if (show) {
-                if (_currentlyBeingDragged) {
-                    // If we're trying to glow the dragged token, then let's just allow us to show it if we want.
-                }
-                //// We're dragging something and our last state was not "this is a legal drop target" glow, then don't show
-                /// <<totally confused by this, though it sounds necessary. I'll come back to it. - AK
-                //else if (HornedAxe.itemBeingDragged != null && !lastGlowState) {
-                //    show = false;
-                //}
-                // If we can not interact, don't show the hover highlight
-                else if (!ShouldShowHoverGlow()) {
-                    show = false;
-                }
-            }
+        public void SituationComplete(SituationEvent e)
+        {
+     _manifestation.DisplayComplete();
+     _manifestation.SetCompletionCount(e.StacksInEachStorage[ContainerRelation.Output].Count);
+     _manifestation.DisplayStackInMiniSlot(e.StacksInEachStorage[ContainerRelation.Ongoing].FirstOrDefault());
 
-            if (show) {
-                if (playSFX)
-                    SoundManager.PlaySfx("TokenHover");
+        }
 
-                glowImage.SetColor(hoverColor == null ? UIStyle.GetGlowColor(UIStyle.TokenGlowColor.OnHover) : hoverColor.Value);
-                glowImage.Show();
-            }
-            else {
-                //if (playSFX)
-                //    SoundManager.PlaySfx("TokenHoverOff");
-                glowImage.Hide();
-            }
+        public void ResetSituation()
+        {
+            _manifestation.SetCompletionCount(-1);
+    }
+
+        public void ReceiveAndRefineTextNotification(SituationEvent e)
+        {
+            _manifestation.ReceiveAndRefineTextNotification(e.notification);
+        }
+
+
+        }
+
+
+
+    public class SituationEvent
+    {
+        public float Warmup { get; set; }
+        public float TimeRemaining { get; set; }
+        public Recipe CurrentRecipe; //replace with SituationCreationComand / SituationEffectCommand? combine CreationCommand and EffectCommand?
+        public Dictionary<ContainerRelation, List<ElementStackToken>> StacksInEachStorage { get; set; }
+        public SituationEffectCommand effect;
+        public INotification notification;
+
+        public SituationEvent()
+        {
+         StacksInEachStorage=new Dictionary<ContainerRelation, List<ElementStackToken>>();
+         CurrentRecipe = NullRecipe.Create();
+         effect = new SituationEffectCommand();
         }
     }
 }

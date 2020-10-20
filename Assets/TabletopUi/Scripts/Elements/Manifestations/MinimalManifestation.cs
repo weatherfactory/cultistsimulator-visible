@@ -14,7 +14,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
     {
         public bool RequestingNoDrag => false;
 
-        public void DisplayVisuals(Element element)
+        public void InitialiseVisuals(Element element)
         {
             //do nothing
         }

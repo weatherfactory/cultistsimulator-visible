@@ -18,7 +18,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         public bool RequestingNoDrag => false;
 
-        public void DisplayVisuals(Element element)
+        public void InitialiseVisuals(Element element)
         {
             // Customize appearance of card to make it distinctive
             // First hide normal card elements

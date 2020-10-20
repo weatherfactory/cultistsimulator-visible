@@ -347,7 +347,7 @@ namespace Assets.CS.TabletopUI {
             {
                 SetQuantity(quantity, new Context(Context.ActionSource.Unknown)); // this also toggles badge visibility through second call
 
-                _manifestation.DisplayVisuals(_element);
+                _manifestation.InitialiseVisuals(_element);
                 _manifestation.UpdateText(_element,quantity);
                 LifetimeRemaining = _element.Lifetime;
                 _manifestation.UpdateDecayVisuals(LifetimeRemaining, _element,0,_currentlyBeingDragged);

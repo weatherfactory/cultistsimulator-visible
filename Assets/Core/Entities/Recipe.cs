@@ -12,6 +12,24 @@ using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
 {
+
+    public class NullRecipe : Recipe
+    {
+        public NullRecipe(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
+        {
+            //do nothing, we're null
+        }
+
+        protected NullRecipe()
+        {}
+
+        public static NullRecipe Create()
+        {
+            return new NullRecipe();
+        }
+
+    }
+
     [FucineImportable("recipes")]
     public class Recipe : AbstractEntity<Recipe>
     {
@@ -132,7 +150,10 @@ namespace Assets.Core.Entities
         [FucineSubEntity(typeof(DeckSpec))]
         public DeckSpec InternalDeck { get; set; }
 
-        //recipe to execute next; may be the loop recipe; this is null if no loop has been set
+        protected Recipe()
+        {
+
+        }
 
         public Recipe(EntityData importDataForEntity, ContentImportLog log):base(importDataForEntity, log)
         {

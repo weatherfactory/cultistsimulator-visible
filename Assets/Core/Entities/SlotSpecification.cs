@@ -51,9 +51,7 @@ public class SlotSpecification: AbstractEntity<SlotSpecification>
     [FucineValue(false)]
     public bool Consumes { get; set; }
 
-    /// <summary>
-    /// An slot with NoAnim set to true won't display the VFX/SFX when it appears as an ongoing slot. So! it has no effect on startingslots
-    /// </summary>
+    [Obsolete]
     [FucineValue(false)]
     public bool NoAnim { get; set; }
 

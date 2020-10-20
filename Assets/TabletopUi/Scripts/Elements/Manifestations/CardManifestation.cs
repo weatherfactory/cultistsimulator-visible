@@ -49,7 +49,7 @@ namespace Assets.TabletopUi.Scripts.Elements
             flipHelper=new FlipHelper(this);
         }
 
-        public void DisplayVisuals(Element element)
+        public void InitialiseVisuals(Element element)
         {
             Sprite sprite = ResourcesManager.GetSpriteForElement(element.Icon);
             artwork.sprite = sprite;
@@ -150,9 +150,11 @@ namespace Assets.TabletopUi.Scripts.Elements
             if (highlightType == HighlightType.CanMerge)
             {
                 SetGlowColor(UIStyle.TokenGlowColor.Default);
+                ShowGlow(true,false);
             }
             else if (highlightType == HighlightType.AttentionPls)
             {
+                SetGlowColor(UIStyle.TokenGlowColor.Default);
                 StartCoroutine(PulseGlow());
             }
             else if (highlightType == HighlightType.CanInteractWithOtherToken)
@@ -178,7 +180,6 @@ namespace Assets.TabletopUi.Scripts.Elements
         }
         else if(highlightType==HighlightType.CanMerge || highlightType==HighlightType.CanFitSlot)
             ShowGlow(false,false);
-
         }
 
         private IEnumerator PulseGlow()

@@ -65,6 +65,7 @@ namespace Assets.TabletopUi {
             Situation.AddSubscriber(this);
 
             situationAnchor = a;
+            Situation.AddSubscriber(situationAnchor);
             
 
 
@@ -176,7 +177,7 @@ namespace Assets.TabletopUi {
             return aspects;
         }
 
-        private int GetNumOutputCards() {
+        public int GetNumOutputCards() {
             int count = 0;
             var stacks = situationWindowAsStorage.GetOutputStacks();
 
@@ -241,8 +242,6 @@ namespace Assets.TabletopUi {
         }
 
         public void SituationBeginning(Recipe withRecipe) {
-            situationAnchor.DisplayStackInMiniSlot(null); // Hide content of miniSlotDisplay - looping recipes never go by complete which would do that
-            situationAnchor.DisplayMiniSlot(withRecipe.Slots);
             situationWindowAsStorage.SetOngoing(withRecipe);
             StoreStacks(situationWindowAsStorage.GetStartingStacks());
 
@@ -284,8 +283,6 @@ namespace Assets.TabletopUi {
 
         public void SituationOngoing()
 		{
-            //var currentRecipe = compendium.GetRecipeById(SituationClock.RecipeId);
-            situationAnchor.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, CurrentEndingFlavourToSignal);
             situationWindowAsView.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, CurrentEndingFlavourToSignal);
         }
 
@@ -293,7 +290,7 @@ namespace Assets.TabletopUi {
         /// respond to the SituationClock's request to execute its payload
         /// </summary>
         /// <param name="command"></param>
-        public void SituationExecutingRecipe(ISituationEffectCommand command) {
+        public void SituationExecutingRecipe(SituationEffectCommand command) {
             var tabletopManager = Registry.Get<TabletopManager>();
 
             //called here in case ongoing slots trigger consumption
@@ -405,10 +402,6 @@ namespace Assets.TabletopUi {
             //This must be run here: it disables (and destroys) any card tokens that have not been moved to outputs
             situationWindowAsStorage.SetComplete();
 
-            // Now update the token based on the current stacks in the window
-            situationAnchor.DisplayComplete();
-            situationAnchor.SetCompletionCount(GetNumOutputCards());
-            situationAnchor.DisplayStackInMiniSlot(situationWindowAsStorage.GetOngoingStacks());
 
             AttemptAspectInductions();
 
@@ -490,12 +483,11 @@ namespace Assets.TabletopUi {
             Situation.ResetIfComplete();
 
             //if this was a transient verb, clean up everything and finish.
-            if (situationAnchor.IsTransient) {
+            if (situationAnchor.Durability==AnchorDurability.Transient) {
                 Retire();
             }
             else {
                 situationWindowAsStorage.SetUnstarted();
-                situationAnchor.SetCompletionCount(-1);
             }
         }
 

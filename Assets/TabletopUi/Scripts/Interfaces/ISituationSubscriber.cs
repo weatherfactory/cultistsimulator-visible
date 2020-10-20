@@ -13,10 +13,9 @@ namespace Assets.TabletopUi.Scripts.Interfaces
     {
         void SituationBeginning(Recipe withRecipe);
         void SituationOngoing();
-        void SituationExecutingRecipe(ISituationEffectCommand situationEffectCommand);
+        void SituationExecutingRecipe(SituationEffectCommand situationEffectCommand);
         void SituationComplete();
         void ResetSituation();
-        void Halt();
         void ReceiveAndRefineTextNotification(INotification notification);
     }
 }

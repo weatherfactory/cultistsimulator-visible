@@ -24,7 +24,7 @@ namespace Assets.Logic
             _ttm = ttm;
         }
 
-        public void RunEffects(ISituationEffectCommand command, ITokenContainer tokenContainer,
+        public void RunEffects(SituationEffectCommand command, ITokenContainer tokenContainer,
             Character storage, IDice d)
         {
             var recipeAspects = command.Recipe.Aspects;
@@ -61,7 +61,7 @@ namespace Assets.Logic
         }
 
 
-        private void RunElementPurges(ISituationEffectCommand command, TabletopManager ttm)
+        private void RunElementPurges(SituationEffectCommand command, TabletopManager ttm)
         {
             //NOTE: element purges trigger decayto transformation if the element itself is specified. If we filter by aspect and purge on that, its decayto is *not* triggered.
             foreach (var p in command.Recipe.Purge)
@@ -71,7 +71,7 @@ namespace Assets.Logic
         }
 
 
-        private void RunVerbManipulations(ISituationEffectCommand command, TabletopManager ttm)
+        private void RunVerbManipulations(SituationEffectCommand command, TabletopManager ttm)
         {
             foreach (var h in command.Recipe.HaltVerb)
                 ttm.HaltVerb(h.Key, h.Value);
@@ -81,7 +81,7 @@ namespace Assets.Logic
         }
 
 
-        private void RunMutationEffects(ISituationEffectCommand command, ITokenContainer tokenContainer)
+        private void RunMutationEffects(SituationEffectCommand command, ITokenContainer tokenContainer)
         {
             foreach (var mutationEffect in command.Recipe.Mutations)
             {
@@ -108,7 +108,7 @@ namespace Assets.Logic
             }
         }
 
-        public void RunDeckEffect(ISituationEffectCommand command, ITokenContainer tokenContainer,
+        public void RunDeckEffect(SituationEffectCommand command, ITokenContainer tokenContainer,
             Character storage)
         {
             var deckIds = command.GetDeckEffects();
@@ -141,7 +141,7 @@ namespace Assets.Logic
             }
         }
 
-        private static void RunRecipeEffects(ISituationEffectCommand command, ITokenContainer tokenContainer)
+        private static void RunRecipeEffects(SituationEffectCommand command, ITokenContainer tokenContainer)
         {
             foreach (var kvp in command.GetElementChanges())
             {

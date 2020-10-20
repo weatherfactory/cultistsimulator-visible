@@ -23,7 +23,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         public interface IElementManifestation
     {
-        void DisplayVisuals(Element element);
+        void InitialiseVisuals(Element element);
         void UpdateText(Element element, int quantity);
         void ResetAnimations();
         bool Retire(CanvasGroup canvasGroup);
