@@ -28,7 +28,8 @@ namespace Assets.Core.Entities {
         public string OverrideTitle { get; set; }
         public int CompletionCount { get; set; }
 
-        private SituationController _TEMP;
+        
+        public const float HOUSEKEEPING_CYCLE_BEATS = 1f;
 
 
 		public Situation(SituationCreationCommand command)
@@ -52,8 +53,6 @@ namespace Assets.Core.Entities {
 
 		public bool AddSubscriber(ISituationSubscriber subscriber)
         {
-            if (subscriber.GetType() == typeof(SituationController))
-                _TEMP = (SituationController)subscriber;
 
             if (subscribers.Contains(subscriber))
                 return false;
@@ -75,6 +74,11 @@ namespace Assets.Core.Entities {
         public void AddContainer(ITokenContainer container)
         {
             _containers.Add(container);
+        }
+        public void AddContainers(IEnumerable<ITokenContainer> containers)
+        {
+			foreach(var c in containers)
+             _containers.Add(c);
         }
 
 		public IList<SlotSpecification> GetSlotsForCurrentRecipe() {
@@ -142,13 +146,13 @@ namespace Assets.Core.Entities {
             var ttm = Registry.Get<TabletopManager>();
             var aspectsInContext = ttm.GetAspectsInContext(GetAspectsAvailableToSituation(true));
 
-            RecipeConductor rc = new RecipeConductor(compendium,
-                aspectsInContext, Registry.Get<IDice>(), currentCharacter);
+            RecipeConductor rc = new RecipeConductor(Registry.Get<ICompendium>(),
+                aspectsInContext, Registry.Get<IDice>(), Registry.Get<Character>());
 
-            Situation.Continue(rc, interval, greedyAnimIsActive);
+            Continue(rc, interval, greedyAnimIsActive);
 
             // only pull in something if we've got a second remaining
-            if (Situation.State == SituationState.Ongoing && Situation.TimeRemaining > HOUSEKEEPING_CYCLE_BEATS)
+            if (State == SituationState.Ongoing && Situation.TimeRemaining > HOUSEKEEPING_CYCLE_BEATS)
             {
                 var tokenAndSlot = new TokenAndSlot()
                 {
@@ -165,8 +169,31 @@ namespace Assets.Core.Entities {
             return response;
         }
 
+        public List<ElementStackToken> GetStacks(ContainerCategory forContainerCategory)
+        {
+			List<ElementStackToken> stacks=	new List<ElementStackToken>();
+			foreach(var container in _containers.Where(c=>c.ContainerCategory== forContainerCategory))
+				stacks.AddRange(container.GetStacks());
 
-		public SituationState Continue(IRecipeConductor rc, float interval, bool waitForGreedyAnim = false)
+            return stacks;
+        }
+
+        public IAspectsDictionary GetAspectsAvailableToSituation(bool includeElementAspects)
+        {
+            var aspects = new AspectsDictionary();
+
+            foreach (var container in _containers.Where(c =>
+                c.ContainerCategory == ContainerCategory.SituationStorage ||
+                c.ContainerCategory == ContainerCategory.Threshold))
+            {
+                aspects.CombineAspects(container.GetTotalAspects(includeElementAspects));
+            }
+
+            return aspects;
+
+        }
+
+        public SituationState Continue(IRecipeConductor rc, float interval, bool waitForGreedyAnim = false)
 		{
 			if (State == SituationState.RequiringExecution)
 			{

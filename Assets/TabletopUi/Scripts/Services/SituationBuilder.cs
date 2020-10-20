@@ -52,8 +52,10 @@ namespace Assets.TabletopUi.Scripts.Services {
             newWindow.Initialise(situation);
             situation.AddSubscriber(newWindow);
 
-            situation.AddContainer(ContainerCategory.Starting,newWindow.);
-            situation.AddContainer(ContainerCategory.SituationStorage, newWindow.GetStorageContainer());
+            situation.AddContainers(newWindow.GetStartingSlots());
+            situation.AddContainers(newWindow.GetOngoingSlots());
+            situation.AddContainer(newWindow.GetStorageContainer());
+            situation.AddContainer(newWindow.GetResultsContainer());
             
 
 
@@ -65,39 +67,6 @@ namespace Assets.TabletopUi.Scripts.Services {
             return situation;
         }
 
-        void InitialiseForActiveSituation()
-        {
-            if (Situation.State == SituationState.FreshlyStarted)
-                Situation.Start();
-
-            //ugly subclause here. SituationClock.Start largely duplicates the constructor. I'm trying to use the same code path for recreating situations from a save file as for beginning a new situation
-            //possibly just separating out FreshlyStarted would solve it
-
-            situationWindowAsStorage.SetOngoing(Situation.currentPrimaryRecipe);
-
-            situationAnchor.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, CurrentEndingFlavourToSignal);
-            situationWindowAsView.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, CurrentEndingFlavourToSignal);
-
-            //this is a little ugly here; but it makes the intent clear. The best way to deal with it is probably to pass the whole Command down to the situationwindow for processing.
-            if (Situation.OverrideTitle != null)
-                situationWindowAsView.Title = Situation.OverrideTitle;
-
-            UpdateSituationDisplayForPossiblePredictedRecipe();
-
-            if (Situation.currentPrimaryRecipe != null && Situation.currentPrimaryRecipe.BurnImage != null)
-                BurnImageUnderToken(Situation.currentPrimaryRecipe.BurnImage);
-
-        }
-
-        void InitialiseCompletedSituation()
-        {
-            situationWindowAsStorage.SetComplete();
-
-            //this is a little ugly here; but it makes the intent clear. The best way to deal with it is probably to pass the whole Command down to the situationwindow for processing.
-            if (Situation.OverrideTitle != null)
-                situationWindowAsView.Title = Situation.OverrideTitle;
-
-        }
 
         public ISituationAnchor CreateAnchor(SituationCreationCommand situationCreationCommand)
         {

@@ -354,16 +354,15 @@ namespace Assets.CS.TabletopUI {
         public INotification Notification;
         public SituationEffectCommand EffectCommand;
 
-        public static SituationEventData Create(Situation fromSituation,SituationController controller)
+        public static SituationEventData Create(Situation fromSituation)
         {
             var e = new SituationEventData();
             e.Warmup = fromSituation.Warmup;
             e.TimeRemaining = fromSituation.TimeRemaining;
             e.CurrentRecipe = fromSituation.currentPrimaryRecipe;
-            e.StacksInEachStorage.Add(ContainerCategory.Starting,controller.GetStartingStacks().ToList());
-            e.StacksInEachStorage.Add(ContainerCategory.Ongoing, controller.GetOngoingStacks().ToList());
-            e.StacksInEachStorage.Add(ContainerCategory.SituationStorage, controller.GetStoredStacks().ToList());
-            e.StacksInEachStorage.Add(ContainerCategory.Output, controller.GetOutputStacks().ToList());
+            e.StacksInEachStorage.Add(ContainerCategory.Threshold,fromSituation.GetStacks(ContainerCategory.Threshold));
+            e.StacksInEachStorage.Add(ContainerCategory.SituationStorage, fromSituation.GetStacks(ContainerCategory.SituationStorage));
+            e.StacksInEachStorage.Add(ContainerCategory.Output, fromSituation.GetStacks(ContainerCategory.Output));
             return e;
 
         }

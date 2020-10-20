@@ -27,7 +27,7 @@ namespace Assets.TabletopUi {
         public ISituationWindowAsStorage situationWindowAsStorage;
         public Situation Situation;
 
-        private readonly ICompendium compendium;
+        private readonly ICompendium compendium;get
         private readonly Character currentCharacter;
 
         private bool greedyAnimIsActive;
@@ -38,7 +38,6 @@ namespace Assets.TabletopUi {
         public bool IsOpen { get; set; }
 		public Vector3 RestoreWindowPosition { get; set; }	// For saving window positions - CP
 
-        public const float HOUSEKEEPING_CYCLE_BEATS = 1f;
 
 
         public bool IsOngoing {
@@ -73,67 +72,20 @@ namespace Assets.TabletopUi {
             Registry.Get<SituationsCatalogue>().DeregisterSituation(this);
         }
 
-        #endregion
-
+    
 
         public string GetTokenId() {
             return situationAnchor.EntityId;
         }
 
-        public IAspectsDictionary GetAspectsAvailableToSituation(bool showElementAspects) {
-            var aspects = situationWindowAsStorage.GetAspectsFromAllSlottedElements(showElementAspects);
-            aspects.CombineAspects(situationWindowAsStorage.GetAspectsFromStoredElements(showElementAspects));
-            return aspects;
-        }
 
-        // Compiles a dictionary of *every* aspect involved in the situation, so
-        // that the extantreqs can be satisfied by elements that are in
-        // completed situations
-        public IAspectsDictionary GetAspectsInSituation()
-        {
-            var aspects = situationWindowAsStorage.GetAspectsFromAllSlottedAndStoredElements(true);
-            aspects.CombineAspects(situationWindowAsStorage.GetAspectsFromOutputElements(true));
-            return aspects;
-        }
 
-        public int GetNumOutputCards() {
-            int count = 0;
-            var stacks = situationWindowAsStorage.GetOutputStacks();
-
-            foreach (var item in stacks) {
-                if (item.Defunct)
-                    continue;
-
-                count += item.Quantity;
-            }
-
-            return count;
-        }
 
         // Used to have greedy slots grab cards from within situations
         public IList<RecipeSlot> GetOngoingSlots() {
             return situationWindowAsStorage.GetOngoingSlots();
         }
 
-        public IEnumerable<ElementStackToken> GetOutputStacks() {
-            return situationWindowAsStorage.GetOutputStacks();
-        }
-
-        public IEnumerable<ElementStackToken> GetStartingStacks() {
-            return situationWindowAsStorage.GetStartingStacks();
-        }
-
-        public IEnumerable<ElementStackToken> GetOngoingStacks()
-        {
-            return situationWindowAsStorage.GetOngoingStacks();
-        }g
-
-        public IEnumerable<ElementStackToken> GetStoredStacks()
-        {
-            return situationWindowAsStorage.GetStoredStacks();
-        }
-
-        
 
 
         public void SituationBeginning(SituationEventData d) {

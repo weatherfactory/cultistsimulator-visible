@@ -22,7 +22,7 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 
 namespace Assets.CS.TabletopUI {
     [RequireComponent(typeof(SituationWindowPositioner))]
-    public class SituationWindow : MonoBehaviour,ISituationView,ISituationWindowAsStorage,ISituationSubscriber {
+    public class SituationWindow : MonoBehaviour,ISituationSubscriber {
 
         string buttonDefault;
         string buttonBusy;
@@ -425,13 +425,7 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public IAspectsDictionary GetAspectsFromAllSlottedAndStoredElements(bool includeElementAspects)
-        {
-            var aspects = GetAspectsFromAllSlottedElements(includeElementAspects);
-            var storedAspects = GetAspectsFromStoredElements(includeElementAspects);
-            aspects.CombineAspects(storedAspects);
-            return aspects;
-        }
+
 
         public void TryDecayResults(float interval)
         {
@@ -439,27 +433,6 @@ namespace Assets.CS.TabletopUI {
             foreach(var s in stacksToDecay)
                 s.Decay(interval);
         }
-
-        public IAspectsDictionary GetAspectsFromStartingElements(bool includeElementAspects) {
-            return startingSlots.GetAspectsFromSlottedCards(includeElementAspects);
-        }
-
-        public IAspectsDictionary GetAspectsFromAllSlottedElements(bool includeElementAspects) {
-            var slottedAspects = new AspectsDictionary();
-            slottedAspects.CombineAspects(startingSlots.GetAspectsFromSlottedCards(includeElementAspects));
-            slottedAspects.CombineAspects(ongoing.GetAspectsFromSlottedCards(includeElementAspects));
-            return slottedAspects;
-        }
-
-        public IAspectsDictionary GetAspectsFromStoredElements(bool includeElementAspects) {
-            return storage.GetTotalAspects(includeElementAspects);
-        }
-
-        public IAspectsDictionary GetAspectsFromOutputElements(bool includeElementAspects) {
-            return results.GetTotalAspects(includeElementAspects);
-        }
-
-
 
         public IEnumerable<ISituationNote> GetNotes() {
             return PaginatedNotes.GetCurrentTexts();
