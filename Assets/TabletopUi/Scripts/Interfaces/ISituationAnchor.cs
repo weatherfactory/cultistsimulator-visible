@@ -25,14 +25,9 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
         void Initialise(IVerb verb, SituationController controller);
 
-        void DisplayMiniSlot(IList<SlotSpecification> ongoingSlots);
         void DisplayTimeRemaining(float duration, float timeRemaining, EndingFlavour signalEndingFlavour);
-        void DisplayStackInMiniSlot(IEnumerable<ElementStackToken> getStacksInOngoingSlots);
-        void DisplayComplete();
+
         bool Retire();
-
-        void DisplayUpdatedSituationState(SituationController controller);
-
 
         void DisplayOverrideIcon(string icon);
 

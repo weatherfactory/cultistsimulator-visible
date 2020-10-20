@@ -27,6 +27,8 @@ namespace Assets.Core.Entities {
         public string OverrideTitle { get; set; }
         public int CompletionCount { get; set; }
 
+        private SituationController _TEMP;
+
 
 		public Situation(SituationCreationCommand command)
         {
@@ -50,6 +52,9 @@ namespace Assets.Core.Entities {
 
 		public bool AddSubscriber(ISituationSubscriber subscriber)
         {
+            if (subscriber.GetType() == typeof(SituationController))
+                _TEMP = (SituationController)subscriber;
+
             if (subscribers.Contains(subscriber))
                 return false;
 
@@ -166,14 +171,20 @@ namespace Assets.Core.Entities {
 
 		public void Beginning(Recipe withRecipe) {
 			State = SituationState.Ongoing;
+
+			SituationEventData d=SituationEventData.Create(this,_TEMP);
+
             foreach (var subscriber in subscribers)
-			subscriber.SituationBeginning(withRecipe);
+			subscriber.SituationBeginning(d);
 		}
 
 		private void Ongoing() {
+
+            SituationEventData d = SituationEventData.Create(this, _TEMP);
+
 			State = SituationState.Ongoing;
             foreach (var subscriber in subscribers)
-			subscriber.SituationOngoing();
+			    subscriber.SituationOngoing(d);
 		}
 
 		private void RequireExecution(IRecipeConductor rc) {
@@ -189,8 +200,12 @@ namespace Assets.Core.Entities {
 			foreach (var c in recipeExecutionCommands) {
 				SituationEffectCommand ec = new SituationEffectCommand(c.Recipe, c.Recipe.ActionId != currentPrimaryRecipe.ActionId,c.Expulsion);
                 foreach (var subscriber in subscribers)
-
-					subscriber.SituationExecutingRecipe(ec);
+                {
+                    SituationEventData d = SituationEventData.Create(this, _TEMP);
+                    d.EffectCommand = ec;
+                    subscriber.SituationExecutingRecipe(d);
+				}
+				
 			}
 		}
 
@@ -203,8 +218,11 @@ namespace Assets.Core.Entities {
 				//send the completion description before we move on
 				INotification notification = new Notification(currentPrimaryRecipe.Label, currentPrimaryRecipe.Description);
                 foreach (var subscriber in subscribers)
-				    subscriber.ReceiveAndRefineTextNotification(notification);
-
+                {
+                    var d = SituationEventData.Create(this, _TEMP);
+                    d.Notification = notification;
+				    subscriber.ReceiveAndRefineTextNotification(d);
+                }
 				currentPrimaryRecipe = linkedRecipe;
 				TimeRemaining = currentPrimaryRecipe.Warmup;
 				if(TimeRemaining>0) //don't play a sound if we loop through multiple linked ones
@@ -225,8 +243,12 @@ namespace Assets.Core.Entities {
 		private void Complete() {
 			State = global::SituationState.Complete;
             foreach (var subscriber in subscribers)
-			    subscriber.SituationComplete();
-			SoundManager.PlaySfx("SituationComplete");
+            {
+                var d = SituationEventData.Create(this, _TEMP);
+                subscriber.SituationComplete(d);
+            }
+
+            SoundManager.PlaySfx("SituationComplete");
 		}
 
 	}

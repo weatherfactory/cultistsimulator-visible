@@ -608,7 +608,7 @@ namespace Assets.CS.TabletopUI {
 						var ongoingSlots = situ.GetOngoingSlots();
 						targetSlots.AddRange( FindValidSlot( ongoingSlots, situ ) );
 					}
-					else if (!situ.situationAnchor.IsTransient && situ.Situation.State == SituationState.Unstarted)
+					else if (situ.situationAnchor.Durability==AnchorDurability.Enduring && situ.Situation.State == SituationState.Unstarted)
 					{
 						// Look for starting slots (most common case)
 						var startSlots = situ.situationWindow.GetStartingSlots();

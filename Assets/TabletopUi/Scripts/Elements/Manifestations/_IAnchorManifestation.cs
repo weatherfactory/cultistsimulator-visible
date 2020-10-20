@@ -9,6 +9,7 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
@@ -35,6 +36,9 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         void DisplayComplete();
         void SetCompletionCount(int count);
         void ReceiveAndRefineTextNotification(INotification notification);
+        void Clicked(PointerEventData eventData,VerbAnchor anchor);
+        void OverrideIcon(string icon);
+        Vector3 GetOngoingSlotPosition();
     }
 
 }

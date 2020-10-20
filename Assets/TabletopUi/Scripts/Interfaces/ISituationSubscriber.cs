@@ -5,17 +5,19 @@ using System.Text;
 using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 
 namespace Assets.TabletopUi.Scripts.Interfaces
 {
     public interface ISituationSubscriber
     {
-        void SituationBeginning(Recipe withRecipe);
-        void SituationOngoing();
-        void SituationExecutingRecipe(SituationEffectCommand situationEffectCommand);
-        void SituationComplete();
+        void SituationBeginning(SituationEventData e);
+        void SituationOngoing(SituationEventData e);
+        void SituationExecutingRecipe(SituationEventData e);
+        void SituationComplete(SituationEventData e);
         void ResetSituation();
-        void ReceiveAndRefineTextNotification(INotification notification);
+        void ContainerContentsUpdated(SituationEventData e);
+        void ReceiveAndRefineTextNotification(SituationEventData e);
     }
 }

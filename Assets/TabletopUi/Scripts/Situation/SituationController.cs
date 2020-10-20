@@ -107,7 +107,6 @@ namespace Assets.TabletopUi {
 
             situationWindowAsStorage.SetOngoing(Situation.currentPrimaryRecipe);
 
-            situationAnchor.DisplayMiniSlot(Situation.currentPrimaryRecipe.Slots);
             situationAnchor.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, CurrentEndingFlavourToSignal);
             situationWindowAsView.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, CurrentEndingFlavourToSignal);
 
@@ -129,9 +128,6 @@ namespace Assets.TabletopUi {
             if (Situation.OverrideTitle != null)
                 situationWindowAsView.Title = Situation.OverrideTitle;
 
-            //NOTE: only on Complete state. Completioncount shouldn't show on other states. This is fragile tho.
-            if (Situation.CompletionCount >= 0)
-                situationAnchor.SetCompletionCount(Situation.CompletionCount);
         }
         // Called from importer
         public void ModifyStoredElementStack(string elementId, int quantity, Context context)
@@ -241,16 +237,16 @@ namespace Assets.TabletopUi {
             return response;
         }
 
-        public void SituationBeginning(Recipe withRecipe) {
-            situationWindowAsStorage.SetOngoing(withRecipe);
+        public void SituationBeginning(SituationEventData d) {
+            situationWindowAsStorage.SetOngoing(d.EffectCommand.Recipe);
             StoreStacks(situationWindowAsStorage.GetStartingStacks());
 
             UpdateSituationDisplayForPossiblePredictedRecipe();
 
             situationWindowAsView.DisplayAspects(GetAspectsAvailableToSituation(false));
 
-            if (withRecipe.BurnImage != null)
-                BurnImageUnderToken(withRecipe.BurnImage);
+            if (d.EffectCommand. Recipe.BurnImage != null)
+                BurnImageUnderToken(d.EffectCommand.Recipe.BurnImage);
 
         }
 
@@ -275,13 +271,14 @@ namespace Assets.TabletopUi {
         public void AddToResults(ElementStackToken stack, Context context)
 		{
             situationWindowAsStorage.GetResultsContainer().AcceptStack(stack, context);
-            UpdateTokenResultsCountBadge();
+            var d = SituationEventData.Create(Situation, this);
+            situationAnchor.ContainerContentsUpdated(d);
 
 			var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
 			tabletop.NotifyAspectsDirty();	// Notify tabletop that aspects will need recompiling
         }
 
-        public void SituationOngoing()
+        public void SituationOngoing(SituationEventData d)
 		{
             situationWindowAsView.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, CurrentEndingFlavourToSignal);
         }
@@ -290,7 +287,7 @@ namespace Assets.TabletopUi {
         /// respond to the SituationClock's request to execute its payload
         /// </summary>
         /// <param name="command"></param>
-        public void SituationExecutingRecipe(SituationEffectCommand command) {
+        public void SituationExecutingRecipe(SituationEventData d) {
             var tabletopManager = Registry.Get<TabletopManager>();
 
             //called here in case ongoing slots trigger consumption
@@ -302,18 +299,18 @@ namespace Assets.TabletopUi {
 
 
 
-            if (command.AsNewSituation) {
+            if (d.EffectCommand.AsNewSituation) {
 
                 List<ElementStackToken> stacksToAddToNewSituation=new List<ElementStackToken>();
                 //if there's an expulsion
-                if (command.Expulsion.Limit>0)
+                if (d.EffectCommand.Expulsion.Limit>0)
                 {
                     //find one or more matching stacks. Important! the limit applies to stacks, not cards. This might need to change.
-                    AspectMatchFilter filter = new AspectMatchFilter(command.Expulsion.Filter);
+                    AspectMatchFilter filter = new AspectMatchFilter(d.EffectCommand.Expulsion.Filter);
                     var filteredStacks = filter.FilterElementStacks(situationWindowAsStorage.GetStoredStacks()).ToList();
-                    if (filteredStacks.Any() && command.Expulsion.Limit > 0)
+                    if (filteredStacks.Any() && d.EffectCommand.Expulsion.Limit > 0)
                     {
-                        while (filteredStacks.Count > command.Expulsion.Limit)
+                        while (filteredStacks.Count > d.EffectCommand.Expulsion.Limit)
                         {
                             filteredStacks.RemoveAt(filteredStacks.Count - 1);
                         }
@@ -327,25 +324,25 @@ namespace Assets.TabletopUi {
                     //take this opportunity to tidy stacks??
                 }
 
-                IVerb verbForNewSituation = compendium.GetEntityById<BasicVerb>(command.Recipe.ActionId);
+                IVerb verbForNewSituation = compendium.GetEntityById<BasicVerb>(d.EffectCommand.Recipe.ActionId);
 
                 if (verbForNewSituation == null)
-                    verbForNewSituation = new CreatedVerb(command.Recipe.ActionId, command.Recipe.Label, command.Recipe.Description);
+                    verbForNewSituation = new CreatedVerb(d.EffectCommand.Recipe.ActionId, d.EffectCommand.Recipe.Label, d.EffectCommand.Recipe.Description);
 
          
 
-                var scc = new SituationCreationCommand(verbForNewSituation, command.Recipe, SituationState.FreshlyStarted, situationAnchor as AbstractToken);
+                var scc = new SituationCreationCommand(verbForNewSituation, d.EffectCommand.Recipe, SituationState.FreshlyStarted, situationAnchor as AbstractToken);
                 tabletopManager.BeginNewSituation(scc,stacksToAddToNewSituation);
                 situationWindowAsView.DisplayStoredElements();             //in case expulsions have removed anything
                 return;
             }
 
-            currentCharacter.AddExecutionsToHistory(command.Recipe.Id, 1);
+            currentCharacter.AddExecutionsToHistory(d.EffectCommand.Recipe.Id, 1);
             var executor = new SituationEffectExecutor(tabletopManager);
-            executor.RunEffects(command, situationWindowAsStorage.GetStorageContainer(), currentCharacter, Registry.Get<IDice>());
+            executor.RunEffects(d.EffectCommand, situationWindowAsStorage.GetStorageContainer(), currentCharacter, Registry.Get<IDice>());
 
-            if (!string.IsNullOrEmpty(command.Recipe.Ending)) {
-                var ending = compendium.GetEntityById<Ending>(command.Recipe.Ending);
+            if (!string.IsNullOrEmpty(d.EffectCommand.Recipe.Ending)) {
+                var ending = compendium.GetEntityById<Ending>(d.EffectCommand.Recipe.Ending);
                 tabletopManager.EndGame(ending, this);
             }
 
@@ -369,7 +366,12 @@ namespace Assets.TabletopUi {
             }
         }
 
-        public void ReceiveAndRefineTextNotification(INotification notification)
+        public void ContainerContentsUpdated(SituationEventData e)
+        {
+           //
+        }
+
+        public void ReceiveAndRefineTextNotification(SituationEventData d)
         {
             //Check for possible text refinements based on the aspects in context
             var aspectsInSituation = GetAspectsAvailableToSituation(true);
@@ -380,8 +382,8 @@ namespace Assets.TabletopUi {
             TextRefiner tr=new TextRefiner(aspectsInSituation);
 
 
-            Notification refinedNotification=new Notification(notification.Title,
-                tr.RefineString(notification.Description));
+            Notification refinedNotification=new Notification(d.Notification.Title,
+                tr.RefineString(d.Notification.Description));
 
 
             situationWindowAsStorage.ReceiveTextNote(refinedNotification);
@@ -391,13 +393,12 @@ namespace Assets.TabletopUi {
         /// <summary>
         /// The situation is complete. DisplayHere the output cards and description
         /// </summary>
-        public void SituationComplete() {
+        public void SituationComplete(SituationEventData d) {
             var outputStacks = situationWindowAsStorage.GetStoredStacks();
             INotification notification = new Notification(Situation.GetTitle(), Situation.GetDescription());
             SetOutput(outputStacks.ToList());
 
-            ReceiveAndRefineTextNotification(notification);
-
+            
 
             //This must be run here: it disables (and destroys) any card tokens that have not been moved to outputs
             situationWindowAsStorage.SetComplete();
@@ -664,10 +665,12 @@ namespace Assets.TabletopUi {
 
             }
 
-            situationAnchor.DisplayStackInMiniSlot(situationWindowAsStorage.GetOngoingStacks());
+            SituationEventData e=SituationEventData.Create(Situation,this);
+            situationAnchor.ContainerContentsUpdated(e); //this duplicates a potential call via the subscription model
 
-            TryOverrideVerbIcon(situationWindowAsStorage.GetAspectsFromStoredElements(true));
+            TryOverrideVerbIcon(situationWindowAsStorage.GetAspectsFromStoredElements(true)); //this also duplicates
         }
+
 
         private RecipePrediction GetNextRecipePrediction(AspectsInContext aspectsInContext) {
             RecipeConductor rc = new RecipeConductor(compendium, aspectsInContext,
@@ -778,12 +781,6 @@ namespace Assets.TabletopUi {
         void HandleOnGreedySlotAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair) {
             greedyAnimIsActive = false;
 			TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.Greedy, false );
-        }
-
-        // Update Visuals
-
-        public void UpdateTokenResultsCountBadge() {
-            situationAnchor.SetCompletionCount(GetNumOutputCards());
         }
 
         private void BurnImageUnderToken(string burnImage) {

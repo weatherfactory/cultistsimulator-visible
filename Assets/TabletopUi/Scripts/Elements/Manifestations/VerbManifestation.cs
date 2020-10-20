@@ -12,6 +12,7 @@ using Assets.CS.TabletopUI.Interfaces;
 using Noon;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.Elements.Manifestations
@@ -75,6 +76,16 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             ShowDumpButton(false);
         }
 
+        public void OverrideIcon(string icon)
+        {
+            displayIcon(icon);
+        }
+
+        public Vector3 GetOngoingSlotPosition()
+        {
+            return  ongoingSlotImage.rectTransform.anchoredPosition3D;
+        }
+
         public void SetCompletionCount(int newCount)
         {
             // count == -1 ? No badge
@@ -91,6 +102,16 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         public void ReceiveAndRefineTextNotification(INotification notification)
         {
             //do nothing
+        }
+
+        public void Clicked(PointerEventData eventData, VerbAnchor anchor)
+        {
+            if (dumpButton.IsHovering())
+            {
+                anchor.DumpAllResults();
+            }
+            else
+               anchor.TokenClickUnhandledByManifestation();
         }
 
         public void ShowMiniSlot(bool greedy)

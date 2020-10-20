@@ -75,7 +75,7 @@ namespace Assets.CS.TabletopUI {
 
         public void DisplayOverrideIcon(string icon)
         {
-            displayIcon(icon);
+            _manifestation.OverrideIcon(icon);
         }
 
         public void SetParticleSimulationSpace(Transform transform)
@@ -104,7 +104,8 @@ namespace Assets.CS.TabletopUI {
 
         public override void HighlightPotentialInteractionWithToken(bool show)
         {
-            ShowHoverGlow(show, false, UIStyle.brightPink);
+            _manifestation.Highlight(HighlightType.CanInteractWithOtherToken);
+
 
         }
 
@@ -131,8 +132,9 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public Vector3 GetOngoingSlotPosition() {
-            return rectTransform.anchoredPosition3D + ongoingSlotImage.rectTransform.anchoredPosition3D;
+        public Vector3 GetOngoingSlotPosition()
+        {
+            return rectTransform.anchoredPosition3D + _manifestation.GetOngoingSlotPosition();
         }
 
 
@@ -141,10 +143,7 @@ namespace Assets.CS.TabletopUI {
         {
             throw new NotImplementedException();
         }
-
-
-
-
+        
 
 
         protected override void NotifyChroniclerPlacedOnTabletop()
@@ -180,19 +179,29 @@ namespace Assets.CS.TabletopUI {
             InteractWithTokenDroppedOn(eventData.pointerDrag);
         }
 
-        public override void OnPointerClick(PointerEventData eventData) {
-            if (dumpButton.IsHovering()) {
-                SituationController.DumpAllResults();
-            }
-            else {
-                // Add the current recipe name, if any, to the debug panel if it's active
-                Registry.Get<DebugTools>().SetInput(SituationController.Situation.RecipeId);
+        public override void OnPointerClick(PointerEventData eventData)
+        {
 
-                if (!SituationController.IsOpen)
-                    OpenSituation();
-                else
-                    CloseSituation();
-            }
+            _manifestation.Clicked(eventData,this);
+        }
+
+        public void TokenClickUnhandledByManifestation()
+        {
+            //compromise event to handle 'general clicking of token' while we move it down to Manifestation
+
+            // Add the current recipe name, if any, to the debug panel if it's active
+            Registry.Get<DebugTools>().SetInput(SituationController.Situation.RecipeId);
+
+            if (!SituationController.IsOpen)
+                OpenSituation();
+            else
+                CloseSituation();
+        }
+        
+        public void DumpAllResults()
+        {
+            SituationController.DumpAllResults();
+
         }
 
         public void OpenSituation() {
@@ -279,7 +288,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void SituationBeginning(SituationEvent e)
+        public void SituationBeginning(SituationEventData e)
         {
           _manifestation.DisplayStackInMiniSlot(null);
           if(e.CurrentRecipe.Slots.Count==1)
@@ -287,17 +296,18 @@ namespace Assets.CS.TabletopUI {
             
         }
 
-        public void SituationOngoing(SituationEvent e)
+        public void SituationOngoing(SituationEventData e)
         {
-        _manifestation.UpdateTimerVisuals(e.Warmup, e.TimeRemaining, e.CurrentRecipe.SignalEndingFlavour);
+            _manifestation.UpdateTimerVisuals(e.Warmup, e.TimeRemaining, e.CurrentRecipe.SignalEndingFlavour);
         }
 
-        public void SituationExecutingRecipe(SituationEvent e)
+
+        public void SituationExecutingRecipe(SituationEventData e)
         {
           //
         }
 
-        public void SituationComplete(SituationEvent e)
+        public void SituationComplete(SituationEventData e)
         {
      _manifestation.DisplayComplete();
      _manifestation.SetCompletionCount(e.StacksInEachStorage[ContainerRelation.Output].Count);
@@ -310,9 +320,23 @@ namespace Assets.CS.TabletopUI {
             _manifestation.SetCompletionCount(-1);
     }
 
-        public void ReceiveAndRefineTextNotification(SituationEvent e)
+        public void ContainerContentsUpdated(SituationEventData e)
         {
-            _manifestation.ReceiveAndRefineTextNotification(e.notification);
+            
+            var ongoingStacks = e.StacksInEachStorage[ContainerRelation.Ongoing];
+            if(ongoingStacks.Count == 1)
+                _manifestation.DisplayStackInMiniSlot(ongoingStacks.First());
+            else
+              _manifestation.DisplayStackInMiniSlot(null);
+
+
+            _manifestation.SetCompletionCount(e.StacksInEachStorage[ContainerRelation.Output].Count);
+
+        }
+
+        public void ReceiveAndRefineTextNotification(SituationEventData e)
+        {
+            _manifestation.ReceiveAndRefineTextNotification(e.Notification);
         }
 
 
@@ -320,20 +344,34 @@ namespace Assets.CS.TabletopUI {
 
 
 
-    public class SituationEvent
+    public class SituationEventData
     {
         public float Warmup { get; set; }
         public float TimeRemaining { get; set; }
         public Recipe CurrentRecipe; //replace with SituationCreationComand / SituationEffectCommand? combine CreationCommand and EffectCommand?
         public Dictionary<ContainerRelation, List<ElementStackToken>> StacksInEachStorage { get; set; }
-        public SituationEffectCommand effect;
-        public INotification notification;
+        public INotification Notification;
+        public SituationEffectCommand EffectCommand;
 
-        public SituationEvent()
+        public static SituationEventData Create(Situation fromSituation,SituationController controller)
+        {
+            var e = new SituationEventData();
+            e.Warmup = fromSituation.Warmup;
+            e.TimeRemaining = fromSituation.TimeRemaining;
+            e.CurrentRecipe = fromSituation.currentPrimaryRecipe;
+            e.StacksInEachStorage.Add(ContainerRelation.Starting,controller.GetStartingStacks().ToList());
+            e.StacksInEachStorage.Add(ContainerRelation.Ongoing, controller.GetOngoingStacks().ToList());
+            e.StacksInEachStorage.Add(ContainerRelation.Storage, controller.GetStoredStacks().ToList());
+            e.StacksInEachStorage.Add(ContainerRelation.Output, controller.GetOutputStacks().ToList());
+            return e;
+
+        }
+
+        private SituationEventData()
         {
          StacksInEachStorage=new Dictionary<ContainerRelation, List<ElementStackToken>>();
          CurrentRecipe = NullRecipe.Create();
-         effect = new SituationEffectCommand();
+         EffectCommand=new SituationEffectCommand();
         }
     }
 }
