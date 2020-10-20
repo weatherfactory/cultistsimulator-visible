@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
+using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Interfaces;
@@ -445,7 +446,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             //grabbing existingtoken: just in case some day I want to, e.g., add additional tokens to an ongoing one rather than silently fail the attempt.
             if (existingSituation != null) {
-                if (existingSituation.Situation.State == SituationState.Complete && existingSituation.situationAnchor.IsTransient) {
+                if (existingSituation.Situation.State == SituationState.Complete && existingSituation.situationAnchor.Durability==AnchorDurability.Transient) {
                     //verb exists already, but it's completed. We don't want to block new temp verbs executing if the old one is complete, because
                     //otherwise there's an exploit to, e.g., leave hazard finished but unresolved to block new ones appearing.
                     //So nothing happens in this branch except logging.

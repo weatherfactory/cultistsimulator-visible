@@ -39,6 +39,12 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         void Clicked(PointerEventData eventData,VerbAnchor anchor);
         void OverrideIcon(string icon);
         Vector3 GetOngoingSlotPosition();
+
+        /// <summary>
+        /// needs to be set to initial token container
+        /// </summary>
+        /// <param name="transform"></param>
+        void SetParticleSimulationSpace(Transform transform);
     }
 
 }

@@ -63,7 +63,7 @@ namespace Assets.TabletopUi.Scripts.Services {
                 newAnchor.SaveLocationInfo = situationCreationCommand.LocationInfo;
 
 
-            newAnchor.SetParticleSimulationSpace(tableLevel);
+          
             return newAnchor;
         }
 

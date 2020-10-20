@@ -63,7 +63,8 @@ namespace Assets.CS.TabletopUI {
 
             SituationController = sc;
             name = "Verb_" + EntityId;
-    _manifestation.DisplayStackInMiniSlot(null);            
+         _manifestation.DisplayStackInMiniSlot(null);
+            SetParticleSimulationSpace(transform.parent);
 
         }
 
@@ -80,7 +81,7 @@ namespace Assets.CS.TabletopUI {
 
         public void SetParticleSimulationSpace(Transform transform)
         {
-            throw new NotImplementedException();
+          _manifestation.SetParticleSimulationSpace(transform);
         }
 
 

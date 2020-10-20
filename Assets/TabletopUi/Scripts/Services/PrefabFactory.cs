@@ -24,7 +24,6 @@ namespace Assets.TabletopUi.Scripts.Services
         [Header("Prefabs")]
         public ElementFrame ElementFrame = null;
         public VerbAnchor VerbAnchor = null;
-        public BookshelfAnchor BookshelfAnchor = null;
         public ElementStackToken ElementStackToken = null;
         public CardManifestation CardManifestation = null;
         public DropzoneManifestation DropzoneManifestation = null;
@@ -38,9 +37,9 @@ namespace Assets.TabletopUi.Scripts.Services
 
         public ISituationAnchor CreateSituationAnchorForVerb(IVerb verb,Transform t)
         {
-            if(verb.Species==NoonConstants.ANCHOR_BOOKSHELF)
-                return CreateLocally<BookshelfAnchor>(t);
-            else
+            //if(verb.Species==NoonConstants.ANCHOR_BOOKSHELF)
+            //    return CreateLocally<BookshelfAnchor>(t);
+            //else
                 return CreateLocally<VerbAnchor>(t);
         }
 
