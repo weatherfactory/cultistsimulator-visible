@@ -55,6 +55,7 @@ namespace Assets.CS.TabletopUI {
         {
             _verb = verb;
             _manifestation = TokenContainer.CreateAnchorManifestation(this);
+            _manifestation.InitialiseVisuals(_verb);
 
             if (verb.Transient)
                 _durability = AnchorDurability.Transient;
