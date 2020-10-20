@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core;
 using Assets.Core.Entities;
+using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.TabletopUi.Scripts.Elements;
 using Assets.TabletopUi.Scripts.Elements.Manifestations;
@@ -19,6 +20,8 @@ namespace Assets.CS.TabletopUI.Interfaces
         bool PersistBetweenScenes { get; }
         bool EnforceUniqueStacksInThisContainer { get; set; }
         bool ContentsHidden { get; }
+
+        ContainerCategory ContainerCategory { get; }
 
         ElementStackToken ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context, string locatorId = null);
 

@@ -52,83 +52,6 @@ namespace Assets.TabletopUi {
         }
 
 
-        #region -- Construct, Initialize & Retire --------------------
-
-        public SituationController(ICompendium co, Character ch) {
-            compendium = co;
-            currentCharacter = ch;
-        }
-
-        public void Initialise(Situation situation, ISituationAnchor a, SituationWindow w) {
-            Registry.Get<SituationsCatalogue>().RegisterSituation(this);
-            Situation = situation;
-            Situation.AddSubscriber(this);
-
-            situationAnchor = a;
-            Situation.AddSubscriber(situationAnchor);
-            
-
-
-            if (situation.SourceToken != null)
-				SoundManager.PlaySfx("SituationTokenCreate");
-
-            situationWindow = w;
-            situationWindowAsStorage = w;
-            situationWindowAsView = w;
-
-            
-
-            switch (Situation.State) {
-                case SituationState.Unstarted:
-                    situationWindowAsStorage.SetUnstarted();
-                    break;
-
-                case SituationState.FreshlyStarted:
-                case SituationState.Ongoing:
-                case SituationState.RequiringExecution:
-                    InitialiseForActiveSituation();
-                    break;
-
-                case SituationState.Complete:
-                    InitialiseCompletedSituation();
-                    break;
-
-                default:
-                    throw new ApplicationException("Tried to create situation for " + situation.Verb.Label + " with unknown state");
-            }
-        }
-
-        void InitialiseForActiveSituation() {
-            if (Situation.State == SituationState.FreshlyStarted)
-                Situation.Start();
-
-            //ugly subclause here. SituationClock.Start largely duplicates the constructor. I'm trying to use the same code path for recreating situations from a save file as for beginning a new situation
-            //possibly just separating out FreshlyStarted would solve it
-
-            situationWindowAsStorage.SetOngoing(Situation.currentPrimaryRecipe);
-
-            situationAnchor.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, CurrentEndingFlavourToSignal);
-            situationWindowAsView.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, CurrentEndingFlavourToSignal);
-
-            //this is a little ugly here; but it makes the intent clear. The best way to deal with it is probably to pass the whole Command down to the situationwindow for processing.
-            if (Situation.OverrideTitle != null)
-                situationWindowAsView.Title = Situation.OverrideTitle;
-
-            UpdateSituationDisplayForPossiblePredictedRecipe();
-
-            if (Situation.currentPrimaryRecipe!=null && Situation.currentPrimaryRecipe.BurnImage != null)
-                BurnImageUnderToken(Situation.currentPrimaryRecipe.BurnImage);
-
-        }
-
-        void InitialiseCompletedSituation() {
-            situationWindowAsStorage.SetComplete();
-
-            //this is a little ugly here; but it makes the intent clear. The best way to deal with it is probably to pass the whole Command down to the situationwindow for processing.
-            if (Situation.OverrideTitle != null)
-                situationWindowAsView.Title = Situation.OverrideTitle;
-
-        }
         // Called from importer
         public void ModifyStoredElementStack(string elementId, int quantity, Context context)
         {
@@ -203,7 +126,7 @@ namespace Assets.TabletopUi {
         public IEnumerable<ElementStackToken> GetOngoingStacks()
         {
             return situationWindowAsStorage.GetOngoingStacks();
-        }
+        }g
 
         public IEnumerable<ElementStackToken> GetStoredStacks()
         {
@@ -211,31 +134,7 @@ namespace Assets.TabletopUi {
         }
 
         
-        public HeartbeatResponse ExecuteHeartbeat(float interval) {
-            HeartbeatResponse response = new HeartbeatResponse();
-            var ttm = Registry.Get<TabletopManager>();
-            var aspectsInContext = ttm.GetAspectsInContext(GetAspectsAvailableToSituation(true));
 
-            RecipeConductor rc = new RecipeConductor(compendium,
-               aspectsInContext, Registry.Get<IDice>(), currentCharacter);
-
-            Situation.Continue(rc, interval, greedyAnimIsActive);
-
-            // only pull in something if we've got a second remaining
-            if (Situation.State == SituationState.Ongoing && Situation.TimeRemaining > HOUSEKEEPING_CYCLE_BEATS) {
-                var tokenAndSlot = new TokenAndSlot() {
-                    Token = situationAnchor as VerbAnchor,
-                    RecipeSlot = situationWindowAsStorage.GetUnfilledGreedySlot() as RecipeSlot
-                };
-
-                if (tokenAndSlot.RecipeSlot != null && !tokenAndSlot.Token.Defunct && !tokenAndSlot.RecipeSlot.Defunct)
-                {
-                    response.SlotsToFill.Add(tokenAndSlot);
-                }
-            }
-
-            return response;
-        }
 
         public void SituationBeginning(SituationEventData d) {
             situationWindowAsStorage.SetOngoing(d.EffectCommand.Recipe);

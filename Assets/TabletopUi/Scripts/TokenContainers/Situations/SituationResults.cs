@@ -30,8 +30,7 @@ public class SituationResults : AbstractTokenContainer {
     public override bool AllowStackMerge { get { return false; } }
 
 
-    public void Initialise(SituationController sc) {
-        controller = sc;
+    public void Initialise() {
         buttonClearResultsDefault = "VERB_COLLECT";
         buttonClearResultsNone = "VERB_ACCEPT";
     }
@@ -50,6 +49,8 @@ public class SituationResults : AbstractTokenContainer {
         //cardPos.ReorderCards(allStacksToOutput);
         // we noew reorder on DisplayHere
     }
+
+    public override ContainerCategory ContainerCategory => ContainerCategory.Output;
 
     public override void DisplayHere(ElementStackToken stack, Context context) {
         base.DisplayHere(stack, context);

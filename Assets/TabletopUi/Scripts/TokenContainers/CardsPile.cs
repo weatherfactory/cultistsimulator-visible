@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Entities;
+using Assets.Core.Enums;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
 
@@ -12,6 +13,8 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
   public class CardsPile: AbstractTokenContainer
   {
       private DeckSpec _deckSpec;
+
+      public override ContainerCategory ContainerCategory => ContainerCategory.Dormant;
 
       public override void Start()
       {

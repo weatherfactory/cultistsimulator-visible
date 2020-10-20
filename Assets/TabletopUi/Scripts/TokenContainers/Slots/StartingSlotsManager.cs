@@ -21,8 +21,8 @@ namespace Assets.TabletopUi.SlotsContainers {
 
         protected RecipeSlot primarySlot;
 
-        public override void Initialise(IVerb verb,SituationController sc) {
-            base.Initialise(verb,sc);
+        public override void Initialise(IVerb verb) {
+            base.Initialise(verb);
             
             var primarySlotSpecification = verb.Slot;
             if(primarySlotSpecification!=null)

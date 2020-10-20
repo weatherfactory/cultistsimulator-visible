@@ -1,4 +1,5 @@
 ﻿using Assets.Core.Entities;
+using Assets.Core.Enums;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using UnityEngine;
@@ -7,7 +8,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public class Limbo : AbstractTokenContainer {
 
-        
+        public override ContainerCategory ContainerCategory => ContainerCategory.Dormant;
+
         public override void Start() {
 
             PersistBetweenScenes = true;

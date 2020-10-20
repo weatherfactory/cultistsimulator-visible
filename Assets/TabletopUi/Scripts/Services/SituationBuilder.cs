@@ -9,6 +9,7 @@ using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
+using Assets.Core.Enums;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Services {
@@ -37,27 +38,72 @@ namespace Assets.TabletopUi.Scripts.Services {
 
         }
 
-        public SituationController CreateSituation(SituationCreationCommand command)
+        public Situation CreateSituation(SituationCreationCommand command)
         {
-            Core.Entities.Situation situation = new Core.Entities.Situation(command);
-            var newToken = CreateAnchor(command);
-            var newWindow = CreateSituationWindow(newToken);
-            var situationController = new SituationController(Registry.Get<ICompendium>(), Registry.Get<Character>());
-            newToken.Initialise(situation.Verb, situationController);
-            newWindow.Initialise(situation.Verb, situationController);
-            situationController.Initialise(situation, newToken, newWindow);
+            Situation situation = new Situation(command);
+            Registry.Get<SituationsCatalogue>().RegisterSituation(situation);
 
-            return situationController;
+
+            var newAnchor = CreateAnchor(command);
+            newAnchor.Initialise(situation);
+            situation.AddSubscriber(newAnchor);
+
+            var newWindow = CreateSituationWindow(newAnchor);
+            newWindow.Initialise(situation);
+            situation.AddSubscriber(newWindow);
+
+            situation.AddContainer(ContainerCategory.Starting,newWindow.);
+            situation.AddContainer(ContainerCategory.SituationStorage, newWindow.GetStorageContainer());
+            
+
+
+            if (command.SourceToken != null)
+                SoundManager.PlaySfx("SituationTokenCreate");
+
+            situation.ExecuteHeartbeat(0f);
+
+            return situation;
+        }
+
+        void InitialiseForActiveSituation()
+        {
+            if (Situation.State == SituationState.FreshlyStarted)
+                Situation.Start();
+
+            //ugly subclause here. SituationClock.Start largely duplicates the constructor. I'm trying to use the same code path for recreating situations from a save file as for beginning a new situation
+            //possibly just separating out FreshlyStarted would solve it
+
+            situationWindowAsStorage.SetOngoing(Situation.currentPrimaryRecipe);
+
+            situationAnchor.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, CurrentEndingFlavourToSignal);
+            situationWindowAsView.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, CurrentEndingFlavourToSignal);
+
+            //this is a little ugly here; but it makes the intent clear. The best way to deal with it is probably to pass the whole Command down to the situationwindow for processing.
+            if (Situation.OverrideTitle != null)
+                situationWindowAsView.Title = Situation.OverrideTitle;
+
+            UpdateSituationDisplayForPossiblePredictedRecipe();
+
+            if (Situation.currentPrimaryRecipe != null && Situation.currentPrimaryRecipe.BurnImage != null)
+                BurnImageUnderToken(Situation.currentPrimaryRecipe.BurnImage);
+
+        }
+
+        void InitialiseCompletedSituation()
+        {
+            situationWindowAsStorage.SetComplete();
+
+            //this is a little ugly here; but it makes the intent clear. The best way to deal with it is probably to pass the whole Command down to the situationwindow for processing.
+            if (Situation.OverrideTitle != null)
+                situationWindowAsView.Title = Situation.OverrideTitle;
+
         }
 
         public ISituationAnchor CreateAnchor(SituationCreationCommand situationCreationCommand)
         {
 
             var newAnchor = Registry.Get<PrefabFactory>().CreateSituationAnchorForVerb(situationCreationCommand.Verb,tableLevel);
-
-            
-              newAnchor.SetTokenContainer(tableLevel.GetComponent<AbstractTokenContainer>(), new Context(Context.ActionSource.Unknown));
-
+            newAnchor.SetTokenContainer(tableLevel.GetComponent<AbstractTokenContainer>(), new Context(Context.ActionSource.Unknown));
 
             if (situationCreationCommand.LocationInfo != null)
                 newAnchor.SaveLocationInfo = situationCreationCommand.LocationInfo;

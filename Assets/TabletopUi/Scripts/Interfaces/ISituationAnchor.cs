@@ -23,7 +23,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void DisplayAsOpen();
         void DisplayAsClosed();
 
-        void Initialise(IVerb verb, SituationController controller);
+        void Initialise(Situation situation);
 
         void DisplayTimeRemaining(float duration, float timeRemaining, EndingFlavour signalEndingFlavour);
 

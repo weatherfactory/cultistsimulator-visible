@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
+using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
@@ -20,7 +21,10 @@ public class TabletopTokenContainer : AbstractTokenContainer,IBeginDragHandler,I
 #pragma warning disable 649
     [SerializeField] TabletopBackground _background;
     [SerializeField] protected CanvasGroupFader canvasGroupFader;
-    #pragma warning disable 649
+#pragma warning disable 649
+
+    public override ContainerCategory ContainerCategory => ContainerCategory.World;
+
 
     protected Choreographer choreo;
 

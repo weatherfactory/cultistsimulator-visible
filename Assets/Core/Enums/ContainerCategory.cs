@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Assets.Core.Enums
 {
-    public enum ContainerRelation
+    public enum ContainerCategory
     {
-        Starting,
-        Ongoing,
-        Storage,
-        Output
+       Threshold,
+        SituationStorage,
+        Output,
+        World,
+        Meta,
+        Dormant
     }
 }

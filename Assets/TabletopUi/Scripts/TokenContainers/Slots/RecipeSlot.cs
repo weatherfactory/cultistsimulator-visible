@@ -39,6 +39,8 @@ namespace Assets.CS.TabletopUI {
         public event System.Action<RecipeSlot, ElementStackToken, Context> onCardDropped;
         public event System.Action<ElementStackToken, Context> onCardRemoved;
 
+        public override ContainerCategory ContainerCategory => ContainerCategory.Threshold;
+
         // DATA ACCESS
         public SlotSpecification GoverningSlotSpecification { get; set; }
         public IList<RecipeSlot> childSlots { get; set; }
@@ -305,6 +307,8 @@ namespace Assets.CS.TabletopUI {
         
         onCardDropped(this, stack, context);
         }
+
+        
 
         public override void DisplayHere(IToken token, Context context) {
             base.DisplayHere(token, context);

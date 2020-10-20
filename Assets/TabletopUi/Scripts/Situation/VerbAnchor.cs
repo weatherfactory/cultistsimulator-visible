@@ -51,18 +51,17 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void Initialise(IVerb verb, SituationController sc)
+        public void Initialise(Situation situation)
         {
-            _verb = verb;
+            _verb = situation.Verb;
             _manifestation = TokenContainer.CreateAnchorManifestation(this);
             _manifestation.InitialiseVisuals(_verb);
 
-            if (verb.Transient)
+            if (_verb.Transient)
                 _durability = AnchorDurability.Transient;
             else
                 _durability = AnchorDurability.Enduring;
 
-            SituationController = sc;
             name = "Verb_" + EntityId;
          _manifestation.DisplayStackInMiniSlot(null);
             SetParticleSimulationSpace(transform.parent);
@@ -312,8 +311,8 @@ namespace Assets.CS.TabletopUI {
         public void SituationComplete(SituationEventData e)
         {
      _manifestation.DisplayComplete();
-     _manifestation.SetCompletionCount(e.StacksInEachStorage[ContainerRelation.Output].Count);
-     _manifestation.DisplayStackInMiniSlot(e.StacksInEachStorage[ContainerRelation.Ongoing].FirstOrDefault());
+     _manifestation.SetCompletionCount(e.StacksInEachStorage[ContainerCategory.Output].Count);
+     _manifestation.DisplayStackInMiniSlot(e.StacksInEachStorage[ContainerCategory.Ongoing].FirstOrDefault());
 
         }
 
@@ -325,14 +324,14 @@ namespace Assets.CS.TabletopUI {
         public void ContainerContentsUpdated(SituationEventData e)
         {
             
-            var ongoingStacks = e.StacksInEachStorage[ContainerRelation.Ongoing];
+            var ongoingStacks = e.StacksInEachStorage[ContainerCategory.Ongoing];
             if(ongoingStacks.Count == 1)
                 _manifestation.DisplayStackInMiniSlot(ongoingStacks.First());
             else
               _manifestation.DisplayStackInMiniSlot(null);
 
 
-            _manifestation.SetCompletionCount(e.StacksInEachStorage[ContainerRelation.Output].Count);
+            _manifestation.SetCompletionCount(e.StacksInEachStorage[ContainerCategory.Output].Count);
 
         }
 
@@ -351,7 +350,7 @@ namespace Assets.CS.TabletopUI {
         public float Warmup { get; set; }
         public float TimeRemaining { get; set; }
         public Recipe CurrentRecipe; //replace with SituationCreationComand / SituationEffectCommand? combine CreationCommand and EffectCommand?
-        public Dictionary<ContainerRelation, List<ElementStackToken>> StacksInEachStorage { get; set; }
+        public Dictionary<ContainerCategory, List<ElementStackToken>> StacksInEachStorage { get; set; }
         public INotification Notification;
         public SituationEffectCommand EffectCommand;
 
@@ -361,17 +360,17 @@ namespace Assets.CS.TabletopUI {
             e.Warmup = fromSituation.Warmup;
             e.TimeRemaining = fromSituation.TimeRemaining;
             e.CurrentRecipe = fromSituation.currentPrimaryRecipe;
-            e.StacksInEachStorage.Add(ContainerRelation.Starting,controller.GetStartingStacks().ToList());
-            e.StacksInEachStorage.Add(ContainerRelation.Ongoing, controller.GetOngoingStacks().ToList());
-            e.StacksInEachStorage.Add(ContainerRelation.Storage, controller.GetStoredStacks().ToList());
-            e.StacksInEachStorage.Add(ContainerRelation.Output, controller.GetOutputStacks().ToList());
+            e.StacksInEachStorage.Add(ContainerCategory.Starting,controller.GetStartingStacks().ToList());
+            e.StacksInEachStorage.Add(ContainerCategory.Ongoing, controller.GetOngoingStacks().ToList());
+            e.StacksInEachStorage.Add(ContainerCategory.SituationStorage, controller.GetStoredStacks().ToList());
+            e.StacksInEachStorage.Add(ContainerCategory.Output, controller.GetOutputStacks().ToList());
             return e;
 
         }
 
         private SituationEventData()
         {
-         StacksInEachStorage=new Dictionary<ContainerRelation, List<ElementStackToken>>();
+         StacksInEachStorage=new Dictionary<ContainerCategory, List<ElementStackToken>>();
          CurrentRecipe = NullRecipe.Create();
          EffectCommand=new SituationEffectCommand();
         }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core.Commands;
+using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
@@ -23,7 +24,7 @@ namespace Assets.Core.Entities {
 		public string RecipeId { get { return currentPrimaryRecipe == null ? null : currentPrimaryRecipe.Id; } }
         public readonly IVerb Verb;
         private List<ISituationSubscriber> subscribers=new List<ISituationSubscriber>();
-        public AbstractToken SourceToken { get; set; }
+		private HashSet<ITokenContainer>_containers=new HashSet<ITokenContainer>();
         public string OverrideTitle { get; set; }
         public int CompletionCount { get; set; }
 
@@ -36,7 +37,6 @@ namespace Assets.Core.Entities {
             TimeRemaining = command.TimeRemaining ?? 0;
             State = command.State;
             currentPrimaryRecipe = command.Recipe;
-            SourceToken = command.SourceToken;
             OverrideTitle = command.OverrideTitle;
             CompletionCount = command.CompletionCount;
         }
@@ -69,6 +69,12 @@ namespace Assets.Core.Entities {
 
             subscribers.Remove(subscriber);
             return true;
+        }
+
+
+        public void AddContainer(ITokenContainer container)
+        {
+            _containers.Add(container);
         }
 
 		public IList<SlotSpecification> GetSlotsForCurrentRecipe() {
@@ -128,6 +134,36 @@ namespace Assets.Core.Entities {
 			return currentPrimaryRecipe == null ? "no recipe just now" :
 			currentPrimaryRecipe.Description;
 		}
+
+
+        public HeartbeatResponse ExecuteHeartbeat(float interval)
+        {
+            HeartbeatResponse response = new HeartbeatResponse();
+            var ttm = Registry.Get<TabletopManager>();
+            var aspectsInContext = ttm.GetAspectsInContext(GetAspectsAvailableToSituation(true));
+
+            RecipeConductor rc = new RecipeConductor(compendium,
+                aspectsInContext, Registry.Get<IDice>(), currentCharacter);
+
+            Situation.Continue(rc, interval, greedyAnimIsActive);
+
+            // only pull in something if we've got a second remaining
+            if (Situation.State == SituationState.Ongoing && Situation.TimeRemaining > HOUSEKEEPING_CYCLE_BEATS)
+            {
+                var tokenAndSlot = new TokenAndSlot()
+                {
+                    Token = situationAnchor as VerbAnchor,
+                    RecipeSlot = situationWindowAsStorage.GetUnfilledGreedySlot() as RecipeSlot
+                };
+
+                if (tokenAndSlot.RecipeSlot != null && !tokenAndSlot.Token.Defunct && !tokenAndSlot.RecipeSlot.Defunct)
+                {
+                    response.SlotsToFill.Add(tokenAndSlot);
+                }
+            }
+
+            return response;
+        }
 
 
 		public SituationState Continue(IRecipeConductor rc, float interval, bool waitForGreedyAnim = false)
@@ -251,6 +287,6 @@ namespace Assets.Core.Entities {
             SoundManager.PlaySfx("SituationComplete");
 		}
 
-	}
+    }
 
 }

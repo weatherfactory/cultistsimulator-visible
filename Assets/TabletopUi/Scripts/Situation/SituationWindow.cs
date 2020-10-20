@@ -22,7 +22,7 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 
 namespace Assets.CS.TabletopUI {
     [RequireComponent(typeof(SituationWindowPositioner))]
-    public class SituationWindow : MonoBehaviour,ISituationView,ISituationWindowAsStorage {
+    public class SituationWindow : MonoBehaviour,ISituationView,ISituationWindowAsStorage,ISituationSubscriber {
 
         string buttonDefault;
         string buttonBusy;
@@ -99,11 +99,10 @@ namespace Assets.CS.TabletopUI {
             artwork.sprite = sprite;
         }
 
-        public void Initialise(IVerb verb, SituationController sc) {
-			situationController = sc;
-			Verb = verb;
-            name = "Window_" + verb.Id;
-            DisplayIcon(verb.Id);
+        public void Initialise(Situation situation) {
+			Verb = situation.Verb;
+            name = "Window_" + Verb.Id;
+            DisplayIcon(Verb.Id);
 
             if (Verb.Startable)
             {
@@ -116,8 +115,8 @@ namespace Assets.CS.TabletopUI {
 
 
 
-            startingSlots.Initialise(Verb, sc);
-            ongoing.Initialise(Verb,sc);
+            startingSlots.Initialise(Verb);
+            ongoing.Initialise(Verb);
             results.Initialise(sc);
 		}
 
@@ -466,5 +465,39 @@ namespace Assets.CS.TabletopUI {
             return PaginatedNotes.GetCurrentTexts();
         }
 
+        public void SituationBeginning(SituationEventData e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SituationOngoing(SituationEventData e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SituationExecutingRecipe(SituationEventData e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SituationComplete(SituationEventData e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ResetSituation()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ContainerContentsUpdated(SituationEventData e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReceiveAndRefineTextNotification(SituationEventData e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

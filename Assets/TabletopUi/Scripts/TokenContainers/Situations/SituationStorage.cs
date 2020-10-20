@@ -6,6 +6,7 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using System;
+using Assets.Core.Enums;
 using Noon;
 
 public class SituationStorage : AbstractTokenContainer {
@@ -17,6 +18,8 @@ public class SituationStorage : AbstractTokenContainer {
     public override string GetSaveLocationForToken(AbstractToken token) {
         return "slot_storage";
     }
+
+    public override ContainerCategory ContainerCategory => ContainerCategory.SituationStorage;
 
     public override void DisplayHere(ElementStackToken stack, Context context) {
         base.DisplayHere(stack, context);

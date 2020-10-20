@@ -36,6 +36,8 @@ namespace Assets.CS.TabletopUI {
         public override bool AllowDrag { get { return false; } }
         public override bool AllowStackMerge { get { return false; } }
 
+        public override ContainerCategory ContainerCategory => ContainerCategory.Threshold;
+
         public override void Start()
         {
             ShowGlow(false, true);

@@ -26,9 +26,9 @@ namespace Assets.CS.TabletopUI {
 
         [SerializeField] DeckEffectView[] deckEffectViews; 
 
-        public override void Initialise(IVerb verb, SituationController sc)
+        public override void Initialise(IVerb verb)
 		{
-            base.Initialise(verb, sc);
+            base.Initialise(verb);
             ongoingSlot = BuildSlot("ongoing", null, null, true);
             SetSlotToPos();
         }

@@ -17,15 +17,14 @@ using Assets.TabletopUi.Scripts.Services;
 
 public abstract class AbstractSlotsManager : MonoBehaviour {
 
-    protected SituationController situationController;
     
     protected List<RecipeSlot> validSlots;
 
     
 
-    public virtual void Initialise(IVerb verb,SituationController sc)
+    public virtual void Initialise(IVerb verb)
     {
-        situationController = sc;
+        
         var children = GetComponentsInChildren<RecipeSlot>();
         var allSlots = new List<RecipeSlot>(children);
          validSlots = new List<RecipeSlot>(allSlots.Where(rs => rs.Defunct == false && rs.GoverningSlotSpecification!=null));

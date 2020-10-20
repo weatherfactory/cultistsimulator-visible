@@ -26,6 +26,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public bool PersistBetweenScenes { get; protected set; }
         public bool EnforceUniqueStacksInThisContainer { get; set; }
         public bool ContentsHidden { get; protected set; }
+        public abstract ContainerCategory ContainerCategory { get; }
 
 
         private TokenContainersCatalogue _catalogue;
