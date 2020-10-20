@@ -53,7 +53,7 @@ namespace Assets.CS.TabletopUI {
 
         public void Initialise(IVerb verb, SituationController sc)
         {
-
+            _verb = verb;
             _manifestation = TokenContainer.CreateAnchorManifestation(this);
 
             if (verb.Transient)

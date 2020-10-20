@@ -65,7 +65,6 @@ MonoBehaviour:
   spriteUniqueTextBG: {fileID: 21300000, guid: 69e05d84218b358438a6b4e30801d377, type: 3}
   shadow: {fileID: 1948240919320052708}
   glowImage: {fileID: 1914689603901066308}
-  defaultRetireFX: 0
 --- !u!114 &2881439765618108084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,7 +330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shadowOffset: -2
   shadow: {fileID: 1734388991718419170}
-  card: {fileID: 1734388989423545658}
+  shadowCaster: {fileID: 1734388989423545658}
 --- !u!1 &1948240919675838030
 GameObject:
   m_ObjectHideFlags: 0
