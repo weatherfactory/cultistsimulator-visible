@@ -15,23 +15,23 @@ namespace Assets.Core.Entities {
 
     public class TokenContainersCatalogue {
 
-        private readonly HashSet<AbstractTokenContainer> _currentTokenContainers;
+        private readonly HashSet<TokenContainer> _currentTokenContainers;
         private readonly HashSet<IStacksChangeSubscriber> _subscribers;
 
         public TokenContainersCatalogue() {
-            _currentTokenContainers = new HashSet<AbstractTokenContainer>();
+            _currentTokenContainers = new HashSet<TokenContainer>();
             _subscribers = new HashSet<IStacksChangeSubscriber>();
         }
 
-        public HashSet<AbstractTokenContainer> GetRegisteredTokenContainers() {
+        public HashSet<TokenContainer> GetRegisteredTokenContainers() {
             return _currentTokenContainers;
         }
 
-        public void RegisterTokenContainer(AbstractTokenContainer tokenContainer) {
+        public void RegisterTokenContainer(TokenContainer tokenContainer) {
             _currentTokenContainers.Add(tokenContainer);
         }
 
-        public void DeregisterTokenContainer(AbstractTokenContainer tokenContainer) {
+        public void DeregisterTokenContainer(TokenContainer tokenContainer) {
             _currentTokenContainers.Remove(tokenContainer);
         }
 

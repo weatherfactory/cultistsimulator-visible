@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
-    public class Limbo : AbstractTokenContainer {
+    public class Limbo : TokenContainer {
 
         public override ContainerCategory ContainerCategory => ContainerCategory.Dormant;
 

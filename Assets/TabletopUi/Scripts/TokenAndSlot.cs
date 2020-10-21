@@ -11,6 +11,6 @@ namespace Assets.TabletopUi
     public class TokenAndSlot
     {
         public ISituationAnchor Token { get; set; } 
-        public AbstractTokenContainer Threshold { get; set; }
+        public TokenContainer Threshold { get; set; }
     }
 }

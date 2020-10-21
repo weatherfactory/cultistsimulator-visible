@@ -483,7 +483,7 @@ namespace Assets.CS.TabletopUI {
 
 
         // Called from TokenContainer, usually after StacksManager told it to
-        public override void SetTokenContainer(AbstractTokenContainer newTokenContainer, Context context) {
+        public override void SetTokenContainer(TokenContainer newTokenContainer, Context context) {
             OldTokenContainer = TokenContainer;
 
             if (OldTokenContainer != null && OldTokenContainer != newTokenContainer)
@@ -597,24 +597,22 @@ namespace Assets.CS.TabletopUI {
 
 			// Compile list of valid slots
 			List<TabletopUi.TokenAndSlot> targetSlots = new List<TabletopUi.TokenAndSlot>();
-			var registeredSits = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
-			foreach(TabletopUi.SituationController situ in registeredSits)
+			var registeredSituations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
+			foreach(Situation situation in registeredSituations)
 			{
-				if (situ.Situation.State != SituationState.Complete)
-				{
-					if (situ.IsOngoing)
+	            if (situation.State==SituationState.Ongoing)
 					{
 						// Check for ongoing slots only
-						var ongoingSlots = situ.GetOngoingSlots();
-						targetSlots.AddRange( FindValidSlot( ongoingSlots, situ ) );
+						var ongoingSlots = situation.GetOngoingSlots();
+						targetSlots.AddRange( FindValidSlot( ongoingSlots, situation) );
 					}
-					else if (situ.situationAnchor.Durability==AnchorDurability.Enduring && situ.Situation.State == SituationState.Unstarted)
+					else if (situ.Situation.State == SituationState.Unstarted && situation.situationAnchor.Durability==AnchorDurability.Enduring && )
 					{
 						// Look for starting slots (most common case)
-						var startSlots = situ.situationWindow.GetStartingSlots();
-						targetSlots.AddRange( FindValidSlot( startSlots, situ ) );
+						var startSlots = situation.situationWindow.GetStartingSlots();
+						targetSlots.AddRange( FindValidSlot( startSlots, situation) );
 					}
-				}
+				
 			}
 
 			// Now find the best target from that list
@@ -639,18 +637,13 @@ namespace Assets.CS.TabletopUI {
 
 				if (selectedSlot != null && selectedSlot.Threshold !=null)
 				{
-					if (selectedSlot.Threshold.IsBeingAnimated)
-					{
-						//Debug.Log("Already sending something to " + selectedSlot.Token.EntityId);
-					}
-					else
-					{
+		
 						//Debug.Log("Sending " + this.EntityId + " to " + selectedSlot.Token.EntityId);
 						var choreo = Registry.Get<Choreographer>();
 						SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.DoubleClickSend));
 						choreo.PrepareElementForSendAnim( this, selectedSlot.Token ); // this reparents the card so it can animate properly
 						choreo.MoveElementToSituationSlot( this, selectedSlot, choreo.ElementSendAnimDone,SEND_STACK_TO_SLOT_DURATION);
-					}
+					
 				}
 			}
 		}

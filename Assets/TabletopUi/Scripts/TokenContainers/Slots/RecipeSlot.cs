@@ -23,7 +23,7 @@ namespace Assets.CS.TabletopUI {
 
 
 
-    public class RecipeSlot : AbstractTokenContainer, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
+    public class RecipeSlot : TokenContainer, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
 
         public event System.Action<RecipeSlot, ElementStackToken, Context> onCardDropped;
         public event System.Action<ElementStackToken, Context> onCardRemoved;

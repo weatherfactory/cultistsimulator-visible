@@ -16,7 +16,7 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 using TMPro;
 
-public class ExhibitCards : AbstractTokenContainer {
+public class ExhibitCards : TokenContainer {
 
     public override bool AllowDrag { get { return false; } }
     public override bool AllowStackMerge { get { return false; } }

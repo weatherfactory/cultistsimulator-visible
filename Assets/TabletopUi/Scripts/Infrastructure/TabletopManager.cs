@@ -672,53 +672,57 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
         public HashSet<TokenAndSlot> FillTheseSlotsWithFreeStacks(HashSet<TokenAndSlot> slotsToFill) {
             var unprocessedSlots = new HashSet<TokenAndSlot>();
-            var choreo = Registry.Get<Choreographer>();
-            SituationController sit;
 
-            foreach (var tokenSlotPair in slotsToFill) {
-                if (NeedToFillSlot(tokenSlotPair) == false)
-                    continue; // Skip it, we don't need to fill it
+                //uncomment and rework
+            //var choreo = Registry.Get<Choreographer>();
+            //SituationController sit;
 
-                var stack = FindStackForSlotSpecificationOnTabletop(tokenSlotPair.Threshold.GoverningSlotSpecification) as ElementStackToken;
+            //foreach (var tokenSlotPair in slotsToFill) {
+            //    if (NeedToFillSlot(tokenSlotPair) == false)
+            //        continue; // Skip it, we don't need to fill it
 
-                if (stack != null) {
-                    stack.SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.GreedySlot));
-                    choreo.MoveElementToSituationSlot(stack, tokenSlotPair, choreo.ElementGreedyAnimDone);
-                    continue; // we found a stack, we're done here
-                }
+            //    var stack = FindStackForSlotSpecificationOnTabletop(tokenSlotPair.Threshold.GoverningSlotSpecification) as ElementStackToken;
 
-                stack = FindStackForSlotSpecificationInSituations(tokenSlotPair.Threshold.GoverningSlotSpecification, out sit) as ElementStackToken;
+            //    if (stack != null) {
+            //        stack.SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.GreedySlot));
+            //        choreo.MoveElementToSituationSlot(stack, tokenSlotPair, choreo.ElementGreedyAnimDone);
+            //        continue; // we found a stack, we're done here
+            //    }
 
-                if (stack != null) {
-                    stack.SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.GreedySlot));
-                    choreo.PrepareElementForGreedyAnim(stack, sit.situationAnchor as VerbAnchor); // this reparents the card so it can animate properly
-                    choreo.MoveElementToSituationSlot(stack, tokenSlotPair, choreo.ElementGreedyAnimDone);
-                    continue; // we found a stack, we're done here
-                }
+            //    stack = FindStackForSlotSpecificationInSituations(tokenSlotPair.Threshold.GoverningSlotSpecification, out sit) as ElementStackToken;
 
-                unprocessedSlots.Add(tokenSlotPair);
-            }
+            //    if (stack != null) {
+            //        stack.SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.GreedySlot));
+            //        choreo.PrepareElementForGreedyAnim(stack, sit.situationAnchor as VerbAnchor); // this reparents the card so it can animate properly
+            //        choreo.MoveElementToSituationSlot(stack, tokenSlotPair, choreo.ElementGreedyAnimDone);
+            //        continue; // we found a stack, we're done here
+            //    }
+
+            //    unprocessedSlots.Add(tokenSlotPair);
+           // }
 
             return unprocessedSlots;
         }
 
         private bool NeedToFillSlot(TokenAndSlot tokenSlotPair) {
-            if (tokenSlotPair.Token.Equals(null))
-                return false; // It has been destroyed
-            if (tokenSlotPair.Token.Defunct)
-                return false;
-            if (!tokenSlotPair.Token.SituationController.IsOngoing)
-                return false;
-            if (tokenSlotPair.Threshold.Equals(null))
-                return false; // It has been destroyed
-            if (tokenSlotPair.Threshold.Defunct)
-                return false;
-            if (tokenSlotPair.Threshold.IsBeingAnimated)
-                return false; // We're animating something into the slot.
-            if (tokenSlotPair.Threshold.GetElementStackInSlot() != null)
-                return false; // It is already filled
-            if (tokenSlotPair.Threshold.GoverningSlotSpecification==null || !tokenSlotPair.Threshold.GoverningSlotSpecification.Greedy)
-                return false; //it's not greedy any more; sometimes if we have a recipe with a greedy slot followed by a recipe with a non-greedy slot, the behaviour carries over for the moment the recipe changes
+            //rework, move internal
+
+            //if (tokenSlotPair.Token.Equals(null))
+            //    return false; // It has been destroyed
+            //if (tokenSlotPair.Token.Defunct)
+            //    return false;
+            //if (!tokenSlotPair.Token.SituationController.IsOngoing)
+            //    return false;
+            //if (tokenSlotPair.Threshold.Equals(null))
+            //    return false; // It has been destroyed
+            //if (tokenSlotPair.Threshold.Defunct)
+            //    return false;
+            //if (tokenSlotPair.Threshold.IsBeingAnimated)
+            //    return false; // We're animating something into the slot.
+            //if (tokenSlotPair.Threshold.GetElementStackInSlot() != null)
+            //    return false; // It is already filled
+            //if (tokenSlotPair.Threshold.GoverningSlotSpecification==null || !tokenSlotPair.Threshold.GoverningSlotSpecification.Greedy)
+            //    return false; //it's not greedy any more; sometimes if we have a recipe with a greedy slot followed by a recipe with a non-greedy slot, the behaviour carries over for the moment the recipe changes
 
             return true;
         }
@@ -830,12 +834,13 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 				tokenDetailsWindow.Hide();
 		}
 
-        public void CloseAllSituationWindowsExcept(string exceptTokenId) {
-            var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
+        public void CloseAllSituationWindowsExcept(string exceptVerbId) {
+            var situations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 
-            foreach (var controller in situationControllers) {
-                if (controller.GetTokenId() != exceptTokenId)
-                    controller.CloseWindow();
+            foreach (var s in situations)
+            {
+                if (s.Verb.Id != exceptVerbId)
+                    s.Close();
             }
         }
 

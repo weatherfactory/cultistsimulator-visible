@@ -13,6 +13,7 @@ using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using JetBrains.Annotations;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace Assets.Core.Entities {
@@ -35,13 +36,18 @@ namespace Assets.Core.Entities {
 
         public readonly IVerb Verb;
         private List<ISituationSubscriber> subscribers = new List<ISituationSubscriber>();
-        private HashSet<AbstractTokenContainer> _containers = new HashSet<AbstractTokenContainer>();
+        private HashSet<TokenContainer> _containers = new HashSet<TokenContainer>();
         public string OverrideTitle { get; set; }
         public int CompletionCount { get; set; }
 
         private ISituationAnchor _anchor;
         private SituationWindow _window;
         private bool greedyAnimIsActive;
+
+        private TokenLocation GetTokenLocation()
+        {
+            return _anchor.Location;
+        }
 
         public const float HOUSEKEEPING_CYCLE_BEATS = 1f;
 
@@ -106,12 +112,12 @@ namespace Assets.Core.Entities {
         }
 
 
-        public void AddContainer(AbstractTokenContainer container)
+        public void AddContainer(TokenContainer container)
         {
             _containers.Add(container);
         }
 
-        public void AddContainers(IEnumerable<AbstractTokenContainer> containers)
+        public void AddContainers(IEnumerable<TokenContainer> containers)
         {
             foreach (var c in containers)
                 _containers.Add(c);
@@ -126,6 +132,7 @@ namespace Assets.Core.Entities {
         }
 
 
+ 
 
         private void Reset()
         {
@@ -308,7 +315,7 @@ namespace Assets.Core.Entities {
 			SituationEventData d=SituationEventData.Create(this);
 
             foreach (var subscriber in subscribers)
-			subscriber.SituationBeginning(d);
+			    subscriber.SituationBeginning(d);
 		}
 
 		private void Ongoing() {
@@ -385,6 +392,38 @@ namespace Assets.Core.Entities {
 		}
 
 
+        public void Close()
+        {
+            _window.TryDumpAllStartingCardsToDesktop();
+            _window.Hide();
+
+            _anchor.DisplayAsClosed();
+        }
+
+        public bool IsOpen()
+        {
+            return _window.IsOpen;
+        }
+
+        public void OpenAt(TokenLocation location)
+        {
+            _anchor.DisplayAsOpen();
+            _window.Show(location.Position);
+            
+            Registry.Get<TabletopManager>().CloseAllSituationWindowsExcept(_anchor.EntityId);
+        }
+
+        public void OpenAtCurrentLocation()
+        {
+            if(location)
+        }
+
+
+
+        public void OpenWindow()
+        {
+            OpenWindow(Vector3.zero);
+        }
     }
 
 }

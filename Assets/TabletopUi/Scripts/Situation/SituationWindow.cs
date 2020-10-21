@@ -331,7 +331,7 @@ namespace Assets.CS.TabletopUI {
 				SoundManager.PlaySfx("UIButtonClick");
         }
 
-        public void DumpAllStartingCardsToDesktop() {
+        public void TryDumpAllStartingCardsToDesktop() {
             if (situationController.Situation.State == SituationState.Unstarted)
                 DumpToDesktop(GetStartingStacks(), new Context(Context.ActionSource.PlayerDumpAll));
         }

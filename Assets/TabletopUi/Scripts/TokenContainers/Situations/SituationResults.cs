@@ -15,7 +15,7 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 using TMPro;
 
-public class SituationResults : AbstractTokenContainer {
+public class SituationResults : TokenContainer {
 
     public CanvasGroupFader canvasGroupFader;
     [SerializeField] SituationResultsPositioning cardPos;

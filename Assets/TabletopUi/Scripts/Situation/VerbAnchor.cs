@@ -231,7 +231,7 @@ namespace Assets.CS.TabletopUI {
                 if (!SituationController.IsOpen)
                     OpenSituation();
                 else
-                    DisplayAsOpen(); // This will turn off any unneeded hover effects
+                    DisplayAsOpen();
                 return;
             }
 

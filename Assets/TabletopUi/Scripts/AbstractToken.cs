@@ -4,6 +4,7 @@ using System.Collections;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
 using Assets.TabletopUi.Scripts.Interfaces;
@@ -17,7 +18,7 @@ namespace Assets.CS.TabletopUI {
     public interface IToken
     {
         string EntityId { get; }
-        void SetTokenContainer(AbstractTokenContainer newContainer, Context context);
+        void SetTokenContainer(TokenContainer newContainer, Context context);
         string name { get; }
         Transform transform { get; }
         RectTransform RectTransform { get; }
@@ -72,15 +73,15 @@ namespace Assets.CS.TabletopUI {
         private float perlinRotationPoint = 0f;
         private float dragHeight = -8f; // Draggables all drag on a specifc height and have a specific "default height"
 
-        public AbstractTokenContainer TokenContainer;
-        protected AbstractTokenContainer OldTokenContainer; // Used to tell OldContainsTokens that this thing was dropped successfully
+        public TokenContainer TokenContainer;
+        protected TokenContainer OldTokenContainer; // Used to tell OldContainsTokens that this thing was dropped successfully
 
         public RectTransform RectTransform
         {
             get { return rectTransform; }
         }
 
-  
+        TokenLocation Location => new TokenLocation(transform.localPosition);
 
         protected virtual void Awake() {
             rectTransform = GetComponent<RectTransform>();
@@ -163,12 +164,12 @@ namespace Assets.CS.TabletopUI {
 			transform.localPosition = Registry.Get<Choreographer>().SnapToGrid( transform.localPosition );
 		}
 
-        public virtual void SetTokenContainer(AbstractTokenContainer newContainer, Context context) {
+        public virtual void SetTokenContainer(TokenContainer newContainer, Context context) {
             OldTokenContainer = TokenContainer;
             TokenContainer = newContainer;
         }
 
-        public bool IsInContainer(AbstractTokenContainer compareContainer, Context context) {
+        public bool IsInContainer(TokenContainer compareContainer, Context context) {
             return compareContainer == TokenContainer;
         }
 

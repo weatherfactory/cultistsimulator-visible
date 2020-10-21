@@ -18,7 +18,7 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI {
     [ExecuteInEditMode]
-    public class DoorSlot : AbstractTokenContainer, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
+    public class DoorSlot : TokenContainer, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
 
         public event System.Action<ElementStackToken> onCardDropped;
 

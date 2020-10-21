@@ -20,6 +20,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         string SaveLocationInfo { get; set; }
         AnchorDurability Durability { get; }
 
+
         void DisplayAsOpen();
         void DisplayAsClosed();
 

@@ -28,7 +28,7 @@ namespace Assets.TabletopUi {
         
       
 
-        public bool IsOpen { get; set; }
+      
 		public Vector3 RestoreWindowPosition { get; set; }	// For saving window positions - CP
 
 
@@ -115,7 +115,7 @@ namespace Assets.TabletopUi {
         public void AddToResults(ElementStackToken stack, Context context)
 		{
             situationWindowAsStorage.GetResultsContainer().AcceptStack(stack, context);
-            var d = SituationEventData.Create(Situation, this);
+            var d = SituationEventData.Create(Situation);
             situationAnchor.ContainerContentsUpdated(d);
 
 			var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
@@ -336,27 +336,7 @@ namespace Assets.TabletopUi {
             }
         }
 
-        public void OpenWindow( Vector3 targetPosOverride )
-		{
-            IsOpen = true;
-            situationAnchor.DisplayAsOpen();
-            situationWindowAsView.Show( targetPosOverride );
-            Registry.Get<TabletopManager>().CloseAllSituationWindowsExcept(situationAnchor.EntityId);
-        }
 
-		public void OpenWindow()
-		{
-            OpenWindow( Vector3.zero );
-        }
-
-        public void CloseWindow() {
-            IsOpen = false;
-            // This comes first so the token doesn't show a glow when it's being closed
-            situationWindowAsStorage.DumpAllStartingCardsToDesktop(); // only dumps if it can, obv.
-            situationWindowAsView.Hide();
-
-            situationAnchor.DisplayAsClosed();
-        }
 
 
         public bool CanAcceptStackWhenClosed(ElementStackToken stack) {
@@ -509,7 +489,7 @@ namespace Assets.TabletopUi {
 
             }
 
-            SituationEventData e=SituationEventData.Create(Situation,this);
+            SituationEventData e=SituationEventData.Create(Situation);
             situationAnchor.ContainerContentsUpdated(e); //this duplicates a potential call via the subscription model
 
             TryOverrideVerbIcon(situationWindowAsStorage.GetAspectsFromStoredElements(true)); //this also duplicates

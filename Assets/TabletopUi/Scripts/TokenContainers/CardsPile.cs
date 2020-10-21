@@ -10,7 +10,7 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 
 namespace Assets.TabletopUi.Scripts.TokenContainers
 {
-  public class CardsPile: AbstractTokenContainer
+  public class CardsPile: TokenContainer
   {
       private DeckSpec _deckSpec;
 

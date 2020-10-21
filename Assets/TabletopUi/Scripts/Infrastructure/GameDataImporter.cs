@@ -211,10 +211,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 command.CompletionCount = GetIntFromHashtable(htSituationValues, SaveConstants.SAVE_COMPLETIONCOUNT);
                 command.LocationInfo = locationInfo.ToString();
 
-                var situationController = Registry.Get<SituationBuilder>().CreateSituation(command);
+                var situation = Registry.Get<SituationBuilder>().CreateSituation(command);
              
 				// Import window state so we can restore the desktop roughly how the player left it - CP
-				situationController.IsOpen = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
+
+                var wasOpen= htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
+                if (wasOpen)
+                {
+                    situation.OpenAtCurrentLocation();
+                    situation.
+                }
+
+                situationController.IsOpen = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
 				Vector3 pos = situationController.situationWindow.Position;
 				pos.x = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_X].MakeFloat();
 				pos.y = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_Y].MakeFloat();

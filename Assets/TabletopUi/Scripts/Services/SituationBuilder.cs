@@ -68,7 +68,7 @@ namespace Assets.TabletopUi.Scripts.Services {
         {
 
             var newAnchor = Registry.Get<PrefabFactory>().CreateSituationAnchorForVerb(situationCreationCommand.Verb,tableLevel);
-            newAnchor.SetTokenContainer(tableLevel.GetComponent<AbstractTokenContainer>(), new Context(Context.ActionSource.Unknown));
+            newAnchor.SetTokenContainer(tableLevel.GetComponent<TokenContainer>(), new Context(Context.ActionSource.Unknown));
 
             if (situationCreationCommand.LocationInfo != null)
                 newAnchor.SaveLocationInfo = situationCreationCommand.LocationInfo;

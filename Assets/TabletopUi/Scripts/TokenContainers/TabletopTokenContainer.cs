@@ -17,7 +17,7 @@ using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using UnityEngine.EventSystems;
 
-public class TabletopTokenContainer : AbstractTokenContainer,IBeginDragHandler,IEndDragHandler {
+public class TabletopTokenContainer : TokenContainer,IBeginDragHandler,IEndDragHandler {
 #pragma warning disable 649
     [SerializeField] TabletopBackground _background;
     [SerializeField] protected CanvasGroupFader canvasGroupFader;

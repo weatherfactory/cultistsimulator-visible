@@ -9,7 +9,7 @@ using System;
 using Assets.Core.Enums;
 using Noon;
 
-public class SituationStorage : AbstractTokenContainer {
+public class SituationStorage : TokenContainer {
 
     public override bool AllowDrag { get { return false; } }
     public override bool AllowStackMerge { get { return false; } }

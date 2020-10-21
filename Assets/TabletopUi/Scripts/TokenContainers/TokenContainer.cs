@@ -18,7 +18,7 @@ using UnityEngine;
 namespace Assets.TabletopUi.Scripts.Infrastructure {
 
     
-    public abstract class AbstractTokenContainer : MonoBehaviour {
+    public abstract class TokenContainer : MonoBehaviour {
 
         public virtual bool AllowDrag { get; private set; }
         public virtual bool AllowStackMerge { get; private set; }
