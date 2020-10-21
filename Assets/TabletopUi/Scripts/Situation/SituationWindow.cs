@@ -19,10 +19,13 @@ using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Core.Services;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Infrastructure.Events;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 namespace Assets.CS.TabletopUI {
     [RequireComponent(typeof(SituationWindowPositioner))]
-    public class SituationWindow : MonoBehaviour,ISituationSubscriber {
+    public class SituationWindow : AbstractToken,ISituationSubscriber {
 
         string buttonDefault;
         string buttonBusy;
@@ -55,6 +58,8 @@ namespace Assets.CS.TabletopUI {
 
 		[SerializeField] Button startButton;
 		[SerializeField] TextMeshProUGUI startButtonText;
+
+        public UnityEvent OnClose;
 
 		private SituationController situationController;
         private IVerb Verb;
@@ -120,6 +125,58 @@ namespace Assets.CS.TabletopUI {
             results.Initialise();
 		}
 
+        public override void StartArtAnimation()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool CanAnimate()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string EntityId { get; }
+
+        public override void OnDrop(PointerEventData eventData)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool CanInteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void InteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void InteractWithTokenDroppedOn(ElementStackToken stackDroppedOn)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void OnPointerClick(PointerEventData eventData)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void ReturnToTabletop(Context context)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void NotifyChroniclerPlacedOnTabletop()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Retire()
         {
             var startingStacks = new List<ElementStackToken>(GetStartingStacks());
@@ -135,9 +192,29 @@ namespace Assets.CS.TabletopUI {
             Destroy(gameObject);
         }
 
-        // to be accessable from Close Button
+        public override void ReactToDraggedToken(TokenInteractionEventArgs args)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void HighlightPotentialInteractionWithToken(bool show)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void OnPointerEnter(PointerEventData eventData)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void OnPointerExit(PointerEventData eventData)
+        {
+            throw new NotImplementedException();
+        }
+
+        
         public void Close() {
-            situationController.CloseWindow();
+        OnClose.Invoke();
         }
 
         // BASIC DISPLAY
@@ -163,64 +240,9 @@ namespace Assets.CS.TabletopUI {
 			canvasGroupFader.Hide();
         }
 
-        // Start State
-
-		public void SetUnstarted() {
-            startingSlots.DoReset();
-            startingSlots.gameObject.SetActive(true);
-
-            ongoing.DoReset();
-            ongoing.gameObject.SetActive(false);
-
-            results.DoReset();
-            results.gameObject.SetActive(false);
-
-            DisplayUnstarted();
-        }
-
-        // Ongoing State
-
-		public void SetOngoing(Recipe recipe) {
-            startingSlots.gameObject.SetActive(false);
-
-            // If our recipe has at least one slot specified, we use that - only one slot supported for now (and maybe forever)
-            ongoing.SetupSlot(recipe);
-            ongoing.ShowDeckEffects(recipe.DeckEffects);
-            ongoing.gameObject.SetActive(true);
-
-            results.gameObject.SetActive(false);
-
-            DisplayButtonState(false, buttonBusy);
-            
-            SetWindowSize(false); //always collapse the window if we don't need to display multiple slots
-
-        }
-
-        // Results State
-
-        public void SetOutput(List<ElementStackToken> stacks) {
-            results.SetOutput(stacks);
-        }
-
-        public void SetComplete() {
-            startingSlots.gameObject.SetActive(false);
-            ongoing.gameObject.SetActive(false);
-            results.gameObject.SetActive(true);
-            aspectsDisplay.ClearCurrentlyDisplayedAspects();
-
-            results.UpdateDumpButtonText();
-        }
-
-        // SHOW VIZ
-
-        public void DisplayUnstarted() {
-            Title = Verb.Label;
-            PaginatedNotes.SetText(Verb.Description);
-            DisplayButtonState(false);
-            SetWindowSize(false);
-        }
-
-		public void DisplayNoRecipeFound() {
+        
+        
+        public void DisplayNoRecipeFound() {
 			Title = Verb.Label;
 			PaginatedNotes.SetText(Verb.Description);
             
@@ -278,17 +300,6 @@ namespace Assets.CS.TabletopUI {
 
            startingSlots.ArrangeSlots();
         }
-
-        public void ReceiveTextNote(INotification notification) {
-            PaginatedNotes.AddText(notification.Description);
-        }
-
-        public void UpdateTextForPrediction(RecipePrediction recipePrediction) {
-			Title = recipePrediction.Title;
-			PaginatedNotes.AddText(recipePrediction.DescriptiveText);
-
-        }
-
 
         public void DisplayAspects(IAspectsDictionary forAspects) {
 			aspectsDisplay.DisplayAspects(forAspects);
@@ -363,10 +374,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public ElementStackToken ReprovisionExistingElementStackInStorage(ElementStackSpecification stackSpecification, Source stackSource, string locatorid = null)
-        {
-            return storage.ReprovisionExistingElementStack(stackSpecification, stackSource, new Context(Context.ActionSource.Loading), locatorid);
-        }
+
 
 
 
@@ -433,27 +441,56 @@ namespace Assets.CS.TabletopUI {
 
         public void SituationBeginning(SituationEventData e)
         {
-            throw new NotImplementedException();
+         
+            startingSlots.gameObject.SetActive(false);
+
+         
+            ongoing.SetupSlot(e.CurrentRecipe);
+            ongoing.ShowDeckEffects(e.CurrentRecipe.DeckEffects);
+            ongoing.gameObject.SetActive(true);
+
+            results.gameObject.SetActive(false);
+            DisplayButtonState(false, buttonBusy);
+
+            SetWindowSize(false); //always collapse the window if we don't need to display multiple slots
+
         }
 
         public void SituationOngoing(SituationEventData e)
         {
-            throw new NotImplementedException();
+            DisplayTimeRemaining(e.Warmup, e.TimeRemaining, e.CurrentRecipe.SignalEndingFlavour);
         }
 
         public void SituationExecutingRecipe(SituationEventData e)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void SituationComplete(SituationEventData e)
         {
-            throw new NotImplementedException();
+            startingSlots.gameObject.SetActive(false);
+            ongoing.gameObject.SetActive(false);
+            results.gameObject.SetActive(true);
+            aspectsDisplay.ClearCurrentlyDisplayedAspects();
+
+            results.UpdateDumpButtonText();
         }
 
         public void ResetSituation()
         {
-            throw new NotImplementedException();
+            startingSlots.DoReset();
+            startingSlots.gameObject.SetActive(true);
+
+            ongoing.DoReset();
+            ongoing.gameObject.SetActive(false);
+
+            results.DoReset();
+            results.gameObject.SetActive(false);
+
+            Title = Verb.Label;
+            PaginatedNotes.SetText(Verb.Description);
+            DisplayButtonState(false);
+            SetWindowSize(false);
         }
 
         public void ContainerContentsUpdated(SituationEventData e)
@@ -461,9 +498,15 @@ namespace Assets.CS.TabletopUI {
             throw new NotImplementedException();
         }
 
-        public void ReceiveAndRefineTextNotification(SituationEventData e)
+        public void ReceiveNotification(SituationEventData e)
         {
-            throw new NotImplementedException();
+            PaginatedNotes.AddText(e.Notification.Description);
+        }
+
+        public void RecipePredicted(RecipePrediction recipePrediction)
+        {
+            Title = recipePrediction.Title;
+            PaginatedNotes.AddText(recipePrediction.DescriptiveText);
         }
     }
 }

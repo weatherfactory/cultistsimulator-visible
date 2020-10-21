@@ -26,7 +26,7 @@ namespace Assets.CS.TabletopUI {
         void DisplayAtTableLevel();
         void SnapToGrid();
         bool NoPush { get; }
-
+        TokenLocation Location { get; }
     }
 
     public enum TokenXNess
@@ -48,7 +48,7 @@ namespace Assets.CS.TabletopUI {
         [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(CanvasGroup))]
     public abstract class AbstractToken : MonoBehaviour,
-        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IToken,IAnimatable {
+        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IToken,IAnimatableToken {
 
         // STATIC FIELDS
 
@@ -81,7 +81,7 @@ namespace Assets.CS.TabletopUI {
             get { return rectTransform; }
         }
 
-        TokenLocation Location => new TokenLocation(transform.localPosition);
+        public TokenLocation Location => new TokenLocation(transform.localPosition);
 
         protected virtual void Awake() {
             rectTransform = GetComponent<RectTransform>();
@@ -398,6 +398,13 @@ namespace Assets.CS.TabletopUI {
         public abstract void OnPointerEnter(PointerEventData eventData);
 
         public abstract void OnPointerExit(PointerEventData eventData);
+
+        public void BurnImageUnderToken(string burnImage)
+        {
+            Registry.Get<INotifier>()
+                .ShowImageBurn(burnImage, this, 20f, 2f,
+                    TabletopImageBurner.ImageLayoutConfig.CenterOnToken);
+        }
 
     }
 }

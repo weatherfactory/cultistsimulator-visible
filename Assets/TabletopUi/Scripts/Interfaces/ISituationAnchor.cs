@@ -13,7 +13,7 @@ using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Interfaces
 {
-    public interface ISituationAnchor: ISituationSubscriber, IAnimatable
+    public interface ISituationAnchor: ISituationSubscriber, IAnimatableToken
     {
         SituationController SituationController { get; }
 
@@ -25,8 +25,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void DisplayAsClosed();
 
         void Populate(Situation situation);
-
-        void DisplayTimeRemaining(float duration, float timeRemaining, EndingFlavour signalEndingFlavour);
 
         bool Retire();
 

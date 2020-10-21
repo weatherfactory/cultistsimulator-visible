@@ -215,11 +215,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
              
 				// Import window state so we can restore the desktop roughly how the player left it - CP
 
+
+
+
                 var wasOpen= htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
                 if (wasOpen)
                 {
+                    float x=
                     situation.OpenAtCurrentLocation();
-                    situation.
                 }
 
                 situationController.IsOpen = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
@@ -292,7 +295,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         }
 
-        private void ImportSituationStoredElements(Hashtable htSituationValues, SituationController controller)
+        private void ImportSituationStoredElements(Hashtable htSituationValues, Situation situation)
         {
 
             if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS))
@@ -300,9 +303,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 var htElements = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS);
                 var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
                 foreach (var ess in elementStackSpecifications)  
-                    controller.ReprovisionStoredElementStack(ess,Source.Existing());
+                    situation.ReprovisionStoredElementStack(ess,Source.Existing());
                     
-                controller.OngoingSlotsOrStorageUpdated();
+                
                 
             }
         }

@@ -294,7 +294,11 @@ namespace Assets.CS.TabletopUI {
           _manifestation.DisplayStackInMiniSlot(null);
           if(e.CurrentRecipe.Slots.Count==1)
               _manifestation.ShowMiniSlot(e.CurrentRecipe.Slots[0].Greedy);
-            
+
+
+          if (e.EffectCommand.Recipe.BurnImage != null)
+              BurnImageUnderToken(e.EffectCommand.Recipe.BurnImage);
+
         }
 
         public void SituationOngoing(SituationEventData e)
@@ -334,13 +338,16 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        public void ReceiveAndRefineTextNotification(SituationEventData e)
+        public void ReceiveNotification(SituationEventData e)
         {
             _manifestation.ReceiveAndRefineTextNotification(e.Notification);
         }
 
-
+        public void RecipePredicted(RecipePrediction recipePrediction)
+        {
+            
         }
+    }
 
 
 

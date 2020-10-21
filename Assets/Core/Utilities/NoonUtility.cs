@@ -187,6 +187,13 @@ namespace Noon
             Log(message);
         }
 
+        public static void LogWarning(string description)
+        {
+            NoonLogMessage message = new NoonLogMessage(description, 1, Convert.ToInt32(VerbosityLevel.Essential));
+
+            Log(message);
+        }
+
         public static string GetGameSaveLocation(int index = 0)
         {
             string wholePath = Application.persistentDataPath + "/save" + (index == 0 ? "": "_" + index) + ".txt" ;
@@ -269,6 +276,7 @@ namespace Noon
         {
             return file.Name != ".dropbox";
         }
+
 
         public static void LogException(Exception exception)
         {

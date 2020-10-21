@@ -483,7 +483,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         #region -- ANIMATIONS ------------------------
 
-        void AnimateTokenTo(IAnimatable token, float duration, Vector3 startPos, Vector3 endPos, float startScale = 1f, float endScale = 1f) {
+        void AnimateTokenTo(IAnimatableToken token, float duration, Vector3 startPos, Vector3 endPos, float startScale = 1f, float endScale = 1f) {
             var tokenAnim = token.gameObject.AddComponent<TokenAnimation>();
             tokenAnim.onAnimDone += SituationAnimDone;
             tokenAnim.SetPositions(startPos, endPos);

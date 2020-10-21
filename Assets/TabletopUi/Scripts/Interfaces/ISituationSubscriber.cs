@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core;
+using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
@@ -18,6 +19,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void SituationComplete(SituationEventData e);
         void ResetSituation();
         void ContainerContentsUpdated(SituationEventData e);
-        void ReceiveAndRefineTextNotification(SituationEventData e);
+        void ReceiveNotification(SituationEventData e);
+        void RecipePredicted(RecipePrediction recipePrediction);
     }
 }

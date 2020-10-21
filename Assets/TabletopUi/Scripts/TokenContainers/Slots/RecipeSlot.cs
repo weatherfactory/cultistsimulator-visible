@@ -379,7 +379,7 @@ namespace Assets.CS.TabletopUI {
             return SaveLocationInfoPath; //we don't currently care about the actual draggable
         }
 
-        public void SetConsumption() {
+        public override void ActivatePreRecipeExecutionBehaviour() {
             if (GoverningSlotSpecification.Consumes) {
                 var stack = GetElementStackInSlot();
 

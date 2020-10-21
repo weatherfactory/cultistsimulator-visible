@@ -38,9 +38,9 @@ namespace Assets.Core.Entities
             return GetRegisteredSituations().FirstOrDefault(s => s.IsOpen);
     }
 
-        public IEnumerable<IAnimatable> GetAnimatables()
+        public IEnumerable<IAnimatableToken> GetAnimatables()
         {
-            var situationTokens = GetRegisteredSituations().Select(s => s.situationAnchor as IAnimatable);
+            var situationTokens = GetRegisteredSituations().Select(s => s.situationAnchor as IAnimatableToken);
 
             return situationTokens.Where(s => s.CanAnimate());
         }

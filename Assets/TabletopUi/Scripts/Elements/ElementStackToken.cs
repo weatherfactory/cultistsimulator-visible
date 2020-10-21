@@ -30,7 +30,10 @@ using UnityEngine.InputSystem;
 // Should inherit from a "TabletopToken" base class same as VerbBox
 
 namespace Assets.CS.TabletopUI {
-    public class ElementStackToken : AbstractToken, IAnimatable
+
+
+
+    public class ElementStackToken : AbstractToken, IAnimatableToken
     {
         public const float SEND_STACK_TO_SLOT_DURATION = 0.2f;
 
@@ -168,9 +171,7 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-
-
-
+        
         public void SetQuantity(int quantity, Context context)
 		{
 			_quantity = quantity;
@@ -603,7 +604,7 @@ namespace Assets.CS.TabletopUI {
 	            if (situation.State==SituationState.Ongoing)
 					{
 						// Check for ongoing slots only
-						var ongoingSlots = situation.GetOngoingSlots();
+						var ongoingSlots = situation.GetOngoingSlots(); //'get slots available for threshold behaviour'
 						targetSlots.AddRange( FindValidSlot( ongoingSlots, situation) );
 					}
 					else if (situ.Situation.State == SituationState.Unstarted && situation.situationAnchor.Durability==AnchorDurability.Enduring && )

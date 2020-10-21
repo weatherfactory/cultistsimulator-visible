@@ -17,8 +17,9 @@ using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure {
 
-    
-    public abstract class TokenContainer : MonoBehaviour {
+
+    public abstract class TokenContainer : MonoBehaviour
+    {
 
         public virtual bool AllowDrag { get; private set; }
         public virtual bool AllowStackMerge { get; private set; }
@@ -31,8 +32,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
 
         private TokenContainersCatalogue _catalogue;
-        private List<ElementStackToken> _stacks=new List<ElementStackToken>();
-        protected List<INotifier> _notifiersForContainer=new List<INotifier>();
+        private List<ElementStackToken> _stacks = new List<ElementStackToken>();
+        protected List<INotifier> _notifiersForContainer = new List<INotifier>();
 
         public virtual void Start()
         {
@@ -40,24 +41,25 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             _catalogue.RegisterTokenContainer(this);
         }
 
-        
 
-        public ElementStackToken ReprovisionExistingElementStack(ElementStackSpecification stackSpecification, Source stackSource, Context context, string locatorid = null)
+
+        public ElementStackToken ReprovisionExistingElementStack(ElementStackSpecification stackSpecification,
+            Source stackSource, Context context, string locatorid = null)
         {
             var stack = ProvisionElementStack(stackSpecification.ElementId, stackSpecification.ElementQuantity,
                 stackSource, context, locatorid);
-            foreach(var m in stackSpecification.Mutations)
-                stack.SetMutation(m.Key,m.Value,false);
+            foreach (var m in stackSpecification.Mutations)
+                stack.SetMutation(m.Key, m.Value, false);
 
-            stack.IlluminateLibrarian=new IlluminateLibrarian(stackSpecification.Illuminations);
+            stack.IlluminateLibrarian = new IlluminateLibrarian(stackSpecification.Illuminations);
 
-            if (stackSpecification.LifetimeRemaining>0)
+            if (stackSpecification.LifetimeRemaining > 0)
                 stack.LifetimeRemaining = stackSpecification.LifetimeRemaining;
 
             if (stackSpecification.MarkedForConsumption)
                 stack.MarkedForConsumption = true;
 
-			stack.LastTablePos = stackSpecification.LastTablePos;
+            stack.LastTablePos = stackSpecification.LastTablePos;
 
             return stack;
         }
@@ -69,17 +71,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
 
-        public virtual ElementStackToken ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context, string locatorid = null)
+        public virtual ElementStackToken ProvisionElementStack(string elementId, int quantity, Source stackSource,
+            Context context, string locatorid = null)
         {
 
             var limbo = Registry.Get<Limbo>();
-            
-            var stack = Registry.Get<PrefabFactory>().CreateLocally<ElementStackToken>(transform);
-            stack.SetTokenContainer(limbo,context);
 
-         foreach(INotifier notifier in _notifiersForContainer)
-                  stack.AddObserver(notifier);
-                
+            var stack = Registry.Get<PrefabFactory>().CreateLocally<ElementStackToken>(transform);
+            stack.SetTokenContainer(limbo, context);
+
+            foreach (INotifier notifier in _notifiersForContainer)
+                stack.AddObserver(notifier);
+
             if (locatorid != null)
                 stack.SaveLocationInfo = locatorid;
 
@@ -90,19 +93,38 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return stack;
         }
 
-        public virtual void SignalStackAdded(ElementStackToken elementStackToken, Context context) {
+        public virtual ElementStackToken ProvisionNullElementStack(int quantity, Source stackSource, Context context,
+            string locatorid = null)
+        {
+
+            var limbo = Registry.Get<Limbo>();
+
+            var stack = Registry.Get<PrefabFactory>().CreateLocally<NullElementStackToken>(transform);
+            stack.SetTokenContainer(limbo, context);
+
+            if (locatorid != null)
+                stack.SaveLocationInfo = locatorid;
+
+            return stack;
+        }
+
+        public virtual void SignalStackAdded(ElementStackToken elementStackToken, Context context)
+        {
             // By default: do nothing right now
         }
 
-        public virtual void SignalStackRemoved(ElementStackToken elementStackToken, Context context) {
+        public virtual void SignalStackRemoved(ElementStackToken elementStackToken, Context context)
+        {
             // By default: do nothing right now
         }
 
-        public virtual void DisplayHere(ElementStackToken stack, Context context) {
+        public virtual void DisplayHere(ElementStackToken stack, Context context)
+        {
             DisplayHere(stack as AbstractToken, context);
         }
 
-        public virtual void DisplayHere(IToken token, Context context) {
+        public virtual void DisplayHere(IToken token, Context context)
+        {
             token.transform.SetParent(transform);
             token.transform.localPosition = Vector3.zero;
             token.transform.localRotation = Quaternion.identity;
@@ -110,19 +132,24 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             token.SetTokenContainer(this, context);
         }
 
-        public virtual void TryMoveAsideFor(VerbAnchor potentialUsurper, AbstractToken incumbent, out bool incumbentMoved) {
+        public virtual void TryMoveAsideFor(VerbAnchor potentialUsurper, AbstractToken incumbent,
+            out bool incumbentMoved)
+        {
             // By default: do no move-aside
             incumbentMoved = false;
         }
 
-        public virtual void TryMoveAsideFor(ElementStackToken potentialUsurper, AbstractToken incumbent, out bool incumbentMoved) {
+        public virtual void TryMoveAsideFor(ElementStackToken potentialUsurper, AbstractToken incumbent,
+            out bool incumbentMoved)
+        {
             // By default: do no move-aside
             incumbentMoved = false;
         }
 
         public abstract string GetSaveLocationForToken(AbstractToken token);
 
-        public virtual void OnDestroy() {
+        public virtual void OnDestroy()
+        {
             Registry.Get<TokenContainersCatalogue>().DeregisterTokenContainer(this);
         }
 
@@ -147,10 +174,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             int unsatisfiedChange = quantityChange;
             while (unsatisfiedChange < 0)
             {
-                ElementStackToken stackToAffect = _stacks.FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(elementId));
+                ElementStackToken stackToAffect =
+                    _stacks.FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(elementId));
 
-                if (stackToAffect == null) //we haven't found either a concrete matching element, or an element with that ID.
-                                           //so end execution here, and return the unsatisfied change amount
+                if (stackToAffect == null
+                    ) //we haven't found either a concrete matching element, or an element with that ID.
+                    //so end execution here, and return the unsatisfied change amount
                     return unsatisfiedChange;
 
                 int originalQuantity = stackToAffect.Quantity;
@@ -158,6 +187,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 unsatisfiedChange += originalQuantity;
 
             }
+
             return unsatisfiedChange;
         }
 
@@ -169,11 +199,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                                             quantityChange + ")");
         }
 
-        public int IncreaseElement(string elementId, int quantityChange, Source stackSource, Context context, string locatorid = null)
+        public int IncreaseElement(string elementId, int quantityChange, Source stackSource, Context context,
+            string locatorid = null)
         {
 
             if (quantityChange <= 0)
-                throw new ArgumentException("Tried to call IncreaseElement for " + elementId + " with a <=0 change (" + quantityChange + ")");
+                throw new ArgumentException("Tried to call IncreaseElement for " + elementId + " with a <=0 change (" +
+                                            quantityChange + ")");
 
             var newStack = ProvisionElementStack(elementId, quantityChange, stackSource, context, locatorid);
             AcceptStack(newStack, context);
@@ -223,12 +255,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public int GetTotalStacksCount()
         {
-            return GetTotalElementsCount(x=>true);
+            return GetTotalElementsCount(x => true);
         }
 
         public int GetTotalStacksCountWith(Func<ElementStackToken, bool> filter)
         {
-            
+
             return _stacks.Count(filter);
         }
 
@@ -238,7 +270,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         }
 
-        public int GetTotalElementsCount(Func<ElementStackToken,bool> filter)
+        public int GetTotalElementsCount(Func<ElementStackToken, bool> filter)
         {
             return _stacks.Where(filter).Sum(stack => stack.Quantity);
 
@@ -259,9 +291,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 {
 
                     //nb: if we transform a stack of >1, it's possible maxToPurge/Transform will be less than the stack total - iwc it'll transform the whole stack. Probably fine.
-                    ElementStackToken stackToAffect = _stacks.FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(element.Id));
+                    ElementStackToken stackToAffect =
+                        _stacks.FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(element.Id));
 
-                    if (stackToAffect == null) //we haven't found either a concrete matching element, or an element with that ID.
+                    if (stackToAffect == null
+                        ) //we haven't found either a concrete matching element, or an element with that ID.
                         //so end execution here, and return the unsatisfied change amount
                         return unsatisfiedChange;
 
@@ -270,6 +304,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                     //stackToAffect.Populate(element.DecayTo, stackToAffect.Quantity, Source.Existing());
                     unsatisfiedChange -= originalQuantity;
                 }
+
                 return unsatisfiedChange;
             }
 
@@ -295,7 +330,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
 
             }
-            
+
             // Check if we're dropping a unique stack? Then kill all other copies of it on the tabletop
             if (EnforceUniqueStacksInThisContainer)
                 RemoveDuplicates(stack);
@@ -313,7 +348,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 _stacks.Add(stack);
 
             DisplayHere(stack as ElementStackToken, context);
-        Registry.Get<TokenContainersCatalogue>().NotifyStacksChanged();
+            Registry.Get<TokenContainersCatalogue>().NotifyStacksChanged();
         }
 
         public void RemoveDuplicates(ElementStackToken incomingStack)
@@ -327,10 +362,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
                 if (existingStack != incomingStack && existingStack.EntityId == incomingStack.EntityId)
                 {
-                    NoonUtility.Log("Not the stack that got accepted, but has the same ID as the stack that got accepted? It's a copy!");
+                    NoonUtility.Log(
+                        "Not the stack that got accepted, but has the same ID as the stack that got accepted? It's a copy!");
                     existingStack.Retire(CardVFX.CardHide);
                     return; // should only ever be one stack to retire!
-                            // Otherwise this crashes because Retire changes the collection we are looking at
+                    // Otherwise this crashes because Retire changes the collection we are looking at
                 }
                 else if (existingStack != incomingStack && !string.IsNullOrEmpty(incomingStack.UniquenessGroup))
                 {
@@ -376,7 +412,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 s.Retire(CardVFX.None);
         }
 
-        public void RetireWith(Func<ElementStackToken,bool> filter)
+        public void RetireWith(Func<ElementStackToken, bool> filter)
         {
             var stacksToRetire = new List<ElementStackToken>(_stacks).Where(filter);
             foreach (ElementStackToken s in stacksToRetire)
@@ -411,12 +447,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public IElementManifestation CreateElementManifestation(ElementStackToken elementStackToken)
         {
 
-				if (elementStackToken.EntityId == "dropzone")
-				
-                    return Registry.Get<PrefabFactory>().CreateLocally<DropzoneManifestation>(elementStackToken.transform);
+            if (elementStackToken.EntityId == "dropzone")
 
-                else
-                    return Registry.Get<PrefabFactory>().CreateLocally<CardManifestation>(elementStackToken.transform);
+                return Registry.Get<PrefabFactory>().CreateLocally<DropzoneManifestation>(elementStackToken.transform);
+
+            else
+                return Registry.Get<PrefabFactory>().CreateLocally<CardManifestation>(elementStackToken.transform);
         }
 
         public IAnchorManifestation CreateAnchorManifestation(VerbAnchor anchorToken)
@@ -424,6 +460,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return Registry.Get<PrefabFactory>().CreateLocally<VerbManifestation>(anchorToken.transform);
 
         }
-    }
+
+        public virtual void ActivatePreRecipeExecutionBehaviour()
+        {
+            //eg slot consumptions
+
+        }
+}
+
 }
 

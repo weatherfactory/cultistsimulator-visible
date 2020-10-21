@@ -106,22 +106,14 @@ namespace Assets.Core.Services
 			}
 		}
 
-        public void ChronicleGameEnd(List<SituationController> situations, HashSet<TokenContainer> tokenContainers,Ending ending)
+        public void ChronicleGameEnd(List<Situation> situations, HashSet<TokenContainer> tokenContainers,Ending ending)
         {
             //a lot of the stuff in TokenPlacedOnTabletop might be better here, actually
             SetAchievementsForEnding(ending);
 
             List<ElementStackToken> allStacksInGame=new List<ElementStackToken>();
 
-            foreach (var situation in situations)
-            {
-                allStacksInGame.AddRange(situation.GetStartingStacks());
-                allStacksInGame.AddRange(situation.GetOutputStacks());
-                allStacksInGame.AddRange(situation.GetStoredStacks());
-                allStacksInGame.AddRange(situation.GetOngoingStacks());
-             
-            }
-
+            
             foreach (var tc in tokenContainers)
             {
                 allStacksInGame.AddRange(tc.GetStacks());

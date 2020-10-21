@@ -104,7 +104,7 @@ namespace Assets.CS.TabletopUI {
 
         static private bool[] isInNonSaveableState = new bool[(int) NonSaveableType.NumNonSaveableTypes];
 
-        private SituationController mansusSituation;
+        private Situation mansusSituation;
         //private Vector2 preMansusTabletopPos; // Disabled cause it looks jerky -Martin
 
         public static bool IsInMansus()
@@ -502,7 +502,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public async void EndGame(Ending ending, SituationController endingSituation)
+        public async void EndGame(Ending ending, Situation endingSituation)
 		{
 			NoonUtility.Log("TabletopManager.EndGame()");
 
@@ -965,7 +965,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 		}
 
 
-        public void ShowMansusMap(SituationController situation, Transform origin, PortalEffect effect) {
+        public void ShowMansusMap(Situation situation, Transform origin, PortalEffect effect) {
             CloseAllSituationWindowsExcept(null);
 
 
