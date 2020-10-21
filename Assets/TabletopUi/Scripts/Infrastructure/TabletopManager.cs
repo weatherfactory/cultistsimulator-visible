@@ -679,7 +679,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
                 if (NeedToFillSlot(tokenSlotPair) == false)
                     continue; // Skip it, we don't need to fill it
 
-                var stack = FindStackForSlotSpecificationOnTabletop(tokenSlotPair.RecipeSlot.GoverningSlotSpecification) as ElementStackToken;
+                var stack = FindStackForSlotSpecificationOnTabletop(tokenSlotPair.Threshold.GoverningSlotSpecification) as ElementStackToken;
 
                 if (stack != null) {
                     stack.SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.GreedySlot));
@@ -687,7 +687,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
                     continue; // we found a stack, we're done here
                 }
 
-                stack = FindStackForSlotSpecificationInSituations(tokenSlotPair.RecipeSlot.GoverningSlotSpecification, out sit) as ElementStackToken;
+                stack = FindStackForSlotSpecificationInSituations(tokenSlotPair.Threshold.GoverningSlotSpecification, out sit) as ElementStackToken;
 
                 if (stack != null) {
                     stack.SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.GreedySlot));
@@ -709,15 +709,15 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
                 return false;
             if (!tokenSlotPair.Token.SituationController.IsOngoing)
                 return false;
-            if (tokenSlotPair.RecipeSlot.Equals(null))
+            if (tokenSlotPair.Threshold.Equals(null))
                 return false; // It has been destroyed
-            if (tokenSlotPair.RecipeSlot.Defunct)
+            if (tokenSlotPair.Threshold.Defunct)
                 return false;
-            if (tokenSlotPair.RecipeSlot.IsBeingAnimated)
+            if (tokenSlotPair.Threshold.IsBeingAnimated)
                 return false; // We're animating something into the slot.
-            if (tokenSlotPair.RecipeSlot.GetElementStackInSlot() != null)
+            if (tokenSlotPair.Threshold.GetElementStackInSlot() != null)
                 return false; // It is already filled
-            if (tokenSlotPair.RecipeSlot.GoverningSlotSpecification==null || !tokenSlotPair.RecipeSlot.GoverningSlotSpecification.Greedy)
+            if (tokenSlotPair.Threshold.GoverningSlotSpecification==null || !tokenSlotPair.Threshold.GoverningSlotSpecification.Greedy)
                 return false; //it's not greedy any more; sometimes if we have a recipe with a greedy slot followed by a recipe with a non-greedy slot, the behaviour carries over for the moment the recipe changes
 
             return true;

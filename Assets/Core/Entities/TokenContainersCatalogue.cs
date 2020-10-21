@@ -6,6 +6,7 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi;
+using Assets.TabletopUi.Scripts.Infrastructure;
 
 namespace Assets.Core.Entities {
     public interface IStacksChangeSubscriber {
@@ -14,23 +15,23 @@ namespace Assets.Core.Entities {
 
     public class TokenContainersCatalogue {
 
-        private readonly HashSet<ITokenContainer> _currentTokenContainers;
+        private readonly HashSet<AbstractTokenContainer> _currentTokenContainers;
         private readonly HashSet<IStacksChangeSubscriber> _subscribers;
 
         public TokenContainersCatalogue() {
-            _currentTokenContainers = new HashSet<ITokenContainer>();
+            _currentTokenContainers = new HashSet<AbstractTokenContainer>();
             _subscribers = new HashSet<IStacksChangeSubscriber>();
         }
 
-        public HashSet<ITokenContainer> GetRegisteredTokenContainers() {
+        public HashSet<AbstractTokenContainer> GetRegisteredTokenContainers() {
             return _currentTokenContainers;
         }
 
-        public void RegisterTokenContainer(ITokenContainer tokenContainer) {
+        public void RegisterTokenContainer(AbstractTokenContainer tokenContainer) {
             _currentTokenContainers.Add(tokenContainer);
         }
 
-        public void DeregisterTokenContainer(ITokenContainer tokenContainer) {
+        public void DeregisterTokenContainer(AbstractTokenContainer tokenContainer) {
             _currentTokenContainers.Remove(tokenContainer);
         }
 

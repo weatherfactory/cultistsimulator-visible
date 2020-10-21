@@ -36,9 +36,9 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         return validSlots;
     }
 
-    public IRecipeSlot GetSlotBySaveLocationInfoPath(string saveLocationInfoPath) {
+    public RecipeSlot GetSlotBySaveLocationInfoPath(string saveLocationInfoPath) {
         var candidateSlots = GetAllSlots();
-        IRecipeSlot slotToReturn = candidateSlots.SingleOrDefault(s => s.SaveLocationInfoPath == saveLocationInfoPath);
+        RecipeSlot slotToReturn = candidateSlots.SingleOrDefault(s => s.SaveLocationInfoPath == saveLocationInfoPath);
         return slotToReturn;
     }
 
@@ -75,7 +75,7 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         AspectsDictionary currentAspects = new AspectsDictionary();
         ElementStackToken stack;
 
-        foreach (IRecipeSlot slot in GetAllSlots()) {
+        foreach (RecipeSlot slot in GetAllSlots()) {
             stack = slot.GetElementStackInSlot();
 
             if (stack != null)
@@ -89,7 +89,7 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         IList<ElementStackToken> stacks = new List<ElementStackToken>();
         ElementStackToken stack;
 
-        foreach (IRecipeSlot slot in GetAllSlots()) {
+        foreach (RecipeSlot slot in GetAllSlots()) {
             stack = slot.GetElementStackInSlot();
 
             if (stack != null)

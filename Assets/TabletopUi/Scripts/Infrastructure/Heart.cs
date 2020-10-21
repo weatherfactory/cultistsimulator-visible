@@ -133,10 +133,10 @@ public class Heart : MonoBehaviour
         {
             HeartbeatResponse response = sc.ExecuteHeartbeat(beatInterval);
 
-            foreach (var r in response.SlotsToFill)
+            foreach (var tokenAndSlot in response.SlotsToFill)
             {
-                if (!OutstandingSlotAlreadySaved(r))
-                    outstandingSlotsToFill.Add(r);
+                if (!OutstandingSlotAlreadySaved(tokenAndSlot))
+                    outstandingSlotsToFill.Add(tokenAndSlot);
             }
         }
     }
@@ -157,7 +157,7 @@ public class Heart : MonoBehaviour
 
     bool OutstandingSlotAlreadySaved(TokenAndSlot slot) {
         foreach (var item in outstandingSlotsToFill)
-            if (item.Token == slot.Token && item.RecipeSlot == slot.RecipeSlot)
+            if (item.Token == slot.Token && item.Threshold == slot.Threshold)
                 return true;
 
         return false;

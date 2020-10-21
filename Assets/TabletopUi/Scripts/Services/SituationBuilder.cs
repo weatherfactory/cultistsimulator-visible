@@ -43,19 +43,15 @@ namespace Assets.TabletopUi.Scripts.Services {
             Situation situation = new Situation(command);
             Registry.Get<SituationsCatalogue>().RegisterSituation(situation);
 
+            
 
             var newAnchor = CreateAnchor(command);
-            newAnchor.Initialise(situation);
-            situation.AddSubscriber(newAnchor);
 
+            situation.AttachAnchor(newAnchor);
+            
             var newWindow = CreateSituationWindow(newAnchor);
-            newWindow.Initialise(situation);
-            situation.AddSubscriber(newWindow);
-
-            situation.AddContainers(newWindow.GetStartingSlots());
-            situation.AddContainers(newWindow.GetOngoingSlots());
-            situation.AddContainer(newWindow.GetStorageContainer());
-            situation.AddContainer(newWindow.GetResultsContainer());
+            situation.AttachWindow(newWindow);
+            
             
 
 

@@ -23,17 +23,10 @@ namespace Assets.TabletopUi {
 
         public ISituationAnchor situationAnchor;
         public SituationWindow situationWindow;
-        public ISituationView situationWindowAsView;
-        public ISituationWindowAsStorage situationWindowAsStorage;
         public Situation Situation;
 
-        private readonly ICompendium compendium;get
-        private readonly Character currentCharacter;
-
-        private bool greedyAnimIsActive;
-        private EndingFlavour _currentEndingFlavourToSignal=EndingFlavour.None; //encapsulating; want to be able to catch calls to thie slightly sloppy bit of state
-
-
+        
+      
 
         public bool IsOpen { get; set; }
 		public Vector3 RestoreWindowPosition { get; set; }	// For saving window positions - CP
@@ -618,21 +611,8 @@ namespace Assets.TabletopUi {
                 BurnImageUnderToken(recipe.BurnImage);
         }
 
-        public void NotifyGreedySlotAnim(TokenAnimationToSlot slotAnim) {
-            greedyAnimIsActive = true;
-            slotAnim.onElementSlotAnimDone += HandleOnGreedySlotAnimDone;
 
-			TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.Greedy, true );
 
-			// Hack to try to repro bug #1253 - CP
-			//var tabletop = Registry.Retrieve<TabletopManager>();
-			//tabletop.ForceAutosave();
-        }
-
-        void HandleOnGreedySlotAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair) {
-            greedyAnimIsActive = false;
-			TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.Greedy, false );
-        }
 
         private void BurnImageUnderToken(string burnImage) {
             Registry.Get<INotifier>()
@@ -641,7 +621,7 @@ namespace Assets.TabletopUi {
         }
 
 
-        public IRecipeSlot GetSlotBySaveLocationInfoPath(string locationInfo, string slotType) {
+        public RecipeSlot GetSlotBySaveLocationInfoPath(string locationInfo, string slotType) {
             if (slotType == SaveConstants.SAVE_STARTINGSLOTELEMENTS)
                 return situationWindowAsStorage.GetStartingSlotBySaveLocationInfoPath(locationInfo);
             else

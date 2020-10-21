@@ -24,7 +24,7 @@ namespace Assets.Logic
             _ttm = ttm;
         }
 
-        public void RunEffects(SituationEffectCommand command, ITokenContainer tokenContainer,
+        public void RunEffects(SituationEffectCommand command, AbstractTokenContainer tokenContainer,
             Character storage, IDice d)
         {
             var recipeAspects = command.Recipe.Aspects;
@@ -81,7 +81,7 @@ namespace Assets.Logic
         }
 
 
-        private void RunMutationEffects(SituationEffectCommand command, ITokenContainer tokenContainer)
+        private void RunMutationEffects(SituationEffectCommand command, AbstractTokenContainer tokenContainer)
         {
             foreach (var mutationEffect in command.Recipe.Mutations)
             {
@@ -94,7 +94,7 @@ namespace Assets.Logic
             }
         }
 
-        private void RunConsumptions(ITokenContainer tokenContainer)
+        private void RunConsumptions(AbstractTokenContainer tokenContainer)
         {
 
             var stacks = tokenContainer.GetStacks();
@@ -108,7 +108,7 @@ namespace Assets.Logic
             }
         }
 
-        public void RunDeckEffect(SituationEffectCommand command, ITokenContainer tokenContainer,
+        public void RunDeckEffect(SituationEffectCommand command, AbstractTokenContainer tokenContainer,
             Character storage)
         {
             var deckIds = command.GetDeckEffects();
@@ -141,7 +141,7 @@ namespace Assets.Logic
             }
         }
 
-        private static void RunRecipeEffects(SituationEffectCommand command, ITokenContainer tokenContainer)
+        private static void RunRecipeEffects(SituationEffectCommand command, AbstractTokenContainer tokenContainer)
         {
             foreach (var kvp in command.GetElementChanges())
             {
@@ -158,7 +158,7 @@ namespace Assets.Logic
             }
         }
 
-        private static void RunXTriggers(ITokenContainer tokenContainer, AspectsDictionary aspectsPresent,
+        private static void RunXTriggers(AbstractTokenContainer tokenContainer, AspectsDictionary aspectsPresent,
             IDice dice)
         {
             ICompendium _compendium = Registry.Get<ICompendium>();
@@ -172,7 +172,7 @@ namespace Assets.Logic
             }
         }
 
-        private static void RunXTriggersOnMutationsForStack(ITokenContainer tokenContainer, [CanBeNull] AspectsDictionary aspectsPresent, [CanBeNull] IDice dice,
+        private static void RunXTriggersOnMutationsForStack(AbstractTokenContainer tokenContainer, [CanBeNull] AspectsDictionary aspectsPresent, [CanBeNull] IDice dice,
             [CanBeNull] ElementStackToken eachStack, [CanBeNull] ICompendium _compendium)
         {
             foreach (var eachStackMutation in eachStack.GetCurrentMutations())
@@ -226,7 +226,7 @@ namespace Assets.Logic
             }
         }
 
-        private static void RunXTriggersOnStackItself(ITokenContainer tokenContainer, AspectsDictionary aspectsPresent,
+        private static void RunXTriggersOnStackItself(AbstractTokenContainer tokenContainer, AspectsDictionary aspectsPresent,
             IDice dice, ElementStackToken eachStack, ICompendium _compendium)
         {
             var xTriggers = eachStack.GetXTriggers();

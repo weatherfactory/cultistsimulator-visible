@@ -17,7 +17,7 @@ namespace Assets.CS.TabletopUI {
     public interface IToken
     {
         string EntityId { get; }
-        void SetTokenContainer(ITokenContainer newContainer, Context context);
+        void SetTokenContainer(AbstractTokenContainer newContainer, Context context);
         string name { get; }
         Transform transform { get; }
         RectTransform RectTransform { get; }
@@ -72,8 +72,8 @@ namespace Assets.CS.TabletopUI {
         private float perlinRotationPoint = 0f;
         private float dragHeight = -8f; // Draggables all drag on a specifc height and have a specific "default height"
 
-        public ITokenContainer TokenContainer;
-        protected ITokenContainer OldTokenContainer; // Used to tell OldContainsTokens that this thing was dropped successfully
+        public AbstractTokenContainer TokenContainer;
+        protected AbstractTokenContainer OldTokenContainer; // Used to tell OldContainsTokens that this thing was dropped successfully
 
         public RectTransform RectTransform
         {
@@ -163,12 +163,12 @@ namespace Assets.CS.TabletopUI {
 			transform.localPosition = Registry.Get<Choreographer>().SnapToGrid( transform.localPosition );
 		}
 
-        public virtual void SetTokenContainer(ITokenContainer newContainer, Context context) {
+        public virtual void SetTokenContainer(AbstractTokenContainer newContainer, Context context) {
             OldTokenContainer = TokenContainer;
             TokenContainer = newContainer;
         }
 
-        public bool IsInContainer(ITokenContainer compareContainer, Context context) {
+        public bool IsInContainer(AbstractTokenContainer compareContainer, Context context) {
             return compareContainer == TokenContainer;
         }
 

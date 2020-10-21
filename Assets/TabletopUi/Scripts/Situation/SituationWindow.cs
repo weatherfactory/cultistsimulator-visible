@@ -99,7 +99,7 @@ namespace Assets.CS.TabletopUI {
             artwork.sprite = sprite;
         }
 
-        public void Initialise(Situation situation) {
+        public void Populate(Situation situation) {
 			Verb = situation.Verb;
             name = "Window_" + Verb.Id;
             DisplayIcon(Verb.Id);
@@ -117,7 +117,7 @@ namespace Assets.CS.TabletopUI {
 
             startingSlots.Initialise(Verb);
             ongoing.Initialise(Verb);
-            results.Initialise(sc);
+            results.Initialise();
 		}
 
         public void Retire()
@@ -392,11 +392,11 @@ namespace Assets.CS.TabletopUI {
             return startingSlots.GetAllSlots().FirstOrDefault();
         }
 
-        public IRecipeSlot GetStartingSlotBySaveLocationInfoPath(string locationInfo) {
+        public RecipeSlot GetStartingSlotBySaveLocationInfoPath(string locationInfo) {
             return startingSlots.GetSlotBySaveLocationInfoPath(locationInfo);
         }
 
-        public IRecipeSlot GetOngoingSlotBySaveLocationInfoPath(string locationInfo) {
+        public RecipeSlot GetOngoingSlotBySaveLocationInfoPath(string locationInfo) {
             return ongoing.GetSlotBySaveLocationInfoPath(locationInfo);
         }
 
@@ -418,13 +418,6 @@ namespace Assets.CS.TabletopUI {
         {
             return results;
         }
-
-        public IRecipeSlot GetUnfilledGreedySlot() {
-            return ongoing.GetUnfilledGreedySlot();
-        }
-
-
-
 
 
         public void TryDecayResults(float interval)

@@ -10,29 +10,43 @@ using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
 using Assets.TabletopUi;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using JetBrains.Annotations;
 using UnityEngine.Assertions;
 
 namespace Assets.Core.Entities {
 
-	public class Situation {
-		public SituationState State { get; set; }
-		public Recipe currentPrimaryRecipe { get; set; }
-		public float TimeRemaining { private set; get; }
-		public float Warmup { get { return currentPrimaryRecipe.Warmup; } }
-		public string RecipeId { get { return currentPrimaryRecipe == null ? null : currentPrimaryRecipe.Id; } }
+    public class Situation
+    {
+        public SituationState State { get; set; }
+        public Recipe currentPrimaryRecipe { get; set; }
+        public float TimeRemaining { private set; get; }
+
+        public float Warmup
+        {
+            get { return currentPrimaryRecipe.Warmup; }
+        }
+
+        public string RecipeId
+        {
+            get { return currentPrimaryRecipe == null ? null : currentPrimaryRecipe.Id; }
+        }
+
         public readonly IVerb Verb;
-        private List<ISituationSubscriber> subscribers=new List<ISituationSubscriber>();
-		private HashSet<ITokenContainer>_containers=new HashSet<ITokenContainer>();
+        private List<ISituationSubscriber> subscribers = new List<ISituationSubscriber>();
+        private HashSet<AbstractTokenContainer> _containers = new HashSet<AbstractTokenContainer>();
         public string OverrideTitle { get; set; }
         public int CompletionCount { get; set; }
 
-        
+        private ISituationAnchor _anchor;
+        private SituationWindow _window;
+        private bool greedyAnimIsActive;
+
         public const float HOUSEKEEPING_CYCLE_BEATS = 1f;
 
 
-		public Situation(SituationCreationCommand command)
+        public Situation(SituationCreationCommand command)
         {
             Verb = command.GetBasicOrCreatedVerb();
             TimeRemaining = command.TimeRemaining ?? 0;
@@ -49,15 +63,36 @@ namespace Assets.Core.Entities {
             State = SituationState.Unstarted;
         }
 
+        public void AttachAnchor(ISituationAnchor newAnchor)
+        {
+            _anchor = newAnchor;
+            AddSubscriber(_anchor);
+            _anchor.Populate(this);
+        }
 
 
-		public bool AddSubscriber(ISituationSubscriber subscriber)
+
+        public void AttachWindow(SituationWindow newWindow)
+        {
+            _window = newWindow;
+            AddSubscriber(_window);
+            _window.Populate(this);
+
+            AddContainers(newWindow.GetStartingSlots());
+            AddContainers(newWindow.GetOngoingSlots());
+            AddContainer(newWindow.GetStorageContainer());
+            AddContainer(newWindow.GetResultsContainer());
+
+        }
+
+
+        public bool AddSubscriber(ISituationSubscriber subscriber)
         {
 
             if (subscribers.Contains(subscriber))
                 return false;
 
-			subscribers.Add(subscriber);
+            subscribers.Add(subscriber);
             return true;
         }
 
@@ -71,78 +106,102 @@ namespace Assets.Core.Entities {
         }
 
 
-        public void AddContainer(ITokenContainer container)
+        public void AddContainer(AbstractTokenContainer container)
         {
             _containers.Add(container);
         }
-        public void AddContainers(IEnumerable<ITokenContainer> containers)
+
+        public void AddContainers(IEnumerable<AbstractTokenContainer> containers)
         {
-			foreach(var c in containers)
-             _containers.Add(c);
+            foreach (var c in containers)
+                _containers.Add(c);
         }
 
-		public IList<SlotSpecification> GetSlotsForCurrentRecipe() {
-			if (currentPrimaryRecipe.Slots.Any())
-				return currentPrimaryRecipe.Slots;
-			else
-				return new List<SlotSpecification>();
-		}
+        public IList<SlotSpecification> GetSlotsForCurrentRecipe()
+        {
+            if (currentPrimaryRecipe.Slots.Any())
+                return currentPrimaryRecipe.Slots;
+            else
+                return new List<SlotSpecification>();
+        }
 
 
 
-		private void Reset() {
-			currentPrimaryRecipe = null;
-			TimeRemaining = 0;
-			State = SituationState.Unstarted;
-			foreach(var subscriber in subscribers)
-			    subscriber.ResetSituation();
-		}
+        private void Reset()
+        {
+            currentPrimaryRecipe = null;
+            TimeRemaining = 0;
+            State = SituationState.Unstarted;
+            foreach (var subscriber in subscribers)
+                subscriber.ResetSituation();
+        }
 
-		public void Halt()
-		{
-			if(State!=SituationState.Complete && State!=SituationState.Unstarted) //don't halt if the situation is not running. This is not only superfluous but dangerous: 'complete' called from an already completed verb has bad effects
-			    Complete();
-		}
+        public void Halt()
+        {
+            if (State != SituationState.Complete && State != SituationState.Unstarted
+            ) //don't halt if the situation is not running. This is not only superfluous but dangerous: 'complete' called from an already completed verb has bad effects
+                Complete();
+        }
 
         public void StartRecipe(Recipe recipe)
         {
             currentPrimaryRecipe = recipe;
-    Start();
+            Start();
         }
 
-		public void Start() {
-			TimeRemaining = currentPrimaryRecipe.Warmup;
-			State = SituationState.FreshlyStarted;
-		}
+        public void Start()
+        {
+            TimeRemaining = currentPrimaryRecipe.Warmup;
+            State = SituationState.FreshlyStarted;
+        }
 
 
-		public void ResetIfComplete() {
-			if (State == SituationState.Complete)
-				Reset();
-		}
+        public void ResetIfComplete()
+        {
+            if (State == SituationState.Complete)
+                Reset();
+        }
 
 
 
 
-		public string GetTitle() {
-			return currentPrimaryRecipe == null ? "no recipe just now" :
-			currentPrimaryRecipe.Label;
-		}
+        public string GetTitle()
+        {
+            return currentPrimaryRecipe == null ? "no recipe just now" : currentPrimaryRecipe.Label;
+        }
 
-		public string GetStartingDescription() {
-			return currentPrimaryRecipe == null ? "no recipe just now" :
-			currentPrimaryRecipe.StartDescription;
-		}
+        public string GetStartingDescription()
+        {
+            return currentPrimaryRecipe == null ? "no recipe just now" : currentPrimaryRecipe.StartDescription;
+        }
 
-		public string GetDescription() {
-			return currentPrimaryRecipe == null ? "no recipe just now" :
-			currentPrimaryRecipe.Description;
-		}
+        public string GetDescription()
+        {
+            return currentPrimaryRecipe == null ? "no recipe just now" : currentPrimaryRecipe.Description;
+        }
+
+        public void NotifyGreedySlotAnim(TokenAnimationToSlot slotAnim)
+        {
+            greedyAnimIsActive = true;
+            slotAnim.onElementSlotAnimDone += HandleOnGreedySlotAnimDone;
+
+            TabletopManager.RequestNonSaveableState(TabletopManager.NonSaveableType.Greedy, true);
+
+            // Hack to try to repro bug #1253 - CP
+            //var tabletop = Registry.Retrieve<TabletopManager>();
+            //tabletop.ForceAutosave();
+        }
+
+        void HandleOnGreedySlotAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair)
+        {
+            greedyAnimIsActive = false;
+            TabletopManager.RequestNonSaveableState(TabletopManager.NonSaveableType.Greedy, false);
+        }
 
 
         public HeartbeatResponse ExecuteHeartbeat(float interval)
         {
-            HeartbeatResponse response = new HeartbeatResponse();
+
             var ttm = Registry.Get<TabletopManager>();
             var aspectsInContext = ttm.GetAspectsInContext(GetAspectsAvailableToSituation(true));
 
@@ -151,23 +210,34 @@ namespace Assets.Core.Entities {
 
             Continue(rc, interval, greedyAnimIsActive);
 
-            // only pull in something if we've got a second remaining
-            if (State == SituationState.Ongoing && Situation.TimeRemaining > HOUSEKEEPING_CYCLE_BEATS)
+            if (State == SituationState.Ongoing)
+                return new HeartbeatResponse();
+            else
+                return GetResponseWithUnfilledGreedyThresholdsForThisSituation();
+
+        }
+    
+
+    private HeartbeatResponse GetResponseWithUnfilledGreedyThresholdsForThisSituation()
+        {
+            var response=new HeartbeatResponse();
+
+            if (TimeRemaining > HOUSEKEEPING_CYCLE_BEATS)
             {
-                var tokenAndSlot = new TokenAndSlot()
-                {
-                    Token = situationAnchor as VerbAnchor,
-                    RecipeSlot = situationWindowAsStorage.GetUnfilledGreedySlot() as RecipeSlot
-                };
 
-                if (tokenAndSlot.RecipeSlot != null && !tokenAndSlot.Token.Defunct && !tokenAndSlot.RecipeSlot.Defunct)
-                {
-                    response.SlotsToFill.Add(tokenAndSlot);
-                }
+                var greedyThresholds =
+                    _containers.Where(c => c.ContainerCategory == ContainerCategory.Threshold && c.IsGreedy && c.GetTotalStacksCount()==0);
+
+               foreach(var g in greedyThresholds)
+               {
+                var tokenAndSlot = new TokenAndSlot{Token = _anchor, Threshold = g};
+                response.SlotsToFill.Add(tokenAndSlot);
+             
+               }
             }
-
             return response;
         }
+
 
         public List<ElementStackToken> GetStacks(ContainerCategory forContainerCategory)
         {
@@ -235,7 +305,7 @@ namespace Assets.Core.Entities {
 		public void Beginning(Recipe withRecipe) {
 			State = SituationState.Ongoing;
 
-			SituationEventData d=SituationEventData.Create(this,_TEMP);
+			SituationEventData d=SituationEventData.Create(this);
 
             foreach (var subscriber in subscribers)
 			subscriber.SituationBeginning(d);
@@ -243,7 +313,7 @@ namespace Assets.Core.Entities {
 
 		private void Ongoing() {
 
-            SituationEventData d = SituationEventData.Create(this, _TEMP);
+            SituationEventData d = SituationEventData.Create(this);
 
 			State = SituationState.Ongoing;
             foreach (var subscriber in subscribers)
@@ -264,7 +334,7 @@ namespace Assets.Core.Entities {
 				SituationEffectCommand ec = new SituationEffectCommand(c.Recipe, c.Recipe.ActionId != currentPrimaryRecipe.ActionId,c.Expulsion);
                 foreach (var subscriber in subscribers)
                 {
-                    SituationEventData d = SituationEventData.Create(this, _TEMP);
+                    SituationEventData d = SituationEventData.Create(this);
                     d.EffectCommand = ec;
                     subscriber.SituationExecutingRecipe(d);
 				}
@@ -282,7 +352,7 @@ namespace Assets.Core.Entities {
 				INotification notification = new Notification(currentPrimaryRecipe.Label, currentPrimaryRecipe.Description);
                 foreach (var subscriber in subscribers)
                 {
-                    var d = SituationEventData.Create(this, _TEMP);
+                    var d = SituationEventData.Create(this);
                     d.Notification = notification;
 				    subscriber.ReceiveAndRefineTextNotification(d);
                 }
@@ -307,12 +377,13 @@ namespace Assets.Core.Entities {
 			State = global::SituationState.Complete;
             foreach (var subscriber in subscribers)
             {
-                var d = SituationEventData.Create(this, _TEMP);
+                var d = SituationEventData.Create(this);
                 subscriber.SituationComplete(d);
             }
 
             SoundManager.PlaySfx("SituationComplete");
 		}
+
 
     }
 

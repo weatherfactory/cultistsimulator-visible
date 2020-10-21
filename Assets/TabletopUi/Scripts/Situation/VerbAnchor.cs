@@ -51,7 +51,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void Initialise(Situation situation)
+        public void Populate(Situation situation)
         {
             _verb = situation.Verb;
             _manifestation = TokenContainer.CreateAnchorManifestation(this);
@@ -312,7 +312,6 @@ namespace Assets.CS.TabletopUI {
         {
      _manifestation.DisplayComplete();
      _manifestation.SetCompletionCount(e.StacksInEachStorage[ContainerCategory.Output].Count);
-     _manifestation.DisplayStackInMiniSlot(e.StacksInEachStorage[ContainerCategory.Ongoing].FirstOrDefault());
 
         }
 
@@ -324,7 +323,7 @@ namespace Assets.CS.TabletopUI {
         public void ContainerContentsUpdated(SituationEventData e)
         {
             
-            var ongoingStacks = e.StacksInEachStorage[ContainerCategory.Ongoing];
+            var ongoingStacks = e.StacksInEachStorage[ContainerCategory.Threshold];
             if(ongoingStacks.Count == 1)
                 _manifestation.DisplayStackInMiniSlot(ongoingStacks.First());
             else

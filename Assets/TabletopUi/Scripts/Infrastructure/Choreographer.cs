@@ -520,7 +520,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             stackAnim.SetScaling(1f, 0.35f);
             stackAnim.SetTargetSlot(tokenSlotPair);
 
-            tokenSlotPair.RecipeSlot.IsBeingAnimated = true;
+            tokenSlotPair.Threshold.IsBeingAnimated = true;
 
             stackAnim.StartAnim(duration);
         }
@@ -529,9 +529,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 		{
             try
             {
-				if (tokenSlotPair.RecipeSlot.Equals(null) ||
-					(tokenSlotPair.Token.SituationController.situationWindow.GetStartingSlots().Contains( tokenSlotPair.RecipeSlot )==false &&
-					 tokenSlotPair.Token.SituationController.situationWindow.GetOngoingSlots().Contains( tokenSlotPair.RecipeSlot )==false))
+				if (tokenSlotPair.Threshold.Equals(null) ||
+					(tokenSlotPair.Token.SituationController.situationWindow.GetStartingSlots().Contains( tokenSlotPair.Threshold )==false &&
+					 tokenSlotPair.Token.SituationController.situationWindow.GetOngoingSlots().Contains( tokenSlotPair.Threshold )==false))
 				{
 					// Abort - either the slot has gone or it's been removed from the valid list
 					element.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
@@ -539,12 +539,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 				else
 				{
 					// Assign element to new slot
-					tokenSlotPair.RecipeSlot.AcceptStack(element, new Context(Context.ActionSource.AnimEnd));
+					tokenSlotPair.Threshold.AcceptStack(element, new Context(Context.ActionSource.AnimEnd));
 					if (!tokenSlotPair.Token.SituationController.IsOpen)
 						tokenSlotPair.Token.OpenSituation();
 				}
 				// Clear this whether the card arrived successfully or not, otherwise slot is locked for rest of session - CP
-				tokenSlotPair.RecipeSlot.IsBeingAnimated = false;
+				tokenSlotPair.Threshold.IsBeingAnimated = false;
             }
             catch
             {
@@ -555,11 +555,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public void ElementGreedyAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair)
 		{
-            if (tokenSlotPair.RecipeSlot.Equals(null))
+            if (tokenSlotPair.Threshold.Equals(null))
                 return;
 
-            tokenSlotPair.RecipeSlot.AcceptStack(element, new Context(Context.ActionSource.AnimEnd));
-            tokenSlotPair.RecipeSlot.IsBeingAnimated = false;
+            tokenSlotPair.Threshold.AcceptStack(element, new Context(Context.ActionSource.AnimEnd));
+            tokenSlotPair.Threshold.IsBeingAnimated = false;
         }
 
         void SituationAnimDone(VerbAnchor token) {

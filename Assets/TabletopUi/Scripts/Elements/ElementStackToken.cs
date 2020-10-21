@@ -483,7 +483,7 @@ namespace Assets.CS.TabletopUI {
 
 
         // Called from TokenContainer, usually after StacksManager told it to
-        public override void SetTokenContainer(ITokenContainer newTokenContainer, Context context) {
+        public override void SetTokenContainer(AbstractTokenContainer newTokenContainer, Context context) {
             OldTokenContainer = TokenContainer;
 
             if (OldTokenContainer != null && OldTokenContainer != newTokenContainer)
@@ -579,7 +579,7 @@ namespace Assets.CS.TabletopUI {
 					var tokenSlotPair = new TabletopUi.TokenAndSlot()
 					{
 						Token = situation.situationAnchor as VerbAnchor,
-						RecipeSlot = slot as RecipeSlot
+						Threshold = slot as RecipeSlot
 					};
 
 					results.Add( tokenSlotPair );
@@ -637,9 +637,9 @@ namespace Assets.CS.TabletopUI {
 					}
 				}
 
-				if (selectedSlot != null && selectedSlot.RecipeSlot !=null)
+				if (selectedSlot != null && selectedSlot.Threshold !=null)
 				{
-					if (selectedSlot.RecipeSlot.IsBeingAnimated)
+					if (selectedSlot.Threshold.IsBeingAnimated)
 					{
 						//Debug.Log("Already sending something to " + selectedSlot.Token.EntityId);
 					}

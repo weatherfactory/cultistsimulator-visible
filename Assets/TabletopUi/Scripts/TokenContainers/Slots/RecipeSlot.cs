@@ -21,20 +21,9 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI {
 
-    public interface IRecipeSlot:ITokenContainer {
-        ElementStackToken GetElementStackInSlot();
-        AbstractToken GetTokenInSlot();
-        SlotMatchForAspects GetSlotMatchForStack(ElementStackToken stack);
-        SlotSpecification GoverningSlotSpecification { get; set; }
-        string AnimationTag { get; set; }
-        IRecipeSlot ParentSlot { get; set; }
-        string SaveLocationInfoPath { get; }
-        bool Defunct { get; set; }
-        bool Retire();
-        bool IsPrimarySlot();
-    }
 
-    public class RecipeSlot : AbstractTokenContainer, IDropHandler, IRecipeSlot, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
+
+    public class RecipeSlot : AbstractTokenContainer, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
 
         public event System.Action<RecipeSlot, ElementStackToken, Context> onCardDropped;
         public event System.Action<ElementStackToken, Context> onCardRemoved;
@@ -44,7 +33,7 @@ namespace Assets.CS.TabletopUI {
         // DATA ACCESS
         public SlotSpecification GoverningSlotSpecification { get; set; }
         public IList<RecipeSlot> childSlots { get; set; }
-        public IRecipeSlot ParentSlot { get; set; }
+        public RecipeSlot ParentSlot { get; set; }
         public bool Defunct { get; set; }
         public string AnimationTag { get; set; }
 
@@ -71,7 +60,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public bool IsGreedy
+        public override bool IsGreedy
         {
             get { return GoverningSlotSpecification != null && GoverningSlotSpecification.Greedy; }
         }
