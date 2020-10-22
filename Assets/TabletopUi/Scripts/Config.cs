@@ -259,18 +259,8 @@ public class Config
                 return "de";
 
             default:
-                switch (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName)
-                {
-                    case "zh":
-                        return "zh-hans";
-                        
-                    case "ru":
-                        return "ru";
-                        
-                    default:
-                        return (NoonConstants.DEFAULT_CULTURE_ID);
-                        
-                }
+                return (NoonConstants.DEFAULT_CULTURE_ID);
+
 
                 
         }
