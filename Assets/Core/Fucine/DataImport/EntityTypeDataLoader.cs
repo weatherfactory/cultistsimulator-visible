@@ -96,7 +96,7 @@ namespace Assets.Core.Fucine
             foreach (var thisProperty in entityTypeProperties)
             {
                 //Note: this doesn't work quite in the way I intended it. Label and Description on Slots are marked as Localise, but
-                //the attribute is inspected only for the top level entity. Because the top level entity also has Label and Description marked as localie,
+                //the attribute is inspected only for the top level entity. Because the top level entity also has Label and Description marked as localise,
                 //the slot properties are added to the localisable keys, but this will break if the names are different. Consider explicitly inspecting subproperty attributes
                 //to see if they're also subentities, when loading the data
                 if (Attribute.GetCustomAttribute(thisProperty, typeof(Fucine)) is Fucine fucineAttribute)
