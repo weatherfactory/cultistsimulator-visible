@@ -723,6 +723,57 @@ namespace Assets.Core.Entities {
             OpenAt(currentLocation);
     }
 
+
+
+    public TokenContainer GetFirstAvailableThresholdForStackPush(ElementStackToken stack)
+    {
+        var thresholds = GetContainersByCategory(ContainerCategory.Threshold);
+        foreach (var t in thresholds)
+            if (!t.IsGreedy &&
+                t.GetMatchForStack(stack) == ContainerMatchForStack.MatchOK())
+                return t;
+
+        return null;
+    }
+
+
+        public bool PushDraggedStackIntoThreshold(ElementStackToken stack)
+        {
+            var thresholdContainer = GetFirstAvailableThresholdForStackPush(stack);
+            var possibleIncumbent = thresholdContainer.GetStacks().FirstOrDefault();
+            if (possibleIncumbent != null)
+            {
+                possibleIncumbent.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
+            }
+
+              return  thresholdContainer.TryAcceptStackAsThreshold(stack);
+
+        }
+
+
+        bool PushDraggedStackIntoStartingSlots(ElementStackToken stack)
+        {
+            if (HasSuitableStartingSlot(stack) == false)
+                return false;
+
+            var win = situationWindow as SituationWindow;
+            var primarySlot = win.GetPrimarySlot();
+
+            return PushDraggedStackIntoSlot(stack, primarySlot);
+        }
+
+        bool PushDraggedStackIntoOngoingSlot(ElementStackToken stack)
+        {
+            if (HasEmptyOngoingSlot(stack) == false)
+                return false;
+
+            var ongoingSlots = situationWindowAsStorage.GetOngoingSlots();
+
+            return PushDraggedStackIntoSlot(stack, ongoingSlots[0]);
+        }
+
+
+
     }
 
 }

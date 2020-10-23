@@ -29,7 +29,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public bool ContentsHidden { get; protected set; }
         public virtual bool IsGreedy { get; protected set; }
         public abstract ContainerCategory ContainerCategory { get; }
-
+        public SlotSpecification GoverningSlotSpecification { get; set; }
 
         private TokenContainersCatalogue _catalogue;
         private List<ElementStackToken> _stacks = new List<ElementStackToken>();
@@ -351,6 +351,61 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             Registry.Get<TokenContainersCatalogue>().NotifyStacksChanged();
         }
 
+
+        public bool TryAcceptStackAsThreshold(ElementStackToken stack)
+        {
+
+            //does the token match the slot? Check that first
+            ContainerMatchForStack match = GetMatchForStack(stack);
+
+            if (match.MatchType != SlotMatchForAspectsType.Okay)
+            {
+                stack.SetXNess(TokenXNess.DoesntMatchSlotRequirements);
+                stack.ReturnToStartPosition();
+
+                var notifier = Registry.Get<INotifier>();
+
+                var compendium = Registry.Get<ICompendium>();
+
+                if (notifier != null)
+                    notifier.ShowNotificationWindow(Registry.Get<ILocStringProvider>().Get("UI_CANTPUT"), match.GetProblemDescription(compendium), false);
+            }
+            else if (stack.Quantity != 1)
+            {
+                // We're dropping more than one?
+                // set main stack to be returned to start position
+                stack.SetXNess(TokenXNess.ReturningSplitStack);
+                // And we split a new one that's 1 (leaving the returning card to be n-1)
+                var newStack = stack.SplitAllButNCardsToNewStack(stack.Quantity - 1, new Context(Context.ActionSource.PlayerDrag));
+                // And we put that into the slot
+                AcceptStack(newStack, new Context(Context.ActionSource.PlayerDrag));
+            }
+            else
+            {
+                //it matches. Now we check if there's a token already there, and replace it if so:
+                var currentOccupant = GetStacks().FirstOrDefault();
+
+                // if we drop in the same slot where we came from, do nothing.
+                if (currentOccupant == stack)
+                {
+                    stack.SetXNess(TokenXNess.ReturnedToStartingSlot);
+                    return false;
+                }
+
+                if (currentOccupant != null)
+                    NoonUtility.LogWarning("There's still a card in the slot when this reaches the slot; it wasn't intercepted by being dropped on the current occupant. Rework.");
+                //currentOccupant.ReturnToTabletop();
+
+                //now we put the token in the slot.
+                stack.SetXNess(TokenXNess.PlacedInSlot);
+                AcceptStack(stack, new Context(Context.ActionSource.PlayerDrag));
+                SoundManager.PlaySfx("CardPutInSlot");
+            }
+
+            return true;
+        }
+
+
         public void RemoveDuplicates(ElementStackToken incomingStack)
         {
 
@@ -466,7 +521,21 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             //eg slot consumptions
 
         }
-}
+
+        public ContainerMatchForStack GetMatchForStack(ElementStackToken stack)
+        {
+            //no multiple stack is ever permitted in a slot  EDIT: removed this because we have support for splitting the stack to get a single card out - CP
+            //			if (stack.Quantity > 1)
+            //				return new SlotMatchForAspects(new List<string>{"Too many!"}, SlotMatchForAspectsType.ForbiddenAspectPresent);
+
+            if (stack.EntityId == "dropzone")
+                return new ContainerMatchForStack(new List<string>(), SlotMatchForAspectsType.ForbiddenAspectPresent);
+            if (GoverningSlotSpecification == null)
+                return ContainerMatchForStack.MatchOK();
+            else
+                return GoverningSlotSpecification.GetSlotMatchForAspects(stack.GetAspects());
+        }
+    }
 
 }
 

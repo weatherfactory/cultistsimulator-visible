@@ -81,21 +81,21 @@ private const string PRIMARY_SLOT="primary";
     }
 
 
-    public SlotMatchForAspects GetSlotMatchForAspects(IAspectsDictionary aspects)
+    public ContainerMatchForStack GetSlotMatchForAspects(IAspectsDictionary aspects)
     {
 
         foreach (string k in Forbidden.Keys)
         {
             if(aspects.ContainsKey(k))
             {
-                return new SlotMatchForAspects(new List<string>() {k}, SlotMatchForAspectsType.ForbiddenAspectPresent);
+                return new ContainerMatchForStack(new List<string>() {k}, SlotMatchForAspectsType.ForbiddenAspectPresent);
             }
         }
         
         //passed the forbidden check
         //if there are no specific requirements, then we're now okay
         if(Required.Keys.Count==0)
-            return new SlotMatchForAspects(null,SlotMatchForAspectsType.Okay);
+            return new ContainerMatchForStack(null,SlotMatchForAspectsType.Okay);
 
 
         foreach (string k in Required.Keys) //only one needs to match
@@ -104,11 +104,11 @@ private const string PRIMARY_SLOT="primary";
             { 
                 int aspectAtValue = aspects[k];
                 if (aspectAtValue >= Required[k])
-                    return new SlotMatchForAspects(null, SlotMatchForAspectsType.Okay);
+                    return new ContainerMatchForStack(null, SlotMatchForAspectsType.Okay);
             }
         }
 
-        return new SlotMatchForAspects(Required.Keys, SlotMatchForAspectsType.RequiredAspectMissing);
+        return new ContainerMatchForStack(Required.Keys, SlotMatchForAspectsType.RequiredAspectMissing);
 
 
     }

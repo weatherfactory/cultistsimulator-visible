@@ -15,11 +15,9 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 {
     public interface ISituationAnchor: ISituationSubscriber, IAnimatableToken
     {
-        SituationController SituationController { get; }
 
         string SaveLocationInfo { get; set; }
         AnchorDurability Durability { get; }
-
 
         void DisplayAsOpen();
         void DisplayAsClosed();

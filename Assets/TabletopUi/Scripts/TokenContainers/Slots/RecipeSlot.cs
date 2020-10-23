@@ -31,7 +31,7 @@ namespace Assets.CS.TabletopUI {
         public override ContainerCategory ContainerCategory => ContainerCategory.Threshold;
 
         // DATA ACCESS
-        public SlotSpecification GoverningSlotSpecification { get; set; }
+
         public IList<RecipeSlot> childSlots { get; set; }
         public RecipeSlot ParentSlot { get; set; }
         public bool Defunct { get; set; }
@@ -117,7 +117,7 @@ namespace Assets.CS.TabletopUI {
                 if (stack.EntityId == "dropzone")
                     return; // Dropzone can never be put in a slot
 
-                if (GetSlotMatchForStack(stack).MatchType == SlotMatchForAspectsType.Okay)
+                if (GetMatchForStack(stack).MatchType == SlotMatchForAspectsType.Okay)
                     ShowGlow(true,false);
             }
 
@@ -138,7 +138,7 @@ namespace Assets.CS.TabletopUI {
                 return false; // we only accept stacks
 
             //does the token match the slot? Check that first
-            SlotMatchForAspects match = GetSlotMatchForStack(stack);
+            ContainerMatchForStack match = GetMatchForStack(stack);
 
             return match.MatchType == SlotMatchForAspectsType.Okay;
         }
@@ -222,58 +222,7 @@ namespace Assets.CS.TabletopUI {
             return childSlots.Count > 0;
         }
 
-        public bool TryPutElementStackInSlot(ElementStackToken stack)
-        {
 
-            //does the token match the slot? Check that first
-            SlotMatchForAspects match = GetSlotMatchForStack(stack);
-
-            if (match.MatchType != SlotMatchForAspectsType.Okay)
-            {
-                stack.SetXNess(TokenXNess.DoesntMatchSlotRequirements);
-                stack.ReturnToStartPosition();
-
-                var notifier = Registry.Get<INotifier>();
-
-                var compendium = Registry.Get<ICompendium>();
-
-                if (notifier != null)
-                    notifier.ShowNotificationWindow(Registry.Get<ILocStringProvider>().Get("UI_CANTPUT"), match.GetProblemDescription(compendium), false);
-            }
-            else if (stack.Quantity != 1)
-            {
-                // We're dropping more than one?
-                // set main stack to be returned to start position
-                stack.SetXNess( TokenXNess.ReturningSplitStack);
-                // And we split a new one that's 1 (leaving the returning card to be n-1)
-                var newStack = stack.SplitAllButNCardsToNewStack(stack.Quantity - 1, new Context(Context.ActionSource.PlayerDrag));
-                // And we put that into the slot
-                AcceptStack(newStack, new Context(Context.ActionSource.PlayerDrag));
-            }
-            else
-            {
-                //it matches. Now we check if there's a token already there, and replace it if so:
-                var currentOccupant = GetElementStackInSlot();
-
-                // if we drop in the same slot where we came from, do nothing.
-                if (currentOccupant == stack)
-                {
-                    stack.SetXNess(TokenXNess.ReturnedToStartingSlot);
-                    return false;
-                }
-
-                if (currentOccupant != null)
-                    throw new NotImplementedException("There's still a card in the slot when this reaches the slot; it wasn't intercepted by being dropped on the current occupant. Rework.");
-                //currentOccupant.ReturnToTabletop();
-
-                //now we put the token in the slot.
-                stack.SetXNess(TokenXNess.PlacedInSlot);
-                AcceptStack(stack, new Context(Context.ActionSource.PlayerDrag));
-                SoundManager.PlaySfx("CardPutInSlot");
-            }
-
-            return true;
-        }
 
 
         public void OnDrop(PointerEventData eventData)
@@ -287,7 +236,7 @@ namespace Assets.CS.TabletopUI {
             if (IsBeingAnimated || !eventData.dragging || stack==null)
                 return;
 
-            TryPutElementStackInSlot(stack);
+            TryAcceptStackAsThreshold(stack);
 
         }
 
@@ -325,19 +274,7 @@ namespace Assets.CS.TabletopUI {
             return GetStacks().SingleOrDefault();
         }
 
-        public SlotMatchForAspects GetSlotMatchForStack(ElementStackToken stack)
-        {
-            //no multiple stack is ever permitted in a slot  EDIT: removed this because we have support for splitting the stack to get a single card out - CP
-//			if (stack.Quantity > 1)
-//				return new SlotMatchForAspects(new List<string>{"Too many!"}, SlotMatchForAspectsType.ForbiddenAspectPresent);
 
-            if (stack.EntityId == "dropzone")
-                return new SlotMatchForAspects(new List<string>(), SlotMatchForAspectsType.ForbiddenAspectPresent);
-            if (GoverningSlotSpecification == null)
-                return SlotMatchForAspects.MatchOK();
-            else
-                return GoverningSlotSpecification.GetSlotMatchForAspects(stack.GetAspects());
-        }
 
         public override void SignalStackRemoved(ElementStackToken elementStackToken, Context context)
         {
@@ -351,7 +288,7 @@ namespace Assets.CS.TabletopUI {
             }
 
             //incomer is a token. Does it fit in the slot?
-            if (GetSlotMatchForStack(potentialUsurper).MatchType==SlotMatchForAspectsType.Okay && potentialUsurper.Quantity == 1)
+            if (GetMatchForStack(potentialUsurper).MatchType==SlotMatchForAspectsType.Okay && potentialUsurper.Quantity == 1)
             {
                 incumbentMoved = true;
                 incumbent.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag)); //do this first; AcceptStack will trigger an update on the displayed aspects

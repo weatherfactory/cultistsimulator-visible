@@ -574,7 +574,7 @@ namespace Assets.CS.TabletopUI {
 			{
 				if (!slot.IsGreedy &&
 					slot.GetTokenInSlot() == null &&
-					slot.GetSlotMatchForStack(this).MatchType == SlotMatchForAspectsType.Okay)
+					slot.GetMatchForStack(this).MatchType == SlotMatchForAspectsType.Okay)
 				{
 					// Create token/slot pair
 					var tokenSlotPair = new TabletopUi.TokenAndSlot()

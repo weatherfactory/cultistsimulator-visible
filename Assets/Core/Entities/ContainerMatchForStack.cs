@@ -6,17 +6,17 @@ using Assets.CS.TabletopUI;
 
 namespace Assets.Core.Entities
 {
-    public class SlotMatchForAspects
+    public class ContainerMatchForStack
     {
         public IEnumerable<string> ProblemAspectIds = new List<string>();
         public SlotMatchForAspectsType MatchType { get; set; }
 
-        public static SlotMatchForAspects MatchOK()
+        public static ContainerMatchForStack MatchOK()
         {
-            return new SlotMatchForAspects(new List<string>(), SlotMatchForAspectsType.Okay);
+            return new ContainerMatchForStack(new List<string>(), SlotMatchForAspectsType.Okay);
         }
 
-        public SlotMatchForAspects(IEnumerable<string> problemAspectIds, SlotMatchForAspectsType esm)
+        public ContainerMatchForStack(IEnumerable<string> problemAspectIds, SlotMatchForAspectsType esm)
         {
             ProblemAspectIds = problemAspectIds;
             MatchType = esm;

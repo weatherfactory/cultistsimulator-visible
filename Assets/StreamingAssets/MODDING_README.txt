@@ -131,10 +131,18 @@ The game currently ships with English, Russian and Chinese (Simplified). If you'
 A culture entity allows you to specify:
 - the name of the language
 - values for the UI labels in the game
-- which base font script a mod will use - Latin, cyrillic, or 'cjk' for a font which should support Simplified Chinese, Japanese and Korean. This is pretty primitive and you're out of luck if you want to localise into e.g. Arabic. I'll update if there's demand for more non-Latin scripts.
+- which base font script a mod will use. 'Font script' here means a selection of font assets that support a particular writing system.
 
-[Acknowledgement: the modding framework is based on Lyrositor's original fan-contributed modding framework.
+fontscript='latin' uses Philosopher, Titania and Belgrad and should be okay for EFIGS-neighbourhood languages.
+fontscript='cyrillic' uses Philosopher, Titania and NotoSans, with the basic Roman and Cyrillic characters.
+fontscript='cjk' uses NotoSansCJK, a Google font which provides common characters used in Chinese, Japanese and Korean.
+fontscript='jp' uses NotoSansJP: our Japanese-speaking players pointed out cases where this is better for Japanese than NotoSansCJK.
+
+And if fontscript isn't specified at all, the game will default to NotoSerif with glyphs for Latin-A and Latin-B. This will cover a lot of languages that use or can use a Latin-based script / Romanization, but crikey I'm only starting to understand how complicated all this is. If you're trying to translate something that needs to use other characters, contact us and we'll see what we can do.
+
+
+[Acknowledgement: the modding framework is based on Lyrositor's original fan-contributed modding framework.]
 
 ---------------
 
-- AK 15/09/2020
+- AK 23/10/2020

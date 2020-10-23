@@ -30,13 +30,13 @@ namespace Assets.CS.TabletopUI {
     public class VerbAnchor : AbstractToken, ISituationAnchor
     {
 
+        private Situation _situation;
 
-        private IVerb _verb;
+        public IVerb Verb { get {return _situation.Verb} }
         private IAnchorManifestation _manifestation;
 
         private AnchorDurability _durability;
 
-        public SituationController SituationController { get; private set; }
 
         public AnchorDurability Durability
         {
@@ -47,17 +47,17 @@ namespace Assets.CS.TabletopUI {
 
         public override string EntityId
         {
-            get { return _verb.Id; }
+            get { return Verb.Id; }
         }
 
 
         public void Populate(Situation situation)
         {
-            _verb = situation.Verb;
+            _situation = situation;
             _manifestation = TokenContainer.CreateAnchorManifestation(this);
-            _manifestation.InitialiseVisuals(_verb);
+            _manifestation.InitialiseVisuals(Verb);
 
-            if (_verb.Transient)
+            if (Verb.Transient)
                 _durability = AnchorDurability.Transient;
             else
                 _durability = AnchorDurability.Enduring;
@@ -93,7 +93,7 @@ namespace Assets.CS.TabletopUI {
                 var stack = args.Token as ElementStackToken;
                 if (stack == null)
                     return;
-                if (SituationController.CanAcceptStackWhenClosed(stack))
+                if (_situation.CanAcceptStackWhenClosed(stack))
                 {
                     _manifestation.Highlight(HighlightType.CanInteractWithOtherToken);
                 }
@@ -193,7 +193,7 @@ namespace Assets.CS.TabletopUI {
             // Add the current recipe name, if any, to the debug panel if it's active
             Registry.Get<DebugTools>().SetInput(SituationController.Situation.RecipeId);
 
-            if (!SituationController.IsOpen)
+            if (!_situation.IsOpen())
                 OpenSituation();
             else
                 CloseSituation();
@@ -206,29 +206,29 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void OpenSituation() {
-            SituationController.OpenWindow();
+            _situation.OpenAtCurrentLocation();
         }
 
         void CloseSituation() {
-            SituationController.CloseWindow();
+            _situation.Close();
         }
 
         public override bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn) {
-            //element stack dropped on verb - FIXED
-            return SituationController.CanAcceptStackWhenClosed(stackDroppedOn);
+            
+            return (_situation.GetFirstAvailableThresholdForStackPush(stackDroppedOn) != null);
         }
 
         public override void InteractWithTokenDroppedOn(ElementStackToken stackDroppedOn)
         {
-            //element stack dropped on verb - FIXED
+            
             if (CanInteractWithTokenDroppedOn(stackDroppedOn))
             {
                 // This will put it into the ongoing or the starting slot, token determines
-                SituationController.PushDraggedStackIntoToken(stackDroppedOn);
+                _situation.PushDraggedStackIntoThreshold(stackDroppedOn);
 
                 // Then we open the situation (cause this closes other situations and this may return the stack we try to move
                 // back onto the tabletop - if it was in its starting slots. - Martin
-                if (!SituationController.IsOpen)
+                if (!_situation.IsOpen())
                     OpenSituation();
                 else
                     DisplayAsOpen();
