@@ -59,9 +59,8 @@ namespace Assets.CS.TabletopUI {
 		[SerializeField] Button startButton;
 		[SerializeField] TextMeshProUGUI startButtonText;
 
-        public UnityEvent OnClose;
+        public UnityEvent OnWindowClosed;
 
-		private SituationController situationController;
         private IVerb Verb;
         private bool windowIsWide = false;
 
@@ -177,7 +176,7 @@ namespace Assets.CS.TabletopUI {
             throw new NotImplementedException();
         }
 
-        public void Retire()
+        public override bool Retire()
         {
             var startingStacks = new List<ElementStackToken>(GetStartingStacks());
             foreach (var s in startingStacks)
@@ -190,6 +189,8 @@ namespace Assets.CS.TabletopUI {
            storage.RemoveAllStacks();
             results.RemoveAllStacks();
             Destroy(gameObject);
+
+            return true;
         }
 
         public override void ReactToDraggedToken(TokenInteractionEventArgs args)
@@ -214,7 +215,7 @@ namespace Assets.CS.TabletopUI {
 
         
         public void Close() {
-        OnClose.Invoke();
+        OnWindowClosed.Invoke();
         }
 
         // BASIC DISPLAY
@@ -240,8 +241,16 @@ namespace Assets.CS.TabletopUI {
 			canvasGroupFader.Hide();
         }
 
-        
-        
+
+        public void DisplayInitialState()
+        {
+            Title = Verb.Label;
+            PaginatedNotes.SetText(Verb.Description);
+
+            DisplayButtonState(false);
+        }
+
+
         public void DisplayNoRecipeFound() {
 			Title = Verb.Label;
 			PaginatedNotes.SetText(Verb.Description);
@@ -249,12 +258,11 @@ namespace Assets.CS.TabletopUI {
 			DisplayButtonState(false);
         }
 
-        public void DisplayStartingRecipeFound(Recipe r) {
+        public void DisplayStartingRecipeFound(Recipe r,AspectsDictionary aspectsInSituation) {
 
 
             Title = r.Label;
             //Check for possible text refinements based on the aspects in context
-            var aspectsInSituation = GetAspectsFromAllSlottedElements(true);
             TextRefiner tr = new TextRefiner(aspectsInSituation);
             PaginatedNotes.SetText(tr.RefineString(r.StartDescription));
 
@@ -264,12 +272,12 @@ namespace Assets.CS.TabletopUI {
             SoundManager.PlaySfx("SituationAvailable");
         }
 
-        public void DisplayHintRecipeFound(Recipe r)
-		{
+        public void DisplayHintRecipeFound(Recipe r, AspectsDictionary aspectsInSituation)
+        
+            {
             Title = Registry.Get<ILocStringProvider>().Get("UI_HINT") + " " + r.Label;
             //Check for possible text refinements based on the aspects in context
-            var aspectsInSituation = GetAspectsFromAllSlottedElements(true);
-            TextRefiner tr = new TextRefiner(aspectsInSituation);
+        TextRefiner tr = new TextRefiner(aspectsInSituation);
 
             PaginatedNotes.SetText("<i>" + tr.RefineString(r.StartDescription) + "</i>");
             DisplayButtonState(false);
@@ -324,39 +332,7 @@ namespace Assets.CS.TabletopUI {
             situationController.AttemptActivateRecipe();
         }
 
-        // so the token-dump button can trigger this
-        public void DumpAllResultingCardsToDesktop() {
-			var results = GetOutputStacks();
-
-			DumpToDesktop(results, new Context(Context.ActionSource.PlayerDumpAll));
-			situationController.ResetSituation();
-
-			// Only play collect all if there's actually something to collect 
-			// Only play collect all if it's not transient - cause that will retire it and play the retire sound
-			// Note: If we collect all from the window we also get the default button sound in any case.
-			if (results.Count() > 0)
-				SoundManager.PlaySfx("SituationCollectAll");
-			else if (situationController.situationAnchor.Durability==AnchorDurability.Transient)
-				SoundManager.PlaySfx("SituationTokenRetire");
-			else 
-				SoundManager.PlaySfx("UIButtonClick");
-        }
-
-        public void TryDumpAllStartingCardsToDesktop() {
-            if (situationController.Situation.State == SituationState.Unstarted)
-                DumpToDesktop(GetStartingStacks(), new Context(Context.ActionSource.PlayerDumpAll));
-        }
-
-        void DumpToDesktop(IEnumerable<ElementStackToken> stacks, Context context) {
-
-            foreach (var item in stacks) {
-                item.ReturnToTabletop(context);
-                
-            }
-        }
-
-        // ISituationDetails
-
+        
         public IEnumerable<ElementStackToken> GetStartingStacks() {
             return startingSlots.GetStacksInSlots();
         }
@@ -385,17 +361,7 @@ namespace Assets.CS.TabletopUI {
             startingSlots.RemoveAnyChildSlotsWithEmptyParent(new Context(Context.ActionSource.SituationStoreStacks)); 
         }
 
-
-
-        public void SetSlotConsumptions() {
-            foreach (var s in startingSlots.GetAllSlots())
-                s.SetConsumption();
-
-            foreach (var o in ongoing.GetAllSlots())
-                o.SetConsumption();
-        }
-
-
+        
         public RecipeSlot GetPrimarySlot() {
             return startingSlots.GetAllSlots().FirstOrDefault();
         }
@@ -428,12 +394,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void TryDecayResults(float interval)
-        {
-            var stacksToDecay = results.GetStacks();
-            foreach(var s in stacksToDecay)
-                s.Decay(interval);
-        }
+
 
         public IEnumerable<ISituationNote> GetNotes() {
             return PaginatedNotes.GetCurrentTexts();
@@ -495,7 +456,42 @@ namespace Assets.CS.TabletopUI {
 
         public void ContainerContentsUpdated(SituationEventData e)
         {
-            throw new NotImplementedException();
+  
+
+            var allAspectsInSituation = AspectsDictionary.GetFromStacks(e.StacksInEachStorage.SelectMany(s => s.Value), true);
+            
+
+            var tabletopManager = Registry.Get<TabletopManager>();
+            var aspectsInContext = tabletopManager.GetAspectsInContext(allAspectsInSituation);
+
+            // Get all aspects and find a recipe
+            Recipe matchingRecipe = Registry.Get<ICompendium>().GetFirstMatchingRecipe(aspectsInContext, Verb.Id, Registry.Get<Character>(), false);
+
+            var allAspectsToDisplay = AspectsDictionary.GetFromStacks(e.StacksInEachStorage.SelectMany(s => s.Value), false);
+
+            // Update the aspects in the window
+            
+            DisplayAspects(allAspectsToDisplay);
+
+            //if we found a recipe, display it, and get ready to activate
+            if (matchingRecipe != null)
+            {
+                DisplayStartingRecipeFound(matchingRecipe,allAspectsInSituation);
+                return;
+            }
+
+            //if we can't find a matching craftable recipe, check for matching hint recipes
+            Recipe matchingHintRecipe = Registry.Get<ICompendium>().GetFirstMatchingRecipe(aspectsInContext, e.ActiveVerb.Id , Registry.Get<Character>(), true); ;
+
+            //perhaps we didn't find an executable recipe, but we did find a hint recipe to display
+            if (matchingHintRecipe != null)
+                DisplayHintRecipeFound(matchingHintRecipe,allAspectsInSituation);
+            //no recipe, no hint? If there are any elements in the mix, display 'try again' message
+            else if (allAspectsInSituation.Count > 0)
+                DisplayNoRecipeFound();
+            //no recipe, no hint, no aspects. Just set back to unstarted
+            else
+                DisplayInitialState();
         }
 
         public void ReceiveNotification(SituationEventData e)

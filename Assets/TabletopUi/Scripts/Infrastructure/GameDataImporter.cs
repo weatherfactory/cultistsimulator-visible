@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
+using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Interfaces;
@@ -218,37 +219,36 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 
 
-                var wasOpen= htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
-                if (wasOpen)
-                {
-                    float x=
-                    situation.OpenAtCurrentLocation();
-                }
+    //            var wasOpen= htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
+    //            if (wasOpen)
+    //            {
+    //                situation.OpenAtCurrentLocation();
+    //            }
 
-                situationController.IsOpen = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
-				Vector3 pos = situationController.situationWindow.Position;
-				pos.x = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_X].MakeFloat();
-				pos.y = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_Y].MakeFloat();
-				pos.z = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_Z].MakeFloat();
-				situationController.RestoreWindowPosition = pos;
+    //            situation.IsOpen = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
+				//Vector3 pos = situationController.situationWindow.Position;
+				//pos.x = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_X].MakeFloat();
+				//pos.y = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_Y].MakeFloat();
+				//pos.z = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_Z].MakeFloat();
+				//situation.RestoreWindowPosition = pos;
 
-                ImportSituationNotes(htSituationValues, situationController);
+                ImportSituationNotes(htSituationValues, situation);
 
-                ImportSlotContents(htSituationValues, situationController, tabletop, SaveConstants.SAVE_STARTINGSLOTELEMENTS);
-                ImportSlotContents(htSituationValues, situationController, tabletop, SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
+                ImportSlotContents(htSituationValues, situation, tabletop, SaveConstants.SAVE_STARTINGSLOTELEMENTS);
+                ImportSlotContents(htSituationValues, situation, tabletop, SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
                 
 
-                ImportSituationStoredElements(htSituationValues, situationController);
-                ImportOutputs(htSituationValues, situationController, tabletop);
+                ImportSituationStoredElements(htSituationValues, situation);
+                ImportOutputs(htSituationValues, situation, tabletop);
 
             }
         }
 
 
-        private void ImportOutputs(Hashtable htSituationValues, SituationController situationController, TabletopTokenContainer tabletop)
+        private void ImportOutputs(Hashtable htSituationValues, Situation situation, TabletopTokenContainer tabletop)
         {
          var outputStacks=ImportOutputStacks(htSituationValues, tabletop);
-            situationController.SetOutput(outputStacks);
+            situation.AcceptStacks(ContainerCategory.SituationStorage,outputStacks);
 
         }
 
@@ -272,7 +272,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return outputStacks;
         }
 
-        private void ImportSituationNotes(Hashtable htSituationValues,SituationController controller)
+        private void ImportSituationNotes(Hashtable htSituationValues,Situation situation)
         {
             if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONNOTES))
             {
@@ -289,7 +289,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                     
                     var notificationForSituationNote =new Notification(title,title);
-                    controller.AddNote(notificationForSituationNote);
+                    situation.SendNotificationToSubscribers(notificationForSituationNote);
                 }
             }
 
@@ -300,10 +300,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS))
             {
-                var htElements = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS);
-                var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
-                foreach (var ess in elementStackSpecifications)  
-                    situation.ReprovisionStoredElementStack(ess,Source.Existing());
+                //var htElements = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS);
+                //var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
+                //foreach (var ess in elementStackSpecifications)  
+                //    situation.ReprovisionStoredElementStack(ess,Source.Existing());
                     
                 
                 
@@ -312,39 +312,39 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 
         private void ImportSlotContents(Hashtable htSituationValues,
-         SituationController controller, TabletopTokenContainer tabletop,string slotTypeKey)
+         Situation situation, TabletopTokenContainer tabletop,string slotTypeKey)
         {
             //I think there's a problem here. There is an issue where we were creating ongoing slots with null GoverningSlotSpecifications for transient verbs
-            //I don't know if this happens all the time? some saves? Starting slots as well but it doesn't matter?
-            //(this showed up a problem where greedy slots were trying to grab from ongoing slots that didn't really exist, and threw a nullref error - I've added a guard there but the problem remains).
-            if (htSituationValues.ContainsKey(slotTypeKey))
-            {
-                var htElements = htSituationValues.GetHashtable(slotTypeKey);
-                var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
+            ////I don't know if this happens all the time? some saves? Starting slots as well but it doesn't matter?
+            ////(this showed up a problem where greedy slots were trying to grab from ongoing slots that didn't really exist, and threw a nullref error - I've added a guard there but the problem remains).
+            //if (htSituationValues.ContainsKey(slotTypeKey))
+            //{
+            //    var htElements = htSituationValues.GetHashtable(slotTypeKey);
+            //    var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
 
-                foreach (var ess in elementStackSpecifications.OrderBy(spec=>spec.Depth)) //this order-by is important if we're populating something with elements which create child slots -
-                    //in that case we need to do it from the top down, or the slots won't be there
-                {
-                    var stackToPutInSlot =
-                        tabletop.ReprovisionExistingElementStack(ess, Source.Existing(),new Context(Context.ActionSource.Loading));
+            //    foreach (var ess in elementStackSpecifications.OrderBy(spec=>spec.Depth)) //this order-by is important if we're populating something with elements which create child slots -
+            //        //in that case we need to do it from the top down, or the slots won't be there
+            //    {
+            //        var stackToPutInSlot =
+            //            tabletop.ReprovisionExistingElementStack(ess, Source.Existing(),new Context(Context.ActionSource.Loading));
 
-                    //SaveLocationInfo for slots are recorded with an appended Guid. Everything up until the last separator is the slotId
+            //        //SaveLocationInfo for slots are recorded with an appended Guid. Everything up until the last separator is the slotId
 
-                    //var slotId = ess.LocationInfo.Split(SaveConstants.SEPARATOR)[0];
+            //        //var slotId = ess.LocationInfo.Split(SaveConstants.SEPARATOR)[0];
 
-                    int lastSeparatorPosition = ess.LocationInfo.LastIndexOf(SaveConstants.SEPARATOR);
-                    var slotId = ess.LocationInfo.Substring(0, lastSeparatorPosition); //if lastseparatorposition zero-indexed is 4, length before separator - 1-indexed - is also 4
+            //        int lastSeparatorPosition = ess.LocationInfo.LastIndexOf(SaveConstants.SEPARATOR);
+            //        var slotId = ess.LocationInfo.Substring(0, lastSeparatorPosition); //if lastseparatorposition zero-indexed is 4, length before separator - 1-indexed - is also 4
 
 
-                    var slotToFill = controller.GetSlotBySaveLocationInfoPath(slotId, slotTypeKey);
-                    if (slotToFill != null) //a little bit robust if a higher level element slot spec has changed between saves
-                        //if the game can't find a matching slot, it'll just leave it on the desktop
-                        slotToFill.AcceptStack(stackToPutInSlot, new Context(Context.ActionSource.Loading));
+            //        var slotToFill = situation.GetSlotBySaveLocationInfoPath(slotId, slotTypeKey);
+            //        if (slotToFill != null) //a little bit robust if a higher level element slot spec has changed between saves
+            //            //if the game can't find a matching slot, it'll just leave it on the desktop
+            //            slotToFill.AcceptStack(stackToPutInSlot, new Context(Context.ActionSource.Loading));
 
-                    //if this was an ongoing slot, we also need to tell the situation that the slot's filled, or it will grab another
+            //        //if this was an ongoing slot, we also need to tell the situation that the slot's filled, or it will grab another
 
-                }
-            }
+                //}
+            //}
         }
 
         private List<ElementStackSpecification> PopulateElementStackSpecificationsList(Hashtable htStacks)

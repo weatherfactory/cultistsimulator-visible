@@ -17,21 +17,21 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     public interface ITableSaveState
     {
         IEnumerable<ElementStackToken> TableStacks { get; }
-        List<SituationController> Situations { get; }
+        List<Situation> Situations { get; }
         bool IsTableActive();
     }
 
     public class TableSaveState : ITableSaveState
     {
         public IEnumerable<ElementStackToken> TableStacks { get; private set; }
-        public List<SituationController> Situations { get; private set; }
+        public List<Situation> Situations { get; private set; }
         public bool IsTableActive()
         {
             return true;
         }
 
 
-        public TableSaveState(IEnumerable<ElementStackToken> tableStacks, List<SituationController> situations)
+        public TableSaveState(IEnumerable<ElementStackToken> tableStacks, List<Situation> situations)
         {
             TableStacks = tableStacks;
             Situations = situations;
@@ -41,7 +41,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     public class InactiveTableSaveState : ITableSaveState
     {
         public IEnumerable<ElementStackToken> TableStacks { get; private set; }
-        public List<SituationController> Situations { get; private set; }
+        public List<Situation> Situations { get; private set; }
 
         public bool IsTableActive()
         {
@@ -51,7 +51,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public InactiveTableSaveState()
         {
             TableStacks = new List<ElementStackToken>();
-            Situations = new List<SituationController>();
+            Situations = new List<Situation>();
         }
 
 
@@ -115,7 +115,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             int index = (int) source;
               //  var allStacks = tabletop.GetElementStacksManager().GetStacks();
-              //  var currentSituationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
+              //  var currentSituations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
                 var metaInfo = Registry.Get<MetaInfo>();
       
                 // GetSaveHashTable now does basic validation of the data and might return null if it's bad - CP

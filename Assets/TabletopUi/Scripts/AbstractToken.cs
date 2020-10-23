@@ -27,6 +27,7 @@ namespace Assets.CS.TabletopUI {
         void SnapToGrid();
         bool NoPush { get; }
         TokenLocation Location { get; }
+        public bool Defunct { get; }
     }
 
     public enum TokenXNess

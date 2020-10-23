@@ -49,13 +49,17 @@ namespace Assets.TabletopUi.SlotsContainers {
 
 
             situationController.StartingSlotsUpdated();
+            situationController.TryResizeWindow(GetAllSlots().Count);
+            public void TryResizeWindow(int slotsCount)
+            {
+                situationWindow.SetWindowSize(slotsCount > 3);
+            }
 
             if (slot.IsPrimarySlot() && stack.HasChildSlotsForVerb(situationController.GetTokenId()))
                 AddSlotsForStack(stack, slot);
 
             ArrangeSlots();
 
-            situationController.TryResizeWindow(GetAllSlots().Count);
 
         }
 

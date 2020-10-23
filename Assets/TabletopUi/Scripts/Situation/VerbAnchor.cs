@@ -32,7 +32,10 @@ namespace Assets.CS.TabletopUI {
 
         private Situation _situation;
 
-        public IVerb Verb { get {return _situation.Verb} }
+        public IVerb Verb
+        {
+            get { return _situation.Verb; }
+        }
         private IAnchorManifestation _manifestation;
 
         private AnchorDurability _durability;
@@ -93,7 +96,7 @@ namespace Assets.CS.TabletopUI {
                 var stack = args.Token as ElementStackToken;
                 if (stack == null)
                     return;
-                if (_situation.CanAcceptStackWhenClosed(stack))
+                if (_situation.GetFirstAvailableThresholdForStackPush(stack)!=null)
                 {
                     _manifestation.Highlight(HighlightType.CanInteractWithOtherToken);
                 }
@@ -191,7 +194,7 @@ namespace Assets.CS.TabletopUI {
             //compromise event to handle 'general clicking of token' while we move it down to Manifestation
 
             // Add the current recipe name, if any, to the debug panel if it's active
-            Registry.Get<DebugTools>().SetInput(SituationController.Situation.RecipeId);
+            Registry.Get<DebugTools>().SetInput(_situation.RecipeId);
 
             if (!_situation.IsOpen())
                 OpenSituation();
@@ -199,11 +202,6 @@ namespace Assets.CS.TabletopUI {
                 CloseSituation();
         }
         
-        public void DumpAllResults()
-        {
-            SituationController.DumpAllResults();
-
-        }
 
         public void OpenSituation() {
             _situation.OpenAtCurrentLocation();
@@ -296,8 +294,8 @@ namespace Assets.CS.TabletopUI {
               _manifestation.ShowMiniSlot(e.CurrentRecipe.Slots[0].Greedy);
 
 
-          if (e.EffectCommand.Recipe.BurnImage != null)
-              BurnImageUnderToken(e.EffectCommand.Recipe.BurnImage);
+          if (e.CurrentRecipe.BurnImage != null)
+              BurnImageUnderToken(e.CurrentRecipe.BurnImage);
 
         }
 
@@ -355,6 +353,7 @@ namespace Assets.CS.TabletopUI {
     {
         public float Warmup { get; set; }
         public float TimeRemaining { get; set; }
+        public IVerb ActiveVerb { get; set; }
         public Recipe CurrentRecipe; //replace with SituationCreationComand / SituationEffectCommand? combine CreationCommand and EffectCommand?
         public Dictionary<ContainerCategory, List<ElementStackToken>> StacksInEachStorage { get; set; }
         public INotification Notification;
@@ -369,6 +368,7 @@ namespace Assets.CS.TabletopUI {
             e.StacksInEachStorage.Add(ContainerCategory.Threshold,fromSituation.GetStacks(ContainerCategory.Threshold));
             e.StacksInEachStorage.Add(ContainerCategory.SituationStorage, fromSituation.GetStacks(ContainerCategory.SituationStorage));
             e.StacksInEachStorage.Add(ContainerCategory.Output, fromSituation.GetStacks(ContainerCategory.Output));
+            e.ActiveVerb = fromSituation.Verb;
             return e;
 
         }

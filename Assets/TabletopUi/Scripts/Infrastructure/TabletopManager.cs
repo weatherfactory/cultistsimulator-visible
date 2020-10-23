@@ -397,7 +397,7 @@ namespace Assets.CS.TabletopUI {
            foreach (var s in situationsCatalogue.GetRegisteredSituations())
            {
 
-               if (s.Situation.State == SituationState.Unstarted)
+               if (s.State == SituationState.Unstarted)
                {
                    var slotsToTryPurge = new List<RecipeSlot>(s.situationWindow.GetStartingSlots());
 
@@ -406,7 +406,7 @@ namespace Assets.CS.TabletopUI {
                        slot.TryPurgeElement(purgedElement, maxToPurge);
                }
                //If the situation has finished, purge any matching elements in the results.
-                else if (s.Situation.State==SituationState.Complete)
+                else if (s.State==SituationState.Complete)
                 { 
                    s.situationWindow.GetResultsContainer()
                        .PurgeElement(purgedElement, maxToPurge);
@@ -433,7 +433,7 @@ namespace Assets.CS.TabletopUI {
 
                 foreach (var s in situationsCatalogue.GetRegisteredSituations())
                 {
-                    if (s.GetTokenId().StartsWith(wildcardToDelete))
+                    if (s.Verb.Id.StartsWith(wildcardToDelete))
                     {
                         s.Halt();
                         i++;
@@ -448,7 +448,7 @@ namespace Assets.CS.TabletopUI {
             {
                 foreach (var s in situationsCatalogue.GetRegisteredSituations())
                 {
-                    if (s.GetTokenId() == toHaltId.Trim())
+                    if (s.Verb.Id == toHaltId.Trim())
                     {
                         s.Halt();
                         i++;
@@ -471,7 +471,7 @@ namespace Assets.CS.TabletopUI {
 
                 foreach (var s in situationsCatalogue.GetRegisteredSituations())
                 {
-                    if (s.GetTokenId().StartsWith(wildcardToDelete))
+                    if (s.Verb.Id.StartsWith(wildcardToDelete))
                     {
                         s.Retire();
                         i++;
@@ -486,7 +486,7 @@ namespace Assets.CS.TabletopUI {
                 {
                     foreach (var s in situationsCatalogue.GetRegisteredSituations())
                     {
-                 if (s.GetTokenId() == toDeleteId.Trim())
+                 if (s.Verb.Id == toDeleteId.Trim())
                         {
                             s.Retire();
                             i++;
@@ -548,7 +548,7 @@ namespace Assets.CS.TabletopUI {
 					if (s.IsOpen)
 					{
 						Vector3 tgtPos = s.RestoreWindowPosition;
-		                s.OpenWindow( tgtPos );
+		                s.OpenAt( tgtPos );
 					}
 				}
 
@@ -663,9 +663,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
         }
 
-
-        #region -- Greedy Grabbing -------------------------------
-
+        
         public HashSet<TokenAndSlot> FillTheseSlotsWithFreeStacks(HashSet<TokenAndSlot> slotsToFill) {
             var unprocessedSlots = new HashSet<TokenAndSlot>();
 
@@ -771,55 +769,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             return slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay;
         }
 
-        private ElementStackToken FindStackForSlotSpecificationInSituations(SlotSpecification slotSpec, out SituationController sit) {
-            var rnd = new Random();
-
-            // Nothing on the table? Look at the Situations.
-            var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
-
-            // We grab output first
-            foreach (var controller in situationControllers) {
-                foreach (var stack in controller.GetOutputStacks().OrderBy(x=>rnd.Next())) {
-                    if (CanPullCardToGreedySlot(stack as ElementStackToken, slotSpec)) {
-                        sit = controller;
-                        return stack;
-                    }
-                }
-            }
-
-            // Nothing? Then We grab starting
-            foreach (var controller in situationControllers) {
-                foreach (var stack in controller.GetStartingStacks()) {
-                    if (CanPullCardToGreedySlot(stack as ElementStackToken, slotSpec)) {
-                        sit = controller;
-                        return stack;
-                    }
-                }
-            }
-
-            // Nothing? Then we grab ongoing
-            foreach (var controller in situationControllers.OrderBy(x => rnd.Next())) {
-                foreach (var slot in controller.GetOngoingSlots()) {
-                    if (slot.IsGreedy)
-                        continue; // Greedy? Don't grab.
-
-                    var stack = slot.GetElementStackInSlot();
-
-                    if (stack == null)
-                        continue; // Empty? Nothing to grab either
-
-                    if (CanPullCardToGreedySlot(stack as ElementStackToken, slotSpec)) {
-                        sit = controller;
-                        return stack;
-                    }
-                }
-            }
-
-            sit = null;
-            return null;
-        }
-
-#endregion
+     
 
 
 		public void CloseAllDetailsWindows()
@@ -885,15 +835,14 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
         public void DecayStacksInResults(float interval)
         {
-            var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
+            var situations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 
-            foreach (var s in situationControllers)
+            foreach (var s in situations)
             {
-                s.TryDecayContents(interval);
+                s.TryDecayOutputContents(interval);
             }
 
-            //foreach (var d in decayingStacks)
-              //  d.Decay(interval);
+
         }
 
 
@@ -1010,8 +959,8 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
             // Put card into the original Situation Results
 			mansusCard.lastTablePos = null;	// Flush last known desktop position so it's treated as brand new
-            mansusSituation.AddToResults(mansusCard, new Context(Context.ActionSource.PlayerDrag));
-            mansusSituation.AddNote(new Notification(string.Empty, mansusCard.IlluminateLibrarian.PopMansusJournalEntry()));
+            mansusSituation.AcceptStack(ContainerCategory.Output, mansusCard, new Context(Context.ActionSource.PlayerDrag));
+            mansusSituation.SendNotificationToSubscribers(new Notification(string.Empty, mansusCard.IlluminateLibrarian.PopMansusJournalEntry()));
             mansusSituation.OpenWindow();
 
             // insta setting back to last position before the mansus was transformed, but I don't like it. Feels jerky. - martin
@@ -1110,12 +1059,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 				var allSituations = Registry.Get<SituationsCatalogue>();
 				foreach (var s in allSituations.GetRegisteredSituations())
                 {
-                    var stacksInSituation = new List<ElementStackToken>();
-                    stacksInSituation.AddRange(s.GetStartingStacks());
-                    stacksInSituation.AddRange(s.GetOngoingStacks());
-                    stacksInSituation.AddRange(s.GetStoredStacks());
-                    stacksInSituation.AddRange(s.GetOutputStacks());
-
+                    var stacksInSituation = s.GetAllStacksInSituation();
                     foreach (var situationStack in stacksInSituation)
                     {
                         IAspectsDictionary stackAspects = situationStack.GetAspects();

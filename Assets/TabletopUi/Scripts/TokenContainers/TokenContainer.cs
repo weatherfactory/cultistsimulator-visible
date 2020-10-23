@@ -234,22 +234,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         /// <returns></returns>
         public AspectsDictionary GetTotalAspects(bool includingSelf = true)
         {
-            AspectsDictionary totals = new AspectsDictionary();
-
-            foreach (var elementCard in _stacks)
-            {
-                var aspects = elementCard.GetAspects(includingSelf);
-
-                foreach (string k in aspects.Keys)
-                {
-                    if (totals.ContainsKey(k))
-                        totals[k] += aspects[k];
-                    else
-                        totals.Add(k, aspects[k]);
-                }
-            }
-
-            return totals;
+           return AspectsDictionary.GetFromStacks(_stacks,includingSelf);
         }
 
 
@@ -258,7 +243,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return GetTotalElementsCount(x => true);
         }
 
-        public int GetTotalStacksCountWith(Func<ElementStackToken, bool> filter)
+        public int GetTotalStacksCountWithFilter(Func<ElementStackToken, bool> filter)
         {
 
             return _stacks.Count(filter);

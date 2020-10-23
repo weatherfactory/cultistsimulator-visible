@@ -96,6 +96,8 @@ namespace Assets.Core.Entities {
             AddContainer(newWindow.GetStorageContainer());
             AddContainer(newWindow.GetResultsContainer());
 
+            _window.OnWindowClosed.AddListener(Close);
+
         }
 
 
@@ -137,8 +139,6 @@ namespace Assets.Core.Entities {
             else
                 return new List<SlotSpecification>();
         }
-
-
 
 
         private void Reset()
@@ -308,6 +308,12 @@ namespace Assets.Core.Entities {
             }
 
             return response;
+        }
+
+        public void AcceptStack(ContainerCategory forContainerCategory, ElementStackToken stackToken, Context context)
+        {
+            var stackTokenList = new List<ElementStackToken> {stackToken};
+            AcceptStacks(forContainerCategory, stackTokenList, context);
         }
 
         public void AcceptStacks(ContainerCategory forContainerCategory, IEnumerable<ElementStackToken> stacks,
@@ -580,7 +586,7 @@ namespace Assets.Core.Entities {
 			}
     }
 
-    private void SendNotificationToSubscribers(INotification notification)
+    public void SendNotificationToSubscribers(INotification notification)
     {
         //Check for possible text refinements based on the aspects in context
         var aspectsInSituation = GetAspectsAvailableToSituation(true);
@@ -695,9 +701,8 @@ namespace Assets.Core.Entities {
 
         public void Close()
     {
-        _window.TryDumpAllStartingCardsToDesktop();
+        DumpThresholdStacks();
         _window.Hide();
-
         _anchor.DisplayAsClosed();
     }
 
@@ -746,34 +751,100 @@ namespace Assets.Core.Entities {
                 possibleIncumbent.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
             }
 
-              return  thresholdContainer.TryAcceptStackAsThreshold(stack);
+            return  thresholdContainer.TryAcceptStackAsThreshold(stack);
 
         }
 
-
-        bool PushDraggedStackIntoStartingSlots(ElementStackToken stack)
+        private void ContainerContentsUpdated()
         {
-            if (HasSuitableStartingSlot(stack) == false)
-                return false;
+            SituationEventData data = SituationEventData.Create(this);
 
-            var win = situationWindow as SituationWindow;
-            var primarySlot = win.GetPrimarySlot();
+            foreach (var s in subscribers)
+                s.ContainerContentsUpdated(data);
 
-            return PushDraggedStackIntoSlot(stack, primarySlot);
         }
 
-        bool PushDraggedStackIntoOngoingSlot(ElementStackToken stack)
+        public void DumpThresholdStacks()
         {
-            if (HasEmptyOngoingSlot(stack) == false)
-                return false;
+            var slotted = GetStacks(ContainerCategory.Threshold);
+            foreach (var item in slotted)
+                item.ReturnToTabletop(new Context(Context.ActionSource.PlayerDumpAll));
 
-            var ongoingSlots = situationWindowAsStorage.GetOngoingSlots();
+            Reset();
 
-            return PushDraggedStackIntoSlot(stack, ongoingSlots[0]);
+ 
         }
 
+        public void DumpOutputStacks()
+        {
+            var results = GetStacks(ContainerCategory.Output);
+            foreach (var item in results)
+                item.ReturnToTabletop(new Context(Context.ActionSource.PlayerDumpAll));
+            
+            Reset();
+
+            // Only play collect all if there's actually something to collect 
+            // Only play collect all if it's not transient - cause that will retire it and play the retire sound
+            // Note: If we collect all from the window we also get the default button sound in any case.
+            if (results.Any())
+                SoundManager.PlaySfx("SituationCollectAll");
+            else if (_anchor.Durability == AnchorDurability.Transient)
+                SoundManager.PlaySfx("SituationTokenRetire");
+            else
+                SoundManager.PlaySfx("UIButtonClick");
+        }
+
+        public void TryDecayOutputContents( float interval)
+        {
+            var stacksToDecay = GetStacks(ContainerCategory.Output);
+            foreach (var s in stacksToDecay)
+                s.Decay(interval);
+        }
+
+        public void AttemptActivateRecipe()
+        {
 
 
+            if (State != SituationState.Unstarted)
+                return;
+
+            var aspects = GetAspectsAvailableToSituation(true);
+            var tabletopManager = Registry.Get<TabletopManager>();
+            var aspectsInContext = tabletopManager.GetAspectsInContext(aspects);
+
+
+            var recipe = Registry.Get<Compendium>().GetFirstMatchingRecipe(aspectsInContext, Verb.Id, Registry.Get<Character>(), false);
+
+            //no recipe found? get outta here
+            if (recipe == null)
+                return;
+
+            //kick off the situation. We want to do this first, so that modifying the stacks next won't cause the window to react
+            //as if we're removing items from an unstarted situation
+            StartRecipe(recipe);
+
+            // Play the SFX here (not in the clock) so it is only played when we manually start
+            SoundManager.PlaySfx("SituationBegin");
+
+            //called here in case starting slots trigger consumption
+            foreach(var t in GetContainersByCategory(ContainerCategory.Threshold))
+                t.ActivatePreRecipeExecutionBehaviour();
+
+            AcceptStacks(ContainerCategory.SituationStorage,GetStacks(ContainerCategory.Threshold));
+
+            //The game might be paused! or the player might just be incredibly quick off the mark
+            //so immediately continue with a 0 interval - this won't advance time, but will update the visuals in the situation window
+            //(which among other things should make the starting slot unavailable
+
+            RecipeConductor rc = new RecipeConductor(Registry.Get<ICompendium>(),
+                aspectsInContext, Registry.Get<IDice>(), Registry.Get<Character>()); //reusing the aspectsInContext from above
+
+            Continue(rc, 0);
+
+   
+        }
+
+ 
     }
 
 }

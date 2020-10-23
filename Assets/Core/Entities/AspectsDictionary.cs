@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Text;
+using Assets.CS.TabletopUI;
 
 namespace Assets.Core
 {
@@ -21,6 +22,28 @@ namespace Assets.Core
     {
         public AspectsDictionary():this(new Dictionary<string, int>())
         { }
+
+        public static AspectsDictionary GetFromStacks(IEnumerable<ElementStackToken> stacks,bool includingSelf=true)
+        {
+            AspectsDictionary totals = new AspectsDictionary();
+
+            foreach (var elementCard in stacks)
+            {
+                var aspects = elementCard.GetAspects(includingSelf);
+
+                foreach (string k in aspects.Keys)
+                {
+                    if (totals.ContainsKey(k))
+                        totals[k] += aspects[k];
+                    else
+                        totals.Add(k, aspects[k]);
+                }
+            }
+
+            return totals;
+
+        }
+
 
         public AspectsDictionary(Dictionary<string, int> aspectsAsDictionary)
         {
