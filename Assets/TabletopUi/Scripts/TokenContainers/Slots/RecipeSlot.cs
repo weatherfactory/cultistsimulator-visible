@@ -347,32 +347,9 @@ namespace Assets.CS.TabletopUI {
             Registry.Get<INotifier>().ShowSlotDetails(GoverningSlotSpecification, highlightGreedy, highlightConsumes);
 
         }
-        /// <summary>
-        ///  </summary>
-        /// <param name="element"></param>
-        /// <param name="maxToPurge"></param>
-        /// <param name="context"></param>
-        /// <returns>count of elements purged</returns>
-        public int TryPurgeElement(Element element, int maxToPurge)
-        {
-            if (maxToPurge <= 0)
-                return 0;
-
-            var stackInSlot = GetElementStackInSlot();
-            if (stackInSlot == null)
-                return 0;
-            //passing in maxToPurge just in case we someday want stacks in slots
-            if (!stackInSlot.Defunct && stackInSlot.GetAspects().ContainsKey(element.Id)) 
-            {
-                int originalQuantity = stackInSlot.Quantity;
-                stackInSlot.ModifyQuantity(-maxToPurge, new Context(Context.ActionSource.Purge));
-                return originalQuantity;
-            }
-
-            return 0;
 
         }
 
 
-    }
+    
 }

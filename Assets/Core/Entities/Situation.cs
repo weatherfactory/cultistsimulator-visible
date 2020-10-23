@@ -185,7 +185,7 @@ namespace Assets.Core.Entities {
             return _containers.Where(c => c.ContainerCategory == category);
         }
 
-        private TokenContainer GetContainerByCategory(ContainerCategory category)
+        private TokenContainer GetSingleContainerByCategory(ContainerCategory category)
         {
             try
             {
@@ -310,6 +310,31 @@ namespace Assets.Core.Entities {
             return response;
         }
 
+        public int TryPurgeStacks(Element elementToPurge, int maxToPurge)
+        {
+            
+            var containersToPurge = GetContainersByCategory(ContainerCategory.Threshold).ToList();
+
+            containersToPurge.Reverse(); //I couldn't remember why I put this - but I think it must have been to start with the final slot, so we don't dump everything by purging the primary slot.
+
+ 
+            containersToPurge.AddRange(GetContainersByCategory(ContainerCategory.Output));
+
+ 
+            foreach (var container in containersToPurge)
+            {
+                if (maxToPurge <= 0)
+                    return maxToPurge;
+                else
+                    maxToPurge -= container.TryPurgeStacks(elementToPurge, maxToPurge);
+            }
+
+            return maxToPurge;
+
+
+
+        }
+
         public void AcceptStack(ContainerCategory forContainerCategory, ElementStackToken stackToken, Context context)
         {
             var stackTokenList = new List<ElementStackToken> {stackToken};
@@ -319,7 +344,7 @@ namespace Assets.Core.Entities {
         public void AcceptStacks(ContainerCategory forContainerCategory, IEnumerable<ElementStackToken> stacks,
             Context context)
         {
-            var acceptingContainer = GetContainerByCategory(forContainerCategory);
+            var acceptingContainer = GetSingleContainerByCategory(forContainerCategory);
             acceptingContainer.AcceptStacks(stacks, context);
         }
 
@@ -404,7 +429,7 @@ namespace Assets.Core.Entities {
             SituationEventData d = SituationEventData.Create(this);
 
 
-            var storageContainer = GetContainerByCategory(ContainerCategory.SituationStorage);
+            var storageContainer = GetSingleContainerByCategory(ContainerCategory.SituationStorage);
             storageContainer.AcceptStacks(GetStacks(ContainerCategory.Threshold),
                 new Context(Context.ActionSource.SituationStoreStacks));
 
@@ -478,7 +503,7 @@ namespace Assets.Core.Entities {
 
             //move any elements currently in OngoingSlots to situation storage
             //NB we're doing this *before* we execute the command - the command may affect these elements too
-            GetContainerByCategory(ContainerCategory.SituationStorage).AcceptStacks(
+            GetSingleContainerByCategory(ContainerCategory.SituationStorage).AcceptStacks(
                 GetStacks(ContainerCategory.Threshold), new Context(Context.ActionSource.SituationStoreStacks));
 
 
@@ -492,12 +517,12 @@ namespace Assets.Core.Entities {
                 {
                     Registry.Get<Character>().AddExecutionsToHistory(ec.Recipe.Id, 1); //can we make 
                     var executor = new SituationEffectExecutor(Registry.Get<TabletopManager>());
-                    executor.RunEffects(ec, GetContainerByCategory(ContainerCategory.SituationStorage), Registry.Get<Character>(), Registry.Get<IDice>());
+                    executor.RunEffects(ec, GetSingleContainerByCategory(ContainerCategory.SituationStorage), Registry.Get<Character>(), Registry.Get<IDice>());
 
                     if (!string.IsNullOrEmpty(ec.Recipe.Ending))
                     {
                         var ending = Registry.Get<ICompendium>().GetEntityById<Ending>(ec.Recipe.Ending);
-                        Registry.Get<TabletopManager>() .EndGame(ending, this); //again, ttm (or successor) is subscribed. We should do it through there.
+                        Registry.Get<TabletopManager>() .EndGame(ending, this._anchor); //again, ttm (or successor) is subscribed. We should do it through there.
                     }
                     
                     

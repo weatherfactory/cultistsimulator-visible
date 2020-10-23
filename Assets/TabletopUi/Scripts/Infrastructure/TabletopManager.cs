@@ -384,41 +384,25 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void PurgeElement(string elementId, int maxToPurge)
+        public int PurgeElement(string elementId, int maxToPurge)
         {
             var compendium = Registry.Get<ICompendium>();
 
-            Element purgedElement = compendium.GetEntityById<Element>(elementId);
-            //I don't think MaxToPurge is being usefully decremented here - should return int
-
-           _tabletop.PurgeElement(purgedElement, maxToPurge);
+            Element elementToPurge = compendium.GetEntityById<Element>(elementId);
+            
+          maxToPurge-=_tabletop.TryPurgeStacks(elementToPurge, maxToPurge);
 
            var situationsCatalogue = Registry.Get<SituationsCatalogue>();
            foreach (var s in situationsCatalogue.GetRegisteredSituations())
            {
+               if (maxToPurge <= 0)
+                   return maxToPurge;
+               else
+                    maxToPurge -= s.TryPurgeStacks(elementToPurge, maxToPurge);
 
-               if (s.State == SituationState.Unstarted)
-               {
-                   var slotsToTryPurge = new List<RecipeSlot>(s.situationWindow.GetStartingSlots());
-
-                   slotsToTryPurge.Reverse();
-                   foreach (var slot in slotsToTryPurge)
-                       slot.TryPurgeElement(purgedElement, maxToPurge);
-               }
-               //If the situation has finished, purge any matching elements in the results.
-                else if (s.State==SituationState.Complete)
-                { 
-                   s.situationWindow.GetResultsContainer()
-                       .PurgeElement(purgedElement, maxToPurge);
-
-                }
-                else
-                 {
-                   //if the situation is still ongoing, any elements actually inside it are protected. However, elements in the slot are not protected.
-                   s.situationWindow.GetOngoingSlots().FirstOrDefault()
-                       ?.TryPurgeElement(purgedElement, maxToPurge);
-                 }
            }
+
+           return maxToPurge;
         }
 
         public void HaltVerb(string toHaltId, int maxToHalt)
@@ -498,7 +482,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public async void EndGame(Ending ending, Situation endingSituation)
+        public async void EndGame(Ending ending, ISituationAnchor _anchor)
 		{
 			NoonUtility.Log("TabletopManager.EndGame()");
 
@@ -516,9 +500,7 @@ namespace Assets.CS.TabletopUI {
             var result = await saveTask;
 
         
-
-            
-            _endGameAnimController.TriggerEnd((VerbAnchor)endingSituation.situationAnchor, ending);
+            _endGameAnimController.TriggerEnd(_anchor, ending);
         }
 
 
@@ -545,10 +527,9 @@ namespace Assets.CS.TabletopUI {
 				var allSituationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 	            foreach (var s in allSituationControllers)
 				{
-					if (s.IsOpen)
+					if (s.IsOpen())
 					{
-						Vector3 tgtPos = s.RestoreWindowPosition;
-		                s.OpenAt( tgtPos );
+					s.OpenAtCurrentLocation();
 					}
 				}
 
@@ -792,7 +773,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
         public bool IsSituationWindowOpen() {
 	        var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
-	        return situationControllers.Any(c => c.IsOpen);
+	        return situationControllers.Any(c => c.IsOpen());
         }
 
         public void SetHighlightedElement(string elementId, int quantity = 1)
@@ -961,7 +942,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 			mansusCard.lastTablePos = null;	// Flush last known desktop position so it's treated as brand new
             mansusSituation.AcceptStack(ContainerCategory.Output, mansusCard, new Context(Context.ActionSource.PlayerDrag));
             mansusSituation.SendNotificationToSubscribers(new Notification(string.Empty, mansusCard.IlluminateLibrarian.PopMansusJournalEntry()));
-            mansusSituation.OpenWindow();
+            mansusSituation.OpenAtCurrentLocation();
 
             // insta setting back to last position before the mansus was transformed, but I don't like it. Feels jerky. - martin
 			//tableScroll.content.anchoredPosition = preMansusTabletopPos;

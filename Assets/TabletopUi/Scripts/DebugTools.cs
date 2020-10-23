@@ -325,14 +325,7 @@ public class DebugTools : MonoBehaviour,ITokenObserver
 
     void RemoveItem(string itemId)
     {
-        //do we have an inactive empty verb with this id?
-       var possibleEmptyVerb= Registry.Get<SituationsCatalogue>().GetRegisteredSituations().FirstOrDefault(s => s.situationAnchor.EntityId==itemId);
-        if(possibleEmptyVerb!=null)
-        { if(!possibleEmptyVerb.situationWindow.GetOutputStacks().Any() && !possibleEmptyVerb.IsOngoing)
-            possibleEmptyVerb.Retire();
-        }
-        else
-        tabletop.ModifyElementQuantity(itemId, -1, Source.Existing(), new Context(Context.ActionSource.Debug));
+throw new NotImplementedException();
     }
 
     void BeginSituation(string recipeId)
@@ -461,9 +454,8 @@ public class DebugTools : MonoBehaviour,ITokenObserver
         
         // Get us a random situation that killed us!
         var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
-        var deathSit = situationControllers[UnityEngine.Random.Range(0, situationControllers.Count)];
-
-        Registry.Get<TabletopManager>().EndGame(ending, deathSit);
+        
+    throw new NotImplementedException();
     }
 
     public void LoadGame()

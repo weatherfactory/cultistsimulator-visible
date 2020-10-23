@@ -21,8 +21,8 @@ namespace Assets.TabletopUi.SlotsContainers {
 
         protected RecipeSlot primarySlot;
 
-        public override void Initialise(IVerb verb) {
-            base.Initialise(verb);
+        public override void Initialise(IVerb verb,SituationWindow window) {
+            base.Initialise(verb,window);
             
             var primarySlotSpecification = verb.Slot;
             if(primarySlotSpecification!=null)
@@ -45,17 +45,14 @@ namespace Assets.TabletopUi.SlotsContainers {
             }
         }
 
-        public override void RespondToStackAdded(RecipeSlot slot, ElementStackToken stack, Context context) {
+        //currently, nothing fires this
+        public void RespondToStackAdded(RecipeSlot slot, ElementStackToken stack, Context context) {
 
 
-            situationController.StartingSlotsUpdated();
-            situationController.TryResizeWindow(GetAllSlots().Count);
-            public void TryResizeWindow(int slotsCount)
-            {
-                situationWindow.SetWindowSize(slotsCount > 3);
-            }
+            _window.TryResizeWindow(GetAllSlots().Count);
+           
 
-            if (slot.IsPrimarySlot() && stack.HasChildSlotsForVerb(situationController.GetTokenId()))
+            if (slot.IsPrimarySlot() && stack.HasChildSlotsForVerb(_verb.Id))
                 AddSlotsForStack(stack, slot);
 
             ArrangeSlots();
@@ -65,7 +62,7 @@ namespace Assets.TabletopUi.SlotsContainers {
 
         protected void AddSlotsForStack(ElementStackToken stack, RecipeSlot parentSlot) {
 
-            foreach (var childSlotSpecification in stack.GetChildSlotSpecificationsForVerb(situationController.GetTokenId()))
+            foreach (var childSlotSpecification in stack.GetChildSlotSpecificationsForVerb(_verb.Id))
             {
                 var slot = BuildSlot("childslot of " + stack.EntityId, childSlotSpecification, parentSlot);
                 parentSlot.childSlots.Add(slot);
@@ -74,7 +71,7 @@ namespace Assets.TabletopUi.SlotsContainers {
 
         public override void RespondToStackRemoved(ElementStackToken stack, Context context) {
             // startingSlots updated may resize window
-            situationController.StartingSlotsUpdated();
+            
 
             // Only update the slots if we're doing this manually, otherwise don't
             // Addendum: We also do this when retiring a card - Martin
@@ -82,7 +79,6 @@ namespace Assets.TabletopUi.SlotsContainers {
                 RemoveAnyChildSlotsWithEmptyParent(context);
 
             ArrangeSlots();
-            situationController.StartingSlotsUpdated();
 
         }
 
@@ -100,7 +96,6 @@ namespace Assets.TabletopUi.SlotsContainers {
                 }
             }
 
-            situationController.StartingSlotsUpdated();
         }
 
         protected override RecipeSlot BuildSlot(string slotName, SlotSpecification slotSpecification, RecipeSlot parentSlot, bool wideLabel = false) {

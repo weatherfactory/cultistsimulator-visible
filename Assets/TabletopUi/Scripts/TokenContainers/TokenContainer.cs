@@ -261,7 +261,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         }
 
-        public int PurgeElement(Element element, int maxToPurge)
+
+
+        public int TryPurgeStacks(Element element, int maxToPurge)
         {
 
             if (string.IsNullOrEmpty(element.DecayTo))

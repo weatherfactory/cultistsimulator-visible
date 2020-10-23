@@ -59,7 +59,11 @@ namespace Assets.CS.TabletopUI {
 		[SerializeField] Button startButton;
 		[SerializeField] TextMeshProUGUI startButtonText;
 
+        public UnityEvent OnStartButtonClicked;
+        public UnityEvent OnCollectButtonClicked;
         public UnityEvent OnWindowClosed;
+
+        public TokenLocation LastOpenLocation;
 
         private IVerb Verb;
         private bool windowIsWide = false;
@@ -83,20 +87,15 @@ namespace Assets.CS.TabletopUI {
         void OnEnable()
         {
 
-                startButton.onClick.AddListener(HandleStartButton);
-
-            dumpResultsButton.onClick.AddListener(DumpAllResultingCardsToDesktop);
-
+          
             buttonDefault = "VERB_START";
 			buttonBusy = "VERB_RUNNING";
         }
 
-		void OnDisable() {
-			startButton.onClick.RemoveListener(HandleStartButton);
-            dumpResultsButton.onClick.RemoveListener(DumpAllResultingCardsToDesktop);
+        public void TryResizeWindow(int slotsCount)
+        {
+            SetWindowSize(slotsCount > 3);
         }
-
-
         public void DisplayIcon(string icon)
         {
             Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(icon);
@@ -119,8 +118,8 @@ namespace Assets.CS.TabletopUI {
 
 
 
-            startingSlots.Initialise(Verb);
-            ongoing.Initialise(Verb);
+            startingSlots.Initialise(Verb,this);
+            ongoing.Initialise(Verb,this);
             results.Initialise();
 		}
 
@@ -328,10 +327,6 @@ namespace Assets.CS.TabletopUI {
 
         // ACTIONS
 
-        void HandleStartButton() {
-            situationController.AttemptActivateRecipe();
-        }
-
         
         public IEnumerable<ElementStackToken> GetStartingStacks() {
             return startingSlots.GetStacksInSlots();
@@ -344,11 +339,6 @@ namespace Assets.CS.TabletopUI {
         public IEnumerable<ElementStackToken> GetStoredStacks() {
             return storage.GetStacks();
         }
-
-        public IEnumerable<ElementStackToken> GetOutputStacks() {
-            return results.GetOutputStacks();
-        }
-
 
 
 

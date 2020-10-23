@@ -12,23 +12,27 @@ using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
-
+using UnityEditor.PackageManager.UI;
 
 
 public abstract class AbstractSlotsManager : MonoBehaviour {
 
     
     protected List<RecipeSlot> validSlots;
-
+    protected SituationWindow _window;
+    protected IVerb _verb;
     
 
-    public virtual void Initialise(IVerb verb)
+    public virtual void Initialise(IVerb verb,SituationWindow window)
     {
+        //move this into SituationWindow
         
         var children = GetComponentsInChildren<RecipeSlot>();
         var allSlots = new List<RecipeSlot>(children);
          validSlots = new List<RecipeSlot>(allSlots.Where(rs => rs.Defunct == false && rs.GoverningSlotSpecification!=null));
-   
+         _window = window;
+         _verb = verb;
+
     }
 
     public virtual IList<RecipeSlot> GetAllSlots() {
@@ -42,7 +46,8 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         return slotToReturn;
     }
 
-    protected virtual RecipeSlot BuildSlot(string slotName, SlotSpecification slotSpecification, RecipeSlot parentSlot, bool wideLabel = false) {
+    protected virtual RecipeSlot BuildSlot(string slotName, SlotSpecification slotSpecification, RecipeSlot parentSlot, bool wideLabel = false)
+    {
         var slot = Registry.Get<PrefabFactory>().CreateLocally<RecipeSlot>(transform);
 
         slot.name = slotName + (slotSpecification != null ? " - " + slotSpecification.Id : "");
@@ -65,6 +70,7 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
     public abstract void RespondToStackRemoved(ElementStackToken stack, Context context);
 
     public abstract void RespondToStackAdded(RecipeSlot slot, ElementStackToken stack, Context context);
+
 
     /// <summary>
     /// 

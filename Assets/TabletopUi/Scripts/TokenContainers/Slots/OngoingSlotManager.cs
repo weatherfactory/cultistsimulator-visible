@@ -26,9 +26,9 @@ namespace Assets.CS.TabletopUI {
 
         [SerializeField] DeckEffectView[] deckEffectViews; 
 
-        public override void Initialise(IVerb verb)
+        public override void Initialise(IVerb verb,SituationWindow window)
 		{
-            base.Initialise(verb);
+            base.Initialise(verb,window);
             ongoingSlot = BuildSlot("ongoing", null, null, true);
             SetSlotToPos();
         }
@@ -54,15 +54,15 @@ namespace Assets.CS.TabletopUI {
             ongoingSlot.gameObject.SetActive(slotSpec != null);
             ongoingSlot.Initialise(slotSpec);
         }
-
-        public override void RespondToStackAdded(RecipeSlot slot, ElementStackToken stack, Context context) {
-            situationController.OngoingSlotsOrStorageUpdated();
+        public override void RespondToStackAdded(RecipeSlot slot, ElementStackToken stack, Context context)
+        {
+           
         }
 
-        public override void RespondToStackRemoved(ElementStackToken stack, Context context) {
-            situationController.OngoingSlotsOrStorageUpdated();
+        public override void RespondToStackRemoved(ElementStackToken stack, Context context)
+        {
+            
         }
-
 
 
         public void UpdateTime(float duration, float timeRemaining, EndingFlavour forEndingFlavour)
