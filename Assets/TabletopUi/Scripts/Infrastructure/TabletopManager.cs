@@ -222,8 +222,6 @@ namespace Assets.CS.TabletopUI {
         /// </summary>
         private void LoadExistingGame(SourceForGameState source)
         {
-
-
             var saveGameManager =
                 new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
             bool isSaveCorrupted = false;
@@ -241,8 +239,6 @@ namespace Assets.CS.TabletopUI {
             }
 
             LoadGame(source);
-
-
 
             if (!shouldContinueGame || isSaveCorrupted)
             {

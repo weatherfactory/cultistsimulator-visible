@@ -21,10 +21,12 @@ using UnityEngine;
 public class FontStyle
 {
 	public LanguageManager.eFontStyle fontStyle;
-	public TMP_FontAsset	fontCJK;	// centralized font asset list for Chinese/Japanese/Korean lang (common ideographs)
+	public TMP_FontAsset	fontCJK;	// centralized font asset list for Chinese/Japanese/Korean lang (common ideographs) - but we don't use it for Japanese, because some characters are subtly different.
+    public TMP_FontAsset fontJP;// Specifically Japanese fonts
     public TMP_FontAsset	fontRu;		// for RU - cyrillic langs
     public TMP_FontAsset	fontEn;		// for all other latin/germanic langs
-	public Material			fontMaterial;
+    public TMP_FontAsset fontX;
+    public Material			fontMaterial;
 };
 
 public interface ILocStringProvider
@@ -130,7 +132,12 @@ public class LanguageManager : MonoBehaviour,ILocStringProvider
                     return fontStyles[style].fontCJK;
                 break;
 
-            case "cyrillic":
+            case "jp":
+                if (fontStyles[style].fontJP != null)
+                    return fontStyles[style].fontJP;
+                break;
+
+            case "cyrillic":
                 if (fontStyles[style].fontRu != null)
                     return fontStyles[style].fontRu;
                 break;
@@ -142,7 +149,7 @@ public class LanguageManager : MonoBehaviour,ILocStringProvider
 
 			default: // fall thru for all other languages; add additional cases if nec.
                 if (fontStyles[style].fontEn != null)
-                    return fontStyles[style].fontEn;
+                    return fontStyles[style].fontX;
                 break;
         }
 		return null;

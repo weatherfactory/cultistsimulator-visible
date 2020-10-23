@@ -78,6 +78,10 @@ namespace Assets.TabletopUi.Scripts.Services
 
         private void Initialise()
         {
+            try
+            {
+
+            
             // force invariant culture to fix Linux save file issues
             System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
 
@@ -166,7 +170,13 @@ namespace Assets.TabletopUi.Scripts.Services
             //finally, load the first scene and get the ball rolling.
             stageHand.LoadFirstScene(Registry.Get<Config>().skiplogo);
 
-
+            }
+            catch (Exception e)
+            {
+                NoonUtility.LogException(e);
+                stageHand.LoadInfoScene();
+                
+            }
         }
 
         private void LoadCurrentSaveOrCreateNewCharacter(Registry registry)
