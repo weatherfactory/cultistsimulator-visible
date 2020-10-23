@@ -212,17 +212,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ElementFrame: {fileID: 114000012559859656, guid: b61b75a0ff5f8434fb2f202cca9514bb,
     type: 3}
-  VerbAnchor: {fileID: 114000011782136268, guid: 96f241c6dc7c1460ba6333216ddca33b,
-    type: 3}
+  SituationToken: {fileID: 0}
   ElementStackToken: {fileID: 114000012247175884, guid: 6956a1f4fac3a4786a39778dc3cd2f8b,
-    type: 3}
-  CardManifestation: {fileID: 1948377804298620470, guid: 5639b0e91525fcd49a44b2b5a698e9ba,
-    type: 3}
-  DropzoneManifestation: {fileID: 323380861675452517, guid: 1156e72892331c64397bcd330e4ea6c6,
-    type: 3}
-  MinimalManifestation: {fileID: 237947359040070189, guid: db8ea07c7f085e54bbabfd0089b46a40,
-    type: 3}
-  VerbManifestation: {fileID: 1717203996559423667, guid: 940b98e353b7f404a8f491b507b88cfb,
     type: 3}
   SituationWindow: {fileID: 114020662237663214, guid: deb00c042628c48cfa9eef03d318a4ba,
     type: 3}
@@ -230,6 +221,8 @@ MonoBehaviour:
     type: 3}
   NotificationWindow: {fileID: 114000014022297626, guid: 24926ddfbbe311e45a08a5a61eab67b8,
     type: 3}
+  DropZoneToken: {fileID: 0}
+  TabletopManager: {fileID: 0}
 --- !u!1 &16260490
 GameObject:
   m_ObjectHideFlags: 0
@@ -2121,23 +2114,31 @@ MonoBehaviour:
   fontStyles:
   - fontStyle: 0
     fontCJK: {fileID: 11400000, guid: b0ec15a0d10613542af979becdf390ed, type: 2}
+    fontJP: {fileID: 11400000, guid: cd905fd1f94d2cd468bf33d4424f9ced, type: 2}
     fontRu: {fileID: 11400000, guid: a66e82af3d2e04f30841a932250fed53, type: 2}
     fontEn: {fileID: 11400000, guid: 924035b7778230945bf7c1c414c6a332, type: 2}
+    fontX: {fileID: 11400000, guid: e06c358705b661140a592dd0a6417f6e, type: 2}
     fontMaterial: {fileID: 0}
   - fontStyle: 1
     fontCJK: {fileID: 11400000, guid: b0ec15a0d10613542af979becdf390ed, type: 2}
+    fontJP: {fileID: 11400000, guid: cd905fd1f94d2cd468bf33d4424f9ced, type: 2}
     fontRu: {fileID: 11400000, guid: a66e82af3d2e04f30841a932250fed53, type: 2}
     fontEn: {fileID: 11400000, guid: 924035b7778230945bf7c1c414c6a332, type: 2}
+    fontX: {fileID: 11400000, guid: e06c358705b661140a592dd0a6417f6e, type: 2}
     fontMaterial: {fileID: 0}
   - fontStyle: 2
     fontCJK: {fileID: 11400000, guid: b0ec15a0d10613542af979becdf390ed, type: 2}
+    fontJP: {fileID: 11400000, guid: cd905fd1f94d2cd468bf33d4424f9ced, type: 2}
     fontRu: {fileID: 11400000, guid: a66e82af3d2e04f30841a932250fed53, type: 2}
     fontEn: {fileID: 11400000, guid: b925783294fd8cb49862e058e1931f2b, type: 2}
+    fontX: {fileID: 11400000, guid: e06c358705b661140a592dd0a6417f6e, type: 2}
     fontMaterial: {fileID: 0}
   - fontStyle: 3
     fontCJK: {fileID: 11400000, guid: b0ec15a0d10613542af979becdf390ed, type: 2}
+    fontJP: {fileID: 11400000, guid: cd905fd1f94d2cd468bf33d4424f9ced, type: 2}
     fontRu: {fileID: 11400000, guid: a66e82af3d2e04f30841a932250fed53, type: 2}
     fontEn: {fileID: 11400000, guid: b4be5994744ee7349a5a22b91cb7f1f4, type: 2}
+    fontX: {fileID: 11400000, guid: e06c358705b661140a592dd0a6417f6e, type: 2}
     fontMaterial: {fileID: 0}
 --- !u!4 &91402278
 Transform:
@@ -11845,10 +11846,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   languageManager: {fileID: 91402277}
   stageHand: {fileID: 1768733093}
-  prefabFactory: {fileID: 661}
   concursum: {fileID: 1256507083}
   SecretHistory: {fileID: 1477282972}
-  Character: {fileID: 1727400817}
   screenResolutionAdapter: {fileID: 1955269523}
   graphicsSettingsAdapter: {fileID: 1393924172}
   windowSettingsAdapter: {fileID: 1966314239}
@@ -29996,6 +29995,7 @@ MonoBehaviour:
   LogMessageEntryPrefab: {fileID: 4723071585633626973, guid: 15cff9d1631ac354aba986322f0bc3f9,
     type: 3}
   logMessageEntriesHere: {fileID: 470808504}
+  canvasGroup: {fileID: 0}
   canvas: {fileID: 361750801}
 --- !u!1 &1486001718
 GameObject:
