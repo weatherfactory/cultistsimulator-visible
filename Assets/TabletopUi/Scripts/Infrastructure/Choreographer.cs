@@ -432,7 +432,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             //if new situation is beginning with an existing verb: do not action the creation.
             //oh: I could have an scc property which is a MUST CREATE override
 
-            SituationController existingSituation;
+            Situation existingSituation;
             var sitToken = scc.SourceToken as VerbAnchor;
 
             if (sitToken != null && sitToken.EntityId==scc.Recipe.ActionId) { 
@@ -446,7 +446,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             //grabbing existingtoken: just in case some day I want to, e.g., add additional tokens to an ongoing one rather than silently fail the attempt.
             if (existingSituation != null) {
-                if (existingSituation.Situation.State == SituationState.Complete && existingSituation.situationAnchor.Durability==AnchorDurability.Transient) {
+                if (existingSituation.State == SituationState.Complete && existingSituation.situationAnchor.Durability==AnchorDurability.Transient) {
                     //verb exists already, but it's completed. We don't want to block new temp verbs executing if the old one is complete, because
                     //otherwise there's an exploit to, e.g., leave hazard finished but unresolved to block new ones appearing.
                     //So nothing happens in this branch except logging.
@@ -510,7 +510,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public void MoveElementToSituationSlot(ElementStackToken stack, TokenAndSlot tokenSlotPair, Action<ElementStackToken, TokenAndSlot> callOnAnimDone, float durationOverride = -1.0f)
 		{
             var startPos = stack.rectTransform.anchoredPosition3D;
-            var endPos = tokenSlotPair.Token.GetOngoingSlotPosition();
+            var endPos = tokenSlotPair.Token.GetTargetContainerPosition();
             float distance = Vector3.Distance(startPos, endPos);
             float duration = durationOverride>0.0f ? durationOverride : Mathf.Max(0.3f, distance * 0.001f);
 

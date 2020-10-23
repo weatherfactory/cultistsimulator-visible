@@ -129,18 +129,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         /// I think it probably shouldn't be
         /// </summary>
         /// <returns></returns>
-        private Hashtable GetHashTableForSituations(IEnumerable<SituationController> situationControllers)
+        private Hashtable GetHashTableForSituations(IEnumerable<Situation> situationControllers)
         {
 
             var htSituations = new Hashtable();
-            foreach (var s in situationControllers)
-            {
-				if (s.situationAnchor != null && s.situationAnchor.SaveLocationInfo != null)
-				{
-					var htSituationProperties = s.GetSaveData();
-					htSituations.Add(s.situationAnchor.SaveLocationInfo, htSituationProperties);
-				}
-            }
+    //        foreach (var s in situationControllers)
+    //        {
+				//if (s.situationAnchor != null && s.situationAnchor.SaveLocationInfo != null)
+				//{
+				//	var htSituationProperties = s.GetSaveData();
+				//	htSituations.Add(s.situationAnchor.SaveLocationInfo, htSituationProperties);
+				//}
+    //        }
             return htSituations;
         }
         /// <summary>
@@ -243,7 +243,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-		public void AnalyticsReport( bool success, MetaInfo metaInfo, Character character,IEnumerable<ElementStackToken> stacks, IEnumerable<SituationController> situationControllers,IEnumerable<DeckInstance> deckInstances )
+		public void AnalyticsReport( bool success, MetaInfo metaInfo, Character character,IEnumerable<ElementStackToken> stacks, IEnumerable<Situation> situationControllers,IEnumerable<DeckInstance> deckInstances )
 		{
 			// Report very basic info	- success/failure (so we can measure failure %)
 			//							- Data counts so we can see what is going missing (0 == empty, -1 == null ref)

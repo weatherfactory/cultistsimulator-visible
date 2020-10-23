@@ -566,29 +566,6 @@ namespace Assets.CS.TabletopUI {
         }
         
 
-		private List<TabletopUi.TokenAndSlot> FindValidSlot( IList<RecipeSlot> slots, TabletopUi.SituationController situation )
-		{
-			List<TabletopUi.TokenAndSlot> results = new List<TabletopUi.TokenAndSlot>();
-
-			foreach (RecipeSlot slot in slots)
-			{
-				if (!slot.IsGreedy &&
-					slot.GetTokenInSlot() == null &&
-					slot.GetMatchForStack(this).MatchType == SlotMatchForAspectsType.Okay)
-				{
-					// Create token/slot pair
-					var tokenSlotPair = new TabletopUi.TokenAndSlot()
-					{
-						Token = situation.situationAnchor as VerbAnchor,
-						Threshold = slot as RecipeSlot
-					};
-
-					results.Add( tokenSlotPair );
-				}
-			}
-			return results;
-		}
-
 		private void SendStackToNearestValidSlot()
 		{
 			if (TabletopManager.IsInMansus())	// Prevent SendTo while in Mansus
@@ -597,56 +574,49 @@ namespace Assets.CS.TabletopUI {
 				return;
 
 			// Compile list of valid slots
-			List<TabletopUi.TokenAndSlot> targetSlots = new List<TabletopUi.TokenAndSlot>();
+			List<TokenContainer> candidateThresholds = new List<TokenContainer>();
 			var registeredSituations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 			foreach(Situation situation in registeredSituations)
-			{
-	            if (situation.State==SituationState.Ongoing)
-					{
-						// Check for ongoing slots only
-						var ongoingSlots = situation.GetOngoingSlots(); //'get slots available for threshold behaviour'
-						targetSlots.AddRange( FindValidSlot( ongoingSlots, situation) );
-					}
-					else if (situ.Situation.State == SituationState.Unstarted && situation.situationAnchor.Durability==AnchorDurability.Enduring && )
-					{
-						// Look for starting slots (most common case)
-						var startSlots = situation.situationWindow.GetStartingSlots();
-						targetSlots.AddRange( FindValidSlot( startSlots, situation) );
-					}
-				
-			}
+            {
+                var candidateThreshold=situation.GetFirstAvailableThresholdForStackPush(this);
+                if(candidateThreshold!=null)
+                    candidateThresholds.Add(candidateThreshold);
+            }
+
+            if (candidateThresholds.Any())
+            {
+                TokenContainer selectedContainer;
+                float selectedSlotDist = float.MaxValue;
+
+                // Find closest token to stack
+                foreach (TokenContainer candidate in candidateThresholds)
+                {
+                    Vector3 dist = c.transform.position - transform.position;
+                    //Debug.Log("Dist to " + tokenpair.Token.EntityId + " = " + dist.magnitude );
+                    if (!c.CurrentlyBlockedFor(BlockDirection.Inward))
+                        dist = Vector3.zero;    // Prioritise open windows above all else
+                    if (dist.sqrMagnitude < selectedSlotDist)
+                    {
+                        selectedSlotDist = dist.sqrMagnitude;
+                        selectedContainer = candidate;
+                    }
+                }
+
+                if (selectedContainer != null)
+                {
+
+                    var choreographer = Registry.Get<Choreographer>();
+                    SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.DoubleClickSend));
+                    choreographer.PrepareElementForSendAnim(this, selectedSlot.Token); // this reparents the card so it can animate properly
+                    choreographer.MoveElementToSituationSlot(this, selectedSlot, choreographer.ElementSendAnimDone, SEND_STACK_TO_SLOT_DURATION);
+
+                }
+            }
 
 			// Now find the best target from that list
-			if (targetSlots.Count > 0)
-			{
-				TabletopUi.TokenAndSlot selectedSlot = null;
-				float selectedSlotDist = float.MaxValue;
-
-				// Find closest token to stack
-				foreach (TabletopUi.TokenAndSlot tokenpair in targetSlots)
-				{
-					Vector3 dist = tokenpair.Token.transform.position - transform.position;
-					//Debug.Log("Dist to " + tokenpair.Token.EntityId + " = " + dist.magnitude );
-					if (tokenpair.Token.SituationController.IsOpen)
-						dist = Vector3.zero;	// Prioritise open windows above all else
-					if (dist.sqrMagnitude < selectedSlotDist)
-					{
-						selectedSlotDist = dist.sqrMagnitude;
-						selectedSlot = tokenpair;
-					}
-				}
-
-				if (selectedSlot != null && selectedSlot.Threshold !=null)
-				{
 		
-						//Debug.Log("Sending " + this.EntityId + " to " + selectedSlot.Token.EntityId);
-						var choreo = Registry.Get<Choreographer>();
-						SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.DoubleClickSend));
-						choreo.PrepareElementForSendAnim( this, selectedSlot.Token ); // this reparents the card so it can animate properly
-						choreo.MoveElementToSituationSlot( this, selectedSlot, choreo.ElementSendAnimDone,SEND_STACK_TO_SLOT_DURATION);
-					
-				}
-			}
+
+			
 		}
 
         public override void HighlightPotentialInteractionWithToken(bool show)

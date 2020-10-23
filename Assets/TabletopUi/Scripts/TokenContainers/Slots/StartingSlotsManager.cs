@@ -45,8 +45,8 @@ namespace Assets.TabletopUi.SlotsContainers {
             }
         }
 
-        //currently, nothing fires this
-        public void RespondToStackAdded(RecipeSlot slot, ElementStackToken stack, Context context) {
+        
+        public override void RespondToStackAdded(RecipeSlot slot, ElementStackToken stack, Context context) {
 
 
             _window.TryResizeWindow(GetAllSlots().Count);

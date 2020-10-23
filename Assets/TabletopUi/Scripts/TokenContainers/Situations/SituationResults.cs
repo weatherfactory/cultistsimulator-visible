@@ -24,8 +24,7 @@ public class SituationResults : TokenContainer {
     private string buttonClearResultsDefault;
     private string buttonClearResultsNone;
 
-    private SituationController controller;
-
+    
     public override bool AllowDrag { get { return true; } }
     public override bool AllowStackMerge { get { return false; } }
 

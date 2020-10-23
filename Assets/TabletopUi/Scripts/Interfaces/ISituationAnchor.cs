@@ -30,5 +30,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
         void SetParticleSimulationSpace(Transform transform);
 
+        Vector3 GetTargetContainerPosition();
     }
 }

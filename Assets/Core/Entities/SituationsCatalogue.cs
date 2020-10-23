@@ -33,9 +33,9 @@ namespace Assets.Core.Entities
             _currentSituations.Remove(situation);
         }
         
-        public SituationController GetOpenSituation()
+        public Situation GetOpenSituation()
         {
-            return GetRegisteredSituations().FirstOrDefault(s => s.IsOpen);
+            return GetRegisteredSituations().FirstOrDefault(s => s.IsOpen());
     }
 
         public IEnumerable<IAnimatableToken> GetAnimatables()

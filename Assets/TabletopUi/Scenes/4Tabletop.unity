@@ -22718,9 +22718,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  TokenInteractionEvent:
-    m_PersistentCalls:
-      m_Calls: []
   playerInput: {fileID: 202816351}
   _debugTools: {fileID: 589}
 --- !u!1 &980569403
@@ -33155,7 +33152,7 @@ GameObject:
   - component: {fileID: 1610149767}
   - component: {fileID: 1610149765}
   m_Layer: 5
-  m_Name: CanvasForDraggables
+  m_Name: EnRouteTokenContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38469,8 +38466,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e4e1614f22284fb88afe962ca58539c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rectTransform: {fileID: 224000011908250321}
+  RectTransform: {fileID: 0}
+  useDragOffset: 1
   rotateOnDrag: 1
+  glowImage: {fileID: 0}
+  artwork: {fileID: 0}
+  backArtwork: {fileID: 0}
+  textBackground: {fileID: 0}
+  text: {fileID: 0}
+  stackBadge: {fileID: 0}
+  stackCountText: {fileID: 0}
+  decayView: {fileID: 0}
+  decayCountText: {fileID: 0}
+  spriteDecaysTextBG: {fileID: 0}
+  spriteUniqueTextBG: {fileID: 0}
+  shadow: {fileID: 0}
+  defaultRetireFX: 0
   PlacementAlreadyChronicled: 0
 --- !u!114 &114111364633692442 stripped
 MonoBehaviour:

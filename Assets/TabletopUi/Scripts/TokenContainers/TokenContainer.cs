@@ -18,6 +18,34 @@ using UnityEngine;
 namespace Assets.TabletopUi.Scripts.Infrastructure {
 
 
+    public enum BlockReason
+    {
+      StackEnRouteToContainer
+    }
+
+    public enum BlockDirection
+    {
+        None,
+        Inward,
+        Outward,
+        All
+    }
+
+    /// <summary>
+    /// blocking entry/exit
+    /// </summary>
+    public class ContainerBlock
+    {
+        public BlockDirection BlockDirection { get; }
+        public BlockReason BlockReason { get; }
+
+        public ContainerBlock(BlockDirection direction, BlockReason reason)
+        {
+            BlockDirection = direction;
+            BlockReason = reason;
+        }
+    }
+
     public abstract class TokenContainer : MonoBehaviour
     {
 
@@ -35,12 +63,49 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         private List<ElementStackToken> _stacks = new List<ElementStackToken>();
         protected List<INotifier> _notifiersForContainer = new List<INotifier>();
 
+        public bool Defunct { get; protected set; }
+
+        protected HashSet<ContainerBlock> _currentContainerBlocks=new HashSet<ContainerBlock>();
+
+
         public virtual void Start()
         {
             _catalogue = Registry.Get<TokenContainersCatalogue>();
             _catalogue.RegisterTokenContainer(this);
         }
 
+        public virtual bool Retire()
+        {
+            Destroy(gameObject);
+            Defunct = true;
+            return true;
+
+            
+        }
+
+        public bool CurrentlyBlockedFor(BlockDirection direction)
+        {
+            var currentBlockDirection = CurrentBlockDirection();
+            return (currentBlockDirection == BlockDirection.All ||
+                    currentBlockDirection == direction);
+        }
+
+        public BlockDirection CurrentBlockDirection()
+        {
+            bool inwardblock = _currentContainerBlocks.Any(cb => cb.BlockDirection == BlockDirection.Inward);
+            bool outwardBlock = _currentContainerBlocks.Any(cb => cb.BlockDirection == BlockDirection.Outward);
+            bool allBlock = _currentContainerBlocks.Any(cb => cb.BlockDirection == BlockDirection.All);
+
+            if(allBlock || (inwardblock && outwardBlock))
+                return BlockDirection.All;
+
+            if (inwardblock)
+                return BlockDirection.Inward;
+            if (outwardBlock)
+                return BlockDirection.Outward;
+
+            return BlockDirection.None;
+        }
 
 
         public ElementStackToken ReprovisionExistingElementStack(ElementStackSpecification stackSpecification,

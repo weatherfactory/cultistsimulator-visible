@@ -8,7 +8,7 @@ namespace Assets.Core.Enums
 {
     public enum ContainerCategory
     {
-       Threshold,
+        Threshold,
         SituationStorage,
         Output,
         World,

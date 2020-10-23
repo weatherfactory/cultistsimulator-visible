@@ -15,10 +15,11 @@ public class TokenAnimationToSlot : TokenAnimation {
         {
             //target token and/or slot might conceivably have been destroyed en route
             //This should really be upstream, because it doesn't stop the scale shrinking
-            if (targetTokenSlotPair.Token == null || targetTokenSlotPair.Threshold == null || targetTokenSlotPair.Token.Defunct || targetTokenSlotPair.Threshold.Defunct)
+            if (targetTokenSlotPair.Token == null || targetTokenSlotPair.Threshold == null ||
+                targetTokenSlotPair.Token.Defunct || targetTokenSlotPair.Threshold.Defunct)
                 return transform.localPosition;
             else
-                return targetTokenSlotPair.Token.GetOngoingSlotPosition();
+                return targetTokenSlotPair.Token.GetTargetContainerPosition();
         }
     }
 

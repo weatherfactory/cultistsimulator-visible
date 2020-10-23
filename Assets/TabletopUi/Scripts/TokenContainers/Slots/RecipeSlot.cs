@@ -34,7 +34,6 @@ namespace Assets.CS.TabletopUI {
 
         public IList<RecipeSlot> childSlots { get; set; }
         public RecipeSlot ParentSlot { get; set; }
-        public bool Defunct { get; set; }
         public string AnimationTag { get; set; }
 
         // VISUAL ELEMENTS
@@ -323,16 +322,6 @@ namespace Assets.CS.TabletopUI {
                 if (stack != null)
                     stack.MarkedForConsumption = true;
             }
-        }
-
-        public bool Retire() {
-            UnityEngine.Object.Destroy(gameObject);
-
-            if (Defunct)
-                return false;
-
-            Defunct = true;
-            return true;
         }
 
         public bool IsPrimarySlot()

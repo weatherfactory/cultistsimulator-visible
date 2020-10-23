@@ -182,13 +182,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (IsEditingText())
                 return;
 
-                var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
+                var situations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 
-                foreach (var controller in situationControllers)
+                foreach (var s in situations)
                 {
-                    if (controller.IsOpen)
+                    if (s.IsOpen())
                     {
-                        controller.AttemptActivateRecipe();
+                        s.AttemptActivateRecipe();
                         break;
                     }
                 }
@@ -198,13 +198,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (IsEditingText())
                 return;
 
-            var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
+            var situations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 
-            foreach (var controller in situationControllers)
+            foreach (var s in situations)
             {
-                if (controller.IsOpen)
+                if (s.IsOpen())
                 {
-                    controller.DumpAllResults();
+                    s.DumpOutputStacks();
                     break;
                 }
             }
@@ -235,11 +235,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 			{
 				// Check for open situation windows and close them first
 				bool windowWasOpen = false;
-				var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
+				var situations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 
-				foreach (var controller in situationControllers) {
-					if (controller.IsOpen) {
-						controller.CloseWindow();
+				foreach (var situation in situations) {
+					if (situation.IsOpen()) {
+						situation.Close();
 						windowWasOpen = true;
 						break;
 					}
