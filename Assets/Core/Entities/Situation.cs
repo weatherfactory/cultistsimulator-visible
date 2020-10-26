@@ -71,11 +71,6 @@ namespace Assets.Core.Entities {
 
 
 
-        public Situation()
-        {
-            State = SituationState.Unstarted;
-        }
-
         public void AttachAnchor(ISituationAnchor newAnchor)
         {
             _anchor = newAnchor;
@@ -145,14 +140,14 @@ namespace Assets.Core.Entities {
         {
             currentPrimaryRecipe = null;
             TimeRemaining = 0;
-            State = SituationState.Unstarted;
+            State = SituationState.ReadyToStart;
             foreach (var subscriber in subscribers)
                 subscriber.ResetSituation();
         }
 
         public void Halt()
         {
-            if (State != SituationState.Complete && State != SituationState.Unstarted
+            if (State != SituationState.Complete && State !=SituationState.ReadyToReset && State != SituationState.ReadyToStart
             ) //don't halt if the situation is not running. This is not only superfluous but dangerous: 'complete' called from an already completed verb has bad effects
                 Complete();
 
@@ -386,34 +381,52 @@ namespace Assets.Core.Entities {
 
         public SituationState Continue(IRecipeConductor rc, float interval, bool waitForGreedyAnim = false)
         {
-            if (State == SituationState.RequiringExecution)
+            switch (State)
             {
-                End(rc);
-            }
-            else if (State == SituationState.Ongoing)
-            {
-                // Execute if we've got no time remaining and we're not waiting for a greedy anim
-                // UNLESS timer has gone negative for 5 seconds. In that case sometime is stuck and we need to break out
-                if (TimeRemaining <= 0 && (!waitForGreedyAnim || TimeRemaining < -5.0f))
-                {
-                    RequireExecution(rc);
-                }
-                else
-                {
-                    TimeRemaining = TimeRemaining - interval;
-                    Ongoing();
-                }
-            }
-            else if (State == SituationState.FreshlyStarted)
-            {
-                Beginning(currentPrimaryRecipe);
-            }
-            /*
-            else if (State == SituationState.Unstarted || State == SituationState.Complete) {
-                //do nothing: it's either not running, or it's finished running and waiting for user action
-            }
-            */
+                case SituationState.ReadyToReset:
 
+                    Reset();
+                    break;
+
+                case SituationState.ReadyToStart:
+
+                    break;
+
+                case SituationState.FreshlyStarted:
+
+                    Beginning(currentPrimaryRecipe);
+                    break;
+
+
+                case SituationState.Ongoing:
+
+                    // Execute if we've got no time remaining and we're not waiting for a greedy anim
+                    // UNLESS timer has gone negative for 5 seconds. In that case sometime is stuck and we need to break out
+                    if (TimeRemaining <= 0 && (!waitForGreedyAnim || TimeRemaining < -5.0f))
+                    {
+                        RequireExecution(rc);
+                    }
+                    else
+                    {
+                        TimeRemaining = TimeRemaining - interval;
+                        Ongoing();
+                    }
+
+                    break;
+
+                case SituationState.RequiringExecution:
+            
+                End(rc);
+                  break;
+
+                case SituationState.Complete:
+
+                  break;
+
+                
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
             return State;
         }
 
@@ -827,7 +840,7 @@ namespace Assets.Core.Entities {
         {
 
 
-            if (State != SituationState.Unstarted)
+            if (State != SituationState.ReadyToStart)
                 return;
 
             var aspects = GetAspectsAvailableToSituation(true);

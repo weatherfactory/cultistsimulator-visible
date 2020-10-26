@@ -333,9 +333,6 @@ namespace Assets.CS.TabletopUI {
 
 
 
-
-
-
         public void SetupNewBoard(SituationBuilder builder) {
 
 
@@ -345,7 +342,7 @@ namespace Assets.CS.TabletopUI {
                 throw new ApplicationException("Trying to set up a new board for a character with no chosen legacy. Even fresh characters should have a legacy when created, but this code has always been hinky.");
 
             IVerb v = Registry.Get<ICompendium>().GetEntityById<BasicVerb>(_character.ActiveLegacy.StartingVerbId);
-            SituationCreationCommand command = new SituationCreationCommand(v, null, SituationState.Unstarted);
+            SituationCreationCommand command = new SituationCreationCommand(v, null, SituationState.ReadyToReset);
             var situation = builder.CreateSituation(command);
 
             

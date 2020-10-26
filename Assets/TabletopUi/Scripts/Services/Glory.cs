@@ -153,7 +153,7 @@ namespace Assets.TabletopUi.Scripts.Services
             concursum.BeforeChangingCulture.AddListener(OnCultureChanged);
 
             //TODO: async
-            LoadCurrentSaveOrCreateNewCharacter(registryAccess);
+            RegisterSavedOrNewCharacter(registryAccess);
 
             var chronicler = new Chronicler(Registry.Get<Character>(), Registry.Get<ICompendium>());
             registryAccess.Register(chronicler);
@@ -179,7 +179,7 @@ namespace Assets.TabletopUi.Scripts.Services
             }
         }
 
-        private void LoadCurrentSaveOrCreateNewCharacter(Registry registry)
+        private void RegisterSavedOrNewCharacter(Registry registry)
         {
             registry.Register(Character);
           
@@ -187,6 +187,11 @@ namespace Assets.TabletopUi.Scripts.Services
 
             if (saveGameManager.DoesGameSaveExist())
                 saveGameManager.LoadCharacterState(SourceForGameState.DefaultSave,Character);
+            else
+            {
+                NoonUtility.LogWarning("Setting a default legacy for character: shouldn't do this in the actual game");
+                Character.Reset(Registry.Get<ICompendium>().GetEntitiesAsList<Legacy>().First(),null);
+            }
             
 
             
