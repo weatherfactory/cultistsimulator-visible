@@ -10,7 +10,7 @@ public class TokenAnimationToSlot : TokenAnimation {
 
 	public event System.Action<ElementStackToken, TokenLocation, TokenContainer> onElementSlotAnimDone;
 
-    private ISituationAnchor destinationAnchor;
+    private TokenLocation destinationLocation;
     private TokenContainer destinationSlot;
 
     protected override Vector3 endPos {
@@ -18,11 +18,10 @@ public class TokenAnimationToSlot : TokenAnimation {
         {
             //target token and/or slot might conceivably have been destroyed en route
             //This should really be upstream, because it doesn't stop the scale shrinking
-            if (destinationAnchor == null || destinationSlot == null ||
-                destinationAnchor.Defunct || destinationSlot.Defunct)
+            if (destinationSlot == null || destinationSlot.Defunct)
                 return transform.localPosition;
             else
-                return destinationAnchor.transform.localPosition;
+                return destinationLocation.Position;
         }
     }
 
@@ -30,17 +29,16 @@ public class TokenAnimationToSlot : TokenAnimation {
         base.StartAnim(duration);
 
         transform.SetAsLastSibling();
-        anchor.SituationController.NotifyGreedySlotAnim(this);
     }
 
-    public void SetDestination(ISituationAnchor anchor,TokenContainer slot)
+    public void SetDestination(TokenLocation destination,TokenContainer slot)
     {
-        destinationAnchor = anchor;
+        destinationLocation = destination;
         destinationSlot = slot;
     }
 
     protected override void FireCompleteEvent() {
 		if (onElementSlotAnimDone != null)
-			onElementSlotAnimDone(token as ElementStackToken, destinationAnchor.Location,destinationSlot);
+			onElementSlotAnimDone(token as ElementStackToken, destinationLocation, destinationSlot);
 	}
 }

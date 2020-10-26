@@ -17,6 +17,13 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         private GraphicFader glowImage;
 
         public bool RequestingNoDrag => false;
+        public void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<AbstractToken> animDone, float startScale, float endScale)
+        {
+            var tokenAnim = gameObject.AddComponent<TokenAnimation>();
+            tokenAnim.SetPositions(startPos, endPos);
+            tokenAnim.SetScaling(startScale, endScale);
+            tokenAnim.StartAnim(duration);
+        }
 
         public void InitialiseVisuals(Element element)
         {

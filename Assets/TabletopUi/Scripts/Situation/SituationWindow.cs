@@ -212,7 +212,12 @@ namespace Assets.CS.TabletopUI {
             throw new NotImplementedException();
         }
 
-        
+        public override void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<AbstractToken> animDone, float startScale, float endScale)
+        {
+            throw new NotImplementedException();
+        }
+
+
         public void Close() {
         OnWindowClosed.Invoke();
         }

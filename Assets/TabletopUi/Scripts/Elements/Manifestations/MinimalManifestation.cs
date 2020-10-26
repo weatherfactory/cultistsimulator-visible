@@ -13,6 +13,10 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
    public class MinimalManifestation:MonoBehaviour,IElementManifestation
     {
         public bool RequestingNoDrag => false;
+        public void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<AbstractToken> animDone, float startScale, float endScale)
+        {
+            //do nothing
+        }
 
         public void InitialiseVisuals(Element element)
         {

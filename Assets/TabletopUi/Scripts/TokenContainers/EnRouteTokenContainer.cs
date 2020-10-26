@@ -54,7 +54,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
             stackAnim.onElementSlotAnimDone += ElementSendAnimDone;
             stackAnim.SetPositions(startPos, endPos);
             stackAnim.SetScaling(1f, 0.35f);
-            stackAnim.SetDestinationSlot(destinationSlot);
+            stackAnim.SetDestination(destination, destinationSlot);
 
             destinationSlot.AddBlock(new ContainerBlock(BlockDirection.Inward,
                 BlockReason.StackEnRouteToContainer));

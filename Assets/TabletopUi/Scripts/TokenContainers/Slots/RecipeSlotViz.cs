@@ -36,7 +36,7 @@ namespace Assets.CS.TabletopUI {
 
         public void TriggerHideAnim() {
             isHidden = true;
-            slot.Defunct = true;
+            
             anim.Play("recipe-slot-hide");
         }
 

@@ -60,8 +60,7 @@ namespace Assets.CS.TabletopUI {
         public void RetireSlot(RecipeSlot slot) {
 			if (slot == null)
 				return;
-
-			slots.Remove(slot);
+            slots.Remove(slot);
 
             if (gameObject.activeInHierarchy)
                 slot.viz.TriggerHideAnim();
