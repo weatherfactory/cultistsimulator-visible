@@ -91,7 +91,7 @@ namespace Assets.CS.TabletopUI {
 
         public abstract void StartArtAnimation();
         
-        public abstract bool CanAnimate();
+        public abstract bool CanAnimateArt();
 
         public abstract string EntityId { get; }
         public bool IsBeingAnimated { get; set; }
@@ -406,6 +406,10 @@ namespace Assets.CS.TabletopUI {
                 .ShowImageBurn(burnImage, this, 20f, 2f,
                     TabletopImageBurner.ImageLayoutConfig.CenterOnToken);
         }
+
+        public abstract void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<VerbAnchor> animDone,
+            float startScale, float endScale);
+
 
     }
 }

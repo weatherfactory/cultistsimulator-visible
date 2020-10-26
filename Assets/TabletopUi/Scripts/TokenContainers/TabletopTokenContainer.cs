@@ -68,6 +68,9 @@ public class TabletopTokenContainer : TokenContainer,IBeginDragHandler,IEndDragH
 		token.SnapToGrid();
         token.SetTokenContainer(this, context);
         token.DisplayAtTableLevel(); // This puts it on the table, so now the choreographer will pick it up
+        CheckOverlappingTokens(token);
+
+
     }
 
     // Tabletop specific
@@ -79,7 +82,7 @@ public class TabletopTokenContainer : TokenContainer,IBeginDragHandler,IEndDragH
     public override void TryMoveAsideFor(VerbAnchor potentialUsurper, AbstractToken incumbent, out bool incumbentMoved) {
         //incumbent.RectTransform.anchoredPosition = GetFreeTokenPos(incumbent);
         incumbentMoved = true;
-        DisplaySituationTokenOnTable(potentialUsurper, new Context(Context.ActionSource.PlayerDrag));
+        DisplayHere(potentialUsurper, new Context(Context.ActionSource.PlayerDrag));
     }
 
     public override void TryMoveAsideFor(ElementStackToken potentialUsurper, AbstractToken incumbent, out bool incumbentMoved) {
@@ -97,11 +100,6 @@ public class TabletopTokenContainer : TokenContainer,IBeginDragHandler,IEndDragH
         return choreo.GetFreePosWithDebug(incumbent, currentPos);
     }
 
-    public void DisplaySituationTokenOnTable(ISituationAnchor anchor, Context context) {
-        DisplayHere(anchor, context);
-        CheckOverlappingTokens(anchor);
-        anchor.DisplayAtTableLevel();
-    }
 
     public override string GetSaveLocationForToken(AbstractToken token) {
         try

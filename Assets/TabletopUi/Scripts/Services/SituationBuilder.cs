@@ -33,8 +33,6 @@ namespace Assets.TabletopUi.Scripts.Services {
  
                 SituationCreationCommand command = new SituationCreationCommand(v, null, SituationState.Unstarted);
                var controller=CreateSituation(command);
-            controller.situationAnchor.transform.localPosition = new Vector3(-700f + sTokenHorizSpace, 200f -(0*sTokenVertiSpace));
-                //this is left over from when we sometimes started with multiple verbs in a new legacy; those days might come again ofc, so I'm leaving the formula in
 
         }
 
@@ -43,22 +41,39 @@ namespace Assets.TabletopUi.Scripts.Services {
             Situation situation = new Situation(command);
             Registry.Get<SituationsCatalogue>().RegisterSituation(situation);
 
-            
-
             var newAnchor = CreateAnchor(command);
 
             situation.AttachAnchor(newAnchor);
             
             var newWindow = CreateSituationWindow(newAnchor);
             situation.AttachWindow(newWindow);
-            
-            
+
+
+            //if token has been spawned from an existing token, animate its appearance
+            if (command.SourceToken != null)
+            {
+                newAnchor.AnimateTo(
+                     1f,
+                     command.SourceToken.RectTransform.anchoredPosition3D,
+                     Registry.Get<Choreographer>().GetFreePosWithDebug(newAnchor, command.SourceToken.RectTransform.anchoredPosition, 3),
+                     null,
+                     0f,
+                     1f);
+            }
+            else
+            {
+                Registry.Get<Choreographer>().ArrangeTokenOnTable(newAnchor, null);
+            }
+
 
 
             if (command.SourceToken != null)
                 SoundManager.PlaySfx("SituationTokenCreate");
 
             situation.ExecuteHeartbeat(0f);
+
+
+
 
             return situation;
         }

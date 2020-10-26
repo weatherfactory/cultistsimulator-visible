@@ -27,14 +27,6 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
             get { return GetComponent<RectTransform>(); }
         }
 
-        void AnimateTokenTo(IAnimatableToken token, float duration, Vector3 startPos, Vector3 endPos, float startScale = 1f, float endScale = 1f)
-        {
-            var tokenAnim = token.gameObject.AddComponent<TokenAnimation>();
-            tokenAnim.onAnimDone += SituationAnimDone;
-            tokenAnim.SetPositions(startPos, endPos);
-            tokenAnim.SetScaling(startScale, endScale);
-            tokenAnim.StartAnim(duration);
-        }
 
         public void PrepareElementForSendAnim(ElementStackToken stack, TokenLocation destination) // "this reparents the card so it can animate properly" - okay, let's roll with that for now. But the line below is commented, so do we need it?
         {
@@ -100,9 +92,6 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
                 BlockReason.StackEnRouteToContainer));
         }
 
-        void SituationAnimDone(VerbAnchor token)
-        {
-            StartingContainer.DisplaySituationTokenOnTable(token, new Context(Context.ActionSource.AnimEnd));
-        }
+
     }
 }

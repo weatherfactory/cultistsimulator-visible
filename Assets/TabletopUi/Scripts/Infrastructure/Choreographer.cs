@@ -55,7 +55,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public void ArrangeTokenOnTable(ISituationAnchor token, Context context) {
             token.RectTransform.anchoredPosition = GetFreePosWithDebug(token, Vector2.zero);
 
-            _tabletop.DisplaySituationTokenOnTable(token, context);
+            _tabletop.DisplayHere(token, context);
         }
 
         // Elements are we placed differently than tokens
@@ -115,10 +115,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 				if (!pushedRect.Overlaps(targetRect))
                     continue;
 
-                AnimateTokenTo(token,
-                    duration: 0.2f,
-                    startPos: token.rectTransform.anchoredPosition3D,
-                    endPos: GetFreePosWithDebug(token, token.rectTransform.anchoredPosition));
+                token.AnimateTo( 0.2f,
+                    token.rectTransform.anchoredPosition3D,
+                    GetFreePosWithDebug(token, token.rectTransform.anchoredPosition),
+                    null,
+                    1f,
+                    1f);
             }
         }
 
@@ -432,21 +434,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             //if new situation is beginning with an existing verb: do not action the creation.
             //oh: I could have an scc property which is a MUST CREATE override
 
-            Situation existingSituation;
-            var sitToken = scc.SourceToken as VerbAnchor;
-
-            if (sitToken != null && sitToken.EntityId==scc.Recipe.ActionId) { 
-                existingSituation = sitToken.SituationController;
-            }
-            // We don't have a source token, then get us the first token with the appopriate id.
-            else { 
-                var registeredSits = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
-                existingSituation = registeredSits.Find(sc => sc.situationAnchor.EntityId == scc.Recipe.ActionId);
-            }
-
+                var registeredSituations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
+                var existingSituation = registeredSituations.Find(s => s.Verb.Id==scc.Recipe.ActionId);
+           
             //grabbing existingtoken: just in case some day I want to, e.g., add additional tokens to an ongoing one rather than silently fail the attempt.
             if (existingSituation != null) {
-                if (existingSituation.State == SituationState.Complete && existingSituation.situationAnchor.Durability==AnchorDurability.Transient) {
+                if (existingSituation.State == SituationState.Complete && existingSituation.Verb.Transient) {
                     //verb exists already, but it's completed. We don't want to block new temp verbs executing if the old one is complete, because
                     //otherwise there's an exploit to, e.g., leave hazard finished but unresolved to block new ones appearing.
                     //So nothing happens in this branch except logging.
@@ -459,27 +452,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 }
             }
             
-            var situationController = Registry.Get<SituationBuilder>().CreateSituation(scc);
+            var situation = Registry.Get<SituationBuilder>().CreateSituation(scc);
 
 
             //if there's been (for instance) an expulsion, we now want to add the relevant stacks to this situation
             if (withStacksInStorage.Any())
-                situationController.StoreStacks(withStacksInStorage);
+                situation.AcceptStacks(ContainerCategory.SituationStorage,withStacksInStorage);
 
-            //if token has been spawned from an existing token, animate its appearance
-            if (scc.SourceToken != null) {
-                AnimateTokenTo(situationController.situationAnchor,
-                    duration: 1f,
-                    startPos: scc.SourceToken.rectTransform.anchoredPosition3D,
-                    endPos: GetFreePosWithDebug(situationController.situationAnchor, scc.SourceToken.rectTransform.anchoredPosition, 3),
-                    startScale: 0f,
-                    endScale: 1f);
-            }
-            else {
-                Registry.Get<Choreographer>().ArrangeTokenOnTable(situationController.situationAnchor, null);
-            }
+           
         }
-
 
 
 

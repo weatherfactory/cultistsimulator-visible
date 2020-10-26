@@ -30,6 +30,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
         void SetParticleSimulationSpace(Transform transform);
 
-        Vector3 GetTargetContainerPosition();
+        void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<VerbAnchor> animDone, float startScale = 1f, float endScale = 1f);
     }
 }

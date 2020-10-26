@@ -9,6 +9,7 @@ using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
 using TMPro;
 using UnityEngine;
@@ -405,5 +406,17 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
                 mainSettings.customSimulationSpace = transform;
             }
         }
+
+
+       public void AnimateTo(IAnimatableToken token, float duration, Vector3 startPos, Vector3 endPos,
+           Action<VerbAnchor> SituationAnimDone, float startScale = 1f, float endScale = 1f)
+        {
+            var tokenAnim = token.gameObject.AddComponent<TokenAnimation>();
+            tokenAnim.onAnimDone += SituationAnimDone;
+            tokenAnim.SetPositions(startPos, endPos);
+            tokenAnim.SetScaling(startScale, endScale);
+            tokenAnim.StartAnim(duration);
+        }
+   
     }
 }

@@ -70,7 +70,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var animatables = new List<IAnimatableToken>();
             
             foreach (var stack in stacks)
-                if (!stack.Defunct && stack.CanAnimate() && stack.EntityId != lastAnimID)
+                if (!stack.Defunct && stack.CanAnimateArt() && stack.EntityId != lastAnimID)
                     animatables.Add(stack as IAnimatableToken);
 
             List<IAnimatableToken> tokens =new List<IAnimatableToken>(Registry.Get<SituationsCatalogue>().GetAnimatables());

@@ -11,6 +11,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
     public interface IAnimatableToken:IToken
     {
         void StartArtAnimation();
-        bool CanAnimate();
+        bool CanAnimateArt();
     }
 }

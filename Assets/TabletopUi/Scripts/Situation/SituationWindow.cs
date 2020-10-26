@@ -128,7 +128,7 @@ namespace Assets.CS.TabletopUI {
             throw new NotImplementedException();
         }
 
-        public override bool CanAnimate()
+        public override bool CanAnimateArt()
         {
             throw new NotImplementedException();
         }

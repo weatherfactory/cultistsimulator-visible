@@ -4,11 +4,13 @@ using UnityEngine;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Interfaces;
 
 public class TokenAnimationToSlot : TokenAnimation {
 
 	public event System.Action<ElementStackToken, TokenLocation, TokenContainer> onElementSlotAnimDone;
 
+    private ISituationAnchor destinationAnchor;
     private TokenContainer destinationSlot;
 
     protected override Vector3 endPos {
@@ -16,11 +18,11 @@ public class TokenAnimationToSlot : TokenAnimation {
         {
             //target token and/or slot might conceivably have been destroyed en route
             //This should really be upstream, because it doesn't stop the scale shrinking
-            if (targetAnchorSlotPair.Token == null || targetAnchorSlotPair.Threshold == null ||
-                targetAnchorSlotPair.Token.Defunct || targetAnchorSlotPair.Threshold.Defunct)
+            if (destinationAnchor == null || destinationSlot == null ||
+                destinationAnchor.Defunct || destinationSlot.Defunct)
                 return transform.localPosition;
             else
-                return targetAnchorSlotPair.Token.GetTargetContainerPosition();
+                return Token.GetTargetContainerPosition();
         }
     }
 
@@ -28,11 +30,12 @@ public class TokenAnimationToSlot : TokenAnimation {
         base.StartAnim(duration);
 
         transform.SetAsLastSibling();
-        targetAnchorSlotPair.Token.SituationController.NotifyGreedySlotAnim(this);
+        anchor.SituationController.NotifyGreedySlotAnim(this);
     }
 
-    public void SetDestinationSlot(TokenContainer slot)
+    public void SetDestination(ISituationAnchor anchor,TokenContainer slot)
     {
+        destinationAnchor = anchor;
         destinationSlot = slot;
     }
 

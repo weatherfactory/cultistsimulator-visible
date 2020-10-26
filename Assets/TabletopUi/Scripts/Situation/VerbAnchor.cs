@@ -1,13 +1,10 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
@@ -267,7 +264,7 @@ namespace Assets.CS.TabletopUI {
         /// <param name="frameIndex">At which frame to start. Default is 0</param>
         public override void StartArtAnimation()
         {
-            if (!CanAnimate())
+            if (!CanAnimateArt())
                 return;
             _manifestation.BeginArtAnimation();
 
@@ -275,7 +272,7 @@ namespace Assets.CS.TabletopUI {
 
       
 
-        public override bool CanAnimate()
+        public override bool CanAnimateArt()
         {
             if (gameObject == null)
                 return false;
@@ -345,39 +342,15 @@ namespace Assets.CS.TabletopUI {
         {
             
         }
-    }
 
-
-
-    public class SituationEventData
-    {
-        public float Warmup { get; set; }
-        public float TimeRemaining { get; set; }
-        public IVerb ActiveVerb { get; set; }
-        public Recipe CurrentRecipe; //replace with SituationCreationComand / SituationEffectCommand? combine CreationCommand and EffectCommand?
-        public Dictionary<ContainerCategory, List<ElementStackToken>> StacksInEachStorage { get; set; }
-        public INotification Notification;
-        public SituationEffectCommand EffectCommand;
-
-        public static SituationEventData Create(Situation fromSituation)
+       public void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<VerbAnchor> animDone, float startScale = 1f, float endScale = 1f)
         {
-            var e = new SituationEventData();
-            e.Warmup = fromSituation.Warmup;
-            e.TimeRemaining = fromSituation.TimeRemaining;
-            e.CurrentRecipe = fromSituation.currentPrimaryRecipe;
-            e.StacksInEachStorage.Add(ContainerCategory.Threshold,fromSituation.GetStacks(ContainerCategory.Threshold));
-            e.StacksInEachStorage.Add(ContainerCategory.SituationStorage, fromSituation.GetStacks(ContainerCategory.SituationStorage));
-            e.StacksInEachStorage.Add(ContainerCategory.Output, fromSituation.GetStacks(ContainerCategory.Output));
-            e.ActiveVerb = fromSituation.Verb;
-            return e;
-
+            _manifestation.AnimateTo(this,duration,startPos,endPos,animDone,startScale,endScale);
         }
 
-        private SituationEventData()
+        private void animDone(VerbAnchor token)
         {
-         StacksInEachStorage=new Dictionary<ContainerCategory, List<ElementStackToken>>();
-         CurrentRecipe = NullRecipe.Create();
-         EffectCommand=new SituationEffectCommand();
+            TokenContainer.DisplayHere(token, new Context(Context.ActionSource.AnimEnd));
         }
     }
 }

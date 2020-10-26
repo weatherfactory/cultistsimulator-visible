@@ -986,7 +986,7 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public override bool CanAnimate()
+        public override bool CanAnimateArt()
         {
             if (gameObject == null)
                 return false;
@@ -1002,7 +1002,7 @@ namespace Assets.CS.TabletopUI {
 
 
         public override void StartArtAnimation() {
-            if (!CanAnimate())
+            if (!CanAnimateArt())
                 return;
             _manifestation.BeginArtAnimation(_element.Icon);
            

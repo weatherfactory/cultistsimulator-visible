@@ -42,7 +42,7 @@ namespace Assets.Core.Entities
         {
             var situationTokens = GetRegisteredSituations().Select(s => s.situationAnchor as IAnimatableToken);
 
-            return situationTokens.Where(s => s.CanAnimate());
+            return situationTokens.Where(s => s.CanAnimateArt());
         }
     }
 }
