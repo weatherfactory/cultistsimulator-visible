@@ -107,6 +107,20 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return BlockDirection.None;
         }
 
+        public bool AddBlock(ContainerBlock block)
+        {
+            return _currentContainerBlocks.Add(block);
+        }
+
+        public int RemoveBlock(ContainerBlock blockToRemove)
+        {
+            if (blockToRemove.BlockDirection == BlockDirection.All)
+                return _currentContainerBlocks.RemoveWhere(cb => cb.BlockReason == blockToRemove.BlockReason);
+            else
+                return _currentContainerBlocks.RemoveWhere(cb =>
+                    cb.BlockDirection == blockToRemove.BlockDirection && cb.BlockReason == blockToRemove.BlockReason);
+
+        }
 
         public ElementStackToken ReprovisionExistingElementStack(ElementStackSpecification stackSpecification,
             Source stackSource, Context context, string locatorid = null)

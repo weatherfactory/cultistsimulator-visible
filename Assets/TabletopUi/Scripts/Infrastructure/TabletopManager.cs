@@ -645,8 +645,8 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
         }
 
         
-        public HashSet<TokenAndSlot> FillTheseSlotsWithFreeStacks(HashSet<TokenAndSlot> slotsToFill) {
-            var unprocessedSlots = new HashSet<TokenAndSlot>();
+        public HashSet<AnchorAndSlot> FillTheseSlotsWithFreeStacks(HashSet<AnchorAndSlot> slotsToFill) {
+            var unprocessedSlots = new HashSet<AnchorAndSlot>();
 
                 //uncomment and rework
             //var choreo = Registry.Get<Choreographer>();
@@ -679,7 +679,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             return unprocessedSlots;
         }
 
-        private bool NeedToFillSlot(TokenAndSlot tokenSlotPair) {
+        private bool NeedToFillSlot(AnchorAndSlot anchorSlotPair) {
             //rework, move internal
 
             //if (tokenSlotPair.Token.Equals(null))

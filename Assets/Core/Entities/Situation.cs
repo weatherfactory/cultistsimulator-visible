@@ -261,7 +261,7 @@ namespace Assets.Core.Entities {
             //tabletop.ForceAutosave();
         }
 
-        void HandleOnGreedySlotAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair)
+        void HandleOnGreedySlotAnimDone(ElementStackToken element, AnchorAndSlot anchorSlotPair)
         {
             greedyAnimIsActive = false;
             TabletopManager.RequestNonSaveableState(TabletopManager.NonSaveableType.Greedy, false);
@@ -301,7 +301,7 @@ namespace Assets.Core.Entities {
 
                 foreach (var g in greedyThresholds)
                 {
-                    var tokenAndSlot = new TokenAndSlot {Token = _anchor, Threshold = g};
+                    var tokenAndSlot = new AnchorAndSlot {Token = _anchor, Threshold = g};
                     response.SlotsToFill.Add(tokenAndSlot);
 
                 }

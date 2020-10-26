@@ -14,6 +14,7 @@ using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
+using Assets.TabletopUi.Scripts.TokenContainers;
 using Noon;
 using UnityEngine.EventSystems;
 
@@ -25,8 +26,9 @@ public class TabletopTokenContainer : TokenContainer,IBeginDragHandler,IEndDragH
 
     public override ContainerCategory ContainerCategory => ContainerCategory.World;
 
+    public EnRouteTokenContainer SendViaContainer;
 
-    protected Choreographer choreo;
+    protected Choreographer choreographer;
 
     public override bool AllowDrag { get { return true; } }
     public override bool AllowStackMerge { get { return true; } }
@@ -38,7 +40,7 @@ public class TabletopTokenContainer : TokenContainer,IBeginDragHandler,IEndDragH
     public override void Start() {
         EnforceUniqueStacksInThisContainer = true; // Martin: This ensures that this stackManager kills other copies when a unique is dropped in
 
-        choreo = Registry.Get<Choreographer>();
+        choreographer = Registry.Get<Choreographer>();
         InitialiseListeners();
         _notifiersForContainer.Add(Registry.Get<INotifier>());
         base.Start();
@@ -71,7 +73,7 @@ public class TabletopTokenContainer : TokenContainer,IBeginDragHandler,IEndDragH
     // Tabletop specific
     public void CheckOverlappingTokens(IToken token) {
         // Verify if we are overlapping with anything. If so: move it.
-        choreo.MoveAllTokensOverlappingWith(token);
+        choreographer.MoveAllTokensOverlappingWith(token);
     }
 
     public override void TryMoveAsideFor(VerbAnchor potentialUsurper, AbstractToken incumbent, out bool incumbentMoved) {

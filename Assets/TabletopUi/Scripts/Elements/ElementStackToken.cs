@@ -570,45 +570,54 @@ namespace Assets.CS.TabletopUI {
 		{
 			if (TabletopManager.IsInMansus())	// Prevent SendTo while in Mansus
 				return;
-			if (!(TokenContainer.GetType()==typeof(TabletopTokenContainer)))
+            var tabletopTokenContainer = TokenContainer as TabletopTokenContainer;
+
+            if(tabletopTokenContainer==null)
 				return;
 
-			// Compile list of valid slots
-			List<TokenContainer> candidateThresholds = new List<TokenContainer>();
+
+            Dictionary<TokenContainer, Situation> candidateThresholds = new Dictionary<TokenContainer, Situation>();
 			var registeredSituations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 			foreach(Situation situation in registeredSituations)
             {
+                try
+                {
+
                 var candidateThreshold=situation.GetFirstAvailableThresholdForStackPush(this);
                 if(candidateThreshold!=null)
-                    candidateThresholds.Add(candidateThreshold);
+                    candidateThresholds.Add(candidateThreshold,situation);
+                }
+                catch (Exception e)
+                {
+                    NoonUtility.LogWarning("Problem adding a candidate threshold to list of valid thresholds - does a valid threshold belong to more than one situation? - "  + e.Message);
+                }
             }
 
             if (candidateThresholds.Any())
             {
-                TokenContainer selectedContainer;
+                TokenContainer selectedCandidate=null;
                 float selectedSlotDist = float.MaxValue;
 
-                // Find closest token to stack
-                foreach (TokenContainer candidate in candidateThresholds)
+                foreach (TokenContainer candidate in candidateThresholds.Keys)
                 {
-                    Vector3 dist = c.transform.position - transform.position;
+                    Vector3 distance = candidateThresholds[candidate].GetAnchorLocation().Position - transform.position;
                     //Debug.Log("Dist to " + tokenpair.Token.EntityId + " = " + dist.magnitude );
-                    if (!c.CurrentlyBlockedFor(BlockDirection.Inward))
-                        dist = Vector3.zero;    // Prioritise open windows above all else
-                    if (dist.sqrMagnitude < selectedSlotDist)
+                    if (!candidate.CurrentlyBlockedFor(BlockDirection.Inward))
+                        distance = Vector3.zero;    // Prioritise open windows above all else
+                    if (distance.sqrMagnitude < selectedSlotDist)
                     {
-                        selectedSlotDist = dist.sqrMagnitude;
-                        selectedContainer = candidate;
+                        selectedSlotDist = distance.sqrMagnitude;
+                        selectedCandidate = candidate;
                     }
                 }
 
-                if (selectedContainer != null)
+                if (selectedCandidate != null)
                 {
 
-                    var choreographer = Registry.Get<Choreographer>();
+                    var candidateAnchorLocation = candidateThresholds[selectedCandidate].GetAnchorLocation();
                     SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.DoubleClickSend));
-                    choreographer.PrepareElementForSendAnim(this, selectedSlot.Token); // this reparents the card so it can animate properly
-                    choreographer.MoveElementToSituationSlot(this, selectedSlot, choreographer.ElementSendAnimDone, SEND_STACK_TO_SLOT_DURATION);
+                    tabletopTokenContainer.SendViaContainer.PrepareElementForSendAnim(this, candidateAnchorLocation); // this reparents the card so it can animate properly
+                    tabletopTokenContainer.SendViaContainer.MoveElementToSituationSlot(this,candidateAnchorLocation, selectedCandidate, SEND_STACK_TO_SLOT_DURATION);
 
                 }
             }

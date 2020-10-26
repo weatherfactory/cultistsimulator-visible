@@ -17,7 +17,7 @@ using Noon;
 public class Heart : MonoBehaviour
 {
     [SerializeField] private Transform allContent;
-    private HashSet<TokenAndSlot> outstandingSlotsToFill=new HashSet<TokenAndSlot>();
+    private HashSet<AnchorAndSlot> outstandingSlotsToFill=new HashSet<AnchorAndSlot>();
     private int beatCounter = 0;
     //do major housekeeping every n beats
     private const int HOUSEKEEPING_CYCLE_BEATS = 20; //usually, a second
@@ -155,7 +155,7 @@ public class Heart : MonoBehaviour
     }
 
 
-    bool OutstandingSlotAlreadySaved(TokenAndSlot slot) {
+    bool OutstandingSlotAlreadySaved(AnchorAndSlot slot) {
         foreach (var item in outstandingSlotsToFill)
             if (item.Token == slot.Token && item.Threshold == slot.Threshold)
                 return true;

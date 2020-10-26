@@ -8,7 +8,7 @@ using Assets.TabletopUi.Scripts.Interfaces;
 
 namespace Assets.TabletopUi
 {
-    public class TokenAndSlot
+    public class AnchorAndSlot
     {
         public ISituationAnchor Token { get; set; } 
         public TokenContainer Threshold { get; set; }

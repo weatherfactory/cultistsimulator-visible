@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
+using Assets.TabletopUi.Scripts.Infrastructure;
 
 public class TokenAnimationToSlot : TokenAnimation {
 
-	public event System.Action<ElementStackToken, TokenAndSlot> onElementSlotAnimDone;
+	public event System.Action<ElementStackToken, TokenLocation, TokenContainer> onElementSlotAnimDone;
 
-	TokenAndSlot targetTokenSlotPair;
+    private TokenContainer destinationSlot;
 
     protected override Vector3 endPos {
         get
         {
             //target token and/or slot might conceivably have been destroyed en route
             //This should really be upstream, because it doesn't stop the scale shrinking
-            if (targetTokenSlotPair.Token == null || targetTokenSlotPair.Threshold == null ||
-                targetTokenSlotPair.Token.Defunct || targetTokenSlotPair.Threshold.Defunct)
+            if (targetAnchorSlotPair.Token == null || targetAnchorSlotPair.Threshold == null ||
+                targetAnchorSlotPair.Token.Defunct || targetAnchorSlotPair.Threshold.Defunct)
                 return transform.localPosition;
             else
-                return targetTokenSlotPair.Token.GetTargetContainerPosition();
+                return targetAnchorSlotPair.Token.GetTargetContainerPosition();
         }
     }
 
@@ -27,15 +28,16 @@ public class TokenAnimationToSlot : TokenAnimation {
         base.StartAnim(duration);
 
         transform.SetAsLastSibling();
-        targetTokenSlotPair.Token.SituationController.NotifyGreedySlotAnim(this);
+        targetAnchorSlotPair.Token.SituationController.NotifyGreedySlotAnim(this);
     }
 
-    public void SetTargetSlot(TokenAndSlot targetTokenSlotPair) {
-		this.targetTokenSlotPair = targetTokenSlotPair;
+    public void SetDestinationSlot(TokenContainer slot)
+    {
+        destinationSlot = slot;
     }
 
     protected override void FireCompleteEvent() {
 		if (onElementSlotAnimDone != null)
-			onElementSlotAnimDone(token as ElementStackToken, targetTokenSlotPair);
+			onElementSlotAnimDone(token as ElementStackToken, targetAnchorSlotPair);
 	}
 }

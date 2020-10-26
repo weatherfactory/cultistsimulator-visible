@@ -9,6 +9,6 @@ namespace Assets.Core.Commands
 {
     public class HeartbeatResponse
     {        
-        public HashSet<TokenAndSlot> SlotsToFill=new HashSet<TokenAndSlot>();
+        public HashSet<AnchorAndSlot> SlotsToFill=new HashSet<AnchorAndSlot>();
     }
 }

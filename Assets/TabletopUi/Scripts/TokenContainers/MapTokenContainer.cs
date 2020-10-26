@@ -18,7 +18,7 @@ namespace Assets.CS.TabletopUI {
 
         public override void Start() {
 
-            choreo = Registry.Get<Choreographer>();
+            choreographer = Registry.Get<Choreographer>();
             _notifiersForContainer.Add(Registry.Get<INotifier>());
             base.Start();
         }
