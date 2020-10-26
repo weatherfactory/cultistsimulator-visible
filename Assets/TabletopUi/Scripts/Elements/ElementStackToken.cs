@@ -33,7 +33,7 @@ namespace Assets.CS.TabletopUI {
 
 
 
-    public class ElementStackToken : AbstractToken, IAnimatableToken
+    public class ElementStackToken : AbstractToken, IArtAnimatableToken
     {
         public const float SEND_STACK_TO_SLOT_DURATION = 0.2f;
 
@@ -683,6 +683,12 @@ namespace Assets.CS.TabletopUI {
                         hlc.DeactivateMatchingHighlightLocation(_element.Id);
                     }
                 }
+        }
+
+        public override void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<AbstractToken> animDone, float startScale, float endScale)
+        {
+            _manifestation.AnimateTo(duration, startPos, endPos, animDone, startScale, endScale);
+
         }
 
         public override void ReactToDraggedToken(TokenInteractionEventArgs args)

@@ -13,7 +13,7 @@ using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Interfaces
 {
-    public interface ISituationAnchor: ISituationSubscriber, IAnimatableToken
+    public interface ISituationAnchor: ISituationSubscriber, IArtAnimatableToken
     {
 
         string SaveLocationInfo { get; set; }
@@ -30,6 +30,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
         void SetParticleSimulationSpace(Transform transform);
 
-        void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<VerbAnchor> animDone, float startScale = 1f, float endScale = 1f);
+        void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<AbstractToken> animDone, float startScale = 1f, float endScale = 1f);
     }
 }

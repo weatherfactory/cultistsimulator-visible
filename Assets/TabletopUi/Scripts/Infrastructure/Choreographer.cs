@@ -260,7 +260,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return true;
         }
 
-        bool CanTokenBeIgnored(AbstractToken token, IToken ignoreToken) {
+        bool CanTokenBeIgnored(IToken token, IToken ignoreToken) {
             if (token == ignoreToken)
                 return true;
             if (token.IsBeingAnimated)

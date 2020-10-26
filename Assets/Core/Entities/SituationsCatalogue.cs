@@ -38,11 +38,11 @@ namespace Assets.Core.Entities
             return GetRegisteredSituations().FirstOrDefault(s => s.IsOpen());
     }
 
-        public IEnumerable<IAnimatableToken> GetAnimatables()
-        {
-            var situationTokens = GetRegisteredSituations().Select(s => s.situationAnchor as IAnimatableToken);
+        //public IEnumerable<IArtAnimatableToken> GetAnimatables()
+        //{
+        //    var situationTokens = GetRegisteredSituations().Select(s => s.situationAnchor as IArtAnimatableToken);
 
-            return situationTokens.Where(s => s.CanAnimateArt());
-        }
+        //    return situationTokens.Where(s => s.CanAnimateArt());
+        //}
     }
 }

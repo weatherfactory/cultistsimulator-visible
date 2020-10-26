@@ -128,7 +128,7 @@ public class TabletopTokenContainer : TokenContainer,IBeginDragHandler,IEndDragH
         if (potentialVerbToken != null)
         {
             potentialVerbToken.SetXNess(TokenXNess.DroppedOnTableContainer);
-            DisplaySituationTokenOnTable(potentialVerbToken,
+            DisplayHere(potentialVerbToken,
                 new Context(Context.ActionSource.PlayerDrag));
             CheckOverlappingTokens(potentialVerbToken);
             SoundManager.PlaySfx("CardDrop");

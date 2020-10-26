@@ -48,11 +48,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             {
 
     
-            if (Time.time >= nextAnimTime)
-            {
-                TriggerArtAnimation();
-                SetNextAnimTime();
-            }
+                if (Time.time >= nextAnimTime)
+                {
+                    TriggerArtAnimation();
+                    SetNextAnimTime();
+                }
             }
 
 
@@ -67,15 +67,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             
             var stacks = Registry.Get<TabletopManager>()._tabletop.GetStacks();
 
-            var animatables = new List<IAnimatableToken>();
+            var animatables = new List<IArtAnimatableToken>();
             
             foreach (var stack in stacks)
                 if (!stack.Defunct && stack.CanAnimateArt() && stack.EntityId != lastAnimID)
-                    animatables.Add(stack as IAnimatableToken);
+                    animatables.Add(stack);
 
-            List<IAnimatableToken> tokens =new List<IAnimatableToken>(Registry.Get<SituationsCatalogue>().GetAnimatables());
+            //List<IArtAnimatableToken> tokens =new List<IArtAnimatableToken>(Registry.Get<SituationsCatalogue>().GetAnimatables());
 
-            animatables.AddRange(tokens.Where(t => t.EntityId != lastAnimID));
+       //     animatables.AddRange(tokens.Where(t => t.EntityId != lastAnimID));
 
 
 

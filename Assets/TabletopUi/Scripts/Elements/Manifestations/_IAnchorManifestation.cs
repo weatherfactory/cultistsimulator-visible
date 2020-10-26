@@ -47,7 +47,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         /// <param name="transform"></param>
         void SetParticleSimulationSpace(Transform transform);
 
-        void AnimateTo(IAnimatableToken token, float duration, Vector3 startPos, Vector3 endPos,
+        void AnimateTo(IArtAnimatableToken token, float duration, Vector3 startPos, Vector3 endPos,
             Action<VerbAnchor> SituationAnimDone, float startScale = 1f, float endScale = 1f);
     }
 

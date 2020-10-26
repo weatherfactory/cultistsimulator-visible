@@ -28,6 +28,8 @@ namespace Assets.CS.TabletopUI {
         bool NoPush { get; }
         TokenLocation Location { get; }
         bool Defunct { get; }
+        bool IsBeingAnimated { get; }
+        bool IsInAir { get;}
     }
 
     public enum TokenXNess
@@ -49,7 +51,7 @@ namespace Assets.CS.TabletopUI {
         [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(CanvasGroup))]
     public abstract class AbstractToken : MonoBehaviour,
-        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IToken,IAnimatableToken {
+        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IToken,IArtAnimatableToken {
 
         // STATIC FIELDS
 
@@ -407,7 +409,7 @@ namespace Assets.CS.TabletopUI {
                     TabletopImageBurner.ImageLayoutConfig.CenterOnToken);
         }
 
-        public abstract void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<VerbAnchor> animDone,
+        public abstract void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<AbstractToken> animDone,
             float startScale, float endScale);
 
 

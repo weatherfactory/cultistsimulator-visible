@@ -32,7 +32,7 @@ namespace Assets.TabletopUi.Scripts.Services {
                
  
                 SituationCreationCommand command = new SituationCreationCommand(v, null, SituationState.Unstarted);
-               var controller=CreateSituation(command);
+               var situation=CreateSituation(command);
 
         }
 

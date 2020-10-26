@@ -9,6 +9,7 @@ using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Elements.Manifestations;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
 using TMPro;
 using UnityEngine;
@@ -429,6 +430,17 @@ namespace Assets.TabletopUi.Scripts.Elements
 
             // remove anim
             artwork.overrideSprite = null;
+        }
+
+
+        public void AnimateTo(float duration, Vector3 startPos, Vector3 endPos,
+            Action<AbstractToken> SituationAnimDone, float startScale = 1f, float endScale = 1f)
+        {
+            var tokenAnim = gameObject.AddComponent<TokenAnimation>();
+            tokenAnim.onAnimDone += SituationAnimDone;
+            tokenAnim.SetPositions(startPos, endPos);
+            tokenAnim.SetScaling(startScale, endScale);
+            tokenAnim.StartAnim(duration);
         }
     }
 }

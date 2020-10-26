@@ -343,7 +343,7 @@ namespace Assets.CS.TabletopUI {
             
         }
 
-       public void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<VerbAnchor> animDone, float startScale = 1f, float endScale = 1f)
+       public override void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<AbstractToken> animDone, float startScale = 1f, float endScale = 1f)
         {
             _manifestation.AnimateTo(this,duration,startPos,endPos,animDone,startScale,endScale);
         }
@@ -351,6 +351,11 @@ namespace Assets.CS.TabletopUI {
         private void animDone(VerbAnchor token)
         {
             TokenContainer.DisplayHere(token, new Context(Context.ActionSource.AnimEnd));
+        }
+
+        public void DumpOutputStacks()
+        {
+            _situation.DumpOutputStacks();
         }
     }
 }

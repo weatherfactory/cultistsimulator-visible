@@ -109,7 +109,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         {
             if (dumpButton.IsHovering())
             {
-                anchor.DumpAllResults();
+                anchor.DumpOutputStacks();
             }
             else
                anchor.TokenClickUnhandledByManifestation();
@@ -408,7 +408,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         }
 
 
-       public void AnimateTo(IAnimatableToken token, float duration, Vector3 startPos, Vector3 endPos,
+       public void AnimateTo(IArtAnimatableToken token, float duration, Vector3 startPos, Vector3 endPos,
            Action<VerbAnchor> SituationAnimDone, float startScale = 1f, float endScale = 1f)
         {
             var tokenAnim = token.gameObject.AddComponent<TokenAnimation>();

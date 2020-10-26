@@ -256,12 +256,9 @@ namespace Assets.Core.Entities {
 
             TabletopManager.RequestNonSaveableState(TabletopManager.NonSaveableType.Greedy, true);
 
-            // Hack to try to repro bug #1253 - CP
-            //var tabletop = Registry.Retrieve<TabletopManager>();
-            //tabletop.ForceAutosave();
         }
 
-        void HandleOnGreedySlotAnimDone(ElementStackToken element, AnchorAndSlot anchorSlotPair)
+        void HandleOnGreedySlotAnimDone(ElementStackToken element, TokenLocation destination,TokenContainer destinatinoSlot)
         {
             greedyAnimIsActive = false;
             TabletopManager.RequestNonSaveableState(TabletopManager.NonSaveableType.Greedy, false);
@@ -280,9 +277,9 @@ namespace Assets.Core.Entities {
             Continue(rc, interval, greedyAnimIsActive);
 
             if (State == SituationState.Ongoing)
-                return new HeartbeatResponse();
-            else
                 return GetResponseWithUnfilledGreedyThresholdsForThisSituation();
+
+            return new HeartbeatResponse();
 
         }
 

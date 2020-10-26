@@ -8,7 +8,7 @@ using Assets.CS.TabletopUI;
 
 namespace Assets.TabletopUi.Scripts.Interfaces
 {
-    public interface IAnimatableToken:IToken
+    public interface IArtAnimatableToken:IToken
     {
         void StartArtAnimation();
         bool CanAnimateArt();

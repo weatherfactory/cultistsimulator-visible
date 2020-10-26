@@ -79,9 +79,12 @@ public class SituationResults : TokenContainer {
             cardsRemaining = true;
         }
 
-        if (!cardsRemaining)
-            controller.ResetSituation();
-        else
+        //if (!cardsRemaining)
+        //    controller.ResetSituation();
+        //else
+        //    cardPos.ReorderCards(stacks);
+
+        if (cardsRemaining)
             cardPos.ReorderCards(stacks);
     }
 

@@ -22,7 +22,7 @@ public class TokenAnimationToSlot : TokenAnimation {
                 destinationAnchor.Defunct || destinationSlot.Defunct)
                 return transform.localPosition;
             else
-                return Token.GetTargetContainerPosition();
+                return destinationAnchor.transform.localPosition;
         }
     }
 
@@ -41,6 +41,6 @@ public class TokenAnimationToSlot : TokenAnimation {
 
     protected override void FireCompleteEvent() {
 		if (onElementSlotAnimDone != null)
-			onElementSlotAnimDone(token as ElementStackToken, targetAnchorSlotPair);
+			onElementSlotAnimDone(token as ElementStackToken, destinationAnchor.Location,destinationSlot);
 	}
 }

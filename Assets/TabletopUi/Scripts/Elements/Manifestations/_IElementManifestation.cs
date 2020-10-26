@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.CS.TabletopUI;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Elements.Manifestations
@@ -39,5 +40,6 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         void DoRevealEffect(bool instant);
         void DoShroudEffect(bool instant);
         bool RequestingNoDrag { get; }
+        void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<AbstractToken> animDone, float startScale, float endScale);
     }
 }
