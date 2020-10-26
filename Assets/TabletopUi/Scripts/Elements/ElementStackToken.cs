@@ -935,24 +935,33 @@ namespace Assets.CS.TabletopUI {
             // Save this, since we're retiring and that sets quantity to 0
             int quantity = Quantity;
 
-           var cardLeftBehind= TokenContainer.ProvisionElementStack(elementId, quantity, Source.Existing(),
-                new Context(Context.ActionSource.ChangeTo)) as ElementStackToken;
+            try
+            {
 
-            foreach(var m in this.GetCurrentMutations())
-               cardLeftBehind.SetMutation(m.Key,m.Value,false); //brand new mutation, never needs to be additive
-            cardLeftBehind.lastTablePos = lastTablePos;
-            cardLeftBehind.originStack = null;
+                var cardLeftBehind= TokenContainer.ProvisionElementStack(elementId, quantity, Source.Existing(),
+                    new Context(Context.ActionSource.ChangeTo)) as ElementStackToken;
 
-            // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
-            cardLeftBehind.transform.position = transform.position;
+                foreach(var m in this.GetCurrentMutations())
+                    cardLeftBehind.SetMutation(m.Key,m.Value,false); //brand new mutation, never needs to be additive
+                cardLeftBehind.lastTablePos = lastTablePos;
+                cardLeftBehind.originStack = null;
 
-            // Put it behind the card being burned
-            cardLeftBehind.transform.SetSiblingIndex(transform.GetSiblingIndex() - 1);
+                // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
+                cardLeftBehind.transform.position = transform.position;
 
-            // Accepting stack may put it to pos Vector3.zero, so this is last
-            cardLeftBehind.transform.position = transform.position;
+                // Put it behind the card being burned
+                cardLeftBehind.transform.SetSiblingIndex(transform.GetSiblingIndex() - 1);
 
-            Retire(CardVFX.CardTransformWhite);
+                // Accepting stack may put it to pos Vector3.zero, so this is last
+                cardLeftBehind.transform.position = transform.position;
+
+                Retire(CardVFX.CardTransformWhite);
+            }
+            catch (Exception e)
+            {
+                NoonUtility.Log($"Something bad happened when trying to turn the {EntityId} card on the desktop into a {elementId} card: " + e.Message,1,VerbosityLevel.Essential);
+                return false;
+            }
 
             return true;
         }
