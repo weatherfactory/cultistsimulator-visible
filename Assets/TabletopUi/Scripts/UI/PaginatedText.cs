@@ -1,6 +1,7 @@
 ﻿#pragma warning disable 0649
 using System.Collections;
 using System.Collections.Generic;
+using Noon;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -124,6 +125,12 @@ namespace Assets.CS.TabletopUI {
         }
 
 		void SetPage(int page) {
+
+            if (Notes.Count <= 0)
+            {
+                NoonUtility.LogWarning("Tried to set a notes page when there are no notes");
+            }
+
 			if (page + 1 > Notes.Count) 
 				currentPage = Notes.Count - 1;
 			else if (page <= 0)

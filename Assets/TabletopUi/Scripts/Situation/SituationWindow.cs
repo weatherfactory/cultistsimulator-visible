@@ -107,6 +107,10 @@ namespace Assets.CS.TabletopUI {
             name = "Window_" + Verb.Id;
             DisplayIcon(Verb.Id);
 
+            Title = Verb.Label;
+            PaginatedNotes.SetText(Verb.Description);
+            DisplayButtonState(false);
+
             if (Verb.Startable)
             {
                 startButton.gameObject.SetActive(true);
@@ -245,14 +249,6 @@ namespace Assets.CS.TabletopUI {
 			canvasGroupFader.Hide();
         }
 
-
-        public void DisplayInitialState()
-        {
-            Title = Verb.Label;
-            PaginatedNotes.SetText(Verb.Description);
-
-            DisplayButtonState(false);
-        }
 
 
         public void DisplayNoRecipeFound() {
@@ -486,7 +482,11 @@ namespace Assets.CS.TabletopUI {
                 DisplayNoRecipeFound();
             //no recipe, no hint, no aspects. Just set back to unstarted
             else
-                DisplayInitialState();
+            {
+                Title = Verb.Label;
+                PaginatedNotes.SetText(Verb.Description);
+                DisplayButtonState(false);
+            }
         }
 
         public void ReceiveNotification(SituationEventData e)

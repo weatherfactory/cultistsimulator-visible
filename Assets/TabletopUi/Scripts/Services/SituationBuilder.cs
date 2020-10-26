@@ -94,10 +94,11 @@ namespace Assets.TabletopUi.Scripts.Services {
 
    
         public SituationWindow CreateSituationWindow(ISituationAnchor  anchor) {
-            var situationWindow = Registry.Get<PrefabFactory>().CreateLocally<SituationWindow>(windowLevel);
-            situationWindow.gameObject.SetActive(false);
-            situationWindow.positioner.Initialise(anchor);
-            return situationWindow;
+            var newWindow = Registry.Get<PrefabFactory>().CreateLocally<SituationWindow>(windowLevel);
+            newWindow.SetTokenContainer(tableLevel.GetComponent<TokenContainer>(), new Context(Context.ActionSource.Unknown));
+            newWindow.gameObject.SetActive(false);
+            newWindow.positioner.Initialise(anchor);
+            return newWindow;
         }
 
     }
