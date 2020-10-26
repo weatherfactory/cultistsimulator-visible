@@ -15,6 +15,7 @@ using Assets.Core.Services;
 using Assets.Logic;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Infrastructure.Events;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.Scripts.TokenContainers;
@@ -342,12 +343,14 @@ namespace Assets.CS.TabletopUI {
                 throw new ApplicationException("Trying to set up a new board for a character with no chosen legacy. Even fresh characters should have a legacy when created, but this code has always been hinky.");
 
             IVerb v = Registry.Get<ICompendium>().GetEntityById<BasicVerb>(_character.ActiveLegacy.StartingVerbId);
-            SituationCreationCommand command = new SituationCreationCommand(v, null, SituationState.ReadyToReset);
+            SituationCreationCommand command = new SituationCreationCommand(v, NullRecipe.Create(), SituationState.ReadyToReset);
             var situation = builder.CreateSituation(command);
 
             
             SetStartingCharacterInfo(_character.ActiveLegacy);
-            
+
+            ProvisionStartingElements(_character.ActiveLegacy);
+
             StatusBar.UpdateCharacterDetailsView(Registry.Get<Character>());
 
             
@@ -364,7 +367,7 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public void ProvisionStartingElements(Legacy chosenLegacy, Choreographer choreographer) {
+        public void ProvisionStartingElements(Legacy chosenLegacy) {
             AspectsDictionary startingElements = new AspectsDictionary();
             startingElements.CombineAspects(chosenLegacy.Effects);  //note: we don't reset the chosen legacy. We assume it remains the same until someone dies again.
 
@@ -373,7 +376,7 @@ namespace Assets.CS.TabletopUI {
                 var context = new Context(Context.ActionSource.Loading);
 
                 ElementStackToken token = _tabletop.ProvisionElementStack(e.Key, e.Value, Source.Existing(),context) as ElementStackToken;
-                choreographer.ArrangeTokenOnTable(token, context);
+                Registry.Get<Choreographer>().ArrangeTokenOnTable(token, context);
             }
         }
 
@@ -554,8 +557,8 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
 
         public async Task<bool> SaveGameAsync(bool withNotification, SourceForGameState source)
-		{
-
+        {
+            return false;
             if (!IsSafeToAutosave())
             {
                 NoonUtility.Log("Unsafe to autosave: returning", 0,VerbosityLevel.SystemChatter);
@@ -1152,16 +1155,15 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 		}
 
 
-        public void NotifyStacksChanged()
-        {
-          NotifyAspectsDirty();
-        }
-
         public void WhenSettingUpdated(object newValue)
         {
             SetAutosaveInterval(newValue is float ? (float)newValue : 0);
         }
 
+        public void NotifyStacksChangedForContainer(ContainerStacksChangedArgs args)
+        {
+            NotifyAspectsDirty();
+        }
     }
 
 

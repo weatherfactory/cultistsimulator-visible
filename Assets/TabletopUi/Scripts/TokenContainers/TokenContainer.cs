@@ -11,10 +11,12 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
 using Assets.TabletopUi.Scripts.Elements;
 using Assets.TabletopUi.Scripts.Elements.Manifestations;
+using Assets.TabletopUi.Scripts.Infrastructure.Events;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure {
 
@@ -49,6 +51,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
     public abstract class TokenContainer : MonoBehaviour
     {
+        public ContainerStacksChangedEvent OnStacksChanged;
 
         public virtual bool AllowDrag { get; private set; }
         public virtual bool AllowStackMerge { get; private set; }
@@ -435,8 +438,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             if (!_stacks.Contains(stack))
                 _stacks.Add(stack);
 
-            DisplayHere(stack as ElementStackToken, context);
-            Registry.Get<TokenContainersCatalogue>().NotifyStacksChanged();
+            DisplayHere(stack, context);
+            NotifyStacksChanged();
         }
 
 
@@ -564,7 +567,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public void NotifyStacksChanged()
         {
-            Registry.Get<TokenContainersCatalogue>().NotifyStacksChanged();
+           OnStacksChanged.Invoke(new ContainerStacksChangedArgs{Container = this});
         }
 
         /// <summary>

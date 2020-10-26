@@ -8,6 +8,7 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
+using Assets.TabletopUi.Scripts.Infrastructure.Events;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
 using TMPro;
@@ -52,10 +53,6 @@ public class ElementOverview : MonoBehaviour, IStacksChangeSubscriber {
                 break;
         }
 
-    }
-
-    public void NotifyStacksChanged() {
-        UpdateDisplay();
     }
 
 
@@ -107,4 +104,9 @@ public class ElementOverview : MonoBehaviour, IStacksChangeSubscriber {
     //}
 
 
+    public void NotifyStacksChangedForContainer(ContainerStacksChangedArgs args)
+    {
+        UpdateDisplay();
+
+    }
 }

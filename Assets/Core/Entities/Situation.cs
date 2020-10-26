@@ -12,6 +12,7 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Infrastructure.Events;
 using Assets.TabletopUi.Scripts.Interfaces;
 using JetBrains.Annotations;
 using Noon;
@@ -119,12 +120,19 @@ namespace Assets.Core.Entities {
         public void AddContainer(TokenContainer container)
         {
             _containers.Add(container);
+            container.OnStacksChanged.AddListener(ContainerStacksChanged);
         }
 
         public void AddContainers(IEnumerable<TokenContainer> containers)
         {
             foreach (var c in containers)
-                _containers.Add(c);
+                AddContainer(c);
+        }
+
+        public void RemoveContainer(TokenContainer c)
+        {
+            _containers.Remove(c);
+            c.OnStacksChanged.RemoveListener(ContainerStacksChanged);
         }
 
         public IList<SlotSpecification> GetSlotsForCurrentRecipe()
@@ -138,7 +146,7 @@ namespace Assets.Core.Entities {
 
         private void Reset()
         {
-            currentPrimaryRecipe = null;
+            currentPrimaryRecipe = NullRecipe.Create();
             TimeRemaining = 0;
             State = SituationState.ReadyToStart;
             foreach (var subscriber in subscribers)
@@ -790,7 +798,7 @@ namespace Assets.Core.Entities {
 
         }
 
-        private void ContainerContentsUpdated()
+        private void ContainerStacksChanged(ContainerStacksChangedArgs _stacksChangedArgs)
         {
             SituationEventData data = SituationEventData.Create(this);
 

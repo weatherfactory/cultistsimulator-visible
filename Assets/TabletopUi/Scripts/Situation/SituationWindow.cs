@@ -129,12 +129,12 @@ namespace Assets.CS.TabletopUI {
 
         public override void StartArtAnimation()
         {
-            throw new NotImplementedException();
+       
         }
 
         public override bool CanAnimateArt()
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public override string EntityId { get; }
@@ -166,7 +166,7 @@ namespace Assets.CS.TabletopUI {
 
         public override void OnPointerClick(PointerEventData eventData)
         {
-            throw new NotImplementedException();
+//
         }
 
         public override void ReturnToTabletop(Context context)
@@ -198,22 +198,22 @@ namespace Assets.CS.TabletopUI {
 
         public override void ReactToDraggedToken(TokenInteractionEventArgs args)
         {
-            throw new NotImplementedException();
+          //
         }
 
         public override void HighlightPotentialInteractionWithToken(bool show)
         {
-            throw new NotImplementedException();
+          //
         }
 
         public override void OnPointerEnter(PointerEventData eventData)
         {
-            throw new NotImplementedException();
+           //
         }
 
         public override void OnPointerExit(PointerEventData eventData)
         {
-            throw new NotImplementedException();
+            //
         }
 
         public override void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<AbstractToken> animDone, float startScale, float endScale)
@@ -448,9 +448,8 @@ namespace Assets.CS.TabletopUI {
         public void ContainerContentsUpdated(SituationEventData e)
         {
   
-
             var allAspectsInSituation = AspectsDictionary.GetFromStacks(e.StacksInEachStorage.SelectMany(s => s.Value), true);
-            
+           
 
             var tabletopManager = Registry.Get<TabletopManager>();
             var aspectsInContext = tabletopManager.GetAspectsInContext(allAspectsInSituation);

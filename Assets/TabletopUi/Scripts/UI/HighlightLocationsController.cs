@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Assets.Core;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Infrastructure.Events;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -70,18 +71,20 @@ namespace Assets.TabletopUi.Scripts.UI
           ActivateMatchingHighlightLocation(elementId);
       }
 
-      public void NotifyStacksChanged()
+
+
+      public void NotifyStacksChangedForContainer(ContainerStacksChangedArgs args)
       {
           var ttm = Registry.Get<TabletopManager>();
           var aspectsInContext = ttm.GetAspectsInContext(new AspectsDictionary());
 
-          foreach(var hl in highlightLocations)
+          foreach (var hl in highlightLocations)
           {
               if (aspectsInContext.AspectsExtant.ContainsKey(hl.DisplayWhileElementIdPresent))
                   hl.DisplayForPresence(0f);
               else
                   hl.HideForNoPresence();
           }
-      }
+        }
     }
 }

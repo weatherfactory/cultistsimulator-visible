@@ -7,10 +7,11 @@ using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Infrastructure.Events;
 
 namespace Assets.Core.Entities {
     public interface IStacksChangeSubscriber {
-        void NotifyStacksChanged();
+        void NotifyStacksChangedForContainer(ContainerStacksChangedArgs args);
     }
 
     public class TokenContainersCatalogue {
@@ -28,31 +29,38 @@ namespace Assets.Core.Entities {
         }
 
         public void RegisterTokenContainer(TokenContainer tokenContainer) {
+            foreach(var s in _subscribers)
+                tokenContainer.OnStacksChanged.AddListener(s.NotifyStacksChangedForContainer);
+            
             _currentTokenContainers.Add(tokenContainer);
         }
 
         public void DeregisterTokenContainer(TokenContainer tokenContainer) {
+            foreach (var s in _subscribers)
+                tokenContainer.OnStacksChanged.RemoveListener(s.NotifyStacksChangedForContainer);
+            
             _currentTokenContainers.Remove(tokenContainer);
         }
 
-        
+
         public void Reset()
         {
-        _subscribers.Clear();
-        _currentTokenContainers.RemoveWhere(tc => !tc.PersistBetweenScenes);
+            foreach(var c in _currentTokenContainers)
+                if(!c.PersistBetweenScenes)
+                    c.OnStacksChanged.RemoveAllListeners();
+            _currentTokenContainers.RemoveWhere(tc => !tc.PersistBetweenScenes);
+            
+            _subscribers.Clear();
         }
 
 
         public void Subscribe(IStacksChangeSubscriber subscriber) {
-            if(!_subscribers.Contains(subscriber))
-                   _subscribers.Add(subscriber);
+            _subscribers.Add(subscriber);
+
+            foreach(var c in _currentTokenContainers)
+                c.OnStacksChanged.AddListener(subscriber.NotifyStacksChangedForContainer);
         }
 
-        //called whenever a stack quantity is modified, or a stack moves to another StacksManager
-        public void NotifyStacksChanged() {
-            foreach (var s in _subscribers)
-                s.NotifyStacksChanged();
-        }
 
 
     }
