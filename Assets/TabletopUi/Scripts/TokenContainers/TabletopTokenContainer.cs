@@ -28,8 +28,6 @@ public class TabletopTokenContainer : TokenContainer,IBeginDragHandler,IEndDragH
 
     public EnRouteTokenContainer SendViaContainer;
 
-    protected Choreographer choreographer;
-
     public override bool AllowDrag { get { return true; } }
     public override bool AllowStackMerge { get { return true; } }
 
@@ -40,7 +38,6 @@ public class TabletopTokenContainer : TokenContainer,IBeginDragHandler,IEndDragH
     public override void Start() {
         EnforceUniqueStacksInThisContainer = true; // Martin: This ensures that this stackManager kills other copies when a unique is dropped in
 
-        choreographer = Registry.Get<Choreographer>();
         InitialiseListeners();
         _notifiersForContainer.Add(Registry.Get<INotifier>());
         base.Start();
@@ -76,7 +73,7 @@ public class TabletopTokenContainer : TokenContainer,IBeginDragHandler,IEndDragH
     // Tabletop specific
     public void CheckOverlappingTokens(IToken token) {
         // Verify if we are overlapping with anything. If so: move it.
-        choreographer.MoveAllTokensOverlappingWith(token);
+        Registry.Get<Choreographer>().MoveAllTokensOverlappingWith(token);
     }
 
     public override void TryMoveAsideFor(VerbAnchor potentialUsurper, AbstractToken incumbent, out bool incumbentMoved) {

@@ -30,7 +30,6 @@ namespace Assets.CS.TabletopUI {
     public class TabletopManager : MonoBehaviour, IStacksChangeSubscriber,ISettingSubscriber
     {
 
-
         [SerializeField] private EndGameAnimController _endGameAnimController;
 
         [Header("Tabletop")] [SerializeField] public TabletopTokenContainer _tabletop;
@@ -180,10 +179,8 @@ namespace Assets.CS.TabletopUI {
             try
             {
 
-            //AppealToConscience();
+                //AppealToConscience();
             var registry = new Registry();
-            
-
             
             _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform);
 

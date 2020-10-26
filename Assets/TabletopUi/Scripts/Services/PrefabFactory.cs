@@ -22,6 +22,7 @@ namespace Assets.TabletopUi.Scripts.Services
    public class PrefabFactory : MonoBehaviour
     {
         [Header("Prefabs")]
+        
         public ElementFrame ElementFrame = null;
         public VerbAnchor VerbAnchor = null;
         public ElementStackToken ElementStackToken = null;
@@ -33,6 +34,7 @@ namespace Assets.TabletopUi.Scripts.Services
         public RecipeSlot RecipeSlot = null;
         public NotificationWindow NotificationWindow = null;
         public SituationNote SituationNote = null;
+        public NullElementStackToken NullElementStack = null;
 
 
         public ISituationAnchor CreateSituationAnchorForVerb(IVerb verb,Transform t)

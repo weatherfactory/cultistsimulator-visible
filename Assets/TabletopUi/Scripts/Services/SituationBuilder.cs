@@ -24,8 +24,7 @@ namespace Assets.TabletopUi.Scripts.Services {
         }
 
         public void CreateInitialTokensOnTabletop(Legacy legacy) {
-            float sTokenHorizSpace = (Registry.Get<PrefabFactory>().GetPrefab<VerbAnchor>().transform as RectTransform).rect.width + 20f;
-            float sTokenVertiSpace = (Registry.Get<PrefabFactory>().GetPrefab<VerbAnchor>().transform as RectTransform).rect.height + 50f;
+
 
             // build verbs
             IVerb v = Registry.Get<ICompendium>().GetEntityById<BasicVerb>(legacy.StartingVerbId);
