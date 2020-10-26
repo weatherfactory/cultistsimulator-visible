@@ -9,6 +9,7 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
+using Assets.TabletopUi.Scripts.TokenContainers;
 using Noon;
 using UnityEngine;
 
@@ -32,9 +33,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         private ChoreographerDebugView _currentDebug;
 
-        public Choreographer(TabletopTokenContainer tabletop, SituationBuilder situationBuilder, Transform tableLevelTransform, Transform WindowLevelTransform) {
+        public Choreographer(TabletopTokenContainer tabletop, WindowsTokenContainer windowsToken) {
             _tabletop = tabletop;
-            _situationBuilder = situationBuilder;
+            _situationBuilder = new SituationBuilder(tabletop,windowsToken);
 
             tableRect = tabletop.GetRect();
 

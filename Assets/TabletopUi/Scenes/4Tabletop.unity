@@ -2961,6 +2961,7 @@ MonoBehaviour:
   _endGameAnimController: {fileID: 2130193020}
   _tabletop: {fileID: 730}
   tabletopBackground: {fileID: 577}
+  WindowsToken: {fileID: 392807929}
   _highlightLocationsController: {fileID: 1525472693}
   aspectDetailsWindow: {fileID: 566079818}
   tokenDetailsWindow: {fileID: 114111364633692442}
@@ -2970,8 +2971,6 @@ MonoBehaviour:
   mapBackground: {fileID: 1041490181}
   mapAnimation: {fileID: 1041490182}
   draggableHolderRectTransform: {fileID: 1610149764}
-  tableLevelTransform: {fileID: 475}
-  windowLevelTransform: {fileID: 392807927}
   tableScroll: {fileID: 631}
   _dropZoneTemplate: {fileID: 1000011432613132, guid: 1156e72892331c64397bcd330e4ea6c6,
     type: 3}
@@ -13999,6 +13998,7 @@ GameObject:
   m_Component:
   - component: {fileID: 392807927}
   - component: {fileID: 392807928}
+  - component: {fileID: 392807929}
   m_Layer: 5
   m_Name: TabletopWindowContainer
   m_TagString: Untagged
@@ -14033,6 +14033,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392807926}
   m_CullTransparentMesh: 0
+--- !u!114 &392807929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392807926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48934617ae39e4341be599d3e254d463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &406943361
 GameObject:
   m_ObjectHideFlags: 0
@@ -15537,7 +15549,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000034987926, y: -0.0009880066}
+  m_AnchoredPosition: {x: 0.000034987926, y: 0.00016021729}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &512707587
@@ -31150,7 +31162,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1706259581}
   m_HandleRect: {fileID: 1706259580}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -36650,7 +36662,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 422685287}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999999
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

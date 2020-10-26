@@ -37,15 +37,6 @@ namespace Assets.TabletopUi.Scripts.Services
         public NullElementStackToken NullElementStack = null;
 
 
-        public ISituationAnchor CreateSituationAnchorForVerb(IVerb verb,Transform t)
-        {
-            //if(verb.Species==NoonConstants.ANCHOR_BOOKSHELF)
-            //    return CreateLocally<BookshelfAnchor>(t);
-            //else
-                return CreateLocally<VerbAnchor>(t);
-        }
-
-
         public T Create<T>() where T : Component
         {
             var o = GetPrefab<T>();

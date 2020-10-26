@@ -15,36 +15,24 @@ using UnityEngine;
 namespace Assets.TabletopUi.Scripts.Services {
     public class SituationBuilder {
 
-        private Transform tableLevel;
-        private Transform windowLevel;
+        private TokenContainer anchorLevel;
+        private TokenContainer windowLevel;
 
-        public SituationBuilder(Transform tableLevel, Transform windowLevel) {
-            this.tableLevel = tableLevel;
+        public SituationBuilder(TokenContainer anchorLevel, TokenContainer windowLevel) {
+            this.anchorLevel = anchorLevel;
             this.windowLevel = windowLevel;
         }
 
-        public void CreateInitialTokensOnTabletop(Legacy legacy) {
-
-
-            // build verbs
-            IVerb v = Registry.Get<ICompendium>().GetEntityById<BasicVerb>(legacy.StartingVerbId);
-               
- 
-                SituationCreationCommand command = new SituationCreationCommand(v, null, SituationState.Unstarted);
-               var situation=CreateSituation(command);
-
-        }
 
         public Situation CreateSituation(SituationCreationCommand command)
         {
             Situation situation = new Situation(command);
             Registry.Get<SituationsCatalogue>().RegisterSituation(situation);
 
-            var newAnchor = CreateAnchor(command);
-
+            var newAnchor = anchorLevel.ProvisionSituationAnchor(command);
             situation.AttachAnchor(newAnchor);
             
-            var newWindow = CreateSituationWindow(newAnchor);
+            var newWindow = windowLevel.ProvisionSituationWindow(newAnchor);
             situation.AttachWindow(newWindow);
 
 
@@ -71,34 +59,7 @@ namespace Assets.TabletopUi.Scripts.Services {
 
             situation.ExecuteHeartbeat(0f);
 
-
-
-
             return situation;
-        }
-
-
-        public ISituationAnchor CreateAnchor(SituationCreationCommand situationCreationCommand)
-        {
-
-            var newAnchor = Registry.Get<PrefabFactory>().CreateSituationAnchorForVerb(situationCreationCommand.Verb,tableLevel);
-            newAnchor.SetTokenContainer(tableLevel.GetComponent<TokenContainer>(), new Context(Context.ActionSource.Unknown));
-
-            if (situationCreationCommand.LocationInfo != null)
-                newAnchor.SaveLocationInfo = situationCreationCommand.LocationInfo;
-
-
-          
-            return newAnchor;
-        }
-
-   
-        public SituationWindow CreateSituationWindow(ISituationAnchor  anchor) {
-            var newWindow = Registry.Get<PrefabFactory>().CreateLocally<SituationWindow>(windowLevel);
-            newWindow.SetTokenContainer(tableLevel.GetComponent<TokenContainer>(), new Context(Context.ActionSource.Unknown));
-            newWindow.gameObject.SetActive(false);
-            newWindow.positioner.Initialise(anchor);
-            return newWindow;
         }
 
     }

@@ -11,6 +11,7 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
 using Assets.TabletopUi.Scripts.Elements;
 using Assets.TabletopUi.Scripts.Elements.Manifestations;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using UnityEngine;
@@ -141,6 +142,27 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             stack.LastTablePos = stackSpecification.LastTablePos;
 
             return stack;
+        }
+
+
+
+        public ISituationAnchor ProvisionSituationAnchor(SituationCreationCommand situationCreationCommand)
+        {
+            var newAnchor = Registry.Get<PrefabFactory>().CreateLocally<VerbAnchor>(transform);
+
+            newAnchor.SetTokenContainer(this, new Context(Context.ActionSource.Unknown));
+
+            return newAnchor;
+        }
+
+
+        public SituationWindow ProvisionSituationWindow(ISituationAnchor anchor)
+        {
+            var newWindow = Registry.Get<PrefabFactory>().CreateLocally<SituationWindow>(transform);
+            newWindow.SetTokenContainer(this, new Context(Context.ActionSource.Unknown));
+            newWindow.gameObject.SetActive(false);
+            newWindow.positioner.Initialise(anchor);
+            return newWindow;
         }
 
         public virtual ElementStackToken ProvisionElementStack(string elementId, int quantity)

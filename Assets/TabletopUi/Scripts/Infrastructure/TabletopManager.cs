@@ -17,6 +17,7 @@ using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
+using Assets.TabletopUi.Scripts.TokenContainers;
 using Assets.TabletopUi.Scripts.UI;
 using Assets.TabletopUi.UI;
 using Noon;
@@ -34,6 +35,8 @@ namespace Assets.CS.TabletopUI {
 
         [Header("Tabletop")] [SerializeField] public TabletopTokenContainer _tabletop;
         [SerializeField] TabletopBackground tabletopBackground;
+
+        [SerializeField] public WindowsTokenContainer WindowsToken;
 
         [SerializeField] private HighlightLocationsController _highlightLocationsController;
 
@@ -56,8 +59,6 @@ namespace Assets.CS.TabletopUI {
         [Header("Drag & Window")] [SerializeField]
         private RectTransform draggableHolderRectTransform;
 
-        [SerializeField] Transform tableLevelTransform;
-        [SerializeField] Transform windowLevelTransform;
         [SerializeField] private ScrollRect tableScroll;
         [SerializeField] public GameObject _dropZoneTemplate;
 
@@ -182,10 +183,10 @@ namespace Assets.CS.TabletopUI {
                 //AppealToConscience();
             var registry = new Registry();
             
-            _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform);
+            _situationBuilder = new SituationBuilder(_tabletop, WindowsToken);
 
             //register everything used gamewide
-            SetupServices(registry, _situationBuilder, _tabletop);
+            SetupServices(registry, _situationBuilder);
 
             //we hand off board functions to individual controllers
             InitialiseSubControllers(
@@ -286,13 +287,13 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        private void SetupServices(Registry registry,SituationBuilder builder, TabletopTokenContainer container)
+        private void SetupServices(Registry registry,SituationBuilder builder)
         {
 
             registry.Register(builder);
 
 
-            var choreographer = new Choreographer(container, builder, tableLevelTransform, windowLevelTransform);
+            var choreographer = new Choreographer(_tabletop, WindowsToken);
             registry.Register(choreographer);
 
             var situationsCatalogue = new SituationsCatalogue();
@@ -343,17 +344,16 @@ namespace Assets.CS.TabletopUI {
             if(_character.ActiveLegacy==null)
                 throw new ApplicationException("Trying to set up a new board for a character with no chosen legacy. Even fresh characters should have a legacy when created, but this code has always been hinky.");
 
-            builder.CreateInitialTokensOnTabletop(_character.ActiveLegacy);
+            IVerb v = Registry.Get<ICompendium>().GetEntityById<BasicVerb>(_character.ActiveLegacy.StartingVerbId);
+            SituationCreationCommand command = new SituationCreationCommand(v, null, SituationState.Unstarted);
+            var situation = builder.CreateSituation(command);
 
-            ProvisionStartingElements(_character.ActiveLegacy, Registry.Get<Choreographer>());
+            
             SetStartingCharacterInfo(_character.ActiveLegacy);
             
             StatusBar.UpdateCharacterDetailsView(Registry.Get<Character>());
 
-
-
             
-
             _notifier.ShowNotificationWindow(_character.ActiveLegacy.Label, _character.ActiveLegacy.StartDescription);
         }
 
