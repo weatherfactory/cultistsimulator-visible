@@ -3905,6 +3905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _background: {fileID: 577}
   canvasGroupFader: {fileID: 146}
+  SendViaContainer: {fileID: 1610149766}
 --- !u!114 &737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5748,6 +5749,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d82a6bfde0cdd94890dbb172a940e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransform: {fileID: 0}
+  rotateOnDrag: 1
+  TokenContainer: {fileID: 0}
   canvasGroupFader: {fileID: 120257166}
   positioner: {fileID: 120257167}
   artwork: {fileID: 763564556}
@@ -5762,6 +5766,15 @@ MonoBehaviour:
   aspectsDisplay: {fileID: 805780702}
   startButton: {fileID: 1096973141}
   startButtonText: {fileID: 1714488735}
+  OnStartButtonClicked:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollectButtonClicked:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWindowClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &129009707
 GameObject:
   m_ObjectHideFlags: 0
@@ -22718,6 +22731,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  TokenInteractionEvent:
+    m_PersistentCalls:
+      m_Calls: []
   playerInput: {fileID: 202816351}
   _debugTools: {fileID: 589}
 --- !u!1 &980569403
@@ -33151,6 +33167,7 @@ GameObject:
   - component: {fileID: 1610149764}
   - component: {fileID: 1610149767}
   - component: {fileID: 1610149765}
+  - component: {fileID: 1610149766}
   m_Layer: 5
   m_Name: EnRouteTokenContainer
   m_TagString: Untagged
@@ -33194,6 +33211,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1610149766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610149763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e87a6b79cc7ff1449be4ae36e38888b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartingContainer: {fileID: 730}
 --- !u!223 &1610149767
 Canvas:
   m_ObjectHideFlags: 0
@@ -35852,6 +35882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _background: {fileID: 1041490181}
   canvasGroupFader: {fileID: 1927212865}
+  SendViaContainer: {fileID: 0}
 --- !u!223 &1927212868
 Canvas:
   m_ObjectHideFlags: 0
@@ -38466,22 +38497,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e4e1614f22284fb88afe962ca58539c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RectTransform: {fileID: 0}
-  useDragOffset: 1
+  rectTransform: {fileID: 0}
   rotateOnDrag: 1
-  glowImage: {fileID: 0}
-  artwork: {fileID: 0}
-  backArtwork: {fileID: 0}
-  textBackground: {fileID: 0}
-  text: {fileID: 0}
-  stackBadge: {fileID: 0}
-  stackCountText: {fileID: 0}
-  decayView: {fileID: 0}
-  decayCountText: {fileID: 0}
-  spriteDecaysTextBG: {fileID: 0}
-  spriteUniqueTextBG: {fileID: 0}
-  shadow: {fileID: 0}
-  defaultRetireFX: 0
+  TokenContainer: {fileID: 0}
   PlacementAlreadyChronicled: 0
 --- !u!114 &114111364633692442 stripped
 MonoBehaviour:
@@ -39787,6 +39805,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d170d57fdf8432c44b406720bf1e7cdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransform: {fileID: 0}
+  rotateOnDrag: 1
+  TokenContainer: {fileID: 0}
+  PlacementAlreadyChronicled: 0
 --- !u!1 &7184613542656717921
 GameObject:
   m_ObjectHideFlags: 0
