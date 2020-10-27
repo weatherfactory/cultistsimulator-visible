@@ -777,8 +777,8 @@ namespace Assets.Core.Entities {
     {
         var thresholds = GetContainersByCategory(ContainerCategory.Threshold);
         foreach (var t in thresholds)
-            if (!t.IsGreedy &&
-                t.GetMatchForStack(stack) == ContainerMatchForStack.MatchOK())
+
+            if (!t.IsGreedy && t.GetMatchForStack(stack).MatchType ==SlotMatchForAspectsType.Okay)
                 return t;
 
         return null;
