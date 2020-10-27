@@ -21,11 +21,26 @@ namespace Assets.Core.Entities
         }
 
         protected NullRecipe()
-        {}
+        {
+
+            //Linked=new List<LinkedRecipeDetails>();
+            //Alt=new List<LinkedRecipeDetails>();
+            //Requirements=new Dictionary<string, string>();
+            //TableReqs=new Dictionary<string, string>();
+            //ExtantReqs=new Dictionary<string, string>();
+            //Effects=new Dictionary<string, string>();
+            //Aspects=new AspectsDictionary();
+            //Mutations=new List<MutationEffect>();
+            //Purge=new Dictionary<string, int>();
+            
+
+        }
 
         public static NullRecipe Create()
         {
-            return new NullRecipe();
+            Hashtable nullht = new Hashtable();
+            EntityData fauxEntityData = new EntityData("nullrecipe", nullht);
+            return new NullRecipe(fauxEntityData, new ContentImportLog());
         }
 
     }

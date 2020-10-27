@@ -204,7 +204,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             {
                 if (s.IsOpen())
                 {
-                    s.DumpOutputStacks();
+                    s.CollectOutputStacks();
                     break;
                 }
             }

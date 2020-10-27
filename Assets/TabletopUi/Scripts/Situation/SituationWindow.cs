@@ -59,8 +59,8 @@ namespace Assets.CS.TabletopUI {
 		[SerializeField] Button startButton;
 		[SerializeField] TextMeshProUGUI startButtonText;
 
-        public UnityEvent OnStartButtonClicked;
-        public UnityEvent OnCollectButtonClicked;
+        public UnityEvent OnStart;
+        public UnityEvent OnCollect;
         public UnityEvent OnWindowClosed;
 
         public TokenLocation LastOpenLocation;
@@ -109,6 +109,8 @@ namespace Assets.CS.TabletopUI {
 
             Title = Verb.Label;
             PaginatedNotes.SetText(Verb.Description);
+            startButton.onClick.AddListener(OnStart.Invoke);
+
             DisplayButtonState(false);
 
             if (Verb.Startable)
@@ -126,6 +128,8 @@ namespace Assets.CS.TabletopUI {
             ongoing.Initialise(Verb,this);
             results.Initialise();
 		}
+
+
 
         public override void StartArtAnimation()
         {
@@ -225,6 +229,7 @@ namespace Assets.CS.TabletopUI {
         public void Close() {
         OnWindowClosed.Invoke();
         }
+
 
         // BASIC DISPLAY
 

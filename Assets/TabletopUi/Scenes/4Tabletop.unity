@@ -3902,6 +3902,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4199af75920ce641be80d9b87a83e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStacksChanged:
+    m_PersistentCalls:
+      m_Calls: []
   _background: {fileID: 577}
   canvasGroupFader: {fileID: 146}
   SendViaContainer: {fileID: 1610149766}
@@ -4398,6 +4401,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff770ac38cded940b153cb05a2bd041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStacksChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &33277963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5763,8 +5769,7 @@ MonoBehaviour:
   dumpResultsButtonText: {fileID: 0}
   storage: {fileID: 17970473}
   aspectsDisplay: {fileID: 805780702}
-  startButton: {fileID: 1096973141}
-  startButtonText: {fileID: 1714488735}
+  startButton: {fileID: 0}
   OnStartButtonClicked:
     m_PersistentCalls:
       m_Calls: []
@@ -14045,6 +14050,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48934617ae39e4341be599d3e254d463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStacksChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &406943361
 GameObject:
   m_ObjectHideFlags: 0
@@ -15549,7 +15557,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000034987926, y: 0.00016021729}
+  m_AnchoredPosition: {x: 0.000034987926, y: -0.000029698014}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &512707587
@@ -19723,7 +19731,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.4
+  m_fontSize: 26.4
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -31162,7 +31170,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1706259581}
   m_HandleRect: {fileID: 1706259580}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -33102,6 +33110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c066b8af7bf9abc41be5083eddf07401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStacksChanged:
+    m_PersistentCalls:
+      m_Calls: []
   canvasGroupFader: {fileID: 1584716459}
   cardPos: {fileID: 1584716458}
   dumpResultsButtonText: {fileID: 0}
@@ -33235,6 +33246,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e87a6b79cc7ff1449be4ae36e38888b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStacksChanged:
+    m_PersistentCalls:
+      m_Calls: []
   StartingContainer: {fileID: 730}
 --- !u!223 &1610149767
 Canvas:
@@ -35892,6 +35906,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297421c46e047dc46b92ff72ca30a868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStacksChanged:
+    m_PersistentCalls:
+      m_Calls: []
   _background: {fileID: 1041490181}
   canvasGroupFader: {fileID: 1927212865}
   SendViaContainer: {fileID: 0}

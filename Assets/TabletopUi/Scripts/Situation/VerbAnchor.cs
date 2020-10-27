@@ -355,7 +355,7 @@ namespace Assets.CS.TabletopUI {
 
         public void DumpOutputStacks()
         {
-            _situation.DumpOutputStacks();
+            _situation.CollectOutputStacks();
         }
     }
 }

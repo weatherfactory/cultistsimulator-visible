@@ -326,7 +326,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.85
+  m_fontSize: 20
   m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -450,6 +450,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d82a6bfde0cdd94890dbb172a940e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransform: {fileID: 0}
+  rotateOnDrag: 1
+  TokenContainer: {fileID: 0}
   canvasGroupFader: {fileID: 114000011356646590}
   positioner: {fileID: 114651031545853594}
   artwork: {fileID: 114475561134123840}
@@ -464,6 +467,15 @@ MonoBehaviour:
   aspectsDisplay: {fileID: 114000011139942088}
   startButton: {fileID: 114376102645738516}
   startButtonText: {fileID: 114504879707443264}
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollect:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWindowClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &114651031545853594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -774,7 +786,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 17.95
+  m_fontSize: 18
   m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -902,6 +914,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff770ac38cded940b153cb05a2bd041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStacksChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1174806779010474
 GameObject:
   m_ObjectHideFlags: 0
@@ -2044,7 +2059,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114146615484386314}
   m_HandleRect: {fileID: 224417031444728264}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2396,7 +2411,7 @@ GameObject:
   - component: {fileID: 114376102645738516}
   - component: {fileID: 114014756269048980}
   m_Layer: 5
-  m_Name: Button
+  m_Name: StartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3045,6 +3060,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c066b8af7bf9abc41be5083eddf07401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStacksChanged:
+    m_PersistentCalls:
+      m_Calls: []
   canvasGroupFader: {fileID: 114595233805244828}
   cardPos: {fileID: 114962248236931796}
   dumpResultsButtonText: {fileID: 114000013027545752}

@@ -94,6 +94,8 @@ namespace Assets.Core.Entities {
             AddContainer(newWindow.GetResultsContainer());
 
             _window.OnWindowClosed.AddListener(Close);
+            _window.OnStart.AddListener(Start);
+            _window.OnCollect.AddListener(CollectOutputStacks);
 
         }
 
@@ -819,7 +821,7 @@ namespace Assets.Core.Entities {
  
         }
 
-        public void DumpOutputStacks()
+        public void CollectOutputStacks()
         {
             var results = GetStacks(ContainerCategory.Output);
             foreach (var item in results)
