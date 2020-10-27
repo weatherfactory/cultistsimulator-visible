@@ -13,6 +13,7 @@ namespace Assets.Core.Enums
         Output,
         World,
         Meta,
-        Dormant
+        Dormant,
+        Null
     }
 }

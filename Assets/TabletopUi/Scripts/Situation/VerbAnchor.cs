@@ -210,7 +210,7 @@ namespace Assets.CS.TabletopUI {
 
         public override bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn) {
             
-            return (_situation.GetFirstAvailableThresholdForStackPush(stackDroppedOn) != null);
+            return (_situation.GetFirstAvailableThresholdForStackPush(stackDroppedOn).ContainerCategory==ContainerCategory.Threshold);
         }
 
         public override void InteractWithTokenDroppedOn(ElementStackToken stackDroppedOn)

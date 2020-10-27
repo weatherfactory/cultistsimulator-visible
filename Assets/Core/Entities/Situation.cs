@@ -14,6 +14,7 @@ using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
 using Assets.TabletopUi.Scripts.Interfaces;
+using Assets.TabletopUi.Scripts.TokenContainers;
 using JetBrains.Annotations;
 using Noon;
 using UnityEngine;
@@ -781,7 +782,7 @@ namespace Assets.Core.Entities {
             if (!t.IsGreedy && t.GetMatchForStack(stack).MatchType ==SlotMatchForAspectsType.Okay)
                 return t;
 
-        return null;
+        return new NullContainer().Create();
     }
 
 
