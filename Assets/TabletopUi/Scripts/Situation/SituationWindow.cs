@@ -228,7 +228,7 @@ namespace Assets.CS.TabletopUI {
 
         // BASIC DISPLAY
 
-        public void Show( Vector3 targetPosOverride )
+        public void Show( Vector3 targetPosition )
 		{
 			if (!gameObject.activeInHierarchy)
 			{
@@ -236,7 +236,7 @@ namespace Assets.CS.TabletopUI {
 			}
 
 			canvasGroupFader.Show();
-            positioner.Show(canvasGroupFader.durationTurnOn, targetPosOverride); // Animates the window (position allows optional change is position)
+            positioner.Show(canvasGroupFader.durationTurnOn, targetPosition); // Animates the window (position allows optional change is position)
             results.UpdateDumpButtonText(); // ensures that we've updated the dump button accordingly
             startingSlots.ArrangeSlots(); //won't have been arranged if a card was dumped in while the window was closed
  			PaginatedNotes.Reset();

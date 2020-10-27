@@ -41,12 +41,9 @@ namespace Assets.CS.TabletopUI {
 
         // SHOW ANIM
 
-        public void Show(float duration, Vector3 targetPosOverride) {
+        public void Show(float duration, Vector3 targetPosition) {
             StopAllCoroutines();
-			Vector3 pos = anchor.transform.position;
-			if (targetPosOverride.sqrMagnitude > 0.0f)	// Ugly, but no way to pass a null Vector3 reference in C#, so using zero vec as "invalid" - CP
-				pos = targetPosOverride;
-            StartCoroutine(DoShowAnim(duration, pos));
+            StartCoroutine(DoShowAnim(duration, targetPosition));
         }
 
         IEnumerator DoShowAnim(float duration, Vector3 targetPosition)
