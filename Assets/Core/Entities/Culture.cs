@@ -18,7 +18,7 @@ namespace Assets.Core.Entities
         [FucineValue]
         public string Exonym { get; set; }
 
-        [FucineValue]
+        [FucineValue(DefaultValue = "x")]
         public string FontScript { get; set; }
 
         [FucineValue]

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.CS.TabletopUI;
 using Noon;
 using UnityEngine;
 
@@ -43,9 +44,14 @@ namespace Assets.TabletopUi.Scripts.Services
             entries.Add(entry);
             entry.DisplayMessage(message);
             //always display the log if an error has occurred
-            if(message.MessageLevel==2)
+            if(message.MessageLevel>1)
+            {
                 SetVisible(true);
-        
+             //   if(!Application.isEditor)
+                    Registry.Get<StageHand>().LoadInfoScene();
+
+            }
+
         }
 
 

@@ -55,9 +55,9 @@ namespace TabletopUi.Scripts.UI
             if (spec.ReleasedByWf && !IsInstalled() && spec.Links.TryGetValue(store, out _storeLinkUrl))
             {
                 storeLink.gameObject.SetActive(true);
-                string linkText = Registry.Get<LanguageManager>().Get(PurchaseLocLabel);
-                storeLink.text = $"<link=\"{_storeLinkUrl}\"><b><u>{linkText}</u></b></link>";
-
+                var linkfish = storeLink.GetComponent<Babelfish>();
+                linkfish.UpdateLocLabel($"$<link=\"{_storeLinkUrl}\"><b><u>{{UI_DLC_PURCHASE}}</u></b></link>");
+        
             }
             else
                 storeLink.gameObject.SetActive(false);
