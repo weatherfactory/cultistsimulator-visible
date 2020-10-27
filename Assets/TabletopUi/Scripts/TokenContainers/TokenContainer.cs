@@ -212,10 +212,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return stack;
         }
 
-        public virtual void OnStackAdded(ElementStackToken elementStackToken, Context context)
-        {
-            // By default: do nothing right now
-        }
 
         public virtual void OnStackRemoved(ElementStackToken elementStackToken, Context context)
         {
