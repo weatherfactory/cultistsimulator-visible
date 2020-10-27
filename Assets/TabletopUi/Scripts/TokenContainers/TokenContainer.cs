@@ -212,14 +212,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return stack;
         }
 
-        public virtual void SignalStackAdded(ElementStackToken elementStackToken, Context context)
+        public virtual void OnStackAdded(ElementStackToken elementStackToken, Context context)
         {
             // By default: do nothing right now
         }
 
-        public virtual void SignalStackRemoved(ElementStackToken elementStackToken, Context context)
+        public virtual void OnStackRemoved(ElementStackToken elementStackToken, Context context)
         {
-            // By default: do nothing right now
+            RemoveStack(elementStackToken);
         }
 
         public virtual void DisplayHere(ElementStackToken stack, Context context)
@@ -418,8 +418,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                     dealer.RemoveFromAllDecksIfInUniquenessGroup(stack.UniquenessGroup);
                 if (stack.Unique)
                     dealer.IndicateUniqueCardManifested(stack.EntityId);
-
-
             }
 
             // Check if we're dropping a unique stack? Then kill all other copies of it on the tabletop

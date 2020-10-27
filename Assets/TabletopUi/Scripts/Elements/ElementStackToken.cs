@@ -489,17 +489,12 @@ namespace Assets.CS.TabletopUI {
 
             if (OldTokenContainer != null && OldTokenContainer != newTokenContainer)
             {
-                OldTokenContainer.SignalStackRemoved(this, context);
+                OldTokenContainer.OnStackRemoved(this, context);
                 if(OldTokenContainer.ContentsHidden && !newTokenContainer.ContentsHidden)
                  _manifestation.UpdateText(_element,Quantity);
             }
 
             TokenContainer = newTokenContainer;
-
-            if (newTokenContainer != null)
-                newTokenContainer.SignalStackAdded(this, context);
-
-      
 
         }
 

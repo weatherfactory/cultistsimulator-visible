@@ -59,7 +59,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             _tabletop.DisplayHere(token, context);
         }
 
-        // Elements are we placed differently than tokens
 
         public void ArrangeTokenOnTable(ElementStackToken stack, Context context) {
             ArrangeTokenOnTable(stack, context, stack.lastTablePos, false);

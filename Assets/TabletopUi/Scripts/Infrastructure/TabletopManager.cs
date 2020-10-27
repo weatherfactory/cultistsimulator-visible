@@ -375,7 +375,7 @@ namespace Assets.CS.TabletopUI {
             {
                 var context = new Context(Context.ActionSource.Loading);
 
-                ElementStackToken token = _tabletop.ProvisionElementStack(e.Key, e.Value, Source.Existing(),context) as ElementStackToken;
+                ElementStackToken token = _tabletop.ProvisionElementStack(e.Key, e.Value, Source.Existing(),context);
                 Registry.Get<Choreographer>().ArrangeTokenOnTable(token, context);
             }
         }

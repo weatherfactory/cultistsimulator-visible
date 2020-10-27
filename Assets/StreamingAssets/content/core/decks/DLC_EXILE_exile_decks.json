@@ -2,7 +2,8 @@
     "decks": [
         {
             "id": "rkx.events",
-            "label": "Reckoner Plans",
+          "label": "Reckoner Plans",
+            "forlegacy": "exile", 
             "description": "The reckoners are planning their next move.",
             "spec": [
                 "rkx.event.aggressive",
@@ -12,35 +13,38 @@
             ],
             "resetonexhaustion": true
         },
-        {
-            "id": "rkx.weaknesses.environment",
-            "label": "Foe Weaknesses: Environment",
-            "spec": [
-                "rkx.weakness.cold.hidden",
-                "rkx.weakness.heat.hidden",
-                "rkx.weakness.sea.hidden"
-            ],
-            "resetonexhaustion": true
-        },
-        {
-            "id": "rkx.weaknesses.quirk",
-            "label": "Foe Weaknesses: Quirk",
-            "spec": [
-                "rkx.weakness.faith.hidden",
-                "rkx.weakness.cats.hidden",
-                "rkx.weakness.heights.hidden"
-            ],
-            "resetonexhaustion": true
-        },
-        {
-            "id": "rkx.weaknesses.disfavour",
-            "label": "Foe Weaknesses: Disfavour",
-            "spec": [
-                "rkx.weakness.horned.hidden",
-                "rkx.weakness.wolf.hidden",
-                "rkx.weakness.flowermaker.hidden"
-            ],
-            "resetonexhaustion": true
-        }
+      {
+        "id": "rkx.weaknesses.environment",
+        "label": "Foe Weaknesses: Environment",
+        "forlegacy": "exile",
+        "spec": [
+          "rkx.weakness.cold.hidden",
+          "rkx.weakness.heat.hidden",
+          "rkx.weakness.sea.hidden"
+        ],
+        "resetonexhaustion": true
+      },
+      {
+        "id": "rkx.weaknesses.quirk",
+        "label": "Foe Weaknesses: Quirk",
+        "forlegacy": "exile",
+        "spec": [
+          "rkx.weakness.faith.hidden",
+          "rkx.weakness.cats.hidden",
+          "rkx.weakness.heights.hidden"
+        ],
+        "resetonexhaustion": true
+      },
+      {
+        "id": "rkx.weaknesses.disfavour",
+        "label": "Foe Weaknesses: Disfavour",
+        "forlegacy": "exile",
+        "spec": [
+          "rkx.weakness.horned.hidden",
+          "rkx.weakness.wolf.hidden",
+          "rkx.weakness.flowermaker.hidden"
+        ],
+        "resetonexhaustion": true
+      }
     ]
 }

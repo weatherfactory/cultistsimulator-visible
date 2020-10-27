@@ -275,8 +275,9 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public override void SignalStackRemoved(ElementStackToken elementStackToken, Context context)
+        public override void OnStackRemoved(ElementStackToken elementStackToken, Context context)
         {
+            base.OnStackRemoved(elementStackToken, context);
             onCardRemoved(elementStackToken, context);
         }
 
