@@ -1501,7 +1501,10 @@ MonoBehaviour:
   countdownText: {fileID: 114602261048296978}
   storedCardsLayout: {fileID: 114129789786004442}
   canvasGroupFader: {fileID: 114848985628778574}
-  deckEffectViews: []
+  deckEffectViews:
+  - {fileID: 114023522480365752}
+  - {fileID: 114472748322962946}
+  - {fileID: 114109939223616916}
 --- !u!225 &225493535554730180
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2666,7 +2669,7 @@ GameObject:
   - component: {fileID: 222598295355753824}
   - component: {fileID: 114450571971783588}
   m_Layer: 5
-  m_Name: Quantity (1)
+  m_Name: Quantity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3124,7 +3127,7 @@ GameObject:
   - component: {fileID: 222068282844421072}
   - component: {fileID: 114582119679715526}
   m_Layer: 5
-  m_Name: Quantity (2)
+  m_Name: Quantity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

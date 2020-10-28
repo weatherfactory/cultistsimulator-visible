@@ -29,7 +29,7 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public void UpdateOngoingSlots(Recipe recipe,OnContainerAddedEvent onContainerAdded,OnContainerRemovedEvent onContainerRemoved)
+        public void UpdateForRecipe(Recipe recipe,OnContainerAddedEvent onContainerAdded,OnContainerRemovedEvent onContainerRemoved)
         {
             foreach (var os in ongoingSlots)
             {
@@ -59,6 +59,8 @@ namespace Assets.CS.TabletopUI {
 
             }
 
+            ShowDeckEffects(recipe.DeckEffects);
+            
         }
 
 
@@ -106,26 +108,23 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void ShowDeckEffects(Dictionary<string, int> deckEffects) {
-            // Note, We shouldn't have more effects than we have views
-            UnityEngine.Assertions.Assert.IsTrue(deckEffects.Count <= deckEffectViews.Length);
+            if(deckEffects.Count>deckEffectViews.Length)
+                NoonUtility.LogWarning($"{deckEffects.Count} deck effects to show in OngoingDisplay, but only {deckEffectViews.Length} slots.");
 
             int i = 0;
-            DeckSpec deckSpec;
+            foreach(var dev in deckEffectViews)
+                dev.gameObject.SetActive(false);
+
 
             // Populate those we need
             foreach (var item in deckEffects) {
-                deckSpec = Registry.Get<ICompendium>().GetEntityById<DeckSpec>(item.Key);
+                var deckSpec = Registry.Get<ICompendium>().GetEntityById<DeckSpec>(item.Key);
                 deckEffectViews[i].PopulateDisplay(deckSpec, item.Value);
                 deckEffectViews[i].gameObject.SetActive(true);
                 i++;
             }
 
 
-            // All those we didn't need? Hide them.
-            while (i < deckEffectViews.Length) {
-                deckEffectViews[i].gameObject.SetActive(false);
-                i++;
-            }
         }
 
     }

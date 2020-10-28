@@ -411,10 +411,8 @@ namespace Assets.CS.TabletopUI {
          
             startingSlots.gameObject.SetActive(false);
             ongoingDisplay.gameObject.SetActive(true);
-            ongoingDisplay.UpdateOngoingSlots(e.CurrentRecipe,OnContainerAdded,OnContainerRemoved);
+            ongoingDisplay.UpdateForRecipe(e.CurrentRecipe,OnContainerAdded,OnContainerRemoved);
  
-            ongoingDisplay.ShowDeckEffects(e.CurrentRecipe.DeckEffects);
-
             results.gameObject.SetActive(false);
             DisplayButtonState(false, buttonBusy);
 
@@ -448,7 +446,7 @@ namespace Assets.CS.TabletopUI {
             startingSlots.DoReset();
             startingSlots.gameObject.SetActive(true);
 
-            ongoingDisplay.UpdateOngoingSlots(NullRecipe.Create(),OnContainerAdded,OnContainerRemoved);
+            ongoingDisplay.UpdateForRecipe(NullRecipe.Create(),OnContainerAdded,OnContainerRemoved);
             ongoingDisplay.gameObject.SetActive(false);
 
             results.DoReset();
