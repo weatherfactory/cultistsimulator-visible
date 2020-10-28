@@ -160,18 +160,19 @@ namespace Assets.Core.Entities {
 
         public void Halt()
         {
-            if (State != SituationState.Complete && State !=SituationState.ReadyToReset && State != SituationState.ReadyToBegin
+            if (State != SituationState.Complete && State != SituationState.ReadyToReset &&
+                State != SituationState.ReadyToBegin
             ) //don't halt if the situation is not running. This is not only superfluous but dangerous: 'complete' called from an already completed verb has bad effects
                 Complete();
 
             //If we leave anything in the ongoing slot, it's lost, and also the situation ends up in an anomalous state which breaks loads
-            AcceptStacks(ContainerCategory.SituationStorage,GetStacks(ContainerCategory.Threshold));
+            AcceptStacks(ContainerCategory.SituationStorage, GetStacks(ContainerCategory.Threshold));
 
         }
 
 
 
-   
+
 
 
         public void ResetIfComplete()
@@ -210,7 +211,7 @@ namespace Assets.Core.Entities {
         }
 
         public ElementStackToken ReprovisionElementStack(ContainerCategory containerCategory,
-            ElementStackSpecification stackSpecification, Source stackSource, string locatorid = null)
+            StackCreationCommand stackCreationCommand, Source stackSource, string locatorid = null)
         {
             //containercategory works fine for storage, because there's only ever one, but I think we should pass something solid as locatorid / TokenLocation combined
 
@@ -219,19 +220,19 @@ namespace Assets.Core.Entities {
             if (containerCount > 1)
             {
                 NoonUtility.LogWarning(
-                    $"Trying to reprovision a stack of {stackSpecification?.ElementId} in situation with verb {Verb?.Id} but found more than one container in category {containerCategory}");
+                    $"Trying to reprovision a stack of {stackCreationCommand?.ElementId} in situation with verb {Verb?.Id} but found more than one container in category {containerCategory}");
                 return null;
             }
 
             if (containerCount == 0)
             {
                 NoonUtility.LogWarning(
-                    $"Trying to reprovision a stack of {stackSpecification?.ElementId} in situation with verb {Verb?.Id} but can't find a container of category {containerCategory}");
+                    $"Trying to reprovision a stack of {stackCreationCommand?.ElementId} in situation with verb {Verb?.Id} but can't find a container of category {containerCategory}");
                 return null;
             }
 
             var reprovisionedStack = containersInCategory.First()
-                .ReprovisionExistingElementStack(stackSpecification, stackSource,
+                .ProvisionStackFromCommand(stackCreationCommand, stackSource,
                     new Context(Context.ActionSource.Loading), locatorid);
 
             return reprovisionedStack;
@@ -263,7 +264,8 @@ namespace Assets.Core.Entities {
 
         }
 
-        void HandleOnGreedySlotAnimDone(ElementStackToken element, TokenLocation destination,TokenContainer destinatinoSlot)
+        void HandleOnGreedySlotAnimDone(ElementStackToken element, TokenLocation destination,
+            TokenContainer destinatinoSlot)
         {
             greedyAnimIsActive = false;
             TabletopManager.RequestNonSaveableState(TabletopManager.NonSaveableType.Greedy, false);
@@ -314,15 +316,16 @@ namespace Assets.Core.Entities {
 
         public int TryPurgeStacks(Element elementToPurge, int maxToPurge)
         {
-            
+
             var containersToPurge = GetContainersByCategory(ContainerCategory.Threshold).ToList();
 
-            containersToPurge.Reverse(); //I couldn't remember why I put this - but I think it must have been to start with the final slot, so we don't dump everything by purging the primary slot.
+            containersToPurge
+                .Reverse(); //I couldn't remember why I put this - but I think it must have been to start with the final slot, so we don't dump everything by purging the primary slot.
 
- 
+
             containersToPurge.AddRange(GetContainersByCategory(ContainerCategory.Output));
 
- 
+
             foreach (var container in containersToPurge)
             {
                 if (maxToPurge <= 0)
@@ -337,7 +340,8 @@ namespace Assets.Core.Entities {
 
         }
 
-        public void AcceptStack(ContainerCategory forContainerCategory, ElementStackToken stackToken, Context context)
+        
+    public void AcceptStack(ContainerCategory forContainerCategory, ElementStackToken stackToken, Context context)
         {
             var stackTokenList = new List<ElementStackToken> {stackToken};
             AcceptStacks(forContainerCategory, stackTokenList, context);

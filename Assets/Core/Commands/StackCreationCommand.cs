@@ -11,7 +11,7 @@ namespace Assets.Core.Commands
     /// <summary>
     /// Used when saving/loading games, just to tidy up the code around wrangling these values
     /// </summary>
-    public class ElementStackSpecification
+    public class StackCreationCommand
     {
         public string ElementId { get; private set; }
         public int ElementQuantity { get; private set; }
@@ -24,7 +24,7 @@ namespace Assets.Core.Commands
         public bool MarkedForConsumption { get; private set; }
 		public Vector2 LastTablePos { get; private set; }
 
-        public ElementStackSpecification(string elementId, int elementQuantity, string locationInfo,Dictionary<string,int> mutations,Dictionary<string,string> illuminations, float lifetimeRemaining,bool markedForConsumption,Vector2 lasttablepos)
+        public StackCreationCommand(string elementId, int elementQuantity, string locationInfo,Dictionary<string,int> mutations,Dictionary<string,string> illuminations, float lifetimeRemaining,bool markedForConsumption,Vector2 lasttablepos)
         {
             ElementId = elementId;
             ElementQuantity = elementQuantity;

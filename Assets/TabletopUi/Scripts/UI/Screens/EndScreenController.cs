@@ -96,9 +96,8 @@ namespace Assets.CS.TabletopUI
         private async void ReturnToMenuInternal()
 		{
             //save on exit, so the player will return here, not begin a new game
-            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
-
-            var saveTask = saveGameManager.SaveActiveGameAsync(new InactiveTableSaveState(),Registry.Get<Character>(), SourceForGameState.DefaultSave);
+            
+            var saveTask = Registry.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Registry.Get<MetaInfo>()),Registry.Get<Character>(), SourceForGameState.DefaultSave);
             await saveTask;
 
 

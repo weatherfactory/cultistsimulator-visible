@@ -17,13 +17,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     {
         Hashtable GetSaveHashTable(MetaInfo metaInfo, ITableSaveState tableSaveState, Character character);
 
-        Hashtable GetHashTableForStacks(IEnumerable<ElementStackToken> stacks);
-
-        Hashtable GetHashTableForSituationNotes(IEnumerable<ISituationNote> notes);
-        Hashtable GetHashtableForExtragameState(Legacy withActiveLegacy);
 }
 
-    public class GameDataExporter: IGameDataExporter
+    public class SimpleJsonDataExporter: IGameDataExporter
     {
 
         /// <summary>

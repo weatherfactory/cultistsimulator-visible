@@ -125,23 +125,23 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         }
 
-        public ElementStackToken ReprovisionExistingElementStack(ElementStackSpecification stackSpecification,
+        public ElementStackToken ProvisionStackFromCommand(StackCreationCommand stackCreationCommand,
             Source stackSource, Context context, string locatorid = null)
         {
-            var stack = ProvisionElementStack(stackSpecification.ElementId, stackSpecification.ElementQuantity,
+            var stack = ProvisionElementStack(stackCreationCommand.ElementId, stackCreationCommand.ElementQuantity,
                 stackSource, context, locatorid);
-            foreach (var m in stackSpecification.Mutations)
+            foreach (var m in stackCreationCommand.Mutations)
                 stack.SetMutation(m.Key, m.Value, false);
 
-            stack.IlluminateLibrarian = new IlluminateLibrarian(stackSpecification.Illuminations);
+            stack.IlluminateLibrarian = new IlluminateLibrarian(stackCreationCommand.Illuminations);
 
-            if (stackSpecification.LifetimeRemaining > 0)
-                stack.LifetimeRemaining = stackSpecification.LifetimeRemaining;
+            if (stackCreationCommand.LifetimeRemaining > 0)
+                stack.LifetimeRemaining = stackCreationCommand.LifetimeRemaining;
 
-            if (stackSpecification.MarkedForConsumption)
+            if (stackCreationCommand.MarkedForConsumption)
                 stack.MarkedForConsumption = true;
 
-            stack.LastTablePos = stackSpecification.LastTablePos;
+            stack.LastTablePos = stackCreationCommand.LastTablePos;
 
             return stack;
         }

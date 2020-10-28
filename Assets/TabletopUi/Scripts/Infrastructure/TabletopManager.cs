@@ -221,13 +221,12 @@ namespace Assets.CS.TabletopUI {
         /// </summary>
         private void LoadExistingGame(SourceForGameState source)
         {
-            var saveGameManager =
-                new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
+            
             bool isSaveCorrupted = false;
             bool shouldContinueGame;
             try
             {
-                shouldContinueGame = saveGameManager.DoesGameSaveExist() && saveGameManager.IsSavedGameActive(source);
+                shouldContinueGame = Registry.Get<GameSaveManager>().DoesGameSaveExist() && Registry.Get<GameSaveManager>().IsSavedGameActive(source);
             }
             catch (Exception e)
             {
@@ -483,8 +482,7 @@ namespace Assets.CS.TabletopUI {
 		{
 			NoonUtility.Log("TabletopManager.EndGame()");
 
-            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
-
+            
             var character = Registry.Get<Character>();
             var chronicler = Registry.Get<Chronicler>();
 
@@ -493,7 +491,7 @@ namespace Assets.CS.TabletopUI {
             
 
 
-            var saveTask = saveGameManager.SaveActiveGameAsync(new InactiveTableSaveState(), Registry.Get<Character>(),SourceForGameState.DefaultSave);
+            var saveTask = Registry.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Registry.Get<MetaInfo>()), Registry.Get<Character>(),SourceForGameState.DefaultSave);
             var result = await saveTask;
 
         
@@ -510,12 +508,11 @@ namespace Assets.CS.TabletopUI {
             Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
                 {ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false});
             Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
-            var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());
             try
             {
-        
 
-            saveGameManager.LoadTabletopState(_tabletop,gameStateSource);
+
+                Registry.Get<GameSaveManager>().LoadTabletopState(gameStateSource, _tabletop);
                 //saveGameManager.ImportHashedSaveToState(_tabletop, null, htSave);
 
                 StatusBar.UpdateCharacterDetailsView(Registry.Get<Character>());
@@ -581,10 +578,8 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
             try
             {
-	            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
-
-                ITableSaveState tableSaveState=new TableSaveState(_tabletop.GetStacks(), Registry.Get<SituationsCatalogue>().GetRegisteredSituations());
-                 var   saveTask = saveGameManager.SaveActiveGameAsync(tableSaveState,  Registry.Get<Character>(), source);
+	            ITableSaveState tableSaveState=new TableSaveState(_tabletop.GetStacks(), Registry.Get<SituationsCatalogue>().GetRegisteredSituations(),Registry.Get<MetaInfo>());
+                 var   saveTask = Registry.Get<GameSaveManager>().SaveActiveGameAsync(tableSaveState,  Registry.Get<Character>(), source);
                  NoonUtility.Log("Beginning save", 0,VerbosityLevel.SystemChatter);
                bool    success = await saveTask;
                 NoonUtility.Log($"Save status: {success}", 0,VerbosityLevel.SystemChatter);

@@ -19,6 +19,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         IEnumerable<ElementStackToken> TableStacks { get; }
         List<Situation> Situations { get; }
         bool IsTableActive();
+        MetaInfo MetaInfo { get; }
     }
 
     public class TableSaveState : ITableSaveState
@@ -30,11 +31,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return true;
         }
 
+        public MetaInfo MetaInfo { get; }
 
-        public TableSaveState(IEnumerable<ElementStackToken> tableStacks, List<Situation> situations)
+
+        public TableSaveState(IEnumerable<ElementStackToken> tableStacks, List<Situation> situations,MetaInfo metaInfo)
         {
             TableStacks = tableStacks;
             Situations = situations;
+            MetaInfo = metaInfo;
         }
     }
 
@@ -48,33 +52,43 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return false;
         }
 
-        public InactiveTableSaveState()
+        public MetaInfo MetaInfo { get; }
+
+        public InactiveTableSaveState(MetaInfo metaInfo)
         {
             TableStacks = new List<ElementStackToken>();
             Situations = new List<Situation>();
+            MetaInfo = metaInfo;
         }
-
 
     }
 
 
-    public class GameSaveManager
+    public class GameSaveManager: MonoBehaviour
     {
-        private readonly IGameDataImporter dataImporter;
-        private readonly IGameDataExporter dataExporter;
+        private IGameDataImporter dataImporter;
+        private IGameDataExporter dataExporter;
+        private SimpleJSONGameDataImporter simpleJsonGameDataImporter;
 
-		// Save game safety
-		public static int failedSaveCount = 0;
+
+        // Save game safety
+        public static int failedSaveCount = 0;
 		public static bool saveErrorWarningTriggered = false;	// so that tabletop knows not to unpause
 #if UNITY_EDITOR
 		public static bool simulateBrokenSave = false;	// For debugging
 #endif
-        public GameSaveManager(IGameDataImporter dataImporter,IGameDataExporter dataExporter)
+        public void Start()
         {
-            this.dataImporter = dataImporter;
-            this.dataExporter = dataExporter;
+            dataImporter=new SaveDataImporter();
+            dataExporter=new SaveDataExporter();
+            simpleJsonGameDataImporter=new SimpleJSONGameDataImporter();
+
+
+
         }
 
+
+    
         public bool DoesGameSaveExist()
         {
             return File.Exists(NoonUtility.GetGameSaveLocation());
@@ -82,8 +96,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public bool IsSavedGameActive(SourceForGameState source, bool temp = false)
         {
-            var htSave = RetrieveHashedSaveFromFile(source, temp);
-            return htSave.ContainsKey(SaveConstants.SAVE_ELEMENTSTACKS) || htSave.ContainsKey(SaveConstants.SAVE_SITUATIONS);
+            return simpleJsonGameDataImporter.IsSavedGameActive(source, temp);
         }
 
         //copies old version in case of corruption
@@ -146,10 +159,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                     await saveTask;
 
-                    //while (!(saveTask.IsCompleted || saveTask.IsCompleted || saveTask.IsFaulted))
-                    //{
-                    //    return false;
-                    //}
 
                     bool success;
                     if (saveTask.Exception == null)
@@ -199,29 +208,20 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 return true;
         }
 
-        public void LoadTabletopState(TabletopTokenContainer tabletop,SourceForGameState source)
+        public void LoadTabletopState(SourceForGameState source,TabletopTokenContainer tabletop)
         {
-            var htSave = RetrieveHashedSaveFromFile(source);
-            dataImporter.ImportTableState(tabletop,htSave);
+           
+            dataImporter.ImportTableState(source,tabletop);
         }
 
         public void LoadCharacterState(SourceForGameState source,Character character)
         {
-            var htSave = RetrieveHashedSaveFromFile(source);
-           dataImporter.ImportCharacter(htSave,character);
+            dataImporter.ImportCharacter(source,character);
         }
 
 
 
-        private Hashtable RetrieveHashedSaveFromFile(SourceForGameState source, bool temp = false)
-        {
-            var index = (int) source;
 
-            string importJson = File.ReadAllText(
-	            temp ? NoonUtility.GetTemporaryGameSaveLocation(index) : NoonUtility.GetGameSaveLocation(index));
-            Hashtable htSave = SimpleJsonImporter.Import(importJson);
-            return htSave;
-        }
 
 
 

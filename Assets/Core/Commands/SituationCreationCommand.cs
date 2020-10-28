@@ -21,6 +21,7 @@ namespace Assets.Core.Commands
         public string OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
         public int CompletionCount { get; set; }
         public string LocationInfo { get; set; }
+        public bool Open { get; set; }
 
         public SituationCreationCommand(IVerb verb,Recipe recipe, SituationState situationState, ISituationAnchor sourceToken = null)
 		{

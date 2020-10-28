@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Assets.Core.Commands;
@@ -17,24 +18,47 @@ using Assets.TabletopUi.Scripts.Services;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
-    public interface IGameDataImporter
+    public class SimpleJSONGameDataImporter : IGameDataImporter
     {
-        void ImportCharacter(Hashtable htSave,Character character);
-        void ImportTableState(TabletopTokenContainer tabletop,Hashtable htSave);
-    }
+      
 
-    public class GameDataImporter : IGameDataImporter
-    {
-        private ICompendium compendium;
 
-        
-        public GameDataImporter(ICompendium compendium)
+        private Hashtable RetrieveHashedSaveFromFile(SourceForGameState source, bool temp = false)
         {
-            this.compendium = compendium;
+            var index = (int)source;
+
+            string importJson = File.ReadAllText(
+                temp ? NoonUtility.GetTemporaryGameSaveLocation(index) : NoonUtility.GetGameSaveLocation(index));
+            Hashtable htSave = SimpleJsonImporter.Import(importJson);
+            return htSave;
         }
 
-        public void ImportTableState(TabletopTokenContainer tabletop, Hashtable htSave)
+        public bool IsSavedGameActive(SourceForGameState source, bool temp)
         {
+            var htSave = RetrieveHashedSaveFromFile(source, temp);
+            return htSave.ContainsKey(SaveConstants.SAVE_ELEMENTSTACKS) || htSave.ContainsKey(SaveConstants.SAVE_SITUATIONS);
+        }
+
+        private void OldFormatSave_TryRetrieveDefunctCharacter(Hashtable htSave, Character character)
+        {
+            var htCharacter = htSave.GetHashtable("defunctCharacterDetails");
+
+            var endingTriggeredForCharacterId =
+                TryGetStringFromHashtable(htSave, SaveConstants.SAVE_CURRENTENDING);
+
+            var endingTriggered = Registry.Get<ICompendium>().GetEntityById<Ending>(endingTriggeredForCharacterId);
+
+
+
+            character.Reset(null, endingTriggered);
+
+        }
+
+
+        public void ImportTableState(SourceForGameState source, TabletopTokenContainer tabletop)
+        {
+            var htSave = RetrieveHashedSaveFromFile(source);
+
 
             var htElementStacks = htSave.GetHashtable(SaveConstants.SAVE_ELEMENTSTACKS);
             var htSituations = htSave.GetHashtable(SaveConstants.SAVE_SITUATIONS);
@@ -49,24 +73,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         }
 
-        private void OldFormatSave_TryRetrieveDefunctCharacter(Hashtable htSave, Character character)
+        public void ImportCharacter(SourceForGameState source, Character character)
         {
-          var  htCharacter = htSave.GetHashtable("defunctCharacterDetails");
-          
-          var endingTriggeredForCharacterId =
-              TryGetStringFromHashtable(htSave, SaveConstants.SAVE_CURRENTENDING);
 
-          var endingTriggered = compendium.GetEntityById<Ending>(endingTriggeredForCharacterId);
-
-
-
-          character.Reset(null, endingTriggered);
-
-        }
-
-        public void ImportCharacter(Hashtable htSave,Character character)
-        {
-            
+            var htSave = RetrieveHashedSaveFromFile(source);
 
             var htCharacter = htSave.GetHashtable(SaveConstants.SAVE_CHARACTER_DETAILS);
             if(htCharacter==null)
@@ -74,7 +84,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                  OldFormatSave_TryRetrieveDefunctCharacter(htSave, character);
                  return;
             }
-            var htDecks = htSave.GetHashtable(SaveConstants.SAVE_DECKS);
             
 
             var chosenLegacyForCharacterId =TryGetStringFromHashtable(htCharacter, SaveConstants.SAVE_ACTIVELEGACY);
@@ -89,7 +98,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             }
             else
             {
-               activeLegacy = compendium.GetEntityById<Legacy>(chosenLegacyForCharacterId);
+               activeLegacy = Registry.Get<ICompendium>().GetEntityById<Legacy>(chosenLegacyForCharacterId);
             }
 
             var endingTriggeredForCharacterId =
@@ -97,7 +106,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (string.IsNullOrEmpty(endingTriggeredForCharacterId))
                endingTriggered = null;
             else
-               endingTriggered = compendium.GetEntityById<Ending>(endingTriggeredForCharacterId);
+               endingTriggered = Registry.Get<ICompendium>().GetEntityById<Ending>(endingTriggeredForCharacterId);
 
             
 
@@ -145,8 +154,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             }
 
 
-            compendium.SupplyLevers(character);
+            Registry.Get<ICompendium>().SupplyLevers(character);
 
+            var htDecks = htSave.GetHashtable(SaveConstants.SAVE_DECKS);
 
             ImportDecks(character, htDecks);
 
@@ -165,7 +175,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             foreach (var ess in elementStackSpecifications)
             {
                 var context = new Context(Context.ActionSource.Loading);
-                tabletop.AcceptStack(tabletop.ReprovisionExistingElementStack(ess,Source.Existing(), context,ess.LocationInfo), context);
+                tabletop.AcceptStack(tabletop.ProvisionStackFromCommand(ess,Source.Existing(), context,ess.LocationInfo), context);
             }
 
         }
@@ -176,7 +186,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             {
                 var htEachDeck = htDeckInstances.GetHashtable(k);
 
-                DeckSpec spec = compendium.GetEntityById<DeckSpec>(k.ToString());
+                DeckSpec spec = Registry.Get<ICompendium>().GetEntityById<DeckSpec>(k.ToString());
 
                 if (spec == null)
                     NoonUtility.Log("no deckspec found for saved deckinstance " + k.ToString());
@@ -195,11 +205,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 var htSituationValues =htSituations.GetHashtable(locationInfo);
 
                 string recipeId = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_RECIPEID);
-                var recipe = compendium.GetEntityById<Recipe>(recipeId);
+                var recipe = Registry.Get<ICompendium>().GetEntityById<Recipe>(recipeId);
 
                 string verbId= htSituationValues[SaveConstants.SAVE_VERBID].ToString();
                 
-                IVerb situationVerb = compendium.GetEntityById<BasicVerb>(verbId);
+                IVerb situationVerb = Registry.Get<ICompendium>().GetEntityById<BasicVerb>(verbId);
 
                 //This caters for the otherwise troublesome situation where a completed situation (no recipe) has been based on a created verb (no verb obj).
                 if (situationVerb == null && recipe==null)
@@ -211,31 +221,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 command.OverrideTitle = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_TITLE);
                 command.CompletionCount = GetIntFromHashtable(htSituationValues, SaveConstants.SAVE_COMPLETIONCOUNT);
                 command.LocationInfo = locationInfo.ToString();
+                command.Open = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
 
+                
                 var situation = Registry.Get<SituationBuilder>().CreateSituation(command);
-             
-				// Import window state so we can restore the desktop roughly how the player left it - CP
 
-
-
-
-    //            var wasOpen= htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
-    //            if (wasOpen)
-    //            {
-    //                situation.OpenAtCurrentLocation();
-    //            }
-
-    //            situation.IsOpen = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
-				//Vector3 pos = situationController.situationWindow.Position;
-				//pos.x = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_X].MakeFloat();
-				//pos.y = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_Y].MakeFloat();
-				//pos.z = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_Z].MakeFloat();
-				//situation.RestoreWindowPosition = pos;
 
                 ImportSituationNotes(htSituationValues, situation);
 
-                ImportSlotContents(htSituationValues, situation, tabletop, SaveConstants.SAVE_STARTINGSLOTELEMENTS);
-                ImportSlotContents(htSituationValues, situation, tabletop, SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
+                ImportSlotContents(htSituationValues, situation,  SaveConstants.SAVE_STARTINGSLOTELEMENTS);
+                ImportSlotContents(htSituationValues, situation,  SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
                 
 
                 ImportSituationStoredElements(htSituationValues, situation);
@@ -265,7 +260,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     var stackSpecification = PopulateElementStackSpecificationsList(htSituationOutputStacks);
                     foreach (var ess in stackSpecification)
                     {
-                        outputStacks.Add(tabletop.ReprovisionExistingElementStack(ess,Source.Existing(),new Context(Context.ActionSource.Loading)));
+                        outputStacks.Add(tabletop.ProvisionStackFromCommand(ess,Source.Existing(),new Context(Context.ActionSource.Loading)));
                     }
 
             }
@@ -300,56 +295,60 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS))
             {
-                //var htElements = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS);
-                //var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
-                //foreach (var ess in elementStackSpecifications)  
-                //    situation.ReprovisionStoredElementStack(ess,Source.Existing());
-                    
-                
-                
+                var htElements = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS);
+                var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
+                foreach (var ess in elementStackSpecifications)
+                {
+                    var stackToStore=Registry.Get<Limbo>().ProvisionStackFromCommand(ess, Source.Existing(), new Context(Context.ActionSource.Loading));
+
+                    situation.AcceptStack(ContainerCategory.SituationStorage, stackToStore,
+                        new Context(Context.ActionSource.Loading));
+                }
+
+
             }
         }
 
 
-        private void ImportSlotContents(Hashtable htSituationValues,
-         Situation situation, TabletopTokenContainer tabletop,string slotTypeKey)
+        private void ImportSlotContents(Hashtable htSituationValues, Situation situation,string slotTypeKey)
         {
             //I think there's a problem here. There is an issue where we were creating ongoing slots with null GoverningSlotSpecifications for transient verbs
             ////I don't know if this happens all the time? some saves? Starting slots as well but it doesn't matter?
             ////(this showed up a problem where greedy slots were trying to grab from ongoing slots that didn't really exist, and threw a nullref error - I've added a guard there but the problem remains).
-            //if (htSituationValues.ContainsKey(slotTypeKey))
-            //{
-            //    var htElements = htSituationValues.GetHashtable(slotTypeKey);
-            //    var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
+            if (htSituationValues.ContainsKey(slotTypeKey))
+            {
+                var htElements = htSituationValues.GetHashtable(slotTypeKey);
+                var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
 
-            //    foreach (var ess in elementStackSpecifications.OrderBy(spec=>spec.Depth)) //this order-by is important if we're populating something with elements which create child slots -
-            //        //in that case we need to do it from the top down, or the slots won't be there
-            //    {
-            //        var stackToPutInSlot =
-            //            tabletop.ReprovisionExistingElementStack(ess, Source.Existing(),new Context(Context.ActionSource.Loading));
+                foreach (var ess in elementStackSpecifications.OrderBy(spec => spec.Depth)) //this order-by is important if we're populating something with elements which create child slots -
+                                                                                            //in that case we need to do it from the top down, or the slots won't be there
+                {
+                    var stackToPutInSlot =
+                        Registry.Get<Limbo>().ProvisionStackFromCommand(ess, Source.Existing(), new Context(Context.ActionSource.Loading));
+                    
+                        situation.AcceptStack(ess.LocationInfo,stackToPutInSlot);
 
-            //        //SaveLocationInfo for slots are recorded with an appended Guid. Everything up until the last separator is the slotId
+                        //SaveLocationInfo for slots are recorded with an appended Guid. Everything up until the last separator is the slotId
+                        //var slotId = ess.LocationInfo.Split(SaveConstants.SEPARATOR)[0];
 
-            //        //var slotId = ess.LocationInfo.Split(SaveConstants.SEPARATOR)[0];
+                    //int lastSeparatorPosition = ess.LocationInfo.LastIndexOf(SaveConstants.SEPARATOR);
+                    //    var slotId = ess.LocationInfo.Substring(0, lastSeparatorPosition); //if lastseparatorposition zero-indexed is 4, length before separator - 1-indexed - is also 4
+                    //    if (slotTypeKey == SaveConstants.SAVE_STARTINGSLOTELEMENTS)
 
-            //        int lastSeparatorPosition = ess.LocationInfo.LastIndexOf(SaveConstants.SEPARATOR);
-            //        var slotId = ess.LocationInfo.Substring(0, lastSeparatorPosition); //if lastseparatorposition zero-indexed is 4, length before separator - 1-indexed - is also 4
+                    //    var slotToFill = situation.GetSlotBySaveLocationInfoPath(slotId, slotTypeKey);
+                    //if (slotToFill != null) //a little bit robust if a higher level element slot spec has changed between saves
+                    //    //if the game can't find a matching slot, it'll just leave it on the desktop
+                    //    slotToFill.AcceptStack(stackToPutInSlot, new Context(Context.ActionSource.Loading));
 
+                    //if this was an ongoing slot, we also need to tell the situation that the slot's filled, or it will grab another
 
-            //        var slotToFill = situation.GetSlotBySaveLocationInfoPath(slotId, slotTypeKey);
-            //        if (slotToFill != null) //a little bit robust if a higher level element slot spec has changed between saves
-            //            //if the game can't find a matching slot, it'll just leave it on the desktop
-            //            slotToFill.AcceptStack(stackToPutInSlot, new Context(Context.ActionSource.Loading));
-
-            //        //if this was an ongoing slot, we also need to tell the situation that the slot's filled, or it will grab another
-
-                //}
-            //}
+                }
+            }
         }
 
-        private List<ElementStackSpecification> PopulateElementStackSpecificationsList(Hashtable htStacks)
+        private List<StackCreationCommand> PopulateElementStackSpecificationsList(Hashtable htStacks)
         {
-            var elementQuantitySpecifications = new List<ElementStackSpecification>();
+            var stackCreationCommand = new List<StackCreationCommand>();
             foreach (var locationInfoKey in htStacks.Keys)
             {
                 var htEachStack= htStacks.GetHashtable(locationInfoKey);
@@ -377,7 +376,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                         htEachStack.GetHashtable(SaveConstants.SAVE_ILLUMINATIONS));
 
 
-                elementQuantitySpecifications.Add(new ElementStackSpecification(
+                stackCreationCommand.Add(new StackCreationCommand(
                     elementId,
                     elementQuantity,
                     locationInfoKey.ToString(),
@@ -387,7 +386,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     markedForConsumption,
 					lasttablepos));
             }
-            return elementQuantitySpecifications;
+            return stackCreationCommand;
         }
 
         private int GetQuantityFromElementHashtable(Dictionary<string, string> elementValues)
