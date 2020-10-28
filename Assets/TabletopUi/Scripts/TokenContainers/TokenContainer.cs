@@ -80,11 +80,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public virtual bool Retire()
         {
+            RetireAllStacks();
             Destroy(gameObject);
             Defunct = true;
             return true;
-
-            
         }
 
         public bool CurrentlyBlockedFor(BlockDirection direction)
@@ -552,7 +551,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 s.Retire(CardVFX.None);
         }
 
-        public void RetireWith(Func<ElementStackToken, bool> filter)
+        public void RetireStacksWhere(Func<ElementStackToken, bool> filter)
         {
             var stacksToRetire = new List<ElementStackToken>(_stacks).Where(filter);
             foreach (ElementStackToken s in stacksToRetire)

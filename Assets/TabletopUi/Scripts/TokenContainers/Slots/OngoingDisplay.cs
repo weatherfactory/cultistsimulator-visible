@@ -13,11 +13,11 @@ using UnityEngine.UI;
 using TMPro;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
+using UnityEngine.Events;
 
 namespace Assets.CS.TabletopUI {
-    public class OngoingSlotManager : AbstractSlotsManager {
+    public class OngoingDisplay:MonoBehaviour {
 
-        protected RecipeSlot ongoingSlot;
         [SerializeField] Transform slotHolder; 
         [SerializeField] Image countdownBar;
 		[SerializeField] TextMeshProUGUI countdownText;
@@ -25,43 +25,40 @@ namespace Assets.CS.TabletopUI {
         public CanvasGroupFader canvasGroupFader;
 
         [SerializeField] DeckEffectView[] deckEffectViews; 
+        HashSet<RecipeSlot> ongoingSlots=new HashSet<RecipeSlot>();
 
-        public override void Initialise(IVerb verb,SituationWindow window)
-		{
-            base.Initialise(verb,window);
-            ongoingSlot = BuildSlot("ongoing", null, null, true);
-            SetSlotToPos();
-        }
 
-        public override IList<RecipeSlot> GetAllSlots() {
-            // Is the active slot enabled?
-            if (ongoingSlot.gameObject.activeSelf)
-                return base.GetAllSlots();
-            else
-                return new List<RecipeSlot>(0);
-        }
 
-        public void SetSlotToPos() {
-            ongoingSlot.transform.position = slotHolder.position;
-        }
-
-        public virtual void DoReset() {
-            SetupSlot(null);
-        }
-
-        public void SetupSlot(Recipe recipe) {
-            var slotSpec = (recipe != null && recipe.Slots != null && recipe.Slots.Count > 0) ? recipe.Slots[0] : null;
-            ongoingSlot.gameObject.SetActive(slotSpec != null);
-            ongoingSlot.Initialise(slotSpec);
-        }
-        public override void RespondToStackAdded(RecipeSlot slot, ElementStackToken stack, Context context)
+        public void UpdateOngoingSlots(Recipe recipe,OnContainerAddedEvent onContainerAdded,OnContainerRemovedEvent onContainerRemoved)
         {
-           
-        }
+            foreach (var os in ongoingSlots)
+            {
+                onContainerRemoved.Invoke(os);
+                os.Retire();
+            }
 
-        public override void RespondToStackRemoved(ElementStackToken stack, Context context)
-        {
-            
+            ongoingSlots.Clear();
+
+            foreach (var spec in recipe.Slots)
+            {
+                var newSlot = Registry.Get<PrefabFactory>().Create<RecipeSlot>();
+                newSlot.name = spec.UniqueId;
+
+                newSlot.Initialise(spec);
+              //slot.onCardDropped += RespondToStackAdded; //trialling removing these and running it through new event system
+              //slot.onCardRemoved += RespondToStackRemoved;
+              
+              //UGH:
+                  var slotTransform = newSlot.SlotLabel.GetComponent<RectTransform>();
+                  var originalSize = slotTransform.sizeDelta;
+                  slotTransform.sizeDelta = new Vector2(originalSize.x * 1.5f, originalSize.y * 0.75f);
+  
+                newSlot.transform.position = slotHolder.position; //won't work if we ever have more than one
+                ongoingSlots.Add(newSlot);
+                onContainerAdded.Invoke(newSlot);
+
+            }
+
         }
 
 

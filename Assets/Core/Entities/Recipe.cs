@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -12,39 +11,6 @@ using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
 {
-
-    public class NullRecipe : Recipe
-    {
-        public NullRecipe(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
-        {
-            //do nothing, we're null
-        }
-
-        protected NullRecipe()
-        {
-
-            //Linked=new List<LinkedRecipeDetails>();
-            //Alt=new List<LinkedRecipeDetails>();
-            //Requirements=new Dictionary<string, string>();
-            //TableReqs=new Dictionary<string, string>();
-            //ExtantReqs=new Dictionary<string, string>();
-            //Effects=new Dictionary<string, string>();
-            //Aspects=new AspectsDictionary();
-            //Mutations=new List<MutationEffect>();
-            //Purge=new Dictionary<string, int>();
-            
-
-        }
-
-        public static NullRecipe Create()
-        {
-            Hashtable nullht = new Hashtable();
-            EntityData fauxEntityData = new EntityData("nullrecipe", nullht);
-            return new NullRecipe(fauxEntityData, new ContentImportLog());
-        }
-
-    }
-
     [FucineImportable("recipes")]
     public class Recipe : AbstractEntity<Recipe>
     {
@@ -107,6 +73,17 @@ namespace Assets.Core.Entities
         /// </summary>
         [FucineValue(false)]
         public bool HintOnly { get; set; }
+
+        //real recipes override hint prediction, both override null recipes
+        public virtual int Priority
+        {
+            get
+            {
+                if (HintOnly)
+                    return 0;
+                return 1;
+            }
+        }
 
         [FucineValue(0)]
         public int Warmup { get; set; }

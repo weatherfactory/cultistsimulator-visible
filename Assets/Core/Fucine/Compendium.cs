@@ -38,6 +38,16 @@ public interface ICompendium
 
 
     List<T> GetEntitiesAsAlphabetisedList<T>() where T : class, IEntityWithId;
+
+    /// <summary>
+    /// newer approaach, WIP, tries to limit the conditional logic. With a bit more work it could probably replace GetRecipePrediction?
+    /// </summary>
+    /// <param name="currentRecipe">might be null recipe populated with verb information</param>
+    /// <param name="aspectsInContext"></param>
+    /// <param name="verb"></param>
+    /// <param name="character"></param>
+    /// <returns></returns>
+    Recipe GetPredictedRecipe(Recipe currentRecipe, AspectsInContext aspectsInContext, IVerb verb, Character character);
 }
 
 public class Compendium : ICompendium
@@ -224,6 +234,31 @@ public class Compendium : ICompendium
         }
 
         return null;
+    }
+    /// <summary>
+    /// newer approaach, WIP, tries to limit the conditional logic. With a bit more work it could probably replace GetRecipePrediction?
+    /// </summary>
+    /// <param name="currentRecipe">might be null recipe populated with verb information</param>
+    /// <param name="aspectsInContext"></param>
+    /// <param name="verb"></param>
+    /// <param name="character"></param>
+    /// <returns></returns>
+    public Recipe GetPredictedRecipe(Recipe currentRecipe, AspectsInContext aspectsInContext, IVerb verb, Character character)
+    {
+        //returns, in order: craftable non-hint recipes; hint recipes; null recipe (which might be verb-description-based)
+        aspectsInContext.ThrowErrorIfNotPopulated(verb.Id);
+
+        //note: we *either* get craftable recipes *or* if we're getting hint recipes we don't care if they're craftable
+        var _recipes = EntityStoreFor(typeof(Recipe)).GetAllAsList<Recipe>();
+        List<Recipe> candidateRecipes = _recipes.Where(r => r.ActionId == verb.Id && (r.Craftable || r.HintOnly) && !character.HasExhaustedRecipe(r)).ToList();
+        var orderedCandidateRecipes=candidateRecipes.OrderByDescending(r => r.Priority);
+        foreach (var recipe in orderedCandidateRecipes)
+        {
+            if (recipe.RequirementsSatisfiedBy(aspectsInContext))
+                return recipe;
+        }
+
+        return currentRecipe;
     }
 
 

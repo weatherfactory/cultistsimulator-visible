@@ -17,6 +17,7 @@ using UnityEngine.UI;
 using System.Linq;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.Core.NullObjects;
 using Assets.Core.Services;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
@@ -24,6 +25,14 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 namespace Assets.CS.TabletopUI {
+
+    [Serializable]
+    public class OnContainerAddedEvent : UnityEvent<TokenContainer> { }
+
+    [Serializable]
+    public class OnContainerRemovedEvent : UnityEvent<TokenContainer> { }
+
+
     [RequireComponent(typeof(SituationWindowPositioner))]
     public class SituationWindow : AbstractToken,ISituationSubscriber {
 
@@ -43,7 +52,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] StartingSlotsManager startingSlots;
 
         [Space]
-        [SerializeField] OngoingSlotManager ongoing;
+        [SerializeField] OngoingDisplay ongoingDisplay;
 
         [Space]
         [SerializeField] SituationResults results;
@@ -62,6 +71,8 @@ namespace Assets.CS.TabletopUI {
         public UnityEvent OnStart;
         public UnityEvent OnCollect;
         public UnityEvent OnWindowClosed;
+        public OnContainerAddedEvent OnContainerAdded;
+        public OnContainerRemovedEvent OnContainerRemoved;
 
         public TokenLocation LastOpenLocation;
 
@@ -111,6 +122,16 @@ namespace Assets.CS.TabletopUI {
             PaginatedNotes.SetText(Verb.Description);
             startButton.onClick.AddListener(OnStart.Invoke);
 
+            startingSlots.Initialise(Verb, this);
+            results.Initialise();
+
+            //this is an improvement - the situation doesn't need to know what to add - but better yet would be to tie together creation + container add, at runtime
+            foreach (var s in startingSlots.GetAllSlots())
+                OnContainerAdded.Invoke(s);
+
+            OnContainerAdded.Invoke(storage);
+            OnContainerAdded.Invoke(results);
+
             DisplayButtonState(false);
 
             if (Verb.Startable)
@@ -124,9 +145,7 @@ namespace Assets.CS.TabletopUI {
 
 
 
-            startingSlots.Initialise(Verb,this);
-            ongoing.Initialise(Verb,this);
-            results.Initialise();
+ 
 		}
 
 
@@ -188,9 +207,6 @@ namespace Assets.CS.TabletopUI {
             var startingStacks = new List<ElementStackToken>(GetStartingStacks());
             foreach (var s in startingStacks)
                 s.Retire(CardVFX.None);
-            var ongoingStacks=new List<ElementStackToken>(GetOngoingStacks());
-           foreach (var o in ongoingStacks)
-               o.Retire(CardVFX.None);
 
 
            storage.RemoveAllStacks();
@@ -255,6 +271,30 @@ namespace Assets.CS.TabletopUI {
         }
 
 
+        public void DisplayRecipe(Recipe r, AspectsDictionary aspectsInSituation)
+        {
+
+            Title = r.Label;
+            //Check for possible text refinements based on the aspects in context
+            TextRefiner tr = new TextRefiner(aspectsInSituation);
+
+            if(r.HintOnly)
+                PaginatedNotes.SetText("<i>" + tr.RefineString(r.StartDescription) + "</i>");
+            else
+                PaginatedNotes.SetText(tr.RefineString(r.StartDescription));
+
+
+            if(r.Craftable)
+            {
+                DisplayButtonState(true);
+                SoundManager.PlaySfx("SituationAvailable");
+                ongoingDisplay.UpdateTime(r.Warmup, r.Warmup, r.SignalEndingFlavour); //Ensures that the time bar is set to 0 to avoid a flicker
+            }
+            else
+                DisplayButtonState(false);
+            
+        }
+
 
         public void DisplayNoRecipeFound() {
 			Title = Verb.Label;
@@ -271,7 +311,8 @@ namespace Assets.CS.TabletopUI {
             TextRefiner tr = new TextRefiner(aspectsInSituation);
             PaginatedNotes.SetText(tr.RefineString(r.StartDescription));
 
-            DisplayTimeRemaining(r.Warmup, r.Warmup, r.SignalEndingFlavour); //Ensures that the time bar is set to 0 to avoid a flicker
+            ongoingDisplay.UpdateTime(r.Warmup, r.Warmup, r.SignalEndingFlavour); //Ensures that the time bar is set to 0 to avoid a flicker
+
 			DisplayButtonState(true);
 
             SoundManager.PlaySfx("SituationAvailable");
@@ -306,7 +347,6 @@ namespace Assets.CS.TabletopUI {
                     rectTrans.anchoredPosition = rectTrans.anchoredPosition - new Vector2(100f, 0f);
 
                 startingSlots.SetGridNumPerRow(); // Updates the grid row numbers
-                ongoing.SetSlotToPos(); // Updates the ongoing slot position
             }
 
             windowIsWide = wide;
@@ -319,13 +359,10 @@ namespace Assets.CS.TabletopUI {
 		}
 
         public void DisplayStoredElements() {
-            ongoing.ShowStoredAspects(GetStoredStacks());
+            ongoingDisplay.ShowStoredAspects(GetStoredStacks());
         }
 
-        public void DisplayTimeRemaining(float duration, float timeRemaining, EndingFlavour forEndingFlavour) {
-            ongoing.UpdateTime(duration, timeRemaining, forEndingFlavour);
-        }
-
+ 
         void DisplayButtonState(bool interactable, string text = null) {
 			startButton.interactable = interactable;
             startButtonText.GetComponent<Babelfish>().UpdateLocLabel(string.IsNullOrEmpty(text) ? buttonDefault : text);
@@ -338,9 +375,6 @@ namespace Assets.CS.TabletopUI {
             return startingSlots.GetStacksInSlots();
         }
 
-        public IEnumerable<ElementStackToken> GetOngoingStacks() {
-            return ongoing.GetStacksInSlots();
-        }
 
         public IEnumerable<ElementStackToken> GetStoredStacks() {
             return storage.GetStacks();
@@ -366,30 +400,6 @@ namespace Assets.CS.TabletopUI {
             return startingSlots.GetSlotBySaveLocationInfoPath(locationInfo);
         }
 
-        public RecipeSlot GetOngoingSlotBySaveLocationInfoPath(string locationInfo) {
-            return ongoing.GetSlotBySaveLocationInfoPath(locationInfo);
-        }
-
-
-        public IList<RecipeSlot> GetStartingSlots() {
-            return startingSlots.GetAllSlots();
-        }
-
-        public IList<RecipeSlot> GetOngoingSlots() {
-            return ongoing.GetAllSlots();
-        }
-
-        public SituationStorage GetStorageContainer()
-        {
-            return storage;
-        }
-
-        public SituationResults GetResultsContainer()
-        {
-            return results;
-        }
-
-
 
 
         public IEnumerable<ISituationNote> GetNotes() {
@@ -400,11 +410,10 @@ namespace Assets.CS.TabletopUI {
         {
          
             startingSlots.gameObject.SetActive(false);
-
-         
-            ongoing.SetupSlot(e.CurrentRecipe);
-            ongoing.ShowDeckEffects(e.CurrentRecipe.DeckEffects);
-            ongoing.gameObject.SetActive(true);
+            ongoingDisplay.gameObject.SetActive(true);
+            ongoingDisplay.UpdateOngoingSlots(e.CurrentRecipe,OnContainerAdded,OnContainerRemoved);
+ 
+            ongoingDisplay.ShowDeckEffects(e.CurrentRecipe.DeckEffects);
 
             results.gameObject.SetActive(false);
             DisplayButtonState(false, buttonBusy);
@@ -415,7 +424,8 @@ namespace Assets.CS.TabletopUI {
 
         public void SituationOngoing(SituationEventData e)
         {
-            DisplayTimeRemaining(e.Warmup, e.TimeRemaining, e.CurrentRecipe.SignalEndingFlavour);
+            ongoingDisplay.UpdateTime(e.Warmup, e.TimeRemaining, e.CurrentRecipe.SignalEndingFlavour);
+
         }
 
         public void SituationExecutingRecipe(SituationEventData e)
@@ -426,7 +436,7 @@ namespace Assets.CS.TabletopUI {
         public void SituationComplete(SituationEventData e)
         {
             startingSlots.gameObject.SetActive(false);
-            ongoing.gameObject.SetActive(false);
+            ongoingDisplay.gameObject.SetActive(false);
             results.gameObject.SetActive(true);
             aspectsDisplay.ClearCurrentlyDisplayedAspects();
 
@@ -438,8 +448,8 @@ namespace Assets.CS.TabletopUI {
             startingSlots.DoReset();
             startingSlots.gameObject.SetActive(true);
 
-            ongoing.DoReset();
-            ongoing.gameObject.SetActive(false);
+            ongoingDisplay.UpdateOngoingSlots(NullRecipe.Create(),OnContainerAdded,OnContainerRemoved);
+            ongoingDisplay.gameObject.SetActive(false);
 
             results.DoReset();
             results.gameObject.SetActive(false);
@@ -452,45 +462,14 @@ namespace Assets.CS.TabletopUI {
 
         public void ContainerContentsUpdated(SituationEventData e)
         {
-  
             var allAspectsInSituation = AspectsDictionary.GetFromStacks(e.StacksInEachStorage.SelectMany(s => s.Value), true);
-           
+            DisplayRecipe(e.PredictedRecipe, allAspectsInSituation);
 
-            var tabletopManager = Registry.Get<TabletopManager>();
-            var aspectsInContext = tabletopManager.GetAspectsInContext(allAspectsInSituation);
-
-            // Get all aspects and find a recipe
-            Recipe matchingRecipe = Registry.Get<ICompendium>().GetFirstMatchingRecipe(aspectsInContext, Verb.Id, Registry.Get<Character>(), false);
 
             var allAspectsToDisplay = AspectsDictionary.GetFromStacks(e.StacksInEachStorage.SelectMany(s => s.Value), false);
-
-            // Update the aspects in the window
-            
             DisplayAspects(allAspectsToDisplay);
 
-            //if we found a recipe, display it, and get ready to activate
-            if (matchingRecipe != null)
-            {
-                DisplayStartingRecipeFound(matchingRecipe,allAspectsInSituation);
-                return;
-            }
-
-            //if we can't find a matching craftable recipe, check for matching hint recipes
-            Recipe matchingHintRecipe = Registry.Get<ICompendium>().GetFirstMatchingRecipe(aspectsInContext, e.ActiveVerb.Id , Registry.Get<Character>(), true); ;
-
-            //perhaps we didn't find an executable recipe, but we did find a hint recipe to display
-            if (matchingHintRecipe != null)
-                DisplayHintRecipeFound(matchingHintRecipe,allAspectsInSituation);
-            //no recipe, no hint? If there are any elements in the mix, display 'try again' message
-            else if (allAspectsInSituation.Count > 0)
-                DisplayNoRecipeFound();
-            //no recipe, no hint, no aspects. Just set back to unstarted
-            else
-            {
-                Title = Verb.Label;
-                PaginatedNotes.SetText(Verb.Description);
-                DisplayButtonState(false);
-            }
+     
         }
 
         public void ReceiveNotification(SituationEventData e)

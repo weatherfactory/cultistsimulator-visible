@@ -82,7 +82,7 @@ namespace Assets.Core.Entities
         /// <param name="elementId"></param>
         public void EliminateCardWithId(string elementId)
         {
-            _drawPile.RetireWith(x=>x.EntityId==elementId);
+            _drawPile.RetireStacksWhere(x=>x.EntityId==elementId);
 
             if (_deckSpec.Spec.Contains(elementId))
                 _forbiddenCards.ProvisionElementStack(elementId, 1);

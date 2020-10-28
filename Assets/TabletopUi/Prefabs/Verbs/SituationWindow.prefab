@@ -459,7 +459,7 @@ MonoBehaviour:
   title: {fileID: 114797357020451180}
   PaginatedNotes: {fileID: 114985364964061106}
   startingSlots: {fileID: 114656839713261566}
-  ongoing: {fileID: 114151265001902868}
+  ongoingDisplay: {fileID: 114151265001902868}
   results: {fileID: 114941313652618834}
   dumpResultsButton: {fileID: 114000012811200902}
   dumpResultsButtonText: {fileID: 114000013027545752}
@@ -474,6 +474,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnWindowClosed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnContainerAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnContainerRemoved:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &114651031545853594
@@ -1447,7 +1453,7 @@ GameObject:
   - component: {fileID: 225493535554730180}
   - component: {fileID: 114848985628778574}
   m_Layer: 5
-  m_Name: OngoingSlots
+  m_Name: OngoingDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1495,10 +1501,7 @@ MonoBehaviour:
   countdownText: {fileID: 114602261048296978}
   storedCardsLayout: {fileID: 114129789786004442}
   canvasGroupFader: {fileID: 114848985628778574}
-  deckEffectViews:
-  - {fileID: 114023522480365752}
-  - {fileID: 114472748322962946}
-  - {fileID: 114109939223616916}
+  deckEffectViews: []
 --- !u!225 &225493535554730180
 CanvasGroup:
   m_ObjectHideFlags: 0

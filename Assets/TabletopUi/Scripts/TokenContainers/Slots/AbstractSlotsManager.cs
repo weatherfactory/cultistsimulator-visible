@@ -19,21 +19,9 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
 
     
     protected List<RecipeSlot> validSlots;
-    protected SituationWindow _window;
-    protected IVerb _verb;
     
 
-    public virtual void Initialise(IVerb verb,SituationWindow window)
-    {
-        //move this into SituationWindow
-        
-        var children = GetComponentsInChildren<RecipeSlot>();
-        var allSlots = new List<RecipeSlot>(children);
-         validSlots = new List<RecipeSlot>(allSlots.Where(rs => rs.Defunct == false && rs.GoverningSlotSpecification!=null));
-         _window = window;
-         _verb = verb;
 
-    }
 
     public virtual IList<RecipeSlot> GetAllSlots() {
 

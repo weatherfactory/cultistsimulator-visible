@@ -27,7 +27,7 @@ namespace Assets.Core
         /// <returns> this may be the original recipe, or it may be an alternative recipe, it may be any number of recipes possible including the original</returns>
         IList<RecipeExecutionCommand> GetActualRecipesToExecute(Recipe recipe);
 
-        RecipePrediction GetRecipePrediction(Recipe currentRecipe);
+        RecipePrediction GetPredictionForFollowupRecipe(Recipe currentRecipe);
     }
 
     public class RecipeConductor : IRecipeConductor
@@ -122,7 +122,7 @@ namespace Assets.Core
         /// </summary>
         /// <param name="currentRecipe"></param>
         /// <returns></returns>
-        public RecipePrediction GetRecipePrediction(Recipe currentRecipe)
+        public RecipePrediction GetPredictionForFollowupRecipe(Recipe currentRecipe)
         {
             var rp=new RecipePrediction();
 

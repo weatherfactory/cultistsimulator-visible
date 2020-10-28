@@ -20,11 +20,22 @@ namespace Assets.TabletopUi.SlotsContainers {
         public CanvasGroupFader canvasGroupFader;
 
         protected RecipeSlot primarySlot;
+        private IVerb _verb;
+        private SituationWindow _window;
 
-        public override void Initialise(IVerb verb,SituationWindow window) {
-            base.Initialise(verb,window);
+
+        public void Initialise(IVerb verb,SituationWindow window) {
             
-            var primarySlotSpecification = verb.Slot;
+            
+            var children = GetComponentsInChildren<RecipeSlot>();
+            var allSlots = new List<RecipeSlot>(children);
+            validSlots = new List<RecipeSlot>(allSlots.Where(rs => rs.Defunct == false && rs.GoverningSlotSpecification != null));
+
+            _verb = verb;
+            _window= window;
+            
+
+        var primarySlotSpecification = verb.Slot;
             if(primarySlotSpecification!=null)
                 primarySlot = BuildSlot(primarySlotSpecification.Label, primarySlotSpecification, null);
             else
@@ -40,7 +51,7 @@ namespace Assets.TabletopUi.SlotsContainers {
 
         public void DoReset() {
             if (GetAllSlots().Count > 1) {
-                //RemoveAnyChildSlotsWithEmptyParent(); // created an infinite loop - Martin
+              
                 ArrangeSlots();
             }
         }

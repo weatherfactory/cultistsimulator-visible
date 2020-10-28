@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Assets.Core;
+using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Core.Interfaces;
@@ -13,9 +14,12 @@ namespace Assets.CS.TabletopUI
         public float TimeRemaining { get; set; }
         public IVerb ActiveVerb { get; set; }
         public Recipe CurrentRecipe; //replace with SituationCreationComand / SituationEffectCommand? combine CreationCommand and EffectCommand?
+        public Recipe PredictedRecipe;
+
         public Dictionary<ContainerCategory, List<ElementStackToken>> StacksInEachStorage { get; set; }
         public INotification Notification;
         public SituationEffectCommand EffectCommand;
+        public RecipePrediction RecipePrediction;
 
         public static SituationEventData Create(Situation fromSituation)
         {
@@ -23,6 +27,7 @@ namespace Assets.CS.TabletopUI
             e.Warmup = fromSituation.Warmup;
             e.TimeRemaining = fromSituation.TimeRemaining;
             e.CurrentRecipe = fromSituation.currentPrimaryRecipe;
+            e.PredictedRecipe = fromSituation.currentPredictedRecipe;
             e.StacksInEachStorage.Add(ContainerCategory.Threshold,fromSituation.GetStacks(ContainerCategory.Threshold));
             e.StacksInEachStorage.Add(ContainerCategory.SituationStorage, fromSituation.GetStacks(ContainerCategory.SituationStorage));
             e.StacksInEachStorage.Add(ContainerCategory.Output, fromSituation.GetStacks(ContainerCategory.Output));

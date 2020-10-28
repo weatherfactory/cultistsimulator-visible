@@ -5,7 +5,7 @@ using System.Text;
 
 
 
-public enum SituationState {ReadyToReset, ReadyToStart,FreshlyStarted, Ongoing, RequiringExecution, Complete }
+public enum SituationState {ReadyToReset, ReadyToBegin,FreshlyStarted, Ongoing, RequiringExecution, Complete }
 //lifecycle:
 //unstarted: no recipe running
 //freshly started: recipe running, not yet ticked

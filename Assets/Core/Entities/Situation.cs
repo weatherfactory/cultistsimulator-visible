@@ -26,6 +26,8 @@ namespace Assets.Core.Entities {
     {
         public SituationState State { get; set; }
         public Recipe currentPrimaryRecipe { get; set; }
+        public Recipe currentPredictedRecipe { get; set; }
+
         public float TimeRemaining { private set; get; }
 
         public float Warmup
@@ -86,16 +88,15 @@ namespace Assets.Core.Entities {
         {
             _window = newWindow;
             AddSubscriber(_window);
-            _window.Populate(this);
 
-            AddContainers(newWindow.GetStartingSlots());
-            AddContainers(newWindow.GetOngoingSlots());
-            AddContainer(newWindow.GetStorageContainer());
-            AddContainer(newWindow.GetResultsContainer());
 
             _window.OnWindowClosed.AddListener(Close);
-            _window.OnStart.AddListener(Start);
+            _window.OnStart.AddListener(AttemptActivateRecipe);
             _window.OnCollect.AddListener(CollectOutputStacks);
+            _window.OnContainerAdded.AddListener(AddContainer);
+            _window.OnContainerRemoved.AddListener(RemoveContainer);
+
+            _window.Populate(this);
 
         }
 
@@ -149,16 +150,17 @@ namespace Assets.Core.Entities {
 
         private void Reset()
         {
-            currentPrimaryRecipe = NullRecipe.Create();
+            currentPrimaryRecipe = NullRecipe.Create(Verb);
+            currentPredictedRecipe = currentPrimaryRecipe;
             TimeRemaining = 0;
-            State = SituationState.ReadyToStart;
+            State = SituationState.ReadyToBegin;
             foreach (var subscriber in subscribers)
                 subscriber.ResetSituation();
         }
 
         public void Halt()
         {
-            if (State != SituationState.Complete && State !=SituationState.ReadyToReset && State != SituationState.ReadyToStart
+            if (State != SituationState.Complete && State !=SituationState.ReadyToReset && State != SituationState.ReadyToBegin
             ) //don't halt if the situation is not running. This is not only superfluous but dangerous: 'complete' called from an already completed verb has bad effects
                 Complete();
 
@@ -167,17 +169,9 @@ namespace Assets.Core.Entities {
 
         }
 
-        public void StartRecipe(Recipe recipe)
-        {
-            currentPrimaryRecipe = recipe;
-            Start();
-        }
 
-        public void Start()
-        {
-            TimeRemaining = currentPrimaryRecipe.Warmup;
-            State = SituationState.FreshlyStarted;
-        }
+
+   
 
 
         public void ResetIfComplete()
@@ -249,6 +243,11 @@ namespace Assets.Core.Entities {
 
         public void Retire()
         {
+            foreach (var c in _containers)
+            {
+                c.Retire();
+            }
+
             _window.Retire();
             _anchor.Retire();
             Registry.Get<SituationsCatalogue>().DeregisterSituation(this);
@@ -399,13 +398,13 @@ namespace Assets.Core.Entities {
                     Reset();
                     break;
 
-                case SituationState.ReadyToStart:
+                case SituationState.ReadyToBegin:
 
                     break;
 
                 case SituationState.FreshlyStarted:
 
-                    Beginning(currentPrimaryRecipe);
+                    Begin(currentPrimaryRecipe);
                     break;
 
 
@@ -443,7 +442,7 @@ namespace Assets.Core.Entities {
 
 
 
-        public void Beginning(Recipe withRecipe)
+        public void Begin(Recipe withRecipe)
         {
             State = SituationState.Ongoing;
 
@@ -466,22 +465,7 @@ namespace Assets.Core.Entities {
         }
 
 
-        private RecipePrediction GetRecipePrediction()
-        {
-            TabletopManager ttm = Registry.Get<TabletopManager>();
-            var aspectsInSituation = GetAspectsAvailableToSituation(true);
 
-            var context = ttm.GetAspectsInContext(aspectsInSituation);
-            RecipeConductor rc = new RecipeConductor(Registry.Get<ICompendium>(),
-                context, Registry.Get<IDice>(),
-                Registry.Get<Character>());
-            var prediction = rc.GetRecipePrediction(currentPrimaryRecipe);
-
-            TextRefiner tr = new TextRefiner(aspectsInSituation);
-            prediction.DescriptiveText = tr.RefineString(prediction.DescriptiveText);
-            return prediction;
-
-        }
 
 
         private void PossiblySignalImpendingDoom(EndingFlavour endingFlavour)
@@ -625,7 +609,7 @@ namespace Assets.Core.Entities {
 						SoundManager.PlaySfx("SituationLoop");
 
 				}
-				Beginning(currentPrimaryRecipe);
+				Begin(currentPrimaryRecipe);
 			}
 			else { 
 				Complete();
@@ -803,8 +787,19 @@ namespace Assets.Core.Entities {
 
         private void ContainerStacksChanged(ContainerStacksChangedArgs _stacksChangedArgs)
         {
-            SituationEventData data = SituationEventData.Create(this);
+            var aspectsInContext =
+                Registry.Get<TabletopManager>().GetAspectsInContext(GetAspectsAvailableToSituation(true));
 
+        currentPredictedRecipe = Registry.Get<ICompendium>()
+                .GetPredictedRecipe(currentPrimaryRecipe, aspectsInContext, Verb, Registry.Get<Character>());
+
+            //we now have the recipe that would be available the next time an execution point occurs.
+            //we *don't* want to change the current recipe based on this - but we do want to update the prediction for subscribers
+            
+            //so I *think* it's useful to store the predicted recipe? this also allows for caching
+
+            SituationEventData data = SituationEventData.Create(this);
+            
             foreach (var s in subscribers)
                 s.ContainerContentsUpdated(data);
 
@@ -847,11 +842,29 @@ namespace Assets.Core.Entities {
                 s.Decay(interval);
         }
 
+
+        private RecipePrediction GetRecipePrediction()
+        {
+            TabletopManager ttm = Registry.Get<TabletopManager>();
+            var aspectsInSituation = GetAspectsAvailableToSituation(true);
+
+            var context = ttm.GetAspectsInContext(aspectsInSituation);
+            RecipeConductor rc = new RecipeConductor(Registry.Get<ICompendium>(),
+                context, Registry.Get<IDice>(),
+                Registry.Get<Character>());
+            var prediction = rc.GetPredictionForFollowupRecipe(currentPrimaryRecipe);
+
+            TextRefiner tr = new TextRefiner(aspectsInSituation);
+            prediction.DescriptiveText = tr.RefineString(prediction.DescriptiveText);
+            return prediction;
+
+        }
+
+
         public void AttemptActivateRecipe()
         {
-
-
-            if (State != SituationState.ReadyToStart)
+            
+            if (State != SituationState.ReadyToBegin)
                 return;
 
             var aspects = GetAspectsAvailableToSituation(true);
@@ -859,23 +872,23 @@ namespace Assets.Core.Entities {
             var aspectsInContext = tabletopManager.GetAspectsInContext(aspects);
 
 
-            var recipe = Registry.Get<Compendium>().GetFirstMatchingRecipe(aspectsInContext, Verb.Id, Registry.Get<Character>(), false);
+            var recipe = Registry.Get<ICompendium>().GetFirstMatchingRecipe(aspectsInContext, Verb.Id, Registry.Get<Character>(), false);
 
             //no recipe found? get outta here
             if (recipe == null)
                 return;
 
-            //kick off the situation. We want to do this first, so that modifying the stacks next won't cause the window to react
-            //as if we're removing items from an unstarted situation
-            StartRecipe(recipe);
+            currentPrimaryRecipe = recipe;
+            TimeRemaining = currentPrimaryRecipe.Warmup;
+            State = SituationState.FreshlyStarted;
 
-            // Play the SFX here (not in the clock) so it is only played when we manually start
             SoundManager.PlaySfx("SituationBegin");
 
             //called here in case starting slots trigger consumption
             foreach(var t in GetContainersByCategory(ContainerCategory.Threshold))
                 t.ActivatePreRecipeExecutionBehaviour();
 
+            //now move the stacks out of the starting slots into storage
             AcceptStacks(ContainerCategory.SituationStorage,GetStacks(ContainerCategory.Threshold));
 
             //The game might be paused! or the player might just be incredibly quick off the mark

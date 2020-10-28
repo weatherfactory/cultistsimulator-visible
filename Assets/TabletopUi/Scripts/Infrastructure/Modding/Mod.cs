@@ -15,18 +15,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         public string ModRootFolder { get; set; }
     }
 
-    public class NullMod : Mod
-    {
-        public override bool IsValid => false;
-
-        public NullMod(): base("null mod","")
-        {
-
-        }
-
-
-    }
-
     public enum ModInstallType {Unknown=0,Local=1,SteamWorkshop=2}
 
     public class Mod

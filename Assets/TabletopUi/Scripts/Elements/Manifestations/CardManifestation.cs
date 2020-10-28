@@ -45,13 +45,10 @@ namespace Assets.TabletopUi.Scripts.Elements
 
         public bool RequestingNoDrag => flipHelper.FlipInProgress;
 
-        public void Awake()
-        {
-            flipHelper=new FlipHelper(this);
-        }
-
+        
         public void InitialiseVisuals(Element element)
         {
+            flipHelper = new FlipHelper(this);
             Sprite sprite = ResourcesManager.GetSpriteForElement(element.Icon);
             artwork.sprite = sprite;
 
