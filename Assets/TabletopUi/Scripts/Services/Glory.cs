@@ -11,6 +11,7 @@ using Assets.Core.Services;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
+using Assets.TabletopUi.Scripts.TokenContainers;
 using Noon;
 using TabletopUi.Scripts.Services;
 using UnityEngine;
@@ -88,7 +89,6 @@ namespace Assets.TabletopUi.Scripts.Services
 
                 var registryAccess = new Registry();
 
-
                 //load config: this gives us a lot of info that we'll need early
                 registryAccess.Register(new Config());            
             
@@ -113,6 +113,9 @@ namespace Assets.TabletopUi.Scripts.Services
 
                 //prefabFactory means we don't have to rely on magic strings prefab names
                 registryAccess.Register<PrefabFactory>(prefabFactory);
+
+
+                registryAccess.Register(prefabFactory.Create<NullContainer>());
 
                 registryAccess.Register(gameSaveManager);
 

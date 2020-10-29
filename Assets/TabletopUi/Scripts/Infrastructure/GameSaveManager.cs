@@ -66,10 +66,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
     public class GameSaveManager: MonoBehaviour
     {
-        private IGameDataImporter dataImporter;
-        private IGameDataExporter dataExporter;
-        private SimpleJSONGameDataImporter simpleJsonGameDataImporter;
-
+        private IGameDataImporter dataImporter= new SaveDataImporter();
+        private IGameDataExporter dataExporter= new SaveDataExporter();
+        private SimpleJSONGameDataImporter simpleJsonGameDataImporter=new SimpleJSONGameDataImporter();
 
         // Save game safety
         public static int failedSaveCount = 0;
@@ -77,16 +76,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 #if UNITY_EDITOR
 		public static bool simulateBrokenSave = false;	// For debugging
 #endif
-        public void Start()
-        {
-            dataImporter=new SaveDataImporter();
-            dataExporter=new SaveDataExporter();
-            simpleJsonGameDataImporter=new SimpleJSONGameDataImporter();
-
-
-
-        }
-
 
     
         public bool DoesGameSaveExist()
@@ -210,20 +199,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void LoadTabletopState(SourceForGameState source,TabletopTokenContainer tabletop)
         {
-           
-            dataImporter.ImportTableState(source,tabletop);
+
+            simpleJsonGameDataImporter.ImportTableState(source,tabletop);
         }
 
         public void LoadCharacterState(SourceForGameState source,Character character)
         {
-            dataImporter.ImportCharacter(source,character);
+            simpleJsonGameDataImporter.ImportCharacter(source,character);
         }
-
-
-
-
-
-
 
 
 

@@ -49,6 +49,8 @@ namespace Assets.Core.Entities {
         private ISituationAnchor _anchor;
         private SituationWindow _window;
         private bool greedyAnimIsActive;
+        public string Path { get; }
+
 
         public TokenLocation GetAnchorLocation()
         {
@@ -71,6 +73,9 @@ namespace Assets.Core.Entities {
             currentPrimaryRecipe = command.Recipe;
             OverrideTitle = command.OverrideTitle;
             CompletionCount = command.CompletionCount;
+            Path = command.Path;
+
+
         }
 
 
@@ -233,7 +238,7 @@ namespace Assets.Core.Entities {
 
             var reprovisionedStack = containersInCategory.First()
                 .ProvisionStackFromCommand(stackCreationCommand, stackSource,
-                    new Context(Context.ActionSource.Loading), locatorid);
+                    new Context(Context.ActionSource.Loading));
 
             return reprovisionedStack;
 
@@ -772,7 +777,7 @@ namespace Assets.Core.Entities {
             if (!t.IsGreedy && t.GetMatchForStack(stack).MatchType ==SlotMatchForAspectsType.Okay)
                 return t;
 
-        return new NullContainer().Create();
+        return Registry.Get<NullContainer>();
     }
 
 

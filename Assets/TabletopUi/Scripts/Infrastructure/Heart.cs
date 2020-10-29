@@ -148,11 +148,11 @@ public class Heart : MonoBehaviour
     }
 
 
-    public async void  OnApplicationQuit()
-    {
-        var saveTask = Registry.Get<TabletopManager>().SaveGameAsync(true,SourceForGameState.DefaultSave);
-        await saveTask;
-    }
+    //public async void  OnApplicationQuit()
+    //{
+    //    var saveTask = Registry.Get<TabletopManager>().SaveGameAsync(true,SourceForGameState.DefaultSave);
+    //    await saveTask;
+    //}
 
 
     bool OutstandingSlotAlreadySaved(AnchorAndSlot slot) {

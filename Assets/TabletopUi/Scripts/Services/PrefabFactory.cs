@@ -13,6 +13,7 @@ using Assets.TabletopUi.Scripts.Elements;
 using Assets.TabletopUi.Scripts.Elements.Manifestations;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
+using Assets.TabletopUi.Scripts.TokenContainers;
 using Noon;
 using Object = UnityEngine.Object;
 
@@ -35,6 +36,7 @@ namespace Assets.TabletopUi.Scripts.Services
         public NotificationWindow NotificationWindow = null;
         public SituationNote SituationNote = null;
         public NullElementStackToken NullElementStack = null;
+        public NullContainer NullContainer = null;
 
 
         public T Create<T>() where T : Component

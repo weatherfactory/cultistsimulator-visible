@@ -53,6 +53,8 @@ namespace Assets.CS.TabletopUI {
 
         public override bool AllowStackMerge { get { return false; } }
 
+        private string _situationPath;
+
         public override bool AllowDrag {
             get {
                 return !GoverningSlotSpecification.Greedy || IsBeingAnimated;
@@ -82,7 +84,9 @@ namespace Assets.CS.TabletopUI {
             base.Start();
         }
 
-        public void Initialise(SlotSpecification slotSpecification) {
+        public void Initialise(SlotSpecification slotSpecification,string situationPath)
+        {
+            _situationPath = situationPath;
             GoverningSlotSpecification = slotSpecification;
             //we need to do this first. Code checks if an ongoing slot is active by checking whether it has a slotspecification
             //slots with null slotspecification are inactive.
@@ -303,17 +307,15 @@ namespace Assets.CS.TabletopUI {
         /// <summary>
         /// path to slot expressed in underscore-separated slot specification labels: eg "work_sacrifice"
         /// </summary>
-        public string SaveLocationInfoPath {
-            get {
-                string saveLocationInfo = GoverningSlotSpecification.Id;
-                if (ParentSlot != null)
-                    saveLocationInfo = ParentSlot.SaveLocationInfoPath + SaveConstants.SEPARATOR + saveLocationInfo;
-                return saveLocationInfo;
-            }
-        }
+        public override string GetPath()
+        {
 
-        public override string GetSaveLocationForToken(AbstractToken token) {
-            return SaveLocationInfoPath; //we don't currently care about the actual draggable
+            string path;
+            if (ParentSlot != null)
+                path = ParentSlot.GetPath() + SaveConstants.SEPARATOR + GoverningSlotSpecification.Id;
+            else
+                path = _situationPath + SaveConstants.SEPARATOR + GoverningSlotSpecification.Id;
+            return path;
         }
 
         public override void ActivatePreRecipeExecutionBehaviour() {

@@ -98,17 +98,9 @@ public class TabletopTokenContainer : TokenContainer,IBeginDragHandler,IEndDragH
     }
 
 
-    public override string GetSaveLocationForToken(AbstractToken token) {
-        try
-        {
-
-        return (token.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + token.RectTransform.localPosition.y).ToString();
-        }
-        catch (Exception)
-        {
-            //in case the token is misbehaving somehow and TRAPPED BETWEEN WORLS
-            return 0.ToString() + SaveConstants.SEPARATOR + 0.ToString();
-        }
+    public override string GetPath()
+    {
+        return "tabletop";
 
     }
 

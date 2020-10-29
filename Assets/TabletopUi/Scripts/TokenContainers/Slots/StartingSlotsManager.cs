@@ -22,9 +22,10 @@ namespace Assets.TabletopUi.SlotsContainers {
         protected RecipeSlot primarySlot;
         private IVerb _verb;
         private SituationWindow _window;
+        private string _situationPath;
 
 
-        public void Initialise(IVerb verb,SituationWindow window) {
+        public void Initialise(IVerb verb,SituationWindow window,string situationPath) {
             
             
             var children = GetComponentsInChildren<RecipeSlot>();
@@ -33,11 +34,12 @@ namespace Assets.TabletopUi.SlotsContainers {
 
             _verb = verb;
             _window= window;
+            _situationPath = situationPath;
             
 
         var primarySlotSpecification = verb.Slot;
             if(primarySlotSpecification!=null)
-                primarySlot = BuildSlot(primarySlotSpecification.Label, primarySlotSpecification, null);
+                primarySlot = BuildSlot(primarySlotSpecification.Label, primarySlotSpecification, null,false);
             else
                 primarySlot = BuildSlot("Primary recipe slot", new SlotSpecification(), null);
 
@@ -109,11 +111,30 @@ namespace Assets.TabletopUi.SlotsContainers {
 
         }
 
-        protected override RecipeSlot BuildSlot(string slotName, SlotSpecification slotSpecification, RecipeSlot parentSlot, bool wideLabel = false) {
-            var slot = base.BuildSlot(slotName, slotSpecification, parentSlot, wideLabel);
+
+        protected virtual RecipeSlot BuildSlot(string slotName, SlotSpecification slotSpecification, RecipeSlot parentSlot, bool wideLabel = false)
+        {
+            var slot = Registry.Get<PrefabFactory>().CreateLocally<RecipeSlot>(transform);
+
+            slot.name = slotName + (slotSpecification != null ? " - " + slotSpecification.Id : "");
+            slot.ParentSlot = parentSlot;
+            slot.Initialise(slotSpecification,_situationPath);
+            slot.onCardDropped += RespondToStackAdded;
+            slot.onCardRemoved += RespondToStackRemoved;
+            if (wideLabel)
+            {
+                var slotTransform = slot.SlotLabel.GetComponent<RectTransform>();
+                var originalSize = slotTransform.sizeDelta;
+                slotTransform.sizeDelta = new Vector2(originalSize.x * 1.5f, originalSize.y * 0.75f);
+            }
+
+            validSlots.Add(slot);
+
             gridManager.AddSlot(slot);
             return slot;
         }
+
+
 
         protected override void ClearAndDestroySlot(RecipeSlot slot, Context context) {
             if (slot == null)

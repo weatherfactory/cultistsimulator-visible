@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 using UnityEngine;
@@ -22,7 +23,7 @@ namespace Assets.Core.Commands
         public int Depth { get; private set; }
         public float LifetimeRemaining { get; private set; }
         public bool MarkedForConsumption { get; private set; }
-		public Vector2 LastTablePos { get; private set; }
+		public TokenLocation Location { get; private set; }
 
         public StackCreationCommand(string elementId, int elementQuantity, string locationInfo,Dictionary<string,int> mutations,Dictionary<string,string> illuminations, float lifetimeRemaining,bool markedForConsumption,Vector2 lasttablepos)
         {
@@ -34,7 +35,7 @@ namespace Assets.Core.Commands
             Illuminations=new Dictionary<string, string>(illuminations);
             LifetimeRemaining = lifetimeRemaining;
             MarkedForConsumption = markedForConsumption;
-			LastTablePos = lasttablepos;
+			Location=new TokenLocation(lasttablepos);
         }
     }
 }

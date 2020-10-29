@@ -24,14 +24,14 @@ public class ExhibitCards : TokenContainer {
 
 
 
-    public override string GetSaveLocationForToken(AbstractToken token)
+    public override string GetPath()
     {
         return string.Empty;
     }
 
     public override ContainerCategory ContainerCategory => ContainerCategory.Meta;
 
-    public override ElementStackToken ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context, string locatorid = null)
+    public override ElementStackToken ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context)
     {
         var token = Registry.Get<PrefabFactory>().CreateLocally<ElementStackToken>(transform);
 

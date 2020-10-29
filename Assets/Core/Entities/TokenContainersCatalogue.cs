@@ -8,6 +8,7 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
+using Noon;
 
 namespace Assets.Core.Entities {
     public interface IStacksChangeSubscriber {
@@ -61,6 +62,24 @@ namespace Assets.Core.Entities {
                 c.OnStacksChanged.AddListener(subscriber.NotifyStacksChangedForContainer);
         }
 
+        public bool AcceptStack(string containerPath, ElementStackToken stack)
+        {
+            try
+            {
+                var specifiedContainer = _currentTokenContainers.SingleOrDefault(c => c.GetPath() == containerPath);
+                if (specifiedContainer == null)
+                    return false;
+
+                specifiedContainer.AcceptStack(stack, new Context(Context.ActionSource.Loading));
+                return true;
+
+            }
+            catch (Exception e)
+            {
+                NoonUtility.LogWarning($"Error retrieving container with path {containerPath} for stack with element id {stack.EntityId}: {e.Message}");
+                throw;
+            }
+        }
 
 
     }

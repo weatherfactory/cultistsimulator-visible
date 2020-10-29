@@ -29,7 +29,7 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public void UpdateForRecipe(Recipe recipe,OnContainerAddedEvent onContainerAdded,OnContainerRemovedEvent onContainerRemoved)
+        public void UpdateForRecipe(Recipe recipe,OnContainerAddedEvent onContainerAdded,OnContainerRemovedEvent onContainerRemoved,string situationPath)
         {
             foreach (var os in ongoingSlots)
             {
@@ -44,7 +44,7 @@ namespace Assets.CS.TabletopUI {
                 var newSlot = Registry.Get<PrefabFactory>().Create<RecipeSlot>();
                 newSlot.name = spec.UniqueId;
 
-                newSlot.Initialise(spec);
+                newSlot.Initialise(spec,situationPath);
               //slot.onCardDropped += RespondToStackAdded; //trialling removing these and running it through new event system
               //slot.onCardRemoved += RespondToStackRemoved;
               

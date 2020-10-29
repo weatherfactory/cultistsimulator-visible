@@ -126,10 +126,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
         public ElementStackToken ProvisionStackFromCommand(StackCreationCommand stackCreationCommand,
-            Source stackSource, Context context, string locatorid = null)
+            Source stackSource, Context context)
         {
             var stack = ProvisionElementStack(stackCreationCommand.ElementId, stackCreationCommand.ElementQuantity,
-                stackSource, context, locatorid);
+                stackSource, context);
             foreach (var m in stackCreationCommand.Mutations)
                 stack.SetMutation(m.Key, m.Value, false);
 
@@ -141,7 +141,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             if (stackCreationCommand.MarkedForConsumption)
                 stack.MarkedForConsumption = true;
 
-            stack.LastTablePos = stackCreationCommand.LastTablePos;
+            stack.LastTablePos = stackCreationCommand.Location.Position;
 
             return stack;
         }
@@ -175,19 +175,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
 
         public virtual ElementStackToken ProvisionElementStack(string elementId, int quantity, Source stackSource,
-            Context context, string locatorid = null)
+            Context context)
         {
 
-            var limbo = Registry.Get<Limbo>();
+
 
             var stack = Registry.Get<PrefabFactory>().CreateLocally<ElementStackToken>(transform);
-            stack.SetTokenContainer(limbo, context);
 
             foreach (INotifier notifier in _notifiersForContainer)
                 stack.AddObserver(notifier);
-
-            if (locatorid != null)
-                stack.SaveLocationInfo = locatorid;
 
             stack.Populate(elementId, quantity, stackSource);
 
@@ -245,7 +241,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             incumbentMoved = false;
         }
 
-        public abstract string GetSaveLocationForToken(AbstractToken token);
+        public abstract string GetPath();
 
         public virtual void OnDestroy()
         {
@@ -306,7 +302,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 throw new ArgumentException("Tried to call IncreaseElement for " + elementId + " with a <=0 change (" +
                                             quantityChange + ")");
 
-            var newStack = ProvisionElementStack(elementId, quantityChange, stackSource, context, locatorid);
+            var newStack = ProvisionElementStack(elementId, quantityChange, stackSource, context);
             AcceptStack(newStack, context);
             return quantityChange;
         }
@@ -583,7 +579,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return matchingStacks;
         }
 
-        public IElementManifestation CreateElementManifestation(ElementStackToken elementStackToken)
+        public virtual IElementManifestation CreateElementManifestation(ElementStackToken elementStackToken)
         {
 
             if (elementStackToken.EntityId == "dropzone")

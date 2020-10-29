@@ -175,7 +175,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             foreach (var ess in elementStackSpecifications)
             {
                 var context = new Context(Context.ActionSource.Loading);
-                tabletop.AcceptStack(tabletop.ProvisionStackFromCommand(ess,Source.Existing(), context,ess.LocationInfo), context);
+                tabletop.AcceptStack(tabletop.ProvisionStackFromCommand(ess,Source.Existing(), context), context);
             }
 
         }
@@ -220,7 +220,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 command.OverrideTitle = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_TITLE);
                 command.CompletionCount = GetIntFromHashtable(htSituationValues, SaveConstants.SAVE_COMPLETIONCOUNT);
-                command.LocationInfo = locationInfo.ToString();
+                command.Path = locationInfo.ToString();
                 command.Open = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
 
                 
@@ -325,11 +325,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 {
                     var stackToPutInSlot =
                         Registry.Get<Limbo>().ProvisionStackFromCommand(ess, Source.Existing(), new Context(Context.ActionSource.Loading));
-                    
-                        situation.AcceptStack(ess.LocationInfo,stackToPutInSlot);
 
-                        //SaveLocationInfo for slots are recorded with an appended Guid. Everything up until the last separator is the slotId
-                        //var slotId = ess.LocationInfo.Split(SaveConstants.SEPARATOR)[0];
+                    Registry.Get<TokenContainersCatalogue>().AcceptStack(ess.LocationInfo, stackToPutInSlot);
+
+                    //SaveLocationInfo for slots are recorded with an appended Guid. Everything up until the last separator is the slotId
+                    //var slotId = ess.LocationInfo.Split(SaveConstants.SEPARATOR)[0];
 
                     //int lastSeparatorPosition = ess.LocationInfo.LastIndexOf(SaveConstants.SEPARATOR);
                     //    var slotId = ess.LocationInfo.Substring(0, lastSeparatorPosition); //if lastseparatorposition zero-indexed is 4, length before separator - 1-indexed - is also 4

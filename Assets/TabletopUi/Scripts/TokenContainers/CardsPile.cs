@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Elements;
+using Assets.TabletopUi.Scripts.Elements.Manifestations;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Services;
 
 namespace Assets.TabletopUi.Scripts.TokenContainers
 {
@@ -28,8 +31,12 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
       {
           _deckSpec = deckSpec;
       }
+        public override IElementManifestation CreateElementManifestation(ElementStackToken elementStackToken)
+        {
 
-      
+                return Registry.Get<PrefabFactory>().CreateLocally<MinimalManifestation>(elementStackToken.transform);
+        }
+
 
         public void Shuffle(List<string> exceptElements)
       {
@@ -44,7 +51,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
                    ProvisionElementStack(s, 1, Source.Fresh(), new Context(Context.ActionSource.Unknown));
       }
 
-      public override string GetSaveLocationForToken(AbstractToken token)
+      public override string GetPath()
       {
 
           return _deckSpec?.Id;

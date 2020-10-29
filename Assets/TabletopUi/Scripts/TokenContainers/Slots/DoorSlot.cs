@@ -171,8 +171,9 @@ if(stack!=null)
             return GetComponentInChildren<ElementStackToken>();
         }
 
-        public override string GetSaveLocationForToken(AbstractToken token) {
-            throw new NotImplementedException();
+        public override string GetPath()
+        {
+            return portalType.ToString();
         }
 
 #if UNITY_EDITOR

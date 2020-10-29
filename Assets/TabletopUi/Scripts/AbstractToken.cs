@@ -84,11 +84,12 @@ namespace Assets.CS.TabletopUI {
             get { return rectTransform; }
         }
 
-        public TokenLocation Location => new TokenLocation(transform.position);
+        public TokenLocation Location => new TokenLocation(transform.position, TokenContainer);
 
         protected virtual void Awake() {
             rectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
+                TokenContainer= Registry.Get<NullContainer>();
         }
 
         public abstract void StartArtAnimation();
@@ -156,7 +157,7 @@ namespace Assets.CS.TabletopUI {
 
             }
             get {
-                return TokenContainer.GetSaveLocationForToken(this) + "_" + Guid.NewGuid();
+                return TokenContainer.GetPath() + "_" + Guid.NewGuid();
             }
         }
 

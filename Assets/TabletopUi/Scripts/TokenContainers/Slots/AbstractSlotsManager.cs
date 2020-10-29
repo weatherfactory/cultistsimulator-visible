@@ -30,30 +30,11 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
 
     public RecipeSlot GetSlotBySaveLocationInfoPath(string saveLocationInfoPath) {
         var candidateSlots = GetAllSlots();
-        RecipeSlot slotToReturn = candidateSlots.SingleOrDefault(s => s.SaveLocationInfoPath == saveLocationInfoPath);
+        RecipeSlot slotToReturn = candidateSlots.SingleOrDefault(s => s.GetPath() == saveLocationInfoPath);
         return slotToReturn;
     }
 
-    protected virtual RecipeSlot BuildSlot(string slotName, SlotSpecification slotSpecification, RecipeSlot parentSlot, bool wideLabel = false)
-    {
-        var slot = Registry.Get<PrefabFactory>().CreateLocally<RecipeSlot>(transform);
 
-        slot.name = slotName + (slotSpecification != null ? " - " + slotSpecification.Id : "");
-        slot.ParentSlot = parentSlot;
-        slot.Initialise(slotSpecification);
-        slot.onCardDropped += RespondToStackAdded;
-        slot.onCardRemoved += RespondToStackRemoved;
-        if (wideLabel)
-        {
-            var slotTransform = slot.SlotLabel.GetComponent<RectTransform>();
-            var originalSize = slotTransform.sizeDelta;
-            slotTransform.sizeDelta = new Vector2(originalSize.x * 1.5f, originalSize.y * 0.75f);
-        }
-
-        validSlots.Add(slot);
-
-        return slot;
-    }
 
     public abstract void RespondToStackRemoved(ElementStackToken stack, Context context);
 

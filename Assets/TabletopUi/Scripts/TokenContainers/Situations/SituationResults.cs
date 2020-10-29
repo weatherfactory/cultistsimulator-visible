@@ -92,8 +92,10 @@ public class SituationResults : TokenContainer {
         return GetStacks();
     }
 
-    public override string GetSaveLocationForToken(AbstractToken token) {
-        return (token.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + token.RectTransform.localPosition.y).ToString();
+    public override string GetPath()
+    {
+        return "output";
+        //   return (token.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + token.RectTransform.localPosition.y).ToString();
     }
 
     public void UpdateDumpButtonText() {

@@ -17,9 +17,9 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
 
         public TabletopTokenContainer StartingContainer;
 
-        public override string GetSaveLocationForToken(AbstractToken token)
+        public override string GetPath()
         {
-            throw new NotImplementedException();
+            return "enroute";
         }
 
         public RectTransform RectTransform

@@ -19,9 +19,20 @@ namespace Assets.TabletopUi
             Position.z = z;
         }
 
+        public TokenLocation(Vector2 position)
+        {
+            Position = position;
+        }
+
         public TokenLocation(Vector3 position)
         {
             Position = position;
+        }
+
+        public TokenLocation(Vector3 position,TokenContainer container)
+        {
+            Position = position;
+            InContainer = container;
         }
 
     }

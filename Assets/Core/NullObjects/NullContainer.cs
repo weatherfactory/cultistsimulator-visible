@@ -14,12 +14,12 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
     {
         public override ContainerCategory ContainerCategory => ContainerCategory.Null;
 
-        public override string GetSaveLocationForToken(AbstractToken token)
+        public override string GetPath()
         {
             return string.Empty;
         }
 
-        public NullContainer Create()
+        public static NullContainer Get()
         {
            var gameObject=new GameObject("NullContainer");
            return gameObject.AddComponent<NullContainer>();

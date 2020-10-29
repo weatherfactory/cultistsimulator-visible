@@ -15,8 +15,8 @@ public class SituationStorage : TokenContainer {
     public override bool AllowStackMerge { get { return false; } }
 
 
-    public override string GetSaveLocationForToken(AbstractToken token) {
-        return "slot_storage";
+    public override string GetPath() {
+        return "storage";
     }
 
     public override ContainerCategory ContainerCategory => ContainerCategory.SituationStorage;

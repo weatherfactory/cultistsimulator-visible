@@ -16,7 +16,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             base.Start();
         }
         
-        public override string GetSaveLocationForToken(AbstractToken token) {
+        public override string GetPath() {
             return "limbo";
         }
 

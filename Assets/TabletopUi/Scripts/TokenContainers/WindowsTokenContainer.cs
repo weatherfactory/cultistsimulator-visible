@@ -15,9 +15,9 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
         {
             get { return ContainerCategory.World; }
         }
-        public override string GetSaveLocationForToken(AbstractToken token)
+        public override string GetPath()
         {
-            throw new NotImplementedException();
+            return "windows";
         }
     }
 }

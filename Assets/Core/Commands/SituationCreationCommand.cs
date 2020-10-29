@@ -7,6 +7,7 @@ using Assets.Core.Interfaces;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Infrastructure;
 
 namespace Assets.Core.Commands
 {
@@ -20,7 +21,7 @@ namespace Assets.Core.Commands
         public float? TimeRemaining { get; set; }
         public string OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
         public int CompletionCount { get; set; }
-        public string LocationInfo { get; set; }
+        public string Path { get; set; }
         public bool Open { get; set; }
 
         public SituationCreationCommand(IVerb verb,Recipe recipe, SituationState situationState, ISituationAnchor sourceToken = null)
@@ -32,7 +33,8 @@ namespace Assets.Core.Commands
 			Verb = verb;
 			SourceToken = sourceToken;
 		    State = situationState;
-		}
+            Path = verb.Id + SaveConstants.SEPARATOR + Guid.NewGuid();
+        }
 
 
         public IVerb GetBasicOrCreatedVerb()

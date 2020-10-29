@@ -77,6 +77,7 @@ namespace Assets.CS.TabletopUI {
         public TokenLocation LastOpenLocation;
 
         private IVerb Verb;
+        private string _situationPath;
         private bool windowIsWide = false;
 
         public bool IsOpen {
@@ -115,6 +116,7 @@ namespace Assets.CS.TabletopUI {
 
         public void Populate(Situation situation) {
 			Verb = situation.Verb;
+            _situationPath = situation.Path;
             name = "Window_" + Verb.Id;
             DisplayIcon(Verb.Id);
 
@@ -122,7 +124,7 @@ namespace Assets.CS.TabletopUI {
             PaginatedNotes.SetText(Verb.Description);
             startButton.onClick.AddListener(OnStart.Invoke);
 
-            startingSlots.Initialise(Verb, this);
+            startingSlots.Initialise(Verb, this,_situationPath);
             results.Initialise();
 
             //this is an improvement - the situation doesn't need to know what to add - but better yet would be to tie together creation + container add, at runtime
@@ -411,7 +413,7 @@ namespace Assets.CS.TabletopUI {
          
             startingSlots.gameObject.SetActive(false);
             ongoingDisplay.gameObject.SetActive(true);
-            ongoingDisplay.UpdateForRecipe(e.CurrentRecipe,OnContainerAdded,OnContainerRemoved);
+            ongoingDisplay.UpdateForRecipe(e.CurrentRecipe,OnContainerAdded,OnContainerRemoved, _situationPath);
  
             results.gameObject.SetActive(false);
             DisplayButtonState(false, buttonBusy);
@@ -446,7 +448,7 @@ namespace Assets.CS.TabletopUI {
             startingSlots.DoReset();
             startingSlots.gameObject.SetActive(true);
 
-            ongoingDisplay.UpdateForRecipe(NullRecipe.Create(),OnContainerAdded,OnContainerRemoved);
+            ongoingDisplay.UpdateForRecipe(NullRecipe.Create(),OnContainerAdded,OnContainerRemoved, _situationPath);
             ongoingDisplay.gameObject.SetActive(false);
 
             results.DoReset();
