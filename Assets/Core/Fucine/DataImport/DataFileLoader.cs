@@ -49,6 +49,11 @@ public class DataFileLoader
 
         foreach (var contentFilePath in _contentFilePaths)
         {
+
+            var length = new System.IO.FileInfo(contentFilePath).Length;
+            if (length<8) //allows us to ignore empty files, which is particularly useful for Steam placeholders
+                continue;
+
             try
             {
                 using (StreamReader file = File.OpenText(contentFilePath))
