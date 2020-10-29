@@ -162,9 +162,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 
         }
-
-
-
+        
 
         private void ImportTabletopElementStacks(TabletopTokenContainer tabletop, Hashtable htElementStacks)
         {
@@ -224,12 +222,23 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 if(situationState==SituationState.Unstarted)
                     situationState =  SituationState.ReadyToReset; //this state didn't exist in the old save format. We need to set ReadyToReset, or the situation window will remain in its primordial condition
 
-                var command = new SituationCreationCommand(situationVerb, recipe, situationState);
+                var command = new SituationCreationCommand(situationVerb, recipe, situationState,null);
                 command.TimeRemaining = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_TIMEREMAINING);
 
                 command.OverrideTitle = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_TITLE);
                 command.CompletionCount = GetIntFromHashtable(htSituationValues, SaveConstants.SAVE_COMPLETIONCOUNT);
                 command.Path = locationInfo.ToString();
+                float? posx = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_SITUATION_WINDOW_X);
+                float? posy = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_SITUATION_WINDOW_Y);
+                float? posz = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_SITUATION_WINDOW_Z);
+
+                
+                if(posx!=null && posy!=null && posz!=null)
+                {
+                    var anchorPosition=new Vector3((float) posx,(float)posy,(float)posz);
+                    command.AnchorLocation=new TokenLocation(anchorPosition,tabletop);
+                }
+
                 command.Open = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
 
                 

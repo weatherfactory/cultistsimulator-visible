@@ -35,5 +35,10 @@ namespace Assets.TabletopUi
             InContainer = container;
         }
 
+        public static TokenLocation DefaultTokenLocation()
+        {
+            return new TokenLocation(0,0,-100);
+        }
+
     }
 }

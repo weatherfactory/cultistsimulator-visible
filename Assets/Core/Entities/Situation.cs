@@ -585,7 +585,7 @@ namespace Assets.Core.Entities {
                 verbForNewSituation = new CreatedVerb(effectCommand.Recipe.ActionId, effectCommand.Recipe.Label, effectCommand.Recipe.Description);
 
 
-            var scc = new SituationCreationCommand(verbForNewSituation, effectCommand.Recipe, SituationState.FreshlyStarted, _anchor);
+            var scc = new SituationCreationCommand(verbForNewSituation, effectCommand.Recipe, SituationState.FreshlyStarted, _anchor.Location, _anchor);
             Registry.Get<TabletopManager>().BeginNewSituation(scc, stacksToAddToNewSituation); //tabletop manager is a subscriber, right? can we run this (or access to its successor) through that flow?
 
         }
@@ -726,7 +726,7 @@ namespace Assets.Core.Entities {
         var inductionRecipeVerb = new CreatedVerb(inducedRecipe.ActionId,
             inducedRecipe.Label, inducedRecipe.Description);
         SituationCreationCommand inducedSituation = new SituationCreationCommand(inductionRecipeVerb,
-            inducedRecipe, SituationState.FreshlyStarted, _anchor);
+            inducedRecipe, SituationState.FreshlyStarted, _anchor.Location, _anchor);
         Registry.Get<TabletopManager>().BeginNewSituation(inducedSituation, new List<ElementStackToken>());
     }
 

@@ -11,6 +11,7 @@ using Assets.Core.Entities;
 using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
@@ -338,7 +339,7 @@ throw new NotImplementedException();
             if(verbForNewSituation==null)
                 verbForNewSituation = new CreatedVerb(recipe.ActionId, recipe.Label, recipe.Description);
 
-            SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, SituationState.FreshlyStarted);
+            SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, SituationState.FreshlyStarted,TokenLocation.DefaultTokenLocation());
         Registry.Get<TabletopManager>().BeginNewSituation(scc,new List<ElementStackToken>());
         }
         else

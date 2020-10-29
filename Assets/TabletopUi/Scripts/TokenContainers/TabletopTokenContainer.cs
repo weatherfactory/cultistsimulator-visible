@@ -61,6 +61,7 @@ public class TabletopTokenContainer : TokenContainer,IBeginDragHandler,IEndDragH
         // We're not setting the location; this is used to display a token dragged and dropped to an arbitrary position
         // (or loaded and added to an arbitrary position)
         token.transform.SetParent(transform, true);
+        token.TryReturnToOriginalPosition();
         token.transform.localRotation = Quaternion.identity;
 		token.SnapToGrid();
         token.SetTokenContainer(this, context);

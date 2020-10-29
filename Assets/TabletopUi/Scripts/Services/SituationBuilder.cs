@@ -37,28 +37,26 @@ namespace Assets.TabletopUi.Scripts.Services {
 
             if(command.Open)
                 situation.OpenAtCurrentLocation();
-
-
+            
             //if token has been spawned from an existing token, animate its appearance
-            if (command.SourceToken != null)
+            if (command.SourceAnchor == null)
+                
             {
+                //disabled for now: pass the free position instead of trying to find one after the fact, because this resets intended position
+           //     Registry.Get<Choreographer>().ArrangeTokenOnTable(newAnchor, null);
+            }
+            else
+            {
+                SoundManager.PlaySfx("SituationTokenCreate");
                 newAnchor.AnimateTo(
                      1f,
-                     command.SourceToken.RectTransform.anchoredPosition3D,
-                     Registry.Get<Choreographer>().GetFreePosWithDebug(newAnchor, command.SourceToken.RectTransform.anchoredPosition, 3),
+                     command.SourceAnchor.RectTransform.anchoredPosition3D,
+                     Registry.Get<Choreographer>().GetFreePosWithDebug(newAnchor, command.SourceAnchor.RectTransform.anchoredPosition, 3),
                      null,
                      0f,
                      1f);
             }
-            else
-            {
-                Registry.Get<Choreographer>().ArrangeTokenOnTable(newAnchor, null);
-            }
-
-
-
-            if (command.SourceToken != null)
-                SoundManager.PlaySfx("SituationTokenCreate");
+     
 
             situation.ExecuteHeartbeat(0f);
 

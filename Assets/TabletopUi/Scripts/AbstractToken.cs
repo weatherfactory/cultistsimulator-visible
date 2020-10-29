@@ -30,6 +30,7 @@ namespace Assets.CS.TabletopUI {
         bool Defunct { get; }
         bool IsBeingAnimated { get; }
         bool IsInAir { get;}
+        void TryReturnToOriginalPosition();
     }
 
     public enum TokenXNess
@@ -101,7 +102,13 @@ namespace Assets.CS.TabletopUI {
 
         public bool Defunct { get; protected set; }
         public bool IsInAir { protected set; get; }
-		public virtual bool NoPush { protected set; get; }
+        public void TryReturnToOriginalPosition()
+        {
+            if (lastTablePos != null)
+                transform.localPosition = new Vector3(lastTablePos.Value.x,lastTablePos.Value.y);
+        }
+
+        public virtual bool NoPush { protected set; get; }
 
         public bool _currentlyBeingDragged { get; protected set; }
 

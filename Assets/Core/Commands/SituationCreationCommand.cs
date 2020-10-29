@@ -14,24 +14,26 @@ namespace Assets.Core.Commands
     public class SituationCreationCommand
     {
 
-		public ISituationAnchor SourceToken { get; set; } // this may not be set if no origin is known or needed
+		public ISituationAnchor SourceAnchor { get; set; } // this may not be set if no origin is known or needed
         public IVerb Verb { get; set; }
         public Recipe Recipe { get; set; }
         public SituationState State { get; set; }
         public float? TimeRemaining { get; set; }
         public string OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
         public int CompletionCount { get; set; }
+        public TokenLocation AnchorLocation { get; set; }
         public string Path { get; set; }
         public bool Open { get; set; }
 
-        public SituationCreationCommand(IVerb verb,Recipe recipe, SituationState situationState, ISituationAnchor sourceToken = null)
+        public SituationCreationCommand(IVerb verb,Recipe recipe, SituationState situationState, TokenLocation anchorLocation, ISituationAnchor sourceAnchor = null)
 		{
 			if (recipe==null && verb==null)
 				throw new ArgumentException("Must specify either a recipe or a verb (or both");
 			
 			Recipe = recipe;
 			Verb = verb;
-			SourceToken = sourceToken;
+            AnchorLocation = anchorLocation;
+			SourceAnchor = sourceAnchor;
 		    State = situationState;
             Path = verb.Id + SaveConstants.SEPARATOR + Guid.NewGuid();
         }
