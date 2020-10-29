@@ -200,8 +200,7 @@ public class Compendium : ICompendium
         {
             if(typeof(T)==typeof(BasicVerb))
                 Log($"Can't find Basic Verb entity id '{entityId}'. This will sometimes happen at startup if a situation is based on a transient verb - it'll be handled, don't worry.");
-            else if(typeof(T) == typeof(Recipe) && entityId=="NULL")
-            Log($"Can't find Recipe entity id '{entityId}'. This will sometimes happen at startup if a verb is empty - in which case it's  fine, don't worry.");
+
             else
             {
                 Log("Can't find entity id '" + entityId + "' of type " + typeof(T));

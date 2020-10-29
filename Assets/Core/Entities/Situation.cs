@@ -158,7 +158,7 @@ namespace Assets.Core.Entities {
             currentPrimaryRecipe = NullRecipe.Create(Verb);
             currentPredictedRecipe = currentPrimaryRecipe;
             TimeRemaining = 0;
-            State = SituationState.ReadyToBegin;
+            State = SituationState.Unstarted;
             foreach (var subscriber in subscribers)
                 subscriber.ResetSituation();
         }
@@ -166,7 +166,7 @@ namespace Assets.Core.Entities {
         public void Halt()
         {
             if (State != SituationState.Complete && State != SituationState.ReadyToReset &&
-                State != SituationState.ReadyToBegin
+                State != SituationState.Unstarted
             ) //don't halt if the situation is not running. This is not only superfluous but dangerous: 'complete' called from an already completed verb has bad effects
                 Complete();
 
@@ -174,10 +174,6 @@ namespace Assets.Core.Entities {
             AcceptStacks(ContainerCategory.SituationStorage, GetStacks(ContainerCategory.Threshold));
 
         }
-
-
-
-
 
 
         public void ResetIfComplete()
@@ -241,11 +237,7 @@ namespace Assets.Core.Entities {
                     new Context(Context.ActionSource.Loading));
 
             return reprovisionedStack;
-
-
         }
-
-
 
         public void Retire()
         {
@@ -407,7 +399,7 @@ namespace Assets.Core.Entities {
                     Reset();
                     break;
 
-                case SituationState.ReadyToBegin:
+                case SituationState.Unstarted:
 
                     break;
 
@@ -873,7 +865,7 @@ namespace Assets.Core.Entities {
         public void AttemptActivateRecipe()
         {
             
-            if (State != SituationState.ReadyToBegin)
+            if (State != SituationState.Unstarted)
                 return;
 
             var aspects = GetAspectsAvailableToSituation(true);

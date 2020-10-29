@@ -203,13 +203,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             foreach (var locationInfo in htSituations.Keys)
             {
                 var htSituationValues =htSituations.GetHashtable(locationInfo);
+                string verbId = htSituationValues[SaveConstants.SAVE_VERBID].ToString();
+
+                IVerb situationVerb = Registry.Get<ICompendium>().GetEntityById<BasicVerb>(verbId);
+
 
                 string recipeId = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_RECIPEID);
                 var recipe = Registry.Get<ICompendium>().GetEntityById<Recipe>(recipeId);
+                if (recipe == null)
+                    recipe = NullRecipe.Create(situationVerb);
 
-                string verbId= htSituationValues[SaveConstants.SAVE_VERBID].ToString();
                 
-                IVerb situationVerb = Registry.Get<ICompendium>().GetEntityById<BasicVerb>(verbId);
 
                 //This caters for the otherwise troublesome situation where a completed situation (no recipe) has been based on a created verb (no verb obj).
                 if (situationVerb == null && recipe==null)

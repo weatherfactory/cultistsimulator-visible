@@ -34,6 +34,8 @@ namespace Assets.TabletopUi.Scripts.Services
         [SerializeField] private WindowSettingsAdapter windowSettingsAdapter;
         [SerializeField] private SoundManager soundManager;
         [SerializeField] private Limbo limbo;
+        [SerializeField] private NullContainer nullContainer;
+
 
 
         private string initialisedAt = null;
@@ -109,13 +111,15 @@ namespace Assets.TabletopUi.Scripts.Services
 
 
                 //limbo is where all newly created elements are placed before they're moved to their starting tokencontainer
-                registryAccess.Register<Limbo>(limbo);
+                registryAccess.Register(limbo);
+                registryAccess.Register(nullContainer);
+
 
                 //prefabFactory means we don't have to rely on magic strings prefab names
                 registryAccess.Register<PrefabFactory>(prefabFactory);
 
 
-                registryAccess.Register(prefabFactory.Create<NullContainer>());
+                
 
                 registryAccess.Register(gameSaveManager);
 

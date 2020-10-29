@@ -30,7 +30,7 @@ namespace Assets.TabletopUi.Scripts.Elements
         [SerializeField] public TextMeshProUGUI decayCountText;
         [SerializeField] public Sprite spriteDecaysTextBG;
         [SerializeField] public Sprite spriteUniqueTextBG;
-        [SerializeField] public GameObject shadow;
+        [SerializeField] public BasicShadowImplementation shadow;
         [SerializeField] public GraphicFader glowImage;
 
      
@@ -45,7 +45,7 @@ namespace Assets.TabletopUi.Scripts.Elements
 
         public bool RequestingNoDrag => flipHelper.FlipInProgress;
 
-        
+
         public void InitialiseVisuals(Element element)
         {
             flipHelper = new FlipHelper(this);
@@ -187,7 +187,11 @@ namespace Assets.TabletopUi.Scripts.Elements
             ShowHoverGlow(false);
         }
 
-        
+        public void DoMove(RectTransform tokenRectTransform)
+        {
+           shadow.DoMove(tokenRectTransform);
+        }
+
 
         private void ShowGlow(bool glowState, bool instant)
         {
@@ -197,11 +201,10 @@ namespace Assets.TabletopUi.Scripts.Elements
                 glowImage.Hide(instant);
         }
 
-        private  void ShowCardShadow(bool show)
+        private void ShowCardShadow(bool show)
         {
             shadow.gameObject.SetActive(show);
         }
-
 
 
         private void ShowCardDecayTimer(bool showTimer)
@@ -430,14 +433,6 @@ namespace Assets.TabletopUi.Scripts.Elements
         }
 
 
-        public void AnimateTo(float duration, Vector3 startPos, Vector3 endPos,
-            Action<AbstractToken> SituationAnimDone, float startScale = 1f, float endScale = 1f)
-        {
-            var tokenAnim = gameObject.AddComponent<TokenAnimation>();
-            tokenAnim.onAnimDone += SituationAnimDone;
-            tokenAnim.SetPositions(startPos, endPos);
-            tokenAnim.SetScaling(startScale, endScale);
-            tokenAnim.StartAnim(duration);
-        }
+
     }
 }

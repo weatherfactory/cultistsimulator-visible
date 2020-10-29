@@ -23,10 +23,10 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         [SerializeField] Image artwork;
 
         [Header("Token Body")]
-        [SerializeField]
-        Image tokenBody;
-
+        [SerializeField] Image tokenBody;
         [SerializeField] Sprite lightweightSprite;
+        [SerializeField] private BasicShadowImplementation shadow;
+
 
         [Header("Countdown")]
         [SerializeField] GameObject countdownCanvas;
@@ -85,6 +85,11 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         public Vector3 GetOngoingSlotPosition()
         {
             return  ongoingSlotImage.rectTransform.anchoredPosition3D;
+        }
+
+        public void DoMove(RectTransform tokenRectTransform)
+        {
+             shadow.DoMove(tokenRectTransform);
         }
 
         public void SetCompletionCount(int newCount)

@@ -40,6 +40,8 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         void Clicked(PointerEventData eventData,VerbAnchor anchor);
         void OverrideIcon(string icon);
         Vector3 GetOngoingSlotPosition();
+        void DoMove(RectTransform tokenRectTransform);
+
 
         /// <summary>
         /// needs to be set to initial token container

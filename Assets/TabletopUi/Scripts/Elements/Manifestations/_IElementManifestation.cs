@@ -40,6 +40,6 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         void DoRevealEffect(bool instant);
         void DoShroudEffect(bool instant);
         bool RequestingNoDrag { get; }
-        void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<AbstractToken> animDone, float startScale, float endScale);
+        void DoMove(RectTransform tokenRectTransform);
     }
 }

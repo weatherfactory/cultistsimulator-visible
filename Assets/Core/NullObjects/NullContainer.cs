@@ -19,11 +19,5 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
             return string.Empty;
         }
 
-        public static NullContainer Get()
-        {
-           var gameObject=new GameObject("NullContainer");
-           return gameObject.AddComponent<NullContainer>();
-           
-        }
     }
 }

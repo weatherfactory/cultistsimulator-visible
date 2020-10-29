@@ -162,9 +162,9 @@ namespace Assets.TabletopUi.Scripts.Services
 
             if (Application.isEditor)
             {
-                //if (StartingSceneNumber > 0)
-                //    SceneChange(StartingSceneNumber,true);
-                NewGameOnTabletop();
+                if (StartingSceneNumber > 0)
+                    SceneChange(StartingSceneNumber,true);
+              //  NewGameOnTabletop();
             }
             
             else

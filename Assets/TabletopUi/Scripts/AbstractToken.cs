@@ -73,8 +73,8 @@ namespace Assets.CS.TabletopUI {
         protected RectTransform rectCanvas;
         protected CanvasGroup canvasGroup;
 
-        private float perlinRotationPoint = 0f;
-        private float dragHeight = -8f; // Draggables all drag on a specifc height and have a specific "default height"
+        protected float perlinRotationPoint = 0f;
+        protected float dragHeight = -8f; // Draggables all drag on a specifc height and have a specific "default height"
 
         public TokenContainer TokenContainer;
         protected TokenContainer OldTokenContainer; // Used to tell OldContainsTokens that this thing was dropped successfully
@@ -263,20 +263,7 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public void MoveObject(PointerEventData eventData) {
-            Vector3 dragPos;
-            RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Get<IDraggableHolder>().RectTransform, eventData.position, eventData.pressEventCamera, out dragPos);
-
-            // Potentially change this so it is using UI coords and the RectTransform?
-            rectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);
-
-            // rotate object slightly based on pointer Delta
-            if (rotateOnDrag && eventData.delta.sqrMagnitude > 10f) {
-                // This needs some tweaking so that it feels more responsive, physica. Card rotates into the direction you swing it?
-                perlinRotationPoint += eventData.delta.sqrMagnitude * 0.001f;
-                transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -10 + Mathf.PerlinNoise(perlinRotationPoint, 0) * 20));
-            }
-        }
+        public abstract void MoveObject(PointerEventData eventData);
 
 
         public virtual void OnEndDrag(PointerEventData eventData) {
