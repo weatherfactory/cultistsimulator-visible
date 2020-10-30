@@ -56,9 +56,6 @@ namespace Assets.TabletopUi.Scripts.Services {
                      0f,
                      1f);
             }
-     
-
-            situation.ExecuteHeartbeat(0f);
 
             return situation;
         }

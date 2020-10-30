@@ -47,8 +47,22 @@ namespace Assets.TabletopUi.SlotsContainers {
             var otherslots = verb.Slots;
             if(otherslots!=null)
                 foreach (var s in otherslots)
-                BuildSlot(s.Label, s, null);;
+                    BuildSlot(s.Label, s, null);;
 
+        }
+
+        public void UpdateDisplay(SituationEventData e)
+        {
+            switch (e.SituationState)
+            {
+                case SituationState.Unstarted:
+                    canvasGroupFader.Show();
+                    break;
+                default:
+                    canvasGroupFader.Hide();
+                    break;
+
+            }
         }
 
         public void DoReset() {

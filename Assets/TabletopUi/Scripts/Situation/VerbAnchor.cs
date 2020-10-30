@@ -314,7 +314,7 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        public void ResetSituation()
+        public void ResetSituation(SituationEventData data)
         {
             _manifestation.SetCompletionCount(-1);
     }

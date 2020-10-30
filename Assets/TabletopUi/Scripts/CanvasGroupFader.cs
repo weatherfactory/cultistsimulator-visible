@@ -7,11 +7,16 @@ namespace Assets.CS.TabletopUI
     public class CanvasGroupFader : MonoBehaviour {
 
         public bool blockRaysDuringFade = false;
-        public bool destroyOnHide = false;
-        public bool keepActiveOnHide = false;  // Only used if destroyOnHide is false
+      //  public bool destroyOnHide = false;
+      //  public bool keepActiveOnHide = false;  // Only used if destroyOnHide is false
         public float durationTurnOn = 0.5f;
         public float durationTurnOff = 0.25f;
         private bool m_isFading;
+
+        public bool IsVisible()
+        {
+            return Group.alpha > 0f;
+        }
 
         public bool IsFading() {
             return m_isFading;
@@ -48,10 +53,10 @@ namespace Assets.CS.TabletopUI
             if (durationTurnOn <= 0f) {
                 SetAlpha(1f);
             }
-            else if (gameObject.activeSelf == false) {
-                gameObject.SetActive(true);
-                Group.alpha = 0f;
-            }
+            //else if (gameObject.activeSelf == false) {
+            //    gameObject.SetActive(true);
+            //    Group.alpha = 0f;
+            //}
 
             if (Group.alpha < 1f) {
                 StopAllCoroutines();
@@ -82,10 +87,10 @@ namespace Assets.CS.TabletopUI
             Group.alpha = alpha;
 
             if (Mathf.Approximately(alpha, 0f)) {
-                if (destroyOnHide)
-                    Destroy(gameObject);
-                else if (!keepActiveOnHide)
-                    gameObject.SetActive(false);
+                //if (destroyOnHide)
+                //    Destroy(gameObject);
+                //else if (!keepActiveOnHide)
+                //    gameObject.SetActive(false);
             }
             else
                 SetInteractable(true);

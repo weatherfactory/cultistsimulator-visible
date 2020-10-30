@@ -13,6 +13,7 @@ public class SituationStorage : TokenContainer {
 
     public override bool AllowDrag { get { return false; } }
     public override bool AllowStackMerge { get { return false; } }
+  [SerializeField]  private CanvasGroupFader canvasGroupFader;
 
 
     public override string GetPath() {
@@ -20,6 +21,11 @@ public class SituationStorage : TokenContainer {
     }
 
     public override ContainerCategory ContainerCategory => ContainerCategory.SituationStorage;
+
+    public void UpdateDisplay(SituationEventData eventData)
+    {
+        canvasGroupFader.Hide();
+    }
 
     public override void DisplayHere(ElementStackToken stack, Context context) {
         base.DisplayHere(stack, context);

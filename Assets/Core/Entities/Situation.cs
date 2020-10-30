@@ -159,8 +159,9 @@ namespace Assets.Core.Entities {
             currentPredictedRecipe = currentPrimaryRecipe;
             TimeRemaining = 0;
             State = SituationState.Unstarted;
+            var situationEventData = CS.TabletopUI.SituationEventData.Create(this);
             foreach (var subscriber in subscribers)
-                subscriber.ResetSituation();
+                subscriber.ResetSituation(situationEventData);
         }
 
         public void Halt()
@@ -204,35 +205,7 @@ namespace Assets.Core.Entities {
             return null;
 
         }
-
-        public ElementStackToken ReprovisionElementStack(ContainerCategory containerCategory,
-            StackCreationCommand stackCreationCommand, Source stackSource, string locatorid = null)
-        {
-            //containercategory works fine for storage, because there's only ever one, but I think we should pass something solid as locatorid / TokenLocation combined
-
-            var containersInCategory = GetContainersByCategory(containerCategory);
-            int containerCount = containersInCategory.Count();
-            if (containerCount > 1)
-            {
-                NoonUtility.LogWarning(
-                    $"Trying to reprovision a stack of {stackCreationCommand?.ElementId} in situation with verb {Verb?.Id} but found more than one container in category {containerCategory}");
-                return null;
-            }
-
-            if (containerCount == 0)
-            {
-                NoonUtility.LogWarning(
-                    $"Trying to reprovision a stack of {stackCreationCommand?.ElementId} in situation with verb {Verb?.Id} but can't find a container of category {containerCategory}");
-                return null;
-            }
-
-            var reprovisionedStack = containersInCategory.First()
-                .ProvisionStackFromCommand(stackCreationCommand, stackSource,
-                    new Context(Context.ActionSource.Loading));
-
-            return reprovisionedStack;
-        }
-
+        
         public void Retire()
         {
             foreach (var c in _containers)
@@ -425,8 +398,13 @@ namespace Assets.Core.Entities {
                   break;
 
                 case SituationState.Complete:
+                    foreach (var subscriber in subscribers)
+                    {
+                        var d = SituationEventData.Create(this);
+                        subscriber.SituationComplete(d);
+                    }
 
-                  break;
+                    break;
 
                 
                 default:
@@ -652,12 +630,6 @@ namespace Assets.Core.Entities {
                 Registry.Get<TabletopManager>().ShowMansusMap(this, _anchor.transform,
                     currentPrimaryRecipe.PortalEffect);
         }
-
-            foreach (var subscriber in subscribers)
-            {
-                var d = SituationEventData.Create(this);
-                subscriber.SituationComplete(d);
-            }
 
 
             SoundManager.PlaySfx("SituationComplete"); //this could run through that Echo obj

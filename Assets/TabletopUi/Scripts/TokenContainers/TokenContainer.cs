@@ -163,7 +163,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         {
             var newWindow = Registry.Get<PrefabFactory>().CreateLocally<SituationWindow>(transform);
             newWindow.SetTokenContainer(this, new Context(Context.ActionSource.Unknown));
-            newWindow.gameObject.SetActive(false);
             newWindow.positioner.Initialise(anchor);
             return newWindow;
         }

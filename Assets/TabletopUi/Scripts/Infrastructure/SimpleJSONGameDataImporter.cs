@@ -251,13 +251,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 
                 ImportSituationNotes(htSituationValues, situation);
-
                 ImportSlotContents(htSituationValues, situation,  SaveConstants.SAVE_STARTINGSLOTELEMENTS);
                 ImportSlotContents(htSituationValues, situation,  SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
-                
-
                 ImportSituationStoredElements(htSituationValues, situation);
                 ImportOutputs(htSituationValues, situation, tabletop);
+                situation.ExecuteHeartbeat(0f); //flushes everything through and updates
 
             }
         }

@@ -508,8 +508,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockRaysDuringFade: 0
-  destroyOnHide: 0
-  keepActiveOnHide: 0
   durationTurnOn: 0.25
   durationTurnOff: 0.1
 --- !u!225 &225000011348779986
@@ -882,13 +880,15 @@ GameObject:
   m_Component:
   - component: {fileID: 224680463603979946}
   - component: {fileID: 114650484762921316}
+  - component: {fileID: 4521111748551047189}
+  - component: {fileID: 8454324788978835547}
   m_Layer: 5
   m_Name: Storage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &224680463603979946
 RectTransform:
   m_ObjectHideFlags: 0
@@ -906,7 +906,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &114650484762921316
 MonoBehaviour:
@@ -923,6 +923,34 @@ MonoBehaviour:
   OnStacksChanged:
     m_PersistentCalls:
       m_Calls: []
+  canvasGroupFader: {fileID: 8454324788978835547}
+--- !u!225 &4521111748551047189
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171821035643496}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!114 &8454324788978835547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171821035643496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e835ed38c168545d8acd9e0f7f3943f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockRaysDuringFade: 0
+  durationTurnOn: 0.5
+  durationTurnOff: 0.25
 --- !u!1 &1174806779010474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,8 +1558,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockRaysDuringFade: 0
-  destroyOnHide: 0
-  keepActiveOnHide: 0
   durationTurnOn: 0.5
   durationTurnOff: 0.25
 --- !u!1 &1287574504788578
@@ -3097,8 +3123,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockRaysDuringFade: 0
-  destroyOnHide: 0
-  keepActiveOnHide: 0
   durationTurnOn: 0.5
   durationTurnOff: 0.25
 --- !u!114 &114962248236931796
@@ -4286,7 +4310,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockRaysDuringFade: 0
-  destroyOnHide: 0
-  keepActiveOnHide: 0
   durationTurnOn: 0.5
   durationTurnOff: 0.25

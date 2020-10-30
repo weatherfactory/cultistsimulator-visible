@@ -81,7 +81,7 @@ namespace Assets.CS.TabletopUI {
         private bool windowIsWide = false;
 
         public bool IsOpen {
-            get { return gameObject.activeInHierarchy; }
+            get { return canvasGroupFader.IsVisible(); }
         }
 
 		public string Title {
@@ -240,7 +240,7 @@ namespace Assets.CS.TabletopUI {
 
         public void Show( Vector3 targetPosition )
 		{
-			if (!gameObject.activeInHierarchy)
+			if (!canvasGroupFader.IsVisible())
 			{
 				SoundManager.PlaySfx("SituationWindowShow");
 			}
@@ -253,31 +253,31 @@ namespace Assets.CS.TabletopUI {
         }
 
 		public void Hide() {
-			if (gameObject.activeInHierarchy)
+            if (canvasGroupFader.IsVisible())
 				SoundManager.PlaySfx("SituationWindowHide");
 
 			canvasGroupFader.Hide();
         }
 
 
-        public void DisplayRecipe(Recipe r, AspectsDictionary aspectsInSituation)
+        public void DisplayRecipe(SituationEventData e, AspectsDictionary aspectsInSituation)
         {
 
-            Title = r.Label;
+            Title = e.CurrentRecipe.Label;
             //Check for possible text refinements based on the aspects in context
             TextRefiner tr = new TextRefiner(aspectsInSituation);
 
-            if(r.HintOnly)
-                PaginatedNotes.SetText("<i>" + tr.RefineString(r.StartDescription) + "</i>");
+            if(e.CurrentRecipe.HintOnly)
+                PaginatedNotes.SetText("<i>" + tr.RefineString(e.CurrentRecipe.StartDescription) + "</i>");
             else
-                PaginatedNotes.SetText(tr.RefineString(r.StartDescription));
+                PaginatedNotes.SetText(tr.RefineString(e.CurrentRecipe.StartDescription));
 
 
-            if(r.Craftable)
+            if(e.CurrentRecipe.Craftable)
             {
                 DisplayButtonState(true);
                 SoundManager.PlaySfx("SituationAvailable");
-                ongoingDisplay.UpdateTime(r.Warmup, r.Warmup, r.SignalEndingFlavour); //Ensures that the time bar is set to 0 to avoid a flicker
+                ongoingDisplay.UpdateDisplay(e); //Ensures that the time bar is set to 0 to avoid a flicker
             }
             else
                 DisplayButtonState(false);
@@ -323,51 +323,57 @@ namespace Assets.CS.TabletopUI {
             return PaginatedNotes.GetCurrentTexts();
         }
 
-        public void SituationBeginning(SituationEventData e)
+        public void SituationBeginning(SituationEventData eventData)
         {
          
-            startingSlots.gameObject.SetActive(false);
-            ongoingDisplay.gameObject.SetActive(true);
-            ongoingDisplay.UpdateForRecipe(e.CurrentRecipe,OnContainerAdded,OnContainerRemoved, _situationPath);
+            startingSlots.UpdateDisplay(eventData);
+            ongoingDisplay.RecipeActivated(eventData.CurrentRecipe,OnContainerAdded,OnContainerRemoved, _situationPath);
+            ongoingDisplay.UpdateDisplay(eventData);
+            storage.UpdateDisplay(eventData);
+            results.UpdateDisplay(eventData);
  
-            results.gameObject.SetActive(false);
             DisplayButtonState(false, buttonBusy);
 
             SetWindowSize(false); //always collapse the window if we don't need to display multiple slots
 
         }
 
-        public void SituationOngoing(SituationEventData e)
+        public void SituationOngoing(SituationEventData eventData)
         {
-            ongoingDisplay.UpdateTime(e.Warmup, e.TimeRemaining, e.CurrentRecipe.SignalEndingFlavour);
-
+            startingSlots.UpdateDisplay(eventData);
+            ongoingDisplay.UpdateDisplay(eventData);
+            storage.UpdateDisplay(eventData);
+            results.UpdateDisplay(eventData);
         }
 
-        public void SituationExecutingRecipe(SituationEventData e)
+        public void SituationExecutingRecipe(SituationEventData eventData)
         {
-            
+            startingSlots.UpdateDisplay(eventData);
+            ongoingDisplay.UpdateDisplay(eventData);
+            storage.UpdateDisplay(eventData);
+            results.UpdateDisplay(eventData);
         }
 
-        public void SituationComplete(SituationEventData e)
+        public void SituationComplete(SituationEventData eventData)
         {
-            startingSlots.gameObject.SetActive(false);
-            ongoingDisplay.gameObject.SetActive(false);
-            results.gameObject.SetActive(true);
             aspectsDisplay.ClearCurrentlyDisplayedAspects();
-
+            startingSlots.UpdateDisplay(eventData);
+            storage.UpdateDisplay(eventData);
+            ongoingDisplay.UpdateDisplay(eventData);
+            results.UpdateDisplay(eventData);
+            
             results.UpdateDumpButtonText();
         }
 
-        public void ResetSituation()
+        public void ResetSituation(SituationEventData e)
         {
             startingSlots.DoReset();
-            startingSlots.gameObject.SetActive(true);
 
-            ongoingDisplay.UpdateForRecipe(NullRecipe.Create(),OnContainerAdded,OnContainerRemoved, _situationPath);
-            ongoingDisplay.gameObject.SetActive(false);
+            ongoingDisplay.RecipeActivated(NullRecipe.Create(),OnContainerAdded,OnContainerRemoved, _situationPath);
+            ongoingDisplay.UpdateDisplay(e);
 
             results.DoReset();
-            results.gameObject.SetActive(false);
+            results.UpdateDisplay(e);
 
             Title = Verb.Label;
             PaginatedNotes.SetText(Verb.Description);
@@ -378,7 +384,7 @@ namespace Assets.CS.TabletopUI {
         public void ContainerContentsUpdated(SituationEventData e)
         {
             var allAspectsInSituation = AspectsDictionary.GetFromStacks(e.StacksInEachStorage.SelectMany(s => s.Value), true);
-            DisplayRecipe(e.PredictedRecipe, allAspectsInSituation);
+            DisplayRecipe(e, allAspectsInSituation);
 
 
             var allAspectsToDisplay = AspectsDictionary.GetFromStacks(e.StacksInEachStorage.SelectMany(s => s.Value), false);

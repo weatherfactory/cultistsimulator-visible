@@ -344,8 +344,9 @@ namespace Assets.CS.TabletopUI {
             IVerb v = Registry.Get<ICompendium>().GetEntityById<BasicVerb>(_character.ActiveLegacy.StartingVerbId);
             SituationCreationCommand command = new SituationCreationCommand(v, NullRecipe.Create(), SituationState.ReadyToReset,TokenLocation.DefaultTokenLocation());
             var situation = builder.CreateSituation(command);
+            situation.ExecuteHeartbeat(0f);
 
-            
+
             SetStartingCharacterInfo(_character.ActiveLegacy);
 
             ProvisionStartingElements(_character.ActiveLegacy);

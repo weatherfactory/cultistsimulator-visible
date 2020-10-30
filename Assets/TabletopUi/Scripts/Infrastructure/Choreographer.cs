@@ -453,6 +453,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             }
             
             var situation = Registry.Get<SituationBuilder>().CreateSituation(scc);
+            situation.ExecuteHeartbeat(0f);
 
 
             //if there's been (for instance) an expulsion, we now want to add the relevant stacks to this situation

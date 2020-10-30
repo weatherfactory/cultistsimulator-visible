@@ -19,7 +19,7 @@ namespace Assets.CS.TabletopUI
         public Dictionary<ContainerCategory, List<ElementStackToken>> StacksInEachStorage { get; set; }
         public INotification Notification;
         public SituationEffectCommand EffectCommand;
-        public RecipePrediction RecipePrediction;
+        public SituationState SituationState;
 
         public static SituationEventData Create(Situation fromSituation)
         {
@@ -32,6 +32,7 @@ namespace Assets.CS.TabletopUI
             e.StacksInEachStorage.Add(ContainerCategory.SituationStorage, fromSituation.GetStacks(ContainerCategory.SituationStorage));
             e.StacksInEachStorage.Add(ContainerCategory.Output, fromSituation.GetStacks(ContainerCategory.Output));
             e.ActiveVerb = fromSituation.Verb;
+            e.SituationState = fromSituation.State;
             return e;
 
         }

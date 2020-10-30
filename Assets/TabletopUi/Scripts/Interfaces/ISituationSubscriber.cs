@@ -17,7 +17,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void SituationOngoing(SituationEventData e);
         void SituationExecutingRecipe(SituationEventData e);
         void SituationComplete(SituationEventData e);
-        void ResetSituation();
+        void ResetSituation(SituationEventData e);
         void ContainerContentsUpdated(SituationEventData e);
         void ReceiveNotification(SituationEventData e);
         void RecipePredicted(RecipePrediction recipePrediction);

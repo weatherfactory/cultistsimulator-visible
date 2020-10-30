@@ -34,6 +34,20 @@ public class SituationResults : TokenContainer {
         buttonClearResultsNone = "VERB_ACCEPT";
     }
 
+    public void UpdateDisplay(SituationEventData eventData)
+    {
+        switch (eventData.SituationState)
+        {
+            case SituationState.Complete:
+                canvasGroupFader.Show();
+                break; 
+            default:
+                canvasGroupFader.Hide();
+                break;
+        }
+
+    }
+
     public void DoReset() {
         // TODO: Clear out the cards that are still here?
     }

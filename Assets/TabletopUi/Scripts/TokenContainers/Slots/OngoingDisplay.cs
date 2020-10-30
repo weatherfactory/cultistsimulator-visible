@@ -29,7 +29,7 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public void UpdateForRecipe(Recipe recipe,OnContainerAddedEvent onContainerAdded,OnContainerRemovedEvent onContainerRemoved,string situationPath)
+        public void RecipeActivated(Recipe recipe,OnContainerAddedEvent onContainerAdded,OnContainerRemovedEvent onContainerRemoved,string situationPath)
         {
             foreach (var os in ongoingSlots)
             {
@@ -57,16 +57,28 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void UpdateTime(float duration, float timeRemaining, EndingFlavour forEndingFlavour)
+        public void UpdateDisplay(SituationEventData e)
 		{
-            Color barColor = UIStyle.GetColorForCountdownBar(forEndingFlavour, timeRemaining);
+            switch(e.SituationState)
+            {
+
+                case SituationState.Ongoing:
+                    canvasGroupFader.Show();
+
+            Color barColor = UIStyle.GetColorForCountdownBar(e.CurrentRecipe.SignalEndingFlavour, e.TimeRemaining);
 
             countdownBar.color = barColor;
-            countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (timeRemaining / duration));
+            countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (e.TimeRemaining / e.Warmup));
             countdownText.color = barColor;
-			countdownText.text = Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage( timeRemaining );
+			countdownText.text = Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage( e.TimeRemaining );
             countdownText.richText = true;
-        }
+            break;
+
+                default:
+                    canvasGroupFader.Hide();
+                    break;
+            }
+    }
 
         public void ShowStoredAspects(IEnumerable<ElementStackToken> stacks) {
             int i = 0;
@@ -80,16 +92,16 @@ namespace Assets.CS.TabletopUI {
 
                 if(!element.IsHidden)
                 { 
-                for (int q = 0; q < stack.Quantity; q++) {
-                    if (i < aspectFrames.Length)
-                        frame = aspectFrames[i];
-                    else
-                        frame = Registry.Get<PrefabFactory>().CreateLocally<ElementFrame>(storedCardsLayout.transform);
+                    for (int q = 0; q < stack.Quantity; q++) {
+                        if (i < aspectFrames.Length)
+                            frame = aspectFrames[i];
+                        else
+                            frame = Registry.Get<PrefabFactory>().CreateLocally<ElementFrame>(storedCardsLayout.transform);
 
-                    frame.PopulateDisplay(element,1, stack as ElementStackToken);
-                    frame.gameObject.SetActive(true);
-                    i++;
-                }
+                        frame.PopulateDisplay(element,1, stack as ElementStackToken);
+                        frame.gameObject.SetActive(true);
+                        i++;
+                    }
                 }
             }
 
