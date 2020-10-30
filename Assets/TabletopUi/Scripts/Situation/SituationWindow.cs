@@ -80,7 +80,7 @@ namespace Assets.CS.TabletopUI {
         private string _situationPath;
         private bool windowIsWide = false;
 
-        public bool IsOpen {
+        public bool IsVisible {
             get { return canvasGroupFader.IsVisible(); }
         }
 
@@ -98,8 +98,6 @@ namespace Assets.CS.TabletopUI {
 
         void OnEnable()
         {
-
-          
             buttonDefault = "VERB_START";
 			buttonBusy = "VERB_RUNNING";
         }
@@ -125,6 +123,7 @@ namespace Assets.CS.TabletopUI {
             startButton.onClick.AddListener(OnStart.Invoke);
 
             startingSlots.Initialise(Verb, this,_situationPath);
+            ongoingDisplay.Initialise(OnContainerAdded, OnContainerRemoved, _situationPath);
             results.Initialise();
 
             //this is an improvement - the situation doesn't need to know what to add - but better yet would be to tie together creation + container add, at runtime
@@ -231,29 +230,34 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void Close() {
+        public void Closed() {
         OnWindowClosed.Invoke();
         }
 
 
-        // BASIC DISPLAY
-
-        public void Show( Vector3 targetPosition )
+        public void Show( Vector3 targetPosition, SituationEventData eventData)
 		{
-			if (!canvasGroupFader.IsVisible())
+			if (!IsVisible)
 			{
 				SoundManager.PlaySfx("SituationWindowShow");
 			}
 
 			canvasGroupFader.Show();
             positioner.Show(canvasGroupFader.durationTurnOn, targetPosition); // Animates the window (position allows optional change is position)
+            startingSlots.UpdateDisplay(eventData);
+            ongoingDisplay.UpdateDisplay(eventData);
+            storage.UpdateDisplay(eventData);
+            results.UpdateDisplay(eventData);
+
+
+
             results.UpdateDumpButtonText(); // ensures that we've updated the dump button accordingly
             startingSlots.ArrangeSlots(); //won't have been arranged if a card was dumped in while the window was closed
  			PaginatedNotes.Reset();
         }
 
 		public void Hide() {
-            if (canvasGroupFader.IsVisible())
+            if (IsVisible)
 				SoundManager.PlaySfx("SituationWindowHide");
 
 			canvasGroupFader.Hide();
@@ -323,63 +327,19 @@ namespace Assets.CS.TabletopUI {
             return PaginatedNotes.GetCurrentTexts();
         }
 
-        public void SituationBeginning(SituationEventData eventData)
+
+        public void DisplaySituationState(SituationEventData eventData)
         {
-         
-            startingSlots.UpdateDisplay(eventData);
-            ongoingDisplay.RecipeActivated(eventData.CurrentRecipe,OnContainerAdded,OnContainerRemoved, _situationPath);
-            ongoingDisplay.UpdateDisplay(eventData);
-            storage.UpdateDisplay(eventData);
-            results.UpdateDisplay(eventData);
- 
-            DisplayButtonState(false, buttonBusy);
-
-            SetWindowSize(false); //always collapse the window if we don't need to display multiple slots
-
-        }
-
-        public void SituationOngoing(SituationEventData eventData)
-        {
-            startingSlots.UpdateDisplay(eventData);
-            ongoingDisplay.UpdateDisplay(eventData);
-            storage.UpdateDisplay(eventData);
-            results.UpdateDisplay(eventData);
-        }
-
-        public void SituationExecutingRecipe(SituationEventData eventData)
-        {
-            startingSlots.UpdateDisplay(eventData);
-            ongoingDisplay.UpdateDisplay(eventData);
-            storage.UpdateDisplay(eventData);
-            results.UpdateDisplay(eventData);
-        }
-
-        public void SituationComplete(SituationEventData eventData)
-        {
-            aspectsDisplay.ClearCurrentlyDisplayedAspects();
             startingSlots.UpdateDisplay(eventData);
             storage.UpdateDisplay(eventData);
             ongoingDisplay.UpdateDisplay(eventData);
             results.UpdateDisplay(eventData);
-            
             results.UpdateDumpButtonText();
+
+            DisplayButtonState(eventData.SituationState==SituationState.Unstarted, buttonBusy);
         }
 
-        public void ResetSituation(SituationEventData e)
-        {
-            startingSlots.DoReset();
-
-            ongoingDisplay.RecipeActivated(NullRecipe.Create(),OnContainerAdded,OnContainerRemoved, _situationPath);
-            ongoingDisplay.UpdateDisplay(e);
-
-            results.DoReset();
-            results.UpdateDisplay(e);
-
-            Title = Verb.Label;
-            PaginatedNotes.SetText(Verb.Description);
-            DisplayButtonState(false);
-            SetWindowSize(false);
-        }
+        
 
         public void ContainerContentsUpdated(SituationEventData e)
         {

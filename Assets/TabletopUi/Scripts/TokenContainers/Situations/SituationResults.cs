@@ -48,9 +48,6 @@ public class SituationResults : TokenContainer {
 
     }
 
-    public void DoReset() {
-        // TODO: Clear out the cards that are still here?
-    }
 
     public void SetOutput(List<ElementStackToken> allStacksToOutput) {
         if (allStacksToOutput.Any() == false)

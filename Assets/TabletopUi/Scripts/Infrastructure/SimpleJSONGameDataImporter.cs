@@ -264,7 +264,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private void ImportOutputs(Hashtable htSituationValues, Situation situation, TabletopTokenContainer tabletop)
         {
          var outputStacks=ImportOutputStacks(htSituationValues, tabletop);
-            situation.AcceptStacks(ContainerCategory.SituationStorage,outputStacks);
+            situation.AcceptStacks(ContainerCategory.Output,outputStacks);
 
         }
 

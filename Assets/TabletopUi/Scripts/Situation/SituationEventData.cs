@@ -18,7 +18,8 @@ namespace Assets.CS.TabletopUI
 
         public Dictionary<ContainerCategory, List<ElementStackToken>> StacksInEachStorage { get; set; }
         public INotification Notification;
-        public SituationEffectCommand EffectCommand;
+        public RecipeBeginningEffectCommand BeginningEffectCommand;
+        public RecipeCompletionEffectCommand CompletionEffectCommand;
         public SituationState SituationState;
 
         public static SituationEventData Create(Situation fromSituation)
@@ -33,6 +34,9 @@ namespace Assets.CS.TabletopUI
             e.StacksInEachStorage.Add(ContainerCategory.Output, fromSituation.GetStacks(ContainerCategory.Output));
             e.ActiveVerb = fromSituation.Verb;
             e.SituationState = fromSituation.State;
+            e.BeginningEffectCommand = fromSituation.CurrentBeginningEffectCommand;
+
+            e.CompletionEffectCommand = fromSituation.currentCompletionEffectCommand;
             return e;
 
         }
@@ -41,7 +45,6 @@ namespace Assets.CS.TabletopUI
         {
             StacksInEachStorage=new Dictionary<ContainerCategory, List<ElementStackToken>>();
             CurrentRecipe = NullRecipe.Create();
-            EffectCommand=new SituationEffectCommand();
         }
     }
 }

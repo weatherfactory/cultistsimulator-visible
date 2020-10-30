@@ -50,6 +50,9 @@ namespace Assets.Core.Entities {
         private SituationWindow _window;
         private bool greedyAnimIsActive;
         public string Path { get; }
+        public bool IsOpen { get; private set; }
+        public RecipeBeginningEffectCommand CurrentBeginningEffectCommand;
+        public RecipeCompletionEffectCommand currentCompletionEffectCommand;
 
 
         public TokenLocation GetAnchorLocation()
@@ -159,9 +162,6 @@ namespace Assets.Core.Entities {
             currentPredictedRecipe = currentPrimaryRecipe;
             TimeRemaining = 0;
             State = SituationState.Unstarted;
-            var situationEventData = CS.TabletopUI.SituationEventData.Create(this);
-            foreach (var subscriber in subscribers)
-                subscriber.ResetSituation(situationEventData);
         }
 
         public void Halt()
@@ -359,6 +359,8 @@ namespace Assets.Core.Entities {
 
         public SituationState Continue(IRecipeConductor rc, float interval, bool waitForGreedyAnim = false)
         {
+            CurrentBeginningEffectCommand = null;;
+            currentCompletionEffectCommand = null;
             switch (State)
             {
                 case SituationState.ReadyToReset:
@@ -398,17 +400,17 @@ namespace Assets.Core.Entities {
                   break;
 
                 case SituationState.Complete:
-                    foreach (var subscriber in subscribers)
-                    {
-                        var d = SituationEventData.Create(this);
-                        subscriber.SituationComplete(d);
-                    }
-
                     break;
 
                 
                 default:
                     throw new ArgumentOutOfRangeException();
+            }
+
+            foreach (var subscriber in subscribers)
+            {
+                var d = SituationEventData.Create(this);
+                subscriber.DisplaySituationState(d);
             }
             return State;
         }
@@ -419,8 +421,7 @@ namespace Assets.Core.Entities {
         {
             State = SituationState.Ongoing;
 
-            SituationEventData d = SituationEventData.Create(this);
-
+            CurrentBeginningEffectCommand=new RecipeBeginningEffectCommand(currentPrimaryRecipe.Slots,currentPredictedRecipe.BurnImage);
 
             var storageContainer = GetSingleContainerByCategory(ContainerCategory.SituationStorage);
             storageContainer.AcceptStacks(GetStacks(ContainerCategory.Threshold),
@@ -431,7 +432,6 @@ namespace Assets.Core.Entities {
 
             foreach (var subscriber in subscribers)
             {
-                subscriber.SituationBeginning(d);
                 subscriber.RecipePredicted(prediction);
             }
 
@@ -454,11 +454,7 @@ namespace Assets.Core.Entities {
         private void Ongoing()
         {
 
-            SituationEventData d = SituationEventData.Create(this);
-
             State = SituationState.Ongoing;
-            foreach (var subscriber in subscribers)
-                subscriber.SituationOngoing(d);
         }
 
         private void RequireExecution(IRecipeConductor rc)
@@ -487,19 +483,19 @@ namespace Assets.Core.Entities {
 
             foreach (var c in recipeExecutionCommands)
             {
-                SituationEffectCommand ec = new SituationEffectCommand(c.Recipe,
+                RecipeCompletionEffectCommand currentEffectCommand = new RecipeCompletionEffectCommand(c.Recipe,
                     c.Recipe.ActionId != currentPrimaryRecipe.ActionId, c.Expulsion);
-                if (ec.AsNewSituation)
-                    CreateNewSituation(ec);
+                if (currentEffectCommand.AsNewSituation)
+                    CreateNewSituation(currentEffectCommand);
                 else
                 {
-                    Registry.Get<Character>().AddExecutionsToHistory(ec.Recipe.Id, 1); //can we make 
+                    Registry.Get<Character>().AddExecutionsToHistory(currentEffectCommand.Recipe.Id, 1); //can we make 
                     var executor = new SituationEffectExecutor(Registry.Get<TabletopManager>());
-                    executor.RunEffects(ec, GetSingleContainerByCategory(ContainerCategory.SituationStorage), Registry.Get<Character>(), Registry.Get<IDice>());
+                    executor.RunEffects(currentEffectCommand, GetSingleContainerByCategory(ContainerCategory.SituationStorage), Registry.Get<Character>(), Registry.Get<IDice>());
 
-                    if (!string.IsNullOrEmpty(ec.Recipe.Ending))
+                    if (!string.IsNullOrEmpty(currentEffectCommand.Recipe.Ending))
                     {
-                        var ending = Registry.Get<ICompendium>().GetEntityById<Ending>(ec.Recipe.Ending);
+                        var ending = Registry.Get<ICompendium>().GetEntityById<Ending>(currentEffectCommand.Recipe.Ending);
                         Registry.Get<TabletopManager>() .EndGame(ending, this._anchor); //again, ttm (or successor) is subscribed. We should do it through there.
                     }
                     
@@ -507,13 +503,6 @@ namespace Assets.Core.Entities {
                     TryOverrideVerbIcon(GetAspectsAvailableToSituation(true));
 
 
-                }
-
-                foreach (var subscriber in subscribers)
-                {
-                    SituationEventData d = SituationEventData.Create(this);
-                    d.EffectCommand = ec;
-                    subscriber.SituationExecutingRecipe(d);
                 }
 
             }
@@ -529,7 +518,7 @@ namespace Assets.Core.Entities {
                 _window.DisplayIcon(overrideIcon);
             }
         }
-        private void CreateNewSituation(SituationEffectCommand effectCommand)
+        private void CreateNewSituation(RecipeCompletionEffectCommand effectCommand)
         {
             List<ElementStackToken> stacksToAddToNewSituation = new List<ElementStackToken>();
             //if there's an expulsion
@@ -696,21 +685,20 @@ namespace Assets.Core.Entities {
     }
 
         public void Close()
-    {
-        DumpThresholdStacks();
+        { 
+            IsOpen = false; 
+            DumpThresholdStacks();
         _window.Hide();
         _anchor.DisplayAsClosed();
     }
 
-    public bool IsOpen()
-    {
-        return _window.IsOpen;
-    }
 
     public void OpenAt(TokenLocation location)
     {
+        IsOpen = true;
+        SituationEventData eventData=SituationEventData.Create(this);
         _anchor.DisplayAsOpen();
-        _window.Show(location.Position);
+        _window.Show(location.Position,eventData);
             
         Registry.Get<TabletopManager>().CloseAllSituationWindowsExcept(_anchor.EntityId);
     }

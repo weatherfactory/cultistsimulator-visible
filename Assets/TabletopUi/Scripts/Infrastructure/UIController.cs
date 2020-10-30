@@ -186,7 +186,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 foreach (var s in situations)
                 {
-                    if (s.IsOpen())
+                    if (s.IsOpen)
                     {
                         s.ActivateRecipe();
                         break;
@@ -202,7 +202,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             foreach (var s in situations)
             {
-                if (s.IsOpen())
+                if (s.IsOpen)
                 {
                     s.CollectOutputStacks();
                     break;
@@ -238,7 +238,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 				var situations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 
 				foreach (var situation in situations) {
-					if (situation.IsOpen()) {
+					if (situation.IsOpen) {
 						situation.Close();
 						windowWasOpen = true;
 						break;

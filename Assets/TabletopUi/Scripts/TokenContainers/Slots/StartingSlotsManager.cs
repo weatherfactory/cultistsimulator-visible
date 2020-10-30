@@ -65,13 +65,6 @@ namespace Assets.TabletopUi.SlotsContainers {
             }
         }
 
-        public void DoReset() {
-            if (GetAllSlots().Count > 1) {
-              
-                ArrangeSlots();
-            }
-        }
-
         
         public override void RespondToStackAdded(RecipeSlot slot, ElementStackToken stack, Context context) {
 

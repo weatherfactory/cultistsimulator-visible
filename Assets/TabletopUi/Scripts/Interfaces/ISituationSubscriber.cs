@@ -13,11 +13,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 {
     public interface ISituationSubscriber
     {
-        void SituationBeginning(SituationEventData e);
-        void SituationOngoing(SituationEventData e);
-        void SituationExecutingRecipe(SituationEventData e);
-        void SituationComplete(SituationEventData e);
-        void ResetSituation(SituationEventData e);
+        void DisplaySituationState(SituationEventData e);
         void ContainerContentsUpdated(SituationEventData e);
         void ReceiveNotification(SituationEventData e);
         void RecipePredicted(RecipePrediction recipePrediction);

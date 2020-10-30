@@ -27,53 +27,75 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] DeckEffectView[] deckEffectViews; 
         HashSet<RecipeSlot> ongoingSlots=new HashSet<RecipeSlot>();
 
+        private OnContainerAddedEvent _onSlotAdded;
+        private OnContainerRemovedEvent _onSlotRemoved;
+        private string _situationPath;
 
-
-        public void RecipeActivated(Recipe recipe,OnContainerAddedEvent onContainerAdded,OnContainerRemovedEvent onContainerRemoved,string situationPath)
+        public void Initialise(OnContainerAddedEvent onContainerAdded, OnContainerRemovedEvent onContainerRemoved, string situationPath)
         {
-            foreach (var os in ongoingSlots)
+            _onSlotAdded = onContainerAdded;
+            _onSlotRemoved = onContainerRemoved;
+            _situationPath = situationPath;
+
+        }
+
+
+        private void populateOngoingSlots(List<SlotSpecification> ongoingSlots)
+        {
+
+            foreach (var os in this.ongoingSlots)
             {
-                onContainerRemoved.Invoke(os);
+                _onSlotRemoved.Invoke(os);
                 os.Retire();
             }
 
-            ongoingSlots.Clear();
+            this.ongoingSlots.Clear();
 
-            foreach (var spec in recipe.Slots)
+
+            foreach (var spec in ongoingSlots)
             {
                 var newSlot = Registry.Get<PrefabFactory>().CreateLocally<RecipeSlot>(slotHolder);
                 newSlot.name = spec.UniqueId;
 
-                newSlot.Initialise(spec,situationPath);
-              //slot.onCardDropped += RespondToStackAdded; //trialling removing these and running it through new event system
-              //slot.onCardRemoved += RespondToStackRemoved;
-                ongoingSlots.Add(newSlot);
-                onContainerAdded.Invoke(newSlot);
+                newSlot.Initialise(spec, _situationPath);
+                //slot.onCardDropped += RespondToStackAdded; //trialling removing these and running it through new event system
+                //slot.onCardRemoved += RespondToStackRemoved;
+                this.ongoingSlots.Add(newSlot);
+                _onSlotAdded.Invoke(newSlot);
 
             }
-
-            ShowDeckEffects(recipe.DeckEffects);
-            
         }
-
 
         public void UpdateDisplay(SituationEventData e)
 		{
             switch(e.SituationState)
             {
+                case SituationState.Unstarted:
+
+                    canvasGroupFader.Hide();
+                    break;
 
                 case SituationState.Ongoing:
                     canvasGroupFader.Show();
+                    ShowDeckEffects(e.CurrentRecipe.DeckEffects);
 
-            Color barColor = UIStyle.GetColorForCountdownBar(e.CurrentRecipe.SignalEndingFlavour, e.TimeRemaining);
+                    Color barColor = UIStyle.GetColorForCountdownBar(e.CurrentRecipe.SignalEndingFlavour, e.TimeRemaining);
 
-            countdownBar.color = barColor;
-            countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (e.TimeRemaining / e.Warmup));
-            countdownText.color = barColor;
-			countdownText.text = Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage( e.TimeRemaining );
-            countdownText.richText = true;
-            break;
+                    countdownBar.color = barColor;
+                    countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (e.TimeRemaining / e.Warmup));
+                    countdownText.color = barColor;
+			        countdownText.text = Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage( e.TimeRemaining );
+                    countdownText.richText = true;
 
+                    if (e.BeginningEffectCommand != null)
+                    {
+                        populateOngoingSlots(e.BeginningEffectCommand.OngoingSlots);
+                    }
+
+
+                    break;
+
+                
                 default:
                     canvasGroupFader.Hide();
                     break;

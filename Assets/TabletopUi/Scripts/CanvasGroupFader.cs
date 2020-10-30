@@ -13,13 +13,15 @@ namespace Assets.CS.TabletopUI
         public float durationTurnOff = 0.25f;
         private bool m_isFading;
 
+        private Coroutine transparencyChange;
+
         public bool IsVisible()
         {
             return Group.alpha > 0f;
         }
 
-        public bool IsFading() {
-            return m_isFading;
+        public bool IsChanging() {
+            return transparencyChange!=null;
         }
 
         CanvasGroup group;
@@ -32,39 +34,37 @@ namespace Assets.CS.TabletopUI
             }
         }
 
-        public void Hide() {
+        public void Hide()
+        {
+            if (!IsVisible())
+                return;
+
 
             if (durationTurnOn <= 0f) {
                 SetAlpha(0f);
             }
-            else if (gameObject.activeInHierarchy == false) {
-                SetAlpha(0f);
-            }
-            else if (gameObject.activeSelf && Group.alpha > 0)
+            else if ( !IsChanging())
             {
-
-                StopAllCoroutines();
-                StartCoroutine(DoFade(0f, durationTurnOff));
+                transparencyChange = StartCoroutine(DoTransparencyChange(0f, durationTurnOff));
             }
         }
 
 
-        public void Show() {
+        public void Show()
+        {
+            if (IsVisible())
+                return;
+
             if (durationTurnOn <= 0f) {
                 SetAlpha(1f);
             }
-            //else if (gameObject.activeSelf == false) {
-            //    gameObject.SetActive(true);
-            //    Group.alpha = 0f;
-            //}
-
-            if (Group.alpha < 1f) {
-                StopAllCoroutines();
-                StartCoroutine(DoFade(1f, durationTurnOn));
+            else if (!IsChanging())
+            {
+               transparencyChange=StartCoroutine(DoTransparencyChange(1f, durationTurnOn));
             }
         }
 
-        IEnumerator DoFade(float alpha, float duration) {
+        IEnumerator DoTransparencyChange(float alpha, float duration) {
             float currentAlpha = Group.alpha;
             float currentTime = 0f;
 
@@ -80,18 +80,15 @@ namespace Assets.CS.TabletopUI
 
             m_isFading = false;
             SetAlpha(alpha);
+    
         }
 
         public void SetAlpha(float alpha) {
-            StopAllCoroutines();
+            transparencyChange = null;
             Group.alpha = alpha;
 
-            if (Mathf.Approximately(alpha, 0f)) {
-                //if (destroyOnHide)
-                //    Destroy(gameObject);
-                //else if (!keepActiveOnHide)
-                //    gameObject.SetActive(false);
-            }
+            if (Mathf.Approximately(alpha, 0f))
+                SetInteractable(false);
             else
                 SetInteractable(true);
         }

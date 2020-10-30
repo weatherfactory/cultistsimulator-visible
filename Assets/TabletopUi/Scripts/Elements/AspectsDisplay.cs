@@ -10,9 +10,6 @@ using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts
 {
-    /// <summary>
-    /// displays a summary of aspects; used for the workspace display, and in the recipe book
-    /// </summary>
     public class AspectsDisplay : MonoBehaviour {
 
         // This is pushed to the Aspect Frame 

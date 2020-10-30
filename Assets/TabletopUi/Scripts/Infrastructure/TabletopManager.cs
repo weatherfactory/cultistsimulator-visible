@@ -522,7 +522,7 @@ namespace Assets.CS.TabletopUI {
 				var allSituationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 	            foreach (var s in allSituationControllers)
 				{
-					if (s.IsOpen())
+					if (s.IsOpen)
 					{
 					s.OpenAtCurrentLocation();
 					}
@@ -766,7 +766,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
         public bool IsSituationWindowOpen() {
 	        var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
-	        return situationControllers.Any(c => c.IsOpen());
+	        return situationControllers.Any(c => c.IsOpen);
         }
 
         public void SetHighlightedElement(string elementId, int quantity = 1)

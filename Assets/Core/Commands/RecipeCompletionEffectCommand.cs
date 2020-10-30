@@ -8,19 +8,31 @@ using Assets.CS.TabletopUI.Interfaces;
 
 namespace Assets.Core
 {
-    public class SituationEffectCommand
+
+    public class RecipeBeginningEffectCommand
+    {
+        public List<SlotSpecification> OngoingSlots=new List<SlotSpecification>();
+        public string BurnImage;
+
+        public RecipeBeginningEffectCommand(List<SlotSpecification> ongoingSlots,string burnImage)
+        {
+            OngoingSlots = ongoingSlots;
+            BurnImage = burnImage;
+        }
+    }
+
+    public class RecipeCompletionEffectCommand
     {
         public string Title { get; set; }
         public string Description { get; set; }
         public Recipe Recipe { get; set; }
         public bool AsNewSituation { get; set; } //determines whether the recipe will spawn a new situation.
         public Expulsion Expulsion { get; set; }
-
-
-        public SituationEffectCommand() : this(NullRecipe.Create(), false, new Expulsion())
+        
+        public RecipeCompletionEffectCommand() : this(NullRecipe.Create(), false, new Expulsion())
         {}
 
-        public SituationEffectCommand(Recipe recipe,bool asNewSituation,Expulsion expulsion)
+        public RecipeCompletionEffectCommand(Recipe recipe,bool asNewSituation,Expulsion expulsion)
         {
             Recipe = recipe;
             Title = "default title";

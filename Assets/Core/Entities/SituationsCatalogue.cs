@@ -35,7 +35,7 @@ namespace Assets.Core.Entities
         
         public Situation GetOpenSituation()
         {
-            return GetRegisteredSituations().FirstOrDefault(s => s.IsOpen());
+            return GetRegisteredSituations().FirstOrDefault(s => s.IsOpen);
     }
 
         //public IEnumerable<IArtAnimatableToken> GetAnimatables()

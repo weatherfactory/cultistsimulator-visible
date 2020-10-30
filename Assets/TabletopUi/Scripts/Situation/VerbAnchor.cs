@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Diagnostics;
 using System.Linq;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
@@ -193,7 +194,7 @@ namespace Assets.CS.TabletopUI {
             // Add the current recipe name, if any, to the debug panel if it's active
             Registry.Get<DebugTools>().SetInput(_situation.RecipeId);
 
-            if (!_situation.IsOpen())
+            if (!_situation.IsOpen)
                 OpenSituation();
             else
                 CloseSituation();
@@ -223,7 +224,7 @@ namespace Assets.CS.TabletopUI {
 
                 // Then we open the situation (cause this closes other situations and this may return the stack we try to move
                 // back onto the tabletop - if it was in its starting slots. - Martin
-                if (!_situation.IsOpen())
+                if (!_situation.IsOpen)
                     OpenSituation();
                 else
                     DisplayAsOpen();
@@ -284,40 +285,32 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void SituationBeginning(SituationEventData e)
+        public void DisplaySituationState(SituationEventData e)
         {
-          _manifestation.DisplayStackInMiniSlot(null);
-          if(e.CurrentRecipe.Slots.Count==1)
-              _manifestation.ShowMiniSlot(e.CurrentRecipe.Slots[0].Greedy);
+            switch (e.SituationState)
+            {
+                case SituationState.Unstarted:
+                    _manifestation.SetCompletionCount(-1);
+                    _manifestation.DisplayStackInMiniSlot(null);
+                    break;
+                case SituationState.Ongoing:
 
+                    if (e.BeginningEffectCommand!=null)
+                    {
+                        _manifestation.ShowMiniSlot(e.BeginningEffectCommand.OngoingSlots[0].Greedy);
+                        BurnImageUnderToken(e.BeginningEffectCommand.BurnImage);
+                    }
 
-          if (e.CurrentRecipe.BurnImage != null)
-              BurnImageUnderToken(e.CurrentRecipe.BurnImage);
+                    _manifestation.UpdateTimerVisuals(e.Warmup, e.TimeRemaining, e.CurrentRecipe.SignalEndingFlavour);
+                    break;
 
+                case SituationState.Complete:
+                    _manifestation.DisplayComplete();
+                    _manifestation.SetCompletionCount(e.StacksInEachStorage[ContainerCategory.Output].Count);
+                    break;
+            }
         }
 
-        public void SituationOngoing(SituationEventData e)
-        {
-            _manifestation.UpdateTimerVisuals(e.Warmup, e.TimeRemaining, e.CurrentRecipe.SignalEndingFlavour);
-        }
-
-
-        public void SituationExecutingRecipe(SituationEventData e)
-        {
-          //
-        }
-
-        public void SituationComplete(SituationEventData e)
-        {
-     _manifestation.DisplayComplete();
-     _manifestation.SetCompletionCount(e.StacksInEachStorage[ContainerCategory.Output].Count);
-
-        }
-
-        public void ResetSituation(SituationEventData data)
-        {
-            _manifestation.SetCompletionCount(-1);
-    }
 
         public void ContainerContentsUpdated(SituationEventData e)
         {
@@ -327,8 +320,7 @@ namespace Assets.CS.TabletopUI {
                 _manifestation.DisplayStackInMiniSlot(ongoingStacks.First());
             else
               _manifestation.DisplayStackInMiniSlot(null);
-
-
+            
             _manifestation.SetCompletionCount(e.StacksInEachStorage[ContainerCategory.Output].Count);
 
         }
