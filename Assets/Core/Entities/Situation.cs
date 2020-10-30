@@ -561,8 +561,6 @@ namespace Assets.Core.Entities {
     {
         //Check for possible text refinements based on the aspects in context
         var aspectsInSituation = GetAspectsAvailableToSituation(true);
-
-
         TextRefiner tr = new TextRefiner(aspectsInSituation);
 
 

@@ -250,7 +250,8 @@ namespace Assets.CS.TabletopUI {
 
             results.UpdateDumpButtonText(); // ensures that we've updated the dump button accordingly
             startingSlots.ArrangeSlots(); //won't have been arranged if a card was dumped in while the window was closed
-            PaginatedNotes.Reset();
+            PaginatedNotes.ShowFinalPage();
+
         }
 
 		public void Hide(SituationEventData eventData) {

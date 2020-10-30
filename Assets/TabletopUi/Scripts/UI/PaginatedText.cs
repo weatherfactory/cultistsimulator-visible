@@ -94,7 +94,7 @@ namespace Assets.CS.TabletopUI {
 			SoundManager.PlaySfx("SituationWindowTextMove");
         }
 
-        void ShowFinalPage() {
+       public void ShowFinalPage() {
             var offsetToLast = currentPage + Notes.Count-1;
             ShowPage(offsetToLast, AnimDirection.MoveRight); 
         }

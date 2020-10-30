@@ -250,11 +250,22 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 var situation = Registry.Get<SituationBuilder>().CreateSituation(command);
 
 
-                ImportSituationNotes(htSituationValues, situation);
+                
                 ImportSlotContents(htSituationValues, situation,  SaveConstants.SAVE_STARTINGSLOTELEMENTS);
                 ImportSlotContents(htSituationValues, situation,  SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
                 ImportSituationStoredElements(htSituationValues, situation);
                 ImportOutputs(htSituationValues, situation, tabletop);
+
+                //this should happen last, because adding those stacks above can overwrite notes
+                ImportSituationNotes(htSituationValues, situation);
+        
+                //and do this after adding notes because Open will cuse ShowFinalPage(). What larks!
+                if (command.Open)
+                    situation.OpenAtCurrentLocation();
+                else
+                    situation.Close();
+
+
                 situation.ExecuteHeartbeat(0f); //flushes everything through and updates
 
             }
@@ -292,7 +303,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
             if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONNOTES))
             {
+                SortedDictionary<int, Notification> notes=new SortedDictionary<int, Notification>();
+
                 var htSituationNotes = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONNOTES);
+                
                 foreach (var k in htSituationNotes.Keys)
                 {
                     var htThisOutput = htSituationNotes.GetHashtable(k);
@@ -305,8 +319,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                     
                     var notificationForSituationNote =new Notification(title,title);
-                    situation.SendNotificationToSubscribers(notificationForSituationNote);
+
+                    if(int.TryParse(k.ToString(),out int order))
+                        notes.Add(order,notificationForSituationNote);
+                    else
+                       notes.Add(notes.Count,notificationForSituationNote);
+                
                 }
+                
+                foreach(var n in notes)
+                    situation.SendNotificationToSubscribers(n.Value);
             }
 
         }
