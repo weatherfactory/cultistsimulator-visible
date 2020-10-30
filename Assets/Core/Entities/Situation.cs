@@ -238,7 +238,6 @@ namespace Assets.Core.Entities {
 
         public HeartbeatResponse ExecuteHeartbeat(float interval)
         {
-
             var ttm = Registry.Get<TabletopManager>();
             var aspectsInContext = ttm.GetAspectsInContext(GetAspectsAvailableToSituation(true));
 
@@ -364,17 +363,27 @@ namespace Assets.Core.Entities {
             switch (State)
             {
                 case SituationState.ReadyToReset:
-
                     Reset();
                     break;
 
                 case SituationState.Unstarted:
-
                     break;
 
                 case SituationState.ReadyToStart:
+                    State = SituationState.Ongoing;
+                    CurrentBeginningEffectCommand = new RecipeBeginningEffectCommand(currentPrimaryRecipe.Slots, currentPredictedRecipe.BurnImage);
+                    var storageContainer = GetSingleContainerByCategory(ContainerCategory.SituationStorage);
+                    storageContainer.AcceptStacks(GetStacks(ContainerCategory.Threshold),
+                        new Context(Context.ActionSource.SituationStoreStacks));
 
-                    Begin();
+                    var prediction = GetRecipePrediction();
+                    PossiblySignalImpendingDoom(prediction.SignalEndingFlavour);
+                    foreach (var subscriber in subscribers)
+                    {
+                        subscriber.RecipePredicted(prediction);
+                    }
+
+
                     break;
 
 
@@ -383,14 +392,10 @@ namespace Assets.Core.Entities {
                     // Execute if we've got no time remaining and we're not waiting for a greedy anim
                     // UNLESS timer has gone negative for 5 seconds. In that case sometime is stuck and we need to break out
                     if (TimeRemaining <= 0 && (!waitForGreedyAnim || TimeRemaining < -5.0f))
-                    {
                         RequireExecution(rc);
-                    }
                     else
-                    {
                         TimeRemaining = TimeRemaining - interval;
-                        Ongoing();
-                    }
+                    
 
                     break;
 
@@ -417,28 +422,6 @@ namespace Assets.Core.Entities {
 
 
 
-        public void Begin()
-        {
-            State = SituationState.Ongoing;
-
-            CurrentBeginningEffectCommand=new RecipeBeginningEffectCommand(currentPrimaryRecipe.Slots,currentPredictedRecipe.BurnImage);
-
-            var storageContainer = GetSingleContainerByCategory(ContainerCategory.SituationStorage);
-            storageContainer.AcceptStacks(GetStacks(ContainerCategory.Threshold),
-                new Context(Context.ActionSource.SituationStoreStacks));
-
-            var prediction = GetRecipePrediction();
-            PossiblySignalImpendingDoom(prediction.SignalEndingFlavour);
-
-            foreach (var subscriber in subscribers)
-            {
-                subscriber.RecipePredicted(prediction);
-            }
-
-        }
-
-
-
 
 
         private void PossiblySignalImpendingDoom(EndingFlavour endingFlavour)
@@ -449,12 +432,6 @@ namespace Assets.Core.Entities {
             else
                 tabletopManager.NoMoreImpendingDoom(_anchor);
 
-        }
-
-        private void Ongoing()
-        {
-
-            State = SituationState.Ongoing;
         }
 
         private void RequireExecution(IRecipeConductor rc)
@@ -572,8 +549,9 @@ namespace Assets.Core.Entities {
 						SoundManager.PlaySfx("SituationLoop");
 
 				}
-				Begin();
-			}
+
+                State = SituationState.ReadyToStart;
+            }
 			else { 
 				Complete();
 			}

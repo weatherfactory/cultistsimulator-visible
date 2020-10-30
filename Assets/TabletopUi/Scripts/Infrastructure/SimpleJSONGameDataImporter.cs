@@ -219,8 +219,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 var situationState= (SituationState)Enum.Parse(typeof(SituationState), htSituationValues[SaveConstants.SAVE_SITUATIONSTATE].ToString());
 
-                if(situationState==SituationState.Unstarted)
-                    situationState =  SituationState.ReadyToReset; //this state didn't exist in the old save format. We need to set ReadyToReset, or the situation window will remain in its primordial condition
+                if (situationState == SituationState.Unstarted)
+                    situationState = SituationState.ReadyToReset; //this state didn't exist in the old save format. We need to set ReadyToReset, or the situation window will remain in its primordial condition
 
 
                 if (situationState == SituationState.Ongoing)

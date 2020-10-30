@@ -21,6 +21,7 @@ namespace Assets.CS.TabletopUI
         public RecipeBeginningEffectCommand BeginningEffectCommand;
         public RecipeCompletionEffectCommand CompletionEffectCommand;
         public SituationState SituationState;
+        public bool IsOpen;
 
         public static SituationEventData Create(Situation fromSituation)
         {
@@ -35,8 +36,9 @@ namespace Assets.CS.TabletopUI
             e.ActiveVerb = fromSituation.Verb;
             e.SituationState = fromSituation.State;
             e.BeginningEffectCommand = fromSituation.CurrentBeginningEffectCommand;
-
             e.CompletionEffectCommand = fromSituation.currentCompletionEffectCommand;
+
+            e.IsOpen = fromSituation.IsOpen;
             return e;
 
         }

@@ -249,6 +249,7 @@ public class MenuScreenController : LocalNexus {
 
         currentOverlay = overlay;
 
+        overlay.gameObject.SetActive(true);
         overlay.Show();
         modal.Show();
     }

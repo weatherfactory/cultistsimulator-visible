@@ -36,10 +36,8 @@ namespace Assets.CS.TabletopUI
 
         public void Hide()
         {
-            if (!IsVisible())
-                return;
-
-
+            SetAlpha(0f);
+            return;
             if (durationTurnOn <= 0f) {
                 SetAlpha(0f);
             }
@@ -52,9 +50,8 @@ namespace Assets.CS.TabletopUI
 
         public void Show()
         {
-            if (IsVisible())
-                return;
-
+            SetAlpha(1f);
+            return;
             if (durationTurnOn <= 0f) {
                 SetAlpha(1f);
             }
@@ -95,6 +92,7 @@ namespace Assets.CS.TabletopUI
 
         void SetInteractable(bool state) {
             Group.blocksRaycasts = state;
+            Group.interactable = state;
         }
 
     }

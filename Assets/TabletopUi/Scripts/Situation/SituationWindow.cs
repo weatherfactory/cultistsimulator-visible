@@ -240,9 +240,10 @@ namespace Assets.CS.TabletopUI {
 			if (!IsVisible)
 			{
 				SoundManager.PlaySfx("SituationWindowShow");
-			}
+                canvasGroupFader.Show();
+            }
 
-			canvasGroupFader.Show();
+            
             positioner.Show(canvasGroupFader.durationTurnOn, targetPosition); // Animates the window (position allows optional change is position)
             startingSlots.UpdateDisplay(eventData);
             ongoingDisplay.UpdateDisplay(eventData);
@@ -258,9 +259,11 @@ namespace Assets.CS.TabletopUI {
 
 		public void Hide() {
             if (IsVisible)
+            {
 				SoundManager.PlaySfx("SituationWindowHide");
-
-			canvasGroupFader.Hide();
+                canvasGroupFader.Hide();
+            }
+            
         }
 
 
@@ -330,13 +333,17 @@ namespace Assets.CS.TabletopUI {
 
         public void DisplaySituationState(SituationEventData eventData)
         {
-            startingSlots.UpdateDisplay(eventData);
-            storage.UpdateDisplay(eventData);
-            ongoingDisplay.UpdateDisplay(eventData);
-            results.UpdateDisplay(eventData);
-            results.UpdateDumpButtonText();
+            if (eventData.IsOpen)
+            {
+                startingSlots.UpdateDisplay(eventData);
+                storage.UpdateDisplay(eventData);
+                ongoingDisplay.UpdateDisplay(eventData);
+                results.UpdateDisplay(eventData);
+                results.UpdateDumpButtonText();
 
-            DisplayButtonState(eventData.SituationState==SituationState.Unstarted, buttonBusy);
+                DisplayButtonState(eventData.SituationState == SituationState.Unstarted, buttonBusy);
+            }
+
         }
 
         
