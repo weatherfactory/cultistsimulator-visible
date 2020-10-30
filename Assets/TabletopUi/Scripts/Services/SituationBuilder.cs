@@ -35,9 +35,11 @@ namespace Assets.TabletopUi.Scripts.Services {
             var newWindow = windowLevel.ProvisionSituationWindow(newAnchor);
             situation.AttachWindow(newWindow);
 
-            if(command.Open)
+            if (command.Open)
                 situation.OpenAtCurrentLocation();
-            
+            else
+             situation.Close();
+
             //if token has been spawned from an existing token, animate its appearance
             if (command.SourceAnchor == null)
                 

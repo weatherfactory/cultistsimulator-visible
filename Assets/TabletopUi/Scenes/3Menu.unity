@@ -304,8 +304,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockRaysDuringFade: 1
-  destroyOnHide: 0
-  keepActiveOnHide: 0
   durationTurnOn: 0.1
   durationTurnOff: 0.1
 --- !u!225 &11293132
@@ -2049,6 +2047,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   PedestalEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  TokenInteractionEvent:
     m_PersistentCalls:
       m_Calls: []
   eventSystem: {fileID: 678012479}
@@ -20569,8 +20570,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockRaysDuringFade: 0
-  destroyOnHide: 0
-  keepActiveOnHide: 0
   durationTurnOn: 0.25
   durationTurnOff: 0.1
 --- !u!114 &676880557
@@ -21197,8 +21196,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockRaysDuringFade: 0
-  destroyOnHide: 0
-  keepActiveOnHide: 0
   durationTurnOn: 0.25
   durationTurnOff: 0.1
 --- !u!114 &733228549
@@ -41737,6 +41734,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f366e18502e47046bd2a77f4d36015d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStacksChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &971299446
 GameObject:
   m_ObjectHideFlags: 0
@@ -43440,8 +43440,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockRaysDuringFade: 0
-  destroyOnHide: 0
-  keepActiveOnHide: 0
   durationTurnOn: 0.25
   durationTurnOff: 0.1
 --- !u!114 &1081729473
@@ -52008,8 +52006,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockRaysDuringFade: 0
-  destroyOnHide: 0
-  keepActiveOnHide: 0
   durationTurnOn: 0.25
   durationTurnOff: 0.1
 --- !u!224 &1509276083 stripped
@@ -52053,8 +52049,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockRaysDuringFade: 0
-  destroyOnHide: 0
-  keepActiveOnHide: 0
   durationTurnOn: 0.25
   durationTurnOff: 0.1
 --- !u!114 &1516159740
@@ -59443,8 +59437,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockRaysDuringFade: 0
-  destroyOnHide: 0
-  keepActiveOnHide: 0
   durationTurnOn: 0.25
   durationTurnOff: 0.1
 --- !u!1 &1827485033

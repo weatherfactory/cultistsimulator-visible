@@ -665,9 +665,10 @@ namespace Assets.Core.Entities {
         public void Close()
         { 
             IsOpen = false; 
-            DumpThresholdStacks();
-        _window.Hide();
-        _anchor.DisplayAsClosed();
+
+            SituationEventData eventData = SituationEventData.Create(this);
+            _window.Hide(eventData);
+            _anchor.DisplayAsClosed();
     }
 
 
@@ -739,6 +740,7 @@ namespace Assets.Core.Entities {
 
         public void DumpThresholdStacks()
         {
+            //problem: this dumps ongoing stacks too! Revisit.
             var slotted = GetStacks(ContainerCategory.Threshold);
             foreach (var item in slotted)
                 item.ReturnToTabletop(new Context(Context.ActionSource.PlayerDumpAll));

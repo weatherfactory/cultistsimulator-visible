@@ -241,27 +241,25 @@ namespace Assets.CS.TabletopUI {
 			{
 				SoundManager.PlaySfx("SituationWindowShow");
                 canvasGroupFader.Show();
+                DisplaySituationState(eventData);
             }
 
             
             positioner.Show(canvasGroupFader.durationTurnOn, targetPosition); // Animates the window (position allows optional change is position)
-            startingSlots.UpdateDisplay(eventData);
-            ongoingDisplay.UpdateDisplay(eventData);
-            storage.UpdateDisplay(eventData);
-            results.UpdateDisplay(eventData);
-
 
 
             results.UpdateDumpButtonText(); // ensures that we've updated the dump button accordingly
             startingSlots.ArrangeSlots(); //won't have been arranged if a card was dumped in while the window was closed
- 			PaginatedNotes.Reset();
+            PaginatedNotes.Reset();
         }
 
-		public void Hide() {
+		public void Hide(SituationEventData eventData) {
             if (IsVisible)
             {
 				SoundManager.PlaySfx("SituationWindowHide");
+                DisplaySituationState(eventData);
                 canvasGroupFader.Hide();
+                
             }
             
         }
