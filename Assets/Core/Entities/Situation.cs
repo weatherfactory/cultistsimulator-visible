@@ -96,7 +96,7 @@ namespace Assets.Core.Entities {
 
 
             _window.OnWindowClosed.AddListener(Close);
-            _window.OnStart.AddListener(AttemptActivateRecipe);
+            _window.OnStart.AddListener(ActivateRecipe);
             _window.OnCollect.AddListener(CollectOutputStacks);
             _window.OnContainerAdded.AddListener(AddContainer);
             _window.OnContainerRemoved.AddListener(RemoveContainer);
@@ -175,12 +175,6 @@ namespace Assets.Core.Entities {
 
         }
 
-
-        public void ResetIfComplete()
-        {
-            if (State == SituationState.Complete)
-                Reset();
-        }
 
         private IEnumerable<TokenContainer> GetContainersByCategory(ContainerCategory category)
         {
@@ -403,9 +397,9 @@ namespace Assets.Core.Entities {
 
                     break;
 
-                case SituationState.FreshlyStarted:
+                case SituationState.ReadyToStart:
 
-                    Begin(currentPrimaryRecipe);
+                    Begin();
                     break;
 
 
@@ -443,7 +437,7 @@ namespace Assets.Core.Entities {
 
 
 
-        public void Begin(Recipe withRecipe)
+        public void Begin()
         {
             State = SituationState.Ongoing;
 
@@ -585,7 +579,7 @@ namespace Assets.Core.Entities {
                 verbForNewSituation = new CreatedVerb(effectCommand.Recipe.ActionId, effectCommand.Recipe.Label, effectCommand.Recipe.Description);
 
 
-            var scc = new SituationCreationCommand(verbForNewSituation, effectCommand.Recipe, SituationState.FreshlyStarted, _anchor.Location, _anchor);
+            var scc = new SituationCreationCommand(verbForNewSituation, effectCommand.Recipe, SituationState.ReadyToStart, _anchor.Location, _anchor);
             Registry.Get<TabletopManager>().BeginNewSituation(scc, stacksToAddToNewSituation); //tabletop manager is a subscriber, right? can we run this (or access to its successor) through that flow?
 
         }
@@ -726,7 +720,7 @@ namespace Assets.Core.Entities {
         var inductionRecipeVerb = new CreatedVerb(inducedRecipe.ActionId,
             inducedRecipe.Label, inducedRecipe.Description);
         SituationCreationCommand inducedSituation = new SituationCreationCommand(inductionRecipeVerb,
-            inducedRecipe, SituationState.FreshlyStarted, _anchor.Location, _anchor);
+            inducedRecipe, SituationState.ReadyToStart, _anchor.Location, _anchor);
         Registry.Get<TabletopManager>().BeginNewSituation(inducedSituation, new List<ElementStackToken>());
     }
 
@@ -862,7 +856,7 @@ namespace Assets.Core.Entities {
         }
 
 
-        public void AttemptActivateRecipe()
+        public void ActivateRecipe()
         {
             
             if (State != SituationState.Unstarted)
@@ -881,7 +875,7 @@ namespace Assets.Core.Entities {
 
             currentPrimaryRecipe = recipe;
             TimeRemaining = currentPrimaryRecipe.Warmup;
-            State = SituationState.FreshlyStarted;
+            State = SituationState.ReadyToStart;
 
             SoundManager.PlaySfx("SituationBegin");
 

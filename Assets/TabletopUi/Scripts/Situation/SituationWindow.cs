@@ -145,12 +145,7 @@ namespace Assets.CS.TabletopUI {
                 startButton.gameObject.SetActive(false);
             }
 
-
-
- 
 		}
-
-
 
         public override void StartArtAnimation()
         {
@@ -206,15 +201,7 @@ namespace Assets.CS.TabletopUI {
 
         public override bool Retire()
         {
-            var startingStacks = new List<ElementStackToken>(GetStartingStacks());
-            foreach (var s in startingStacks)
-                s.Retire(CardVFX.None);
-
-
-           storage.RemoveAllStacks();
-            results.RemoveAllStacks();
             Destroy(gameObject);
-
             return true;
         }
 
@@ -297,43 +284,7 @@ namespace Assets.CS.TabletopUI {
             
         }
 
-
-        public void DisplayNoRecipeFound() {
-			Title = Verb.Label;
-			PaginatedNotes.SetText(Verb.Description);
-            
-			DisplayButtonState(false);
-        }
-
-        public void DisplayStartingRecipeFound(Recipe r,AspectsDictionary aspectsInSituation) {
-
-
-            Title = r.Label;
-            //Check for possible text refinements based on the aspects in context
-            TextRefiner tr = new TextRefiner(aspectsInSituation);
-            PaginatedNotes.SetText(tr.RefineString(r.StartDescription));
-
-            ongoingDisplay.UpdateTime(r.Warmup, r.Warmup, r.SignalEndingFlavour); //Ensures that the time bar is set to 0 to avoid a flicker
-
-			DisplayButtonState(true);
-
-            SoundManager.PlaySfx("SituationAvailable");
-        }
-
-        public void DisplayHintRecipeFound(Recipe r, AspectsDictionary aspectsInSituation)
         
-            {
-            Title = Registry.Get<ILocStringProvider>().Get("UI_HINT") + " " + r.Label;
-            //Check for possible text refinements based on the aspects in context
-        TextRefiner tr = new TextRefiner(aspectsInSituation);
-
-            PaginatedNotes.SetText("<i>" + tr.RefineString(r.StartDescription) + "</i>");
-            DisplayButtonState(false);
-            
-
-            SoundManager.PlaySfx("SituationAvailable");
-        }
-
        public void SetWindowSize(bool wide) {
             RectTransform rectTrans = transform as RectTransform;
 
@@ -360,10 +311,6 @@ namespace Assets.CS.TabletopUI {
 			aspectsDisplay.DisplayAspects(forAspects);
 		}
 
-        public void DisplayStoredElements() {
-            ongoingDisplay.ShowStoredAspects(GetStoredStacks());
-        }
-
  
         void DisplayButtonState(bool interactable, string text = null) {
 			startButton.interactable = interactable;
@@ -371,38 +318,6 @@ namespace Assets.CS.TabletopUI {
         }
 
         // ACTIONS
-
-        
-        public IEnumerable<ElementStackToken> GetStartingStacks() {
-            return startingSlots.GetStacksInSlots();
-        }
-
-
-        public IEnumerable<ElementStackToken> GetStoredStacks() {
-            return storage.GetStacks();
-        }
-
-
-
-
-
-        public void StoreStacks(IEnumerable<ElementStackToken> stacksToStore)
-        {
-            storage.AcceptStacks(stacksToStore, new Context(Context.ActionSource.SituationStoreStacks));
-            // Now that we've stored stacks, make sure we update the starting slots
-            startingSlots.RemoveAnyChildSlotsWithEmptyParent(new Context(Context.ActionSource.SituationStoreStacks)); 
-        }
-
-        
-        public RecipeSlot GetPrimarySlot() {
-            return startingSlots.GetAllSlots().FirstOrDefault();
-        }
-
-        public RecipeSlot GetStartingSlotBySaveLocationInfoPath(string locationInfo) {
-            return startingSlots.GetSlotBySaveLocationInfoPath(locationInfo);
-        }
-
-
 
         public IEnumerable<ISituationNote> GetNotes() {
             return PaginatedNotes.GetCurrentTexts();

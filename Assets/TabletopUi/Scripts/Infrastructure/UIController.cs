@@ -188,7 +188,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 {
                     if (s.IsOpen())
                     {
-                        s.AttemptActivateRecipe();
+                        s.ActivateRecipe();
                         break;
                     }
                 }
