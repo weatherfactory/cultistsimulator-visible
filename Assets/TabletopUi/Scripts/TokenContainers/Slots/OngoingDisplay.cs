@@ -41,19 +41,12 @@ namespace Assets.CS.TabletopUI {
 
             foreach (var spec in recipe.Slots)
             {
-                var newSlot = Registry.Get<PrefabFactory>().Create<RecipeSlot>();
+                var newSlot = Registry.Get<PrefabFactory>().CreateLocally<RecipeSlot>(slotHolder);
                 newSlot.name = spec.UniqueId;
 
                 newSlot.Initialise(spec,situationPath);
               //slot.onCardDropped += RespondToStackAdded; //trialling removing these and running it through new event system
               //slot.onCardRemoved += RespondToStackRemoved;
-              
-              //UGH:
-                  var slotTransform = newSlot.SlotLabel.GetComponent<RectTransform>();
-                  var originalSize = slotTransform.sizeDelta;
-                  slotTransform.sizeDelta = new Vector2(originalSize.x * 1.5f, originalSize.y * 0.75f);
-  
-                newSlot.transform.position = slotHolder.position; //won't work if we ever have more than one
                 ongoingSlots.Add(newSlot);
                 onContainerAdded.Invoke(newSlot);
 

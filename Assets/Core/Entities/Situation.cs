@@ -594,6 +594,7 @@ namespace Assets.Core.Entities {
 				INotification notification = new Notification(currentPrimaryRecipe.Label, currentPrimaryRecipe.Description);
                 SendNotificationToSubscribers(notification);
     
+                //I think this code duplicates ActivateRecipe, below
 				currentPrimaryRecipe = linkedRecipe;
 				TimeRemaining = currentPrimaryRecipe.Warmup;
 				if(TimeRemaining>0) //don't play a sound if we loop through multiple linked ones
@@ -604,7 +605,7 @@ namespace Assets.Core.Entities {
 						SoundManager.PlaySfx("SituationLoop");
 
 				}
-				Begin(currentPrimaryRecipe);
+				Begin();
 			}
 			else { 
 				Complete();
@@ -669,11 +670,9 @@ namespace Assets.Core.Entities {
 
    var inducingAspects = new AspectsDictionary();
 
-        //face-down cards don't trigger inductions. This is because we don't generally want to trigger an induction
-        //for something that has JUST BEEN CREATED. This is unmistakably a hack, and if we distinguish newly added cards better
-        //(or expand IsFront to cover that) then that would be safer.
-
-        //It will may mean that we can't transform a card that we don't want to trigger initial inductions and may have to delete/recreate it, losing mutations.
+        //shrouded cards don't trigger inductions. This is because we don't generally want to trigger an induction
+        //for something that has JUST BEEN CREATED. This started out as a hack, but now we've moved from 'face-down'
+        //to 'shrouded' it feels more suitable.
 
         foreach (var os in outputStacks)
         {

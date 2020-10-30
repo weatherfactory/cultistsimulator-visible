@@ -5763,20 +5763,27 @@ MonoBehaviour:
   title: {fileID: 1626215944}
   PaginatedNotes: {fileID: 0}
   startingSlots: {fileID: 918704570}
-  ongoing: {fileID: 505385483}
+  ongoingDisplay: {fileID: 0}
   results: {fileID: 1584716461}
   dumpResultsButton: {fileID: 0}
   dumpResultsButtonText: {fileID: 0}
   storage: {fileID: 17970473}
   aspectsDisplay: {fileID: 805780702}
   startButton: {fileID: 0}
-  OnStartButtonClicked:
+  startButtonText: {fileID: 0}
+  OnStart:
     m_PersistentCalls:
       m_Calls: []
-  OnCollectButtonClicked:
+  OnCollect:
     m_PersistentCalls:
       m_Calls: []
   OnWindowClosed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnContainerAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnContainerRemoved:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &129009707
@@ -15557,7 +15564,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000034987926, y: -0.000029698014}
+  m_AnchoredPosition: {x: -0.000034809113, y: 0.0007009506}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &512707587
