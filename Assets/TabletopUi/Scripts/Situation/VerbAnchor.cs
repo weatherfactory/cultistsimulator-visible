@@ -294,7 +294,7 @@ namespace Assets.CS.TabletopUI {
                     _manifestation.DisplayStackInMiniSlot(null);
                     break;
                 case SituationState.Ongoing:
-
+                    _manifestation.SetCompletionCount(-1);
                     if (e.BeginningEffectCommand!=null)
                     {
                         _manifestation.ShowMiniSlot(e.BeginningEffectCommand.OngoingSlots[0].Greedy);
