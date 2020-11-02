@@ -76,7 +76,7 @@ namespace Assets.Core.Entities {
             currentPrimaryRecipe = command.Recipe;
             OverrideTitle = command.OverrideTitle;
             CompletionCount = command.CompletionCount;
-            Path = command.Path;
+            Path = command.SituationPath;
 
 
         }
@@ -92,7 +92,7 @@ namespace Assets.Core.Entities {
 
 
 
-        public void AttachWindow(SituationWindow newWindow)
+        public void AttachWindow(SituationWindow newWindow,SituationCreationCommand command)
         {
             _window = newWindow;
             AddSubscriber(_window);
@@ -104,7 +104,7 @@ namespace Assets.Core.Entities {
             _window.OnContainerAdded.AddListener(AddContainer);
             _window.OnContainerRemoved.AddListener(RemoveContainer);
 
-            _window.Populate(this);
+            _window.Populate(command);
 
         }
 
@@ -358,8 +358,7 @@ namespace Assets.Core.Entities {
 
         public SituationState Continue(IRecipeConductor rc, float interval, bool waitForGreedyAnim = false)
         {
-            CurrentBeginningEffectCommand = null;;
-            currentCompletionEffectCommand = null;
+
             switch (State)
             {
                 case SituationState.ReadyToReset:
@@ -417,6 +416,10 @@ namespace Assets.Core.Entities {
                 var d = SituationEventData.Create(this);
                 subscriber.DisplaySituationState(d);
             }
+
+            CurrentBeginningEffectCommand = null; ;
+            currentCompletionEffectCommand = null;
+
             return State;
         }
 

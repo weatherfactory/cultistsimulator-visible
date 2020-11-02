@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Commands;
 using Assets.TabletopUi;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
@@ -31,12 +32,12 @@ namespace Assets.CS.TabletopUI {
         private OnContainerRemovedEvent _onSlotRemoved;
         private string _situationPath;
 
-        public void Initialise(OnContainerAddedEvent onContainerAdded, OnContainerRemovedEvent onContainerRemoved, string situationPath)
+        public void Initialise(OnContainerAddedEvent onContainerAdded, OnContainerRemovedEvent onContainerRemoved,SituationCreationCommand situationCreationCommand)
         {
             _onSlotAdded = onContainerAdded;
             _onSlotRemoved = onContainerRemoved;
-            _situationPath = situationPath;
-
+            _situationPath = situationCreationCommand.SituationPath;
+            populateOngoingSlots((situationCreationCommand.OngoingSlots));
         }
 
 

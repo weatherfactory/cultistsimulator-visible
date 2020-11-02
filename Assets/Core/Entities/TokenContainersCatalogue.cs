@@ -8,6 +8,7 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
+using Assets.TabletopUi.Scripts.TokenContainers;
 using Noon;
 
 namespace Assets.Core.Entities {
@@ -62,24 +63,27 @@ namespace Assets.Core.Entities {
                 c.OnStacksChanged.AddListener(subscriber.NotifyStacksChangedForContainer);
         }
 
-        public bool AcceptStack(string containerPath, ElementStackToken stack)
+        public TokenContainer GetContainerByPath(string containerPath)
         {
+
             try
             {
                 var specifiedContainer = _currentTokenContainers.SingleOrDefault(c => c.GetPath() == containerPath);
                 if (specifiedContainer == null)
-                    return false;
+                    return Registry.Get<NullContainer>();
 
-                specifiedContainer.AcceptStack(stack, new Context(Context.ActionSource.Loading));
-                return true;
+                return specifiedContainer;
 
             }
             catch (Exception e)
             {
-                NoonUtility.LogWarning($"Error retrieving container with path {containerPath} for stack with element id {stack.EntityId}: {e.Message}");
-                throw;
+                NoonUtility.LogWarning($"Error retrieving container with path {containerPath}: {e.Message}");
+                return Registry.Get<NullContainer>();
             }
+
         }
+
+
 
 
     }

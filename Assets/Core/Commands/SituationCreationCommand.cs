@@ -22,22 +22,24 @@ namespace Assets.Core.Commands
         public string OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
         public int CompletionCount { get; set; }
         public TokenLocation AnchorLocation { get; set; }
-        public string Path { get; set; }
+        public List<SlotSpecification> OngoingSlots { get; set; } //we might, eg, save when slots have been created by a recipe, but later move on to another recipe
+        public string SituationPath { get; set; }
         public bool Open { get; set; }
 
-        public SituationCreationCommand(IVerb verb,Recipe recipe, SituationState situationState, TokenLocation anchorLocation, ISituationAnchor sourceAnchor = null)
-		{
-			if (recipe==null && verb==null)
-				throw new ArgumentException("Must specify either a recipe or a verb (or both");
-			
-			Recipe = recipe;
-			Verb = verb;
-            AnchorLocation = anchorLocation;
-			SourceAnchor = sourceAnchor;
-		    State = situationState;
-            Path = verb.Id + SaveConstants.SEPARATOR + Guid.NewGuid();
-        }
+        public SituationCreationCommand(IVerb verb, Recipe recipe, SituationState situationState,
+            TokenLocation anchorLocation, ISituationAnchor sourceAnchor = null)
+        {
+            if (recipe == null && verb == null)
+                throw new ArgumentException("Must specify either a recipe or a verb (or both");
 
+            Recipe = recipe;
+            Verb = verb;
+            AnchorLocation = anchorLocation;
+            SourceAnchor = sourceAnchor;
+            State = situationState;
+            SituationPath = verb.Id + SaveConstants.SEPARATOR + Guid.NewGuid();
+            OngoingSlots = new List<SlotSpecification>();
+        }
 
         public IVerb GetBasicOrCreatedVerb()
         {

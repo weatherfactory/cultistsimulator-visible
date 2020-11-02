@@ -232,7 +232,22 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 command.OverrideTitle = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_TITLE);
                 command.CompletionCount = GetIntFromHashtable(htSituationValues, SaveConstants.SAVE_COMPLETIONCOUNT);
-                command.Path = locationInfo.ToString();
+
+                string simplifiedSituationPath;
+
+                string[] simplifiedSituationPathParts = locationInfo.ToString().Split(SaveConstants.SEPARATOR);
+                if(simplifiedSituationPathParts.Length!=3)
+                {
+                    NoonUtility.LogWarning($"We can't parse a situation locationinfo: {locationInfo}. So we're just picking the beginning of it to use as the situation path.");
+                    simplifiedSituationPath = simplifiedSituationPathParts[0];
+                }
+                else
+                {
+                    simplifiedSituationPath = simplifiedSituationPathParts[2];
+                }
+
+                command.SituationPath = simplifiedSituationPath;
+
                 float? posx = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_SITUATION_WINDOW_X);
                 float? posy = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_SITUATION_WINDOW_Y);
                 float? posz = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_SITUATION_WINDOW_Z);
@@ -246,13 +261,47 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 command.Open = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
 
-                
+
+                if (htSituationValues.ContainsKey(SaveConstants.SAVE_ONGOINGSLOTELEMENTS))
+                {
+                    var htOngoingSlots = htSituationValues.GetHashtable(SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
+                    List<SlotSpecification> ongoingSlotSpecs=new List<SlotSpecification>();
+                    foreach (string slotPath in htOngoingSlots.Keys)
+                    {
+
+                        //shit a fuck. We only store the slot label, not the required / forbidden elements of the specification!
+                        var slotId = slotPath.Split(SaveConstants.SEPARATOR)[0];
+                        var slotSpec = new SlotSpecification(slotId);
+                        ongoingSlotSpecs.Add(slotSpec);
+
+                    }
+
+                    command.OngoingSlots = ongoingSlotSpecs;
+
+                }
+
+
+                //old code for this stuff below:
+                //SaveLocationInfo for slots are recorded with an appended Guid. Everything up until the last separator is the slotId
+                //var slotId = ess.LocationInfo.Split(SaveConstants.SEPARATOR)[0];
+
+                //int lastSeparatorPosition = ess.LocationInfo.LastIndexOf(SaveConstants.SEPARATOR);
+                //    var slotId = ess.LocationInfo.Substring(0, lastSeparatorPosition); //if lastseparatorposition zero-indexed is 4, length before separator - 1-indexed - is also 4
+                //    if (slotTypeKey == SaveConstants.SAVE_STARTINGSLOTELEMENTS)
+
+                //    var slotToFill = situation.GetSlotBySaveLocationInfoPath(slotId, slotTypeKey);
+                //if (slotToFill != null) //a little bit robust if a higher level element slot spec has changed between saves
+                //    //if the game can't find a matching slot, it'll just leave it on the desktop
+                //    slotToFill.AcceptStack(stackToPutInSlot, new Context(Context.ActionSource.Loading));
+
+                //if this was an ongoing slot, we also need to tell the situation that the slot's filled, or it will grab another
+
                 var situation = Registry.Get<SituationBuilder>().CreateSituation(command);
 
 
                 
-                ImportSlotContents(htSituationValues, situation,  SaveConstants.SAVE_STARTINGSLOTELEMENTS);
-                ImportSlotContents(htSituationValues, situation,  SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
+                ImportSlotContents(htSituationValues,  SaveConstants.SAVE_STARTINGSLOTELEMENTS);
+                ImportSlotContents(htSituationValues,  SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
                 ImportSituationStoredElements(htSituationValues, situation);
                 ImportOutputs(htSituationValues, situation, tabletop);
 
@@ -271,6 +320,27 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             }
         }
 
+        private void ImportSlotContents(Hashtable htSituationValues, string slotTypeKey)
+        {
+            //I think there's a problem here. There is an issue where we were creating ongoing slots with null GoverningSlotSpecifications for transient verbs
+            ////I don't know if this happens all the time? some saves? Starting slots as well but it doesn't matter?
+            ////(this showed up a problem where greedy slots were trying to grab from ongoing slots that didn't really exist, and threw a nullref error - I've added a guard there but the problem remains).
+            if (htSituationValues.ContainsKey(slotTypeKey))
+            {
+                var htElements = htSituationValues.GetHashtable(slotTypeKey);
+                var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
+
+                foreach (var ess in elementStackSpecifications.OrderBy(spec => spec.Depth)) //this order-by is important if we're populating something with elements which create child slots -
+                                                                                            //in that case we need to do it from the top down, or the slots won't be there
+                {
+
+                    var slot = Registry.Get<TokenContainersCatalogue>().GetContainerByPath(ess.LocationInfo);
+
+                    slot.ProvisionStackFromCommand(ess, Source.Existing(), new Context(Context.ActionSource.Loading));
+
+                }
+            }
+        }
 
         private void ImportOutputs(Hashtable htSituationValues, Situation situation, TabletopTokenContainer tabletop)
         {
@@ -353,41 +423,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-        private void ImportSlotContents(Hashtable htSituationValues, Situation situation,string slotTypeKey)
-        {
-            //I think there's a problem here. There is an issue where we were creating ongoing slots with null GoverningSlotSpecifications for transient verbs
-            ////I don't know if this happens all the time? some saves? Starting slots as well but it doesn't matter?
-            ////(this showed up a problem where greedy slots were trying to grab from ongoing slots that didn't really exist, and threw a nullref error - I've added a guard there but the problem remains).
-            if (htSituationValues.ContainsKey(slotTypeKey))
-            {
-                var htElements = htSituationValues.GetHashtable(slotTypeKey);
-                var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
 
-                foreach (var ess in elementStackSpecifications.OrderBy(spec => spec.Depth)) //this order-by is important if we're populating something with elements which create child slots -
-                                                                                            //in that case we need to do it from the top down, or the slots won't be there
-                {
-                    var stackToPutInSlot =
-                        Registry.Get<Limbo>().ProvisionStackFromCommand(ess, Source.Existing(), new Context(Context.ActionSource.Loading));
-
-                    Registry.Get<TokenContainersCatalogue>().AcceptStack(ess.LocationInfo, stackToPutInSlot);
-
-                    //SaveLocationInfo for slots are recorded with an appended Guid. Everything up until the last separator is the slotId
-                    //var slotId = ess.LocationInfo.Split(SaveConstants.SEPARATOR)[0];
-
-                    //int lastSeparatorPosition = ess.LocationInfo.LastIndexOf(SaveConstants.SEPARATOR);
-                    //    var slotId = ess.LocationInfo.Substring(0, lastSeparatorPosition); //if lastseparatorposition zero-indexed is 4, length before separator - 1-indexed - is also 4
-                    //    if (slotTypeKey == SaveConstants.SAVE_STARTINGSLOTELEMENTS)
-
-                    //    var slotToFill = situation.GetSlotBySaveLocationInfoPath(slotId, slotTypeKey);
-                    //if (slotToFill != null) //a little bit robust if a higher level element slot spec has changed between saves
-                    //    //if the game can't find a matching slot, it'll just leave it on the desktop
-                    //    slotToFill.AcceptStack(stackToPutInSlot, new Context(Context.ActionSource.Loading));
-
-                    //if this was an ongoing slot, we also need to tell the situation that the slot's filled, or it will grab another
-
-                }
-            }
-        }
 
         private List<StackCreationCommand> PopulateElementStackSpecificationsList(Hashtable htStacks)
         {

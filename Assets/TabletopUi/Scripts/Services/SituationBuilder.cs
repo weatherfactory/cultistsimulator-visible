@@ -33,7 +33,7 @@ namespace Assets.TabletopUi.Scripts.Services {
             situation.AttachAnchor(newAnchor);
             
             var newWindow = windowLevel.ProvisionSituationWindow(newAnchor);
-            situation.AttachWindow(newWindow);
+            situation.AttachWindow(newWindow,command);
 
 
             //if token has been spawned from an existing token, animate its appearance

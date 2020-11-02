@@ -111,10 +111,10 @@ namespace Assets.CS.TabletopUI {
             Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(icon);
             artwork.sprite = sprite;
         }
-
-        public void Populate(Situation situation) {
-			Verb = situation.Verb;
-            _situationPath = situation.Path;
+         
+        public void Populate(SituationCreationCommand situationCreationCommand) {
+			Verb = situationCreationCommand.Verb;
+            _situationPath = situationCreationCommand.SituationPath;
             name = "Window_" + Verb.Id;
             DisplayIcon(Verb.Id);
 
@@ -123,7 +123,7 @@ namespace Assets.CS.TabletopUI {
             startButton.onClick.AddListener(OnStart.Invoke);
 
             startingSlots.Initialise(Verb, this,_situationPath);
-            ongoingDisplay.Initialise(OnContainerAdded, OnContainerRemoved, _situationPath);
+            ongoingDisplay.Initialise(OnContainerAdded, OnContainerRemoved,situationCreationCommand);
             results.Initialise();
 
             //this is an improvement - the situation doesn't need to know what to add - but better yet would be to tie together creation + container add, at runtime
