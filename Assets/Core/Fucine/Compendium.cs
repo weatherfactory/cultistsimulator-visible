@@ -7,6 +7,7 @@ using Assets.Core.Entities;
 using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
+using Noon;
 using UnityEngine.Analytics;
 using static Noon.NoonUtility;
 
@@ -189,18 +190,26 @@ public class Compendium : ICompendium
                 if (!string.IsNullOrEmpty(entity.Lever) && _pastLevers.ContainsKey(entity.Lever))
                 {
                     entity= GetEntityById<T>(_pastLevers[entity.Lever]);
-
                 }
 
                 return entity;
-
-
         }
         else
         {
             if(typeof(T)==typeof(BasicVerb))
                 Log($"Can't find Basic Verb entity id '{entityId}'. This will sometimes happen at startup if a situation is based on a transient verb - it'll be handled, don't worry.");
-
+            else if (typeof(T) == typeof(Culture))
+            {
+                entityStore.TryGetById(NoonConstants.DEFAULT_CULTURE_ID, out T defaultCultureEntity);
+                if (defaultCultureEntity == null)
+                    return null; //no infinite loops pls
+                else
+                {
+                    Log(
+                        $"Can't find culture with id {entityId}. Reverting to the default culture: sorry for the ethnocentrism!");
+                    return defaultCultureEntity;
+                }
+            }
             else
             {
                 Log("Can't find entity id '" + entityId + "' of type " + typeof(T));
