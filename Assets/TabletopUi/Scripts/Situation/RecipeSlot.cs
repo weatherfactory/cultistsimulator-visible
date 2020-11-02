@@ -77,11 +77,11 @@ namespace Assets.CS.TabletopUI {
             childSlots = new List<RecipeSlot>();
         }
 
-        public override void Start() {
+        public void Start() {
             ShowGlow(false, false);
             Registry.Get<LocalNexus>().TokenInteractionEvent.AddListener(ReactToDraggedToken);
             _notifiersForContainer.Add(Registry.Get<INotifier>());
-            base.Start();
+            
         }
 
         public void Initialise(SlotSpecification slotSpecification,string situationPath)

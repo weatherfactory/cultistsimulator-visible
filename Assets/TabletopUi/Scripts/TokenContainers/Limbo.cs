@@ -9,13 +9,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     public class Limbo : TokenContainer {
 
         public override ContainerCategory ContainerCategory => ContainerCategory.Dormant;
+        public override bool PersistBetweenScenes => true;
+        public override bool EnforceUniqueStacksInThisContainer => true;
+        public override bool ContentsHidden => true;
 
-        public override void Start() {
-
-            PersistBetweenScenes = true;
-            base.Start();
-        }
-        
         public override string GetPath() {
             return "limbo";
         }

@@ -38,13 +38,13 @@ namespace Assets.CS.TabletopUI {
 
         public override ContainerCategory ContainerCategory => ContainerCategory.Threshold;
 
-        public override void Start()
+        public void Start()
         {
             ShowGlow(false, true);
             slotGlow.Hide(true);
             Registry.Get<LocalNexus>().TokenInteractionEvent.AddListener(ReactToDraggedToken);
             _notifiersForContainer.Add(Registry.Get<INotifier>());
-            base.Start();
+
         }
 
         void ReactToDraggedToken(TokenInteractionEventArgs args)

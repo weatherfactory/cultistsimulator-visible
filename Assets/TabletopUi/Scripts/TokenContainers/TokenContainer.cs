@@ -56,9 +56,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public virtual bool AllowDrag { get; private set; }
         public virtual bool AllowStackMerge { get; private set; }
         public virtual bool AlwaysShowHoverGlow { get; private set; }
-        public bool PersistBetweenScenes { get; protected set; }
-        public bool EnforceUniqueStacksInThisContainer { get; set; }
-        public bool ContentsHidden { get; protected set; }
+        public virtual bool PersistBetweenScenes => false;
+        public virtual bool EnforceUniqueStacksInThisContainer => true;
+        public virtual bool ContentsHidden => true;
         public virtual bool IsGreedy { get; protected set; }
         public abstract ContainerCategory ContainerCategory { get; }
         public SlotSpecification GoverningSlotSpecification { get; set; }
@@ -72,11 +72,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         protected HashSet<ContainerBlock> _currentContainerBlocks=new HashSet<ContainerBlock>();
 
 
-        public virtual void Start()
+        public virtual void OnEnable()
         {
             _catalogue = Registry.Get<TokenContainersCatalogue>();
             _catalogue.RegisterTokenContainer(this);
         }
+
+        public virtual void OnDisable()
+        {
+            _catalogue = Registry.Get<TokenContainersCatalogue>();
+            _catalogue.DeregisterTokenContainer(this);
+        }
+
 
         public virtual bool Retire()
         {

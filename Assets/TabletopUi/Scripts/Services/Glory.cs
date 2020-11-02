@@ -33,8 +33,8 @@ namespace Assets.TabletopUi.Scripts.Services
         [SerializeField] private GraphicsSettingsAdapter graphicsSettingsAdapter;
         [SerializeField] private WindowSettingsAdapter windowSettingsAdapter;
         [SerializeField] private SoundManager soundManager;
-        [SerializeField] private Limbo limbo;
-        [SerializeField] private NullContainer nullContainer;
+    public Limbo limbo;
+    public NullContainer nullContainer;
 
 
 
@@ -105,12 +105,11 @@ namespace Assets.TabletopUi.Scripts.Services
                 registryAccess.Register<StageHand>(stageHand);
 
 
-                //we're about to create our first tokencontainer, Limbo: so we need to create the token containers catalogue first.
-                var stackManagersCatalogue = new TokenContainersCatalogue();
-                registryAccess.Register(stackManagersCatalogue);
+                //we're about to register our first tokencontainer, Limbo: so we need to register the token containers catalogue first.
+                var tokenContainersCatalogue=new TokenContainersCatalogue();
+                registryAccess.Register(tokenContainersCatalogue);
 
 
-                //limbo is where all newly created elements are placed before they're moved to their starting tokencontainer
                 registryAccess.Register(limbo);
                 registryAccess.Register(nullContainer);
 

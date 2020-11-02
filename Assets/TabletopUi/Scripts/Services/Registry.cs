@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Assets.Core;
+using Assets.Core.Entities;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
@@ -56,10 +57,17 @@ namespace Assets.CS.TabletopUI
             }
 
             //fallbacks
-            if (!registered.ContainsKey(typeof(LanguageManager)))
+            if (typeof(T)==typeof(LanguageManager))
                 return new NullLocStringProvider() as T;
 
-            if(logWarningIfNotRegistered)
+            if (typeof(T) == typeof(TokenContainersCatalogue))
+            {
+                var tcc=new TokenContainersCatalogue();
+                registered.Add(typeof(T),tcc);
+                return tcc as T;
+            }
+
+            if (logWarningIfNotRegistered)
                 NoonUtility.Log(typeof(T).Name + " wasn't registered: returning null",2);
                 
             return null;

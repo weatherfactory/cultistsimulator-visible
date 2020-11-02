@@ -30,18 +30,16 @@ public class TabletopTokenContainer : TokenContainer,IBeginDragHandler,IEndDragH
 
     public override bool AllowDrag { get { return true; } }
     public override bool AllowStackMerge { get { return true; } }
+     public override  bool EnforceUniqueStacksInThisContainer => true;
 
     // This is used to determine if this component is the tabletop.
     // Needed because the MapTokenContainer inherits from TabletopTokenContainer but is not the Tabletop
     public virtual bool IsTabletop { get { return true; } }
 
-    public override void Start() {
-        EnforceUniqueStacksInThisContainer = true; // Martin: This ensures that this stackManager kills other copies when a unique is dropped in
-
+    public virtual void Start() {
         InitialiseListeners();
         _notifiersForContainer.Add(Registry.Get<INotifier>());
-        base.Start();
-    }
+        }
 
     private void InitialiseListeners() {
         // Init Listeners to pre-existing DisplayHere Objects

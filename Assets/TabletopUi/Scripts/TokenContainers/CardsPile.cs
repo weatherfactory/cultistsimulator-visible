@@ -18,14 +18,9 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
       private DeckSpec _deckSpec;
 
       public override ContainerCategory ContainerCategory => ContainerCategory.Dormant;
-
-      public override void Start()
-      {
-          EnforceUniqueStacksInThisContainer = false;
-          ContentsHidden = true;
-        base.Start();
-      }
-
+      public override bool EnforceUniqueStacksInThisContainer => false;
+        public override bool ContentsHidden => true;
+      
 
         public void SetSpec(DeckSpec deckSpec)
       {
