@@ -320,7 +320,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
                 glowImage.Hide(instant);
         }
 
-        private void ShowHoverGlow(bool show, bool playSFX = true, Color? hoverColor = null)
+        private void ShowHoverGlow(bool show)
         {
             //if (show)
             //{
@@ -342,16 +342,15 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
             if (show)
             {
-                if (playSFX)
-                    SoundManager.PlaySfx("TokenHover");
+                SoundManager.PlaySfx("TokenHover");
 
-                glowImage.SetColor(hoverColor == null ? UIStyle.GetGlowColor(UIStyle.TokenGlowColor.OnHover) : hoverColor.Value);
+                glowImage.SetColor(UIStyle.GetGlowColor(UIStyle.TokenGlowColor.OnHover));
                 glowImage.Show();
             }
             else
             {
-                //if (playSFX)
-                //    SoundManager.PlaySfx("TokenHoverOff");
+                
+                SoundManager.PlaySfx("TokenHoverOff");
                 glowImage.Hide();
             }
         }
@@ -362,6 +361,10 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             {
                 SetGlowColor(UIStyle.TokenGlowColor.Default);
                 ShowGlow(true, false);
+            }
+            else if (highlightType == HighlightType.Hover)
+            {
+                ShowHoverGlow(true);
             }
             else
                 NoonUtility.Log("Verb anchor isn't sure what to do with highlight type " + highlightType);

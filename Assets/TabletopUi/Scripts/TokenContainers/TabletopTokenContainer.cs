@@ -108,17 +108,18 @@ public class TabletopTokenContainer : TokenContainer,IBeginDragHandler,IEndDragH
   
     void HandleOnTableDropped(PointerEventData eventData)
     {
-        var potentialVerbToken = eventData.pointerDrag.GetComponent<VerbAnchor>();
+        //if an anchor or element stack has been dropped on the background, we want to deal with it.
+        var potentialVerbAnchor = eventData.pointerDrag.GetComponent<VerbAnchor>();
 
         var potentialElementStack = eventData.pointerDrag.GetComponent<ElementStackToken>();
 
 
-        if (potentialVerbToken != null)
+        if (potentialVerbAnchor != null)
         {
-            potentialVerbToken.SetXNess(TokenXNess.DroppedOnTableContainer);
-            DisplayHere(potentialVerbToken,
+            potentialVerbAnchor.SetXNess(TokenXNess.DroppedOnTableContainer);
+            DisplayHere(potentialVerbAnchor,
                 new Context(Context.ActionSource.PlayerDrag));
-            CheckOverlappingTokens(potentialVerbToken);
+            CheckOverlappingTokens(potentialVerbAnchor);
             SoundManager.PlaySfx("CardDrop");
 
         }
@@ -130,13 +131,6 @@ public class TabletopTokenContainer : TokenContainer,IBeginDragHandler,IEndDragH
             CheckOverlappingTokens(potentialElementStack);
             SoundManager.PlaySfx("CardDrop");
         }
-
-        else 
-            NoonUtility.Log("Tried to put something weird on the table: " + eventData.pointerDrag.name,1);
-        
-
-        
-
         
     }
 
