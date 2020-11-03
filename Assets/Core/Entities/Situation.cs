@@ -356,7 +356,7 @@ namespace Assets.Core.Entities {
 
         }
 
-        public SituationState Continue(IRecipeConductor rc, float interval, bool waitForGreedyAnim = false)
+        public SituationState Continue(RecipeConductor rc, float interval, bool waitForGreedyAnim = false)
         {
 
             switch (State)
@@ -374,15 +374,6 @@ namespace Assets.Core.Entities {
                     var storageContainer = GetSingleContainerByCategory(ContainerCategory.SituationStorage);
                     storageContainer.AcceptStacks(GetStacks(ContainerCategory.Threshold),
                         new Context(Context.ActionSource.SituationStoreStacks));
-
-                    var prediction = GetRecipePrediction();
-                    PossiblySignalImpendingDoom(prediction.SignalEndingFlavour);
-                    foreach (var subscriber in subscribers)
-                    {
-                        subscriber.RecipePredicted(prediction);
-                    }
-
-
                     break;
 
 
@@ -437,7 +428,7 @@ namespace Assets.Core.Entities {
 
         }
 
-        private void RequireExecution(IRecipeConductor rc)
+        private void RequireExecution(RecipeConductor rc)
         {
             State = SituationState.RequiringExecution;
 
@@ -531,7 +522,7 @@ namespace Assets.Core.Entities {
 
         }
 
-    private void End(IRecipeConductor rc) {
+    private void End(RecipeConductor rc) {
 			
 
 			var linkedRecipe = rc.GetLinkedRecipe(currentPrimaryRecipe);
@@ -721,18 +712,23 @@ namespace Assets.Core.Entities {
 
         private void ContainerStacksChanged(ContainerStacksChangedArgs _stacksChangedArgs)
         {
+            var aspectsAvailableToSituation = GetAspectsAvailableToSituation(true);
+
             var aspectsInContext =
-                Registry.Get<TabletopManager>().GetAspectsInContext(GetAspectsAvailableToSituation(true));
+                Registry.Get<TabletopManager>().GetAspectsInContext(aspectsAvailableToSituation);
 
         currentPredictedRecipe = Registry.Get<ICompendium>()
                 .GetPredictedRecipe(currentPrimaryRecipe, aspectsInContext, Verb, Registry.Get<Character>());
 
-            //we now have the recipe that would be available the next time an execution point occurs.
-            //we *don't* want to change the current recipe based on this - but we do want to update the prediction for subscribers
-            
-            //so I *think* it's useful to store the predicted recipe? this also allows for caching
+   SituationEventData data = SituationEventData.Create(this);
 
-            SituationEventData data = SituationEventData.Create(this);
+
+          PossiblySignalImpendingDoom(currentPredictedRecipe.SignalEndingFlavour);
+
+        
+            var prediction=new RecipePrediction(currentPredictedRecipe.Label,currentPredictedRecipe.Description, currentPredictedRecipe.BurnImage, currentPredictedRecipe.SignalEndingFlavour,aspectsAvailableToSituation);
+            foreach (var subscriber in subscribers)
+                subscriber.RecipePredicted(prediction); //I can maybe fold this into ContainerContentsUpdated?
             
             foreach (var s in subscribers)
                 s.ContainerContentsUpdated(data);
@@ -775,24 +771,6 @@ namespace Assets.Core.Entities {
             var stacksToDecay = GetStacks(ContainerCategory.Output);
             foreach (var s in stacksToDecay)
                 s.Decay(interval);
-        }
-
-
-        private RecipePrediction GetRecipePrediction()
-        {
-            TabletopManager ttm = Registry.Get<TabletopManager>();
-            var aspectsInSituation = GetAspectsAvailableToSituation(true);
-
-            var context = ttm.GetAspectsInContext(aspectsInSituation);
-            RecipeConductor rc = new RecipeConductor(Registry.Get<ICompendium>(),
-                context, Registry.Get<IDice>(),
-                Registry.Get<Character>());
-            var prediction = rc.GetPredictionForFollowupRecipe(currentPrimaryRecipe);
-
-            TextRefiner tr = new TextRefiner(aspectsInSituation);
-            prediction.DescriptiveText = tr.RefineString(prediction.DescriptiveText);
-            return prediction;
-
         }
 
 

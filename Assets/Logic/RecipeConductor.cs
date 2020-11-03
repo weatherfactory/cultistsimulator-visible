@@ -11,26 +11,7 @@ using UnityEngine;
 
 namespace Assets.Core
 {
-    public interface IRecipeConductor
-    {
-        Recipe GetLinkedRecipe(Recipe recipe);
-        /// <summary>
-        ///Determines whether the original recipe, an alternative, or something else should actually be run.
-        /// Alternative recipes which match requirements on elements possessed and % chance are run in place of the original recipe.
-        /// Alternatives which match, but which specify additional are run after the original recipe.
-        /// There may be multiple additional alternatives.
-        /// However, if an alternative ever does *not* specify additional, it replaces the entire list (although it may have alternatives of its own)
-        /// Alternatives are recursive, and may have additionals of their own.
-        /// A non-additional alternative always takes precedence over everything earlier; if a recursive alternative has additionals of its own, they'll replace everything earlier in the execution sequence.
-        /// </summary>
-
-        /// <returns> this may be the original recipe, or it may be an alternative recipe, it may be any number of recipes possible including the original</returns>
-        IList<RecipeExecutionCommand> GetActualRecipesToExecute(Recipe recipe);
-
-        RecipePrediction GetPredictionForFollowupRecipe(Recipe currentRecipe);
-    }
-
-    public class RecipeConductor : IRecipeConductor
+    public class RecipeConductor
     {
         private ICompendium compendium;
         private AspectsInContext aspectsToConsider;
@@ -122,57 +103,57 @@ namespace Assets.Core
         /// </summary>
         /// <param name="currentRecipe"></param>
         /// <returns></returns>
-        public RecipePrediction GetPredictionForFollowupRecipe(Recipe currentRecipe)
-        {
-            var rp=new RecipePrediction();
+   //     public RecipePrediction GetPredictionForFollowupRecipe(Recipe currentRecipe)
+   //     {
+   //         var rp=new RecipePrediction();
 
-   //set this up to return if we pass through the list below without finding anything interesting.
-                rp.Title = currentRecipe.Label;
-                rp.DescriptiveText = currentRecipe.StartDescription;
-            rp.SignalEndingFlavour = currentRecipe.SignalEndingFlavour;
+   ////set this up to return if we pass through the list below without finding anything interesting.
+   //             rp.Title = currentRecipe.Label;
+   //             rp.DescriptiveText = currentRecipe.StartDescription;
+   //         rp.SignalEndingFlavour = currentRecipe.SignalEndingFlavour;
 
 
-            foreach (var ar in currentRecipe.Alt)
-            {
-                Recipe candidateRecipe = compendium.GetEntityById<Recipe>(ar.Id);
+   //         foreach (var ar in currentRecipe.Alt)
+   //         {
+   //             Recipe candidateRecipe = compendium.GetEntityById<Recipe>(ar.Id);
 
-                if (candidateRecipe == null)
-                {
-                    rp.Title = "Recipe predictor couldn't find recipe with id " + ar.Id;
-                    return rp;
-                }
-                if (candidateRecipe.RequirementsSatisfiedBy(aspectsToConsider) &&
-                    !currentCharacter.HasExhaustedRecipe(candidateRecipe))
+   //             if (candidateRecipe == null)
+   //             {
+   //                 rp.Title = "Recipe predictor couldn't find recipe with id " + ar.Id;
+   //                 return rp;
+   //             }
+   //             if (candidateRecipe.RequirementsSatisfiedBy(aspectsToConsider) &&
+   //                 !currentCharacter.HasExhaustedRecipe(candidateRecipe))
 
-                {
-                    if (!ar.Additional)
-                    {
-                        if (ar.ShouldAlwaysSucceed())
-                        {
-                            //we have a candidate which will execute instead. NB we don't recurse - we assume the first level
-                            //alternative will have a useful description.
-                            rp.Title = candidateRecipe.Label;
-                            rp.DescriptiveText = candidateRecipe.StartDescription;
-                            rp.BurnImage = candidateRecipe.BurnImage;
-                            rp.SignalEndingFlavour = candidateRecipe.SignalEndingFlavour;
-                            //we are not in the additional branch, so just return this prediction.
-                            return rp;
-                        }
+   //             {
+   //                 if (!ar.Additional)
+   //                 {
+   //                     if (ar.ShouldAlwaysSucceed())
+   //                     {
+   //                         //we have a candidate which will execute instead. NB we don't recurse - we assume the first level
+   //                         //alternative will have a useful description.
+   //                         rp.Title = candidateRecipe.Label;
+   //                         rp.DescriptiveText = candidateRecipe.StartDescription;
+   //                         rp.BurnImage = candidateRecipe.BurnImage;
+   //                         rp.SignalEndingFlavour = candidateRecipe.SignalEndingFlavour;
+   //                         //we are not in the additional branch, so just return this prediction.
+   //                         return rp;
+   //                     }
                         
-                        // Print a warning when we encounter a non-certain alternative recipe with a start description
-                        // and no description, since its text won't get displayed.
-                        var arRecipe = compendium.GetEntityById<Recipe>(ar.Id);
-                        if (!string.IsNullOrEmpty(arRecipe.StartDescription) && string.IsNullOrEmpty(arRecipe.Description))
-                            Debug.LogWarning(
-                                $"Recipe {ar.Id} should not be listed as an alternative recipe for {currentRecipe.Id}" +
-                                " since it has a chance of failure, a start description and no final description");
-                    }
-                }
-            }
+   //                     // Print a warning when we encounter a non-certain alternative recipe with a start description
+   //                     // and no description, since its text won't get displayed.
+   //                     var arRecipe = compendium.GetEntityById<Recipe>(ar.Id);
+   //                     if (!string.IsNullOrEmpty(arRecipe.StartDescription) && string.IsNullOrEmpty(arRecipe.Description))
+   //                         Debug.LogWarning(
+   //                             $"Recipe {ar.Id} should not be listed as an alternative recipe for {currentRecipe.Id}" +
+   //                             " since it has a chance of failure, a start description and no final description");
+   //                 }
+   //             }
+   //         }
 
 
-            return rp;
-        }
+   //         return rp;
+   //     }
 
         public IList<RecipeExecutionCommand> GetActualRecipesToExecute(Recipe recipe)
         {

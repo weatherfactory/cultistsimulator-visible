@@ -59,8 +59,7 @@ namespace Assets.CS.TabletopUI {
                 newSlot.name = spec.UniqueId;
 
                 newSlot.Initialise(spec, _situationPath);
-                //slot.onCardDropped += RespondToStackAdded; //trialling removing these and running it through new event system
-                //slot.onCardRemoved += RespondToStackRemoved;
+
                 this.ongoingSlots.Add(newSlot);
                 _onSlotAdded.Invoke(newSlot);
 

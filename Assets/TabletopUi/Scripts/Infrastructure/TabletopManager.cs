@@ -511,7 +511,7 @@ namespace Assets.CS.TabletopUI {
             Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             try
             {
-
+                Registry.Get<TokenContainersCatalogue>().Reset();
 
                 Registry.Get<GameSaveManager>().LoadTabletopState(gameStateSource, _tabletop);
                 //saveGameManager.ImportHashedSaveToState(_tabletop, null, htSave);
@@ -546,7 +546,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
             _elementOverview.Initialise(activeLegacy, compendium);
 
-            Registry.Get<TokenContainersCatalogue>().Reset();
+                
             Registry.Get<TokenContainersCatalogue>().Subscribe(_elementOverview);
             tabletopBackground.ShowTabletopFor(activeLegacy);
 
