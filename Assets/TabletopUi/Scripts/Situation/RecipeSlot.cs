@@ -25,9 +25,6 @@ namespace Assets.CS.TabletopUI {
 
     public class RecipeSlot : TokenContainer, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
 
-        public event System.Action<RecipeSlot, ElementStackToken, Context> onCardDropped;
-        public event System.Action<ElementStackToken, Context> onCardRemoved;
-
         public override ContainerCategory ContainerCategory => ContainerCategory.Threshold;
 
         // DATA ACCESS
@@ -88,8 +85,7 @@ namespace Assets.CS.TabletopUI {
         {
             _situationPath = situationPath;
             GoverningSlotSpecification = slotSpecification;
-            //we need to do this first. Code checks if an ongoing slot is active by checking whether it has a slotspecification
-            //slots with null slotspecification are inactive.
+            gameObject.name = GetPath();
 
             if (slotSpecification == null)
                 return;
@@ -98,6 +94,7 @@ namespace Assets.CS.TabletopUI {
 
             GreedyIcon.SetActive(slotSpecification.Greedy);
             ConsumingIcon.SetActive(slotSpecification.Consumes);
+
         }
 
 
@@ -243,12 +240,7 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        public override void AcceptStack(ElementStackToken stack, Context context) {
-        base.AcceptStack(stack,context);
         
-        onCardDropped(this, stack, context);
-        }
-
         
 
         public override void DisplayHere(IToken token, Context context) {
@@ -277,13 +269,6 @@ namespace Assets.CS.TabletopUI {
             return GetStacks().SingleOrDefault();
         }
 
-
-
-        public override void OnStackRemoved(ElementStackToken elementStackToken, Context context)
-        {
-            base.OnStackRemoved(elementStackToken, context);
-            onCardRemoved(elementStackToken, context);
-        }
 
         public override void TryMoveAsideFor(ElementStackToken potentialUsurper, AbstractToken incumbent, out bool incumbentMoved) {
             if (IsGreedy) { // We do not allow

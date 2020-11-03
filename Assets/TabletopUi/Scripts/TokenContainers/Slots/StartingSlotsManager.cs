@@ -67,7 +67,7 @@ namespace Assets.TabletopUi.SlotsContainers {
 
         
         public override void RespondToStackAdded(RecipeSlot slot, ElementStackToken stack, Context context) {
-
+            //currently, nothing calls this - it used to be OnCardAdded. I hope we can feed it through the primary event flow
 
             _window.TryResizeWindow(GetAllSlots().Count);
            
@@ -90,8 +90,9 @@ namespace Assets.TabletopUi.SlotsContainers {
         }
 
         public override void RespondToStackRemoved(ElementStackToken stack, Context context) {
+            //currently, nothing calls this - it used to be OnCardAdded. I hope we can feed it through the primary event flow
             // startingSlots updated may resize window
-            
+
 
             // Only update the slots if we're doing this manually, otherwise don't
             // Addendum: We also do this when retiring a card - Martin
@@ -126,8 +127,7 @@ namespace Assets.TabletopUi.SlotsContainers {
             slot.name = slotName + (slotSpecification != null ? " - " + slotSpecification.Id : "");
             slot.ParentSlot = parentSlot;
             slot.Initialise(slotSpecification,_situationPath);
-            slot.onCardDropped += RespondToStackAdded;
-            slot.onCardRemoved += RespondToStackRemoved;
+            
             if (wideLabel)
             {
                 var slotTransform = slot.SlotLabel.GetComponent<RectTransform>();

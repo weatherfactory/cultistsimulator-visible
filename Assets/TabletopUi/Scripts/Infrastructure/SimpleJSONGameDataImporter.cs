@@ -223,9 +223,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     situationState = SituationState.ReadyToReset; //this state didn't exist in the old save format. We need to set ReadyToReset, or the situation window will remain in its primordial condition
 
 
-                if (situationState == SituationState.Ongoing)
-                    situationState = SituationState.ReadyToStart; //similar issue; we want to put the situation window through the 'has started' visual changes'
-
+  
 
                 var command = new SituationCreationCommand(situationVerb, recipe, situationState,null);
                 command.TimeRemaining = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_TIMEREMAINING);
@@ -297,11 +295,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 //if this was an ongoing slot, we also need to tell the situation that the slot's filled, or it will grab another
 
                 var situation = Registry.Get<SituationBuilder>().CreateSituation(command);
-
-
                 
-                ImportSlotContents(htSituationValues,  SaveConstants.SAVE_STARTINGSLOTELEMENTS);
-                ImportSlotContents(htSituationValues,  SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
+                
+                ImportSlotContents(situation,htSituationValues,  SaveConstants.SAVE_STARTINGSLOTELEMENTS);
+                ImportSlotContents(situation, htSituationValues,  SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
                 ImportSituationStoredElements(htSituationValues, situation);
                 ImportOutputs(htSituationValues, situation, tabletop);
 
@@ -320,7 +317,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             }
         }
 
-        private void ImportSlotContents(Hashtable htSituationValues, string slotTypeKey)
+        private void ImportSlotContents(Situation situation,Hashtable htSituationValues, string slotTypeKey)
         {
             //I think there's a problem here. There is an issue where we were creating ongoing slots with null GoverningSlotSpecifications for transient verbs
             ////I don't know if this happens all the time? some saves? Starting slots as well but it doesn't matter?
@@ -333,8 +330,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 foreach (var ess in elementStackSpecifications.OrderBy(spec => spec.Depth)) //this order-by is important if we're populating something with elements which create child slots -
                                                                                             //in that case we need to do it from the top down, or the slots won't be there
                 {
+                    var slotPath = situation.Path + SaveConstants.SEPARATOR +
+                                   ess.LocationInfo.Split(SaveConstants.SEPARATOR)[0];
 
-                    var slot = Registry.Get<TokenContainersCatalogue>().GetContainerByPath(ess.LocationInfo);
+                    var slot = Registry.Get<TokenContainersCatalogue>().GetContainerByPath(slotPath);
 
                     slot.ProvisionStackFromCommand(ess, Source.Existing(), new Context(Context.ActionSource.Loading));
 
