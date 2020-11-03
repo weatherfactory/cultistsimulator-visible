@@ -306,7 +306,10 @@ namespace Assets.CS.TabletopUI {
 
                 case SituationState.Complete:
                     _manifestation.DisplayComplete();
-                    _manifestation.SetCompletionCount(e.StacksInEachStorage[ContainerCategory.Output].Count);
+
+                    int completionCount = e.StacksInEachStorage[ContainerCategory.Output].Select(s => s.Quantity).Sum();
+
+                    _manifestation.SetCompletionCount(completionCount);
                     break;
             }
         }

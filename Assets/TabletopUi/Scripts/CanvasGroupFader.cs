@@ -37,7 +37,7 @@ namespace Assets.CS.TabletopUI
         public void Hide()
         {
             SetAlpha(0f);
-            return;
+            
             if (durationTurnOn <= 0f) {
                 SetAlpha(0f);
             }

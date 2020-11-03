@@ -44,7 +44,6 @@ namespace Assets.Core.Entities {
         private readonly List<ISituationSubscriber> subscribers = new List<ISituationSubscriber>();
         private readonly HashSet<TokenContainer> _containers = new HashSet<TokenContainer>();
         public string OverrideTitle { get; set; }
-        public int CompletionCount { get; set; }
 
         private ISituationAnchor _anchor;
         private SituationWindow _window;
@@ -75,7 +74,6 @@ namespace Assets.Core.Entities {
             State = command.State;
             currentPrimaryRecipe = command.Recipe;
             OverrideTitle = command.OverrideTitle;
-            CompletionCount = command.CompletionCount;
             Path = command.SituationPath;
 
 
@@ -563,8 +561,6 @@ namespace Assets.Core.Entities {
             foreach (var subscriber in subscribers)
                 subscriber.ReceiveNotification(d);
 
-
-         
         }
 
     private void Complete() {

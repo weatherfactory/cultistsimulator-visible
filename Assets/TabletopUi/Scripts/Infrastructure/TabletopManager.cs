@@ -1079,9 +1079,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 			        {
 				        primaryStack.MergeIntoStack(stack);
 			        }
-
 	        }
-
    
         }
 

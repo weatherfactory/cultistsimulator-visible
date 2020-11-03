@@ -46,8 +46,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public const string SAVE_TITLE = "title";
         public const string SAVE_NAME = "name";
 
-        public const string SAVE_COMPLETIONCOUNT = "completioncount";
-
 
         public const char SEPARATOR = '_';
     }

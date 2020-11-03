@@ -81,8 +81,6 @@ namespace Assets.CS.TabletopUI {
             var newNote = new SituationNote(description);
 
             Notes.Add(newNote);
-            ShowFinalPage(); //assuming that we always want to show the last page, if a note has been added.
-            //This includes adding notes on reloading.
         }
 
 		void ShowPageNum(int page) {
@@ -98,6 +96,12 @@ namespace Assets.CS.TabletopUI {
             var offsetToLast = currentPage + Notes.Count-1;
             ShowPage(offsetToLast, AnimDirection.MoveRight); 
         }
+
+       public void SetFinalPage()
+       {
+           var offsetToLast = currentPage + Notes.Count - 1;
+           SetPage(offsetToLast);
+       }
 
         void ShowNextPage() {
 			ShowPage(1, AnimDirection.MoveRight);

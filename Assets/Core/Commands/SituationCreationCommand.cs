@@ -20,7 +20,6 @@ namespace Assets.Core.Commands
         public SituationState State { get; set; }
         public float? TimeRemaining { get; set; }
         public string OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
-        public int CompletionCount { get; set; }
         public TokenLocation AnchorLocation { get; set; }
         public List<SlotSpecification> OngoingSlots { get; set; } //we might, eg, save when slots have been created by a recipe, but later move on to another recipe
         public string SituationPath { get; set; }
