@@ -222,8 +222,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 if (situationState == SituationState.Unstarted)
                     situationState = SituationState.ReadyToReset; //this state didn't exist in the old save format. We need to set ReadyToReset, or the situation window will remain in its primordial condition
 
+                if (situationState == SituationState.Ongoing)
+                    situationState = SituationState.ReadyToContinue;
 
-  
 
                 var command = new SituationCreationCommand(situationVerb, recipe, situationState,null);
                 command.TimeRemaining = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_TIMEREMAINING);

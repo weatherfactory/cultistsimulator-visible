@@ -374,8 +374,12 @@ namespace Assets.Core.Entities {
                     break;
 
 
-                case SituationState.Ongoing:
+                case SituationState.ReadyToContinue: //special case: we want to re-initiate an ongoing state rather than start a new one, perhaps because we reloaded. So we won't, for instance, move ongoing slots contents into storage.
+                    State = SituationState.Ongoing;
+                    CurrentBeginningEffectCommand = new RecipeBeginningEffectCommand(currentPrimaryRecipe.Slots, CurrentRecipePrediction.BurnImage);
+                    break;
 
+                case SituationState.Ongoing:
                     // Execute if we've got no time remaining and we're not waiting for a greedy anim
                     // UNLESS timer has gone negative for 5 seconds. In that case sometime is stuck and we need to break out
                     if (TimeRemaining <= 0 && (!waitForGreedyAnim || TimeRemaining < -5.0f))
