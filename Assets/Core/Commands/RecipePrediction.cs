@@ -8,18 +8,18 @@ using Assets.Core.Services;
 namespace Assets.Core.Commands
 {
    public class RecipePrediction
-    {
+   {
+       private Recipe _actualRecipe;
         public string Title { get; protected set; }
         public string DescriptiveText { get; protected set; }
-        public string BurnImage { get; protected set; }
-        public EndingFlavour SignalEndingFlavour { get; protected set; }
+        public string BurnImage => _actualRecipe.BurnImage;
+        public EndingFlavour SignalEndingFlavour => _actualRecipe.SignalEndingFlavour;
 
-        public RecipePrediction(string title,string descriptiveText,string burnImage, EndingFlavour signalEndingFlavour,IAspectsDictionary aspectsAvailable)
+        public RecipePrediction(Recipe actualRecipe, IAspectsDictionary aspectsAvailable)
         {
-            Title = title;
-            DescriptiveText = descriptiveText;
-            BurnImage = burnImage;
-            SignalEndingFlavour = signalEndingFlavour;
+            _actualRecipe = actualRecipe;
+            Title = actualRecipe.Label;
+            DescriptiveText = actualRecipe.StartDescription;
             TextRefiner tr = new TextRefiner(aspectsAvailable);
             DescriptiveText = tr.RefineString(DescriptiveText);
 

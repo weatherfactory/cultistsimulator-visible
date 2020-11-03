@@ -27,6 +27,7 @@ namespace Assets.Core.Entities
         public static NullRecipe Create(IVerb forVerb)
         {
             var nr = Create();
+            nr.ActionId = forVerb.Id;
             nr.Label = forVerb.Label;
             nr.Description = forVerb.Description;
             return nr;

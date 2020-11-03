@@ -266,17 +266,17 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void DisplayRecipe(SituationEventData e, AspectsDictionary aspectsInSituation)
+        public void DisplayPredictedRecipe(SituationEventData e, AspectsDictionary aspectsInSituation)
         {
 
-            Title = e.CurrentRecipe.Label;
+            Title = e.RecipePrediction.Title;
             //Check for possible text refinements based on the aspects in context
             TextRefiner tr = new TextRefiner(aspectsInSituation);
 
             if(e.CurrentRecipe.HintOnly)
-                PaginatedNotes.SetText("<i>" + tr.RefineString(e.CurrentRecipe.StartDescription) + "</i>");
+                PaginatedNotes.SetText("<i>" + tr.RefineString(e.RecipePrediction.DescriptiveText) + "</i>");
             else
-                PaginatedNotes.SetText(tr.RefineString(e.CurrentRecipe.StartDescription));
+                PaginatedNotes.SetText(tr.RefineString(e.RecipePrediction.DescriptiveText));
 
 
             if(e.CurrentRecipe.Craftable)
@@ -350,7 +350,7 @@ namespace Assets.CS.TabletopUI {
         public void ContainerContentsUpdated(SituationEventData e)
         {
             var allAspectsInSituation = AspectsDictionary.GetFromStacks(e.StacksInEachStorage.SelectMany(s => s.Value), true);
-            DisplayRecipe(e, allAspectsInSituation);
+            DisplayPredictedRecipe(e, allAspectsInSituation);
 
 
             var allAspectsToDisplay = AspectsDictionary.GetFromStacks(e.StacksInEachStorage.SelectMany(s => s.Value), false);

@@ -5,6 +5,7 @@ using System.Text;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
 using Assets.Logic;
 using Noon;
 using UnityEngine;
@@ -18,13 +19,9 @@ namespace Assets.Core
         private IDice dice;
         private Character currentCharacter;
 
-        public RecipeConductor(ICompendium c,AspectsInContext a,IDice d,Character character)
+        public RecipeConductor()
         {
-            compendium = c;
-            aspectsToConsider = a;
-            dice = d;
-            currentCharacter = character;
-        }
+            }
 
         /// <summary>
         /// If linked recipes exist for this recipe:
@@ -32,15 +29,15 @@ namespace Assets.Core
         /// - check it is not exhausted
         /// - check the chance is satisfied
         /// </summary>
-        /// <param name="recipe"></param>
+        /// <param name="currentRecipe"></param>
         /// <returns></returns>
-        public Recipe GetLinkedRecipe(Recipe recipe)
+        public Recipe GetLinkedRecipe(Recipe currentRecipe)
         {
 
-            if (!recipe.Linked.Any())
+            if (!currentRecipe.Linked.Any())
                 return null;
 
-            foreach (var lr in recipe.Linked)
+            foreach (var lr in currentRecipe.Linked)
             {
                 if (lr.Additional)
                     throw new NotImplementedException(
@@ -51,22 +48,22 @@ namespace Assets.Core
 
                 if (candidateRecipe == null)
                 {
-                    NoonUtility.Log(recipe.Id + " says: " + "Tried to link to a nonexistent recipe with id " + lr.Id);
+                    NoonUtility.Log(currentRecipe.Id + " says: " + "Tried to link to a nonexistent recipe with id " + lr.Id);
                 }
                 else if (!candidateRecipe.RequirementsSatisfiedBy(aspectsToConsider))
                 {
-                    NoonUtility.Log(recipe.Id + " says: " + "Couldn't satisfy requirements for " + lr.Id + " so won't link to it.");
+                    NoonUtility.Log(currentRecipe.Id + " says: " + "Couldn't satisfy requirements for " + lr.Id + " so won't link to it.");
                 }
                 else if (currentCharacter.HasExhaustedRecipe(candidateRecipe))
                 {
-                    NoonUtility.Log(recipe.Id + " says: " + lr.Id + " has been exhausted, so won't execute");
+                    NoonUtility.Log(currentRecipe.Id + " says: " + lr.Id + " has been exhausted, so won't execute");
                 }
                 else
                 {
 
                     if (lr.ShouldAlwaysSucceed())
                     {
-                        NoonUtility.Log(recipe.Id + " says: " + lr.Id +
+                        NoonUtility.Log(currentRecipe.Id + " says: " + lr.Id +
                                         " is a suitable linked recipe no chance or challenges specified. Executing it next.");
                         return candidateRecipe;
 
@@ -74,86 +71,52 @@ namespace Assets.Core
 
                     ChallengeArbiter challengeArbiter=new ChallengeArbiter(aspectsToConsider,lr);
                     
-                    int diceResult = dice.Rolld100(recipe);
+                    int diceResult = dice.Rolld100(currentRecipe);
 
                     if (diceResult > challengeArbiter.GetArbitratedChance())
                     {
-                        NoonUtility.Log(recipe.Id + " says: " + "Dice result " + diceResult + ", against chance " + challengeArbiter.GetArbitratedChance() +
+                        NoonUtility.Log(currentRecipe.Id + " says: " + "Dice result " + diceResult + ", against chance " + challengeArbiter.GetArbitratedChance() +
                                         " for linked recipe " + lr.Id + "; will try to execute next linked recipe");
                     }
                     else
                     {
-                        NoonUtility.Log(recipe.Id + " says: " + lr.Id + " is a suitable linked recipe with dice result " + diceResult + ", against chance " + +challengeArbiter.GetArbitratedChance() + ". Executing it next.");
+                        NoonUtility.Log(currentRecipe.Id + " says: " + lr.Id + " is a suitable linked recipe with dice result " + diceResult + ", against chance " + +challengeArbiter.GetArbitratedChance() + ". Executing it next.");
                         return candidateRecipe;
                     }
                 }
             }
 
-            NoonUtility.Log(recipe.Id + " says: " + "No suitable linked recipe found");
+            NoonUtility.Log(currentRecipe.Id + " says: " + "No suitable linked recipe found");
 
             return null;
         }
 
         /// <summary>
         /// Returns information on the recipe that's going to execute, based on current recipe and aspect context
-        ///  If there are no alternate recipes, we return the current recipe
-        /// If there is a 100% alternate recipe, we return that
-        /// If there is a chance of an alternate recipe, we return *that* with basic chance description
-        /// If there's more than one, we return all those
-        /// </summary>
-        /// <param name="currentRecipe"></param>
-        /// <returns></returns>
-   //     public RecipePrediction GetPredictionForFollowupRecipe(Recipe currentRecipe)
-   //     {
-   //         var rp=new RecipePrediction();
+        public RecipePrediction GetPredictionForFollowupRecipe(Recipe currentRecipe, SituationState situationState, AspectsInContext aspectsInContext, IVerb verb, Character character)
+        {
 
-   ////set this up to return if we pass through the list below without finding anything interesting.
-   //             rp.Title = currentRecipe.Label;
-   //             rp.DescriptiveText = currentRecipe.StartDescription;
-   //         rp.SignalEndingFlavour = currentRecipe.SignalEndingFlavour;
+            
+            //returns, in order: craftable non-hint recipes; hint recipes; null recipe (which might be verb-description-based)
+            aspectsInContext.ThrowErrorIfNotPopulated(verb.Id);
 
+            //note: we *either* get craftable recipes *or* if we're getting hint recipes we don't care if they're craftable
+            var _recipes = Registry.Get<ICompendium>().GetEntitiesAsList<Recipe>();
+            List<Recipe> candidateRecipes = _recipes.Where(r => r.CanExecuteInContext(currentRecipe, situationState)).ToList();
+            List<Recipe> nonExhaustedCandidateRecipes =
+                candidateRecipes.Where(r => !character.HasExhaustedRecipe(r)).ToList();
+            
+            var orderedCandidateRecipes = nonExhaustedCandidateRecipes.OrderByDescending(r => r.Priority);
+            
+            foreach (var candidateRecipe in orderedCandidateRecipes)
+            {
+                if (candidateRecipe.RequirementsSatisfiedBy(aspectsInContext))
+                    return new RecipePrediction(candidateRecipe,aspectsInContext.AspectsInSituation);
+            }
 
-   //         foreach (var ar in currentRecipe.Alt)
-   //         {
-   //             Recipe candidateRecipe = compendium.GetEntityById<Recipe>(ar.Id);
-
-   //             if (candidateRecipe == null)
-   //             {
-   //                 rp.Title = "Recipe predictor couldn't find recipe with id " + ar.Id;
-   //                 return rp;
-   //             }
-   //             if (candidateRecipe.RequirementsSatisfiedBy(aspectsToConsider) &&
-   //                 !currentCharacter.HasExhaustedRecipe(candidateRecipe))
-
-   //             {
-   //                 if (!ar.Additional)
-   //                 {
-   //                     if (ar.ShouldAlwaysSucceed())
-   //                     {
-   //                         //we have a candidate which will execute instead. NB we don't recurse - we assume the first level
-   //                         //alternative will have a useful description.
-   //                         rp.Title = candidateRecipe.Label;
-   //                         rp.DescriptiveText = candidateRecipe.StartDescription;
-   //                         rp.BurnImage = candidateRecipe.BurnImage;
-   //                         rp.SignalEndingFlavour = candidateRecipe.SignalEndingFlavour;
-   //                         //we are not in the additional branch, so just return this prediction.
-   //                         return rp;
-   //                     }
-                        
-   //                     // Print a warning when we encounter a non-certain alternative recipe with a start description
-   //                     // and no description, since its text won't get displayed.
-   //                     var arRecipe = compendium.GetEntityById<Recipe>(ar.Id);
-   //                     if (!string.IsNullOrEmpty(arRecipe.StartDescription) && string.IsNullOrEmpty(arRecipe.Description))
-   //                         Debug.LogWarning(
-   //                             $"Recipe {ar.Id} should not be listed as an alternative recipe for {currentRecipe.Id}" +
-   //                             " since it has a chance of failure, a start description and no final description");
-   //                 }
-   //             }
-   //         }
-
-
-   //         return rp;
-   //     }
+         
+            return new RecipePrediction(currentRecipe,aspectsInContext.AspectsInSituation);
+        }
 
         public IList<RecipeExecutionCommand> GetActualRecipesToExecute(Recipe recipe)
         {

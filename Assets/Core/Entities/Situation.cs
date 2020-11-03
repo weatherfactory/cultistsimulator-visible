@@ -26,7 +26,7 @@ namespace Assets.Core.Entities {
     {
         public SituationState State { get; set; }
         public Recipe currentPrimaryRecipe { get; set; }
-        public Recipe currentPredictedRecipe { get; set; }
+        public RecipePrediction CurrentRecipePrediction{ get; set; }
 
         public float TimeRemaining { private set; get; }
 
@@ -159,7 +159,7 @@ namespace Assets.Core.Entities {
         private void Reset()
         {
             currentPrimaryRecipe = NullRecipe.Create(Verb);
-            currentPredictedRecipe = currentPrimaryRecipe;
+            CurrentRecipePrediction=new RecipePrediction(currentPrimaryRecipe,new AspectsDictionary());
             TimeRemaining = 0;
             State = SituationState.Unstarted;
         }
@@ -241,8 +241,7 @@ namespace Assets.Core.Entities {
             var ttm = Registry.Get<TabletopManager>();
             var aspectsInContext = ttm.GetAspectsInContext(GetAspectsAvailableToSituation(true));
 
-            RecipeConductor rc = new RecipeConductor(Registry.Get<ICompendium>(),
-                aspectsInContext, Registry.Get<IDice>(), Registry.Get<Character>());
+            RecipeConductor rc = new RecipeConductor();
 
             Continue(rc, interval, greedyAnimIsActive);
 
@@ -370,7 +369,7 @@ namespace Assets.Core.Entities {
 
                 case SituationState.ReadyToStart:
                     State = SituationState.Ongoing;
-                    CurrentBeginningEffectCommand = new RecipeBeginningEffectCommand(currentPrimaryRecipe.Slots, currentPredictedRecipe.BurnImage);
+                    CurrentBeginningEffectCommand = new RecipeBeginningEffectCommand(currentPrimaryRecipe.Slots, CurrentRecipePrediction.BurnImage);
                     var storageContainer = GetSingleContainerByCategory(ContainerCategory.SituationStorage);
                     storageContainer.AcceptStacks(GetStacks(ContainerCategory.Threshold),
                         new Context(Context.ActionSource.SituationStoreStacks));
@@ -390,9 +389,34 @@ namespace Assets.Core.Entities {
                     break;
 
                 case SituationState.RequiringExecution:
-            
-                End(rc);
-                  break;
+
+                    var linkedRecipe = rc.GetLinkedRecipe(currentPrimaryRecipe);
+
+                    if (linkedRecipe != null)
+                    {
+                        //send the completion description before we move on
+                        INotification notification = new Notification(currentPrimaryRecipe.Label, currentPrimaryRecipe.Description);
+                        SendNotificationToSubscribers(notification);
+
+                        //I think this code duplicates ActivateRecipe, below
+                        currentPrimaryRecipe = linkedRecipe;
+                        TimeRemaining = currentPrimaryRecipe.Warmup;
+                        if (TimeRemaining > 0) //don't play a sound if we loop through multiple linked ones
+                        {
+                            if (currentPrimaryRecipe.SignalImportantLoop)
+                                SoundManager.PlaySfx("SituationLoopImportant");
+                            else
+                                SoundManager.PlaySfx("SituationLoop");
+
+                        }
+
+                        State = SituationState.ReadyToStart;
+                    }
+                    else
+                    {
+                        Complete();
+                    }
+                    break;
 
                 case SituationState.Complete:
                     break;
@@ -521,35 +545,6 @@ namespace Assets.Core.Entities {
             Registry.Get<TabletopManager>().BeginNewSituation(scc, stacksToAddToNewSituation); //tabletop manager is a subscriber, right? can we run this (or access to its successor) through that flow?
 
         }
-
-    private void End(RecipeConductor rc) {
-			
-
-			var linkedRecipe = rc.GetLinkedRecipe(currentPrimaryRecipe);
-			
-			if (linkedRecipe!=null) {
-				//send the completion description before we move on
-				INotification notification = new Notification(currentPrimaryRecipe.Label, currentPrimaryRecipe.Description);
-                SendNotificationToSubscribers(notification);
-    
-                //I think this code duplicates ActivateRecipe, below
-				currentPrimaryRecipe = linkedRecipe;
-				TimeRemaining = currentPrimaryRecipe.Warmup;
-				if(TimeRemaining>0) //don't play a sound if we loop through multiple linked ones
-				{
-					if (currentPrimaryRecipe.SignalImportantLoop)
-						SoundManager.PlaySfx("SituationLoopImportant");
-					else
-						SoundManager.PlaySfx("SituationLoop");
-
-				}
-
-                State = SituationState.ReadyToStart;
-            }
-			else { 
-				Complete();
-			}
-    }
 
     public void SendNotificationToSubscribers(INotification notification)
     {
@@ -717,19 +712,15 @@ namespace Assets.Core.Entities {
             var aspectsInContext =
                 Registry.Get<TabletopManager>().GetAspectsInContext(aspectsAvailableToSituation);
 
-        currentPredictedRecipe = Registry.Get<ICompendium>()
-                .GetPredictedRecipe(currentPrimaryRecipe, aspectsInContext, Verb, Registry.Get<Character>());
+            RecipeConductor rc=new RecipeConductor();
 
-   SituationEventData data = SituationEventData.Create(this);
-
-
-          PossiblySignalImpendingDoom(currentPredictedRecipe.SignalEndingFlavour);
+            CurrentRecipePrediction = rc.GetPredictionForFollowupRecipe(currentPrimaryRecipe,State, aspectsInContext, Verb, Registry.Get<Character>());
 
         
-            var prediction=new RecipePrediction(currentPredictedRecipe.Label,currentPredictedRecipe.Description, currentPredictedRecipe.BurnImage, currentPredictedRecipe.SignalEndingFlavour,aspectsAvailableToSituation);
-            foreach (var subscriber in subscribers)
-                subscriber.RecipePredicted(prediction); //I can maybe fold this into ContainerContentsUpdated?
+            SituationEventData data = SituationEventData.Create(this);
             
+          PossiblySignalImpendingDoom(CurrentRecipePrediction.SignalEndingFlavour);
+
             foreach (var s in subscribers)
                 s.ContainerContentsUpdated(data);
 
@@ -808,8 +799,7 @@ namespace Assets.Core.Entities {
             //so immediately continue with a 0 interval - this won't advance time, but will update the visuals in the situation window
             //(which among other things should make the starting slot unavailable
 
-            RecipeConductor rc = new RecipeConductor(Registry.Get<ICompendium>(),
-                aspectsInContext, Registry.Get<IDice>(), Registry.Get<Character>()); //reusing the aspectsInContext from above
+            RecipeConductor rc = new RecipeConductor(); //reusing the aspectsInContext from above
 
             Continue(rc, 0);
 

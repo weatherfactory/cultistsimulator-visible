@@ -14,7 +14,7 @@ namespace Assets.CS.TabletopUI
         public float TimeRemaining { get; set; }
         public IVerb ActiveVerb { get; set; }
         public Recipe CurrentRecipe; //replace with SituationCreationComand / SituationEffectCommand? combine CreationCommand and EffectCommand?
-        public Recipe PredictedRecipe;
+        public RecipePrediction RecipePrediction;
 
         public Dictionary<ContainerCategory, List<ElementStackToken>> StacksInEachStorage { get; set; }
         public INotification Notification;
@@ -29,7 +29,7 @@ namespace Assets.CS.TabletopUI
             e.Warmup = fromSituation.Warmup;
             e.TimeRemaining = fromSituation.TimeRemaining;
             e.CurrentRecipe = fromSituation.currentPrimaryRecipe;
-            e.PredictedRecipe = fromSituation.currentPredictedRecipe;
+            e.RecipePrediction = fromSituation.CurrentRecipePrediction;
             e.StacksInEachStorage.Add(ContainerCategory.Threshold,fromSituation.GetStacks(ContainerCategory.Threshold));
             e.StacksInEachStorage.Add(ContainerCategory.SituationStorage, fromSituation.GetStacks(ContainerCategory.SituationStorage));
             e.StacksInEachStorage.Add(ContainerCategory.Output, fromSituation.GetStacks(ContainerCategory.Output));

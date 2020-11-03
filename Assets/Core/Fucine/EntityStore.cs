@@ -41,8 +41,7 @@ public class EntityStore
 
 
     }
-
-
+    
     public T GetById<T>(string entityId) where T : class, IEntityWithId
     {
         if (entityId == null)
@@ -68,6 +67,13 @@ public class EntityStore
         //if we order here, we don't have to cast to list twice
 
         return new List<T>(_entities.Values.Cast<T>().OrderBy(e=>e.Id).ToList());
+    }
+
+    public List<T> GetFilteredList<T>() where T : class, IEntityWithId
+    {
+        //if we order here, we don't have to cast to list twice
+
+        return new List<T>(_entities.Values.Cast<T>().OrderBy(e => e.Id).ToList());
     }
 
 
