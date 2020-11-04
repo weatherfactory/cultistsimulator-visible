@@ -21,6 +21,7 @@ using Assets.Core.NullObjects;
 using Assets.Core.Services;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
+using Noon;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
@@ -36,10 +37,7 @@ namespace Assets.CS.TabletopUI {
     [RequireComponent(typeof(SituationWindowPositioner))]
     public class SituationWindow : AbstractToken,ISituationSubscriber {
 
-        string buttonDefault;
-        string buttonBusy;
-
-		[Header("Visuals")]
+        [Header("Visuals")]
 		[SerializeField] CanvasGroupFader canvasGroupFader;
         public SituationWindowPositioner positioner;
 
@@ -96,11 +94,7 @@ namespace Assets.CS.TabletopUI {
 		}
         // INIT & LIFECYCLE
 
-        void OnEnable()
-        {
-            buttonDefault = "VERB_START";
-			buttonBusy = "VERB_RUNNING";
-        }
+
 
         public void TryResizeWindow(int slotsCount)
         {
@@ -132,9 +126,7 @@ namespace Assets.CS.TabletopUI {
 
             OnContainerAdded.Invoke(storage);
             OnContainerAdded.Invoke(results);
-
-            DisplayButtonState(false);
-
+            
             if (Verb.Startable)
             {
                 startButton.gameObject.SetActive(true);
@@ -281,12 +273,9 @@ namespace Assets.CS.TabletopUI {
 
             if(e.CurrentRecipe.Craftable)
             {
-                DisplayButtonState(true);
                 SoundManager.PlaySfx("SituationAvailable");
                 ongoingDisplay.UpdateDisplay(e); //Ensures that the time bar is set to 0 to avoid a flicker
             }
-            else
-                DisplayButtonState(false);
             
         }
 
@@ -313,14 +302,31 @@ namespace Assets.CS.TabletopUI {
            startingSlots.ArrangeSlots();
         }
 
-        public void DisplayAspects(IAspectsDictionary forAspects) {
-			aspectsDisplay.DisplayAspects(forAspects);
-		}
 
- 
-        void DisplayButtonState(bool interactable, string text = null) {
-			startButton.interactable = interactable;
-            startButtonText.GetComponent<Babelfish>().UpdateLocLabel(string.IsNullOrEmpty(text) ? buttonDefault : text);
+        void DisplayButtonState(SituationEventData data) {
+
+            switch(data.SituationState)
+            {
+                case SituationState.Unstarted:
+            
+                startButtonText.GetComponent<Babelfish>().UpdateLocLabel(NoonConstants.SITUATION_STARTABLE);
+                if (data.RecipePrediction.Craftable)
+                    startButton.interactable = true;
+                else
+                    startButton.interactable = false;
+                break;
+
+                case SituationState.Ongoing:
+                
+                    startButtonText.GetComponent<Babelfish>().UpdateLocLabel(NoonConstants.SITUATION_RUNNING);
+                    startButton.interactable = false;
+                    break;
+                case SituationState.Complete:
+                    startButtonText.GetComponent<Babelfish>().UpdateLocLabel(NoonConstants.SITUATION_STARTABLE);
+                    startButton.interactable = false;
+                    break;
+            }
+
         }
 
         // ACTIONS
@@ -340,7 +346,7 @@ namespace Assets.CS.TabletopUI {
                 results.UpdateDisplay(eventData);
                 results.UpdateDumpButtonText();
 
-                DisplayButtonState(eventData.SituationState == SituationState.Unstarted, buttonBusy);
+                DisplayButtonState(eventData);
             }
 
         }
@@ -354,9 +360,9 @@ namespace Assets.CS.TabletopUI {
 
 
             var allAspectsToDisplay = AspectsDictionary.GetFromStacks(e.StacksInEachStorage.SelectMany(s => s.Value), false);
-            DisplayAspects(allAspectsToDisplay);
+            aspectsDisplay.DisplayAspects(allAspectsToDisplay);
 
-     
+
         }
 
         public void ReceiveNotification(SituationEventData e)

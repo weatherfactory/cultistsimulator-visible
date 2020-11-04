@@ -14,6 +14,7 @@ namespace Assets.Core.Commands
         public string DescriptiveText { get; protected set; }
         public string BurnImage => _actualRecipe.BurnImage;
         public EndingFlavour SignalEndingFlavour => _actualRecipe.SignalEndingFlavour;
+        public bool Craftable => _actualRecipe.Craftable;
 
         public RecipePrediction(Recipe actualRecipe, IAspectsDictionary aspectsAvailable)
         {
