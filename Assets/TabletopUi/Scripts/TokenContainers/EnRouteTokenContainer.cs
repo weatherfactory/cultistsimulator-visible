@@ -13,6 +13,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
 {
     public class EnRouteTokenContainer : TokenContainer, IDraggableHolder
     {
+        
         public override ContainerCategory ContainerCategory { get; }
 
         public TabletopTokenContainer StartingContainer;
@@ -25,6 +26,11 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
         public RectTransform RectTransform
         {
             get { return GetComponent<RectTransform>(); }
+        }
+
+        public override void OnEnable()
+        {
+            base.OnEnable();
         }
 
 

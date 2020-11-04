@@ -37,7 +37,7 @@ namespace Assets.CS.TabletopUI {
         [Header("Tabletop")] [SerializeField] public TabletopTokenContainer _tabletop;
         [SerializeField] TabletopBackground tabletopBackground;
 
-        [SerializeField] public WindowsTokenContainer WindowsToken;
+        [SerializeField] public WindowsTokenContainer WindowsTokenContainer;
 
         [SerializeField] private HighlightLocationsController _highlightLocationsController;
 
@@ -184,7 +184,7 @@ namespace Assets.CS.TabletopUI {
                 //AppealToConscience();
             var registry = new Registry();
             
-            _situationBuilder = new SituationBuilder(_tabletop, WindowsToken);
+            _situationBuilder = new SituationBuilder(_tabletop, WindowsTokenContainer);
 
             //register everything used gamewide
             SetupServices(registry, _situationBuilder);
@@ -293,7 +293,7 @@ namespace Assets.CS.TabletopUI {
             registry.Register(builder);
 
 
-            var choreographer = new Choreographer(_tabletop, WindowsToken);
+            var choreographer = new Choreographer(_tabletop, WindowsTokenContainer);
             registry.Register(choreographer);
 
             var situationsCatalogue = new SituationsCatalogue();
@@ -511,7 +511,6 @@ namespace Assets.CS.TabletopUI {
             Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             try
             {
-                Registry.Get<TokenContainersCatalogue>().Reset();
 
                 Registry.Get<GameSaveManager>().LoadTabletopState(gameStateSource, _tabletop);
                 //saveGameManager.ImportHashedSaveToState(_tabletop, null, htSave);

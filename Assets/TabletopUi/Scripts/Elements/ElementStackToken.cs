@@ -589,9 +589,9 @@ namespace Assets.CS.TabletopUI {
                 try
                 {
 
-                var candidateThreshold=situation.GetFirstAvailableThresholdForStackPush(this);
-                if(candidateThreshold!=null)
-                    candidateThresholds.Add(candidateThreshold,situation);
+                    var candidateThreshold=situation.GetFirstAvailableThresholdForStackPush(this);
+                    if(candidateThreshold!=null)
+                        candidateThresholds.Add(candidateThreshold,situation);
                 }
                 catch (Exception e)
                 {
@@ -889,8 +889,8 @@ namespace Assets.CS.TabletopUI {
 
             _currentlyBeingDragged = true;
 
-            var windowsContainer = Registry.Get<TokenContainersCatalogue>().GetContainerByPath("enroute");
-            windowsContainer.AcceptStack(this, new Context(Context.ActionSource.PlayerDrag));
+            var enrouteContainer = Registry.Get<TokenContainersCatalogue>().GetContainerByPath("enroute");
+            enrouteContainer.AcceptStack(this, new Context(Context.ActionSource.PlayerDrag));
 
             _manifestation.OnBeginDragVisuals();
 

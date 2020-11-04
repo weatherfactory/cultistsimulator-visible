@@ -54,12 +54,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public ContainerStacksChangedEvent OnStacksChanged;
 
         public virtual bool AllowDrag { get; private set; }
-        public virtual bool AllowStackMerge { get; private set; }
-        public virtual bool AlwaysShowHoverGlow { get; private set; }
+        public virtual bool AllowStackMerge => true;
+        public virtual bool AlwaysShowHoverGlow => true;
         public virtual bool PersistBetweenScenes => false;
         public virtual bool EnforceUniqueStacksInThisContainer => true;
         public virtual bool ContentsHidden => false;
-        public virtual bool IsGreedy { get; protected set; }
+        public virtual bool IsGreedy => false;
         public abstract ContainerCategory ContainerCategory { get; }
         public SlotSpecification GoverningSlotSpecification { get; set; }
 
