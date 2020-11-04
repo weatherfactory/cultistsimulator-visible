@@ -267,8 +267,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 return true;
             if (token.Defunct)
                 return true;
-            if (token.IsInAir)
-                return true;
 			if (token.NoPush)
 				return true;
 

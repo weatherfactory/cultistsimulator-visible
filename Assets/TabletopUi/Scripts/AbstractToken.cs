@@ -1,6 +1,7 @@
 #pragma warning disable 0649
 using System;
 using System.Collections;
+using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
@@ -30,7 +31,6 @@ namespace Assets.CS.TabletopUI {
         TokenLocation Location { get; }
         bool Defunct { get; }
         bool IsBeingAnimated { get; }
-        bool IsInAir { get;}
         void TryReturnToOriginalPosition();
     }
 
@@ -102,7 +102,7 @@ namespace Assets.CS.TabletopUI {
         public bool IsBeingAnimated { get; set; }
 
         public bool Defunct { get; protected set; }
-        public bool IsInAir { protected set; get; }
+        
         public void TryReturnToOriginalPosition()
         {
             if (lastTablePos != null)
@@ -212,16 +212,17 @@ namespace Assets.CS.TabletopUI {
         protected virtual void StartDrag(PointerEventData eventData) {
             
             
-            if (rectCanvas == null)
-                rectCanvas = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
+            //if (rectCanvas == null)
+            //    rectCanvas = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
 
             _currentlyBeingDragged = true;
+
+
 
             TokenXNess = TokenXNess.NoValidDestination;
             canvasGroup.blocksRaycasts = false;
 
-            DisplayInAir();
-
+     
             startPosition = rectTransform.localPosition;
             startParent = rectTransform.parent;
             startSiblingIndex = rectTransform.GetSiblingIndex();
@@ -365,16 +366,13 @@ namespace Assets.CS.TabletopUI {
 
         public abstract void ReturnToTabletop(Context context);
 
-        public virtual void DisplayInAir() {
-            IsInAir = true;
-        }
+
 
         public virtual void DisplayAtTableLevel() {
             rectTransform.anchoredPosition3D = new Vector3(rectTransform.anchoredPosition3D.x, rectTransform.anchoredPosition3D.y, 0f);
             rectTransform.localRotation = Quaternion.identity;
             rectTransform.localScale = Vector3.one;
 			lastTablePos = rectTransform.anchoredPosition3D;
-            IsInAir = false;
             NotifyChroniclerPlacedOnTabletop();
         }
 

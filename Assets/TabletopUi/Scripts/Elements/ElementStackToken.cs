@@ -191,7 +191,7 @@ namespace Assets.CS.TabletopUI {
 			}
 			_aspectsDirtyInc = true;
             if(!TokenContainer.ContentsHidden)
-			    _manifestation.UpdateText(_element,quantity);
+			    _manifestation.UpdateVisuals(_element,quantity);
 
             TokenContainer.NotifyStacksChanged();
         }
@@ -350,7 +350,7 @@ namespace Assets.CS.TabletopUI {
                 SetQuantity(quantity, new Context(Context.ActionSource.Unknown)); // this also toggles badge visibility through second call
 
                 _manifestation.InitialiseVisuals(_element);
-                _manifestation.UpdateText(_element,quantity);
+                _manifestation.UpdateVisuals(_element,quantity);
                 LifetimeRemaining = _element.Lifetime;
                 _manifestation.UpdateDecayVisuals(LifetimeRemaining, _element,0,_currentlyBeingDragged);
            
@@ -413,9 +413,9 @@ namespace Assets.CS.TabletopUI {
 			
 				if (lastTablePos == null)	// If we've never been on the tabletop, use the drop zone
 				{
-				// If we get here we have a new card that won't stack with anything else. Place it in the "in-tray"
-					lastTablePos = GetDropZoneSpawnPos();
-					stackBothSides = false;
+                    // If we get here we have a new card that won't stack with anything else. Place it in the "in-tray"
+                    lastTablePos = GetDropZoneSpawnPos();
+                    stackBothSides = false;
                 }
 			}
 
@@ -492,7 +492,7 @@ namespace Assets.CS.TabletopUI {
             {
                 OldTokenContainer.OnStackRemoved(this, context);
                 if(OldTokenContainer.ContentsHidden && !newTokenContainer.ContentsHidden)
-                 _manifestation.UpdateText(_element,Quantity);
+                 _manifestation.UpdateVisuals(_element,Quantity);
             }
 
             TokenContainer = newTokenContainer;
@@ -558,7 +558,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         virtual public bool AllowsIncomingMerge() {
-            if (Decays || _element.Unique || IsBeingAnimated || IsInAir || TokenContainer.GetType()==typeof(RecipeSlot))
+            if (Decays || _element.Unique || IsBeingAnimated)
                 return false;
             else
                 return TokenContainer.AllowStackMerge;
@@ -711,11 +711,11 @@ namespace Assets.CS.TabletopUI {
                     return;
 
                 
-                if (stack.CanMergeWith(this))
-                {
-                    _manifestation.Highlight(HighlightType.CanMerge);
+                //if (stack.CanMergeWith(this))
+                //{
+                //    _manifestation.Highlight(HighlightType.CanMerge);
                    
-                }
+                //}
             }
             else if (args.TokenInteractionType == TokenInteractionType.EndDrag)
             {
@@ -784,11 +784,18 @@ namespace Assets.CS.TabletopUI {
 
         public bool CanMergeWith(ElementStackToken intoStack)
 		{
-            return	intoStack.EntityId == this.EntityId &&
-					(intoStack as ElementStackToken) != this &&
-					intoStack.AllowsIncomingMerge() &&
-					this.AllowsOutgoingMerge() &&
-					intoStack.GetCurrentMutations().IsEquivalentTo(GetCurrentMutations());
+            if(intoStack.EntityId != this.EntityId)
+                return false;
+            if (intoStack == this)
+                return false;
+            if (!intoStack.AllowsIncomingMerge())
+                return false;
+            if (!this.AllowsOutgoingMerge())
+                return false;
+            if(!intoStack.GetCurrentMutations().IsEquivalentTo(GetCurrentMutations()))
+                return false;
+
+            return true;
         }
 
         public override bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn)
@@ -877,8 +884,10 @@ namespace Assets.CS.TabletopUI {
         {
             _currentlyBeingDragged = true;
 
-            IsInAir = true; // This makes sure we don't consider it when checking for overlap
- _manifestation.OnBeginDragVisuals();
+            var windowsContainer = Registry.Get<TokenContainersCatalogue>().GetContainerByPath("enroute");
+            windowsContainer.AcceptStack(this, new Context(Context.ActionSource.PlayerDrag));
+
+            _manifestation.OnBeginDragVisuals();
 
             if (!Keyboard.current.shiftKey.wasPressedThisFrame)
 			{

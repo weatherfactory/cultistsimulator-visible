@@ -28,7 +28,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             //do nothing
         }
 
-        public void UpdateText(Element element, int quantity)
+        public void UpdateVisuals(Element element, int quantity)
         {
             //do nothing
         }

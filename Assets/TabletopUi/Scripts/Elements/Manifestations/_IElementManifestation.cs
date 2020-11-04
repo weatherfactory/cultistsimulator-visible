@@ -25,7 +25,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         public interface IElementManifestation
     {
         void InitialiseVisuals(Element element);
-        void UpdateText(Element element, int quantity);
+        void UpdateVisuals(Element element, int quantity);
         void ResetAnimations();
         bool Retire(RetirementVFX retirementVfx);
         void UpdateDecayVisuals(float lifetimeRemaining, Element element, float interval,bool currentlyBeingDragged);

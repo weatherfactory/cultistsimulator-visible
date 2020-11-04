@@ -223,7 +223,7 @@ namespace Assets.TabletopUi.Scripts.Elements
                 textBackground.overrideSprite = null;
         }
 
-        public void UpdateText(Element element, int quantity)
+        public void UpdateVisuals(Element element, int quantity)
         {
             text.text = element.Label;
             stackBadge.gameObject.SetActive(quantity > 1);

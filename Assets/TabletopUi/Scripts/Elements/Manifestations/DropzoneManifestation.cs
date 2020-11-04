@@ -65,7 +65,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             }
         }
 
-        public void UpdateText(Element element, int quantity)
+        public void UpdateVisuals(Element element, int quantity)
         {
             }
 

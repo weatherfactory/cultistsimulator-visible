@@ -326,7 +326,7 @@ public class DebugTools : MonoBehaviour,ITokenObserver
 
     void RemoveItem(string itemId)
     {
-throw new NotImplementedException();
+        tabletop.ModifyElementQuantity(itemId, -1, Source.Fresh(), new Context(Context.ActionSource.Debug));
     }
 
     void BeginSituation(string recipeId)
