@@ -621,7 +621,7 @@ namespace Assets.CS.TabletopUI {
                 {
 
                     var candidateAnchorLocation = candidateThresholds[selectedCandidate].GetAnchorLocation();
-                    SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.DoubleClickSend));
+                    SplitOffNCardsToNewStack(1, new Context(Context.ActionSource.DoubleClickSend));
                     tabletopTokenContainer.SendViaContainer.PrepareElementForSendAnim(this, candidateAnchorLocation); // this reparents the card so it can animate properly
                     tabletopTokenContainer.SendViaContainer.MoveElementToSituationSlot(this,candidateAnchorLocation, selectedCandidate, SEND_STACK_TO_SLOT_DURATION);
 
@@ -856,7 +856,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public ElementStackToken SplitAllButNCardsToNewStack(int n, Context context) {
+        public ElementStackToken SplitOffNCardsToNewStack(int n, Context context) {
             if (Quantity > n)
             {
                 var cardLeftBehind =
@@ -882,6 +882,11 @@ namespace Assets.CS.TabletopUI {
 
         protected override void StartDrag(PointerEventData eventData)
         {
+            if (!Keyboard.current.shiftKey.wasPressedThisFrame)
+            {
+                SplitOffNCardsToNewStack(1, new Context(Context.ActionSource.PlayerDrag));
+            }
+
             _currentlyBeingDragged = true;
 
             var windowsContainer = Registry.Get<TokenContainersCatalogue>().GetContainerByPath("enroute");
@@ -889,10 +894,7 @@ namespace Assets.CS.TabletopUI {
 
             _manifestation.OnBeginDragVisuals();
 
-            if (!Keyboard.current.shiftKey.wasPressedThisFrame)
-			{
-                SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.PlayerDrag));
-			}
+
             base.StartDrag(eventData); // To ensure all events fire at the end
         }
 

@@ -13,6 +13,9 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
     public class NullContainer:TokenContainer
     {
         public override ContainerCategory ContainerCategory => ContainerCategory.Null;
+        public override bool PersistBetweenScenes => true;
+        public override bool EnforceUniqueStacksInThisContainer =>false;
+        public override bool ContentsHidden => true;
 
         public override bool CurrentlyBlockedFor(BlockDirection direction)
         {

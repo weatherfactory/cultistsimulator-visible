@@ -58,7 +58,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public virtual bool AlwaysShowHoverGlow { get; private set; }
         public virtual bool PersistBetweenScenes => false;
         public virtual bool EnforceUniqueStacksInThisContainer => true;
-        public virtual bool ContentsHidden => true;
+        public virtual bool ContentsHidden => false;
         public virtual bool IsGreedy { get; protected set; }
         public abstract ContainerCategory ContainerCategory { get; }
         public SlotSpecification GoverningSlotSpecification { get; set; }
@@ -431,7 +431,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             // Decaying stacks should not be allowed
             while (stack.Decays && stack.Quantity > 1)
             {
-                AcceptStack(stack.SplitAllButNCardsToNewStack(stack.Quantity - 1, context), context);
+                AcceptStack(stack.SplitOffNCardsToNewStack(stack.Quantity - 1, context), context);
             }
 
 
@@ -468,7 +468,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 // set main stack to be returned to start position
                 stack.SetXNess(TokenXNess.ReturningSplitStack);
                 // And we split a new one that's 1 (leaving the returning card to be n-1)
-                var newStack = stack.SplitAllButNCardsToNewStack(stack.Quantity - 1, new Context(Context.ActionSource.PlayerDrag));
+                var newStack = stack.SplitOffNCardsToNewStack(stack.Quantity - 1, new Context(Context.ActionSource.PlayerDrag));
                 // And we put that into the slot
                 AcceptStack(newStack, new Context(Context.ActionSource.PlayerDrag));
             }
