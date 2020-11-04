@@ -536,12 +536,12 @@ namespace Assets.CS.TabletopUI {
             //we also want to make sure that we don't do anything else with the manifestation once we retire it
             //down in Manifestation, OnAnimDone from the instantiated effect destroys the game object.
 
-            var currentManifestation = _manifestation;
+            var manifestationToRetire = _manifestation;
             _manifestation=new NullElementManifestation();
 
             Destroy(this.gameObject);
 
-            return currentManifestation.Retire(vfxName);
+            return manifestationToRetire.Retire(vfxName);
 
         }
 
