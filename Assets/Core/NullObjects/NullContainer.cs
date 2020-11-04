@@ -14,6 +14,14 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
     {
         public override ContainerCategory ContainerCategory => ContainerCategory.Null;
 
+        public override bool CurrentlyBlockedFor(BlockDirection direction)
+        {
+            if (direction == BlockDirection.Outward)
+                return false; //might legitimately want to remove something from the null container
+
+            return true;
+        }
+
         public override string GetPath()
         {
             return string.Empty;

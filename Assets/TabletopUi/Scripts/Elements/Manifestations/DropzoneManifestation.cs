@@ -74,15 +74,11 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             
         }
 
-        public bool Retire(CanvasGroup canvasGroup)
+        public bool Retire(RetirementVFX vfx)
         {
             return false;
         }
 
-        public void SetVfx(CardVFX vfxName)
-        {
-            
-        }
 
         public void ShowGlow(bool glowState, bool instant = false)
         {

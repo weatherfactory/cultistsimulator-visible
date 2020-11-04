@@ -76,7 +76,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 			cameraZoom.StartFixedZoom(0f, zoomDuration);
 
             // Start hiding all tokens
-            RetireAllStacks(CardVFX.CardBurn);
+            RetireAllStacks(RetirementVFX.CardBurn);
 
             // (Spawn specific effect based on token, depending on end-game-type)
             InstantiateEffect(ending, culpableVerb.transform);
@@ -129,7 +129,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return go;
         }
 
-        void RetireAllStacks(CardVFX anim) {
+        void RetireAllStacks(RetirementVFX anim) {
             var stacks = _tabletopManager._tabletop.GetStacks();
 
             foreach (var item in stacks)

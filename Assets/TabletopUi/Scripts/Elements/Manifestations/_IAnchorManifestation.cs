@@ -19,7 +19,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         void InitialiseVisuals(IVerb verb);
         void ResetAnimations();
         bool Retire(CanvasGroup canvasGroup);
-        void SetVfx(CardVFX vfxName);
+        void SetVfx(RetirementVFX vfxName);
         void UpdateTimerVisuals(float duration, float timeRemaining, EndingFlavour signalEndingFlavour);
         void BeginArtAnimation();
         bool CanAnimate();

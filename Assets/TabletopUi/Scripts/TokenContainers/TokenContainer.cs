@@ -93,7 +93,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return true;
         }
 
-        public bool CurrentlyBlockedFor(BlockDirection direction)
+        public virtual bool CurrentlyBlockedFor(BlockDirection direction)
         {
             var currentBlockDirection = CurrentBlockDirection();
             return (currentBlockDirection == BlockDirection.All ||
@@ -401,6 +401,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         }
 
+        public virtual void AcceptAnchor(VerbAnchor anchor, Context context)
+        {
+            DisplayHere(anchor,context);
+        }
+
         public virtual void AcceptStack(ElementStackToken stack, Context context)
         {
             if (stack == null)
@@ -506,14 +511,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 {
                     NoonUtility.Log(
                         "Not the stack that got accepted, but has the same ID as the stack that got accepted? It's a copy!");
-                    existingStack.Retire(CardVFX.CardHide);
+                    existingStack.Retire(RetirementVFX.CardHide);
                     return; // should only ever be one stack to retire!
                     // Otherwise this crashes because Retire changes the collection we are looking at
                 }
                 else if (existingStack != incomingStack && !string.IsNullOrEmpty(incomingStack.UniquenessGroup))
                 {
                     if (existingStack.UniquenessGroup == incomingStack.UniquenessGroup)
-                        existingStack.Retire(CardVFX.CardHide);
+                        existingStack.Retire(RetirementVFX.CardHide);
 
                 }
             }
@@ -551,14 +556,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         {
             var stacksListCopy = new List<ElementStackToken>(_stacks);
             foreach (ElementStackToken s in stacksListCopy)
-                s.Retire(CardVFX.None);
+                s.Retire(RetirementVFX.None);
         }
 
         public void RetireStacksWhere(Func<ElementStackToken, bool> filter)
         {
             var stacksToRetire = new List<ElementStackToken>(_stacks).Where(filter);
             foreach (ElementStackToken s in stacksToRetire)
-                s.Retire(CardVFX.None);
+                s.Retire(RetirementVFX.None);
         }
 
         public void NotifyStacksChanged()

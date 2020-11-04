@@ -126,7 +126,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     if (cards[i] != cardTurned)
                     {
                         cards[i].Unshroud();
-                        cards[i].Retire(CardVFX.CardLightDramatic);
+                        cards[i].Retire(RetirementVFX.CardLightDramatic);
                     }
 
             cards = null;
@@ -146,7 +146,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (cards != null) {
                 foreach (var item in cards) {
                     if (item != pickedStack)
-                        item.Retire(CardVFX.None);
+                        item.Retire(RetirementVFX.None);
                 }
             }
 

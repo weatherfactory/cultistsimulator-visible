@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Core.Enums
 {
-    public enum CardVFX
+    public enum RetirementVFX
     {
         CardBurn,
         CardBlood,

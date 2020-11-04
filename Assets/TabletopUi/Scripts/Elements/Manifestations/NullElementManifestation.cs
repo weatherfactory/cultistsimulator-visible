@@ -5,50 +5,39 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
-using Assets.CS.TabletopUI;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
-   public class MinimalManifestation:MonoBehaviour,IElementManifestation
+    /// <summary>
+    /// used for an element that has been retired.
+    /// </summary>
+   public class NullElementManifestation: IElementManifestation
     {
-        public bool RequestingNoDrag => false;
-        public void DoMove(RectTransform tokenRectTransform)
-        {
-
-        }
-
-        public void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<AbstractToken> animDone, float startScale, float endScale)
-        {
-            //do nothing
-        }
-
         public void InitialiseVisuals(Element element)
         {
-            //do nothing
+            
         }
 
         public void UpdateText(Element element, int quantity)
         {
-            //do nothing
+            
         }
 
         public void ResetAnimations()
         {
-            //do nothing
+            
         }
 
-        public bool Retire(RetirementVFX vfx)
+        public bool Retire(RetirementVFX retirementVfx)
         {
-            Destroy(gameObject);
             return true;
         }
 
-
-
         public void UpdateDecayVisuals(float lifetimeRemaining, Element element, float interval, bool currentlyBeingDragged)
         {
-            }
+            
+        }
 
         public void BeginArtAnimation(string icon)
         {
@@ -72,6 +61,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         public void Highlight(HighlightType highlightType)
         {
+            
         }
 
         public void Unhighlight(HighlightType highlightType)
@@ -80,12 +70,21 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         }
 
         public bool NoPush => true;
+        
+
+        public bool RequestingNoDrag => true;
         public void DoRevealEffect(bool instant)
         {
-        }
+            }
 
         public void DoShroudEffect(bool instant)
         {
+            }
+
+        
+        public void DoMove(RectTransform tokenRectTransform)
+        {
+            
         }
     }
 }

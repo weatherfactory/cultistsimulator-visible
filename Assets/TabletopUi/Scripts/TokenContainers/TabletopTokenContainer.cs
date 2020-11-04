@@ -56,16 +56,12 @@ public class TabletopTokenContainer : TokenContainer,IBeginDragHandler,IEndDragH
 
 
     public override void DisplayHere(IToken token, Context context) {
-        // We're not setting the location; this is used to display a token dragged and dropped to an arbitrary position
-        // (or loaded and added to an arbitrary position)
+        
         token.transform.SetParent(transform, true);
-        token.TryReturnToOriginalPosition();
         token.transform.localRotation = Quaternion.identity;
 		token.SnapToGrid();
         token.SetTokenContainer(this, context);
         token.DisplayAtTableLevel(); // This puts it on the table, so now the choreographer will pick it up
-        CheckOverlappingTokens(token);
-
 
     }
 
@@ -103,8 +99,6 @@ public class TabletopTokenContainer : TokenContainer,IBeginDragHandler,IEndDragH
 
     }
 
-
-
   
     void HandleOnTableDropped(PointerEventData eventData)
     {
@@ -117,7 +111,7 @@ public class TabletopTokenContainer : TokenContainer,IBeginDragHandler,IEndDragH
         if (potentialVerbAnchor != null)
         {
             potentialVerbAnchor.SetXNess(TokenXNess.DroppedOnTableContainer);
-            DisplayHere(potentialVerbAnchor,
+            AcceptAnchor(potentialVerbAnchor,
                 new Context(Context.ActionSource.PlayerDrag));
             CheckOverlappingTokens(potentialVerbAnchor);
             SoundManager.PlaySfx("CardDrop");

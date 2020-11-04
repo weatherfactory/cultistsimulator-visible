@@ -94,7 +94,7 @@ namespace Assets.CS.TabletopUI {
                 var stack = args.Token as ElementStackToken;
                 if (stack == null)
                     return;
-                if (_situation.GetFirstAvailableThresholdForStackPush(stack)!=null)
+                if (!_situation.GetFirstAvailableThresholdForStackPush(stack).CurrentlyBlockedFor(BlockDirection.Inward))
                 {
                     _manifestation.Highlight(HighlightType.CanInteractWithOtherToken);
                 }
@@ -113,12 +113,14 @@ namespace Assets.CS.TabletopUI {
 
         public override void OnPointerEnter(PointerEventData eventData)
         {
-            _manifestation.Highlight(HighlightType.Hover);
+            if(!eventData.dragging) 
+                _manifestation.Highlight(HighlightType.Hover);
         }
 
         public override void OnPointerExit(PointerEventData eventData)
         {
-            _manifestation.Unhighlight(HighlightType.Hover);
+            if (!eventData.dragging)
+                _manifestation.Unhighlight(HighlightType.Hover);
 
         }
 

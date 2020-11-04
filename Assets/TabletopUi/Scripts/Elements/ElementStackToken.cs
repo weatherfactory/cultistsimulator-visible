@@ -23,6 +23,7 @@ using Assets.TabletopUi.Scripts.Elements.Manifestations;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
 using Assets.TabletopUi.Scripts.Interfaces;
+using Assets.TabletopUi.Scripts.TokenContainers;
 using Assets.TabletopUi.Scripts.UI;
 using Noon;
 using UnityEngine.InputSystem;
@@ -178,9 +179,9 @@ namespace Assets.CS.TabletopUI {
 			if (quantity <= 0)
 			{
 			    if (context.actionSource == Context.ActionSource.Purge)
-			        Retire(CardVFX.CardLight);
+			        Retire(RetirementVFX.CardLight);
                 else
-				    Retire(CardVFX.CardBurn);
+				    Retire(RetirementVFX.CardBurn);
                 return;
 			}
 
@@ -369,7 +370,7 @@ namespace Assets.CS.TabletopUI {
             catch (Exception e)
             {
                 NoonUtility.Log("Couldn't create element with ID " + elementId + " - " + e.Message + "(This might be an element that no longer exists being referenced in a save file?)");
-                Retire(CardVFX.None);
+                Retire(RetirementVFX.None);
             }
         }
 
@@ -476,7 +477,7 @@ namespace Assets.CS.TabletopUI {
 
         public void MergeIntoStack(ElementStackToken stackMergedIntoThisOne) {
             SetQuantity(Quantity + stackMergedIntoThisOne.Quantity,new Context(Context.ActionSource.Merge));
-            stackMergedIntoThisOne.Retire(CardVFX.None);
+            stackMergedIntoThisOne.Retire(RetirementVFX.None);
 
             _manifestation.Highlight(HighlightType.AttentionPls);
         }
@@ -504,36 +505,46 @@ namespace Assets.CS.TabletopUI {
         }
 
         public override bool Retire()
-		{
-            		if (Defunct)
-                        return false;
-
-                    var hlc = Registry.Get<HighlightLocationsController>(false);
-                    if(hlc!=null)
-                        hlc.DeactivateMatchingHighlightLocation(_element?.Id);
-
-                    var tabletop = Registry.Get<TabletopManager>(false);
-                    if(tabletop!=null)
-                        tabletop.NotifyAspectsDirty();	// Notify tabletop that aspects will need recompiling
-            
-                    SetTokenContainer(null, new Context(Context.ActionSource.Retire)); // notify the view container that we're no longer here
-
-                    //now take care of the Unity side of things.
-
-                    Defunct = true;
-                    FinishDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex)
-
-                    return _manifestation.Retire(canvasGroup);
+        {
+            return Retire(RetirementVFX.CardBurn);
         }
 
 
-        public bool Retire(CardVFX vfxName)
+        
+        public override bool Retire(RetirementVFX vfxName)
         {
 
-            _manifestation.SetVfx(vfxName);
+            if (Defunct)
+                return false;
 
-            return Retire();
+            var hlc = Registry.Get<HighlightLocationsController>(false);
+            if (hlc != null)
+                hlc.DeactivateMatchingHighlightLocation(_element?.Id);
+
+            var tabletop = Registry.Get<TabletopManager>(false);
+            if (tabletop != null)
+                tabletop.NotifyAspectsDirty();  // Notify tabletop that aspects will need recompiling
+
+            SetTokenContainer(Registry.Get<NullContainer>(), new Context(Context.ActionSource.Retire)); // notify the view container that we're no longer here
+
+            //now take care of the Unity side of things.
+
+            Defunct = true;
+            FinishDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex)
+
+            //we really want to pass down the VFX; and we ideally wouldn't pass down the canvasgroup, os that's ugly.
+            //we also want to make sure that we don't do anything else with the manifestation once we retire it
+            //down in Manifestation, OnAnimDone from the instantiated effect destroys the game object.
+
+            var currentManifestation = _manifestation;
+            _manifestation=new NullElementManifestation();
+
+            Destroy(this.gameObject);
+
+            return currentManifestation.Retire(vfxName);
+
         }
+
 
 
         protected override bool AllowsDrag()
@@ -794,7 +805,7 @@ namespace Assets.CS.TabletopUI {
                 SoundManager.PlaySfx("CardPutOnStack");
 
                 
-                this.Retire(CardVFX.None);
+                Retire(RetirementVFX.None);
             }
             else {
                 ShowNoMergeMessage(stackDroppedOn);
@@ -910,7 +921,7 @@ namespace Assets.CS.TabletopUI {
 
                 // If we DecayTo, then do that. Otherwise straight up retire the card
                 if (string.IsNullOrEmpty(_element.DecayTo))
-                    Retire(CardVFX.CardBurn);
+                    Retire(RetirementVFX.CardBurn);
                 else
                     DecayTo(_element.DecayTo);
             }
@@ -954,7 +965,7 @@ namespace Assets.CS.TabletopUI {
                 // Accepting stack may put it to pos Vector3.zero, so this is last
                 cardLeftBehind.transform.position = transform.position;
 
-                Retire(CardVFX.CardTransformWhite);
+                Retire(RetirementVFX.CardTransformWhite);
             }
             catch (Exception e)
             {

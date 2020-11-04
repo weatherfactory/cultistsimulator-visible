@@ -36,7 +36,6 @@ namespace Assets.TabletopUi.Scripts.Elements
      
         private Image decayBackgroundImage;
         private Color cachedDecayBackgroundColor;
-        private CardVFX retirementVfx = CardVFX.CardBurn;
         private bool decayVisible = false;
         private float decayAlpha = 0.0f;
         private Coroutine animCoroutine;
@@ -233,12 +232,6 @@ namespace Assets.TabletopUi.Scripts.Elements
         }
 
 
-        public void SetVfx(CardVFX vfx)
-        {
-            //room here to specify the vfx type / change to args
-            retirementVfx = vfx;
-        }
-
         private bool IsGlowing()
         {
             if (glowImage == null)
@@ -299,18 +292,19 @@ namespace Assets.TabletopUi.Scripts.Elements
         
 
 
-        public bool Retire(CanvasGroup canvasGroup)
+        public bool Retire(RetirementVFX retirementVfx)
         {
-            if (retirementVfx == CardVFX.CardHide || retirementVfx == CardVFX.CardHide)
+            
+            if (retirementVfx == RetirementVFX.CardHide)
             {
-                StartCoroutine( FadeCard(canvasGroup,0.5f));
+                StartCoroutine( FadeCard(this.gameObject.GetComponentInParent<CanvasGroup>(),0.5f));
             }
             else
             {
                 // Check if we have an effect
                 CardEffectRemove effect;
 
-                if (retirementVfx == CardVFX.None || !gameObject.activeInHierarchy)
+                if (retirementVfx == RetirementVFX.None || !gameObject.activeInHierarchy)
                     effect = null;
                 else
                     effect = InstantiateEffect(retirementVfx.ToString());

@@ -18,7 +18,6 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 namespace Assets.CS.TabletopUI {
     public class ElementStackBadge : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 
-        [SerializeField] ElementStackToken token;
         [SerializeField] Image image;
         [SerializeField] Sprite badgeHoverSprite;
 
@@ -35,7 +34,7 @@ namespace Assets.CS.TabletopUI {
 			SoundManager.PlaySfx("TokenHover");
 
             // only highlight if we're not dragging anything
-            if (!token.Defunct && !eventData.dragging)
+            if (!eventData.dragging)
                 image.overrideSprite = badgeHoverSprite;
             
         }

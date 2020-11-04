@@ -103,7 +103,7 @@ namespace Assets.Logic
             {
                 if (stacks.ElementAt(i) != null && stacks.ElementAt(i).MarkedForConsumption)
                 {
-                    stacks.ElementAt(i).Retire(CardVFX.CardBurn);
+                    stacks.ElementAt(i).Retire(RetirementVFX.CardBurn);
                 }
             }
         }

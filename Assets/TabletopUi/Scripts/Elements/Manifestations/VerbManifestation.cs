@@ -229,7 +229,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             throw new NotImplementedException();
         }
 
-        public void SetVfx(CardVFX vfxName)
+        public void SetVfx(RetirementVFX vfxName)
         {
             throw new NotImplementedException();
         }
@@ -322,23 +322,6 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         private void ShowHoverGlow(bool show)
         {
-            //if (show)
-            //{
-            //    if (_currentlyBeingDragged)
-            //    {
-            //        // If we're trying to glow the dragged token, then let's just allow us to show it if we want.
-            //    }
-            //    //// We're dragging something and our last state was not "this is a legal drop target" glow, then don't show
-            //    /// <<totally confused by this, though it sounds necessary. I'll come back to it. - AK
-            //    //else if (HornedAxe.itemBeingDragged != null && !lastGlowState) {
-            //    //    show = false;
-            //    //}
-            //    // If we can not interact, don't show the hover highlight
-            //    else if (!ShouldShowHoverGlow())
-            //    {
-            //        show = false;
-            //    }
-            //}
 
             if (show)
             {

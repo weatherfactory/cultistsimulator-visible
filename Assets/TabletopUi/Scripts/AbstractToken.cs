@@ -1,6 +1,7 @@
 #pragma warning disable 0649
 using System;
 using System.Collections;
+using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
 using Assets.CS.TabletopUI.Interfaces;
@@ -379,11 +380,17 @@ namespace Assets.CS.TabletopUI {
 
         protected abstract void NotifyChroniclerPlacedOnTabletop();
 
-        public virtual bool Retire() {
-            Destroy(gameObject);
+        public virtual bool Retire()
+        {
+          return  Retire(RetirementVFX.None);
+        }
+        public virtual bool Retire(RetirementVFX vfx)
+        {
             Defunct = true;
+            Destroy(gameObject);
             return true;
         }
+
 
 
 
