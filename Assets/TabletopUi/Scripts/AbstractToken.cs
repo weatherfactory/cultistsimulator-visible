@@ -333,34 +333,34 @@ namespace Assets.CS.TabletopUI {
             var element = token as ElementStackToken;
 
             if (element != null)
-                return CanInteractWithTokenDroppedOn(element);
+                return CanInteractWithIncomingObject(element);
             else
-                return CanInteractWithTokenDroppedOn(token as VerbAnchor);
+                return CanInteractWithIncomingObject(token as VerbAnchor);
         }
 
 
 
-        public abstract bool CanInteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn);
-        public abstract bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn);
+        public abstract bool CanInteractWithIncomingObject(VerbAnchor tokenDroppedOn);
+        public abstract bool CanInteractWithIncomingObject(ElementStackToken stackDroppedOn);
 
-        public void InteractWithTokenDroppedOn(GameObject objectDroppedOn)
+        public void InteractWithIncomingObject(GameObject incomingObject)
         {
-            var token = objectDroppedOn.GetComponent<AbstractToken>();
+            var token = incomingObject.GetComponent<AbstractToken>();
             if (token != null)
-                 InteractWithTokenDroppedOn(token);
+                 InteractWithIncomingObject(token);
         }
-        public void InteractWithTokenDroppedOn(AbstractToken token)
+        public void InteractWithIncomingObject(AbstractToken token)
         {
             var element = token as ElementStackToken;
 
             if (element != null)
-                InteractWithTokenDroppedOn(element);
+                InteractWithIncomingObject(element);
             else
-                InteractWithTokenDroppedOn(token as VerbAnchor);
+                InteractWithIncomingObject(token as VerbAnchor);
         }
 
-        public abstract void InteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn);
-        public abstract void InteractWithTokenDroppedOn(ElementStackToken stackDroppedOn);
+        public abstract void InteractWithIncomingObject(VerbAnchor tokenDroppedOn);
+        public abstract void InteractWithIncomingObject(ElementStackToken incomingStack);
 
         public abstract void OnPointerClick(PointerEventData eventData);
 

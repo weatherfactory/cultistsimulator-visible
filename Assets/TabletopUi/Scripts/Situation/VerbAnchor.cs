@@ -180,7 +180,7 @@ namespace Assets.CS.TabletopUI {
         public override void OnDrop(PointerEventData eventData)
         {
 
-            InteractWithTokenDroppedOn(eventData.pointerDrag);
+            InteractWithIncomingObject(eventData.pointerDrag);
         }
 
         public override void OnPointerClick(PointerEventData eventData)
@@ -211,18 +211,18 @@ namespace Assets.CS.TabletopUI {
             _situation.Close();
         }
 
-        public override bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn) {
+        public override bool CanInteractWithIncomingObject(ElementStackToken stackDroppedOn) {
             
             return (_situation.GetFirstAvailableThresholdForStackPush(stackDroppedOn).ContainerCategory==ContainerCategory.Threshold);
         }
 
-        public override void InteractWithTokenDroppedOn(ElementStackToken stackDroppedOn)
+        public override void InteractWithIncomingObject(ElementStackToken incomingStack)
         {
             
-            if (CanInteractWithTokenDroppedOn(stackDroppedOn))
+            if (CanInteractWithIncomingObject(incomingStack))
             {
                 // This will put it into the ongoing or the starting slot, token determines
-                _situation.PushDraggedStackIntoThreshold(stackDroppedOn);
+                _situation.PushDraggedStackIntoThreshold(incomingStack);
 
                 // Then we open the situation (cause this closes other situations and this may return the stack we try to move
                 // back onto the tabletop - if it was in its starting slots. - Martin
@@ -240,12 +240,12 @@ namespace Assets.CS.TabletopUI {
             
         }
 
-        public override bool CanInteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn) {
+        public override bool CanInteractWithIncomingObject(VerbAnchor tokenDroppedOn) {
             //verb dropped on verb - OK
             return false; // a verb anchor can't be dropped on anything
         }
 
-        public override void InteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn) {
+        public override void InteractWithIncomingObject(VerbAnchor tokenDroppedOn) {
             //verb dropped on verb - OK
             
             tokenDroppedOn.TokenContainer.TryMoveAsideFor(this, tokenDroppedOn, out bool moveAsideFor);

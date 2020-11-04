@@ -155,22 +155,22 @@ namespace Assets.CS.TabletopUI {
             throw new NotImplementedException();
         }
 
-        public override bool CanInteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn)
+        public override bool CanInteractWithIncomingObject(VerbAnchor tokenDroppedOn)
         {
             throw new NotImplementedException();
         }
 
-        public override bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn)
+        public override bool CanInteractWithIncomingObject(ElementStackToken stackDroppedOn)
         {
             throw new NotImplementedException();
         }
 
-        public override void InteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn)
+        public override void InteractWithIncomingObject(VerbAnchor tokenDroppedOn)
         {
             throw new NotImplementedException();
         }
 
-        public override void InteractWithTokenDroppedOn(ElementStackToken stackDroppedOn)
+        public override void InteractWithIncomingObject(ElementStackToken incomingStack)
         {
             throw new NotImplementedException();
         }

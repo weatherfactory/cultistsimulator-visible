@@ -57,7 +57,7 @@ namespace Assets.TabletopUi.Scripts.UI
 
         }
 
-        public void OnStackDropped(ElementStackToken stack, PointerEventData eventData)
+        public void OnStackReceivedADrop(ElementStackToken stack, PointerEventData eventData)
         {
         }
 

@@ -389,7 +389,7 @@ namespace Assets.CS.TabletopUI {
             //We might have changed the element that a stack is associated with... so check we can still merge it
             if (originStack != null && originStack.IsOnTabletop() && CanMergeWith(originStack))
 			{
-                originStack.MergeIntoStack(this);
+                originStack.AcceptIncomingStackForMerge(this);
                 return;
             }
             else
@@ -405,7 +405,7 @@ namespace Assets.CS.TabletopUI {
 						if (CanMergeWith(stack))
 						{
 							var elementStack = stack as ElementStackToken;
-							elementStack.MergeIntoStack(this);
+							elementStack.AcceptIncomingStackForMerge(this);
 							return;
 						}
 					}
@@ -475,9 +475,12 @@ namespace Assets.CS.TabletopUI {
             return transform.parent.GetComponent<TabletopTokenContainer>() != null;
         }
 
-        public void MergeIntoStack(ElementStackToken stackMergedIntoThisOne) {
+        public void AcceptIncomingStackForMerge(ElementStackToken stackMergedIntoThisOne) {
             SetQuantity(Quantity + stackMergedIntoThisOne.Quantity,new Context(Context.ActionSource.Merge));
             stackMergedIntoThisOne.Retire(RetirementVFX.None);
+
+            SetXNess(TokenXNess.MergedIntoStack);
+            SoundManager.PlaySfx("CardPutOnStack");
 
             _manifestation.Highlight(HighlightType.AttentionPls);
         }
@@ -710,12 +713,11 @@ namespace Assets.CS.TabletopUI {
                 if (Defunct || stack == null)
                     return;
 
-                
-                //if (stack.CanMergeWith(this))
-                //{
-                //    _manifestation.Highlight(HighlightType.CanMerge);
-                   
-                //}
+
+                if (stack.CanMergeWith(this))
+                {
+                    _manifestation.Highlight(HighlightType.CanMerge);
+                }
             }
             else if (args.TokenInteractionType == TokenInteractionType.EndDrag)
             {
@@ -770,13 +772,17 @@ namespace Assets.CS.TabletopUI {
 			}
         }
 
+        /// <summary>
+        /// this is on the object that *accepts* a drop
+        /// </summary>
+        /// <param name="eventData"></param>
         public override void OnDrop(PointerEventData eventData) {
             foreach (var o in observers)
             {
-                o.OnStackDropped(this, eventData);
+                o.OnStackReceivedADrop(this, eventData);
             }
 
-            InteractWithTokenDroppedOn(eventData.pointerDrag);
+            InteractWithIncomingObject(eventData.pointerDrag);
 
         }
 
@@ -798,26 +804,21 @@ namespace Assets.CS.TabletopUI {
             return true;
         }
 
-        public override bool CanInteractWithTokenDroppedOn(ElementStackToken stackDroppedOn)
+        public override bool CanInteractWithIncomingObject(ElementStackToken stackDroppedOn)
         {
             //element dropped on element
             return CanMergeWith(stackDroppedOn);
         }
 
-        public override void InteractWithTokenDroppedOn(ElementStackToken stackDroppedOn) {
+        public override void InteractWithIncomingObject(ElementStackToken incomingStack) {
             //element dropped on element
-            if (CanInteractWithTokenDroppedOn(stackDroppedOn)) {
-                stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity,new Context(Context.ActionSource.Unknown));
-                SetXNess(TokenXNess.MergedIntoStack);
-                SoundManager.PlaySfx("CardPutOnStack");
-
-                
-                Retire(RetirementVFX.None);
-            }
+            if (CanInteractWithIncomingObject(incomingStack)) {
+                AcceptIncomingStackForMerge(incomingStack);
+                }
             else {
-                ShowNoMergeMessage(stackDroppedOn);
+                ShowNoMergeMessage(incomingStack);
 
-                var droppedOnToken = stackDroppedOn as AbstractToken;
+                var droppedOnToken = incomingStack as AbstractToken;
                 bool moveAsideFor = false;
                 droppedOnToken.TokenContainer.TryMoveAsideFor(this, droppedOnToken, out moveAsideFor);
 
@@ -826,13 +827,13 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public override bool CanInteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn)
+        public override bool CanInteractWithIncomingObject(VerbAnchor tokenDroppedOn)
         {
             //verb dropped on element - FIXED
             return false; // a verb anchor can't be dropped on anything
         }
 
-        public override void InteractWithTokenDroppedOn(VerbAnchor tokenDroppedOn)
+        public override void InteractWithIncomingObject(VerbAnchor tokenDroppedOn)
         {
             //Verb dropped on element - FIXED
             

@@ -1076,7 +1076,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 		        foreach (var stack in group.Skip(1))
 			        if (primaryStack.CanMergeWith(stack))
 			        {
-				        primaryStack.MergeIntoStack(stack);
+				        primaryStack.AcceptIncomingStackForMerge(stack);
 			        }
 	        }
    
