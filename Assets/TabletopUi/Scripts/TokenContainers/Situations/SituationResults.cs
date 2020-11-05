@@ -74,7 +74,7 @@ public class SituationResults : TokenContainer {
         cardPos.ReorderCards(GetStacks());
     }
 
-    public override void OnStackRemoved(ElementStackToken elementStackToken, Context context) {
+    public override void RemoveStack(ElementStackToken elementStackToken) {
         // Did we just drop the last available token? 
         // Update the badge, then reorder cards?
 

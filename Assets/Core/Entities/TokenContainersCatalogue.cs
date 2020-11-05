@@ -29,6 +29,7 @@ namespace Assets.Core.Entities {
         public static string EN_ROUTE_PATH = "enroute";
         public static string TABLETOP_PATH = "tabletop";
         public static string WINDOWS_PATH = "windows";
+        public static string STORAGE_PATH = "storage";
 
 
         public TokenContainersCatalogue() {

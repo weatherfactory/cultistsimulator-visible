@@ -298,9 +298,25 @@ namespace Assets.CS.TabletopUI {
                 _illuminateLibrarian = new IlluminateLibrarian();
             
 
-            _manifestation = TokenContainer.CreateElementManifestation(this);
+            _manifestation = new NullElementManifestation();
         }
 
+        public void Manifest(TokenContainer forContainer)
+        {
+            if (EntityId == "dropzone")
+            {
+                _manifestation= Registry.Get<PrefabFactory>().CreateManifestationPrefab(nameof(DropzoneManifestation),this.transform);
+                return;
+            }
+            
+
+            if (_manifestation.GetType()!=forContainer.ElementManifestationType)
+            {
+
+                var newManifestation = Registry.Get<PrefabFactory>().CreateManifestationPrefab(forContainer.ElementManifestationType.Name, this.transform);
+                SwapOutManifestation(_manifestation,newManifestation,RetirementVFX.None);
+            }
+        }
 
         /// <summary>
         /// This is uses both for population and for repopulation - eg when an xtrigger transforms a stack
@@ -465,13 +481,12 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        // Called from TokenContainer, usually after StacksManager told it to
         public override void SetTokenContainer(TokenContainer newTokenContainer, Context context) {
             OldTokenContainer = TokenContainer;
 
             if (OldTokenContainer != null && OldTokenContainer != newTokenContainer)
             {
-                OldTokenContainer.OnStackRemoved(this, context);
+                OldTokenContainer.RemoveStack(this);
                 if(OldTokenContainer.ContentsHidden && !newTokenContainer.ContentsHidden)
                  _manifestation.UpdateVisuals(_element,Quantity);
             }
@@ -491,6 +506,13 @@ namespace Assets.CS.TabletopUI {
         }
 
 
+        private bool SwapOutManifestation(IElementManifestation oldManifestation, IElementManifestation newManifestation,RetirementVFX vfxForOldManifestation)
+        {
+            var manifestationToRetire = oldManifestation;
+            _manifestation = newManifestation;
+            return manifestationToRetire.Retire(vfxForOldManifestation);
+
+        }
         
         public override bool Retire(RetirementVFX vfxName)
         {
@@ -504,6 +526,7 @@ namespace Assets.CS.TabletopUI {
 
             TokenContainer.NotifyStacksChangedForContainer(new TokenEventArgs{Element = _element,Token = this,Container = TokenContainer});  // Notify tabletop that aspects will need recompiling
 
+
             SetTokenContainer(Registry.Get<NullContainer>(), new Context(Context.ActionSource.Retire));
 
             //now take care of the Unity side of things.
@@ -511,9 +534,6 @@ namespace Assets.CS.TabletopUI {
             Defunct = true;
             FinishDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex)
 
-            //we really want to pass down the VFX; and we ideally wouldn't pass down the canvasgroup, os that's ugly.
-            //we also want to make sure that we don't do anything else with the manifestation once we retire it
-            //down in Manifestation, OnAnimDone from the instantiated effect destroys the game object.
 
             var manifestationToRetire = _manifestation;
             _manifestation=new NullElementManifestation();

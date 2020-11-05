@@ -6,11 +6,16 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using System;
+using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.TabletopUi.Scripts.Elements;
+using Assets.TabletopUi.Scripts.Elements.Manifestations;
+using Assets.TabletopUi.Scripts.Services;
 using Noon;
 
 public class SituationStorage : TokenContainer
 {
+    public override Type ElementManifestationType => typeof(StoredManifestation);
 
     public override bool AllowDrag
     {
@@ -25,9 +30,11 @@ public class SituationStorage : TokenContainer
     [SerializeField] private CanvasGroupFader canvasGroupFader;
 
 
+
+
     public override string GetPath()
     {
-        return "storage";
+        return TokenContainersCatalogue.STORAGE_PATH;
     }
 
     public override ContainerCategory ContainerCategory => ContainerCategory.SituationStorage;

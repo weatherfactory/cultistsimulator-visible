@@ -19,23 +19,18 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         public void InitialiseVisuals(Element element)
         {
-            Sprite sprite = ResourcesManager.GetSpriteForElement(element.Icon);
-            icon.sprite = sprite;
+            elementFrame.PopulateDisplay(element, 1, false);
 
-            if (sprite == null)
-                icon.color = Color.clear;
-            else
-                icon.color = Color.white;
-
-            name = "Stored_" + element.Id;
             
             
         }
 
         public void UpdateVisuals(Element element, int quantity)
         {
-            throw new NotImplementedException();
+            elementFrame.PopulateDisplay(element, quantity, false);
+
         }
+
 
         public void ResetAnimations()
         {
@@ -44,7 +39,8 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         public bool Retire(RetirementVFX retirementVfx)
         {
-            throw new NotImplementedException();
+          Destroy(gameObject);
+          return true;
         }
 
         public void UpdateDecayVisuals(float lifetimeRemaining, Element element, float interval, bool currentlyBeingDragged)
@@ -74,23 +70,23 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         public void Highlight(HighlightType highlightType)
         {
-            throw new NotImplementedException();
+     //
         }
 
         public void Unhighlight(HighlightType highlightType)
         {
-            throw new NotImplementedException();
+           //
         }
 
         public bool NoPush { get; }
         public void DoRevealEffect(bool instant)
         {
-            throw new NotImplementedException();
+       //
         }
 
         public void DoShroudEffect(bool instant)
         {
-            throw new NotImplementedException();
+           //
         }
 
         public bool RequestingNoDrag => true;

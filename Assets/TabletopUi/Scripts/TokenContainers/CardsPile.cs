@@ -20,19 +20,13 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
       public override ContainerCategory ContainerCategory => ContainerCategory.Dormant;
       public override bool EnforceUniqueStacksInThisContainer => false;
         public override bool ContentsHidden => true;
-      
+        public virtual Type ElementManifestationType => typeof(MinimalManifestation);
+
 
         public void SetSpec(DeckSpec deckSpec)
       {
           _deckSpec = deckSpec;
       }
-        public override IElementManifestation CreateElementManifestation(ElementStackToken elementStackToken)
-        {
-
-                return Registry.Get<PrefabFactory>().CreateLocally<MinimalManifestation>(elementStackToken.transform);
-        }
-
-
         public void Shuffle(List<string> exceptElements)
       {
           var rnd = new Random();

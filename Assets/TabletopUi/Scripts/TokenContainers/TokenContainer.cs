@@ -51,6 +51,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
     public abstract class TokenContainer : MonoBehaviour, ITokenEventSubscriber
     {
+        public virtual Type DropzoneType => typeof(DropzoneManifestation);
+        public virtual Type ElementManifestationType => typeof(CardManifestation);
 
         public virtual bool AllowDrag { get; private set; }
         public virtual bool AllowStackMerge => true;
@@ -202,10 +204,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         {
 
 
-
             var stack = Registry.Get<PrefabFactory>().CreateLocally<ElementStackToken>(transform);
-
-
+            
             stack.Populate(elementId, quantity, stackSource);
 
             AcceptStack(stack, context);
@@ -229,13 +229,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
 
-        public virtual void OnStackRemoved(ElementStackToken elementStackToken, Context context)
+       public virtual void DisplayHere(ElementStackToken stack, Context context)
         {
-            RemoveStack(elementStackToken);
-        }
-
-        public virtual void DisplayHere(ElementStackToken stack, Context context)
-        {
+            stack.Manifest(this);
             DisplayHere(stack as AbstractToken, context);
         }
 
@@ -245,7 +241,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             token.transform.localPosition = Vector3.zero;
             token.transform.localRotation = Quaternion.identity;
             token.transform.localScale = Vector3.one;
-            token.SetTokenContainer(this, context);
+
         }
 
         public virtual void TryMoveAsideFor(VerbAnchor potentialUsurper, AbstractToken incumbent,
@@ -422,11 +418,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public virtual void AcceptStack(ElementStackToken stack, Context context)
         {
-            if (stack == null)
-                return;
-
-            if (stack.TokenContainer == null)
-                stack.SetTokenContainer(this, context);
+            
+            stack.SetTokenContainer(this, context);
 
             if (EnforceUniqueStacksInThisContainer)
             {
@@ -551,7 +544,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         /// removes the stack from this stack manager; doesn't retire the stack
         /// </summary>
         /// <param name="stack"></param>
-        public void RemoveStack(ElementStackToken stack)
+        public virtual void RemoveStack(ElementStackToken stack)
         {
             _stacks.Remove(stack);
             NotifyStacksChangedForContainer(new TokenEventArgs {Container = this});
@@ -600,17 +593,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             }
 
             return matchingStacks;
-        }
-
-        public virtual IElementManifestation CreateElementManifestation(ElementStackToken elementStackToken)
-        {
-
-            if (elementStackToken.EntityId == "dropzone")
-
-                return Registry.Get<PrefabFactory>().CreateLocally<DropzoneManifestation>(elementStackToken.transform);
-
-            else
-                return Registry.Get<PrefabFactory>().CreateLocally<CardManifestation>(elementStackToken.transform);
         }
 
         public IAnchorManifestation CreateAnchorManifestation(VerbAnchor anchorToken)

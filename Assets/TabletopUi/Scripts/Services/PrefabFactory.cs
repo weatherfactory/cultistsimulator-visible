@@ -41,7 +41,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         public T Create<T>() where T : Component
         {
-            var o = GetPrefab<T>();
+            var o = GetPrefabObject<T>();
             try
             {
                 var c = Object.Instantiate(o) as T;
@@ -59,7 +59,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         public T CreateLocally<T>(Transform parent) where T : Component
         {
-            var o = GetPrefab<T>();
+            var o = GetPrefabObject<T>();
             try
             { 
                 var c = Object.Instantiate(o, parent, false) as T;
@@ -75,7 +75,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         }
 
-        public T GetPrefab<T>() where T : Component
+        public T GetPrefabObject<T>() where T : Component
         {
 
             string prefabFieldName = typeof(T).Name;
@@ -89,6 +89,22 @@ namespace Assets.TabletopUi.Scripts.Services
             T prefab = field.GetValue(this) as T;
             return prefab;
         }
+
+        public IElementManifestation CreateManifestationPrefab(string prefabFieldName,Transform parent)
+        {
+            
+            FieldInfo field = GetType().GetField(prefabFieldName);
+            if (field == null)
+                throw new ApplicationException(prefabFieldName +
+                                               " not registered in prefab factory; must have field name and type both '" +
+                                               prefabFieldName + "', must have field populated in editor");
+
+            var prefabObject = field.GetValue(this) as UnityEngine.Object;
+
+            var instantiatedPrefab = Instantiate(prefabObject,parent);
+            return instantiatedPrefab as IElementManifestation;
+        }
+
 
 
     }
