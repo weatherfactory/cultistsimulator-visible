@@ -62,6 +62,13 @@ public class SituationResults : TokenContainer {
 
     public override ContainerCategory ContainerCategory => ContainerCategory.Output;
 
+    public override void AcceptStack(ElementStackToken stack, Context context)
+    {
+        base.AcceptStack(stack,context);
+        stack.Shroud(true);
+    }
+        //stack.Shroud(true);)
+
     public override void DisplayHere(ElementStackToken stack, Context context) {
         base.DisplayHere(stack, context);
         cardPos.ReorderCards(GetStacks());

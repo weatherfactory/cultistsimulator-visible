@@ -14,6 +14,7 @@ using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Infrastructure.Events;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
@@ -26,7 +27,7 @@ using UnityEngine.UI;
 using UnityEngine.VR;
 using static Noon.NoonUtility;
 
-public class DebugTools : MonoBehaviour,ITokenObserver
+public class DebugTools : MonoBehaviour,ITokenEventSubscriber
 {
     private const int MaxAutoCompletionSuggestions = 50;
 
@@ -548,28 +549,58 @@ public class DebugTools : MonoBehaviour,ITokenObserver
         return File.Exists(GetGameSaveLocation(index));
     }
 
-    public void OnStackClicked(ElementStackToken stack, PointerEventData pointerEventData, Element element)
+    public void OnTokenClicked(ElementStackToken stack, PointerEventData pointerEventData, Element element)
     {
         if(isActiveAndEnabled)
             SetInput(stack.EntityId);
     }
 
-    public void OnStackReceivedADrop(ElementStackToken stack, PointerEventData eventData)
+    public void OnTokenReceivedADrop(ElementStackToken stack, PointerEventData eventData)
     {
         }
 
-    public void OnStackPointerEntered(ElementStackToken stack, PointerEventData pointerEventData)
+    public void OnTokenPointerEntered(ElementStackToken stack, PointerEventData pointerEventData)
     {
     }
 
-    public void OnStackPointerExited(ElementStackToken stack, PointerEventData pointerEventData)
+    public void OnTokenPointerExited(ElementStackToken stack, PointerEventData pointerEventData)
     {
     }
 
-    public void OnStackDoubleClicked(ElementStackToken stack, PointerEventData eventData, Element element)
+    public void OnTokenDoubleClicked(ElementStackToken stack, PointerEventData eventData, Element element)
     {
         if (isActiveAndEnabled)
             SetInput(stack.EntityId);
+    }
+
+    public void NotifyStacksChangedForContainer(TokenEventArgs args)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void OnTokenClicked(TokenEventArgs args)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void OnTokenReceivedADrop(TokenEventArgs args)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void OnTokenPointerEntered(TokenEventArgs args)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void OnTokenPointerExited(TokenEventArgs args)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void OnTokenDoubleClicked(TokenEventArgs args)
+    {
+        throw new NotImplementedException();
     }
 }
 

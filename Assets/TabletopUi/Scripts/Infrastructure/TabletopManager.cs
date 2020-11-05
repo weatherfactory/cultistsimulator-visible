@@ -29,7 +29,7 @@ using UnityEngine.UI;
 using Random = System.Random;
 
 namespace Assets.CS.TabletopUI {
-    public class TabletopManager : MonoBehaviour, IStacksChangeSubscriber,ISettingSubscriber
+    public class TabletopManager : MonoBehaviour,ISettingSubscriber
     {
 
         [SerializeField] private EndGameAnimController _endGameAnimController;
@@ -81,18 +81,10 @@ namespace Assets.CS.TabletopUI {
         private bool disabled;
         private bool _initialised;
 
-        // Internal cache - if ENABLE_ASPECT_CACHING disabled, if still uses these but recalcs every frame
-        [NonSerialized] public bool _enableAspectCaching = true;
 
-        private AspectsDictionary _tabletopAspects = null;
-        private AspectsDictionary _allAspectsExtant = null;
-        private bool _tabletopAspectsDirty = true;
-        private bool _allAspectsExtantDirty = true;
 
-        public void NotifyAspectsDirty()
-        {
-            _tabletopAspectsDirty = true;
-        }
+
+
 
         public enum NonSaveableType
         {
@@ -298,10 +290,7 @@ namespace Assets.CS.TabletopUI {
 
             var situationsCatalogue = new SituationsCatalogue();
             registry.Register(situationsCatalogue);
-
-            Registry.Get<TokenContainersCatalogue>().Subscribe(this);
-
-
+            
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
             registry.Register<IDraggableHolder>(draggableHolder);
 
@@ -309,10 +298,7 @@ namespace Assets.CS.TabletopUI {
             registry.Register<INotifier>(_notifier);
 
             
-            
-			registry.Register<HighlightLocationsController>(_highlightLocationsController);
-            _highlightLocationsController.Initialise(Registry.Get<TokenContainersCatalogue>());
-
+  
 
             //element overview needs to be initialised with
             // - legacy - in case we're displaying unusual info
@@ -978,89 +964,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 			}
 		}
 
-        public AspectsInContext GetAspectsInContext(IAspectsDictionary aspectsInSituation)
-        {
-			if (!_enableAspectCaching)
-			{
-				_tabletopAspectsDirty = true;
-				_allAspectsExtantDirty = true;
-			}
-
-            if (_tabletopAspectsDirty)
-			{
-				if (_tabletopAspects==null)
-					_tabletopAspects=new AspectsDictionary();
-				else
-					_tabletopAspects.Clear();
-
-
-				var tabletopStacks = _tabletop.GetStacks();
-                if(tabletopStacks!=null)
-                { 
-                    foreach(var tabletopStack in tabletopStacks)
-                    {
-                        IAspectsDictionary stackAspects = tabletopStack.GetAspects();
-                        IAspectsDictionary multipliedAspects = new AspectsDictionary();
-                        //If we just count aspects, a stack of 10 cards only counts them once. I *think* this is the only place we need to worry about this rn,
-                        //but bear it in mind in case there's ever a similar issue inside situations <--there is! if multiple cards are output, they stack.
-                        //However! To complicate matters, if we're counting elements rather than aspects, there is already code in the stack to multiply aspect * quality, and we don't want to multiply it twice
-                        foreach (var aspect in stackAspects)
-                        {
-
-                          if(aspect.Key==tabletopStack.EntityId)
-                              multipliedAspects.Add(aspect.Key, aspect.Value);
-                          else
-                              multipliedAspects.Add(aspect.Key, aspect.Value * tabletopStack.Quantity);
-                        }
-                        _tabletopAspects.CombineAspects(multipliedAspects);
-                    }
-
-
-                    if (_enableAspectCaching)
-                        _tabletopAspectsDirty = false;		// If left dirty the aspects will recalc every frame
-                }
-                _allAspectsExtantDirty = true;		// Force the aspects below to recalc
-			}
-
-			if (_allAspectsExtantDirty)
-			{
-				if (_allAspectsExtant == null)
-					_allAspectsExtant=new AspectsDictionary();
-				else
-					_allAspectsExtant.Clear();
-
-				var allSituations = Registry.Get<SituationsCatalogue>();
-				foreach (var s in allSituations.GetRegisteredSituations())
-                {
-                    var stacksInSituation = s.GetAllStacksInSituation();
-                    foreach (var situationStack in stacksInSituation)
-                    {
-                        IAspectsDictionary stackAspects = situationStack.GetAspects();
-                        IAspectsDictionary multipliedAspects = new AspectsDictionary();
-                        //See notes above. We need to multiply aspects to take account of stack quantities here too.
-                        foreach (var aspect in stackAspects)
-                        {
-
-                            if (aspect.Key == situationStack.EntityId)
-                                multipliedAspects.Add(aspect.Key, aspect.Value);
-                            else
-                                multipliedAspects.Add(aspect.Key, aspect.Value * situationStack.Quantity);
-                        }
-                        _allAspectsExtant.CombineAspects(multipliedAspects);
-                    }
-
-                }
-                _allAspectsExtant.CombineAspects(_tabletopAspects);
-
-				if (_enableAspectCaching)
-					_allAspectsExtantDirty = false;		// If left dirty the aspects will recalc every frame
-			}
-
-            AspectsInContext aspectsInContext=new AspectsInContext(aspectsInSituation, _tabletopAspects, _allAspectsExtant);
-
-            return aspectsInContext;
-
-        }
+      
 
         public void GroupAllStacks()
         {
@@ -1137,12 +1041,6 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 				GUI.TextArea( new Rect(Screen.width * 0.5f + 50f, 10f, 70f, 20f), "BLOCKED" );
 			}
 
-			#if ENABLE_ASPECT_CACHING
-			if (GUI.Button( new Rect(Screen.width * 0.5f - 300f, 35f, 180f, 20f), "Aspect caching: " + (_enableAspectCaching?"ON":"OFF") ))
-			{
-				_enableAspectCaching = !_enableAspectCaching;		// Click
-			}
-			#endif
 #endif
 
 		}
@@ -1153,10 +1051,6 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             SetAutosaveInterval(newValue is float ? (float)newValue : 0);
         }
 
-        public void NotifyStacksChangedForContainer(ContainerStacksChangedArgs args)
-        {
-            NotifyAspectsDirty();
-        }
     }
 
 

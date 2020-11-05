@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
@@ -20,19 +21,13 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
 
         public override string GetPath()
         {
-            return "enroute";
+            return TokenContainersCatalogue.EN_ROUTE_PATH;
         }
 
         public RectTransform RectTransform
         {
             get { return GetComponent<RectTransform>(); }
         }
-
-        public override void OnEnable()
-        {
-            base.OnEnable();
-        }
-
 
         public void PrepareElementForSendAnim(ElementStackToken stack, TokenLocation destination) // "this reparents the card so it can animate properly" - okay, let's roll with that for now. But the line below is commented, so do we need it?
         {

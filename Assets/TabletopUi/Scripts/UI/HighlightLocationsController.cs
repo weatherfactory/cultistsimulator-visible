@@ -7,12 +7,13 @@ using Assets.Core;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
+using Assets.TabletopUi.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.UI
 {
-  public  class HighlightLocationsController:MonoBehaviour, IStacksChangeSubscriber
+  public  class HighlightLocationsController:MonoBehaviour, ITokenEventSubscriber
     {
 
  private HashSet<HighlightLocation> highlightLocations;
@@ -23,9 +24,9 @@ namespace Assets.TabletopUi.Scripts.UI
           highlightLocations = new HashSet<HighlightLocation>();
       }
 
-      public void Initialise(TokenContainersCatalogue smc)
+      public void Start()
       {
-            smc.Subscribe(this);
+            Registry.Get<TokenContainersCatalogue>().Subscribe(this);
 
           //scan for child highlight locations
           var hls = GetComponentsInChildren<HighlightLocation>();
@@ -73,10 +74,10 @@ namespace Assets.TabletopUi.Scripts.UI
 
 
 
-      public void NotifyStacksChangedForContainer(ContainerStacksChangedArgs args)
+      public void NotifyStacksChangedForContainer(TokenEventArgs args)
       {
-          var ttm = Registry.Get<TabletopManager>();
-          var aspectsInContext = ttm.GetAspectsInContext(new AspectsDictionary());
+          var tc = Registry.Get<TokenContainersCatalogue>();
+          var aspectsInContext = tc.GetAspectsInContext(new AspectsDictionary());
 
           foreach (var hl in highlightLocations)
           {
@@ -86,5 +87,31 @@ namespace Assets.TabletopUi.Scripts.UI
                   hl.HideForNoPresence();
           }
         }
+
+      public void OnTokenClicked(TokenEventArgs args)
+      {
+          }
+
+      public void OnTokenReceivedADrop(TokenEventArgs args)
+      {
+          }
+
+      public void OnTokenPointerEntered(TokenEventArgs args)
+      {
+          if (!args.PointerEventData.dragging)
+                ActivateOnlyMatchingHighlightLocation(args.Element.Id);
+
+        }
+
+      public void OnTokenPointerExited(TokenEventArgs args)
+      { 
+          if(!args.PointerEventData.dragging)
+           DeactivateMatchingHighlightLocation(args.Element.Id);
+
+        }
+
+      public void OnTokenDoubleClicked(TokenEventArgs args)
+      {
+          }
     }
 }

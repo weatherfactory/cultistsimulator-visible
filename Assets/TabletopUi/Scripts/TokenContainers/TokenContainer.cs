@@ -49,9 +49,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
     }
 
-    public abstract class TokenContainer : MonoBehaviour
+    public abstract class TokenContainer : MonoBehaviour, ITokenEventSubscriber
     {
-        public ContainerStacksChangedEvent OnStacksChanged;
 
         public virtual bool AllowDrag { get; private set; }
         public virtual bool AllowStackMerge => true;
@@ -63,25 +62,42 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public abstract ContainerCategory ContainerCategory { get; }
         public SlotSpecification GoverningSlotSpecification { get; set; }
 
+        public TokenContainersCatalogue Catalogue { get {
+            if (_catalogue==null)
+            {
+                _catalogue=Registry.Get<TokenContainersCatalogue>(); 
+                    _catalogue.RegisterTokenContainer(this);
+            }
+            return _catalogue;
+        } }
+
+    
+        protected List<INotifier> _notifiersForContainer = new List<INotifier>();
+        public bool Defunct { get; protected set; }
+        protected HashSet<ContainerBlock> _currentContainerBlocks=new HashSet<ContainerBlock>();
         private TokenContainersCatalogue _catalogue;
         private List<ElementStackToken> _stacks = new List<ElementStackToken>();
-        protected List<INotifier> _notifiersForContainer = new List<INotifier>();
+        private readonly HashSet<ITokenEventSubscriber> _subscribers=new HashSet<ITokenEventSubscriber>();
 
-        public bool Defunct { get; protected set; }
+        public void Subscribe(ITokenEventSubscriber subscriber)
+        {
+            _subscribers.Add(subscriber);
+        }
 
-        protected HashSet<ContainerBlock> _currentContainerBlocks=new HashSet<ContainerBlock>();
+        public void Unsubscribe(ITokenEventSubscriber subscriber)
+        {
+            _subscribers.Remove(subscriber);
+        }
 
 
         public virtual void OnEnable()
         {
-            _catalogue = Registry.Get<TokenContainersCatalogue>();
-            _catalogue.RegisterTokenContainer(this);
+            Catalogue.RegisterTokenContainer(this); //this is a double call - we already subscribe above. This should be fine because it's a hashset, and because we may want to disable then re-enable. But FYI, future AK.
         }
 
         public virtual void OnDisable()
         {
-            _catalogue = Registry.Get<TokenContainersCatalogue>();
-            _catalogue.DeregisterTokenContainer(this);
+            Catalogue.DeregisterTokenContainer(this);
         }
 
 
@@ -189,8 +205,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             var stack = Registry.Get<PrefabFactory>().CreateLocally<ElementStackToken>(transform);
 
-            foreach (INotifier notifier in _notifiersForContainer)
-                stack.AddObserver(notifier);
 
             stack.Populate(elementId, quantity, stackSource);
 
@@ -440,7 +454,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 _stacks.Add(stack);
 
             DisplayHere(stack, context);
-            NotifyStacksChanged();
+            NotifyStacksChangedForContainer(new TokenEventArgs { Container = this });
+
         }
 
 
@@ -539,7 +554,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public void RemoveStack(ElementStackToken stack)
         {
             _stacks.Remove(stack);
-            NotifyStacksChanged();
+            NotifyStacksChangedForContainer(new TokenEventArgs {Container = this});
         }
 
         /// <summary>
@@ -566,10 +581,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 s.Retire(RetirementVFX.None);
         }
 
-        public void NotifyStacksChanged()
-        {
-           OnStacksChanged.Invoke(new ContainerStacksChangedArgs{Container = this});
-        }
 
         /// <summary>
         /// This was relevant for a refactoring of the greedy slot code; I decided to do something else
@@ -627,6 +638,52 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             else
                 return GoverningSlotSpecification.GetSlotMatchForAspects(stack.GetAspects());
         }
+
+        public void NotifyStacksChangedForContainer(TokenEventArgs args)
+        {
+            Catalogue.NotifyStacksChangedForContainer(args);
+            foreach(var s in _subscribers)
+                s.NotifyStacksChangedForContainer(args);
+        }
+
+        public void OnTokenClicked(TokenEventArgs args)
+        {
+            Catalogue.OnTokenClicked(args);
+            foreach (var s in _subscribers)
+                s.OnTokenClicked(args);
+        }
+
+        public void OnTokenReceivedADrop(TokenEventArgs args)
+        {
+            Catalogue.OnTokenReceivedADrop(args);
+            foreach (var s in _subscribers)
+                s.OnTokenReceivedADrop(args);
+        }
+
+        public void OnTokenPointerEntered(TokenEventArgs args)
+        {
+            Catalogue.OnTokenPointerEntered(args);
+            foreach (var s in _subscribers)
+                s.OnTokenPointerEntered(args);
+        }
+
+        public void OnTokenPointerExited(TokenEventArgs args)
+        {
+            Catalogue.OnTokenPointerExited(args);
+            foreach (var s in _subscribers)
+                s.OnTokenPointerExited(args);
+        }
+
+        public void OnTokenDoubleClicked(TokenEventArgs args)
+        {
+            Catalogue.OnTokenDoubleClicked(args);
+            foreach (var s in _subscribers)
+                s.OnTokenDoubleClicked(args);
+        }
+
+
+     
+
     }
 
 }

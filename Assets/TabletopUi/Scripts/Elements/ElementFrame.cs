@@ -31,23 +31,22 @@ public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
     float width1Digit = 60f; //68f;
     float width0Digits = 40f;
 
-    public void PopulateDisplay(Element aspect, int aspectValue, ElementStackToken elementStackToken, bool hasBrightBg = false) {
+    public void PopulateDisplay(Element element, int quantity, bool hasBrightBg = false) {
         
-        _aspect = aspect;
-        _elementStackToken = elementStackToken; //this is populated only if the frame reflects a card that's being displayed in a situation storage
-        Quantity = aspectValue;
-        DisplayAspectImage(aspect);
-        DisplayQuantity(aspectValue, hasBrightBg);
-        gameObject.name = "Aspect - " + aspect.Id;
+        _aspect = element;
+        Quantity = quantity;
+        DisplayAImage(element);
+        DisplayQuantity(quantity, hasBrightBg);
+        gameObject.name = "Element - " + element.Id;
     }
 
-    private void DisplayAspectImage(Element aspect)
+    private void DisplayAImage(Element element)
     {
         Sprite aspectSprite;
-        if (aspect.IsAspect) //it may be a concrete element rather than just an aspect
-            aspectSprite= ResourcesManager.GetSpriteForAspect(aspect.Icon);
+        if (element.IsAspect) //it may be a concrete element rather than just an aspect
+            aspectSprite= ResourcesManager.GetSpriteForAspect(element.Icon);
         else
-            aspectSprite = ResourcesManager.GetSpriteForElement(aspect.Icon);
+            aspectSprite = ResourcesManager.GetSpriteForElement(element.Icon);
 
         aspectImage.sprite = aspectSprite;
     }

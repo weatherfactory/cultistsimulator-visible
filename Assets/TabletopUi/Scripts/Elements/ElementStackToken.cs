@@ -12,6 +12,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using System.ComponentModel;
 using System.Linq;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
@@ -68,29 +69,10 @@ namespace Assets.CS.TabletopUI {
         private IlluminateLibrarian _illuminateLibrarian;
     
 
-        private HashSet<ITokenObserver> observers=new HashSet<ITokenObserver>();
-
         //set true when the Chronicler notices it's been placed on the desktop. This ensures we don't keep spamming achievements / Lever requests. It isn't persisted in saves! which is probably fine.
         public bool PlacementAlreadyChronicled=false;
 
 
-        public bool AddObserver(ITokenObserver observer)
-        {
-            if (observers.Contains(observer))
-                return false;
-
-            observers.Add(observer);
-            return true;
-        }
-
-        public bool RemoveObserver(ITokenObserver observer)
-        {
-            if(!observers.Contains(observer))
-                return false;
-            observers.Remove(observer);
-            return true;
-
-        }
 
         public override string EntityId {
             get { return _element == null ? null : _element.Id; }
@@ -193,7 +175,7 @@ namespace Assets.CS.TabletopUI {
             if(!TokenContainer.ContentsHidden)
 			    _manifestation.UpdateVisuals(_element,quantity);
 
-            TokenContainer.NotifyStacksChanged();
+            TokenContainer.NotifyStacksChangedForContainer(new TokenEventArgs{Token = this, Element = _element,Container = TokenContainer});
         }
 
         public void ModifyQuantity(int change,Context context) {
@@ -243,12 +225,12 @@ namespace Assets.CS.TabletopUI {
             //if we've somehow failed to populate an element, return empty aspects, just to exception-proof ourselves
     
             
-            var tabletop = Registry.Get<TabletopManager>(false) as TabletopManager;
+            var tc = Registry.Get<TokenContainersCatalogue>(false);
 
-            if (_element == null || tabletop==null)
+            if (_element == null || tc==null)
                 return new AspectsDictionary();
             
-			if (!tabletop._enableAspectCaching)
+			if (!tc.EnableAspectCaching)
 			{
 				_aspectsDirtyInc = true;
 				_aspectsDirtyExc = true;
@@ -268,10 +250,10 @@ namespace Assets.CS.TabletopUI {
 
 					_aspectsDictionaryInc.ApplyMutations(_currentMutations);
 
-					if (tabletop._enableAspectCaching)
+					if (tc.EnableAspectCaching)
 						_aspectsDirtyInc = false;
 
-					tabletop.NotifyAspectsDirty();
+					tc.NotifyAspectsDirty();
 				}
 				return _aspectsDictionaryInc;
 			}
@@ -288,10 +270,10 @@ namespace Assets.CS.TabletopUI {
 
 					_aspectsDictionaryExc.ApplyMutations(_currentMutations);
 
-					if (tabletop._enableAspectCaching)
+					if (tc.EnableAspectCaching)
 						_aspectsDirtyExc = false;
 
-					tabletop.NotifyAspectsDirty();
+					tc.NotifyAspectsDirty();
 				}
 				return _aspectsDictionaryExc;
 			}
@@ -315,10 +297,6 @@ namespace Assets.CS.TabletopUI {
             if (_illuminateLibrarian == null)
                 _illuminateLibrarian = new IlluminateLibrarian();
             
-            //add any observers that we can find in the context
-            var debugTools = Registry.Get<DebugTools>(false);
-            if (debugTools != null)
-                AddObserver(debugTools);
 
             _manifestation = TokenContainer.CreateElementManifestation(this);
         }
@@ -524,11 +502,9 @@ namespace Assets.CS.TabletopUI {
             if (hlc != null)
                 hlc.DeactivateMatchingHighlightLocation(_element?.Id);
 
-            var tabletop = Registry.Get<TabletopManager>(false);
-            if (tabletop != null)
-                tabletop.NotifyAspectsDirty();  // Notify tabletop that aspects will need recompiling
+            TokenContainer.NotifyStacksChangedForContainer(new TokenEventArgs{Element = _element,Token = this,Container = TokenContainer});  // Notify tabletop that aspects will need recompiling
 
-            SetTokenContainer(Registry.Get<NullContainer>(), new Context(Context.ActionSource.Retire)); // notify the view container that we're no longer here
+            SetTokenContainer(Registry.Get<NullContainer>(), new Context(Context.ActionSource.Retire));
 
             //now take care of the Unity side of things.
 
@@ -648,10 +624,7 @@ namespace Assets.CS.TabletopUI {
 
         public override void OnPointerEnter(PointerEventData eventData)
 		{
-            foreach (var o in observers)
-            {
-                o.OnStackPointerEntered(this, eventData);
-            }
+
             _manifestation.Highlight(HighlightType.Hover);
             
 			var tabletopManager = Registry.Get<TabletopManager>(false);
@@ -661,22 +634,18 @@ namespace Assets.CS.TabletopUI {
                     tabletopManager.SetHighlightedElement(EntityId, Quantity);
                 else
                     tabletopManager.SetHighlightedElement(null);
-
-                if (!eventData.dragging)
-                { 
-                    //Display any HighlightLocations tagged for this element, unless we're currently dragging something else
-                    var hlc = Registry.Get<HighlightLocationsController>();
-                    hlc.ActivateOnlyMatchingHighlightLocation(_element.Id);
-                }
             }
         }
 
 		public override void OnPointerExit(PointerEventData eventData)
 		{
-            foreach (var o in observers)
+            TokenContainer.OnTokenPointerExited(new TokenEventArgs
             {
-                o.OnStackPointerExited(this, eventData);
-            }
+                Element = _element,
+                Token = this,
+                Container = TokenContainer,
+                PointerEventData = eventData
+            });
 
             _manifestation.Unhighlight(HighlightType.Hover);
 
@@ -684,13 +653,6 @@ namespace Assets.CS.TabletopUI {
                 if(ttm!=null)
                 {
                 Registry.Get<TabletopManager>().SetHighlightedElement(null);
-
-                    //No longer display any HighlightLocations tagged for this element
-                    if(!_currentlyBeingDragged)
-                    { 
-                        var hlc = Registry.Get<HighlightLocationsController>();
-                        hlc.DeactivateMatchingHighlightLocation(_element.Id);
-                    }
                 }
         }
 
@@ -735,10 +697,13 @@ namespace Assets.CS.TabletopUI {
 			{
 				// Double-click, so abort any pending single-clicks
 				singleClickPending = false;
-                foreach (var o in observers)
+                TokenContainer.OnTokenDoubleClicked(new TokenEventArgs
                 {
-                    o.OnStackDoubleClicked(this, eventData, this._element);
-                }
+                    Element = _element,
+                    Token = this,
+                    Container = TokenContainer,
+                    PointerEventData = eventData
+                });
 
 
                 SendStackToNearestValidSlot();
@@ -760,10 +725,13 @@ namespace Assets.CS.TabletopUI {
                 }
 				else
 				{
-                    foreach (var o in observers)
+                    TokenContainer.OnTokenClicked(new TokenEventArgs
                     {
-                        o.OnStackClicked(this, eventData, this._element);
-                    }
+                        Element = _element,
+                        Token = this,
+                        Container = TokenContainer,
+                        PointerEventData = eventData
+                    });
                 }
 
 				// this moves the clicked sibling on top of any other nearby cards.
@@ -777,10 +745,13 @@ namespace Assets.CS.TabletopUI {
         /// </summary>
         /// <param name="eventData"></param>
         public override void OnDrop(PointerEventData eventData) {
-            foreach (var o in observers)
+            TokenContainer.OnTokenReceivedADrop(new TokenEventArgs
             {
-                o.OnStackReceivedADrop(this, eventData);
-            }
+                Element = _element,
+                Token = this,
+                Container = TokenContainer,
+                PointerEventData = eventData
+            });
 
             InteractWithIncomingObject(eventData.pointerDrag);
 
@@ -890,7 +861,7 @@ namespace Assets.CS.TabletopUI {
 
             _currentlyBeingDragged = true;
 
-            var enrouteContainer = Registry.Get<TokenContainersCatalogue>().GetContainerByPath("enroute");
+            var enrouteContainer = Registry.Get<TokenContainersCatalogue>().GetContainerByPath(TokenContainersCatalogue.EN_ROUTE_PATH);
             enrouteContainer.AcceptStack(this, new Context(Context.ActionSource.PlayerDrag));
 
             _manifestation.OnBeginDragVisuals();

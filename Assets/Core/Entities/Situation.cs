@@ -22,7 +22,7 @@ using UnityEngine.Assertions;
 
 namespace Assets.Core.Entities {
 
-    public class Situation
+    public class Situation: ITokenEventSubscriber
     {
         public SituationState State { get; set; }
         public Recipe currentPrimaryRecipe { get; set; }
@@ -129,8 +129,8 @@ namespace Assets.Core.Entities {
 
         public void AddContainer(TokenContainer container)
         {
+            container.Subscribe(this);
             _containers.Add(container);
-            container.OnStacksChanged.AddListener(ContainerStacksChanged);
         }
 
         public void AddContainers(IEnumerable<TokenContainer> containers)
@@ -141,8 +141,9 @@ namespace Assets.Core.Entities {
 
         public void RemoveContainer(TokenContainer c)
         {
+            c.Unsubscribe(this);
             _containers.Remove(c);
-            c.OnStacksChanged.RemoveListener(ContainerStacksChanged);
+            
         }
 
         public IList<SlotSpecification> GetSlotsForCurrentRecipe()
@@ -236,8 +237,6 @@ namespace Assets.Core.Entities {
 
         public HeartbeatResponse ExecuteHeartbeat(float interval)
         {
-            var ttm = Registry.Get<TabletopManager>();
-            var aspectsInContext = ttm.GetAspectsInContext(GetAspectsAvailableToSituation(true));
 
             RecipeConductor rc = new RecipeConductor();
 
@@ -705,26 +704,7 @@ namespace Assets.Core.Entities {
 
         }
 
-        private void ContainerStacksChanged(ContainerStacksChangedArgs _stacksChangedArgs)
-        {
-            var aspectsAvailableToSituation = GetAspectsAvailableToSituation(true);
 
-            var aspectsInContext =
-                Registry.Get<TabletopManager>().GetAspectsInContext(aspectsAvailableToSituation);
-
-            RecipeConductor rc=new RecipeConductor();
-
-            CurrentRecipePrediction = rc.GetPredictionForFollowupRecipe(currentPrimaryRecipe,State, aspectsInContext, Verb, Registry.Get<Character>());
-
-        
-            SituationEventData data = SituationEventData.Create(this);
-            
-          PossiblySignalImpendingDoom(CurrentRecipePrediction.SignalEndingFlavour);
-
-            foreach (var s in subscribers)
-                s.ContainerContentsUpdated(data);
-
-        }
 
         public void DumpThresholdStacks()
         {
@@ -772,8 +752,8 @@ namespace Assets.Core.Entities {
                 return;
 
             var aspects = GetAspectsAvailableToSituation(true);
-            var tabletopManager = Registry.Get<TabletopManager>();
-            var aspectsInContext = tabletopManager.GetAspectsInContext(aspects);
+            var tc = Registry.Get<TokenContainersCatalogue>();
+            var aspectsInContext = tc.GetAspectsInContext(aspects);
 
 
             var recipe = Registry.Get<ICompendium>().GetFirstMatchingRecipe(aspectsInContext, Verb.Id, Registry.Get<Character>(), false);
@@ -806,7 +786,46 @@ namespace Assets.Core.Entities {
    
         }
 
- 
+
+        public void NotifyStacksChangedForContainer(TokenEventArgs args)
+        {
+            var aspectsAvailableToSituation = GetAspectsAvailableToSituation(true);
+
+            var aspectsInContext =
+                Registry.Get<TokenContainersCatalogue>().GetAspectsInContext(aspectsAvailableToSituation);
+
+            RecipeConductor rc = new RecipeConductor();
+
+            CurrentRecipePrediction = rc.GetPredictionForFollowupRecipe(currentPrimaryRecipe, State, aspectsInContext, Verb, Registry.Get<Character>());
+
+
+            SituationEventData data = SituationEventData.Create(this);
+
+            PossiblySignalImpendingDoom(CurrentRecipePrediction.SignalEndingFlavour);
+
+            foreach (var s in subscribers)
+                s.ContainerContentsUpdated(data);
+        }
+
+        public void OnTokenClicked(TokenEventArgs args)
+        {
+            }
+
+        public void OnTokenReceivedADrop(TokenEventArgs args)
+        {
+            }
+
+        public void OnTokenPointerEntered(TokenEventArgs args)
+        {
+            }
+
+        public void OnTokenPointerExited(TokenEventArgs args)
+        {
+            }
+
+        public void OnTokenDoubleClicked(TokenEventArgs args)
+        {
+            }
     }
 
 }

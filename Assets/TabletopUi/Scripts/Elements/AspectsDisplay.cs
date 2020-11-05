@@ -47,7 +47,7 @@ namespace Assets.TabletopUi.Scripts
                 return; //...because it's hidden
 
             ElementFrame newElementFrame = Registry.Get<PrefabFactory>().CreateLocally<ElementFrame>(transform);
-            newElementFrame.PopulateDisplay(aspect, quantity, null,hasBrightBackground);
+            newElementFrame.PopulateDisplay(aspect, quantity,hasBrightBackground);
 
             if (isWithinDetailsWindow)
                 newElementFrame.SetAsDetailWindowChild();

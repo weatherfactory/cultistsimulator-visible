@@ -8,6 +8,7 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
 using Assets.Core.Entities;
+using Assets.TabletopUi.Scripts.Infrastructure.Events;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
@@ -39,6 +40,8 @@ namespace Assets.CS.TabletopUI {
 			saveDeniedWindow.gameObject.SetActive(false);
 
             Registry.Get<Concursum>().ShowNotificationEvent.AddListener(ShowNotificationWindow);
+            
+            Registry.Get<TokenContainersCatalogue>().Subscribe(this);
 
         }
 
@@ -170,24 +173,32 @@ namespace Assets.CS.TabletopUI {
             tabletopBurner.ShowImageBurn(spriteName, token, duration, scale, alignment);
         }
 
-        public void OnStackClicked(ElementStackToken stack, PointerEventData pointerEventData, Element element)
+        public void NotifyStacksChangedForContainer(TokenEventArgs args)
         {
-            ShowCardElementDetails(element, stack);
+            //
         }
 
-        public void OnStackReceivedADrop(ElementStackToken stack, PointerEventData eventData)
+        public void OnTokenClicked(TokenEventArgs args)
         {
+            ShowCardElementDetails(args.Element,args.Token);
         }
 
-        public void OnStackPointerEntered(ElementStackToken stack, PointerEventData pointerEventData)
+        public void OnTokenReceivedADrop(TokenEventArgs args)
         {
+            //
         }
 
-        public void OnStackPointerExited(ElementStackToken stack, PointerEventData pointerEventData)
+        public void OnTokenPointerEntered(TokenEventArgs args)
         {
+            //
         }
 
-        public void OnStackDoubleClicked(ElementStackToken elementStackToken, PointerEventData eventData, Element element)
+        public void OnTokenPointerExited(TokenEventArgs args)
+        {
+            //
+        }
+
+        public void OnTokenDoubleClicked(TokenEventArgs args)
         {
             HideDetails();
         }

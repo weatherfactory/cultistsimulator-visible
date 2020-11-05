@@ -120,7 +120,7 @@ namespace Assets.CS.TabletopUI {
                         else
                             frame = Registry.Get<PrefabFactory>().CreateLocally<ElementFrame>(storedCardsLayout.transform);
 
-                        frame.PopulateDisplay(element,1, stack as ElementStackToken);
+                        frame.PopulateDisplay(element,1);
                         frame.gameObject.SetActive(true);
                         i++;
                     }

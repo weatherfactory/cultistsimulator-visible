@@ -95,7 +95,7 @@ public class TabletopTokenContainer : TokenContainer,IBeginDragHandler,IEndDragH
 
     public override string GetPath()
     {
-        return "tabletop";
+        return TokenContainersCatalogue.TABLETOP_PATH;
 
     }
 

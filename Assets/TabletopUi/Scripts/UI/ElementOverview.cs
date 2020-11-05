@@ -15,7 +15,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ElementOverview : MonoBehaviour, IStacksChangeSubscriber {
+public class ElementOverview : MonoBehaviour, ITokenEventSubscriber {
 
 
     [SerializeField] StatusBarElementCount[] elementCounts;
@@ -58,9 +58,8 @@ public class ElementOverview : MonoBehaviour, IStacksChangeSubscriber {
 
     public void UpdateDisplay()
     {
-        // now called from the notification chain in StacksCatalogue
-        var ttm = Registry.Get<TabletopManager>();
-        var aspectsInContext = ttm.GetAspectsInContext(new AspectsDictionary());
+        var tc = Registry.Get<TokenContainersCatalogue>();
+        var aspectsInContext = tc.GetAspectsInContext(new AspectsDictionary());
   
         for (int i = 0; i <= 3; i++)
         {
@@ -90,23 +89,36 @@ public class ElementOverview : MonoBehaviour, IStacksChangeSubscriber {
 
     }
 
-    //private int GetCountForElement(string forElementId, StackManagersCatalogue stacksCatalogue)
-    //{
-    //    int count = 0;
-    //    foreach (var stackManager in stacksCatalogue.GetRegisteredStackManagers())
-    //    {
-
-    //        count += stackManager.GetCurrentElementQuantity(forElementId);
-
-    //    }
-
-    //    return count;
-    //}
-
-
-    public void NotifyStacksChangedForContainer(ContainerStacksChangedArgs args)
+    
+    public void NotifyStacksChangedForContainer(TokenEventArgs args)
     {
         UpdateDisplay();
+
+    }
+
+    public void OnTokenClicked(TokenEventArgs args)
+    {
+        //could emphasise display element here
+    }
+
+    public void OnTokenReceivedADrop(TokenEventArgs args)
+    {
+        //
+    }
+
+    public void OnTokenPointerEntered(TokenEventArgs args)
+    {
+       //
+    }
+
+    public void OnTokenPointerExited(TokenEventArgs args)
+    {
+        //could emphasise display element here
+        }
+
+    public void OnTokenDoubleClicked(TokenEventArgs args)
+    {
+        //could emphasise display element here
 
     }
 }

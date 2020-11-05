@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Infrastructure.Events;
 using Assets.TabletopUi.Scripts.Interfaces;
 using TMPro;
 using UnityEngine;
@@ -13,7 +14,7 @@ using UnityEngine.EventSystems;
 
 namespace Assets.TabletopUi.Scripts.UI
 {
-    public class CreditsWindow: MonoBehaviour,ITokenObserver
+    public class CreditsWindow: MonoBehaviour,ITokenEventSubscriber
     {
         [SerializeField] public ExhibitCards CardsExhibit;
         [SerializeField] public TextMeshProUGUI Responsibilities;
@@ -29,8 +30,6 @@ namespace Assets.TabletopUi.Scripts.UI
             foreach (var cc in creditCards)
             {
                 var card=CardsExhibit.ProvisionElementStack(cc.Id, 1, Source.Fresh(),new Context(Context.ActionSource.UI));
-                card.AddObserver(this);
-
             }
 
             var firstCard = creditCards[0];
@@ -48,33 +47,38 @@ namespace Assets.TabletopUi.Scripts.UI
 
 
 
-        public void OnStackClicked(ElementStackToken stack, PointerEventData pointerEventData, Element element)
+        public void NotifyStacksChangedForContainer(TokenEventArgs args)
         {
-            
-            CardsExhibit.HighlightCardWithId(stack.EntityId);
-            Responsibilities.text = element.Label;
-            Names.text = element.Description;
-
+        //
         }
 
-        public void OnStackReceivedADrop(ElementStackToken stack, PointerEventData eventData)
+        public void OnTokenClicked(TokenEventArgs args)
         {
+
+            CardsExhibit.HighlightCardWithId(args.Token.EntityId);
+            Responsibilities.text = args.Token.Label;
+            Names.text = args.Element.Description;
         }
 
-        public void OnStackPointerEntered(ElementStackToken stack, PointerEventData pointerEventData)
+        public void OnTokenReceivedADrop(TokenEventArgs args)
         {
-            stack.Emphasise();
+            //
         }
 
-        public void OnStackPointerExited(ElementStackToken stack, PointerEventData pointerEventData)
+        public void OnTokenPointerEntered(TokenEventArgs args)
         {
-            if(Responsibilities.text!=stack.Label) // don't remove the highlight if the card is currently selected
-             stack.Understate();
+            args.Token.Emphasise();
         }
 
-        public void OnStackDoubleClicked(ElementStackToken elementStackToken, PointerEventData eventData, Element element)
+        public void OnTokenPointerExited(TokenEventArgs args)
         {
+            if (Responsibilities.text != args.Token.Label) // don't remove the highlight if the card is currently selected
+                args.Token.Understate();
+        }
 
+        public void OnTokenDoubleClicked(TokenEventArgs args)
+        {
+            OnTokenClicked(args);
         }
     }
 }

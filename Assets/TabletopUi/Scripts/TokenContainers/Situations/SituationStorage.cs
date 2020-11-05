@@ -9,14 +9,24 @@ using System;
 using Assets.Core.Enums;
 using Noon;
 
-public class SituationStorage : TokenContainer {
+public class SituationStorage : TokenContainer
+{
 
-    public override bool AllowDrag { get { return false; } }
-    public override bool AllowStackMerge { get { return false; } }
-  [SerializeField]  private CanvasGroupFader canvasGroupFader;
+    public override bool AllowDrag
+    {
+        get { return false; }
+    }
+
+    public override bool AllowStackMerge
+    {
+        get { return false; }
+    }
+
+    [SerializeField] private CanvasGroupFader canvasGroupFader;
 
 
-    public override string GetPath() {
+    public override string GetPath()
+    {
         return "storage";
     }
 
@@ -24,15 +34,12 @@ public class SituationStorage : TokenContainer {
 
     public void UpdateDisplay(SituationEventData eventData)
     {
-        canvasGroupFader.Hide();
+        if(eventData.SituationState==SituationState.Ongoing)
+            canvasGroupFader.Show();
+        else
+            canvasGroupFader.Hide();
     }
 
-    public override void DisplayHere(ElementStackToken stack, Context context) {
-        base.DisplayHere(stack, context);
-
-        // We ensure all stored cards are always face down
-        //stack.Shroud(true);
-        //commented out because actually stored cards should be stored in a container with a different manifestation. Theyu should go to *results8 face down.
-    }
+   
 
 }

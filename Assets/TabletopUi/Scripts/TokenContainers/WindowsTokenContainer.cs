@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
@@ -17,7 +18,8 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
         }
         public override string GetPath()
         {
-            return "windows";
+            return TokenContainersCatalogue.WINDOWS_PATH;
+
         }
     }
 }
