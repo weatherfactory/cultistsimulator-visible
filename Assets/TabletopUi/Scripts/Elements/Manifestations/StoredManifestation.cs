@@ -47,7 +47,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             //
         }
 
-        public void BeginArtAnimation(string icon)
+        public void BeginArtAnimation()
         {
         //
         }

@@ -55,14 +55,7 @@ namespace Assets.CS.TabletopUI {
     public abstract class AbstractToken : MonoBehaviour,
         IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IToken,IArtAnimatableToken {
 
-        // STATIC FIELDS
-
-        // ReSharper disable once NotAccessedField.Local
-        // This is used in DelayedEndDrag, which occurs one frame after EndDrag. If it's set to true, the token will be returned to where it began the drag (default is false).
-
-
-        // INSTANCE FIELDS
-
+ 
         public RectTransform rectTransform;
         [SerializeField] protected bool rotateOnDrag = true;
         

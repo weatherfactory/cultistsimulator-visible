@@ -224,18 +224,12 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             throw new NotImplementedException();
         }
 
-        public bool Retire(CanvasGroup canvasGroup)
+        public bool Retire(RetirementVFX retirementVfx)
         {
             throw new NotImplementedException();
         }
 
-        public void SetVfx(RetirementVFX vfxName)
-        {
-            throw new NotImplementedException();
-        }
-
-
-
+        
 
         public void BeginArtAnimation()
         {

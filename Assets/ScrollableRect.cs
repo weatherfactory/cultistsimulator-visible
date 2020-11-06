@@ -192,5 +192,4 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 	}
 
 
-
 }

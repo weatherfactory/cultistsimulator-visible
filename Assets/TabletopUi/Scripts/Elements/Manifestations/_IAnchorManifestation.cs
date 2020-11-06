@@ -14,23 +14,12 @@ using UnityEngine.EventSystems;
 
 namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
-    public interface IAnchorManifestation
+    public interface IAnchorManifestation: IManifestation
     {
         void InitialiseVisuals(IVerb verb);
-        void ResetAnimations();
-        bool Retire(CanvasGroup canvasGroup);
-        void SetVfx(RetirementVFX vfxName);
         void UpdateTimerVisuals(float duration, float timeRemaining, EndingFlavour signalEndingFlavour);
-        void BeginArtAnimation();
-        bool CanAnimate();
-        void OnBeginDragVisuals();
-        void OnEndDragVisuals();
-        void Highlight(HighlightType highlightType);
-        void Unhighlight(HighlightType highlightType);
-        bool NoPush { get; }
-        void DoRevealEffect(bool instant);
-        void DoShroudEffect(bool instant);
-        bool RequestingNoDrag { get; }
+
+        
         void ShowMiniSlot(bool greedy);
         void HideMiniSlot();
         void DisplayStackInMiniSlot(ElementStackToken stack);
@@ -40,7 +29,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         void Clicked(PointerEventData eventData,VerbAnchor anchor);
         void OverrideIcon(string icon);
         Vector3 GetOngoingSlotPosition();
-        void DoMove(RectTransform tokenRectTransform);
+
 
 
         /// <summary>

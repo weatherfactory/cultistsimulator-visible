@@ -22,23 +22,11 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
 
 
-        public interface IElementManifestation
+        public interface IElementManifestation:IManifestation
     {
         void InitialiseVisuals(Element element);
         void UpdateVisuals(Element element, int quantity);
-        void ResetAnimations();
-        bool Retire(RetirementVFX retirementVfx);
         void UpdateDecayVisuals(float lifetimeRemaining, Element element, float interval,bool currentlyBeingDragged);
-        void BeginArtAnimation(string icon);
-        bool CanAnimate();
-        void OnBeginDragVisuals();
-        void OnEndDragVisuals();
-        void Highlight(HighlightType highlightType);
-        void Unhighlight(HighlightType highlightType);
-        bool NoPush { get; }
-        void DoRevealEffect(bool instant);
-        void DoShroudEffect(bool instant);
-        bool RequestingNoDrag { get; }
-        void DoMove(RectTransform tokenRectTransform);
+
     }
 }

@@ -269,7 +269,7 @@ namespace Assets.CS.TabletopUI {
         {
             if (!CanAnimateArt())
                 return;
-            _manifestation.BeginArtAnimation();
+            _manifestation.BeginArtAnimation(Verb.Id);
 
         }
 

@@ -373,7 +373,7 @@ namespace Assets.TabletopUi.Scripts.Elements
             return frames.Any();
         }
 
-        public void BeginArtAnimation(string icon)
+        public void BeginArtAnimation()
         {
             if (animCoroutine != null)
                 StopCoroutine(animCoroutine);
@@ -383,18 +383,15 @@ namespace Assets.TabletopUi.Scripts.Elements
             int frameCount = frames.Count;
             int frameIndex = 0;
 
-            animCoroutine = StartCoroutine(DoAnim(duration, frameCount, frameIndex, icon));
+            animCoroutine = StartCoroutine(DoAnim(duration, frameCount, frameIndex));
         }
 
         /// <param name="duration">Determines how long the animation runs. Time is spent equally on all frames</param>
         /// <param name="frameCount">How many frames to show. Default is 1</param>
         /// <param name="frameIndex">At which frame to start. Default is 0</param>
-        private IEnumerator DoAnim(float duration, int frameCount, int frameIndex, string icon)
+        private IEnumerator DoAnim(float duration, int frameCount, int frameIndex)
         {
-            Sprite[] animSprites = new Sprite[frameCount];
 
-            for (int i = 0; i < animSprites.Length; i++)
-                animSprites[i] = ResourcesManager.GetSpriteForElement(icon, frameIndex + i);
 
             float time = 0f;
             int lastSpriteIndex = -1;

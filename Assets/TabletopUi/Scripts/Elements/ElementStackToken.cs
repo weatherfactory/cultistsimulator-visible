@@ -1037,7 +1037,7 @@ namespace Assets.CS.TabletopUI {
         public override void StartArtAnimation() {
             if (!CanAnimateArt())
                 return;
-            _manifestation.BeginArtAnimation(_element.Icon);
+            _manifestation.BeginArtAnimation();
            
         }
 
