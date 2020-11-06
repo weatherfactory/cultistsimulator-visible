@@ -655,7 +655,9 @@ namespace Assets.Core.Entities {
             SituationEventData eventData = SituationEventData.Create(this);
             _window.Hide(eventData);
             _anchor.DisplayAsClosed();
-    }
+
+            DumpUnstartedBusiness();
+        }
 
 
     public void OpenAt(TokenLocation location)
@@ -706,16 +708,18 @@ namespace Assets.Core.Entities {
 
 
 
-        public void DumpThresholdStacks()
+        public void DumpUnstartedBusiness()
         {
-            //problem: this dumps ongoing stacks too! Revisit.
-            var slotted = GetStacks(ContainerCategory.Threshold);
-            foreach (var item in slotted)
-                item.ReturnToTabletop(new Context(Context.ActionSource.PlayerDumpAll));
+            //This only dumps threshold stacks if the situation is not ongoing. In classic CS situation sets, this is fine,
+            //because it effectively excludes ongoing stacks - but it might need more filtration.
+            if(State!=SituationState.Ongoing)
+            {
+                var slotted = GetStacks(ContainerCategory.Threshold);
+                foreach (var item in slotted)
+                    item.ReturnToTabletop(new Context(Context.ActionSource.PlayerDumpAll));
+            }
 
-            Reset();
 
- 
         }
 
         public void CollectOutputStacks()

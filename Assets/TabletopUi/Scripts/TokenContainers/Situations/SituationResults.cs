@@ -21,6 +21,8 @@ public class SituationResults : TokenContainer {
     [SerializeField] SituationResultsPositioning cardPos;
     [SerializeField] TextMeshProUGUI dumpResultsButtonText;
 
+    public override ContainerCategory ContainerCategory => ContainerCategory.Output;
+
     private string buttonClearResultsDefault;
     private string buttonClearResultsNone;
 
@@ -60,7 +62,7 @@ public class SituationResults : TokenContainer {
         // we noew reorder on DisplayHere
     }
 
-    public override ContainerCategory ContainerCategory => ContainerCategory.Output;
+
 
     public override void AcceptStack(ElementStackToken stack, Context context)
     {

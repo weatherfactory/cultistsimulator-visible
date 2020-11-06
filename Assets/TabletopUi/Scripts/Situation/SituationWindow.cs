@@ -92,10 +92,7 @@ namespace Assets.CS.TabletopUI {
 			get { return positioner.GetPosition(); }
 			set { positioner.SetPosition( value ); }
 		}
-        // INIT & LIFECYCLE
-
-
-
+        
         public void TryResizeWindow(int slotsCount)
         {
             SetWindowSize(slotsCount > 3);
