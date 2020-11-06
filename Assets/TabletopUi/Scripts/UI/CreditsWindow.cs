@@ -80,5 +80,10 @@ namespace Assets.TabletopUi.Scripts.UI
         {
             OnTokenClicked(args);
         }
+
+        public void OnTokenDragged(TokenEventArgs args)
+        {
+            
+        }
     }
 }

@@ -130,7 +130,12 @@ namespace Assets.Core.Entities {
                 s.OnTokenPointerExited(args);
         }
 
-        
+        public void OnTokenDragged(TokenEventArgs args)
+        {
+            foreach(var s in _subscribers)
+                s.OnTokenDragged(args);
+        }
+
 
         public AspectsInContext GetAspectsInContext(IAspectsDictionary aspectsInSituation)
         {

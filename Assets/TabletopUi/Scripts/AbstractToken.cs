@@ -254,6 +254,7 @@ namespace Assets.CS.TabletopUI {
 
             if (_draggingEnabled)
 			{
+                TokenContainer.OnTokenDragged(new TokenEventArgs{PointerEventData = eventData});
                 MoveObject(eventData);
             }
             else

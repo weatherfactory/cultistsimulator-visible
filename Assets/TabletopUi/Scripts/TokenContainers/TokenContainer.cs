@@ -663,9 +663,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 s.OnTokenDoubleClicked(args);
         }
 
-
-     
-
+        public void OnTokenDragged(TokenEventArgs args)
+        {
+            Catalogue.OnTokenDragged(args);
+            foreach(var s in _subscribers)
+                s.OnTokenDragged(args);
+        }
     }
 
 }

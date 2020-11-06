@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.Core.Entities;
+using Assets.CS.TabletopUI;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Infrastructure.Events;
+using Assets.TabletopUi.Scripts.Interfaces;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(ScrollRect))]
-public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler  {
+public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler,ITokenEventSubscriber  {
 	
 	ScrollRect scrollRect;
     // Vector4 order is Top, Right, Bottom, Left
@@ -40,6 +44,10 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 
 
     void Start() {
+
+        Registry.Get<TokenContainersCatalogue>().Subscribe(this);
+
+
 		scrollRect = GetComponent<ScrollRect>();
 		// TODO: Disable on touch?
 
@@ -72,67 +80,32 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 	}
 
 	public void OnEndDrag(PointerEventData eventData) {
-		//OnEndDrag fired on the scrollrect itself: we've stopped dragging it directly.
-		ManualScrollRectDragIsActive = false;
-	}
+        if (scrollRect.isActiveAndEnabled)
+            scrollRect.velocity = Vector2.zero;
+    }
 
     public void OnTruckEvent(TruckEventArgs args)
     {
-        currentTruckInput = args.CurrentTruckInput;
-    }
+        currentTruckInput = args.CurrentTruckInput * KEY_MOVEMENT_EFFECT_MULTIPLIER;
+        mousePos = new Vector2(args.CurrentTruckInput, currentPedestalInput);
+        }
 
     public void OnPedestalEvent(PedestalEventArgs args)
     {
-        currentPedestalInput = args.CurrentPedestalInput;
+        currentPedestalInput = args.CurrentPedestalInput * KEY_MOVEMENT_EFFECT_MULTIPLIER;
+        mousePos = new Vector2(currentTruckInput, currentPedestalInput);
+
     }
 
 
-	void Update()
+    void Update()
     {
-     
-        //Move camera with mouse or keys?
+        //This still isn't working perfectly - I don't understand the differing decelerations when using keys -
+        //but I'm going to move on and come back to it
 
-		// We are dragging manually? then block this thing and stop
-		if (ManualScrollRectDragIsActive)
-		{
-			blockScrolling = true;
-			return;
-		}
-        // We're pressing a hotkey? Then move.
-        if (currentTruckInput < 0 || currentTruckInput > 0 || currentPedestalInput<0 || currentPedestalInput>0)
-		{
-			Debug.Log($"Truck: {currentTruckInput} Pedestal: {currentPedestalInput} ");
-
-            mousePos = new Vector2(currentTruckInput,currentPedestalInput);
-            magnitude = KEY_MOVEMENT_EFFECT_MULTIPLIER;
-            pointerEnterEdgeTime = timeout;
-        }
-
-        
-        // check if the mouse is in the scroll zone near the edge of the screen.
-       else if (Mouse.current.leftButton.isPressed) //...but only if the mouse button is down - ie we're dragging something else. It would be better to check if we're actually dragging, though. Event?
-        {
-            // point ranging from (-0.5, -0.5) to (0.5, 0.5)
-            mousePos = new Vector2(Pointer.current.position.x.ReadValue()/ Screen.width - 0.5f, Pointer.current.position.y.ReadValue() / Screen.height - 0.5f);
-            SetMagnitudeFromMouse();
-        }
-        // We got neither a button nor a pointer? Nothing.
-       	else
-        {
-            blockScrolling = false; // enable scrolling starting with the next frame
-            return;
-        }
-
-        // We are not in a zone? Then stop doing this and unblock us if needed
         if (Mathf.Approximately(magnitude, 0f))
         {
-            blockScrolling = false; // enable scrolling starting with the next frame
-            pointerEnterEdgeTime = 0f;	
-            return;
-        }
-        // We are blocked - IE we had a manual drag and we're still in the scroll-zone?
-        else if (blockScrolling)
-        {
+            pointerEnterEdgeTime = 0f;
             return;
         }
 
@@ -142,7 +115,7 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
             pointerEnterEdgeTime += Time.deltaTime;
 
             // Still not enough, then get us out of here
-            if (pointerEnterEdgeTime < timeout) 
+            if (pointerEnterEdgeTime < timeout)
                 return;
         }
 
@@ -168,7 +141,17 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 	}
 
 
-	void SetMagnitudeFromMouse() {
+    public void OnTokenDragged(TokenEventArgs args)
+    {
+
+        // if we're dragging a token, check if the mouse is in the scroll zone near the edge of the screen.
+
+            // point ranging from (-0.5, -0.5) to (0.5, 0.5)
+            mousePos = new Vector2(Pointer.current.position.x.ReadValue() / Screen.width - 0.5f, Pointer.current.position.y.ReadValue() / Screen.height - 0.5f);
+            SetMagnitudeFromMouse();
+    }
+
+    void SetMagnitudeFromMouse() {
 		magnitude = 0f;
 		// Vertical
 		// up
@@ -190,6 +173,37 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 			magnitude = Mathf.Max(magnitude, Mathf.Abs(mousePos.x - innerBounds.w) / marginVect.x);
 		}
 	}
+
+
+    public void NotifyStacksChangedForContainer(TokenEventArgs args)
+    {
+        //
+    }
+
+    public void OnTokenClicked(TokenEventArgs args)
+    {
+     //
+    }
+
+    public void OnTokenReceivedADrop(TokenEventArgs args)
+    {
+     //
+    }
+
+    public void OnTokenPointerEntered(TokenEventArgs args)
+    {
+     //
+    }
+
+    public void OnTokenPointerExited(TokenEventArgs args)
+    {
+      //
+    }
+
+    public void OnTokenDoubleClicked(TokenEventArgs args)
+    {
+      //
+    }
 
 
 }

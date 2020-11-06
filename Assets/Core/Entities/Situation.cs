@@ -826,6 +826,11 @@ namespace Assets.Core.Entities {
         public void OnTokenDoubleClicked(TokenEventArgs args)
         {
             }
+
+        public void OnTokenDragged(TokenEventArgs args)
+        {
+            //
+        }
     }
 
 }

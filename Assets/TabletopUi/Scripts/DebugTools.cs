@@ -602,6 +602,11 @@ public class DebugTools : MonoBehaviour,ITokenEventSubscriber
     {
         throw new NotImplementedException();
     }
+
+    public void OnTokenDragged(TokenEventArgs args)
+    {
+        //
+    }
 }
 
 

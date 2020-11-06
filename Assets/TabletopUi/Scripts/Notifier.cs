@@ -202,5 +202,10 @@ namespace Assets.CS.TabletopUI {
         {
             HideDetails();
         }
+
+        public void OnTokenDragged(TokenEventArgs args)
+        {
+            //
+        }
     }
 }

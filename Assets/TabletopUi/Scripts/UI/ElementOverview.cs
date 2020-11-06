@@ -121,4 +121,9 @@ public class ElementOverview : MonoBehaviour, ITokenEventSubscriber {
         //could emphasise display element here
 
     }
+
+    public void OnTokenDragged(TokenEventArgs args)
+    {
+        //
+    }
 }

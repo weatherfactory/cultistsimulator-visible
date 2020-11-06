@@ -113,5 +113,10 @@ namespace Assets.TabletopUi.Scripts.UI
       public void OnTokenDoubleClicked(TokenEventArgs args)
       {
           }
+
+      public void OnTokenDragged(TokenEventArgs args)
+      {
+          //
+      }
     }
 }
