@@ -236,10 +236,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 {
                     NoonUtility.LogWarning($"We can't parse a situation locationinfo: {locationInfo}. So we're just picking the beginning of it to use as the situation path.");
                     simplifiedSituationPath = simplifiedSituationPathParts[0];
+                    command.AnchorLocation = new TokenLocation(0, 0, 0);
                 }
                 else
                 {
                     simplifiedSituationPath = simplifiedSituationPathParts[2];
+                    float.TryParse(simplifiedSituationPathParts[0], out float anchorPosX);
+                    float.TryParse(simplifiedSituationPathParts[1], out float anchorPosY);
+                    command.AnchorLocation = new TokenLocation(anchorPosX, anchorPosY, 0);
+
+
                 }
 
                 command.SituationPath = simplifiedSituationPath;
@@ -251,8 +257,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 
                 if(posx!=null && posy!=null && posz!=null)
                 {
-                    var anchorPosition=new Vector3((float) posx,(float)posy,(float)posz);
-                    command.AnchorLocation=new TokenLocation(anchorPosition,tabletop);
+                    var windowPosition=new Vector3((float) posx,(float)posy,(float)posz);
+                    command.WindowLocation=new TokenLocation(windowPosition, tabletop);
                 }
 
                 command.Open = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();

@@ -178,8 +178,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             var newAnchor = Registry.Get<PrefabFactory>().CreateLocally<VerbAnchor>(transform);
 
             newAnchor.SetTokenContainer(this, new Context(Context.ActionSource.Unknown));
-            //we're passing in world positions via the creation command
-            newAnchor.transform.localPosition=transform.InverseTransformPoint(situationCreationCommand.AnchorLocation.Position);
+            newAnchor.transform.localPosition = situationCreationCommand.AnchorLocation.Position;
             return newAnchor;
         }
 
