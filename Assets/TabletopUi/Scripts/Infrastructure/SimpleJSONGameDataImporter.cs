@@ -298,7 +298,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 //if this was an ongoing slot, we also need to tell the situation that the slot's filled, or it will grab another
 
-                var situation = Registry.Get<SituationBuilder>().CreateSituation(command);
+                var situation = Registry.Get<SituationsCatalogue>().CreateSituation(command);
                 
                 
                 ImportSlotContents(situation,htSituationValues,  SaveConstants.SAVE_STARTINGSLOTELEMENTS);

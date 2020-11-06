@@ -285,9 +285,7 @@ namespace Assets.CS.TabletopUI {
             var choreographer = new Choreographer(_tabletop, WindowsTokenContainer);
             registry.Register(choreographer);
 
-            var situationsCatalogue = new SituationsCatalogue();
-            registry.Register(situationsCatalogue);
-            
+           
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
             registry.Register<IDraggableHolder>(draggableHolder);
 

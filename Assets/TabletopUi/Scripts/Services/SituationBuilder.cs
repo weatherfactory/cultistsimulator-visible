@@ -17,11 +17,11 @@ namespace Assets.TabletopUi.Scripts.Services {
 
         [SerializeField] private TokenContainer anchorLevel;
         [SerializeField] private TokenContainer windowLevel;
+        public string ForVerbSpecies;
 
         public void Awake()
         {
-            
-            new Registry().Register<SituationBuilder>(this);
+         Registry.Get<SituationsCatalogue>().RegisterBuilder(ForVerbSpecies,this);
         }
 
 

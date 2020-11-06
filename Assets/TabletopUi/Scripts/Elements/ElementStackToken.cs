@@ -225,7 +225,7 @@ namespace Assets.CS.TabletopUI {
             //if we've somehow failed to populate an element, return empty aspects, just to exception-proof ourselves
     
             
-            var tc = Registry.Get<TokenContainersCatalogue>(false);
+            var tc = Registry.Get<TokenContainersCatalogue>();
 
             if (_element == null || tc==null)
                 return new AspectsDictionary();
@@ -517,7 +517,7 @@ namespace Assets.CS.TabletopUI {
             if (Defunct)
                 return false;
 
-            var hlc = Registry.Get<HighlightLocationsController>(false);
+            var hlc = Registry.Get<HighlightLocationsController>();
             if (hlc != null)
                 hlc.DeactivateMatchingHighlightLocation(_element?.Id);
 
@@ -649,7 +649,7 @@ namespace Assets.CS.TabletopUI {
 
             _manifestation.Highlight(HighlightType.Hover);
             
-			var tabletopManager = Registry.Get<TabletopManager>(false);
+			var tabletopManager = Registry.Get<TabletopManager>();
             if(tabletopManager!=null ) //eg we might have a face down card on the credits page - in the longer term, of course, this should get interfaced
             {
                 if (!shrouded)
@@ -671,7 +671,7 @@ namespace Assets.CS.TabletopUI {
 
             _manifestation.Unhighlight(HighlightType.Hover);
 
-            var ttm = Registry.Get<TabletopManager>(false);
+            var ttm = Registry.Get<TabletopManager>();
                 if(ttm!=null)
                 {
                 Registry.Get<TabletopManager>().SetHighlightedElement(null);

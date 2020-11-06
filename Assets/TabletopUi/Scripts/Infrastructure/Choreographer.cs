@@ -18,7 +18,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
     public class Choreographer:ISettingSubscriber {
 
         private TabletopTokenContainer _tabletop;
-        private SituationBuilder _situationBuilder;
         private Rect tableRect;
 
         const float checkPointPerArcLength = 100f;
@@ -35,7 +34,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public Choreographer(TabletopTokenContainer tabletop, WindowsTokenContainer windowsToken) {
             _tabletop = tabletop;
-            _situationBuilder = Registry.Get<SituationBuilder>();
+
 
             tableRect = tabletop.GetRect();
 
@@ -450,7 +449,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 }
             }
             
-            var situation = Registry.Get<SituationBuilder>().CreateSituation(scc);
+            var situation = Registry.Get<SituationsCatalogue>().CreateSituation(scc);
             situation.ExecuteHeartbeat(0f);
 
 

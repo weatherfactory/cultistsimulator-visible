@@ -2,19 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Commands;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Interfaces;
+using Assets.TabletopUi.Scripts.Services;
 
 namespace Assets.Core.Entities
 {
     public class SituationsCatalogue
     {
-        private readonly List<Situation> _currentSituations;
+        private readonly Dictionary<string, SituationBuilder> _builders;
+        private readonly  List<Situation> _currentSituations;
+        
 
         public SituationsCatalogue()
         {
+            _builders = new Dictionary<string, SituationBuilder>();
             _currentSituations = new List<Situation>();
+            
+        }
+
+        public void RegisterBuilder(string forSpecies, SituationBuilder builder)
+        {
+            _builders.Add(forSpecies,builder);
         }
 
         public List<Situation> GetRegisteredSituations()
@@ -33,10 +44,17 @@ namespace Assets.Core.Entities
             _currentSituations.Remove(situation);
         }
         
+        
         public Situation GetOpenSituation()
         {
             return GetRegisteredSituations().FirstOrDefault(s => s.IsOpen);
-    }
+        }
+
+        public Situation CreateSituation(SituationCreationCommand command)
+        {
+            var builder = _builders[command.Verb.Species];
+            return builder.CreateSituation(command);
+        }
 
         //public IEnumerable<IArtAnimatableToken> GetAnimatables()
         //{

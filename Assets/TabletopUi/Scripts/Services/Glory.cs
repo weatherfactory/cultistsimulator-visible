@@ -109,6 +109,9 @@ namespace Assets.TabletopUi.Scripts.Services
                 var tokenContainersCatalogue=new TokenContainersCatalogue();
                 registryAccess.Register(tokenContainersCatalogue);
 
+                var situationsCatalogue = new SituationsCatalogue();
+                registryAccess.Register(situationsCatalogue);
+
 
                 registryAccess.Register(limbo);
                 registryAccess.Register(nullContainer);
