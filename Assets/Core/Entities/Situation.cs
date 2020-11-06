@@ -710,14 +710,16 @@ namespace Assets.Core.Entities {
 
         public void DumpUnstartedBusiness()
         {
-            //This only dumps threshold stacks if the situation is not ongoing. In classic CS situation sets, this is fine,
-            //because it effectively excludes ongoing stacks - but it might need more filtration.
-            if(State!=SituationState.Ongoing)
-            {
-                var slotted = GetStacks(ContainerCategory.Threshold);
-                foreach (var item in slotted)
-                    item.ReturnToTabletop(new Context(Context.ActionSource.PlayerDumpAll));
-            }
+       //deferring this a bit longer. I need to think about how to connect startingslot behaviour with the BOH model:
+       //slot behaviour: dump when window closed?
+       //slot behaviour: block for certain kinds of interaction? using existing block?
+       //slot behaviour: specify connection type with other containers? ie expand 'greedy' effect to mean multiple things and directions
+            //if(State!=SituationState.Ongoing)
+            //{
+            //    var slotted = GetStacks(ContainerCategory.Threshold);
+            //    foreach (var item in slotted)
+            //        item.ReturnToTabletop(new Context(Context.ActionSource.PlayerDumpAll));
+            //}
 
 
         }

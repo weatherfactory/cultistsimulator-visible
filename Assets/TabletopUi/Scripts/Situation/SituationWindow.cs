@@ -254,6 +254,11 @@ namespace Assets.CS.TabletopUI {
             
         }
 
+        public void Collect()
+        {
+            OnCollect.Invoke();
+        }
+
 
         public void DisplayPredictedRecipe(SituationEventData e, AspectsDictionary aspectsInSituation)
         {
