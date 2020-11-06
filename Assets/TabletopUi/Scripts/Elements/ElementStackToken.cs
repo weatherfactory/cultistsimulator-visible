@@ -291,6 +291,7 @@ namespace Assets.CS.TabletopUI {
         {
             //these things should only be initialised if we've just created the stack
             //if we're repopulating, they'll already exist
+            gameObject.name = _element.Id + "_stack";
 
             if (_currentMutations == null)
                 _currentMutations = new Dictionary<string, int>();

@@ -13,8 +13,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
     public class StoredManifestation: MonoBehaviour, IElementManifestation
     {
-        [SerializeField] public Image icon;
-
+        
         [SerializeField] private ElementFrame elementFrame;
 
         public void InitialiseVisuals(Element element)
