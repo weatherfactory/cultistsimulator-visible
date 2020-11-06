@@ -316,6 +316,10 @@ namespace Assets.CS.TabletopUI {
                 var newManifestation = Registry.Get<PrefabFactory>().CreateManifestationPrefab(forContainer.ElementManifestationType.Name, this.transform);
                 SwapOutManifestation(_manifestation,newManifestation,RetirementVFX.None);
             }
+
+            _manifestation.InitialiseVisuals(_element);
+            _manifestation.UpdateVisuals(_element,Quantity);
+            
         }
 
         /// <summary>

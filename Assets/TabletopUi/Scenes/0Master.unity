@@ -153,9 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876e8111ed625f3429f5283925fdf384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnStacksChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &79
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +219,8 @@ MonoBehaviour:
   CardManifestation: {fileID: 1948377804298620470, guid: 5639b0e91525fcd49a44b2b5a698e9ba,
     type: 3}
   DropzoneManifestation: {fileID: 323380861675452517, guid: 1156e72892331c64397bcd330e4ea6c6,
+    type: 3}
+  StoredManifestation: {fileID: 5242376316704206303, guid: d4123cb099b40b24392f3d3b5d9447a9,
     type: 3}
   MinimalManifestation: {fileID: 237947359040070189, guid: db8ea07c7f085e54bbabfd0089b46a40,
     type: 3}
@@ -30563,9 +30562,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 118bdeec73f673144936cf3d718493f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnStacksChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1425316270
 GameObject:
   m_ObjectHideFlags: 0

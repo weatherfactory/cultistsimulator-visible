@@ -29,6 +29,7 @@ namespace Assets.TabletopUi.Scripts.Services
         public ElementStackToken ElementStackToken = null;
         public CardManifestation CardManifestation = null;
         public DropzoneManifestation DropzoneManifestation = null;
+        public StoredManifestation StoredManifestation = null;
         public MinimalManifestation MinimalManifestation = null;
         public VerbManifestation VerbManifestation = null;
         public SituationWindow SituationWindow = null;
