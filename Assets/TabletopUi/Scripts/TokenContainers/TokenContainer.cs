@@ -186,7 +186,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public SituationWindow ProvisionSituationWindow(ISituationAnchor anchor)
         {
             var newWindow = Registry.Get<PrefabFactory>().CreateLocally<SituationWindow>(transform);
-            newWindow.SetTokenContainer(this, new Context(Context.ActionSource.Unknown));
             newWindow.positioner.Initialise(anchor);
             return newWindow;
         }

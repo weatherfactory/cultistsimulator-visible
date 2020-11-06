@@ -35,7 +35,7 @@ namespace Assets.CS.TabletopUI {
 
 
     [RequireComponent(typeof(SituationWindowPositioner))]
-    public class SituationWindow : AbstractToken,ISituationSubscriber {
+    public class SituationWindow : MonoBehaviour, ISituationSubscriber {
 
         [Header("Visuals")]
 		[SerializeField] CanvasGroupFader canvasGroupFader;
@@ -92,7 +92,7 @@ namespace Assets.CS.TabletopUI {
 			get { return positioner.GetPosition(); }
 			set { positioner.SetPosition( value ); }
 		}
-        
+
         public void TryResizeWindow(int slotsCount)
         {
             SetWindowSize(slotsCount > 3);
@@ -135,92 +135,9 @@ namespace Assets.CS.TabletopUI {
 
 		}
 
-        public override void StartArtAnimation()
-        {
-       
-        }
-
-        public override bool CanAnimateArt()
-        {
-            return false;
-        }
-
-        public override string EntityId { get; }
-
-        public override void OnDrop(PointerEventData eventData)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool CanInteractWithIncomingObject(VerbAnchor tokenDroppedOn)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool CanInteractWithIncomingObject(ElementStackToken stackDroppedOn)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void InteractWithIncomingObject(VerbAnchor tokenDroppedOn)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void InteractWithIncomingObject(ElementStackToken incomingStack)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void OnPointerClick(PointerEventData eventData)
-        {
-//
-        }
-
-        public override void ReturnToTabletop(Context context)
-        {
-            throw new NotImplementedException();
-        }
-
-        protected override void NotifyChroniclerPlacedOnTabletop()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool Retire()
-        {
-            Destroy(gameObject);
-            return true;
-        }
-
-        public override void ReactToDraggedToken(TokenInteractionEventArgs args)
-        {
-          //
-        }
-
-        public override void HighlightPotentialInteractionWithToken(bool show)
-        {
-          //
-        }
-
-        public override void OnPointerEnter(PointerEventData eventData)
-        {
-           //
-        }
-
-        public override void OnPointerExit(PointerEventData eventData)
-        {
-            //
-        }
-
-        public override void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<AbstractToken> animDone, float startScale, float endScale)
-        {
-            throw new NotImplementedException();
-        }
-
-
+    
         public void Closed() {
-        OnWindowClosed.Invoke();
+          OnWindowClosed.Invoke();
         }
 
 
@@ -378,19 +295,23 @@ namespace Assets.CS.TabletopUI {
             PaginatedNotes.AddText(recipePrediction.DescriptiveText);
         }
 
-        public override void MoveObject(PointerEventData eventData) {
-            Vector3 dragPos;
-            RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Get<IDraggableHolder>().RectTransform, eventData.position, eventData.pressEventCamera, out dragPos);
+        //public override void MoveObject(PointerEventData eventData) {
+        //    Vector3 dragPos;
+        //    RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Get<IDraggableHolder>().RectTransform, eventData.position, eventData.pressEventCamera, out dragPos);
 
-            // Potentially change this so it is using UI coords and the RectTransform?
-            rectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);
+        //    // Potentially change this so it is using UI coords and the RectTransform?
+        //    rectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);
 
-            // rotate object slightly based on pointer Delta
-            if (rotateOnDrag && eventData.delta.sqrMagnitude > 10f) {
-                // This needs some tweaking so that it feels more responsive, physica. Card rotates into the direction you swing it?
-                perlinRotationPoint += eventData.delta.sqrMagnitude * 0.001f;
-                transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -10 + Mathf.PerlinNoise(perlinRotationPoint, 0) * 20));
-            }
+        //    // rotate object slightly based on pointer Delta
+        //    if (rotateOnDrag && eventData.delta.sqrMagnitude > 10f) {
+        //        // This needs some tweaking so that it feels more responsive, physica. Card rotates into the direction you swing it?
+        //        perlinRotationPoint += eventData.delta.sqrMagnitude * 0.001f;
+        //        transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -10 + Mathf.PerlinNoise(perlinRotationPoint, 0) * 20));
+        //    }
+        //}
+        public void Retire()
+        {
+            Destroy(gameObject);
         }
     }
 }

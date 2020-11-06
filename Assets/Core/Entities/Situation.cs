@@ -59,9 +59,9 @@ namespace Assets.Core.Entities {
             return _anchor.Location;
         }
 
-        public TokenLocation GetWindowLocation()
+        public Vector3 GetWindowLocation()
         {
-            return _window.Location;
+            return _window.positioner.GetPosition();
         }
 
         public const float HOUSEKEEPING_CYCLE_BEATS = 1f;

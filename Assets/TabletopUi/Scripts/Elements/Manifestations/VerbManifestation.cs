@@ -288,12 +288,12 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         public void OnBeginDragVisuals()
         {
-            canvasGroup.blocksRaycasts = false;
+          
         }
 
         public void OnEndDragVisuals()
         {
-            canvasGroup.blocksRaycasts = false;
+      
         }
 
         private void SetGlowColor(Color color)

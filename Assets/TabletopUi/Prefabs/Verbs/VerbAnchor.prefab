@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224000012250353942}
   - component: {fileID: 114000011782136268}
+  - component: {fileID: -511566289788418940}
   m_Layer: 5
   m_Name: VerbAnchor
   m_TagString: Untagged
@@ -51,3 +52,15 @@ MonoBehaviour:
   rectTransform: {fileID: 224000012250353942}
   rotateOnDrag: 1
   TokenContainer: {fileID: 0}
+--- !u!225 &-511566289788418940
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000012741670848}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

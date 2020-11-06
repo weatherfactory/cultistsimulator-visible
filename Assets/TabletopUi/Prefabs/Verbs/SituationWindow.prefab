@@ -461,9 +461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d82a6bfde0cdd94890dbb172a940e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rectTransform: {fileID: 0}
-  rotateOnDrag: 1
-  TokenContainer: {fileID: 0}
   canvasGroupFader: {fileID: 114000011356646590}
   positioner: {fileID: 114651031545853594}
   artwork: {fileID: 114475561134123840}
@@ -3501,8 +3498,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114020662237663214}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: Close
+        m_TargetAssemblyTypeName: Assets.CS.TabletopUI.SituationWindow, Assembly-CSharp
+        m_MethodName: Closed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

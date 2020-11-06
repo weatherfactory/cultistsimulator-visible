@@ -143,15 +143,13 @@ namespace Assets.TabletopUi.Scripts.Elements
         public void OnBeginDragVisuals()
         {
             ShowCardShadow(true); // Ensure we always have a shadow when dragging
-            canvasGroup.blocksRaycasts = false;
-
+            
         }
 
 
         public void OnEndDragVisuals()
         {
             ShowCardShadow(false);
-            canvasGroup.blocksRaycasts = true;
 
         }
 

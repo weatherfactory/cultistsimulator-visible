@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 224000011999988054}
   - component: {fileID: 222000011707310424}
   - component: {fileID: 114000012247175884}
+  - component: {fileID: 1741897546066371184}
   m_Layer: 5
   m_Name: ElementStack
   m_TagString: Untagged
@@ -61,3 +62,15 @@ MonoBehaviour:
   rotateOnDrag: 1
   TokenContainer: {fileID: 0}
   PlacementAlreadyChronicled: 0
+--- !u!225 &1741897546066371184
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011432613132}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
