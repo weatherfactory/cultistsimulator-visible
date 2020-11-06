@@ -43,7 +43,7 @@ namespace Assets.CS.TabletopUI {
         public event System.Action<float> onDecay;
 
  
-        private IElementManifestation _manifestation;
+        private IElementManifestation _manifestation=new NullElementManifestation();
         private Element _element;
         private int _quantity;
 
@@ -287,20 +287,6 @@ namespace Assets.CS.TabletopUI {
             return _element.HasChildSlotsForVerb(verb);
         }
 
-        private void InitialiseIfStackIsNew()
-        {
-            //these things should only be initialised if we've just created the stack
-            //if we're repopulating, they'll already exist
-            gameObject.name = _element.Id + "_stack";
-
-            if (_currentMutations == null)
-                _currentMutations = new Dictionary<string, int>();
-            if (_illuminateLibrarian == null)
-                _illuminateLibrarian = new IlluminateLibrarian();
-            
-
-            _manifestation = new NullElementManifestation();
-        }
 
         public void Manifest(TokenContainer forContainer)
         {
@@ -341,15 +327,20 @@ namespace Assets.CS.TabletopUI {
                 return;
             }
 
-            InitialiseIfStackIsNew();
+            gameObject.name = _element.Id + "_stack";
+
+            if (_currentMutations == null)
+                _currentMutations = new Dictionary<string, int>();
+            if (_illuminateLibrarian == null)
+                _illuminateLibrarian = new IlluminateLibrarian();
 
 
             try
             {
                 SetQuantity(quantity, new Context(Context.ActionSource.Unknown)); // this also toggles badge visibility through second call
 
-                _manifestation.InitialiseVisuals(_element);
-                _manifestation.UpdateVisuals(_element,quantity);
+            Manifest(TokenContainer);
+
                 LifetimeRemaining = _element.Lifetime;
                 _manifestation.UpdateDecayVisuals(LifetimeRemaining, _element,0,_currentlyBeingDragged);
            
@@ -511,11 +502,12 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        private bool SwapOutManifestation(IElementManifestation oldManifestation, IElementManifestation newManifestation,RetirementVFX vfxForOldManifestation)
+        private void SwapOutManifestation(IElementManifestation oldManifestation, IElementManifestation newManifestation,RetirementVFX vfxForOldManifestation)
         {
             var manifestationToRetire = oldManifestation;
             _manifestation = newManifestation;
-            return manifestationToRetire.Retire(vfxForOldManifestation);
+            
+            manifestationToRetire.Retire(vfxForOldManifestation,OnSwappedOutManifestationRetired);
 
         }
         
@@ -530,23 +522,28 @@ namespace Assets.CS.TabletopUI {
                 hlc.DeactivateMatchingHighlightLocation(_element?.Id);
 
             TokenContainer.NotifyStacksChangedForContainer(new TokenEventArgs{Element = _element,Token = this,Container = TokenContainer});  // Notify tabletop that aspects will need recompiling
-
-
             SetTokenContainer(Registry.Get<NullContainer>(), new Context(Context.ActionSource.Retire));
 
-            //now take care of the Unity side of things.
 
             Defunct = true;
             FinishDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex)
 
+            
+            _manifestation.Retire(vfxName,OnManifestationRetired);
 
-            var manifestationToRetire = _manifestation;
-            _manifestation=new NullElementManifestation();
+            return true;
+
+        }
+
+        private void OnManifestationRetired()
+        {
 
             Destroy(this.gameObject);
+        }
 
-            return manifestationToRetire.Retire(vfxName);
-
+        private void OnSwappedOutManifestationRetired()
+        {
+            //
         }
 
 
@@ -986,12 +983,12 @@ namespace Assets.CS.TabletopUI {
 
         public void Understate()
         {
-            canvasGroup.alpha = 0.3f;
+            _manifestation.Understate();
         }
 
         public void Emphasise()
         {
-            canvasGroup.alpha = 1f;
+            _manifestation.Emphasise();
         }
 
 

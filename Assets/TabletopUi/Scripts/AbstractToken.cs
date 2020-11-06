@@ -51,7 +51,6 @@ namespace Assets.CS.TabletopUI {
     }
 
         [RequireComponent(typeof(RectTransform))]
-    [RequireComponent(typeof(CanvasGroup))]
     public abstract class AbstractToken : MonoBehaviour,
         IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IToken,IArtAnimatableToken {
 
@@ -66,7 +65,6 @@ namespace Assets.CS.TabletopUI {
         protected int startSiblingIndex;
         protected Vector3 dragOffset;
         protected RectTransform rectCanvas;
-        protected CanvasGroup canvasGroup;
 
         protected float perlinRotationPoint = 0f;
         protected float dragHeight = -8f; // Draggables all drag on a specifc height and have a specific "default height"
@@ -83,7 +81,6 @@ namespace Assets.CS.TabletopUI {
 
         protected virtual void Awake() {
             rectTransform = GetComponent<RectTransform>();
-            canvasGroup = GetComponent<CanvasGroup>();
                 TokenContainer= Registry.Get<NullContainer>();
         }
 
@@ -213,9 +210,7 @@ namespace Assets.CS.TabletopUI {
 
 
             TokenXNess = TokenXNess.NoValidDestination;
-            canvasGroup.blocksRaycasts = false;
-
-     
+            
             startPosition = rectTransform.localPosition;
             startParent = rectTransform.parent;
             startSiblingIndex = rectTransform.GetSiblingIndex();
@@ -279,7 +274,6 @@ namespace Assets.CS.TabletopUI {
             if (_currentlyBeingDragged)
             {
                 _currentlyBeingDragged = false;
-                canvasGroup.blocksRaycasts = true;
 
                 if (ShouldReturnToStart())
                     ReturnToStartPosition();

@@ -238,9 +238,9 @@ namespace Assets.Core.Entities {
         public HeartbeatResponse ExecuteHeartbeat(float interval)
         {
 
-            RecipeConductor rc = new RecipeConductor();
+        
 
-            Continue(rc, interval, greedyAnimIsActive);
+            Continue(interval, greedyAnimIsActive);
 
             if (State == SituationState.Ongoing)
                 return GetResponseWithUnfilledGreedyThresholdsForThisSituation();
@@ -352,7 +352,7 @@ namespace Assets.Core.Entities {
 
         }
 
-        public SituationState Continue(RecipeConductor rc, float interval, bool waitForGreedyAnim = false)
+        public SituationState Continue(float interval, bool waitForGreedyAnim = false)
         {
 
             switch (State)
@@ -382,7 +382,7 @@ namespace Assets.Core.Entities {
                     // Execute if we've got no time remaining and we're not waiting for a greedy anim
                     // UNLESS timer has gone negative for 5 seconds. In that case sometime is stuck and we need to break out
                     if (TimeRemaining <= 0 && (!waitForGreedyAnim || TimeRemaining < -5.0f))
-                        RequireExecution(rc);
+                        RequireExecution();
                     else
                         TimeRemaining = TimeRemaining - interval;
                     
@@ -390,6 +390,10 @@ namespace Assets.Core.Entities {
                     break;
 
                 case SituationState.RequiringExecution:
+                    var tc = Registry.Get<TokenContainersCatalogue>();
+                    var aspectsInContext = tc.GetAspectsInContext(GetAspectsAvailableToSituation(true));
+
+                    var rc=new RecipeConductor(aspectsInContext, Registry.Get<Character>());
 
                     var linkedRecipe = rc.GetLinkedRecipe(currentPrimaryRecipe);
 
@@ -453,9 +457,13 @@ namespace Assets.Core.Entities {
 
         }
 
-        private void RequireExecution(RecipeConductor rc)
+        private void RequireExecution()
         {
             State = SituationState.RequiringExecution;
+            var tc = Registry.Get<TokenContainersCatalogue>();
+            var aspectsInContext = tc.GetAspectsInContext(GetAspectsAvailableToSituation(true));
+
+            RecipeConductor rc =new RecipeConductor(aspectsInContext, Registry.Get<Character>());
 
             IList<RecipeExecutionCommand> recipeExecutionCommands = rc.GetActualRecipesToExecute(currentPrimaryRecipe);
 
@@ -785,9 +793,9 @@ namespace Assets.Core.Entities {
             //so immediately continue with a 0 interval - this won't advance time, but will update the visuals in the situation window
             //(which among other things should make the starting slot unavailable
 
-            RecipeConductor rc = new RecipeConductor(); //reusing the aspectsInContext from above
+            RecipeConductor rc = new RecipeConductor(aspectsInContext, Registry.Get<Character>()); //reusing the aspectsInContext from above
 
-            Continue(rc, 0);
+            Continue(0);
 
    
         }
@@ -800,9 +808,9 @@ namespace Assets.Core.Entities {
             var aspectsInContext =
                 Registry.Get<TokenContainersCatalogue>().GetAspectsInContext(aspectsAvailableToSituation);
 
-            RecipeConductor rc = new RecipeConductor();
+            RecipeConductor rc = new RecipeConductor(aspectsInContext,Registry.Get<Character>());
 
-            return rc.GetPredictionForFollowupRecipe(currentPrimaryRecipe, State, aspectsInContext, Verb, Registry.Get<Character>());
+            return rc.GetPredictionForFollowupRecipe(currentPrimaryRecipe, State, Verb);
         }
 
         public void NotifyStacksChangedForContainer(TokenEventArgs args)

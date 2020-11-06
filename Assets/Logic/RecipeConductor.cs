@@ -14,14 +14,15 @@ namespace Assets.Core
 {
     public class RecipeConductor
     {
-        private ICompendium compendium;
-        private AspectsInContext aspectsToConsider;
-        private IDice dice;
-        private Character currentCharacter;
+        private readonly AspectsInContext _aspectsInContext;
+        private readonly Character _character;
 
-        public RecipeConductor()
+        
+        public RecipeConductor(AspectsInContext aspectsInContext, Character character)
         {
-            }
+            _aspectsInContext = aspectsInContext;
+            _character = character;
+        }
 
         /// <summary>
         /// If linked recipes exist for this recipe:
@@ -44,17 +45,17 @@ namespace Assets.Core
                         lr.Id +
                         " is marked as an additional linked recipe, but we haven't worked out what to do with additional linked recipes yet");
 
-                Recipe candidateRecipe = compendium.GetEntityById<Recipe>(lr.Id);
+                Recipe candidateRecipe = Registry.Get<ICompendium>().GetEntityById<Recipe>(lr.Id);
 
                 if (candidateRecipe == null)
                 {
                     NoonUtility.Log(currentRecipe.Id + " says: " + "Tried to link to a nonexistent recipe with id " + lr.Id);
                 }
-                else if (!candidateRecipe.RequirementsSatisfiedBy(aspectsToConsider))
+                else if (!candidateRecipe.RequirementsSatisfiedBy(_aspectsInContext))
                 {
                     NoonUtility.Log(currentRecipe.Id + " says: " + "Couldn't satisfy requirements for " + lr.Id + " so won't link to it.");
                 }
-                else if (currentCharacter.HasExhaustedRecipe(candidateRecipe))
+                else if (_character.HasExhaustedRecipe(candidateRecipe))
                 {
                     NoonUtility.Log(currentRecipe.Id + " says: " + lr.Id + " has been exhausted, so won't execute");
                 }
@@ -69,9 +70,9 @@ namespace Assets.Core
 
                     }
 
-                    ChallengeArbiter challengeArbiter=new ChallengeArbiter(aspectsToConsider,lr);
+                    ChallengeArbiter challengeArbiter=new ChallengeArbiter(_aspectsInContext,lr);
                     
-                    int diceResult = dice.Rolld100(currentRecipe);
+                    int diceResult = Registry.Get<IDice>().Rolld100(currentRecipe);
 
                     if (diceResult > challengeArbiter.GetArbitratedChance())
                     {
@@ -93,29 +94,29 @@ namespace Assets.Core
 
         /// <summary>
         /// Returns information on the recipe that's going to execute, based on current recipe and aspect context
-        public RecipePrediction GetPredictionForFollowupRecipe(Recipe currentRecipe, SituationState situationState, AspectsInContext aspectsInContext, IVerb verb, Character character)
+        public RecipePrediction GetPredictionForFollowupRecipe(Recipe currentRecipe, SituationState situationState, IVerb verb)
         {
 
             
             //returns, in order: craftable non-hint recipes; hint recipes; null recipe (which might be verb-description-based)
-            aspectsInContext.ThrowErrorIfNotPopulated(verb.Id);
+            _aspectsInContext.ThrowErrorIfNotPopulated(verb.Id);
 
             //note: we *either* get craftable recipes *or* if we're getting hint recipes we don't care if they're craftable
             var _recipes = Registry.Get<ICompendium>().GetEntitiesAsList<Recipe>();
             List<Recipe> candidateRecipes = _recipes.Where(r => r.CanExecuteInContext(currentRecipe, situationState)).ToList();
             List<Recipe> nonExhaustedCandidateRecipes =
-                candidateRecipes.Where(r => !character.HasExhaustedRecipe(r)).ToList();
+                candidateRecipes.Where(r => !_character.HasExhaustedRecipe(r)).ToList();
             
             var orderedCandidateRecipes = nonExhaustedCandidateRecipes.OrderByDescending(r => r.Priority);
             
             foreach (var candidateRecipe in orderedCandidateRecipes)
             {
-                if (candidateRecipe.RequirementsSatisfiedBy(aspectsInContext))
-                    return new RecipePrediction(candidateRecipe,aspectsInContext.AspectsInSituation);
+                if (candidateRecipe.RequirementsSatisfiedBy(_aspectsInContext))
+                    return new RecipePrediction(candidateRecipe, _aspectsInContext.AspectsInSituation);
             }
 
          
-            return new RecipePrediction(currentRecipe,aspectsInContext.AspectsInSituation);
+            return new RecipePrediction(currentRecipe, _aspectsInContext.AspectsInSituation);
         }
 
         public IList<RecipeExecutionCommand> GetActualRecipesToExecute(Recipe recipe)
@@ -129,9 +130,9 @@ namespace Assets.Core
             {
 
 
-                ChallengeArbiter challengeArbiter = new ChallengeArbiter(aspectsToConsider, ar);
+                ChallengeArbiter challengeArbiter = new ChallengeArbiter(_aspectsInContext, ar);
 
-                int diceResult = dice.Rolld100(recipe);
+                int diceResult = Registry.Get<IDice>().Rolld100(recipe);
                 if (diceResult > challengeArbiter.GetArbitratedChance()) //BUT NOTE: Challenges always seem to fail on alternative recipes at the mo - though they're working fine on linked recipes.
                 {
                     NoonUtility.Log(recipe.Id + " says: " + "Dice result " + diceResult + ", against chance " +
@@ -141,14 +142,14 @@ namespace Assets.Core
                 }
                 else
                 {
-                    Recipe candidateRecipe = compendium.GetEntityById<Recipe>(ar.Id);
+                    Recipe candidateRecipe = Registry.Get<ICompendium>().GetEntityById<Recipe>(ar.Id);
 
-                    if (!candidateRecipe.RequirementsSatisfiedBy(aspectsToConsider))
+                    if (!candidateRecipe.RequirementsSatisfiedBy(_aspectsInContext))
                     {
                         NoonUtility.Log(recipe.Id + " says: couldn't satisfy requirements for " + ar.Id);
                         continue;
                     }
-                    if (currentCharacter.HasExhaustedRecipe(candidateRecipe))
+                    if (_character.HasExhaustedRecipe(candidateRecipe))
                     {
                         NoonUtility.Log(recipe.Id + " says: already exhausted " + ar.Id);
                         continue;

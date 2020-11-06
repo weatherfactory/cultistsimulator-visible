@@ -26,6 +26,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         [SerializeField] Image tokenBody;
         [SerializeField] Sprite lightweightSprite;
         [SerializeField] private BasicShadowImplementation shadow;
+        [SerializeField] private CanvasGroup canvasGroup;
 
 
         [Header("Countdown")]
@@ -224,12 +225,12 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             throw new NotImplementedException();
         }
 
-        public bool Retire(RetirementVFX retirementVfx)
+        public void Retire(RetirementVFX vfx, Action callbackOnRetired)
         {
-            throw new NotImplementedException();
+            Destroy(gameObject);
+            callbackOnRetired();
         }
 
-        
 
         public void BeginArtAnimation()
         {
@@ -287,12 +288,12 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         public void OnBeginDragVisuals()
         {
-            throw new NotImplementedException();
+            canvasGroup.blocksRaycasts = false;
         }
 
         public void OnEndDragVisuals()
         {
-            throw new NotImplementedException();
+            canvasGroup.blocksRaycasts = false;
         }
 
         private void SetGlowColor(Color color)

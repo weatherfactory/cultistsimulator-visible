@@ -13,15 +13,14 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
     public class StoredManifestation: MonoBehaviour, IElementManifestation
     {
+        [SerializeField] private CanvasGroup canvasGroup;
         
         [SerializeField] private ElementFrame elementFrame;
 
         public void InitialiseVisuals(Element element)
         {
+            name = "StoredManifestation_" + element.Id;
             elementFrame.PopulateDisplay(element, 1, false);
-
-            
-            
         }
 
         public void UpdateVisuals(Element element, int quantity)
@@ -36,15 +35,26 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
    //
         }
 
-        public bool Retire(RetirementVFX retirementVfx)
+
+        public void Retire(RetirementVFX vfx, Action callbackOnRetired)
         {
-          Destroy(gameObject);
-          return true;
+            Destroy(gameObject);
+            callbackOnRetired();
         }
 
         public void UpdateDecayVisuals(float lifetimeRemaining, Element element, float interval, bool currentlyBeingDragged)
         {
             //
+        }
+
+        public void Emphasise()
+        {
+            canvasGroup.alpha = 0.3f;
+        }
+
+        public void Understate()
+        {
+            
         }
 
         public void BeginArtAnimation()

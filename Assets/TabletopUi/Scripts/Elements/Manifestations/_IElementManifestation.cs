@@ -27,6 +27,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         void InitialiseVisuals(Element element);
         void UpdateVisuals(Element element, int quantity);
         void UpdateDecayVisuals(float lifetimeRemaining, Element element, float interval,bool currentlyBeingDragged);
-
+        void Emphasise();
+        void Understate();
     }
 }

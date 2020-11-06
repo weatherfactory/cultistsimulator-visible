@@ -74,9 +74,10 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             
         }
 
-        public bool Retire(RetirementVFX vfx)
+        public void Retire(RetirementVFX vfx, Action callbackOnRetired)
         {
-            return false;
+            Destroy(gameObject);
+            callbackOnRetired();
         }
 
 
@@ -88,6 +89,16 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         public void UpdateDecayVisuals(float lifetimeRemaining, Element element, float interval, bool currentlyBeingDragged)
         {
 
+        }
+
+        public void Emphasise()
+        {
+           //
+        }
+
+        public void Understate()
+        {
+         //
         }
 
         public void BeginArtAnimation()

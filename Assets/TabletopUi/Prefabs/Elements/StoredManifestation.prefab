@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5453278853181616869}
   - component: {fileID: 5242376316704206303}
   - component: {fileID: 3085496489996758159}
+  - component: {fileID: 910810465983018586}
   m_Layer: 5
   m_Name: StoredManifestation
   m_TagString: Untagged
@@ -50,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ecd9325d2227c049bb9471b655be0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 910810465983018586}
   elementFrame: {fileID: 8756625816768449680}
 --- !u!114 &3085496489996758159
 MonoBehaviour:
@@ -71,6 +73,18 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!225 &910810465983018586
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3237788134974986802}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8652337514109287244
 GameObject:
   m_ObjectHideFlags: 0

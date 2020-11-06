@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Enums;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
    public interface IManifestation
-    {
-        bool Retire(RetirementVFX retirementVfx);
+   {
+       
+        void Retire(RetirementVFX retirementVfx, Action callback);
         bool CanAnimate();
         void BeginArtAnimation();
         void ResetAnimations();

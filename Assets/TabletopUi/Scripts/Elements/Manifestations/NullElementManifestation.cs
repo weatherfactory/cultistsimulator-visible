@@ -29,14 +29,24 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             
         }
 
-        public bool Retire(RetirementVFX retirementVfx)
+       public void Retire(RetirementVFX vfx,Action callbackOnRetired)
         {
-            return true;
+            callbackOnRetired();
         }
 
         public void UpdateDecayVisuals(float lifetimeRemaining, Element element, float interval, bool currentlyBeingDragged)
         {
             
+        }
+
+        public void Emphasise()
+        {
+            //
+        }
+
+        public void Understate()
+        {
+         //
         }
 
         public void BeginArtAnimation()

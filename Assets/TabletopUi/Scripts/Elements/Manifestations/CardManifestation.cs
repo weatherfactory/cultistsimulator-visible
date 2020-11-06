@@ -31,6 +31,7 @@ namespace Assets.TabletopUi.Scripts.Elements
         [SerializeField] public Sprite spriteDecaysTextBG;
         [SerializeField] public Sprite spriteUniqueTextBG;
         [SerializeField] public BasicShadowImplementation shadow;
+        [SerializeField] public CanvasGroup canvasGroup;
         [SerializeField] public GraphicFader glowImage;
 
      
@@ -58,7 +59,7 @@ namespace Assets.TabletopUi.Scripts.Elements
 
             SetCardBackground(element.Unique, element.Decays);
 
-            name = "Card_" + element.Id;
+            name = "CardManifestation_" + element.Id;
             decayBackgroundImage = decayView.GetComponent<Image>();
             cachedDecayBackgroundColor = decayBackgroundImage.color;
 
@@ -129,9 +130,20 @@ namespace Assets.TabletopUi.Scripts.Elements
 
         }
 
+        public void Emphasise()
+        {
+            canvasGroup.alpha = 1f;
+        }
+
+        public void Understate()
+        {
+            canvasGroup.alpha = 0.3f;
+        }
+
         public void OnBeginDragVisuals()
         {
             ShowCardShadow(true); // Ensure we always have a shadow when dragging
+            canvasGroup.blocksRaycasts = false;
 
         }
 
@@ -139,6 +151,7 @@ namespace Assets.TabletopUi.Scripts.Elements
         public void OnEndDragVisuals()
         {
             ShowCardShadow(false);
+            canvasGroup.blocksRaycasts = true;
 
         }
 
@@ -292,7 +305,7 @@ namespace Assets.TabletopUi.Scripts.Elements
         
 
 
-        public bool Retire(RetirementVFX retirementVfx)
+        public void Retire(RetirementVFX retirementVfx,Action callbackOnRetired)
         {
             
             if (retirementVfx == RetirementVFX.CardHide)
@@ -315,7 +328,7 @@ namespace Assets.TabletopUi.Scripts.Elements
                     Destroy(gameObject);
             }
 
-            return true;
+            callbackOnRetired();
         }
 
 

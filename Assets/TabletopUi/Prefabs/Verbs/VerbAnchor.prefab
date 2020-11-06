@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 224000012250353942}
   - component: {fileID: 114000011782136268}
-  - component: {fileID: 225000012001114436}
   m_Layer: 5
   m_Name: VerbAnchor
   m_TagString: Untagged
@@ -51,33 +50,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rectTransform: {fileID: 224000012250353942}
   rotateOnDrag: 1
-  artwork: {fileID: 0}
-  tokenBody: {fileID: 0}
-  lightweightSprite: {fileID: 21300000, guid: 4ad73a08864fa9541961ac78c0864e50, type: 3}
-  countdownCanvas: {fileID: 0}
-  countdownBar: {fileID: 0}
-  countdownBadge: {fileID: 0}
-  countdownText: {fileID: 0}
-  particles:
-  - {fileID: 0}
-  - {fileID: 0}
-  ongoingSlotImage: {fileID: 0}
-  ongoingSlotArtImage: {fileID: 0}
-  ongoingSlotGreedyIcon: {fileID: 0}
-  ongoingSlotAppearFX: {fileID: 0}
-  completionBadge: {fileID: 0}
-  completionText: {fileID: 0}
-  dumpButton: {fileID: 0}
-  glowImage: {fileID: 0}
---- !u!225 &225000012001114436
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000012741670848}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
+  TokenContainer: {fileID: 0}
