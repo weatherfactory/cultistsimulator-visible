@@ -185,7 +185,7 @@ namespace Assets.Core.Entities
         {
             //return true if:
             //Situation is Unstarted; verb matches; and the recipe is either craftable or hintable
-            if (situationState == SituationState.Unstarted && (Craftable || HintOnly) && ActionId==currentRecipe.ActionId) //this is slightly naughty: we're assuming that if a NullRecipe is passed, it'll be set up with the correct action id for the verb. 
+            if ((situationState == SituationState.Unstarted || situationState == SituationState.ReadyToReset) && (Craftable || HintOnly) && ActionId==currentRecipe.ActionId) //this is slightly naughty: we're assuming that if a NullRecipe is passed, it'll be set up with the correct action id for the verb. 
                 return true;
 
             //Situation is Ongoing. Recipe is in Alt list of current recipe - as Always Succeed and not as Additional. ActionId doesn't need to match.

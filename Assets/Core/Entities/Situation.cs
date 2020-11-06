@@ -158,7 +158,7 @@ namespace Assets.Core.Entities {
         private void Reset()
         {
             currentPrimaryRecipe = NullRecipe.Create(Verb);
-            CurrentRecipePrediction=new RecipePrediction(currentPrimaryRecipe,new AspectsDictionary());
+            CurrentRecipePrediction = GetUpdatedRecipePrediction();
             TimeRemaining = 0;
             State = SituationState.Unstarted;
         }
@@ -793,7 +793,7 @@ namespace Assets.Core.Entities {
         }
 
 
-        public void NotifyStacksChangedForContainer(TokenEventArgs args)
+        private RecipePrediction GetUpdatedRecipePrediction()
         {
             var aspectsAvailableToSituation = GetAspectsAvailableToSituation(true);
 
@@ -802,8 +802,13 @@ namespace Assets.Core.Entities {
 
             RecipeConductor rc = new RecipeConductor();
 
-            CurrentRecipePrediction = rc.GetPredictionForFollowupRecipe(currentPrimaryRecipe, State, aspectsInContext, Verb, Registry.Get<Character>());
+            return rc.GetPredictionForFollowupRecipe(currentPrimaryRecipe, State, aspectsInContext, Verb, Registry.Get<Character>());
+        }
 
+        public void NotifyStacksChangedForContainer(TokenEventArgs args)
+        {
+
+            CurrentRecipePrediction = GetUpdatedRecipePrediction();
 
             SituationEventData data = SituationEventData.Create(this);
 

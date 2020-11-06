@@ -297,7 +297,7 @@ namespace Assets.CS.TabletopUI {
                     break;
                 case SituationState.Ongoing:
                     _manifestation.SetCompletionCount(-1);
-                    if (e.BeginningEffectCommand!=null)
+                    if (e.BeginningEffectCommand!=null && e.BeginningEffectCommand.OngoingSlots.Any())
                     {
                         _manifestation.ShowMiniSlot(e.BeginningEffectCommand.OngoingSlots[0].Greedy);
                         BurnImageUnderToken(e.BeginningEffectCommand.BurnImage);
