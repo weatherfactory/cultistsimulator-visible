@@ -13,14 +13,15 @@ using Assets.Core.Enums;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Services {
-    public class SituationBuilder {
+    public class SituationBuilder:MonoBehaviour{
 
-        private TokenContainer anchorLevel;
-        private TokenContainer windowLevel;
+        [SerializeField] private TokenContainer anchorLevel;
+        [SerializeField] private TokenContainer windowLevel;
 
-        public SituationBuilder(TokenContainer anchorLevel, TokenContainer windowLevel) {
-            this.anchorLevel = anchorLevel;
-            this.windowLevel = windowLevel;
+        public void Awake()
+        {
+            
+            new Registry().Register<SituationBuilder>(this);
         }
 
 

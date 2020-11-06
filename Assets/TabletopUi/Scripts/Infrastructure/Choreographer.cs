@@ -35,7 +35,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public Choreographer(TabletopTokenContainer tabletop, WindowsTokenContainer windowsToken) {
             _tabletop = tabletop;
-            _situationBuilder = new SituationBuilder(tabletop,windowsToken);
+            _situationBuilder = Registry.Get<SituationBuilder>();
 
             tableRect = tabletop.GetRect();
 

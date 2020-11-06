@@ -176,10 +176,9 @@ namespace Assets.CS.TabletopUI {
                 //AppealToConscience();
             var registry = new Registry();
             
-            _situationBuilder = new SituationBuilder(_tabletop, WindowsTokenContainer);
-
+          
             //register everything used gamewide
-            SetupServices(registry, _situationBuilder);
+            SetupServices(registry);
 
             //we hand off board functions to individual controllers
             InitialiseSubControllers(
@@ -279,10 +278,8 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        private void SetupServices(Registry registry,SituationBuilder builder)
+        private void SetupServices(Registry registry)
         {
-
-            registry.Register(builder);
 
 
             var choreographer = new Choreographer(_tabletop, WindowsTokenContainer);
