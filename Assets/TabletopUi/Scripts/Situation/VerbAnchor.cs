@@ -55,8 +55,8 @@ namespace Assets.CS.TabletopUI {
         public void Populate(Situation situation)
         {
             _situation = situation;
-            _manifestation = Sphere.CreateAnchorManifestation(this);
-            _manifestation.InitialiseVisuals(Verb);
+            _manifestation  = Registry.Get<PrefabFactory>().CreateAnchorManifestationPrefab(situation.Species.AnchorManifestationType, this.transform);
+            
 
             if (Verb.Transient)
                 _durability = AnchorDurability.Transient;
@@ -64,7 +64,10 @@ namespace Assets.CS.TabletopUI {
                 _durability = AnchorDurability.Enduring;
 
             name = "Verb_" + EntityId;
-         _manifestation.DisplayStackInMiniSlot(null);
+
+
+            _manifestation.InitialiseVisuals(Verb);
+            _manifestation.DisplayStackInMiniSlot(null);
             SetParticleSimulationSpace(transform.parent);
 
         }
@@ -371,5 +374,21 @@ namespace Assets.CS.TabletopUI {
                 transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -10 + Mathf.PerlinNoise(perlinRotationPoint, 0) * 20));
             }
         }
+
+        private void SwapOutManifestation(IAnchorManifestation oldManifestation, IAnchorManifestation newManifestation, RetirementVFX vfxForOldManifestation)
+        {
+            var manifestationToRetire = oldManifestation;
+            _manifestation = newManifestation;
+
+            manifestationToRetire.Retire(vfxForOldManifestation, OnSwappedOutManifestationRetired);
+
+        }
+
+        private void OnSwappedOutManifestationRetired()
+        {
+
+        }
+
+   
     }
 }

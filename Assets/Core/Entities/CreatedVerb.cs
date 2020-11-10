@@ -24,12 +24,14 @@ namespace Assets.Core.Entities
             get { return true; }
         }
 
+        public string Art=>String.Empty;
 
- public string Id { get; set; }
+
+        public string Id { get; set; }
 
         public string Label { get; set; }
 
-   public string Description { get; set; }
+        public string Description { get; set; }
 
         public SlotSpecification Slot { get; set; }
         public List<SlotSpecification> Slots { get; set; }

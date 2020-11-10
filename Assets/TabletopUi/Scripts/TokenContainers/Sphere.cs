@@ -584,12 +584,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return matchingStacks;
         }
 
-        public IAnchorManifestation CreateAnchorManifestation(VerbAnchor anchorToken)
-        {
-            return Registry.Get<PrefabFactory>().CreateLocally<VerbManifestation>(anchorToken.transform);
-
-        }
-
         public virtual void ActivatePreRecipeExecutionBehaviour()
         {
             //eg slot consumptions

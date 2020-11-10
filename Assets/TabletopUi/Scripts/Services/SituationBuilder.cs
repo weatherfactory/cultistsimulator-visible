@@ -17,7 +17,6 @@ namespace Assets.TabletopUi.Scripts.Services {
     {
 
         [SerializeField] private SituationWindow situationWindowPrefab;
-        [SerializeField] private VerbAnchor situationAnchorPrefab;
         [SerializeField] private Sphere anchorLevel;
         [SerializeField] private Sphere windowLevel;
         public string ForVerbSpecies;
@@ -33,7 +32,7 @@ namespace Assets.TabletopUi.Scripts.Services {
             Situation situation = new Situation(command);
             Registry.Get<SituationsCatalogue>().RegisterSituation(situation);
 
-            var newAnchor = Instantiate(situationAnchorPrefab);
+            var newAnchor = Registry.Get<PrefabFactory>().Create<VerbAnchor>();
             anchorLevel.AcceptAnchor(newAnchor, new Context(Context.ActionSource.Unknown));
             newAnchor.transform.localPosition = command.AnchorLocation.Position;
             situation.AttachAnchor(newAnchor);

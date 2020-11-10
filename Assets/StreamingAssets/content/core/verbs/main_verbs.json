@@ -97,14 +97,21 @@
                 }
             }
         },
-        {
-            "id": "time",
-            "label": "Time",
-            "description": "The sundial's shadow.",
-            "slot": {
-                "id": "time",
-                "label": "Time"
-            }
+      {
+        "id": "time",
+        "label": "Time",
+        "description": "The sundial's shadow.",
+        "slot": {
+          "id": "time",
+          "label": "Time"
         }
+      },
+      {
+        "id": "portal.mansus",
+        "label": "Mansus Portal",
+        "description": "A Mansus transition",
+        "art": "map",
+        "species": "portal" 
+      }
     ]
 }

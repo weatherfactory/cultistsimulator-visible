@@ -69,7 +69,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         public void InitialiseVisuals(IVerb verb)
         {
-            displayIcon(verb.Id);
+            displayArtForVerb(verb);
             if (verb.Transient)
                 SetTransient();
             SetTimerVisibility(false);
@@ -78,9 +78,12 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             ShowDumpButton(false);
         }
 
-        public void OverrideIcon(string icon)
+        public void OverrideIcon(string art)
         {
-            displayIcon(icon);
+
+            Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(art);
+            frames = ResourcesManager.GetAnimFramesForVerb(art);
+            artwork.sprite = sprite;
         }
 
         public Vector3 GetOngoingSlotPosition()
@@ -209,10 +212,16 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             countdownCanvas.gameObject.SetActive(show);
         }
 
-        private void displayIcon(string icon)
+        private void displayArtForVerb(IVerb verb)
         {
-            Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(icon);
-            frames = ResourcesManager.GetAnimFramesForVerb(icon);
+            string art;
+            if (!string.IsNullOrEmpty(verb.Art))
+                art = verb.Art;
+            else
+                art = verb.Id;
+
+            Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(art);
+            frames = ResourcesManager.GetAnimFramesForVerb(art);
             artwork.sprite = sprite;
         }
 

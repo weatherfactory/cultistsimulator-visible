@@ -12,10 +12,11 @@ namespace Assets.Core.Entities
     public class Species: AbstractEntity<Species>
     {
 
-        [FucineList]
-        public List<SphereSpecification> Spheres { get; set; }
+        [FucineValue(false)]
+        public bool ExclusiveOpen { get; set; }
 
-
+        [FucineValue]
+        public string AnchorManifestationType { get; set; }
 
         public Species(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {

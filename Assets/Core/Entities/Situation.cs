@@ -41,6 +41,7 @@ namespace Assets.Core.Entities {
         }
 
         public readonly IVerb Verb;
+        public readonly Species Species;
         private readonly List<ISituationSubscriber> subscribers = new List<ISituationSubscriber>();
         private readonly HashSet<Sphere> _containers = new HashSet<Sphere>();
         public string OverrideTitle { get; set; }
@@ -70,6 +71,7 @@ namespace Assets.Core.Entities {
         public Situation(SituationCreationCommand command)
         {
             Verb = command.GetBasicOrCreatedVerb();
+            Species = command.Species;
             TimeRemaining = command.TimeRemaining ?? 0;
             State = command.State;
             currentPrimaryRecipe = command.Recipe;

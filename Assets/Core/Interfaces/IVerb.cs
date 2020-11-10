@@ -12,6 +12,7 @@ namespace Assets.Core.Interfaces
         string Description { get; }
         string Species { get; }
         bool Transient { get; }
+        string Art { get; }
       SlotSpecification Slot { get; set; }
       List<SlotSpecification> Slots { get; set; }
       bool Startable { get; }

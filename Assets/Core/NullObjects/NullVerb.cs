@@ -14,6 +14,7 @@ namespace Assets.Core.NullObjects
         public string Description { get; }
         public string Species { get; }
         public bool Transient { get; }
+        public string Art => string.Empty;
         public SlotSpecification Slot { get; set; }
         public List<SlotSpecification> Slots { get; set; }
         public bool Startable { get; }

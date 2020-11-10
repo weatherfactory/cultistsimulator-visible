@@ -160,8 +160,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (_mapAnimation.CanShow(show) == false)
                 return;
 
-            if (!show) // hide the container
-                _mapSphere.Show(false);
+            //if (!show) // hide the container
+            //    _mapSphere.Show(false);
 
             _mapAnimation.onAnimDone += OnMansusMapAnimDone;
             _mapAnimation.SetCenterForEffect(effectCenter);
@@ -173,8 +173,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
             _mapAnimation.onAnimDone -= OnMansusMapAnimDone;
 
-            if (show) // show the container
-                _mapSphere.Show(true);
+            //if (show) // show the container
+            //    _mapSphere.Show(true);
 
         }
 

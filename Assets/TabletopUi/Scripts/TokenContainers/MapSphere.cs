@@ -8,20 +8,19 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Assets.CS.TabletopUI {
-    public class MapSphere : TabletopSphere {
+    public class MapSphere : Sphere {
 
         DoorSlot[] allSlots;
         DoorSlot activeSlot;
 
         public override bool AllowStackMerge { get { return false; } }
-        public override bool IsTabletop { get { return false; } }
-
-        public override void Start() {
-
-            _notifiersForContainer.Add(Registry.Get<INotifier>());
-            base.Start();
+        public override ContainerCategory ContainerCategory { get; }
+        public override string GetPath()
+        {
+            return "portal";
         }
 
+        
         public void SetActiveDoor(PortalEffect effect) {
             if (effect == PortalEffect.None) {
                 activeSlot = null;
@@ -58,19 +57,6 @@ namespace Assets.CS.TabletopUI {
             return activeSlot;
         }
 
-        public override void Show(bool show) {
-            if (show) {
-                canvasGroupFader.Show();
-                return;
-            }
-
-            canvasGroupFader.Hide();
-
-            if (activeSlot != null) {
-                activeSlot.ShowGlow(false, false); // ensure we're not glowing
-                activeSlot = null;
-            }
-        }
 
     }
 }

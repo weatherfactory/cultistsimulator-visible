@@ -32,6 +32,7 @@ namespace Assets.TabletopUi.Scripts.Services
         public StoredManifestation StoredManifestation = null;
         public MinimalManifestation MinimalManifestation = null;
         public VerbManifestation VerbManifestation = null;
+        public PortalManifestation PortalManifestation = null;
         public RecipeSlot RecipeSlot = null;
         public NotificationWindow NotificationWindow = null;
         public SituationNote SituationNote = null;
@@ -90,7 +91,7 @@ namespace Assets.TabletopUi.Scripts.Services
             return prefab;
         }
 
-        public IElementManifestation CreateManifestationPrefab(string prefabFieldName,Transform parent)
+        public IElementManifestation CreateElementManifestationPrefab(string prefabFieldName,Transform parent)
         {
             
             FieldInfo field = GetType().GetField(prefabFieldName);
@@ -103,6 +104,21 @@ namespace Assets.TabletopUi.Scripts.Services
 
             var instantiatedPrefab = Instantiate(prefabObject,parent);
             return instantiatedPrefab as IElementManifestation;
+        }
+
+        public IAnchorManifestation CreateAnchorManifestationPrefab(string prefabFieldName, Transform parent)
+        {
+
+            FieldInfo field = GetType().GetField(prefabFieldName);
+            if (field == null)
+                throw new ApplicationException(prefabFieldName +
+                                               " not registered in prefab factory; must have field name and type both '" +
+                                               prefabFieldName + "', must have field populated in editor");
+
+            var prefabObject = field.GetValue(this) as UnityEngine.Object;
+
+            var instantiatedPrefab = Instantiate(prefabObject, parent);
+            return instantiatedPrefab as IAnchorManifestation;
         }
 
 

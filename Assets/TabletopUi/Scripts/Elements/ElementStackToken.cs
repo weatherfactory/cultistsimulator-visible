@@ -292,7 +292,7 @@ namespace Assets.CS.TabletopUI {
         {
             if (EntityId == "dropzone")
             {
-                _manifestation= Registry.Get<PrefabFactory>().CreateManifestationPrefab(nameof(DropzoneManifestation),this.transform);
+                _manifestation= Registry.Get<PrefabFactory>().CreateElementManifestationPrefab(nameof(DropzoneManifestation),this.transform);
                 return;
             }
             
@@ -300,7 +300,7 @@ namespace Assets.CS.TabletopUI {
             if (_manifestation.GetType()!=forContainer.ElementManifestationType)
             {
 
-                var newManifestation = Registry.Get<PrefabFactory>().CreateManifestationPrefab(forContainer.ElementManifestationType.Name, this.transform);
+                var newManifestation = Registry.Get<PrefabFactory>().CreateElementManifestationPrefab(forContainer.ElementManifestationType.Name, this.transform);
                 SwapOutManifestation(_manifestation,newManifestation,RetirementVFX.None);
             }
 

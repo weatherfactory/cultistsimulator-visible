@@ -23,6 +23,9 @@ namespace Assets.Core.Entities
         [FucineValue(DefaultValue = "classic")]
         public string Species { get; set; }
 
+        [FucineValue]
+        public string Art { get; set; }
+
         [FucineSubEntity(typeof(SlotSpecification),Localise = true)]
         public SlotSpecification Slot { get; set; }
 
