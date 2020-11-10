@@ -23,7 +23,7 @@ namespace Assets.CS.TabletopUI {
 
 
 
-    public class RecipeSlot : TokenContainer, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
+    public class RecipeSlot : Sphere, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
 
         public override ContainerCategory ContainerCategory => ContainerCategory.Threshold;
 

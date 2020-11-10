@@ -42,7 +42,7 @@ namespace Assets.Core.Entities {
 
         public readonly IVerb Verb;
         private readonly List<ISituationSubscriber> subscribers = new List<ISituationSubscriber>();
-        private readonly HashSet<TokenContainer> _containers = new HashSet<TokenContainer>();
+        private readonly HashSet<Sphere> _containers = new HashSet<Sphere>();
         public string OverrideTitle { get; set; }
 
         private ISituationAnchor _anchor;
@@ -127,19 +127,19 @@ namespace Assets.Core.Entities {
         }
 
 
-        public void AddContainer(TokenContainer container)
+        public void AddContainer(Sphere container)
         {
             container.Subscribe(this);
             _containers.Add(container);
         }
 
-        public void AddContainers(IEnumerable<TokenContainer> containers)
+        public void AddContainers(IEnumerable<Sphere> containers)
         {
             foreach (var c in containers)
                 AddContainer(c);
         }
 
-        public void RemoveContainer(TokenContainer c)
+        public void RemoveContainer(Sphere c)
         {
             c.Unsubscribe(this);
             _containers.Remove(c);
@@ -176,12 +176,12 @@ namespace Assets.Core.Entities {
         }
 
 
-        private IEnumerable<TokenContainer> GetContainersByCategory(ContainerCategory category)
+        private IEnumerable<Sphere> GetContainersByCategory(ContainerCategory category)
         {
             return _containers.Where(c => c.ContainerCategory == category);
         }
 
-        private TokenContainer GetSingleContainerByCategory(ContainerCategory category)
+        private Sphere GetSingleContainerByCategory(ContainerCategory category)
         {
             try
             {
@@ -228,7 +228,7 @@ namespace Assets.Core.Entities {
         }
 
         void HandleOnGreedySlotAnimDone(ElementStackToken element, TokenLocation destination,
-            TokenContainer destinatinoSlot)
+            Sphere destinatinoSlot)
         {
             greedyAnimIsActive = false;
             TabletopManager.RequestNonSaveableState(TabletopManager.NonSaveableType.Greedy, false);
@@ -689,7 +689,7 @@ namespace Assets.Core.Entities {
 
 
 
-    public TokenContainer GetFirstAvailableThresholdForStackPush(ElementStackToken stack)
+    public Sphere GetFirstAvailableThresholdForStackPush(ElementStackToken stack)
     {
         var thresholds = GetContainersByCategory(ContainerCategory.Threshold);
         foreach (var t in thresholds)

@@ -12,12 +12,12 @@ using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.TokenContainers
 {
-    public class EnRouteTokenContainer : TokenContainer, IDraggableHolder
+    public class EnRouteSphere : Sphere, IDraggableHolder
     {
         
         public override ContainerCategory ContainerCategory { get; }
 
-        public TabletopTokenContainer StartingContainer;
+        public TabletopSphere StartingContainer;
 
         public override string GetPath()
         {
@@ -43,7 +43,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
             stack.Unshroud(true);
         }
 
-        public void MoveElementToSituationSlot(ElementStackToken stack, TokenLocation destination, TokenContainer destinationSlot, float durationOverride = -1.0f)
+        public void MoveElementToSituationSlot(ElementStackToken stack, TokenLocation destination, Sphere destinationSlot, float durationOverride = -1.0f)
         {
             var startPos = stack.rectTransform.anchoredPosition3D;
             var endPos = destination.Position;
@@ -63,7 +63,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
             stackAnim.StartAnim(duration);
         }
 
-        public void ElementSendAnimDone(ElementStackToken element, TokenLocation destination,TokenContainer destinationSlot)
+        public void ElementSendAnimDone(ElementStackToken element, TokenLocation destination,Sphere destinationSlot)
         {
             try
             {

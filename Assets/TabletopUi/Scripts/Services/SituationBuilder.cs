@@ -13,10 +13,13 @@ using Assets.Core.Enums;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Services {
-    public class SituationBuilder:MonoBehaviour{
+    public class SituationBuilder:MonoBehaviour
+    {
 
-        [SerializeField] private TokenContainer anchorLevel;
-        [SerializeField] private TokenContainer windowLevel;
+        [SerializeField] private SituationWindow situationWindowPrefab;
+        [SerializeField] private VerbAnchor situationAnchorPrefab;
+        [SerializeField] private Sphere anchorLevel;
+        [SerializeField] private Sphere windowLevel;
         public string ForVerbSpecies;
 
         public void Awake()
@@ -30,10 +33,13 @@ namespace Assets.TabletopUi.Scripts.Services {
             Situation situation = new Situation(command);
             Registry.Get<SituationsCatalogue>().RegisterSituation(situation);
 
-            var newAnchor = anchorLevel.ProvisionSituationAnchor(command);
+            var newAnchor = Instantiate(situationAnchorPrefab);
+            anchorLevel.AcceptAnchor(newAnchor, new Context(Context.ActionSource.Unknown));
+            newAnchor.transform.localPosition = command.AnchorLocation.Position;
             situation.AttachAnchor(newAnchor);
-            
-            var newWindow = windowLevel.ProvisionSituationWindow(newAnchor);
+
+            var newWindow = Instantiate(situationWindowPrefab);
+            newWindow.positioner.Initialise(newAnchor);
             situation.AttachWindow(newWindow,command);
 
 

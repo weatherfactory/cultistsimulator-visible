@@ -19,7 +19,7 @@ namespace Assets.Core.Entities {
     public class TokenContainersCatalogue:ITokenEventSubscriber {
 
         public bool EnableAspectCaching = true;
-        private readonly HashSet<TokenContainer> _currentTokenContainers;
+        private readonly HashSet<Sphere> _currentTokenContainers;
         private readonly HashSet<ITokenEventSubscriber> _subscribers;
         private AspectsDictionary _tabletopAspects = null;
         private AspectsDictionary _allAspectsExtant = null;
@@ -33,22 +33,22 @@ namespace Assets.Core.Entities {
 
 
         public TokenContainersCatalogue() {
-            _currentTokenContainers = new HashSet<TokenContainer>();
+            _currentTokenContainers = new HashSet<Sphere>();
             _subscribers = new HashSet<ITokenEventSubscriber>();
         }
 
-        public HashSet<TokenContainer> GetRegisteredTokenContainers() {
+        public HashSet<Sphere> GetRegisteredTokenContainers() {
             return _currentTokenContainers;
         }
 
-        public void RegisterTokenContainer(TokenContainer tokenContainer) {
+        public void RegisterTokenContainer(Sphere sphere) {
             
-            _currentTokenContainers.Add(tokenContainer);
+            _currentTokenContainers.Add(sphere);
         }
 
-        public void DeregisterTokenContainer(TokenContainer tokenContainer) {
+        public void DeregisterTokenContainer(Sphere sphere) {
             
-            _currentTokenContainers.Remove(tokenContainer);
+            _currentTokenContainers.Remove(sphere);
         }
 
 
@@ -71,7 +71,7 @@ namespace Assets.Core.Entities {
         }
 
 
-        public TokenContainer GetContainerByPath(string containerPath)
+        public Sphere GetContainerByPath(string containerPath)
         {
 
             try

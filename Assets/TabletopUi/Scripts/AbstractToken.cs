@@ -20,7 +20,7 @@ namespace Assets.CS.TabletopUI {
     public interface IToken
     {
         string EntityId { get; }
-        void SetTokenContainer(TokenContainer newContainer, Context context);
+        void SetSphere(Sphere newContainer, Context context);
         string name { get; }
         Transform transform { get; }
         RectTransform RectTransform { get; }
@@ -70,20 +70,20 @@ namespace Assets.CS.TabletopUI {
         protected float perlinRotationPoint = 0f;
         protected float dragHeight = -8f; // Draggables all drag on a specifc height and have a specific "default height"
 
-        public TokenContainer TokenContainer;
-        protected TokenContainer OldTokenContainer; // Used to tell OldContainsTokens that this thing was dropped successfully
+        public Sphere Sphere;
+        protected Sphere OldSphere; // Used to tell OldContainsTokens that this thing was dropped successfully
 
         public RectTransform RectTransform
         {
             get { return rectTransform; }
         }
 
-        public TokenLocation Location => new TokenLocation(transform.position, TokenContainer);
+        public TokenLocation Location => new TokenLocation(transform.position, Sphere);
 
         protected virtual void Awake() {
             rectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
-                TokenContainer= Registry.Get<NullContainer>();
+                Sphere= Registry.Get<NullContainer>();
         }
 
         public abstract void StartArtAnimation();
@@ -111,7 +111,7 @@ namespace Assets.CS.TabletopUI {
 
             public void Start()
         {
-            if(TokenContainer.GetType()!=typeof(CardsPile))
+            if(Sphere.GetType()!=typeof(CardsPile))
                Registry.Get<LocalNexus>().TokenInteractionEvent.AddListener(ReactToDraggedToken);
 
             SetXNess(TokenXNess.NoValidDestination);
@@ -138,7 +138,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         protected virtual bool ShouldShowHoverGlow() {
-            return !Defunct && TokenContainer != null && !IsBeingAnimated && (TokenContainer.AllowDrag || TokenContainer.AlwaysShowHoverGlow) && AllowsDrag();
+            return !Defunct && Sphere != null && !IsBeingAnimated && (Sphere.AllowDrag || Sphere.AlwaysShowHoverGlow) && AllowsDrag();
         }
 
 
@@ -157,7 +157,7 @@ namespace Assets.CS.TabletopUI {
 
             }
             get {
-                return TokenContainer.GetPath() + "_" + Guid.NewGuid();
+                return Sphere.GetPath() + "_" + Guid.NewGuid();
             }
         }
 
@@ -168,13 +168,13 @@ namespace Assets.CS.TabletopUI {
 			transform.localPosition = Registry.Get<Choreographer>().SnapToGrid( transform.localPosition );
 		}
 
-        public virtual void SetTokenContainer(TokenContainer newContainer, Context context) {
-            OldTokenContainer = TokenContainer;
-            TokenContainer = newContainer;
+        public virtual void SetSphere(Sphere newContainer, Context context) {
+            OldSphere = Sphere;
+            Sphere = newContainer;
         }
 
-        public bool IsInContainer(TokenContainer compareContainer, Context context) {
-            return compareContainer == TokenContainer;
+        public bool IsInContainer(Sphere compareContainer, Context context) {
+            return compareContainer == Sphere;
         }
 
 
@@ -194,7 +194,7 @@ namespace Assets.CS.TabletopUI {
             if (!_draggingEnabled)
                 return false;
 
-            if (!TokenContainer.AllowDrag || !AllowsDrag())
+            if (!Sphere.AllowDrag || !AllowsDrag())
                 return false;
 
 
@@ -253,7 +253,7 @@ namespace Assets.CS.TabletopUI {
 
             if (_draggingEnabled)
 			{
-                TokenContainer.OnTokenDragged(new TokenEventArgs{PointerEventData = eventData});
+                Sphere.OnTokenDragged(new TokenEventArgs{PointerEventData = eventData});
                 MoveObject(eventData);
             }
             else
@@ -296,7 +296,7 @@ namespace Assets.CS.TabletopUI {
             }
 
             SoundManager.PlaySfx("CardDragFail");
-            var tabletopContainer = startParent.GetComponent<TabletopTokenContainer>();
+            var tabletopContainer = startParent.GetComponent<TabletopSphere>();
             
             // Token was from tabletop - return it there. This auto-merges it back in case of ElementStacks
             // The map is not the tabletop but inherits from it, so we do the IsTabletop check

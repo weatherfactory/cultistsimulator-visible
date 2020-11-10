@@ -11,6 +11,6 @@ namespace Assets.TabletopUi
     public class AnchorAndSlot
     {
         public ISituationAnchor Token { get; set; } 
-        public TokenContainer Threshold { get; set; }
+        public Sphere Threshold { get; set; }
     }
 }

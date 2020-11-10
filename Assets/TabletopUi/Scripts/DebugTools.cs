@@ -31,7 +31,7 @@ public class DebugTools : MonoBehaviour,ITokenEventSubscriber
 {
     private const int MaxAutoCompletionSuggestions = 50;
 
-    [SerializeField] private TabletopTokenContainer tabletop;
+    [SerializeField] private TabletopSphere tabletop;
     [SerializeField] private Heart heart;
     [SerializeField] private InputField input;
     [SerializeField] private ScrollRect autoCompletionBox;

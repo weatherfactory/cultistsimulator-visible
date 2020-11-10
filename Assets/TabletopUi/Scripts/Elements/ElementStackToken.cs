@@ -172,10 +172,10 @@ namespace Assets.CS.TabletopUI {
 				_quantity = 1;
 			}
 			_aspectsDirtyInc = true;
-            if(!TokenContainer.ContentsHidden)
+            if(!Sphere.ContentsHidden)
 			    _manifestation.UpdateVisuals(_element,quantity);
 
-            TokenContainer.NotifyStacksChangedForContainer(new TokenEventArgs{Token = this, Element = _element,Container = TokenContainer});
+            Sphere.NotifyStacksChangedForContainer(new TokenEventArgs{Token = this, Element = _element,Container = Sphere});
         }
 
         public void ModifyQuantity(int change,Context context) {
@@ -288,7 +288,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void Manifest(TokenContainer forContainer)
+        public void Manifest(Sphere forContainer)
         {
             if (EntityId == "dropzone")
             {
@@ -339,7 +339,7 @@ namespace Assets.CS.TabletopUI {
             {
                 SetQuantity(quantity, new Context(Context.ActionSource.Unknown)); // this also toggles badge visibility through second call
 
-            Manifest(TokenContainer);
+            Manifest(Sphere);
 
                 LifetimeRemaining = _element.Lifetime;
                 _manifestation.UpdateDecayVisuals(LifetimeRemaining, _element,0,_currentlyBeingDragged);
@@ -462,7 +462,7 @@ namespace Assets.CS.TabletopUI {
 
 
         private bool IsOnTabletop() {
-            return transform.parent.GetComponent<TabletopTokenContainer>() != null;
+            return transform.parent.GetComponent<TabletopSphere>() != null;
         }
 
         public void AcceptIncomingStackForMerge(ElementStackToken stackMergedIntoThisOne) {
@@ -477,17 +477,17 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public override void SetTokenContainer(TokenContainer newTokenContainer, Context context) {
-            OldTokenContainer = TokenContainer;
+        public override void SetSphere(Sphere newSphere, Context context) {
+            OldSphere = Sphere;
 
-            if (OldTokenContainer != null && OldTokenContainer != newTokenContainer)
+            if (OldSphere != null && OldSphere != newSphere)
             {
-                OldTokenContainer.RemoveStack(this);
-                if(OldTokenContainer.ContentsHidden && !newTokenContainer.ContentsHidden)
+                OldSphere.RemoveStack(this);
+                if(OldSphere.ContentsHidden && !newSphere.ContentsHidden)
                  _manifestation.UpdateVisuals(_element,Quantity);
             }
 
-            TokenContainer = newTokenContainer;
+            Sphere = newSphere;
 
         }
 
@@ -521,8 +521,8 @@ namespace Assets.CS.TabletopUI {
             if (hlc != null)
                 hlc.DeactivateMatchingHighlightLocation(_element?.Id);
 
-            TokenContainer.NotifyStacksChangedForContainer(new TokenEventArgs{Element = _element,Token = this,Container = TokenContainer});  // Notify tabletop that aspects will need recompiling
-            SetTokenContainer(Registry.Get<NullContainer>(), new Context(Context.ActionSource.Retire));
+            Sphere.NotifyStacksChangedForContainer(new TokenEventArgs{Element = _element,Token = this,Container = Sphere});  // Notify tabletop that aspects will need recompiling
+            SetSphere(Registry.Get<NullContainer>(), new Context(Context.ActionSource.Retire));
 
 
             Defunct = true;
@@ -562,7 +562,7 @@ namespace Assets.CS.TabletopUI {
             if (Decays || _element.Unique || IsBeingAnimated)
                 return false;
             else
-                return TokenContainer.AllowStackMerge;
+                return Sphere.AllowStackMerge;
         }
 
         virtual public bool AllowsOutgoingMerge() {
@@ -577,13 +577,13 @@ namespace Assets.CS.TabletopUI {
 		{
 			if (TabletopManager.IsInMansus())	// Prevent SendTo while in Mansus
 				return;
-            var tabletopTokenContainer = TokenContainer as TabletopTokenContainer;
+            var tabletopTokenContainer = Sphere as TabletopSphere;
 
             if(tabletopTokenContainer==null)
 				return;
 
 
-            Dictionary<TokenContainer, Situation> candidateThresholds = new Dictionary<TokenContainer, Situation>();
+            Dictionary<Sphere, Situation> candidateThresholds = new Dictionary<Sphere, Situation>();
 			var registeredSituations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 			foreach(Situation situation in registeredSituations)
             {
@@ -602,10 +602,10 @@ namespace Assets.CS.TabletopUI {
 
             if (candidateThresholds.Any())
             {
-                TokenContainer selectedCandidate=null;
+                Sphere selectedCandidate=null;
                 float selectedSlotDist = float.MaxValue;
 
-                foreach (TokenContainer candidate in candidateThresholds.Keys)
+                foreach (Sphere candidate in candidateThresholds.Keys)
                 {
                     Vector3 distance = candidateThresholds[candidate].GetAnchorLocation().Position - transform.position;
                     //Debug.Log("Dist to " + tokenpair.Token.EntityId + " = " + dist.magnitude );
@@ -661,11 +661,11 @@ namespace Assets.CS.TabletopUI {
 
 		public override void OnPointerExit(PointerEventData eventData)
 		{
-            TokenContainer.OnTokenPointerExited(new TokenEventArgs
+            Sphere.OnTokenPointerExited(new TokenEventArgs
             {
                 Element = _element,
                 Token = this,
-                Container = TokenContainer,
+                Container = Sphere,
                 PointerEventData = eventData
             });
 
@@ -719,11 +719,11 @@ namespace Assets.CS.TabletopUI {
 			{
 				// Double-click, so abort any pending single-clicks
 				singleClickPending = false;
-                TokenContainer.OnTokenDoubleClicked(new TokenEventArgs
+                Sphere.OnTokenDoubleClicked(new TokenEventArgs
                 {
                     Element = _element,
                     Token = this,
-                    Container = TokenContainer,
+                    Container = Sphere,
                     PointerEventData = eventData
                 });
 
@@ -747,17 +747,17 @@ namespace Assets.CS.TabletopUI {
                 }
 				else
 				{
-                    TokenContainer.OnTokenClicked(new TokenEventArgs
+                    Sphere.OnTokenClicked(new TokenEventArgs
                     {
                         Element = _element,
                         Token = this,
-                        Container = TokenContainer,
+                        Container = Sphere,
                         PointerEventData = eventData
                     });
                 }
 
 				// this moves the clicked sibling on top of any other nearby cards.
-				if (TokenContainer.GetType() != typeof(RecipeSlot) && TokenContainer.GetType()!=typeof(ExhibitCards) )
+				if (Sphere.GetType() != typeof(RecipeSlot) && Sphere.GetType()!=typeof(ExhibitCards) )
 					transform.SetAsLastSibling();
 			}
         }
@@ -767,11 +767,11 @@ namespace Assets.CS.TabletopUI {
         /// </summary>
         /// <param name="eventData"></param>
         public override void OnDrop(PointerEventData eventData) {
-            TokenContainer.OnTokenReceivedADrop(new TokenEventArgs
+            Sphere.OnTokenReceivedADrop(new TokenEventArgs
             {
                 Element = _element,
                 Token = this,
-                Container = TokenContainer,
+                Container = Sphere,
                 PointerEventData = eventData
             });
 
@@ -813,7 +813,7 @@ namespace Assets.CS.TabletopUI {
 
                 var droppedOnToken = incomingStack as AbstractToken;
                 bool moveAsideFor = false;
-                droppedOnToken.TokenContainer.TryMoveAsideFor(this, droppedOnToken, out moveAsideFor);
+                droppedOnToken.Sphere.TryMoveAsideFor(this, droppedOnToken, out moveAsideFor);
 
                 if (moveAsideFor)
                     SetXNess(TokenXNess.DroppedOnTokenWhichMovedAside);
@@ -830,7 +830,7 @@ namespace Assets.CS.TabletopUI {
         {
             //Verb dropped on element - FIXED
             
-            this.TokenContainer.TryMoveAsideFor(this,tokenDroppedOn, out bool  moveAsideFor);
+            this.Sphere.TryMoveAsideFor(this,tokenDroppedOn, out bool  moveAsideFor);
 
             if (moveAsideFor)
                 SetXNess(TokenXNess.DroppedOnTokenWhichMovedAside);
@@ -854,7 +854,7 @@ namespace Assets.CS.TabletopUI {
             if (Quantity > n)
             {
                 var cardLeftBehind =
-                    TokenContainer.ProvisionElementStack(EntityId, Quantity - n, Source.Existing(), context) as ElementStackToken;
+                    Sphere.ProvisionElementStack(EntityId, Quantity - n, Source.Existing(), context) as ElementStackToken;
                 foreach (var m in GetCurrentMutations())
 	                cardLeftBehind.SetMutation(m.Key, m.Value, false); //brand new mutation, never needs to be additive
 
@@ -953,7 +953,7 @@ namespace Assets.CS.TabletopUI {
             try
             {
 
-                var cardLeftBehind= TokenContainer.ProvisionElementStack(elementId, quantity, Source.Existing(),
+                var cardLeftBehind= Sphere.ProvisionElementStack(elementId, quantity, Source.Existing(),
                     new Context(Context.ActionSource.ChangeTo)) as ElementStackToken;
 
                 foreach(var m in this.GetCurrentMutations())

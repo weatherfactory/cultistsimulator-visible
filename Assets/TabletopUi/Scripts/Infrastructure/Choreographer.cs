@@ -17,7 +17,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
     //places, arranges and displays things on the table
     public class Choreographer:ISettingSubscriber {
 
-        private TabletopTokenContainer _tabletop;
+        private TabletopSphere _tabletop;
         private Rect tableRect;
 
         const float checkPointPerArcLength = 100f;
@@ -32,7 +32,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         private ChoreographerDebugView _currentDebug;
 
-        public Choreographer(TabletopTokenContainer tabletop, WindowsTokenContainer windowsToken) {
+        public Choreographer(TabletopSphere tabletop, WindowsSphere windowsToken) {
             _tabletop = tabletop;
 
 

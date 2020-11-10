@@ -14,7 +14,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public class MapController: MonoBehaviour
     {
-        private MapTokenContainer _mapTokenContainer;
+        private MapSphere _mapSphere;
         //private TabletopBackground _mapBackground;
         private MapAnimation _mapAnimation;
 
@@ -26,11 +26,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             registry.Register(this);
         }
 
-        public void Initialise(MapTokenContainer mapTokenContainer, TabletopBackground mapBackground, MapAnimation mapAnimation) {
+        public void Initialise(MapSphere mapSphere, TabletopBackground mapBackground, MapAnimation mapAnimation) {
             mapBackground.gameObject.SetActive(false);
 
-            mapTokenContainer.gameObject.SetActive(false);
-            _mapTokenContainer = mapTokenContainer;
+            mapSphere.gameObject.SetActive(false);
+            _mapSphere = mapSphere;
 
             //_mapBackground = mapBackground;
 
@@ -40,8 +40,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void SetupMap(PortalEffect effect) {
             // Highlight active door
-            _mapTokenContainer.SetActiveDoor(effect);
-            var activeDoor = _mapTokenContainer.GetActiveDoor();
+            _mapSphere.SetActiveDoor(effect);
+            var activeDoor = _mapSphere.GetActiveDoor();
             activeDoor.onCardDropped += HandleOnSlotFilled;
 
 
@@ -104,7 +104,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         ElementStackToken BuildCard(Vector3 position, string id,PortalEffect portalType,string mansusJournalEntryMessage)
         {
             var newCard =
-                _mapTokenContainer.ProvisionElementStack(id, 1, Source.Fresh(),
+                _mapSphere.ProvisionElementStack(id, 1, Source.Fresh(),
                     new Context(Context.ActionSource.Loading)) as ElementStackToken;
             
 
@@ -133,14 +133,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
         void HandleOnSlotFilled(ElementStackToken stack) {
-            var activeDoor = _mapTokenContainer.GetActiveDoor();
+            var activeDoor = _mapSphere.GetActiveDoor();
             HideMansusMap(activeDoor.transform, stack);
         }
 
         public void CleanupMap(ElementStackToken pickedStack) {
-            var activeDoor = _mapTokenContainer.GetActiveDoor();
+            var activeDoor = _mapSphere.GetActiveDoor();
             activeDoor.onCardDropped -= HandleOnSlotFilled;
-            _mapTokenContainer.SetActiveDoor(PortalEffect.None);
+            _mapSphere.SetActiveDoor(PortalEffect.None);
 
             // Kill all still existing cards
             if (cards != null) {
@@ -161,7 +161,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 return;
 
             if (!show) // hide the container
-                _mapTokenContainer.Show(false);
+                _mapSphere.Show(false);
 
             _mapAnimation.onAnimDone += OnMansusMapAnimDone;
             _mapAnimation.SetCenterForEffect(effectCenter);
@@ -174,7 +174,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             _mapAnimation.onAnimDone -= OnMansusMapAnimDone;
 
             if (show) // show the container
-                _mapTokenContainer.Show(true);
+                _mapSphere.Show(true);
 
         }
 
@@ -186,7 +186,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 //not currently in use, preserve for quick debug
         public void CloseMap() {
-            Registry.Get<TabletopManager>().ReturnFromMansus(_mapTokenContainer.GetActiveDoor().transform, null);
+            Registry.Get<TabletopManager>().ReturnFromMansus(_mapSphere.GetActiveDoor().transform, null);
         }
     }
 }

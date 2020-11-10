@@ -33,7 +33,7 @@ public class ChoreographerDebugView : MonoBehaviour {
         if (showCurrent) {
             Gizmos.color = Color.cyan;
 
-            var container = tabletop.GetComponent<TabletopTokenContainer>();
+            var container = tabletop.GetComponent<TabletopSphere>();
 
             foreach (var item in container.GetTokens()) {
                 DrawToken(GetCenterPosRect(item.RectTransform.anchoredPosition, item.RectTransform.rect.size));

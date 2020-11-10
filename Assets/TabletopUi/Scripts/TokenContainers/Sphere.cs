@@ -49,7 +49,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
     }
 
-    public abstract class TokenContainer : MonoBehaviour, ITokenEventSubscriber
+    public abstract class Sphere : MonoBehaviour, ITokenEventSubscriber
     {
         public virtual Type DropzoneType => typeof(DropzoneManifestation);
         public virtual Type ElementManifestationType => typeof(CardManifestation);
@@ -64,22 +64,27 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public abstract ContainerCategory ContainerCategory { get; }
         public SlotSpecification GoverningSlotSpecification { get; set; }
 
-        public TokenContainersCatalogue Catalogue { get {
-            if (_catalogue==null)
+        public TokenContainersCatalogue Catalogue
+        {
+            get
             {
-                _catalogue=Registry.Get<TokenContainersCatalogue>(); 
+                if (_catalogue == null)
+                {
+                    _catalogue = Registry.Get<TokenContainersCatalogue>();
                     _catalogue.RegisterTokenContainer(this);
-            }
-            return _catalogue;
-        } }
+                }
 
-    
+                return _catalogue;
+            }
+        }
+
+
         protected List<INotifier> _notifiersForContainer = new List<INotifier>();
         public bool Defunct { get; protected set; }
-        protected HashSet<ContainerBlock> _currentContainerBlocks=new HashSet<ContainerBlock>();
+        protected HashSet<ContainerBlock> _currentContainerBlocks = new HashSet<ContainerBlock>();
         private TokenContainersCatalogue _catalogue;
         private List<ElementStackToken> _stacks = new List<ElementStackToken>();
-        private readonly HashSet<ITokenEventSubscriber> _subscribers=new HashSet<ITokenEventSubscriber>();
+        private readonly HashSet<ITokenEventSubscriber> _subscribers = new HashSet<ITokenEventSubscriber>();
 
         public void Subscribe(ITokenEventSubscriber subscriber)
         {
@@ -94,7 +99,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public virtual void OnEnable()
         {
-            Catalogue.RegisterTokenContainer(this); //this is a double call - we already subscribe above. This should be fine because it's a hashset, and because we may want to disable then re-enable. But FYI, future AK.
+            Catalogue.RegisterTokenContainer(
+                this); //this is a double call - we already subscribe above. This should be fine because it's a hashset, and because we may want to disable then re-enable. But FYI, future AK.
         }
 
         public virtual void OnDisable()
@@ -124,7 +130,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             bool outwardBlock = _currentContainerBlocks.Any(cb => cb.BlockDirection == BlockDirection.Outward);
             bool allBlock = _currentContainerBlocks.Any(cb => cb.BlockDirection == BlockDirection.All);
 
-            if(allBlock || (inwardblock && outwardBlock))
+            if (allBlock || (inwardblock && outwardBlock))
                 return BlockDirection.All;
 
             if (inwardblock)
@@ -172,24 +178,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
 
-
-        public ISituationAnchor ProvisionSituationAnchor(SituationCreationCommand situationCreationCommand)
-        {
-            var newAnchor = Registry.Get<PrefabFactory>().CreateLocally<VerbAnchor>(transform);
-
-            newAnchor.SetTokenContainer(this, new Context(Context.ActionSource.Unknown));
-            newAnchor.transform.localPosition = situationCreationCommand.AnchorLocation.Position;
-            return newAnchor;
-        }
-
-
-        public SituationWindow ProvisionSituationWindow(ISituationAnchor anchor)
-        {
-            var newWindow = Registry.Get<PrefabFactory>().CreateLocally<SituationWindow>(transform);
-            newWindow.positioner.Initialise(anchor);
-            return newWindow;
-        }
-
         public virtual ElementStackToken ProvisionElementStack(string elementId, int quantity)
         {
             return ProvisionElementStack(elementId, quantity, Source.Existing(),
@@ -203,7 +191,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
 
             var stack = Registry.Get<PrefabFactory>().CreateLocally<ElementStackToken>(transform);
-            
+
             stack.Populate(elementId, quantity, stackSource);
 
             AcceptStack(stack, context);
@@ -218,7 +206,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             var limbo = Registry.Get<Limbo>();
 
             var stack = Registry.Get<PrefabFactory>().CreateLocally<NullElementStackToken>(transform);
-            stack.SetTokenContainer(limbo, context);
+            stack.SetSphere(limbo, context);
 
             if (locatorid != null)
                 stack.SaveLocationInfo = locatorid;
@@ -227,7 +215,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
 
-       public virtual void DisplayHere(ElementStackToken stack, Context context)
+        public virtual void DisplayHere(ElementStackToken stack, Context context)
         {
             stack.Manifest(this);
             DisplayHere(stack as AbstractToken, context);
@@ -344,7 +332,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         /// <returns></returns>
         public AspectsDictionary GetTotalAspects(bool includingSelf = true)
         {
-           return AspectsDictionary.GetFromStacks(_stacks,includingSelf);
+            return AspectsDictionary.GetFromStacks(_stacks, includingSelf);
         }
 
 
@@ -409,15 +397,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         }
 
-        public virtual void AcceptAnchor(VerbAnchor anchor, Context context)
+
+        public virtual void AcceptAnchor(ISituationAnchor anchor, Context context)
         {
+
+            anchor.SetSphere(this, context);
             DisplayHere(anchor,context);
         }
 
-        public virtual void AcceptStack(ElementStackToken stack, Context context)
+    public virtual void AcceptStack(ElementStackToken stack, Context context)
         {
             
-            stack.SetTokenContainer(this, context);
+            stack.SetSphere(this, context);
 
             if (EnforceUniqueStacksInThisContainer)
             {

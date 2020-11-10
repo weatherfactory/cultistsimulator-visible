@@ -55,7 +55,7 @@ namespace Assets.CS.TabletopUI {
         public void Populate(Situation situation)
         {
             _situation = situation;
-            _manifestation = TokenContainer.CreateAnchorManifestation(this);
+            _manifestation = Sphere.CreateAnchorManifestation(this);
             _manifestation.InitialiseVisuals(Verb);
 
             if (Verb.Transient)
@@ -248,7 +248,7 @@ namespace Assets.CS.TabletopUI {
         public override void InteractWithIncomingObject(VerbAnchor tokenDroppedOn) {
             //verb dropped on verb - OK
             
-            tokenDroppedOn.TokenContainer.TryMoveAsideFor(this, tokenDroppedOn, out bool moveAsideFor);
+            tokenDroppedOn.Sphere.TryMoveAsideFor(this, tokenDroppedOn, out bool moveAsideFor);
 
             if (moveAsideFor)
                 SetXNess(TokenXNess.DroppedOnTokenWhichMovedAside);
@@ -347,7 +347,7 @@ namespace Assets.CS.TabletopUI {
 
         private void animDone(VerbAnchor token)
         {
-            TokenContainer.DisplayHere(token, new Context(Context.ActionSource.AnimEnd));
+            Sphere.DisplayHere(token, new Context(Context.ActionSource.AnimEnd));
         }
 
         public void DumpOutputStacks()

@@ -28,10 +28,10 @@ using UnityEngine.EventSystems;
 namespace Assets.CS.TabletopUI {
 
     [Serializable]
-    public class OnContainerAddedEvent : UnityEvent<TokenContainer> { }
+    public class OnContainerAddedEvent : UnityEvent<Sphere> { }
 
     [Serializable]
-    public class OnContainerRemovedEvent : UnityEvent<TokenContainer> { }
+    public class OnContainerRemovedEvent : UnityEvent<Sphere> { }
 
 
     [RequireComponent(typeof(SituationWindowPositioner))]

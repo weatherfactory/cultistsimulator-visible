@@ -13,7 +13,7 @@ using Assets.TabletopUi.Scripts.Elements.Manifestations;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 
-public class SituationStorage : TokenContainer
+public class SituationStorage : Sphere
 {
     public override Type ElementManifestationType => typeof(StoredManifestation);
 

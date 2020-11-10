@@ -53,7 +53,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-        public void ImportTableState(SourceForGameState source, TabletopTokenContainer tabletop)
+        public void ImportTableState(SourceForGameState source, TabletopSphere tabletop)
         {
             var htSave = RetrieveHashedSaveFromFile(source);
 
@@ -162,7 +162,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
         
 
-        private void ImportTabletopElementStacks(TabletopTokenContainer tabletop, Hashtable htElementStacks)
+        private void ImportTabletopElementStacks(TabletopSphere tabletop, Hashtable htElementStacks)
         {
 
             var elementStackSpecifications = PopulateElementStackSpecificationsList(htElementStacks);
@@ -194,7 +194,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         
         }
 
-        private void ImportSituations(TabletopTokenContainer tabletop, Hashtable htSituations)
+        private void ImportSituations(TabletopSphere tabletop, Hashtable htSituations)
         {
             foreach (var locationInfo in htSituations.Keys)
             {
@@ -345,14 +345,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             }
         }
 
-        private void ImportOutputs(Hashtable htSituationValues, Situation situation, TabletopTokenContainer tabletop)
+        private void ImportOutputs(Hashtable htSituationValues, Situation situation, TabletopSphere tabletop)
         {
          var outputStacks=ImportOutputStacks(htSituationValues, tabletop);
             situation.AcceptStacks(ContainerCategory.Output,outputStacks);
 
         }
 
-        private List<ElementStackToken> ImportOutputStacks(Hashtable htSituationValues, TabletopTokenContainer tabletop)
+        private List<ElementStackToken> ImportOutputStacks(Hashtable htSituationValues, TabletopSphere tabletop)
         {
             List<ElementStackToken> outputStacks = new List<ElementStackToken>();
 

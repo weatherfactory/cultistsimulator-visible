@@ -16,7 +16,7 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 using TMPro;
 
-public class ExhibitCards : TokenContainer {
+public class ExhibitCards : Sphere {
 
     public override bool AllowDrag { get { return false; } }
     public override bool AllowStackMerge { get { return false; } }

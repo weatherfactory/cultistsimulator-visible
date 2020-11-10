@@ -18,7 +18,7 @@ using Assets.TabletopUi.Scripts.TokenContainers;
 using Noon;
 using UnityEngine.EventSystems;
 
-public class TabletopTokenContainer : TokenContainer,IBeginDragHandler,IEndDragHandler {
+public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
 #pragma warning disable 649
     [SerializeField] TabletopBackground _background;
     [SerializeField] protected CanvasGroupFader canvasGroupFader;
@@ -26,7 +26,7 @@ public class TabletopTokenContainer : TokenContainer,IBeginDragHandler,IEndDragH
 
     public override ContainerCategory ContainerCategory => ContainerCategory.World;
 
-    public EnRouteTokenContainer SendViaContainer;
+    public EnRouteSphere SendViaContainer;
 
     public override bool AllowDrag { get { return true; } }
     public override bool AllowStackMerge { get { return true; } }

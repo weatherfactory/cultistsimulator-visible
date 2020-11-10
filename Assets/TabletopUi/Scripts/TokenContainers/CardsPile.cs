@@ -13,7 +13,7 @@ using Assets.TabletopUi.Scripts.Services;
 
 namespace Assets.TabletopUi.Scripts.TokenContainers
 {
-  public class CardsPile: TokenContainer
+  public class CardsPile: Sphere
   {
       private DeckSpec _deckSpec;
 

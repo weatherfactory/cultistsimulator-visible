@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.TokenContainers
 {
-    public class NullContainer:TokenContainer
+    public class NullContainer:Sphere
     {
         public override ContainerCategory ContainerCategory => ContainerCategory.Null;
         public override bool PersistBetweenScenes => true;

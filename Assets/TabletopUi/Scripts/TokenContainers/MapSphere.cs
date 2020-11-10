@@ -8,7 +8,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Assets.CS.TabletopUI {
-    public class MapTokenContainer : TabletopTokenContainer {
+    public class MapSphere : TabletopSphere {
 
         DoorSlot[] allSlots;
         DoorSlot activeSlot;

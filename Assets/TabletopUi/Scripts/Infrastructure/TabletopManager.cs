@@ -34,10 +34,10 @@ namespace Assets.CS.TabletopUI {
 
         [SerializeField] private EndGameAnimController _endGameAnimController;
 
-        [Header("Tabletop")] [SerializeField] public TabletopTokenContainer _tabletop;
+        [Header("Tabletop")] [SerializeField] public TabletopSphere _tabletop;
         [SerializeField] TabletopBackground tabletopBackground;
 
-        [SerializeField] public WindowsTokenContainer WindowsTokenContainer;
+        [SerializeField] public WindowsSphere WindowsSphere;
 
         [SerializeField] private HighlightLocationsController _highlightLocationsController;
 
@@ -52,7 +52,7 @@ namespace Assets.CS.TabletopUI {
         private MapController _mapController;
 
         [SerializeField] [UnityEngine.Serialization.FormerlySerializedAs("mapContainsTokens")]
-        public MapTokenContainer mapTokenContainer;
+        public MapSphere MapSphere;
 
         [SerializeField] TabletopBackground mapBackground;
         [SerializeField] MapAnimation mapAnimation;
@@ -261,7 +261,7 @@ namespace Assets.CS.TabletopUI {
         private void InitialiseSubControllers(MapController mapController,
                                               EndGameAnimController endGameAnimController) {
 
-            mapController.Initialise(mapTokenContainer, mapBackground, mapAnimation);
+            mapController.Initialise(MapSphere, mapBackground, mapAnimation);
             endGameAnimController.Initialise();
         }
 
@@ -282,7 +282,7 @@ namespace Assets.CS.TabletopUI {
         {
 
 
-            var choreographer = new Choreographer(_tabletop, WindowsTokenContainer);
+            var choreographer = new Choreographer(_tabletop, WindowsSphere);
             registry.Register(choreographer);
 
            
@@ -773,7 +773,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
                 stack.SetXNess(TokenXNess.DroppedOnTableContainer);
                 stack.DisplayAtTableLevel();
-                mapTokenContainer.DisplayHere(stack, new Context(Context.ActionSource.PlayerDrag));
+                MapSphere.DisplayHere(stack, new Context(Context.ActionSource.PlayerDrag));
 
                 SoundManager.PlaySfx("CardDrop");
             }

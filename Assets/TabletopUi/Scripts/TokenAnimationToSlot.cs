@@ -8,10 +8,10 @@ using Assets.TabletopUi.Scripts.Interfaces;
 
 public class TokenAnimationToSlot : TokenAnimation {
 
-	public event System.Action<ElementStackToken, TokenLocation, TokenContainer> onElementSlotAnimDone;
+	public event System.Action<ElementStackToken, TokenLocation, Sphere> onElementSlotAnimDone;
 
     private TokenLocation destinationLocation;
-    private TokenContainer destinationSlot;
+    private Sphere destinationSlot;
 
     protected override Vector3 endPos {
         get
@@ -31,7 +31,7 @@ public class TokenAnimationToSlot : TokenAnimation {
         transform.SetAsLastSibling();
     }
 
-    public void SetDestination(TokenLocation destination,TokenContainer slot)
+    public void SetDestination(TokenLocation destination,Sphere slot)
     {
         destinationLocation = destination;
         destinationSlot = slot;

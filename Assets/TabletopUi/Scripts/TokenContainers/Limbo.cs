@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
-    public class Limbo : TokenContainer {
+    public class Limbo : Sphere {
 
         public override ContainerCategory ContainerCategory => ContainerCategory.Dormant;
         public override bool PersistBetweenScenes => true;

@@ -11,7 +11,7 @@ namespace Assets.TabletopUi
   public  class TokenLocation
   {
       public Vector3 Position;
-      public TokenContainer InContainer;
+      public Sphere InContainer;
         public TokenLocation(float x,float y,float z)
         {
             Position.x = x;
@@ -29,7 +29,7 @@ namespace Assets.TabletopUi
             Position = position;
         }
 
-        public TokenLocation(Vector3 position,TokenContainer container)
+        public TokenLocation(Vector3 position,Sphere container)
         {
             Position = position;
             InContainer = container;

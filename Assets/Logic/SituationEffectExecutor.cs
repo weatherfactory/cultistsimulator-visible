@@ -24,16 +24,16 @@ namespace Assets.Logic
             _ttm = ttm;
         }
 
-        public void RunEffects(RecipeCompletionEffectCommand command, TokenContainer tokenContainer,
+        public void RunEffects(RecipeCompletionEffectCommand command, Sphere sphere,
             Character storage, IDice d)
         {
             var recipeAspects = command.Recipe.Aspects;
-            var cardAspects = tokenContainer.GetTotalAspects();
+            var cardAspects = sphere.GetTotalAspects();
             IDice dice = d;
 
             //MutationEffects happen first. I often regret this, because I sometimes create a card and want to apply a mutationeffect to it.
             //But I can always pass something through an empty recipe if I gotta.
-            RunMutationEffects(command, tokenContainer);
+            RunMutationEffects(command, sphere);
 
 
             //note: xtriggers for recipe aspects happen before xtriggers for card aspects. Within that precedence, aspects take effect in non-specific order.
@@ -41,13 +41,13 @@ namespace Assets.Logic
             //Card aspects are 'this should generally happen'
             //If this basic logic doesn't work, solutions under consideration: (1) xtrigger priorities (2) feeding a stack back in if it's transformed to react to its new xtriggers (with guard against loop)
 
-            RunXTriggers(tokenContainer, recipeAspects, dice);
-            RunXTriggers(tokenContainer, cardAspects, dice);
+            RunXTriggers(sphere, recipeAspects, dice);
+            RunXTriggers(sphere, cardAspects, dice);
 
             //note: standard effects happen *after* XTrigger effects
-            RunDeckEffect(command, tokenContainer, storage);
+            RunDeckEffect(command, sphere, storage);
             //and after deck effect
-            RunRecipeEffects(command, tokenContainer);
+            RunRecipeEffects(command, sphere);
 
             //Penultimate: run verb manipulations and element purges. This means purges will occur *after* any elements have been mutated or xtrigger-transformed.
 
@@ -57,7 +57,7 @@ namespace Assets.Logic
 
             //Do this last: remove any stacks marked for consumption by being placed in a consuming slot
             RunConsumptions(
-                tokenContainer); //NOTE: If a stack has just been transformed into another element, all sins are forgiven. It won't be consumed.
+                sphere); //NOTE: If a stack has just been transformed into another element, all sins are forgiven. It won't be consumed.
         }
 
 
@@ -81,11 +81,11 @@ namespace Assets.Logic
         }
 
 
-        private void RunMutationEffects(RecipeCompletionEffectCommand command, TokenContainer tokenContainer)
+        private void RunMutationEffects(RecipeCompletionEffectCommand command, Sphere sphere)
         {
             foreach (var mutationEffect in command.Recipe.Mutations)
             {
-                foreach (var stack in tokenContainer.GetStacks())
+                foreach (var stack in sphere.GetStacks())
                 {
                     if (stack.GetAspects(true).ContainsKey(mutationEffect.Filter))
                         stack.SetMutation(mutationEffect.Mutate, mutationEffect.Level,
@@ -94,10 +94,10 @@ namespace Assets.Logic
             }
         }
 
-        private void RunConsumptions(TokenContainer tokenContainer)
+        private void RunConsumptions(Sphere sphere)
         {
 
-            var stacks = tokenContainer.GetStacks();
+            var stacks = sphere.GetStacks();
 
             for (int i = 0; i < stacks.Count(); i++)
             {
@@ -108,7 +108,7 @@ namespace Assets.Logic
             }
         }
 
-        public void RunDeckEffect(RecipeCompletionEffectCommand command, TokenContainer tokenContainer,
+        public void RunDeckEffect(RecipeCompletionEffectCommand command, Sphere sphere,
             Character storage)
         {
             var deckIds = command.GetDeckEffects();
@@ -128,7 +128,7 @@ namespace Assets.Logic
                             if (!string.IsNullOrEmpty(drawnCardId))
                             {
                                 var source = Source.Fresh(); //ultimately this should correspond to deck
-                                tokenContainer.ModifyElementQuantity(drawnCardId, 1, source,
+                                sphere.ModifyElementQuantity(drawnCardId, 1, source,
                                     new Context(Context.ActionSource.SituationEffect));
                             }
                             else
@@ -141,7 +141,7 @@ namespace Assets.Logic
             }
         }
 
-        private static void RunRecipeEffects(RecipeCompletionEffectCommand command, TokenContainer tokenContainer)
+        private static void RunRecipeEffects(RecipeCompletionEffectCommand command, Sphere sphere)
         {
             foreach (var kvp in command.GetElementChanges())
             {
@@ -149,30 +149,30 @@ namespace Assets.Logic
                 if (!int.TryParse(kvp.Value, out var effectValue))
                 {
                     //it's a string not an int, so it must be a reference to a quantity of another element
-                    effectValue = tokenContainer.GetTotalAspects(true).AspectValue(kvp.Value);
+                    effectValue = sphere.GetTotalAspects(true).AspectValue(kvp.Value);
                 }
 
                 var source = Source.Fresh(); //might later be eg Transformed
-                tokenContainer.ModifyElementQuantity(kvp.Key, effectValue, source,
+                sphere.ModifyElementQuantity(kvp.Key, effectValue, source,
                     new Context(Context.ActionSource.SituationEffect));
             }
         }
 
-        private static void RunXTriggers(TokenContainer tokenContainer, AspectsDictionary aspectsPresent,
+        private static void RunXTriggers(Sphere sphere, AspectsDictionary aspectsPresent,
             IDice dice)
         {
             ICompendium _compendium = Registry.Get<ICompendium>();
 
-            foreach (var eachStack in tokenContainer.GetStacks())
+            foreach (var eachStack in sphere.GetStacks())
             {
-                RunXTriggersOnMutationsForStack(tokenContainer, aspectsPresent, dice, eachStack, _compendium);
+                RunXTriggersOnMutationsForStack(sphere, aspectsPresent, dice, eachStack, _compendium);
 
 
-                RunXTriggersOnStackItself(tokenContainer, aspectsPresent, dice, eachStack, _compendium);
+                RunXTriggersOnStackItself(sphere, aspectsPresent, dice, eachStack, _compendium);
             }
         }
 
-        private static void RunXTriggersOnMutationsForStack(TokenContainer tokenContainer, [CanBeNull] AspectsDictionary aspectsPresent, [CanBeNull] IDice dice,
+        private static void RunXTriggersOnMutationsForStack(Sphere sphere, [CanBeNull] AspectsDictionary aspectsPresent, [CanBeNull] IDice dice,
             [CanBeNull] ElementStackToken eachStack, [CanBeNull] ICompendium _compendium)
         {
             foreach (var eachStackMutation in eachStack.GetCurrentMutations())
@@ -207,7 +207,7 @@ namespace Assets.Logic
                                     }
                                     else if (morph.MorphEffect == MorphEffectType.Spawn)
                                     {
-                                        tokenContainer.ProvisionElementStack(newElementId, morph.Level,
+                                        sphere.ProvisionElementStack(newElementId, morph.Level,
                                             Source.Existing(),
                                             new Context(Context.ActionSource.ChangeTo));
                                         NoonUtility.Log(
@@ -226,7 +226,7 @@ namespace Assets.Logic
             }
         }
 
-        private static void RunXTriggersOnStackItself(TokenContainer tokenContainer, AspectsDictionary aspectsPresent,
+        private static void RunXTriggersOnStackItself(Sphere sphere, AspectsDictionary aspectsPresent,
             IDice dice, ElementStackToken eachStack, ICompendium _compendium)
         {
             var xTriggers = eachStack.GetXTriggers();
@@ -260,7 +260,7 @@ namespace Assets.Logic
                             }
                             else if (morph.MorphEffect == MorphEffectType.Spawn)
                             {
-                              tokenContainer.ProvisionElementStack(newElementId, morph.Level,
+                              sphere.ProvisionElementStack(newElementId, morph.Level,
                                     Source.Existing(),
                                     new Context(Context.ActionSource.ChangeTo));
                                 NoonUtility.Log(

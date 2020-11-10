@@ -10,7 +10,7 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 
 namespace Assets.TabletopUi.Scripts.TokenContainers
 {
-    public class WindowsTokenContainer: TokenContainer
+    public class WindowsSphere: Sphere
     {
         public override ContainerCategory ContainerCategory
         {

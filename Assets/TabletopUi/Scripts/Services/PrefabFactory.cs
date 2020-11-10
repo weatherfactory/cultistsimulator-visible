@@ -32,7 +32,6 @@ namespace Assets.TabletopUi.Scripts.Services
         public StoredManifestation StoredManifestation = null;
         public MinimalManifestation MinimalManifestation = null;
         public VerbManifestation VerbManifestation = null;
-        public SituationWindow SituationWindow = null;
         public RecipeSlot RecipeSlot = null;
         public NotificationWindow NotificationWindow = null;
         public SituationNote SituationNote = null;

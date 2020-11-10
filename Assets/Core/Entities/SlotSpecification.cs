@@ -12,9 +12,7 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Noon;
 
-/// <summary>
-/// Entity class: a child slot for an element
-/// </summary>
+
 public class SlotSpecification: AbstractEntity<SlotSpecification>
 {
 
