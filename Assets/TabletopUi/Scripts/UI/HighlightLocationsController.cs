@@ -26,7 +26,7 @@ namespace Assets.TabletopUi.Scripts.UI
 
       public void Start()
       {
-            Registry.Get<TokenContainersCatalogue>().Subscribe(this);
+            Registry.Get<SphereCatalogue>().Subscribe(this);
 
           //scan for child highlight locations
           var hls = GetComponentsInChildren<HighlightLocation>();
@@ -76,7 +76,7 @@ namespace Assets.TabletopUi.Scripts.UI
 
       public void NotifyStacksChangedForContainer(TokenEventArgs args)
       {
-          var tc = Registry.Get<TokenContainersCatalogue>();
+          var tc = Registry.Get<SphereCatalogue>();
           var aspectsInContext = tc.GetAspectsInContext(new AspectsDictionary());
 
           foreach (var hl in highlightLocations)

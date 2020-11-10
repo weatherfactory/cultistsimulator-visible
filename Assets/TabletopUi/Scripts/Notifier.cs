@@ -41,7 +41,7 @@ namespace Assets.CS.TabletopUI {
 
             Registry.Get<Concursum>().ShowNotificationEvent.AddListener(ShowNotificationWindow);
             
-            Registry.Get<TokenContainersCatalogue>().Subscribe(this);
+            Registry.Get<SphereCatalogue>().Subscribe(this);
 
         }
 

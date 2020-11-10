@@ -94,7 +94,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
 
     public override string GetPath()
     {
-        return TokenContainersCatalogue.TABLETOP_PATH;
+        return SphereCatalogue.TABLETOP_PATH;
 
     }
 

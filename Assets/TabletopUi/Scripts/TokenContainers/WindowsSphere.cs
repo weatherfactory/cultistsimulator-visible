@@ -18,7 +18,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
         }
         public override string GetPath()
         {
-            return TokenContainersCatalogue.WINDOWS_PATH;
+            return SphereCatalogue.WINDOWS_PATH;
 
         }
     }

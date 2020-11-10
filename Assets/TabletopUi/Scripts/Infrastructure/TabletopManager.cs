@@ -305,7 +305,7 @@ namespace Assets.CS.TabletopUI {
                 Registry.Get<StageHand>().EndingScreen();
 
             _elementOverview.Initialise(legacy,  Registry.Get<ICompendium>());
-            Registry.Get<TokenContainersCatalogue>().Subscribe(_elementOverview);
+            Registry.Get<SphereCatalogue>().Subscribe(_elementOverview);
             tabletopBackground.ShowTabletopFor(legacy);
 
   
@@ -468,7 +468,7 @@ namespace Assets.CS.TabletopUI {
             var character = Registry.Get<Character>();
             var chronicler = Registry.Get<Chronicler>();
 
-            chronicler.ChronicleGameEnd(Registry.Get<SituationsCatalogue>().GetRegisteredSituations(), Registry.Get<TokenContainersCatalogue>().GetRegisteredTokenContainers(),ending);
+            chronicler.ChronicleGameEnd(Registry.Get<SituationsCatalogue>().GetRegisteredSituations(), Registry.Get<SphereCatalogue>().GetRegisteredTokenContainers(),ending);
             character.Reset(null,ending);
             
 
@@ -527,7 +527,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             _elementOverview.Initialise(activeLegacy, compendium);
 
                 
-            Registry.Get<TokenContainersCatalogue>().Subscribe(_elementOverview);
+            Registry.Get<SphereCatalogue>().Subscribe(_elementOverview);
             tabletopBackground.ShowTabletopFor(activeLegacy);
 
         }

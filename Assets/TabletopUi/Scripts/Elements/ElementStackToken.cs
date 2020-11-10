@@ -225,7 +225,7 @@ namespace Assets.CS.TabletopUI {
             //if we've somehow failed to populate an element, return empty aspects, just to exception-proof ourselves
     
             
-            var tc = Registry.Get<TokenContainersCatalogue>();
+            var tc = Registry.Get<SphereCatalogue>();
 
             if (_element == null || tc==null)
                 return new AspectsDictionary();
@@ -883,7 +883,7 @@ namespace Assets.CS.TabletopUI {
 
             _currentlyBeingDragged = true;
 
-            var enrouteContainer = Registry.Get<TokenContainersCatalogue>().GetContainerByPath(TokenContainersCatalogue.EN_ROUTE_PATH);
+            var enrouteContainer = Registry.Get<SphereCatalogue>().GetContainerByPath(SphereCatalogue.EN_ROUTE_PATH);
             enrouteContainer.AcceptStack(this, new Context(Context.ActionSource.PlayerDrag));
 
             _manifestation.OnBeginDragVisuals();

@@ -106,7 +106,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
 
                 //we're about to register our first tokencontainer, Limbo: so we need to register the token containers catalogue first.
-                var tokenContainersCatalogue=new TokenContainersCatalogue();
+                var tokenContainersCatalogue=new SphereCatalogue();
                 registryAccess.Register(tokenContainersCatalogue);
 
                 var situationsCatalogue = new SituationsCatalogue();

@@ -21,7 +21,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
 
         public override string GetPath()
         {
-            return TokenContainersCatalogue.EN_ROUTE_PATH;
+            return SphereCatalogue.EN_ROUTE_PATH;
         }
 
         public RectTransform RectTransform

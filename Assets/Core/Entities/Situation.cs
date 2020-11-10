@@ -390,7 +390,7 @@ namespace Assets.Core.Entities {
                     break;
 
                 case SituationState.RequiringExecution:
-                    var tc = Registry.Get<TokenContainersCatalogue>();
+                    var tc = Registry.Get<SphereCatalogue>();
                     var aspectsInContext = tc.GetAspectsInContext(GetAspectsAvailableToSituation(true));
 
                     var rc=new RecipeConductor(aspectsInContext, Registry.Get<Character>());
@@ -460,7 +460,7 @@ namespace Assets.Core.Entities {
         private void RequireExecution()
         {
             State = SituationState.RequiringExecution;
-            var tc = Registry.Get<TokenContainersCatalogue>();
+            var tc = Registry.Get<SphereCatalogue>();
             var aspectsInContext = tc.GetAspectsInContext(GetAspectsAvailableToSituation(true));
 
             RecipeConductor rc =new RecipeConductor(aspectsInContext, Registry.Get<Character>());
@@ -766,7 +766,7 @@ namespace Assets.Core.Entities {
                 return;
 
             var aspects = GetAspectsAvailableToSituation(true);
-            var tc = Registry.Get<TokenContainersCatalogue>();
+            var tc = Registry.Get<SphereCatalogue>();
             var aspectsInContext = tc.GetAspectsInContext(aspects);
 
 
@@ -806,7 +806,7 @@ namespace Assets.Core.Entities {
             var aspectsAvailableToSituation = GetAspectsAvailableToSituation(true);
 
             var aspectsInContext =
-                Registry.Get<TokenContainersCatalogue>().GetAspectsInContext(aspectsAvailableToSituation);
+                Registry.Get<SphereCatalogue>().GetAspectsInContext(aspectsAvailableToSituation);
 
             RecipeConductor rc = new RecipeConductor(aspectsInContext,Registry.Get<Character>());
 

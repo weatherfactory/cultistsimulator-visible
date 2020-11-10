@@ -337,7 +337,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     var slotPath = situation.Path + SaveConstants.SEPARATOR +
                                    ess.LocationInfo.Split(SaveConstants.SEPARATOR)[0];
 
-                    var slot = Registry.Get<TokenContainersCatalogue>().GetContainerByPath(slotPath);
+                    var slot = Registry.Get<SphereCatalogue>().GetContainerByPath(slotPath);
 
                     slot.ProvisionStackFromCommand(ess, Source.Existing(), new Context(Context.ActionSource.Loading));
 

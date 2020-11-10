@@ -1,13 +1,62 @@
 {
-    "recipes": [
+  "recipes": [
+    {
+
+      "id": "bookshelf.create",
+      "label": "BOOKSHELF!",
+      "actionId": "bookshelf",
+      "startdescription": "EX LIBRIS",
+      "warmup": 2
+
+    },
+
+    {
+      "id": "dreamenterwood.results.1",
+      "label": "Wood draws: 1",
+      "actionid": "mansus",
+      "craftable": false,
+      "startdescription": ".",
+      "deckeffects":
+      {
+        "mansus_wood": 1, 
+      },
+      "linked": [
         {
-          
-          "id": "bookshelf.create",
-          "label": "BOOKSHELF!",
-          "actionId": "bookshelf",
-          "startdescription": "EX LIBRIS",
-          "warmup": 2
-        
+          "id": "dreamwood.results.2"
         }
-    ]
+      ]
+    },
+    {
+      "id": "dreamenterwood.results.2",
+      "label": "Wood draws: 2",
+      "actionid": "mansus",
+      "craftable": false,
+      "startdescription": ".",
+      "deckeffects": {
+        "mansus_wood1": 1
+      },
+      "linked": [
+        {
+          "id": "dreamwood.results.2"
+        }
+      ]
+    },
+    {
+      "id": "dreamenterwood.results.3",
+      "label": "Wood draws: 3",
+      "actionid": "mansus",
+      "craftable": false,
+      "startdescription": ".",
+      "deckeffects": {
+        "mansus_wood2": 1
+      },
+      "linked": [
+        {
+          "id": "dreamwood.results.2"
+        }
+      ]
+    }
+
+
+  ]
 }

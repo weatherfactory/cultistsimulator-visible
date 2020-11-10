@@ -64,10 +64,10 @@ namespace Assets.TabletopUi.Scripts.Services
 
         private async void SceneChange(int sceneToLoad,bool withFadeEffect)
         {
-            var tokenContainersCatalogue = Registry.Get<TokenContainersCatalogue>();
+            var tokenContainersCatalogue = Registry.Get<SphereCatalogue>();
 
             if(tokenContainersCatalogue != null)
-                Registry.Get<TokenContainersCatalogue>().Reset();
+                Registry.Get<SphereCatalogue>().Reset();
 
 
             if(SceneManager.sceneCount > 2)

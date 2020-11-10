@@ -34,7 +34,7 @@ public class SituationStorage : Sphere
 
     public override string GetPath()
     {
-        return TokenContainersCatalogue.STORAGE_PATH;
+        return SphereCatalogue.STORAGE_PATH;
     }
 
     public override ContainerCategory ContainerCategory => ContainerCategory.SituationStorage;

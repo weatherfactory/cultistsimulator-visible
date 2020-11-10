@@ -111,14 +111,15 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             //do nothing
         }
 
-        public void Clicked(PointerEventData eventData, VerbAnchor anchor)
+        public bool HandleClick(PointerEventData eventData, VerbAnchor anchor)
         {
             if (dumpButton.IsHovering())
             {
                 anchor.DumpOutputStacks();
+                return true;
             }
             else
-               anchor.TokenClickUnhandledByManifestation();
+                return false;
         }
 
         public void ShowMiniSlot(bool greedy)

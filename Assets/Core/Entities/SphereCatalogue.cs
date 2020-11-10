@@ -16,7 +16,7 @@ using UnityEngine;
 
 namespace Assets.Core.Entities {
 
-    public class TokenContainersCatalogue:ITokenEventSubscriber {
+    public class SphereCatalogue:ITokenEventSubscriber {
 
         public bool EnableAspectCaching = true;
         private readonly HashSet<Sphere> _currentTokenContainers;
@@ -26,13 +26,13 @@ namespace Assets.Core.Entities {
         private bool _tabletopAspectsDirty = true;
         private bool _allAspectsExtantDirty = true;
 
-        public static string EN_ROUTE_PATH = "enroute";
-        public static string TABLETOP_PATH = "tabletop";
-        public static string WINDOWS_PATH = "windows";
-        public static string STORAGE_PATH = "storage";
+        public const string EN_ROUTE_PATH = "enroute";
+        public const string TABLETOP_PATH = "tabletop";
+        public const string WINDOWS_PATH = "windows";
+        public const string STORAGE_PATH = "storage";
 
 
-        public TokenContainersCatalogue() {
+        public SphereCatalogue() {
             _currentTokenContainers = new HashSet<Sphere>();
             _subscribers = new HashSet<ITokenEventSubscriber>();
         }

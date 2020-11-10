@@ -18,6 +18,9 @@ namespace Assets.Core.Entities
         [FucineValue(false)]
         public bool Additional { get; set; }
 
+        [FucineValue(DefaultValue = SphereCatalogue.TABLETOP_PATH)]
+        public string ToPath { get; set; }
+
         /// <summary>
         /// Specify a challenge based on aspect quality, as either base or advanced. If there's more than one challenge,
         /// the most generous % chance will be used.

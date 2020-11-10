@@ -172,30 +172,30 @@
                 }
             ]
         },
-        {
-            "id": "dreamenterwood",
-            "label": "Entering the Wood",
-            "actionid": "dream",
-            "craftable": false,
-            "requirements": {
-                "waywood": 1,
-                "passion": 1
-            },
-            "startdescription": "Now I pass between scar-barked trees. The moon passes behind branches, though her fingers remain in my hair. I am stumbling over roots, now. It is tempting to drop to all fours, to avoid the low branches. Pale wings move, deep in the night.",
-            "description": ".",
-            "portaleffect": "Wood",
-            "alt": [
-                {
-                    "id": "poison.long.way.trap",
-                    "additional": true
-                }
-            ],
-            "warmup": 0,
-            "aspects": {
-                "fatiguing": 1
-            }
+      {
+        "id": "dreamenterwood",
+        "label": "Entering the Wood",
+        "actionid": "dream",
+        "craftable": false,
+        "requirements": {
+          "waywood": 1,
+          "passion": 1
         },
-        {
+        "startdescription": "Now I pass between scar-barked trees. The moon passes behind branches, though her fingers remain in my hair. I am stumbling over roots, now. It is tempting to drop to all fours, to avoid the low branches. Pale wings move, deep in the night.",
+        "description": ".",
+        "portaleffect": "Wood",
+        "alt": [
+          {
+            "id": "poison.long.way.trap",
+            "additional": true
+          }
+        ],
+        "warmup": 0,
+        "aspects": {
+          "fatiguing": 1
+        }
+      },
+      {
             "id": "dreamnotquitereachwhitelantern",
             "label": "The Light in the Wood: Not Enough!",
             "actionid": "dream",

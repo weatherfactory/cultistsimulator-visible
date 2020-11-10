@@ -58,7 +58,7 @@ public class ElementOverview : MonoBehaviour, ITokenEventSubscriber {
 
     public void UpdateDisplay()
     {
-        var tc = Registry.Get<TokenContainersCatalogue>();
+        var tc = Registry.Get<SphereCatalogue>();
         var aspectsInContext = tc.GetAspectsInContext(new AspectsDictionary());
   
         for (int i = 0; i <= 3; i++)

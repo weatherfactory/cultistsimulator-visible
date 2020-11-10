@@ -64,13 +64,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public abstract ContainerCategory ContainerCategory { get; }
         public SlotSpecification GoverningSlotSpecification { get; set; }
 
-        public TokenContainersCatalogue Catalogue
+        public SphereCatalogue Catalogue
         {
             get
             {
                 if (_catalogue == null)
                 {
-                    _catalogue = Registry.Get<TokenContainersCatalogue>();
+                    _catalogue = Registry.Get<SphereCatalogue>();
                     _catalogue.RegisterTokenContainer(this);
                 }
 
@@ -82,7 +82,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         protected List<INotifier> _notifiersForContainer = new List<INotifier>();
         public bool Defunct { get; protected set; }
         protected HashSet<ContainerBlock> _currentContainerBlocks = new HashSet<ContainerBlock>();
-        private TokenContainersCatalogue _catalogue;
+        private SphereCatalogue _catalogue;
         private List<ElementStackToken> _stacks = new List<ElementStackToken>();
         private readonly HashSet<ITokenEventSubscriber> _subscribers = new HashSet<ITokenEventSubscriber>();
 
@@ -248,7 +248,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public virtual void OnDestroy()
         {
-            Registry.Get<TokenContainersCatalogue>().DeregisterTokenContainer(this);
+            Registry.Get<SphereCatalogue>().DeregisterTokenContainer(this);
         }
 
         public void ModifyElementQuantity(string elementId, int quantityChange, Source stackSource, Context context)

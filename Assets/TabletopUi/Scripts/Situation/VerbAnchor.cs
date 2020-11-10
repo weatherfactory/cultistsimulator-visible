@@ -186,22 +186,20 @@ namespace Assets.CS.TabletopUI {
         public override void OnPointerClick(PointerEventData eventData)
         {
 
-            _manifestation.Clicked(eventData,this);
+            if (!_manifestation.HandleClick(eventData, this))
+            {
+                //Manifestation didn't handle click
+                Registry.Get<DebugTools>().SetInput(_situation.RecipeId);
+
+                if (!_situation.IsOpen)
+                    OpenSituation();
+                else
+                    CloseSituation();
+            }
+
         }
 
-        public void TokenClickUnhandledByManifestation()
-        {
-            //compromise event to handle 'general clicking of token' while we move it down to Manifestation
 
-            // Add the current recipe name, if any, to the debug panel if it's active
-            Registry.Get<DebugTools>().SetInput(_situation.RecipeId);
-
-            if (!_situation.IsOpen)
-                OpenSituation();
-            else
-                CloseSituation();
-        }
-        
 
         public void OpenSituation() {
             _situation.OpenAtCurrentLocation();
@@ -300,7 +298,7 @@ namespace Assets.CS.TabletopUI {
                     if (e.BeginningEffectCommand!=null)
                     {
                         if (e.BeginningEffectCommand.OngoingSlots.Any())
-                        _manifestation.ShowMiniSlot(e.BeginningEffectCommand.OngoingSlots[0].Greedy);
+                            _manifestation.ShowMiniSlot(e.BeginningEffectCommand.OngoingSlots[0].Greedy);
                         if(!string.IsNullOrEmpty(e.BeginningEffectCommand.BurnImage))
                             BurnImageUnderToken(e.BeginningEffectCommand.BurnImage);
                     }

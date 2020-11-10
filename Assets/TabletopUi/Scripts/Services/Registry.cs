@@ -60,9 +60,9 @@ namespace Assets.CS.TabletopUI
             if (typeof(T)==typeof(LanguageManager))
                 return new NullLocStringProvider() as T;
 
-            if (typeof(T) == typeof(TokenContainersCatalogue))
+            if (typeof(T) == typeof(SphereCatalogue))
             {
-                var tcc=new TokenContainersCatalogue();
+                var tcc=new SphereCatalogue();
                 registered.Add(typeof(T),tcc);
                 return tcc as T;
             }
