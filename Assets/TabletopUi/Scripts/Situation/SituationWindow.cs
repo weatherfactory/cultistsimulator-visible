@@ -53,7 +53,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] OngoingDisplay ongoingDisplay;
 
         [Space]
-        [SerializeField] SituationResults results;
+        [SerializeField] Output results;
 		[SerializeField] Button dumpResultsButton;
         [SerializeField] TextMeshProUGUI dumpResultsButtonText;
 

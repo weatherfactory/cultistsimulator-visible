@@ -15,7 +15,10 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 using TMPro;
 
-public class SituationResults : Sphere {
+/// <summary>
+/// The contents of Output spheres can be picked up by the player, but not replaced. They become unavailable once empty.
+/// </summary>
+public class Output : Sphere {
 
     public CanvasGroupFader canvasGroupFader;
     [SerializeField] SituationResultsPositioning cardPos;

@@ -10,7 +10,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public override ContainerCategory ContainerCategory => ContainerCategory.Dormant;
         public override bool PersistBetweenScenes => true;
-        public override bool EnforceUniqueStacksInThisContainer => true;
+        public override bool EnforceUniqueStacksInThisContainer => false;
         public override bool ContentsHidden => true;
 
         public override string GetPath() {

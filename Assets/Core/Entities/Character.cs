@@ -75,6 +75,7 @@ public class Character:MonoBehaviour
     public Ending EndingTriggered { get; set; }
 
     private Dictionary<string, int> recipeExecutions;
+    private Dictionary<string, DeckInstance> _deckInstances;
 
 
 
@@ -95,6 +96,7 @@ public class Character:MonoBehaviour
         
         _inProgressHistoryRecords = new Dictionary<string, string>();
         recipeExecutions= new Dictionary<string, int>();
+        _deckInstances=new Dictionary<string, DeckInstance>();
         ResetStartingDecks();
 
     }
@@ -112,7 +114,10 @@ public class Character:MonoBehaviour
         {
             DeckInstance di=Instantiate(DeckPrefab, CurrentDecks);
             di.SetSpec(ds);
-           di.Shuffle();
+            di.Shuffle();
+
+            _deckInstances.Add(di.Id,di);
+ 
 
         }
     }
@@ -189,11 +194,7 @@ else
 
     public List<DeckInstance> GetAllDecks()
     {
-        List<DeckInstance> decks=new List<DeckInstance>();
-        foreach (Transform d in CurrentDecks)
-            decks.Add(d.GetComponent<DeckInstance>());
-
-        return decks;
+        return _deckInstances.Values.ToList();
     }
 
     public DeckInstance GetDeckInstanceById(string id)
