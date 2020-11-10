@@ -49,7 +49,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
     }
 
-    public abstract class Sphere : MonoBehaviour, ITokenEventSubscriber
+    public abstract class Sphere : MonoBehaviour, ISphereEventSubscriber
     {
         public virtual Type DropzoneType => typeof(DropzoneManifestation);
         public virtual Type ElementManifestationType => typeof(CardManifestation);
@@ -71,7 +71,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 if (_catalogue == null)
                 {
                     _catalogue = Registry.Get<SphereCatalogue>();
-                    _catalogue.RegisterTokenContainer(this);
+                    _catalogue.RegisterSphere(this);
                 }
 
                 return _catalogue;
@@ -84,14 +84,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         protected HashSet<ContainerBlock> _currentContainerBlocks = new HashSet<ContainerBlock>();
         private SphereCatalogue _catalogue;
         private List<ElementStackToken> _stacks = new List<ElementStackToken>();
-        private readonly HashSet<ITokenEventSubscriber> _subscribers = new HashSet<ITokenEventSubscriber>();
+        private readonly HashSet<ISphereEventSubscriber> _subscribers = new HashSet<ISphereEventSubscriber>();
 
-        public void Subscribe(ITokenEventSubscriber subscriber)
+        public void Subscribe(ISphereEventSubscriber subscriber)
         {
             _subscribers.Add(subscriber);
         }
 
-        public void Unsubscribe(ITokenEventSubscriber subscriber)
+        public void Unsubscribe(ISphereEventSubscriber subscriber)
         {
             _subscribers.Remove(subscriber);
         }
@@ -99,13 +99,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public virtual void OnEnable()
         {
-            Catalogue.RegisterTokenContainer(
+            Catalogue.RegisterSphere(
                 this); //this is a double call - we already subscribe above. This should be fine because it's a hashset, and because we may want to disable then re-enable. But FYI, future AK.
         }
 
         public virtual void OnDisable()
         {
-            Catalogue.DeregisterTokenContainer(this);
+            Catalogue.DeregisterSphere(this);
         }
 
 
@@ -248,7 +248,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public virtual void OnDestroy()
         {
-            Registry.Get<SphereCatalogue>().DeregisterTokenContainer(this);
+            Registry.Get<SphereCatalogue>().DeregisterSphere(this);
         }
 
         public void ModifyElementQuantity(string elementId, int quantityChange, Source stackSource, Context context)

@@ -14,7 +14,7 @@ using UnityEngine.EventSystems;
 
 namespace Assets.TabletopUi.Scripts.UI
 {
-    public class CreditsWindow: MonoBehaviour,ITokenEventSubscriber
+    public class CreditsWindow: MonoBehaviour,ISphereEventSubscriber
     {
         [SerializeField] public ExhibitCards CardsExhibit;
         [SerializeField] public TextMeshProUGUI Responsibilities;

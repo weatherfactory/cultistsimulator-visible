@@ -10,7 +10,7 @@ using UnityEngine.EventSystems;
 
 namespace Assets.TabletopUi.Scripts.Interfaces
 {
-    public interface ITokenEventSubscriber
+    public interface ISphereEventSubscriber
     {
         void NotifyStacksChangedForContainer(TokenEventArgs args);
         void OnTokenClicked(TokenEventArgs args);

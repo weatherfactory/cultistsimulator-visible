@@ -11,7 +11,7 @@ using Assets.TabletopUi.Scripts.Interfaces;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(ScrollRect))]
-public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler,ITokenEventSubscriber  {
+public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler,ISphereEventSubscriber  {
 	
 	ScrollRect scrollRect;
     // Vector4 order is Top, Right, Bottom, Left

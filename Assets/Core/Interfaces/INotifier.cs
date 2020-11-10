@@ -10,7 +10,7 @@ using Assets.TabletopUi.Scripts.Services;
 
 namespace Assets.Core.Interfaces
 {
-    public interface INotifier:ITokenEventSubscriber
+    public interface INotifier:ISphereEventSubscriber
     {
         void PushTextToLog(string text);
         void HideDetails();

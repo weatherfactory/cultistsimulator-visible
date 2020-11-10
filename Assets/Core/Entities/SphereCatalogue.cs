@@ -16,11 +16,11 @@ using UnityEngine;
 
 namespace Assets.Core.Entities {
 
-    public class SphereCatalogue:ITokenEventSubscriber {
+    public class SphereCatalogue:ISphereEventSubscriber {
 
         public bool EnableAspectCaching = true;
-        private readonly HashSet<Sphere> _currentTokenContainers;
-        private readonly HashSet<ITokenEventSubscriber> _subscribers;
+        private readonly HashSet<Sphere> _spheres;
+        private readonly HashSet<ISphereEventSubscriber> _subscribers;
         private AspectsDictionary _tabletopAspects = null;
         private AspectsDictionary _allAspectsExtant = null;
         private bool _tabletopAspectsDirty = true;
@@ -33,39 +33,39 @@ namespace Assets.Core.Entities {
 
 
         public SphereCatalogue() {
-            _currentTokenContainers = new HashSet<Sphere>();
-            _subscribers = new HashSet<ITokenEventSubscriber>();
+            _spheres = new HashSet<Sphere>();
+            _subscribers = new HashSet<ISphereEventSubscriber>();
         }
 
-        public HashSet<Sphere> GetRegisteredTokenContainers() {
-            return _currentTokenContainers;
+        public HashSet<Sphere> GetSpheres() {
+            return _spheres;
         }
 
-        public void RegisterTokenContainer(Sphere sphere) {
+        public void RegisterSphere(Sphere sphere) {
             
-            _currentTokenContainers.Add(sphere);
+            _spheres.Add(sphere);
         }
 
-        public void DeregisterTokenContainer(Sphere sphere) {
+        public void DeregisterSphere(Sphere sphere) {
             
-            _currentTokenContainers.Remove(sphere);
+            _spheres.Remove(sphere);
         }
 
 
         public void Reset()
         {
-            foreach(var c in _currentTokenContainers)
-                _currentTokenContainers.RemoveWhere(tc => !tc.PersistBetweenScenes);
+            foreach(var c in _spheres)
+                _spheres.RemoveWhere(tc => !tc.PersistBetweenScenes);
             
             _subscribers.Clear();
         }
 
 
-        public void Subscribe(ITokenEventSubscriber subscriber) {
+        public void Subscribe(ISphereEventSubscriber subscriber) {
             _subscribers.Add(subscriber);
          }
 
-        public void Unsubscribe(ITokenEventSubscriber subscriber)
+        public void Unsubscribe(ISphereEventSubscriber subscriber)
         {
             _subscribers.Remove(subscriber);
         }
@@ -76,7 +76,7 @@ namespace Assets.Core.Entities {
 
             try
             {
-                var specifiedContainer = _currentTokenContainers.SingleOrDefault(c => c.GetPath() == containerPath);
+                var specifiedContainer = _spheres.SingleOrDefault(c => c.GetPath() == containerPath);
                 if (specifiedContainer == null)
                     return Registry.Get<NullContainer>();
 
@@ -156,7 +156,7 @@ namespace Assets.Core.Entities {
 
 
                 var tabletopContainers =
-                    _currentTokenContainers.Where(tc => tc.ContainerCategory == ContainerCategory.World);
+                    _spheres.Where(tc => tc.ContainerCategory == ContainerCategory.World);
 
                 foreach(var tc in tabletopContainers)
                     tabletopStacks.AddRange(tc.GetStacks());

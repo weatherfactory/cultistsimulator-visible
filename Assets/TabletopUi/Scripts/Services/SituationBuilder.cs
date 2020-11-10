@@ -39,6 +39,7 @@ namespace Assets.TabletopUi.Scripts.Services {
             situation.AttachAnchor(newAnchor);
 
             var newWindow = Instantiate(situationWindowPrefab);
+            newWindow.transform.SetParent(windowLevel.transform);
             newWindow.positioner.Initialise(newAnchor);
             situation.AttachWindow(newWindow,command);
 

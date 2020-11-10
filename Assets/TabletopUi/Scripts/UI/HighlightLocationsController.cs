@@ -13,7 +13,7 @@ using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.UI
 {
-  public  class HighlightLocationsController:MonoBehaviour, ITokenEventSubscriber
+  public  class HighlightLocationsController:MonoBehaviour, ISphereEventSubscriber
     {
 
  private HashSet<HighlightLocation> highlightLocations;

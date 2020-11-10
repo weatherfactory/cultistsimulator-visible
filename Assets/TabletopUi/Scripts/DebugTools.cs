@@ -27,7 +27,7 @@ using UnityEngine.UI;
 using UnityEngine.VR;
 using static Noon.NoonUtility;
 
-public class DebugTools : MonoBehaviour,ITokenEventSubscriber
+public class DebugTools : MonoBehaviour,ISphereEventSubscriber
 {
     private const int MaxAutoCompletionSuggestions = 50;
 

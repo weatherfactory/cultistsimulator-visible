@@ -15,7 +15,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ElementOverview : MonoBehaviour, ITokenEventSubscriber {
+public class ElementOverview : MonoBehaviour, ISphereEventSubscriber {
 
 
     [SerializeField] StatusBarElementCount[] elementCounts;

@@ -22,7 +22,7 @@ using UnityEngine.Assertions;
 
 namespace Assets.Core.Entities {
 
-    public class Situation: ITokenEventSubscriber
+    public class Situation: ISphereEventSubscriber
     {
         public SituationState State { get; set; }
         public Recipe currentPrimaryRecipe { get; set; }

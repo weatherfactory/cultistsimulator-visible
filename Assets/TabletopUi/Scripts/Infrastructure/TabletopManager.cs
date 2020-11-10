@@ -468,7 +468,7 @@ namespace Assets.CS.TabletopUI {
             var character = Registry.Get<Character>();
             var chronicler = Registry.Get<Chronicler>();
 
-            chronicler.ChronicleGameEnd(Registry.Get<SituationsCatalogue>().GetRegisteredSituations(), Registry.Get<SphereCatalogue>().GetRegisteredTokenContainers(),ending);
+            chronicler.ChronicleGameEnd(Registry.Get<SituationsCatalogue>().GetRegisteredSituations(), Registry.Get<SphereCatalogue>().GetSpheres(),ending);
             character.Reset(null,ending);
             
 
