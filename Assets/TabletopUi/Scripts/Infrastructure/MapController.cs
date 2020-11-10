@@ -134,7 +134,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         void HandleOnSlotFilled(ElementStackToken stack) {
             var activeDoor = _mapSphere.GetActiveDoor();
-            HideMansusMap(activeDoor.transform, stack);
+            //HideMansusMap(activeDoor.transform, stack);
         }
 
         public void CleanupMap(ElementStackToken pickedStack) {
@@ -178,15 +178,5 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         }
 
-        public void HideMansusMap(Transform effectCenter, ElementStackToken stack)
-        {
-            Registry.Get<TabletopManager>().ReturnFromMansus(effectCenter, (ElementStackToken)stack);
-        }
-
-
-//not currently in use, preserve for quick debug
-        public void CloseMap() {
-            Registry.Get<TabletopManager>().ReturnFromMansus(_mapSphere.GetActiveDoor().transform, null);
-        }
     }
 }

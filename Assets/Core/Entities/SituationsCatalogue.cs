@@ -25,7 +25,8 @@ namespace Assets.Core.Entities
 
         public void RegisterBuilder(string forSpecies, SituationBuilder builder)
         {
-            _builders.Add(forSpecies,builder);
+            if(!_builders.ContainsKey(forSpecies))
+                _builders.Add(forSpecies,builder);
         }
 
         public List<Situation> GetRegisteredSituations()

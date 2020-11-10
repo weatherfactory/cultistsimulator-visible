@@ -38,9 +38,6 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] TabletopBackground tabletopBackground;
 
         [SerializeField] public WindowsSphere WindowsSphere;
-
-        [SerializeField] private HighlightLocationsController _highlightLocationsController;
-
         
         [Header("Detail Windows")] [SerializeField]
         private AspectDetailsWindow aspectDetailsWindow;
@@ -48,8 +45,6 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] private TokenDetailsWindow tokenDetailsWindow;
         [SerializeField] private CardHoverDetail cardHoverDetail;
 
-        [Header("Mansus Map")] [SerializeField]
-        private MapController _mapController;
 
         [SerializeField] [UnityEngine.Serialization.FormerlySerializedAs("mapContainsTokens")]
         public MapSphere MapSphere;
@@ -72,10 +67,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] private Notifier _notifier;
         [SerializeField] private AutosaveWindow _autosaveNotifier;
         [SerializeField] private ElementOverview _elementOverview;
-
-
-        private SituationBuilder _situationBuilder;
-
+        
         
 
         private bool disabled;
@@ -182,7 +174,6 @@ namespace Assets.CS.TabletopUI {
 
             //we hand off board functions to individual controllers
             InitialiseSubControllers(
-                _mapController,
                 _endGameAnimController
             );
 
@@ -193,7 +184,7 @@ namespace Assets.CS.TabletopUI {
 
             if (Registry.Get<StageHand>().SourceForGameState == SourceForGameState.NewGame)
             {
-                BeginNewGame(_situationBuilder);
+                BeginNewGame();
             }
             else
             {
@@ -248,9 +239,9 @@ namespace Assets.CS.TabletopUI {
 
 
 
-    private void BeginNewGame(SituationBuilder builder)
+    private void BeginNewGame()
         {
-            SetupNewBoard(builder);
+            SetupNewBoard();
             var populatedCharacter =
                 Registry.Get<Character>(); //should just have been set above, but let's keep this clean
             populatedCharacter.Reset(populatedCharacter.ActiveLegacy,null);
@@ -258,10 +249,8 @@ namespace Assets.CS.TabletopUI {
      Registry.Get<StageHand>().ClearRestartingGameFlag();
         }
 
-        private void InitialiseSubControllers(MapController mapController,
-                                              EndGameAnimController endGameAnimController) {
+        private void InitialiseSubControllers(EndGameAnimController endGameAnimController) {
 
-            mapController.Initialise(MapSphere, mapBackground, mapAnimation);
             endGameAnimController.Initialise();
         }
 
@@ -314,7 +303,7 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public void SetupNewBoard(SituationBuilder builder) {
+        public void SetupNewBoard() {
 
 
      
@@ -324,7 +313,8 @@ namespace Assets.CS.TabletopUI {
 
             IVerb v = Registry.Get<ICompendium>().GetEntityById<BasicVerb>(_character.ActiveLegacy.StartingVerbId);
             SituationCreationCommand command = new SituationCreationCommand(v, NullRecipe.Create(), SituationState.ReadyToReset,TokenLocation.DefaultTokenLocation());
-            var situation = builder.CreateSituation(command);
+            var situation = Registry.Get<SituationsCatalogue>().CreateSituation(command);
+            
             situation.ExecuteHeartbeat(0f);
 
 
@@ -864,63 +854,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 		}
 
 
-        public void ShowMansusMap(Situation situation, Transform origin, PortalEffect effect) {
-            CloseAllSituationWindowsExcept(null);
 
-
-            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 3,GameSpeed=GameSpeed.Paused,WithSFX =false});
-            RequestNonSaveableState( NonSaveableType.Mansus, true );
-
-            SoundManager.PlaySfx("MansusEntry");
-            // Play Mansus Music
-            backgroundMusic.PlayMansusClip();
-
-            // Build mansus cards and doors everything
-            mansusSituation = situation; // so we can drop the card in the right place
-            _mapController.SetupMap(effect);
-
-            var chronicler = Registry.Get<Chronicler>();
-            chronicler.ChronicleMansusEntry(effect);
-
-			//preMansusTabletopPos = tableScroll.content.anchoredPosition;
-
-            // Do transition
-            _tabletop.Show(false);
-            _mapController.ShowMansusMap(origin, true);
-        }
-
-        public void ReturnFromMansus(Transform origin, ElementStackToken mansusCard)
-		{
-  
-
-            FlushNonSaveableState();	// On return from Mansus we can't possibly be overlapping with any other non-autosave state so force a reset for safety - CP
-
-            // Play Normal Music
-            backgroundMusic.PlayRandomClip();
-
-            // Cleanup mansus cards and doors everything
-            _mapController.CleanupMap(mansusCard);
-
-            // Do transition
-            _tabletop.Show(true);
-            _mapController.ShowMansusMap(origin, false);
-            SoundManager.PlaySfx("MansusExit");
-
-            // Pause the game with a flashing notification
-            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel =3 , GameSpeed = GameSpeed.Paused, WithSFX = false});
-
-           Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
-
-            // Put card into the original Situation Results
-			mansusCard.lastTablePos = null;	// Flush last known desktop position so it's treated as brand new
-            mansusSituation.AcceptStack(ContainerCategory.Output, mansusCard, new Context(Context.ActionSource.PlayerDrag));
-            mansusSituation.SendNotificationToSubscribers(new Notification(string.Empty, mansusCard.IlluminateLibrarian.PopMansusJournalEntry()));
-            mansusSituation.OpenAtCurrentLocation();
-
-            // insta setting back to last position before the mansus was transformed, but I don't like it. Feels jerky. - martin
-			//tableScroll.content.anchoredPosition = preMansusTabletopPos;
-            mansusSituation = null;
-        }
 
         public void BeginNewSituation(SituationCreationCommand scc,List<ElementStackToken> withStacksInStorage) {
             Registry.Get<Choreographer>().BeginNewSituation(scc,withStacksInStorage);

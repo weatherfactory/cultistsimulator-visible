@@ -54,7 +54,7 @@ namespace Assets.Core.Entities {
 
         public void Reset()
         {
-            foreach(var c in _spheres)
+            foreach(var c in new List<Sphere>(_spheres))
                 _spheres.RemoveWhere(tc => !tc.PersistBetweenScenes);
             
             _subscribers.Clear();

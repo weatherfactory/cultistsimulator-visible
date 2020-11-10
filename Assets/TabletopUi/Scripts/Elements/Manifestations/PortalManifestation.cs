@@ -16,6 +16,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
    public class PortalManifestation: MonoBehaviour,IAnchorManifestation
     {
+
         public void Retire(RetirementVFX retirementVfx, Action callback)
         {
             Destroy(gameObject);

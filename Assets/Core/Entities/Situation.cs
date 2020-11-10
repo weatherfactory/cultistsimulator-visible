@@ -585,15 +585,6 @@ namespace Assets.Core.Entities {
         
         AttemptAspectInductions(currentPrimaryRecipe,outputStacks);
 
-            
-        if (currentPrimaryRecipe.PortalEffect != PortalEffect.None)
-        {
-            // Once again, very much subscriber territory
-
-                Registry.Get<TabletopManager>().ShowMansusMap(this, _anchor.transform,
-                    currentPrimaryRecipe.PortalEffect);
-        }
-
 
             SoundManager.PlaySfx("SituationComplete"); //this could run through that Echo obj
     }
