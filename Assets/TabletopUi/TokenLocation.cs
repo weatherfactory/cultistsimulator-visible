@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Core.Fucine;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using UnityEngine;
 
@@ -11,34 +12,28 @@ namespace Assets.TabletopUi
   public  class TokenLocation
   {
       public Vector3 Position;
-      public Sphere InContainer;
-        public TokenLocation(float x,float y,float z)
+      public SpherePath AtSpherePath;
+        public TokenLocation(float x,float y,float z, SpherePath atSpherePath)
         {
             Position.x = x;
             Position.y = y;
             Position.z = z;
+            AtSpherePath = atSpherePath;
+
         }
 
-        public TokenLocation(Vector2 position)
+        public TokenLocation(Vector2 position, SpherePath atSpherePath)
         {
             Position = position;
+            AtSpherePath = atSpherePath;
         }
 
-        public TokenLocation(Vector3 position)
+        public TokenLocation(Vector3 position,SpherePath atSpherePath)
         {
             Position = position;
+            AtSpherePath = atSpherePath;
         }
 
-        public TokenLocation(Vector3 position,Sphere container)
-        {
-            Position = position;
-            InContainer = container;
-        }
-
-        public static TokenLocation DefaultTokenLocation()
-        {
-            return new TokenLocation(0,0,-100);
-        }
 
     }
 }

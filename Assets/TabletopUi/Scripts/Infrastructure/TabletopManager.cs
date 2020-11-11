@@ -312,7 +312,8 @@ namespace Assets.CS.TabletopUI {
                 throw new ApplicationException("Trying to set up a new board for a character with no chosen legacy. Even fresh characters should have a legacy when created, but this code has always been hinky.");
 
             IVerb v = Registry.Get<ICompendium>().GetEntityById<BasicVerb>(_character.ActiveLegacy.StartingVerbId);
-            SituationCreationCommand command = new SituationCreationCommand(v, NullRecipe.Create(), SituationState.ReadyToReset,TokenLocation.DefaultTokenLocation());
+            SituationCreationCommand command = new SituationCreationCommand(v, NullRecipe.Create(), SituationState.ReadyToReset,
+                new TokenLocation(0f,0f,-100f, _tabletop.GetPath()));
             var situation = Registry.Get<SituationsCatalogue>().CreateSituation(command);
             
             situation.ExecuteHeartbeat(0f);

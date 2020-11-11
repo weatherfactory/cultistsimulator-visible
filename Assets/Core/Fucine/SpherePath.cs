@@ -10,9 +10,22 @@ using Noon;
 
 namespace Assets.Core.Fucine
 {
-   public class SpherePath
+   public class SpherePath:IEquatable<SpherePath>
    {
-       private string _path;
+       public override bool Equals(object obj)
+       {
+           if (ReferenceEquals(null, obj)) return false;
+           if (ReferenceEquals(this, obj)) return true;
+           if (obj.GetType() != this.GetType()) return false;
+           return Equals((SpherePath) obj);
+       }
+
+       public override int GetHashCode()
+       {
+           return (_path != null ? _path.GetHashCode() : 0);
+       }
+
+       private readonly string _path;
 
        public const char SEPARATOR='_';
 
@@ -21,9 +34,20 @@ namespace Assets.Core.Fucine
            return _path;
        }
 
+       public static bool operator ==(SpherePath path1, SpherePath path2)
+       {
+           return path1.Equals(path2);
+       }
+
+       public static bool operator !=(SpherePath path1, SpherePath path2)
+       {
+           return !(path1 == path2);
+       }
+
        public bool Equals(SpherePath otherPath)
        {
-           return otherPath.ToString() == _path;
+
+           return otherPath?.ToString() == _path;
        }
 
 

@@ -18,7 +18,6 @@ namespace Assets.TabletopUi.Scripts.Services {
     {
 
         [SerializeField] private SituationWindow situationWindowPrefab;
-        [SerializeField] private string anchorSpherePath;
        [SerializeField] public string ForVerbSpecies;
 
         public void Awake()
@@ -35,7 +34,9 @@ namespace Assets.TabletopUi.Scripts.Services {
             var sphereCatalogue = Registry.Get<SphereCatalogue>();
 
             var windowSphere = sphereCatalogue.GetContainerByPath(new SpherePath(Registry.Get<ICompendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath));
-            var anchorSphere = sphereCatalogue.GetContainerByPath(new SpherePath(anchorSpherePath));
+
+            
+            var anchorSphere = sphereCatalogue.GetContainerByPath(command.AnchorLocation.AtSpherePath);
 
             var newAnchor = Registry.Get<PrefabFactory>().Create<VerbAnchor>();
             anchorSphere.AcceptAnchor(newAnchor, new Context(Context.ActionSource.Unknown));

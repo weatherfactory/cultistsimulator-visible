@@ -21,8 +21,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public class SimpleJSONGameDataImporter : IGameDataImporter
     {
-      
-
+        private  SpherePath windowSpherePath;
+        private  SpherePath tabletopSpherePath;
 
         private Hashtable RetrieveHashedSaveFromFile(SourceForGameState source, bool temp = false)
         {
@@ -57,6 +57,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public void ImportTableState(SourceForGameState source, TabletopSphere tabletop)
         {
             var htSave = RetrieveHashedSaveFromFile(source);
+
+       windowSpherePath = new SpherePath(Registry.Get<ICompendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
+          tabletopSpherePath = new SpherePath(Registry.Get<ICompendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath);
 
 
             var htElementStacks = htSave.GetHashtable(SaveConstants.SAVE_ELEMENTSTACKS);
@@ -197,6 +200,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         private void ImportSituations(TabletopSphere tabletop, Hashtable htSituations)
         {
+
+
+
             foreach (var locationInfo in htSituations.Keys)
             {
                 var htSituationValues =htSituations.GetHashtable(locationInfo);
@@ -237,14 +243,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 {
                     NoonUtility.LogWarning($"We can't parse a situation locationinfo: {locationInfo}. So we're just picking the beginning of it to use as the situation path.");
                     simplifiedSituationPath = simplifiedSituationPathParts[0];
-                    command.AnchorLocation = new TokenLocation(0, 0, 0);
+                    command.AnchorLocation = new TokenLocation(0, 0, 0, tabletopSpherePath);
                 }
                 else
                 {
                     simplifiedSituationPath = simplifiedSituationPathParts[2];
                     float.TryParse(simplifiedSituationPathParts[0], out float anchorPosX);
                     float.TryParse(simplifiedSituationPathParts[1], out float anchorPosY);
-                    command.AnchorLocation = new TokenLocation(anchorPosX, anchorPosY, 0);
+                    command.AnchorLocation = new TokenLocation(anchorPosX, anchorPosY, 0, tabletopSpherePath);
 
 
                 }
@@ -256,10 +262,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 float? posz = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_SITUATION_WINDOW_Z);
 
                 
+
+           
+
+
                 if(posx!=null && posy!=null && posz!=null)
                 {
                     var windowPosition=new Vector3((float) posx,(float)posy,(float)posz);
-                    command.WindowLocation=new TokenLocation(windowPosition, tabletop);
+                    command.WindowLocation=new TokenLocation(windowPosition, windowSpherePath);
                 }
 
                 command.Open = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
@@ -451,6 +461,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                         htEachStack.GetHashtable(SaveConstants.SAVE_ILLUMINATIONS));
 
 
+                TokenLocation stackLocation=new TokenLocation(lasttablepos,tabletopSpherePath);
+
                 stackCreationCommand.Add(new StackCreationCommand(
                     elementId,
                     elementQuantity,
@@ -459,7 +471,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     illuminations,
                     lifetimeRemaining,
                     markedForConsumption,
-					lasttablepos));
+                    stackLocation));
             }
             return stackCreationCommand;
         }

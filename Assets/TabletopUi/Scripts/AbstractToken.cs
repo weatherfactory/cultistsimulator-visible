@@ -78,7 +78,7 @@ namespace Assets.CS.TabletopUI {
             get { return rectTransform; }
         }
 
-        public TokenLocation Location => new TokenLocation(transform.position, Sphere);
+        public TokenLocation Location => new TokenLocation(transform.position, Sphere.GetPath());
 
         protected virtual void Awake() {
             rectTransform = GetComponent<RectTransform>();

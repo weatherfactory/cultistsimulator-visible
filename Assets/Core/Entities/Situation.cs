@@ -679,7 +679,7 @@ namespace Assets.Core.Entities {
     {
         var currentLocation = GetAnchorLocation();
         if(currentLocation==null)
-            OpenAt(new TokenLocation(Vector3.zero));
+            OpenAt(new TokenLocation(Vector3.zero,currentLocation.AtSpherePath));
         else
             OpenAt(currentLocation);
     }
