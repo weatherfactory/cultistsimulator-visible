@@ -79,7 +79,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         public void InitialiseVisuals(IVerb verb)
         {
-            //
+            this.transform.position = Vector3.zero;
         }
 
         public void UpdateTimerVisuals(float duration, float timeRemaining, EndingFlavour signalEndingFlavour)
