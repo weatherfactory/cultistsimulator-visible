@@ -65,6 +65,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public abstract ContainerCategory ContainerCategory { get; }
         public SlotSpecification GoverningSlotSpecification { get; set; }
 
+        [Tooltip("Use this to specify the SpherePath in the editor")]
+        [SerializeField] protected string _localPath;
+
         public SphereCatalogue Catalogue
         {
             get
@@ -245,7 +248,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             incumbentMoved = false;
         }
 
-        public abstract SpherePath GetPath();
+        public virtual SpherePath GetPath()
+        {
+            return new SpherePath(_localPath);
+        }
 
         public virtual void OnDestroy()
         {

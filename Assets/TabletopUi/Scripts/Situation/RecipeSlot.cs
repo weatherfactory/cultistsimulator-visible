@@ -301,6 +301,10 @@ namespace Assets.CS.TabletopUI {
                 path = new SpherePath(ParentSlot.GetPath(), GoverningSlotSpecification.Id);
             else
                 path = new SpherePath(_situationPath,GoverningSlotSpecification.Id);
+
+
+            if (!string.IsNullOrEmpty(_localPath))
+                NoonUtility.Log($"We're trying to specify a spherepath ({_localPath}) in a recipe slot / threshold ({path})");
             return path;
         }
 

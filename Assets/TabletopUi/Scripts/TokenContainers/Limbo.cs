@@ -14,9 +14,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public override bool EnforceUniqueStacksInThisContainer => false;
         public override bool ContentsHidden => true;
 
-        public override SpherePath GetPath() {
-            return new SpherePath("limbo");
-        }
 
     }
 }

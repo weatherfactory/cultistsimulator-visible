@@ -16,15 +16,10 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
     public class EnRouteSphere : Sphere, IDraggableHolder
     {
 
-        public string PathValue;
         public override ContainerCategory ContainerCategory { get; }
 
         public TabletopSphere StartingContainer;
 
-        public override SpherePath GetPath()
-        {
-            return  new SpherePath(PathValue);
-        }
 
         public RectTransform RectTransform
         {

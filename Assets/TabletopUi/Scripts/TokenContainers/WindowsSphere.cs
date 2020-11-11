@@ -13,15 +13,9 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
 {
     public class WindowsSphere: Sphere
     {
-        public string Path;
         public override ContainerCategory ContainerCategory
         {
             get { return ContainerCategory.World; }
-        }
-        public override SpherePath GetPath()
-        {
-            return new SpherePath("windows");
-
         }
     }
 }

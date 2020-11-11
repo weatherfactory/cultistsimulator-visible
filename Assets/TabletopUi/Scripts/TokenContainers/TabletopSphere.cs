@@ -93,12 +93,6 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
     }
 
 
-    public override SpherePath GetPath()
-    {
-        return new SpherePath("tabletop");
-
-    }
-
   
     void HandleOnTableDropped(PointerEventData eventData)
     {

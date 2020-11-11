@@ -23,13 +23,7 @@ public class ExhibitCards : Sphere {
     public override bool AllowStackMerge { get { return false; } }
     public override bool AlwaysShowHoverGlow { get { return true; } }
 
-
-
-    public override SpherePath GetPath()
-    {
-        return new SpherePath("");
-    }
-
+    
     public override ContainerCategory ContainerCategory => ContainerCategory.Meta;
 
     public override ElementStackToken ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context)

@@ -11,6 +11,7 @@ using Assets.TabletopUi.Scripts.Elements;
 using Assets.TabletopUi.Scripts.Elements.Manifestations;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Services;
+using Noon;
 
 namespace Assets.TabletopUi.Scripts.TokenContainers
 {
@@ -43,8 +44,9 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
 
       public override SpherePath GetPath()
       {
-
-          return new SpherePath(_deckSpec?.Id);
+            if(!string.IsNullOrEmpty(_localPath))
+                NoonUtility.Log($"We're trying to specify a spherepath ({_localPath}) in cardpile for {_deckSpec?.Id}");
+            return new SpherePath(_deckSpec?.Id);
       }
 
 

@@ -16,10 +16,6 @@ namespace Assets.CS.TabletopUI {
 
         public override bool AllowStackMerge { get { return false; } }
         public override ContainerCategory ContainerCategory { get; }
-        public override SpherePath GetPath()
-        {
-            return new SpherePath("portal");
-        }
 
         
         public void SetActiveDoor(PortalEffect effect) {
