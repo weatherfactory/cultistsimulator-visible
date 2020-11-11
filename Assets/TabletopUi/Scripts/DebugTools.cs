@@ -341,6 +341,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
                 verbForNewSituation = new CreatedVerb(recipe.ActionId, recipe.Label, recipe.Description);
 
             SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, SituationState.ReadyToStart,TokenLocation.DefaultTokenLocation());
+            scc.Open = false;
         Registry.Get<TabletopManager>().BeginNewSituation(scc,new List<ElementStackToken>());
         }
         else

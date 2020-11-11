@@ -308,13 +308,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 //this should happen last, because adding those stacks above can overwrite notes
                 ImportSituationNotes(htSituationValues, situation);
-        
-                //and do this after adding notes because Open will cuse ShowFinalPage(). What larks!
-                if (command.Open)
-                    situation.OpenAtCurrentLocation();
-                else
-                    situation.Close();
-
 
                 situation.ExecuteHeartbeat(0f); //flushes everything through and updates
 

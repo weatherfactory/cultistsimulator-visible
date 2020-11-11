@@ -77,8 +77,6 @@ namespace Assets.Core.Entities {
             currentPrimaryRecipe = command.Recipe;
             OverrideTitle = command.OverrideTitle;
             Path = command.SituationPath;
-
-
         }
 
 

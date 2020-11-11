@@ -2965,11 +2965,9 @@ MonoBehaviour:
   _tabletop: {fileID: 730}
   tabletopBackground: {fileID: 577}
   WindowsSphere: {fileID: 392807929}
-  _highlightLocationsController: {fileID: 1525472693}
   aspectDetailsWindow: {fileID: 566079818}
   tokenDetailsWindow: {fileID: 114111364633692442}
   cardHoverDetail: {fileID: 5265435531635378363}
-  _mapController: {fileID: 1698081295}
   MapSphere: {fileID: 1927212867}
   mapBackground: {fileID: 1041490181}
   mapAnimation: {fileID: 1041490182}
@@ -15610,7 +15608,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00004017353, y: -0.000027701259}
+  m_AnchoredPosition: {x: 0.000031411648, y: 0.0017023087}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &512707587
@@ -15823,8 +15821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   situationWindowPrefab: {fileID: 114020662237663214, guid: deb00c042628c48cfa9eef03d318a4ba,
     type: 3}
-  anchorLevel: {fileID: 478929474}
-  windowLevel: {fileID: 392807929}
+  anchorSpherePath: furniture
   ForVerbSpecies: furniture
 --- !u!114 &563033641 stripped
 MonoBehaviour:
@@ -17809,8 +17806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   situationWindowPrefab: {fileID: 114020662237663214, guid: deb00c042628c48cfa9eef03d318a4ba,
     type: 3}
-  anchorLevel: {fileID: 930831225}
-  windowLevel: {fileID: 392807929}
+  anchorSpherePath: portal
   ForVerbSpecies: portal
 --- !u!1001 &661481464
 PrefabInstance:
@@ -35489,8 +35485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   situationWindowPrefab: {fileID: 114020662237663214, guid: deb00c042628c48cfa9eef03d318a4ba,
     type: 3}
-  anchorLevel: {fileID: 730}
-  windowLevel: {fileID: 392807929}
+  anchorSpherePath: tabletop
   ForVerbSpecies: classic
 --- !u!1001 &1859361944
 PrefabInstance:
@@ -36035,7 +36030,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -101.00003, y: 0}
+  m_AnchoredPosition: {x: -101.00006, y: 0}
   m_SizeDelta: {x: -1102.2994, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &1909590238 stripped
@@ -37031,7 +37026,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 422685288}
   m_HandleRect: {fileID: 422685287}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

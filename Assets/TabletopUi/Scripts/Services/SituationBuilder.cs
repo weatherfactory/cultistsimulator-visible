@@ -17,9 +17,8 @@ namespace Assets.TabletopUi.Scripts.Services {
     {
 
         [SerializeField] private SituationWindow situationWindowPrefab;
-        [SerializeField] private Sphere anchorLevel;
-        [SerializeField] private Sphere windowLevel;
-        public string ForVerbSpecies;
+        [SerializeField] private string anchorSpherePath;
+       [SerializeField] public string ForVerbSpecies;
 
         public void Awake()
         {
@@ -32,15 +31,26 @@ namespace Assets.TabletopUi.Scripts.Services {
             Situation situation = new Situation(command);
             Registry.Get<SituationsCatalogue>().RegisterSituation(situation);
 
+            var sphereCatalogue = Registry.Get<SphereCatalogue>();
+
+            var windowSphere = sphereCatalogue.GetContainerByPath(SphereCatalogue.WINDOWS_PATH);
+            var anchorSphere = sphereCatalogue.GetContainerByPath(anchorSpherePath);
+
             var newAnchor = Registry.Get<PrefabFactory>().Create<VerbAnchor>();
-            anchorLevel.AcceptAnchor(newAnchor, new Context(Context.ActionSource.Unknown));
+            anchorSphere.AcceptAnchor(newAnchor, new Context(Context.ActionSource.Unknown));
             newAnchor.transform.localPosition = command.AnchorLocation.Position;
             situation.AttachAnchor(newAnchor);
 
             var newWindow = Instantiate(situationWindowPrefab);
-            newWindow.transform.SetParent(windowLevel.transform);
+            newWindow.transform.SetParent(windowSphere.transform);
             newWindow.positioner.Initialise(newAnchor);
             situation.AttachWindow(newWindow,command);
+
+
+            if (command.Open)
+                situation.OpenAtCurrentLocation();
+            else
+                situation.Close();
 
 
             //if token has been spawned from an existing token, animate its appearance

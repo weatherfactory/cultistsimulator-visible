@@ -12,15 +12,21 @@ namespace Assets.Core.Entities
 {
     public class SituationsCatalogue
     {
-        private readonly Dictionary<string, SituationBuilder> _builders;
-        private readonly  List<Situation> _currentSituations;
+        private Dictionary<string, SituationBuilder> _builders;
+        private  List<Situation> _currentSituations;
         
 
         public SituationsCatalogue()
         {
+           Reset();
+            
+        }
+
+        //}
+        public void Reset()
+        {
             _builders = new Dictionary<string, SituationBuilder>();
             _currentSituations = new List<Situation>();
-            
         }
 
         public void RegisterBuilder(string forSpecies, SituationBuilder builder)
@@ -62,6 +68,6 @@ namespace Assets.Core.Entities
         //    var situationTokens = GetRegisteredSituations().Select(s => s.situationAnchor as IArtAnimatableToken);
 
         //    return situationTokens.Where(s => s.CanAnimateArt());
-        //}
+
     }
 }
