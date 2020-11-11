@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi;
@@ -27,7 +28,7 @@ namespace Assets.Core.Commands
         public TokenLocation AnchorLocation { get; set; }
         public TokenLocation WindowLocation { get; set; }
         public List<SlotSpecification> OngoingSlots { get; set; } //we might, eg, save when slots have been created by a recipe, but later move on to another recipe
-        public string SituationPath { get; set; }
+        public SpherePath SituationPath { get; set; }
         public bool Open { get; set; }
 
         public SituationCreationCommand(IVerb verb, Recipe recipe, SituationState situationState,
@@ -42,7 +43,7 @@ namespace Assets.Core.Commands
             AnchorLocation = anchorLocation;
             SourceAnchor = sourceAnchor;
             State = situationState;
-            SituationPath = verb.Id + SaveConstants.SEPARATOR + Guid.NewGuid();
+            SituationPath = SpherePath.SituationPath(verb);
             OngoingSlots = new List<SlotSpecification>();
         }
 

@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Core.Enums;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.TabletopUi;
 using Assets.CS.TabletopUI;
@@ -115,9 +116,9 @@ public class Output : Sphere {
         return GetStacks();
     }
 
-    public override string GetPath()
+    public override SpherePath GetPath()
     {
-        return "output";
+        return new SpherePath("output");
         //   return (token.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + token.RectTransform.localPosition.y).ToString();
     }
 

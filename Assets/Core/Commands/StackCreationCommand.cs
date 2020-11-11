@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Fucine;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
@@ -30,7 +31,7 @@ namespace Assets.Core.Commands
             ElementId = elementId;
             ElementQuantity = elementQuantity;
             LocationInfo = locationInfo;
-            Depth = locationInfo.Count(c => c == SaveConstants.SEPARATOR);
+            Depth = locationInfo.Count(c => c == SpherePath.SEPARATOR);
             Mutations=new Dictionary<string, int>(mutations);
             Illuminations=new Dictionary<string, string>(illuminations);
             LifetimeRemaining = lifetimeRemaining;

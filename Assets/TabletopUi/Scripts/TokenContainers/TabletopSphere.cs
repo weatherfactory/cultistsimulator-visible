@@ -7,6 +7,7 @@ using System.Reflection;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
@@ -92,9 +93,9 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
     }
 
 
-    public override string GetPath()
+    public override SpherePath GetPath()
     {
-        return SphereCatalogue.TABLETOP_PATH;
+        return new SpherePath("tabletop");
 
     }
 

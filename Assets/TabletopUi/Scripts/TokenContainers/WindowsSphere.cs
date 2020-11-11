@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.Core.Fucine;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
 
@@ -12,13 +13,14 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
 {
     public class WindowsSphere: Sphere
     {
+        public string Path;
         public override ContainerCategory ContainerCategory
         {
             get { return ContainerCategory.World; }
         }
-        public override string GetPath()
+        public override SpherePath GetPath()
         {
-            return SphereCatalogue.WINDOWS_PATH;
+            return new SpherePath("windows");
 
         }
     }

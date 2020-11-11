@@ -7,6 +7,7 @@ using System.Text;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Interfaces;
@@ -231,7 +232,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 string simplifiedSituationPath;
 
-                string[] simplifiedSituationPathParts = locationInfo.ToString().Split(SaveConstants.SEPARATOR);
+                string[] simplifiedSituationPathParts = locationInfo.ToString().Split(SpherePath.SEPARATOR);
                 if(simplifiedSituationPathParts.Length!=3)
                 {
                     NoonUtility.LogWarning($"We can't parse a situation locationinfo: {locationInfo}. So we're just picking the beginning of it to use as the situation path.");
@@ -248,7 +249,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 }
 
-                command.SituationPath = simplifiedSituationPath;
+                command.SituationPath = new SpherePath(simplifiedSituationPath);
 
                 float? posx = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_SITUATION_WINDOW_X);
                 float? posy = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_SITUATION_WINDOW_Y);
@@ -272,7 +273,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     {
 
                         //shit a fuck. We only store the slot label, not the required / forbidden elements of the specification!
-                        var slotId = slotPath.Split(SaveConstants.SEPARATOR)[0];
+                        var slotId = slotPath.Split(SpherePath.SEPARATOR)[0];
                         var slotSpec = new SlotSpecification(slotId);
                         ongoingSlotSpecs.Add(slotSpec);
 
@@ -327,8 +328,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 foreach (var ess in elementStackSpecifications.OrderBy(spec => spec.Depth)) //this order-by is important if we're populating something with elements which create child slots -
                                                                                             //in that case we need to do it from the top down, or the slots won't be there
                 {
-                    var slotPath = situation.Path + SaveConstants.SEPARATOR +
-                                   ess.LocationInfo.Split(SaveConstants.SEPARATOR)[0];
+                    var slotPath = new SpherePath(situation.Path, ess.LocationInfo.Split(SpherePath.SEPARATOR)[0]);
 
                     var slot = Registry.Get<SphereCatalogue>().GetContainerByPath(slotPath);
 

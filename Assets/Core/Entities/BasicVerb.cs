@@ -43,6 +43,9 @@ namespace Assets.Core.Entities
         [FucineValue(DefaultValue = true)]
         public bool Startable { get; set; }
 
+        [FucineValue(DefaultValue =false)]
+        public bool AllowMultipleInstances { get; set; }
+
         public BasicVerb(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
 
@@ -51,7 +54,7 @@ namespace Assets.Core.Entities
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium)
         {
             if (string.IsNullOrEmpty(SpeciesId))
-                SpeciesId = populatedCompendium.GetEntitiesAsList<Dictum>().First().DefaultVerbSpecies;
+                SpeciesId = populatedCompendium.GetSingleEntity<Dictum>().DefaultVerbSpecies;
 
             Species = populatedCompendium.GetEntityById<Species>(SpeciesId);
 

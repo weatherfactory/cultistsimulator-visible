@@ -15,17 +15,14 @@ namespace Assets.Core.Entities
             Label = label;
             Description = description;
             Startable = false;
-            SpeciesId = Registry.Get<ICompendium>().GetEntitiesAsList<Dictum>().First().DefaultVerbSpecies;
+            SpeciesId = Registry.Get<ICompendium>().GetSingleEntity<Dictum>().DefaultVerbSpecies;
             Species = Registry.Get<ICompendium>().GetEntityById<Species>(SpeciesId);
         }
 
         public string SpeciesId { get; private set; }
         public Species Species { get; private set; }
 
-        public  bool Transient
-        {
-            get { return true; }
-        }
+        public  bool Transient => true;
 
         public string Art=>String.Empty;
 
@@ -39,5 +36,6 @@ namespace Assets.Core.Entities
         public SlotSpecification Slot { get; set; }
         public List<SlotSpecification> Slots { get; set; }
         public bool Startable { get; set; }
+        public bool AllowMultipleInstances => false;
     }
 }

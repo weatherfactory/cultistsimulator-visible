@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
@@ -22,10 +23,10 @@ namespace Assets.TabletopUi.SlotsContainers {
         protected RecipeSlot primarySlot;
         private IVerb _verb;
         private SituationWindow _window;
-        private string _situationPath;
+        private SpherePath _situationPath;
 
 
-        public void Initialise(IVerb verb,SituationWindow window,string situationPath) {
+        public void Initialise(IVerb verb,SituationWindow window,SpherePath situationPath) {
             
             
             var children = GetComponentsInChildren<RecipeSlot>();

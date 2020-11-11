@@ -30,7 +30,7 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
 
     public RecipeSlot GetSlotBySaveLocationInfoPath(string saveLocationInfoPath) {
         var candidateSlots = GetAllSlots();
-        RecipeSlot slotToReturn = candidateSlots.SingleOrDefault(s => s.GetPath() == saveLocationInfoPath);
+        RecipeSlot slotToReturn = candidateSlots.SingleOrDefault(s => s.GetPath().ToString() == saveLocationInfoPath);
         return slotToReturn;
     }
 

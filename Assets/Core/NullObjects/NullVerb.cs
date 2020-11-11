@@ -20,6 +20,7 @@ namespace Assets.Core.NullObjects
         public SlotSpecification Slot { get; set; }
         public List<SlotSpecification> Slots { get; set; }
         public bool Startable { get; }
+        public bool AllowMultipleInstances => true;
 
         protected NullVerb()
         {

@@ -10,6 +10,7 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.Core.Enums;
+using Assets.Core.Fucine;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Services {
@@ -33,8 +34,8 @@ namespace Assets.TabletopUi.Scripts.Services {
 
             var sphereCatalogue = Registry.Get<SphereCatalogue>();
 
-            var windowSphere = sphereCatalogue.GetContainerByPath(SphereCatalogue.WINDOWS_PATH);
-            var anchorSphere = sphereCatalogue.GetContainerByPath(anchorSpherePath);
+            var windowSphere = sphereCatalogue.GetContainerByPath(new SpherePath(Registry.Get<ICompendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath));
+            var anchorSphere = sphereCatalogue.GetContainerByPath(new SpherePath(anchorSpherePath));
 
             var newAnchor = Registry.Get<PrefabFactory>().Create<VerbAnchor>();
             anchorSphere.AcceptAnchor(newAnchor, new Context(Context.ActionSource.Unknown));

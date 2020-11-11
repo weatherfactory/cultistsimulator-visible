@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.TabletopUi;
 using Assets.CS.TabletopUI;
@@ -24,9 +25,9 @@ public class ExhibitCards : Sphere {
 
 
 
-    public override string GetPath()
+    public override SpherePath GetPath()
     {
-        return string.Empty;
+        return new SpherePath("");
     }
 
     public override ContainerCategory ContainerCategory => ContainerCategory.Meta;

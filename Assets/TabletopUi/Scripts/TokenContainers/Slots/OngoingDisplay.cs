@@ -7,6 +7,7 @@ using System.Text;
 using Assets.Core.Commands;
 using Assets.TabletopUi;
 using Assets.Core.Entities;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using UnityEngine;
@@ -30,7 +31,7 @@ namespace Assets.CS.TabletopUI {
 
         private OnContainerAddedEvent _onSlotAdded;
         private OnContainerRemovedEvent _onSlotRemoved;
-        private string _situationPath;
+        private SpherePath _situationPath;
 
         public void Initialise(OnContainerAddedEvent onContainerAdded, OnContainerRemovedEvent onContainerRemoved,SituationCreationCommand situationCreationCommand)
         {

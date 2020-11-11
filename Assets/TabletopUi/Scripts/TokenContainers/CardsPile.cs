@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.Core.Fucine;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Elements;
 using Assets.TabletopUi.Scripts.Elements.Manifestations;
@@ -40,10 +41,10 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
                    ProvisionElementStack(s, 1, Source.Fresh(), new Context(Context.ActionSource.Unknown));
       }
 
-      public override string GetPath()
+      public override SpherePath GetPath()
       {
 
-          return _deckSpec?.Id;
+          return new SpherePath(_deckSpec?.Id);
       }
 
 

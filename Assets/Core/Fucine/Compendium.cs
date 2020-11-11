@@ -17,6 +17,7 @@ public interface ICompendium
     Recipe GetFirstMatchingRecipe(AspectsInContext aspectsInContext, string verb, Character character,bool getHintRecipes);
     List<T> GetEntitiesAsList<T>() where T : class, IEntityWithId;
     T GetEntityById<T>(string entityId) where  T: class,IEntityWithId;
+    T GetSingleEntity<T>() where T : class, IEntityWithId;
     bool TryAddEntity(IEntityWithId entity);
     bool EntityExists<T>(string entityId) where T : class, IEntityWithId;
 
@@ -103,6 +104,13 @@ public class Compendium : ICompendium
         return new List<Type>(allEntityTypes);
     }
 
+    public T GetSingleEntity<T>() where T : class, IEntityWithId
+    {
+        EntityStore entityStore = entityStores[typeof(T)];
+        return entityStore.GetSingleInstance<T>();
+
+    }
+
     public bool TryAddEntity(IEntityWithId entityToAdd)
     {
         var type = entityToAdd.GetType();
@@ -114,9 +122,7 @@ public class Compendium : ICompendium
 
     public void OnPostImport(ContentImportLog log)
     {
-
-
-
+        
       //run OnPostImport for every entity in every store
         foreach (var entityStore in entityStores.Values)
         {

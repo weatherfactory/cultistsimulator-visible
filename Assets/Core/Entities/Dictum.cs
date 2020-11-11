@@ -14,6 +14,17 @@ namespace Assets.Core.Entities
         [FucineValue]
         public string DefaultVerbSpecies { get; set; }
 
+        [FucineValue]
+        public string DefaultWorldSpherePath { get; set; }
+
+
+        [FucineValue]
+        public string DefaultEnRouteSpherePath { get; set; }
+
+        [FucineValue]
+        public string DefaultWindowSpherePath { get; set; }
+
+
         public Dictum(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
             

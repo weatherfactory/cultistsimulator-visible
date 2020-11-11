@@ -3,6 +3,7 @@ using Assets.Core.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Core.Enums;
+using Assets.Core.Fucine;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -15,9 +16,9 @@ namespace Assets.CS.TabletopUI {
 
         public override bool AllowStackMerge { get { return false; } }
         public override ContainerCategory ContainerCategory { get; }
-        public override string GetPath()
+        public override SpherePath GetPath()
         {
-            return "portal";
+            return new SpherePath("portal");
         }
 
         

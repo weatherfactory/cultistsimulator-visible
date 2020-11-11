@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Commands;
 using Assets.Core.Enums;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
 using Assets.CS.TabletopUI;
@@ -49,7 +50,7 @@ namespace Assets.Core.Entities {
         private ISituationAnchor _anchor;
         private SituationWindow _window;
         private bool greedyAnimIsActive;
-        public string Path { get; }
+        public SpherePath Path { get; }
         public bool IsOpen { get; private set; }
         public RecipeBeginningEffectCommand CurrentBeginningEffectCommand;
         public RecipeCompletionEffectCommand currentCompletionEffectCommand;

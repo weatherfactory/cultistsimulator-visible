@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
@@ -171,9 +172,9 @@ if(stack!=null)
             return GetComponentInChildren<ElementStackToken>();
         }
 
-        public override string GetPath()
+        public override SpherePath GetPath()
         {
-            return portalType.ToString();
+            return new SpherePath(portalType.ToString());
         }
 
 #if UNITY_EDITOR

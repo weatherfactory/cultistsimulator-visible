@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core.Enums;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
@@ -27,8 +28,7 @@ namespace Assets.Core.Entities {
         private bool _allAspectsExtantDirty = true;
 
         public const string EN_ROUTE_PATH = "enroute";
-        public const string TABLETOP_PATH = "tabletop";
-        public const string WINDOWS_PATH = "windows";
+        
         public const string STORAGE_PATH = "storage";
 
 
@@ -71,7 +71,7 @@ namespace Assets.Core.Entities {
         }
 
 
-        public Sphere GetContainerByPath(string containerPath)
+        public Sphere GetContainerByPath(SpherePath containerPath)
         {
 
             try

@@ -436,7 +436,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7684133270066409491}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Assets.CS.TabletopUI.SituationWindow, Assembly-CSharp
         m_MethodName: Closed
         m_Mode: 1
@@ -3583,7 +3583,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7684133270066409491}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Assets.CS.TabletopUI.SituationWindow, Assembly-CSharp
         m_MethodName: Collect
         m_Mode: 1
@@ -3869,10 +3869,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7506759085890163983}
-  - component: {fileID: 7684133270066409491}
-  - component: {fileID: 7683635531468933479}
   - component: {fileID: 7684144986348524355}
   - component: {fileID: 7505757983529081903}
+  - component: {fileID: -3755688860703516573}
   m_Layer: 5
   m_Name: PickupWindow
   m_TagString: Untagged
@@ -3911,60 +3910,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 200}
   m_SizeDelta: {x: 700, y: 370}
   m_Pivot: {x: 0.5, y: 0.7}
---- !u!114 &7684133270066409491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7725114608843162991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d82a6bfde0cdd94890dbb172a940e75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasGroupFader: {fileID: 7684144986348524355}
-  positioner: {fileID: 7683635531468933479}
-  artwork: {fileID: 7683177959136842941}
-  title: {fileID: 7683498140668866193}
-  PaginatedNotes: {fileID: 7687101248774312015}
-  startingSlots: {fileID: 7683638522674624515}
-  ongoingDisplay: {fileID: 7684012566128045289}
-  results: {fileID: 7687303488068209071}
-  dumpResultsButton: {fileID: 7684144986998888059}
-  dumpResultsButtonText: {fileID: 7684144987865296229}
-  storage: {fileID: 7683634976620050073}
-  aspectsDisplay: {fileID: 7684144994047342901}
-  startButton: {fileID: 7683364416482743273}
-  startButtonText: {fileID: 7683245262284287933}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCollect:
-    m_PersistentCalls:
-      m_Calls: []
-  OnWindowClosed:
-    m_PersistentCalls:
-      m_Calls: []
-  OnContainerAdded:
-    m_PersistentCalls:
-      m_Calls: []
-  OnContainerRemoved:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &7683635531468933479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7725114608843162991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c382ba08d13be9347a2fb7704a9c36ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDrag: 1
 --- !u!114 &7684144986348524355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3992,6 +3937,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 1
+--- !u!114 &-3755688860703516573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7725114608843162991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 768e7ea422839ed49af10ba32768e3b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7725114609544339903
 GameObject:
   m_ObjectHideFlags: 0

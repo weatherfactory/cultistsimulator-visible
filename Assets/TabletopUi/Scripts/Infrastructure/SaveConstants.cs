@@ -47,6 +47,5 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public const string SAVE_NAME = "name";
 
 
-        public const char SEPARATOR = '_';
     }
 }

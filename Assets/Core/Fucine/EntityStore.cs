@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Assets.Core.Interfaces;
+using Noon;
 
 public class EntityStore
 {
@@ -49,6 +50,21 @@ public class EntityStore
         return _entities[entityId] as T;
     }
 
+    public T GetSingleInstance<T>() where T : class, IEntityWithId
+    {
+        if (_entities.Count > 1)
+        {
+            NoonUtility.LogWarning($"Single instance requested of {nameof(T)}, but there's {_entities.Count} of them. Returning the first. ");
+            return _entities.Values.First() as T;
+        }
+        if(_entities.Count<1)
+        {
+            NoonUtility.LogWarning($"Single instance requested of {nameof(T)}, but there aren't any. Returning null.");
+            return null;
+        }
+
+        return _entities.Values.Single() as T;
+    }
 
     public List<IEntityWithId> GetAllAsList()
     {

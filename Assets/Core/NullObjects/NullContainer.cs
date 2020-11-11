@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Enums;
+using Assets.Core.Fucine;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using UnityEngine;
@@ -25,9 +26,9 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
             return true;
         }
 
-        public override string GetPath()
+        public override SpherePath GetPath()
         {
-            return string.Empty;
+            return new SpherePath("-");
         }
 
     }

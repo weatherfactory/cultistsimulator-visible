@@ -8,6 +8,7 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 using System;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.Core.Fucine;
 using Assets.TabletopUi.Scripts.Elements;
 using Assets.TabletopUi.Scripts.Elements.Manifestations;
 using Assets.TabletopUi.Scripts.Services;
@@ -32,9 +33,9 @@ public class SituationStorage : Sphere
 
 
 
-    public override string GetPath()
+    public override SpherePath GetPath()
     {
-        return SphereCatalogue.STORAGE_PATH;
+        return new SpherePath("storage");
     }
 
     public override ContainerCategory ContainerCategory => ContainerCategory.SituationStorage;

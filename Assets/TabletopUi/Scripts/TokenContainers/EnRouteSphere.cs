@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.Core.Fucine;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
@@ -14,14 +15,15 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
 {
     public class EnRouteSphere : Sphere, IDraggableHolder
     {
-        
+
+        public string PathValue;
         public override ContainerCategory ContainerCategory { get; }
 
         public TabletopSphere StartingContainer;
 
-        public override string GetPath()
+        public override SpherePath GetPath()
         {
-            return SphereCatalogue.EN_ROUTE_PATH;
+            return  new SpherePath(PathValue);
         }
 
         public RectTransform RectTransform

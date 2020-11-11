@@ -4,6 +4,7 @@ using System.Linq;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
@@ -50,7 +51,7 @@ namespace Assets.CS.TabletopUI {
 
         public override bool AllowStackMerge { get { return false; } }
 
-        private string _situationPath;
+        private SpherePath _situationPath;
 
         public override bool AllowDrag {
             get {
@@ -81,11 +82,11 @@ namespace Assets.CS.TabletopUI {
             
         }
 
-        public void Initialise(SlotSpecification slotSpecification,string situationPath)
+        public void Initialise(SlotSpecification slotSpecification,SpherePath situationPath)
         {
             _situationPath = situationPath;
             GoverningSlotSpecification = slotSpecification;
-            gameObject.name = GetPath();
+            gameObject.name = GetPath().ToString();
 
             if (slotSpecification == null)
                 return;
@@ -292,14 +293,14 @@ namespace Assets.CS.TabletopUI {
         /// <summary>
         /// path to slot expressed in underscore-separated slot specification labels: eg "work_sacrifice"
         /// </summary>
-        public override string GetPath()
+        public override SpherePath GetPath()
         {
 
-            string path;
+            SpherePath path;
             if (ParentSlot != null)
-                path = ParentSlot.GetPath() + SaveConstants.SEPARATOR + GoverningSlotSpecification.Id;
+                path = new SpherePath(ParentSlot.GetPath(), GoverningSlotSpecification.Id);
             else
-                path = _situationPath + SaveConstants.SEPARATOR + GoverningSlotSpecification.Id;
+                path = new SpherePath(_situationPath,GoverningSlotSpecification.Id);
             return path;
         }
 

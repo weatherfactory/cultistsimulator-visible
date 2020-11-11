@@ -17,6 +17,7 @@ using System.Linq;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.Core.Fucine;
 using Assets.Core.Services;
 using Assets.Logic;
 using Assets.TabletopUi.Scripts.Elements;
@@ -883,7 +884,8 @@ namespace Assets.CS.TabletopUI {
 
             _currentlyBeingDragged = true;
 
-            var enrouteContainer = Registry.Get<SphereCatalogue>().GetContainerByPath(SphereCatalogue.EN_ROUTE_PATH);
+            var enrouteContainer = Registry.Get<SphereCatalogue>().GetContainerByPath(
+                new SpherePath(Registry.Get<ICompendium>().GetSingleEntity<Dictum>().DefaultEnRouteSpherePath));
             enrouteContainer.AcceptStack(this, new Context(Context.ActionSource.PlayerDrag));
 
             _manifestation.OnBeginDragVisuals();

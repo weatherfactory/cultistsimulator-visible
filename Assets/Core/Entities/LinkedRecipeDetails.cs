@@ -18,7 +18,7 @@ namespace Assets.Core.Entities
         [FucineValue(false)]
         public bool Additional { get; set; }
 
-        [FucineValue(DefaultValue = SphereCatalogue.TABLETOP_PATH)]
+        [FucineValue]
         public string ToPath { get; set; }
 
         /// <summary>

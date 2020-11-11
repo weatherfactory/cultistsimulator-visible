@@ -17,6 +17,7 @@ using UnityEngine.UI;
 using System.Linq;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.Core.Fucine;
 using Assets.Core.NullObjects;
 using Assets.Core.Services;
 using Assets.TabletopUi.Scripts.Infrastructure;
@@ -75,7 +76,7 @@ namespace Assets.CS.TabletopUI {
         public TokenLocation LastOpenLocation;
 
         private IVerb Verb;
-        private string _situationPath;
+        private SpherePath _situationPath;
         private bool windowIsWide = false;
 
         public bool IsVisible {

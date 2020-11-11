@@ -33,6 +33,7 @@ namespace Assets.TabletopUi.Scripts.Services
         public MinimalManifestation MinimalManifestation = null;
         public VerbManifestation VerbManifestation = null;
         public PortalManifestation PortalManifestation = null;
+        public PickupManifestation PickupManifestation = null;
         public RecipeSlot RecipeSlot = null;
         public NotificationWindow NotificationWindow = null;
         public SituationNote SituationNote = null;

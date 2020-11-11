@@ -5,6 +5,7 @@ using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
@@ -244,7 +245,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             incumbentMoved = false;
         }
 
-        public abstract string GetPath();
+        public abstract SpherePath GetPath();
 
         public virtual void OnDestroy()
         {
