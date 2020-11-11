@@ -7,6 +7,7 @@ using System.Text;
 using Assets.Core.Fucine;
 using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
 
 namespace Assets.Core.Entities
 {
@@ -20,8 +21,10 @@ namespace Assets.Core.Entities
         [FucineValue(DefaultValue = ".", Localise = true)]
         public string Description { get; set; }
 
-        [FucineValue(DefaultValue = "classic")]
-        public string Species { get; set; }
+        [FucineValue]
+        public string SpeciesId { get; set; }
+
+        public Species Species { get; private set; }
 
         [FucineValue]
         public string Art { get; set; }
@@ -47,6 +50,12 @@ namespace Assets.Core.Entities
 
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium)
         {
+            if (string.IsNullOrEmpty(SpeciesId))
+                SpeciesId = populatedCompendium.GetEntitiesAsList<Dictum>().First().DefaultVerbSpecies;
+
+            Species = populatedCompendium.GetEntityById<Species>(SpeciesId);
+
+
         }
     }
 }

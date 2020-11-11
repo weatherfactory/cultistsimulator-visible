@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Entities;
 
 namespace Assets.Core.Interfaces
 {
@@ -10,7 +11,8 @@ namespace Assets.Core.Interfaces
         string Id { get; }
         string Label { get; }
         string Description { get; }
-        string Species { get; }
+        string SpeciesId { get; }
+        Species Species { get; }
         bool Transient { get; }
         string Art { get; }
       SlotSpecification Slot { get; set; }

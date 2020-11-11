@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
 
 namespace Assets.Core.Entities
 {
@@ -14,10 +15,12 @@ namespace Assets.Core.Entities
             Label = label;
             Description = description;
             Startable = false;
-            Species = string.Empty;
+            SpeciesId = Registry.Get<ICompendium>().GetEntitiesAsList<Dictum>().First().DefaultVerbSpecies;
+            Species = Registry.Get<ICompendium>().GetEntityById<Species>(SpeciesId);
         }
 
-        public string Species { get; private set; }
+        public string SpeciesId { get; private set; }
+        public Species Species { get; private set; }
 
         public  bool Transient
         {

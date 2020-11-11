@@ -22,7 +22,7 @@ namespace Assets.Core.Entities
             
         }
 
-        //}
+        
         public void Reset()
         {
             _builders = new Dictionary<string, SituationBuilder>();
@@ -59,7 +59,7 @@ namespace Assets.Core.Entities
 
         public Situation CreateSituation(SituationCreationCommand command)
         {
-            var builder = _builders[command.Verb.Species];
+            var builder = _builders[command.Verb.SpeciesId];
             return builder.CreateSituation(command);
         }
 

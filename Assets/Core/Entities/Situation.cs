@@ -366,6 +366,7 @@ namespace Assets.Core.Entities {
 
                 case SituationState.ReadyToStart:
                     State = SituationState.Ongoing;
+                    CurrentRecipePrediction = GetUpdatedRecipePrediction();
                     CurrentBeginningEffectCommand = new RecipeBeginningEffectCommand(currentPrimaryRecipe.Slots, CurrentRecipePrediction.BurnImage);
                     var storageContainer = GetSingleContainerByCategory(ContainerCategory.SituationStorage);
                     storageContainer.AcceptStacks(GetStacks(ContainerCategory.Threshold),
@@ -550,8 +551,12 @@ namespace Assets.Core.Entities {
                 verbForNewSituation = new CreatedVerb(effectCommand.Recipe.ActionId, effectCommand.Recipe.Label, effectCommand.Recipe.Description);
 
 
-            var scc = new SituationCreationCommand(verbForNewSituation, effectCommand.Recipe, SituationState.ReadyToStart, _anchor.Location, _anchor);
-            Registry.Get<TabletopManager>().BeginNewSituation(scc, stacksToAddToNewSituation); //tabletop manager is a subscriber, right? can we run this (or access to its successor) through that flow?
+
+            var scc = new SituationCreationCommand(verbForNewSituation, effectCommand.Recipe,
+                SituationState.ReadyToStart, _anchor.Location, _anchor);
+            Registry.Get<TabletopManager>()
+                .BeginNewSituation(scc,
+                    stacksToAddToNewSituation); //tabletop manager is a subscriber, right? can we run this (or access to its successor) through that flow?
 
         }
 

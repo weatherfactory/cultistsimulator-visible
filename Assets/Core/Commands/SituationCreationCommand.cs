@@ -16,7 +16,10 @@ namespace Assets.Core.Commands
 
 		public ISituationAnchor SourceAnchor { get; set; } // this may not be set if no origin is known or needed
         public IVerb Verb { get; set; }
-        public Species Species { get; set; }
+        public Species Species
+        {
+            get { return Verb.Species; }
+        }
         public Recipe Recipe { get; set; }
         public SituationState State { get; set; }
         public float? TimeRemaining { get; set; }
@@ -33,7 +36,6 @@ namespace Assets.Core.Commands
             if (recipe == null && verb == null)
                 throw new ArgumentException("Must specify either a recipe or a verb (or both");
 
-            Species = Registry.Get<ICompendium>().GetEntityById<Species>(verb.Species);
 
             Recipe = recipe;
             Verb = verb;
