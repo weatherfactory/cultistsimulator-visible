@@ -44,7 +44,6 @@ namespace Assets.CS.TabletopUI {
         public event System.Action<float> onDecay;
 
  
-        private Element _element;
         private int _quantity;
 
 		// Cache aspect lists because they are EXPENSIVE to calculate repeatedly every frame - CP
@@ -61,7 +60,7 @@ namespace Assets.CS.TabletopUI {
         {
             get { return _manifestation.NoPush; }
         }
-        private bool shrouded = false;
+
         public Source StackSource { get; set; }
 
         private ElementStackToken originStack = null; // if it was pulled from a stack, save that stack!
@@ -69,8 +68,7 @@ namespace Assets.CS.TabletopUI {
         private IlluminateLibrarian _illuminateLibrarian;
     
 
-        //set true when the Chronicler notices it's been placed on the desktop. This ensures we don't keep spamming achievements / Lever requests. It isn't persisted in saves! which is probably fine.
-        public bool PlacementAlreadyChronicled=false;
+
 
 
 
@@ -498,10 +496,7 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        protected override void NotifyChroniclerPlacedOnTabletop()
-        {
-            Registry.Get<Chronicler>()?.TokenPlacedOnTabletop(this);
-        }
+
 
         public override bool Retire()
         {
@@ -1024,27 +1019,8 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public override bool CanAnimateArt()
-        {
-            if (gameObject == null)
-                return false;
-
-            if (gameObject.activeInHierarchy == false)
-                return false; // can not animate if deactivated
-
-            if (_element == null)
-                return false;
-
-            return _manifestation.CanAnimate();
-        }
 
 
-        public override void StartArtAnimation() {
-            if (!CanAnimateArt())
-                return;
-            _manifestation.BeginArtAnimation();
-           
-        }
 
     }
 }

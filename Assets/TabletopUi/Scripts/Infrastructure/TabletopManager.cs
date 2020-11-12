@@ -451,7 +451,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public async void EndGame(Ending ending, ISituationAnchor _anchor)
+        public async void EndGame(Ending ending, AbstractToken _anchor)
 		{
 			NoonUtility.Log("TabletopManager.EndGame()");
 
@@ -856,14 +856,14 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
 
 
-        public void SignalImpendingDoom(ISituationAnchor situationToken) {
+        public void SignalImpendingDoom(AbstractToken situationToken) {
             if(!currentDoomTokens.Contains(situationToken.EntityId))
                 currentDoomTokens.Add(situationToken.EntityId);
             backgroundMusic.PlayImpendingDoom();
         }
 
 
-        public void NoMoreImpendingDoom(ISituationAnchor situationToken)
+        public void NoMoreImpendingDoom(AbstractToken situationToken)
         {
             if (currentDoomTokens.Contains(situationToken.EntityId))
                 currentDoomTokens.Remove(situationToken.EntityId);

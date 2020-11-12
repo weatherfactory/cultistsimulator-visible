@@ -105,7 +105,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
         if (potentialVerbAnchor != null)
         {
             potentialVerbAnchor.SetXNess(TokenXNess.DroppedOnTableContainer);
-            AcceptAnchor(potentialVerbAnchor,
+            AcceptToken(potentialVerbAnchor,
                 new Context(Context.ActionSource.PlayerDrag));
             CheckOverlappingTokens(potentialVerbAnchor);
             SoundManager.PlaySfx("CardDrop");

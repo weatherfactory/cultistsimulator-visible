@@ -1,6 +1,9 @@
 #pragma warning disable 0649
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Core.Interfaces;
@@ -11,6 +14,7 @@ using Assets.TabletopUi.Scripts.Elements.Manifestations;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
 using Assets.TabletopUi.Scripts.Interfaces;
+using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.Scripts.TokenContainers;
 using Noon;
 using UnityEngine;
@@ -52,10 +56,17 @@ namespace Assets.CS.TabletopUI {
     }
 
         [RequireComponent(typeof(RectTransform))]
-    public abstract class AbstractToken : MonoBehaviour,
-        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IToken,IArtAnimatableToken {
+    public class AbstractToken : MonoBehaviour,
+        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IToken,IArtAnimatableToken,ISituationSubscriber
+    {
 
- 
+        protected Element _element;
+        protected bool shrouded = false;
+        public IVerb Verb
+        {
+            get { return _situation.Verb; }
+        }
+
         public RectTransform rectTransform;
         [SerializeField] protected bool rotateOnDrag = true;
         
@@ -69,6 +80,9 @@ namespace Assets.CS.TabletopUI {
         protected Vector3 dragOffset;
         protected RectTransform rectCanvas;
         protected CanvasGroup canvasGroup;
+
+        //set true when the Chronicler notices it's been placed on the desktop. This ensures we don't keep spamming achievements / Lever requests. It isn't persisted in saves! which is probably fine.
+        public bool PlacementAlreadyChronicled = false;
 
         protected float perlinRotationPoint = 0f;
         protected float dragHeight = -8f; // Draggables all drag on a specifc height and have a specific "default height"
@@ -91,29 +105,75 @@ namespace Assets.CS.TabletopUI {
                 _manifestation=new NullManifestation();
         }
 
-        public abstract void StartArtAnimation();
-        
-        public abstract bool CanAnimateArt();
+        public void StartArtAnimation()
+        {
+            if (!CanAnimateArt())
+                return;
+            _manifestation.BeginArtAnimation();
 
-        public abstract string EntityId { get; }
+        }
+        public bool CanAnimateArt()
+        {
+            if (gameObject == null)
+                return false;
+
+            if (gameObject.activeInHierarchy == false)
+                return false; // can not animate if deactivated
+
+
+            return _manifestation.CanAnimate();
+        }
+
+        public virtual string EntityId
+        {
+            get { return Verb.Id; }
+        }
         public bool IsBeingAnimated { get; set; }
-
         public bool Defunct { get; protected set; }
-        
+        public virtual bool NoPush { protected set; get; }
+        public bool _currentlyBeingDragged { get; protected set; }
+        protected bool _draggingEnabled = true;
+        protected Situation _situation;
+        private TokenXNess TokenXNess { get; set; }
+
+
+
+        protected AnchorDurability _durability;
+
+
+        public AnchorDurability Durability
+        {
+            get { return _durability; }
+        }
+
+        public void Populate(Situation situation)
+        {
+            _situation = situation;
+            _manifestation = Registry.Get<PrefabFactory>().CreateManifestationPrefab(situation.Species.AnchorManifestationType, this.transform);
+
+
+            if (Verb.Transient)
+                _durability = AnchorDurability.Transient;
+            else
+                _durability = AnchorDurability.Enduring;
+
+            name = "Verb_" + EntityId;
+
+
+            _manifestation.InitialiseVisuals(Verb);
+            _manifestation.DisplaySpheres(new List<Sphere>());
+            _manifestation.SetParticleSimulationSpace(transform);
+
+        }
+
+
         public void TryReturnToOriginalPosition()
         {
             if (lastTablePos != null)
                 transform.localPosition = new Vector3(lastTablePos.Value.x,lastTablePos.Value.y);
         }
 
-        public virtual bool NoPush { protected set; get; }
 
-        public bool _currentlyBeingDragged { get; protected set; }
-
-        protected bool _draggingEnabled = true;
-        protected Situation _situation;
-
-        private TokenXNess TokenXNess { get; set; }
 
             public void Start()
         {
@@ -167,10 +227,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public IVerb Verb
-        {
-            get { return _situation.Verb; }
-        }
+
 
 
         public virtual void SnapToGrid()
@@ -341,7 +398,11 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public abstract void OnDrop(PointerEventData eventData);
+        public virtual void OnDrop(PointerEventData eventData)
+        {
+
+            InteractWithIncomingObject(eventData.pointerDrag);
+        }
 
 
         public bool CanInteractWithTokenDroppedOn(GameObject objectDroppedOn)
@@ -363,8 +424,16 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public abstract bool CanInteractWithIncomingObject(VerbAnchor tokenDroppedOn);
-        public abstract bool CanInteractWithIncomingObject(ElementStackToken stackDroppedOn);
+        public virtual bool CanInteractWithIncomingObject(VerbAnchor tokenDroppedOn)
+        {
+            //verb dropped on verb - OK
+            return false; // a verb anchor can't be dropped on anything
+        }
+        public virtual bool CanInteractWithIncomingObject(ElementStackToken stackDroppedOn)
+        {
+
+            return (_situation.GetFirstAvailableThresholdForStackPush(stackDroppedOn).SphereCategory == SphereCategory.Threshold);
+        }
 
         public void InteractWithIncomingObject(GameObject incomingObject)
         {
@@ -382,14 +451,71 @@ namespace Assets.CS.TabletopUI {
                 InteractWithIncomingObject(token as VerbAnchor);
         }
 
-        public abstract void InteractWithIncomingObject(VerbAnchor tokenDroppedOn);
-        public abstract void InteractWithIncomingObject(ElementStackToken incomingStack);
 
-        public abstract void OnPointerClick(PointerEventData eventData);
+        public virtual void InteractWithIncomingObject(VerbAnchor tokenDroppedOn)
+        {
+            //verb dropped on verb - OK
 
-        public abstract void ReturnToTabletop(Context context);
+            tokenDroppedOn.Sphere.TryMoveAsideFor(this, tokenDroppedOn, out bool moveAsideFor);
+
+            if (moveAsideFor)
+                SetXNess(TokenXNess.DroppedOnTokenWhichMovedAside);
+            else
+                SetXNess(TokenXNess.DroppedOnTokenWhichWontMoveAside);
+
+        }
+
+        public virtual void InteractWithIncomingObject(ElementStackToken incomingStack)
+        {
+
+            if (CanInteractWithIncomingObject(incomingStack))
+            {
+                // This will put it into the ongoing or the starting slot, token determines
+                _situation.PushDraggedStackIntoThreshold(incomingStack);
+
+                // Then we open the situation (cause this closes other situations and this may return the stack we try to move
+                // back onto the tabletop - if it was in its starting slots. - Martin
+                if (!_situation.IsOpen)
+                    _situation.OpenAtCurrentLocation();
+                return;
+            }
+
+            // We can't interact? Then dump us on the tabletop
+            SetXNess(TokenXNess.ElementDroppedOnTokenButCannotInteractWithIt);
+            ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
 
 
+        }
+
+
+
+        public virtual void OnPointerClick(PointerEventData eventData)
+        {
+
+            if (!_manifestation.HandleClick(eventData, this))
+            {
+                //Manifestation didn't handle click
+                Registry.Get<DebugTools>().SetInput(_situation.RecipeId);
+
+                if (!_situation.IsOpen)
+                    _situation.OpenAtCurrentLocation();
+                else
+                    _situation.Close();
+            }
+
+        }
+
+
+        public virtual void ReturnToTabletop(Context context)
+        {
+            Registry.Get<Choreographer>().ArrangeTokenOnTable(this, context);
+        }
+
+
+        public void DisplayOverrideIcon(string icon)
+        {
+            _manifestation.OverrideIcon(icon);
+        }
 
         public virtual void DisplayAtTableLevel() {
             rectTransform.anchoredPosition3D = new Vector3(rectTransform.anchoredPosition3D.x, rectTransform.anchoredPosition3D.y, 0f);
@@ -399,7 +525,10 @@ namespace Assets.CS.TabletopUI {
             NotifyChroniclerPlacedOnTabletop();
         }
 
-        protected abstract void NotifyChroniclerPlacedOnTabletop();
+        protected void NotifyChroniclerPlacedOnTabletop()
+        {
+            Registry.Get<Chronicler>()?.TokenPlacedOnTabletop(this);
+        }
 
         public virtual bool Retire()
         {
@@ -415,15 +544,44 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public abstract void ReactToDraggedToken(TokenInteractionEventArgs args);
+        public virtual void ReactToDraggedToken(TokenInteractionEventArgs args)
+        {
+            if (args.TokenInteractionType == TokenInteractionType.BeginDrag)
+            {
 
-        public abstract void HighlightPotentialInteractionWithToken(bool show);
+                var stack = args.Token as ElementStackToken;
+                if (stack == null)
+                    return;
+                if (!_situation.GetFirstAvailableThresholdForStackPush(stack).CurrentlyBlockedFor(BlockDirection.Inward))
+                {
+                    _manifestation.Highlight(HighlightType.CanInteractWithOtherToken);
+                }
+            }
+            if (args.TokenInteractionType == TokenInteractionType.EndDrag)
+                _manifestation.Unhighlight(HighlightType.CanInteractWithOtherToken);
+
+        }
+
+        public virtual void HighlightPotentialInteractionWithToken(bool show)
+        {
+            _manifestation.Highlight(HighlightType.CanInteractWithOtherToken);
 
 
+        }
 
-        public abstract void OnPointerEnter(PointerEventData eventData);
 
-        public abstract void OnPointerExit(PointerEventData eventData);
+        public virtual void OnPointerEnter(PointerEventData eventData)
+        {
+            if (!eventData.dragging)
+                _manifestation.Highlight(HighlightType.Hover);
+        }
+
+        public virtual void OnPointerExit(PointerEventData eventData)
+        {
+            if (!eventData.dragging)
+                _manifestation.Unhighlight(HighlightType.Hover);
+
+        }
 
         public void BurnImageUnderToken(string burnImage)
         {
@@ -432,9 +590,58 @@ namespace Assets.CS.TabletopUI {
                     TabletopImageBurner.ImageLayoutConfig.CenterOnToken);
         }
 
-        public abstract void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<AbstractToken> animDone,
-            float startScale, float endScale);
+        public virtual void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<AbstractToken> animDone, float startScale = 1f, float endScale = 1f)
+        {
+            _manifestation.AnimateTo(this, duration, startPos, endPos, animDone, startScale, endScale);
+        }
 
 
+        public void DisplaySituationState(Situation situation)
+        {
+            switch (situation.State)
+            {
+                case SituationState.Unstarted:
+                    _manifestation.SendNotification(new Notification(string.Empty, "-1"));
+                    _manifestation.DisplaySpheres(new List<Sphere>());
+                    break;
+                case SituationState.Ongoing:
+                    _manifestation.SendNotification(new Notification(string.Empty, "-1"));
+                    if (situation.CurrentBeginningEffectCommand != null)
+                    {
+                        //if (situation.CurrentBeginningEffectCommand.OngoingSlots.Any())
+                        //    _manifestation.DisplaySpheres(situation.CurrentBeginningEffectCommand.OngoingSlots[0].Greedy);
+                        if (!string.IsNullOrEmpty(situation.CurrentBeginningEffectCommand.BurnImage))
+                            BurnImageUnderToken(situation.CurrentBeginningEffectCommand.BurnImage);
+                    }
+
+                    _manifestation.UpdateTimerVisuals(situation.Warmup, situation.TimeRemaining, situation.intervalForLastHeartbeat, false, situation.currentPrimaryRecipe.SignalEndingFlavour);
+                    break;
+
+                case SituationState.Complete:
+                    _manifestation.UpdateTimerVisuals(situation.Warmup, situation.TimeRemaining, situation.intervalForLastHeartbeat, false, situation.currentPrimaryRecipe.SignalEndingFlavour);
+
+                    int completionCount = situation.GetStacks(SphereCategory.Output).Select(s => s.Quantity).Sum();
+
+                    _manifestation.SendNotification(new Notification(string.Empty, completionCount.ToString()));
+                    break;
+            }
+        }
+
+        public void ContainerContentsUpdated(Situation situation)
+        {
+            var thresholdSpheresWithStacks = situation.GetSpheresByCategory(SphereCategory.Threshold)
+                .Where(sphere => sphere.GetStacks().Count() == 1);
+
+            _manifestation.DisplaySpheres(thresholdSpheresWithStacks);
+
+
+            int completionCount = situation.GetStacks(SphereCategory.Output).Select(s => s.Quantity).Sum();
+            _manifestation.SendNotification(new Notification(string.Empty, completionCount.ToString()));
+        }
+
+        public void ReceiveNotification(INotification n)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

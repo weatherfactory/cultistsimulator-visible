@@ -13,7 +13,7 @@ namespace Assets.CS.TabletopUI {
     public class SituationWindowPositioner : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
 
         public bool canDrag = true;
-        ISituationAnchor anchor;
+        AbstractToken anchor;
 
         static SituationWindowPositioner windowBeingDragged;
         
@@ -25,7 +25,7 @@ namespace Assets.CS.TabletopUI {
 
         Vector3 dragOffset;
 
-        public void Initialise(ISituationAnchor anchor) {
+        public void Initialise(AbstractToken anchor) {
             this.anchor = anchor;
             this.rectTrans = GetComponent<RectTransform>();
             this.canvasGroup = GetComponent<CanvasGroup>();

@@ -33,7 +33,7 @@ namespace Assets.TabletopUi.Scripts.Services {
             var anchorSphere = sphereCatalogue.GetContainerByPath(command.AnchorLocation.AtSpherePath);
 
             var newAnchor = Registry.Get<PrefabFactory>().Create<VerbAnchor>();
-            anchorSphere.AcceptAnchor(newAnchor, new Context(Context.ActionSource.Unknown));
+            anchorSphere.AcceptToken(newAnchor, new Context(Context.ActionSource.Unknown));
             newAnchor.transform.localPosition = command.AnchorLocation.Position;
             situation.AttachAnchor(newAnchor);
 
@@ -50,7 +50,7 @@ namespace Assets.TabletopUi.Scripts.Services {
 
 
             //if token has been spawned from an existing token, animate its appearance
-            if (command.SourceAnchor == null)
+            if (command.SourceToken == null)
                 
             {
                 //disabled for now: pass the free position instead of trying to find one after the fact, because this resets intended position
@@ -61,8 +61,8 @@ namespace Assets.TabletopUi.Scripts.Services {
                 SoundManager.PlaySfx("SituationTokenCreate");
                 newAnchor.AnimateTo(
                      1f,
-                     command.SourceAnchor.RectTransform.anchoredPosition3D,
-                     Registry.Get<Choreographer>().GetFreePosWithDebug(newAnchor, command.SourceAnchor.RectTransform.anchoredPosition, 3),
+                     command.SourceToken.RectTransform.anchoredPosition3D,
+                     Registry.Get<Choreographer>().GetFreePosWithDebug(newAnchor, command.SourceToken.RectTransform.anchoredPosition, 3),
                      null,
                      0f,
                      1f);

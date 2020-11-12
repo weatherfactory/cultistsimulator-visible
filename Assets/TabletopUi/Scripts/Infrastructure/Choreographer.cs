@@ -52,7 +52,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         #region -- PUBLIC POSITIONING METHODS ----------------------------
 
-        public void ArrangeTokenOnTable(ISituationAnchor token, Context context) {
+        public void ArrangeTokenOnTable(AbstractToken token, Context context) {
             token.RectTransform.anchoredPosition = GetFreePosWithDebug(token, Vector2.zero);
 
             _tabletop.DisplayHere(token, context);

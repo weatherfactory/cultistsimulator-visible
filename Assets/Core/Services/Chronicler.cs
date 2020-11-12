@@ -63,33 +63,37 @@ namespace Assets.Core.Services
             _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastcharactername.ToString(), newName);
         }
 
-        public void TokenPlacedOnTabletop(ElementStackToken token)
+        public void TokenPlacedOnTabletop(AbstractToken  token)
         {
 
             if (token.PlacementAlreadyChronicled)
                 return;
 
-            IAspectsDictionary tokenAspects = token.GetAspects();
+            if(token is ElementStackToken stackToken)
+            {
+                IAspectsDictionary tokenAspects = stackToken.GetAspects();
 
             var storefrontServicesProvider = Registry.Get<StorefrontServicesProvider>();
 
-            TryChronicleBookPlaced(token, tokenAspects);
+            TryChronicleBookPlaced(stackToken, tokenAspects);
 
-            TryChronicleDesirePlaced(token, tokenAspects);
+            TryChronicleDesirePlaced(stackToken, tokenAspects);
 
-            TryChronicleFollowerPlaced(token, tokenAspects, storefrontServicesProvider);
+            TryChronicleFollowerPlaced(stackToken, tokenAspects, storefrontServicesProvider);
 
-            TryChronicleToolPlaced(token, tokenAspects);
+            TryChronicleToolPlaced(stackToken, tokenAspects);
             
-            TryChronicleCultPlaced(token, tokenAspects, storefrontServicesProvider);
+            TryChronicleCultPlaced(stackToken, tokenAspects, storefrontServicesProvider);
             
-            TryCHronicleHQPlaced(token, tokenAspects);
+            TryCHronicleHQPlaced(stackToken, tokenAspects);
 
             token.PlacementAlreadyChronicled = true;
+             }
+
 
         }
 
-        
+
         private void SetAchievementsForEnding(Ending ending)
         {
             if (string.IsNullOrEmpty(ending.Achievement))

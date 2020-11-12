@@ -405,7 +405,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
 
-        public virtual void AcceptAnchor(ISituationAnchor anchor, Context context)
+        public virtual void AcceptToken(AbstractToken anchor, Context context)
         {
 
             anchor.SetSphere(this, context);

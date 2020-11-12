@@ -49,7 +49,7 @@ namespace Assets.Core.Entities {
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
         public string OverrideTitle { get; set; }
 
-        private ISituationAnchor _anchor;
+        private AbstractToken _anchor;
         private SituationWindow _window;
         private bool greedyAnimIsActive;
         public SituationPath Path { get; }
@@ -84,7 +84,7 @@ namespace Assets.Core.Entities {
 
 
 
-        public void AttachAnchor(ISituationAnchor newAnchor)
+        public void AttachAnchor(AbstractToken newAnchor)
         {
             _anchor = newAnchor;
             AddSubscriber(_anchor);
@@ -662,7 +662,6 @@ namespace Assets.Core.Entities {
             IsOpen = false; 
 
             _window.Hide(this);
-            _anchor.DisplayAsClosed();
 
             DumpUnstartedBusiness();
         }
@@ -671,7 +670,6 @@ namespace Assets.Core.Entities {
     public void OpenAt(TokenLocation location)
     {
         IsOpen = true;
-        _anchor.DisplayAsOpen();
         _window.Show(location.Position,this);
             
         Registry.Get<TabletopManager>().CloseAllSituationWindowsExcept(_anchor.EntityId);
@@ -816,9 +814,6 @@ namespace Assets.Core.Entities {
         {
 
             CurrentRecipePrediction = GetUpdatedRecipePrediction();
-
-            SituationEventData data = SituationEventData.Create(this);
-
             PossiblySignalImpendingDoom(CurrentRecipePrediction.SignalEndingFlavour);
 
             foreach (var s in subscribers)
