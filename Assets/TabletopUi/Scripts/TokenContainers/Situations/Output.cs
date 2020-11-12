@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
@@ -25,7 +26,7 @@ public class Output : Sphere {
     [SerializeField] SituationResultsPositioning cardPos;
     [SerializeField] TextMeshProUGUI dumpResultsButtonText;
 
-    public override ContainerCategory ContainerCategory => ContainerCategory.Output;
+    public override SphereCategory SphereCategory => SphereCategory.Output;
 
     private string buttonClearResultsDefault;
     private string buttonClearResultsNone;
@@ -40,9 +41,9 @@ public class Output : Sphere {
         buttonClearResultsNone = "VERB_ACCEPT";
     }
 
-    public void UpdateDisplay(SituationEventData eventData)
+    public void UpdateDisplay(Situation situation)
     {
-        switch (eventData.SituationState)
+        switch (situation.State)
         {
             case SituationState.Complete:
                 canvasGroupFader.Show();

@@ -7,17 +7,21 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts.Elements.Manifestations;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.Elements
 {
-    public class CardManifestation : MonoBehaviour, IElementManifestation
+    public class CardManifestation : MonoBehaviour, IManifestation
     {
 
         [SerializeField] public Image artwork;
@@ -67,20 +71,28 @@ namespace Assets.TabletopUi.Scripts.Elements
 
         }
 
-        public void UpdateDecayVisuals(float lifetimeRemaining, Element element, float interval,
-            bool currentlyBeingDragged)
+        public void InitialiseVisuals(IVerb verb)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateTimerVisuals(float duration, float timeRemaining, EndingFlavour signalEndingFlavour)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateTimerVisuals(float originalDuration, float durationRemaining,float interval,bool resaturate,EndingFlavour signalEndingFlavour)
         {
 
             string cardDecayTime =
-                Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(lifetimeRemaining);
+                Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(durationRemaining);
             decayCountText.text = cardDecayTime;
             decayCountText.richText = true;
 
             // Decide whether timer should be visible or not
-            if (lifetimeRemaining < element.Lifetime / 2)
+            if (durationRemaining < originalDuration / 2)
                 ShowCardDecayTimer(true);
-            else
-                ShowCardDecayTimer(IsGlowing() || currentlyBeingDragged); // Allow timer to show when hovering over card
+            
 
             // This handles moving the alpha value towards the desired target
             float cosmetic_dt =
@@ -90,7 +102,7 @@ namespace Assets.TabletopUi.Scripts.Elements
                 decayAlpha = Mathf.MoveTowards(decayAlpha, 1.0f, cosmetic_dt);
             else
                 decayAlpha = Mathf.MoveTowards(decayAlpha, 0.0f, cosmetic_dt);
-            if (lifetimeRemaining <= 0.0f)
+            if (durationRemaining <= 0.0f)
                 decayAlpha = 0.0f;
             if (decayView && decayView.gameObject)
             {
@@ -108,12 +120,9 @@ namespace Assets.TabletopUi.Scripts.Elements
                 decayBackgroundImage.color = col;
             }
 
-    
-            if(element.Decays)
-            {
-                float percentageDecayed = 1 - lifetimeRemaining / element.Lifetime;
+            float percentageDecayed = 1 - durationRemaining / originalDuration;
                 percentageDecayed = Mathf.Clamp01(percentageDecayed);
-                if (element.Resaturate)
+                if (resaturate)
                 {
                     float reversePercentage = 1f - percentageDecayed;
                     artwork.color = new Color(1f - reversePercentage, 1f - reversePercentage, 1f - reversePercentage, 1f);
@@ -122,12 +131,14 @@ namespace Assets.TabletopUi.Scripts.Elements
                 {
                     artwork.color = new Color(1f - percentageDecayed, 1f - percentageDecayed, 1f - percentageDecayed, 1f);
                 }
-            }
-            else
-                artwork.color = new Color(1f, 1f, 1f, 1f);
 
 
 
+        }
+
+        public void SendNotification(INotification notification)
+        {
+            NoonUtility.LogWarning("CardManifestation doesn't support SendNotification");
         }
 
         public void Emphasise()
@@ -138,6 +149,38 @@ namespace Assets.TabletopUi.Scripts.Elements
         public void Understate()
         {
             canvasGroup.alpha = 0.3f;
+        }
+
+
+
+
+
+
+        public bool HandleClick(PointerEventData eventData, VerbAnchor anchor)
+        {
+       return false;
+        }
+
+        public void DisplaySpheres(IEnumerable<Sphere> spheres)
+        {
+            NoonUtility.LogWarning("CardManifestation doesn't support DisplaySpheres");
+        }
+
+        public void OverrideIcon(string icon)
+        {
+            NoonUtility.LogWarning("CardManifestation doesn't support OverrideIcon");
+        }
+
+
+        public void SetParticleSimulationSpace(Transform transform)
+        {
+            NoonUtility.LogWarning("CardManifestation doesn't support OverrideIcon");
+        }
+
+        public void AnimateTo(IArtAnimatableToken token, float duration, Vector3 startPos, Vector3 endPos, Action<VerbAnchor> SituationAnimDone,
+            float startScale = 1, float endScale = 1)
+        {
+            NoonUtility.LogWarning("CardManifestation doesn't support AnimateTo(but perhaps it should)");
         }
 
         public void OnBeginDragVisuals()
@@ -285,7 +328,7 @@ namespace Assets.TabletopUi.Scripts.Elements
             get { return false; }
         }
 
-        public void DoRevealEffect(bool instant)
+        public void Reveal(bool instant)
         {
             if (!instant)
                 SoundManager.PlaySfx("CardTurnOver");
@@ -295,7 +338,7 @@ namespace Assets.TabletopUi.Scripts.Elements
 
         }
 
-        public void DoShroudEffect(bool instant)
+        public void Shroud(bool instant)
         {
             flipHelper.Flip(FlipHelper.TargetOrientation.FaceDown, instant);
         }

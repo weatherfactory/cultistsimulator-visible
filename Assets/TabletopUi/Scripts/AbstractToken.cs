@@ -7,6 +7,7 @@ using Assets.Core.Interfaces;
 using Assets.Core.Services;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi;
+using Assets.TabletopUi.Scripts.Elements.Manifestations;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
 using Assets.TabletopUi.Scripts.Interfaces;
@@ -60,6 +61,8 @@ namespace Assets.CS.TabletopUI {
         
         [HideInInspector] public Vector2? lastTablePos = null; // if it was pulled from the table, save that position
 
+        protected  IManifestation _manifestation;
+
         protected Transform startParent;
         protected Vector3 startPosition;
         protected int startSiblingIndex;
@@ -84,6 +87,8 @@ namespace Assets.CS.TabletopUI {
             rectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
                 Sphere= Registry.Get<NullContainer>();
+
+                _manifestation=new NullManifestation();
         }
 
         public abstract void StartArtAnimation();
@@ -270,7 +275,27 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public abstract void MoveObject(PointerEventData eventData);
+        public void MoveObject(PointerEventData eventData)
+        {
+            Vector3 dragPos;
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Get<IDraggableHolder>().RectTransform, eventData.position, eventData.pressEventCamera, out dragPos);
+
+            // Potentially change this so it is using UI coords and the RectTransform?
+          //  rectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);
+
+            _manifestation.DoMove(rectTransform);
+
+            // rotate object slightly based on pointer Delta
+            if (rotateOnDrag && eventData.delta.sqrMagnitude > 10f)
+            {
+                // This needs some tweaking so that it feels more responsive, physica. Card rotates into the direction you swing it?
+                perlinRotationPoint += eventData.delta.sqrMagnitude * 0.001f;
+                transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -10 + Mathf.PerlinNoise(perlinRotationPoint, 0) * 20));
+            }
+
+
+
+        }
 
 
         public virtual void OnEndDrag(PointerEventData eventData) {

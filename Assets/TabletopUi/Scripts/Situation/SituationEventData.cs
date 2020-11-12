@@ -16,12 +16,13 @@ namespace Assets.CS.TabletopUI
         public Recipe CurrentRecipe; //replace with SituationCreationComand / SituationEffectCommand? combine CreationCommand and EffectCommand?
         public RecipePrediction RecipePrediction;
 
-        public Dictionary<ContainerCategory, List<ElementStackToken>> StacksInEachStorage { get; set; }
+        public Dictionary<SphereCategory, List<ElementStackToken>> StacksInEachStorage { get; set; }
         public INotification Notification;
         public RecipeBeginningEffectCommand BeginningEffectCommand;
         public RecipeCompletionEffectCommand CompletionEffectCommand;
         public SituationState SituationState;
         public bool IsOpen;
+        public float IntervalForLastHeartbeat { get; set; }
 
         public static SituationEventData Create(Situation fromSituation)
         {
@@ -30,22 +31,24 @@ namespace Assets.CS.TabletopUI
             e.TimeRemaining = fromSituation.TimeRemaining;
             e.CurrentRecipe = fromSituation.currentPrimaryRecipe;
             e.RecipePrediction = fromSituation.CurrentRecipePrediction;
-            e.StacksInEachStorage.Add(ContainerCategory.Threshold,fromSituation.GetStacks(ContainerCategory.Threshold));
-            e.StacksInEachStorage.Add(ContainerCategory.SituationStorage, fromSituation.GetStacks(ContainerCategory.SituationStorage));
-            e.StacksInEachStorage.Add(ContainerCategory.Output, fromSituation.GetStacks(ContainerCategory.Output));
+            e.StacksInEachStorage.Add(SphereCategory.Threshold,fromSituation.GetStacks(SphereCategory.Threshold));
+            e.StacksInEachStorage.Add(SphereCategory.SituationStorage, fromSituation.GetStacks(SphereCategory.SituationStorage));
+            e.StacksInEachStorage.Add(SphereCategory.Output, fromSituation.GetStacks(SphereCategory.Output));
             e.ActiveVerb = fromSituation.Verb;
             e.SituationState = fromSituation.State;
             e.BeginningEffectCommand = fromSituation.CurrentBeginningEffectCommand;
             e.CompletionEffectCommand = fromSituation.currentCompletionEffectCommand;
-
+            e.IntervalForLastHeartbeat = fromSituation.intervalForLastHeartbeat;
             e.IsOpen = fromSituation.IsOpen;
             return e;
 
         }
 
+
+
         private SituationEventData()
         {
-            StacksInEachStorage=new Dictionary<ContainerCategory, List<ElementStackToken>>();
+            StacksInEachStorage=new Dictionary<SphereCategory, List<ElementStackToken>>();
             CurrentRecipe = NullRecipe.Create();
         }
     }

@@ -52,9 +52,9 @@ namespace Assets.TabletopUi.SlotsContainers {
 
         }
 
-        public void UpdateDisplay(SituationEventData e)
+        public void UpdateDisplay(Situation situation)
         {
-            switch (e.SituationState)
+            switch (situation.State)
             {
                 case SituationState.Unstarted:
                     canvasGroupFader.Show();

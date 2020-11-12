@@ -67,9 +67,9 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public void UpdateDisplay(SituationEventData e)
+        public void UpdateDisplay(Situation s)
 		{
-            switch(e.SituationState)
+            switch(s.State)
             {
                 case SituationState.Unstarted:
 
@@ -78,19 +78,19 @@ namespace Assets.CS.TabletopUI {
 
                 case SituationState.Ongoing:
                     canvasGroupFader.Show();
-                    ShowDeckEffects(e.CurrentRecipe.DeckEffects);
+                    ShowDeckEffects(s.currentPrimaryRecipe.DeckEffects);
 
-                    Color barColor = UIStyle.GetColorForCountdownBar(e.CurrentRecipe.SignalEndingFlavour, e.TimeRemaining);
+                    Color barColor = UIStyle.GetColorForCountdownBar(s.currentPrimaryRecipe.SignalEndingFlavour, s.TimeRemaining);
 
                     countdownBar.color = barColor;
-                    countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (e.TimeRemaining / e.Warmup));
+                    countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (s.TimeRemaining / s.Warmup));
                     countdownText.color = barColor;
-			        countdownText.text = Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage( e.TimeRemaining );
+			        countdownText.text = Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage( s.TimeRemaining );
                     countdownText.richText = true;
 
-                    if (e.BeginningEffectCommand != null)
+                    if (s.CurrentBeginningEffectCommand != null)
                     {
-                        populateOngoingSlots(e.BeginningEffectCommand.OngoingSlots);
+                        populateOngoingSlots(s.CurrentBeginningEffectCommand.OngoingSlots);
                     }
 
 

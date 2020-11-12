@@ -11,7 +11,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
 {
    public class FurnitureContainer: Sphere
    {
-       public override ContainerCategory ContainerCategory => ContainerCategory.World;
+       public override SphereCategory SphereCategory => SphereCategory.World;
 
     }
 }

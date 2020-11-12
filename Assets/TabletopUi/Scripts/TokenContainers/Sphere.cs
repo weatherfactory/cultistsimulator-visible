@@ -62,7 +62,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public virtual bool EnforceUniqueStacksInThisContainer => true;
         public virtual bool ContentsHidden => false;
         public virtual bool IsGreedy => false;
-        public abstract ContainerCategory ContainerCategory { get; }
+        public abstract SphereCategory SphereCategory { get; }
         public SlotSpecification GoverningSlotSpecification { get; set; }
 
         [Tooltip("Use this to specify the SpherePath in the editor")]

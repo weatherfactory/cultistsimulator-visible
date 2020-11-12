@@ -31,6 +31,8 @@ namespace Assets.Core.Entities {
 
         public float TimeRemaining { private set; get; }
 
+        public float intervalForLastHeartbeat { private set; get; }
+
         public float Warmup
         {
             get { return currentPrimaryRecipe.Warmup; }
@@ -44,7 +46,7 @@ namespace Assets.Core.Entities {
         public readonly IVerb Verb;
         public readonly Species Species;
         private readonly List<ISituationSubscriber> subscribers = new List<ISituationSubscriber>();
-        private readonly HashSet<Sphere> _containers = new HashSet<Sphere>();
+        private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
         public string OverrideTitle { get; set; }
 
         private ISituationAnchor _anchor;
@@ -131,7 +133,7 @@ namespace Assets.Core.Entities {
         public void AddContainer(Sphere container)
         {
             container.Subscribe(this);
-            _containers.Add(container);
+            _spheres.Add(container);
         }
 
         public void AddContainers(IEnumerable<Sphere> containers)
@@ -143,7 +145,7 @@ namespace Assets.Core.Entities {
         public void RemoveContainer(Sphere c)
         {
             c.Unsubscribe(this);
-            _containers.Remove(c);
+            _spheres.Remove(c);
             
         }
 
@@ -172,21 +174,21 @@ namespace Assets.Core.Entities {
                 Complete();
 
             //If we leave anything in the ongoing slot, it's lost, and also the situation ends up in an anomalous state which breaks loads
-            AcceptStacks(ContainerCategory.SituationStorage, GetStacks(ContainerCategory.Threshold));
+            AcceptStacks(SphereCategory.SituationStorage, GetStacks(SphereCategory.Threshold));
 
         }
 
 
-        private IEnumerable<Sphere> GetContainersByCategory(ContainerCategory category)
+        public IEnumerable<Sphere> GetSpheresByCategory(SphereCategory category)
         {
-            return _containers.Where(c => c.ContainerCategory == category);
+            return _spheres.Where(c => c.SphereCategory == category);
         }
 
-        private Sphere GetSingleContainerByCategory(ContainerCategory category)
+        private Sphere GetSingleSphereByCategory(SphereCategory category)
         {
             try
             {
-                return _containers.SingleOrDefault(c => c.ContainerCategory == category);
+                return _spheres.SingleOrDefault(c => c.SphereCategory == category);
             }
             catch (Exception e)
             {
@@ -195,7 +197,7 @@ namespace Assets.Core.Entities {
 
             try
             {
-                return GetContainersByCategory(category).First();
+                return GetSpheresByCategory(category).First();
             }
             catch (Exception e)
             {
@@ -208,7 +210,7 @@ namespace Assets.Core.Entities {
         
         public void Retire()
         {
-            foreach (var c in _containers)
+            foreach (var c in _spheres)
             {
                 c.Retire();
             }
@@ -259,8 +261,8 @@ namespace Assets.Core.Entities {
             {
 
                 var greedyThresholds =
-                    _containers.Where(c =>
-                        c.ContainerCategory == ContainerCategory.Threshold && c.IsGreedy &&
+                    _spheres.Where(c =>
+                        c.SphereCategory == SphereCategory.Threshold && c.IsGreedy &&
                         c.GetTotalStacksCount() == 0);
 
                 foreach (var g in greedyThresholds)
@@ -277,13 +279,13 @@ namespace Assets.Core.Entities {
         public int TryPurgeStacks(Element elementToPurge, int maxToPurge)
         {
 
-            var containersToPurge = GetContainersByCategory(ContainerCategory.Threshold).ToList();
+            var containersToPurge = GetSpheresByCategory(SphereCategory.Threshold).ToList();
 
             containersToPurge
                 .Reverse(); //I couldn't remember why I put this - but I think it must have been to start with the final slot, so we don't dump everything by purging the primary slot.
 
 
-            containersToPurge.AddRange(GetContainersByCategory(ContainerCategory.Output));
+            containersToPurge.AddRange(GetSpheresByCategory(SphereCategory.Output));
 
 
             foreach (var container in containersToPurge)
@@ -301,37 +303,37 @@ namespace Assets.Core.Entities {
         }
 
         
-    public void AcceptStack(ContainerCategory forContainerCategory, ElementStackToken stackToken, Context context)
+    public void AcceptStack(SphereCategory forSphereCategory, ElementStackToken stackToken, Context context)
         {
             var stackTokenList = new List<ElementStackToken> {stackToken};
-            AcceptStacks(forContainerCategory, stackTokenList, context);
+            AcceptStacks(forSphereCategory, stackTokenList, context);
         }
 
-        public void AcceptStacks(ContainerCategory forContainerCategory, IEnumerable<ElementStackToken> stacks,
+        public void AcceptStacks(SphereCategory forSphereCategory, IEnumerable<ElementStackToken> stacks,
             Context context)
         {
-            var acceptingContainer = GetSingleContainerByCategory(forContainerCategory);
+            var acceptingContainer = GetSingleSphereByCategory(forSphereCategory);
             acceptingContainer.AcceptStacks(stacks, context);
         }
 
-        public void AcceptStacks(ContainerCategory forContainerCategory, IEnumerable<ElementStackToken> stacks)
+        public void AcceptStacks(SphereCategory forSphereCategory, IEnumerable<ElementStackToken> stacks)
         {
-            AcceptStacks(forContainerCategory,stacks,new Context(Context.ActionSource.Unknown));
+            AcceptStacks(forSphereCategory,stacks,new Context(Context.ActionSource.Unknown));
         }
 
         public List<ElementStackToken> GetAllStacksInSituation()
         {
             List<ElementStackToken> stacks = new List<ElementStackToken>();
-            foreach (var container in _containers)
+            foreach (var container in _spheres)
                 stacks.AddRange(container.GetStacks());
             return stacks;
         }
 
 
-        public List<ElementStackToken> GetStacks(ContainerCategory forContainerCategory)
+        public List<ElementStackToken> GetStacks(SphereCategory forSphereCategory)
         {
             List<ElementStackToken> stacks = new List<ElementStackToken>();
-            foreach (var container in _containers.Where(c => c.ContainerCategory == forContainerCategory))
+            foreach (var container in _spheres.Where(c => c.SphereCategory == forSphereCategory))
                 stacks.AddRange(container.GetStacks());
 
             return stacks;
@@ -341,10 +343,10 @@ namespace Assets.Core.Entities {
         {
             var aspects = new AspectsDictionary();
 
-            foreach (var container in _containers.Where(c =>
-                c.ContainerCategory == ContainerCategory.SituationStorage ||
-                c.ContainerCategory == ContainerCategory.Threshold ||
-            c.ContainerCategory == ContainerCategory.Output))
+            foreach (var container in _spheres.Where(c =>
+                c.SphereCategory == SphereCategory.SituationStorage ||
+                c.SphereCategory == SphereCategory.Threshold ||
+            c.SphereCategory == SphereCategory.Output))
             {
                 aspects.CombineAspects(container.GetTotalAspects(includeElementAspects));
             }
@@ -355,6 +357,7 @@ namespace Assets.Core.Entities {
 
         public SituationState Continue(float interval, bool waitForGreedyAnim = false)
         {
+            intervalForLastHeartbeat = interval;
 
             switch (State)
             {
@@ -369,8 +372,8 @@ namespace Assets.Core.Entities {
                     State = SituationState.Ongoing;
                     CurrentRecipePrediction = GetUpdatedRecipePrediction();
                     CurrentBeginningEffectCommand = new RecipeBeginningEffectCommand(currentPrimaryRecipe.Slots, CurrentRecipePrediction.BurnImage);
-                    var storageContainer = GetSingleContainerByCategory(ContainerCategory.SituationStorage);
-                    storageContainer.AcceptStacks(GetStacks(ContainerCategory.Threshold),
+                    var storageContainer = GetSingleSphereByCategory(SphereCategory.SituationStorage);
+                    storageContainer.AcceptStacks(GetStacks(SphereCategory.Threshold),
                         new Context(Context.ActionSource.SituationStoreStacks));
                     break;
 
@@ -435,8 +438,7 @@ namespace Assets.Core.Entities {
 
             foreach (var subscriber in subscribers)
             {
-                var d = SituationEventData.Create(this);
-                subscriber.DisplaySituationState(d);
+                subscriber.DisplaySituationState(this);
             }
 
             CurrentBeginningEffectCommand = null; ;
@@ -475,7 +477,7 @@ namespace Assets.Core.Entities {
                 currentPrimaryRecipe = recipeExecutionCommands.First().Recipe;
 
 
-            foreach (var container in _containers)
+            foreach (var container in _spheres)
                 container
                     .ActivatePreRecipeExecutionBehaviour(); //currently, this is just marking items in slots for consumption, so it happens once for everything. I might later want to run it per effect command, tho
             //on the other hand, I *do* want this to run before the stacks are moved to storage.
@@ -483,8 +485,8 @@ namespace Assets.Core.Entities {
 
             //move any elements currently in OngoingSlots to situation storage
             //NB we're doing this *before* we execute the command - the command may affect these elements too
-            GetSingleContainerByCategory(ContainerCategory.SituationStorage).AcceptStacks(
-                GetStacks(ContainerCategory.Threshold), new Context(Context.ActionSource.SituationStoreStacks));
+            GetSingleSphereByCategory(SphereCategory.SituationStorage).AcceptStacks(
+                GetStacks(SphereCategory.Threshold), new Context(Context.ActionSource.SituationStoreStacks));
 
 
             foreach (var c in recipeExecutionCommands)
@@ -497,7 +499,7 @@ namespace Assets.Core.Entities {
                 {
                     Registry.Get<Character>().AddExecutionsToHistory(currentEffectCommand.Recipe.Id, 1); //can we make 
                     var executor = new SituationEffectExecutor(Registry.Get<TabletopManager>());
-                    executor.RunEffects(currentEffectCommand, GetSingleContainerByCategory(ContainerCategory.SituationStorage), Registry.Get<Character>(), Registry.Get<IDice>());
+                    executor.RunEffects(currentEffectCommand, GetSingleSphereByCategory(SphereCategory.SituationStorage), Registry.Get<Character>(), Registry.Get<IDice>());
 
                     if (!string.IsNullOrEmpty(currentEffectCommand.Recipe.Ending))
                     {
@@ -532,7 +534,7 @@ namespace Assets.Core.Entities {
             {
                 //find one or more matching stacks. Important! the limit applies to stacks, not cards. This might need to change.
                 AspectMatchFilter filter = new AspectMatchFilter(effectCommand.Expulsion.Filter);
-                var filteredStacks = filter.FilterElementStacks(GetStacks(ContainerCategory.SituationStorage)).ToList();
+                var filteredStacks = filter.FilterElementStacks(GetStacks(SphereCategory.SituationStorage)).ToList();
 
                 if (filteredStacks.Any() && effectCommand.Expulsion.Limit > 0)
                 {
@@ -576,13 +578,9 @@ namespace Assets.Core.Entities {
 
         Notification refinedNotification = new Notification(notification.Title,
             tr.RefineString(notification.Description));
-            
-
-            var d = SituationEventData.Create(this);
-        d.Notification = refinedNotification;
-
+        
             foreach (var subscriber in subscribers)
-                subscriber.ReceiveNotification(d);
+                subscriber.ReceiveNotification(refinedNotification);
 
         }
 
@@ -590,8 +588,8 @@ namespace Assets.Core.Entities {
         State = SituationState.Complete;
 
 
-        var outputStacks = GetStacks(ContainerCategory.SituationStorage);
-        AcceptStacks(ContainerCategory.Output, outputStacks, new Context(Context.ActionSource.SituationResults));
+        var outputStacks = GetStacks(SphereCategory.SituationStorage);
+        AcceptStacks(SphereCategory.Output, outputStacks, new Context(Context.ActionSource.SituationResults));
         
         AttemptAspectInductions(currentPrimaryRecipe,outputStacks);
 
@@ -663,8 +661,7 @@ namespace Assets.Core.Entities {
         { 
             IsOpen = false; 
 
-            SituationEventData eventData = SituationEventData.Create(this);
-            _window.Hide(eventData);
+            _window.Hide(this);
             _anchor.DisplayAsClosed();
 
             DumpUnstartedBusiness();
@@ -674,9 +671,8 @@ namespace Assets.Core.Entities {
     public void OpenAt(TokenLocation location)
     {
         IsOpen = true;
-        SituationEventData eventData=SituationEventData.Create(this);
         _anchor.DisplayAsOpen();
-        _window.Show(location.Position,eventData);
+        _window.Show(location.Position,this);
             
         Registry.Get<TabletopManager>().CloseAllSituationWindowsExcept(_anchor.EntityId);
     }
@@ -694,7 +690,7 @@ namespace Assets.Core.Entities {
 
     public Sphere GetFirstAvailableThresholdForStackPush(ElementStackToken stack)
     {
-        var thresholds = GetContainersByCategory(ContainerCategory.Threshold);
+        var thresholds = GetSpheresByCategory(SphereCategory.Threshold);
         foreach (var t in thresholds)
 
             if (!t.IsGreedy && t.GetMatchForStack(stack).MatchType ==SlotMatchForAspectsType.Okay)
@@ -737,7 +733,7 @@ namespace Assets.Core.Entities {
 
         public void CollectOutputStacks()
         {
-            var results = GetStacks(ContainerCategory.Output);
+            var results = GetStacks(SphereCategory.Output);
             foreach (var item in results)
                 item.ReturnToTabletop(new Context(Context.ActionSource.PlayerDumpAll));
             
@@ -756,7 +752,7 @@ namespace Assets.Core.Entities {
 
         public void TryDecayOutputContents( float interval)
         {
-            var stacksToDecay = GetStacks(ContainerCategory.Output);
+            var stacksToDecay = GetStacks(SphereCategory.Output);
             foreach (var s in stacksToDecay)
                 s.Decay(interval);
         }
@@ -786,11 +782,11 @@ namespace Assets.Core.Entities {
             SoundManager.PlaySfx("SituationBegin");
 
             //called here in case starting slots trigger consumption
-            foreach(var t in GetContainersByCategory(ContainerCategory.Threshold))
+            foreach(var t in GetSpheresByCategory(SphereCategory.Threshold))
                 t.ActivatePreRecipeExecutionBehaviour();
 
             //now move the stacks out of the starting slots into storage
-            AcceptStacks(ContainerCategory.SituationStorage,GetStacks(ContainerCategory.Threshold));
+            AcceptStacks(SphereCategory.SituationStorage,GetStacks(SphereCategory.Threshold));
 
             //The game might be paused! or the player might just be incredibly quick off the mark
             //so immediately continue with a 0 interval - this won't advance time, but will update the visuals in the situation window
@@ -826,7 +822,7 @@ namespace Assets.Core.Entities {
             PossiblySignalImpendingDoom(CurrentRecipePrediction.SignalEndingFlavour);
 
             foreach (var s in subscribers)
-                s.ContainerContentsUpdated(data);
+                s.ContainerContentsUpdated(this);
         }
 
         public void OnTokenClicked(TokenEventArgs args)

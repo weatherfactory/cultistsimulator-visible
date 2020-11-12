@@ -13,7 +13,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
 {
     public class NullContainer:Sphere
     {
-        public override ContainerCategory ContainerCategory => ContainerCategory.Null;
+        public override SphereCategory SphereCategory => SphereCategory.Null;
         public override bool PersistBetweenScenes => true;
         public override bool EnforceUniqueStacksInThisContainer =>false;
         public override bool ContentsHidden => true;

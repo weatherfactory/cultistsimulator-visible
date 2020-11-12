@@ -9,6 +9,7 @@ using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
 using TMPro;
@@ -18,7 +19,7 @@ using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
-    public class VerbManifestation: MonoBehaviour, IAnchorManifestation
+    public class VerbManifestation: MonoBehaviour, IManifestation
     {
         [SerializeField] Image artwork;
 
@@ -67,6 +68,11 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             ongoingSlotImage.gameObject.SetActive(false);
         }
 
+        public void InitialiseVisuals(Element element)
+        {
+            throw new NotImplementedException();
+        }
+
         public void InitialiseVisuals(IVerb verb)
         {
             displayArtForVerb(verb);
@@ -76,6 +82,38 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             SetCompletionCount(-1);
             ShowGlow(false, false);
             ShowDumpButton(false);
+        }
+
+        public void UpdateVisuals(Element element, int quantity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate,
+            EndingFlavour signalEndingFlavour)
+        {
+            if (durationRemaining > 0.0f)
+            {
+                SetTimerVisibility(true);
+
+                Color barColor = UIStyle.GetColorForCountdownBar(signalEndingFlavour, durationRemaining);
+
+                durationRemaining = Mathf.Max(0f, durationRemaining);
+                countdownBar.color = barColor;
+                countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (durationRemaining / originalDuration));
+                countdownText.color = barColor;
+                countdownText.text = Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(durationRemaining);
+                countdownText.richText = true;
+            }
+            else
+            {
+                SetTimerVisibility(false);
+            }
+        }
+
+        public void SendNotification(INotification notification)
+        {
+           //
         }
 
         public void OverrideIcon(string art)
@@ -109,10 +147,6 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             ShowDumpButton(newCount >= 0);
         }
 
-        public void ReceiveAndRefineTextNotification(INotification notification)
-        {
-            //do nothing
-        }
 
         public bool HandleClick(PointerEventData eventData, VerbAnchor anchor)
         {
@@ -125,7 +159,36 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
                 return false;
         }
 
-        public void ShowMiniSlot(bool greedy)
+        public void DisplaySpheres(IEnumerable<Sphere> spheres)
+        {
+            int spheresCount = spheres.Count();
+            if (spheresCount == 0)
+            {
+                hideMiniSlot();
+                return;
+            }
+
+            
+            if (spheresCount > 1)
+            {
+                NoonUtility.LogWarning("VerbManifestation implementation doessn't support >1 slot");
+                return;
+            }
+
+            var sphereToDisplayAsMiniSlot = spheres.Single();
+            showMiniSlot(sphereToDisplayAsMiniSlot.GoverningSlotSpecification.Greedy);
+            displayStackInMiniSlot(sphereToDisplayAsMiniSlot.GetStacks());
+        }
+
+
+        private void hideMiniSlot()
+        {
+            ongoingSlotImage.gameObject.SetActive(false);
+            ongoingSlotGreedyIcon.gameObject.SetActive(false);
+
+        }
+
+        private void showMiniSlot(bool greedy)
         {
             
             if(!ongoingSlotImage.isActiveAndEnabled)
@@ -140,17 +203,17 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
           
         }
 
-        public void HideMiniSlot()
+
+        private void displayStackInMiniSlot(IEnumerable<ElementStackToken> stacks)
         {
-            ongoingSlotImage.gameObject.SetActive(false);
-            ongoingSlotGreedyIcon.gameObject.SetActive(false);
+            if(stacks.Count()>1)
+            {
+                NoonUtility.LogWarning("VerbManifestation implementation doessn't support >1 stack in minislot");
+                return;
+            }
 
-        }
-
-        public void DisplayStackInMiniSlot(ElementStackToken stack)
-        {
-
-            if (stack == null)
+            var stack = stacks.SingleOrDefault();
+            if(stack==null)
             {
                 ongoingSlotArtImage.sprite = null;
                 ongoingSlotArtImage.color = Color.black;
@@ -162,33 +225,8 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             }
         }
 
-        public void DisplayComplete()
-        {
-            SetTimerVisibility(false);
-           HideMiniSlot();
-        }
 
 
-        public void UpdateTimerVisuals(float duration, float timeRemaining, EndingFlavour signalEndingFlavour)
-        {
-            if (timeRemaining > 0.0f)
-            {
-                SetTimerVisibility(true);
-
-                Color barColor = UIStyle.GetColorForCountdownBar(signalEndingFlavour, timeRemaining);
-
-                timeRemaining = Mathf.Max(0f, timeRemaining);
-                countdownBar.color = barColor;
-                countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (timeRemaining / duration));
-                countdownText.color = barColor;
-                countdownText.text = Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(timeRemaining);
-                countdownText.richText = true;
-            }
-            else
-            {
-                SetTimerVisibility(false);
-            }
-        }
 
         private void SetTransient()
         {
@@ -375,14 +413,30 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         }
 
         public bool NoPush { get; }
-        public void DoRevealEffect(bool instant)
+        public void Reveal(bool instant)
         {
-            throw new NotImplementedException();
+            //you never know when it might be useful
+            canvasGroup.alpha = 1f;
         }
 
-        public void DoShroudEffect(bool instant)
+        public void Shroud(bool instant)
         {
-            throw new NotImplementedException();
+            //you never know when it might be useful
+            canvasGroup.alpha = 0.1f;
+        }
+
+        public void Emphasise()
+        {
+            //you never know when it might be useful
+            canvasGroup.alpha = 1f;
+
+        }
+
+        public void Understate()
+        {
+            //you never know when it might be useful
+            canvasGroup.alpha = 0.3f;
+
         }
 
         public bool RequestingNoDrag { get; }

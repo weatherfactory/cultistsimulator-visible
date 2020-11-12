@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Core.Enums
 {
-    public enum ContainerCategory
+    public enum SphereCategory
     {
         Threshold,
         SituationStorage,

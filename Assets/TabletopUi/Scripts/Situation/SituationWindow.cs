@@ -142,13 +142,13 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void Show( Vector3 targetPosition, SituationEventData eventData)
+        public void Show( Vector3 targetPosition, Situation situation)
 		{
 			if (!IsVisible)
 			{
 				SoundManager.PlaySfx("SituationWindowShow");
                 canvasGroupFader.Show();
-                DisplaySituationState(eventData);
+                DisplaySituationState(situation);
             }
 
             
@@ -161,11 +161,11 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-		public void Hide(SituationEventData eventData) {
+		public void Hide(Situation s) {
             if (IsVisible)
             {
 				SoundManager.PlaySfx("SituationWindowHide");
-                DisplaySituationState(eventData);
+                DisplaySituationState(s);
                 canvasGroupFader.Hide();
                 
             }
@@ -178,23 +178,25 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void DisplayPredictedRecipe(SituationEventData e, AspectsDictionary aspectsInSituation)
+        public void DisplayPredictedRecipe(Situation s)
         {
 
-            Title = e.RecipePrediction.Title;
+            Title = s.CurrentRecipePrediction.Title;
             //Check for possible text refinements based on the aspects in context
+            var aspectsInSituation = s.GetAspectsAvailableToSituation(true);
+
             TextRefiner tr = new TextRefiner(aspectsInSituation);
 
-            if(e.CurrentRecipe.HintOnly)
-                PaginatedNotes.SetText("<i>" + tr.RefineString(e.RecipePrediction.DescriptiveText) + "</i>");
+            if(s.currentPrimaryRecipe.HintOnly)
+                PaginatedNotes.SetText("<i>" + tr.RefineString(s.CurrentRecipePrediction.DescriptiveText) + "</i>");
             else
-                PaginatedNotes.SetText(tr.RefineString(e.RecipePrediction.DescriptiveText));
+                PaginatedNotes.SetText(tr.RefineString(s.CurrentRecipePrediction.DescriptiveText));
 
 
-            if(e.CurrentRecipe.Craftable)
+            if(s.currentPrimaryRecipe.Craftable)
             {
                 SoundManager.PlaySfx("SituationAvailable");
-                ongoingDisplay.UpdateDisplay(e); //Ensures that the time bar is set to 0 to avoid a flicker
+                ongoingDisplay.UpdateDisplay(s); //Ensures that the time bar is set to 0 to avoid a flicker
             }
             
         }
@@ -223,14 +225,14 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        void DisplayButtonState(SituationEventData data) {
+        void DisplayButtonState(Situation situation) {
 
-            switch(data.SituationState)
+            switch(situation.State)
             {
                 case SituationState.Unstarted:
             
                 startButtonText.GetComponent<Babelfish>().UpdateLocLabel(NoonConstants.SITUATION_STARTABLE);
-                if (data.RecipePrediction.Craftable)
+                if (situation.CurrentRecipePrediction.Craftable)
                     startButton.interactable = true;
                 else
                     startButton.interactable = false;
@@ -256,45 +258,39 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void DisplaySituationState(SituationEventData eventData)
+        public void DisplaySituationState(Situation situation)
         {
-            if (eventData.IsOpen)
+            if (situation.IsOpen)
             {
-                startingSlots.UpdateDisplay(eventData);
-                storage.UpdateDisplay(eventData);
-                ongoingDisplay.UpdateDisplay(eventData);
-                results.UpdateDisplay(eventData);
+                startingSlots.UpdateDisplay(situation);
+                storage.UpdateDisplay(situation);
+                ongoingDisplay.UpdateDisplay(situation);
+                results.UpdateDisplay(situation);
                 results.UpdateDumpButtonText();
 
-                DisplayButtonState(eventData);
+                DisplayButtonState(situation);
             }
 
         }
 
         
 
-        public void ContainerContentsUpdated(SituationEventData e)
+        public void ContainerContentsUpdated(Situation s)
         {
-            var allAspectsInSituation = AspectsDictionary.GetFromStacks(e.StacksInEachStorage.SelectMany(s => s.Value), true);
-            DisplayPredictedRecipe(e, allAspectsInSituation);
+            DisplayPredictedRecipe(s);
 
 
-            var allAspectsToDisplay = AspectsDictionary.GetFromStacks(e.StacksInEachStorage.SelectMany(s => s.Value), false);
+            var allAspectsToDisplay =s.GetAspectsAvailableToSituation(false);
             aspectsDisplay.DisplayAspects(allAspectsToDisplay);
 
 
         }
 
-        public void ReceiveNotification(SituationEventData e)
+        public void ReceiveNotification(INotification n)
         {
-            PaginatedNotes.AddText(e.Notification.Description);
+            PaginatedNotes.AddText(n.Description);
         }
 
-        public void RecipePredicted(RecipePrediction recipePrediction)
-        {
-            Title = recipePrediction.Title;
-            PaginatedNotes.AddText(recipePrediction.DescriptiveText);
-        }
 
         //public override void MoveObject(PointerEventData eventData) {
         //    Vector3 dragPos;

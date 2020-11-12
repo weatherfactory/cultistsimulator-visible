@@ -16,7 +16,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
     public class EnRouteSphere : Sphere, IDraggableHolder
     {
 
-        public override ContainerCategory ContainerCategory { get; }
+        public override SphereCategory SphereCategory { get; }
 
         public TabletopSphere StartingContainer;
 

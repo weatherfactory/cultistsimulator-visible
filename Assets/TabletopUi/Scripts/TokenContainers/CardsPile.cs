@@ -19,7 +19,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
   {
       private DeckSpec _deckSpec;
 
-      public override ContainerCategory ContainerCategory => ContainerCategory.Dormant;
+      public override SphereCategory SphereCategory => SphereCategory.Dormant;
       public override bool EnforceUniqueStacksInThisContainer => false;
         public override bool ContentsHidden => true;
         public override Type ElementManifestationType => typeof(MinimalManifestation);

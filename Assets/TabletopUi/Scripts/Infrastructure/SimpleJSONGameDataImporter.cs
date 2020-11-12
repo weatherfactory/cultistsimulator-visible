@@ -351,7 +351,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private void ImportOutputs(Hashtable htSituationValues, Situation situation, TabletopSphere tabletop)
         {
          var outputStacks=ImportOutputStacks(htSituationValues, tabletop);
-            situation.AcceptStacks(ContainerCategory.Output,outputStacks);
+            situation.AcceptStacks(SphereCategory.Output,outputStacks);
 
         }
 
@@ -420,7 +420,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 {
                     var stackToStore=Registry.Get<Limbo>().ProvisionStackFromCommand(ess, Source.Existing(), new Context(Context.ActionSource.Loading));
 
-                    situation.AcceptStack(ContainerCategory.SituationStorage, stackToStore,
+                    situation.AcceptStack(SphereCategory.SituationStorage, stackToStore,
                         new Context(Context.ActionSource.Loading));
                 }
 

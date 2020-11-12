@@ -8,13 +8,14 @@ using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
-    public class NullAnchorManifestation: IAnchorManifestation
+    public class NullManifestation: IManifestation
     {
         public void Retire(RetirementVFX vfx, Action callbackOnRetired)
         {
@@ -60,6 +61,27 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         {
             get { return false; }
         }
+
+        public void Reveal(bool instant)
+        {
+            //
+        }
+
+        public void Shroud(bool instant)
+        {
+         //
+        }
+
+        public void Emphasise()
+        {
+         //
+        }
+
+        public void Understate()
+        {
+          //
+        }
+
         public void DoRevealEffect(bool instant)
         {
             //
@@ -79,9 +101,30 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             //
         }
 
+        public void InitialiseVisuals(Element element)
+        {
+      //
+        }
+
         public void InitialiseVisuals(IVerb verb)
         {
             //
+        }
+
+        public void UpdateVisuals(Element element, int quantity)
+        {
+        //
+        }
+
+        public void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate,
+            EndingFlavour signalEndingFlavour)
+        {
+          //
+        }
+
+        public void SendNotification(INotification notification)
+        {
+        //
         }
 
         public void UpdateTimerVisuals(float duration, float timeRemaining, EndingFlavour signalEndingFlavour)
@@ -122,6 +165,11 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         public bool HandleClick(PointerEventData eventData, VerbAnchor anchor)
         {
             return false;
+        }
+
+        public void DisplaySpheres(IEnumerable<Sphere> spheres)
+        {
+           //
         }
 
         public void OverrideIcon(string icon)

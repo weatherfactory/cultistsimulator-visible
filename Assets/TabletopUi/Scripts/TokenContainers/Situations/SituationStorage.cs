@@ -41,11 +41,11 @@ public class SituationStorage : Sphere
         return new SpherePath("storage");
     }
 
-    public override ContainerCategory ContainerCategory => ContainerCategory.SituationStorage;
+    public override SphereCategory SphereCategory => SphereCategory.SituationStorage;
 
-    public void UpdateDisplay(SituationEventData eventData)
+    public void UpdateDisplay(Situation situation)
     {
-        if(eventData.SituationState==SituationState.Ongoing)
+        if(situation.State==SituationState.Ongoing)
             canvasGroupFader.Show();
         else
             canvasGroupFader.Hide();

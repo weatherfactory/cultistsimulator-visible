@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
@@ -27,7 +29,7 @@ namespace Assets.CS.TabletopUI {
 
     public class VerbAnchor : AbstractToken, ISituationAnchor
     {
-        private IAnchorManifestation _manifestation;
+ 
 
         private AnchorDurability _durability;
 
@@ -48,7 +50,7 @@ namespace Assets.CS.TabletopUI {
         public void Populate(Situation situation)
         {
             _situation = situation;
-            _manifestation  = Registry.Get<PrefabFactory>().CreateAnchorManifestationPrefab(situation.Species.AnchorManifestationType, this.transform);
+            _manifestation  = Registry.Get<PrefabFactory>().CreateManifestationPrefab(situation.Species.AnchorManifestationType, this.transform);
             
 
             if (Verb.Transient)
@@ -60,7 +62,7 @@ namespace Assets.CS.TabletopUI {
 
 
             _manifestation.InitialiseVisuals(Verb);
-            _manifestation.DisplayStackInMiniSlot(null);
+            _manifestation.DisplaySpheres(new List<Sphere>());
             SetParticleSimulationSpace(transform.parent);
 
         }
@@ -132,20 +134,6 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public Vector3 GetOngoingSlotPosition()
-        {
-            return rectTransform.anchoredPosition3D + _manifestation.GetOngoingSlotPosition();
-        }
-
-
-
-        public void DisplayTimeRemaining(float duration, float timeRemaining, EndingFlavour signalEndingFlavour)
-        {
-            throw new NotImplementedException();
-        }
-        
-
-
         protected override void NotifyChroniclerPlacedOnTabletop()
         {
             //currently, we never tell chroniclers about verb placement
@@ -207,7 +195,7 @@ namespace Assets.CS.TabletopUI {
 
         public override bool CanInteractWithIncomingObject(ElementStackToken stackDroppedOn) {
             
-            return (_situation.GetFirstAvailableThresholdForStackPush(stackDroppedOn).ContainerCategory==ContainerCategory.Threshold);
+            return (_situation.GetFirstAvailableThresholdForStackPush(stackDroppedOn).SphereCategory==SphereCategory.Threshold);
         }
 
         public override void InteractWithIncomingObject(ElementStackToken incomingStack)
@@ -281,61 +269,58 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void DisplaySituationState(SituationEventData e)
+        public void DisplaySituationState(Situation situation)
         {
-            switch (e.SituationState)
+            switch (situation.State)
             {
                 case SituationState.Unstarted:
-                    _manifestation.SetCompletionCount(-1);
-                    _manifestation.DisplayStackInMiniSlot(null);
+                    _manifestation.SendNotification(new Notification(string.Empty,"-1"));
+                    _manifestation.DisplaySpheres(new List<Sphere>());
                     break;
                 case SituationState.Ongoing:
-                    _manifestation.SetCompletionCount(-1);
-                    if (e.BeginningEffectCommand!=null)
+                    _manifestation.SendNotification(new Notification(string.Empty, "-1"));
+                    if (situation.CurrentBeginningEffectCommand!=null)
                     {
-                        if (e.BeginningEffectCommand.OngoingSlots.Any())
-                            _manifestation.ShowMiniSlot(e.BeginningEffectCommand.OngoingSlots[0].Greedy);
-                        if(!string.IsNullOrEmpty(e.BeginningEffectCommand.BurnImage))
-                            BurnImageUnderToken(e.BeginningEffectCommand.BurnImage);
+                        //if (situation.CurrentBeginningEffectCommand.OngoingSlots.Any())
+                        //    _manifestation.DisplaySpheres(situation.CurrentBeginningEffectCommand.OngoingSlots[0].Greedy);
+                        if(!string.IsNullOrEmpty(situation.CurrentBeginningEffectCommand.BurnImage))
+                            BurnImageUnderToken(situation.CurrentBeginningEffectCommand.BurnImage);
                     }
 
-                    _manifestation.UpdateTimerVisuals(e.Warmup, e.TimeRemaining, e.CurrentRecipe.SignalEndingFlavour);
+                    _manifestation.UpdateTimerVisuals(situation.Warmup, situation.TimeRemaining,situation.intervalForLastHeartbeat,false,situation.currentPrimaryRecipe.SignalEndingFlavour);
                     break;
 
                 case SituationState.Complete:
-                    _manifestation.DisplayComplete();
+                    _manifestation.UpdateTimerVisuals(situation.Warmup, situation.TimeRemaining, situation.intervalForLastHeartbeat, false, situation.currentPrimaryRecipe.SignalEndingFlavour);
 
-                    int completionCount = e.StacksInEachStorage[ContainerCategory.Output].Select(s => s.Quantity).Sum();
+                    int completionCount = situation.GetStacks(SphereCategory.Output).Select(s => s.Quantity).Sum();
 
-                    _manifestation.SetCompletionCount(completionCount);
+                    _manifestation.SendNotification(new Notification(string.Empty, completionCount.ToString()));
                     break;
             }
         }
 
 
-        public void ContainerContentsUpdated(SituationEventData e)
+        public void ContainerContentsUpdated(Situation situation)
         {
+
+            var thresholdSpheresWithStacks = situation.GetSpheresByCategory(SphereCategory.Threshold)
+                .Where(sphere => sphere.GetStacks().Count() == 1);
             
-            var ongoingStacks = e.StacksInEachStorage[ContainerCategory.Threshold];
-            if(ongoingStacks.Count == 1)
-                _manifestation.DisplayStackInMiniSlot(ongoingStacks.First());
-            else
-              _manifestation.DisplayStackInMiniSlot(null);
+            _manifestation.DisplaySpheres(thresholdSpheresWithStacks);
             
-            _manifestation.SetCompletionCount(e.StacksInEachStorage[ContainerCategory.Output].Count);
+
+            int completionCount =situation.GetStacks(SphereCategory.Output).Select(s => s.Quantity).Sum();
+            _manifestation.SendNotification(new Notification(string.Empty, completionCount.ToString()));
 
         }
 
-        public void ReceiveNotification(SituationEventData e)
+        public void ReceiveNotification(INotification n)
         {
-            _manifestation.ReceiveAndRefineTextNotification(e.Notification);
+            _manifestation.SendNotification(n);
         }
 
-        public void RecipePredicted(RecipePrediction recipePrediction)
-        {
-            
-        }
-
+ 
        public override void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<AbstractToken> animDone, float startScale = 1f, float endScale = 1f)
         {
             _manifestation.AnimateTo(this,duration,startPos,endPos,animDone,startScale,endScale);
@@ -351,24 +336,7 @@ namespace Assets.CS.TabletopUI {
             _situation.CollectOutputStacks();
         }
 
-        public override void MoveObject(PointerEventData eventData) {
-            Vector3 dragPos;
-            RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Get<IDraggableHolder>().RectTransform, eventData.position, eventData.pressEventCamera, out dragPos);
-
-            _manifestation.DoMove(rectTransform);
-
-            // Potentially change this so it is using UI coords and the RectTransform?
-            rectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);
-
-            // rotate object slightly based on pointer Delta
-            if (rotateOnDrag && eventData.delta.sqrMagnitude > 10f) {
-                // This needs some tweaking so that it feels more responsive, physica. Card rotates into the direction you swing it?
-                perlinRotationPoint += eventData.delta.sqrMagnitude * 0.001f;
-                transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -10 + Mathf.PerlinNoise(perlinRotationPoint, 0) * 20));
-            }
-        }
-
-        private void SwapOutManifestation(IAnchorManifestation oldManifestation, IAnchorManifestation newManifestation, RetirementVFX vfxForOldManifestation)
+        private void SwapOutManifestation(IManifestation oldManifestation, IManifestation newManifestation, RetirementVFX vfxForOldManifestation)
         {
             var manifestationToRetire = oldManifestation;
             _manifestation = newManifestation;

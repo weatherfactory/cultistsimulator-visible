@@ -24,7 +24,7 @@ public class ExhibitCards : Sphere {
     public override bool AlwaysShowHoverGlow { get { return true; } }
 
     
-    public override ContainerCategory ContainerCategory => ContainerCategory.Meta;
+    public override SphereCategory SphereCategory => SphereCategory.Meta;
 
     public override ElementStackToken ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context)
     {

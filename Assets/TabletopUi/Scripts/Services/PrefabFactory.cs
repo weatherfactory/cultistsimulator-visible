@@ -92,7 +92,7 @@ namespace Assets.TabletopUi.Scripts.Services
             return prefab;
         }
 
-        public IElementManifestation CreateElementManifestationPrefab(string prefabFieldName,Transform parent)
+        public IManifestation CreateManifestationPrefab(string prefabFieldName,Transform parent)
         {
             
             FieldInfo field = GetType().GetField(prefabFieldName);
@@ -104,23 +104,9 @@ namespace Assets.TabletopUi.Scripts.Services
             var prefabObject = field.GetValue(this) as UnityEngine.Object;
 
             var instantiatedPrefab = Instantiate(prefabObject,parent);
-            return instantiatedPrefab as IElementManifestation;
+            return instantiatedPrefab as IManifestation;
         }
 
-        public IAnchorManifestation CreateAnchorManifestationPrefab(string prefabFieldName, Transform parent)
-        {
-
-            FieldInfo field = GetType().GetField(prefabFieldName);
-            if (field == null)
-                throw new ApplicationException(prefabFieldName +
-                                               " not registered in prefab factory; must have field name and type both '" +
-                                               prefabFieldName + "', must have field populated in editor");
-
-            var prefabObject = field.GetValue(this) as UnityEngine.Object;
-
-            var instantiatedPrefab = Instantiate(prefabObject, parent);
-            return instantiatedPrefab as IAnchorManifestation;
-        }
 
 
 

@@ -25,7 +25,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
     [SerializeField] protected CanvasGroupFader canvasGroupFader;
 #pragma warning disable 649
 
-    public override ContainerCategory ContainerCategory => ContainerCategory.World;
+    public override SphereCategory SphereCategory => SphereCategory.World;
 
     public EnRouteSphere SendViaContainer;
 

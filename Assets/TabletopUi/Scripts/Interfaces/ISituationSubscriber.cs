@@ -13,9 +13,8 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 {
     public interface ISituationSubscriber
     {
-        void DisplaySituationState(SituationEventData e);
-        void ContainerContentsUpdated(SituationEventData e);
-        void ReceiveNotification(SituationEventData e);
-        void RecipePredicted(RecipePrediction recipePrediction);
+        void DisplaySituationState(Situation situation);
+        void ContainerContentsUpdated(Situation s);
+        void ReceiveNotification(INotification n);
     }
 }

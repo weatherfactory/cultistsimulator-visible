@@ -15,7 +15,7 @@ namespace Assets.CS.TabletopUI {
         DoorSlot activeSlot;
 
         public override bool AllowStackMerge { get { return false; } }
-        public override ContainerCategory ContainerCategory { get; }
+        public override SphereCategory SphereCategory { get; }
 
         
         public void SetActiveDoor(PortalEffect effect) {

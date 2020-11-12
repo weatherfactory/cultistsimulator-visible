@@ -44,7 +44,6 @@ namespace Assets.CS.TabletopUI {
         public event System.Action<float> onDecay;
 
  
-        private IElementManifestation _manifestation=new NullElementManifestation();
         private Element _element;
         private int _quantity;
 
@@ -293,7 +292,7 @@ namespace Assets.CS.TabletopUI {
         {
             if (EntityId == "dropzone")
             {
-                _manifestation= Registry.Get<PrefabFactory>().CreateElementManifestationPrefab(nameof(DropzoneManifestation),this.transform);
+                _manifestation= Registry.Get<PrefabFactory>().CreateManifestationPrefab(nameof(DropzoneManifestation),this.transform);
                 return;
             }
             
@@ -301,7 +300,7 @@ namespace Assets.CS.TabletopUI {
             if (_manifestation.GetType()!=forContainer.ElementManifestationType)
             {
 
-                var newManifestation = Registry.Get<PrefabFactory>().CreateElementManifestationPrefab(forContainer.ElementManifestationType.Name, this.transform);
+                var newManifestation = Registry.Get<PrefabFactory>().CreateManifestationPrefab(forContainer.ElementManifestationType.Name, this.transform);
                 SwapOutManifestation(_manifestation,newManifestation,RetirementVFX.None);
             }
 
@@ -343,10 +342,17 @@ namespace Assets.CS.TabletopUI {
             Manifest(Sphere);
 
                 LifetimeRemaining = _element.Lifetime;
-                _manifestation.UpdateDecayVisuals(LifetimeRemaining, _element,0,_currentlyBeingDragged);
-           
-            _manifestation.Unhighlight(HighlightType.CanMerge);
-            _manifestation.Unhighlight(HighlightType.CanFitSlot);
+                if(_element.Decays)
+
+                    if (_manifestation != null)
+                        _manifestation.UpdateTimerVisuals(_element.Lifetime, LifetimeRemaining, 0, _element.Resaturate,
+                            EndingFlavour.None);
+
+                if (_manifestation != null)
+                {
+                    _manifestation.Unhighlight(HighlightType.CanMerge);
+                    _manifestation.Unhighlight(HighlightType.CanFitSlot);
+                }
 
 
                 PlacementAlreadyChronicled = false; //element has changed, so we want to relog placement
@@ -503,7 +509,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        private void SwapOutManifestation(IElementManifestation oldManifestation, IElementManifestation newManifestation,RetirementVFX vfxForOldManifestation)
+        private void SwapOutManifestation(IManifestation oldManifestation, IManifestation newManifestation,RetirementVFX vfxForOldManifestation)
         {
             var manifestationToRetire = oldManifestation;
             _manifestation = newManifestation;
@@ -937,7 +943,7 @@ namespace Assets.CS.TabletopUI {
                 Unshroud(true); //never leave a decaying card face down.
 
 
-		    _manifestation.UpdateDecayVisuals(LifetimeRemaining,_element,interval,_currentlyBeingDragged );
+		    _manifestation.UpdateTimerVisuals( _element.Lifetime, LifetimeRemaining,interval,_element.Resaturate,EndingFlavour.None);
 
           if (onDecay != null)
                 onDecay(LifetimeRemaining);
@@ -997,7 +1003,7 @@ namespace Assets.CS.TabletopUI {
         public void Unshroud(bool instant = false)
         {
             shrouded = false;
-            _manifestation.DoRevealEffect(instant);
+            _manifestation.Reveal(instant);
 
             //if a card has just been turned face up in a situation, it's now an existing, established card
             if (StackSource.SourceType == SourceType.Fresh)
@@ -1007,7 +1013,7 @@ namespace Assets.CS.TabletopUI {
 
         public void Shroud(bool instant = false) {
             shrouded = true;
-            _manifestation.DoShroudEffect(instant);
+            _manifestation.Shroud(instant);
 
         
         }
@@ -1040,22 +1046,5 @@ namespace Assets.CS.TabletopUI {
            
         }
 
-
-        public override void MoveObject(PointerEventData eventData) {
-            Vector3 dragPos;
-            RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Get<IDraggableHolder>().RectTransform, eventData.position, eventData.pressEventCamera, out dragPos);
-
-            // Potentially change this so it is using UI coords and the RectTransform?
-            rectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);
-
-            _manifestation.DoMove(rectTransform);
-
-            // rotate object slightly based on pointer Delta
-            if (rotateOnDrag && eventData.delta.sqrMagnitude > 10f) {
-                // This needs some tweaking so that it feels more responsive, physica. Card rotates into the direction you swing it?
-                perlinRotationPoint += eventData.delta.sqrMagnitude * 0.001f;
-                transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -10 + Mathf.PerlinNoise(perlinRotationPoint, 0) * 20));
-            }
-        }
     }
 }

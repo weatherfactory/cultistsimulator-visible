@@ -156,7 +156,7 @@ namespace Assets.Core.Entities {
 
 
                 var tabletopContainers =
-                    _spheres.Where(tc => tc.ContainerCategory == ContainerCategory.World);
+                    _spheres.Where(tc => tc.SphereCategory == SphereCategory.World);
 
                 foreach(var tc in tabletopContainers)
                     tabletopStacks.AddRange(tc.GetStacks());

@@ -5,13 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Interfaces;
+using Noon;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
-   public class DropzoneManifestation: MonoBehaviour,IElementManifestation
+   public class DropzoneManifestation: MonoBehaviour,IManifestation
     {
         private GameObject shadow;
         private GraphicFader glowImage;
@@ -65,9 +71,45 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             }
         }
 
+        public void InitialiseVisuals(IVerb verb)
+        {
+            throw new NotImplementedException();
+        }
+
         public void UpdateVisuals(Element element, int quantity)
         {
             }
+
+        public void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate,
+            EndingFlavour signalEndingFlavour)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SendNotification(INotification notification)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool HandleClick(PointerEventData eventData, VerbAnchor anchor)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DisplaySpheres(IEnumerable<Sphere> spheres)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OverrideIcon(string icon)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetParticleSimulationSpace(Transform transform)
+        {
+            throw new NotImplementedException();
+        }
 
         public void ResetAnimations()
         {
@@ -83,22 +125,22 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         public void ShowGlow(bool glowState, bool instant = false)
         {
-            
+            NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
         }
 
         public void UpdateDecayVisuals(float lifetimeRemaining, Element element, float interval, bool currentlyBeingDragged)
         {
-
+            NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
         }
 
         public void Emphasise()
         {
-           //
+            NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
         }
 
         public void Understate()
         {
-         //
+            NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
         }
 
         public void BeginArtAnimation()
@@ -118,6 +160,12 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         {
         }
 
+        public void AnimateTo(IArtAnimatableToken token, float duration, Vector3 startPos, Vector3 endPos, Action<VerbAnchor> SituationAnimDone,
+            float startScale = 1, float endScale = 1)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Highlight(HighlightType highlightType)
         {
         }
@@ -128,11 +176,11 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         }
 
         public bool NoPush => true;
-        public void DoRevealEffect(bool instant)
+        public void Reveal(bool instant)
         {
         }
 
-        public void DoShroudEffect(bool instant)
+        public void Shroud(bool instant)
         {
         }
 

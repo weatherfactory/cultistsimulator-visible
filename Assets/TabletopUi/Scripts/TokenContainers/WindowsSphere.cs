@@ -13,9 +13,9 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
 {
     public class WindowsSphere: Sphere
     {
-        public override ContainerCategory ContainerCategory
+        public override SphereCategory SphereCategory
         {
-            get { return ContainerCategory.World; }
+            get { return SphereCategory.World; }
         }
     }
 }

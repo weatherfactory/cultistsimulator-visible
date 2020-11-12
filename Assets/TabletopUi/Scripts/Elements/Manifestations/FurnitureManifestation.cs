@@ -9,6 +9,7 @@ using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
 using TMPro;
@@ -18,7 +19,7 @@ using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
-    public class FurnitureManifestation : MonoBehaviour, IAnchorManifestation
+    public class FurnitureManifestation : MonoBehaviour, IManifestation
     {
         [SerializeField] Image artwork;
 
@@ -66,6 +67,11 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             ongoingSlotImage.gameObject.SetActive(false);
         }
 
+        public void InitialiseVisuals(Element element)
+        {
+            throw new NotImplementedException();
+        }
+
         public void InitialiseVisuals(IVerb verb)
         {
             displayIcon(verb.Id);
@@ -75,6 +81,27 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             SetCompletionCount(-1);
             ShowGlow(false, false);
             ShowDumpButton(false);
+        }
+
+        public void UpdateVisuals(Element element, int quantity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate,
+            EndingFlavour signalEndingFlavour)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SendNotification(INotification notification)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DisplaySpheres(IEnumerable<Sphere> spheres)
+        {
+            throw new NotImplementedException();
         }
 
         public void OverrideIcon(string icon)
@@ -359,14 +386,34 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         }
 
         public bool NoPush { get; }
+        public void Reveal(bool instant)
+        {
+            NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
+        }
+
+        public void Shroud(bool instant)
+        {
+            NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
+        }
+
+        public void Emphasise()
+        {
+            NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
+        }
+
+        public void Understate()
+        {
+            NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
+        }
+
         public void DoRevealEffect(bool instant)
         {
-            throw new NotImplementedException();
+            NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
         }
 
         public void DoShroudEffect(bool instant)
         {
-            throw new NotImplementedException();
+            NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
         }
 
         public bool RequestingNoDrag { get; }
