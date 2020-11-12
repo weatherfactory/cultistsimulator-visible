@@ -31,7 +31,7 @@ namespace Assets.CS.TabletopUI {
 
         private OnContainerAddedEvent _onSlotAdded;
         private OnContainerRemovedEvent _onSlotRemoved;
-        private SpherePath _situationPath;
+        private SituationPath _situationPath;
 
         public void Initialise(OnContainerAddedEvent onContainerAdded, OnContainerRemovedEvent onContainerRemoved,SituationCreationCommand situationCreationCommand)
         {

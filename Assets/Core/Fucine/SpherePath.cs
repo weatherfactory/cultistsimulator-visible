@@ -6,13 +6,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Interfaces;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 
 namespace Assets.Core.Fucine
 {
    public class SpherePath:IEquatable<SpherePath>
    {
-       public override bool Equals(object obj)
+       public const char SEPARATOR = '_';
+       private readonly string _path;
+       private readonly string _sphereIdentifier;
+       public SituationPath SituationPath { get; protected set; }
+
+        public override bool Equals(object obj)
        {
            if (ReferenceEquals(null, obj)) return false;
            if (ReferenceEquals(this, obj)) return true;
@@ -25,9 +31,7 @@ namespace Assets.Core.Fucine
            return (_path != null ? _path.GetHashCode() : 0);
        }
 
-       private readonly string _path;
-
-       public const char SEPARATOR='_';
+       
 
        public override string ToString()
        {
@@ -51,22 +55,24 @@ namespace Assets.Core.Fucine
        }
 
 
-       public SpherePath(string pathStringRepresentation)
+       public SpherePath(string sphereIdentifier)
        {
-           _path = pathStringRepresentation;
+           _sphereIdentifier = sphereIdentifier;
+           _path = sphereIdentifier;
            
        }
 
-       public static SpherePath SituationPath(IVerb verb)
+       public SpherePath(SituationPath situationPath, string sphereIdentifier)
        {
-           string situationPathString = verb.Id + SEPARATOR + DateTime.Now.ToString(CultureInfo.InvariantCulture);
-           return new SpherePath(situationPathString);
+           SituationPath = situationPath;
+           _sphereIdentifier = sphereIdentifier;
+           _path = SituationPath.ToString() + SEPARATOR + sphereIdentifier;
        }
 
-       public SpherePath(SpherePath originalPath, string pathStringRepresentation)
+       public SpherePath(SpherePath originalPath, string sphereIdentifier)
        {
 
-           _path = originalPath.ToString() + SEPARATOR + pathStringRepresentation;
+           _path = originalPath.ToString() + SEPARATOR + sphereIdentifier;
 
        }
    }

@@ -28,7 +28,7 @@ namespace Assets.Core.Commands
         public TokenLocation AnchorLocation { get; set; }
         public TokenLocation WindowLocation { get; set; }
         public List<SlotSpecification> OngoingSlots { get; set; } //we might, eg, save when slots have been created by a recipe, but later move on to another recipe
-        public SpherePath SituationPath { get; set; }
+        public SituationPath SituationPath { get; set; }
         public bool Open { get; set; }
 
         public SituationCreationCommand(IVerb verb, Recipe recipe, SituationState situationState,
@@ -43,7 +43,7 @@ namespace Assets.Core.Commands
             AnchorLocation = anchorLocation;
             SourceAnchor = sourceAnchor;
             State = situationState;
-            SituationPath = SpherePath.SituationPath(verb);
+            SituationPath =new SituationPath(verb);
             OngoingSlots = new List<SlotSpecification>();
         }
 

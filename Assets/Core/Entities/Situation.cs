@@ -50,7 +50,7 @@ namespace Assets.Core.Entities {
         private ISituationAnchor _anchor;
         private SituationWindow _window;
         private bool greedyAnimIsActive;
-        public SpherePath Path { get; }
+        public SituationPath Path { get; }
         public bool IsOpen { get; private set; }
         public RecipeBeginningEffectCommand CurrentBeginningEffectCommand;
         public RecipeCompletionEffectCommand currentCompletionEffectCommand;

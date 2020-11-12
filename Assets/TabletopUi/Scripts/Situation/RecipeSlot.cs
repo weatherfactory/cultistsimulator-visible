@@ -51,7 +51,7 @@ namespace Assets.CS.TabletopUI {
 
         public override bool AllowStackMerge { get { return false; } }
 
-        private SpherePath _situationPath;
+        private SituationPath _situationPath;
 
         public override bool AllowDrag {
             get {
@@ -82,7 +82,7 @@ namespace Assets.CS.TabletopUI {
             
         }
 
-        public void Initialise(SlotSpecification slotSpecification,SpherePath situationPath)
+        public void Initialise(SlotSpecification slotSpecification,SituationPath situationPath)
         {
             _situationPath = situationPath;
             GoverningSlotSpecification = slotSpecification;

@@ -23,10 +23,10 @@ namespace Assets.TabletopUi.SlotsContainers {
         protected RecipeSlot primarySlot;
         private IVerb _verb;
         private SituationWindow _window;
-        private SpherePath _situationPath;
+        private SituationPath _situationPath;
 
 
-        public void Initialise(IVerb verb,SituationWindow window,SpherePath situationPath) {
+        public void Initialise(IVerb verb,SituationWindow window,SituationPath situationPath) {
             
             
             var children = GetComponentsInChildren<RecipeSlot>();

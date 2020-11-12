@@ -76,7 +76,7 @@ namespace Assets.CS.TabletopUI {
         public TokenLocation LastOpenLocation;
 
         private IVerb Verb;
-        private SpherePath _situationPath;
+        private SituationPath _situationPath;
         private bool windowIsWide = false;
 
         public bool IsVisible {

@@ -22,7 +22,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
       public override ContainerCategory ContainerCategory => ContainerCategory.Dormant;
       public override bool EnforceUniqueStacksInThisContainer => false;
         public override bool ContentsHidden => true;
-        public virtual Type ElementManifestationType => typeof(MinimalManifestation);
+        public override Type ElementManifestationType => typeof(MinimalManifestation);
 
 
         public void SetSpec(DeckSpec deckSpec)

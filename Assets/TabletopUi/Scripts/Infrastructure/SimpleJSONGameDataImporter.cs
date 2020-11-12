@@ -255,7 +255,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 }
 
-                command.SituationPath = new SpherePath(simplifiedSituationPath);
+                command.SituationPath = new SituationPath(simplifiedSituationPath);
 
                 float? posx = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_SITUATION_WINDOW_X);
                 float? posy = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_SITUATION_WINDOW_Y);
