@@ -106,8 +106,9 @@ namespace Assets.CS.TabletopUI {
         public bool _currentlyBeingDragged { get; protected set; }
 
         protected bool _draggingEnabled = true;
+        protected Situation _situation;
 
-     private TokenXNess TokenXNess { get; set; }
+        private TokenXNess TokenXNess { get; set; }
 
             public void Start()
         {
@@ -161,9 +162,13 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
+        public IVerb Verb
+        {
+            get { return _situation.Verb; }
+        }
 
 
-		public virtual void SnapToGrid()
+        public virtual void SnapToGrid()
 		{
 			transform.localPosition = Registry.Get<Choreographer>().SnapToGrid( transform.localPosition );
 		}

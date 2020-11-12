@@ -27,13 +27,6 @@ namespace Assets.CS.TabletopUI {
 
     public class VerbAnchor : AbstractToken, ISituationAnchor
     {
-
-        private Situation _situation;
-
-        public IVerb Verb
-        {
-            get { return _situation.Verb; }
-        }
         private IAnchorManifestation _manifestation;
 
         private AnchorDurability _durability;

@@ -346,7 +346,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
         Registry.Get<SituationsCatalogue>().BeginNewSituation(scc,new List<ElementStackToken>());
         }
         else
-        Debug.Log("couldn't find this recipe: " + recipeId);
+            NoonUtility.LogWarning("Tried to begin situation via debug, but couldn't find this recipe: " + recipeId);
     }
 
     void HaltVerb(string verbId)

@@ -2964,7 +2964,7 @@ MonoBehaviour:
   aspectDetailsWindow: {fileID: 566079818}
   tokenDetailsWindow: {fileID: 114111364633692442}
   cardHoverDetail: {fileID: 5265435531635378363}
-  MapSphere: {fileID: 1927212867}
+  MapSphere: {fileID: 0}
   mapBackground: {fileID: 1041490181}
   mapAnimation: {fileID: 1041490182}
   draggableHolderRectTransform: {fileID: 1610149764}
@@ -35974,7 +35974,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1927212864}
-  - component: {fileID: 1927212867}
   - component: {fileID: 1927212868}
   - component: {fileID: 1927212869}
   - component: {fileID: 1927212866}
@@ -36039,19 +36038,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &1927212867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1927212863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 297421c46e047dc46b92ff72ca30a868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pathIdentifier: portal
 --- !u!223 &1927212868
 Canvas:
   m_ObjectHideFlags: 0
