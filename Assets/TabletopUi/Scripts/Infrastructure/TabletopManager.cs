@@ -314,7 +314,7 @@ namespace Assets.CS.TabletopUI {
             IVerb v = Registry.Get<ICompendium>().GetEntityById<BasicVerb>(_character.ActiveLegacy.StartingVerbId);
             SituationCreationCommand command = new SituationCreationCommand(v, NullRecipe.Create(), SituationState.ReadyToReset,
                 new TokenLocation(0f,0f,-100f, _tabletop.GetPath()));
-            var situation = Registry.Get<SituationsCatalogue>().CreateSituation(command);
+            var situation = Registry.Get<SituationBuilder>().CreateSituation(command);
             
             situation.ExecuteHeartbeat(0f);
 
@@ -855,11 +855,6 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 		}
 
 
-
-
-        public void BeginNewSituation(SituationCreationCommand scc,List<ElementStackToken> withStacksInStorage) {
-            Registry.Get<Choreographer>().BeginNewSituation(scc,withStacksInStorage);
-        }
 
         public void SignalImpendingDoom(ISituationAnchor situationToken) {
             if(!currentDoomTokens.Contains(situationToken.EntityId))

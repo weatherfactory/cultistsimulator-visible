@@ -66,7 +66,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public SlotSpecification GoverningSlotSpecification { get; set; }
 
         [Tooltip("Use this to specify the SpherePath in the editor")]
-        [SerializeField] protected string _localPath;
+        [SerializeField] protected string pathIdentifier;
 
         public SphereCatalogue Catalogue
         {
@@ -250,7 +250,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public virtual SpherePath GetPath()
         {
-            return new SpherePath(_localPath);
+            return new SpherePath(pathIdentifier);
         }
 
         public virtual void OnDestroy()

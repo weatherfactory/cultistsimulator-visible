@@ -343,7 +343,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
             SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, SituationState.ReadyToStart,
                 new TokenLocation(0f,0f,-100f,tabletop.GetPath()));
             scc.Open = false;
-        Registry.Get<TabletopManager>().BeginNewSituation(scc,new List<ElementStackToken>());
+        Registry.Get<SituationsCatalogue>().BeginNewSituation(scc,new List<ElementStackToken>());
         }
         else
         Debug.Log("couldn't find this recipe: " + recipeId);

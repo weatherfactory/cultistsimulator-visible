@@ -118,8 +118,8 @@ public class Output : Sphere {
 
     public override SpherePath GetPath()
     {
-        if (!string.IsNullOrEmpty(_localPath))
-            NoonUtility.Log($"We're trying to specify a spherepath ({_localPath}) in an output sphere");
+        if (!string.IsNullOrEmpty(pathIdentifier))
+            NoonUtility.Log($"We're trying to specify a spherepath ({pathIdentifier}) in an output sphere");
         return new SpherePath("output");
         //   return (token.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + token.RectTransform.localPosition.y).ToString();
     }

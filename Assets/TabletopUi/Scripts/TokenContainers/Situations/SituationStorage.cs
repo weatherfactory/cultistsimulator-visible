@@ -35,8 +35,8 @@ public class SituationStorage : Sphere
 
     public override SpherePath GetPath()
     {
-        if (!string.IsNullOrEmpty(_localPath))
-            NoonUtility.Log($"We're trying to specify a spherepath ({_localPath}) in a storage sphere)");
+        if (!string.IsNullOrEmpty(pathIdentifier))
+            NoonUtility.Log($"We're trying to specify a spherepath ({pathIdentifier}) in a storage sphere)");
 
         return new SpherePath("storage");
     }

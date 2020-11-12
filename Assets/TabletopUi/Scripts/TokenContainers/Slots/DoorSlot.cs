@@ -174,8 +174,8 @@ if(stack!=null)
 
         public override SpherePath GetPath()
         {
-            if (!string.IsNullOrEmpty(_localPath))
-                NoonUtility.Log($"We're trying to specify a spherepath ({_localPath}) in doorslot for {portalType}");
+            if (!string.IsNullOrEmpty(pathIdentifier))
+                NoonUtility.Log($"We're trying to specify a spherepath ({pathIdentifier}) in doorslot for {portalType}");
 
             return new SpherePath(portalType.ToString());
         }

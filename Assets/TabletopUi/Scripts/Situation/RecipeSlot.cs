@@ -303,8 +303,8 @@ namespace Assets.CS.TabletopUI {
                 path = new SpherePath(_situationPath,GoverningSlotSpecification.Id);
 
 
-            if (!string.IsNullOrEmpty(_localPath))
-                NoonUtility.Log($"We're trying to specify a spherepath ({_localPath}) in a recipe slot / threshold ({path})");
+            if (!string.IsNullOrEmpty(pathIdentifier))
+                NoonUtility.Log($"We're trying to specify a spherepath ({pathIdentifier}) in a recipe slot / threshold ({path})");
             return path;
         }
 

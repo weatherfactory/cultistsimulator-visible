@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 
@@ -28,17 +29,19 @@ namespace Assets.Core
         public Recipe Recipe { get; set; }
         public bool AsNewSituation { get; set; } //determines whether the recipe will spawn a new situation.
         public Expulsion Expulsion { get; set; }
+        public SpherePath ToPath { get; set; }
         
-        public RecipeCompletionEffectCommand() : this(NullRecipe.Create(), false, new Expulsion())
+        public RecipeCompletionEffectCommand() : this(NullRecipe.Create(), false, new Expulsion(),SpherePath.Current())
         {}
 
-        public RecipeCompletionEffectCommand(Recipe recipe,bool asNewSituation,Expulsion expulsion)
+        public RecipeCompletionEffectCommand(Recipe recipe,bool asNewSituation,Expulsion expulsion,SpherePath toPath)
         {
             Recipe = recipe;
             Title = "default title";
             Description = recipe.Description;
             AsNewSituation = asNewSituation;
             Expulsion = expulsion;
+            ToPath = toPath;
         }
 
         public Dictionary<string, string> GetElementChanges()

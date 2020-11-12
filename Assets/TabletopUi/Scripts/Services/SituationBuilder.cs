@@ -18,12 +18,6 @@ namespace Assets.TabletopUi.Scripts.Services {
     {
 
         [SerializeField] private SituationWindow situationWindowPrefab;
-       [SerializeField] public string ForVerbSpecies;
-
-        public void Awake()
-        {
-         Registry.Get<SituationsCatalogue>().RegisterBuilder(ForVerbSpecies,this);
-        }
 
 
         public Situation CreateSituation(SituationCreationCommand command)

@@ -18,7 +18,7 @@ namespace Assets.Core.Entities
         [FucineValue(false)]
         public bool Additional { get; set; }
 
-        [FucineValue]
+        [FucineValue(DefaultValue = SpherePath.CURRENT)]
         public string ToPath { get; set; }
 
         /// <summary>

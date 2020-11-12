@@ -14,7 +14,9 @@ namespace Assets.Core.Fucine
    public class SpherePath:IEquatable<SpherePath>
    {
        public const char SEPARATOR = '_';
-       private readonly string _path;
+       public const char CURRENT = '@';
+
+        private readonly string _path;
        private readonly string _sphereIdentifier;
        public SituationPath SituationPath { get; protected set; }
 
@@ -74,6 +76,11 @@ namespace Assets.Core.Fucine
 
            _path = originalPath.ToString() + SEPARATOR + sphereIdentifier;
 
+       }
+
+       public static SpherePath Current()
+       { 
+           return new SpherePath(CURRENT.ToString());
        }
    }
 }

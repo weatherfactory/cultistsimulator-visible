@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.Logic;
@@ -119,9 +120,10 @@ namespace Assets.Core
             return new RecipePrediction(currentRecipe, _aspectsInContext.AspectsInSituation);
         }
 
-        public IList<RecipeExecutionCommand> GetActualRecipesToExecute(Recipe recipe)
+        public IList<RecipeExecutionCommand> GetRecipeExecutionCommands(Recipe recipe)
         {
-            IList<RecipeExecutionCommand> recipeExecutionCommands = new List<RecipeExecutionCommand>() {new RecipeExecutionCommand(recipe,null) }; ;
+            //start with the execution command for the original recipe
+            IList<RecipeExecutionCommand> recipeExecutionCommands = new List<RecipeExecutionCommand>() {new RecipeExecutionCommand(recipe,null,new SpherePath(String.Empty)) }; ;
             if (recipe.Alt.Count == 0)
                 return recipeExecutionCommands;
 
@@ -156,7 +158,7 @@ namespace Assets.Core
                     }
                     if (ar.Additional)
                     {
-                        recipeExecutionCommands.Add(new RecipeExecutionCommand(candidateRecipe,ar.Expulsion)); //add the additional recipe, and keep going
+                        recipeExecutionCommands.Add(new RecipeExecutionCommand(candidateRecipe,ar.Expulsion,new SpherePath(ar.ToPath))); //add the additional recipe, and keep going
                         NoonUtility.Log(recipe.Id + " says: Found additional recipe with dice result " + diceResult + ", against chance " + +challengeArbiter.GetArbitratedChance()  + ar.Id +
                                         " to execute - adding it to execution list and looking for more");
                     }
@@ -164,7 +166,7 @@ namespace Assets.Core
                     {
                         IList<RecipeExecutionCommand>
                             recursiveRange =
-                                GetActualRecipesToExecute(candidateRecipe); //check if this recipe has any substitutes in turn, and then
+                                GetRecipeExecutionCommands(candidateRecipe); //check if this recipe has any substitutes in turn, and then
 
                         string logmessage =
                             recipe.Id + " says: reached the bottom of the execution list: returning ";

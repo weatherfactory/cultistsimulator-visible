@@ -467,7 +467,7 @@ namespace Assets.Core.Entities {
 
             RecipeConductor rc =new RecipeConductor(aspectsInContext, Registry.Get<Character>());
 
-            IList<RecipeExecutionCommand> recipeExecutionCommands = rc.GetActualRecipesToExecute(currentPrimaryRecipe);
+            IList<RecipeExecutionCommand> recipeExecutionCommands = rc.GetRecipeExecutionCommands(currentPrimaryRecipe);
 
             //actually replace the current recipe with the first on the list: any others will be additionals,
             //but we want to loop from this one.
@@ -490,7 +490,7 @@ namespace Assets.Core.Entities {
             foreach (var c in recipeExecutionCommands)
             {
                 RecipeCompletionEffectCommand currentEffectCommand = new RecipeCompletionEffectCommand(c.Recipe,
-                    c.Recipe.ActionId != currentPrimaryRecipe.ActionId, c.Expulsion);
+                    c.Recipe.ActionId != currentPrimaryRecipe.ActionId, c.Expulsion,c.ToPath);
                 if (currentEffectCommand.AsNewSituation)
                     CreateNewSituation(currentEffectCommand);
                 else
@@ -551,11 +551,17 @@ namespace Assets.Core.Entities {
             if (verbForNewSituation == null)
                 verbForNewSituation = new CreatedVerb(effectCommand.Recipe.ActionId, effectCommand.Recipe.Label, effectCommand.Recipe.Description);
 
+            TokenLocation newAnchorLocation;
+
+            if (effectCommand.ToPath != SpherePath.Current())
+                newAnchorLocation = new TokenLocation(Vector3.zero, effectCommand.ToPath);
+            else
+                newAnchorLocation = _anchor.Location;
 
 
             var scc = new SituationCreationCommand(verbForNewSituation, effectCommand.Recipe,
-                SituationState.ReadyToStart, _anchor.Location, _anchor);
-            Registry.Get<TabletopManager>()
+                SituationState.ReadyToStart, newAnchorLocation, _anchor);
+            Registry.Get<SituationsCatalogue>()
                 .BeginNewSituation(scc,
                     stacksToAddToNewSituation); //tabletop manager is a subscriber, right? can we run this (or access to its successor) through that flow?
 
@@ -650,7 +656,7 @@ namespace Assets.Core.Entities {
             inducedRecipe.Label, inducedRecipe.Description);
         SituationCreationCommand inducedSituation = new SituationCreationCommand(inductionRecipeVerb,
             inducedRecipe, SituationState.ReadyToStart, _anchor.Location, _anchor);
-        Registry.Get<TabletopManager>().BeginNewSituation(inducedSituation, new List<ElementStackToken>());
+        Registry.Get<SituationsCatalogue>().BeginNewSituation(inducedSituation, new List<ElementStackToken>());
     }
 
         public void Close()

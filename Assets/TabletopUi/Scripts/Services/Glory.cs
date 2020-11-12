@@ -33,8 +33,9 @@ namespace Assets.TabletopUi.Scripts.Services
         [SerializeField] private GraphicsSettingsAdapter graphicsSettingsAdapter;
         [SerializeField] private WindowSettingsAdapter windowSettingsAdapter;
         [SerializeField] private SoundManager soundManager;
-    public Limbo limbo;
-    public NullContainer nullContainer;
+        public Limbo limbo;
+        public NullContainer nullContainer;
+        public SituationBuilder situationBuilder;
 
 
 
@@ -115,6 +116,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
                 registryAccess.Register(limbo);
                 registryAccess.Register(nullContainer);
+                registryAccess.Register(situationBuilder);
 
 
                 //prefabFactory means we don't have to rely on magic strings prefab names
