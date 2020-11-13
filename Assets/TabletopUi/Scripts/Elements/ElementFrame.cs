@@ -14,7 +14,7 @@ public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
 {
     public int Quantity;
     private Element _aspect=null;
-    private ElementStackToken _elementStackToken;
+    private ElementStack _elementStack;
     private bool parentIsDetailsWindow = false; // set by AspectsDisplay. Used in Notifier call.
 
     [SerializeField] private LayoutElement layoutElement;
@@ -80,8 +80,8 @@ public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
     }
 
     public void OnPointerClick(PointerEventData eventData) {
-        if(_elementStackToken!=null)
-            Registry.Get<INotifier>().ShowCardElementDetails(_aspect, _elementStackToken);
+        if(_elementStack!=null)
+            Registry.Get<INotifier>().ShowCardElementDetails(_aspect, _elementStack);
         else
             Registry.Get<INotifier>().ShowElementDetails(_aspect, parentIsDetailsWindow);
     }

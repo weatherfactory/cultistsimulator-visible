@@ -26,7 +26,7 @@ namespace Assets.TabletopUi.Scripts.Services
         
         public ElementFrame ElementFrame = null;
         public VerbAnchor VerbAnchor = null;
-        public ElementStackToken ElementStackToken = null;
+        public Token Token = null;
         public CardManifestation CardManifestation = null;
         public DropzoneManifestation DropzoneManifestation = null;
         public StoredManifestation StoredManifestation = null;
@@ -37,7 +37,7 @@ namespace Assets.TabletopUi.Scripts.Services
         public RecipeSlot RecipeSlot = null;
         public NotificationWindow NotificationWindow = null;
         public SituationNote SituationNote = null;
-        public NullElementStackToken NullElementStack = null;
+        public NullElementStack NullElementStack = null;
         public NullContainer NullContainer = null;
 
 

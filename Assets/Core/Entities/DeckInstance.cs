@@ -74,7 +74,7 @@ namespace Assets.Core.Entities
 
         public void Add(string elementId)
         {
-            _drawPile.ProvisionElementStack(elementId, 1, Source.Existing(), new Context(Context.ActionSource.Unknown));
+            _drawPile.ProvisionElementStackToken(elementId, 1, Source.Existing(), new Context(Context.ActionSource.Unknown));
         }
         /// <summary>
         /// This card is unique and has been drawn elsewhere, or belongs to the same uniqueness group as one that has been drawn elsewhere
@@ -82,10 +82,10 @@ namespace Assets.Core.Entities
         /// <param name="elementId"></param>
         public void EliminateCardWithId(string elementId)
         {
-            _drawPile.RetireStacksWhere(x=>x.EntityId==elementId);
+            _drawPile.RetireTokensWhere(x=>x.EntityId==elementId);
 
             if (_deckSpec.Spec.Contains(elementId))
-                _forbiddenCards.ProvisionElementStack(elementId, 1);
+                _forbiddenCards.ProvisionElementStackToken(elementId, 1);
 
         }
 

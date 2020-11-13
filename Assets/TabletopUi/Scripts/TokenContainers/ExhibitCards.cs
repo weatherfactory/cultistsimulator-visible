@@ -26,18 +26,8 @@ public class ExhibitCards : Sphere {
     
     public override SphereCategory SphereCategory => SphereCategory.Meta;
 
-    public override ElementStackToken ProvisionElementStack(string elementId, int quantity, Source stackSource, Context context)
-    {
-        var token = Registry.Get<PrefabFactory>().CreateLocally<ElementStackToken>(transform);
 
-        token.Populate(elementId,quantity,stackSource);
-
-         AcceptStack(token, context);
-
-         return token;
-    }
-
-    public override void DisplayHere(ElementStackToken stack, Context context)
+    public override void DisplayHere(ElementStack stack, Context context)
     {
         base.DisplayHere(stack, context);
         stack.Understate();
@@ -47,7 +37,7 @@ public class ExhibitCards : Sphere {
     {
         var cards = GetStackTokens();
 
-        foreach (var card in cards.Select(c=>c as ElementStackToken))
+        foreach (var card in cards.Select(c=>c as ElementStack))
         {
             if (card.EntityId == elementId)
                 card.Emphasise();

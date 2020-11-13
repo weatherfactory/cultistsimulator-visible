@@ -230,7 +230,7 @@ namespace Assets.Core.Entities {
 
         }
 
-        void HandleOnGreedySlotAnimDone(ElementStackToken element, TokenLocation destination,
+        void HandleOnGreedySlotAnimDone(ElementStack element, TokenLocation destination,
             Sphere destinatinoSlot)
         {
             greedyAnimIsActive = false;
@@ -303,36 +303,36 @@ namespace Assets.Core.Entities {
         }
 
         
-    public void AcceptStack(SphereCategory forSphereCategory, ElementStackToken stackToken, Context context)
+    public void AcceptStack(SphereCategory forSphereCategory, ElementStack stack, Context context)
         {
-            var stackTokenList = new List<ElementStackToken> {stackToken};
+            var stackTokenList = new List<ElementStack> {stack};
             AcceptStacks(forSphereCategory, stackTokenList, context);
         }
 
-        public void AcceptStacks(SphereCategory forSphereCategory, IEnumerable<ElementStackToken> stacks,
+        public void AcceptStacks(SphereCategory forSphereCategory, IEnumerable<ElementStack> stacks,
             Context context)
         {
             var acceptingContainer = GetSingleSphereByCategory(forSphereCategory);
             acceptingContainer.AcceptStacks(stacks, context);
         }
 
-        public void AcceptStacks(SphereCategory forSphereCategory, IEnumerable<ElementStackToken> stacks)
+        public void AcceptStacks(SphereCategory forSphereCategory, IEnumerable<ElementStack> stacks)
         {
             AcceptStacks(forSphereCategory,stacks,new Context(Context.ActionSource.Unknown));
         }
 
-        public List<ElementStackToken> GetAllStacksInSituation()
+        public List<ElementStack> GetAllStacksInSituation()
         {
-            List<ElementStackToken> stacks = new List<ElementStackToken>();
+            List<ElementStack> stacks = new List<ElementStack>();
             foreach (var container in _spheres)
                 stacks.AddRange(container.GetStackTokens());
             return stacks;
         }
 
 
-        public List<ElementStackToken> GetStacks(SphereCategory forSphereCategory)
+        public List<ElementStack> GetStacks(SphereCategory forSphereCategory)
         {
-            List<ElementStackToken> stacks = new List<ElementStackToken>();
+            List<ElementStack> stacks = new List<ElementStack>();
             foreach (var container in _spheres.Where(c => c.SphereCategory == forSphereCategory))
                 stacks.AddRange(container.GetStackTokens());
 
@@ -528,7 +528,7 @@ namespace Assets.Core.Entities {
         }
         private void CreateNewSituation(RecipeCompletionEffectCommand effectCommand)
         {
-            List<ElementStackToken> stacksToAddToNewSituation = new List<ElementStackToken>();
+            List<ElementStack> stacksToAddToNewSituation = new List<ElementStack>();
             //if there's an expulsion
             if (effectCommand.Expulsion.Limit > 0)
             {
@@ -598,7 +598,7 @@ namespace Assets.Core.Entities {
     }
 
 
-    private void AttemptAspectInductions(Recipe currentRecipe, List<ElementStackToken> outputStacks) // this should absolutely go through subscription - something to succeed ttm
+    private void AttemptAspectInductions(Recipe currentRecipe, List<ElementStack> outputStacks) // this should absolutely go through subscription - something to succeed ttm
     {
         //If any elements in the output, or in the situation itself, have inductions, test whether to start a new recipe
 
@@ -654,7 +654,7 @@ namespace Assets.Core.Entities {
             inducedRecipe.Label, inducedRecipe.Description);
         SituationCreationCommand inducedSituation = new SituationCreationCommand(inductionRecipeVerb,
             inducedRecipe, SituationState.ReadyToStart, _anchor.Location, _anchor);
-        Registry.Get<SituationsCatalogue>().BeginNewSituation(inducedSituation, new List<ElementStackToken>());
+        Registry.Get<SituationsCatalogue>().BeginNewSituation(inducedSituation, new List<ElementStack>());
     }
 
         public void Close()
@@ -686,7 +686,7 @@ namespace Assets.Core.Entities {
 
 
 
-    public Sphere GetFirstAvailableThresholdForStackPush(ElementStackToken stack)
+    public Sphere GetFirstAvailableThresholdForStackPush(ElementStack stack)
     {
         var thresholds = GetSpheresByCategory(SphereCategory.Threshold);
         foreach (var t in thresholds)
@@ -698,7 +698,7 @@ namespace Assets.Core.Entities {
     }
 
 
-        public bool PushDraggedStackIntoThreshold(ElementStackToken stack)
+        public bool PushDraggedStackIntoThreshold(ElementStack stack)
         {
             var thresholdContainer = GetFirstAvailableThresholdForStackPush(stack);
             var possibleIncumbent = thresholdContainer.GetStackTokens().FirstOrDefault();
@@ -810,7 +810,7 @@ namespace Assets.Core.Entities {
             return rc.GetPredictionForFollowupRecipe(currentPrimaryRecipe, State, Verb);
         }
 
-        public void NotifyStacksChangedForContainer(TokenEventArgs args)
+        public void NotifyTokensChangedForContainer(TokenEventArgs args)
         {
 
             CurrentRecipePrediction = GetUpdatedRecipePrediction();

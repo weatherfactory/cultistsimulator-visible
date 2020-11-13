@@ -36,13 +36,16 @@ namespace Assets.CS.TabletopUI {
 
 
 
-    public class ElementStackToken: MonoBehaviour
+    public class ElementStack: MonoBehaviour
     {
         public const float SEND_STACK_TO_SLOT_DURATION = 0.2f;
 
         public event System.Action<float> onDecay;
+        public bool Defunct { get; protected set; }
+
 
         public Element _element;
+        private Token _attachedToken;
         private int _quantity;
 
 		// Cache aspect lists because they are EXPENSIVE to calculate repeatedly every frame - CP
@@ -159,7 +162,7 @@ namespace Assets.CS.TabletopUI {
             if(!Sphere.ContentsHidden)
 			    _manifestation.UpdateVisuals(_element,quantity);
 
-            Sphere.NotifyStacksChangedForContainer(new TokenEventArgs{Token = this, Element = _element,Container = Sphere});
+            Sphere.NotifyTokensChangedForContainer(new TokenEventArgs{Token = this, Element = _element,Container = Sphere});
         }
 
         public void ModifyQuantity(int change,Context context) {
@@ -271,7 +274,11 @@ namespace Assets.CS.TabletopUI {
             return _element.HasChildSlotsForVerb(verb);
         }
 
-
+        public void AttachToken(Token token)
+        {
+            _attachedToken = token;
+            _attachedToken.Populate(this);
+        }
 
 
         /// <summary>
@@ -339,15 +346,6 @@ namespace Assets.CS.TabletopUI {
 
 
 
-
-
-
-
-        public override void ReturnToTabletop(Context context)
-		{
-
-        }
-
 		public Vector2 GetDropZoneSpawnPos()
 		{
 			var tabletop = Registry.Get<TabletopManager>()._tabletop;
@@ -383,8 +381,8 @@ namespace Assets.CS.TabletopUI {
 		{
 			var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
 
-            var dropZone = tabletop._tabletop.ProvisionElementStack("dropzone", 1, Source.Fresh(),
-                new Context(Context.ActionSource.Loading)) as ElementStackToken;
+            var dropZone = tabletop._tabletop.ProvisionElementStackToken("dropzone", 1, Source.Fresh(),
+                new Context(Context.ActionSource.Loading)) as ElementStack;
 
             dropZone.Populate("dropzone", 1, Source.Fresh());
 
@@ -401,7 +399,7 @@ namespace Assets.CS.TabletopUI {
             return transform.parent.GetComponent<TabletopSphere>() != null;
         }
 
-        public void AcceptIncomingStackForMerge(ElementStackToken stackMergedIntoThisOne) {
+        public void AcceptIncomingStackForMerge(ElementStack stackMergedIntoThisOne) {
             SetQuantity(Quantity + stackMergedIntoThisOne.Quantity,new Context(Context.ActionSource.Merge));
             stackMergedIntoThisOne.Retire(RetirementVFX.None);
 
@@ -437,7 +435,7 @@ namespace Assets.CS.TabletopUI {
 
 
         
-        public override bool Retire(RetirementVFX vfxName)
+        public bool Retire(RetirementVFX vfxName)
         {
 
             if (Defunct)
@@ -447,7 +445,7 @@ namespace Assets.CS.TabletopUI {
             if (hlc != null)
                 hlc.DeactivateMatchingHighlightLocation(_element?.Id);
 
-            Sphere.NotifyStacksChangedForContainer(new TokenEventArgs{Element = _element,Token = this,Container = Sphere});  // Notify tabletop that aspects will need recompiling
+            Sphere.NotifyTokensChangedForContainer(new TokenEventArgs{Element = _element,Token = this,Container = Sphere});  // Notify tabletop that aspects will need recompiling
             SetSphere(Registry.Get<NullContainer>(), new Context(Context.ActionSource.Retire));
 
 
@@ -593,11 +591,11 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        public override void ReactToDraggedToken(TokenInteractionEventArgs args)
+        public  void ReactToDraggedToken(TokenInteractionEventArgs args)
         {
             if(args.TokenInteractionType==TokenInteractionType.BeginDrag)
             {
-                ElementStackToken stack = args.Token as ElementStackToken;
+                ElementStack stack = args.Token as ElementStack;
                 ;
                 if (Defunct || stack == null)
                     return;
@@ -618,7 +616,7 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public virtual bool CanMergeWith(ElementStackToken intoStack)
+        public virtual bool CanMergeWith(ElementStack intoStack)
 		{
             if(intoStack.EntityId != this.EntityId)
                 return false;
@@ -638,7 +636,7 @@ namespace Assets.CS.TabletopUI {
 
    
 
-        public void ShowNoMergeMessage(ElementStackToken stackDroppedOn) {
+        public void ShowNoMergeMessage(ElementStack stackDroppedOn) {
             if (stackDroppedOn._element.Id != this._element.Id)
                 return; // We're dropping on a different element? No message needed.
 
@@ -648,11 +646,11 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public ElementStackToken SplitOffNCardsToNewStack(int n, Context context) {
+        public ElementStack SplitOffNCardsToNewStack(int n, Context context) {
             if (Quantity > n)
             {
                 var cardLeftBehind =
-                    Sphere.ProvisionElementStack(_element.Id, Quantity - n, Source.Existing(), context) as ElementStackToken;
+                    Sphere.ProvisionElementStackToken(_element.Id, Quantity - n, Source.Existing(), context) as ElementStack;
                 foreach (var m in GetCurrentMutations())
 	                cardLeftBehind.SetMutation(m.Key, m.Value, false); //brand new mutation, never needs to be additive
 
@@ -727,8 +725,8 @@ namespace Assets.CS.TabletopUI {
             try
             {
 
-                var cardLeftBehind= Sphere.ProvisionElementStack(elementId, quantity, Source.Existing(),
-                    new Context(Context.ActionSource.ChangeTo)) as ElementStackToken;
+                var cardLeftBehind= Sphere.ProvisionElementStackToken(elementId, quantity, Source.Existing(),
+                    new Context(Context.ActionSource.ChangeTo)) as ElementStack;
 
                 foreach(var m in this.GetCurrentMutations())
                     cardLeftBehind.SetMutation(m.Key,m.Value,false); //brand new mutation, never needs to be additive

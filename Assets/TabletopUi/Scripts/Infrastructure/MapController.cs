@@ -18,7 +18,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         //private TabletopBackground _mapBackground;
         private MapAnimation _mapAnimation;
 
-        private ElementStackToken[] cards;
+        private ElementStack[] cards;
 
         public void Awake()
         {
@@ -47,7 +47,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             //get card position names
             //populate card positions 1,2,3 from decks with names of positions
-            cards = new ElementStackToken[3];
+            cards = new ElementStack[3];
 
             // Display face-up card next to door
 
@@ -101,11 +101,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-        ElementStackToken BuildCard(Vector3 position, string id,PortalEffect portalType,string mansusJournalEntryMessage)
+        ElementStack BuildCard(Vector3 position, string id,PortalEffect portalType,string mansusJournalEntryMessage)
         {
             var newCard =
-                _mapSphere.ProvisionElementStack(id, 1, Source.Fresh(),
-                    new Context(Context.ActionSource.Loading)) as ElementStackToken;
+                _mapSphere.ProvisionElementStackToken(id, 1, Source.Fresh(),
+                    new Context(Context.ActionSource.Loading)) as ElementStack;
             
 
             newCard.IlluminateLibrarian.AddMansusJournalEntry(mansusJournalEntryMessage);
@@ -120,7 +120,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return newCard;
         }
 
-        void HandleOnCardTurned(ElementStackToken cardTurned) {
+        void HandleOnCardTurned(ElementStack cardTurned) {
             if (cards != null)
                 for (int i = 0; i < cards.Length; i++)
                     if (cards[i] != cardTurned)
@@ -132,12 +132,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             cards = null;
         }
 
-        void HandleOnSlotFilled(ElementStackToken stack) {
+        void HandleOnSlotFilled(ElementStack stack) {
             var activeDoor = _mapSphere.GetActiveDoor();
             //HideMansusMap(activeDoor.transform, stack);
         }
 
-        public void CleanupMap(ElementStackToken pickedStack) {
+        public void CleanupMap(ElementStack pickedStack) {
             var activeDoor = _mapSphere.GetActiveDoor();
             activeDoor.onCardDropped -= HandleOnSlotFilled;
             _mapSphere.SetActiveDoor(PortalEffect.None);

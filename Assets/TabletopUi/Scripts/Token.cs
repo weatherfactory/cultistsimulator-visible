@@ -55,14 +55,17 @@ namespace Assets.CS.TabletopUI {
             get { return _situation.Verb; }
         }
 
-        public ElementStackToken ElementStack { get; private set; }
+        public ElementStack ElementStack { get; private set; }
 
+        public int ElementQuantity => ElementStack.Quantity;
+
+        public Element Element => ElementStack._element;
 
 
         public RectTransform rectTransform;
         [SerializeField] protected bool rotateOnDrag = true;
         
-        [HideInInspector] public Vector2? lastTablePos = null; // if it was pulled from the table, save that position
+        [HideInInspector] public Vector2? LastTablePos = null; // if it was pulled from the table, save that position
 
         protected  IManifestation _manifestation;
 
@@ -97,7 +100,7 @@ namespace Assets.CS.TabletopUI {
                 Sphere= Registry.Get<NullContainer>();
 
                 _manifestation=new NullManifestation();
-                ElementStack=new NullElementStackToken();
+                ElementStack=new NullElementStack();
         }
 
         public void StartArtAnimation()
@@ -119,10 +122,6 @@ namespace Assets.CS.TabletopUI {
             return _manifestation.CanAnimate();
         }
 
-        public virtual string EntityId
-        {
-            get { return Verb.Id; }
-        }
         public bool IsInMotion { get; set; }
         public bool Defunct { get; protected set; }
         public  bool NoPush => _manifestation.NoPush;
@@ -199,8 +198,8 @@ namespace Assets.CS.TabletopUI {
 
         public void TryReturnToOriginalPosition()
         {
-            if (lastTablePos != null)
-                transform.localPosition = new Vector3(lastTablePos.Value.x,lastTablePos.Value.y);
+            if (LastTablePos != null)
+                transform.localPosition = new Vector3(LastTablePos.Value.x,LastTablePos.Value.y);
         }
 
 
@@ -325,7 +324,7 @@ namespace Assets.CS.TabletopUI {
 
 			if (rectTransform.anchoredPosition.sqrMagnitude > 0.0f)	// Never store 0,0 as that's a slot position and we never auto-return to slots - CP
 			{
-	            lastTablePos = rectTransform.anchoredPosition;
+	            LastTablePos = rectTransform.anchoredPosition;
 			}
 
             rectTransform.SetParent(Registry.Get<IDraggableHolder>().RectTransform);
@@ -600,22 +599,22 @@ namespace Assets.CS.TabletopUI {
                     {
                         if (CanMergeWith(stack))
                         {
-                            var elementStack = stack as ElementStackToken;
+                            var elementStack = stack as ElementStack;
                             elementStack.AcceptIncomingStackForMerge(this);
                             return;
                         }
                     }
                 
 
-                if (lastTablePos == null)   // If we've never been on the tabletop, use the drop zone
+                if (LastTablePos == null)   // If we've never been on the tabletop, use the drop zone
                 {
                     // If we get here we have a new card that won't stack with anything else. Place it in the "in-tray"
-                    lastTablePos = GetDropZoneSpawnPos();
+                    LastTablePos = GetDropZoneSpawnPos();
                     stackBothSides = false;
                 }
             }
 
-            Registry.Get<Choreographer>().ArrangeTokenOnTable(this, context, lastTablePos, false, stackBothSides);	// Never push other cards aside - CP
+            Registry.Get<Choreographer>().ArrangeTokenOnTable(this, context, LastTablePos, false, stackBothSides);	// Never push other cards aside - CP
 
         }
 
@@ -629,7 +628,7 @@ namespace Assets.CS.TabletopUI {
             rectTransform.anchoredPosition3D = new Vector3(rectTransform.anchoredPosition3D.x, rectTransform.anchoredPosition3D.y, 0f);
             rectTransform.localRotation = Quaternion.identity;
             rectTransform.localScale = Vector3.one;
-			lastTablePos = rectTransform.anchoredPosition3D;
+			LastTablePos = rectTransform.anchoredPosition3D;
             NotifyChroniclerPlacedOnTabletop();
         }
 
@@ -657,7 +656,7 @@ namespace Assets.CS.TabletopUI {
             if (args.TokenInteractionType == TokenInteractionType.BeginDrag)
             {
 
-                var stack = args.Token as ElementStackToken;
+                var stack = args.Token as ElementStack;
                 if (stack == null)
                     return;
                 if (!_situation.GetFirstAvailableThresholdForStackPush(stack).CurrentlyBlockedFor(BlockDirection.Inward))

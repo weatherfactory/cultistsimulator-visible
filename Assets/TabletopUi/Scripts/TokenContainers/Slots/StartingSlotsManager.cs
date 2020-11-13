@@ -67,7 +67,7 @@ namespace Assets.TabletopUi.SlotsContainers {
         }
 
         
-        public override void RespondToStackAdded(RecipeSlot slot, ElementStackToken stack, Context context) {
+        public override void RespondToStackAdded(RecipeSlot slot, ElementStack stack, Context context) {
             //currently, nothing calls this - it used to be OnCardAdded. I hope we can feed it through the primary event flow
 
             _window.TryResizeWindow(GetAllSlots().Count);
@@ -81,7 +81,7 @@ namespace Assets.TabletopUi.SlotsContainers {
 
         }
 
-        protected void AddSlotsForStack(ElementStackToken stack, RecipeSlot parentSlot) {
+        protected void AddSlotsForStack(ElementStack stack, RecipeSlot parentSlot) {
 
             foreach (var childSlotSpecification in stack.GetChildSlotSpecificationsForVerb(_verb.Id))
             {
@@ -90,7 +90,7 @@ namespace Assets.TabletopUi.SlotsContainers {
             }
         }
 
-        public override void RespondToStackRemoved(ElementStackToken stack, Context context) {
+        public override void RespondToStackRemoved(ElementStack stack, Context context) {
             //currently, nothing calls this - it used to be OnCardAdded. I hope we can feed it through the primary event flow
             // startingSlots updated may resize window
 

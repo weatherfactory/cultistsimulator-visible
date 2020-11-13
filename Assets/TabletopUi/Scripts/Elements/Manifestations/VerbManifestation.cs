@@ -204,7 +204,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         }
 
 
-        private void displayStackInMiniSlot(IEnumerable<ElementStackToken> stacks)
+        private void displayStackInMiniSlot(IEnumerable<ElementStack> stacks)
         {
             if(stacks.Count()>1)
             {

@@ -92,12 +92,12 @@ namespace Assets.Core.Entities {
         }
 
 
-        public void NotifyStacksChangedForContainer(TokenEventArgs args)
+        public void NotifyTokensChangedForContainer(TokenEventArgs args)
         {
             NotifyAspectsDirty();
 
             foreach(var s in _subscribers)
-                s.NotifyStacksChangedForContainer(args);
+                s.NotifyTokensChangedForContainer(args);
         }
 
         public void OnTokenClicked(TokenEventArgs args)
@@ -152,7 +152,7 @@ namespace Assets.Core.Entities {
                 else
                     _tabletopAspects.Clear();
 
-                List<ElementStackToken> tabletopStacks=new List<ElementStackToken>();
+                List<ElementStack> tabletopStacks=new List<ElementStack>();
 
 
                 var tabletopContainers =

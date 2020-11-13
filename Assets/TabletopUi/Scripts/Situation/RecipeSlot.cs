@@ -105,7 +105,7 @@ namespace Assets.CS.TabletopUI {
             if (args.TokenInteractionType == TokenInteractionType.BeginDrag)
             {
 
-                var stack = args.Token as ElementStackToken;
+                var stack = args.Token as ElementStack;
 
                 if (stack == null)
                     return;
@@ -133,7 +133,7 @@ namespace Assets.CS.TabletopUI {
             if (lastGlowState == false || token == null)
                 return false;
 
-            var stack = token as ElementStackToken;
+            var stack = token as ElementStack;
 
             if (stack == null)
                 return false; // we only accept stacks
@@ -229,7 +229,7 @@ namespace Assets.CS.TabletopUI {
         public void OnDrop(PointerEventData eventData)
         {
 
-            var stack = eventData.pointerDrag.GetComponent<ElementStackToken>();
+            var stack = eventData.pointerDrag.GetComponent<ElementStack>();
 
             if (GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
                 return;
@@ -246,7 +246,7 @@ namespace Assets.CS.TabletopUI {
 
         public override void DisplayHere(IToken token, Context context) {
             base.DisplayHere(token, context);
-            var stack = token as ElementStackToken;
+            var stack = token as ElementStack;
 
             if (stack != null) {
                 slotIconHolder.transform.SetAsLastSibling();
@@ -257,7 +257,7 @@ namespace Assets.CS.TabletopUI {
             return GetComponentInChildren<Token>();
         }
 
-        public ElementStackToken GetElementStackInSlot()
+        public ElementStack GetElementStackInSlot()
         {
             if (GetStackTokens().Count() > 1)
             {
@@ -271,7 +271,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public override void TryMoveAsideFor(ElementStackToken potentialUsurper, Token incumbent, out bool incumbentMoved) {
+        public override void TryMoveAsideFor(ElementStack potentialUsurper, Token incumbent, out bool incumbentMoved) {
             if (IsGreedy) { // We do not allow
                 incumbentMoved = false;
                 return;

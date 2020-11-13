@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 224000011999988054}
   - component: {fileID: 222000011707310424}
-  - component: {fileID: 114000012247175884}
   - component: {fileID: 1741897546066371184}
   m_Layer: 5
-  m_Name: ElementStack
+  m_Name: Token
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,22 +45,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000011432613132}
   m_CullTransparentMesh: 0
---- !u!114 &114000012247175884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000011432613132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e4e1614f22284fb88afe962ca58539c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rectTransform: {fileID: 224000011999988054}
-  rotateOnDrag: 1
-  TokenContainer: {fileID: 0}
-  PlacementAlreadyChronicled: 0
 --- !u!225 &1741897546066371184
 CanvasGroup:
   m_ObjectHideFlags: 0

@@ -54,7 +54,7 @@ namespace Assets.CS.TabletopUI {
             if (args.TokenInteractionType == TokenInteractionType.BeginDrag)
             {
 
-                var stack = args.Token as ElementStackToken;
+                var stack = args.Token as ElementStack;
 
                 if (stack == null)
                     return;
@@ -146,7 +146,7 @@ namespace Assets.CS.TabletopUI {
             if (!isActive || !eventData.dragging)
                 return;
 
-            ElementStackToken stack = eventData.pointerDrag.GetComponent<ElementStackToken>();
+            ElementStack stack = eventData.pointerDrag.GetComponent<ElementStack>();
 
 if(stack!=null)
 {
@@ -168,8 +168,8 @@ if(stack!=null)
             return GetComponentInChildren<Token>();
         }
 
-        public ElementStackToken GetElementStackInSlot() {
-            return GetComponentInChildren<ElementStackToken>();
+        public ElementStack GetElementStackInSlot() {
+            return GetComponentInChildren<ElementStack>();
         }
 
         public override SpherePath GetPath()

@@ -23,7 +23,7 @@ namespace Assets.Core
         public AspectsDictionary():this(new Dictionary<string, int>())
         { }
 
-        public static AspectsDictionary GetFromStacks(IEnumerable<ElementStackToken> stacks,bool includingSelf=true)
+        public static AspectsDictionary GetFromStacks(IEnumerable<ElementStack> stacks,bool includingSelf=true)
         {
             AspectsDictionary totals = new AspectsDictionary();
 

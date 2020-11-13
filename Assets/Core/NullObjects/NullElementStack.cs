@@ -8,14 +8,14 @@ using Assets.CS.TabletopUI;
 
 namespace Assets.TabletopUi.Scripts.Elements
 {
-    public class NullElementStackToken: ElementStackToken
+    public class NullElementStack: ElementStack
     {
-        public NullElementStackToken()
+        public NullElementStack()
         {
             _element=new NullElement();
         }
         
-        public override bool CanMergeWith(ElementStackToken intoStack)
+        public override bool CanMergeWith(ElementStack intoStack)
         {
             return false;
         }

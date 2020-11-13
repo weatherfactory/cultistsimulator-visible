@@ -41,14 +41,14 @@ namespace Assets.CS.TabletopUI {
 
         // These are saved here to make sure we have a ref when we're kicking off the anim
         Element _element;
-        ElementStackToken _token;
+        ElementStack _token;
 
         SlotSpecification slotSpec;
 
         DeckSpec deckSpec;
         int deckQuantity;
 
-        public void ShowElementDetails(Element element, ElementStackToken token = null) {
+        public void ShowElementDetails(Element element, ElementStack token = null) {
 
             //AK: removed for now. Mutations complicate things, but also, clicking on the card and getting no response feels stuck
             // Check if we'd show the same, if so: do nothing
@@ -144,7 +144,7 @@ namespace Assets.CS.TabletopUI {
 
         // SET TOKEN TYPE CONTENT VISUALS
 
-        void SetElementCard(Element element, ElementStackToken token) {
+        void SetElementCard(Element element, ElementStack token) {
             Sprite sprite;
 
             if (element.IsAspect)

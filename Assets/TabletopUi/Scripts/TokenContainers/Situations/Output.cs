@@ -56,7 +56,7 @@ public class Output : Sphere {
     }
 
 
-    public void SetOutput(List<ElementStackToken> allStacksToOutput) {
+    public void SetOutput(List<ElementStack> allStacksToOutput) {
         if (allStacksToOutput.Any() == false)
             return;
 
@@ -76,19 +76,19 @@ public class Output : Sphere {
     }
         //stack.Shroud(true);)
 
-    public override void DisplayHere(ElementStackToken stack, Context context) {
+    public override void DisplayHere(ElementStack stack, Context context) {
         base.DisplayHere(stack, context);
         cardPos.ReorderCards(GetStackTokens());
     }
 
-    public override void RemoveStack(ElementStackToken elementStackToken) {
+    public override void RemoveStack(ElementStack elementStack) {
         // Did we just drop the last available token? 
         // Update the badge, then reorder cards?
 
         UpdateDumpButtonText();
 
         bool cardsRemaining = false;
-        IEnumerable<ElementStackToken> stacks = GetOutputStacks();
+        IEnumerable<ElementStack> stacks = GetOutputStacks();
 
         // Window is open? Check if it was the last card, then reset automatically
         if (gameObject.activeInHierarchy) {
@@ -113,7 +113,7 @@ public class Output : Sphere {
             cardPos.ReorderCards(stacks);
     }
 
-    public IEnumerable<ElementStackToken> GetOutputStacks() {
+    public IEnumerable<ElementStack> GetOutputStacks() {
         return GetStackTokens();
     }
 

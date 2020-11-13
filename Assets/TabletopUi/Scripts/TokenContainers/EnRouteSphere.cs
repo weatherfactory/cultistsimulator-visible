@@ -26,21 +26,21 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
             get { return GetComponent<RectTransform>(); }
         }
 
-        public void PrepareElementForSendAnim(ElementStackToken stack, TokenLocation destination) // "this reparents the card so it can animate properly" - okay, let's roll with that for now. But the line below is commented, so do we need it?
+        public void PrepareElementForSendAnim(ElementStack stack, TokenLocation destination) // "this reparents the card so it can animate properly" - okay, let's roll with that for now. But the line below is commented, so do we need it?
         {
             StartingContainer.AcceptStack(stack, new Context(Context.ActionSource.DoubleClickSend)); // this reparents, sets container
             //stack.transform.position = ownerSituation.transform.position;
             stack.Unshroud(true);
         }
 
-        public void PrepareElementForGreedyAnim(ElementStackToken stack, TokenLocation destination)
+        public void PrepareElementForGreedyAnim(ElementStack stack, TokenLocation destination)
         {
             StartingContainer.AcceptStack(stack, new Context(Context.ActionSource.GreedySlot)); // "this reparents, sets container" - okay, let's roll with that for now
             stack.transform.position = destination.Position;
             stack.Unshroud(true);
         }
 
-        public void MoveElementToSituationSlot(ElementStackToken stack, TokenLocation destination, Sphere destinationSlot, float durationOverride = -1.0f)
+        public void MoveElementToSituationSlot(ElementStack stack, TokenLocation destination, Sphere destinationSlot, float durationOverride = -1.0f)
         {
             var startPos = stack.rectTransform.anchoredPosition3D;
             var endPos = destination.Position;
@@ -60,7 +60,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
             stackAnim.StartAnim(duration);
         }
 
-        public void ElementSendAnimDone(ElementStackToken element, TokenLocation destination,Sphere destinationSlot)
+        public void ElementSendAnimDone(ElementStack element, TokenLocation destination,Sphere destinationSlot)
         {
             try
             {
@@ -80,7 +80,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
             }
         }
 
-        public void ElementGreedyAnimDone(ElementStackToken element, AnchorAndSlot anchorSlotPair)
+        public void ElementGreedyAnimDone(ElementStack element, AnchorAndSlot anchorSlotPair)
         {
             if (anchorSlotPair.Threshold.Equals(null) || anchorSlotPair.Threshold.Defunct)
                 return;

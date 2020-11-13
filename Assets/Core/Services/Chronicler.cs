@@ -69,7 +69,7 @@ namespace Assets.Core.Services
             if (token.PlacementAlreadyChronicled)
                 return;
 
-            if(token is ElementStackToken stackToken)
+            if(token is ElementStack stackToken)
             {
                 IAspectsDictionary tokenAspects = stackToken.GetAspects();
 
@@ -115,7 +115,7 @@ namespace Assets.Core.Services
             //a lot of the stuff in TokenPlacedOnTabletop might be better here, actually
             SetAchievementsForEnding(ending);
 
-            List<ElementStackToken> allStacksInGame=new List<ElementStackToken>();
+            List<ElementStack> allStacksInGame=new List<ElementStack>();
 
             
             foreach (var tc in tokenContainers)
@@ -130,7 +130,7 @@ namespace Assets.Core.Services
             TryUpdateBestFollower(allStacksInGame);
         }
 
-        private void TryUpdateBestFollower(List<ElementStackToken> stacks)
+        private void TryUpdateBestFollower(List<ElementStack> stacks)
         {
 
             Element currentFollower=null;
@@ -164,7 +164,7 @@ namespace Assets.Core.Services
 
         }
 
-        private void TryChronicleFollowerPlaced(ElementStackToken token, IAspectsDictionary tokenAspects, StorefrontServicesProvider storefrontServicesProvider)
+        private void TryChronicleFollowerPlaced(ElementStack token, IAspectsDictionary tokenAspects, StorefrontServicesProvider storefrontServicesProvider)
         {
             if (tokenAspects.ContainsKey(SUMMONED_ASPECT))
 			{
@@ -221,7 +221,7 @@ namespace Assets.Core.Services
         }
 
 
-        private void TryCHronicleHQPlaced(ElementStackToken token, IAspectsDictionary tokenAspects)
+        private void TryCHronicleHQPlaced(ElementStack token, IAspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(HQ_ASPECT))
 			{
@@ -230,7 +230,7 @@ namespace Assets.Core.Services
 			}
         }
 
-        private void TryChronicleCultPlaced(ElementStackToken token, IAspectsDictionary tokenAspects, StorefrontServicesProvider storefrontServicesProvider)
+        private void TryChronicleCultPlaced(ElementStack token, IAspectsDictionary tokenAspects, StorefrontServicesProvider storefrontServicesProvider)
         {
             if (tokenAspects.Keys.Contains(CULT_ASPECT))
             {
@@ -276,7 +276,7 @@ namespace Assets.Core.Services
             }
         }
 
-        private void TryChronicleToolPlaced(ElementStackToken token, IAspectsDictionary tokenAspects)
+        private void TryChronicleToolPlaced(ElementStack token, IAspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(TOOL_ASPECT))
 			{
@@ -285,7 +285,7 @@ namespace Assets.Core.Services
 			}
         }
 
-        private void TryChronicleDesirePlaced(ElementStackToken token, IAspectsDictionary tokenAspects)
+        private void TryChronicleDesirePlaced(ElementStack token, IAspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(DESIRE_ASPECT))
             {
@@ -309,7 +309,7 @@ namespace Assets.Core.Services
             }
         }
 
-        private void TryChronicleBookPlaced(ElementStackToken token, IAspectsDictionary tokenAspects)
+        private void TryChronicleBookPlaced(ElementStack token, IAspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(BOOK_ASPECT))
 			{

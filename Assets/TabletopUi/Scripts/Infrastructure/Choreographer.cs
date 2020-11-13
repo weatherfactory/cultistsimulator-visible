@@ -59,11 +59,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
 
-        public void ArrangeTokenOnTable(ElementStackToken stack, Context context) {
+        public void ArrangeTokenOnTable(ElementStack stack, Context context) {
             ArrangeTokenOnTable(stack, context, stack.lastTablePos, false);
         }
 
-        public void ArrangeTokenOnTable(ElementStackToken stack, Context context, Vector2? pos = null, bool pushOthers = false, bool stackBothSides = true)
+        public void ArrangeTokenOnTable(ElementStack stack, Context context, Vector2? pos = null, bool pushOthers = false, bool stackBothSides = true)
 		{
             _tabletop.AcceptStack(stack, context);  // this does parenting. Needs to happen before we position
 
@@ -92,7 +92,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         #region -- POSITIONING HELP METHODS ----------------------------
 
-        public void MoveAllTokensOverlappingWith(IToken pushingToken)
+        public void MoveAllTokensOverlappingWith(Token pushingToken)
 		{
 			if (pushingToken.NoPush)
 			{

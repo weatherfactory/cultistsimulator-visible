@@ -60,7 +60,7 @@ namespace Assets.Core.Entities
         }
 
 
-        public void BeginNewSituation(SituationCreationCommand scc, List<ElementStackToken> withStacksInStorage)
+        public void BeginNewSituation(SituationCreationCommand scc, List<ElementStack> withStacksInStorage)
         {
             if (scc.Recipe == null)
                 throw new ApplicationException("DON'T PASS AROUND SITUATIONCREATIONCOMMANDS WITH RECIPE NULL");

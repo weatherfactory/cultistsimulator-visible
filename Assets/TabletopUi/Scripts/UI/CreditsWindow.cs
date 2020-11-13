@@ -29,7 +29,7 @@ namespace Assets.TabletopUi.Scripts.UI
 
             foreach (var cc in creditCards)
             {
-                var card=CardsExhibit.ProvisionElementStack(cc.Id, 1, Source.Fresh(),new Context(Context.ActionSource.UI));
+                var card=CardsExhibit.ProvisionElementStackToken(cc.Id, 1, Source.Fresh(),new Context(Context.ActionSource.UI));
             }
 
             var firstCard = creditCards[0];
@@ -41,13 +41,13 @@ namespace Assets.TabletopUi.Scripts.UI
 
         public void OnDisable()
         {
-         CardsExhibit.RetireAllStacks();
+         CardsExhibit.RetireAllTokens();
 
         }
 
 
 
-        public void NotifyStacksChangedForContainer(TokenEventArgs args)
+        public void NotifyTokensChangedForContainer(TokenEventArgs args)
         {
         //
         }

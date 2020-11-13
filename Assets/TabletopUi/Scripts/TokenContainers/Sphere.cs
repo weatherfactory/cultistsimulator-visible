@@ -87,7 +87,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public bool Defunct { get; protected set; }
         protected HashSet<ContainerBlock> _currentContainerBlocks = new HashSet<ContainerBlock>();
         private SphereCatalogue _catalogue;
-        private List<Token> _stacks = new List<Token>();
+        private List<Token> _tokens = new List<Token>();
         private readonly HashSet<ISphereEventSubscriber> _subscribers = new HashSet<ISphereEventSubscriber>();
 
         public void Subscribe(ISphereEventSubscriber subscriber)
@@ -115,7 +115,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public virtual bool Retire()
         {
-            RetireAllStacks();
+            RetireAllTokens();
             Destroy(gameObject);
             Defunct = true;
             return true;
@@ -160,62 +160,50 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         }
 
-        public ElementStackToken ProvisionStackFromCommand(StackCreationCommand stackCreationCommand,
+        public Token ProvisionStackFromCommand(StackCreationCommand stackCreationCommand,
             Source stackSource, Context context)
         {
-            var stack = ProvisionElementStack(stackCreationCommand.ElementId, stackCreationCommand.ElementQuantity,
+            var token = ProvisionElementStackToken(stackCreationCommand.ElementId, stackCreationCommand.ElementQuantity,
                 stackSource, context);
             foreach (var m in stackCreationCommand.Mutations)
-                stack.SetMutation(m.Key, m.Value, false);
+                token.ElementStack.SetMutation(m.Key, m.Value, false);
 
-            stack.IlluminateLibrarian = new IlluminateLibrarian(stackCreationCommand.Illuminations);
+            token.ElementStack.IlluminateLibrarian = new IlluminateLibrarian(stackCreationCommand.Illuminations);
 
             if (stackCreationCommand.LifetimeRemaining > 0)
-                stack.LifetimeRemaining = stackCreationCommand.LifetimeRemaining;
+                token.ElementStack.LifetimeRemaining = stackCreationCommand.LifetimeRemaining;
 
             if (stackCreationCommand.MarkedForConsumption)
-                stack.MarkedForConsumption = true;
+                token.ElementStack.MarkedForConsumption = true;
 
-            stack.LastTablePos = stackCreationCommand.Location.Position;
+            token.LastTablePos = stackCreationCommand.Location.Position;
 
-            return stack;
+            return token;
         }
 
 
-        public virtual ElementStackToken ProvisionElementStack(string elementId, int quantity)
+        public virtual Token ProvisionElementStackToken(string elementId, int quantity)
         {
-            return ProvisionElementStack(elementId, quantity, Source.Existing(),
+            return ProvisionElementStackToken(elementId, quantity, Source.Existing(),
                 new Context(Context.ActionSource.Unknown));
         }
 
 
-        public virtual ElementStackToken ProvisionElementStack(string elementId, int quantity, Source stackSource,
+        public Token ProvisionElementStackToken(string elementId, int quantity, Source stackSource,
             Context context)
         {
 
-
-            var stack = Registry.Get<PrefabFactory>().CreateLocally<ElementStackToken>(transform);
-
+            var gameobject =new GameObject(elementId);
+           var stack=gameobject.AddComponent<ElementStack>();
+            
             stack.Populate(elementId, quantity, stackSource);
 
-            AcceptToken(stack, context);
+            var token = Registry.Get<PrefabFactory>().CreateLocally<Token>(transform);
+            stack.AttachToken(token);
 
-            return stack;
-        }
+            AcceptToken(token, context);
 
-        public virtual ElementStackToken ProvisionNullElementStack(int quantity, Source stackSource, Context context,
-            string locatorid = null)
-        {
-
-            var limbo = Registry.Get<Limbo>();
-
-            var stack = Registry.Get<PrefabFactory>().CreateLocally<NullElementStackToken>(transform);
-            stack.SetSphere(limbo, context);
-
-            if (locatorid != null)
-                stack.SaveLocationInfo = locatorid;
-
-            return stack;
+            return token;
         }
 
 
@@ -268,16 +256,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             int unsatisfiedChange = quantityChange;
             while (unsatisfiedChange < 0)
             {
-                ElementStackToken stackToAffect =
-                    _stacks.FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(elementId));
+                Token tokenToAffect =
+                    _tokens.FirstOrDefault(c => !c.Defunct && c.ElementStack.GetAspects().ContainsKey(elementId));
 
-                if (stackToAffect == null
+                if (tokenToAffect == null
                     ) //we haven't found either a concrete matching element, or an element with that ID.
                     //so end execution here, and return the unsatisfied change amount
                     return unsatisfiedChange;
 
-                int originalQuantity = stackToAffect.Quantity;
-                stackToAffect.ModifyQuantity(unsatisfiedChange, context);
+                int originalQuantity = tokenToAffect.ElementStack.Quantity;
+                tokenToAffect.ElementStack.ModifyQuantity(unsatisfiedChange, context);
                 unsatisfiedChange += originalQuantity;
 
             }
@@ -301,24 +289,31 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 throw new ArgumentException("Tried to call IncreaseElement for " + elementId + " with a <=0 change (" +
                                             quantityChange + ")");
 
-            var newStack = ProvisionElementStack(elementId, quantityChange, stackSource, context);
+            var newStack = ProvisionElementStackToken(elementId, quantityChange, stackSource, context);
             AcceptToken(newStack, context);
             return quantityChange;
         }
 
-        public IEnumerable<ElementStackToken> GetStackTokens()
+        public List<Token> GetStackTokens()
         {
-            return _stacks.Where(s => !s.Defunct).ToList();
+            return _tokens.Where(s => !s.Defunct && s.ElementStack.IsValidElementStack()).ToList();
+        }
+
+        public List<ElementStack> GetElementStacks()
+        {
+            return GetStackTokens().Select(t => t.ElementStack).ToList();
         }
 
         public List<string> GetUniqueStackElementIds()
         {
-            return _stacks.Select(s => s.EntityId).Distinct().ToList();
+            var stacks = _tokens.Where(t => t.ElementStack.IsValidElementStack());
+
+            return stacks.Select(s => s.Element.Id).Distinct().ToList();
         }
 
         public List<string> GetStackElementIds()
         {
-            return _stacks.Select(s => s.EntityId).ToList();
+            return GetStackTokens().Select(s => s.Element.Id).ToList();
         }
 
 
@@ -328,7 +323,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         /// <returns></returns>
         public AspectsDictionary GetTotalAspects(bool includingSelf = true)
         {
-            return AspectsDictionary.GetFromStacks(_stacks, includingSelf);
+            var stacks = _tokens.Where(t => t.ElementStack.IsValidElementStack());
+
+            return AspectsDictionary.GetFromStacks(stacks.Select(s=>s.ElementStack), includingSelf);
         }
 
 
@@ -337,10 +334,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return GetTotalElementsCount(x => true);
         }
 
-        public int GetTotalStacksCountWithFilter(Func<ElementStackToken, bool> filter)
+        public int GetTotalStacksCountWithFilter(Func<ElementStack, bool> filter)
         {
 
-            return _stacks.Count(filter);
+            return GetStackTokens().Select(t=>t.ElementStack).Where(filter).Count();
         }
 
         public int GetTotalElementsCount()
@@ -349,9 +346,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         }
 
-        public int GetTotalElementsCount(Func<ElementStackToken, bool> filter)
+        public int GetTotalElementsCount(Func<ElementStack, bool> filter)
         {
-            return _stacks.Where(filter).Sum(stack => stack.Quantity);
+            return GetStackTokens().Select(t=>t.ElementStack).Where(filter).Sum(stack => stack.Quantity);
 
         }
 
@@ -372,8 +369,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 {
 
                     //nb: if we transform a stack of >1, it's possible maxToPurge/Transform will be less than the stack total - iwc it'll transform the whole stack. Probably fine.
-                    ElementStackToken stackToAffect =
-                        _stacks.FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(element.Id));
+                    ElementStack stackToAffect =
+                        GetElementStacks().FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(element.Id));
 
                     if (stackToAffect == null
                         ) //we haven't found either a concrete matching element, or an element with that ID.
@@ -400,47 +397,54 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             
             token.SetSphere(this, context);
 
-            if (EnforceUniqueStacksInThisContainer)
+            if(token.ElementStack.IsValidElementStack())
             {
-                var dealer = new Dealer(Registry.Get<Character>());
-                if (!String.IsNullOrEmpty(token.ElementStack.UniquenessGroup))
-                    dealer.RemoveFromAllDecksIfInUniquenessGroup(token.ElementStack.UniquenessGroup);
-                if (token.ElementStack.Unique)
-                    dealer.IndicateUniqueCardManifested(token.EntityId);
+
+                if (EnforceUniqueStacksInThisContainer)
+                {
+                    var dealer = new Dealer(Registry.Get<Character>());
+                    if (!String.IsNullOrEmpty(token.ElementStack.UniquenessGroup))
+                        dealer.RemoveFromAllDecksIfInUniquenessGroup(token.ElementStack.UniquenessGroup);
+                    if (token.ElementStack.Unique)
+                        dealer.IndicateUniqueCardManifested(token.Element.Id);
+                }
+
+                // Check if we're dropping a unique stack? Then kill all other copies of it on the tabletop
+                if (EnforceUniqueStacksInThisContainer)
+                    RemoveDuplicates(token.ElementStack);
+
+                // Check if the stack's elements are decaying, and split them if they are
+                // Decaying stacks should not be allowed
+                while (token.ElementStack.Decays && token.ElementStack.Quantity > 1)
+                {
+                    AcceptToken(token.SplitOffNCardsToNewStack(token.Quantity - 1, context), context);
+                }
+
             }
 
-            // Check if we're dropping a unique stack? Then kill all other copies of it on the tabletop
-            if (EnforceUniqueStacksInThisContainer)
-                RemoveDuplicates(token);
 
-            // Check if the stack's elements are decaying, and split them if they are
-            // Decaying stacks should not be allowed
-            while (token.ElementStack.Decays && token.ElementStack.Quantity > 1)
-            {
-                AcceptToken(token.SplitOffNCardsToNewStack(token.Quantity - 1, context), context);
-            }
 
 
             //sometimes, we reassign a stack to a container where it already lives. Don't add it again!
-            if (!_stacks.Contains(token))
-                _stacks.Add(token);
+            if (!_tokens.Contains(token))
+                _tokens.Add(token);
 
             DisplayHere(token, context);
-            NotifyStacksChangedForContainer(new TokenEventArgs { Container = this });
+            NotifyTokensChangedForContainer(new TokenEventArgs { Container = this });
 
         }
 
 
-        public bool TryAcceptTokenAsThreshold(ElementStackToken stack)
+        public bool TryAcceptTokenAsThreshold(Token token)
         {
 
             //does the token match the slot? Check that first
-            ContainerMatchForStack match = GetMatchForStack(stack);
+            ContainerMatchForStack match = GetMatchForStack(token.ElementStack);
 
             if (match.MatchType != SlotMatchForAspectsType.Okay)
             {
-                stack.SetXNess(TokenXNess.DoesntMatchSlotRequirements);
-                stack.ReturnToStartPosition();
+                token.SetXNess(TokenXNess.DoesntMatchSlotRequirements);
+                token.ReturnToStartPosition();
 
                 var notifier = Registry.Get<INotifier>();
 
@@ -449,13 +453,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 if (notifier != null)
                     notifier.ShowNotificationWindow(Registry.Get<ILocStringProvider>().Get("UI_CANTPUT"), match.GetProblemDescription(compendium), false);
             }
-            else if (stack.Quantity != 1)
+            else if (token.ElementQuantity != 1)
             {
                 // We're dropping more than one?
                 // set main stack to be returned to start position
-                stack.SetXNess(TokenXNess.ReturningSplitStack);
+                token.SetXNess(TokenXNess.ReturningSplitStack);
                 // And we split a new one that's 1 (leaving the returning card to be n-1)
-                var newStack = stack.SplitOffNCardsToNewStack(stack.Quantity - 1, new Context(Context.ActionSource.PlayerDrag));
+                var newStack = token.SplitOffNCardsToNewStack(token.Quantity - 1, new Context(Context.ActionSource.PlayerDrag));
                 // And we put that into the slot
                 AcceptToken(newStack, new Context(Context.ActionSource.PlayerDrag));
             }
@@ -465,9 +469,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 var currentOccupant = GetStackTokens().FirstOrDefault();
 
                 // if we drop in the same slot where we came from, do nothing.
-                if (currentOccupant == stack)
+                if (currentOccupant == token)
                 {
-                    stack.SetXNess(TokenXNess.ReturnedToStartingSlot);
+                    token.SetXNess(TokenXNess.ReturnedToStartingSlot);
                     return false;
                 }
 
@@ -476,8 +480,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 //currentOccupant.ReturnToTabletop();
 
                 //now we put the token in the slot.
-                stack.SetXNess(TokenXNess.PlacedInSlot);
-                AcceptToken(stack, new Context(Context.ActionSource.PlayerDrag));
+                token.SetXNess(TokenXNess.PlacedInSlot);
+                AcceptToken(token, new Context(Context.ActionSource.PlayerDrag));
                 SoundManager.PlaySfx("CardPutInSlot");
             }
 
@@ -485,16 +489,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
 
-        public void RemoveDuplicates(ElementStackToken incomingStack)
+        public void RemoveDuplicates(ElementStack incomingStack)
         {
 
             if (!incomingStack.Unique && string.IsNullOrEmpty(incomingStack.UniquenessGroup))
                 return;
 
-            foreach (var existingStack in new List<ElementStackToken>(_stacks))
+            foreach (var existingStack in new List<ElementStack>(GetElementStacks()))
             {
 
-                if (existingStack != incomingStack && existingStack.EntityId == incomingStack.EntityId)
+                if (existingStack != incomingStack && existingStack._element.Id == incomingStack._element.Id)
                 {
                     NoonUtility.Log(
                         "Not the stack that got accepted, but has the same ID as the stack that got accepted? It's a copy!");
@@ -511,11 +515,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             }
         }
 
-        public void AcceptTokens(IEnumerable<ElementStackToken> stacks, Context context)
+        public void AcceptTokens(IEnumerable<Token> tokens, Context context)
         {
-            foreach (var eachStack in stacks)
+            foreach (var token in tokens)
             {
-                AcceptToken(eachStack, context);
+                AcceptToken(token, context);
             }
         }
 
@@ -523,10 +527,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         /// removes the stack from this stack manager; doesn't retire the stack
         /// </summary>
         /// <param name="stack"></param>
-        public virtual void RemoveStack(ElementStackToken stack)
+        public virtual void RemoveToken(Token token)
         {
-            _stacks.Remove(stack);
-            NotifyStacksChangedForContainer(new TokenEventArgs {Container = this});
+            _tokens.Remove(token);
+            NotifyTokensChangedForContainer(new TokenEventArgs {Container = this});
         }
 
         /// <summary>
@@ -534,23 +538,23 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         /// </summary>
         public void RemoveAllStacks()
         {
-            var stacksListCopy = new List<ElementStackToken>(_stacks);
-            foreach (ElementStackToken s in stacksListCopy)
-                RemoveStack(s);
+            var tokensListCopy = new List<Token>(_tokens);
+            foreach (Token s in tokensListCopy)
+                RemoveToken(s);
         }
 
-        public void RetireAllStacks()
+        public void RetireAllTokens()
         {
-            var stacksListCopy = new List<ElementStackToken>(_stacks);
-            foreach (ElementStackToken s in stacksListCopy)
-                s.Retire(RetirementVFX.None);
+            var listCopy = new List<Token>(_tokens);
+            foreach (Token t in listCopy)
+                t.Retire(RetirementVFX.None);
         }
 
-        public void RetireStacksWhere(Func<ElementStackToken, bool> filter)
+        public void RetireTokensWhere(Func<Token, bool> filter)
         {
-            var stacksToRetire = new List<ElementStackToken>(_stacks).Where(filter);
-            foreach (ElementStackToken s in stacksToRetire)
-                s.Retire(RetirementVFX.None);
+            var tokensToRetire = new List<Token>(_tokens).Where(filter);
+            foreach (Token t in tokensToRetire)
+                t.Retire(RetirementVFX.None);
         }
 
 
@@ -560,10 +564,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         /// </summary>
         /// <param name="requirement"></param>
         /// <returns></returns>
-        public List<ElementStackToken> GetStacksWithAspect(KeyValuePair<string, int> requirement)
+        public List<ElementStack> GetStacksWithAspect(KeyValuePair<string, int> requirement)
         {
-            List<ElementStackToken> matchingStacks = new List<ElementStackToken>();
-            var candidateStacks = new List<ElementStackToken>(_stacks); //room here for caching
+            List<ElementStack> matchingStacks = new List<ElementStack>();
+            var candidateStacks = new List<ElementStack>(_tokens); //room here for caching
             foreach (var stack in candidateStacks)
             {
                 int aspectAtValue = stack.GetAspects(true).AspectValue(requirement.Key);
@@ -580,13 +584,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         }
 
-        public ContainerMatchForStack GetMatchForStack(ElementStackToken stack)
+        public ContainerMatchForStack GetMatchForStack(ElementStack stack)
         {
-            //no multiple stack is ever permitted in a slot  EDIT: removed this because we have support for splitting the stack to get a single card out - CP
-            //			if (stack.Quantity > 1)
-            //				return new SlotMatchForAspects(new List<string>{"Too many!"}, SlotMatchForAspectsType.ForbiddenAspectPresent);
-
-            if (stack.EntityId == "dropzone")
+            if (!stack.IsValidElementStack())
                 return new ContainerMatchForStack(new List<string>(), SlotMatchForAspectsType.ForbiddenAspectPresent);
             if (GoverningSlotSpecification == null)
                 return ContainerMatchForStack.MatchOK();
@@ -594,11 +594,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 return GoverningSlotSpecification.GetSlotMatchForAspects(stack.GetAspects());
         }
 
-        public void NotifyStacksChangedForContainer(TokenEventArgs args)
+        public void NotifyTokensChangedForContainer(TokenEventArgs args)
         {
-            Catalogue.NotifyStacksChangedForContainer(args);
+            Catalogue.NotifyTokensChangedForContainer(args);
             foreach(var s in _subscribers)
-                s.NotifyStacksChangedForContainer(args);
+                s.NotifyTokensChangedForContainer(args);
         }
 
         public void OnTokenClicked(TokenEventArgs args)

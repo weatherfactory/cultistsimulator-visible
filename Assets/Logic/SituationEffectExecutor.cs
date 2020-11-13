@@ -173,7 +173,7 @@ namespace Assets.Logic
         }
 
         private static void RunXTriggersOnMutationsForStack(Sphere sphere, [CanBeNull] AspectsDictionary aspectsPresent, [CanBeNull] IDice dice,
-            [CanBeNull] ElementStackToken eachStack, [CanBeNull] ICompendium _compendium)
+            [CanBeNull] ElementStack eachStack, [CanBeNull] ICompendium _compendium)
         {
             foreach (var eachStackMutation in eachStack.GetCurrentMutations())
             {
@@ -207,7 +207,7 @@ namespace Assets.Logic
                                     }
                                     else if (morph.MorphEffect == MorphEffectType.Spawn)
                                     {
-                                        sphere.ProvisionElementStack(newElementId, morph.Level,
+                                        sphere.ProvisionElementStackToken(newElementId, morph.Level,
                                             Source.Existing(),
                                             new Context(Context.ActionSource.ChangeTo));
                                         NoonUtility.Log(
@@ -227,7 +227,7 @@ namespace Assets.Logic
         }
 
         private static void RunXTriggersOnStackItself(Sphere sphere, AspectsDictionary aspectsPresent,
-            IDice dice, ElementStackToken eachStack, ICompendium _compendium)
+            IDice dice, ElementStack eachStack, ICompendium _compendium)
         {
             var xTriggers = eachStack.GetXTriggers();
 
@@ -260,7 +260,7 @@ namespace Assets.Logic
                             }
                             else if (morph.MorphEffect == MorphEffectType.Spawn)
                             {
-                              sphere.ProvisionElementStack(newElementId, morph.Level,
+                              sphere.ProvisionElementStackToken(newElementId, morph.Level,
                                     Source.Existing(),
                                     new Context(Context.ActionSource.ChangeTo));
                                 NoonUtility.Log(

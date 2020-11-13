@@ -355,9 +355,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         }
 
-        private List<ElementStackToken> ImportOutputStacks(Hashtable htSituationValues, TabletopSphere tabletop)
+        private List<ElementStack> ImportOutputStacks(Hashtable htSituationValues, TabletopSphere tabletop)
         {
-            List<ElementStackToken> outputStacks = new List<ElementStackToken>();
+            List<ElementStack> outputStacks = new List<ElementStack>();
 
             if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONOUTPUTSTACKS))
             {

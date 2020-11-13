@@ -16,7 +16,7 @@ namespace Assets.Core.Interfaces
         void HideDetails();
         void ShowNotificationWindow(NotificationArgs args);
         void ShowNotificationWindow(string title,string description, bool duplicatesAllowed);
-        void ShowCardElementDetails(Element element, ElementStackToken token);
+        void ShowCardElementDetails(Element element, ElementStack token);
         void ShowElementDetails(Element element, bool fromDetailsWindow = false);
         void ShowSlotDetails(SlotSpecification slot, bool highlightGreedy, bool highlightConsumes);
         void ShowDeckDetails(DeckSpec deckId, int deckQuantity);

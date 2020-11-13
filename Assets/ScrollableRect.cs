@@ -175,7 +175,7 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 	}
 
 
-    public void NotifyStacksChangedForContainer(TokenEventArgs args)
+    public void NotifyTokensChangedForContainer(TokenEventArgs args)
     {
         //
     }

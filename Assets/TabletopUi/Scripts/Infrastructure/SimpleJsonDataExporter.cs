@@ -144,7 +144,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         /// NOTE: stacks *in situations* are *not* handled by this function
         /// </summary>
         /// <returns></returns>
-        public Hashtable GetHashTableForStacks(IEnumerable<ElementStackToken> stacks)
+        public Hashtable GetHashTableForStacks(IEnumerable<ElementStack> stacks)
         {
             var htElementStacks = new Hashtable();
             foreach (var e in stacks)
@@ -187,7 +187,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return null;
         }
 
-		private Hashtable GetHashtableForThisStack(ElementStackToken stack)
+		private Hashtable GetHashtableForThisStack(ElementStack stack)
         {
             var htStackProperties = new Hashtable();
             htStackProperties.Add(SaveConstants.SAVE_ELEMENTID, stack.EntityId);
@@ -239,7 +239,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-		public void AnalyticsReport( bool success, MetaInfo metaInfo, Character character,IEnumerable<ElementStackToken> stacks, IEnumerable<Situation> situationControllers,IEnumerable<DeckInstance> deckInstances )
+		public void AnalyticsReport( bool success, MetaInfo metaInfo, Character character,IEnumerable<ElementStack> stacks, IEnumerable<Situation> situationControllers,IEnumerable<DeckInstance> deckInstances )
 		{
 			// Report very basic info	- success/failure (so we can measure failure %)
 			//							- Data counts so we can see what is going missing (0 == empty, -1 == null ref)

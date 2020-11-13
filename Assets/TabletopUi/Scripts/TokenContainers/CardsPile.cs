@@ -35,11 +35,11 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
           var unshuffledList = new List<string>(_deckSpec.Spec);
           var shuffledList = unshuffledList.OrderBy(x => rnd.Next());
 
-            RetireAllStacks();
+            RetireAllTokens();
 
             foreach (var s in shuffledList)
                 if(!exceptElements.Contains(s))
-                   ProvisionElementStack(s, 1, Source.Fresh(), new Context(Context.ActionSource.Unknown));
+                   ProvisionElementStackToken(s, 1, Source.Fresh(), new Context(Context.ActionSource.Unknown));
       }
 
       public override SpherePath GetPath()

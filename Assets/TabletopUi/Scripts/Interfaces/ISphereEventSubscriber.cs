@@ -12,7 +12,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 {
     public interface ISphereEventSubscriber
     {
-        void NotifyStacksChangedForContainer(TokenEventArgs args);
+        void NotifyTokensChangedForContainer(TokenEventArgs args);
         void OnTokenClicked(TokenEventArgs args);
         void OnTokenReceivedADrop(TokenEventArgs args);
         void OnTokenPointerEntered(TokenEventArgs args);

@@ -91,7 +91,7 @@ namespace Assets.CS.TabletopUI {
         // Token Details
 
         // Variant to link to token decay
-        public void ShowCardElementDetails(Element element, ElementStackToken token)
+        public void ShowCardElementDetails(Element element, ElementStack token)
 		{
 			if (token.name == "Card_dropzone")	// Clunky but reliable
 			{
@@ -173,7 +173,7 @@ namespace Assets.CS.TabletopUI {
             tabletopBurner.ShowImageBurn(spriteName, token, duration, scale, alignment);
         }
 
-        public void NotifyStacksChangedForContainer(TokenEventArgs args)
+        public void NotifyTokensChangedForContainer(TokenEventArgs args)
         {
             //
         }

@@ -93,7 +93,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
         //if an anchor or element stack has been dropped on the background, we want to deal with it.
         var potentialVerbAnchor = eventData.pointerDrag.GetComponent<VerbAnchor>();
 
-        var potentialElementStack = eventData.pointerDrag.GetComponent<ElementStackToken>();
+        var potentialElementStack = eventData.pointerDrag.GetComponent<ElementStack>();
 
 
         if (potentialVerbAnchor != null)

@@ -103,7 +103,7 @@ namespace Assets.CS.TabletopUI {
             }
     }
 
-        public void ShowStoredAspects(IEnumerable<ElementStackToken> stacks) {
+        public void ShowStoredAspects(IEnumerable<ElementStack> stacks) {
             int i = 0;
 
             var aspectFrames = storedCardsLayout.GetComponentsInChildren<ElementFrame>();

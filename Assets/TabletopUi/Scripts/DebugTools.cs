@@ -317,7 +317,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
         {
             if(stack.EntityId==elementId && !stack.GetCurrentMutations().Any())
             {
-				ElementStackToken token = stack as ElementStackToken;
+				ElementStack token = stack as ElementStack;
 				Vector2 dropPos = token.GetDropZoneSpawnPos();
 				
 	            Registry.Get<Choreographer>().ArrangeTokenOnTable(token, debugContext, dropPos, false);	// Never push other cards aside - CP
@@ -343,7 +343,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
             SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, SituationState.ReadyToStart,
                 new TokenLocation(0f,0f,-100f,tabletop.GetPath()));
             scc.Open = false;
-        Registry.Get<SituationsCatalogue>().BeginNewSituation(scc,new List<ElementStackToken>());
+        Registry.Get<SituationsCatalogue>().BeginNewSituation(scc,new List<ElementStack>());
         }
         else
             NoonUtility.LogWarning("Tried to begin situation via debug, but couldn't find this recipe: " + recipeId);
@@ -551,31 +551,31 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
         return File.Exists(GetGameSaveLocation(index));
     }
 
-    public void OnTokenClicked(ElementStackToken stack, PointerEventData pointerEventData, Element element)
+    public void OnTokenClicked(ElementStack stack, PointerEventData pointerEventData, Element element)
     {
         if(isActiveAndEnabled)
             SetInput(stack.EntityId);
     }
 
-    public void OnTokenReceivedADrop(ElementStackToken stack, PointerEventData eventData)
+    public void OnTokenReceivedADrop(ElementStack stack, PointerEventData eventData)
     {
         }
 
-    public void OnTokenPointerEntered(ElementStackToken stack, PointerEventData pointerEventData)
+    public void OnTokenPointerEntered(ElementStack stack, PointerEventData pointerEventData)
     {
     }
 
-    public void OnTokenPointerExited(ElementStackToken stack, PointerEventData pointerEventData)
+    public void OnTokenPointerExited(ElementStack stack, PointerEventData pointerEventData)
     {
     }
 
-    public void OnTokenDoubleClicked(ElementStackToken stack, PointerEventData eventData, Element element)
+    public void OnTokenDoubleClicked(ElementStack stack, PointerEventData eventData, Element element)
     {
         if (isActiveAndEnabled)
             SetInput(stack.EntityId);
     }
 
-    public void NotifyStacksChangedForContainer(TokenEventArgs args)
+    public void NotifyTokensChangedForContainer(TokenEventArgs args)
     {
         throw new NotImplementedException();
     }

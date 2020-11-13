@@ -139,7 +139,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             //
         }
 
-        public void DisplayStackInMiniSlot(ElementStackToken stack)
+        public void DisplayStackInMiniSlot(ElementStack stack)
         {
             //
         }

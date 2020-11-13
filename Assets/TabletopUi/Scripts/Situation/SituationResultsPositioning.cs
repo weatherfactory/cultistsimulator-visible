@@ -40,10 +40,10 @@ namespace Assets.CS.TabletopUI {
         }
         */
 
-        public void ReorderCards(IEnumerable<ElementStackToken> elementStacks) {
+        public void ReorderCards(IEnumerable<ElementStack> elementStacks) {
             var sortedStacks = SortStacks(elementStacks);
 
-            ElementStackToken token;
+            ElementStack token;
             int i = 1; // index starts at 1 for positioning math reasons
             int amount = 0;
 
@@ -52,11 +52,11 @@ namespace Assets.CS.TabletopUI {
             string debugText = "Reorder Results: ";
 
             foreach (var stack in sortedStacks)
-                if (stack is ElementStackToken)
+                if (stack is ElementStack)
                     amount++;
 
             foreach (var stack in sortedStacks) {
-                token = stack as ElementStackToken;
+                token = stack as ElementStack;
 
                 if (token == null)
                     continue;
@@ -78,10 +78,10 @@ namespace Assets.CS.TabletopUI {
             NoonUtility.Log(debugText);
         }
 
-        List<ElementStackToken> SortStacks(IEnumerable<ElementStackToken> elementStacks) {
-			var hiddenStacks = new List<ElementStackToken>();	// Hidden fresh cards
-            var freshStacks = new List<ElementStackToken>();	// Face-up fresh cards
-            var existingStacks = new List<ElementStackToken>(); // Face-up existing cards
+        List<ElementStack> SortStacks(IEnumerable<ElementStack> elementStacks) {
+			var hiddenStacks = new List<ElementStack>();	// Hidden fresh cards
+            var freshStacks = new List<ElementStack>();	// Face-up fresh cards
+            var existingStacks = new List<ElementStack>(); // Face-up existing cards
 
             foreach (var stack in elementStacks)
 			{

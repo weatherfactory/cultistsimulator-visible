@@ -6,18 +6,18 @@ using Assets.CS.TabletopUI;
 public class FXTestController : MonoBehaviour {
 
     public CardEffect[] testEffects;
-    public ElementStackToken targetToken;
+    public ElementStack Target;
 
     public float waitAfterFX = 3f;
     public float pauseDuration = 1f;    
 
     private CardEffect activeEffect;
-    private ElementStackToken activeToken;
+    private ElementStack _active;
 
     private int effectNum = 0;
 
     void OnEnable () {
-        targetToken.gameObject.SetActive(false);
+        Target.gameObject.SetActive(false);
 
         for (int i = 0; i < testEffects.Length; i++)
             testEffects[i].gameObject.SetActive(false);
@@ -33,10 +33,10 @@ public class FXTestController : MonoBehaviour {
         activeEffect.transform.localScale = effect.transform.localScale;
         activeEffect.gameObject.SetActive(false);
 
-        activeToken = Instantiate(targetToken, targetToken.transform.parent) as ElementStackToken;
-        activeToken.transform.position = targetToken.transform.position;
-        activeToken.transform.localScale = targetToken.transform.localScale;
-        activeToken.gameObject.SetActive(true);
+        _active = Instantiate(Target, Target.transform.parent) as ElementStack;
+        _active.transform.position = Target.transform.position;
+        _active.transform.localScale = Target.transform.localScale;
+        _active.gameObject.SetActive(true);
 
         if (effect is CardEffectCreate)
             StartAnim();
@@ -45,7 +45,7 @@ public class FXTestController : MonoBehaviour {
     }
 
     void StartAnim() {
-        activeEffect.StartAnim(activeToken.transform);
+        activeEffect.StartAnim(_active.transform);
 
         effectNum++;
 
@@ -62,8 +62,8 @@ public class FXTestController : MonoBehaviour {
         if (activeEffect != null)
             Destroy(activeEffect.gameObject);
 
-        if (activeToken != null)
-            Destroy(activeToken.gameObject);
+        if (_active != null)
+            Destroy(_active.gameObject);
 
         Invoke("SpawnFX", pauseDuration);
     }

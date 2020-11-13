@@ -16,7 +16,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public interface ITableSaveState
     {
-        IEnumerable<ElementStackToken> TableStacks { get; }
+        IEnumerable<ElementStack> TableStacks { get; }
         List<Situation> Situations { get; }
         bool IsTableActive();
         MetaInfo MetaInfo { get; }
@@ -24,7 +24,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
     public class TableSaveState : ITableSaveState
     {
-        public IEnumerable<ElementStackToken> TableStacks { get; private set; }
+        public IEnumerable<ElementStack> TableStacks { get; private set; }
         public List<Situation> Situations { get; private set; }
         public bool IsTableActive()
         {
@@ -34,7 +34,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public MetaInfo MetaInfo { get; }
 
 
-        public TableSaveState(IEnumerable<ElementStackToken> tableStacks, List<Situation> situations,MetaInfo metaInfo)
+        public TableSaveState(IEnumerable<ElementStack> tableStacks, List<Situation> situations,MetaInfo metaInfo)
         {
             TableStacks = tableStacks;
             Situations = situations;
@@ -44,7 +44,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
     public class InactiveTableSaveState : ITableSaveState
     {
-        public IEnumerable<ElementStackToken> TableStacks { get; private set; }
+        public IEnumerable<ElementStack> TableStacks { get; private set; }
         public List<Situation> Situations { get; private set; }
 
         public bool IsTableActive()
@@ -56,7 +56,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public InactiveTableSaveState(MetaInfo metaInfo)
         {
-            TableStacks = new List<ElementStackToken>();
+            TableStacks = new List<ElementStack>();
             Situations = new List<Situation>();
             MetaInfo = metaInfo;
         }

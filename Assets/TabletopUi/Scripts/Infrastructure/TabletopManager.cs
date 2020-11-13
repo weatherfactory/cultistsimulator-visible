@@ -347,7 +347,7 @@ namespace Assets.CS.TabletopUI {
             {
                 var context = new Context(Context.ActionSource.Loading);
 
-                ElementStackToken token = _tabletop.ProvisionElementStack(e.Key, e.Value, Source.Existing(),context);
+                ElementStack token = _tabletop.ProvisionElementStackToken(e.Key, e.Value, Source.Existing(),context);
                 Registry.Get<Choreographer>().ArrangeTokenOnTable(token, context);
             }
         }
@@ -666,13 +666,13 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             return true;
         }
 
-        private ElementStackToken FindStackForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
+        private ElementStack FindStackForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
 
             var rnd = new Random();
             var stacks = _tabletop.GetStackTokens().OrderBy(x=>rnd.Next());
 
             foreach (var stack in stacks)
-                if (CanPullCardToGreedySlot(stack as ElementStackToken, slotSpec))
+                if (CanPullCardToGreedySlot(stack as ElementStack, slotSpec))
                 {
 
                     if (stack._currentlyBeingDragged)
@@ -688,7 +688,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             return null;
         }
 
-        private bool CanPullCardToGreedySlot(ElementStackToken stack, SlotSpecification slotSpec)
+        private bool CanPullCardToGreedySlot(ElementStack stack, SlotSpecification slotSpec)
         {
             if (slotSpec == null)
                 return false; //We were seeing NullReferenceExceptions in the Unity analytics from the bottom line; stack is referenced okay so it shouldn't be stack, so probably a null slotspec is being specified somewhere
@@ -758,7 +758,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
         
         void HandleOnMapBackgroundDropped(PointerEventData eventData)
         {
-            var stack = eventData.pointerDrag.GetComponent<ElementStackToken>();
+            var stack = eventData.pointerDrag.GetComponent<ElementStack>();
 
             if (stack!=null) {
 
@@ -894,7 +894,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
         public void GroupAllStacks()
         {
 	        var stacks = _tabletop.GetStackTokens();
-	        var groups = stacks.OfType<ElementStackToken>()
+	        var groups = stacks.OfType<ElementStack>()
 		        .GroupBy(e => e.EntityWithMutationsId, e => e)
 		        .Select(group => group.OrderByDescending(e => e.Quantity).ToList());
 	        
@@ -911,13 +911,13 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
    
         }
 
-		private List<ElementStackToken> FindAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
-			var stackList = new List<ElementStackToken>();
+		private List<ElementStack> FindAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
+			var stackList = new List<ElementStack>();
 			var stacks = _tabletop.GetStackTokens();
-			ElementStackToken stackToken;
+			ElementStack stack;
 
 			foreach (var stack in stacks) {
-				stackToken = stack as ElementStackToken;
+				stackToken = stack as ElementStack;
 
 				if (stackToken != null && CanPullCardToGreedySlot(stackToken, slotSpec))
 					stackList.Add(stackToken);
