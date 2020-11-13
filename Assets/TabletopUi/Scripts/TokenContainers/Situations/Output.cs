@@ -69,16 +69,16 @@ public class Output : Sphere {
 
 
 
-    public override void AcceptStack(ElementStackToken stack, Context context)
+    public override void AcceptToken(Token token, Context context)
     {
-        base.AcceptStack(stack,context);
-        stack.Shroud(true);
+        base.AcceptToken(token, context);
+        token.Shroud(true);
     }
         //stack.Shroud(true);)
 
     public override void DisplayHere(ElementStackToken stack, Context context) {
         base.DisplayHere(stack, context);
-        cardPos.ReorderCards(GetStacks());
+        cardPos.ReorderCards(GetStackTokens());
     }
 
     public override void RemoveStack(ElementStackToken elementStackToken) {
@@ -114,7 +114,7 @@ public class Output : Sphere {
     }
 
     public IEnumerable<ElementStackToken> GetOutputStacks() {
-        return GetStacks();
+        return GetStackTokens();
     }
 
     public override SpherePath GetPath()

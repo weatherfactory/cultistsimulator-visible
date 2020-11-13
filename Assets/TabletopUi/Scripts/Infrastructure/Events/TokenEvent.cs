@@ -15,7 +15,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Events
     {
         public Sphere Container { get; set; }
         public Element Element { get; set; }
-        public ElementStackToken Token { get; set; }
+        public Token Token { get; set; }
         public PointerEventData PointerEventData { get; set; }
         //room for eg a diff or the nature of the change
     }

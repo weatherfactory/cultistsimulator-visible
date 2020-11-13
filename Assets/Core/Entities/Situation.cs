@@ -49,7 +49,7 @@ namespace Assets.Core.Entities {
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
         public string OverrideTitle { get; set; }
 
-        private AbstractToken _anchor;
+        private Token _anchor;
         private SituationWindow _window;
         private bool greedyAnimIsActive;
         public SituationPath Path { get; }
@@ -84,7 +84,7 @@ namespace Assets.Core.Entities {
 
 
 
-        public void AttachAnchor(AbstractToken newAnchor)
+        public void AttachAnchor(Token newAnchor)
         {
             _anchor = newAnchor;
             AddSubscriber(_anchor);
@@ -325,7 +325,7 @@ namespace Assets.Core.Entities {
         {
             List<ElementStackToken> stacks = new List<ElementStackToken>();
             foreach (var container in _spheres)
-                stacks.AddRange(container.GetStacks());
+                stacks.AddRange(container.GetStackTokens());
             return stacks;
         }
 
@@ -334,7 +334,7 @@ namespace Assets.Core.Entities {
         {
             List<ElementStackToken> stacks = new List<ElementStackToken>();
             foreach (var container in _spheres.Where(c => c.SphereCategory == forSphereCategory))
-                stacks.AddRange(container.GetStacks());
+                stacks.AddRange(container.GetStackTokens());
 
             return stacks;
         }
@@ -701,7 +701,7 @@ namespace Assets.Core.Entities {
         public bool PushDraggedStackIntoThreshold(ElementStackToken stack)
         {
             var thresholdContainer = GetFirstAvailableThresholdForStackPush(stack);
-            var possibleIncumbent = thresholdContainer.GetStacks().FirstOrDefault();
+            var possibleIncumbent = thresholdContainer.GetStackTokens().FirstOrDefault();
             if (possibleIncumbent != null)
             {
                 possibleIncumbent.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));

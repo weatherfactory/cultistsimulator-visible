@@ -451,7 +451,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public async void EndGame(Ending ending, AbstractToken _anchor)
+        public async void EndGame(Ending ending, Token _anchor)
 		{
 			NoonUtility.Log("TabletopManager.EndGame()");
 
@@ -550,7 +550,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
             try
             {
-	            ITableSaveState tableSaveState=new TableSaveState(_tabletop.GetStacks(), Registry.Get<SituationsCatalogue>().GetRegisteredSituations(),Registry.Get<MetaInfo>());
+	            ITableSaveState tableSaveState=new TableSaveState(_tabletop.GetStackTokens(), Registry.Get<SituationsCatalogue>().GetRegisteredSituations(),Registry.Get<MetaInfo>());
                  var   saveTask = Registry.Get<GameSaveManager>().SaveActiveGameAsync(tableSaveState,  Registry.Get<Character>(), source);
                  NoonUtility.Log("Beginning save", 0,VerbosityLevel.SystemChatter);
                bool    success = await saveTask;
@@ -669,7 +669,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
         private ElementStackToken FindStackForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
 
             var rnd = new Random();
-            var stacks = _tabletop.GetStacks().OrderBy(x=>rnd.Next());
+            var stacks = _tabletop.GetStackTokens().OrderBy(x=>rnd.Next());
 
             foreach (var stack in stacks)
                 if (CanPullCardToGreedySlot(stack as ElementStackToken, slotSpec))
@@ -771,7 +771,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
         }
 
         public void DecayStacksOnTable(float interval) {
-            var decayingStacks = _tabletop.GetStacks().Where(s => s.Decays);
+            var decayingStacks = _tabletop.GetStackTokens().Where(s => s.Decays);
 
             foreach (var d in decayingStacks)
                 d.Decay(interval);
@@ -856,14 +856,14 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
 
 
-        public void SignalImpendingDoom(AbstractToken situationToken) {
+        public void SignalImpendingDoom(Token situationToken) {
             if(!currentDoomTokens.Contains(situationToken.EntityId))
                 currentDoomTokens.Add(situationToken.EntityId);
             backgroundMusic.PlayImpendingDoom();
         }
 
 
-        public void NoMoreImpendingDoom(AbstractToken situationToken)
+        public void NoMoreImpendingDoom(Token situationToken)
         {
             if (currentDoomTokens.Contains(situationToken.EntityId))
                 currentDoomTokens.Remove(situationToken.EntityId);
@@ -893,7 +893,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
         public void GroupAllStacks()
         {
-	        var stacks = _tabletop.GetStacks();
+	        var stacks = _tabletop.GetStackTokens();
 	        var groups = stacks.OfType<ElementStackToken>()
 		        .GroupBy(e => e.EntityWithMutationsId, e => e)
 		        .Select(group => group.OrderByDescending(e => e.Quantity).ToList());
@@ -913,7 +913,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
 		private List<ElementStackToken> FindAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
 			var stackList = new List<ElementStackToken>();
-			var stacks = _tabletop.GetStacks();
+			var stacks = _tabletop.GetStackTokens();
 			ElementStackToken stackToken;
 
 			foreach (var stack in stacks) {

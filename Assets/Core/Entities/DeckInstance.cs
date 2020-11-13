@@ -60,7 +60,7 @@ namespace Assets.Core.Entities
             //so let's test again
             if (_drawPile.GetTotalStacksCount() > 0)
             {
-                var cardDrawn = _drawPile.GetStacks().First();
+                var cardDrawn = _drawPile.GetStackTokens().First();
                 return cardDrawn.EntityId;
             }
 

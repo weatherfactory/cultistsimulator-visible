@@ -168,7 +168,7 @@ namespace Assets.TabletopUi.SlotsContainers {
             if (context != null && context.actionSource == Context.ActionSource.SituationStoreStacks)
                 return; // Don't return the tokens to tabletop if we
 
-            AbstractToken tokenContained = slot.GetTokenInSlot();
+            Token tokenContained = slot.GetTokenInSlot();
 
             if (tokenContained != null)
                 tokenContained.ReturnToTabletop(context);

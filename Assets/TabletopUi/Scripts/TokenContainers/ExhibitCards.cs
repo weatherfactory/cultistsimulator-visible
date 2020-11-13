@@ -45,7 +45,7 @@ public class ExhibitCards : Sphere {
 
     public void HighlightCardWithId(string elementId)
     {
-        var cards = GetStacks();
+        var cards = GetStackTokens();
 
         foreach (var card in cards.Select(c=>c as ElementStackToken))
         {

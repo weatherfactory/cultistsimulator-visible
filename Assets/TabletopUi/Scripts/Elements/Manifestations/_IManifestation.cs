@@ -56,7 +56,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         void SendNotification(INotification notification);
 
 
-        bool HandleClick(PointerEventData eventData, VerbAnchor anchor);
+        bool HandleClick(PointerEventData eventData, Token token);
 
         void DisplaySpheres(IEnumerable<Sphere> spheres);
         

@@ -15,7 +15,7 @@ namespace Assets.Core.Commands
     public class SituationCreationCommand
     {
 
-		public AbstractToken SourceToken { get; set; } // this may not be set if no origin is known or needed
+		public Token SourceToken { get; set; } // this may not be set if no origin is known or needed
         public IVerb Verb { get; set; }
         public Species Species
         {
@@ -32,7 +32,7 @@ namespace Assets.Core.Commands
         public bool Open { get; set; }
 
         public SituationCreationCommand(IVerb verb, Recipe recipe, SituationState situationState,
-            TokenLocation anchorLocation, AbstractToken sourceToken = null)
+            TokenLocation anchorLocation, Token sourceToken = null)
         {
             if (recipe == null && verb == null)
                 throw new ArgumentException("Must specify either a recipe or a verb (or both");

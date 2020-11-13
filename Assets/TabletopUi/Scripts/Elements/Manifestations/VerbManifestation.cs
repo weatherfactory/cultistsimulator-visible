@@ -148,11 +148,11 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         }
 
 
-        public bool HandleClick(PointerEventData eventData, VerbAnchor anchor)
+        public bool HandleClick(PointerEventData eventData, Token token)
         {
             if (dumpButton.IsHovering())
             {
-                anchor.DumpOutputStacks();
+                token.DumpOutputStacks();
                 return true;
             }
             else
@@ -177,7 +177,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
             var sphereToDisplayAsMiniSlot = spheres.Single();
             showMiniSlot(sphereToDisplayAsMiniSlot.GoverningSlotSpecification.Greedy);
-            displayStackInMiniSlot(sphereToDisplayAsMiniSlot.GetStacks());
+            displayStackInMiniSlot(sphereToDisplayAsMiniSlot.GetStackTokens());
         }
 
 

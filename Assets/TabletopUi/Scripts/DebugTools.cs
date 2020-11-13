@@ -287,7 +287,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
     void AddCard(string elementId)
     {
        
-        var existingStacks = tabletop.GetStacks();
+        var existingStacks = tabletop.GetStackTokens();
 
         var element = Registry.Get<ICompendium>().GetEntityById<Element>(elementId);
 
@@ -312,7 +312,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
         tabletop.ModifyElementQuantity(elementId,1, Source.Fresh(), debugContext);
 
 		// Find the card we just added and move it to the dropzone
-		existingStacks = tabletop.GetStacks();
+		existingStacks = tabletop.GetStackTokens();
 		foreach (var stack in existingStacks)
         {
             if(stack.EntityId==elementId && !stack.GetCurrentMutations().Any())

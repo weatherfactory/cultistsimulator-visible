@@ -156,7 +156,7 @@ namespace Assets.TabletopUi.Scripts.Elements
 
 
 
-        public bool HandleClick(PointerEventData eventData, VerbAnchor anchor)
+        public bool HandleClick(PointerEventData eventData, Token token)
         {
        return false;
         }

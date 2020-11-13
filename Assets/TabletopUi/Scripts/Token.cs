@@ -6,10 +6,12 @@ using System.Linq;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi;
+using Assets.TabletopUi.Scripts.Elements;
 using Assets.TabletopUi.Scripts.Elements.Manifestations;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
@@ -19,25 +21,9 @@ using Assets.TabletopUi.Scripts.TokenContainers;
 using Noon;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 namespace Assets.CS.TabletopUI {
-
-    public interface IToken
-    {
-        string EntityId { get; }
-        void SetSphere(Sphere newContainer, Context context);
-        string name { get; }
-        Transform transform { get; }
-        RectTransform RectTransform { get; }
-        GameObject gameObject { get; }
-        void DisplayAtTableLevel();
-        void SnapToGrid();
-        bool NoPush { get; }
-        TokenLocation Location { get; }
-        bool Defunct { get; }
-        bool IsBeingAnimated { get; }
-        void TryReturnToOriginalPosition();
-    }
 
     public enum TokenXNess
     {
@@ -56,16 +42,22 @@ namespace Assets.CS.TabletopUI {
     }
 
         [RequireComponent(typeof(RectTransform))]
-    public class AbstractToken : MonoBehaviour,
+    public class Token : MonoBehaviour,
         IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IToken,IArtAnimatableToken,ISituationSubscriber
     {
+        protected bool singleClickPending = false;
 
-        protected Element _element;
+
         protected bool shrouded = false;
+        protected Situation _situation;
         public IVerb Verb
         {
             get { return _situation.Verb; }
         }
+
+        public ElementStackToken ElementStack { get; private set; }
+
+
 
         public RectTransform rectTransform;
         [SerializeField] protected bool rotateOnDrag = true;
@@ -80,6 +72,8 @@ namespace Assets.CS.TabletopUI {
         protected Vector3 dragOffset;
         protected RectTransform rectCanvas;
         protected CanvasGroup canvasGroup;
+        private Token originToken = null; // if it was pulled from a stack, save that stack!
+
 
         //set true when the Chronicler notices it's been placed on the desktop. This ensures we don't keep spamming achievements / Lever requests. It isn't persisted in saves! which is probably fine.
         public bool PlacementAlreadyChronicled = false;
@@ -103,6 +97,7 @@ namespace Assets.CS.TabletopUI {
                 Sphere= Registry.Get<NullContainer>();
 
                 _manifestation=new NullManifestation();
+                ElementStack=new NullElementStackToken();
         }
 
         public void StartArtAnimation()
@@ -128,12 +123,12 @@ namespace Assets.CS.TabletopUI {
         {
             get { return Verb.Id; }
         }
-        public bool IsBeingAnimated { get; set; }
+        public bool IsInMotion { get; set; }
         public bool Defunct { get; protected set; }
-        public virtual bool NoPush { protected set; get; }
+        public  bool NoPush => _manifestation.NoPush;
         public bool _currentlyBeingDragged { get; protected set; }
         protected bool _draggingEnabled = true;
-        protected Situation _situation;
+
         private TokenXNess TokenXNess { get; set; }
 
 
@@ -163,6 +158,41 @@ namespace Assets.CS.TabletopUI {
             _manifestation.InitialiseVisuals(Verb);
             _manifestation.DisplaySpheres(new List<Sphere>());
             _manifestation.SetParticleSimulationSpace(transform);
+
+        }
+
+        private void SwapOutManifestation(IManifestation oldManifestation, IManifestation newManifestation, RetirementVFX vfxForOldManifestation)
+        {
+            var manifestationToRetire = oldManifestation;
+            _manifestation = newManifestation;
+
+            manifestationToRetire.Retire(vfxForOldManifestation, OnSwappedOutManifestationRetired);
+
+        }
+
+        private void OnSwappedOutManifestationRetired()
+        {
+            //
+        }
+
+        public void Manifest(Sphere forContainer)
+        {
+            if (EntityId == "dropzone")
+            {
+                _manifestation = Registry.Get<PrefabFactory>().CreateManifestationPrefab(nameof(DropzoneManifestation), this.transform);
+                return;
+            }
+
+
+            if (_manifestation.GetType() != forContainer.ElementManifestationType)
+            {
+
+                var newManifestation = Registry.Get<PrefabFactory>().CreateManifestationPrefab(forContainer.ElementManifestationType.Name, this.transform);
+                SwapOutManifestation(_manifestation, newManifestation, RetirementVFX.None);
+            }
+
+            _manifestation.InitialiseVisuals(ElementStack._element);
+            _manifestation.UpdateVisuals(ElementStack._element, ElementStack.Quantity);
 
         }
 
@@ -200,12 +230,9 @@ namespace Assets.CS.TabletopUI {
         }
 
         protected virtual bool AllowsDrag() {
-            return !IsBeingAnimated;
+            return !IsInMotion &&  !shrouded && !_manifestation.RequestingNoDrag; ;
         }
 
-        protected virtual bool ShouldShowHoverGlow() {
-            return !Defunct && Sphere != null && !IsBeingAnimated && (Sphere.AllowDrag || Sphere.AlwaysShowHoverGlow) && AllowsDrag();
-        }
 
 
         /// <summary>
@@ -269,13 +296,23 @@ namespace Assets.CS.TabletopUI {
         }
 
         protected virtual void StartDrag(PointerEventData eventData) {
-            
-            
+
+
             //if (rectCanvas == null)
             //    rectCanvas = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
 
+            if (!Keyboard.current.shiftKey.wasPressedThisFrame)
+            {
+               ElementStack.SplitOffNCardsToNewStack(1, new Context(Context.ActionSource.PlayerDrag));
+            }
+
+
             _currentlyBeingDragged = true;
 
+            var enrouteContainer = Registry.Get<SphereCatalogue>().GetContainerByPath(
+                new SpherePath(Registry.Get<ICompendium>().GetSingleEntity<Dictum>().DefaultEnRouteSpherePath));
+            enrouteContainer.AcceptToken(this, new Context(Context.ActionSource.PlayerDrag));
+            _manifestation.OnBeginDragVisuals();
 
 
             TokenXNess = TokenXNess.NoValidDestination;
@@ -311,7 +348,7 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        
+
 
         public void OnDrag(PointerEventData eventData)
         {
@@ -400,78 +437,65 @@ namespace Assets.CS.TabletopUI {
 
         public virtual void OnDrop(PointerEventData eventData)
         {
+            
+            var incomingToken = eventData.pointerDrag.GetComponent<Token>();
+            if (incomingToken == null)
+                return;
 
-            InteractWithIncomingObject(eventData.pointerDrag);
-        }
-
-
-        public bool CanInteractWithTokenDroppedOn(GameObject objectDroppedOn)
-        {
-            var token = objectDroppedOn.GetComponent<AbstractToken>();
-            if (token == null)
-                return false;
-            return CanInteractWithTokenDroppedOn(token);
-        }
-
-        public bool CanInteractWithTokenDroppedOn(AbstractToken token) {
-            var element = token as ElementStackToken;
-
-            if (element != null)
-                return CanInteractWithIncomingObject(element);
+            if(CanInteractWithIncomingToken(incomingToken))
+                InteractWithIncomingToken(incomingToken,eventData);
             else
-                return CanInteractWithIncomingObject(token as VerbAnchor);
-        }
-
-
-
-        public virtual bool CanInteractWithIncomingObject(VerbAnchor tokenDroppedOn)
-        {
-            //verb dropped on verb - OK
-            return false; // a verb anchor can't be dropped on anything
-        }
-        public virtual bool CanInteractWithIncomingObject(ElementStackToken stackDroppedOn)
-        {
-
-            return (_situation.GetFirstAvailableThresholdForStackPush(stackDroppedOn).SphereCategory == SphereCategory.Threshold);
-        }
-
-        public void InteractWithIncomingObject(GameObject incomingObject)
-        {
-            var token = incomingObject.GetComponent<AbstractToken>();
-            if (token != null)
-                 InteractWithIncomingObject(token);
-        }
-        public void InteractWithIncomingObject(AbstractToken token)
-        {
-            var element = token as ElementStackToken;
-
-            if (element != null)
-                InteractWithIncomingObject(element);
-            else
-                InteractWithIncomingObject(token as VerbAnchor);
-        }
-
-
-        public virtual void InteractWithIncomingObject(VerbAnchor tokenDroppedOn)
-        {
-            //verb dropped on verb - OK
-
-            tokenDroppedOn.Sphere.TryMoveAsideFor(this, tokenDroppedOn, out bool moveAsideFor);
+            {
+                this.Sphere.TryMoveAsideFor(this, incomingToken, out bool moveAsideFor);
 
             if (moveAsideFor)
                 SetXNess(TokenXNess.DroppedOnTokenWhichMovedAside);
             else
                 SetXNess(TokenXNess.DroppedOnTokenWhichWontMoveAside);
-
+            }
         }
 
-        public virtual void InteractWithIncomingObject(ElementStackToken incomingStack)
+        public bool CanInteractWithIncomingToken(Token incomingToken)
         {
+            //can we merge tokens?
+            if (incomingToken.ElementStack.CanMergeWith(incomingToken.ElementStack))
+                return true;
 
-            if (CanInteractWithIncomingObject(incomingStack))
+            //can we put a stack in a threshold associated with this token?
+            if (_situation.GetFirstAvailableThresholdForStackPush(incomingToken.ElementStack).SphereCategory ==
+                SphereCategory.Threshold)
+                return true;
+
+            return false;
+        }
+
+        private void InteractWithIncomingToken(Token incomingToken,PointerEventData eventData)
+        {
+            Sphere.OnTokenReceivedADrop(new TokenEventArgs
             {
-                // This will put it into the ongoing or the starting slot, token determines
-                _situation.PushDraggedStackIntoThreshold(incomingStack);
+                Token = this,
+                Container = Sphere,
+                PointerEventData = eventData
+            });
+            if (ElementStack.IsValidElementStack() && incomingToken.ElementStack.IsValidElementStack())
+            {
+                if(incomingToken.ElementStack.CanMergeWith(incomingToken.ElementStack))
+                    AcceptIncomingStackForMerge(incomingStack);
+                else
+                {
+                    ElementStack.ShowNoMergeMessage(incomingToken.ElementStack);
+
+                    incomingToken.Sphere.TryMoveAsideFor(this, incomingToken, out bool moveAsideFor);
+
+                    if (moveAsideFor)
+                        SetXNess(TokenXNess.DroppedOnTokenWhichMovedAside);
+                }
+            }
+
+            else if (incomingToken.ElementStack.IsValidElementStack())
+            {
+
+                _situation.PushDraggedStackIntoThreshold(incomingToken.ElementStack);
 
                 // Then we open the situation (cause this closes other situations and this may return the stack we try to move
                 // back onto the tabletop - if it was in its starting slots. - Martin
@@ -479,11 +503,11 @@ namespace Assets.CS.TabletopUI {
                     _situation.OpenAtCurrentLocation();
                 return;
             }
-
-            // We can't interact? Then dump us on the tabletop
-            SetXNess(TokenXNess.ElementDroppedOnTokenButCannotInteractWithIt);
-            ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
-
+            else
+            {
+                // We can't interact? Then dump us on the tabletop
+                incomingToken.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
+            }
 
         }
 
@@ -491,6 +515,8 @@ namespace Assets.CS.TabletopUI {
 
         public virtual void OnPointerClick(PointerEventData eventData)
         {
+
+
 
             if (!_manifestation.HandleClick(eventData, this))
             {
@@ -503,12 +529,94 @@ namespace Assets.CS.TabletopUI {
                     _situation.Close();
             }
 
+
+
+            if (eventData.clickCount > 1)
+            {
+                // Double-click, so abort any pending single-clicks
+                singleClickPending = false;
+                Sphere.OnTokenDoubleClicked(new TokenEventArgs
+                {
+                    Element = ElementStack._element,
+                    Token = this,
+                    Container = Sphere,
+                    PointerEventData = eventData
+                });
+
+
+                SendStackToNearestValidSlot();
+            }
+            else
+            {
+                // Single-click BUT might be first half of a double-click
+                // Most of these functions are OK to fire instantly - just the ShowCardDetails we want to wait and confirm it's not a double
+                singleClickPending = true;
+
+
+                if (shrouded)
+                {
+                    Unshroud(false);
+
+                }
+                else
+                {
+                    Sphere.OnTokenClicked(new TokenEventArgs
+                    {
+                        Element = ElementStack._element,
+                        Token = this,
+                        Container = Sphere,
+                        PointerEventData = eventData
+                    });
+                }
+
+                // this moves the clicked sibling on top of any other nearby cards.
+                if (Sphere.GetType() != typeof(RecipeSlot) && Sphere.GetType() != typeof(ExhibitCards))
+                    transform.SetAsLastSibling();
+            }
+
         }
 
 
         public virtual void ReturnToTabletop(Context context)
         {
             Registry.Get<Choreographer>().ArrangeTokenOnTable(this, context);
+
+            bool stackBothSides = true;
+
+            //if we have an origin stack and the origin stack is on the tabletop, merge it with that.
+            //We might have changed the element that a stack is associated with... so check we can still merge it
+            if (originToken != null && originToken.Sphere.SphereCategory==SphereCategory.World && ElementStack.CanMergeWith(originToken.ElementStack))
+            {
+                originStack.AcceptIncomingStackForMerge(this);
+                return;
+            }
+            else
+            {
+                var tabletop = Registry.Get<TabletopManager>()._tabletop;
+                var existingStacks = tabletop.GetStackTokens();
+
+    //check if there's an existing stack of that type to merge with
+                    foreach (var stack in existingStacks)
+                    {
+                        if (CanMergeWith(stack))
+                        {
+                            var elementStack = stack as ElementStackToken;
+                            elementStack.AcceptIncomingStackForMerge(this);
+                            return;
+                        }
+                    }
+                
+
+                if (lastTablePos == null)   // If we've never been on the tabletop, use the drop zone
+                {
+                    // If we get here we have a new card that won't stack with anything else. Place it in the "in-tray"
+                    lastTablePos = GetDropZoneSpawnPos();
+                    stackBothSides = false;
+                }
+            }
+
+            Registry.Get<Choreographer>().ArrangeTokenOnTable(this, context, lastTablePos, false, stackBothSides);	// Never push other cards aside - CP
+
         }
 
 
@@ -564,7 +672,10 @@ namespace Assets.CS.TabletopUI {
 
         public virtual void HighlightPotentialInteractionWithToken(bool show)
         {
-            _manifestation.Highlight(HighlightType.CanInteractWithOtherToken);
+            if (show)
+                _manifestation.Highlight(HighlightType.CanInteractWithOtherToken);
+            else
+                _manifestation.Unhighlight(HighlightType.CanInteractWithOtherToken);
 
 
         }
@@ -590,7 +701,7 @@ namespace Assets.CS.TabletopUI {
                     TabletopImageBurner.ImageLayoutConfig.CenterOnToken);
         }
 
-        public virtual void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<AbstractToken> animDone, float startScale = 1f, float endScale = 1f)
+        public virtual void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<Token> animDone, float startScale = 1f, float endScale = 1f)
         {
             _manifestation.AnimateTo(this, duration, startPos, endPos, animDone, startScale, endScale);
         }
@@ -630,7 +741,7 @@ namespace Assets.CS.TabletopUI {
         public void ContainerContentsUpdated(Situation situation)
         {
             var thresholdSpheresWithStacks = situation.GetSpheresByCategory(SphereCategory.Threshold)
-                .Where(sphere => sphere.GetStacks().Count() == 1);
+                .Where(sphere => sphere.GetStackTokens().Count() == 1);
 
             _manifestation.DisplaySpheres(thresholdSpheresWithStacks);
 
@@ -643,5 +754,41 @@ namespace Assets.CS.TabletopUI {
         {
             throw new NotImplementedException();
         }
+
+        public void Understate()
+        {
+            _manifestation.Understate();
+        }
+
+        public void Emphasise()
+        {
+            _manifestation.Emphasise();
+        }
+
+
+        public void Unshroud(bool instant = false)
+        {
+            shrouded = false;
+            _manifestation.Reveal(instant);
+
+            //if a card has just been turned face up in a situation, it's now an existing, established card
+            if (ElementStack.StackSource.SourceType == SourceType.Fresh)
+                ElementStack.StackSource = Source.Existing();
+
+        }
+
+        public void Shroud(bool instant = false)
+        {
+            shrouded = true;
+            _manifestation.Shroud(instant);
+
+
+        }
+
+        public bool Shrouded()
+        {
+            return shrouded;
+        }
+
     }
 }

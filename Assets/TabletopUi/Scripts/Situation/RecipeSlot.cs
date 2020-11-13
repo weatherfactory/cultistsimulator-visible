@@ -129,7 +129,7 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        bool CanInteractWithDraggedObject(AbstractToken token) {
+        bool CanInteractWithDraggedObject(Token token) {
             if (lastGlowState == false || token == null)
                 return false;
 
@@ -155,9 +155,9 @@ namespace Assets.CS.TabletopUI {
                 if (GetTokenInSlot() == null)
                     ShowHoverGlow(true);
             }
-            else if (CanInteractWithDraggedObject(eventData.pointerDrag.GetComponent<AbstractToken>())) {
+            else if (CanInteractWithDraggedObject(eventData.pointerDrag.GetComponent<Token>())) {
                 if (lastGlowState)
-                    eventData.pointerDrag.GetComponent<AbstractToken>().HighlightPotentialInteractionWithToken(true);
+                    eventData.pointerDrag.GetComponent<Token>().HighlightPotentialInteractionWithToken(true);
 
                 if (GetTokenInSlot() == null) // Only glow if the slot is empty
                     ShowHoverGlow(true);
@@ -170,7 +170,7 @@ namespace Assets.CS.TabletopUI {
 
             if(eventData.dragging)
             {
-                var potentialDragToken = eventData.pointerDrag.GetComponent<AbstractToken>();
+                var potentialDragToken = eventData.pointerDrag.GetComponent<Token>();
 
                 if (lastGlowState && potentialDragToken != null)
                     potentialDragToken.HighlightPotentialInteractionWithToken(false);
@@ -253,25 +253,25 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public AbstractToken GetTokenInSlot() {
-            return GetComponentInChildren<AbstractToken>();
+        public Token GetTokenInSlot() {
+            return GetComponentInChildren<Token>();
         }
 
         public ElementStackToken GetElementStackInSlot()
         {
-            if (GetStacks().Count() > 1)
+            if (GetStackTokens().Count() > 1)
             {
                 NoonUtility.Log("Something weird in slot " + GoverningSlotSpecification.Id +
                                 ": it has more than one stack, so we're just returning the first.");
-                return GetStacks().First();
+                return GetStackTokens().First();
 
             }
 
-            return GetStacks().SingleOrDefault();
+            return GetStackTokens().SingleOrDefault();
         }
 
 
-        public override void TryMoveAsideFor(ElementStackToken potentialUsurper, AbstractToken incumbent, out bool incumbentMoved) {
+        public override void TryMoveAsideFor(ElementStackToken potentialUsurper, Token incumbent, out bool incumbentMoved) {
             if (IsGreedy) { // We do not allow
                 incumbentMoved = false;
                 return;

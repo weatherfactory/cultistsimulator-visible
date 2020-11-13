@@ -21,7 +21,7 @@ namespace Assets.CS.TabletopUI {
     [ExecuteInEditMode]
     public class DoorSlot : Sphere, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
 
-        public event System.Action<ElementStackToken> onCardDropped;
+        public event System.Action<Token> onCardDropped;
 
         public PortalEffect portalType;
         public Transform[] cardPositions;
@@ -151,21 +151,21 @@ namespace Assets.CS.TabletopUI {
 if(stack!=null)
 {
 
-            //now we put the token in the slot.
-            AcceptStack(stack, new global::Context(Context.ActionSource.PlayerDrag));
+                //now we put the token in the slot.
+                AcceptToken(stack, new global::Context(Context.ActionSource.PlayerDrag));
             SoundManager.PlaySfx("CardPutInSlot");
 }
         }
 
-        public override void AcceptStack(ElementStackToken stack, Context context) {
-            base.AcceptStack(stack,context);
+        public override void AcceptToken(Token token, Context context) {
+            base.AcceptToken(token, context);
 
             if (onCardDropped != null)
-                onCardDropped(stack);
+                onCardDropped(token);
         }
 
-        public AbstractToken GetTokenInSlot() {
-            return GetComponentInChildren<AbstractToken>();
+        public Token GetTokenInSlot() {
+            return GetComponentInChildren<Token>();
         }
 
         public ElementStackToken GetElementStackInSlot() {

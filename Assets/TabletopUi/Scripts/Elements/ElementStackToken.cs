@@ -36,14 +36,13 @@ namespace Assets.CS.TabletopUI {
 
 
 
-    public class ElementStackToken : AbstractToken, IArtAnimatableToken
+    public class ElementStackToken: MonoBehaviour
     {
         public const float SEND_STACK_TO_SLOT_DURATION = 0.2f;
 
-        public event System.Action<ElementStackToken> onTurnFaceUp; // only used in the map to hide the other cards
         public event System.Action<float> onDecay;
 
- 
+        public Element _element;
         private int _quantity;
 
 		// Cache aspect lists because they are EXPENSIVE to calculate repeatedly every frame - CP
@@ -52,29 +51,16 @@ namespace Assets.CS.TabletopUI {
 		private bool _aspectsDirtyInc = true;
 		private bool _aspectsDirtyExc = true;
 
-        // Interaction handling - CP
-		protected bool singleClickPending = false;
-
         public float LifetimeRemaining { get; set; }
-        public override bool NoPush
-        {
-            get { return _manifestation.NoPush; }
-        }
 
         public Source StackSource { get; set; }
 
-        private ElementStackToken originStack = null; // if it was pulled from a stack, save that stack!
+        
         private Dictionary<string,int> _currentMutations; //not strictly an aspects dictionary; it can contain negatives
         private IlluminateLibrarian _illuminateLibrarian;
     
 
 
-
-
-
-        public override string EntityId {
-            get { return _element == null ? null : _element.Id; }
-        }
         virtual public string Label
         {
             get { return _element == null ? null : _element.Label; }
@@ -92,7 +78,7 @@ namespace Assets.CS.TabletopUI {
 	        get
 	        {
 		        var mutations = GetCurrentMutations();
-		        return EntityId + "?" + string.Join(
+		        return _element.Id + "?" + string.Join(
 			               "&", 
 			               mutations.Keys
 				               .Where(m => mutations[m] != 0)
@@ -140,10 +126,6 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        protected override void Awake()
-		{
-            base.Awake();
-        }
 
         protected void OnDisable()
 		{
@@ -152,6 +134,10 @@ namespace Assets.CS.TabletopUI {
 
         }
 
+        public bool IsValidElementStack()
+        {
+            return EntityId != NullElement.NULL_ELEMENT_ID;
+        }
         
         public void SetQuantity(int quantity, Context context)
 		{
@@ -286,26 +272,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void Manifest(Sphere forContainer)
-        {
-            if (EntityId == "dropzone")
-            {
-                _manifestation= Registry.Get<PrefabFactory>().CreateManifestationPrefab(nameof(DropzoneManifestation),this.transform);
-                return;
-            }
-            
 
-            if (_manifestation.GetType()!=forContainer.ElementManifestationType)
-            {
-
-                var newManifestation = Registry.Get<PrefabFactory>().CreateManifestationPrefab(forContainer.ElementManifestationType.Name, this.transform);
-                SwapOutManifestation(_manifestation,newManifestation,RetirementVFX.None);
-            }
-
-            _manifestation.InitialiseVisuals(_element);
-            _manifestation.UpdateVisuals(_element,Quantity);
-            
-        }
 
         /// <summary>
         /// This is uses both for population and for repopulation - eg when an xtrigger transforms a stack
@@ -378,57 +345,21 @@ namespace Assets.CS.TabletopUI {
 
         public override void ReturnToTabletop(Context context)
 		{
-			bool stackBothSides = true;
 
-            //if we have an origin stack and the origin stack is on the tabletop, merge it with that.
-            //We might have changed the element that a stack is associated with... so check we can still merge it
-            if (originStack != null && originStack.IsOnTabletop() && CanMergeWith(originStack))
-			{
-                originStack.AcceptIncomingStackForMerge(this);
-                return;
-            }
-            else
-			{
-                var tabletop = Registry.Get<TabletopManager>()._tabletop;
-                var existingStacks = tabletop.GetStacks();
-
-				if (!_element.Unique)            // If we're not unique, auto-merge us!
-				{
-					//check if there's an existing stack of that type to merge with
-					foreach (var stack in existingStacks)
-					{
-						if (CanMergeWith(stack))
-						{
-							var elementStack = stack as ElementStackToken;
-							elementStack.AcceptIncomingStackForMerge(this);
-							return;
-						}
-					}
-				}
-			
-				if (lastTablePos == null)	// If we've never been on the tabletop, use the drop zone
-				{
-                    // If we get here we have a new card that won't stack with anything else. Place it in the "in-tray"
-                    lastTablePos = GetDropZoneSpawnPos();
-                    stackBothSides = false;
-                }
-			}
-
-            Registry.Get<Choreographer>().ArrangeTokenOnTable(this, context, lastTablePos, false, stackBothSides);	// Never push other cards aside - CP
         }
 
 		public Vector2 GetDropZoneSpawnPos()
 		{
 			var tabletop = Registry.Get<TabletopManager>()._tabletop;
-			var existingStacks = tabletop.GetStacks();
+			var existingStacks = tabletop.GetStackTokens();
 
 			Vector2 spawnPos = Vector2.zero;
-			AbstractToken	dropZoneObject = null;
+			Token	dropZoneObject = null;
 			Vector3			dropZoneOffset = new Vector3(0f,0f,0f);
 
 			foreach (var stack in existingStacks)
 			{
-				AbstractToken tok = stack as AbstractToken;
+				Token tok = stack as Token;
 				if (tok!=null && tok.EntityId == "dropzone")
 				{
 					dropZoneObject = tok;
@@ -448,7 +379,7 @@ namespace Assets.CS.TabletopUI {
 			return spawnPos;	
 		}
 
-		private AbstractToken CreateDropZone()
+		private Token CreateDropZone()
 		{
 			var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
 
@@ -461,7 +392,7 @@ namespace Assets.CS.TabletopUI {
             dropZone.transform.position = Vector3.zero;
             
             dropZone.transform.localScale = Vector3.one;
-            return dropZone as AbstractToken;
+            return dropZone as Token;
 		}
 
 
@@ -504,14 +435,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        private void SwapOutManifestation(IManifestation oldManifestation, IManifestation newManifestation,RetirementVFX vfxForOldManifestation)
-        {
-            var manifestationToRetire = oldManifestation;
-            _manifestation = newManifestation;
-            
-            manifestationToRetire.Retire(vfxForOldManifestation,OnSwappedOutManifestationRetired);
 
-        }
         
         public override bool Retire(RetirementVFX vfxName)
         {
@@ -543,22 +467,9 @@ namespace Assets.CS.TabletopUI {
             Destroy(this.gameObject);
         }
 
-        private void OnSwappedOutManifestationRetired()
-        {
-            //
-        }
 
 
 
-        protected override bool AllowsDrag()
-        {
-            return !shrouded && !_manifestation.RequestingNoDrag;
-        }
-
-        protected override bool ShouldShowHoverGlow() {
-            // interaction is always possible on facedown cards to turn them back up
-            return shrouded || base.ShouldShowHoverGlow();
-        }
 
         virtual public bool AllowsIncomingMerge() {
             if (Decays || _element.Unique || IsBeingAnimated)
@@ -637,14 +548,6 @@ namespace Assets.CS.TabletopUI {
 			
 		}
 
-        public override void HighlightPotentialInteractionWithToken(bool show)
-        {
-            if(show)
-                _manifestation.Highlight(HighlightType.CanInteractWithOtherToken);
-            else
-                _manifestation.Unhighlight(HighlightType.CanInteractWithOtherToken);
-
-        }
 
         public override void OnPointerEnter(PointerEventData eventData)
 		{
@@ -680,7 +583,7 @@ namespace Assets.CS.TabletopUI {
                 }
         }
 
-        public override void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<AbstractToken> animDone, float startScale, float endScale)
+        public override void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<Token> animDone, float startScale, float endScale)
         {
             var tokenAnim = gameObject.AddComponent<TokenAnimation>();
             tokenAnim.onAnimDone += animDone;
@@ -714,76 +617,8 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public override void OnPointerClick(PointerEventData eventData)
-        {
-    
-            if (eventData.clickCount > 1)
-			{
-				// Double-click, so abort any pending single-clicks
-				singleClickPending = false;
-                Sphere.OnTokenDoubleClicked(new TokenEventArgs
-                {
-                    Element = _element,
-                    Token = this,
-                    Container = Sphere,
-                    PointerEventData = eventData
-                });
 
-
-                SendStackToNearestValidSlot();
-			}
-			else
-			{
-				// Single-click BUT might be first half of a double-click
-				// Most of these functions are OK to fire instantly - just the ShowCardDetails we want to wait and confirm it's not a double
-				singleClickPending = true;
-
-    
-                if (shrouded)
-				{
-                    Unshroud(false);
-
-                    if (onTurnFaceUp != null)
-                        onTurnFaceUp(this);
-
-                }
-				else
-				{
-                    Sphere.OnTokenClicked(new TokenEventArgs
-                    {
-                        Element = _element,
-                        Token = this,
-                        Container = Sphere,
-                        PointerEventData = eventData
-                    });
-                }
-
-				// this moves the clicked sibling on top of any other nearby cards.
-				if (Sphere.GetType() != typeof(RecipeSlot) && Sphere.GetType()!=typeof(ExhibitCards) )
-					transform.SetAsLastSibling();
-			}
-        }
-
-        /// <summary>
-        /// this is on the object that *accepts* a drop
-        /// </summary>
-        /// <param name="eventData"></param>
-        public override void OnDrop(PointerEventData eventData) {
-            Sphere.OnTokenReceivedADrop(new TokenEventArgs
-            {
-                Element = _element,
-                Token = this,
-                Container = Sphere,
-                PointerEventData = eventData
-            });
-
-            InteractWithIncomingObject(eventData.pointerDrag);
-
-        }
-
-
-
-        public bool CanMergeWith(ElementStackToken intoStack)
+        public virtual bool CanMergeWith(ElementStackToken intoStack)
 		{
             if(intoStack.EntityId != this.EntityId)
                 return false;
@@ -799,51 +634,12 @@ namespace Assets.CS.TabletopUI {
             return true;
         }
 
-        public override bool CanInteractWithIncomingObject(ElementStackToken stackDroppedOn)
-        {
-            //element dropped on element
-            return CanMergeWith(stackDroppedOn);
-        }
-
-        public override void InteractWithIncomingObject(ElementStackToken incomingStack) {
-            //element dropped on element
-            if (CanInteractWithIncomingObject(incomingStack)) {
-                AcceptIncomingStackForMerge(incomingStack);
-                }
-            else {
-                ShowNoMergeMessage(incomingStack);
-
-                var droppedOnToken = incomingStack as AbstractToken;
-                bool moveAsideFor = false;
-                droppedOnToken.Sphere.TryMoveAsideFor(this, droppedOnToken, out moveAsideFor);
-
-                if (moveAsideFor)
-                    SetXNess(TokenXNess.DroppedOnTokenWhichMovedAside);
-            }
-        }
-
-        public override bool CanInteractWithIncomingObject(VerbAnchor tokenDroppedOn)
-        {
-            //verb dropped on element - FIXED
-            return false; // a verb anchor can't be dropped on anything
-        }
-
-        public override void InteractWithIncomingObject(VerbAnchor tokenDroppedOn)
-        {
-            //Verb dropped on element - FIXED
-            
-            this.Sphere.TryMoveAsideFor(this,tokenDroppedOn, out bool  moveAsideFor);
-
-            if (moveAsideFor)
-                SetXNess(TokenXNess.DroppedOnTokenWhichMovedAside);
-            else
-                SetXNess(TokenXNess.DroppedOnTokenWhichWontMoveAside);
-        }
 
 
+   
 
-        void ShowNoMergeMessage(ElementStackToken stackDroppedOn) {
-            if (stackDroppedOn.EntityId != this.EntityId)
+        public void ShowNoMergeMessage(ElementStackToken stackDroppedOn) {
+            if (stackDroppedOn._element.Id != this._element.Id)
                 return; // We're dropping on a different element? No message needed.
 
             if (stackDroppedOn.Decays)
@@ -856,7 +652,7 @@ namespace Assets.CS.TabletopUI {
             if (Quantity > n)
             {
                 var cardLeftBehind =
-                    Sphere.ProvisionElementStack(EntityId, Quantity - n, Source.Existing(), context) as ElementStackToken;
+                    Sphere.ProvisionElementStack(_element.Id, Quantity - n, Source.Existing(), context) as ElementStackToken;
                 foreach (var m in GetCurrentMutations())
 	                cardLeftBehind.SetMutation(m.Key, m.Value, false); //brand new mutation, never needs to be additive
 
@@ -875,32 +671,7 @@ namespace Assets.CS.TabletopUI {
 
             return null;
         }
-
-        protected override void StartDrag(PointerEventData eventData)
-        {
-            if (!Keyboard.current.shiftKey.wasPressedThisFrame)
-            {
-                SplitOffNCardsToNewStack(1, new Context(Context.ActionSource.PlayerDrag));
-            }
-
-            _currentlyBeingDragged = true;
-
-            var enrouteContainer = Registry.Get<SphereCatalogue>().GetContainerByPath(
-                new SpherePath(Registry.Get<ICompendium>().GetSingleEntity<Dictum>().DefaultEnRouteSpherePath));
-            enrouteContainer.AcceptStack(this, new Context(Context.ActionSource.PlayerDrag));
-
-            _manifestation.OnBeginDragVisuals();
-
-
-            base.StartDrag(eventData); // To ensure all events fire at the end
-        }
-
-        public override void OnEndDrag(PointerEventData eventData)
-        {
-            base.OnEndDrag(eventData);
-
-        }
-      
+     
 
 
         public void Decay(float interval) {
@@ -984,38 +755,6 @@ namespace Assets.CS.TabletopUI {
             return true;
         }
 
-        public void Understate()
-        {
-            _manifestation.Understate();
-        }
-
-        public void Emphasise()
-        {
-            _manifestation.Emphasise();
-        }
-
-
-        public void Unshroud(bool instant = false)
-        {
-            shrouded = false;
-            _manifestation.Reveal(instant);
-
-            //if a card has just been turned face up in a situation, it's now an existing, established card
-            if (StackSource.SourceType == SourceType.Fresh)
-                StackSource = Source.Existing();
-
-        }
-
-        public void Shroud(bool instant = false) {
-            shrouded = true;
-            _manifestation.Shroud(instant);
-
-        
-        }
-
-        public bool Shrouded() {
-            return shrouded;
-        }
 
 
 

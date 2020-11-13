@@ -52,7 +52,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         #region -- PUBLIC POSITIONING METHODS ----------------------------
 
-        public void ArrangeTokenOnTable(AbstractToken token, Context context) {
+        public void ArrangeTokenOnTable(Token token, Context context) {
             token.RectTransform.anchoredPosition = GetFreePosWithDebug(token, Vector2.zero);
 
             _tabletop.DisplayHere(token, context);
@@ -262,7 +262,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         bool CanTokenBeIgnored(IToken token, IToken ignoreToken) {
             if (token == ignoreToken)
                 return true;
-            if (token.IsBeingAnimated)
+            if (token.IsInMotion)
                 return true;
             if (token.Defunct)
                 return true;

@@ -91,9 +91,9 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             throw new NotImplementedException();
         }
 
-        public bool HandleClick(PointerEventData eventData, VerbAnchor anchor)
+        public bool HandleClick(PointerEventData eventData, Token token)
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public void DisplaySpheres(IEnumerable<Sphere> spheres)

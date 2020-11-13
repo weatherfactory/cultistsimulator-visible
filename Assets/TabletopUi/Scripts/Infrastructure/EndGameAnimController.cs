@@ -31,7 +31,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             fadeOverlay.gameObject.SetActive(false);
         }
 
-        public void TriggerEnd(AbstractToken culpableVerb, Ending ending) {
+        public void TriggerEnd(Token culpableVerb, Ending ending) {
             if (isEnding)
                 return;
 
@@ -39,7 +39,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             StartCoroutine(DoEndGameAnim(culpableVerb, ending));
         }
 
-        IEnumerator DoEndGameAnim(AbstractToken culpableVerb, Ending ending) {
+        IEnumerator DoEndGameAnim(Token culpableVerb, Ending ending) {
             const float zoomDuration = 5f;
             const float fadeDuration = 2f;
 
@@ -130,7 +130,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
         void RetireAllStacks(RetirementVFX anim) {
-            var stacks = _tabletopManager._tabletop.GetStacks();
+            var stacks = _tabletopManager._tabletop.GetStackTokens();
 
             foreach (var item in stacks)
                 item.Retire(anim);

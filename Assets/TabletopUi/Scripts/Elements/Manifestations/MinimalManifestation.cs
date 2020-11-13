@@ -24,7 +24,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         }
 
-        public void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<AbstractToken> animDone, float startScale, float endScale)
+        public void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<Token> animDone, float startScale, float endScale)
         {
             //do nothing
         }
@@ -55,7 +55,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
         }
 
-        public bool HandleClick(PointerEventData eventData, VerbAnchor anchor)
+        public bool HandleClick(PointerEventData eventData, Token token)
         {
             return false;
         }

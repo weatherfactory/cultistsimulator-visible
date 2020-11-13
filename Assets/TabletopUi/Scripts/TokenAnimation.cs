@@ -8,7 +8,7 @@ public class TokenAnimation : MonoBehaviour {
 
 	public event System.Action<VerbAnchor> onAnimDone;
 
-	protected AbstractToken token;
+	protected Token token;
 
 	private Vector3 startPosition;
 	private Vector3 endPosition;
@@ -53,9 +53,9 @@ public class TokenAnimation : MonoBehaviour {
 		this.duration = duration;
 		this.timeSpent = 0f;
 
-		token = GetComponent<AbstractToken>();
+		token = GetComponent<Token>();
 		token.enabled = false;
-        token.IsBeingAnimated = true;
+        token.IsInMotion = true;
         token.RectTransform.localScale = Vector3.one * scaleStart;
 		IsRunning = true;
 	}
@@ -93,7 +93,7 @@ public class TokenAnimation : MonoBehaviour {
 		token.RectTransform.anchoredPosition3D = new Vector3(endPos.x, endPos.y, zPos);
 		token.RectTransform.localScale = Vector3.one * scaleEnd;
 		token.enabled = true;
-        token.IsBeingAnimated = false;
+        token.IsInMotion = false;
 
 		FireCompleteEvent();
 		Destroy(this);

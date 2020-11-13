@@ -63,7 +63,7 @@ namespace Assets.Core.Services
             _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastcharactername.ToString(), newName);
         }
 
-        public void TokenPlacedOnTabletop(AbstractToken  token)
+        public void TokenPlacedOnTabletop(Token  token)
         {
 
             if (token.PlacementAlreadyChronicled)
@@ -120,7 +120,7 @@ namespace Assets.Core.Services
             
             foreach (var tc in tokenContainers)
             {
-                allStacksInGame.AddRange(tc.GetStacks());
+                allStacksInGame.AddRange(tc.GetStackTokens());
             }
 
             var rnd=new Random();

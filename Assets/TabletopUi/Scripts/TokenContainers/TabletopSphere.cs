@@ -71,21 +71,15 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
         Registry.Get<Choreographer>().MoveAllTokensOverlappingWith(token);
     }
 
-    public override void TryMoveAsideFor(VerbAnchor potentialUsurper, AbstractToken incumbent, out bool incumbentMoved) {
+    public override void TryMoveAsideFor(Token potentialUsurper, Token incumbent, out bool incumbentMoved) {
         //incumbent.RectTransform.anchoredPosition = GetFreeTokenPos(incumbent);
         incumbentMoved = true;
-        DisplayHere(potentialUsurper, new Context(Context.ActionSource.PlayerDrag));
-    }
-
-    public override void TryMoveAsideFor(ElementStackToken potentialUsurper, AbstractToken incumbent, out bool incumbentMoved) {
-        // We don't merge here. We assume if we end up here no merge was possible
-        //incumbent.RectTransform.anchoredPosition = GetFreeTokenPos(incumbent);
-        incumbentMoved = true;
-        AcceptStack(potentialUsurper, new Context(Context.ActionSource.PlayerDrag));
+        AcceptToken(potentialUsurper, new Context(Context.ActionSource.PlayerDrag));
         CheckOverlappingTokens(potentialUsurper);
     }
 
-    Vector2 GetFreeTokenPos(AbstractToken incumbent) {
+
+    Vector2 GetFreeTokenPos(Token incumbent) {
         var choreo = Registry.Get<Choreographer>();
         var currentPos = incumbent.RectTransform.anchoredPosition;
 
@@ -153,8 +147,8 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
     }
 
     // Returns all visual tokens for use by the Choreographer
-    public virtual IEnumerable<AbstractToken> GetTokens() {
-        return transform.GetComponentsInChildren<AbstractToken>();
+    public virtual IEnumerable<Token> GetTokens() {
+        return transform.GetComponentsInChildren<Token>();
     }
 
     // Hide / Show for use with Mansus Map transition

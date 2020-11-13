@@ -90,7 +90,7 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
             slot.childSlots.Clear();
         }
 
-        AbstractToken tokenContained = slot.GetTokenInSlot();
+        Token tokenContained = slot.GetTokenInSlot();
 
         if (tokenContained != null) {
             tokenContained.ReturnToTabletop(context);

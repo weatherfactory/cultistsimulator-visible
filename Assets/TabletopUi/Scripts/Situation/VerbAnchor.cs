@@ -27,14 +27,9 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI {
 
-    public class VerbAnchor : AbstractToken
+    public class VerbAnchor : Token
     {
- 
-
-
-
-
-
+        
         public override bool Retire() {
             if (!Defunct)
                 SpawnKillFX();

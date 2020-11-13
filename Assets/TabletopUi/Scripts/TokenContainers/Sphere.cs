@@ -87,7 +87,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public bool Defunct { get; protected set; }
         protected HashSet<ContainerBlock> _currentContainerBlocks = new HashSet<ContainerBlock>();
         private SphereCatalogue _catalogue;
-        private List<ElementStackToken> _stacks = new List<ElementStackToken>();
+        private List<Token> _stacks = new List<Token>();
         private readonly HashSet<ISphereEventSubscriber> _subscribers = new HashSet<ISphereEventSubscriber>();
 
         public void Subscribe(ISphereEventSubscriber subscriber)
@@ -198,7 +198,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             stack.Populate(elementId, quantity, stackSource);
 
-            AcceptStack(stack, context);
+            AcceptToken(stack, context);
 
             return stack;
         }
@@ -219,14 +219,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
 
-        public virtual void DisplayHere(ElementStackToken stack, Context context)
+        public virtual void DisplayHere(Token token, Context context)
         {
-            stack.Manifest(this);
-            DisplayHere(stack as AbstractToken, context);
-        }
-
-        public virtual void DisplayHere(IToken token, Context context)
-        {
+            token.Manifest(this);
             token.transform.SetParent(transform);
             token.transform.localPosition = Vector3.zero;
             token.transform.localRotation = Quaternion.identity;
@@ -234,19 +229,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         }
 
-        public virtual void TryMoveAsideFor(VerbAnchor potentialUsurper, AbstractToken incumbent,
+        public virtual void TryMoveAsideFor(Token potentialUsurper, Token incumbent,
             out bool incumbentMoved)
         {
             // By default: do no move-aside
             incumbentMoved = false;
         }
 
-        public virtual void TryMoveAsideFor(ElementStackToken potentialUsurper, AbstractToken incumbent,
-            out bool incumbentMoved)
-        {
-            // By default: do no move-aside
-            incumbentMoved = false;
-        }
 
         public virtual SpherePath GetPath()
         {
@@ -313,11 +302,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                                             quantityChange + ")");
 
             var newStack = ProvisionElementStack(elementId, quantityChange, stackSource, context);
-            AcceptStack(newStack, context);
+            AcceptToken(newStack, context);
             return quantityChange;
         }
 
-        public IEnumerable<ElementStackToken> GetStacks()
+        public IEnumerable<ElementStackToken> GetStackTokens()
         {
             return _stacks.Where(s => !s.Defunct).ToList();
         }
@@ -405,50 +394,44 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
 
-        public virtual void AcceptToken(AbstractToken anchor, Context context)
-        {
 
-            anchor.SetSphere(this, context);
-            DisplayHere(anchor,context);
-        }
-
-    public virtual void AcceptStack(ElementStackToken stack, Context context)
+    public virtual void AcceptToken(Token token, Context context)
         {
             
-            stack.SetSphere(this, context);
+            token.SetSphere(this, context);
 
             if (EnforceUniqueStacksInThisContainer)
             {
                 var dealer = new Dealer(Registry.Get<Character>());
-                if (!String.IsNullOrEmpty(stack.UniquenessGroup))
-                    dealer.RemoveFromAllDecksIfInUniquenessGroup(stack.UniquenessGroup);
-                if (stack.Unique)
-                    dealer.IndicateUniqueCardManifested(stack.EntityId);
+                if (!String.IsNullOrEmpty(token.ElementStack.UniquenessGroup))
+                    dealer.RemoveFromAllDecksIfInUniquenessGroup(token.ElementStack.UniquenessGroup);
+                if (token.ElementStack.Unique)
+                    dealer.IndicateUniqueCardManifested(token.EntityId);
             }
 
             // Check if we're dropping a unique stack? Then kill all other copies of it on the tabletop
             if (EnforceUniqueStacksInThisContainer)
-                RemoveDuplicates(stack);
+                RemoveDuplicates(token);
 
             // Check if the stack's elements are decaying, and split them if they are
             // Decaying stacks should not be allowed
-            while (stack.Decays && stack.Quantity > 1)
+            while (token.ElementStack.Decays && token.ElementStack.Quantity > 1)
             {
-                AcceptStack(stack.SplitOffNCardsToNewStack(stack.Quantity - 1, context), context);
+                AcceptToken(token.SplitOffNCardsToNewStack(token.Quantity - 1, context), context);
             }
 
 
             //sometimes, we reassign a stack to a container where it already lives. Don't add it again!
-            if (!_stacks.Contains(stack))
-                _stacks.Add(stack);
+            if (!_stacks.Contains(token))
+                _stacks.Add(token);
 
-            DisplayHere(stack, context);
+            DisplayHere(token, context);
             NotifyStacksChangedForContainer(new TokenEventArgs { Container = this });
 
         }
 
 
-        public bool TryAcceptStackAsThreshold(ElementStackToken stack)
+        public bool TryAcceptTokenAsThreshold(ElementStackToken stack)
         {
 
             //does the token match the slot? Check that first
@@ -474,12 +457,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 // And we split a new one that's 1 (leaving the returning card to be n-1)
                 var newStack = stack.SplitOffNCardsToNewStack(stack.Quantity - 1, new Context(Context.ActionSource.PlayerDrag));
                 // And we put that into the slot
-                AcceptStack(newStack, new Context(Context.ActionSource.PlayerDrag));
+                AcceptToken(newStack, new Context(Context.ActionSource.PlayerDrag));
             }
             else
             {
                 //it matches. Now we check if there's a token already there, and replace it if so:
-                var currentOccupant = GetStacks().FirstOrDefault();
+                var currentOccupant = GetStackTokens().FirstOrDefault();
 
                 // if we drop in the same slot where we came from, do nothing.
                 if (currentOccupant == stack)
@@ -494,7 +477,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
                 //now we put the token in the slot.
                 stack.SetXNess(TokenXNess.PlacedInSlot);
-                AcceptStack(stack, new Context(Context.ActionSource.PlayerDrag));
+                AcceptToken(stack, new Context(Context.ActionSource.PlayerDrag));
                 SoundManager.PlaySfx("CardPutInSlot");
             }
 
@@ -528,11 +511,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             }
         }
 
-        public void AcceptStacks(IEnumerable<ElementStackToken> stacks, Context context)
+        public void AcceptTokens(IEnumerable<ElementStackToken> stacks, Context context)
         {
             foreach (var eachStack in stacks)
             {
-                AcceptStack(eachStack, context);
+                AcceptToken(eachStack, context);
             }
         }
 
