@@ -13,6 +13,7 @@ using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Infrastructure.Events;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.Scripts.TokenContainers;
@@ -28,6 +29,8 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
     public override SphereCategory SphereCategory => SphereCategory.World;
 
     public EnRouteSphere SendViaContainer;
+    public const float SEND_STACK_TO_SLOT_DURATION = 0.2f;
+
 
     public override bool AllowDrag { get { return true; } }
     public override bool AllowStackMerge { get { return true; } }
@@ -61,9 +64,73 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
         token.transform.SetParent(transform, true);
         token.transform.localRotation = Quaternion.identity;
 		token.SnapToGrid();
-        token.DisplayAtTableLevel(); // This puts it on the table, so now the choreographer will pick it up
 
     }
+    public override void OnTokenDoubleClicked(TokenEventArgs args)
+    {
+        SendTokenToNearestValidDestination(args.Token);
+        base.OnTokenDoubleClicked(args);
+    }
+
+    private bool SendTokenToNearestValidDestination(Token tokenToSend)
+    {
+
+        if (!tokenToSend.ElementStack.IsValidElementStack())
+            return false;
+
+
+        Dictionary<Sphere, Situation> candidateThresholds = new Dictionary<Sphere, Situation>();
+        var registeredSituations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
+        foreach (Situation situation in registeredSituations)
+        {
+            try
+            {
+                var candidateThreshold = situation.GetFirstAvailableThresholdForStackPush(tokenToSend.ElementStack);
+                candidateThresholds.Add(candidateThreshold, situation);
+
+            }
+            catch (Exception e)
+            {
+                NoonUtility.LogWarning("Problem adding a candidate threshold to list of valid thresholds - does a valid threshold belong to more than one situation? - " + e.Message);
+            }
+        }
+
+        if (candidateThresholds.Any())
+        {
+            Sphere selectedCandidate = null;
+            float selectedSlotDist = float.MaxValue;
+
+            foreach (Sphere candidate in candidateThresholds.Keys)
+            {
+                Vector3 distance = candidateThresholds[candidate].GetAnchorLocation().Position - transform.position;
+                //Debug.Log("Dist to " + tokenpair.Token.EntityId + " = " + dist.magnitude );
+                if (candidateThresholds[candidate].IsOpen && candidateThresholds[candidate].Species.ExclusiveOpen)
+                    distance = Vector3.zero;    // Prioritise open windows above all else
+                if (distance.sqrMagnitude < selectedSlotDist)
+                {
+                    selectedSlotDist = distance.sqrMagnitude;
+                    selectedCandidate = candidate;
+                }
+            }
+
+            if (selectedCandidate != null)
+            {
+
+                var candidateAnchorLocation = candidateThresholds[selectedCandidate].GetAnchorLocation();
+                if (tokenToSend.ElementQuantity > 1)
+                   tokenToSend.CalveTokenAtPosition(tokenToSend.ElementQuantity - 1, new Context(Context.ActionSource.DoubleClickSend));
+                SendViaContainer.PrepareElementForSendAnim(tokenToSend, candidateAnchorLocation); // this reparents the card so it can animate properly
+                SendViaContainer.MoveElementToSituationSlot(tokenToSend, candidateAnchorLocation, selectedCandidate, SEND_STACK_TO_SLOT_DURATION);
+
+                return true;
+            }
+        }
+
+        //final fallthrough - couldn't send it anywhere
+        return false;
+    }
+
+
 
     // Tabletop specific
     public void CheckOverlappingTokens(Token token) {

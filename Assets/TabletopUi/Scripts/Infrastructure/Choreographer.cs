@@ -48,11 +48,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 NoonUtility.Log("Missing setting entity: " + NoonConstants.GRIDSNAPSIZE);
         }
 
-        
 
-        #region -- PUBLIC POSITIONING METHODS ----------------------------
-
-        public void ArrangeTokenOnTable(Token token, Context context) {
+     public void ArrangeTokenOnTable(Token token, Context context) {
             
             
             token.RectTransform.anchoredPosition = GetFreePosWithDebug(token, Vector2.zero);
@@ -81,9 +78,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         }
 
-        #endregion
-
-        #region -- POSITIONING HELP METHODS ----------------------------
+#region -- POSITIONING HELP METHODS ----------------------------
 
         public void MoveAllTokensOverlappingWith(Token pushingToken)
 		{

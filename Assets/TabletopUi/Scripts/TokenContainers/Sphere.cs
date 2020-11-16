@@ -648,7 +648,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 s.OnTokenPointerExited(args);
         }
 
-        public void OnTokenDoubleClicked(TokenEventArgs args)
+        public virtual void OnTokenDoubleClicked(TokenEventArgs args)
         {
             Catalogue.OnTokenDoubleClicked(args);
             foreach (var s in _subscribers)
@@ -661,6 +661,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             foreach(var s in _subscribers)
                 s.OnTokenDragged(args);
         }
+
+
     }
 
 }

@@ -18,6 +18,7 @@ using Assets.TabletopUi.Scripts.Infrastructure.Events;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.Scripts.TokenContainers;
+using Assets.TabletopUi.Scripts.UI;
 using Noon;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -354,10 +355,8 @@ namespace Assets.CS.TabletopUI {
             if (!Keyboard.current.shiftKey.wasPressedThisFrame)
             {
                 if (ElementStack.IsValidElementStack() && ElementQuantity > 1)
-                {
-                    OriginToken =
-                        CalveTokenAtPosition(ElementQuantity - 1, new Context(Context.ActionSource.PlayerDrag));
-                }
+                    CalveTokenAtPosition(ElementQuantity - 1, new Context(Context.ActionSource.PlayerDrag));
+                
             }
 
             _currentlyBeingDragged = true;
@@ -598,6 +597,7 @@ namespace Assets.CS.TabletopUI {
 
             // Accepting stack may put it to pos Vector3.zero, so this is last
             calvedToken.transform.position = transform.position;
+            originToken = calvedToken;
             return calvedToken;
 
         }
@@ -633,7 +633,7 @@ namespace Assets.CS.TabletopUI {
                 });
 
 
-                SendStackToNearestValidSlot();
+                SendTokenToNearestValidDestination();
             }
             else
             {
@@ -666,6 +666,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
+
         public virtual void ReturnToTabletop(Context context)
         {
             Registry.Get<Choreographer>().ArrangeTokenOnTable(this, context);
@@ -691,7 +692,9 @@ namespace Assets.CS.TabletopUI {
                     if (CanMergeWith(stack))
                     {
                         var elementStack = stack as ElementStack;
-                        elementStack.AcceptIncomingStackForMerge(this);
+                        elementStack.AcceptIncomingStackForMerge(this.ElementStack);
+
+                        _manifestation.Highlight(HighlightType.AttentionPls);
                         return;
                     }
                 }
@@ -729,11 +732,25 @@ namespace Assets.CS.TabletopUI {
 
         public virtual bool Retire(RetirementVFX vfx)
         {
+            if (Defunct)
+                return false;
             Defunct = true;
-            Destroy(gameObject);
+            FinishDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex)
+
+            _manifestation.Retire(vfx, OnManifestationRetired);
+            ElementStack.Retire(vfx);
+            Sphere.NotifyTokensChangedForContainer(new TokenEventArgs { Element = Element, Token = this, Container = Sphere });  // Notify tabletop that aspects will need recompiling
+
+            SetSphere(Registry.Get<NullContainer>(), new Context(Context.ActionSource.Retire));
+
             return true;
         }
 
+        private void OnManifestationRetired()
+        {
+
+            Destroy(this.gameObject);
+        }
 
 
 
@@ -850,11 +867,10 @@ namespace Assets.CS.TabletopUI {
 
         public void ElementStackStateUpdated(ElementStack stack)
         {
+
             _manifestation.UpdateVisuals(stack.Element,stack.Quantity);
             _manifestation.UpdateTimerVisuals(stack.Element.Lifetime,stack.LifetimeRemaining,stack.IntervalForLastHeartbeat,Element.Resaturate,EndingFlavour.None);
             PlacementAlreadyChronicled = false; //should really only do this if the element has changed
-
-
 
             Sphere.NotifyTokensChangedForContainer(new TokenEventArgs { Token = this, Element = Element, Container = Sphere });
         }
@@ -910,6 +926,7 @@ namespace Assets.CS.TabletopUI {
         {
             return shrouded;
         }
+
 
     }
 }

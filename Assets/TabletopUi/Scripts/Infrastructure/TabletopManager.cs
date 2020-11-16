@@ -271,7 +271,7 @@ namespace Assets.CS.TabletopUI {
         {
 
 
-            var choreographer = new Choreographer(_tabletop, WindowsSphere);
+            var choreographer = new Choreographer(_tabletop);
             registry.Register(choreographer);
 
            
@@ -347,7 +347,7 @@ namespace Assets.CS.TabletopUI {
             {
                 var context = new Context(Context.ActionSource.Loading);
 
-                ElementStack token = _tabletop.ProvisionElementStackToken(e.Key, e.Value, Source.Existing(),context);
+                Token token = _tabletop.ProvisionElementStackToken(e.Key, e.Value, Source.Existing(),context,Element.EmptyMutationsDictionary());
                 Registry.Get<Choreographer>().ArrangeTokenOnTable(token, context);
             }
         }

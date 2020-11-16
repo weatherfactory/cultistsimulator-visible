@@ -38,7 +38,6 @@ namespace Assets.CS.TabletopUI {
 
     public class ElementStack: MonoBehaviour
     {
-        public const float SEND_STACK_TO_SLOT_DURATION = 0.2f;
 
         public event System.Action<float> onDecay;
         public bool Defunct { get; protected set; }
@@ -320,52 +319,7 @@ namespace Assets.CS.TabletopUI {
 
 
 
-		public Vector2 GetDropZoneSpawnPos()
-		{
-			var tabletop = Registry.Get<TabletopManager>()._tabletop;
-			var existingStacks = tabletop.GetElementTokens();
-
-			Vector2 spawnPos = Vector2.zero;
-			Token	dropZoneObject = null;
-			Vector3			dropZoneOffset = new Vector3(0f,0f,0f);
-
-			foreach (var stack in existingStacks)
-			{
-				Token tok = stack as Token;
-				if (tok!=null && tok.Element == "dropzone")
-				{
-					dropZoneObject = tok;
-					break;
-				}
-			}
-			if (dropZoneObject == null)
-			{
-				dropZoneObject = CreateDropZone();		// Create drop zone now and add to stacks
-			}
-
-			if (dropZoneObject != null)	// Position card near dropzone
-			{
-				spawnPos = Registry.Get<Choreographer>().GetTablePosForWorldPos(dropZoneObject.transform.position + dropZoneOffset);
-			}
-			
-			return spawnPos;	
-		}
-
-		private Token CreateDropZone()
-		{
-			var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
-
-            var dropZone = tabletop._tabletop.ProvisionElementStackToken("dropzone", 1, Source.Fresh(),
-                new Context(Context.ActionSource.Loading));
-
-            dropZone.Populate("dropzone", 1, Source.Fresh());
-
-            // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
-            dropZone.transform.position = Vector3.zero;
-            
-            dropZone.transform.localScale = Vector3.one;
-            return dropZone as Token;
-		}
+		
 
 
 
@@ -373,15 +327,12 @@ namespace Assets.CS.TabletopUI {
             SetQuantity(Quantity + stackMergedIntoThisOne.Quantity,new Context(Context.ActionSource.Merge));
             stackMergedIntoThisOne.Retire(RetirementVFX.None);
 
-            SetXNess(TokenXNess.MergedIntoStack);
+          _attachedToken.SetXNess(TokenXNess.MergedIntoStack);
             SoundManager.PlaySfx("CardPutOnStack");
 
-            _manifestation.Highlight(HighlightType.AttentionPls);
         }
 
-
-
-
+        
         public bool Retire()
         {
             return Retire(RetirementVFX.CardBurn);
@@ -395,116 +346,21 @@ namespace Assets.CS.TabletopUI {
 
             if (Defunct)
                 return false;
-
-            var hlc = Registry.Get<HighlightLocationsController>();
-            if (hlc != null)
-                hlc.DeactivateMatchingHighlightLocation(Element?.Id);
-
-            Sphere.NotifyTokensChangedForContainer(new TokenEventArgs{Element = Element,Token = this,Container = Sphere});  // Notify tabletop that aspects will need recompiling
-            SetSphere(Registry.Get<NullContainer>(), new Context(Context.ActionSource.Retire));
-
-
             Defunct = true;
-            FinishDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex)
 
-            
-            _manifestation.Retire(vfxName,OnManifestationRetired);
+            if(!_attachedToken.Equals(null) && !_attachedToken.Defunct)
+                _attachedToken.Retire(vfxName); 
 
             return true;
 
         }
 
-        private void OnManifestationRetired()
-        {
 
-            Destroy(this.gameObject);
-        }
-
-
-
-
-
-        virtual public bool AllowsIncomingMerge() {
-            if (Decays || Element.Unique || IsBeingAnimated)
-                return false;
-            else
-                return Sphere.AllowStackMerge;
-        }
-
-        virtual public bool AllowsOutgoingMerge() {
-            if (Decays || Element.Unique || IsBeingAnimated)
-                return false;
-            else
-                return true;	// If outgoing, it doesn't matter what its current container is - CP
-        }
         
 
-		private void SendStackToNearestValidSlot()
-		{
-			if (TabletopManager.IsInMansus())	// Prevent SendTo while in Mansus
-				return;
-            var tabletopTokenContainer = Sphere as TabletopSphere;
-
-            if(tabletopTokenContainer==null)
-				return;
-
-
-            Dictionary<Sphere, Situation> candidateThresholds = new Dictionary<Sphere, Situation>();
-			var registeredSituations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
-			foreach(Situation situation in registeredSituations)
-            {
-                try
-                {
-
-                    var candidateThreshold=situation.GetFirstAvailableThresholdForStackPush(this);
-                    if(candidateThreshold!=null)
-                        candidateThresholds.Add(candidateThreshold,situation);
-                }
-                catch (Exception e)
-                {
-                    NoonUtility.LogWarning("Problem adding a candidate threshold to list of valid thresholds - does a valid threshold belong to more than one situation? - "  + e.Message);
-                }
-            }
-
-            if (candidateThresholds.Any())
-            {
-                Sphere selectedCandidate=null;
-                float selectedSlotDist = float.MaxValue;
-
-                foreach (Sphere candidate in candidateThresholds.Keys)
-                {
-                    Vector3 distance = candidateThresholds[candidate].GetAnchorLocation().Position - transform.position;
-                    //Debug.Log("Dist to " + tokenpair.Token.EntityId + " = " + dist.magnitude );
-                    if (!candidate.CurrentlyBlockedFor(BlockDirection.Inward))
-                        distance = Vector3.zero;    // Prioritise open windows above all else
-                    if (distance.sqrMagnitude < selectedSlotDist)
-                    {
-                        selectedSlotDist = distance.sqrMagnitude;
-                        selectedCandidate = candidate;
-                    }
-                }
-
-                if (selectedCandidate != null)
-                {
-
-                    var candidateAnchorLocation = candidateThresholds[selectedCandidate].GetAnchorLocation();
-                    TryCreateNewStackWithSplitCardsToLeaveBehind(1, new Context(Context.ActionSource.DoubleClickSend));
-                    tabletopTokenContainer.SendViaContainer.PrepareElementForSendAnim(this, candidateAnchorLocation); // this reparents the card so it can animate properly
-                    tabletopTokenContainer.SendViaContainer.MoveElementToSituationSlot(this,candidateAnchorLocation, selectedCandidate, SEND_STACK_TO_SLOT_DURATION);
-
-                }
-            }
-
-			// Now find the best target from that list
 		
 
-			
-		}
-
-        
-
-
-        public void bool CanMergeWith(ElementStack intoStack)
+        public bool CanMergeWith(ElementStack intoStack)
 		{
             if(intoStack.Element != this.Element)
                 return false;
@@ -522,7 +378,24 @@ namespace Assets.CS.TabletopUI {
 
 
 
-   
+
+        virtual public bool AllowsIncomingMerge()
+        {
+            if (Decays || Element.Unique ||_attachedToken.IsInMotion)
+                return false;
+            else
+                return _attachedToken.Sphere.AllowStackMerge;
+        }
+
+        virtual public bool AllowsOutgoingMerge()
+        {
+            if (Decays || Element.Unique || _attachedToken.IsInMotion)
+                return false;
+            else
+                return true;	// If outgoing, it doesn't matter what its current container is - CP
+        }
+
+
 
         public void ShowNoMergeMessage(ElementStack stackDroppedOn) {
             if (stackDroppedOn.Element.Id != this.Element.Id)
@@ -534,32 +407,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public ElementStack TryCreateNewStackWithSplitCardsToLeaveBehind(int n, Context context) {
-            if (Quantity > n)
-            {
-                var cardLeftBehind =
-                    Sphere.ProvisionElementStackToken(Element.Id, Quantity - n, Source.Existing(), context) as ElementStack;
-                foreach (var m in GetCurrentMutations())
-	                cardLeftBehind.SetMutation(m.Key, m.Value, false); //brand new mutation, never needs to be additive
-
-                originStack = cardLeftBehind;
-
-                //goes weird when we pick things up from a slot. Do we need to refactor to Accept/Gateway in order to fix?
-                SetQuantity(n,context);
-
-                // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
-                cardLeftBehind.transform.position = transform.position;
-                
-                // Accepting stack may put it to pos Vector3.zero, so this is last
-                cardLeftBehind.transform.position = transform.position;
-                return cardLeftBehind;
-            }
-
-            return null;
-        }
-     
-
-
+        
         public void Decay(float interval) {
             //passing a negative interval overrides and ensures it'll always decay
             if (!Decays && interval>=0)

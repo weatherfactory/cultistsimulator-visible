@@ -61,12 +61,12 @@ namespace Assets.TabletopUi.Scripts.UI
       {
           var hlToActivate = highlightLocations.SingleOrDefault(hl => (hl.HighlightWhileElementIdInteracting == elementId || hl.DisplayWhileElementIdPresent == elementId));
           if (hlToActivate != null)
-            { 
+          { 
               hlToActivate.HideForNoInteraction();
-            }
-        }
+          }
+      }
 
-        public void ActivateOnlyMatchingHighlightLocation(string elementId)
+      public void ActivateOnlyMatchingHighlightLocation(string elementId)
       {
           DeactivateHighlightLocations();
           ActivateMatchingHighlightLocation(elementId);
@@ -84,35 +84,38 @@ namespace Assets.TabletopUi.Scripts.UI
               if (aspectsInContext.AspectsExtant.ContainsKey(hl.DisplayWhileElementIdPresent))
                   hl.DisplayForPresence(0f);
               else
+              {
                   hl.HideForNoPresence();
+                    hl.HideForNoInteraction(); //in case we were interacting with it and it got retired
+              }
           }
-        }
+      }
 
       public void OnTokenClicked(TokenEventArgs args)
       {
-          }
+      }
 
       public void OnTokenReceivedADrop(TokenEventArgs args)
       {
-          }
+      }
 
       public void OnTokenPointerEntered(TokenEventArgs args)
       {
           if (!args.PointerEventData.dragging)
-                ActivateOnlyMatchingHighlightLocation(args.Element.Id);
+              ActivateOnlyMatchingHighlightLocation(args.Element.Id);
 
-        }
+      }
 
       public void OnTokenPointerExited(TokenEventArgs args)
       { 
           if(!args.PointerEventData.dragging)
-           DeactivateMatchingHighlightLocation(args.Element.Id);
+              DeactivateMatchingHighlightLocation(args.Element.Id);
 
-        }
+      }
 
       public void OnTokenDoubleClicked(TokenEventArgs args)
       {
-          }
+      }
 
       public void OnTokenDragged(TokenEventArgs args)
       {

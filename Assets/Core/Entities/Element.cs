@@ -199,6 +199,10 @@ namespace Assets.Core.Entities
         }
 
 
+        public static Dictionary<string, int> EmptyMutationsDictionary()
+        {
+            return new Dictionary<string, int>();
+        }
     }
 
 
