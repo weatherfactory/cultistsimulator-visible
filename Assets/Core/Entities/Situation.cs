@@ -174,7 +174,7 @@ namespace Assets.Core.Entities {
                 Complete();
 
             //If we leave anything in the ongoing slot, it's lost, and also the situation ends up in an anomalous state which breaks loads
-            AcceptTokens(SphereCategory.SituationStorage, GetStacks(SphereCategory.Threshold));
+            AcceptTokens(SphereCategory.SituationStorage, GetTokens(SphereCategory.Threshold));
 
         }
 
@@ -234,7 +234,7 @@ namespace Assets.Core.Entities {
 
         }
 
-        void HandleOnGreedySlotAnimDone(ElementStack element, TokenLocation destination,
+        void HandleOnGreedySlotAnimDone(Token token, TokenLocation destination,
             Sphere destinatinoSlot)
         {
             greedyAnimIsActive = false;
@@ -307,38 +307,55 @@ namespace Assets.Core.Entities {
         }
 
         
-    public void AcceptToken(SphereCategory forSphereCategory, ElementStack stack, Context context)
+    public void AcceptToken(SphereCategory forSphereCategory, Token token, Context context)
         {
-            var stackTokenList = new List<ElementStack> {stack};
-            AcceptTokens(forSphereCategory, stackTokenList, context);
+            var tokenList = new List<Token> {token};
+            AcceptTokens(forSphereCategory, tokenList, context);
         }
 
-        public void AcceptTokens(SphereCategory forSphereCategory, IEnumerable<ElementStack> stacks,
+        public void AcceptTokens(SphereCategory forSphereCategory, IEnumerable<Token> tokens,
             Context context)
         {
             var acceptingContainer = GetSingleSphereByCategory(forSphereCategory);
-            acceptingContainer.AcceptTokens(stacks, context);
+            acceptingContainer.AcceptTokens(tokens, context);
         }
 
-        public void AcceptTokens(SphereCategory forSphereCategory, IEnumerable<ElementStack> stacks)
+        public void AcceptTokens(SphereCategory forSphereCategory, IEnumerable<Token> tokens)
         {
-            AcceptTokens(forSphereCategory,stacks,new Context(Context.ActionSource.Unknown));
+            AcceptTokens(forSphereCategory,tokens,new Context(Context.ActionSource.Unknown));
         }
 
         public List<ElementStack> GetAllStacksInSituation()
         {
             List<ElementStack> stacks = new List<ElementStack>();
             foreach (var container in _spheres)
-                stacks.AddRange(container.GetElementTokens());
+                stacks.AddRange(container.GetElementTokens().Select(t=>t.ElementStack));
             return stacks;
         }
 
+        public List<Token> GetTokens(SphereCategory forSphereCategory)
+        {
+            List<Token> stacks = new List<Token>();
+            foreach (var container in _spheres.Where(c => c.SphereCategory == forSphereCategory))
+                stacks.AddRange(container.GetAllTokens());
+
+            return stacks;
+        }
+
+        public List<Token> GetElementTokens(SphereCategory forSphereCategory)
+        {
+            List<Token> stacks = new List<Token>();
+            foreach (var container in _spheres.Where(c => c.SphereCategory == forSphereCategory))
+                stacks.AddRange(container.GetElementTokens());
+
+            return stacks;
+        }
 
         public List<ElementStack> GetStacks(SphereCategory forSphereCategory)
         {
             List<ElementStack> stacks = new List<ElementStack>();
             foreach (var container in _spheres.Where(c => c.SphereCategory == forSphereCategory))
-                stacks.AddRange(container.GetElementTokens());
+                stacks.AddRange(container.GetElementTokens().Select(s=>s.ElementStack));
 
             return stacks;
         }
@@ -377,7 +394,7 @@ namespace Assets.Core.Entities {
                     CurrentRecipePrediction = GetUpdatedRecipePrediction();
                     CurrentBeginningEffectCommand = new RecipeBeginningEffectCommand(currentPrimaryRecipe.Slots, CurrentRecipePrediction.BurnImage);
                     var storageContainer = GetSingleSphereByCategory(SphereCategory.SituationStorage);
-                    storageContainer.AcceptTokens(GetStacks(SphereCategory.Threshold),
+                    storageContainer.AcceptTokens(GetTokens(SphereCategory.Threshold),
                         new Context(Context.ActionSource.SituationStoreStacks));
                     break;
 
@@ -490,7 +507,7 @@ namespace Assets.Core.Entities {
             //move any elements currently in OngoingSlots to situation storage
             //NB we're doing this *before* we execute the command - the command may affect these elements too
             GetSingleSphereByCategory(SphereCategory.SituationStorage).AcceptTokens(
-                GetStacks(SphereCategory.Threshold), new Context(Context.ActionSource.SituationStoreStacks));
+                GetTokens(SphereCategory.Threshold), new Context(Context.ActionSource.SituationStoreStacks));
 
 
             foreach (var c in recipeExecutionCommands)
@@ -532,13 +549,13 @@ namespace Assets.Core.Entities {
         }
         private void CreateNewSituation(RecipeCompletionEffectCommand effectCommand)
         {
-            List<ElementStack> stacksToAddToNewSituation = new List<ElementStack>();
+            List<Token> stacksToAddToNewSituation = new List<Token>();
             //if there's an expulsion
             if (effectCommand.Expulsion.Limit > 0)
             {
                 //find one or more matching stacks. Important! the limit applies to stacks, not cards. This might need to change.
                 AspectMatchFilter filter = new AspectMatchFilter(effectCommand.Expulsion.Filter);
-                var filteredStacks = filter.FilterElementStacks(GetStacks(SphereCategory.SituationStorage)).ToList();
+                var filteredStacks = filter.FilterElementStacks(GetElementTokens(SphereCategory.SituationStorage)).ToList();
 
                 if (filteredStacks.Any() && effectCommand.Expulsion.Limit > 0)
                 {
@@ -592,30 +609,30 @@ namespace Assets.Core.Entities {
         State = SituationState.Complete;
 
 
-        var outputStacks = GetStacks(SphereCategory.SituationStorage);
-        AcceptTokens(SphereCategory.Output, outputStacks, new Context(Context.ActionSource.SituationResults));
+        var outputTokens = GetTokens(SphereCategory.SituationStorage);
+        AcceptTokens(SphereCategory.Output, outputTokens, new Context(Context.ActionSource.SituationResults));
         
-        AttemptAspectInductions(currentPrimaryRecipe,outputStacks);
+        AttemptAspectInductions(currentPrimaryRecipe,outputTokens);
 
 
             SoundManager.PlaySfx("SituationComplete"); //this could run through that Echo obj
     }
 
 
-    private void AttemptAspectInductions(Recipe currentRecipe, List<ElementStack> outputStacks) // this should absolutely go through subscription - something to succeed ttm
+    private void AttemptAspectInductions(Recipe currentRecipe, List<Token> outputTokens) // this should absolutely go through subscription - something to succeed ttm
     {
         //If any elements in the output, or in the situation itself, have inductions, test whether to start a new recipe
 
-   var inducingAspects = new AspectsDictionary();
+     var inducingAspects = new AspectsDictionary();
 
         //shrouded cards don't trigger inductions. This is because we don't generally want to trigger an induction
         //for something that has JUST BEEN CREATED. This started out as a hack, but now we've moved from 'face-down'
         //to 'shrouded' it feels more suitable.
 
-        foreach (var os in outputStacks)
+        foreach (var os in outputTokens)
         {
             if (!os.Shrouded())
-                inducingAspects.CombineAspects(os.GetAspects());
+                inducingAspects.CombineAspects(os.ElementStack.GetAspects());
         }
 
 
@@ -658,7 +675,7 @@ namespace Assets.Core.Entities {
             inducedRecipe.Label, inducedRecipe.Description);
         SituationCreationCommand inducedSituation = new SituationCreationCommand(inductionRecipeVerb,
             inducedRecipe, SituationState.ReadyToStart, _anchor.Location, _anchor);
-        Registry.Get<SituationsCatalogue>().BeginNewSituation(inducedSituation, new List<ElementStack>());
+        Registry.Get<SituationsCatalogue>().BeginNewSituation(inducedSituation, new List<Token>());
     }
 
         public void Close()
@@ -735,7 +752,7 @@ namespace Assets.Core.Entities {
 
         public void CollectOutputStacks()
         {
-            var results = GetStacks(SphereCategory.Output);
+            var results = GetElementTokens(SphereCategory.Output);
             foreach (var item in results)
                 item.ReturnToTabletop(new Context(Context.ActionSource.PlayerDumpAll));
             
@@ -788,7 +805,7 @@ namespace Assets.Core.Entities {
                 t.ActivatePreRecipeExecutionBehaviour();
 
             //now move the stacks out of the starting slots into storage
-            AcceptTokens(SphereCategory.SituationStorage,GetStacks(SphereCategory.Threshold));
+            AcceptTokens(SphereCategory.SituationStorage,GetElementTokens(SphereCategory.Threshold));
 
             //The game might be paused! or the player might just be incredibly quick off the mark
             //so immediately continue with a 0 interval - this won't advance time, but will update the visuals in the situation window

@@ -105,20 +105,15 @@ namespace Assets.CS.TabletopUI {
             if (args.TokenInteractionType == TokenInteractionType.BeginDrag)
             {
 
-                var stack = args.Token as ElementStack;
-
-                if (stack == null)
-                    return;
                 if (GetElementTokenInSlot() != null)
                     return; // Slot is filled? Don't highlight it as interactive
                 if (IsBeingAnimated)
                     return; // Slot is being animated? Don't highlight
                 if (IsGreedy)
                     return; // Slot is greedy? It can never take anything.
-                if (stack.EntityId == "dropzone")
-                    return; // Dropzone can never be put in a slot
+                
 
-                if (GetMatchForStack(stack).MatchType == SlotMatchForAspectsType.Okay)
+                if (GetMatchForStack(args.Token.ElementStack).MatchType == SlotMatchForAspectsType.Okay)
                     ShowGlow(true,false);
             }
 
@@ -133,13 +128,12 @@ namespace Assets.CS.TabletopUI {
             if (lastGlowState == false || token == null)
                 return false;
 
-            var stack = token as ElementStack;
-
-            if (stack == null)
+            
+            if (!token.ElementStack.IsValidElementStack())
                 return false; // we only accept stacks
 
             //does the token match the slot? Check that first
-            ContainerMatchForStack match = GetMatchForStack(stack);
+            ContainerMatchForStack match = GetMatchForStack(token.ElementStack);
 
             return match.MatchType == SlotMatchForAspectsType.Okay;
         }
@@ -229,7 +223,7 @@ namespace Assets.CS.TabletopUI {
         public void OnDrop(PointerEventData eventData)
         {
 
-            var stack = eventData.pointerDrag.GetComponent<ElementStack>();
+            var stack = eventData.pointerDrag.GetComponent<Token>();
 
             if (GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
                 return;
@@ -246,11 +240,8 @@ namespace Assets.CS.TabletopUI {
 
         public override void DisplayHere(Token token, Context context) {
             base.DisplayHere(token, context);
-            var stack = token as ElementStack;
-
-            if (stack != null) {
-                slotIconHolder.transform.SetAsLastSibling();
-            }
+            slotIconHolder.transform.SetAsLastSibling();
+            
         }
 
         public Token GetTokenInSlot() {
@@ -310,10 +301,10 @@ namespace Assets.CS.TabletopUI {
 
         public override void ActivatePreRecipeExecutionBehaviour() {
             if (GoverningSlotSpecification.Consumes) {
-                var stack = GetElementTokenInSlot();
+                var token = GetElementTokenInSlot();
 
-                if (stack != null)
-                    stack.MarkedForConsumption = true;
+                if (token != null)
+                    token.ElementStack.MarkedForConsumption = true;
             }
         }
 

@@ -70,7 +70,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var animatables = new List<Token>();
             
             foreach (var stack in stacks)
-                if (!stack.Defunct && stack.CanAnimateArt() && stack.EntityId != lastAnimID)
+                if (!stack.Defunct && stack.CanAnimateArt() && stack. Element.Id != lastAnimID)
                     animatables.Add(stack);
 
             //List<Token> tokens =new List<Token>(Registry.Get<SituationsCatalogue>().GetAnimatables());
@@ -84,7 +84,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 int index = UnityEngine.Random.Range(0, animatables.Count);
 
                 animatables[index].StartArtAnimation();
-                lastAnimID = animatables[index].EntityId;
+                lastAnimID = animatables[index].Element.Id;
 				numAnimsRemainingToAirSound--;
 
 				if (numAnimsRemainingToAirSound <= 8) {

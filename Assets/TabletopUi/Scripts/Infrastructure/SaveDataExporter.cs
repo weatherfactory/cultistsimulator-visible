@@ -5,7 +5,7 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 
 namespace Assets.TabletopUi.Scripts
 {
-    public class SaveDataExporter : IGameDataExporter
+    public class SaveDataExporter
     {
         public Hashtable GetSaveHashTable(MetaInfo metaInfo, ITableSaveState tableSaveState, Character character)
         {

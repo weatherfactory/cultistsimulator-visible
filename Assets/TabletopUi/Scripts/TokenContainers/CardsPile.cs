@@ -39,7 +39,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
 
             foreach (var s in shuffledList)
                 if(!exceptElements.Contains(s))
-                   ProvisionElementStackToken(s, 1, Source.Fresh(), new Context(Context.ActionSource.Unknown));
+                   ProvisionElementStackToken(s, 1, Source.Fresh(), new Context(Context.ActionSource.Unknown),Element.EmptyMutationsDictionary());
       }
 
       public override SpherePath GetPath()

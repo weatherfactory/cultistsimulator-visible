@@ -348,7 +348,7 @@ namespace Assets.CS.TabletopUI {
                 var context = new Context(Context.ActionSource.Loading);
 
                 Token token = _tabletop.ProvisionElementStackToken(e.Key, e.Value, Source.Existing(),context,Element.EmptyMutationsDictionary());
-                Registry.Get<Choreographer>().ArrangeTokenOnTable(token, context);
+                Registry.Get<Choreographer>().PlaceTokenOnTableAtFreePosition(token, context);
             }
         }
 
@@ -550,7 +550,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
             try
             {
-	            ITableSaveState tableSaveState=new TableSaveState(_tabletop.GetElementTokens(), Registry.Get<SituationsCatalogue>().GetRegisteredSituations(),Registry.Get<MetaInfo>());
+	            ITableSaveState tableSaveState=new TableSaveState(_tabletop.GetElementStacks(), Registry.Get<SituationsCatalogue>().GetRegisteredSituations(),Registry.Get<MetaInfo>());
                  var   saveTask = Registry.Get<GameSaveManager>().SaveActiveGameAsync(tableSaveState,  Registry.Get<Character>(), source);
                  NoonUtility.Log("Beginning save", 0,VerbosityLevel.SystemChatter);
                bool    success = await saveTask;
@@ -666,39 +666,39 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             return true;
         }
 
-        private ElementStack FindStackForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
+        private Token FindStackForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
 
             var rnd = new Random();
-            var stacks = _tabletop.GetElementTokens().OrderBy(x=>rnd.Next());
+            var tokens = _tabletop.GetElementTokens().OrderBy(x=>rnd.Next());
 
-            foreach (var stack in stacks)
-                if (CanPullCardToGreedySlot(stack as ElementStack, slotSpec))
+            foreach (var token in tokens)
+                if (CanPullCardToGreedySlot(token, slotSpec))
                 {
 
-                    if (stack._currentlyBeingDragged)
+                    if (token._currentlyBeingDragged)
                     {
-                        stack.SetXNess(TokenXNess.DivertedByGreedySlot);
-                        stack.FinishDrag();
+                        token.SetXNess(TokenXNess.DivertedByGreedySlot);
+                        token.FinishDrag();
                     }
                 
-                    return stack;
+                    return token;
                 }
 
             
             return null;
         }
 
-        private bool CanPullCardToGreedySlot(ElementStack stack, SlotSpecification slotSpec)
+        private bool CanPullCardToGreedySlot(Token stackToken, SlotSpecification slotSpec)
         {
             if (slotSpec == null)
                 return false; //We were seeing NullReferenceExceptions in the Unity analytics from the bottom line; stack is referenced okay so it shouldn't be stack, so probably a null slotspec is being specified somewhere
 
-            if (stack == null) //..but just in case.
+            if (stackToken == null) //..but just in case.
                 return false;
 
-            if (stack.Defunct)
+            if (stackToken.Defunct)
                 return false; // don't pull defunct cards
-            else if (stack.IsBeingAnimated)
+            else if (stackToken.IsInMotion)
                 return false; // don't pull animated cards
 
 
@@ -706,12 +706,12 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             if (allowExploits!=null || allowExploits > 0)
             {
                 Debug.Log("exploits on");
-                if (stack._currentlyBeingDragged)
+                if (stackToken._currentlyBeingDragged)
                     return false; // don't pull cards being dragged if Worm is set On}
             }
             
 
-            return slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay;
+            return slotSpec.GetSlotMatchForAspects(stackToken.ElementStack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay;
         }
 
      
@@ -758,12 +758,11 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
         
         void HandleOnMapBackgroundDropped(PointerEventData eventData)
         {
-            var stack = eventData.pointerDrag.GetComponent<ElementStack>();
+            var stack = eventData.pointerDrag.GetComponent<Token>();
 
             if (stack!=null) {
 
                 stack.SetXNess(TokenXNess.DroppedOnTableContainer);
-                stack.DisplayAtTableLevel();
                 MapSphere.DisplayHere(stack, new Context(Context.ActionSource.PlayerDrag));
 
                 SoundManager.PlaySfx("CardDrop");
@@ -771,7 +770,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
         }
 
         public void DecayStacksOnTable(float interval) {
-            var decayingStacks = _tabletop.GetElementTokens().Where(s => s.Decays);
+            var decayingStacks = _tabletop.GetElementStacks().Where(s => s.Decays);
 
             foreach (var d in decayingStacks)
                 d.Decay(interval);
@@ -857,16 +856,16 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
 
         public void SignalImpendingDoom(Token situationToken) {
-            if(!currentDoomTokens.Contains(situationToken.EntityId))
-                currentDoomTokens.Add(situationToken.EntityId);
+            if(!currentDoomTokens.Contains(situationToken.Verb.Id))
+                currentDoomTokens.Add(situationToken.Verb.Id);
             backgroundMusic.PlayImpendingDoom();
         }
 
 
         public void NoMoreImpendingDoom(Token situationToken)
         {
-            if (currentDoomTokens.Contains(situationToken.EntityId))
-                currentDoomTokens.Remove(situationToken.EntityId);
+            if (currentDoomTokens.Contains(situationToken.Verb.Id))
+                currentDoomTokens.Remove(situationToken.Verb.Id);
             if(!currentDoomTokens.Any())
                 backgroundMusic.NoMoreImpendingDoom();
         }
@@ -880,7 +879,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 			{
 				cardPingLastTriggered = time;
 
-				var stacks = FindAllStacksForSlotSpecificationOnTabletop(slotSpec);
+                var stacks = FindAllElementTokenssForSlotSpecificationOnTabletop(slotSpec);
 
 				foreach (var stack in stacks)
 				{
@@ -911,15 +910,13 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
    
         }
 
-		private List<ElementStack> FindAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
-			var stackList = new List<ElementStack>();
-			var stacks = _tabletop.GetElementTokens();
-			ElementStack stack;
+		private List<Token> FindAllElementTokenssForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
+			var stackList = new List<Token>();
+			var stackTokens = _tabletop.GetElementTokens();
 
-			foreach (var stack in stacks) {
-				stackToken = stack as ElementStack;
+			foreach (var stackToken in stackTokens) {
 
-				if (stackToken != null && CanPullCardToGreedySlot(stackToken, slotSpec))
+				if (CanPullCardToGreedySlot(stackToken, slotSpec))
 					stackList.Add(stackToken);
 			}
 

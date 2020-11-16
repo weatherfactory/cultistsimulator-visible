@@ -54,7 +54,7 @@ namespace Assets.CS.TabletopUI {
             if (args.TokenInteractionType == TokenInteractionType.BeginDrag)
             {
 
-                var stack = args.Token as ElementStack;
+                var stack = args.Token;
 
                 if (stack == null)
                     return;
@@ -146,7 +146,7 @@ namespace Assets.CS.TabletopUI {
             if (!isActive || !eventData.dragging)
                 return;
 
-            ElementStack stack = eventData.pointerDrag.GetComponent<ElementStack>();
+            Token stack = eventData.pointerDrag.GetComponent<Token>();
 
 if(stack!=null)
 {

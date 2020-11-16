@@ -67,7 +67,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     public class GameSaveManager: MonoBehaviour
     {
         private IGameDataImporter dataImporter= new SaveDataImporter();
-        private IGameDataExporter dataExporter= new SaveDataExporter();
+        private SaveDataExporter dataExporter= new SaveDataExporter();
         private SimpleJSONGameDataImporter simpleJsonGameDataImporter=new SimpleJSONGameDataImporter();
 
         // Save game safety

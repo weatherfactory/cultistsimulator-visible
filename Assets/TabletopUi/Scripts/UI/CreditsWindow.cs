@@ -55,8 +55,8 @@ namespace Assets.TabletopUi.Scripts.UI
         public void OnTokenClicked(TokenEventArgs args)
         {
 
-            CardsExhibit.HighlightCardWithId(args.Token.EntityId);
-            Responsibilities.text = args.Token.Label;
+            CardsExhibit.HighlightCardWithId(args.Token.Element.Id);
+            Responsibilities.text = args.Token.Element.Label;
             Names.text = args.Element.Description;
         }
 
@@ -72,7 +72,7 @@ namespace Assets.TabletopUi.Scripts.UI
 
         public void OnTokenPointerExited(TokenEventArgs args)
         {
-            if (Responsibilities.text != args.Token.Label) // don't remove the highlight if the card is currently selected
+            if (Responsibilities.text != args.Token.Element.Label) // don't remove the highlight if the card is currently selected
                 args.Token.Understate();
         }
 

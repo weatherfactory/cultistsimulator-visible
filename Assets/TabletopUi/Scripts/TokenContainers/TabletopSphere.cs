@@ -118,7 +118,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
 
                 var candidateAnchorLocation = candidateThresholds[selectedCandidate].GetAnchorLocation();
                 if (tokenToSend.ElementQuantity > 1)
-                   tokenToSend.CalveTokenAtPosition(tokenToSend.ElementQuantity - 1, new Context(Context.ActionSource.DoubleClickSend));
+                   tokenToSend.CalveTokenAtSamePosition(tokenToSend.ElementQuantity - 1, new Context(Context.ActionSource.DoubleClickSend));
                 SendViaContainer.PrepareElementForSendAnim(tokenToSend, candidateAnchorLocation); // this reparents the card so it can animate properly
                 SendViaContainer.MoveElementToSituationSlot(tokenToSend, candidateAnchorLocation, selectedCandidate, SEND_STACK_TO_SLOT_DURATION);
 

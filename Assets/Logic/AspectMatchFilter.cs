@@ -17,13 +17,13 @@ namespace Assets.Logic
             _filterCriteria = filterCriteria;
         }
 
-        public IEnumerable<ElementStack> FilterElementStacks(IEnumerable<ElementStack> stacks)
+        public IEnumerable<Token> FilterElementStacks(IEnumerable<Token> stacks)
         {
-            IList<ElementStack> filteredElementStacks=new List<ElementStack>();
+            IList<Token> filteredElementStacks=new List<Token>();
             foreach (var stack in stacks)
             {
 
-                if (stack.GetAspects().Any(a => _filterCriteria.ContainsKey(a.Key) && _filterCriteria[a.Key] <= a.Value))
+                if (stack.ElementStack.GetAspects().Any(a => _filterCriteria.ContainsKey(a.Key) && _filterCriteria[a.Key] <= a.Value))
                     filteredElementStacks.Add(stack);
             }
             return filteredElementStacks;

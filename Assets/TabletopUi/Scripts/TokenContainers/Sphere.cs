@@ -66,8 +66,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public abstract SphereCategory SphereCategory { get; }
         public SlotSpecification GoverningSlotSpecification { get; set; }
 
-        [Tooltip("Use this to specify the SpherePath in the editor")]
-        [SerializeField] protected string pathIdentifier;
+        [Tooltip("Use this to specify the SpherePath in the editor")] [SerializeField]
+        protected string pathIdentifier;
 
         public SphereCatalogue Catalogue
         {
@@ -165,8 +165,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             Source stackSource, Context context)
         {
             var token = ProvisionElementStackToken(stackCreationCommand.ElementId, stackCreationCommand.ElementQuantity,
-                stackSource, context,stackCreationCommand.Mutations);
-            
+                stackSource, context, stackCreationCommand.Mutations);
+
 
             token.ElementStack.IlluminateLibrarian = new IlluminateLibrarian(stackCreationCommand.Illuminations);
 
@@ -185,11 +185,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public virtual Token ProvisionElementStackToken(string elementId, int quantity)
         {
             return ProvisionElementStackToken(elementId, quantity, Source.Existing(),
-                new Context(Context.ActionSource.Unknown),new Dictionary<string, int>());
+                new Context(Context.ActionSource.Unknown), new Dictionary<string, int>());
+        }
+
+        public Token ProvisionElementStackToken(string elementId, int quantity, Source stackSource,
+            Context context)
+        {
+           return  ProvisionElementStackToken(elementId, quantity, stackSource, context, Element.EmptyMutationsDictionary());
         }
 
 
-        public Token ProvisionElementStackToken(string elementId, int quantity, Source stackSource,
+    public Token ProvisionElementStackToken(string elementId, int quantity, Source stackSource,
             Context context,Dictionary<string,int> withMutations)
         {
 
@@ -436,7 +442,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 // Decaying stacks should not be allowed
                 while (token.ElementStack.Decays && token.ElementStack.Quantity > 1)
                 {
-                    AcceptToken(token.SplitOffNCardsToNewStack(token.Quantity - 1, context), context);
+                    AcceptToken(token.CalveTokenAtSamePosition(1,context),context);
+
                 }
 
             }
@@ -478,7 +485,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 // set main stack to be returned to start position
                 token.SetXNess(TokenXNess.ReturningSplitStack);
                 // And we split a new one that's 1 (leaving the returning card to be n-1)
-                var newStack = token.SplitOffNCardsToNewStack(token.Quantity - 1, new Context(Context.ActionSource.PlayerDrag));
+                var newStack = token.CalveTokenAtSamePosition( 1, new Context(Context.ActionSource.PlayerDrag));
                 // And we put that into the slot
                 AcceptToken(newStack, new Context(Context.ActionSource.PlayerDrag));
             }
@@ -577,25 +584,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
 
-        /// <summary>
-        /// This was relevant for a refactoring of the greedy slot code; I decided to do something else
-        /// but this code might still be useful elsewhere!
-        /// </summary>
-        /// <param name="requirement"></param>
-        /// <returns></returns>
-        public List<ElementStack> GetStacksWithAspect(KeyValuePair<string, int> requirement)
-        {
-            List<ElementStack> matchingStacks = new List<ElementStack>();
-            var candidateStacks = new List<ElementStack>(_tokens); //room here for caching
-            foreach (var stack in candidateStacks)
-            {
-                int aspectAtValue = stack.GetAspects(true).AspectValue(requirement.Key);
-                if (aspectAtValue >= requirement.Value)
-                    matchingStacks.Add(stack);
-            }
-
-            return matchingStacks;
-        }
 
         public virtual void ActivatePreRecipeExecutionBehaviour()
         {

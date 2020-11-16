@@ -49,7 +49,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
 
-     public void ArrangeTokenOnTable(Token token, Context context) {
+     public void PlaceTokenOnTableAtFreePosition(Token token, Context context) {
             
             
             token.RectTransform.anchoredPosition = GetFreePosWithDebug(token, Vector2.zero);
@@ -60,16 +60,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 /// <summary>
 /// Place at a specific position, pushing other tokens out of the way if necessary
 /// </summary>
-/// <param name="token"></param>
-/// <param name="context"></param>
-/// <param name="pos"></param>
-            public void PlaceTokenAggressively(Token token, Context context, Vector2? pos)
+            public void PlaceTokenAssertivelyAtSpecifiedPosition(Token token, Context context, Vector2 pos)
 		{
             _tabletop.AcceptToken(token, context);  // this does parenting. Needs to happen before we position
 
 
-            token.rectTransform.anchoredPosition = pos.Value;
-            token.LastTablePos = pos.Value;
+            token.rectTransform.anchoredPosition = pos;
+            token.LastTablePos = pos;
             token.transform.localRotation = Quaternion.identity;
      
 			token.SnapToGrid();
@@ -78,7 +75,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         }
 
-#region -- POSITIONING HELP METHODS ----------------------------
+
+/// <summary>
+/// Place as close to a specific position as we can get
+/// </summary>
+        public void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 pos)
+{
+    token.RectTransform.anchoredPosition = GetFreePosWithDebug(token, pos);
+    _tabletop.DisplayHere(token, context);
+
+        }
+
+        #region -- POSITIONING HELP METHODS ----------------------------
 
         public void MoveAllTokensOverlappingWith(Token pushingToken)
 		{

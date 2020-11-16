@@ -180,7 +180,7 @@ namespace Assets.CS.TabletopUI {
 
         public void OnTokenClicked(TokenEventArgs args)
         {
-            ShowCardElementDetails(args.Element,args.Token);
+            ShowCardElementDetails(args.Element,args.Token.ElementStack);
         }
 
         public void OnTokenReceivedADrop(TokenEventArgs args)

@@ -317,9 +317,8 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
         {
             if(token.Element.Id==elementId && !token.ElementStack.GetCurrentMutations().Any())
             {
-				Vector2 dropPos = token.ElementStack.GetDropZoneSpawnPos();
 				
-	            Registry.Get<Choreographer>().ArrangeTokenOnTable(token, debugContext, dropPos, false);	// Never push other cards aside - CP
+	            Registry.Get<Choreographer>().PlaceTokenOnTableAtFreePosition(token, debugContext);	
             }
         }
     }
@@ -342,7 +341,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
             SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, SituationState.ReadyToStart,
                 new TokenLocation(0f,0f,-100f,tabletop.GetPath()));
             scc.Open = false;
-        Registry.Get<SituationsCatalogue>().BeginNewSituation(scc,new List<ElementStack>());
+        Registry.Get<SituationsCatalogue>().BeginNewSituation(scc,new List<Token>());
         }
         else
             NoonUtility.LogWarning("Tried to begin situation via debug, but couldn't find this recipe: " + recipeId);
@@ -553,7 +552,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
     public void OnTokenClicked(ElementStack stack, PointerEventData pointerEventData, Element element)
     {
         if(isActiveAndEnabled)
-            SetInput(stack.EntityId);
+            SetInput(stack.Element.Id);
     }
 
     public void OnTokenReceivedADrop(ElementStack stack, PointerEventData eventData)
@@ -571,7 +570,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
     public void OnTokenDoubleClicked(ElementStack stack, PointerEventData eventData, Element element)
     {
         if (isActiveAndEnabled)
-            SetInput(stack.EntityId);
+            SetInput(stack.Element.Id);
     }
 
     public void NotifyTokensChangedForContainer(TokenEventArgs args)

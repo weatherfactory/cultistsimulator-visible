@@ -322,7 +322,7 @@ namespace Assets.CS.TabletopUI {
             {
                 OldSphere.RemoveToken(this);
                 if (OldSphere.ContentsHidden && !newSphere.ContentsHidden)
-                    _manifestation.UpdateVisuals(_element, Quantity);
+                    _manifestation.UpdateVisuals(Element,ElementQuantity);
             }
 
             Sphere = newSphere;
@@ -368,7 +368,7 @@ namespace Assets.CS.TabletopUI {
             if (!Keyboard.current.shiftKey.wasPressedThisFrame)
             {
                 if (ElementStack.IsValidElementStack() && ElementQuantity > 1)
-                    CalveTokenAtPosition(ElementQuantity - 1, new Context(Context.ActionSource.PlayerDrag));
+                    CalveTokenAtSamePosition(ElementQuantity - 1, new Context(Context.ActionSource.PlayerDrag));
                 
             }
 
@@ -553,7 +553,7 @@ namespace Assets.CS.TabletopUI {
             if (ElementStack.IsValidElementStack() && incomingToken.ElementStack.IsValidElementStack())
             {
                 if (incomingToken.ElementStack.CanMergeWith(incomingToken.ElementStack))
-                    AcceptIncomingStackForMerge(incomingStack);
+                    ElementStack.AcceptIncomingStackForMerge(incomingToken.ElementStack);
                 else
                 {
                     ElementStack.ShowNoMergeMessage(incomingToken.ElementStack);
@@ -568,7 +568,7 @@ namespace Assets.CS.TabletopUI {
             else if (incomingToken.ElementStack.IsValidElementStack())
             {
 
-                _situation.PushDraggedStackIntoThreshold(incomingToken.ElementStack);
+                _situation.PushDraggedStackIntoThreshold(incomingToken);
 
                 // Then we open the situation (cause this closes other situations and this may return the stack we try to move
                 // back onto the tabletop - if it was in its starting slots. - Martin
@@ -584,7 +584,7 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        public Token CalveTokenAtPosition(int quantityToLeaveBehind, Context context)
+        public Token CalveTokenAtSamePosition(int quantityToLeaveBehind, Context context)
         {
 
             if (quantityToLeaveBehind <= 0) //for some reason we're trying to leave an empty stack behind..
@@ -645,8 +645,6 @@ namespace Assets.CS.TabletopUI {
                     PointerEventData = eventData
                 });
 
-
-                SendTokenToNearestValidDestination();
             }
             else
             {
@@ -682,48 +680,38 @@ namespace Assets.CS.TabletopUI {
 
         public virtual void ReturnToTabletop(Context context)
         {
-            Registry.Get<Choreographer>().ArrangeTokenOnTable(this, context);
+            Registry.Get<Choreographer>().PlaceTokenOnTableAtFreePosition(this, context);
 
-            bool stackBothSides = true;
 
             //if we have an origin stack and the origin stack is on the tabletop, merge it with that.
             //We might have changed the element that a stack is associated with... so check we can still merge it
             if (originToken != null && originToken.Sphere.SphereCategory == SphereCategory.World &&
                 ElementStack.CanMergeWith(originToken.ElementStack))
             {
-                originStack.AcceptIncomingStackForMerge(this);
+                originToken.ElementStack.AcceptIncomingStackForMerge(this.ElementStack);
                 return;
             }
             else
             {
                 var tabletop = Registry.Get<TabletopManager>()._tabletop;
-                var existingStacks = tabletop.GetElementTokens();
+                var existingElementTokens = tabletop.GetElementTokens();
 
                 //check if there's an existing stack of that type to merge with
-                foreach (var stack in existingStacks)
+                foreach (var elementToken in existingElementTokens)
                 {
-                    if (CanMergeWith(stack))
+                    if (this.ElementStack.CanMergeWith(elementToken.ElementStack))
                     {
-                        var elementStack = stack as ElementStack;
-                        elementStack.AcceptIncomingStackForMerge(this.ElementStack);
+                        elementToken.ElementStack.AcceptIncomingStackForMerge(this.ElementStack);
 
                         _manifestation.Highlight(HighlightType.AttentionPls);
                         return;
                     }
                 }
-
-
-                if (LastTablePos == null) // If we've never been on the tabletop, use the drop zone
-                {
-                    // If we get here we have a new card that won't stack with anything else. Place it in the "in-tray"
-                    LastTablePos = GetDropZoneSpawnPos();
-                    stackBothSides = false;
-                }
             }
 
-            Registry.Get<Choreographer>()
-                .ArrangeTokenOnTable(this, context, LastTablePos, false,
-                    stackBothSides); // Never push other cards aside - CP
+            if(LastTablePos!=null)
+                Registry.Get<Choreographer>()
+                .PlaceTokenAsCloseAsPossibleToSpecifiedPosition(this, context, LastTablePos.Value);
 
         }
 
