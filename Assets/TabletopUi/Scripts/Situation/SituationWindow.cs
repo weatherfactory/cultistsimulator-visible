@@ -148,7 +148,7 @@ namespace Assets.CS.TabletopUI {
 			{
 				SoundManager.PlaySfx("SituationWindowShow");
                 canvasGroupFader.Show();
-                DisplaySituationState(situation);
+                SituationStateUpdated(situation);
             }
 
             
@@ -165,7 +165,7 @@ namespace Assets.CS.TabletopUI {
             if (IsVisible)
             {
 				SoundManager.PlaySfx("SituationWindowHide");
-                DisplaySituationState(s);
+                SituationStateUpdated(s);
                 canvasGroupFader.Hide();
                 
             }
@@ -258,7 +258,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void DisplaySituationState(Situation situation)
+        public void SituationStateUpdated(Situation situation)
         {
             if (situation.IsOpen)
             {

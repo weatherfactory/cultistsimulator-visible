@@ -13,7 +13,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 {
     public interface ISituationSubscriber
     {
-        void DisplaySituationState(Situation situation);
+        void SituationStateUpdated(Situation situation);
         void ContainerContentsUpdated(Situation s);
         void ReceiveNotification(INotification n);
     }

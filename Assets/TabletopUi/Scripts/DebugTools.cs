@@ -287,7 +287,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
     void AddCard(string elementId)
     {
        
-        var existingStacks = tabletop.GetElementTokens();
+        var existingTokens = tabletop.GetElementTokens();
 
         var element = Registry.Get<ICompendium>().GetEntityById<Element>(elementId);
 
@@ -298,11 +298,11 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
 
         //check if there's an existing stack of that type to increment
         if (!element.Unique) {
-            foreach (var stack in existingStacks)
+            foreach (var token in existingTokens)
             {
-                if (stack.EntityId == elementId && !stack.GetCurrentMutations().Any())
+                if (token.Element.Id == elementId && !token.ElementStack.GetCurrentMutations().Any())
                 {
-                    stack.ModifyQuantity(1,new Context(Context.ActionSource.Debug));
+                    token.ElementStack. ModifyQuantity(1,new Context(Context.ActionSource.Debug));
                     return;
                 }
             }
@@ -312,13 +312,12 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
         tabletop.ModifyElementQuantity(elementId,1, Source.Fresh(), debugContext);
 
 		// Find the card we just added and move it to the dropzone
-		existingStacks = tabletop.GetElementTokens();
-		foreach (var stack in existingStacks)
+		existingTokens = tabletop.GetElementTokens();
+		foreach (var token in existingTokens)
         {
-            if(stack.EntityId==elementId && !stack.GetCurrentMutations().Any())
+            if(token.Element.Id==elementId && !token.ElementStack.GetCurrentMutations().Any())
             {
-				ElementStack token = stack as ElementStack;
-				Vector2 dropPos = token.GetDropZoneSpawnPos();
+				Vector2 dropPos = token.ElementStack.GetDropZoneSpawnPos();
 				
 	            Registry.Get<Choreographer>().ArrangeTokenOnTable(token, debugContext, dropPos, false);	// Never push other cards aside - CP
             }

@@ -174,14 +174,18 @@ namespace Assets.Core.Entities {
                 Complete();
 
             //If we leave anything in the ongoing slot, it's lost, and also the situation ends up in an anomalous state which breaks loads
-            AcceptStacks(SphereCategory.SituationStorage, GetStacks(SphereCategory.Threshold));
+            AcceptTokens(SphereCategory.SituationStorage, GetStacks(SphereCategory.Threshold));
 
         }
 
-
-        public IEnumerable<Sphere> GetSpheresByCategory(SphereCategory category)
+        public List<Sphere> GetSpheres()
         {
-            return _spheres.Where(c => c.SphereCategory == category);
+            return new List<Sphere>(_spheres);
+        }
+
+        public List<Sphere> GetSpheresByCategory(SphereCategory category)
+        {
+            return new List<Sphere>(_spheres.Where(c => c.SphereCategory == category));
         }
 
         private Sphere GetSingleSphereByCategory(SphereCategory category)
@@ -303,22 +307,22 @@ namespace Assets.Core.Entities {
         }
 
         
-    public void AcceptStack(SphereCategory forSphereCategory, ElementStack stack, Context context)
+    public void AcceptToken(SphereCategory forSphereCategory, ElementStack stack, Context context)
         {
             var stackTokenList = new List<ElementStack> {stack};
-            AcceptStacks(forSphereCategory, stackTokenList, context);
+            AcceptTokens(forSphereCategory, stackTokenList, context);
         }
 
-        public void AcceptStacks(SphereCategory forSphereCategory, IEnumerable<ElementStack> stacks,
+        public void AcceptTokens(SphereCategory forSphereCategory, IEnumerable<ElementStack> stacks,
             Context context)
         {
             var acceptingContainer = GetSingleSphereByCategory(forSphereCategory);
-            acceptingContainer.AcceptStacks(stacks, context);
+            acceptingContainer.AcceptTokens(stacks, context);
         }
 
-        public void AcceptStacks(SphereCategory forSphereCategory, IEnumerable<ElementStack> stacks)
+        public void AcceptTokens(SphereCategory forSphereCategory, IEnumerable<ElementStack> stacks)
         {
-            AcceptStacks(forSphereCategory,stacks,new Context(Context.ActionSource.Unknown));
+            AcceptTokens(forSphereCategory,stacks,new Context(Context.ActionSource.Unknown));
         }
 
         public List<ElementStack> GetAllStacksInSituation()
@@ -373,7 +377,7 @@ namespace Assets.Core.Entities {
                     CurrentRecipePrediction = GetUpdatedRecipePrediction();
                     CurrentBeginningEffectCommand = new RecipeBeginningEffectCommand(currentPrimaryRecipe.Slots, CurrentRecipePrediction.BurnImage);
                     var storageContainer = GetSingleSphereByCategory(SphereCategory.SituationStorage);
-                    storageContainer.AcceptStacks(GetStacks(SphereCategory.Threshold),
+                    storageContainer.AcceptTokens(GetStacks(SphereCategory.Threshold),
                         new Context(Context.ActionSource.SituationStoreStacks));
                     break;
 
@@ -438,7 +442,7 @@ namespace Assets.Core.Entities {
 
             foreach (var subscriber in subscribers)
             {
-                subscriber.DisplaySituationState(this);
+                subscriber.SituationStateUpdated(this);
             }
 
             CurrentBeginningEffectCommand = null; ;
@@ -481,11 +485,11 @@ namespace Assets.Core.Entities {
                 container
                     .ActivatePreRecipeExecutionBehaviour(); //currently, this is just marking items in slots for consumption, so it happens once for everything. I might later want to run it per effect command, tho
             //on the other hand, I *do* want this to run before the stacks are moved to storage.
-            //but finally, it would probably do better in AcceptStack on the recipeslot anyway
+            //but finally, it would probably do better in AcceptToken on the recipeslot anyway
 
             //move any elements currently in OngoingSlots to situation storage
             //NB we're doing this *before* we execute the command - the command may affect these elements too
-            GetSingleSphereByCategory(SphereCategory.SituationStorage).AcceptStacks(
+            GetSingleSphereByCategory(SphereCategory.SituationStorage).AcceptTokens(
                 GetStacks(SphereCategory.Threshold), new Context(Context.ActionSource.SituationStoreStacks));
 
 
@@ -589,7 +593,7 @@ namespace Assets.Core.Entities {
 
 
         var outputStacks = GetStacks(SphereCategory.SituationStorage);
-        AcceptStacks(SphereCategory.Output, outputStacks, new Context(Context.ActionSource.SituationResults));
+        AcceptTokens(SphereCategory.Output, outputStacks, new Context(Context.ActionSource.SituationResults));
         
         AttemptAspectInductions(currentPrimaryRecipe,outputStacks);
 
@@ -672,7 +676,7 @@ namespace Assets.Core.Entities {
         IsOpen = true;
         _window.Show(location.Position,this);
             
-        Registry.Get<TabletopManager>().CloseAllSituationWindowsExcept(_anchor.EntityId);
+        Registry.Get<TabletopManager>().CloseAllSituationWindowsExcept(_anchor.Verb.Id);
     }
 
     public void OpenAtCurrentLocation()
@@ -691,23 +695,23 @@ namespace Assets.Core.Entities {
         var thresholds = GetSpheresByCategory(SphereCategory.Threshold);
         foreach (var t in thresholds)
 
-            if (!t.IsGreedy && t.GetMatchForStack(stack).MatchType ==SlotMatchForAspectsType.Okay)
+            if (!t.IsGreedy && !t.CurrentlyBlockedFor(BlockDirection.Inward) && t.GetMatchForStack(stack).MatchType ==SlotMatchForAspectsType.Okay)
                 return t;
 
         return Registry.Get<NullContainer>();
     }
 
 
-        public bool PushDraggedStackIntoThreshold(ElementStack stack)
+        public bool PushDraggedStackIntoThreshold(Token token)
         {
-            var thresholdContainer = GetFirstAvailableThresholdForStackPush(stack);
+            var thresholdContainer = GetFirstAvailableThresholdForStackPush(token.ElementStack);
             var possibleIncumbent = thresholdContainer.GetElementTokens().FirstOrDefault();
             if (possibleIncumbent != null)
             {
                 possibleIncumbent.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
             }
 
-            return  thresholdContainer.TryAcceptStackAsThreshold(stack);
+            return  thresholdContainer.TryAcceptTokenAsThreshold(token);
 
         }
 
@@ -784,7 +788,7 @@ namespace Assets.Core.Entities {
                 t.ActivatePreRecipeExecutionBehaviour();
 
             //now move the stacks out of the starting slots into storage
-            AcceptStacks(SphereCategory.SituationStorage,GetStacks(SphereCategory.Threshold));
+            AcceptTokens(SphereCategory.SituationStorage,GetStacks(SphereCategory.Threshold));
 
             //The game might be paused! or the player might just be incredibly quick off the mark
             //so immediately continue with a 0 interval - this won't advance time, but will update the visuals in the situation window

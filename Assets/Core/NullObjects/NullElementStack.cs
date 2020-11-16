@@ -12,7 +12,7 @@ namespace Assets.TabletopUi.Scripts.Elements
     {
         public NullElementStack()
         {
-            _element=new NullElement();
+            Element=new NullElement();
         }
         
         public override bool CanMergeWith(ElementStack intoStack)

@@ -91,29 +91,17 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
     void HandleOnTableDropped(PointerEventData eventData)
     {
         //if an anchor or element stack has been dropped on the background, we want to deal with it.
-        var potentialVerbAnchor = eventData.pointerDrag.GetComponent<VerbAnchor>();
-
-        var potentialElementStack = eventData.pointerDrag.GetComponent<ElementStack>();
-
-
-        if (potentialVerbAnchor != null)
+        var potentialToken = eventData.pointerDrag.GetComponent<Token>();
+        if(potentialToken!=null)
         {
-            potentialVerbAnchor.SetXNess(TokenXNess.DroppedOnTableContainer);
-            AcceptToken(potentialVerbAnchor,
+            potentialToken.SetXNess(TokenXNess.DroppedOnTableContainer);
+            AcceptToken(potentialToken,
                 new Context(Context.ActionSource.PlayerDrag));
-            CheckOverlappingTokens(potentialVerbAnchor);
-            SoundManager.PlaySfx("CardDrop");
 
-        }
-        else if (potentialElementStack!=null) {
-            potentialElementStack.SetXNess(TokenXNess.DroppedOnTableContainer);
-
-            AcceptStack(potentialElementStack,
-                    new Context(Context.ActionSource.PlayerDrag));
-            CheckOverlappingTokens(potentialElementStack);
+            CheckOverlappingTokens(potentialToken);
             SoundManager.PlaySfx("CardDrop");
         }
-        
+
     }
 
     void HandleOnTableClicked(PointerEventData eventData) {
@@ -138,18 +126,6 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
     }
 
 
-
-
-    // Returns a rect for use by the Choreographer
-    public Rect GetRect() {
-        var rectTrans = transform as RectTransform;
-        return rectTrans.rect;
-    }
-
-    // Returns all visual tokens for use by the Choreographer
-    public virtual IEnumerable<Token> GetTokens() {
-        return transform.GetComponentsInChildren<Token>();
-    }
 
     // Hide / Show for use with Mansus Map transition
     public virtual void Show(bool show) {

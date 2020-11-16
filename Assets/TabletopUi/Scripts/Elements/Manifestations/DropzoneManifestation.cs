@@ -111,7 +111,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             throw new NotImplementedException();
         }
 
-        public void ResetAnimations()
+        public void ResetIconAnimation()
         {
             
         }
@@ -143,11 +143,11 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
         }
 
-        public void BeginArtAnimation()
+        public void BeginIconAnimation()
         {
         }
 
-        public bool CanAnimate()
+        public bool CanAnimateIcon()
         {
             return false;
         }

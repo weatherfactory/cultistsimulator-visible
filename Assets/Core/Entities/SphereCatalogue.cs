@@ -159,7 +159,7 @@ namespace Assets.Core.Entities {
                     _spheres.Where(tc => tc.SphereCategory == SphereCategory.World);
 
                 foreach(var tc in tabletopContainers)
-                    tabletopStacks.AddRange(tc.GetElementTokens());
+                    tabletopStacks.AddRange(tc.GetElementStacks());
 
                 
                 foreach (var tabletopStack in tabletopStacks)
@@ -172,7 +172,7 @@ namespace Assets.Core.Entities {
                     foreach (var aspect in stackAspects)
                     {
 
-                        if (aspect.Key == tabletopStack.EntityId)
+                        if (aspect.Key == tabletopStack.Element.Id)
                             multipliedAspects.Add(aspect.Key, aspect.Value);
                         else
                             multipliedAspects.Add(aspect.Key, aspect.Value * tabletopStack.Quantity);
@@ -207,7 +207,7 @@ namespace Assets.Core.Entities {
                         foreach (var aspect in stackAspects)
                         {
 
-                            if (aspect.Key == situationStack.EntityId)
+                            if (aspect.Key == situationStack.Element.Id)
                                 multipliedAspects.Add(aspect.Key, aspect.Value);
                             else
                                 multipliedAspects.Add(aspect.Key, aspect.Value * situationStack.Quantity);

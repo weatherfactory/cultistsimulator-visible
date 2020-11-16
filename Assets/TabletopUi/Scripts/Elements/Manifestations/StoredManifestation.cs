@@ -73,7 +73,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         }
 
 
-        public void ResetAnimations()
+        public void ResetIconAnimation()
         {
    //
         }
@@ -110,12 +110,12 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             
         }
 
-        public void BeginArtAnimation()
+        public void BeginIconAnimation()
         {
         //
         }
 
-    public bool CanAnimate()
+    public bool CanAnimateIcon()
         {
            return false;
         }

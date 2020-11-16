@@ -85,7 +85,7 @@ namespace Assets.TabletopUi.SlotsContainers {
 
             foreach (var childSlotSpecification in stack.GetChildSlotSpecificationsForVerb(_verb.Id))
             {
-                var slot = BuildSlot("childslot of " + stack.EntityId, childSlotSpecification, parentSlot);
+                var slot = BuildSlot("childslot of " + stack.Element.Id, childSlotSpecification, parentSlot);
                 parentSlot.childSlots.Add(slot);
             }
         }

@@ -33,9 +33,9 @@ namespace Assets.TabletopUi.Scripts.Services {
             var anchorSphere = sphereCatalogue.GetContainerByPath(command.AnchorLocation.AtSpherePath);
 
             var newAnchor = Registry.Get<PrefabFactory>().Create<VerbAnchor>();
+            situation.AttachAnchor(newAnchor);
             anchorSphere.AcceptToken(newAnchor, new Context(Context.ActionSource.Unknown));
             newAnchor.transform.localPosition = command.AnchorLocation.Position;
-            situation.AttachAnchor(newAnchor);
 
             var newWindow = Instantiate(situationWindowPrefab);
             newWindow.transform.SetParent(windowSphere.transform);

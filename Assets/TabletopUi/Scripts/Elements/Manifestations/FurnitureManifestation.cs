@@ -241,7 +241,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             dumpButton.gameObject.SetActive(showButton && _transient);
         }
 
-        public void ResetAnimations()
+        public void ResetIconAnimation()
         {
             throw new NotImplementedException();
         }
@@ -253,9 +253,9 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         }
 
 
-        public void BeginArtAnimation()
+        public void BeginIconAnimation()
         {
-            if (!CanAnimate())
+            if (!CanAnimateIcon())
                 return;
 
             if (animCoroutine != null)
@@ -302,7 +302,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             artwork.overrideSprite = null;
         }
 
-        public bool CanAnimate()
+        public bool CanAnimateIcon()
         {
             return frames.Any();
         }

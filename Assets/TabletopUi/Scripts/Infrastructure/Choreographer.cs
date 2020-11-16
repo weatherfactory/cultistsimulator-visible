@@ -17,7 +17,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
     //places, arranges and displays things on the table
     public class Choreographer:ISettingSubscriber {
 
-        private TabletopSphere _tabletop;
+        private Sphere _tabletop;
         private Rect tableRect;
 
         const float checkPointPerArcLength = 100f;
@@ -32,11 +32,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         private ChoreographerDebugView _currentDebug;
 
-        public Choreographer(TabletopSphere tabletop, WindowsSphere windowsToken) {
-            _tabletop = tabletop;
+        public Choreographer(Sphere sphere) {
+            _tabletop = sphere;
 
 
-            tableRect = tabletop.GetRect();
+            tableRect = _tabletop.GetRect();
 
             var snapGridSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.GRIDSNAPSIZE);
             if (snapGridSetting != null)
@@ -53,39 +53,32 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         #region -- PUBLIC POSITIONING METHODS ----------------------------
 
         public void ArrangeTokenOnTable(Token token, Context context) {
+            
+            
             token.RectTransform.anchoredPosition = GetFreePosWithDebug(token, Vector2.zero);
-
             _tabletop.DisplayHere(token, context);
         }
 
 
-        public void ArrangeTokenOnTable(ElementStack stack, Context context) {
-            ArrangeTokenOnTable(stack, context, stack.lastTablePos, false);
-        }
-
-        public void ArrangeTokenOnTable(ElementStack stack, Context context, Vector2? pos = null, bool pushOthers = false, bool stackBothSides = true)
+/// <summary>
+/// Place at a specific position, pushing other tokens out of the way if necessary
+/// </summary>
+/// <param name="token"></param>
+/// <param name="context"></param>
+/// <param name="pos"></param>
+            public void PlaceTokenAggressively(Token token, Context context, Vector2? pos)
 		{
-            _tabletop.AcceptStack(stack, context);  // this does parenting. Needs to happen before we position
+            _tabletop.AcceptToken(token, context);  // this does parenting. Needs to happen before we position
 
-            if (pushOthers && pos != null)
-			{ 
-                pos = GetPosClampedToTable(pos.Value);
-            }
-            else
-			{
-                pos = GetFreePosWithDebug(stack, pos != null ? pos.Value : Vector2.zero, -1, stackBothSides);
-            }
 
-            stack.rectTransform.anchoredPosition = pos.Value;
-            stack.lastTablePos = pos.Value;
-            stack.transform.localRotation = Quaternion.identity;
+            token.rectTransform.anchoredPosition = pos.Value;
+            token.LastTablePos = pos.Value;
+            token.transform.localRotation = Quaternion.identity;
      
-            stack.DisplayAtTableLevel();
-            stack.Unshroud(true);
-			stack.SnapToGrid();
+			token.SnapToGrid();
 
-            if (pushOthers)
-                MoveAllTokensOverlappingWith(stack);
+            MoveAllTokensOverlappingWith(token);
+
         }
 
         #endregion
@@ -105,7 +98,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
 			Rect pushedRect;
 
-            foreach (var token in _tabletop.GetTokens()) {
+            foreach (var token in _tabletop.GetAllTokens()) {
                 if (CanTokenBeIgnored(token, pushingToken))
                     continue;
 
@@ -136,7 +129,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         #region -- GET FREE POSITION ----------------------------
 
-        public Vector2 GetFreePosWithDebug(Token token, Vector2 centerPos, int startIteration = -1, bool stackBothSides = true)
+        public Vector2 GetFreePosWithDebug(Token token, Vector2 centerPos, int startIteration = -1)
 		{
 #if DEBUG
             _currentDebug = new GameObject("ChoreoDebugInfo_" + token.name).AddComponent<ChoreographerDebugView>();
@@ -146,7 +139,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             _currentDebug.tokenOverlaps = false;
             _currentDebug.checkedRects = new List<Rect>();
 
-            var pos = GetFreeTokenPosition(token, centerPos, startIteration, stackBothSides);
+            var pos = GetFreeTokenPosition(token, centerPos, startIteration);
             _currentDebug.finalRect = GetCenterPosRect(pos, token.RectTransform.rect.size);
             _currentDebug.hasDebugData = true;
 
@@ -158,7 +151,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 #endif
         }
 
-        Vector2 GetFreeTokenPosition(Token token, Vector2 centerPos, int startIteration = -1, bool stackBothSides = true)
+        Vector2 GetFreeTokenPosition(Token token, Vector2 centerPos, int startIteration = -1)
 		{
             //Debug.Log("Trying to find FREE POS for " + token.Id);
             centerPos = GetPosClampedToTable(centerPos);
@@ -176,7 +169,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             // We grab a bunch of test points
             startIteration = startIteration > 0f ? startIteration : 1;
-            var currentPoints = GetTestPoints(targetRect.position + targetRect.size / 2f, startIteration, maxGridIterations, stackBothSides);
+            var currentPoints = GetTestPoints(targetRect.position + targetRect.size / 2f, startIteration, maxGridIterations);
 
             // Go over the test points and check if there's a clear spot to place things
             foreach (var point in currentPoints)
@@ -205,7 +198,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                     return point;
             }
 
-            NoonUtility.Log("Choreographer: No legal tabletop position found for " + token.EntityId + " (" + centerPos + ")!",1);
+            NoonUtility.Log("Choreographer: No legal tabletop position found for " + token.Element.Id + " (" + centerPos + ")!",1);
 
             return Vector2.zero;
         }
@@ -238,7 +231,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             Rect rectCheck;
             //Debug.Log("Checking if " + rect + " is a legal position");
 
-            foreach (var token in _tabletop.GetTokens()) {
+            foreach (var token in _tabletop.GetAllTokens()) {
                 rectCheck = GetCenterPosRect(token.rectTransform);
 
                 if (CanTokenBeIgnored(token, ignoreToken))
@@ -272,7 +265,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return false;
         }
 
-        Vector2[] GetTestPoints(Vector3 pos, int startIteration, int maxIteration, bool stackBothSides = true)
+        Vector2[] GetTestPoints(Vector3 pos, int startIteration, int maxIteration)
 		{
             int numPoints = 0;
 			// Always test in half-card intervals for best chance of finding valid slot
@@ -299,14 +292,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                     if (h <= -1 + startIteration * 2 && v <= -1 + startIteration * 2)
                         continue; // don't put out points lower than our startIteration
 
-					if (stackBothSides)
-					{
-						x = (h % 2 == 0 ? (h / 2) : -(h / 2));
-					}
-					else
-					{
-						x = h;
-					}
+
+					x = (h % 2 == 0 ? (h / 2) : -(h / 2));
+
 
                     points[p] = new Vector2(pos.x + x * snap_x, pos.y + y * snap_y);
 					points[p] = SnapToGrid( points[p] );

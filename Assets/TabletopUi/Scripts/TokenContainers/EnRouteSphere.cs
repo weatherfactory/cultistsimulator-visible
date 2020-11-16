@@ -26,21 +26,21 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
             get { return GetComponent<RectTransform>(); }
         }
 
-        public void PrepareElementForSendAnim(ElementStack stack, TokenLocation destination) // "this reparents the card so it can animate properly" - okay, let's roll with that for now. But the line below is commented, so do we need it?
+        public void PrepareElementForSendAnim(Token token, TokenLocation destination) // "this reparents the card so it can animate properly" - okay, let's roll with that for now. But the line below is commented, so do we need it?
         {
-            StartingContainer.AcceptStack(stack, new Context(Context.ActionSource.DoubleClickSend)); // this reparents, sets container
+            StartingContainer.AcceptToken(token, new Context(Context.ActionSource.DoubleClickSend)); // this reparents, sets container
             //stack.transform.position = ownerSituation.transform.position;
-            stack.Unshroud(true);
+            token.Unshroud(true);
         }
 
-        public void PrepareElementForGreedyAnim(ElementStack stack, TokenLocation destination)
+        public void PrepareElementForGreedyAnim(Token stack, TokenLocation destination)
         {
-            StartingContainer.AcceptStack(stack, new Context(Context.ActionSource.GreedySlot)); // "this reparents, sets container" - okay, let's roll with that for now
+            StartingContainer.AcceptToken(stack, new Context(Context.ActionSource.GreedySlot)); // "this reparents, sets container" - okay, let's roll with that for now
             stack.transform.position = destination.Position;
             stack.Unshroud(true);
         }
 
-        public void MoveElementToSituationSlot(ElementStack stack, TokenLocation destination, Sphere destinationSlot, float durationOverride = -1.0f)
+        public void MoveElementToSituationSlot(Token stack, TokenLocation destination, Sphere destinationSlot, float durationOverride = -1.0f)
         {
             var startPos = stack.rectTransform.anchoredPosition3D;
             var endPos = destination.Position;
@@ -60,7 +60,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
             stackAnim.StartAnim(duration);
         }
 
-        public void ElementSendAnimDone(ElementStack element, TokenLocation destination,Sphere destinationSlot)
+        public void ElementSendAnimDone(Token element, TokenLocation destination,Sphere destinationSlot)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
                     element.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
                 else
                     // Assign element to new slot
-                    destinationSlot.AcceptStack(element, new Context(Context.ActionSource.AnimEnd));
+                    destinationSlot.AcceptToken(element, new Context(Context.ActionSource.AnimEnd));
                 // Clear this whether the card arrived successfully or not, otherwise slot is locked for rest of session - CP
                 destinationSlot.RemoveBlock(new ContainerBlock(BlockDirection.Inward,
                     BlockReason.StackEnRouteToContainer));
@@ -80,12 +80,12 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
             }
         }
 
-        public void ElementGreedyAnimDone(ElementStack element, AnchorAndSlot anchorSlotPair)
+        public void ElementGreedyAnimDone(Token element, AnchorAndSlot anchorSlotPair)
         {
             if (anchorSlotPair.Threshold.Equals(null) || anchorSlotPair.Threshold.Defunct)
                 return;
 
-            anchorSlotPair.Threshold.AcceptStack(element, new Context(Context.ActionSource.AnimEnd));
+            anchorSlotPair.Threshold.AcceptToken(element, new Context(Context.ActionSource.AnimEnd));
             anchorSlotPair.Threshold.RemoveBlock(new ContainerBlock(BlockDirection.Inward,
                 BlockReason.StackEnRouteToContainer));
         }

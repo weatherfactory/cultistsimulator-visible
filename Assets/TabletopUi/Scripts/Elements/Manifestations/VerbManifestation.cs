@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Core.Interfaces;
@@ -79,7 +80,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             if (verb.Transient)
                 SetTransient();
             SetTimerVisibility(false);
-            SetCompletionCount(-1);
+            DisplayCompletionCount(-1);
             ShowGlow(false, false);
             ShowDumpButton(false);
         }
@@ -134,7 +135,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
              shadow.DoMove(tokenRectTransform);
         }
 
-        public void SetCompletionCount(int newCount)
+        public void DisplayCompletionCount(int newCount)
         {
             // count == -1 ? No badge
             // count ==  0 ? badge, no text
@@ -161,23 +162,25 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         public void DisplaySpheres(IEnumerable<Sphere> spheres)
         {
-            int spheresCount = spheres.Count();
-            if (spheresCount == 0)
-            {
-                hideMiniSlot();
-                return;
-            }
-
             
-            if (spheresCount > 1)
+            var thresholdSpheres = new List<Sphere>(spheres.Where(s => s.SphereCategory == SphereCategory.Threshold));
+            var outputSpheres = new List<Sphere>(spheres.Where(s => s.SphereCategory == SphereCategory.Output));
+
+
+            if (!thresholdSpheres.Any())
+                hideMiniSlot();
+            else
             {
-                NoonUtility.LogWarning("VerbManifestation implementation doessn't support >1 slot");
-                return;
+                
+                var sphereToDisplayAsMiniSlot = thresholdSpheres.Single();
+                showMiniSlot(sphereToDisplayAsMiniSlot.GoverningSlotSpecification.Greedy);
+                displayStackInMiniSlot(sphereToDisplayAsMiniSlot.GetElementStacks());
             }
 
-            var sphereToDisplayAsMiniSlot = spheres.Single();
-            showMiniSlot(sphereToDisplayAsMiniSlot.GoverningSlotSpecification.Greedy);
-            displayStackInMiniSlot(sphereToDisplayAsMiniSlot.GetElementTokens());
+
+            int completionCount = outputSpheres.Select(s => s.GetTotalElementsCount()).Sum();
+            DisplayCompletionCount(completionCount);
+
         }
 
 
@@ -268,7 +271,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             dumpButton.gameObject.SetActive(showButton && _transient);
         }
 
-        public void ResetAnimations()
+        public void ResetIconAnimation()
         {
             throw new NotImplementedException();
         }
@@ -280,9 +283,9 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         }
 
 
-        public void BeginArtAnimation()
+        public void BeginIconAnimation()
         {
-            if (!CanAnimate())
+            if (!CanAnimateIcon())
                 return;
 
             if (animCoroutine != null)
@@ -329,7 +332,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             artwork.overrideSprite = null;
         }
 
-        public bool CanAnimate()
+        public bool CanAnimateIcon()
         {
            return frames.Any();
         }

@@ -63,29 +63,29 @@ namespace Assets.Core.Services
             _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastcharactername.ToString(), newName);
         }
 
-        public void TokenPlacedOnTabletop(Token  token)
+        public void TokenPlacedOnTabletop(Token token)
         {
 
             if (token.PlacementAlreadyChronicled)
                 return;
 
-            if(token is ElementStack stackToken)
+            if(token.ElementStack.IsValidElementStack())
             {
-                IAspectsDictionary tokenAspects = stackToken.GetAspects();
+                IAspectsDictionary tokenAspects = token.ElementStack.GetAspects();
 
             var storefrontServicesProvider = Registry.Get<StorefrontServicesProvider>();
 
-            TryChronicleBookPlaced(stackToken, tokenAspects);
+            TryChronicleBookPlaced(token, tokenAspects);
 
-            TryChronicleDesirePlaced(stackToken, tokenAspects);
+            TryChronicleDesirePlaced(token, tokenAspects);
 
-            TryChronicleFollowerPlaced(stackToken, tokenAspects, storefrontServicesProvider);
+            TryChronicleFollowerPlaced(token, tokenAspects, storefrontServicesProvider);
 
-            TryChronicleToolPlaced(stackToken, tokenAspects);
+            TryChronicleToolPlaced(token, tokenAspects);
             
-            TryChronicleCultPlaced(stackToken, tokenAspects, storefrontServicesProvider);
+            TryChronicleCultPlaced(token, tokenAspects, storefrontServicesProvider);
             
-            TryCHronicleHQPlaced(stackToken, tokenAspects);
+            TryCHronicleHQPlaced(token, tokenAspects);
 
             token.PlacementAlreadyChronicled = true;
              }
@@ -120,7 +120,7 @@ namespace Assets.Core.Services
             
             foreach (var tc in tokenContainers)
             {
-                allStacksInGame.AddRange(tc.GetElementTokens());
+                allStacksInGame.AddRange(tc.GetElementStacks());
             }
 
             var rnd=new Random();
@@ -141,18 +141,18 @@ namespace Assets.Core.Services
                 //if the follower is Exalted, update it.
                 if (aspects.ContainsKey(EXALTED_ASPECT))
                 {
-                    currentFollower = _compendium.GetEntityById<Element>(stack.EntityId);
+                    currentFollower = _compendium.GetEntityById<Element>(stack.Element.Id);
 
                 }
 
                 else if (aspects.ContainsKey(DISCIPLE_ASPECT) && currentFollower!=null && !currentFollower.Aspects.ContainsKey(EXALTED_ASPECT))
-                    {
-                        currentFollower = _compendium.GetEntityById<Element>(stack.EntityId);
-                    }
+                {
+                    currentFollower = _compendium.GetEntityById<Element>(stack.Element.Id);
+                }
                 else if (currentFollower==null || (!currentFollower.Aspects.ContainsKey(EXALTED_ASPECT) &&
                          !currentFollower.Aspects.ContainsKey(DISCIPLE_ASPECT)))
                 {
-                    currentFollower = _compendium.GetEntityById<Element>(stack.EntityId);
+                    currentFollower = _compendium.GetEntityById<Element>(stack.Element.Id);
 
                 }
 
@@ -160,15 +160,15 @@ namespace Assets.Core.Services
 
             if(currentFollower!=null)
 
-            _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastfollower.ToString(), currentFollower.Id);
+                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastfollower.ToString(), currentFollower.Id);
 
         }
 
-        private void TryChronicleFollowerPlaced(ElementStack token, IAspectsDictionary tokenAspects, StorefrontServicesProvider storefrontServicesProvider)
+        private void TryChronicleFollowerPlaced(Token token, IAspectsDictionary tokenAspects, StorefrontServicesProvider storefrontServicesProvider)
         {
             if (tokenAspects.ContainsKey(SUMMONED_ASPECT))
 			{
-				Analytics.CustomEvent( "A_SUMMON_GENERIC", new Dictionary<string,object>{ {"id",token.EntityId} } );
+				Analytics.CustomEvent( "A_SUMMON_GENERIC", new Dictionary<string,object>{ {"id",token.Element.Id } } );
                 storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_SUMMON_GENERIC", true);
 			}
 
@@ -221,21 +221,21 @@ namespace Assets.Core.Services
         }
 
 
-        private void TryCHronicleHQPlaced(ElementStack token, IAspectsDictionary tokenAspects)
+        private void TryCHronicleHQPlaced(Token token, IAspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(HQ_ASPECT))
 			{
-				Analytics.CustomEvent( "A_HQ_PLACED", new Dictionary<string,object>{ {"id",token.EntityId} } );
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastheadquarters.ToString(), token.EntityId);
+				Analytics.CustomEvent( "A_HQ_PLACED", new Dictionary<string,object>{ {"id",token.Element.Id } } );
+                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastheadquarters.ToString(), token.Element.Id);
 			}
         }
 
-        private void TryChronicleCultPlaced(ElementStack token, IAspectsDictionary tokenAspects, StorefrontServicesProvider storefrontServicesProvider)
+        private void TryChronicleCultPlaced(Token token, IAspectsDictionary tokenAspects, StorefrontServicesProvider storefrontServicesProvider)
         {
             if (tokenAspects.Keys.Contains(CULT_ASPECT))
             {
-				Analytics.CustomEvent( "A_CULT_PLACED", new Dictionary<string,object>{ {"id",token.EntityId} } );
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastcult.ToString(), token.EntityId);
+				Analytics.CustomEvent( "A_CULT_PLACED", new Dictionary<string,object>{ {"id",token.Element.Id} } );
+                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastcult.ToString(), token.Element.Id);
 
                 if (tokenAspects.Keys.Contains("cultsecrethistories_1"))
 				{
@@ -276,20 +276,20 @@ namespace Assets.Core.Services
             }
         }
 
-        private void TryChronicleToolPlaced(ElementStack token, IAspectsDictionary tokenAspects)
+        private void TryChronicleToolPlaced(Token token, IAspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(TOOL_ASPECT))
 			{
-				Analytics.CustomEvent( "A_TOOL_PLACED", new Dictionary<string,object>{ {"id",token.EntityId} } );
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lasttool.ToString(), token.EntityId);
+				Analytics.CustomEvent( "A_TOOL_PLACED", new Dictionary<string,object>{ {"id",token.Element.Id } } );
+                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lasttool.ToString(), token.Element.Id);
 			}
         }
 
-        private void TryChronicleDesirePlaced(ElementStack token, IAspectsDictionary tokenAspects)
+        private void TryChronicleDesirePlaced(Token token, IAspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(DESIRE_ASPECT))
             {
-				Analytics.CustomEvent( "A_DESIRE_PLACED", new Dictionary<string,object>{ {"id",token.EntityId} } );
+				Analytics.CustomEvent( "A_DESIRE_PLACED", new Dictionary<string,object>{ {"id",token.Element.Id } } );
 
                 if (tokenAspects.Keys.Contains(POWER_ASPECT))
 				{
@@ -309,12 +309,12 @@ namespace Assets.Core.Services
             }
         }
 
-        private void TryChronicleBookPlaced(ElementStack token, IAspectsDictionary tokenAspects)
+        private void TryChronicleBookPlaced(Token token, IAspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(BOOK_ASPECT))
 			{
-				Analytics.CustomEvent( "A_BOOK_PLACED", new Dictionary<string,object>{ {"id",token.EntityId} } );
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastbook.ToString(), token.EntityId);
+				Analytics.CustomEvent( "A_BOOK_PLACED", new Dictionary<string,object>{ {"id",token.Element.Id} } );
+                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastbook.ToString(), token.Element.Id);
 			}
         }
 

@@ -419,19 +419,19 @@ namespace Assets.TabletopUi.Scripts.Elements
             backArtwork.overrideSprite = sprite;
         }
 
-        public void ResetAnimations()
+        public void ResetIconAnimation()
         {
             artwork.overrideSprite = null;
             // we're turning? Just set us to the target
             flipHelper.FinishFlip();
         }
 
-        public bool CanAnimate()
+        public bool CanAnimateIcon()
         {
             return frames.Any();
         }
 
-        public void BeginArtAnimation()
+        public void BeginIconAnimation()
         {
             if (animCoroutine != null)
                 StopCoroutine(animCoroutine);

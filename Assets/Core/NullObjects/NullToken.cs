@@ -5,13 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.CS.TabletopUI;
 
-namespace Assets.TabletopUi.Scripts.Interfaces
+namespace Assets.Core.NullObjects
 {
-    public class IElementStackSubscriber
+   public class NullToken:Token
     {
-        void ElementStackUpdated(ElementStack stack)
-        {
-
-        }
     }
 }

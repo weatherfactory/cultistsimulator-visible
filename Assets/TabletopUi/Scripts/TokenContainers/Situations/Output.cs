@@ -56,11 +56,11 @@ public class Output : Sphere {
     }
 
 
-    public void SetOutput(List<ElementStack> allStacksToOutput) {
-        if (allStacksToOutput.Any() == false)
+    public void SetOutput(List<Token> allTokensToOutput) {
+        if (allTokensToOutput.Any() == false)
             return;
 
-        AcceptStacks(allStacksToOutput, new Context(Context.ActionSource.SituationResults));
+        AcceptTokens(allTokensToOutput, new Context(Context.ActionSource.SituationResults));
 
         //currently, if the first stack is fresh, we'll turn it over anyway. I think that's OK for now.
         //cardPos.ReorderCards(allStacksToOutput);
@@ -88,7 +88,7 @@ public class Output : Sphere {
         UpdateDumpButtonText();
 
         bool cardsRemaining = false;
-        IEnumerable<ElementStack> stacks = GetOutputStacks();
+        IEnumerable<Token> stacks = GetOutputTokens();
 
         // Window is open? Check if it was the last card, then reset automatically
         if (gameObject.activeInHierarchy) {
@@ -113,7 +113,7 @@ public class Output : Sphere {
             cardPos.ReorderCards(stacks);
     }
 
-    public IEnumerable<Token> GetOutputStacks() {
+    public IEnumerable<Token> GetOutputTokens() {
         return GetElementTokens();
     }
 
@@ -126,7 +126,7 @@ public class Output : Sphere {
     }
 
     public void UpdateDumpButtonText() {
-        if (GetOutputStacks().Any())
+        if (GetOutputTokens().Any())
             dumpResultsButtonText.GetComponent<Babelfish>().UpdateLocLabel(buttonClearResultsDefault);
         else
             dumpResultsButtonText.GetComponent<Babelfish>().UpdateLocLabel(buttonClearResultsNone);

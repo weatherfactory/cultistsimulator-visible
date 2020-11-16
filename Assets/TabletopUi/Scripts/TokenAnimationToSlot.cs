@@ -8,7 +8,7 @@ using Assets.TabletopUi.Scripts.Interfaces;
 
 public class TokenAnimationToSlot : TokenAnimation {
 
-	public event System.Action<ElementStack, TokenLocation, Sphere> onElementSlotAnimDone;
+	public event System.Action<Token, TokenLocation, Sphere> onElementSlotAnimDone;
 
     private TokenLocation destinationLocation;
     private Sphere destinationSlot;
@@ -39,6 +39,6 @@ public class TokenAnimationToSlot : TokenAnimation {
 
     protected override void FireCompleteEvent() {
 		if (onElementSlotAnimDone != null)
-			onElementSlotAnimDone(token as ElementStack, destinationLocation, destinationSlot);
+			onElementSlotAnimDone(token, destinationLocation, destinationSlot);
 	}
 }

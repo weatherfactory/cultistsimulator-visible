@@ -22,17 +22,17 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             callbackOnRetired();
         }
 
-        public bool CanAnimate()
+        public bool CanAnimateIcon()
         {
             return false;
         }
 
-        public void BeginArtAnimation()
+        public void BeginIconAnimation()
         {
             //
         }
 
-        public void ResetAnimations()
+        public void ResetIconAnimation()
         {
             //
         }

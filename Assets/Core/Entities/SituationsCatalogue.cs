@@ -99,7 +99,7 @@ namespace Assets.Core.Entities
 
             //if there's been (for instance) an expulsion, we now want to add the relevant stacks to this situation
             if (withStacksInStorage.Any())
-                situation.AcceptStacks(SphereCategory.SituationStorage, withStacksInStorage);
+                situation.AcceptTokens(SphereCategory.SituationStorage, withStacksInStorage);
 
 
         }

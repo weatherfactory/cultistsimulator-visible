@@ -75,7 +75,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
         }
 
-        public void ResetAnimations()
+        public void ResetIconAnimation()
         {
             //do nothing
         }
@@ -111,12 +111,12 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             //
         }
 
-        public void BeginArtAnimation()
+        public void BeginIconAnimation()
         {
             
         }
 
-        public bool CanAnimate()
+        public bool CanAnimateIcon()
         {
             return false;
         }

@@ -30,13 +30,25 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
    {
        
         void Retire(RetirementVFX retirementVfx, Action callback);
-        bool CanAnimate();
-        void BeginArtAnimation();
-        void ResetAnimations();
+        bool CanAnimateIcon();
+        void BeginIconAnimation();
+        void ResetIconAnimation();
+
+
+        void InitialiseVisuals(Element element);
+        void InitialiseVisuals(IVerb verb);
+
+        void UpdateVisuals(Element element, int quantity);
+        void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate, EndingFlavour signalEndingFlavour);
+        void OverrideIcon(string icon);
+
         void OnBeginDragVisuals();
         void OnEndDragVisuals();
+
         void AnimateTo(Token token, float duration, Vector3 startPos, Vector3 endPos,
             Action<Token> SituationAnimDone, float startScale = 1f, float endScale = 1f);
+
+
         void Highlight(HighlightType highlightType);
         void Unhighlight(HighlightType highlightType);
         bool NoPush { get; }
@@ -48,11 +60,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         void DoMove(RectTransform tokenRectTransform);
 
 
-        void InitialiseVisuals(Element element);
-        void InitialiseVisuals(IVerb verb);
-        void UpdateVisuals(Element element, int quantity);
-        void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate, EndingFlavour signalEndingFlavour);
-
+        
         void SendNotification(INotification notification);
 
 
@@ -61,7 +69,6 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         void DisplaySpheres(IEnumerable<Sphere> spheres);
         
         
-        void OverrideIcon(string icon);
         
 
         /// <summary>

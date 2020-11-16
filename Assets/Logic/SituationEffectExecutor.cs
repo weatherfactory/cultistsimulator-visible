@@ -85,10 +85,10 @@ namespace Assets.Logic
         {
             foreach (var mutationEffect in command.Recipe.Mutations)
             {
-                foreach (var stack in sphere.GetElementTokens())
+                foreach (var token in sphere.GetElementTokens())
                 {
-                    if (stack.GetAspects(true).ContainsKey(mutationEffect.Filter))
-                        stack.SetMutation(mutationEffect.Mutate, mutationEffect.Level,
+                    if (token.ElementStack.GetAspects(true).ContainsKey(mutationEffect.Filter))
+                        token.ElementStack.SetMutation(mutationEffect.Mutate, mutationEffect.Level,
                             mutationEffect.Additive);
                 }
             }
@@ -101,7 +101,7 @@ namespace Assets.Logic
 
             for (int i = 0; i < stacks.Count(); i++)
             {
-                if (stacks.ElementAt(i) != null && stacks.ElementAt(i).MarkedForConsumption)
+                if (stacks.ElementAt(i) != null && stacks.ElementAt(i).ElementStack.MarkedForConsumption)
                 {
                     stacks.ElementAt(i).Retire(RetirementVFX.CardBurn);
                 }
@@ -163,7 +163,7 @@ namespace Assets.Logic
         {
             ICompendium _compendium = Registry.Get<ICompendium>();
 
-            foreach (var eachStack in sphere.GetElementTokens())
+            foreach (var eachStack in sphere.GetElementStacks())
             {
                 RunXTriggersOnMutationsForStack(sphere, aspectsPresent, dice, eachStack, _compendium);
 
@@ -209,7 +209,7 @@ namespace Assets.Logic
                                     {
                                         sphere.ProvisionElementStackToken(newElementId, morph.Level,
                                             Source.Existing(),
-                                            new Context(Context.ActionSource.ChangeTo));
+                                            new Context(Context.ActionSource.ChangeTo),new Dictionary<string,int>());
                                         NoonUtility.Log(
                                             "xtrigger aspect marked additional=true " + mutationXTrigger + " caused " +
                                             currentMutationId + " to spawn a new " + newElementId);
@@ -249,7 +249,7 @@ namespace Assets.Logic
                         else if (morph.Chance >= dice.Rolld100())
                         {
                             string newElementId = morph.Id;
-                            string oldElementId = eachStack.EntityId;
+                            string oldElementId = eachStack.Element.Id;
                             int existingQuantity = eachStack.Quantity;
                             if (morph.MorphEffect==MorphEffectType.Transform)
                             {
@@ -262,7 +262,7 @@ namespace Assets.Logic
                             {
                               sphere.ProvisionElementStackToken(newElementId, morph.Level,
                                     Source.Existing(),
-                                    new Context(Context.ActionSource.ChangeTo));
+                                    new Context(Context.ActionSource.ChangeTo),new Dictionary<string, int>());
                                 NoonUtility.Log(
                                     "Spawn xtrigger " + triggerKey + " caused " +
                                     oldElementId + " to spawn a new " + newElementId);

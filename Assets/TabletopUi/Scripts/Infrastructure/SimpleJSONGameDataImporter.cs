@@ -175,7 +175,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             foreach (var ess in elementStackSpecifications)
             {
                 var context = new Context(Context.ActionSource.Loading);
-                tabletop.AcceptStack(tabletop.ProvisionStackFromCommand(ess,Source.Existing(), context), context);
+                tabletop.AcceptToken(tabletop.ProvisionStackFromCommand(ess,Source.Existing(), context), context);
             }
 
         }
@@ -305,7 +305,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 //    var slotToFill = situation.GetSlotBySaveLocationInfoPath(slotId, slotTypeKey);
                 //if (slotToFill != null) //a little bit robust if a higher level element slot spec has changed between saves
                 //    //if the game can't find a matching slot, it'll just leave it on the desktop
-                //    slotToFill.AcceptStack(stackToPutInSlot, new Context(Context.ActionSource.Loading));
+                //    slotToFill.AcceptToken(stackToPutInSlot, new Context(Context.ActionSource.Loading));
 
                 //if this was an ongoing slot, we also need to tell the situation that the slot's filled, or it will grab another
 
@@ -351,7 +351,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private void ImportOutputs(Hashtable htSituationValues, Situation situation, TabletopSphere tabletop)
         {
          var outputStacks=ImportOutputStacks(htSituationValues, tabletop);
-            situation.AcceptStacks(SphereCategory.Output,outputStacks);
+            situation.AcceptTokens(SphereCategory.Output,outputStacks);
 
         }
 
@@ -420,7 +420,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 {
                     var stackToStore=Registry.Get<Limbo>().ProvisionStackFromCommand(ess, Source.Existing(), new Context(Context.ActionSource.Loading));
 
-                    situation.AcceptStack(SphereCategory.SituationStorage, stackToStore,
+                    situation.AcceptToken(SphereCategory.SituationStorage, stackToStore,
                         new Context(Context.ActionSource.Loading));
                 }
 

@@ -44,7 +44,7 @@ namespace Assets.CS.TabletopUI {
         public bool Defunct { get; protected set; }
 
 
-        public Element _element;
+        public Element Element;
         private Token _attachedToken;
         private int _quantity;
 
@@ -66,12 +66,12 @@ namespace Assets.CS.TabletopUI {
 
         virtual public string Label
         {
-            get { return _element == null ? null : _element.Label; }
+            get { return Element == null ? null : Element.Label; }
         }
 
         virtual public string Icon
         {
-            get { return _element == null ? null : _element.Icon; }
+            get { return Element == null ? null : Element.Icon; }
         }
 
         public string EntityWithMutationsId 
@@ -81,7 +81,7 @@ namespace Assets.CS.TabletopUI {
 	        get
 	        {
 		        var mutations = GetCurrentMutations();
-		        return _element.Id + "?" + string.Join(
+		        return Element.Id + "?" + string.Join(
 			               "&", 
 			               mutations.Keys
 				               .Where(m => mutations[m] != 0)
@@ -94,31 +94,26 @@ namespace Assets.CS.TabletopUI {
         {
             get
             {
-                if (_element == null)
+                if (Element == null)
                     return false;
-                return _element.Unique;
+                return Element.Unique;
             }
         }
 
         virtual public string UniquenessGroup
         {
-            get { return _element == null ? null : _element.UniquenessGroup; }
+            get { return Element == null ? null : Element.UniquenessGroup; }
         }
 
         virtual public bool Decays
 		{
-            get { return _element.Decays; }
+            get { return Element.Decays; }
         }
 
         virtual public int Quantity {
             get { return Defunct ? 0 : _quantity; }
         }
 
-        virtual public Vector2? LastTablePos
-		{
-            get { return lastTablePos; }
-			set { lastTablePos = value; }
-        }
 
         virtual public bool MarkedForConsumption { get; set; }
 
@@ -128,18 +123,12 @@ namespace Assets.CS.TabletopUI {
             set { _illuminateLibrarian = value; }
         }
 
+        public float IntervalForLastHeartbeat { get; set; }
 
-
-        protected void OnDisable()
-		{
-            // this resets any animation frames so we don't get stuck when deactivating mid-anim
-            _manifestation.ResetAnimations();
-
-        }
 
         public bool IsValidElementStack()
         {
-            return EntityId != NullElement.NULL_ELEMENT_ID;
+            return Element.Id != NullElement.NULL_ELEMENT_ID;
         }
         
         public void SetQuantity(int quantity, Context context)
@@ -159,10 +148,9 @@ namespace Assets.CS.TabletopUI {
 				_quantity = 1;
 			}
 			_aspectsDirtyInc = true;
-            if(!Sphere.ContentsHidden)
-			    _manifestation.UpdateVisuals(_element,quantity);
 
-            Sphere.NotifyTokensChangedForContainer(new TokenEventArgs{Token = this, Element = _element,Container = Sphere});
+            _attachedToken.ElementStackStateUpdated(this);
+            
         }
 
         public void ModifyQuantity(int change,Context context) {
@@ -204,7 +192,7 @@ namespace Assets.CS.TabletopUI {
 
 
         virtual public Dictionary<string, List<MorphDetails>> GetXTriggers() {
-            return _element.XTriggers;
+            return Element.XTriggers;
         }
 
         virtual public IAspectsDictionary GetAspects(bool includeSelf = true)
@@ -214,7 +202,7 @@ namespace Assets.CS.TabletopUI {
             
             var tc = Registry.Get<SphereCatalogue>();
 
-            if (_element == null || tc==null)
+            if (Element == null || tc==null)
                 return new AspectsDictionary();
             
 			if (!tc.EnableAspectCaching)
@@ -232,8 +220,8 @@ namespace Assets.CS.TabletopUI {
 					else
 						_aspectsDictionaryInc.Clear();	// constructor is expensive
 
-					_aspectsDictionaryInc.CombineAspects(_element.AspectsIncludingSelf);
-					_aspectsDictionaryInc[_element.Id] = _aspectsDictionaryInc[_element.Id] * Quantity; //This might be a stack. In this case, we always want to return the multiple of the aspect of the element itself (only).
+					_aspectsDictionaryInc.CombineAspects(Element.AspectsIncludingSelf);
+					_aspectsDictionaryInc[Element.Id] = _aspectsDictionaryInc[Element.Id] * Quantity; //This might be a stack. In this case, we always want to return the multiple of the aspect of the element itself (only).
 
 					_aspectsDictionaryInc.ApplyMutations(_currentMutations);
 
@@ -253,7 +241,7 @@ namespace Assets.CS.TabletopUI {
 					else
 						_aspectsDictionaryExc.Clear();	// constructor is expensive
 
-					_aspectsDictionaryExc.CombineAspects(_element.Aspects);
+					_aspectsDictionaryExc.CombineAspects(Element.Aspects);
 
 					_aspectsDictionaryExc.ApplyMutations(_currentMutations);
 
@@ -267,11 +255,11 @@ namespace Assets.CS.TabletopUI {
         }
 
         virtual public List<SlotSpecification> GetChildSlotSpecificationsForVerb(string forVerb) {
-            return _element.Slots.Where(cs=>cs.ActionId==forVerb || cs.ActionId==string.Empty).ToList();
+            return Element.Slots.Where(cs=>cs.ActionId==forVerb || cs.ActionId==string.Empty).ToList();
         }
 
         virtual public bool HasChildSlotsForVerb(string verb) {
-            return _element.HasChildSlotsForVerb(verb);
+            return Element.HasChildSlotsForVerb(verb);
         }
 
         public void AttachToken(Token token)
@@ -291,15 +279,15 @@ namespace Assets.CS.TabletopUI {
         public void Populate(string elementId, int quantity, Source source)
 		{
             
-            _element = Registry.Get<ICompendium>().GetEntityById<Element>(elementId);
-            if (_element==null)
+            Element = Registry.Get<ICompendium>().GetEntityById<Element>(elementId);
+            if (Element==null)
 			{
 				NoonUtility.Log("Trying to create nonexistent element! - '" + elementId + "'");
                 this.Retire();
                 return;
             }
 
-            gameObject.name = _element.Id + "_stack";
+            gameObject.name = Element.Id + "_stack";
 
             if (_currentMutations == null)
                 _currentMutations = new Dictionary<string, int>();
@@ -311,23 +299,9 @@ namespace Assets.CS.TabletopUI {
             {
                 SetQuantity(quantity, new Context(Context.ActionSource.Unknown)); // this also toggles badge visibility through second call
 
-            Manifest(Sphere);
 
-                LifetimeRemaining = _element.Lifetime;
-                if(_element.Decays)
+                LifetimeRemaining = Element.Lifetime;
 
-                    if (_manifestation != null)
-                        _manifestation.UpdateTimerVisuals(_element.Lifetime, LifetimeRemaining, 0, _element.Resaturate,
-                            EndingFlavour.None);
-
-                if (_manifestation != null)
-                {
-                    _manifestation.Unhighlight(HighlightType.CanMerge);
-                    _manifestation.Unhighlight(HighlightType.CanFitSlot);
-                }
-
-
-                PlacementAlreadyChronicled = false; //element has changed, so we want to relog placement
                 MarkedForConsumption = false; //If a stack has just been transformed into another element, all sins are forgiven. It won't be consumed.
 			
 				_aspectsDirtyExc = true;
@@ -358,7 +332,7 @@ namespace Assets.CS.TabletopUI {
 			foreach (var stack in existingStacks)
 			{
 				Token tok = stack as Token;
-				if (tok!=null && tok.EntityId == "dropzone")
+				if (tok!=null && tok.Element == "dropzone")
 				{
 					dropZoneObject = tok;
 					break;
@@ -395,10 +369,6 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        private bool IsOnTabletop() {
-            return transform.parent.GetComponent<TabletopSphere>() != null;
-        }
-
         public void AcceptIncomingStackForMerge(ElementStack stackMergedIntoThisOne) {
             SetQuantity(Quantity + stackMergedIntoThisOne.Quantity,new Context(Context.ActionSource.Merge));
             stackMergedIntoThisOne.Retire(RetirementVFX.None);
@@ -428,9 +398,9 @@ namespace Assets.CS.TabletopUI {
 
             var hlc = Registry.Get<HighlightLocationsController>();
             if (hlc != null)
-                hlc.DeactivateMatchingHighlightLocation(_element?.Id);
+                hlc.DeactivateMatchingHighlightLocation(Element?.Id);
 
-            Sphere.NotifyTokensChangedForContainer(new TokenEventArgs{Element = _element,Token = this,Container = Sphere});  // Notify tabletop that aspects will need recompiling
+            Sphere.NotifyTokensChangedForContainer(new TokenEventArgs{Element = Element,Token = this,Container = Sphere});  // Notify tabletop that aspects will need recompiling
             SetSphere(Registry.Get<NullContainer>(), new Context(Context.ActionSource.Retire));
 
 
@@ -455,14 +425,14 @@ namespace Assets.CS.TabletopUI {
 
 
         virtual public bool AllowsIncomingMerge() {
-            if (Decays || _element.Unique || IsBeingAnimated)
+            if (Decays || Element.Unique || IsBeingAnimated)
                 return false;
             else
                 return Sphere.AllowStackMerge;
         }
 
         virtual public bool AllowsOutgoingMerge() {
-            if (Decays || _element.Unique || IsBeingAnimated)
+            if (Decays || Element.Unique || IsBeingAnimated)
                 return false;
             else
                 return true;	// If outgoing, it doesn't matter what its current container is - CP
@@ -518,7 +488,7 @@ namespace Assets.CS.TabletopUI {
                 {
 
                     var candidateAnchorLocation = candidateThresholds[selectedCandidate].GetAnchorLocation();
-                    SplitOffNCardsToNewStack(1, new Context(Context.ActionSource.DoubleClickSend));
+                    TryCreateNewStackWithSplitCardsToLeaveBehind(1, new Context(Context.ActionSource.DoubleClickSend));
                     tabletopTokenContainer.SendViaContainer.PrepareElementForSendAnim(this, candidateAnchorLocation); // this reparents the card so it can animate properly
                     tabletopTokenContainer.SendViaContainer.MoveElementToSituationSlot(this,candidateAnchorLocation, selectedCandidate, SEND_STACK_TO_SLOT_DURATION);
 
@@ -532,34 +502,11 @@ namespace Assets.CS.TabletopUI {
 		}
 
         
-        public  void ReactToDraggedToken(TokenInteractionEventArgs args)
-        {
-            if(args.TokenInteractionType==TokenInteractionType.BeginDrag)
-            {
-                ElementStack stack = args.Token as ElementStack;
-                ;
-                if (Defunct || stack == null)
-                    return;
 
 
-                if (stack.CanMergeWith(this))
-                {
-                    _manifestation.Highlight(HighlightType.CanMerge);
-                }
-            }
-            else if (args.TokenInteractionType == TokenInteractionType.EndDrag)
-            {
-               _manifestation.Unhighlight(HighlightType.CanMerge);
-            }
-            
-        }
-
-
-
-
-        public virtual bool CanMergeWith(ElementStack intoStack)
+        public void bool CanMergeWith(ElementStack intoStack)
 		{
-            if(intoStack.EntityId != this.EntityId)
+            if(intoStack.Element != this.Element)
                 return false;
             if (intoStack == this)
                 return false;
@@ -578,7 +525,7 @@ namespace Assets.CS.TabletopUI {
    
 
         public void ShowNoMergeMessage(ElementStack stackDroppedOn) {
-            if (stackDroppedOn._element.Id != this._element.Id)
+            if (stackDroppedOn.Element.Id != this.Element.Id)
                 return; // We're dropping on a different element? No message needed.
 
             if (stackDroppedOn.Decays)
@@ -587,11 +534,11 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public ElementStack SplitOffNCardsToNewStack(int n, Context context) {
+        public ElementStack TryCreateNewStackWithSplitCardsToLeaveBehind(int n, Context context) {
             if (Quantity > n)
             {
                 var cardLeftBehind =
-                    Sphere.ProvisionElementStackToken(_element.Id, Quantity - n, Source.Existing(), context) as ElementStack;
+                    Sphere.ProvisionElementStackToken(Element.Id, Quantity - n, Source.Existing(), context) as ElementStack;
                 foreach (var m in GetCurrentMutations())
 	                cardLeftBehind.SetMutation(m.Key, m.Value, false); //brand new mutation, never needs to be additive
 
@@ -638,18 +585,13 @@ namespace Assets.CS.TabletopUI {
                 }
 
                 // If we DecayTo, then do that. Otherwise straight up retire the card
-                if (string.IsNullOrEmpty(_element.DecayTo))
+                if (string.IsNullOrEmpty(Element.DecayTo))
                     Retire(RetirementVFX.CardBurn);
                 else
-                    DecayTo(_element.DecayTo);
+                    DecayTo(Element.DecayTo);
             }
 
-            if (shrouded)
-                Unshroud(true); //never leave a decaying card face down.
-
-
-		    _manifestation.UpdateTimerVisuals( _element.Lifetime, LifetimeRemaining,interval,_element.Resaturate,EndingFlavour.None);
-
+            
           if (onDecay != null)
                 onDecay(LifetimeRemaining);
         }

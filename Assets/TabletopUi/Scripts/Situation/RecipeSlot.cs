@@ -237,7 +237,7 @@ namespace Assets.CS.TabletopUI {
             if (IsBeingAnimated || !eventData.dragging || stack==null)
                 return;
 
-            TryAcceptStackAsThreshold(stack);
+            TryAcceptTokenAsThreshold(stack);
 
         }
 
@@ -281,7 +281,7 @@ namespace Assets.CS.TabletopUI {
             if (GetMatchForStack(potentialUsurper.ElementStack).MatchType==SlotMatchForAspectsType.Okay && potentialUsurper.ElementQuantity == 1)
             {
                 incumbentMoved = true;
-                incumbent.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag)); //do this first; AcceptStack will trigger an update on the displayed aspects
+                incumbent.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag)); //do this first; AcceptToken will trigger an update on the displayed aspects
                 AcceptToken(potentialUsurper, new Context(Context.ActionSource.PlayerDrag));
             }
             else

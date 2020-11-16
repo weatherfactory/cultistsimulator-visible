@@ -53,6 +53,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
     public abstract class Sphere : MonoBehaviour, ISphereEventSubscriber
     {
         public virtual Type DropzoneType => typeof(DropzoneManifestation);
+        public virtual Type SituationManifestationType => typeof(VerbManifestation);
         public virtual Type ElementManifestationType => typeof(CardManifestation);
 
         public virtual bool AllowDrag { get; private set; }
@@ -164,9 +165,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             Source stackSource, Context context)
         {
             var token = ProvisionElementStackToken(stackCreationCommand.ElementId, stackCreationCommand.ElementQuantity,
-                stackSource, context);
-            foreach (var m in stackCreationCommand.Mutations)
-                token.ElementStack.SetMutation(m.Key, m.Value, false);
+                stackSource, context,stackCreationCommand.Mutations);
+            
 
             token.ElementStack.IlluminateLibrarian = new IlluminateLibrarian(stackCreationCommand.Illuminations);
 
@@ -185,18 +185,21 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public virtual Token ProvisionElementStackToken(string elementId, int quantity)
         {
             return ProvisionElementStackToken(elementId, quantity, Source.Existing(),
-                new Context(Context.ActionSource.Unknown));
+                new Context(Context.ActionSource.Unknown),new Dictionary<string, int>());
         }
 
 
         public Token ProvisionElementStackToken(string elementId, int quantity, Source stackSource,
-            Context context)
+            Context context,Dictionary<string,int> withMutations)
         {
 
             var gameobject =new GameObject(elementId);
            var stack=gameobject.AddComponent<ElementStack>();
             
             stack.Populate(elementId, quantity, stackSource);
+
+            foreach (var m in withMutations)
+                stack.SetMutation(m.Key, m.Value, false); //brand new mutation, never needs to be additive
 
             var token = Registry.Get<PrefabFactory>().CreateLocally<Token>(transform);
             stack.AttachToken(token);
@@ -206,6 +209,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return token;
         }
 
+
+        // Returns a rect for use by the Choreographer
+        public Rect GetRect()
+        {
+            var rectTrans = transform as RectTransform;
+            return rectTrans.rect;
+        }
 
         public virtual void DisplayHere(Token token, Context context)
         {
@@ -294,6 +304,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return quantityChange;
         }
 
+        public List<Token> GetAllTokens()
+        {
+            return new List<Token>(_tokens);
+        }
+
         public List<Token> GetElementTokens()
         {
             return _tokens.Where(s => !s.Defunct && s.ElementStack.IsValidElementStack()).ToList();
@@ -339,13 +354,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             return GetElementTokens().Select(t=>t.ElementStack).Where(filter).Count();
         }
-
+        /// <summary>
+        /// total of (stacks*quantity of each stack)
+        /// </summary>
         public int GetTotalElementsCount()
         {
             return GetTotalElementsCount(x => true);
 
         }
-
+        /// <summary>
+        /// total of (stacks*quantity of each stack)
+        /// </summary>
         public int GetTotalElementsCount(Func<ElementStack, bool> filter)
         {
             return GetElementTokens().Select(t=>t.ElementStack).Where(filter).Sum(stack => stack.Quantity);
@@ -498,7 +517,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             foreach (var existingStack in new List<ElementStack>(GetElementStacks()))
             {
 
-                if (existingStack != incomingStack && existingStack._element.Id == incomingStack._element.Id)
+                if (existingStack != incomingStack && existingStack.Element.Id == incomingStack.Element.Id)
                 {
                     NoonUtility.Log(
                         "Not the stack that got accepted, but has the same ID as the stack that got accepted? It's a copy!");
