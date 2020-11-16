@@ -130,7 +130,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
         void RetireAllStacks(RetirementVFX anim) {
-            var stacks = _tabletopManager._tabletop.GetStackTokens();
+            var stacks = _tabletopManager._tabletop.GetElementTokens();
 
             foreach (var item in stacks)
                 item.Retire(anim);

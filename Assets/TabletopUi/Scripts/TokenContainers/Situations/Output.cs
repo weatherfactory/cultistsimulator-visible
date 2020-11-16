@@ -78,10 +78,10 @@ public class Output : Sphere {
 
     public override void DisplayHere(ElementStack stack, Context context) {
         base.DisplayHere(stack, context);
-        cardPos.ReorderCards(GetStackTokens());
+        cardPos.ReorderCards(GetElementTokens());
     }
 
-    public override void RemoveStack(ElementStack elementStack) {
+    public override void RemoveToken(Token token) {
         // Did we just drop the last available token? 
         // Update the badge, then reorder cards?
 
@@ -113,8 +113,8 @@ public class Output : Sphere {
             cardPos.ReorderCards(stacks);
     }
 
-    public IEnumerable<ElementStack> GetOutputStacks() {
-        return GetStackTokens();
+    public IEnumerable<Token> GetOutputStacks() {
+        return GetElementTokens();
     }
 
     public override SpherePath GetPath()

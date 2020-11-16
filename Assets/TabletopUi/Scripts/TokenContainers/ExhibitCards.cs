@@ -27,19 +27,19 @@ public class ExhibitCards : Sphere {
     public override SphereCategory SphereCategory => SphereCategory.Meta;
 
 
-    public override void DisplayHere(ElementStack stack, Context context)
+    public override void DisplayHere(Token token, Context context)
     {
-        base.DisplayHere(stack, context);
-        stack.Understate();
+        base.DisplayHere(token, context);
+        token.Understate();
     }
 
     public void HighlightCardWithId(string elementId)
     {
         var cards = GetStackTokens();
 
-        foreach (var card in cards.Select(c=>c as ElementStack))
+        foreach (var card in cards)
         {
-            if (card.EntityId == elementId)
+            if (card.Element.Id == elementId)
                 card.Emphasise();
             else
                 card.Understate();

@@ -136,7 +136,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         #region -- GET FREE POSITION ----------------------------
 
-        public Vector2 GetFreePosWithDebug(IToken token, Vector2 centerPos, int startIteration = -1, bool stackBothSides = true)
+        public Vector2 GetFreePosWithDebug(Token token, Vector2 centerPos, int startIteration = -1, bool stackBothSides = true)
 		{
 #if DEBUG
             _currentDebug = new GameObject("ChoreoDebugInfo_" + token.name).AddComponent<ChoreographerDebugView>();
@@ -158,7 +158,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 #endif
         }
 
-        Vector2 GetFreeTokenPosition(IToken token, Vector2 centerPos, int startIteration = -1, bool stackBothSides = true)
+        Vector2 GetFreeTokenPosition(Token token, Vector2 centerPos, int startIteration = -1, bool stackBothSides = true)
 		{
             //Debug.Log("Trying to find FREE POS for " + token.Id);
             centerPos = GetPosClampedToTable(centerPos);
@@ -230,7 +230,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return pos;
         }
 
-        bool IsLegalPosition(Rect rect,  IToken ignoreToken = null)
+        bool IsLegalPosition(Rect rect,  Token ignoreToken = null)
 		{
             if (tableRect.Contains(rect.position + rect.size / 2f) == false)
                 return false;
@@ -259,7 +259,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return true;
         }
 
-        bool CanTokenBeIgnored(IToken token, IToken ignoreToken) {
+        bool CanTokenBeIgnored(Token token, Token ignoreToken) {
             if (token == ignoreToken)
                 return true;
             if (token.IsInMotion)

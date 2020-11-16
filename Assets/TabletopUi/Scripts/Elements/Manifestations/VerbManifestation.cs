@@ -177,7 +177,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
             var sphereToDisplayAsMiniSlot = spheres.Single();
             showMiniSlot(sphereToDisplayAsMiniSlot.GoverningSlotSpecification.Greedy);
-            displayStackInMiniSlot(sphereToDisplayAsMiniSlot.GetStackTokens());
+            displayStackInMiniSlot(sphereToDisplayAsMiniSlot.GetElementTokens());
         }
 
 

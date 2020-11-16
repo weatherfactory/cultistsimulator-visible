@@ -43,7 +43,7 @@ namespace Assets.CS.TabletopUI {
 
         [RequireComponent(typeof(RectTransform))]
     public class Token : MonoBehaviour,
-        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IToken,IArtAnimatableToken,ISituationSubscriber
+        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IArtAnimatableToken,ISituationSubscriber
     {
         protected bool singleClickPending = false;
 
@@ -261,9 +261,18 @@ namespace Assets.CS.TabletopUI {
 			transform.localPosition = Registry.Get<Choreographer>().SnapToGrid( transform.localPosition );
 		}
 
-        public virtual void SetSphere(Sphere newContainer, Context context) {
+        public virtual void SetSphere(Sphere newSphere, Context context) {
             OldSphere = Sphere;
-            Sphere = newContainer;
+            Sphere = newSphere;
+
+            if (OldSphere != null && OldSphere != newSphere)
+            {
+                OldSphere.RemoveToken(this);
+                if (OldSphere.ContentsHidden && !newSphere.ContentsHidden)
+                    _manifestation.UpdateVisuals(_element, Quantity);
+            }
+
+            Sphere = newSphere;
         }
 
         public bool IsInContainer(Sphere compareContainer, Context context) {

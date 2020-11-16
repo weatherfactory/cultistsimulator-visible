@@ -325,7 +325,7 @@ namespace Assets.Core.Entities {
         {
             List<ElementStack> stacks = new List<ElementStack>();
             foreach (var container in _spheres)
-                stacks.AddRange(container.GetStackTokens());
+                stacks.AddRange(container.GetElementTokens());
             return stacks;
         }
 
@@ -334,7 +334,7 @@ namespace Assets.Core.Entities {
         {
             List<ElementStack> stacks = new List<ElementStack>();
             foreach (var container in _spheres.Where(c => c.SphereCategory == forSphereCategory))
-                stacks.AddRange(container.GetStackTokens());
+                stacks.AddRange(container.GetElementTokens());
 
             return stacks;
         }
@@ -701,7 +701,7 @@ namespace Assets.Core.Entities {
         public bool PushDraggedStackIntoThreshold(ElementStack stack)
         {
             var thresholdContainer = GetFirstAvailableThresholdForStackPush(stack);
-            var possibleIncumbent = thresholdContainer.GetStackTokens().FirstOrDefault();
+            var possibleIncumbent = thresholdContainer.GetElementTokens().FirstOrDefault();
             if (possibleIncumbent != null)
             {
                 possibleIncumbent.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));

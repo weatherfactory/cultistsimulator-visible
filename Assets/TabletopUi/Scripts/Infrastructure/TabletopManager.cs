@@ -550,7 +550,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
             try
             {
-	            ITableSaveState tableSaveState=new TableSaveState(_tabletop.GetStackTokens(), Registry.Get<SituationsCatalogue>().GetRegisteredSituations(),Registry.Get<MetaInfo>());
+	            ITableSaveState tableSaveState=new TableSaveState(_tabletop.GetElementTokens(), Registry.Get<SituationsCatalogue>().GetRegisteredSituations(),Registry.Get<MetaInfo>());
                  var   saveTask = Registry.Get<GameSaveManager>().SaveActiveGameAsync(tableSaveState,  Registry.Get<Character>(), source);
                  NoonUtility.Log("Beginning save", 0,VerbosityLevel.SystemChatter);
                bool    success = await saveTask;
@@ -669,7 +669,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
         private ElementStack FindStackForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
 
             var rnd = new Random();
-            var stacks = _tabletop.GetStackTokens().OrderBy(x=>rnd.Next());
+            var stacks = _tabletop.GetElementTokens().OrderBy(x=>rnd.Next());
 
             foreach (var stack in stacks)
                 if (CanPullCardToGreedySlot(stack as ElementStack, slotSpec))
@@ -771,7 +771,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
         }
 
         public void DecayStacksOnTable(float interval) {
-            var decayingStacks = _tabletop.GetStackTokens().Where(s => s.Decays);
+            var decayingStacks = _tabletop.GetElementTokens().Where(s => s.Decays);
 
             foreach (var d in decayingStacks)
                 d.Decay(interval);
@@ -893,7 +893,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
         public void GroupAllStacks()
         {
-	        var stacks = _tabletop.GetStackTokens();
+	        var stacks = _tabletop.GetElementTokens();
 	        var groups = stacks.OfType<ElementStack>()
 		        .GroupBy(e => e.EntityWithMutationsId, e => e)
 		        .Select(group => group.OrderByDescending(e => e.Quantity).ToList());
@@ -913,7 +913,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
 		private List<ElementStack> FindAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
 			var stackList = new List<ElementStack>();
-			var stacks = _tabletop.GetStackTokens();
+			var stacks = _tabletop.GetElementTokens();
 			ElementStack stack;
 
 			foreach (var stack in stacks) {

@@ -65,7 +65,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         void TriggerArtAnimation()
         {
             
-            var stacks = Registry.Get<TabletopManager>()._tabletop.GetStackTokens();
+            var stacks = Registry.Get<TabletopManager>()._tabletop.GetElementTokens();
 
             var animatables = new List<IArtAnimatableToken>();
             

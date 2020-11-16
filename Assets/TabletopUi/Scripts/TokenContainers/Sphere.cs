@@ -294,14 +294,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return quantityChange;
         }
 
-        public List<Token> GetStackTokens()
+        public List<Token> GetElementTokens()
         {
             return _tokens.Where(s => !s.Defunct && s.ElementStack.IsValidElementStack()).ToList();
         }
 
         public List<ElementStack> GetElementStacks()
         {
-            return GetStackTokens().Select(t => t.ElementStack).ToList();
+            return GetElementTokens().Select(t => t.ElementStack).ToList();
         }
 
         public List<string> GetUniqueStackElementIds()
@@ -313,7 +313,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public List<string> GetStackElementIds()
         {
-            return GetStackTokens().Select(s => s.Element.Id).ToList();
+            return GetElementTokens().Select(s => s.Element.Id).ToList();
         }
 
 
@@ -337,7 +337,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public int GetTotalStacksCountWithFilter(Func<ElementStack, bool> filter)
         {
 
-            return GetStackTokens().Select(t=>t.ElementStack).Where(filter).Count();
+            return GetElementTokens().Select(t=>t.ElementStack).Where(filter).Count();
         }
 
         public int GetTotalElementsCount()
@@ -348,7 +348,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public int GetTotalElementsCount(Func<ElementStack, bool> filter)
         {
-            return GetStackTokens().Select(t=>t.ElementStack).Where(filter).Sum(stack => stack.Quantity);
+            return GetElementTokens().Select(t=>t.ElementStack).Where(filter).Sum(stack => stack.Quantity);
 
         }
 
@@ -466,7 +466,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             else
             {
                 //it matches. Now we check if there's a token already there, and replace it if so:
-                var currentOccupant = GetStackTokens().FirstOrDefault();
+                var currentOccupant = GetElementTokens().FirstOrDefault();
 
                 // if we drop in the same slot where we came from, do nothing.
                 if (currentOccupant == token)

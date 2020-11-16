@@ -85,7 +85,7 @@ namespace Assets.Logic
         {
             foreach (var mutationEffect in command.Recipe.Mutations)
             {
-                foreach (var stack in sphere.GetStackTokens())
+                foreach (var stack in sphere.GetElementTokens())
                 {
                     if (stack.GetAspects(true).ContainsKey(mutationEffect.Filter))
                         stack.SetMutation(mutationEffect.Mutate, mutationEffect.Level,
@@ -97,7 +97,7 @@ namespace Assets.Logic
         private void RunConsumptions(Sphere sphere)
         {
 
-            var stacks = sphere.GetStackTokens();
+            var stacks = sphere.GetElementTokens();
 
             for (int i = 0; i < stacks.Count(); i++)
             {
@@ -163,7 +163,7 @@ namespace Assets.Logic
         {
             ICompendium _compendium = Registry.Get<ICompendium>();
 
-            foreach (var eachStack in sphere.GetStackTokens())
+            foreach (var eachStack in sphere.GetElementTokens())
             {
                 RunXTriggersOnMutationsForStack(sphere, aspectsPresent, dice, eachStack, _compendium);
 

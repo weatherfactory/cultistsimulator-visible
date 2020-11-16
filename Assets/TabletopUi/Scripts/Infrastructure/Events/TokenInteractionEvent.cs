@@ -13,7 +13,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Events
     public enum TokenInteractionType{BeginDrag=1,EndDrag=2}
     public class TokenInteractionEventArgs
     {
-        public IToken Token { get; set; }
+        public Token Token { get; set; }
         public TokenInteractionType TokenInteractionType { get; set; }
         public PointerEventData PointerEventData { get; set; }
 

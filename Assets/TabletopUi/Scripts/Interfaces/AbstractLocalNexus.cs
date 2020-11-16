@@ -40,12 +40,12 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
         }
 
-        public void SignalTokenBeginDrag(IToken token, PointerEventData pointerEventData)
+        public void SignalTokenBeginDrag(Token token, PointerEventData pointerEventData)
         {
             TokenInteractionEvent.Invoke(new TokenInteractionEventArgs{Token=token,PointerEventData = pointerEventData,TokenInteractionType = TokenInteractionType.BeginDrag});
         }
 
-        public void SignalTokenEndDrag(IToken token, PointerEventData pointerEventData)
+        public void SignalTokenEndDrag(Token token, PointerEventData pointerEventData)
         {
             TokenInteractionEvent.Invoke(new TokenInteractionEventArgs { Token = token, PointerEventData = pointerEventData, TokenInteractionType = TokenInteractionType.EndDrag });
         }

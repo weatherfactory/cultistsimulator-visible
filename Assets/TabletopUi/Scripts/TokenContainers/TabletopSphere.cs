@@ -56,7 +56,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
 
 
 
-    public override void DisplayHere(IToken token, Context context) {
+    public override void DisplayHere(Token token, Context context) {
         
         token.transform.SetParent(transform, true);
         token.transform.localRotation = Quaternion.identity;
@@ -66,7 +66,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
     }
 
     // Tabletop specific
-    public void CheckOverlappingTokens(IToken token) {
+    public void CheckOverlappingTokens(Token token) {
         // Verify if we are overlapping with anything. If so: move it.
         Registry.Get<Choreographer>().MoveAllTokensOverlappingWith(token);
     }

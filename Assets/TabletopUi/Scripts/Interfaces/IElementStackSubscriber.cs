@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +7,11 @@ using Assets.CS.TabletopUI;
 
 namespace Assets.TabletopUi.Scripts.Interfaces
 {
-    public interface IArtAnimatableToken
+    public class IElementStackSubscriber
     {
-        void StartArtAnimation();
-        bool CanAnimateArt();
+        void ElementStackUpdated(ElementStack stack)
+        {
+
+        }
     }
 }

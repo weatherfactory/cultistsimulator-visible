@@ -120,7 +120,7 @@ namespace Assets.Core.Services
             
             foreach (var tc in tokenContainers)
             {
-                allStacksInGame.AddRange(tc.GetStackTokens());
+                allStacksInGame.AddRange(tc.GetElementTokens());
             }
 
             var rnd=new Random();

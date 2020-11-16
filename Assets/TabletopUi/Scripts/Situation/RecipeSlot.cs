@@ -244,7 +244,7 @@ namespace Assets.CS.TabletopUI {
         
         
 
-        public override void DisplayHere(IToken token, Context context) {
+        public override void DisplayHere(Token token, Context context) {
             base.DisplayHere(token, context);
             var stack = token as ElementStack;
 
