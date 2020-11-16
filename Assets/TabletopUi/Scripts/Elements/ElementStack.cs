@@ -357,10 +357,8 @@ namespace Assets.CS.TabletopUI {
 
 
         
-
-		
-
-        public bool CanMergeWith(ElementStack intoStack)
+        
+        public virtual bool CanMergeWith(ElementStack intoStack)
 		{
             if(intoStack.Element != this.Element)
                 return false;
@@ -424,13 +422,6 @@ namespace Assets.CS.TabletopUI {
             LifetimeRemaining = LifetimeRemaining - interval;
 
             if (LifetimeRemaining <= 0 || interval<0) {
-                // We're dragging this thing? Then return it?
-                if (_currentlyBeingDragged) {
-                    // Set our table pos based on our current world pos
-                    lastTablePos = Registry.Get<Choreographer>().GetTablePosForWorldPos(transform.position);
-                    // Then cancel our drag, which will return us to our new pos
-                    FinishDrag();
-                }
 
                 // If we DecayTo, then do that. Otherwise straight up retire the card
                 if (string.IsNullOrEmpty(Element.DecayTo))
@@ -440,7 +431,7 @@ namespace Assets.CS.TabletopUI {
             }
 
             
-          if (onDecay != null)
+            if (onDecay != null)
                 onDecay(LifetimeRemaining);
         }
 
@@ -453,33 +444,9 @@ namespace Assets.CS.TabletopUI {
             // Save this, since we're retiring and that sets quantity to 0
             int quantity = Quantity;
 
-            try
-            {
+            Populate(elementId,quantity,Source.Existing());
 
-                var cardLeftBehind= Sphere.ProvisionElementStackToken(elementId, quantity, Source.Existing(),
-                    new Context(Context.ActionSource.ChangeTo)) as ElementStack;
-
-                foreach(var m in this.GetCurrentMutations())
-                    cardLeftBehind.SetMutation(m.Key,m.Value,false); //brand new mutation, never needs to be additive
-                cardLeftBehind.lastTablePos = lastTablePos;
-                cardLeftBehind.originStack = null;
-
-                // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
-                cardLeftBehind.transform.position = transform.position;
-
-                // Put it behind the card being burned
-                cardLeftBehind.transform.SetSiblingIndex(transform.GetSiblingIndex() - 1);
-
-                // Accepting stack may put it to pos Vector3.zero, so this is last
-                cardLeftBehind.transform.position = transform.position;
-
-                Retire(RetirementVFX.CardTransformWhite);
-            }
-            catch (Exception e)
-            {
-                NoonUtility.Log($"Something bad happened when trying to turn the {EntityId} card on the desktop into a {elementId} card: " + e.Message,1,VerbosityLevel.Essential);
-                return false;
-            }
+            _attachedToken.Remanifest(RetirementVFX.CardTransformWhite);
 
             return true;
         }

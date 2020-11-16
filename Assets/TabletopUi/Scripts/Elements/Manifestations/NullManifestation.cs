@@ -17,6 +17,9 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
     public class NullManifestation: IManifestation
     {
+
+        public Transform Transform => null;
+
         public void Retire(RetirementVFX vfx, Action callbackOnRetired)
         {
             callbackOnRetired();

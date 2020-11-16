@@ -58,6 +58,9 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         [SerializeField] public GraphicFader glowImage;
 
+        public Transform Transform => gameObject.transform;
+
+
         private List<Sprite> frames;
         private bool _transient;
         private Coroutine animCoroutine;

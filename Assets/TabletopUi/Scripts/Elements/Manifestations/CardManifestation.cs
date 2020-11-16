@@ -50,6 +50,8 @@ namespace Assets.TabletopUi.Scripts.Elements
         public bool RequestingNoDrag => flipHelper.FlipInProgress;
 
 
+        public Transform Transform => gameObject.transform;
+
         public void InitialiseVisuals(Element element)
         {
             flipHelper = new FlipHelper(this);
@@ -347,7 +349,6 @@ namespace Assets.TabletopUi.Scripts.Elements
             flipHelper.Flip(FlipHelper.TargetOrientation.FaceDown, instant);
         }
 
-        
 
 
         public void Retire(RetirementVFX retirementVfx,Action callbackOnRetired)
@@ -480,6 +481,7 @@ namespace Assets.TabletopUi.Scripts.Elements
             // remove anim
             artwork.overrideSprite = null;
         }
+
 
 
 

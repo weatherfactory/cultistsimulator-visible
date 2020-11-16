@@ -18,6 +18,9 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
    public class PickupManifestation: MonoBehaviour, IManifestation
     {
+
+        public Transform Transform => gameObject.transform;
+
         public void Retire(RetirementVFX retirementVfx, Action callback)
         {
             Destroy(gameObject);

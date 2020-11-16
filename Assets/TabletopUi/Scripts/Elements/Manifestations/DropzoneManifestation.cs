@@ -22,6 +22,8 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         private GameObject shadow;
         private GraphicFader glowImage;
 
+        public Transform Transform => gameObject.transform;
+
         public bool RequestingNoDrag => false;
         public void DoMove(RectTransform tokenRectTransform)
         {

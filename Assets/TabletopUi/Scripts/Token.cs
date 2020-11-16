@@ -173,6 +173,7 @@ namespace Assets.CS.TabletopUI {
             
         }
 
+        
         public void Populate(ElementStack elementStack)
         {
             ElementStack = elementStack;
@@ -195,14 +196,7 @@ namespace Assets.CS.TabletopUI {
 
         public void Manifest(Sphere forContainer)
         {
-            if (Element.Id == "dropzone")
-            {
-                _manifestation = Registry.Get<PrefabFactory>()
-                    .CreateManifestationPrefab(nameof(DropzoneManifestation), this.transform);
-                return;
-            }
 
-            
             if(ElementStack.IsValidElementStack())
             {
 
@@ -230,6 +224,25 @@ namespace Assets.CS.TabletopUI {
                 _manifestation.InitialiseVisuals(Verb);
             }
 
+        }
+
+        /// <summary>
+        /// replaces one manifestation with an identical manifestation - so for example we can do a vfx retiring the old one
+        /// </summary>
+        /// <param name="vfx"></param>
+        public void Remanifest(RetirementVFX vfx)
+        {
+            var reManifestation = Registry.Get<PrefabFactory>()
+                .CreateManifestationPrefab(_manifestation.GetType().Name, this.transform);
+
+            reManifestation.Transform.position=_manifestation.Transform.position;
+
+            // Put it behind the old card that we're about to destroy showily
+            reManifestation.Transform.SetSiblingIndex(_manifestation.Transform.GetSiblingIndex() - 1);
+
+            SwapOutManifestation(_manifestation,reManifestation,vfx);
+
+           Manifest(Sphere);
         }
 
 

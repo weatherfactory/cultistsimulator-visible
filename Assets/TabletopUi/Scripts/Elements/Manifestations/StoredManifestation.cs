@@ -20,6 +20,9 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
     public class StoredManifestation: MonoBehaviour, IManifestation
     {
+        public Transform Transform => gameObject.transform;
+
+
         [SerializeField] private CanvasGroup canvasGroup;
         
         [SerializeField] private ElementFrame elementFrame;

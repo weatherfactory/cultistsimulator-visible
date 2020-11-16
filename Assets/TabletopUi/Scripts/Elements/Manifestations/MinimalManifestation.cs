@@ -18,6 +18,8 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
    public class MinimalManifestation:MonoBehaviour,IManifestation
     {
+        public Transform Transform => gameObject.transform;
+
         public bool RequestingNoDrag => false;
         public void DoMove(RectTransform tokenRectTransform)
         {
