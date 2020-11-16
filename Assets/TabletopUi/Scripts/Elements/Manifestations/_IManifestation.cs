@@ -35,7 +35,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         void ResetAnimations();
         void OnBeginDragVisuals();
         void OnEndDragVisuals();
-        void AnimateTo(IArtAnimatableToken token, float duration, Vector3 startPos, Vector3 endPos,
+        void AnimateTo(Token token, float duration, Vector3 startPos, Vector3 endPos,
             Action<Token> SituationAnimDone, float startScale = 1f, float endScale = 1f);
         void Highlight(HighlightType highlightType);
         void Unhighlight(HighlightType highlightType);

@@ -104,9 +104,9 @@ namespace Assets.Core.Entities
 
         }
 
-        //public IEnumerable<IArtAnimatableToken> GetAnimatables()
+        //public IEnumerable<Token> GetAnimatables()
         //{
-        //    var situationTokens = GetRegisteredSituations().Select(s => s.situationAnchor as IArtAnimatableToken);
+        //    var situationTokens = GetRegisteredSituations().Select(s => s.situationAnchor as Token);
 
         //    return situationTokens.Where(s => s.CanAnimateArt());
 

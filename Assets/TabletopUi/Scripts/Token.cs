@@ -43,7 +43,7 @@ namespace Assets.CS.TabletopUI {
 
         [RequireComponent(typeof(RectTransform))]
     public class Token : MonoBehaviour,
-        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IArtAnimatableToken,ISituationSubscriber
+        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,ISituationSubscriber
     {
         protected bool singleClickPending = false;
 

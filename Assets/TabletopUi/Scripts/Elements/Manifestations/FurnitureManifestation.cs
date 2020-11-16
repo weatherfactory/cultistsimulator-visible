@@ -435,8 +435,8 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         }
 
 
-        public void AnimateTo(IArtAnimatableToken token, float duration, Vector3 startPos, Vector3 endPos,
-            Action<VerbAnchor> SituationAnimDone, float startScale = 1f, float endScale = 1f)
+        public void AnimateTo(Token token, float duration, Vector3 startPos, Vector3 endPos,
+            Action<Token> SituationAnimDone, float startScale = 1f, float endScale = 1f)
         {
             var tokenAnim = token.gameObject.AddComponent<TokenAnimation>();
             tokenAnim.onAnimDone += SituationAnimDone;

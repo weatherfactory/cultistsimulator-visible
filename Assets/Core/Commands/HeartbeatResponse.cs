@@ -11,6 +11,6 @@ namespace Assets.Core.Commands
     public class HeartbeatResponse
     {        
         public HashSet<AnchorAndSlot> SlotsToFill=new HashSet<AnchorAndSlot>();
-        public IArtAnimatableToken AnimatableToken { get; set; }
+        public Token Token { get; set; }
     }
 }

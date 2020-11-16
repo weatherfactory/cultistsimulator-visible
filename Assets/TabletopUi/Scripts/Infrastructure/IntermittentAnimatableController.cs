@@ -67,13 +67,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             
             var stacks = Registry.Get<TabletopManager>()._tabletop.GetElementTokens();
 
-            var animatables = new List<IArtAnimatableToken>();
+            var animatables = new List<Token>();
             
             foreach (var stack in stacks)
                 if (!stack.Defunct && stack.CanAnimateArt() && stack.EntityId != lastAnimID)
                     animatables.Add(stack);
 
-            //List<IArtAnimatableToken> tokens =new List<IArtAnimatableToken>(Registry.Get<SituationsCatalogue>().GetAnimatables());
+            //List<Token> tokens =new List<Token>(Registry.Get<SituationsCatalogue>().GetAnimatables());
 
        //     animatables.AddRange(tokens.Where(t => t.EntityId != lastAnimID));
 

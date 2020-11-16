@@ -184,7 +184,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
           //
         }
 
-        public void AnimateTo(IArtAnimatableToken token, float duration, Vector3 startPos, Vector3 endPos, Action<VerbAnchor> SituationAnimDone,
+        public void AnimateTo(Token token, float duration, Vector3 startPos, Vector3 endPos, Action<Token> SituationAnimDone,
             float startScale = 1, float endScale = 1)
         {
             //
