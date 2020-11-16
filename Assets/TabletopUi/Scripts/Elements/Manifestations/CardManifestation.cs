@@ -177,10 +177,14 @@ namespace Assets.TabletopUi.Scripts.Elements
             NoonUtility.LogWarning("CardManifestation doesn't support OverrideIcon");
         }
 
-        public void AnimateTo(IArtAnimatableToken token, float duration, Vector3 startPos, Vector3 endPos, Action<VerbAnchor> SituationAnimDone,
+        public void AnimateTo(IArtAnimatableToken token, float duration, Vector3 startPos, Vector3 endPos, Action<Token> animDoneMethod,
             float startScale = 1, float endScale = 1)
         {
-            NoonUtility.LogWarning("CardManifestation doesn't support AnimateTo(but perhaps it should)");
+            var tokenAnim = gameObject.AddComponent<TokenAnimation>();
+            tokenAnim.onAnimDone += animDoneMethod;
+            tokenAnim.SetPositions(startPos, endPos);
+            tokenAnim.SetScaling(startScale, endScale);
+            tokenAnim.StartAnim(duration);
         }
 
         public void OnBeginDragVisuals()

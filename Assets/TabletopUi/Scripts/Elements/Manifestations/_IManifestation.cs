@@ -36,7 +36,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         void OnBeginDragVisuals();
         void OnEndDragVisuals();
         void AnimateTo(IArtAnimatableToken token, float duration, Vector3 startPos, Vector3 endPos,
-            Action<VerbAnchor> SituationAnimDone, float startScale = 1f, float endScale = 1f);
+            Action<Token> SituationAnimDone, float startScale = 1f, float endScale = 1f);
         void Highlight(HighlightType highlightType);
         void Unhighlight(HighlightType highlightType);
         bool NoPush { get; }

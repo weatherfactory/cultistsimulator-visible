@@ -349,7 +349,7 @@ namespace Assets.CS.TabletopUI {
 		public Vector2 GetDropZoneSpawnPos()
 		{
 			var tabletop = Registry.Get<TabletopManager>()._tabletop;
-			var existingStacks = tabletop.GetStackTokens();
+			var existingStacks = tabletop.GetElementTokens();
 
 			Vector2 spawnPos = Vector2.zero;
 			Token	dropZoneObject = null;
@@ -382,7 +382,7 @@ namespace Assets.CS.TabletopUI {
 			var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
 
             var dropZone = tabletop._tabletop.ProvisionElementStackToken("dropzone", 1, Source.Fresh(),
-                new Context(Context.ActionSource.Loading)) as ElementStack;
+                new Context(Context.ActionSource.Loading));
 
             dropZone.Populate("dropzone", 1, Source.Fresh());
 
@@ -411,23 +411,8 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public override void SetSphere(Sphere newSphere, Context context) {
-            OldSphere = Sphere;
 
-            if (OldSphere != null && OldSphere != newSphere)
-            {
-                OldSphere.RemoveStack(this);
-                if(OldSphere.ContentsHidden && !newSphere.ContentsHidden)
-                 _manifestation.UpdateVisuals(_element,Quantity);
-            }
-
-            Sphere = newSphere;
-
-        }
-
-
-
-        public override bool Retire()
+        public bool Retire()
         {
             return Retire(RetirementVFX.CardBurn);
         }
@@ -546,51 +531,7 @@ namespace Assets.CS.TabletopUI {
 			
 		}
 
-
-        public override void OnPointerEnter(PointerEventData eventData)
-		{
-
-            _manifestation.Highlight(HighlightType.Hover);
-            
-			var tabletopManager = Registry.Get<TabletopManager>();
-            if(tabletopManager!=null ) //eg we might have a face down card on the credits page - in the longer term, of course, this should get interfaced
-            {
-                if (!shrouded)
-                    tabletopManager.SetHighlightedElement(EntityId, Quantity);
-                else
-                    tabletopManager.SetHighlightedElement(null);
-            }
-        }
-
-		public override void OnPointerExit(PointerEventData eventData)
-		{
-            Sphere.OnTokenPointerExited(new TokenEventArgs
-            {
-                Element = _element,
-                Token = this,
-                Container = Sphere,
-                PointerEventData = eventData
-            });
-
-            _manifestation.Unhighlight(HighlightType.Hover);
-
-            var ttm = Registry.Get<TabletopManager>();
-                if(ttm!=null)
-                {
-                Registry.Get<TabletopManager>().SetHighlightedElement(null);
-                }
-        }
-
-        public override void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<Token> animDone, float startScale, float endScale)
-        {
-            var tokenAnim = gameObject.AddComponent<TokenAnimation>();
-            tokenAnim.onAnimDone += animDone;
-            tokenAnim.SetPositions(startPos, endPos);
-            tokenAnim.SetScaling(startScale, endScale);
-            tokenAnim.StartAnim(duration);
-
-        }
-
+        
         public  void ReactToDraggedToken(TokenInteractionEventArgs args)
         {
             if(args.TokenInteractionType==TokenInteractionType.BeginDrag)

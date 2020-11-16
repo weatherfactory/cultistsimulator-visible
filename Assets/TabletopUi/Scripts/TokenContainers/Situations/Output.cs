@@ -76,7 +76,7 @@ public class Output : Sphere {
     }
         //stack.Shroud(true);)
 
-    public override void DisplayHere(ElementStack stack, Context context) {
+    public override void DisplayHere(Token stack, Context context) {
         base.DisplayHere(stack, context);
         cardPos.ReorderCards(GetElementTokens());
     }

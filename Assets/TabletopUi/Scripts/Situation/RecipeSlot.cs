@@ -109,7 +109,7 @@ namespace Assets.CS.TabletopUI {
 
                 if (stack == null)
                     return;
-                if (GetElementStackInSlot() != null)
+                if (GetElementTokenInSlot() != null)
                     return; // Slot is filled? Don't highlight it as interactive
                 if (IsBeingAnimated)
                     return; // Slot is being animated? Don't highlight
@@ -257,32 +257,32 @@ namespace Assets.CS.TabletopUI {
             return GetComponentInChildren<Token>();
         }
 
-        public ElementStack GetElementStackInSlot()
+        public Token GetElementTokenInSlot()
         {
-            if (GetStackTokens().Count() > 1)
+            if (GetElementTokens().Count() > 1)
             {
                 NoonUtility.Log("Something weird in slot " + GoverningSlotSpecification.Id +
                                 ": it has more than one stack, so we're just returning the first.");
-                return GetStackTokens().First();
+                return GetElementTokens().First();
 
             }
 
-            return GetStackTokens().SingleOrDefault();
+            return GetElementTokens().SingleOrDefault();
         }
 
 
-        public override void TryMoveAsideFor(ElementStack potentialUsurper, Token incumbent, out bool incumbentMoved) {
+        public override void TryMoveAsideFor(Token potentialUsurper, Token incumbent, out bool incumbentMoved) {
             if (IsGreedy) { // We do not allow
                 incumbentMoved = false;
                 return;
             }
 
             //incomer is a token. Does it fit in the slot?
-            if (GetMatchForStack(potentialUsurper).MatchType==SlotMatchForAspectsType.Okay && potentialUsurper.Quantity == 1)
+            if (GetMatchForStack(potentialUsurper.ElementStack).MatchType==SlotMatchForAspectsType.Okay && potentialUsurper.ElementQuantity == 1)
             {
                 incumbentMoved = true;
                 incumbent.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag)); //do this first; AcceptStack will trigger an update on the displayed aspects
-                AcceptStack(potentialUsurper, new Context(Context.ActionSource.PlayerDrag));
+                AcceptToken(potentialUsurper, new Context(Context.ActionSource.PlayerDrag));
             }
             else
                 incumbentMoved = false;
@@ -310,7 +310,7 @@ namespace Assets.CS.TabletopUI {
 
         public override void ActivatePreRecipeExecutionBehaviour() {
             if (GoverningSlotSpecification.Consumes) {
-                var stack = GetElementStackInSlot();
+                var stack = GetElementTokenInSlot();
 
                 if (stack != null)
                     stack.MarkedForConsumption = true;

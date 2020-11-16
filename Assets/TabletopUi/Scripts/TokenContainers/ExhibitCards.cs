@@ -35,7 +35,7 @@ public class ExhibitCards : Sphere {
 
     public void HighlightCardWithId(string elementId)
     {
-        var cards = GetStackTokens();
+        var cards = GetElementTokens();
 
         foreach (var card in cards)
         {

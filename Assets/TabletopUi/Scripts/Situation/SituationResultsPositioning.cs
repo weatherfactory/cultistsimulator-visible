@@ -40,37 +40,33 @@ namespace Assets.CS.TabletopUI {
         }
         */
 
-        public void ReorderCards(IEnumerable<ElementStack> elementStacks) {
-            var sortedStacks = SortStacks(elementStacks);
+        public void ReorderCards(IEnumerable<Token> elementTokens) {
+            var sortedStacks = SortStacks(elementTokens);
 
-            ElementStack token;
             int i = 1; // index starts at 1 for positioning math reasons
-            int amount = 0;
+            int numberOfCards = 0;
 
             SetAvailableSpace();
 
             string debugText = "Reorder Results: ";
 
             foreach (var stack in sortedStacks)
-                if (stack is ElementStack)
-                    amount++;
+                if (stack)
+                    numberOfCards++;
 
             foreach (var stack in sortedStacks) {
-                token = stack as ElementStack;
+             
 
-                if (token == null)
-                    continue;
-
-                MoveToPosition(token.transform as RectTransform, GetPositionForIndex(i, amount), 0f);
-                token.transform.SetSiblingIndex(i-1); //each card is conceptually on top of the last. Set sibling index to make sure they appear that way.
+                MoveToPosition(stack.transform as RectTransform, GetPositionForIndex(i, numberOfCards), 0f);
+                stack.transform.SetSiblingIndex(i-1); //each card is conceptually on top of the last. Set sibling index to make sure they appear that way.
 
                 //if any stacks are fresh, flip them face down, otherwise face up
-                if (token.StackSource.SourceType == SourceType.Fresh)
-                    token.Shroud(true); // flip down instantly
+                if (stack.ElementStack.StackSource.SourceType == SourceType.Fresh)
+                    stack.Shroud(true); // flip down instantly
                 else
-                    token.Unshroud(gameObject.activeInHierarchy); // flip up with anim, if we're visible 
+                    stack.Unshroud(gameObject.activeInHierarchy); // flip up with anim, if we're visible 
 
-                debugText += stack.EntityId + " (" + token.StackSource.SourceType + ") ";
+                debugText += stack.Element.Id + " (" + stack.ElementStack.StackSource.SourceType + ") ";
 
                 i++;
             }
@@ -78,16 +74,16 @@ namespace Assets.CS.TabletopUI {
             NoonUtility.Log(debugText);
         }
 
-        List<ElementStack> SortStacks(IEnumerable<ElementStack> elementStacks) {
-			var hiddenStacks = new List<ElementStack>();	// Hidden fresh cards
-            var freshStacks = new List<ElementStack>();	// Face-up fresh cards
-            var existingStacks = new List<ElementStack>(); // Face-up existing cards
+        List<Token> SortStacks(IEnumerable<Token> elementStacks) {
+			var hiddenStacks = new List<Token>();	// Hidden fresh cards
+            var freshStacks = new List<Token>();	// Face-up fresh cards
+            var existingStacks = new List<Token>(); // Face-up existing cards
 
             foreach (var stack in elementStacks)
 			{
-                if (stack.StackSource.SourceType == SourceType.Fresh)
+                if (stack.ElementStack.StackSource.SourceType == SourceType.Fresh)
 				{
-					if (stack.Decays)
+					if (stack.ElementStack.Decays)
 	                    freshStacks.Add(stack);
 					else
 						hiddenStacks.Add(stack);

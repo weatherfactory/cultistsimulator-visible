@@ -51,7 +51,7 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         ElementStack stack;
 
         foreach (RecipeSlot slot in GetAllSlots()) {
-            stack = slot.GetElementStackInSlot();
+            stack = slot.GetElementTokenInSlot();
 
             if (stack != null)
                 currentAspects.CombineAspects(stack.GetAspects(includeElementAspects));
@@ -65,7 +65,7 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         ElementStack stack;
 
         foreach (RecipeSlot slot in GetAllSlots()) {
-            stack = slot.GetElementStackInSlot();
+            stack = slot.GetElementTokenInSlot();
 
             if (stack != null)
                 stacks.Add(stack);

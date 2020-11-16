@@ -151,7 +151,7 @@ namespace Assets.CS.TabletopUI {
             else
                 _durability = AnchorDurability.Enduring;
 
-            name = "Verb_" + EntityId;
+            name = "Verb_" + Verb.Id;
 
 
             _manifestation.InitialiseVisuals(Verb);
@@ -176,7 +176,7 @@ namespace Assets.CS.TabletopUI {
 
         public void Manifest(Sphere forContainer)
         {
-            if (EntityId == "dropzone")
+            if (Element.Id == "dropzone")
             {
                 _manifestation = Registry.Get<PrefabFactory>().CreateManifestationPrefab(nameof(DropzoneManifestation), this.transform);
                 return;
@@ -601,7 +601,7 @@ namespace Assets.CS.TabletopUI {
             else
             {
                 var tabletop = Registry.Get<TabletopManager>()._tabletop;
-                var existingStacks = tabletop.GetStackTokens();
+                var existingStacks = tabletop.GetElementTokens();
 
     //check if there's an existing stack of that type to merge with
                     foreach (var stack in existingStacks)
@@ -665,9 +665,8 @@ namespace Assets.CS.TabletopUI {
             if (args.TokenInteractionType == TokenInteractionType.BeginDrag)
             {
 
-                var stack = args.Token as ElementStack;
-                if (stack == null)
-                    return;
+                var stack = args.Token;
+
                 if (!_situation.GetFirstAvailableThresholdForStackPush(stack).CurrentlyBlockedFor(BlockDirection.Inward))
                 {
                     _manifestation.Highlight(HighlightType.CanInteractWithOtherToken);
@@ -693,12 +692,38 @@ namespace Assets.CS.TabletopUI {
         {
             if (!eventData.dragging)
                 _manifestation.Highlight(HighlightType.Hover);
+
+            var tabletopManager = Registry.Get<TabletopManager>();
+            if (tabletopManager != null) //eg we might have a face down card on the credits page - in the longer term, of course, this should get interfaced
+            {
+                if (!shrouded && ElementStack.IsValidElementStack())
+                    tabletopManager.SetHighlightedElement(Element.Id, ElementQuantity);
+                else
+                    tabletopManager.SetHighlightedElement(null);
+            }
+
+
         }
 
         public virtual void OnPointerExit(PointerEventData eventData)
         {
             if (!eventData.dragging)
                 _manifestation.Unhighlight(HighlightType.Hover);
+
+            Sphere.OnTokenPointerExited(new TokenEventArgs
+            {
+                Element = Element,
+                Token = this,
+                Container = Sphere,
+                PointerEventData = eventData
+            });
+
+
+            var ttm = Registry.Get<TabletopManager>();
+            if (ttm != null)
+            {
+                Registry.Get<TabletopManager>().SetHighlightedElement(null);
+            }
 
         }
 
@@ -749,7 +774,7 @@ namespace Assets.CS.TabletopUI {
         public void ContainerContentsUpdated(Situation situation)
         {
             var thresholdSpheresWithStacks = situation.GetSpheresByCategory(SphereCategory.Threshold)
-                .Where(sphere => sphere.GetStackTokens().Count() == 1);
+                .Where(sphere => sphere.GetElementTokens().Count() == 1);
 
             _manifestation.DisplaySpheres(thresholdSpheresWithStacks);
 
