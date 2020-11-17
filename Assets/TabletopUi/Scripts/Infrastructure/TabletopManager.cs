@@ -20,7 +20,6 @@ using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.Scripts.TokenContainers;
 using Assets.TabletopUi.Scripts.UI;
-using Assets.TabletopUi.UI;
 using Noon;
 using TabletopUi.Scripts.Elements;
 using UnityEngine;
@@ -273,10 +272,6 @@ namespace Assets.CS.TabletopUI {
 
             var choreographer = new Choreographer(_tabletop);
             registry.Register(choreographer);
-
-           
-            var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
-            registry.Register<IDraggableHolder>(draggableHolder);
 
 
             registry.Register<INotifier>(_notifier);

@@ -223,8 +223,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         // Returns a rect for use by the Choreographer
         public Rect GetRect()
         {
+            return GetRectTransform().rect;
+        }
+
+
+        public RectTransform GetRectTransform()
+        {
             var rectTrans = transform as RectTransform;
-            return rectTrans.rect;
+            if (rectTrans == null)
+                NoonUtility.LogWarning("Tried to get a recttransform for " + name + ", but it doesn't have one.");
+            return rectTrans;
         }
 
         public virtual void DisplayHere(Token token, Context context)
@@ -457,7 +465,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 _tokens.Add(token);
 
             DisplayHere(token, context);
-            NotifyTokensChangedForSphere(new TokenEventArgs { Container = this });
+            NotifyTokensChangedForSphere(new TokenEventArgs { Sphere = this });
 
         }
 
@@ -557,7 +565,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public virtual void RemoveToken(Token token)
         {
             _tokens.Remove(token);
-            NotifyTokensChangedForSphere(new TokenEventArgs {Container = this});
+            NotifyTokensChangedForSphere(new TokenEventArgs {Sphere = this});
         }
 
         /// <summary>

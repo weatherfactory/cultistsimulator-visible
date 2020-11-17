@@ -13,7 +13,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Events
 
     public class TokenEventArgs
     {
-        public Sphere Container { get; set; }
+        public Sphere Sphere { get; set; }
         public Element Element { get; set; }
         public Token Token { get; set; }
         public PointerEventData PointerEventData { get; set; }

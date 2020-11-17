@@ -13,7 +13,7 @@ using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.TokenContainers
 {
-    public class EnRouteSphere : Sphere, IDraggableHolder
+    public class EnRouteSphere : Sphere
     {
 
         public override SphereCategory SphereCategory { get; }

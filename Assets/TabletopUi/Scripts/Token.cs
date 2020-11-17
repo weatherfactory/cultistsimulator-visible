@@ -108,12 +108,9 @@ namespace Assets.CS.TabletopUI {
         public Sphere Sphere;
         protected Sphere OldSphere; // Used to tell OldContainsTokens that this thing was dropped successfully
 
-        public RectTransform RectTransform
-        {
-            get { return rectTransform; }
-        }
+        public RectTransform RectTransform => rectTransform;
 
-        public TokenLocation Location => new TokenLocation(transform.position, Sphere.GetPath());
+        public TokenLocation Location => new TokenLocation(RectTransform.anchoredPosition3D, Sphere.GetPath());
 
         protected void Awake()
         {
@@ -150,8 +147,7 @@ namespace Assets.CS.TabletopUI {
         public bool Defunct { get; protected set; }
         public bool NoPush => _manifestation.NoPush;
         public bool _currentlyBeingDragged { get; protected set; }
-        protected bool _draggingEnabled = true;
-
+        
         private TokenXNess TokenXNess { get; set; }
 
 
@@ -186,7 +182,7 @@ namespace Assets.CS.TabletopUI {
             else
                 _durability = AnchorDurability.Enduring;
 
-            name = "Verb_" + Verb.Id;
+            name =  Verb.Id + "_verbtoken";
 
             
         }
@@ -197,6 +193,7 @@ namespace Assets.CS.TabletopUI {
             _attachedToSituation = new NullSituation();
 
             _attachedToElementStack = elementStack;
+            name = elementStack.Element.Id + "_stacktoken";
         }
 
         private void SwapOutManifestation(IManifestation oldManifestation, IManifestation newManifestation,
@@ -358,6 +355,8 @@ namespace Assets.CS.TabletopUI {
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            NoonUtility.Log("Beginning drag for " + this.name,0,VerbosityLevel.SystemChatter);
+
             if (CanDrag(eventData))
             {
                 _currentlyBeingDragged = true;
@@ -370,9 +369,6 @@ namespace Assets.CS.TabletopUI {
         bool CanDrag(PointerEventData eventData)
         {
 
-            if (!_draggingEnabled)
-                return false;
-
             if (!Sphere.AllowDrag || !AllowsDrag())
                 return false;
 
@@ -382,8 +378,7 @@ namespace Assets.CS.TabletopUI {
 
         protected void StartDrag(PointerEventData eventData)
         {
-
-
+            
             //if (rectCanvas == null)
             //    rectCanvas = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
 
@@ -399,6 +394,7 @@ namespace Assets.CS.TabletopUI {
             var enrouteContainer = Registry.Get<SphereCatalogue>().GetContainerByPath(
                 new SpherePath(Registry.Get<ICompendium>().GetSingleEntity<Dictum>().DefaultEnRouteSpherePath));
             enrouteContainer.AcceptToken(this, new Context(Context.ActionSource.PlayerDrag));
+            rectTransform.SetAsLastSibling();
             _manifestation.OnBeginDragVisuals();
 
             TokenXNess = TokenXNess.NoValidDestination;
@@ -414,8 +410,7 @@ namespace Assets.CS.TabletopUI {
                 LastTablePos = rectTransform.anchoredPosition;
             }
 
-            rectTransform.SetParent(Registry.Get<IDraggableHolder>().RectTransform);
-            rectTransform.SetAsLastSibling();
+
 
             //commented out because I *might* not need it; but if I do, we can probably calculate it on the fly.
             //if (this.EntityId=="dropzone")
@@ -441,29 +436,26 @@ namespace Assets.CS.TabletopUI {
             if (!_currentlyBeingDragged)
                 return;
 
-            if (_draggingEnabled)
-            {
-                Sphere.OnTokenDragged(new TokenEventArgs {PointerEventData = eventData});
-                MoveObject(eventData);
-            }
-            else
-            {
-                eventData.pointerDrag = null; // cancel the drag
-                OnEndDrag(eventData);
-            }
+            MoveObject(eventData);
+
+
+            Sphere.OnTokenDragged(new TokenEventArgs {PointerEventData = eventData,Token=this,Sphere= Sphere});
+
         }
 
 
 
         public void MoveObject(PointerEventData eventData)
         {
-            Vector3 dragPos;
-            RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Get<IDraggableHolder>().RectTransform,
-                eventData.position, eventData.pressEventCamera, out dragPos);
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(Sphere.GetRectTransform(),
+                eventData.position, eventData.pressEventCamera, out var draggedToPosition);
 
             // Potentially change this so it is using UI coords and the RectTransform?
             //  rectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);
 
+         RectTransform.anchoredPosition3D = draggedToPosition;
+
+            
             _manifestation.DoMove(rectTransform);
 
             // rotate object slightly based on pointer Delta
@@ -482,6 +474,8 @@ namespace Assets.CS.TabletopUI {
 
         public  void OnEndDrag(PointerEventData eventData)
         {
+            NoonUtility.Log("Ending drag for " + this.name, 0, VerbosityLevel.SystemChatter);
+
             Registry.Get<LocalNexus>().SignalTokenEndDrag(this, eventData);
             FinishDrag();
         }
@@ -569,7 +563,7 @@ namespace Assets.CS.TabletopUI {
             Sphere.OnTokenReceivedADrop(new TokenEventArgs
             {
                 Token = this,
-                Container = Sphere,
+                Sphere = Sphere,
                 PointerEventData = eventData
             });
             if (ElementStack.IsValidElementStack() && incomingToken.ElementStack.IsValidElementStack())
@@ -663,7 +657,7 @@ namespace Assets.CS.TabletopUI {
                 {
                     Element = ElementStack.Element,
                     Token = this,
-                    Container = Sphere,
+                    Sphere = Sphere,
                     PointerEventData = eventData
                 });
 
@@ -686,7 +680,7 @@ namespace Assets.CS.TabletopUI {
                     {
                         Element = ElementStack.Element,
                         Token = this,
-                        Container = Sphere,
+                        Sphere = Sphere,
                         PointerEventData = eventData
                     });
                 }
@@ -762,7 +756,7 @@ namespace Assets.CS.TabletopUI {
 
             _manifestation.Retire(vfx, OnManifestationRetired);
             ElementStack.Retire(vfx);
-            Sphere.NotifyTokensChangedForSphere(new TokenEventArgs { Element = Element, Token = this, Container = Sphere });  // Notify tabletop that aspects will need recompiling
+            Sphere.NotifyTokensChangedForSphere(new TokenEventArgs { Element = Element, Token = this, Sphere = Sphere });  // Notify tabletop that aspects will need recompiling
 
             SetSphere(Registry.Get<NullContainer>(), new Context(Context.ActionSource.Retire));
 
@@ -830,7 +824,7 @@ namespace Assets.CS.TabletopUI {
             {
                 Element = Element,
                 Token = this,
-                Container = Sphere,
+                Sphere = Sphere,
                 PointerEventData = eventData
             });
 
@@ -900,7 +894,7 @@ namespace Assets.CS.TabletopUI {
             _manifestation.UpdateTimerVisuals(stack.Element.Lifetime,stack.LifetimeRemaining,stack.IntervalForLastHeartbeat,Element.Resaturate,EndingFlavour.None);
             PlacementAlreadyChronicled = false; //should really only do this if the element has changed
 
-            Sphere.NotifyTokensChangedForSphere(new TokenEventArgs { Token = this, Element = Element, Container = Sphere });
+            Sphere.NotifyTokensChangedForSphere(new TokenEventArgs { Token = this, Element = Element, Sphere = Sphere });
         }
 
     public void ContainerContentsUpdated(Situation situation)
