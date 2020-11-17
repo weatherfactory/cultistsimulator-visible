@@ -23,7 +23,6 @@ namespace Assets.Core.Entities
            Reset();
             
         }
-
         
         public void Reset()
         {
@@ -31,11 +30,6 @@ namespace Assets.Core.Entities
             _currentSituations = new List<Situation>();
         }
 
-        public void RegisterBuilder(string forSpecies, SituationBuilder builder)
-        {
-            if(!_builders.ContainsKey(forSpecies))
-                _builders.Add(forSpecies,builder);
-        }
 
         public List<Situation> GetRegisteredSituations()
         {

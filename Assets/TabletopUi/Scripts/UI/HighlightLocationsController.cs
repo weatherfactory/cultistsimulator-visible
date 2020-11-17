@@ -74,7 +74,7 @@ namespace Assets.TabletopUi.Scripts.UI
 
 
 
-      public void NotifyTokensChangedForContainer(TokenEventArgs args)
+      public void NotifyTokensChangedForSphere(TokenEventArgs args)
       {
           var tc = Registry.Get<SphereCatalogue>();
           var aspectsInContext = tc.GetAspectsInContext(new AspectsDictionary());

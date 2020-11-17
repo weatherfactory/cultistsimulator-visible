@@ -71,6 +71,11 @@ namespace Assets.Core.Entities {
         public const float HOUSEKEEPING_CYCLE_BEATS = 1f;
 
 
+        public Situation()
+        {
+
+        }
+
         public Situation(SituationCreationCommand command)
         {
             Verb = command.GetBasicOrCreatedVerb();
@@ -844,7 +849,7 @@ namespace Assets.Core.Entities {
             return rc.GetPredictionForFollowupRecipe(currentPrimaryRecipe, State, Verb);
         }
 
-        public void NotifyTokensChangedForContainer(TokenEventArgs args)
+        public void NotifyTokensChangedForSphere(TokenEventArgs args)
         {
 
             CurrentRecipePrediction = GetUpdatedRecipePrediction();

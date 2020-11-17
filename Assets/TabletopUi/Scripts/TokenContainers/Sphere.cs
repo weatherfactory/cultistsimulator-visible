@@ -204,8 +204,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             Context context,Dictionary<string,int> withMutations)
         {
 
-            var gameobject =new GameObject(elementId);
-           var stack=gameobject.AddComponent<ElementStack>();
+            var stack= new GameObject(elementId).AddComponent<ElementStack>();
             
             stack.Populate(elementId, quantity, stackSource);
 
@@ -458,7 +457,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 _tokens.Add(token);
 
             DisplayHere(token, context);
-            NotifyTokensChangedForContainer(new TokenEventArgs { Container = this });
+            NotifyTokensChangedForSphere(new TokenEventArgs { Container = this });
 
         }
 
@@ -558,7 +557,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public virtual void RemoveToken(Token token)
         {
             _tokens.Remove(token);
-            NotifyTokensChangedForContainer(new TokenEventArgs {Container = this});
+            NotifyTokensChangedForSphere(new TokenEventArgs {Container = this});
         }
 
         /// <summary>
@@ -603,11 +602,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 return GoverningSlotSpecification.GetSlotMatchForAspects(stack.GetAspects());
         }
 
-        public void NotifyTokensChangedForContainer(TokenEventArgs args)
+        public void NotifyTokensChangedForSphere(TokenEventArgs args)
         {
-            Catalogue.NotifyTokensChangedForContainer(args);
+            Catalogue.NotifyTokensChangedForSphere(args);
             foreach(var s in _subscribers)
-                s.NotifyTokensChangedForContainer(args);
+                s.NotifyTokensChangedForSphere(args);
         }
 
         public void OnTokenClicked(TokenEventArgs args)

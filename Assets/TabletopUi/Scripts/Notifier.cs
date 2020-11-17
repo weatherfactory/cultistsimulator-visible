@@ -93,17 +93,13 @@ namespace Assets.CS.TabletopUI {
         // Variant to link to token decay
         public void ShowCardElementDetails(Element element, ElementStack token)
 		{
-			if (token.name == "Card_dropzone")	// Clunky but reliable
-			{
-				return;
-			}
             tokenDetails.ShowElementDetails(element, token);
             aspectDetails.Hide();
         }
 
         public void ShowElementDetails(Element element, bool fromDetailsWindow = false) {
             if (element.IsAspect == false) {
-                tokenDetails.ShowElementDetails(element);
+                tokenDetails.ShowElementDetails(element,null);
                 aspectDetails.Hide();
                 return;
             }
@@ -173,7 +169,7 @@ namespace Assets.CS.TabletopUI {
             tabletopBurner.ShowImageBurn(spriteName, token, duration, scale, alignment);
         }
 
-        public void NotifyTokensChangedForContainer(TokenEventArgs args)
+        public void NotifyTokensChangedForSphere(TokenEventArgs args)
         {
             //
         }

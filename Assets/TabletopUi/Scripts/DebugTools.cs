@@ -573,7 +573,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
             SetInput(stack.Element.Id);
     }
 
-    public void NotifyTokensChangedForContainer(TokenEventArgs args)
+    public void NotifyTokensChangedForSphere(TokenEventArgs args)
     {
         throw new NotImplementedException();
     }

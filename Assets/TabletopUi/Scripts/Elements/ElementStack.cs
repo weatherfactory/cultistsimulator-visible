@@ -45,7 +45,7 @@ namespace Assets.CS.TabletopUI {
 
 
         public Element Element;
-        private Token _attachedToken=new NullToken();
+        private Token _attachedToken;
         private int _quantity;
 
 		// Cache aspect lists because they are EXPENSIVE to calculate repeatedly every frame - CP
@@ -61,7 +61,12 @@ namespace Assets.CS.TabletopUI {
         
         private Dictionary<string,int> _currentMutations; //not strictly an aspects dictionary; it can contain negatives
         private IlluminateLibrarian _illuminateLibrarian;
-    
+
+
+        public void Awake()
+        {
+            _attachedToken=new GameObject().AddComponent<NullToken>();
+        }
 
 
         virtual public string Label

@@ -8,6 +8,7 @@ using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
+using Assets.Core.NullObjects;
 using Assets.Core.Services;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi;
@@ -57,14 +58,19 @@ namespace Assets.CS.TabletopUI {
         public OnContainerRemovedEvent OnContainerRemoved;
 
         protected bool shrouded = false;
-        protected Situation _situation;
+        protected Situation _attachedToSituation;
 
         public IVerb Verb
         {
-            get { return _situation.Verb; }
+            get { return _attachedToSituation.Verb; }
         }
 
-        public ElementStack ElementStack { get; private set; }
+        private ElementStack _attachedToElementStack;
+
+        public ElementStack ElementStack
+        {
+            get => _attachedToElementStack;
+        }
 
         public int ElementQuantity => ElementStack.Quantity;
 
@@ -116,7 +122,8 @@ namespace Assets.CS.TabletopUI {
             Sphere = Registry.Get<NullContainer>();
 
             _manifestation = new NullManifestation();
-            ElementStack = new NullElementStack();
+
+
         }
 
         public void StartArtAnimation()
@@ -152,6 +159,7 @@ namespace Assets.CS.TabletopUI {
         protected AnchorDurability _durability;
 
 
+
         public AnchorDurability Durability
         {
             get { return _durability; }
@@ -166,7 +174,9 @@ namespace Assets.CS.TabletopUI {
 
         public void Populate(Situation situation)
         {
-            _situation = situation;
+            _attachedToElementStack = new GameObject(nameof(NullElementStack)).AddComponent<NullElementStack>();
+
+            _attachedToSituation = situation;
             _manifestation = Registry.Get<PrefabFactory>()
                 .CreateManifestationPrefab(situation.Species.AnchorManifestationType, this.transform);
 
@@ -184,7 +194,9 @@ namespace Assets.CS.TabletopUI {
         
         public void Populate(ElementStack elementStack)
         {
-            ElementStack = elementStack;
+            _attachedToSituation = new NullSituation();
+
+            _attachedToElementStack = elementStack;
         }
 
         private void SwapOutManifestation(IManifestation oldManifestation, IManifestation newManifestation,
@@ -545,7 +557,7 @@ namespace Assets.CS.TabletopUI {
                 return true;
 
             //can we put a stack in a threshold associated with this token?
-            if (_situation.GetFirstAvailableThresholdForStackPush(incomingToken.ElementStack).SphereCategory ==
+            if (_attachedToSituation.GetFirstAvailableThresholdForStackPush(incomingToken.ElementStack).SphereCategory ==
                 SphereCategory.Threshold)
                 return true;
 
@@ -578,12 +590,12 @@ namespace Assets.CS.TabletopUI {
             else if (incomingToken.ElementStack.IsValidElementStack())
             {
 
-                _situation.PushDraggedStackIntoThreshold(incomingToken);
+                _attachedToSituation.PushDraggedStackIntoThreshold(incomingToken);
 
                 // Then we open the situation (cause this closes other situations and this may return the stack we try to move
                 // back onto the tabletop - if it was in its starting slots. - Martin
-                if (!_situation.IsOpen)
-                    _situation.OpenAtCurrentLocation();
+                if (!_attachedToSituation.IsOpen)
+                    _attachedToSituation.OpenAtCurrentLocation();
                 return;
             }
             else
@@ -633,12 +645,12 @@ namespace Assets.CS.TabletopUI {
             if (!_manifestation.HandleClick(eventData, this))
             {
                 //Manifestation didn't handle click
-                Registry.Get<DebugTools>().SetInput(_situation.RecipeId);
+                Registry.Get<DebugTools>().SetInput(_attachedToSituation.RecipeId);
 
-                if (!_situation.IsOpen)
-                    _situation.OpenAtCurrentLocation();
+                if (!_attachedToSituation.IsOpen)
+                    _attachedToSituation.OpenAtCurrentLocation();
                 else
-                    _situation.Close();
+                    _attachedToSituation.Close();
             }
 
 
@@ -750,7 +762,7 @@ namespace Assets.CS.TabletopUI {
 
             _manifestation.Retire(vfx, OnManifestationRetired);
             ElementStack.Retire(vfx);
-            Sphere.NotifyTokensChangedForContainer(new TokenEventArgs { Element = Element, Token = this, Container = Sphere });  // Notify tabletop that aspects will need recompiling
+            Sphere.NotifyTokensChangedForSphere(new TokenEventArgs { Element = Element, Token = this, Container = Sphere });  // Notify tabletop that aspects will need recompiling
 
             SetSphere(Registry.Get<NullContainer>(), new Context(Context.ActionSource.Retire));
 
@@ -888,7 +900,7 @@ namespace Assets.CS.TabletopUI {
             _manifestation.UpdateTimerVisuals(stack.Element.Lifetime,stack.LifetimeRemaining,stack.IntervalForLastHeartbeat,Element.Resaturate,EndingFlavour.None);
             PlacementAlreadyChronicled = false; //should really only do this if the element has changed
 
-            Sphere.NotifyTokensChangedForContainer(new TokenEventArgs { Token = this, Element = Element, Container = Sphere });
+            Sphere.NotifyTokensChangedForSphere(new TokenEventArgs { Token = this, Element = Element, Container = Sphere });
         }
 
     public void ContainerContentsUpdated(Situation situation)

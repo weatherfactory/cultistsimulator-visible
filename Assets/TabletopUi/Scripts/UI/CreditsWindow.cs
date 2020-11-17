@@ -47,7 +47,7 @@ namespace Assets.TabletopUi.Scripts.UI
 
 
 
-        public void NotifyTokensChangedForContainer(TokenEventArgs args)
+        public void NotifyTokensChangedForSphere(TokenEventArgs args)
         {
         //
         }

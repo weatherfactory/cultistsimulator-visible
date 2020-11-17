@@ -92,12 +92,12 @@ namespace Assets.Core.Entities {
         }
 
 
-        public void NotifyTokensChangedForContainer(TokenEventArgs args)
+        public void NotifyTokensChangedForSphere(TokenEventArgs args)
         {
             NotifyAspectsDirty();
 
             foreach(var s in _subscribers)
-                s.NotifyTokensChangedForContainer(args);
+                s.NotifyTokensChangedForSphere(args);
         }
 
         public void OnTokenClicked(TokenEventArgs args)

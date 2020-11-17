@@ -82,7 +82,11 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         {
             displayArtForVerb(verb);
             if (verb.Transient)
-                SetTransient();
+            {
+                _transient = true;
+                tokenBody.overrideSprite = lightweightSprite;
+                
+            }
             SetTimerVisibility(false);
             DisplayCompletionCount(-1);
             ShowGlow(false, false);
@@ -233,14 +237,6 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         }
 
 
-
-
-        private void SetTransient()
-        {
-            _transient = true;
-            tokenBody.overrideSprite = lightweightSprite;
-
-        }
 
 
         private void SetTimerVisibility(bool show)

@@ -36,7 +36,6 @@ namespace Assets.TabletopUi.Scripts.Services
         public RecipeSlot RecipeSlot = null;
         public NotificationWindow NotificationWindow = null;
         public SituationNote SituationNote = null;
-        public NullElementStack NullElementStack = null;
         public NullContainer NullContainer = null;
 
 

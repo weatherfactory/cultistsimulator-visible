@@ -48,7 +48,7 @@ namespace Assets.CS.TabletopUI {
         DeckSpec deckSpec;
         int deckQuantity;
 
-        public void ShowElementDetails(Element element, ElementStack token = null) {
+        public void ShowElementDetails(Element element, ElementStack stack) {
 
             //AK: removed for now. Mutations complicate things, but also, clicking on the card and getting no response feels stuck
             // Check if we'd show the same, if so: do nothing
@@ -66,7 +66,7 @@ namespace Assets.CS.TabletopUI {
 
             SetTokenDecayEventListener(false); // remove decay listener if we had one on an old token
             this._element = element;
-            this._token = token; // To be able to update the card's remaining time
+            this._token = stack; // To be able to update the card's remaining time
             this.slotSpec = null;
             this.deckSpec = null;
             this.deckQuantity = 0;
