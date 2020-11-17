@@ -53,7 +53,21 @@ public class SlotSpecification: AbstractEntity<SlotSpecification>
     [FucineValue(false)]
     public bool NoAnim { get; set; }
 
-private const string PRIMARY_SLOT="primary";
+    private HashSet<SituationState> _activeInStates=new HashSet<SituationState>();
+
+    public bool IsActiveInState(SituationState state)
+    {
+        return (_activeInStates.Contains(state));
+    }
+
+
+    public void MakeActiveInState(SituationState state)
+    {
+        _activeInStates.Add(state);
+    }
+    
+
+    private const string PRIMARY_SLOT="primary";
 
     //if no details are supplied at all, just create a primary slot specification
     public SlotSpecification()

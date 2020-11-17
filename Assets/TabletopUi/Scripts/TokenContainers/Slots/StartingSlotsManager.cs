@@ -127,6 +127,7 @@ namespace Assets.TabletopUi.SlotsContainers {
 
             slot.name = slotName + (slotSpecification != null ? " - " + slotSpecification.Id : "");
             slot.ParentSlot = parentSlot;
+            slotSpecification.MakeActiveInState(SituationState.Unstarted);
             slot.Initialise(slotSpecification,_situationPath);
             
             if (wideLabel)

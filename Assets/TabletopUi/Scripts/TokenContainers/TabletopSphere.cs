@@ -58,12 +58,12 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
         }
 
 
-
     public override void DisplayHere(Token token, Context context) {
-        
-        token.transform.SetParent(transform, true);
-        token.transform.localRotation = Quaternion.identity;
+
+        base.DisplayHere(token, context);
+        token.transform.SetParent(transform, true); //should we do this for all DisplayHere reparenting?
 		token.SnapToGrid();
+
 
     }
     public override void OnTokenDoubleClicked(TokenEventArgs args)

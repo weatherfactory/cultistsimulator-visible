@@ -166,7 +166,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             return false;
         }
 
-        public void DisplaySpheres(IEnumerable<Sphere> spheres)
+        public void DisplayActiveSpheres(IEnumerable<Sphere> spheres)
         {
             throw new NotImplementedException();
         }

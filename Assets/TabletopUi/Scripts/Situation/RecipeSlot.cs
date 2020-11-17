@@ -44,6 +44,7 @@ namespace Assets.CS.TabletopUI {
 
         public GameObject GreedyIcon;
         public GameObject ConsumingIcon;
+        public SituationState ActiveInState { get; private set; }
 
         bool lastGlowState;
 

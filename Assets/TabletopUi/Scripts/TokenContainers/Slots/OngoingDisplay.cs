@@ -59,6 +59,8 @@ namespace Assets.CS.TabletopUI {
                 var newSlot = Registry.Get<PrefabFactory>().CreateLocally<RecipeSlot>(slotHolder);
                 newSlot.name = spec.UniqueId;
 
+                spec.MakeActiveInState(SituationState.Ongoing);
+
                 newSlot.Initialise(spec, _situationPath);
 
                 this.ongoingSlots.Add(newSlot);

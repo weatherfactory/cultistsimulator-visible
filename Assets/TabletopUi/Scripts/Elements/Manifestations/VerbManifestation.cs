@@ -74,7 +74,8 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         public void InitialiseVisuals(Element element)
         {
-            throw new NotImplementedException();
+            NoonUtility.Log("Initialise Visuals for element on verb tokens: should look at this");
+
         }
 
         public void InitialiseVisuals(IVerb verb)
@@ -90,7 +91,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         public void UpdateVisuals(Element element, int quantity)
         {
-            throw new NotImplementedException();
+            NoonUtility.Log("Update Visuals on verb tokens: should look at this");
         }
 
         public void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate,
@@ -163,19 +164,19 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
                 return false;
         }
 
-        public void DisplaySpheres(IEnumerable<Sphere> spheres)
+        public void DisplayActiveSpheres(IEnumerable<Sphere> spheres)
         {
             
-            var thresholdSpheres = new List<Sphere>(spheres.Where(s => s.SphereCategory == SphereCategory.Threshold));
+            var activeThresholdSpheres = new List<Sphere>(spheres.Where(s => s.SphereCategory == SphereCategory.Threshold));
             var outputSpheres = new List<Sphere>(spheres.Where(s => s.SphereCategory == SphereCategory.Output));
 
 
-            if (!thresholdSpheres.Any())
+            if (!activeThresholdSpheres.Any())
                 hideMiniSlot();
             else
             {
                 
-                var sphereToDisplayAsMiniSlot = thresholdSpheres.Single();
+                var sphereToDisplayAsMiniSlot = activeThresholdSpheres.Single();
                 showMiniSlot(sphereToDisplayAsMiniSlot.GoverningSlotSpecification.Greedy);
                 displayStackInMiniSlot(sphereToDisplayAsMiniSlot.GetElementStacks());
             }
@@ -300,7 +301,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         public void ResetIconAnimation()
         {
-            throw new NotImplementedException();
+            NoonUtility.Log("Verb manifestion ResetIcon(): use it or lose it");
         }
 
 

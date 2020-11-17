@@ -109,7 +109,7 @@ namespace Assets.CS.TabletopUI {
 
         public TokenLocation Location => new TokenLocation(transform.position, Sphere.GetPath());
 
-        protected virtual void Awake()
+        protected void Awake()
         {
             rectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
@@ -202,7 +202,7 @@ namespace Assets.CS.TabletopUI {
             //
         }
 
-        public void Manifest()
+        public virtual void Manifest()
         {
 
             if(ElementStack.IsValidElementStack())
@@ -240,7 +240,7 @@ namespace Assets.CS.TabletopUI {
         /// replaces one manifestation with an identical manifestation - so for example we can do a vfx retiring the old one
         /// </summary>
         /// <param name="vfx"></param>
-        public void Remanifest(RetirementVFX vfx)
+        public virtual void Remanifest(RetirementVFX vfx)
         {
             var reManifestation = Registry.Get<PrefabFactory>()
                 .CreateManifestationPrefab(_manifestation.GetType().Name, this.transform);
@@ -288,10 +288,10 @@ namespace Assets.CS.TabletopUI {
                    TokenXNess == TokenXNess.DroppedOnTokenWhichWontMoveAside;
         }
 
-        protected virtual bool AllowsDrag()
+        protected  bool AllowsDrag()
         {
             return !IsInMotion && !shrouded && !_manifestation.RequestingNoDrag;
-            ;
+
         }
 
 
@@ -318,12 +318,12 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public virtual void SnapToGrid()
+        public void SnapToGrid()
         {
             transform.localPosition = Registry.Get<Choreographer>().SnapToGrid(transform.localPosition);
         }
 
-        public virtual void SetSphere(Sphere newSphere, Context context)
+        public void SetSphere(Sphere newSphere, Context context)
         {
             OldSphere = Sphere;
             Sphere = newSphere;
@@ -368,7 +368,7 @@ namespace Assets.CS.TabletopUI {
             return true;
         }
 
-        protected virtual void StartDrag(PointerEventData eventData)
+        protected void StartDrag(PointerEventData eventData)
         {
 
 
@@ -468,14 +468,14 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public virtual void OnEndDrag(PointerEventData eventData)
+        public  void OnEndDrag(PointerEventData eventData)
         {
             Registry.Get<LocalNexus>().SignalTokenEndDrag(this, eventData);
             FinishDrag();
         }
 
 
-        public virtual void FinishDrag()
+        public  void FinishDrag()
         {
             if (_currentlyBeingDragged)
             {
@@ -518,7 +518,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public virtual void OnDrop(PointerEventData eventData)
+        public  void OnDrop(PointerEventData eventData)
         {
 
             var incomingToken = eventData.pointerDrag.GetComponent<Token>();
@@ -625,7 +625,7 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        public virtual void OnPointerClick(PointerEventData eventData)
+        public  void OnPointerClick(PointerEventData eventData)
         {
 
 
@@ -688,7 +688,7 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public virtual void ReturnToTabletop(Context context)
+        public  void ReturnToTabletop(Context context)
         {
             Registry.Get<Choreographer>().PlaceTokenOnTableAtFreePosition(this, context);
 
@@ -736,12 +736,12 @@ namespace Assets.CS.TabletopUI {
             Registry.Get<Chronicler>()?.TokenPlacedOnTabletop(this);
         }
 
-        public virtual bool Retire()
+        public  bool Retire()
         {
             return Retire(RetirementVFX.None);
         }
 
-        public virtual bool Retire(RetirementVFX vfx)
+        public  bool Retire(RetirementVFX vfx)
         {
             if (Defunct)
                 return false;
@@ -780,7 +780,7 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        public virtual void HighlightPotentialInteractionWithToken(bool show)
+        public  void HighlightPotentialInteractionWithToken(bool show)
         {
             if (show)
                 _manifestation.Highlight(HighlightType.CanInteractWithOtherToken);
@@ -791,7 +791,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public virtual void OnPointerEnter(PointerEventData eventData)
+        public void OnPointerEnter(PointerEventData eventData)
         {
             if (!eventData.dragging)
                 _manifestation.Highlight(HighlightType.Hover);
@@ -809,7 +809,7 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        public virtual void OnPointerExit(PointerEventData eventData)
+        public void OnPointerExit(PointerEventData eventData)
         {
             if (!eventData.dragging)
                 _manifestation.Unhighlight(HighlightType.Hover);
@@ -838,7 +838,7 @@ namespace Assets.CS.TabletopUI {
                     TabletopImageBurner.ImageLayoutConfig.CenterOnToken);
         }
 
-        public virtual void TravelTo(TokenTravelItinerary itinerary)
+        public void TravelTo(TokenTravelItinerary itinerary)
         {
             Itinerary = itinerary;
             _manifestation.TravelTo(this, itinerary.Duration, itinerary.startPos, itinerary.endPos, TravelComplete, itinerary.startScale, itinerary.endScale);
@@ -851,13 +851,12 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void SituationStateUpdated(Situation situation)
+        public virtual void SituationStateUpdated(Situation situation)
         {
             switch (situation.State)
             {
                 case SituationState.Unstarted:
-                    _manifestation.DisplaySpheres(new List<Sphere>());
-                    break;
+             break;
                 case SituationState.Ongoing:
                     if (situation.CurrentBeginningEffectCommand != null)
                     {
@@ -867,7 +866,6 @@ namespace Assets.CS.TabletopUI {
                             BurnImageUnderToken(situation.CurrentBeginningEffectCommand.BurnImage);
                     }
 
-                    _manifestation.DisplaySpheres(situation.GetSpheres());
                     _manifestation.UpdateTimerVisuals(situation.Warmup, situation.TimeRemaining,
                         situation.intervalForLastHeartbeat, false, situation.currentPrimaryRecipe.SignalEndingFlavour);
                     break;
@@ -877,12 +875,13 @@ namespace Assets.CS.TabletopUI {
                         situation.intervalForLastHeartbeat, false, situation.currentPrimaryRecipe.SignalEndingFlavour);
 
 
-                    _manifestation.DisplaySpheres(situation.GetSpheres());
                     break;
             }
+
+            _manifestation.DisplayActiveSpheres(situation.GetSpheresActiveForSituationState(situation.State));
         }
 
-        public void ElementStackStateUpdated(ElementStack stack)
+        public virtual void ElementStackStateUpdated(ElementStack stack)
         {
 
             _manifestation.UpdateVisuals(stack.Element,stack.Quantity);
@@ -897,7 +896,7 @@ namespace Assets.CS.TabletopUI {
             var thresholdSpheresWithStacks = situation.GetSpheresByCategory(SphereCategory.Threshold)
                 .Where(sphere => sphere.GetElementTokens().Count() == 1);
 
-            _manifestation.DisplaySpheres(thresholdSpheresWithStacks);
+            _manifestation.DisplayActiveSpheres(thresholdSpheresWithStacks);
 
 
             int completionCount = situation.GetStacks(SphereCategory.Output).Select(s => s.Quantity).Sum();
@@ -906,7 +905,7 @@ namespace Assets.CS.TabletopUI {
 
         public void ReceiveNotification(INotification n)
         {
-            throw new NotImplementedException();
+           NoonUtility.Log("ReceiveNotification on Token: use it or lose it");
         }
 
         public void Understate()

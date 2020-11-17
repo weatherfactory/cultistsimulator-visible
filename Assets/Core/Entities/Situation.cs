@@ -190,6 +190,12 @@ namespace Assets.Core.Entities {
             return new List<Sphere>(_spheres);
         }
 
+
+        public List<Sphere> GetSpheresActiveForSituationState(SituationState state)
+        {
+            return new List<Sphere>(_spheres).Where(s=>s.GoverningSlotSpecification.IsActiveInState(state)).ToList();
+        }
+
         public List<Sphere> GetSpheresByCategory(SphereCategory category)
         {
             return new List<Sphere>(_spheres.Where(c => c.SphereCategory == category));

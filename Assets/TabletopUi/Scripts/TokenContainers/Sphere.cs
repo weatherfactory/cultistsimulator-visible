@@ -64,7 +64,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public virtual bool ContentsHidden => false;
         public virtual bool IsGreedy => false;
         public abstract SphereCategory SphereCategory { get; }
-        public SlotSpecification GoverningSlotSpecification { get; set; }
+        private SlotSpecification _governingSlotSpecification=new SlotSpecification();
+        public SlotSpecification GoverningSlotSpecification
+        {
+            get => _governingSlotSpecification;
+            set => _governingSlotSpecification = value;
+        }
 
         [Tooltip("Use this to specify the SpherePath in the editor")] [SerializeField]
         protected string pathIdentifier;

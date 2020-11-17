@@ -18,6 +18,7 @@ using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Core.Fucine;
+using Assets.Core.NullObjects;
 using Assets.Core.Services;
 using Assets.Logic;
 using Assets.TabletopUi.Scripts.Elements;
@@ -44,7 +45,7 @@ namespace Assets.CS.TabletopUI {
 
 
         public Element Element;
-        private Token _attachedToken;
+        private Token _attachedToken=new NullToken();
         private int _quantity;
 
 		// Cache aspect lists because they are EXPENSIVE to calculate repeatedly every frame - CP
@@ -311,6 +312,7 @@ namespace Assets.CS.TabletopUI {
             }
             catch (Exception e)
             {
+
                 NoonUtility.Log("Couldn't create element with ID " + elementId + " - " + e.Message + "(This might be an element that no longer exists being referenced in a save file?)");
                 Retire(RetirementVFX.None);
             }
