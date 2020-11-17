@@ -225,7 +225,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public virtual void DisplayHere(Token token, Context context)
         {
-            token.Manifest(this);
+            token.Manifest();
             token.transform.SetParent(transform);
             token.transform.localPosition = Vector3.zero;
             token.transform.localRotation = Quaternion.identity;
@@ -447,9 +447,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 }
 
             }
-
-
-
 
             //sometimes, we reassign a stack to a container where it already lives. Don't add it again!
             if (!_tokens.Contains(token))

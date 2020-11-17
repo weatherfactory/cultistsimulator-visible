@@ -25,7 +25,6 @@ namespace Assets.TabletopUi.Scripts.Services
         [Header("Prefabs")]
         
         public ElementFrame ElementFrame = null;
-        public VerbAnchor VerbAnchor = null;
         public Token Token = null;
         public CardManifestation CardManifestation = null;
         public DropzoneManifestation DropzoneManifestation = null;

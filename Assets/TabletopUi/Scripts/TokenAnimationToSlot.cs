@@ -37,8 +37,8 @@ public class TokenAnimationToSlot : TokenAnimation {
         destinationSlot = slot;
     }
 
-    protected override void FireCompleteEvent() {
-		if (onElementSlotAnimDone != null)
-			onElementSlotAnimDone(token, destinationLocation, destinationSlot);
-	}
+ //   protected override void FireCompleteEvent() {
+	//	if (onElementSlotAnimDone != null)
+	//		onElementSlotAnimDone(token, destinationLocation, destinationSlot);
+	//}
 }

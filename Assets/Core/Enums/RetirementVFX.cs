@@ -20,6 +20,7 @@ namespace Assets.Core.Enums
         CardTakenShadowSlow,
         CardTransformWhite,
         CardHide,
+        VerbAnchorVanish,
         None
     }
 }

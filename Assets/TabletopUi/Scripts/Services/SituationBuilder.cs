@@ -32,7 +32,7 @@ namespace Assets.TabletopUi.Scripts.Services {
             
             var anchorSphere = sphereCatalogue.GetContainerByPath(command.AnchorLocation.AtSpherePath);
 
-            var newAnchor = Registry.Get<PrefabFactory>().Create<VerbAnchor>();
+            var newAnchor = Registry.Get<PrefabFactory>().Create<Token>();
             situation.AttachAnchor(newAnchor);
             anchorSphere.AcceptToken(newAnchor, new Context(Context.ActionSource.Unknown));
             newAnchor.transform.localPosition = command.AnchorLocation.Position;
@@ -59,13 +59,11 @@ namespace Assets.TabletopUi.Scripts.Services {
             else
             {
                 SoundManager.PlaySfx("SituationTokenCreate");
-                newAnchor.AnimateTo(
-                     1f,
-                     command.SourceToken.RectTransform.anchoredPosition3D,
-                     Registry.Get<Choreographer>().GetFreePosWithDebug(newAnchor, command.SourceToken.RectTransform.anchoredPosition, 3),
-                     null,
-                     0f,
-                     1f);
+
+                var spawnedTravelItinerary=new TokenTravelItinerary(windowSphere, anchorSphere,1f, command.SourceToken.RectTransform.anchoredPosition3D, Registry.Get<Choreographer>().GetFreePosWithDebug(newAnchor, command.SourceToken.RectTransform.anchoredPosition, 3),
+                    0f,1f);
+
+                newAnchor.TravelTo(spawnedTravelItinerary);
             }
 
             return situation;

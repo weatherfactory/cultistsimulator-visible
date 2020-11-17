@@ -21,6 +21,7 @@ using Assets.TabletopUi.Scripts.TokenContainers;
 using Assets.TabletopUi.Scripts.UI;
 using Noon;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
@@ -42,13 +43,18 @@ namespace Assets.CS.TabletopUI {
         MergedIntoStack
     }
 
+
     [RequireComponent(typeof(RectTransform))]
     public class Token : MonoBehaviour,
         IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler,
         IPointerExitHandler, ISituationSubscriber
     {
         protected bool singleClickPending = false;
-
+        public UnityEvent OnStart;
+        public UnityEvent OnCollect;
+        public UnityEvent OnWindowClosed;
+        public OnContainerAddedEvent OnContainerAdded;
+        public OnContainerRemovedEvent OnContainerRemoved;
 
         protected bool shrouded = false;
         protected Situation _situation;
@@ -65,6 +71,8 @@ namespace Assets.CS.TabletopUI {
         public Element Element => ElementStack.Element;
 
         public Token OriginToken { get; private set; }
+
+        public TokenTravelItinerary Itinerary { get; set;}
 
 
         public RectTransform rectTransform;
@@ -194,17 +202,17 @@ namespace Assets.CS.TabletopUI {
             //
         }
 
-        public void Manifest(Sphere forContainer)
+        public void Manifest()
         {
 
             if(ElementStack.IsValidElementStack())
             {
 
-                if (_manifestation.GetType() != forContainer.ElementManifestationType)
+                if (_manifestation.GetType() != Sphere.ElementManifestationType)
                 {
 
                     var newManifestation = Registry.Get<PrefabFactory>()
-                        .CreateManifestationPrefab(forContainer.ElementManifestationType.Name, this.transform);
+                        .CreateManifestationPrefab(Sphere.ElementManifestationType.Name, this.transform);
                     SwapOutManifestation(_manifestation, newManifestation, RetirementVFX.None);
                 }
 
@@ -213,13 +221,15 @@ namespace Assets.CS.TabletopUI {
             }
             else
             {
-                if (_manifestation.GetType() != forContainer.SituationManifestationType)
+                if (_manifestation.GetType() != Sphere.SituationManifestationType)
                 {
 
                     var newManifestation = Registry.Get<PrefabFactory>()
-                        .CreateManifestationPrefab(forContainer.SituationManifestationType.Name, this.transform);
+                        .CreateManifestationPrefab(Sphere.SituationManifestationType.Name, this.transform);
                     SwapOutManifestation(_manifestation, newManifestation, RetirementVFX.None);
                 }
+
+                Itinerary = TokenTravelItinerary.StayExactlyWhereYouAre(this);
 
                 _manifestation.InitialiseVisuals(Verb);
             }
@@ -242,7 +252,7 @@ namespace Assets.CS.TabletopUI {
 
             SwapOutManifestation(_manifestation,reManifestation,vfx);
 
-           Manifest(Sphere);
+           Manifest();
         }
 
 
@@ -828,10 +838,16 @@ namespace Assets.CS.TabletopUI {
                     TabletopImageBurner.ImageLayoutConfig.CenterOnToken);
         }
 
-        public virtual void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<Token> animDone,
-            float startScale = 1f, float endScale = 1f)
+        public virtual void TravelTo(TokenTravelItinerary itinerary)
         {
-            _manifestation.AnimateTo(this, duration, startPos, endPos, animDone, startScale, endScale);
+            Itinerary = itinerary;
+            _manifestation.TravelTo(this, itinerary.Duration, itinerary.startPos, itinerary.endPos, TravelComplete, itinerary.startScale, itinerary.endScale);
+        }
+
+        private void TravelComplete()
+        {
+            Itinerary.DestinationSphere.AcceptToken(this,new Context(Context.ActionSource.AnimEnd));
+            //this will (at time of writing) call Sphere.DisplayHere->Token.Manifest, which also resets itinerary, so this *should* be the only line we need at the end of the animation
         }
 
 

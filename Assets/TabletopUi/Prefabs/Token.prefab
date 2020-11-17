@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 224000011999988054}
   - component: {fileID: 222000011707310424}
   - component: {fileID: 1741897546066371184}
+  - component: {fileID: 8831747639255713750}
   m_Layer: 5
   m_Name: Token
   m_TagString: Untagged
@@ -57,3 +58,34 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &8831747639255713750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011432613132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c5149fee4ad419798100764213271f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollect:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWindowClosed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnContainerAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnContainerRemoved:
+    m_PersistentCalls:
+      m_Calls: []
+  rectTransform: {fileID: 0}
+  rotateOnDrag: 1
+  PlacementAlreadyChronicled: 0
+  Sphere: {fileID: 0}

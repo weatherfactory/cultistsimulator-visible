@@ -179,8 +179,9 @@ namespace Assets.TabletopUi.Scripts.Elements
             NoonUtility.LogWarning("CardManifestation doesn't support OverrideIcon");
         }
 
-        public void AnimateTo(Token token, float duration, Vector3 startPos, Vector3 endPos, Action<Token> animDoneMethod,
-            float startScale = 1, float endScale = 1)
+        public void TravelTo(Token token, float duration, Vector3 startPos, Vector3 endPos,
+            Action animDoneMethod,
+            float startScale = 1f, float endScale = 1f)
         {
             var tokenAnim = gameObject.AddComponent<TokenAnimation>();
             tokenAnim.onAnimDone += animDoneMethod;

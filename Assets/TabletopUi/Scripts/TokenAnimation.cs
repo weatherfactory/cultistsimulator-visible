@@ -6,7 +6,7 @@ using Assets.CS.TabletopUI;
 
 public class TokenAnimation : MonoBehaviour {
 
-	public event System.Action<VerbAnchor> onAnimDone;
+	public event System.Action onAnimDone;
 
 	protected Token token;
 
@@ -95,17 +95,10 @@ public class TokenAnimation : MonoBehaviour {
 		token.enabled = true;
         token.IsInMotion = false;
 
-		FireCompleteEvent();
+        onAnimDone?.Invoke();
 		Destroy(this);
 	}
 
-	protected virtual void FireCompleteEvent() {
-        if (onAnimDone != null) {
-            var sitToken = token as VerbAnchor;
-
-            if (sitToken != null)
-                onAnimDone(sitToken);
-        }
-	}
+	
 
 }

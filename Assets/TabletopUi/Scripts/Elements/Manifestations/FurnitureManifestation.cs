@@ -437,11 +437,11 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         }
 
 
-        public void AnimateTo(Token token, float duration, Vector3 startPos, Vector3 endPos,
-            Action<Token> SituationAnimDone, float startScale = 1f, float endScale = 1f)
+        public void TravelTo(Token token, float duration, Vector3 startPos, Vector3 endPos,
+            Action travelComplete, float startScale = 1f, float endScale = 1f)
         {
             var tokenAnim = token.gameObject.AddComponent<TokenAnimation>();
-            tokenAnim.onAnimDone += SituationAnimDone;
+            tokenAnim.onAnimDone += travelComplete;
             tokenAnim.SetPositions(startPos, endPos);
             tokenAnim.SetScaling(startScale, endScale);
             tokenAnim.StartAnim(duration);

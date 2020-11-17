@@ -156,7 +156,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         {
             if (dumpButton.IsHovering())
             {
-                token.DumpOutputStacks();
+                token.OnCollect.Invoke();
                 return true;
             }
             else
@@ -274,16 +274,35 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             dumpButton.gameObject.SetActive(showButton && _transient);
         }
 
+
+        public void Retire(RetirementVFX vfx, Action callbackOnRetired)
+        {
+            VanishFx(vfx.ToString());
+            Destroy(gameObject);
+            callbackOnRetired();
+        }
+
+        private void VanishFx(string effectName)
+        {
+
+            var prefab = Resources.Load("FX/VerbAnchor/" + effectName);
+            //var prefab = Resources.Load("FX/SituationToken/SituationTokenVanish");
+
+            var vanishFxObject = Instantiate(prefab, transform.parent) as GameObject;
+            if (!(vanishFxObject is null)) //I mean it shouldn't be, but let's keep the compiler happy
+            {
+                vanishFxObject.transform.position = transform.position;
+                vanishFxObject.transform.localScale = Vector3.one;
+                vanishFxObject.SetActive(true);
+            }
+        }
+
+
         public void ResetIconAnimation()
         {
             throw new NotImplementedException();
         }
 
-        public void Retire(RetirementVFX vfx, Action callbackOnRetired)
-        {
-            Destroy(gameObject);
-            callbackOnRetired();
-        }
 
 
         public void BeginIconAnimation()
@@ -464,11 +483,11 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         }
 
 
-       public void AnimateTo(Token token, float duration, Vector3 startPos, Vector3 endPos,
-           Action<Token> SituationAnimDone, float startScale = 1f, float endScale = 1f)
+       public void TravelTo(Token token, float duration, Vector3 startPos, Vector3 endPos,
+           Action travelComplete, float startScale = 1f, float endScale = 1f)
         {
             var tokenAnim = token.gameObject.AddComponent<TokenAnimation>();
-            tokenAnim.onAnimDone += SituationAnimDone;
+            tokenAnim.onAnimDone += travelComplete;
             tokenAnim.SetPositions(startPos, endPos);
             tokenAnim.SetScaling(startScale, endScale);
             tokenAnim.StartAnim(duration);

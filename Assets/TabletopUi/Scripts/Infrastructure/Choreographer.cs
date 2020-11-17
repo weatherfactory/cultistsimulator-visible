@@ -110,12 +110,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 				if (!pushedRect.Overlaps(targetRect))
                     continue;
 
-                token.AnimateTo( 0.2f,
-                    token.rectTransform.anchoredPosition3D,
-                    GetFreePosWithDebug(token, token.rectTransform.anchoredPosition),
-                    null,
-                    1f,
-                    1f);
+                TokenTravelItinerary itinerary=new TokenTravelItinerary(_tabletop,_tabletop,0.2f, token.rectTransform.anchoredPosition3D, GetFreePosWithDebug(token, token.rectTransform.anchoredPosition),1f,1f);
+
+                token.TravelTo(itinerary);
             }
         }
 

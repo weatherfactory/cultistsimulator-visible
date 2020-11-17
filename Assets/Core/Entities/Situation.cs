@@ -88,6 +88,13 @@ namespace Assets.Core.Entities {
         {
             _anchor = newAnchor;
             AddSubscriber(_anchor);
+            _anchor.OnWindowClosed.AddListener(Close);
+            _anchor.OnStart.AddListener(ActivateRecipe);
+            _anchor.OnCollect.AddListener(CollectOutputStacks);
+            _anchor.OnContainerAdded.AddListener(AddContainer);
+            _anchor.OnContainerRemoved.AddListener(RemoveContainer);
+
+
             _anchor.Populate(this);
         }
 
