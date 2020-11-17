@@ -445,7 +445,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 bool markedForConsumption = htEachStack[SaveConstants.MARKED_FOR_CONSUMPTION].MakeBool();
 				float? posx = TryGetNullableFloatFromHashtable(htEachStack, SaveConstants.SAVE_LASTTABLEPOS_X);
 				float? posy = TryGetNullableFloatFromHashtable(htEachStack, SaveConstants.SAVE_LASTTABLEPOS_Y);
-				Vector2 lasttablepos = new Vector2( posx.HasValue ? posx.Value : 0.0f, posy.HasValue ? posy.Value : 0.0f );
+				Vector3 lasttablepos = new Vector2( posx.HasValue ? posx.Value : 0.0f, posy.HasValue ? posy.Value : 0.0f );
 				//Debug.Log("Loaded lastTablePos " + lasttablepos.x + ", " + lasttablepos.y);
 
                 Dictionary<string, int> mutations = new Dictionary<string, int>();

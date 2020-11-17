@@ -379,8 +379,6 @@ namespace Assets.CS.TabletopUI {
         protected void StartDrag(PointerEventData eventData)
         {
             
-            //if (rectCanvas == null)
-            //    rectCanvas = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
 
             if (!Keyboard.current.shiftKey.wasPressedThisFrame)
             {
@@ -393,23 +391,24 @@ namespace Assets.CS.TabletopUI {
 
             var enrouteContainer = Registry.Get<SphereCatalogue>().GetContainerByPath(
                 new SpherePath(Registry.Get<ICompendium>().GetSingleEntity<Dictum>().DefaultEnRouteSpherePath));
+
             enrouteContainer.AcceptToken(this, new Context(Context.ActionSource.PlayerDrag));
+            
             rectTransform.SetAsLastSibling();
             _manifestation.OnBeginDragVisuals();
 
             TokenXNess = TokenXNess.NoValidDestination;
             canvasGroup.blocksRaycasts = false;
 
-            startPosition = rectTransform.localPosition;
+            startPosition = rectTransform.anchoredPosition3D;
             startParent = rectTransform.parent;
             startSiblingIndex = rectTransform.GetSiblingIndex();
 
             if (rectTransform.anchoredPosition.sqrMagnitude > 0.0f
             ) // Never store 0,0 as that's a slot position and we never auto-return to slots - CP
             {
-                LastTablePos = rectTransform.anchoredPosition;
+                LastTablePos = rectTransform.anchoredPosition3D;
             }
-
 
 
             //commented out because I *might* not need it; but if I do, we can probably calculate it on the fly.
@@ -450,10 +449,11 @@ namespace Assets.CS.TabletopUI {
             RectTransformUtility.ScreenPointToWorldPointInRectangle(Sphere.GetRectTransform(),
                 eventData.position, eventData.pressEventCamera, out var draggedToPosition);
 
+            
             // Potentially change this so it is using UI coords and the RectTransform?
             //  rectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);
 
-         RectTransform.anchoredPosition3D = draggedToPosition;
+         RectTransform.position = draggedToPosition; ///aaaahh it's *position* not anchoredposition3D because we're getting the world point from the click
 
             
             _manifestation.DoMove(rectTransform);

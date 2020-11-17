@@ -714,7 +714,7 @@ namespace Assets.Core.Entities {
         Registry.Get<TabletopManager>().CloseAllSituationWindowsExcept(_anchor.Verb.Id);
     }
 
-    public void OpenAtCurrentLocation()
+    public virtual void OpenAtCurrentLocation()
     {
         var currentLocation = GetAnchorLocation();
         if(currentLocation==null)

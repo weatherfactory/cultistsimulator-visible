@@ -181,7 +181,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             if (stackCreationCommand.MarkedForConsumption)
                 token.ElementStack.MarkedForConsumption = true;
 
-            token.LastTablePos = stackCreationCommand.Location.Position;
+            token.rectTransform.anchoredPosition3D = stackCreationCommand.Location.Position;
 
             return token;
         }

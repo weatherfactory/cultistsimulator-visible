@@ -30,7 +30,8 @@ public class DragDebug : MonoBehaviour,ISphereEventSubscriber
 
     public void OnTokenClicked(TokenEventArgs args)
     {
-   
+        DisplayDetails(args);
+
     }
 
     public void OnTokenReceivedADrop(TokenEventArgs args)
@@ -53,16 +54,21 @@ public class DragDebug : MonoBehaviour,ISphereEventSubscriber
     public void OnTokenDragged(TokenEventArgs args)
     {
 
+        DisplayDetails(args);
+
+    }
+
+    private void DisplayDetails(TokenEventArgs args)
+    {
         currentlyDragging.text = args.Token?.name;
         currentSphere.text = args.Sphere?.name;
-        if (args.Token != null && args.Token.RectTransform!=null)
+        if (args.Token != null && args.Token.RectTransform != null)
         {
             var position = args.Token.rectTransform.anchoredPosition3D;
 
-            currentAnchorPoint3D.text = $"{Math.Round(position.x,0)}, {Math.Round(position.y, 0)}, {Math.Round(position.z, 0)}";
-            
-        }
+            currentAnchorPoint3D.text = $"{Math.Round(position.x, 0)}, {Math.Round(position.y, 0)}, {Math.Round(position.z, 0)}";
 
+        }
 
     }
 }

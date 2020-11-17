@@ -10,6 +10,9 @@ namespace Assets.Core.NullObjects
 {
     public class NullSituation: Situation
     {
-
+        public override void OpenAtCurrentLocation()
+        {
+            //
+        }
     }
 }
