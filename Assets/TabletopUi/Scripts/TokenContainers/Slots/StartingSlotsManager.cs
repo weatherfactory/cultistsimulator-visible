@@ -54,9 +54,9 @@ namespace Assets.TabletopUi.SlotsContainers {
 
         public void UpdateDisplay(Situation situation)
         {
-            switch (situation.State)
+            switch (situation.EnumState)
             {
-                case SituationState.Unstarted:
+                case StateEnum.Unstarted:
                     canvasGroupFader.Show();
                     break;
                 default:
@@ -127,7 +127,7 @@ namespace Assets.TabletopUi.SlotsContainers {
 
             slot.name = slotName + (slotSpecification != null ? " - " + slotSpecification.Id : "");
             slot.ParentSlot = parentSlot;
-            slotSpecification.MakeActiveInState(SituationState.Unstarted);
+            slotSpecification.MakeActiveInState(StateEnum.Unstarted);
             slot.Initialise(slotSpecification,_situationPath);
             
             if (wideLabel)

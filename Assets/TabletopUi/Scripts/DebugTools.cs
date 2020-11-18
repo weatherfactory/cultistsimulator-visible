@@ -338,7 +338,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
             if(verbForNewSituation==null)
                 verbForNewSituation = new CreatedVerb(recipe.ActionId, recipe.Label, recipe.Description);
 
-            SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, SituationState.ReadyToStart,
+            SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, StateEnum.ReadyToStart,
                 new TokenLocation(0f,0f,-100f,tabletop.GetPath()));
             scc.Open = false;
         Registry.Get<SituationsCatalogue>().BeginNewSituation(scc,new List<Token>());

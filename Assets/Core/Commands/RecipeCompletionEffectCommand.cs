@@ -9,19 +9,6 @@ using Assets.CS.TabletopUI.Interfaces;
 
 namespace Assets.Core
 {
-
-    public class RecipeBeginningEffectCommand
-    {
-        public List<SlotSpecification> OngoingSlots=new List<SlotSpecification>();
-        public string BurnImage;
-
-        public RecipeBeginningEffectCommand(List<SlotSpecification> ongoingSlots,string burnImage)
-        {
-            OngoingSlots = ongoingSlots;
-            BurnImage = burnImage;
-        }
-    }
-
     public class RecipeCompletionEffectCommand
     {
         public string Title { get; set; }

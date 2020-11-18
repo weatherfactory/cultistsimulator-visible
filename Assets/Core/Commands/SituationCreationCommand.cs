@@ -22,7 +22,7 @@ namespace Assets.Core.Commands
             get { return Verb.Species; }
         }
         public Recipe Recipe { get; set; }
-        public SituationState State { get; set; }
+        public StateEnum State { get; set; }
         public float? TimeRemaining { get; set; }
         public string OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
         public TokenLocation AnchorLocation { get; set; }
@@ -31,7 +31,7 @@ namespace Assets.Core.Commands
         public SituationPath SituationPath { get; set; }
         public bool Open { get; set; }
 
-        public SituationCreationCommand(IVerb verb, Recipe recipe, SituationState situationState,
+        public SituationCreationCommand(IVerb verb, Recipe recipe, StateEnum state,
             TokenLocation anchorLocation, Token sourceToken = null)
         {
             if (recipe == null && verb == null)
@@ -42,7 +42,7 @@ namespace Assets.Core.Commands
             Verb = verb;
             AnchorLocation = anchorLocation;
             SourceToken = sourceToken;
-            State = situationState;
+            State = state;
             SituationPath =new SituationPath(verb);
             OngoingSlots = new List<SlotSpecification>();
         }

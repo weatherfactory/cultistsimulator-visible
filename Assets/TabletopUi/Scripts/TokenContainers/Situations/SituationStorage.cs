@@ -45,7 +45,7 @@ public class SituationStorage : Sphere
 
     public void UpdateDisplay(Situation situation)
     {
-        if(situation.State==SituationState.Ongoing)
+        if(situation.EnumState==StateEnum.Ongoing)
             canvasGroupFader.Show();
         else
             canvasGroupFader.Hide();

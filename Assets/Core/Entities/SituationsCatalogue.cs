@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Commands;
 using Assets.Core.Enums;
+using Assets.Core.NullObjects;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Interfaces;
@@ -54,7 +55,7 @@ namespace Assets.Core.Entities
         }
 
 
-        public void BeginNewSituation(SituationCreationCommand scc, List<Token> withStacksInStorage)
+        public Situation BeginNewSituation(SituationCreationCommand scc, List<Token> withStacksInStorage)
         {
             if (scc.Recipe == null)
                 throw new ApplicationException("DON'T PASS AROUND SITUATIONCREATIONCOMMANDS WITH RECIPE NULL");
@@ -70,7 +71,7 @@ namespace Assets.Core.Entities
             //grabbing existingtoken: just in case some day I want to, e.g., add additional tokens to an ongoing one rather than silently fail the attempt.
             if (existingSituation != null)
             {
-                if (existingSituation.State == SituationState.Complete && existingSituation.Verb.Transient)
+                if (existingSituation.EnumState == StateEnum.Complete && existingSituation.Verb.Transient)
                 {
                     //verb exists already, but it's completed. We don't want to block new temp verbs executing if the old one is complete, because
                     //otherwise there's an exploit to, e.g., leave hazard finished but unresolved to block new ones appearing.
@@ -81,7 +82,7 @@ namespace Assets.Core.Entities
                 {
                     NoonUtility.Log("Tried to create " + scc.Recipe.Id + " for verb " + scc.Recipe.ActionId + " but that verb is already active.");
                     //end execution here
-                    return;
+                    return new NullSituation();
                 }
             }
 
@@ -95,6 +96,7 @@ namespace Assets.Core.Entities
             if (withStacksInStorage.Any())
                 situation.AcceptTokens(SphereCategory.SituationStorage, withStacksInStorage);
 
+            return situation;
 
         }
 

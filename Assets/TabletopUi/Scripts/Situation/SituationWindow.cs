@@ -187,13 +187,13 @@ namespace Assets.CS.TabletopUI {
 
             TextRefiner tr = new TextRefiner(aspectsInSituation);
 
-            if(s.currentPrimaryRecipe.HintOnly)
+            if(s.CurrentPrimaryRecipe.HintOnly)
                 PaginatedNotes.SetText("<i>" + tr.RefineString(s.CurrentRecipePrediction.DescriptiveText) + "</i>");
             else
                 PaginatedNotes.SetText(tr.RefineString(s.CurrentRecipePrediction.DescriptiveText));
 
 
-            if(s.currentPrimaryRecipe.Craftable)
+            if(s.CurrentPrimaryRecipe.Craftable)
             {
                 SoundManager.PlaySfx("SituationAvailable");
                 ongoingDisplay.UpdateDisplay(s); //Ensures that the time bar is set to 0 to avoid a flicker
@@ -227,9 +227,9 @@ namespace Assets.CS.TabletopUI {
 
         void DisplayButtonState(Situation situation) {
 
-            switch(situation.State)
+            switch(situation.EnumState)
             {
-                case SituationState.Unstarted:
+                case StateEnum.Unstarted:
             
                 startButtonText.GetComponent<Babelfish>().UpdateLocLabel(NoonConstants.SITUATION_STARTABLE);
                 if (situation.CurrentRecipePrediction.Craftable)
@@ -238,12 +238,12 @@ namespace Assets.CS.TabletopUI {
                     startButton.interactable = false;
                 break;
 
-                case SituationState.Ongoing:
+                case StateEnum.Ongoing:
                 
                     startButtonText.GetComponent<Babelfish>().UpdateLocLabel(NoonConstants.SITUATION_RUNNING);
                     startButton.interactable = false;
                     break;
-                case SituationState.Complete:
+                case StateEnum.Complete:
                     startButtonText.GetComponent<Babelfish>().UpdateLocLabel(NoonConstants.SITUATION_STARTABLE);
                     startButton.interactable = false;
                     break;

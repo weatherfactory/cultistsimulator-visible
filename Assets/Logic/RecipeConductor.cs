@@ -95,7 +95,7 @@ namespace Assets.Core
 
         /// <summary>
         /// Returns information on the recipe that's going to execute, based on current recipe and aspect context
-        public RecipePrediction GetPredictionForFollowupRecipe(Recipe currentRecipe, SituationState situationState, IVerb verb)
+        public RecipePrediction GetPredictionForFollowupRecipe(Recipe currentRecipe, StateEnum state, IVerb verb)
         {
 
             
@@ -104,7 +104,7 @@ namespace Assets.Core
 
             //note: we *either* get craftable recipes *or* if we're getting hint recipes we don't care if they're craftable
             var _recipes = Registry.Get<ICompendium>().GetEntitiesAsList<Recipe>();
-            List<Recipe> candidateRecipes = _recipes.Where(r => r.CanExecuteInContext(currentRecipe, situationState)).ToList();
+            List<Recipe> candidateRecipes = _recipes.Where(r => r.CanExecuteInContext(currentRecipe, state)).ToList();
             List<Recipe> nonExhaustedCandidateRecipes =
                 candidateRecipes.Where(r => !_character.HasExhaustedRecipe(r)).ToList();
             

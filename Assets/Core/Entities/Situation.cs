@@ -8,6 +8,7 @@ using Assets.Core.Enums;
 using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
+using Assets.Core.States;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
@@ -26,21 +27,21 @@ namespace Assets.Core.Entities {
     public class Situation: ISphereEventSubscriber
     {
         public SituationState State { get; set; }
-        public Recipe currentPrimaryRecipe { get; set; }
+        public Recipe CurrentPrimaryRecipe { get; set; }
         public RecipePrediction CurrentRecipePrediction{ get; set; }
 
-        public float TimeRemaining { private set; get; }
+        public float TimeRemaining { set; get; }
 
-        public float intervalForLastHeartbeat { private set; get; }
+        public float IntervalForLastHeartbeat { private set; get; }
 
         public float Warmup
         {
-            get { return currentPrimaryRecipe.Warmup; }
+            get { return CurrentPrimaryRecipe.Warmup; }
         }
 
         public string RecipeId
         {
-            get { return currentPrimaryRecipe == null ? null : currentPrimaryRecipe.Id; }
+            get { return CurrentPrimaryRecipe == null ? null : CurrentPrimaryRecipe.Id; }
         }
 
         public readonly IVerb Verb;
@@ -51,10 +52,12 @@ namespace Assets.Core.Entities {
 
         private Token _anchor;
         private SituationWindow _window;
-        private bool greedyAnimIsActive;
+        
         public SituationPath Path { get; }
         public bool IsOpen { get; private set; }
-        public RecipeBeginningEffectCommand CurrentBeginningEffectCommand;
+    public SituationInterruptCommand CurrentSituationInterruptCommand= new SituationInterruptCommand();
+        
+            public RecipeBeginningEffectCommand CurrentBeginningEffectCommand;
         public RecipeCompletionEffectCommand currentCompletionEffectCommand;
 
 
@@ -81,10 +84,10 @@ namespace Assets.Core.Entities {
             Verb = command.GetBasicOrCreatedVerb();
             Species = command.Species;
             TimeRemaining = command.TimeRemaining ?? 0;
-            State = command.State;
-            currentPrimaryRecipe = command.Recipe;
+            CurrentPrimaryRecipe = command.Recipe;
             OverrideTitle = command.OverrideTitle;
             Path = command.SituationPath;
+            State = SituationState.Rehydrate(command.State,this);
         }
 
 
@@ -94,7 +97,7 @@ namespace Assets.Core.Entities {
             _anchor = newAnchor;
             AddSubscriber(_anchor);
             _anchor.OnWindowClosed.AddListener(Close);
-            _anchor.OnStart.AddListener(ActivateRecipe);
+            _anchor.OnStart.AddListener(TryStart);
             _anchor.OnCollect.AddListener(CollectOutputStacks);
             _anchor.OnContainerAdded.AddListener(AddContainer);
             _anchor.OnContainerRemoved.AddListener(RemoveContainer);
@@ -112,7 +115,7 @@ namespace Assets.Core.Entities {
 
 
             _window.OnWindowClosed.AddListener(Close);
-            _window.OnStart.AddListener(ActivateRecipe);
+            _window.OnStart.AddListener(TryStart);
             _window.OnCollect.AddListener(CollectOutputStacks);
             _window.OnContainerAdded.AddListener(AddContainer);
             _window.OnContainerRemoved.AddListener(RemoveContainer);
@@ -163,31 +166,24 @@ namespace Assets.Core.Entities {
 
         public IList<SlotSpecification> GetSlotsForCurrentRecipe()
         {
-            if (currentPrimaryRecipe.Slots.Any())
-                return currentPrimaryRecipe.Slots;
+            if (CurrentPrimaryRecipe.Slots.Any())
+                return CurrentPrimaryRecipe.Slots;
             else
                 return new List<SlotSpecification>();
         }
 
 
-        private void Reset()
+        public void Reset()
         {
-            currentPrimaryRecipe = NullRecipe.Create(Verb);
+            CurrentPrimaryRecipe = NullRecipe.Create(Verb);
             CurrentRecipePrediction = GetUpdatedRecipePrediction();
             TimeRemaining = 0;
-            State = SituationState.Unstarted;
-        }
+            }
 
         public void Halt()
         {
-            if (State != SituationState.Complete && State != SituationState.ReadyToReset &&
-                State != SituationState.Unstarted
-            ) //don't halt if the situation is not running. This is not only superfluous but dangerous: 'complete' called from an already completed verb has bad effects
-                Complete();
 
-            //If we leave anything in the ongoing slot, it's lost, and also the situation ends up in an anomalous state which breaks loads
-            AcceptTokens(SphereCategory.SituationStorage, GetTokens(SphereCategory.Threshold));
-
+            CurrentSituationInterruptCommand.Halt = true;
         }
 
         public List<Sphere> GetSpheres()
@@ -196,7 +192,7 @@ namespace Assets.Core.Entities {
         }
 
 
-        public List<Sphere> GetSpheresActiveForSituationState(SituationState state)
+        public List<Sphere> GetSpheresActiveForSituationState(StateEnum state)
         {
             return new List<Sphere>(_spheres).Where(s=>s.GoverningSlotSpecification.IsActiveInState(state)).ToList();
         }
@@ -206,7 +202,7 @@ namespace Assets.Core.Entities {
             return new List<Sphere>(_spheres.Where(c => c.SphereCategory == category));
         }
 
-        private Sphere GetSingleSphereByCategory(SphereCategory category)
+        public Sphere GetSingleSphereByCategory(SphereCategory category)
         {
             try
             {
@@ -245,7 +241,7 @@ namespace Assets.Core.Entities {
 
         public void NotifyGreedySlotAnim(TokenAnimationToSlot slotAnim)
         {
-            greedyAnimIsActive = true;
+//            greedyAnimIsActive = true;
             slotAnim.onElementSlotAnimDone += HandleOnGreedySlotAnimDone;
 
             TabletopManager.RequestNonSaveableState(TabletopManager.NonSaveableType.Greedy, true);
@@ -255,19 +251,18 @@ namespace Assets.Core.Entities {
         void HandleOnGreedySlotAnimDone(Token token, TokenLocation destination,
             Sphere destinatinoSlot)
         {
-            greedyAnimIsActive = false;
+  //          greedyAnimIsActive = false;
             TabletopManager.RequestNonSaveableState(TabletopManager.NonSaveableType.Greedy, false);
         }
 
 
         public HeartbeatResponse ExecuteHeartbeat(float interval)
         {
+            
+            Continue(interval);
 
-        
-
-            Continue(interval, greedyAnimIsActive);
-
-            if (State == SituationState.Ongoing)
+            if(State.GetType()==typeof(OngoingState)) //ACK THUPT TEMPORARY PLEASE
+            
                 return GetResponseWithUnfilledGreedyThresholdsForThisSituation();
 
             return new HeartbeatResponse();
@@ -394,94 +389,20 @@ namespace Assets.Core.Entities {
 
         }
 
-        public SituationState Continue(float interval, bool waitForGreedyAnim = false)
+        public SituationState Continue(float interval)
         {
-            intervalForLastHeartbeat = interval;
+            IntervalForLastHeartbeat = interval;
 
-            switch (State)
-            {
-                case SituationState.ReadyToReset:
-                    Reset();
-                    break;
+            State=State.Continue(this);
 
-                case SituationState.Unstarted:
-                    break;
-
-                case SituationState.ReadyToStart:
-                    State = SituationState.Ongoing;
-                    CurrentRecipePrediction = GetUpdatedRecipePrediction();
-                    CurrentBeginningEffectCommand = new RecipeBeginningEffectCommand(currentPrimaryRecipe.Slots, CurrentRecipePrediction.BurnImage);
-                    var storageContainer = GetSingleSphereByCategory(SphereCategory.SituationStorage);
-                    storageContainer.AcceptTokens(GetTokens(SphereCategory.Threshold),
-                        new Context(Context.ActionSource.SituationStoreStacks));
-                    break;
-
-
-                case SituationState.ReadyToContinue: //special case: we want to re-initiate an ongoing state rather than start a new one, perhaps because we reloaded. So we won't, for instance, move ongoing slots contents into storage.
-                    State = SituationState.Ongoing;
-                    CurrentBeginningEffectCommand = new RecipeBeginningEffectCommand(currentPrimaryRecipe.Slots, CurrentRecipePrediction.BurnImage);
-                    break;
-
-                case SituationState.Ongoing:
-                    // Execute if we've got no time remaining and we're not waiting for a greedy anim
-                    // UNLESS timer has gone negative for 5 seconds. In that case sometime is stuck and we need to break out
-                    if (TimeRemaining <= 0 && (!waitForGreedyAnim || TimeRemaining < -5.0f))
-                        RequireExecution();
-                    else
-                        TimeRemaining = TimeRemaining - interval;
-                    
-
-                    break;
-
-                case SituationState.RequiringExecution:
-                    var tc = Registry.Get<SphereCatalogue>();
-                    var aspectsInContext = tc.GetAspectsInContext(GetAspectsAvailableToSituation(true));
-
-                    var rc=new RecipeConductor(aspectsInContext, Registry.Get<Character>());
-
-                    var linkedRecipe = rc.GetLinkedRecipe(currentPrimaryRecipe);
-
-                    if (linkedRecipe != null)
-                    {
-                        //send the completion description before we move on
-                        INotification notification = new Notification(currentPrimaryRecipe.Label, currentPrimaryRecipe.Description);
-                        SendNotificationToSubscribers(notification);
-
-                        //I think this code duplicates ActivateRecipe, below
-                        currentPrimaryRecipe = linkedRecipe;
-                        TimeRemaining = currentPrimaryRecipe.Warmup;
-                        if (TimeRemaining > 0) //don't play a sound if we loop through multiple linked ones
-                        {
-                            if (currentPrimaryRecipe.SignalImportantLoop)
-                                SoundManager.PlaySfx("SituationLoopImportant");
-                            else
-                                SoundManager.PlaySfx("SituationLoop");
-
-                        }
-
-                        State = SituationState.ReadyToStart;
-                    }
-                    else
-                    {
-                        Complete();
-                    }
-                    break;
-
-                case SituationState.Complete:
-                    break;
-
-                
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
-            foreach (var subscriber in subscribers)
+       foreach (var subscriber in subscribers)
             {
                 subscriber.SituationStateUpdated(this);
             }
 
-            CurrentBeginningEffectCommand = null; ;
-            currentCompletionEffectCommand = null;
+            CurrentBeginningEffectCommand = new RecipeBeginningEffectCommand();
+            CurrentSituationInterruptCommand=new SituationInterruptCommand();
+            currentCompletionEffectCommand = new RecipeCompletionEffectCommand();
 
             return State;
         }
@@ -500,20 +421,20 @@ namespace Assets.Core.Entities {
 
         }
 
-        private void RequireExecution()
+        public void ExecuteCurrentRecipe()
         {
-            State = SituationState.RequiringExecution;
+            
             var tc = Registry.Get<SphereCatalogue>();
             var aspectsInContext = tc.GetAspectsInContext(GetAspectsAvailableToSituation(true));
 
             RecipeConductor rc =new RecipeConductor(aspectsInContext, Registry.Get<Character>());
 
-            IList<RecipeExecutionCommand> recipeExecutionCommands = rc.GetRecipeExecutionCommands(currentPrimaryRecipe);
+            IList<RecipeExecutionCommand> recipeExecutionCommands = rc.GetRecipeExecutionCommands(CurrentPrimaryRecipe);
 
             //actually replace the current recipe with the first on the list: any others will be additionals,
             //but we want to loop from this one.
-            if (recipeExecutionCommands.First().Recipe.Id != currentPrimaryRecipe.Id)
-                currentPrimaryRecipe = recipeExecutionCommands.First().Recipe;
+            if (recipeExecutionCommands.First().Recipe.Id != CurrentPrimaryRecipe.Id)
+                CurrentPrimaryRecipe = recipeExecutionCommands.First().Recipe;
 
 
             foreach (var container in _spheres)
@@ -531,7 +452,7 @@ namespace Assets.Core.Entities {
             foreach (var c in recipeExecutionCommands)
             {
                 RecipeCompletionEffectCommand currentEffectCommand = new RecipeCompletionEffectCommand(c.Recipe,
-                    c.Recipe.ActionId != currentPrimaryRecipe.ActionId, c.Expulsion,c.ToPath);
+                    c.Recipe.ActionId != CurrentPrimaryRecipe.ActionId, c.Expulsion,c.ToPath);
                 if (currentEffectCommand.AsNewSituation)
                     CreateNewSituation(currentEffectCommand);
                 else
@@ -601,10 +522,12 @@ namespace Assets.Core.Entities {
 
 
             var scc = new SituationCreationCommand(verbForNewSituation, effectCommand.Recipe,
-                SituationState.ReadyToStart, newAnchorLocation, _anchor);
-            Registry.Get<SituationsCatalogue>()
+                StateEnum.Unstarted, newAnchorLocation, _anchor);
+            var newSituation=Registry.Get<SituationsCatalogue>()
                 .BeginNewSituation(scc,
                     stacksToAddToNewSituation); //tabletop manager is a subscriber, right? can we run this (or access to its successor) through that flow?
+
+            newSituation.TryStart();
 
         }
 
@@ -623,21 +546,9 @@ namespace Assets.Core.Entities {
 
         }
 
-    private void Complete() {
-        State = SituationState.Complete;
 
 
-        var outputTokens = GetTokens(SphereCategory.SituationStorage);
-        AcceptTokens(SphereCategory.Output, outputTokens, new Context(Context.ActionSource.SituationResults));
-        
-        AttemptAspectInductions(currentPrimaryRecipe,outputTokens);
-
-
-            SoundManager.PlaySfx("SituationComplete"); //this could run through that Echo obj
-    }
-
-
-    private void AttemptAspectInductions(Recipe currentRecipe, List<Token> outputTokens) // this should absolutely go through subscription - something to succeed ttm
+    public void AttemptAspectInductions(Recipe currentRecipe, List<Token> outputTokens) // this should absolutely go through subscription - something to succeed ttm
     {
         //If any elements in the output, or in the situation itself, have inductions, test whether to start a new recipe
 
@@ -691,10 +602,13 @@ namespace Assets.Core.Entities {
 
         var inductionRecipeVerb = new CreatedVerb(inducedRecipe.ActionId,
             inducedRecipe.Label, inducedRecipe.Description);
-        SituationCreationCommand inducedSituation = new SituationCreationCommand(inductionRecipeVerb,
-            inducedRecipe, SituationState.ReadyToStart, _anchor.Location, _anchor);
-        Registry.Get<SituationsCatalogue>().BeginNewSituation(inducedSituation, new List<Token>());
+        SituationCreationCommand inducedSituationCreationCommand = new SituationCreationCommand(inductionRecipeVerb,
+            inducedRecipe, StateEnum.Unstarted, _anchor.Location, _anchor);
+        var inducedSituation=Registry.Get<SituationsCatalogue>().BeginNewSituation(inducedSituationCreationCommand, new List<Token>());
+            inducedSituation.TryStart();
+
     }
+
 
         public void Close()
         { 
@@ -758,7 +672,7 @@ namespace Assets.Core.Entities {
        //slot behaviour: dump when window closed?
        //slot behaviour: block for certain kinds of interaction? using existing block?
        //slot behaviour: specify connection type with other containers? ie expand 'greedy' effect to mean multiple things and directions
-            //if(State!=SituationState.Ongoing)
+            //if(State!=State.Ongoing)
             //{
             //    var slotted = GetStacks(ContainerCategory.Threshold);
             //    foreach (var item in slotted)
@@ -773,8 +687,8 @@ namespace Assets.Core.Entities {
             var results = GetElementTokens(SphereCategory.Output);
             foreach (var item in results)
                 item.ReturnToTabletop(new Context(Context.ActionSource.PlayerDumpAll));
-            
-            Reset();
+
+            Continue(0f);
 
             // Only play collect all if there's actually something to collect 
             // Only play collect all if it's not transient - cause that will retire it and play the retire sound
@@ -795,12 +709,11 @@ namespace Assets.Core.Entities {
         }
 
 
-        public void ActivateRecipe()
+        public void TryStart()
         {
-            
-            if (State != SituationState.Unstarted)
-                return;
+            CurrentSituationInterruptCommand.Start = true;
 
+            
             var aspects = GetAspectsAvailableToSituation(true);
             var tc = Registry.Get<SphereCatalogue>();
             var aspectsInContext = tc.GetAspectsInContext(aspects);
@@ -812,10 +725,9 @@ namespace Assets.Core.Entities {
             if (recipe == null)
                 return;
 
-            currentPrimaryRecipe = recipe;
-            TimeRemaining = currentPrimaryRecipe.Warmup;
-            State = SituationState.ReadyToStart;
-
+            CurrentPrimaryRecipe = recipe;
+            TimeRemaining = CurrentPrimaryRecipe.Warmup;
+            
             SoundManager.PlaySfx("SituationBegin");
 
             //called here in case starting slots trigger consumption
@@ -829,15 +741,14 @@ namespace Assets.Core.Entities {
             //so immediately continue with a 0 interval - this won't advance time, but will update the visuals in the situation window
             //(which among other things should make the starting slot unavailable
 
-            RecipeConductor rc = new RecipeConductor(aspectsInContext, Registry.Get<Character>()); //reusing the aspectsInContext from above
-
+            
             Continue(0);
 
    
         }
 
 
-        private RecipePrediction GetUpdatedRecipePrediction()
+        public RecipePrediction GetUpdatedRecipePrediction()
         {
             var aspectsAvailableToSituation = GetAspectsAvailableToSituation(true);
 
@@ -846,7 +757,7 @@ namespace Assets.Core.Entities {
 
             RecipeConductor rc = new RecipeConductor(aspectsInContext,Registry.Get<Character>());
 
-            return rc.GetPredictionForFollowupRecipe(currentPrimaryRecipe, State, Verb);
+            return rc.GetPredictionForFollowupRecipe(CurrentPrimaryRecipe, EnumState, Verb);
         }
 
         public void NotifyTokensChangedForSphere(TokenEventArgs args)

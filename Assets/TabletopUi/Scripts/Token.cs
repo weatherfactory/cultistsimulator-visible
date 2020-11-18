@@ -859,11 +859,11 @@ namespace Assets.CS.TabletopUI {
 
         public virtual void SituationStateUpdated(Situation situation)
         {
-            switch (situation.State)
+            switch (situation.EnumState)
             {
-                case SituationState.Unstarted:
+                case StateEnum.Unstarted:
              break;
-                case SituationState.Ongoing:
+                case StateEnum.Ongoing:
                     if (situation.CurrentBeginningEffectCommand != null)
                     {
                         //if (situation.CurrentBeginningEffectCommand.OngoingSlots.Any())
@@ -873,18 +873,18 @@ namespace Assets.CS.TabletopUI {
                     }
 
                     _manifestation.UpdateTimerVisuals(situation.Warmup, situation.TimeRemaining,
-                        situation.intervalForLastHeartbeat, false, situation.currentPrimaryRecipe.SignalEndingFlavour);
+                        situation.IntervalForLastHeartbeat, false, situation.CurrentPrimaryRecipe.SignalEndingFlavour);
                     break;
 
-                case SituationState.Complete:
+                case StateEnum.Complete:
                     _manifestation.UpdateTimerVisuals(situation.Warmup, situation.TimeRemaining,
-                        situation.intervalForLastHeartbeat, false, situation.currentPrimaryRecipe.SignalEndingFlavour);
+                        situation.IntervalForLastHeartbeat, false, situation.CurrentPrimaryRecipe.SignalEndingFlavour);
 
 
                     break;
             }
 
-            _manifestation.DisplayActiveSpheres(situation.GetSpheresActiveForSituationState(situation.State));
+            _manifestation.DisplayActiveSpheres(situation.GetSpheresActiveForSituationState(situation.EnumState));
         }
 
         public virtual void ElementStackStateUpdated(ElementStack stack)

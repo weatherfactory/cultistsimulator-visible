@@ -59,7 +59,7 @@ namespace Assets.CS.TabletopUI {
                 var newSlot = Registry.Get<PrefabFactory>().CreateLocally<RecipeSlot>(slotHolder);
                 newSlot.name = spec.UniqueId;
 
-                spec.MakeActiveInState(SituationState.Ongoing);
+                spec.MakeActiveInState(StateEnum.Ongoing);
 
                 newSlot.Initialise(spec, _situationPath);
 
@@ -71,18 +71,18 @@ namespace Assets.CS.TabletopUI {
 
         public void UpdateDisplay(Situation s)
 		{
-            switch(s.State)
+            switch(s.EnumState)
             {
-                case SituationState.Unstarted:
+                case StateEnum.Unstarted:
 
                     canvasGroupFader.Hide();
                     break;
 
-                case SituationState.Ongoing:
+                case StateEnum.Ongoing:
                     canvasGroupFader.Show();
-                    ShowDeckEffects(s.currentPrimaryRecipe.DeckEffects);
+                    ShowDeckEffects(s.CurrentPrimaryRecipe.DeckEffects);
 
-                    Color barColor = UIStyle.GetColorForCountdownBar(s.currentPrimaryRecipe.SignalEndingFlavour, s.TimeRemaining);
+                    Color barColor = UIStyle.GetColorForCountdownBar(s.CurrentPrimaryRecipe.SignalEndingFlavour, s.TimeRemaining);
 
                     countdownBar.color = barColor;
                     countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (s.TimeRemaining / s.Warmup));

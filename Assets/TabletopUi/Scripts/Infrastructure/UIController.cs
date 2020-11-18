@@ -182,16 +182,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (IsEditingText())
                 return;
 
-                var situations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
+            var situations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 
-                foreach (var s in situations)
+            foreach (var s in situations)
+            {
+                if (s.IsOpen)
                 {
-                    if (s.IsOpen)
-                    {
-                        s.ActivateRecipe();
-                        break;
-                    }
+                    s.TryStart();
+                    break;
                 }
+            }
         }
         public void Input_CollectAll(InputAction.CallbackContext context)
         {
