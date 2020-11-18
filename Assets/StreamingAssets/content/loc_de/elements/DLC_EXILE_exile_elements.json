@@ -849,7 +849,7 @@
 			"id": "pentiment.display",
 			"label": "Pentiment",
 			"comments": "For Nameless shrine slot",
-			"description": "Ich weiß noch, was mir Peel gesagt hat: 'Der Namenlose Name ist dafür bekannt, nach Geheimnissen im Windschatten zu jagen und sie dem Samt im Forst als Geschenk zu bringen. Und Katzen sind dafür bekannt, ihren Besitzern Mäuse als Geschenk ins Haus zu bringen, doch ich denke nicht, dass die Begeisterung darüber vergleichbar wäre.'",
+			"description": "Ich weiß noch, was mir Peel gesagt hat: 'Der Namenlose Name ist dafür bekannt, nach Geheimnissen im Windschatten zu jagen und sie dem Samt im Wald als Geschenk zu bringen. Und Katzen sind dafür bekannt, ihren Besitzern Mäuse als Geschenk ins Haus zu bringen, doch ich denke nicht, dass die Begeisterung darüber vergleichbar wäre.'",
 			"icon": "pentiment",
 			"isAspect": true
 		},
@@ -3068,7 +3068,7 @@
 			"id": "vault.barber",
 			"label": "Knotschwingknot-Nest",
 			"inherits": "_vault.exile",
-			"description": "Es gibt da einen finsteren Forst, der gegen die Fenster des schlafenden Geistes drückt. In den Zweigen ist ein Nest, gewoben aus schwarzer Seide und weißem Haar. Zulfiya hat ein Gelage vorbereitet und will mich heute Nacht dorthin bringen, und sie hat mir etwas mit Tinte auf den Rücken geschrieben, angeblich eine Karte, die ich nicht sehen darf.",
+			"description": "Es gibt da einen finsteren Wald, der gegen die Fenster des schlafenden Geistes drückt. In den Zweigen ist ein Nest, gewoben aus schwarzer Seide und weißem Haar. Zulfiya hat ein Gelage vorbereitet und will mich heute Nacht dorthin bringen, und sie hat mir etwas mit Tinte auf den Rücken geschrieben, angeblich eine Karte, die ich nicht sehen darf.",
 			"icon": "vaultcontinent3",
 			"xtriggers": {
 				"success": [
@@ -3372,7 +3372,7 @@
 		{
 			"id": "vault.barber.completed",
 			"label": "Flatternder Glibber",
-			"description": "Als ich vom Forste erwachte, fand ich dies in einer verschlossenen Flasche neben meinem Bett.",
+			"description": "Als ich vom Walde erwachte, fand ich dies in einer verschlossenen Flasche neben meinem Bett.",
 			"aspects": {
 				"vault.completed": 1,
 				"moth": 12,
@@ -3750,7 +3750,7 @@
 		{
 			"id": "contact.barber.fatigued",
 			"label": "Zulfiya, träumend",
-			"description": "Zulfiya hat eine krakelige Notiz hinterlassen, sie werde für einige Zeit 'im Forste wandeln'.",
+			"description": "Zulfiya hat eine krakelige Notiz hinterlassen, sie werde für einige Zeit 'im Walde wandeln'.",
 			"inherits": "_contact.mortal.fatigued",
 			"icon": "npc.barber",
 			"decayTo": "contact.barber",
@@ -4103,7 +4103,7 @@
 		{
 			"id": "ally.barber.fatigued",
 			"label": "Zulfiya, träumend",
-			"description": "Zulfiya hat eine krakelige Notiz hinterlassen, sie werde für einige Zeit 'im Forste wandeln'.",
+			"description": "Zulfiya hat eine krakelige Notiz hinterlassen, sie werde für einige Zeit 'im Walde wandeln'.",
 			"inherits": "_ally.mortal.fatigued",
 			"icon": "npc.barber",
 			"decayTo": "ally.barber",

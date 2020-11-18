@@ -60,8 +60,8 @@
 				"moth": 3
 			},
 			"comments": "requirement 3, not 2, because there's already moth in the mix.",
-			"startdescription": "Ich könnte vor dem Schlafen eine Haarlocke abschneiden, um einer Macht des Forstes zu huldigen.",
-			"description": "Die Straße duckt sich in die Bäume weg. Blasse Flügel regen sich tief im Forst. Jetzt stolpere ich über Wurzeln. Es ist verlockend, auf alle Viere zu gehen, um den tief hängenden Zweigen auszuweichen. Der Mond wandert hinter schwarzen Blättern vorbei, doch er behält seine Finger in meinem Haar. Den Weg hierher werde ich nicht vergessen.",
+			"startdescription": "Ich könnte vor dem Schlafen eine Haarlocke abschneiden, um einer Macht des Waldes zu huldigen.",
+			"description": "Die Straße duckt sich in die Bäume weg. Blasse Flügel regen sich tief im Wald. Jetzt stolpere ich über Wurzeln. Es ist verlockend, auf alle Viere zu gehen, um den tief hängenden Zweigen auszuweichen. Der Mond wandert hinter schwarzen Blättern vorbei, doch er behält seine Finger in meinem Haar. Den Weg hierher werde ich nicht vergessen.",
 			"effects": {
 				"waywood": 1,
 				"influencemoth": 1
@@ -97,7 +97,7 @@
 				"lantern": 2
 			},
 			"startdescription": "Ich könnte in einem Raum ohne Farben schlafen: die Laken bleichen, die Wände tünchen, mir die Haare färben und die Haut anmalen.",
-			"description": "'Farbe gibt es nur dort, wo Licht ist' – und der Forst ist der Ort, wo das Licht nicht wandelt. Im Traume schließe ich die Augen und gehe, wobei ich stolpere und mir Füße und Knie aufschlage. Schließlich wird das Unterholz zu dicht als dass ich noch durchkäme, und als ich meine Augen öffne, treibe ich zwischen schwarzen Bäumen. Schatten flattern. Meine Füße werden den Weg zurück an diesen Ort finden.",
+			"description": "'Farbe gibt es nur dort, wo Licht ist' – und der Wald ist der Ort, wo das Licht nicht wandelt. Im Traume schließe ich die Augen und gehe, wobei ich stolpere und mir Füße und Knie aufschlage. Schließlich wird das Unterholz zu dicht als dass ich noch durchkäme, und als ich meine Augen öffne, treibe ich zwischen schwarzen Bäumen. Schatten flattern. Meine Füße werden den Weg zurück an diesen Ort finden.",
 			"effects": {
 				"waywood": 1,
 				"influencemoth": 1
@@ -108,7 +108,7 @@
 		},
 		{
 			"id": "dreamusewoodway",
-			"label": "Der Weg zum Forst",
+			"label": "Der Weg zum Wald",
 			"actionId": "dream",
 			"requirements": {
 				"waywood": 1
@@ -117,15 +117,15 @@
 				{
 					"id": "Path",
 					"label": "Pfad",
-					"description": "Setze Leidenschaft ein, um den Forst zu betreten – oder, wenn du das richtige Wissen hast, finde einen Weg zur Weißen Tür, wo sich die Toten drängen.",
+					"description": "Setze Leidenschaft ein, um den Wald zu betreten – oder, wenn du das richtige Wissen hast, finde einen Weg zur Weißen Tür, wo sich die Toten drängen.",
 					"required": {
 						"lore": 1,
 						"passion": 1
 					}
 				}
 			],
-			"startdescription": "Wenn ich genug Leidenschaft aufbringe, kann ich auf der Traumstraße zum Forst gehen. Wenn ich über das richtige Wissen verfüge, könnte ich den Weg jenseits davon finden.",
-			"description": "Die Wasser des Forstes fließen kalt und tief, doch niemals klar. Nur auswendig gelernte Erinnerungen werden mich nicht dorthin führen. Ich muss meine Leidenschaft einsetzen. Nun treibe ich in andere Träume ab.",
+			"startdescription": "Wenn ich genug Leidenschaft aufbringe, kann ich auf der Traumstraße zum Wald gehen. Wenn ich über das richtige Wissen verfüge, könnte ich den Weg jenseits davon finden.",
+			"description": "Die Wasser des Waldes fließen kalt und tief, doch niemals klar. Nur auswendig gelernte Erinnerungen werden mich nicht dorthin führen. Ich muss meine Leidenschaft einsetzen. Nun treibe ich in andere Träume ab.",
 			"aspects": {
 				"fatiguing": 1
 			},
@@ -174,7 +174,7 @@
 		},
 		{
 			"id": "dreamenterwood",
-			"label": "Den Forst betreten",
+			"label": "Den Wald betreten",
 			"actionId": "dream",
 			"craftable": false,
 			"requirements": {
@@ -197,13 +197,13 @@
 		},
 		{
 			"id": "dreamnotquitereachwhitelantern",
-			"label": "Das Licht im Forst: Nicht genug!",
+			"label": "Das Licht im Wald: Nicht genug!",
 			"actionId": "dream",
 			"requirements": {
 				"lore": 1,
 				"lantern": 1
 			},
-			"startdescription": "Da ist ein Haus im Forst. So viel weiß ich. Hier ist ein Licht durch die Bäume – ",
+			"startdescription": "Da ist ein Haus im Wald. So viel weiß ich. Hier ist ein Licht durch die Bäume – ",
 			"description": "Meine Traumhaut wird von Traumdornen traumdurchbohrt. Mein Bett wird blutbefleckt sein, wenn ich erwache. Dies ist der richtige Ansatz, doch ich muss mehr wissen, um weiter zu reisen. Nun treibe ich in andere Träume ab.",
 			"alternativerecipes": [
 				{
@@ -230,7 +230,7 @@
 				"lore": 1,
 				"lantern": 4
 			},
-			"startdescription": "Da ist ein Haus im Forst. Ich weiß etwas über jenes Haus. Genug, um den Weg zu seinem Lichte zu finden?",
+			"startdescription": "Da ist ein Haus im Wald. Ich weiß etwas über jenes Haus. Genug, um den Weg zu seinem Lichte zu finden?",
 			"description": "Dies sind die Grenzen rund um das Haus, mit ihren Nebeln und ihren Spuren. Dies ist der Fels namens Tempel des Rads, hoch wie ein Kirchturm, gescheckt von schwarzen Flechten und gesprenkelt mit Augensymbolen. Ich umrunde ihn, und die Weiße Tür ist vor mir. Das Licht des Hauses leckt an seinen Mauern heraus.",
 			"alternativerecipes": [
 				{
@@ -247,13 +247,13 @@
 		},
 		{
 			"id": "dreamnotquitereachwhiteknock",
-			"label": "Das Licht im Forst: Nicht genug!",
+			"label": "Das Licht im Wald: Nicht genug!",
 			"actionId": "dream",
 			"requirements": {
 				"lore": 1,
 				"knock": 1
 			},
-			"startdescription": "Da ist ein Haus im Forst. So viel weiß ich. Hier ist ein Licht durch die Bäume – ",
+			"startdescription": "Da ist ein Haus im Wald. So viel weiß ich. Hier ist ein Licht durch die Bäume – ",
 			"description": "Meine Traumhaut wird von Traumdornen traumdurchbohrt. Mein Bett wird blutbefleckt sein, wenn ich erwache. Dies ist der richtige Ansatz, doch ich muss mehr wissen, um weiter zu reisen. Nun treibe ich in andere Träume ab.",
 			"alternativerecipes": [
 				{
@@ -280,7 +280,7 @@
 				"lore": 1,
 				"knock": 4
 			},
-			"startdescription": "Da ist ein Haus im Forst. Ich kenne genug Geheimnisse des Klopfens, um die verborgenen Pfade durch die verschlungenen Bäume zu finden.",
+			"startdescription": "Da ist ein Haus im Wald. Ich kenne genug Geheimnisse des Klopfens, um die verborgenen Pfade durch die verschlungenen Bäume zu finden.",
 			"description": "Dies sind die Grenzen rund um das Haus, mit ihren Nebeln und ihren Spuren. Dies ist der Fels namens Tempel des Rads, hoch wie ein Kirchturm, gescheckt von schwarzen Flechten und gesprenkelt mit Augensymbolen. Ich umrunde ihn, und die Weiße Tür ist vor mir: offen, wie es vor so langer Zeit schon geschrieben stand.",
 			"alternativerecipes": [
 				{
@@ -297,13 +297,13 @@
 		},
 		{
 			"id": "dreamnotquitereachwhitewinter",
-			"label": "Das Licht im Forst: Nicht genug!",
+			"label": "Das Licht im Wald: Nicht genug!",
 			"actionId": "dream",
 			"requirements": {
 				"lore": 1,
 				"winter": 1
 			},
-			"startdescription": "Da ist ein Haus im Forst. So viel weiß ich. Hier ist ein Licht durch die Bäume – ",
+			"startdescription": "Da ist ein Haus im Wald. So viel weiß ich. Hier ist ein Licht durch die Bäume – ",
 			"description": "Meine Traumhaut wird von Traumdornen traumdurchbohrt. Mein Bett wird blutbefleckt sein, wenn ich erwache. Dies ist der richtige Ansatz, doch ich muss mehr wissen, um weiter zu reisen. Nun treibe ich in andere Träume ab.",
 			"alternativerecipes": [
 				{
@@ -330,7 +330,7 @@
 				"lore": 1,
 				"winter": 4
 			},
-			"startdescription": "Da ist ein Haus im Forst, und eine Tür, wo zuweilen die Toten wandeln. Ich habe von den Pfaden gelesen, welche die Toten nehmen.",
+			"startdescription": "Da ist ein Haus im Wald, und eine Tür, wo zuweilen die Toten wandeln. Ich habe von den Pfaden gelesen, welche die Toten nehmen.",
 			"description": "Dies sind die Grenzen rund um das Haus, mit ihren Nebeln und ihren Spuren. Dies ist der Fels namens Tempel des Rads, hoch wie ein Kirchturm, gescheckt von schwarzen Flechten und gesprenkelt mit Augensymbolen. Ich umrunde ihn, und die Weiße Tür ist vor mir, leuchtend wie der Mond im Winter.",
 			"alternativerecipes": [
 				{
@@ -434,7 +434,7 @@
 				"waystagbefore_5": -1,
 				"waystag_after": -1
 			},
-			"startdescription": "Der Aufstieg ist langsam. Aus dem Nichts heraus zerrt der Wind an mir. Meine Haut ist von Licht besudelt. Der Forst erbebt vor Bewegung, weit unten.",
+			"startdescription": "Der Aufstieg ist langsam. Aus dem Nichts heraus zerrt der Wind an mir. Meine Haut ist von Licht besudelt. Der Wald erbebt vor Bewegung, weit unten.",
 			"description": "Die Tür des Hirsches: eine gezahnte Barriere blutgefleckten Horns, groß genug, um ein Schiff passieren zu lassen. Sie wurde vor langer Zeit aufgebrochen, und selbst jetzt sind die Narben noch nicht ganz verheilt. Auf einem Abhang neben der Tür ruht ein gigantisches und verwundetes goldenes Haupt. Sein Mund wäre groß genug, um mich zu verschlingen, wäre sein Unterkiefer nicht gebrochen. Dies ist der Name Ghirbi. Er beginnt sein Rätsel zu verkünden. ",
 			"alternativerecipes": [
 				{
@@ -1201,7 +1201,7 @@
 			"requirements": {
 				"sendingheartg": 1
 			},
-			"startdescription": "Der Wind frisch auf und das Dach klappert als ich mich zum Schlafen einrichte. Es gibt da ein bitteres Kraut, das mir helfen wird, meinen Körper zu verlassen. Der Forst öffnet sich um mich herum, doch mit meinen neuen Augen kann ich nun einen anderen Pfad erkennen. Diejenige mit Namen Marinette wartet an jenem Pfad mit dem Schlüssel, der mein Ende und Anfang sein wird.",
+			"startdescription": "Der Wind frisch auf und das Dach klappert als ich mich zum Schlafen einrichte. Es gibt da ein bitteres Kraut, das mir helfen wird, meinen Körper zu verlassen. Der Wald öffnet sich um mich herum, doch mit meinen neuen Augen kann ich nun einen anderen Pfad erkennen. Diejenige mit Namen Marinette wartet an jenem Pfad mit dem Schlüssel, der mein Ende und Anfang sein wird.",
 			"warmup": 30,
 			"craftable": true,
 			"signalEndingFlavour": "Grand",
@@ -1264,7 +1264,7 @@
 			"requirements": {
 				"sendingmothg": 1
 			},
-			"startdescription": "Ich lasse mich auf den vertrauten Pfaden des Schlafes nach unten treiben, bis der Forst klar vor mir steht, mit seinen ausgreifenden Bäumen und seinen schattenumsäumten Pfaden. Die Tür im Forst liegt unterhalb der Wasser des Brunnens. Das weiß ich jetzt. Ich kann sie weder tot noch lebendig passieren. Medusa, die weder tot noch lebendig ist, wird den Weg frei machen. Ich fange an zu laufen.",
+			"startdescription": "Ich lasse mich auf den vertrauten Pfaden des Schlafes nach unten treiben, bis der Wald klar vor mir steht, mit seinen ausgreifenden Bäumen und seinen schattenumsäumten Pfaden. Die Tür im Wald liegt unterhalb der Wasser des Brunnens. Das weiß ich jetzt. Ich kann sie weder tot noch lebendig passieren. Medusa, die weder tot noch lebendig ist, wird den Weg frei machen. Ich fange an zu laufen.",
 			"warmup": 30,
 			"craftable": true,
 			"signalEndingFlavour": "Grand",
@@ -1299,7 +1299,7 @@
 		},
 		{
 			"id": "dreammothvictory",
-			"label": "Die Tür im Forst",
+			"label": "Die Tür im Wald",
 			"actionId": "dream",
 			"requirements": {
 				"sendingmothg": 1
@@ -1310,7 +1310,7 @@
 		},
 		{
 			"id": "dreammothvictory_withrisen",
-			"label": "Die Tür im Forst",
+			"label": "Die Tür im Wald",
 			"actionId": "dream",
 			"requirements": {
 				"sendingmothg": 1,
@@ -1327,7 +1327,7 @@
 			"requirements": {
 				"sendingmothheartg": 1
 			},
-			"startdescription": "Ich lasse mich auf den vertrauten Pfaden des Schlafes nach unten treiben, bis der Forst klar vor mir steht, mit seinen ausgreifenden Bäumen und seinen schattenumsäumten Pfaden. Doch dies ist nicht der Forst, wie ich ihn kenne. Überall Birken, weiß wie Mondschein, und der Mondschein ist schwarz wie Tinte. Unter seinem Druck beginnt die weiße Haut des Baums sich abzuschälen, bis er blutet. Ich fange an zu laufen, dann renne ich. Ich muss den Brunnen erreichen, bevor ich erwache, oder etwas Schlimmeres – ",
+			"startdescription": "Ich lasse mich auf den vertrauten Pfaden des Schlafes nach unten treiben, bis der Wald klar vor mir steht, mit seinen ausgreifenden Bäumen und seinen schattenumsäumten Pfaden. Doch dies ist nicht der Wald, wie ich ihn kenne. Überall Birken, weiß wie Mondschein, und der Mondschein ist schwarz wie Tinte. Unter seinem Druck beginnt die weiße Haut des Baums sich abzuschälen, bis er blutet. Ich fange an zu laufen, dann renne ich. Ich muss den Brunnen erreichen, bevor ich erwache, oder etwas Schlimmeres – ",
 			"warmup": 30,
 			"craftable": true,
 			"signalEndingFlavour": "Grand",
