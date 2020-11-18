@@ -47,7 +47,7 @@ def ExtractFromLocationsToFile( locs, tofilename ):
     with open(tofilename, "w", encoding="utf8") as text_file:
         text_file.write(gcharset)
 
-cslocs=("../StreamingAssets/content/core/cultures/zh",./StreamingAssets/content/loc_zh-hans")
+cslocs=("../StreamingAssets/content/core/cultures/zh","../StreamingAssets/content/loc_zh-hans")
 rulocs=("../StreamingAssets/content/core/cultures/ru","../StreamingAssets/content/loc_ru")
 jplocs=("../StreamingAssets/content/core/cultures/jp","../StreamingAssets/content/loc_jp")
 
