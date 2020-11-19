@@ -1,6 +1,7 @@
 ﻿using System;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
+using Assets.Core.Enums;
 using Assets.TabletopUi.Scripts.Infrastructure;
 
 namespace Assets.Core.States
@@ -12,17 +13,23 @@ namespace Assets.Core.States
 
         protected override void Enter(Situation situation)
         {
-         situation.CurrentBeginningEffectCommand = new RecipeBeginningEffectCommand(situation.CurrentPrimaryRecipe.Slots, situation.CurrentRecipePrediction.BurnImage);
+         situation.CurrentBeginningEffectCommand = new RecipeBeginningEffectCommand(situation.CurrentPrimaryRecipe.Slots, situation.CurrentRecipePrediction?.BurnImage);
         }
 
         protected override void Exit(Situation situation)
         {
-            throw new NotImplementedException();
+            
         }
 
         public override bool IsActiveInThisState(Sphere s)
         {
-            throw new NotImplementedException();
+            if (s.SphereCategory == SphereCategory.SituationStorage)
+                return true;
+
+            if (s.SphereCategory != SphereCategory.Threshold && s.GoverningSlotSpecification.IsActiveInState(StateEnum.Ongoing))
+                return true;
+
+            return false;
         }
         /// <summary>
         /// WARNING: this assumes ShouldAlwaysSucceed, which is greast for prediction but not for execution

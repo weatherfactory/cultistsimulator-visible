@@ -337,7 +337,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
             IVerb verbForNewSituation = Registry.Get<ICompendium>().GetDurableOrTransientVerbFromI(recipe);
 
 
-            SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, StateEnum.ReadyToStart,
+            SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, StateEnum.Ongoing,
                 new TokenLocation(0f,0f,-100f,tabletop.GetPath()));
             scc.Open = false;
         Registry.Get<SituationsCatalogue>().BeginNewSituation(scc,new List<Token>());

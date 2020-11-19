@@ -7,6 +7,7 @@ using Assets.Core.Commands;
 using Assets.Core.Enums;
 using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
+using Assets.Core.NullObjects;
 using Assets.Core.Services;
 using Assets.Core.States;
 using Assets.CS.TabletopUI;
@@ -73,7 +74,6 @@ namespace Assets.Core.Entities {
         }
 
         public const float HOUSEKEEPING_CYCLE_BEATS = 1f;
-
 
         public Situation()
         {
@@ -177,7 +177,7 @@ namespace Assets.Core.Entities {
         public void Reset()
         {
             CurrentPrimaryRecipe = NullRecipe.Create(Verb);
-            CurrentRecipePrediction = GetUpdatedRecipePrediction();
+            CurrentRecipePrediction = RecipePrediction.DefaultFromVerb(Verb);
             TimeRemaining = 0;
             }
 

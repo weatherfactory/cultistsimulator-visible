@@ -97,8 +97,6 @@ namespace Assets.Core
         /// Returns information on the recipe that's going to execute, based on current recipe and aspect context
         public RecipePrediction GetPredictionForFollowupRecipe(Recipe currentRecipe, Situation situation)
         {
-
-            
             _aspectsInContext.ThrowErrorIfNotPopulated(situation.Verb.Id);
 
             //note: we *either* get craftable recipes *or* if we're getting hint recipes we don't care if they're craftable

@@ -226,11 +226,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 //if (situationState == StateEnum.Unstarted)
                 //    situationState = StateEnum.ReadyToReset; //this state didn't exist in the old save format. We need to set ReadyToReset, or the situation window will remain in its primordial condition
+
+                //if (situationState == StateEnum.Ongoing)
+                //    situationState = StateEnum.ReadyToContinue;
                 //commented above out because the Enter() method on the new state classes *should* take care of it
-
-
-                if (situationState == StateEnum.Ongoing)
-                    situationState = StateEnum.ReadyToContinue;
 
 
                 var command = new SituationCreationCommand(situationVerb, recipe, situationState,null);

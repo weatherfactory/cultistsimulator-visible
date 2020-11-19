@@ -22,34 +22,40 @@ namespace Assets.Core.States
 
         public static SituationState Rehydrate(StateEnum stateEnum,Situation situation)
        {
-           SituationState rehydrationState;
+           SituationState rehydratedState;
 
 
             switch (stateEnum)
            {
 
                 case StateEnum.Unstarted:
-                    rehydrationState=new UnstartedState();
+                    rehydratedState=new UnstartedState();
                     break;
-                    
+
+                
+
                 case StateEnum.Ongoing:
-                    rehydrationState = new OngoingState();
+                    rehydratedState = new OngoingState();
                         break;
                 
                 case StateEnum.RequiringExecution:
-                    rehydrationState = new RequiresExecutionState();
+                    rehydratedState = new RequiresExecutionState();
+                    break;
+
+                case StateEnum.Halting:
+                    rehydratedState = new HaltingState();
                     break;
 
                 case StateEnum.Complete:
-                    rehydrationState = new CompleteState();
+                    rehydratedState = new CompleteState();
                     break;
 
             default:
-                    throw new ArgumentOutOfRangeException(stateEnum.ToString());
+                    throw new ArgumentOutOfRangeException(nameof(stateEnum),stateEnum, stateEnum.ToString() + " isn't rehydratable");
             }
 
-            rehydrationState.Enter(situation);
-            return rehydrationState;
+            rehydratedState.Enter(situation);
+            return rehydratedState;
        }
 
 

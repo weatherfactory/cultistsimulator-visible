@@ -5,4 +5,4 @@ using System.Text;
 
 
 
-public enum StateEnum {Unstarted,ReadyToStart, ReadyToContinue,Ongoing, RequiringExecution, Complete }
+public enum StateEnum {Unstarted,Halting,Ongoing, RequiringExecution, Complete }

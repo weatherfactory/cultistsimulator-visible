@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
+using Assets.Core.Interfaces;
 using Assets.Core.Services;
 
 namespace Assets.Core.Commands
@@ -15,6 +16,13 @@ namespace Assets.Core.Commands
         public string BurnImage => _actualRecipe.BurnImage;
         public EndingFlavour SignalEndingFlavour => _actualRecipe.SignalEndingFlavour;
         public bool Craftable => _actualRecipe.Craftable;
+
+        public static RecipePrediction DefaultFromVerb(IVerb verb)
+        {
+            NullRecipe nullRecipe=NullRecipe.Create(verb);
+            return new RecipePrediction(nullRecipe,new AspectsDictionary());
+        }
+
 
         public RecipePrediction(Recipe actualRecipe, IAspectsDictionary aspectsAvailable)
         {
