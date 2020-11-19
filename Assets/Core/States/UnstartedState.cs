@@ -61,11 +61,11 @@ namespace Assets.Core.States
         public override bool Extinct => false;
 
 
-        protected override SituationState GetNextState(Situation situation)
+        public override void Continue (Situation situation)
         {
-            if (situation.CurrentInterruptInputs.Contains(SituationInterruptInput.Start))
+            if (situation.CurrentInterrupts.Contains(SituationInterruptInput.Start))
             {
-                situation.CurrentInterruptInputs.Remove(SituationInterruptInput.Start);
+                situation.CurrentInterrupts.Remove(SituationInterruptInput.Start);
                 var aspects =situation.GetAspectsAvailableToSituation(true);
                 var tc = Registry.Get<SphereCatalogue>();
                 var aspectsInContext = tc.GetAspectsInContext(aspects);
@@ -74,9 +74,8 @@ namespace Assets.Core.States
                 var recipe = Registry.Get<ICompendium>().GetFirstMatchingRecipe(aspectsInContext, situation.Verb.Id, Registry.Get<Character>(), false);
 
                 //no recipe found? get outta here
-                if (recipe == null)
-                    return this;
-
+                if (recipe != null)
+                    
                 situation.CurrentPrimaryRecipe = recipe;
                 situation.TimeRemaining = situation.CurrentPrimaryRecipe.Warmup;
 
@@ -89,13 +88,10 @@ namespace Assets.Core.States
                 //now move the stacks out of the starting slots into storage
                 situation.AcceptTokens(SphereCategory.SituationStorage, situation.GetElementTokens(SphereCategory.Threshold));
 
-                return new OngoingState();
+               ChangeState(this,new OngoingState(), situation);
 
             }
 
-                
-            else
-                return this;
         }
     }
 }

@@ -11,7 +11,7 @@ using Assets.Core.NullObjects;
 using Assets.Core.Services;
 using Assets.Core.States;
 using Assets.CS.TabletopUI;
-using Assets.CS.TabletopUI.Interfaces;
+using Assets.CS.TabletopUI.Interfaces;du
 using Assets.Logic;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
@@ -48,7 +48,7 @@ namespace Assets.Core.Entities {
         public readonly IVerb Verb;
         public readonly Species Species;
         private readonly List<ISituationSubscriber> subscribers = new List<ISituationSubscriber>();
-        public HashSet<SituationInterruptInput> CurrentInterruptInputs = new HashSet<SituationInterruptInput>();
+        public HashSet<SituationInterruptInput> CurrentInterrupts = new HashSet<SituationInterruptInput>();
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
         public string OverrideTitle { get; set; }
 
@@ -183,7 +183,7 @@ namespace Assets.Core.Entities {
 
         public void Halt()
         {
-            CurrentInterruptInputs.Add(SituationInterruptInput.Halt);
+            CurrentInterrupts.Add(SituationInterruptInput.Halt);
         }
 
         public List<Sphere> GetSpheres()
@@ -393,12 +393,8 @@ namespace Assets.Core.Entities {
         {
             IntervalForLastHeartbeat = interval;
 
-            CurrentState=CurrentState.Continue(this);
+            CurrentState.Continue(this);
 
-       foreach (var subscriber in subscribers)
-            {
-                subscriber.SituationStateUpdated(this);
-            }
 
             CurrentBeginningEffectCommand = new RecipeBeginningEffectCommand();
             currentCompletionEffectCommand = new RecipeCompletionEffectCommand();
@@ -407,7 +403,13 @@ namespace Assets.Core.Entities {
         }
 
 
-
+        public void OnSituationStateChanged()
+        {
+            foreach (var subscriber in subscribers)
+            {
+                subscriber.SituationStateUpdated(this);
+            }
+        }
 
 
         private void PossiblySignalImpendingDoom(EndingFlavour endingFlavour)
@@ -711,8 +713,6 @@ namespace Assets.Core.Entities {
         public void TryStart()
         {
          
-
-
             var aspects = GetAspectsAvailableToSituation(true);
             var tc = Registry.Get<SphereCatalogue>();
             var aspectsInContext = tc.GetAspectsInContext(aspects);
@@ -725,7 +725,7 @@ namespace Assets.Core.Entities {
 
             {
             
-                CurrentInterruptInputs.Add(SituationInterruptInput.Start);
+                CurrentInterrupts.Add(SituationInterruptInput.Start);
 
                 CurrentPrimaryRecipe = recipe;
                 TimeRemaining = CurrentPrimaryRecipe.Warmup;
@@ -759,7 +759,10 @@ namespace Assets.Core.Entities {
             PossiblySignalImpendingDoom(CurrentRecipePrediction.SignalEndingFlavour);
 
             foreach (var s in subscribers)
-                s.ContainerContentsUpdated(this);
+                s.SphereContentsUpdated(this);
+
+            if (!GetAllStacksInSituation().Any())
+                CurrentInterrupts.Add(SituationInterruptInput.AllOutputsCollected);
         }
 
         public void OnTokenClicked(TokenEventArgs args)

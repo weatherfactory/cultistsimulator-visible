@@ -10,7 +10,8 @@ namespace Assets.Core.Commands
     public enum SituationInterruptInput
     {
         Start,
-        Halt
+        Halt,
+        AllOutputsCollected
     }
 
     public class SituationInterrupt

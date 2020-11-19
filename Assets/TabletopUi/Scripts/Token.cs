@@ -890,7 +890,7 @@ namespace Assets.CS.TabletopUI {
             Sphere.NotifyTokensChangedForSphere(new TokenEventArgs { Token = this, Element = Element, Sphere = Sphere });
         }
 
-    public void ContainerContentsUpdated(Situation situation)
+    public void SphereContentsUpdated(Situation situation)
         {
             var thresholdSpheresWithStacks = situation.GetSpheresByCategory(SphereCategory.Threshold)
                 .Where(sphere => sphere.GetElementTokens().Count() == 1);

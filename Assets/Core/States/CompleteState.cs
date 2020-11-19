@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.TabletopUi.Scripts.Infrastructure;
@@ -36,9 +37,10 @@ namespace Assets.Core.States
             return false;
         }
 
-        protected override SituationState GetNextState(Situation situation)
+        public override void Continue(Situation situation)
         {
-            return new UnstartedState();
+            if(situation.CurrentInterrupts.Contains(SituationInterruptInput.AllOutputsCollected))
+                ChangeState(this, new UnstartedState(), situation);
         }
     }
 }

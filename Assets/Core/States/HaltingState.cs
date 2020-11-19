@@ -30,9 +30,9 @@ namespace Assets.Core.States
             return false;
         }
 
-        protected override SituationState GetNextState(Situation situation)
+        public override void Continue(Situation situation)
         {
-           return new CompleteState();
+           ChangeState(this,new CompleteState(), situation);
         }
     }
 }

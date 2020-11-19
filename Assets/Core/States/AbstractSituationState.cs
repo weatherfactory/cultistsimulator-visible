@@ -11,7 +11,7 @@ using Noon;
 
 namespace Assets.Core.States
 {
-   public abstract class SituationState: IEquatable<SituationState>
+   public abstract class SituationState
    {
        protected abstract void Enter(Situation situation);
        protected abstract void Exit(Situation situation);
@@ -31,8 +31,7 @@ namespace Assets.Core.States
                 case StateEnum.Unstarted:
                     rehydratedState=new UnstartedState();
                     break;
-
-                
+                    
 
                 case StateEnum.Ongoing:
                     rehydratedState = new OngoingState();
@@ -59,31 +58,16 @@ namespace Assets.Core.States
        }
 
 
-       public SituationState Continue(Situation situation)
-       {
-           var newState = this.GetNextState(situation);
-           this.Exit(situation);
-           newState.Enter(situation);;
-           return newState;
-       }
+        public abstract void Continue(Situation situation);
 
-       protected abstract SituationState GetNextState(Situation situation);
+        protected void ChangeState(SituationState oldState, SituationState newState, Situation situation)
+        {
+            oldState.Exit(situation);
+            newState.Enter(situation);
+            situation.CurrentState = newState;
+            situation.OnSituationStateChanged();
+        }
 
-
-       public bool Equals(SituationState other)
-       {
-           throw new NotImplementedException();
-       }
-
-       public override bool Equals(object obj)
-       {
-           return ReferenceEquals(this, obj) || obj is SituationState other && Equals(other);
-       }
-
-       public override int GetHashCode()
-       {
-           throw new NotImplementedException();
-       }
 
        public static bool operator ==(SituationState left, SituationState right)
        {

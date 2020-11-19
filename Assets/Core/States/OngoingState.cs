@@ -48,20 +48,19 @@ namespace Assets.Core.States
 
         }
 
-        protected override SituationState GetNextState(Situation situation)
+        public override void Continue(Situation situation)
         {
-            if(situation.CurrentInterruptInputs.Contains(SituationInterruptInput.Halt))
+            if(situation.CurrentInterrupts.Contains(SituationInterruptInput.Halt))
             {
-                situation.CurrentInterruptInputs.Remove(SituationInterruptInput.Halt);
-            return new HaltingState();
+                situation.CurrentInterrupts.Remove(SituationInterruptInput.Halt);
+         ChangeState(this,new HaltingState(),situation);
             }
 
             if (situation.TimeRemaining <= 0)
-                return new RequiresExecutionState();
+                ChangeState(this,new RequiresExecutionState(), situation);
             else
             {
-                situation.TimeRemaining = situation.TimeRemaining - situation.IntervalForLastHeartbeat;
-                return this;
+                situation.TimeRemaining -= situation.IntervalForLastHeartbeat;
             }
             
         }

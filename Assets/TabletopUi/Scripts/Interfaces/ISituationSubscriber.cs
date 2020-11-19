@@ -14,7 +14,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
     public interface ISituationSubscriber
     {
         void SituationStateUpdated(Situation situation);
-        void ContainerContentsUpdated(Situation s);
+        void SphereContentsUpdated(Situation s);
         void ReceiveNotification(INotification n);
     }
 }

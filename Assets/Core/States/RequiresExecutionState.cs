@@ -41,12 +41,12 @@ namespace Assets.Core.States
             return false;
         }
 
-        protected override SituationState GetNextState(Situation situation)
+        public override void Continue(Situation situation)
         {
-            if (situation.CurrentInterruptInputs.Contains(SituationInterruptInput.Halt))
+            if (situation.CurrentInterrupts.Contains(SituationInterruptInput.Halt))
             {
-                situation.CurrentInterruptInputs.Remove(SituationInterruptInput.Halt);
-                return new HaltingState();
+                situation.CurrentInterrupts.Remove(SituationInterruptInput.Halt);
+                ChangeState(this,new HaltingState(), situation);
             }
 
             var tc = Registry.Get<SphereCatalogue>();
@@ -74,11 +74,13 @@ namespace Assets.Core.States
 
                 }
 
-                return new UnstartedState();
+                ChangeState(this, new UnstartedState(), situation);
+
             }
             else
             {
-                return new CompleteState();
+                ChangeState(this, new CompleteState(), situation);
+
             }
 
 

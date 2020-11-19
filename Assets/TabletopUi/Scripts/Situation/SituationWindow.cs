@@ -278,7 +278,7 @@ namespace Assets.CS.TabletopUI {
 
         
 
-        public void ContainerContentsUpdated(Situation s)
+        public void SphereContentsUpdated(Situation s)
         {
             DisplayPredictedRecipe(s);
 
