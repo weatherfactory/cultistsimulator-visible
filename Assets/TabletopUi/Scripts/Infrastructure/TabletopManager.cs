@@ -742,7 +742,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
             if (enableAccessibleCards==null || enableAccessibleCards==0)
 		        return;
-	        if (elementId == null || elementId == "dropzone")
+	        if (elementId == null)
 	        {
 		        cardHoverDetail.Hide();
 		        return;
