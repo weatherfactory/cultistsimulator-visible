@@ -220,7 +220,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 //This caters for the otherwise troublesome situation where a completed situation (no recipe) has been based on a created verb (no verb obj).
                 if (situationVerb == null && recipe==null)
-                    situationVerb = new CreatedVerb(verbId, "","");
+                    situationVerb = new TransientVerb(verbId, "","");
 
                 var situationState= (StateEnum)Enum.Parse(typeof(StateEnum), htSituationValues[SaveConstants.SAVE_SITUATIONSTATE].ToString());
 

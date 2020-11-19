@@ -14,6 +14,10 @@ namespace Assets.Core.Entities
         [FucineValue]
         public string DefaultVerbSpecies { get; set; }
 
+
+        [FucineValue]
+        public string DefaultTransientVerbSpecies { get; set; }
+
         [FucineValue]
         public string DefaultWorldSpherePath { get; set; }
 

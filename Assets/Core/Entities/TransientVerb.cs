@@ -7,16 +7,21 @@ using Assets.CS.TabletopUI;
 
 namespace Assets.Core.Entities
 {
-   public class CreatedVerb: IVerb
+   public class TransientVerb: IVerb
     {
-        public CreatedVerb(string id, string label, string description)
+        public TransientVerb()
+        {
+            Startable = false;
+            SpeciesId = Registry.Get<ICompendium>().GetSingleEntity<Dictum>().DefaultTransientVerbSpecies;
+            Species = Registry.Get<ICompendium>().GetEntityById<Species>(SpeciesId);
+        }
+
+        public TransientVerb(string id, string label, string description):this()
         {
             Id = id;
             Label = label;
             Description = description;
-            Startable = false;
-            SpeciesId = Registry.Get<ICompendium>().GetSingleEntity<Dictum>().DefaultVerbSpecies;
-            Species = Registry.Get<ICompendium>().GetEntityById<Species>(SpeciesId);
+
         }
 
         public string SpeciesId { get; private set; }
@@ -27,7 +32,12 @@ namespace Assets.Core.Entities
         public string Art=>String.Empty;
 
 
-        public string Id { get; set; }
+        public string Id { get; private set; }
+
+        public void SetId(string id)
+        {
+            Id = id;
+        }
 
         public string Label { get; set; }
 

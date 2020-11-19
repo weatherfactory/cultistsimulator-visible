@@ -15,6 +15,7 @@ namespace Assets.Core.Entities
         [FucineValue(false)]
         public bool ExclusiveOpen { get; set; }
 
+        
         [FucineValue]
         public string AnchorManifestationType { get; set; }
 

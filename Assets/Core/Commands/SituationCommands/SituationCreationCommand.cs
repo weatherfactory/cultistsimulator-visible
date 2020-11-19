@@ -49,12 +49,7 @@ namespace Assets.Core.Commands
 
         public IVerb GetBasicOrCreatedVerb()
         {
-            if (Verb == null)
-            {
-                return new CreatedVerb(Recipe.ActionId, Recipe.Label, Recipe.Description);
-            }
-
-            return Verb;
+            return Registry.Get<ICompendium>().GetDurableOrTransientVerbFromI(Recipe);
         }
 
     }

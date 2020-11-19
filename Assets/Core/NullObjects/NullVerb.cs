@@ -10,9 +10,14 @@ namespace Assets.Core.NullObjects
 {
     public class NullVerb:IVerb
     {
-        public string Id { get; }
-        public string Label { get; }
-        public string Description { get; }
+        public string Id { get; private set; }
+        public void SetId(string id)
+        {
+            Id = id;
+        }
+
+        public string Label { get; set; }
+        public string Description { get; set; }
         public string SpeciesId { get; }
         public Species Species { get; }
         public bool Transient { get; }

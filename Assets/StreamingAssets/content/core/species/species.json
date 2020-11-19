@@ -1,7 +1,12 @@
 {
   "species": [
     {
-      "id": "classic",
+      "id": "BasicVerb",
+      "exclusiveopen": true,
+      "AnchorManifestationType": "VerbManifestation"
+    },
+    {
+      "id": "TransientVerb",
       "exclusiveopen": true,
       "AnchorManifestationType": "VerbManifestation"
     },

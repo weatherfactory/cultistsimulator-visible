@@ -54,16 +54,11 @@ namespace Assets.TabletopUi.SlotsContainers {
 
         public void UpdateDisplay(Situation situation)
         {
-            switch (situation.EnumState)
-            {
-                case StateEnum.Unstarted:
-                    canvasGroupFader.Show();
-                    break;
-                default:
-                    canvasGroupFader.Hide();
-                    break;
 
-            }
+            if(situation.CurrentState.IsActiveInThisState(primarySlot))
+                    canvasGroupFader.Show();
+            else
+                    canvasGroupFader.Hide();
         }
 
         

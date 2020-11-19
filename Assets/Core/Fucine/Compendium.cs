@@ -7,6 +7,7 @@ using Assets.Core.Entities;
 using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
+using Assets.CS.TabletopUI;
 using Noon;
 using UnityEngine.Analytics;
 using static Noon.NoonUtility;
@@ -24,7 +25,7 @@ public interface ICompendium
     void SupplyLevers(Character populatedCharacter);
     string GetVerbIconOverrideFromAspects(IAspectsDictionary currentAspects);
 
-
+    IVerb GetDurableOrTransientVerbFromI(Recipe recipe);
     /// <summary>
     /// Run all second-stage populations that occur between / across entities
     /// </summary>
@@ -239,6 +240,26 @@ public class Compendium : ICompendium
         }
 
         return null;
+    }
+
+
+    public IVerb GetDurableOrTransientVerbFromI(Recipe recipe)
+    {
+        IVerb durableVerb = GetEntityById<BasicVerb>(recipe.ActionId);
+
+        if (durableVerb == null)
+        {
+            IVerb transientVerb =
+                Activator.CreateInstance(Type.GetType(GetSingleEntity<Dictum>().DefaultTransientVerbSpecies)) as IVerb;
+
+            transientVerb.SetId(recipe.ActionId);
+            transientVerb.Label = recipe.Label;
+            transientVerb.Description = recipe.Description;
+
+            return transientVerb;
+        }
+
+        return durableVerb;
     }
 
 

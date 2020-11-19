@@ -9,8 +9,9 @@ namespace Assets.Core.Interfaces
     public interface IVerb
     {
         string Id { get; }
-        string Label { get; }
-        string Description { get; }
+        void SetId(string id);
+        string Label { get; set; }
+        string Description { get; set; }
         string SpeciesId { get; }
         Species Species { get; }
         bool Transient { get; }

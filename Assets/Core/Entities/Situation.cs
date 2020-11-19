@@ -507,10 +507,11 @@ namespace Assets.Core.Entities {
 
             }
 
-            IVerb verbForNewSituation = Registry.Get<ICompendium>().GetEntityById<BasicVerb>(effectCommand.Recipe.ActionId);
 
-            if (verbForNewSituation == null)
-                verbForNewSituation = new CreatedVerb(effectCommand.Recipe.ActionId, effectCommand.Recipe.Label, effectCommand.Recipe.Description);
+
+
+            IVerb verbForNewSituation = Registry.Get<ICompendium>().GetDurableOrTransientVerbFromI(effectCommand.Recipe);
+
 
             TokenLocation newAnchorLocation;
 
@@ -598,10 +599,9 @@ namespace Assets.Core.Entities {
             NoonUtility.Log("unknown recipe " + inducedRecipe + " in induction for " + aspectID);
             return;
         }
-
-        var inductionRecipeVerb = new CreatedVerb(inducedRecipe.ActionId,
-            inducedRecipe.Label, inducedRecipe.Description);
-        SituationCreationCommand inducedSituationCreationCommand = new SituationCreationCommand(inductionRecipeVerb,
+        
+            var inductionRecipeVerb = Registry.Get<ICompendium>().GetDurableOrTransientVerbFromI(inducedRecipe);
+            SituationCreationCommand inducedSituationCreationCommand = new SituationCreationCommand(inductionRecipeVerb,
             inducedRecipe, StateEnum.Unstarted, _anchor.Location, _anchor);
         var inducedSituation=Registry.Get<SituationsCatalogue>().BeginNewSituation(inducedSituationCreationCommand, new List<Token>());
             inducedSituation.TryStart();

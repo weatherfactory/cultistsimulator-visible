@@ -334,9 +334,8 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
         var recipe = compendium.GetEntityById<Recipe>(recipeId.Trim());
         if (recipe!=null)
         {
-            IVerb verbForNewSituation = compendium.GetEntityById<BasicVerb>(recipe.ActionId);
-            if(verbForNewSituation==null)
-                verbForNewSituation = new CreatedVerb(recipe.ActionId, recipe.Label, recipe.Description);
+            IVerb verbForNewSituation = Registry.Get<ICompendium>().GetDurableOrTransientVerbFromI(recipe);
+
 
             SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, StateEnum.ReadyToStart,
                 new TokenLocation(0f,0f,-100f,tabletop.GetPath()));
