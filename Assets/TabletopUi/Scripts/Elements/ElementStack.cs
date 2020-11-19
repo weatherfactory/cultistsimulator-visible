@@ -49,8 +49,8 @@ namespace Assets.CS.TabletopUI {
         private int _quantity;
 
 		// Cache aspect lists because they are EXPENSIVE to calculate repeatedly every frame - CP
-		private IAspectsDictionary _aspectsDictionaryInc;		// For caching aspects including self 
-		private IAspectsDictionary _aspectsDictionaryExc;		// For caching aspects excluding self
+		private IAspectsDictionary _aspectsDictionaryInc=new AspectsDictionary();		// For caching aspects including self 
+		private IAspectsDictionary _aspectsDictionaryExc = new AspectsDictionary();		// For caching aspects excluding self
 		private bool _aspectsDirtyInc = true;
 		private bool _aspectsDirtyExc = true;
 
@@ -59,7 +59,7 @@ namespace Assets.CS.TabletopUI {
         public Source StackSource { get; set; }
 
         
-        private Dictionary<string,int> _currentMutations; //not strictly an aspects dictionary; it can contain negatives
+        private Dictionary<string,int> _currentMutations=new Dictionary<string, int>(); //not strictly an aspects dictionary; it can contain negatives
         private IlluminateLibrarian _illuminateLibrarian;
 
 

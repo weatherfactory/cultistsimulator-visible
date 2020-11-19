@@ -232,7 +232,7 @@ namespace Assets.CS.TabletopUI {
                 startButtonText.GetComponent<Babelfish>().UpdateLocLabel(NoonConstants.SITUATION_RUNNING);
                 startButton.interactable = false;
             }
-            else if (situation.CurrentRecipePrediction.Craftable)
+            else if (situation.CurrentRecipePrediction!=null && situation.CurrentRecipePrediction.Craftable)
             {
                 startButtonText.GetComponent<Babelfish>().UpdateLocLabel(NoonConstants.SITUATION_STARTABLE);
                 startButton.interactable = true;
