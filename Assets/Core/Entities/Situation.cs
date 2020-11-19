@@ -26,7 +26,7 @@ namespace Assets.Core.Entities {
 
     public class Situation: ISphereEventSubscriber
     {
-        public SituationState State { get; set; }
+        public SituationState CurrentState { get; set; }
         public Recipe CurrentPrimaryRecipe { get; set; }
         public RecipePrediction CurrentRecipePrediction{ get; set; }
 
@@ -47,6 +47,7 @@ namespace Assets.Core.Entities {
         public readonly IVerb Verb;
         public readonly Species Species;
         private readonly List<ISituationSubscriber> subscribers = new List<ISituationSubscriber>();
+        public HashSet<SituationInterruptInput> CurrentInterruptInputs = new HashSet<SituationInterruptInput>();
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
         public string OverrideTitle { get; set; }
 
@@ -55,7 +56,7 @@ namespace Assets.Core.Entities {
         
         public SituationPath Path { get; }
         public bool IsOpen { get; private set; }
-    public SituationInterruptCommand CurrentSituationInterruptCommand= new SituationInterruptCommand();
+    
         
             public RecipeBeginningEffectCommand CurrentBeginningEffectCommand;
         public RecipeCompletionEffectCommand currentCompletionEffectCommand;
@@ -87,7 +88,7 @@ namespace Assets.Core.Entities {
             CurrentPrimaryRecipe = command.Recipe;
             OverrideTitle = command.OverrideTitle;
             Path = command.SituationPath;
-            State = SituationState.Rehydrate(command.State,this);
+            CurrentState = SituationState.Rehydrate(command.State,this);
         }
 
 
@@ -182,8 +183,7 @@ namespace Assets.Core.Entities {
 
         public void Halt()
         {
-
-            CurrentSituationInterruptCommand.Halt = true;
+            CurrentInterruptInputs.Add(SituationInterruptInput.Halt);
         }
 
         public List<Sphere> GetSpheres()
@@ -192,9 +192,9 @@ namespace Assets.Core.Entities {
         }
 
 
-        public List<Sphere> GetSpheresActiveForSituationState(StateEnum state)
+        public List<Sphere> GetSpheresActiveForCurrentState()
         {
-            return new List<Sphere>(_spheres).Where(s=>s.GoverningSlotSpecification.IsActiveInState(state)).ToList();
+            return new List<Sphere>(_spheres).Where(sphere => CurrentState.IsActiveInThisState(sphere)).ToList();
         }
 
         public List<Sphere> GetSpheresByCategory(SphereCategory category)
@@ -261,7 +261,7 @@ namespace Assets.Core.Entities {
             
             Continue(interval);
 
-            if(State.GetType()==typeof(OngoingState)) //ACK THUPT TEMPORARY PLEASE
+            if(CurrentState.GetType()==typeof(OngoingState)) //ACK THUPT TEMPORARY PLEASE
             
                 return GetResponseWithUnfilledGreedyThresholdsForThisSituation();
 
@@ -393,7 +393,7 @@ namespace Assets.Core.Entities {
         {
             IntervalForLastHeartbeat = interval;
 
-            State=State.Continue(this);
+            CurrentState=CurrentState.Continue(this);
 
        foreach (var subscriber in subscribers)
             {
@@ -401,10 +401,9 @@ namespace Assets.Core.Entities {
             }
 
             CurrentBeginningEffectCommand = new RecipeBeginningEffectCommand();
-            CurrentSituationInterruptCommand=new SituationInterruptCommand();
             currentCompletionEffectCommand = new RecipeCompletionEffectCommand();
 
-            return State;
+            return CurrentState;
         }
 
 
@@ -672,7 +671,7 @@ namespace Assets.Core.Entities {
        //slot behaviour: dump when window closed?
        //slot behaviour: block for certain kinds of interaction? using existing block?
        //slot behaviour: specify connection type with other containers? ie expand 'greedy' effect to mean multiple things and directions
-            //if(State!=State.Ongoing)
+            //if(CurrentState!=CurrentState.Ongoing)
             //{
             //    var slotted = GetStacks(ContainerCategory.Threshold);
             //    foreach (var item in slotted)
@@ -711,9 +710,9 @@ namespace Assets.Core.Entities {
 
         public void TryStart()
         {
-            CurrentSituationInterruptCommand.Start = true;
+         
 
-            
+
             var aspects = GetAspectsAvailableToSituation(true);
             var tc = Registry.Get<SphereCatalogue>();
             var aspectsInContext = tc.GetAspectsInContext(aspects);
@@ -722,29 +721,22 @@ namespace Assets.Core.Entities {
             var recipe = Registry.Get<ICompendium>().GetFirstMatchingRecipe(aspectsInContext, Verb.Id, Registry.Get<Character>(), false);
 
             //no recipe found? get outta here
-            if (recipe == null)
-                return;
+            if (recipe != null)
 
-            CurrentPrimaryRecipe = recipe;
-            TimeRemaining = CurrentPrimaryRecipe.Warmup;
+            {
             
-            SoundManager.PlaySfx("SituationBegin");
+                CurrentInterruptInputs.Add(SituationInterruptInput.Start);
 
-            //called here in case starting slots trigger consumption
-            foreach(var t in GetSpheresByCategory(SphereCategory.Threshold))
-                t.ActivatePreRecipeExecutionBehaviour();
+                CurrentPrimaryRecipe = recipe;
+                TimeRemaining = CurrentPrimaryRecipe.Warmup;
 
-            //now move the stacks out of the starting slots into storage
-            AcceptTokens(SphereCategory.SituationStorage,GetElementTokens(SphereCategory.Threshold));
+                //The game might be paused! or the player might just be incredibly quick off the mark
+                //so immediately continue with a 0 interval - this won't advance time, but will update the visuals in the situation window
+                //(which among other things should make the starting slot unavailable
 
-            //The game might be paused! or the player might just be incredibly quick off the mark
-            //so immediately continue with a 0 interval - this won't advance time, but will update the visuals in the situation window
-            //(which among other things should make the starting slot unavailable
+                Continue(0);
+            }
 
-            
-            Continue(0);
-
-   
         }
 
 
@@ -757,7 +749,7 @@ namespace Assets.Core.Entities {
 
             RecipeConductor rc = new RecipeConductor(aspectsInContext,Registry.Get<Character>());
 
-            return rc.GetPredictionForFollowupRecipe(CurrentPrimaryRecipe, EnumState, Verb);
+            return rc.GetPredictionForFollowupRecipe(CurrentPrimaryRecipe, this);
         }
 
         public void NotifyTokensChangedForSphere(TokenEventArgs args)

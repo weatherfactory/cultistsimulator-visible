@@ -66,7 +66,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         bool HandleClick(PointerEventData eventData, Token token);
 
-        void DisplayActiveSpheres(IEnumerable<Sphere> spheres);
+        void DisplaySpheres(IEnumerable<Sphere> spheres);
         
         
         

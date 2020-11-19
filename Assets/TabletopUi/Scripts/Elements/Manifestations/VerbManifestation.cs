@@ -168,7 +168,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
                 return false;
         }
 
-        public void DisplayActiveSpheres(IEnumerable<Sphere> spheres)
+        public void DisplaySpheres(IEnumerable<Sphere> spheres)
         {
             
             var activeThresholdSpheres = new List<Sphere>(spheres.Where(s => s.SphereCategory == SphereCategory.Threshold));

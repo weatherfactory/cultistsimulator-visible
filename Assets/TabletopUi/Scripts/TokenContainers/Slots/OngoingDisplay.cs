@@ -38,11 +38,11 @@ namespace Assets.CS.TabletopUI {
             _onSlotAdded = onContainerAdded;
             _onSlotRemoved = onContainerRemoved;
             _situationPath = situationCreationCommand.SituationPath;
-            populateOngoingSlots((situationCreationCommand.OngoingSlots));
+            PopulateOngoingSlots((situationCreationCommand.OngoingSlots));
         }
 
 
-        private void populateOngoingSlots(List<SlotSpecification> ongoingSlots)
+        public void PopulateOngoingSlots(List<SlotSpecification> ongoingSlots)
         {
 
             foreach (var os in this.ongoingSlots)
@@ -69,41 +69,36 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public void UpdateDisplay(Situation s)
-		{
-            switch(s.EnumState)
+
+        public void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate,
+            EndingFlavour signalEndingFlavour)
+        {
+            if(durationRemaining<=0f)
+                canvasGroupFader.Hide();
+            else
             {
-                case StateEnum.Unstarted:
-
-                    canvasGroupFader.Hide();
-                    break;
-
-                case StateEnum.Ongoing:
-                    canvasGroupFader.Show();
-                    ShowDeckEffects(s.CurrentPrimaryRecipe.DeckEffects);
-
-                    Color barColor = UIStyle.GetColorForCountdownBar(s.CurrentPrimaryRecipe.SignalEndingFlavour, s.TimeRemaining);
-
-                    countdownBar.color = barColor;
-                    countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (s.TimeRemaining / s.Warmup));
-                    countdownText.color = barColor;
-			        countdownText.text = Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage( s.TimeRemaining );
-                    countdownText.richText = true;
-
-                    if (s.CurrentBeginningEffectCommand != null)
-                    {
-                        populateOngoingSlots(s.CurrentBeginningEffectCommand.OngoingSlots);
-                    }
+                canvasGroupFader.Show();
 
 
-                    break;
+    
 
-                
-                default:
-                    canvasGroupFader.Hide();
-                    break;
+                Color barColor =
+                    UIStyle.GetColorForCountdownBar(signalEndingFlavour, durationRemaining);
+
+                countdownBar.color = barColor;
+                countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (durationRemaining / originalDuration));
+                countdownText.color = barColor;
+                countdownText.text =
+                    Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(durationRemaining);
+                countdownText.richText = true;
+
+
+
             }
-    }
+
+        }
+
+         
 
         public void ShowStoredAspects(IEnumerable<ElementStack> stacks) {
             int i = 0;

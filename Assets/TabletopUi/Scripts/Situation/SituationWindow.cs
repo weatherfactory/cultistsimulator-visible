@@ -196,7 +196,7 @@ namespace Assets.CS.TabletopUI {
             if(s.CurrentPrimaryRecipe.Craftable)
             {
                 SoundManager.PlaySfx("SituationAvailable");
-                ongoingDisplay.UpdateDisplay(s); //Ensures that the time bar is set to 0 to avoid a flicker
+              //  ongoingDisplay.UpdateDisplay(s); //Ensures that the time bar is set to 0 to avoid a flicker - commented this out while refactoring, but bear it in mind
             }
             
         }
@@ -227,26 +227,20 @@ namespace Assets.CS.TabletopUI {
 
         void DisplayButtonState(Situation situation) {
 
-            switch(situation.EnumState)
+            if (situation.TimeRemaining > 0)
             {
-                case StateEnum.Unstarted:
-            
+                startButtonText.GetComponent<Babelfish>().UpdateLocLabel(NoonConstants.SITUATION_RUNNING);
+                startButton.interactable = false;
+            }
+            else if (situation.CurrentRecipePrediction.Craftable)
+            {
                 startButtonText.GetComponent<Babelfish>().UpdateLocLabel(NoonConstants.SITUATION_STARTABLE);
-                if (situation.CurrentRecipePrediction.Craftable)
-                    startButton.interactable = true;
-                else
-                    startButton.interactable = false;
-                break;
-
-                case StateEnum.Ongoing:
-                
-                    startButtonText.GetComponent<Babelfish>().UpdateLocLabel(NoonConstants.SITUATION_RUNNING);
-                    startButton.interactable = false;
-                    break;
-                case StateEnum.Complete:
-                    startButtonText.GetComponent<Babelfish>().UpdateLocLabel(NoonConstants.SITUATION_STARTABLE);
-                    startButton.interactable = false;
-                    break;
+                startButton.interactable = true;
+            }
+            else
+            {
+                startButtonText.GetComponent<Babelfish>().UpdateLocLabel(NoonConstants.SITUATION_STARTABLE);
+                startButton.interactable = false;
             }
 
         }
@@ -264,7 +258,16 @@ namespace Assets.CS.TabletopUI {
             {
                 startingSlots.UpdateDisplay(situation);
                 storage.UpdateDisplay(situation);
-                ongoingDisplay.UpdateDisplay(situation);
+                ongoingDisplay.UpdateTimerVisuals(situation.Warmup, situation.TimeRemaining,
+                    situation.IntervalForLastHeartbeat, false, situation.CurrentPrimaryRecipe.SignalEndingFlavour);
+
+                ongoingDisplay.ShowDeckEffects(situation.CurrentPrimaryRecipe.DeckEffects);
+                if (situation.CurrentBeginningEffectCommand != null)
+                {
+                    ongoingDisplay.PopulateOngoingSlots(situation.CurrentBeginningEffectCommand.OngoingSlots);
+                }
+
+
                 results.UpdateDisplay(situation);
                 results.UpdateDumpButtonText();
 

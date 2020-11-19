@@ -224,8 +224,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 var situationState= (StateEnum)Enum.Parse(typeof(StateEnum), htSituationValues[SaveConstants.SAVE_SITUATIONSTATE].ToString());
 
-                if (situationState == StateEnum.Unstarted)
-                    situationState = StateEnum.ReadyToReset; //this state didn't exist in the old save format. We need to set ReadyToReset, or the situation window will remain in its primordial condition
+                //if (situationState == StateEnum.Unstarted)
+                //    situationState = StateEnum.ReadyToReset; //this state didn't exist in the old save format. We need to set ReadyToReset, or the situation window will remain in its primordial condition
+                //commented above out because the Enter() method on the new state classes *should* take care of it
+
 
                 if (situationState == StateEnum.Ongoing)
                     situationState = StateEnum.ReadyToContinue;

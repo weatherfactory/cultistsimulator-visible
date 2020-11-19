@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Core.Commands;
 using Assets.Core.Entities;
-using Assets.Core.Enums;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 
 namespace Assets.Core.States
@@ -13,9 +14,10 @@ namespace Assets.Core.States
    {
        protected abstract void Enter(Situation situation);
        protected abstract void Exit(Situation situation);
+       public abstract bool IsActiveInThisState(Sphere sphereToCheck);
+       public abstract bool IsValidPredictionForState(Recipe recipeToCheck, Situation s);
 
-
-       public static SituationState Rehydrate(StateEnum stateEnum,Situation situation)
+        public static SituationState Rehydrate(StateEnum stateEnum,Situation situation)
        {
            SituationState rehydrationState;
 
@@ -84,56 +86,4 @@ namespace Assets.Core.States
            return !Equals(left, right);
        }
    }
-
-
-   public class CompleteState : SituationState
-   {
-
-        protected override void Enter(Situation situation)
-       {
-         
-
-           var outputTokens = situation.GetTokens(SphereCategory.SituationStorage);
-           situation.AcceptTokens(SphereCategory.Output, outputTokens, new Context(Context.ActionSource.SituationResults));
-
-           situation.AttemptAspectInductions(situation.CurrentPrimaryRecipe, outputTokens);
-           SoundManager.PlaySfx("SituationComplete"); //this could run through that Echo obj
-        }
-
-       protected override void Exit(Situation situation)
-       {
-           throw new NotImplementedException();
-       }
-
-       protected override SituationState GetNextState(Situation situation)
-       {
-           return new UnstartedState();
-       }
-   }
-
-
-
-   public class HaltingState : SituationState
-   {
-       protected override void Enter(Situation situation)
-       {
-           situation.Complete();
-
-            //If we leave anything in the ongoing slot, it's lost, and also the situation ends up in an anomalous state which breaks loads
-            situation.AcceptTokens(SphereCategory.SituationStorage, situation.GetTokens(SphereCategory.Threshold));
-        }
-
-       protected override void Exit(Situation situation)
-       {
-           throw new NotImplementedException();
-       }
-
-       protected override SituationState GetNextState(Situation situation)
-       {
-           throw new NotImplementedException();
-       }
-   }
-
-
-
 }

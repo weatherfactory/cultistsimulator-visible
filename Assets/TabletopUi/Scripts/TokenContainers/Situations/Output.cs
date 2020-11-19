@@ -43,15 +43,12 @@ public class Output : Sphere {
 
     public void UpdateDisplay(Situation situation)
     {
-        switch (situation.EnumState)
-        {
-            case StateEnum.Complete:
-                canvasGroupFader.Show();
-                break; 
-            default:
+        if(situation.CurrentState.IsActiveInThisState(this))
+            canvasGroupFader.Show();
+        else
                 canvasGroupFader.Hide();
-                break;
-        }
+                
+        
 
     }
 

@@ -7,6 +7,7 @@ using Assets.Core.Enums;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
+using Assets.TabletopUi.Scripts.Infrastructure;
 
 namespace Assets.Core.States
 {
@@ -24,10 +25,27 @@ namespace Assets.Core.States
             throw new NotImplementedException();
         }
 
+        public override bool IsActiveInThisState(Sphere s)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool IsValidPredictionForState(Recipe recipeToCheck, Situation s)
+        {
+            //Situation is RequiringExecution, and recipe is in Linked list of current recipe.  ActionId doesn't need to match.
+            if (s.CurrentPrimaryRecipe.Linked.Exists(r => r.Id == recipeToCheck.Id))
+                return true;
+
+            return false;
+        }
+
         protected override SituationState GetNextState(Situation situation)
         {
-            if (situation.CurrentSituationInterruptCommand.Halt)
+            if (situation.CurrentInterruptInputs.Contains(SituationInterruptInput.Halt))
+            {
+                situation.CurrentInterruptInputs.Remove(SituationInterruptInput.Halt);
                 return new HaltingState();
+            }
 
             var tc = Registry.Get<SphereCatalogue>();
             var aspectsInContext = tc.GetAspectsInContext(situation.GetAspectsAvailableToSituation(true));

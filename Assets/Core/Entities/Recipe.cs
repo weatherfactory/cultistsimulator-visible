@@ -8,6 +8,7 @@ using Assets.Core.Enums;
 using Assets.Core.Fucine;
 using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
+using Assets.Core.States;
 
 namespace Assets.Core.Entities
 {
@@ -181,20 +182,12 @@ namespace Assets.Core.Entities
         }
 
 
-        public bool CanExecuteInContext(Recipe currentRecipe,StateEnum state)
+
+        public bool CanExecuteInContext(Recipe currentRecipe,SituationState state)
         {
-            //return true if:
-            //Situation is Unstarted; verb matches; and the recipe is either craftable or hintable
-            if ((state == StateEnum.Unstarted || state == StateEnum.ReadyToReset) && (Craftable || HintOnly) && ActionId==currentRecipe.ActionId) //this is slightly naughty: we're assuming that if a NullRecipe is passed, it'll be set up with the correct action id for the verb. 
-                return true;
 
-            //Situation is Ongoing. Recipe is in Alt list of current recipe - as Always Succeed and not as Additional. ActionId doesn't need to match.
-            if (state == StateEnum.Ongoing && currentRecipe.Alt.Exists(r => r.Id == Id && r.ShouldAlwaysSucceed() && !r.Additional))
-                return true;
 
-            //Situation is RequiringExecution, and recipe is in Linked list of current recipe.  ActionId doesn't need to match.
-            if (state == StateEnum.RequiringExecution && currentRecipe.Linked.Exists(r => r.Id == Id))
-                return true;
+
 
             return false;
         }

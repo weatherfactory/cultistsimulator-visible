@@ -859,11 +859,7 @@ namespace Assets.CS.TabletopUI {
 
         public virtual void SituationStateUpdated(Situation situation)
         {
-            switch (situation.EnumState)
-            {
-                case StateEnum.Unstarted:
-             break;
-                case StateEnum.Ongoing:
+         
                     if (situation.CurrentBeginningEffectCommand != null)
                     {
                         //if (situation.CurrentBeginningEffectCommand.OngoingSlots.Any())
@@ -874,17 +870,14 @@ namespace Assets.CS.TabletopUI {
 
                     _manifestation.UpdateTimerVisuals(situation.Warmup, situation.TimeRemaining,
                         situation.IntervalForLastHeartbeat, false, situation.CurrentPrimaryRecipe.SignalEndingFlavour);
-                    break;
-
-                case StateEnum.Complete:
+   
                     _manifestation.UpdateTimerVisuals(situation.Warmup, situation.TimeRemaining,
                         situation.IntervalForLastHeartbeat, false, situation.CurrentPrimaryRecipe.SignalEndingFlavour);
 
 
-                    break;
-            }
+         
 
-            _manifestation.DisplayActiveSpheres(situation.GetSpheresActiveForSituationState(situation.EnumState));
+            _manifestation.DisplaySpheres(situation.GetSpheresActiveForCurrentState());
         }
 
         public virtual void ElementStackStateUpdated(ElementStack stack)
@@ -902,7 +895,7 @@ namespace Assets.CS.TabletopUI {
             var thresholdSpheresWithStacks = situation.GetSpheresByCategory(SphereCategory.Threshold)
                 .Where(sphere => sphere.GetElementTokens().Count() == 1);
 
-            _manifestation.DisplayActiveSpheres(thresholdSpheresWithStacks);
+            _manifestation.DisplaySpheres(thresholdSpheresWithStacks);
 
 
             int completionCount = situation.GetStacks(SphereCategory.Output).Select(s => s.Quantity).Sum();
