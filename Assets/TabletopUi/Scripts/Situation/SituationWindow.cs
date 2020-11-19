@@ -104,9 +104,9 @@ namespace Assets.CS.TabletopUI {
             artwork.sprite = sprite;
         }
          
-        public void Populate(SituationCreationCommand situationCreationCommand) {
-			Verb = situationCreationCommand.Verb;
-            _situationPath = situationCreationCommand.SituationPath;
+        public void Populate(Situation situation) {
+			Verb = situation.Verb;
+            _situationPath = situation.Path;
             name = "Window_" + Verb.Id;
             DisplayIcon(Verb.Id);
 
@@ -115,7 +115,7 @@ namespace Assets.CS.TabletopUI {
             startButton.onClick.AddListener(OnStart.Invoke);
 
             startingSlots.Initialise(Verb, this,_situationPath);
-            ongoingDisplay.Initialise(OnContainerAdded, OnContainerRemoved,situationCreationCommand);
+            ongoingDisplay.Initialise(OnContainerAdded, OnContainerRemoved, situation);
             results.Initialise();
 
             //this is an improvement - the situation doesn't need to know what to add - but better yet would be to tie together creation + container add, at runtime
@@ -134,9 +134,14 @@ namespace Assets.CS.TabletopUI {
                 startButton.gameObject.SetActive(false);
             }
 
-		}
 
-    
+            SituationStateChanged(situation);
+            TimerValuesChanged(situation);
+
+
+        }
+
+
         public void Closed() {
           OnWindowClosed.Invoke();
         }
@@ -254,8 +259,7 @@ namespace Assets.CS.TabletopUI {
 
         public void SituationStateChanged(Situation situation)
         {
-            if (situation.IsOpen)
-            {
+      
                 startingSlots.UpdateDisplay(situation);
                 storage.UpdateDisplay(situation);
              
@@ -271,7 +275,7 @@ namespace Assets.CS.TabletopUI {
                 results.UpdateDumpButtonText();
 
                 DisplayButtonState(situation);
-            }
+            
 
         }
 

@@ -33,12 +33,13 @@ namespace Assets.CS.TabletopUI {
         private OnContainerRemovedEvent _onSlotRemoved;
         private SituationPath _situationPath;
 
-        public void Initialise(OnContainerAddedEvent onContainerAdded, OnContainerRemovedEvent onContainerRemoved,SituationCreationCommand situationCreationCommand)
+        public void Initialise(OnContainerAddedEvent onContainerAdded, OnContainerRemovedEvent onContainerRemoved,Situation situation)
         {
             _onSlotAdded = onContainerAdded;
             _onSlotRemoved = onContainerRemoved;
-            _situationPath = situationCreationCommand.SituationPath;
-            PopulateOngoingSlots((situationCreationCommand.OngoingSlots));
+            _situationPath = situation.Path;
+            if(situation.CurrentBeginningEffectCommand!=null)
+            PopulateOngoingSlots((situation.CurrentBeginningEffectCommand.OngoingSlots));
         }
 
 

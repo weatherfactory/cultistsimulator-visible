@@ -184,6 +184,9 @@ namespace Assets.CS.TabletopUI {
 
             name =  Verb.Id + "_verbtoken";
 
+            SituationStateChanged(situation);
+            TimerValuesChanged(situation);
+
             
         }
 

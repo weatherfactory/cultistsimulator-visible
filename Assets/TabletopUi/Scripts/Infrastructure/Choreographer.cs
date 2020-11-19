@@ -50,10 +50,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
 
      public void PlaceTokenOnTableAtFreePosition(Token token, Context context) {
-            
-            
+
+            _tabletop.AcceptToken(token, context);
             token.RectTransform.anchoredPosition = GetFreePosWithDebug(token, Vector2.zero);
-            _tabletop.DisplayHere(token, context);
+            
         }
 
 

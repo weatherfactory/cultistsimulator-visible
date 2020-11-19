@@ -89,7 +89,8 @@ namespace Assets.Core.Entities {
             OverrideTitle = command.OverrideTitle;
             Path = command.SituationPath;
             CurrentState = SituationState.Rehydrate(command.State,this);
-        }
+
+  }
 
 
 
@@ -102,7 +103,6 @@ namespace Assets.Core.Entities {
             _anchor.OnCollect.AddListener(CollectOutputStacks);
             _anchor.OnContainerAdded.AddListener(AddContainer);
             _anchor.OnContainerRemoved.AddListener(RemoveContainer);
-
 
             _anchor.Populate(this);
         }
@@ -121,7 +121,8 @@ namespace Assets.Core.Entities {
             _window.OnContainerAdded.AddListener(AddContainer);
             _window.OnContainerRemoved.AddListener(RemoveContainer);
 
-            _window.Populate(command);
+            _window.Populate(this);
+
 
         }
 
@@ -409,6 +410,12 @@ namespace Assets.Core.Entities {
             {
                 subscriber.SituationStateChanged(this);
             }
+        }
+
+        public void NotifySubscribersOfTimerValueUpdate()
+        {
+            foreach (var subscriber in subscribers)
+                subscriber.TimerValuesChanged(this);
         }
 
 

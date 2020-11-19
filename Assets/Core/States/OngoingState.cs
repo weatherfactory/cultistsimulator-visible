@@ -61,6 +61,7 @@ namespace Assets.Core.States
             else
             {
                 situation.TimeRemaining -= situation.IntervalForLastHeartbeat;
+                situation.NotifySubscribersOfTimerValueUpdate();
             }
             
         }

@@ -108,6 +108,8 @@ public class Output : Sphere {
 
         if (cardsRemaining)
             cardPos.ReorderCards(stacks);
+
+        base.RemoveToken(token);
     }
 
     public IEnumerable<Token> GetOutputTokens() {
