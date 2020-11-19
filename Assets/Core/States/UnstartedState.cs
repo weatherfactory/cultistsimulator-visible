@@ -58,6 +58,8 @@ namespace Assets.Core.States
             return false;
         }
 
+        public override bool Extinct => false;
+
 
         protected override SituationState GetNextState(Situation situation)
         {

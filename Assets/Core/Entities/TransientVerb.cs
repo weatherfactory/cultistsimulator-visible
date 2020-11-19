@@ -46,6 +46,16 @@ namespace Assets.Core.Entities
         public SlotSpecification Slot { get; set; }
         public List<SlotSpecification> Slots { get; set; }
         public bool Startable { get; set; }
+        public bool CreationAllowedWhenAlreadyExists(Situation s)
+        {
+            
+                if (s.Verb.Id == this.Id && !s.CurrentState.Extinct)
+                    return false;
+                return true;
+
+        }
+
+
         public bool AllowMultipleInstances => false;
     }
 }

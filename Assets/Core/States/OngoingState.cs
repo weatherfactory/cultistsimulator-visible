@@ -8,6 +8,8 @@ namespace Assets.Core.States
     public class OngoingState : SituationState
     {
 
+        public override bool Extinct => false;
+
         protected override void Enter(Situation situation)
         {
          situation.CurrentBeginningEffectCommand = new RecipeBeginningEffectCommand(situation.CurrentPrimaryRecipe.Slots, situation.CurrentRecipePrediction.BurnImage);

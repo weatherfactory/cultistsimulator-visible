@@ -65,27 +65,17 @@ namespace Assets.Core.Entities
             //if new situation is beginning with an existing verb: do not action the creation.
             //oh: I could have an scc property which is a MUST CREATE override
 
-            var registeredSituations = GetRegisteredSituations();
-            var existingSituation = registeredSituations.Find(s => !s.Verb.AllowMultipleInstances && s.Verb.Id == scc.Recipe.ActionId);
 
-            //grabbing existingtoken: just in case some day I want to, e.g., add additional tokens to an ongoing one rather than silently fail the attempt.
-            if (existingSituation != null)
+            var registeredSituations = GetRegisteredSituations();
+
+            if (registeredSituations.Exists(rs => !scc.Verb.CreationAllowedWhenAlreadyExists(rs)))
             {
-                if (existingSituation.EnumState == StateEnum.Complete && existingSituation.Verb.Transient)
-                {
-                    //verb exists already, but it's completed. We don't want to block new temp verbs executing if the old one is complete, because
-                    //otherwise there's an exploit to, e.g., leave hazard finished but unresolved to block new ones appearing.
-                    //So nothing happens in this branch except logging.
-                    NoonUtility.Log("Created duplicate verb, because previous one is both transient and complete.");
-                }
-                else
-                {
-                    NoonUtility.Log("Tried to create " + scc.Recipe.Id + " for verb " + scc.Recipe.ActionId + " but that verb is already active.");
-                    //end execution here
-                    return new NullSituation();
-                }
+                NoonUtility.Log("Tried to create " + scc.Recipe.Id + " for verb " + scc.Recipe.ActionId + " but that verb is already active.");
+                //end execution here
+                return new NullSituation();
             }
 
+    
             var builder = Registry.Get<SituationBuilder>();
             var situation =builder.CreateSituation(scc);
 

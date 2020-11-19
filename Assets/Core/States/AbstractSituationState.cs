@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
+using Assets.Core.Interfaces;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 
@@ -16,6 +17,8 @@ namespace Assets.Core.States
        protected abstract void Exit(Situation situation);
        public abstract bool IsActiveInThisState(Sphere sphereToCheck);
        public abstract bool IsValidPredictionForState(Recipe recipeToCheck, Situation s);
+       public abstract bool Extinct { get; }
+
 
         public static SituationState Rehydrate(StateEnum stateEnum,Situation situation)
        {

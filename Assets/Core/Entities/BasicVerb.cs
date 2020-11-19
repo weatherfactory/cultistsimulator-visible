@@ -43,8 +43,13 @@ namespace Assets.Core.Entities
         [FucineValue(DefaultValue = true)]
         public bool Startable { get; set; }
 
-        [FucineValue(DefaultValue =false)]
-        public bool AllowMultipleInstances { get; set; }
+        public bool CreationAllowedWhenAlreadyExists(Situation s)
+        {
+            if (s.Verb.Id == this.Id)
+                return false;
+            return true;
+
+        }
 
         public BasicVerb(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {

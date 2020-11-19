@@ -7,7 +7,7 @@ namespace Assets.Core.States
 {
     public class CompleteState : SituationState
     {
-
+        public override bool Extinct => false;
         protected override void Enter(Situation situation)
         {
          

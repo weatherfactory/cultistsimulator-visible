@@ -7,6 +7,8 @@ namespace Assets.Core.States
 {
     public class HaltingState : SituationState
     {
+        public override bool Extinct => true;
+
         protected override void Enter(Situation situation)
         {
             //If we leave anything in the ongoing slot, it's lost, so let's rescue it to SituationStorage

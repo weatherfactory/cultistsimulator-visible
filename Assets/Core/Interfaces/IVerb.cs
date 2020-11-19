@@ -19,7 +19,7 @@ namespace Assets.Core.Interfaces
       SlotSpecification Slot { get; set; }
       List<SlotSpecification> Slots { get; set; }
       bool Startable { get; }
-      bool AllowMultipleInstances { get; }
+      bool CreationAllowedWhenAlreadyExists(Situation s);
     }
 
 }

@@ -14,6 +14,8 @@ namespace Assets.Core.States
     public class RequiresExecutionState : SituationState
     {
 
+        public override bool Extinct => false;
+
         protected override void Enter(Situation situation)
         {
 
