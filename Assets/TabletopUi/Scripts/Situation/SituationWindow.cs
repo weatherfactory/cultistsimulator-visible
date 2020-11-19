@@ -148,7 +148,7 @@ namespace Assets.CS.TabletopUI {
 			{
 				SoundManager.PlaySfx("SituationWindowShow");
                 canvasGroupFader.Show();
-                SituationStateUpdated(situation);
+                SituationStateChanged(situation);
             }
 
             
@@ -165,7 +165,7 @@ namespace Assets.CS.TabletopUI {
             if (IsVisible)
             {
 				SoundManager.PlaySfx("SituationWindowHide");
-                SituationStateUpdated(s);
+                SituationStateChanged(s);
                 canvasGroupFader.Hide();
                 
             }
@@ -252,14 +252,13 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void SituationStateUpdated(Situation situation)
+        public void SituationStateChanged(Situation situation)
         {
             if (situation.IsOpen)
             {
                 startingSlots.UpdateDisplay(situation);
                 storage.UpdateDisplay(situation);
-                ongoingDisplay.UpdateTimerVisuals(situation.Warmup, situation.TimeRemaining,
-                    situation.IntervalForLastHeartbeat, false, situation.CurrentPrimaryRecipe.SignalEndingFlavour);
+             
 
                 ongoingDisplay.ShowDeckEffects(situation.CurrentPrimaryRecipe.DeckEffects);
                 if (situation.CurrentBeginningEffectCommand != null)
@@ -276,7 +275,12 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        
+        public void TimerValuesChanged(Situation situation)
+        {
+            ongoingDisplay.UpdateTimerVisuals(situation.Warmup, situation.TimeRemaining,
+                situation.IntervalForLastHeartbeat, false, situation.CurrentPrimaryRecipe.SignalEndingFlavour);
+        }
+
 
         public void SphereContentsUpdated(Situation s)
         {

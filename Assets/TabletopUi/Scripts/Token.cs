@@ -857,7 +857,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public virtual void SituationStateUpdated(Situation situation)
+        public virtual void SituationStateChanged(Situation situation)
         {
          
                     if (situation.CurrentBeginningEffectCommand != null)
@@ -868,16 +868,15 @@ namespace Assets.CS.TabletopUI {
                             BurnImageUnderToken(situation.CurrentBeginningEffectCommand.BurnImage);
                     }
 
-                    _manifestation.UpdateTimerVisuals(situation.Warmup, situation.TimeRemaining,
-                        situation.IntervalForLastHeartbeat, false, situation.CurrentPrimaryRecipe.SignalEndingFlavour);
-   
-                    _manifestation.UpdateTimerVisuals(situation.Warmup, situation.TimeRemaining,
-                        situation.IntervalForLastHeartbeat, false, situation.CurrentPrimaryRecipe.SignalEndingFlavour);
 
+                    _manifestation.DisplaySpheres(situation.GetSpheresActiveForCurrentState());
+        }
 
-         
+        public void TimerValuesChanged(Situation situation)
+        {
+            _manifestation.UpdateTimerVisuals(situation.Warmup, situation.TimeRemaining,
+                situation.IntervalForLastHeartbeat, false, situation.CurrentPrimaryRecipe.SignalEndingFlavour);
 
-            _manifestation.DisplaySpheres(situation.GetSpheresActiveForCurrentState());
         }
 
         public virtual void ElementStackStateUpdated(ElementStack stack)

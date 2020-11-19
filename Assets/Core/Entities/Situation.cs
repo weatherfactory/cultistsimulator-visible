@@ -11,7 +11,7 @@ using Assets.Core.NullObjects;
 using Assets.Core.Services;
 using Assets.Core.States;
 using Assets.CS.TabletopUI;
-using Assets.CS.TabletopUI.Interfaces;du
+using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
@@ -403,11 +403,11 @@ namespace Assets.Core.Entities {
         }
 
 
-        public void OnSituationStateChanged()
+        public void NotifySubscribersOfSituationStateChange()
         {
             foreach (var subscriber in subscribers)
             {
-                subscriber.SituationStateUpdated(this);
+                subscriber.SituationStateChanged(this);
             }
         }
 

@@ -27,7 +27,7 @@ namespace Assets.Core.NullObjects
         //
         }
 
-        public override void SituationStateUpdated(Situation situation)
+        public override void SituationStateChanged(Situation situation)
         {
           //
         }

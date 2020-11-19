@@ -65,18 +65,9 @@ namespace Assets.Core.States
             oldState.Exit(situation);
             newState.Enter(situation);
             situation.CurrentState = newState;
-            situation.OnSituationStateChanged();
+            situation.NotifySubscribersOfSituationStateChange();
         }
 
 
-       public static bool operator ==(SituationState left, SituationState right)
-       {
-           return Equals(left, right);
-       }
-
-       public static bool operator !=(SituationState left, SituationState right)
-       {
-           return !Equals(left, right);
-       }
    }
 }
