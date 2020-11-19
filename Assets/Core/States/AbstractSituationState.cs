@@ -54,7 +54,7 @@ namespace Assets.Core.States
                     throw new ArgumentOutOfRangeException(nameof(stateEnum),stateEnum, stateEnum.ToString() + " isn't rehydratable");
             }
 
-            rehydratedState.Enter(situation);
+          
             return rehydratedState;
        }
 

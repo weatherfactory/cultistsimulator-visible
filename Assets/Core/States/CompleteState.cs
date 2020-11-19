@@ -20,7 +20,7 @@ namespace Assets.Core.States
 
         protected override void Exit(Situation situation)
         {
-            throw new NotImplementedException();
+       
         }
 
         public override bool IsActiveInThisState(Sphere s)
