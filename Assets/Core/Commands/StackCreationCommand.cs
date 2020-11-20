@@ -24,9 +24,9 @@ namespace Assets.Core.Commands
         public int Depth { get; private set; }
         public float LifetimeRemaining { get; private set; }
         public bool MarkedForConsumption { get; private set; }
-		public TokenLocation Location { get; private set; }
+		public Context Context { get; private set; }
 
-        public StackCreationCommand(string elementId, int elementQuantity, string locationInfo,Dictionary<string,int> mutations,Dictionary<string,string> illuminations, float lifetimeRemaining,bool markedForConsumption,TokenLocation location)
+        public StackCreationCommand(string elementId, int elementQuantity, string locationInfo,Dictionary<string,int> mutations,Dictionary<string,string> illuminations, float lifetimeRemaining,bool markedForConsumption,Context context)
         {
             ElementId = elementId;
             ElementQuantity = elementQuantity;
@@ -36,7 +36,7 @@ namespace Assets.Core.Commands
             Illuminations=new Dictionary<string, string>(illuminations);
             LifetimeRemaining = lifetimeRemaining;
             MarkedForConsumption = markedForConsumption;
-			Location= location;
+			Context= context;
         }
     }
 }

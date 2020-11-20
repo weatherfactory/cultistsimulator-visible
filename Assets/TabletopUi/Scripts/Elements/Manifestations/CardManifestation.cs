@@ -21,6 +21,7 @@ using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.Elements
 {
+    [RequireComponent(typeof(RectTransform))]
     public class CardManifestation : MonoBehaviour, IManifestation
     {
 
@@ -38,6 +39,8 @@ namespace Assets.TabletopUi.Scripts.Elements
         [SerializeField] public CanvasGroup canvasGroup;
         [SerializeField] public GraphicFader glowImage;
 
+        public Transform Transform => gameObject.transform;
+        public RectTransform RectTransform=> gameObject.GetComponent<RectTransform>();
      
         private Image decayBackgroundImage;
         private Color cachedDecayBackgroundColor;
@@ -50,8 +53,7 @@ namespace Assets.TabletopUi.Scripts.Elements
         public bool RequestingNoDrag => flipHelper.FlipInProgress;
 
 
-        public Transform Transform => gameObject.transform;
-
+        
         public void InitialiseVisuals(Element element)
         {
             flipHelper = new FlipHelper(this);
@@ -187,7 +189,7 @@ namespace Assets.TabletopUi.Scripts.Elements
             tokenAnim.onAnimDone += animDoneMethod;
             tokenAnim.SetPositions(startPos, endPos);
             tokenAnim.SetScaling(startScale, endScale);
-            tokenAnim.StartAnim(duration);
+            tokenAnim.StartAnim(token,duration);
         }
 
         public void OnBeginDragVisuals()

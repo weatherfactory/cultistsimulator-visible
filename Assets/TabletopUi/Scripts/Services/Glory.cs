@@ -9,6 +9,7 @@ using Assets.Core.Entities;
 using Assets.Core.Fucine;
 using Assets.Core.Services;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Elements.Manifestations;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Assets.TabletopUi.Scripts.TokenContainers;
@@ -35,6 +36,7 @@ namespace Assets.TabletopUi.Scripts.Services
         [SerializeField] private SoundManager soundManager;
         public Limbo limbo;
         public NullSphere NullSphere;
+        public NullManifestation NullManifestation;
         public SituationBuilder situationBuilder;
 
 
@@ -116,6 +118,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
                 registryAccess.Register(limbo);
                 registryAccess.Register(NullSphere);
+                registryAccess.Register(NullManifestation);
                 registryAccess.Register(situationBuilder);
 
 

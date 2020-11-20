@@ -67,7 +67,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             var menuBarCanvasGrp = menuCanvas.GetComponent<CanvasGroup>();
             float time = 0f;
             Vector2 startPos = tableScroll.content.anchoredPosition;
-            Vector2 targetPos = -1f * culpableVerb.RectTransform.anchoredPosition + targetPosOffset;
+            Vector2 targetPos = -1f * culpableVerb.TokenRectTransform.anchoredPosition + targetPosOffset;
             // ^ WARNING: targetPosOffset fixes the difference between the scrollable and tokenParent rect sizes 
 
             Debug.Log("Target Zoom Pos " + targetPos);

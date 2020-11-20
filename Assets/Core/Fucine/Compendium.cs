@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Core;
 using Assets.Core.Entities;
+using Assets.Core.Entities.Verbs;
 using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
@@ -215,9 +216,12 @@ public class Compendium
 
     public IVerb GetVerbForRecipe(Recipe recipe)
     {
-        IVerb durableVerb = GetEntityById<BasicVerb>(recipe.ActionId);
+        IVerb verb = GetEntityById<BasicVerb>(recipe.ActionId);
 
-        if (durableVerb == null)
+        if (verb == null)
+            verb = GetEntityById<DropzoneVerb>(recipe.ActionId);
+
+        if (verb == null)
         {
             IVerb transientVerb =
                 Activator.CreateInstance(Type.GetType(GetSingleEntity<Dictum>().DefaultTransientVerbType)) as IVerb;
@@ -229,7 +233,7 @@ public class Compendium
             return transientVerb;
         }
 
-        return durableVerb;
+        return verb;
     }
 
 

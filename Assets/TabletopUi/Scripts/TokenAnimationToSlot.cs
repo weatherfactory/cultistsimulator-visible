@@ -25,8 +25,8 @@ public class TokenAnimationToSlot : TokenAnimation {
         }
     }
 
-    public override void StartAnim(float duration = 1) {
-        base.StartAnim(duration);
+    public override void StartAnim(Token token, float duration = 1) {
+        base.StartAnim(token, duration);
 
         transform.SetAsLastSibling();
     }

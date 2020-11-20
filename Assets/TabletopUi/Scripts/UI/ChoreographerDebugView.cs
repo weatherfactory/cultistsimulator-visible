@@ -36,7 +36,7 @@ public class ChoreographerDebugView : MonoBehaviour {
             var container = tabletop.GetComponent<TabletopSphere>();
 
             foreach (var item in container.GetAllTokens()) {
-                DrawToken(GetCenterPosRect(item.RectTransform.anchoredPosition, item.RectTransform.rect.size));
+                DrawToken(GetCenterPosRect(item.TokenRectTransform.anchoredPosition, item.ManifestationRectTransform.rect.size));
             }
         }
         if (hasDebugData) { 

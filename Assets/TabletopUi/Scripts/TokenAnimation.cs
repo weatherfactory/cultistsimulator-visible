@@ -8,7 +8,7 @@ public class TokenAnimation : MonoBehaviour {
 
 	public event System.Action onAnimDone;
 
-	protected Token token;
+	protected Token _token;
 
 	private Vector3 startPosition;
 	private Vector3 endPosition;
@@ -49,14 +49,15 @@ public class TokenAnimation : MonoBehaviour {
 		this.scalePercentage = Mathf.Clamp01(scaleDuration) * ((scaleStart != 1f && scaleEnd != 1f) ? 0.5f : 1f); // may not be bigger than 0.5 for dual scaling
 	}
 
-	public virtual void StartAnim(float duration = 1f) {
+	public virtual void StartAnim(Token token,float duration = 1f) {
 		this.duration = duration;
 		this.timeSpent = 0f;
+        
+        _token = token;
 
-		token = GetComponent<Token>();
-		token.enabled = false;
-        token.IsInMotion = true;
-        token.RectTransform.localScale = Vector3.one * scaleStart;
+		_token.enabled = false;
+        _token.IsInMotion = true;
+        _token.ManifestationRectTransform.localScale = Vector3.one * scaleStart;
 		IsRunning = true;
 	}
 
@@ -74,7 +75,7 @@ public class TokenAnimation : MonoBehaviour {
 
 		float completion = timeSpent / duration;
 
-		token.RectTransform.anchoredPosition3D = GetPos(Easing.Circular.Out(completion));
+		_token.TokenRectTransform.anchoredPosition3D = GetPos(Easing.Circular.Out(completion));
 
 		if (scaleStart != 1f && completion < scalePercentage)
 			transform.localScale = Vector3.Lerp(Vector3.one * scaleStart, Vector3.one, Easing.Quartic.Out(completion / scalePercentage));
@@ -90,10 +91,10 @@ public class TokenAnimation : MonoBehaviour {
 
 	void CompleteAnim() {
 		IsRunning = false;
-		token.RectTransform.anchoredPosition3D = new Vector3(endPos.x, endPos.y, zPos);
-		token.RectTransform.localScale = Vector3.one * scaleEnd;
-		token.enabled = true;
-        token.IsInMotion = false;
+		_token.TokenRectTransform.anchoredPosition3D = new Vector3(endPos.x, endPos.y, zPos);
+		_token.ManifestationRectTransform.localScale = Vector3.one * scaleEnd;
+		_token.enabled = true;
+        _token.IsInMotion = false;
 
         onAnimDone?.Invoke();
 		Destroy(this);

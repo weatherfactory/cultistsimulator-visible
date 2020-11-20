@@ -29,6 +29,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
     public interface IManifestation
    {
        Transform Transform { get; }
+       RectTransform RectTransform { get; }
         void Retire(RetirementVFX retirementVfx, Action callback);
         bool CanAnimateIcon();
         void BeginIconAnimation();

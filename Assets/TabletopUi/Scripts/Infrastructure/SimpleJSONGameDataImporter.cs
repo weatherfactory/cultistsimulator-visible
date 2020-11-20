@@ -174,8 +174,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 	
             foreach (var ess in elementStackSpecifications)
             {
-                var context = new Context(Context.ActionSource.Loading);
-                tabletop.AcceptToken(tabletop.ProvisionStackFromCommand(ess,Source.Existing(), context), context);
+                tabletop.ProvisionStackFromCommand(ess);
             }
 
         }
@@ -343,7 +342,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                     var slot = Registry.Get<SphereCatalogue>().GetContainerByPath(slotPath);
 
-                    slot.ProvisionStackFromCommand(ess, Source.Existing(), new Context(Context.ActionSource.Loading));
+                    slot.ProvisionStackFromCommand(ess);
 
                 }
             }
@@ -369,7 +368,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     var stackSpecification = PopulateElementStackSpecificationsList(htSituationOutputStacks);
                     foreach (var ess in stackSpecification)
                     {
-                        outputStacks.Add(tabletop.ProvisionStackFromCommand(ess,Source.Existing(),new Context(Context.ActionSource.Loading)));
+                        outputStacks.Add(tabletop.ProvisionStackFromCommand(ess));
                     }
 
             }
@@ -419,7 +418,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
                 foreach (var ess in elementStackSpecifications)
                 {
-                    var stackToStore=Registry.Get<Limbo>().ProvisionStackFromCommand(ess, Source.Existing(), new Context(Context.ActionSource.Loading));
+                    var stackToStore=Registry.Get<Limbo>().ProvisionStackFromCommand(ess);
 
                     situation.AcceptToken(SphereCategory.SituationStorage, stackToStore,
                         new Context(Context.ActionSource.Loading));
@@ -464,6 +463,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 TokenLocation stackLocation=new TokenLocation(lasttablepos,tabletopSpherePath);
 
+                Context context=new Context(Context.ActionSource.Loading, stackLocation);
+                context.StackSource=Source.Existing();
+
                 stackCreationCommand.Add(new StackCreationCommand(
                     elementId,
                     elementQuantity,
@@ -472,7 +474,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     illuminations,
                     lifetimeRemaining,
                     markedForConsumption,
-                    stackLocation));
+                    context));
             }
             return stackCreationCommand;
         }

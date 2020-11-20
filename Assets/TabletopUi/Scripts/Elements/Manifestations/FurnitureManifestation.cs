@@ -19,8 +19,11 @@ using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
+    [RequireComponent(typeof(RectTransform))]
     public class FurnitureManifestation : MonoBehaviour, IManifestation
     {
+        public Transform Transform => gameObject.transform;
+        public RectTransform RectTransform => gameObject.GetComponent <RectTransform>();
         [SerializeField] Image artwork;
 
         [Header("Token Body")]
@@ -56,7 +59,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         [SerializeField] public GraphicFader glowImage;
 
-        public Transform Transform => gameObject.transform;
+
 
         private List<Sprite> frames;
         private bool _transient;
@@ -444,7 +447,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             tokenAnim.onAnimDone += travelComplete;
             tokenAnim.SetPositions(startPos, endPos);
             tokenAnim.SetScaling(startScale, endScale);
-            tokenAnim.StartAnim(duration);
+            tokenAnim.StartAnim(token, duration);
         }
 
     }

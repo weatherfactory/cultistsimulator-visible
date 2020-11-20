@@ -52,19 +52,39 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
      public void PlaceTokenOnTableAtFreePosition(Token token, Context context)
      {
+         var mergeableStacks =_tabletop.GetElementStacks().Where(existing => existing.CanMergeWith(token.ElementStack));
 
-         //var dropzoneSituations = Registry.Get<SituationsCatalogue>().GetSituationWithVerbOfType(typeof(DropzoneVerb));
-         
-         //if (!dropzoneSituations.Any())
+         if (mergeableStacks.Any())
+         {
+             mergeableStacks.First().AcceptIncomingStackForMerge(token.ElementStack);
+             return;
+         }
+
+
+
+         //else
          //{
-         //       var dropzoneRecipe=Registry.Get<Compendium>()
+         //    var freePosition = Registry.Get<Choreographer>().GetFreePosWithDebug(token, Vector2.zero);
 
-         //       SituationCreationCommand scc=new SituationCreationCommand();
-         //    Registry.Get<SituationBuilder>().CreateSituation()
          //}
 
-         _tabletop.AcceptToken(token, context);
-            token.RectTransform.anchoredPosition = GetFreePosWithDebug(token, Vector2.zero);
+         //   var dropzoneRecipe = Registry.Get<Compendium>().GetEntityById<Recipe>("dropzone.classic");
+         //       var dropzoneVerb = Registry.Get<Compendium>().GetVerbForRecipe(dropzoneRecipe);
+
+         //       var dropzoneSituations =
+         //           Registry.Get<SituationsCatalogue>().GetSituationsWithVerbOfActionId(dropzoneVerb.Id);
+
+         //       if (!dropzoneSituations.Any())
+         //       {
+         //           var dzTokenLocation= new TokenLocation(GetFreePosWithDebug(token, Vector2.zero),_tabletop.GetPath());
+
+         //       SituationCreationCommand scc = new SituationCreationCommand(dropzoneVerb,dropzoneRecipe,StateEnum.Unstarted, dzTokenLocation);
+         //       Registry.Get<SituationBuilder>().CreateSituation(scc);
+
+         //       }
+
+                _tabletop.AcceptToken(token, context);
+            token.TokenRectTransform.anchoredPosition = GetFreePosWithDebug(token, Vector2.zero);
             
         }
 
@@ -77,7 +97,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             _tabletop.AcceptToken(token, context);  // this does parenting. Needs to happen before we position
 
 
-            token.rectTransform.anchoredPosition = pos;
+            token.TokenRectTransform.anchoredPosition = pos;
             token.LastTablePos = pos;
             token.transform.localRotation = Quaternion.identity;
      
@@ -93,7 +113,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 /// </summary>
         public void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 pos)
 {
-    token.RectTransform.anchoredPosition = GetFreePosWithDebug(token, pos);
+    token.TokenRectTransform.anchoredPosition = GetFreePosWithDebug(token, pos);
     _tabletop.DisplayHere(token, context);
 
         }
@@ -107,22 +127,22 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 				return;
 			}
 
-            var targetRect = GetCenterPosRect(pushingToken.RectTransform);
+            var targetRect = GetCenterPosRect(pushingToken.ManifestationRectTransform);
 			// Reduce the target Rect size to be less finnicky
 			targetRect.size = targetRect.size * 0.6f;
 
 			Rect pushedRect;
 
             foreach (var token in _tabletop.GetAllTokens()) {
-                if (CanTokenBeIgnored(token, pushingToken))
+                if (token==pushingToken || CanTokenBeIgnored(token))
                     continue;
 
-				pushedRect = GetCenterPosRect(token.rectTransform);
+				pushedRect = GetCenterPosRect(token.ManifestationRectTransform);
 
 				if (!pushedRect.Overlaps(targetRect))
                     continue;
 
-                TokenTravelItinerary itinerary=new TokenTravelItinerary(_tabletop,_tabletop,0.2f, token.rectTransform.anchoredPosition3D, GetFreePosWithDebug(token, token.rectTransform.anchoredPosition),1f,1f);
+                TokenTravelItinerary itinerary=new TokenTravelItinerary(_tabletop,_tabletop,0.2f, token.TokenRectTransform.anchoredPosition3D, GetFreePosWithDebug(token, token.TokenRectTransform.anchoredPosition),1f,1f);
 
                 token.TravelTo(itinerary);
             }
@@ -146,13 +166,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 #if DEBUG
             _currentDebug = new GameObject("ChoreoDebugInfo_" + token.name).AddComponent<ChoreographerDebugView>();
             _currentDebug.tabletop = _tabletop.transform;
-            _currentDebug.targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
+
+
+            _currentDebug.targetRect = GetCenterPosRect(centerPos, token.ManifestationRectTransform.rect.size);
             _currentDebug.checkedPoints = new List<Vector2>();
             _currentDebug.tokenOverlaps = false;
             _currentDebug.checkedRects = new List<Rect>();
 
             var pos = GetFreeTokenPosition(token, centerPos, startIteration);
-            _currentDebug.finalRect = GetCenterPosRect(pos, token.RectTransform.rect.size);
+            _currentDebug.finalRect = GetCenterPosRect(pos, token.ManifestationRectTransform.rect.size);
             _currentDebug.hasDebugData = true;
 
             _currentDebug.InitKill(10f); // In 10s, debug thing kills itself
@@ -168,7 +190,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             //Debug.Log("Trying to find FREE POS for " + token.Id);
             centerPos = GetPosClampedToTable(centerPos);
 			centerPos = SnapToGrid( centerPos );
-			var targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
+			var targetRect = GetCenterPosRect(centerPos, token.ManifestationRectTransform.rect.size);
 
             if (IsLegalPosition(targetRect, token))
                 return centerPos;
@@ -235,7 +257,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return pos;
         }
 
-        bool IsLegalPosition(Rect rect,  Token ignoreToken = null)
+        bool IsLegalPosition(Rect rect,  Token placingToken)
 		{
             if (tableRect.Contains(rect.position + rect.size / 2f) == false)
                 return false;
@@ -244,9 +266,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             //Debug.Log("Checking if " + rect + " is a legal position");
 
             foreach (var token in _tabletop.GetAllTokens()) {
-                rectCheck = GetCenterPosRect(token.rectTransform);
+                rectCheck = GetCenterPosRect(token.ManifestationRectTransform);
 
-                if (CanTokenBeIgnored(token, ignoreToken))
+                if (token==placingToken || CanTokenBeIgnored(token))
                     continue;
 
                 if (_currentDebug != null && !_currentDebug.checkedRects.Contains(rectCheck)) { 
@@ -264,9 +286,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return true;
         }
 
-        bool CanTokenBeIgnored(Token token, Token ignoreToken) {
-            if (token == ignoreToken)
-                return true;
+        bool CanTokenBeIgnored(Token token) {
+            
             if (token.IsInMotion)
                 return true;
             if (token.Defunct)

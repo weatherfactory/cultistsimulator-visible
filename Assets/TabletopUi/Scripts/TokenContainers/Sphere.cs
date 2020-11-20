@@ -89,6 +89,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
 
+        protected virtual Vector3 GetDefaultPositionForProvisionedToken(Token token)
+        {
+            return Vector3.zero;
+        }
+
         protected List<INotifier> _notifiersForContainer = new List<INotifier>();
         public bool Defunct { get; protected set; }
         protected HashSet<ContainerBlock> _currentContainerBlocks = new HashSet<ContainerBlock>();
@@ -166,11 +171,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         }
 
-        public Token ProvisionStackFromCommand(StackCreationCommand stackCreationCommand,
-            Source stackSource, Context context)
+        public Token ProvisionStackFromCommand(StackCreationCommand stackCreationCommand)
         {
             var token = ProvisionElementStackToken(stackCreationCommand.ElementId, stackCreationCommand.ElementQuantity,
-                stackSource, context, stackCreationCommand.Mutations);
+                stackCreationCommand.Context.StackSource, stackCreationCommand.Context, stackCreationCommand.Mutations);
 
 
             token.ElementStack.IlluminateLibrarian = new IlluminateLibrarian(stackCreationCommand.Illuminations);
@@ -181,7 +185,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             if (stackCreationCommand.MarkedForConsumption)
                 token.ElementStack.MarkedForConsumption = true;
 
-            token.rectTransform.anchoredPosition3D = stackCreationCommand.Location.Position;
 
             return token;
         }
@@ -211,8 +214,20 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             foreach (var m in withMutations)
                 stack.SetMutation(m.Key, m.Value, false); //brand new mutation, never needs to be additive
 
+
             var token = Registry.Get<PrefabFactory>().CreateLocally<Token>(transform);
             stack.AttachToken(token);
+
+            token.Manifest(typeof(CardManifestation)); //temporary: this should be a default type for the element, probably
+
+            if (context.TokenLocation == null)
+            {
+                token.TokenRectTransform.anchoredPosition3D = GetDefaultPositionForProvisionedToken(token);
+            }
+            else
+            {
+                token.TokenRectTransform.anchoredPosition3D = context.TokenLocation.Position;
+            }
 
             AcceptToken(token, context);
 
@@ -309,16 +324,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                                             quantityChange + ")");
         }
 
-        public int IncreaseElement(string elementId, int quantityChange, Source stackSource, Context context,
-            string locatorid = null)
+        public virtual int IncreaseElement(string elementId, int quantityChange, Source stackSource, Context context)
         {
 
             if (quantityChange <= 0)
                 throw new ArgumentException("Tried to call IncreaseElement for " + elementId + " with a <=0 change (" +
                                             quantityChange + ")");
 
-            var newStack = ProvisionElementStackToken(elementId, quantityChange, stackSource, context);
-            AcceptToken(newStack, context);
+            ProvisionElementStackToken(elementId, quantityChange, stackSource, context);
+
             return quantityChange;
         }
 

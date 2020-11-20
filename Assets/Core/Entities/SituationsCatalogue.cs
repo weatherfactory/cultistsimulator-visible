@@ -48,12 +48,17 @@ namespace Assets.Core.Entities
             _currentSituations.Remove(situation);
         }
 
-        public IEnumerable<Situation> GetSituationWithVerbOfType(Type verbType)
+        public IEnumerable<Situation> GetSituationsWithVerbOfType(Type verbType)
         {
             return _currentSituations.Where(situation => situation.Verb.GetType() == verbType);
         }
-        
-        
+
+        public IEnumerable<Situation> GetSituationsWithVerbOfActionId(string actionId)
+        {
+            return _currentSituations.Where(situation => situation.Verb.Id==actionId);
+        }
+
+
         public Situation GetOpenSituation()
         {
             return GetRegisteredSituations().FirstOrDefault(s => s.IsOpen);

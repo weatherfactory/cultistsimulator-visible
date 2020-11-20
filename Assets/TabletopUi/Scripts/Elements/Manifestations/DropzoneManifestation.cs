@@ -17,12 +17,14 @@ using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
-   public class DropzoneManifestation: MonoBehaviour,IManifestation
+    [RequireComponent(typeof(RectTransform))]
+    public class DropzoneManifestation: MonoBehaviour,IManifestation
     {
         private GameObject shadow;
         private GraphicFader glowImage;
 
         public Transform Transform => gameObject.transform;
+        public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
 
         public bool RequestingNoDrag => false;
         public void DoMove(RectTransform tokenRectTransform)

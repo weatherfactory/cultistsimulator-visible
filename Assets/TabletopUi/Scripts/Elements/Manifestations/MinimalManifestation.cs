@@ -16,9 +16,11 @@ using UnityEngine.EventSystems;
 
 namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
-   public class MinimalManifestation:MonoBehaviour,IManifestation
+    [RequireComponent(typeof(RectTransform))]
+    public class MinimalManifestation:MonoBehaviour,IManifestation
     {
         public Transform Transform => gameObject.transform;
+        public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
 
         public bool RequestingNoDrag => false;
         public void DoMove(RectTransform tokenRectTransform)

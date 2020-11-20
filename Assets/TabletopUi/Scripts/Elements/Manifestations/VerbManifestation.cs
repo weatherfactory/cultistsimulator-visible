@@ -20,6 +20,7 @@ using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
+    [RequireComponent(typeof(RectTransform))]
     public class VerbManifestation: MonoBehaviour, IManifestation
     {
         [SerializeField] Image artwork;
@@ -59,6 +60,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         [SerializeField] public GraphicFader glowImage;
 
         public Transform Transform => gameObject.transform;
+        public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
 
 
         private List<Sprite> frames;
@@ -283,7 +285,9 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         {
 
             var prefab = Resources.Load("FX/VerbAnchor/" + effectName);
-            //var prefab = Resources.Load("FX/SituationToken/SituationTokenVanish");
+
+            if (prefab is null)
+                return;
 
             var vanishFxObject = Instantiate(prefab, transform.parent) as GameObject;
             if (!(vanishFxObject is null)) //I mean it shouldn't be, but let's keep the compiler happy
@@ -487,7 +491,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             tokenAnim.onAnimDone += travelComplete;
             tokenAnim.SetPositions(startPos, endPos);
             tokenAnim.SetScaling(startScale, endScale);
-            tokenAnim.StartAnim(duration);
+            tokenAnim.StartAnim(token, duration);
         }
    
     }

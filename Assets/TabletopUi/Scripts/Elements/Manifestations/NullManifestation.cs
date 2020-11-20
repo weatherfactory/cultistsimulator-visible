@@ -15,10 +15,12 @@ using UnityEngine.EventSystems;
 
 namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
-    public class NullManifestation: IManifestation
+    [RequireComponent(typeof(RectTransform))]
+    public class NullManifestation: MonoBehaviour, IManifestation
     {
 
-        public Transform Transform => null;
+        public Transform Transform => gameObject.transform;
+        public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
 
         public void Retire(RetirementVFX vfx, Action callbackOnRetired)
         {

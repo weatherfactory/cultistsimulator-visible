@@ -42,7 +42,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
 
         public void MoveElementToSituationSlot(Token stack, TokenLocation destination, Sphere destinationSlot, float durationOverride = -1.0f)
         {
-            var startPos = stack.rectTransform.anchoredPosition3D;
+            var startPos = stack.GetComponent<RectTransform>().anchoredPosition3D;
             var endPos = destination.Position;
 
             float distance = Vector3.Distance(startPos, endPos);
@@ -57,7 +57,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
             destinationSlot.AddBlock(new ContainerBlock(BlockDirection.Inward,
                 BlockReason.StackEnRouteToContainer));
 
-            stackAnim.StartAnim(duration);
+            stackAnim.StartAnim(stack ,duration);
         }
 
         public void ElementSendAnimDone(Token element, TokenLocation destination,Sphere destinationSlot)

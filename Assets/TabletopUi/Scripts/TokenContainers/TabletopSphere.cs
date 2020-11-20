@@ -36,6 +36,12 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
     public override bool AllowStackMerge { get { return true; } }
      public override  bool EnforceUniqueStacksInThisContainer => true;
 
+     protected override Vector3 GetDefaultPositionForProvisionedToken(Token token)
+     {
+         return Registry.Get<Choreographer>().GetFreePosWithDebug(token, Vector3.zero);
+     }
+         
+
     // This is used to determine if this component is the tabletop.
     // Needed because the MapTokenContainer inherits from TabletopTokenContainer but is not the Tabletop
     public virtual bool IsTabletop { get { return true; } }
@@ -51,20 +57,12 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
         _background.onClicked += HandleOnTableClicked;
     }
 
-    public override void OnDestroy() {
-        base.OnDestroy();
-
-        // Static event so make sure to de-init once this object is destroyed
-        }
-
-
     public override void DisplayHere(Token token, Context context) {
 
         base.DisplayHere(token, context);
 		token.SnapToGrid();
-
-
     }
+
     public override void OnTokenDoubleClicked(TokenEventArgs args)
     {
         SendTokenToNearestValidDestination(args.Token);
@@ -147,7 +145,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
 
     Vector2 GetFreeTokenPos(Token incumbent) {
         var choreo = Registry.Get<Choreographer>();
-        var currentPos = incumbent.RectTransform.anchoredPosition;
+        var currentPos = incumbent.TokenRectTransform.anchoredPosition;
 
         return choreo.GetFreePosWithDebug(incumbent, currentPos);
     }

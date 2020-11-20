@@ -81,7 +81,11 @@ namespace Assets.CS.TabletopUI {
         public TokenTravelItinerary Itinerary { get; set;}
 
 
-        public RectTransform rectTransform;
+     [SerializeField] public RectTransform TokenRectTransform;
+
+     public RectTransform ManifestationRectTransform => _manifestation.RectTransform;
+     public TokenLocation Location => new TokenLocation(TokenRectTransform.anchoredPosition3D, Sphere.GetPath());
+
         [SerializeField] protected bool rotateOnDrag = true;
 
         [HideInInspector] public Vector2? LastTablePos = null; // if it was pulled from the table, save that position
@@ -92,7 +96,6 @@ namespace Assets.CS.TabletopUI {
         protected Vector3 startPosition;
         protected int startSiblingIndex;
         protected Vector3 dragOffset;
-        protected RectTransform rectCanvas;
         protected CanvasGroup canvasGroup;
         private Token originToken = null; // if it was pulled from a stack, save that stack!
 
@@ -108,17 +111,14 @@ namespace Assets.CS.TabletopUI {
         public Sphere Sphere;
         protected Sphere OldSphere; // Used to tell OldContainsTokens that this thing was dropped successfully
 
-        public RectTransform RectTransform => rectTransform;
 
-        public TokenLocation Location => new TokenLocation(RectTransform.anchoredPosition3D, Sphere.GetPath());
-
-        protected void Awake()
+        public void Awake()
         {
-            rectTransform = GetComponent<RectTransform>();
+            TokenRectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
             Sphere = Registry.Get<NullSphere>();
-
-            _manifestation = new NullManifestation();
+            Itinerary = TokenTravelItinerary.StayExactlyWhereYouAre(this);
+            _manifestation = Registry.Get<NullManifestation>();
 
 
         }
@@ -214,37 +214,40 @@ namespace Assets.CS.TabletopUI {
             //
         }
 
-        public virtual void Manifest()
+        public virtual void Manifest(Type manifestationType)
         {
 
             if(ElementStack.IsValidElementStack())
             {
 
-                if (_manifestation.GetType() != Sphere.ElementManifestationType)
-                {
-
                     var newManifestation = Registry.Get<PrefabFactory>()
-                        .CreateManifestationPrefab(Sphere.ElementManifestationType, this.transform);
+                        .CreateManifestationPrefab(manifestationType, this.transform);
                     SwapOutManifestation(_manifestation, newManifestation, RetirementVFX.None);
-                }
-
                 _manifestation.InitialiseVisuals(ElementStack.Element);
                 _manifestation.UpdateVisuals(ElementStack.Element, ElementStack.Quantity);
             }
             else
             {
-                if (_manifestation.GetType() != Sphere.SituationManifestationType)
-                {
-
                     var newManifestation = Registry.Get<PrefabFactory>()
-                        .CreateManifestationPrefab(Sphere.SituationManifestationType, this.transform);
+                        .CreateManifestationPrefab(manifestationType, this.transform);
                     SwapOutManifestation(_manifestation, newManifestation, RetirementVFX.None);
-                }
-
-                Itinerary = TokenTravelItinerary.StayExactlyWhereYouAre(this);
-
-                _manifestation.InitialiseVisuals(Verb);
+                    _manifestation.InitialiseVisuals(Verb);
             }
+
+        }
+
+        public virtual void Manifest()
+        {
+
+            if (ElementStack.IsValidElementStack())
+            {
+
+                if (_manifestation.GetType() != Sphere.ElementManifestationType)
+                    Manifest(Sphere.ElementManifestationType);
+            }
+            else
+                Manifest(Sphere.SituationManifestationType);
+            
 
         }
 
@@ -305,28 +308,6 @@ namespace Assets.CS.TabletopUI {
             return !IsInMotion && !shrouded && !_manifestation.RequestingNoDrag;
 
         }
-
-
-
-        /// <summary>
-        /// This is an underscore-separated x, y localPosition in the current transform/containsTokens
-        /// but could be anything
-        /// </summary>
-        public string SaveLocationInfo
-        {
-            set
-            {
-                var locs = value.Split('_');
-                if (float.TryParse(locs[0], out float x) && float.TryParse(locs[1], out float y))
-                {
-                    rectTransform.localPosition = new Vector3(x, y);
-                }
-                //if not, then we specified the location as eg 'slot'
-
-            }
-            get { return Sphere.GetPath() + "_" + Guid.NewGuid(); }
-        }
-
 
 
 
@@ -397,20 +378,21 @@ namespace Assets.CS.TabletopUI {
 
             enrouteContainer.AcceptToken(this, new Context(Context.ActionSource.PlayerDrag));
             
-            rectTransform.SetAsLastSibling();
+            TokenRectTransform.SetAsLastSibling();
             _manifestation.OnBeginDragVisuals();
 
             TokenXNess = TokenXNess.NoValidDestination;
             canvasGroup.blocksRaycasts = false;
 
-            startPosition = rectTransform.anchoredPosition3D;
-            startParent = rectTransform.parent;
-            startSiblingIndex = rectTransform.GetSiblingIndex();
+            startPosition = TokenRectTransform.anchoredPosition3D;
 
-            if (rectTransform.anchoredPosition.sqrMagnitude > 0.0f
+            startParent = TokenRectTransform.parent;
+            startSiblingIndex = TokenRectTransform.GetSiblingIndex();
+
+            if (TokenRectTransform.anchoredPosition.sqrMagnitude > 0.0f
             ) // Never store 0,0 as that's a slot position and we never auto-return to slots - CP
             {
-                LastTablePos = rectTransform.anchoredPosition3D;
+                LastTablePos = TokenRectTransform.anchoredPosition3D;
             }
 
 
@@ -456,10 +438,10 @@ namespace Assets.CS.TabletopUI {
             // Potentially change this so it is using UI coords and the RectTransform?
             //  rectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);
 
-         RectTransform.position = draggedToPosition; ///aaaahh it's *position* not anchoredposition3D because we're getting the world point from the click
+         TokenRectTransform.position = draggedToPosition; ///aaaahh it's *position* not anchoredposition3D because we're getting the world point from the click
 
             
-            _manifestation.DoMove(rectTransform);
+            _manifestation.DoMove(ManifestationRectTransform);
 
             // rotate object slightly based on pointer Delta
             if (rotateOnDrag && eventData.delta.sqrMagnitude > 10f)
@@ -520,10 +502,12 @@ namespace Assets.CS.TabletopUI {
             }
             else
             {
-                rectTransform.localRotation = Quaternion.identity;
-                rectTransform.SetParent(startParent);
-                rectTransform.SetSiblingIndex(startSiblingIndex);
-                rectTransform.localPosition = startPosition;
+                TokenRectTransform.anchoredPosition3D = startPosition;
+
+                TokenRectTransform.localRotation = Quaternion.identity;
+                TokenRectTransform.SetParent(startParent);
+                TokenRectTransform.SetSiblingIndex(startSiblingIndex);
+                
             }
         }
 

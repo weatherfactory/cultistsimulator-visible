@@ -18,9 +18,11 @@ using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
+    [RequireComponent(typeof(RectTransform))]
     public class StoredManifestation: MonoBehaviour, IManifestation
     {
         public Transform Transform => gameObject.transform;
+        public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
 
 
         [SerializeField] private CanvasGroup canvasGroup;

@@ -287,8 +287,6 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
     void AddCard(string elementId)
     {
        
-        var existingTokens = tabletop.GetElementTokens();
-
         var element = Registry.Get<Compendium>().GetEntityById<Element>(elementId);
 
         if (element == null) {
@@ -296,31 +294,11 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
             return;
         }
 
-        //check if there's an existing stack of that type to increment
-        if (!element.Unique) {
-            foreach (var token in existingTokens)
-            {
-                if (token.Element.Id == elementId && !token.ElementStack.GetCurrentMutations().Any())
-                {
-                    token.ElementStack. ModifyQuantity(1,new Context(Context.ActionSource.Debug));
-                    return;
-                }
-            }
-        }
-        //if we didn't jump out of loop with return, above
-		Context debugContext = new Context(Context.ActionSource.Debug);
+        Context debugContext = new Context(Context.ActionSource.Debug);
+
+
         tabletop.ModifyElementQuantity(elementId,1, Source.Fresh(), debugContext);
 
-		// Find the card we just added and move it to the dropzone
-		existingTokens = tabletop.GetElementTokens();
-		foreach (var token in existingTokens)
-        {
-            if(token.Element.Id==elementId && !token.ElementStack.GetCurrentMutations().Any())
-            {
-				
-	            Registry.Get<Choreographer>().PlaceTokenOnTableAtFreePosition(token, debugContext);	
-            }
-        }
     }
 
     void RemoveItem(string itemId)

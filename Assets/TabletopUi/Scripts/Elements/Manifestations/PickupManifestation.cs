@@ -16,10 +16,12 @@ using UnityEngine.EventSystems;
 
 namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
-   public class PickupManifestation: MonoBehaviour, IManifestation
+    [RequireComponent(typeof(RectTransform))]
+    public class PickupManifestation: MonoBehaviour, IManifestation
     {
 
         public Transform Transform => gameObject.transform;
+        public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
 
         public void Retire(RetirementVFX retirementVfx, Action callback)
         {
