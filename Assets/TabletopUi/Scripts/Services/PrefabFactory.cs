@@ -36,7 +36,7 @@ namespace Assets.TabletopUi.Scripts.Services
         public RecipeSlot RecipeSlot = null;
         public NotificationWindow NotificationWindow = null;
         public SituationNote SituationNote = null;
-        public NullContainer NullContainer = null;
+        public NullSphere NullSphere = null;
 
 
         public T Create<T>() where T : Component
@@ -90,14 +90,14 @@ namespace Assets.TabletopUi.Scripts.Services
             return prefab;
         }
 
-        public IManifestation CreateManifestationPrefab(string prefabFieldName,Transform parent)
+        public IManifestation CreateManifestationPrefab(Type prefabFieldType,Transform parent)
         {
             
-            FieldInfo field = GetType().GetField(prefabFieldName);
+            FieldInfo field = GetType().GetField(prefabFieldType.Name);
             if (field == null)
-                throw new ApplicationException(prefabFieldName +
+                throw new ApplicationException(prefabFieldType.Name +
                                                " not registered in prefab factory; must have field name and type both '" +
-                                               prefabFieldName + "', must have field populated in editor");
+                                               prefabFieldType.Name + "', must have field populated in editor");
 
             var prefabObject = field.GetValue(this) as UnityEngine.Object;
 

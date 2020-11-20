@@ -78,7 +78,7 @@ namespace Assets.Core.Entities {
             {
                 var specifiedContainer = _spheres.SingleOrDefault(c => c.GetPath() == containerPath);
                 if (specifiedContainer == null)
-                    return Registry.Get<NullContainer>();
+                    return Registry.Get<NullSphere>();
 
                 return specifiedContainer;
 
@@ -86,7 +86,7 @@ namespace Assets.Core.Entities {
             catch (Exception e)
             {
                 NoonUtility.LogWarning($"Error retrieving container with path {containerPath}: {e.Message}");
-                return Registry.Get<NullContainer>();
+                return Registry.Get<NullSphere>();
             }
 
         }

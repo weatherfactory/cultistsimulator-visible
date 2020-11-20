@@ -103,7 +103,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
             {
                 Vector3 distance = candidateThresholds[candidate].GetAnchorLocation().Position - transform.position;
                 //Debug.Log("Dist to " + tokenpair.Token.EntityId + " = " + dist.magnitude );
-                if (candidateThresholds[candidate].IsOpen && candidateThresholds[candidate].Species.ExclusiveOpen)
+                if (candidateThresholds[candidate].IsOpen && candidateThresholds[candidate].Verb.ExclusiveOpen)
                     distance = Vector3.zero;    // Prioritise open windows above all else
                 if (distance.sqrMagnitude < selectedSlotDist)
                 {

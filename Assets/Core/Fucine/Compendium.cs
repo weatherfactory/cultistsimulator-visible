@@ -250,7 +250,7 @@ public class Compendium : ICompendium
         if (durableVerb == null)
         {
             IVerb transientVerb =
-                Activator.CreateInstance(Type.GetType(GetSingleEntity<Dictum>().DefaultTransientVerbSpecies)) as IVerb;
+                Activator.CreateInstance(Type.GetType(GetSingleEntity<Dictum>().DefaultTransientVerbType)) as IVerb;
 
             transientVerb.SetId(recipe.ActionId);
             transientVerb.Label = recipe.Label;

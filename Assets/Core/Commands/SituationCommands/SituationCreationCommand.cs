@@ -17,10 +17,7 @@ namespace Assets.Core.Commands
 
 		public Token SourceToken { get; set; } // this may not be set if no origin is known or needed
         public IVerb Verb { get; set; }
-        public Species Species
-        {
-            get { return Verb.Species; }
-        }
+        
         public Recipe Recipe { get; set; }
         public StateEnum State { get; set; }
         public float? TimeRemaining { get; set; }

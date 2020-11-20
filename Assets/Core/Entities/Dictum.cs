@@ -11,12 +11,10 @@ namespace Assets.Core.Entities
     [FucineImportable("dicta")]
     public class Dictum: AbstractEntity<Dictum>
     {
-        [FucineValue]
-        public string DefaultVerbSpecies { get; set; }
 
 
         [FucineValue]
-        public string DefaultTransientVerbSpecies { get; set; }
+        public string DefaultTransientVerbType { get; set; }
 
         [FucineValue]
         public string DefaultWorldSpherePath { get; set; }

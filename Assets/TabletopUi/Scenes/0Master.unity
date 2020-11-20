@@ -232,8 +232,7 @@ MonoBehaviour:
     type: 3}
   NotificationWindow: {fileID: 114000014022297626, guid: 24926ddfbbe311e45a08a5a61eab67b8,
     type: 3}
-  NullContainer: {fileID: 5776184519591131194, guid: e2898c2b90b9744499f906872a73f1c0,
-    type: 3}
+  NullSphere: {fileID: 0}
 --- !u!1 &16260490
 GameObject:
   m_ObjectHideFlags: 0
@@ -4898,9 +4897,8 @@ Transform:
   m_Children:
   - {fileID: 1267017970}
   - {fileID: 748180954}
-  - {fileID: 520452514}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &181023814
 GameObject:
@@ -7566,7 +7564,7 @@ RectTransform:
   - {fileID: 1875999901}
   - {fileID: 2027384886}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8314,7 +8312,7 @@ Transform:
   m_Children:
   - {fileID: 91402278}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &345806075
 GameObject:
@@ -12434,7 +12432,7 @@ MonoBehaviour:
   windowSettingsAdapter: {fileID: 1966314239}
   soundManager: {fileID: 1151989600}
   limbo: {fileID: 66}
-  nullContainer: {fileID: 1424725277}
+  NullSphere: {fileID: 1424725277}
   situationBuilder: {fileID: 355313015}
 --- !u!4 &520452514
 Transform:
@@ -12444,11 +12442,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520452512}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -160.7078, y: -391.36273, z: -12.105412}
+  m_LocalPosition: {x: 479.4694, y: 67.976685, z: -25.008371}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 179919868}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &529454731
 GameObject:
@@ -16523,7 +16521,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &748180954 stripped
 Transform:
@@ -18252,7 +18250,7 @@ Transform:
   - {fileID: 1966314238}
   - {fileID: 1393924171}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &871553768
 GameObject:
@@ -30580,7 +30578,7 @@ GameObject:
   - component: {fileID: 1424725276}
   - component: {fileID: 1424725277}
   m_Layer: 0
-  m_Name: NullContainer
+  m_Name: NullSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31488,7 +31486,7 @@ RectTransform:
   m_Children:
   - {fileID: 361750802}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -36310,7 +36308,7 @@ Transform:
   m_Children:
   - {fileID: 1935989563}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1727400817
 MonoBehaviour:
@@ -36361,7 +36359,7 @@ Transform:
   - {fileID: 355313014}
   - {fileID: 999615438}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1755256324
 GameObject:
@@ -40135,7 +40133,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1931749717
 GameObject:

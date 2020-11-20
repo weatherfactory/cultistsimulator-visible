@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.TabletopUi.Scripts.Elements.Manifestations;
 
 namespace Assets.Core.NullObjects
 {
@@ -18,13 +19,14 @@ namespace Assets.Core.NullObjects
 
         public string Label { get; set; }
         public string Description { get; set; }
-        public string SpeciesId { get; }
-        public Species Species { get; }
+        public Type AnchorManifestationType => typeof(NullManifestation);
         public bool Transient { get; }
         public string Art => string.Empty;
         public SlotSpecification Slot { get; set; }
         public List<SlotSpecification> Slots { get; set; }
         public bool Startable { get; }
+        public bool ExclusiveOpen => false;
+
         public bool CreationAllowedWhenAlreadyExists(Situation s)
         {
             return true;

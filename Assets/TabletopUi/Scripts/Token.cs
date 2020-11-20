@@ -116,7 +116,7 @@ namespace Assets.CS.TabletopUI {
         {
             rectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
-            Sphere = Registry.Get<NullContainer>();
+            Sphere = Registry.Get<NullSphere>();
 
             _manifestation = new NullManifestation();
 
@@ -174,7 +174,7 @@ namespace Assets.CS.TabletopUI {
 
             _attachedToSituation = situation;
             _manifestation = Registry.Get<PrefabFactory>()
-                .CreateManifestationPrefab(situation.Species.AnchorManifestationType, this.transform);
+                .CreateManifestationPrefab(situation.Verb.AnchorManifestationType, this.transform);
 
 
             if (Verb.Transient)
@@ -224,7 +224,7 @@ namespace Assets.CS.TabletopUI {
                 {
 
                     var newManifestation = Registry.Get<PrefabFactory>()
-                        .CreateManifestationPrefab(Sphere.ElementManifestationType.Name, this.transform);
+                        .CreateManifestationPrefab(Sphere.ElementManifestationType, this.transform);
                     SwapOutManifestation(_manifestation, newManifestation, RetirementVFX.None);
                 }
 
@@ -237,7 +237,7 @@ namespace Assets.CS.TabletopUI {
                 {
 
                     var newManifestation = Registry.Get<PrefabFactory>()
-                        .CreateManifestationPrefab(Sphere.SituationManifestationType.Name, this.transform);
+                        .CreateManifestationPrefab(Sphere.SituationManifestationType, this.transform);
                     SwapOutManifestation(_manifestation, newManifestation, RetirementVFX.None);
                 }
 
@@ -255,7 +255,7 @@ namespace Assets.CS.TabletopUI {
         public virtual void Remanifest(RetirementVFX vfx)
         {
             var reManifestation = Registry.Get<PrefabFactory>()
-                .CreateManifestationPrefab(_manifestation.GetType().Name, this.transform);
+                .CreateManifestationPrefab(_manifestation.GetType(), this.transform);
 
             reManifestation.Transform.position=_manifestation.Transform.position;
 
@@ -761,7 +761,7 @@ namespace Assets.CS.TabletopUI {
             ElementStack.Retire(vfx);
             Sphere.NotifyTokensChangedForSphere(new TokenEventArgs { Element = Element, Token = this, Sphere = Sphere });  // Notify tabletop that aspects will need recompiling
 
-            SetSphere(Registry.Get<NullContainer>(), new Context(Context.ActionSource.Retire));
+            SetSphere(Registry.Get<NullSphere>(), new Context(Context.ActionSource.Retire));
 
             return true;
         }

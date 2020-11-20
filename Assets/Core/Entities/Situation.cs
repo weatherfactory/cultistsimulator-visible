@@ -46,7 +46,6 @@ namespace Assets.Core.Entities {
         }
 
         public readonly IVerb Verb;
-        public readonly Species Species;
         private readonly List<ISituationSubscriber> subscribers = new List<ISituationSubscriber>();
         public HashSet<SituationInterruptInput> CurrentInterrupts = new HashSet<SituationInterruptInput>();
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
@@ -83,7 +82,6 @@ namespace Assets.Core.Entities {
         public Situation(SituationCreationCommand command)
         {
             Verb = command.GetBasicOrCreatedVerb();
-            Species = command.Species;
             TimeRemaining = command.TimeRemaining ?? 0;
             CurrentPrimaryRecipe = command.Recipe;
             OverrideTitle = command.OverrideTitle;
@@ -655,7 +653,7 @@ namespace Assets.Core.Entities {
             if (!t.IsGreedy && !t.CurrentlyBlockedFor(BlockDirection.Inward) && t.GetMatchForStack(stack).MatchType ==SlotMatchForAspectsType.Okay)
                 return t;
 
-        return Registry.Get<NullContainer>();
+        return Registry.Get<NullSphere>();
     }
 
 

@@ -34,7 +34,7 @@ namespace Assets.TabletopUi.Scripts.Services
         [SerializeField] private WindowSettingsAdapter windowSettingsAdapter;
         [SerializeField] private SoundManager soundManager;
         public Limbo limbo;
-        public NullContainer nullContainer;
+        public NullSphere NullSphere;
         public SituationBuilder situationBuilder;
 
 
@@ -115,7 +115,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
 
                 registryAccess.Register(limbo);
-                registryAccess.Register(nullContainer);
+                registryAccess.Register(NullSphere);
                 registryAccess.Register(situationBuilder);
 
 

@@ -12,13 +12,14 @@ namespace Assets.Core.Interfaces
         void SetId(string id);
         string Label { get; set; }
         string Description { get; set; }
-        string SpeciesId { get; }
-        Species Species { get; }
+       
         bool Transient { get; }
         string Art { get; }
+        Type AnchorManifestationType { get; }
       SlotSpecification Slot { get; set; }
       List<SlotSpecification> Slots { get; set; }
       bool Startable { get; }
+      bool ExclusiveOpen { get; }
       bool CreationAllowedWhenAlreadyExists(Situation s);
     }
 
