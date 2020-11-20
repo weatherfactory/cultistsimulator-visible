@@ -233,7 +233,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             return token;
         }
-
+        
 
         // Returns a rect for use by the Choreographer
         public Rect GetRect()

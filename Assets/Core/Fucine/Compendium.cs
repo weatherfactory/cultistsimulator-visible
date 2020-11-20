@@ -165,9 +165,7 @@ public class Compendium
         }
         else
         {
-            if(typeof(T)==typeof(BasicVerb))
-                Log($"Can't find Basic Verb entity id '{entityId}'. This will sometimes happen at startup if a situation is based on a transient verb - it'll be handled, don't worry.");
-            else if (typeof(T) == typeof(Culture))
+            if (typeof(T) == typeof(Culture))
             {
                 entityStore.TryGetById(NoonConstants.DEFAULT_CULTURE_ID, out T defaultCultureEntity);
                 if (defaultCultureEntity == null)

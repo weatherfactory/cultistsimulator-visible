@@ -248,6 +248,7 @@ namespace Assets.CS.TabletopUI {
                     Manifest(Sphere.ElementManifestationType);
             }
             else
+            if(_manifestation.GetType()!=Sphere.SituationManifestationType)
                 Manifest(Sphere.SituationManifestationType);
             
 

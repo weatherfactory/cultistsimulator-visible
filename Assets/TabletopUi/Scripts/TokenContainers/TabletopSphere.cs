@@ -143,14 +143,6 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
     }
 
 
-    Vector2 GetFreeTokenPos(Token incumbent) {
-        var choreo = Registry.Get<Choreographer>();
-        var currentPos = incumbent.TokenRectTransform.anchoredPosition;
-
-        return choreo.GetFreePosWithDebug(incumbent, currentPos);
-    }
-
-
   
     void HandleOnTableDropped(PointerEventData eventData)
     {

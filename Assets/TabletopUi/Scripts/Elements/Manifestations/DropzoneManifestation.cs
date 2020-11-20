@@ -77,7 +77,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         public void InitialiseVisuals(IVerb verb)
         {
-            throw new NotImplementedException();
+        //
         }
 
         public void UpdateVisuals(Element element, int quantity)
@@ -87,12 +87,12 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         public void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate,
             EndingFlavour signalEndingFlavour)
         {
-            throw new NotImplementedException();
+ //
         }
 
         public void SendNotification(INotification notification)
         {
-            throw new NotImplementedException();
+       //
         }
 
         public bool HandleClick(PointerEventData eventData, Token token)
@@ -102,7 +102,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         public void DisplaySpheres(IEnumerable<Sphere> spheres)
         {
-            throw new NotImplementedException();
+        //
         }
 
         public void OverrideIcon(string icon)
@@ -112,7 +112,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         public void SetParticleSimulationSpace(Transform transform)
         {
-            throw new NotImplementedException();
+        //
         }
 
         public void ResetIconAnimation()

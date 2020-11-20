@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Fucine;
+using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
 using Assets.TabletopUi.Scripts.Elements.Manifestations;
 
@@ -27,9 +28,14 @@ namespace Assets.Core.Entities.Verbs
         [FucineList(Localise = true)]
         public List<SlotSpecification> Slots { get; set; }
 
+        public DropzoneVerb(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
+        {
+
+        }
+
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, Compendium populatedCompendium)
         {
-            throw new NotImplementedException();
+           
         }
 
 
@@ -39,7 +45,9 @@ namespace Assets.Core.Entities.Verbs
         public bool ExclusiveOpen => false;
         public bool CreationAllowedWhenAlreadyExists(Situation s)
         {
-            return false;
+            if (s.Verb.Id == this.Id)
+                return false;
+            return true;
         }
     }
 }
