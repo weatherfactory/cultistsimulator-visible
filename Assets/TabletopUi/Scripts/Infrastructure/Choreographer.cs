@@ -11,6 +11,7 @@ using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.Scripts.TokenContainers;
+using Microsoft.Unity.VisualStudio.Editor;
 using Noon;
 using UnityEngine;
 
@@ -31,7 +32,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         const float radiusIncrement = 50f;
         const float radiusMaxSize = 250f;
 
-        private ChoreographerDebugView _currentDebug;
+        
 
         public Choreographer(Sphere sphere) {
             _tabletop = sphere;
@@ -127,7 +128,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 				return;
 			}
 
-            var targetRect = GetCenterPosRect(pushingToken.ManifestationRectTransform);
+            var targetRect = GetRectWithSpherePosition(pushingToken.TokenRectTransform);
 			// Reduce the target Rect size to be less finnicky
 			targetRect.size = targetRect.size * 0.6f;
 
@@ -137,7 +138,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 if (token==pushingToken || CanTokenBeIgnored(token))
                     continue;
 
-				pushedRect = GetCenterPosRect(token.ManifestationRectTransform);
+				pushedRect = GetRectWithSpherePosition(token.TokenRectTransform);
 
 				if (!pushedRect.Overlaps(targetRect))
                     continue;
@@ -164,20 +165,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public Vector2 GetFreePosWithDebug(Token token, Vector2 centerPos, int startIteration = -1)
 		{
 #if DEBUG
-            _currentDebug = new GameObject("ChoreoDebugInfo_" + token.name).AddComponent<ChoreographerDebugView>();
-            _currentDebug.tabletop = _tabletop.transform;
 
-
-            _currentDebug.targetRect = GetCenterPosRect(centerPos, token.ManifestationRectTransform.rect.size);
-            _currentDebug.checkedPoints = new List<Vector2>();
-            _currentDebug.tokenOverlaps = false;
-            _currentDebug.checkedRects = new List<Rect>();
 
             var pos = GetFreeTokenPosition(token, centerPos, startIteration);
-            _currentDebug.finalRect = GetCenterPosRect(pos, token.ManifestationRectTransform.rect.size);
-            _currentDebug.hasDebugData = true;
 
-            _currentDebug.InitKill(10f); // In 10s, debug thing kills itself
 
             return pos;
 #else
@@ -195,11 +186,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             if (IsLegalPosition(targetRect, token))
                 return centerPos;
 
-            if (_currentDebug != null)
-			{
-                _currentDebug.targetRect = targetRect;
-                _currentDebug.tokenOverlaps = true;
-			}
 
             // We grab a bunch of test points
             startIteration = startIteration > 0f ? startIteration : 1;
@@ -238,9 +224,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
         // Tokens have their pos in their center, rects in the bottom right
-        Rect GetCenterPosRect(RectTransform rectTrans)
+        Rect GetRectWithSpherePosition(RectTransform rectTrans)
 		{
-            return GetCenterPosRect(rectTrans.anchoredPosition, rectTrans.rect.size);
+            return new Rect(rectTrans.anchoredPosition, rectTrans.rect.size);
         }
 
         Rect GetCenterPosRect(Vector2 centerPos, Vector2 size)
@@ -257,26 +243,41 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return pos;
         }
 
-        bool IsLegalPosition(Rect rect,  Token placingToken)
+        GameObject ShowRect(Rect rect,string name)
+        {
+        var obj=new GameObject("rect_" + name);    
+        obj.transform.SetParent(_tabletop.transform);
+        obj.AddComponent<UnityEngine.UI.Image>();
+        var objRectTransform = obj.GetComponent<RectTransform>();
+        objRectTransform.localPosition = rect.position;
+        objRectTransform. sizeDelta=new Vector2(rect.width,rect.height);
+    
+
+        return obj;
+
+        }
+
+        bool IsLegalPosition(Rect candidateRect,  Token placingToken)
 		{
-            if (tableRect.Contains(rect.position + rect.size / 2f) == false)
+
+            
+            if (tableRect.Contains(candidateRect.position + candidateRect.size / 2f) == false)
                 return false;
             
-            Rect rectCheck;
-            //Debug.Log("Checking if " + rect + " is a legal position");
+            Rect otherTokenRect;
+
 
             foreach (var token in _tabletop.GetAllTokens()) {
-                rectCheck = GetCenterPosRect(token.ManifestationRectTransform);
+                  otherTokenRect = GetRectWithSpherePosition(token.TokenRectTransform);
+                
+              
+            //  ShowRect(otherTokenRect,token.name);
 
                 if (token==placingToken || CanTokenBeIgnored(token))
                     continue;
 
-                if (_currentDebug != null && !_currentDebug.checkedRects.Contains(rectCheck)) { 
-                    _currentDebug.checkedRects.Add(rectCheck);
-                    //Debug.Log("Checking for " + token.name + " at " + rectCheck);
-                }
 
-                if (rectCheck.Overlaps(rect)) {
+                if (otherTokenRect.Overlaps(candidateRect)) {
                     //Debug.Log("Not a legal pos");
                     return false;
                 }
@@ -331,9 +332,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
                     points[p] = new Vector2(pos.x + x * snap_x, pos.y + y * snap_y);
 					points[p] = SnapToGrid( points[p] );
-
-                    if (_currentDebug != null) 
-                        _currentDebug.checkedPoints.Add(points[p]);
 
                     p++;
                 }

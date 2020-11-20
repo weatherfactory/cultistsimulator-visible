@@ -234,6 +234,8 @@ namespace Assets.CS.TabletopUI {
                     _manifestation.InitialiseVisuals(Verb);
             }
 
+            TokenRectTransform.sizeDelta=new Vector2(ManifestationRectTransform.sizeDelta.x,ManifestationRectTransform.sizeDelta.y);
+
         }
 
         public virtual void Manifest()

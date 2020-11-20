@@ -36,7 +36,6 @@ namespace Assets.TabletopUi.Scripts.Services
         public RecipeSlot RecipeSlot = null;
         public NotificationWindow NotificationWindow = null;
         public SituationNote SituationNote = null;
-        public NullSphere NullSphere = null;
 
 
         public T Create<T>() where T : Component

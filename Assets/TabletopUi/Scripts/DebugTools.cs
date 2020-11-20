@@ -145,7 +145,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
             dbIndex++;
         }
 
-
+        Registry.Get<SphereCatalogue>().Subscribe(this);
     }
 
 
@@ -526,58 +526,35 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
         return File.Exists(GetGameSaveLocation(index));
     }
 
-    public void OnTokenClicked(ElementStack stack, PointerEventData pointerEventData, Element element)
-    {
-        if(isActiveAndEnabled)
-            SetInput(stack.Element.Id);
-    }
-
-    public void OnTokenReceivedADrop(ElementStack stack, PointerEventData eventData)
-    {
-        }
-
-    public void OnTokenPointerEntered(ElementStack stack, PointerEventData pointerEventData)
-    {
-    }
-
-    public void OnTokenPointerExited(ElementStack stack, PointerEventData pointerEventData)
-    {
-    }
-
-    public void OnTokenDoubleClicked(ElementStack stack, PointerEventData eventData, Element element)
-    {
-        if (isActiveAndEnabled)
-            SetInput(stack.Element.Id);
-    }
-
     public void NotifyTokensChangedForSphere(TokenEventArgs args)
     {
-        throw new NotImplementedException();
+        //
     }
 
     public void OnTokenClicked(TokenEventArgs args)
     {
-        throw new NotImplementedException();
+    if(args.Token.ElementStack.IsValidElementStack())
+        SetInput(args.Token.Element.Id);
     }
 
     public void OnTokenReceivedADrop(TokenEventArgs args)
     {
-        throw new NotImplementedException();
+      //
     }
 
     public void OnTokenPointerEntered(TokenEventArgs args)
     {
-        throw new NotImplementedException();
+       //
     }
 
     public void OnTokenPointerExited(TokenEventArgs args)
     {
-        throw new NotImplementedException();
+       //
     }
 
     public void OnTokenDoubleClicked(TokenEventArgs args)
     {
-        throw new NotImplementedException();
+        //
     }
 
     public void OnTokenDragged(TokenEventArgs args)
