@@ -109,7 +109,7 @@ namespace Assets.CS.TabletopUI {
             Element element;
 
             foreach (var stack in stacks) {
-                element = Registry.Get<ICompendium>().GetEntityById<Element>(stack.Element.Id);
+                element = Registry.Get<Compendium>().GetEntityById<Element>(stack.Element.Id);
 
                 if(!element.IsHidden)
                 { 
@@ -144,7 +144,7 @@ namespace Assets.CS.TabletopUI {
 
             // Populate those we need
             foreach (var item in deckEffects) {
-                var deckSpec = Registry.Get<ICompendium>().GetEntityById<DeckSpec>(item.Key);
+                var deckSpec = Registry.Get<Compendium>().GetEntityById<DeckSpec>(item.Key);
                 deckEffectViews[i].PopulateDisplay(deckSpec, item.Value);
                 deckEffectViews[i].gameObject.SetActive(true);
                 i++;

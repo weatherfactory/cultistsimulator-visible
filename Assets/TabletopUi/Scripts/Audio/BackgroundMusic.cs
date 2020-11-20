@@ -37,7 +37,7 @@ public class BackgroundMusic : MonoBehaviour, ISettingSubscriber
 
     void Start()
     {
-        var musicVolumeSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.MUSICVOLUME);
+        var musicVolumeSetting = Registry.Get<Compendium>().GetEntityById<Setting>(NoonConstants.MUSICVOLUME);
         if (musicVolumeSetting != null)
         {
             musicVolumeSetting.AddSubscriber(this);

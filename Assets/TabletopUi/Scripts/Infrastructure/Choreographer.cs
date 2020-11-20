@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
+using Assets.Core.Entities.Verbs;
 using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
@@ -38,7 +39,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             tableRect = _tabletop.GetRect();
 
-            var snapGridSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.GRIDSNAPSIZE);
+            var snapGridSetting = Registry.Get<Compendium>().GetEntityById<Setting>(NoonConstants.GRIDSNAPSIZE);
             if (snapGridSetting != null)
             {
                 snapGridSetting.AddSubscriber(this);
@@ -49,9 +50,20 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
 
-     public void PlaceTokenOnTableAtFreePosition(Token token, Context context) {
+     public void PlaceTokenOnTableAtFreePosition(Token token, Context context)
+     {
 
-            _tabletop.AcceptToken(token, context);
+         //var dropzoneSituations = Registry.Get<SituationsCatalogue>().GetSituationWithVerbOfType(typeof(DropzoneVerb));
+         
+         //if (!dropzoneSituations.Any())
+         //{
+         //       var dropzoneRecipe=Registry.Get<Compendium>()
+
+         //       SituationCreationCommand scc=new SituationCreationCommand();
+         //    Registry.Get<SituationBuilder>().CreateSituation()
+         //}
+
+         _tabletop.AcceptToken(token, context);
             token.RectTransform.anchoredPosition = GetFreePosWithDebug(token, Vector2.zero);
             
         }

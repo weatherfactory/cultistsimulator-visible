@@ -20,10 +20,10 @@ public class ElementOverview : MonoBehaviour, ISphereEventSubscriber {
 
     [SerializeField] StatusBarElementCount[] elementCounts;
     private Legacy _activeLegacy;
-    private ICompendium _compendium;
+    private Compendium _compendium;
     private const int MAX_ELEMENTS = 4;
 
-    public void Initialise(Legacy activeLegacy, ICompendium compendium) {
+    public void Initialise(Legacy activeLegacy, Compendium compendium) {
         
         _activeLegacy = activeLegacy;
         _compendium = compendium;

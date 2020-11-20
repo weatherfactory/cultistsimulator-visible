@@ -284,7 +284,7 @@ namespace Assets.CS.TabletopUI {
         public void Populate(string elementId, int quantity, Source source)
 		{
             
-            Element = Registry.Get<ICompendium>().GetEntityById<Element>(elementId);
+            Element = Registry.Get<Compendium>().GetEntityById<Element>(elementId);
             if (Element==null)
 			{
 				NoonUtility.Log("Trying to create nonexistent element! - '" + elementId + "'");

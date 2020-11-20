@@ -27,7 +27,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             //  bool setSomeDefaultBindingsForFirstTime = false;
             foreach (InputAction action in playerInput.currentActionMap.actions)
             {
-                if (Registry.Get<ICompendium>().EntityExists<Setting>(action.name))
+                if (Registry.Get<Compendium>().EntityExists<Setting>(action.name))
                 {
                     ApplyExistingKeybindOverrides(action);
                 }
@@ -36,7 +36,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         private static void ApplyExistingKeybindOverrides(InputAction action)
         {
-            var keyBindSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(action.name);
+            var keyBindSetting = Registry.Get<Compendium>().GetEntityById<Setting>(action.name);
             if (!string.IsNullOrEmpty(keyBindSetting.CurrentValue.ToString()))
             {
                 action.ApplyBindingOverride(keyBindSetting.CurrentValue.ToString());

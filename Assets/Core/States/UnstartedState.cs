@@ -71,7 +71,7 @@ namespace Assets.Core.States
                 var aspectsInContext = tc.GetAspectsInContext(aspects);
 
 
-                var recipe = Registry.Get<ICompendium>().GetFirstMatchingRecipe(aspectsInContext, situation.Verb.Id, Registry.Get<Character>(), false);
+                var recipe = Registry.Get<Compendium>().GetFirstMatchingRecipe(aspectsInContext, situation.Verb.Id, Registry.Get<Character>(), false);
 
                 //no recipe found? get outta here
                 if (recipe != null)

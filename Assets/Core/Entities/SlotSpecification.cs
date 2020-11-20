@@ -125,7 +125,7 @@ public class SlotSpecification: AbstractEntity<SlotSpecification>
 
     }
 
-    protected override void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium)
+    protected override void OnPostImportForSpecificEntity(ContentImportLog log, Compendium populatedCompendium)
     {
         
     }

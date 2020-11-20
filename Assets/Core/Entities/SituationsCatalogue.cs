@@ -47,6 +47,11 @@ namespace Assets.Core.Entities
         {
             _currentSituations.Remove(situation);
         }
+
+        public IEnumerable<Situation> GetSituationWithVerbOfType(Type verbType)
+        {
+            return _currentSituations.Where(situation => situation.Verb.GetType() == verbType);
+        }
         
         
         public Situation GetOpenSituation()
@@ -55,7 +60,7 @@ namespace Assets.Core.Entities
         }
 
 
-        public Situation BeginNewSituation(SituationCreationCommand scc, List<Token> withStacksInStorage)
+        public Situation TryBeginNewSituation(SituationCreationCommand scc, List<Token> withStacksInStorage)
         {
             if (scc.Recipe == null)
                 throw new ApplicationException("DON'T PASS AROUND SITUATIONCREATIONCOMMANDS WITH RECIPE NULL");

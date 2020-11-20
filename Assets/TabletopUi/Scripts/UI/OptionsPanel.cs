@@ -85,7 +85,7 @@ public class OptionsPanel : MonoBehaviour {
         settingControls = new List<AbstractSettingControl>();
         optionsPanelTabs = new List<OptionsPanelTab>();
 
-        var settings = Registry.Get<ICompendium>().GetEntitiesAsList<Setting>();
+        var settings = Registry.Get<Compendium>().GetEntitiesAsList<Setting>();
 
         PopulateSettingControls(settings);
 
@@ -94,7 +94,7 @@ public class OptionsPanel : MonoBehaviour {
         InitialiseButtons();
 
         var windowednessObserver = new WindowedSettingObserverForOptionsPanel(this);
-        var windowedSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.WINDOWED);
+        var windowedSetting = Registry.Get<Compendium>().GetEntityById<Setting>(NoonConstants.WINDOWED);
         if (windowedSetting != null)
             windowedSetting.AddSubscriber(windowednessObserver);
         else
@@ -112,7 +112,7 @@ public class OptionsPanel : MonoBehaviour {
         {
             AbstractSettingControl resolutionSliderControl;
 
-            var windowedSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.WINDOWED);
+            var windowedSetting = Registry.Get<Compendium>().GetEntityById<Setting>(NoonConstants.WINDOWED);
             resolutionSliderControl = settingControls.SingleOrDefault(sc => sc.SettingId == NoonConstants.RESOLUTION);
  
         if(Convert.ToSingle(windowedSetting.CurrentValue)>0 && resolutionSliderControl)

@@ -57,7 +57,7 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
         concursum.ChangingCulture.AddListener(OnCultureChanged);
         concursum.ContentUpdatedEvent.AddListener(OnContentUpdated);
 
-        var highContrastSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.HIGHCONTRAST);
+        var highContrastSetting = Registry.Get<Compendium>().GetEntityById<Setting>(NoonConstants.HIGHCONTRAST);
         if (highContrastSetting != null)
         {
             highContrastSetting.AddSubscriber(this);
@@ -76,7 +76,7 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
     {
         string currentCultureId = Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY);
 
-        var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(currentCultureId);
+        var currentCulture = Registry.Get<Compendium>().GetEntityById<Culture>(currentCultureId);
 
         SetValuesFromCulture(currentCulture);
     }
@@ -127,7 +127,7 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
     {
         HighContrastEnabledInGlobalSettings = ((newValue is float ? (float)newValue : 0) > 0.5f);
         string currentCultureId = Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY); 
-        var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(currentCultureId);
+        var currentCulture = Registry.Get<Compendium>().GetEntityById<Culture>(currentCultureId);
         SetValuesFromCulture(currentCulture);
 
         ILocStringProvider lm = Registry.Get<ILocStringProvider>();

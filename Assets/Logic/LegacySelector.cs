@@ -11,7 +11,7 @@ namespace Assets.Logic
 {
     public class LegacySelector
     {
-        private readonly ICompendium _compendium;
+        private readonly Compendium _compendium;
 
         public List<Legacy> DetermineLegacies(Ending ending)
         {
@@ -63,7 +63,7 @@ namespace Assets.Logic
             return selectedLegacies;
         }
 
-        public LegacySelector(ICompendium compendium)
+        public LegacySelector(Compendium compendium)
         {
             _compendium = compendium;
         }

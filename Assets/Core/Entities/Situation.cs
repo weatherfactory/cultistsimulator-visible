@@ -469,7 +469,7 @@ namespace Assets.Core.Entities {
 
                     if (!string.IsNullOrEmpty(currentEffectCommand.Recipe.Ending))
                     {
-                        var ending = Registry.Get<ICompendium>().GetEntityById<Ending>(currentEffectCommand.Recipe.Ending);
+                        var ending = Registry.Get<Compendium>().GetEntityById<Ending>(currentEffectCommand.Recipe.Ending);
                         Registry.Get<TabletopManager>() .EndGame(ending, this._anchor); //again, ttm (or successor) is subscribed. We should do it through there.
                     }
                     
@@ -485,7 +485,7 @@ namespace Assets.Core.Entities {
         private void TryOverrideVerbIcon(IAspectsDictionary forAspects)
         {
             //if we have an element in the situation now that overrides the verb icon, update it
-            string overrideIcon = Registry.Get<ICompendium>().GetVerbIconOverrideFromAspects(forAspects);
+            string overrideIcon = Registry.Get<Compendium>().GetVerbIconOverrideFromAspects(forAspects);
             if (!string.IsNullOrEmpty(overrideIcon))
             {
                 _anchor.DisplayOverrideIcon(overrideIcon);
@@ -517,7 +517,7 @@ namespace Assets.Core.Entities {
 
 
 
-            IVerb verbForNewSituation = Registry.Get<ICompendium>().GetDurableOrTransientVerbFromI(effectCommand.Recipe);
+            IVerb verbForNewSituation = Registry.Get<Compendium>().GetVerbForRecipe(effectCommand.Recipe);
 
 
             TokenLocation newAnchorLocation;
@@ -531,7 +531,7 @@ namespace Assets.Core.Entities {
             var scc = new SituationCreationCommand(verbForNewSituation, effectCommand.Recipe,
                 StateEnum.Unstarted, newAnchorLocation, _anchor);
             var newSituation=Registry.Get<SituationsCatalogue>()
-                .BeginNewSituation(scc,
+                .TryBeginNewSituation(scc,
                     stacksToAddToNewSituation); //tabletop manager is a subscriber, right? can we run this (or access to its successor) through that flow?
 
             newSituation.TryStart();
@@ -577,7 +577,7 @@ namespace Assets.Core.Entities {
 
         foreach (var a in inducingAspects)
         {
-            var aspectElement = Registry.Get<ICompendium>().GetEntityById<Element>(a.Key);
+            var aspectElement = Registry.Get<Compendium>().GetEntityById<Element>(a.Key);
 
             if (aspectElement != null)
                 PerformAspectInduction(aspectElement);
@@ -595,7 +595,7 @@ namespace Assets.Core.Entities {
             var d = Registry.Get<IDice>();
 
             if (d.Rolld100() <= induction.Chance)
-                CreateRecipeFromInduction(Registry.Get<ICompendium>() .GetEntityById<Recipe>(induction.Id), aspectElement.Id);
+                CreateRecipeFromInduction(Registry.Get<Compendium>() .GetEntityById<Recipe>(induction.Id), aspectElement.Id);
         }
     }
 
@@ -607,10 +607,10 @@ namespace Assets.Core.Entities {
             return;
         }
         
-            var inductionRecipeVerb = Registry.Get<ICompendium>().GetDurableOrTransientVerbFromI(inducedRecipe);
+            var inductionRecipeVerb = Registry.Get<Compendium>().GetVerbForRecipe(inducedRecipe);
             SituationCreationCommand inducedSituationCreationCommand = new SituationCreationCommand(inductionRecipeVerb,
             inducedRecipe, StateEnum.Unstarted, _anchor.Location, _anchor);
-        var inducedSituation=Registry.Get<SituationsCatalogue>().BeginNewSituation(inducedSituationCreationCommand, new List<Token>());
+        var inducedSituation=Registry.Get<SituationsCatalogue>().TryBeginNewSituation(inducedSituationCreationCommand, new List<Token>());
             inducedSituation.TryStart();
 
     }
@@ -723,7 +723,7 @@ namespace Assets.Core.Entities {
             var aspectsInContext = tc.GetAspectsInContext(aspects);
 
 
-            var recipe = Registry.Get<ICompendium>().GetFirstMatchingRecipe(aspectsInContext, Verb.Id, Registry.Get<Character>(), false);
+            var recipe = Registry.Get<Compendium>().GetFirstMatchingRecipe(aspectsInContext, Verb.Id, Registry.Get<Character>(), false);
 
             //no recipe found? get outta here
             if (recipe != null)

@@ -27,7 +27,7 @@ namespace Assets.TabletopUi.Scripts.Services {
 
             var sphereCatalogue = Registry.Get<SphereCatalogue>();
 
-            var windowSphere = sphereCatalogue.GetContainerByPath(new SpherePath(Registry.Get<ICompendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath));
+            var windowSphere = sphereCatalogue.GetContainerByPath(new SpherePath(Registry.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath));
 
             
             var anchorSphere = sphereCatalogue.GetContainerByPath(command.AnchorLocation.AtSpherePath);

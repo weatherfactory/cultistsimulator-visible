@@ -23,7 +23,7 @@ namespace Assets.Core.Services
     public class Chronicler
     {
         private Character _storage;
-        private ICompendium _compendium;
+        private Compendium _compendium;
         private const string BOOK_ASPECT = "text";
         private const string DESIRE_ASPECT = "desire";
         private const string TOOL_ASPECT = "tool";
@@ -52,7 +52,7 @@ namespace Assets.Core.Services
 
 
 
-        public Chronicler(Character storage,ICompendium compendium)
+        public Chronicler(Character storage,Compendium compendium)
         {
             _storage = storage;
             _compendium = compendium;

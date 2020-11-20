@@ -23,7 +23,7 @@ namespace Assets.TabletopUi.Scripts.UI
 
         public void OnEnable()
         {
-            List<Element> creditCards = Registry.Get<ICompendium>().GetEntitiesAsList<Element>()
+            List<Element> creditCards = Registry.Get<Compendium>().GetEntitiesAsList<Element>()
                 .Where(e => e.Id.StartsWith("credits.")).ToList();
 
 

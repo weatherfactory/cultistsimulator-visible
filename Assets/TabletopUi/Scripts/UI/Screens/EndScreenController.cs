@@ -122,7 +122,7 @@ namespace Assets.CS.TabletopUI
 		private void OnGUI()
 		{
 			Rect buttonRect = new Rect(5,5,200,20);
-			var compendium = Registry.Get<ICompendium>();
+			var compendium = Registry.Get<Compendium>();
             List<Ending> endings = compendium.GetEntitiesAsList<Ending>();
 			foreach (Ending ending in endings)
 			{

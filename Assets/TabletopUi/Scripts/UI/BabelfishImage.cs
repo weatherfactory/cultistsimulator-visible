@@ -31,7 +31,7 @@ public class BabelfishImage : MonoBehaviour
 
         string currentCultureId = Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY);
 
-        var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(currentCultureId);
+        var currentCulture = Registry.Get<Compendium>().GetEntityById<Culture>(currentCultureId);
 
         DisplayImageForCulture(currentCulture);
 

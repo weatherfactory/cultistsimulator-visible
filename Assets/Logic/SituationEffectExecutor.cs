@@ -161,7 +161,7 @@ namespace Assets.Logic
         private static void RunXTriggers(Sphere sphere, AspectsDictionary aspectsPresent,
             IDice dice)
         {
-            ICompendium _compendium = Registry.Get<ICompendium>();
+            Compendium _compendium = Registry.Get<Compendium>();
 
             foreach (var eachStack in sphere.GetElementStacks())
             {
@@ -173,7 +173,7 @@ namespace Assets.Logic
         }
 
         private static void RunXTriggersOnMutationsForStack(Sphere sphere, [CanBeNull] AspectsDictionary aspectsPresent, [CanBeNull] IDice dice,
-            [CanBeNull] ElementStack eachStack, [CanBeNull] ICompendium _compendium)
+            [CanBeNull] ElementStack eachStack, [CanBeNull] Compendium _compendium)
         {
             foreach (var eachStackMutation in eachStack.GetCurrentMutations())
             {
@@ -227,7 +227,7 @@ namespace Assets.Logic
         }
 
         private static void RunXTriggersOnStackItself(Sphere sphere, AspectsDictionary aspectsPresent,
-            IDice dice, ElementStack eachStack, ICompendium _compendium)
+            IDice dice, ElementStack eachStack, Compendium _compendium)
         {
             var xTriggers = eachStack.GetXTriggers();
 

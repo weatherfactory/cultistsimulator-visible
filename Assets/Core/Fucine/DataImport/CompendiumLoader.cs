@@ -41,7 +41,7 @@ public class CompendiumLoader
     readonly ContentImportLog _log=new ContentImportLog();
 
 
-    public ContentImportLog PopulateCompendium(ICompendium compendiumToPopulate,string forCultureId)
+    public ContentImportLog PopulateCompendium(Compendium compendiumToPopulate,string forCultureId)
     {
 
         Dictionary<string,EntityTypeDataLoader> dataLoaders=new Dictionary<string,EntityTypeDataLoader>();

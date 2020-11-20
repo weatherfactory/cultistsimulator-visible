@@ -24,7 +24,7 @@ namespace Assets.TabletopUi.Scripts.Services
             registry.Register(this);
 
 
-            var resolutionSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.RESOLUTION);
+            var resolutionSetting = Registry.Get<Compendium>().GetEntityById<Setting>(NoonConstants.RESOLUTION);
             if (resolutionSetting != null)
             {
                 resolutionSetting.AddSubscriber(this);

@@ -27,7 +27,7 @@ namespace Assets.Core.Entities.Verbs
         [FucineList(Localise = true)]
         public List<SlotSpecification> Slots { get; set; }
 
-        protected override void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium)
+        protected override void OnPostImportForSpecificEntity(ContentImportLog log, Compendium populatedCompendium)
         {
             throw new NotImplementedException();
         }

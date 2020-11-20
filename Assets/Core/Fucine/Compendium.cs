@@ -13,38 +13,8 @@ using UnityEngine.Analytics;
 using static Noon.NoonUtility;
 
 
-public interface ICompendium
-{
-    Recipe GetFirstMatchingRecipe(AspectsInContext aspectsInContext, string verb, Character character,bool getHintRecipes);
-    List<T> GetEntitiesAsList<T>() where T : class, IEntityWithId;
-    T GetEntityById<T>(string entityId) where  T: class,IEntityWithId;
-    T GetSingleEntity<T>() where T : class, IEntityWithId;
-    bool TryAddEntity(IEntityWithId entity);
-    bool EntityExists<T>(string entityId) where T : class, IEntityWithId;
 
-    void SupplyLevers(Character populatedCharacter);
-    string GetVerbIconOverrideFromAspects(IAspectsDictionary currentAspects);
-
-    IVerb GetDurableOrTransientVerbFromI(Recipe recipe);
-    /// <summary>
-    /// Run all second-stage populations that occur between / across entities
-    /// </summary>
-    void OnPostImport(ContentImportLog log);
-
-    void InitialiseForEntityTypes(IEnumerable<Type> entityTypes);
-    IEnumerable<Type> GetEntityTypes();
-
-    void LogFnords(ContentImportLog log);
-    void CountWords(ContentImportLog log);
-    void LogMissingImages(ContentImportLog log);
-    void SupplyElementIdsForValidation(object validateThis);
-
-
-    List<T> GetEntitiesAsAlphabetisedList<T>() where T : class, IEntityWithId;
-
-}
-
-public class Compendium : ICompendium
+public class Compendium
 {
     
     private Dictionary<Type, EntityStore> entityStores;
@@ -243,7 +213,7 @@ public class Compendium : ICompendium
     }
 
 
-    public IVerb GetDurableOrTransientVerbFromI(Recipe recipe)
+    public IVerb GetVerbForRecipe(Recipe recipe)
     {
         IVerb durableVerb = GetEntityById<BasicVerb>(recipe.ActionId);
 

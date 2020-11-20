@@ -104,7 +104,7 @@ public class Config
 
     }
 
-    public void MigrateAnySettingValuesInRegistry(ICompendium compendium)
+    public void MigrateAnySettingValuesInRegistry(Compendium compendium)
     {
         //We've moved storage of Options settings from PlayerPrefs to the config file.
         //To avoid users losing all their persisted settings, and to set a sensible default, for every options setting:

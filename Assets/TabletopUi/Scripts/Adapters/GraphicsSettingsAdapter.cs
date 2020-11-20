@@ -16,7 +16,7 @@ namespace Assets.TabletopUi.Scripts.Services
     {
         public void Initialise()
         {
-            var graphicsLevelSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.GRAPHICSLEVEL);
+            var graphicsLevelSetting = Registry.Get<Compendium>().GetEntityById<Setting>(NoonConstants.GRAPHICSLEVEL);
             if (graphicsLevelSetting != null)
             {
                 graphicsLevelSetting.AddSubscriber(this);

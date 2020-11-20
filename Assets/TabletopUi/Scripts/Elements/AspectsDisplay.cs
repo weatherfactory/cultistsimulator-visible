@@ -38,7 +38,7 @@ namespace Assets.TabletopUi.Scripts
         }
 
         private void AddAspectToDisplay(string aspectId, int quantity) {
-            Element aspect = Registry.Get<ICompendium>().GetEntityById<Element>(aspectId);
+            Element aspect = Registry.Get<Compendium>().GetEntityById<Element>(aspectId);
 
             if (aspect == null)
                 return; // We can't find the aspect? Well then don't add anything

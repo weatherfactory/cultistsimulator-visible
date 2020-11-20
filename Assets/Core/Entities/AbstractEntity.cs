@@ -46,7 +46,7 @@ namespace Assets.Core.Fucine
         /// </summary>
         /// <param name="log"></param>
         /// <param name="populatedCompendium"></param>
-        public void OnPostImport(ContentImportLog log, ICompendium populatedCompendium)
+        public void OnPostImport(ContentImportLog log, Compendium populatedCompendium)
         {
             if (Refined)
                 return;
@@ -62,7 +62,7 @@ namespace Assets.Core.Fucine
         /// </summary>
         /// <param name="log"></param>
         /// <param name="populatedCompendium"></param>
-        protected abstract void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium);
+        protected abstract void OnPostImportForSpecificEntity(ContentImportLog log, Compendium populatedCompendium);
 
         private void PopUnknownKeysToLog(ContentImportLog log)
         {
@@ -75,7 +75,7 @@ namespace Assets.Core.Fucine
             }
         }
 
-        private void SupplyValidationRequirementsToCompendium(ICompendium populatedCompendium)
+        private void SupplyValidationRequirementsToCompendium(Compendium populatedCompendium)
         {
             var fucineProperties = TypeInfoCache<T>.GetCachedFucinePropertiesForType();
 

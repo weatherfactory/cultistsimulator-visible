@@ -244,7 +244,7 @@ namespace Assets.CS.TabletopUI {
             var populatedCharacter =
                 Registry.Get<Character>(); //should just have been set above, but let's keep this clean
             populatedCharacter.Reset(populatedCharacter.ActiveLegacy,null);
-            Registry.Get<ICompendium>().SupplyLevers(populatedCharacter);
+            Registry.Get<Compendium>().SupplyLevers(populatedCharacter);
      Registry.Get<StageHand>().ClearRestartingGameFlag();
         }
 
@@ -288,7 +288,7 @@ namespace Assets.CS.TabletopUI {
             if(legacy==null)
                 Registry.Get<StageHand>().EndingScreen();
 
-            _elementOverview.Initialise(legacy,  Registry.Get<ICompendium>());
+            _elementOverview.Initialise(legacy,  Registry.Get<Compendium>());
             Registry.Get<SphereCatalogue>().Subscribe(_elementOverview);
             tabletopBackground.ShowTabletopFor(legacy);
 
@@ -306,7 +306,7 @@ namespace Assets.CS.TabletopUI {
             if(_character.ActiveLegacy==null)
                 throw new ApplicationException("Trying to set up a new board for a character with no chosen legacy. Even fresh characters should have a legacy when created, but this code has always been hinky.");
 
-            IVerb v = Registry.Get<ICompendium>().GetEntityById<BasicVerb>(_character.ActiveLegacy.StartingVerbId);
+            IVerb v = Registry.Get<Compendium>().GetEntityById<BasicVerb>(_character.ActiveLegacy.StartingVerbId);
             SituationCreationCommand command = new SituationCreationCommand(v, NullRecipe.Create(), StateEnum.Unstarted,
                 new TokenLocation(0f,0f,-100f, _tabletop.GetPath()));
             var situation = Registry.Get<SituationBuilder>().CreateSituation(command);
@@ -350,7 +350,7 @@ namespace Assets.CS.TabletopUI {
 
         public int PurgeElement(string elementId, int maxToPurge)
         {
-            var compendium = Registry.Get<ICompendium>();
+            var compendium = Registry.Get<Compendium>();
 
             Element elementToPurge = compendium.GetEntityById<Element>(elementId);
             
@@ -470,7 +470,7 @@ namespace Assets.CS.TabletopUI {
       
 
         public void LoadGame(SourceForGameState gameStateSource) {
-            ICompendium compendium = Registry.Get<ICompendium>();
+            Compendium compendium = Registry.Get<Compendium>();
 
 
             Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs

@@ -156,7 +156,7 @@ public class LanguageManager : MonoBehaviour,ILocStringProvider
     {
 
         string currentCultureId = Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY);
-        var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(currentCultureId);
+        var currentCulture = Registry.Get<Compendium>().GetEntityById<Culture>(currentCultureId);
 
 
         if (locLabel.StartsWith(NoonConstants.TEMPLATE_MARKER))
@@ -189,7 +189,7 @@ public class LanguageManager : MonoBehaviour,ILocStringProvider
 
             string settingId= template.Substring(settingIdStartsAt, substringLength);
 
-            Setting setting = Registry.Get<ICompendium>().GetEntityById<Setting>(settingId);
+            Setting setting = Registry.Get<Compendium>().GetEntityById<Setting>(settingId);
             if(setting==null)
                 break;
 

@@ -22,7 +22,7 @@ namespace Assets.Core.Entities
             MatchType = esm;
         }
 
-        public string GetProblemDescription(ICompendium compendium)
+        public string GetProblemDescription(Compendium compendium)
         {
             string description = "";
             if (MatchType == SlotMatchForAspectsType.ForbiddenAspectPresent)
@@ -40,7 +40,7 @@ namespace Assets.Core.Entities
             return description;
         }
 
-        public  string ProblemAspectsDescription(ICompendium compendium)
+        public  string ProblemAspectsDescription(Compendium compendium)
         {
             string problemAspects = "";
             foreach (var problemAspectId in ProblemAspectIds)

@@ -26,6 +26,6 @@ public class DebugLoadCompendium : MonoBehaviour
        foreach (var m in messages.GetMessages())
            NoonUtility.Log(m.Description, m.MessageLevel);
 
-        registry.Register<ICompendium>(compendium);
+        registry.Register<Compendium>(compendium);
 	}
 }

@@ -12,9 +12,9 @@ namespace Assets.Core.Services
     public class TokenReplacer
     {
         private Character _character;
-        private ICompendium _compendium;
+        private Compendium _compendium;
         //'token' as in text-to-be-replaced, not as in AbstractToken
-        public TokenReplacer(Character ch,ICompendium co)
+        public TokenReplacer(Character ch,Compendium co)
         {
             _character = ch;
             _compendium = co;

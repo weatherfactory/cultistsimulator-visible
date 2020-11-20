@@ -46,7 +46,7 @@ namespace Assets.Core.Commands
 
         public IVerb GetBasicOrCreatedVerb()
         {
-            return Registry.Get<ICompendium>().GetDurableOrTransientVerbFromI(Recipe);
+            return Registry.Get<Compendium>().GetVerbForRecipe(Recipe);
         }
 
     }

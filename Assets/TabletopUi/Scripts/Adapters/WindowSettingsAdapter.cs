@@ -10,7 +10,7 @@ namespace Assets.TabletopUi.Scripts.Services
     {
         public void Initialise()
         {
-            var windowedStateSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.WINDOWED);
+            var windowedStateSetting = Registry.Get<Compendium>().GetEntityById<Setting>(NoonConstants.WINDOWED);
             if (windowedStateSetting != null)
             {
                 windowedStateSetting.AddSubscriber(this);

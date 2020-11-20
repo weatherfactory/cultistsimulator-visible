@@ -32,7 +32,7 @@ namespace Assets.Core.Entities
         public Dictionary<string,string> UILabels { get; set; }
 
 
-        protected override void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium)
+        protected override void OnPostImportForSpecificEntity(ContentImportLog log, Compendium populatedCompendium)
         {
             //
         }

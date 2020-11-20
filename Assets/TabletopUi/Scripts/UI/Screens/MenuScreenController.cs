@@ -195,7 +195,7 @@ public class MenuScreenController : LocalNexus {
         
         if (currentCharacter.ActiveLegacy != null)
             //we need to go the long wway round because the label on the legacy entity in the character won't have changed if the compendium has just been repopulated with a different culture
-            Subtitle.SetText(Registry.Get<ICompendium>().GetEntityById<Legacy>(currentCharacter.ActiveLegacy.Id).Label);
+            Subtitle.SetText(Registry.Get<Compendium>().GetEntityById<Legacy>(currentCharacter.ActiveLegacy.Id).Label);
         else
         {
             if (NoonUtility.PerpetualEdition)
@@ -272,7 +272,7 @@ public class MenuScreenController : LocalNexus {
         if (!canTakeInput)
             return;
 
-        var defaultLegacy = Registry.Get<ICompendium>().GetEntitiesAsList<Legacy>().First();
+        var defaultLegacy = Registry.Get<Compendium>().GetEntitiesAsList<Legacy>().First();
         BeginNewSaveWithSpecifiedLegacy(defaultLegacy.Id);
 
     }
@@ -322,7 +322,7 @@ public class MenuScreenController : LocalNexus {
 
     public void BeginNewSaveWithSpecifiedLegacy(string legacyId)
     {
-        var legacy= Registry.Get<ICompendium>().GetEntityById<Legacy>(legacyId);
+        var legacy= Registry.Get<Compendium>().GetEntityById<Legacy>(legacyId);
         ResetToLegacy(legacy);
         
         Registry.Get<StageHand>().NewGameOnTabletop();
@@ -355,7 +355,7 @@ public class MenuScreenController : LocalNexus {
 		if (!canTakeInput)
 			return;
 
-        var culture = Registry.Get<ICompendium>().GetEntityById<Culture>(lang_code);
+        var culture = Registry.Get<Compendium>().GetEntityById<Culture>(lang_code);
 
         Registry.Get<Concursum>().SetNewCulture(culture);
 
@@ -400,7 +400,7 @@ public class MenuScreenController : LocalNexus {
         foreach (Transform legacyStartEntry in legacyStartEntries)
             Destroy(legacyStartEntry.gameObject);
 
-        var legacies = Registry.Get<ICompendium>().GetEntitiesAsList<Legacy>();
+        var legacies = Registry.Get<Compendium>().GetEntitiesAsList<Legacy>();
 
         var allNewStartLegacies = legacies.Where(l => l.NewStart).ToList();
 
@@ -472,7 +472,7 @@ public class MenuScreenController : LocalNexus {
 
 
 
-        foreach (var culture in Registry.Get<ICompendium>().GetEntitiesAsList<Culture>().Where(c=>c.Released))
+        foreach (var culture in Registry.Get<Compendium>().GetEntitiesAsList<Culture>().Where(c=>c.Released))
         {
             var languageChoice =Instantiate(languageChoicePrefab).GetComponent<LanguageChoice>();
             languageChoice.transform.SetParent(LanguagesAvailable,false);

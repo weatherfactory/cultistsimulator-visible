@@ -81,14 +81,14 @@ namespace Assets.Core.Entities
         {
         }
 
-        protected override void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium)
+        protected override void OnPostImportForSpecificEntity(ContentImportLog log, Compendium populatedCompendium)
         {
             RegisterUniquenessGroups(populatedCompendium);
 
         }
 
 
-        public void RegisterUniquenessGroups(ICompendium compendium)
+        public void RegisterUniquenessGroups(Compendium compendium)
         {
             if(!Spec.Any())
                 throw new NotImplementedException("We're trying to register uniqueness groups for a DeckSpec before populating it with cards.");

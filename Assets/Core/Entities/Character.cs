@@ -109,7 +109,7 @@ public class Character:MonoBehaviour
             Destroy(deck.gameObject);
 
         
-        var compendium = Registry.Get<ICompendium>();
+        var compendium = Registry.Get<Compendium>();
         foreach (var ds in compendium.GetEntitiesAsAlphabetisedList<DeckSpec>())
         {
             DeckInstance di=Instantiate(DeckPrefab, CurrentDecks);

@@ -15,6 +15,6 @@ namespace Assets.Core.Interfaces
         string UniqueId { get; }
         void SetId(string id);
         string Lever { get; }
-        void OnPostImport(ContentImportLog log, ICompendium populatedCompendium);
+        void OnPostImport(ContentImportLog log, Compendium populatedCompendium);
     }
 }

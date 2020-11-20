@@ -46,7 +46,7 @@ namespace Assets.Core
                         lr.Id +
                         " is marked as an additional linked recipe, but we haven't worked out what to do with additional linked recipes yet");
 
-                Recipe candidateRecipe = Registry.Get<ICompendium>().GetEntityById<Recipe>(lr.Id);
+                Recipe candidateRecipe = Registry.Get<Compendium>().GetEntityById<Recipe>(lr.Id);
 
                 if (candidateRecipe == null)
                 {
@@ -100,7 +100,7 @@ namespace Assets.Core
             _aspectsInContext.ThrowErrorIfNotPopulated(situation.Verb.Id);
 
             //note: we *either* get craftable recipes *or* if we're getting hint recipes we don't care if they're craftable
-            var _recipes = Registry.Get<ICompendium>().GetEntitiesAsList<Recipe>();
+            var _recipes = Registry.Get<Compendium>().GetEntitiesAsList<Recipe>();
 
             List<Recipe> candidateRecipes =
                 _recipes.Where(r => situation.CurrentState.IsValidPredictionForState(r, situation)).ToList();
@@ -145,7 +145,7 @@ namespace Assets.Core
                 }
                 else
                 {
-                    Recipe candidateRecipe = Registry.Get<ICompendium>().GetEntityById<Recipe>(ar.Id);
+                    Recipe candidateRecipe = Registry.Get<Compendium>().GetEntityById<Recipe>(ar.Id);
 
                     if (!candidateRecipe.RequirementsSatisfiedBy(_aspectsInContext))
                     {

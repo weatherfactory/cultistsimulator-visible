@@ -45,7 +45,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var endingTriggeredForCharacterId =
                 TryGetStringFromHashtable(htSave, SaveConstants.SAVE_CURRENTENDING);
 
-            var endingTriggered = Registry.Get<ICompendium>().GetEntityById<Ending>(endingTriggeredForCharacterId);
+            var endingTriggered = Registry.Get<Compendium>().GetEntityById<Ending>(endingTriggeredForCharacterId);
 
 
 
@@ -58,8 +58,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
             var htSave = RetrieveHashedSaveFromFile(source);
 
-       windowSpherePath = new SpherePath(Registry.Get<ICompendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
-          tabletopSpherePath = new SpherePath(Registry.Get<ICompendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath);
+       windowSpherePath = new SpherePath(Registry.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
+          tabletopSpherePath = new SpherePath(Registry.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath);
 
 
             var htElementStacks = htSave.GetHashtable(SaveConstants.SAVE_ELEMENTSTACKS);
@@ -100,7 +100,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             }
             else
             {
-               activeLegacy = Registry.Get<ICompendium>().GetEntityById<Legacy>(chosenLegacyForCharacterId);
+               activeLegacy = Registry.Get<Compendium>().GetEntityById<Legacy>(chosenLegacyForCharacterId);
             }
 
             var endingTriggeredForCharacterId =
@@ -108,7 +108,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (string.IsNullOrEmpty(endingTriggeredForCharacterId))
                endingTriggered = null;
             else
-               endingTriggered = Registry.Get<ICompendium>().GetEntityById<Ending>(endingTriggeredForCharacterId);
+               endingTriggered = Registry.Get<Compendium>().GetEntityById<Ending>(endingTriggeredForCharacterId);
 
             
 
@@ -156,7 +156,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             }
 
 
-            Registry.Get<ICompendium>().SupplyLevers(character);
+            Registry.Get<Compendium>().SupplyLevers(character);
 
             var htDecks = htSave.GetHashtable(SaveConstants.SAVE_DECKS);
 
@@ -186,7 +186,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             {
                 var htEachDeck = htDeckInstances.GetHashtable(k);
 
-                DeckSpec spec = Registry.Get<ICompendium>().GetEntityById<DeckSpec>(k.ToString());
+                DeckSpec spec = Registry.Get<Compendium>().GetEntityById<DeckSpec>(k.ToString());
 
                 if (spec == null)
                     NoonUtility.Log("no deckspec found for saved deckinstance " + k.ToString());
@@ -208,11 +208,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 var htSituationValues =htSituations.GetHashtable(locationInfo);
                 string verbId = htSituationValues[SaveConstants.SAVE_VERBID].ToString();
 
-                IVerb situationVerb = Registry.Get<ICompendium>().GetEntityById<BasicVerb>(verbId);
+                IVerb situationVerb = Registry.Get<Compendium>().GetEntityById<BasicVerb>(verbId);
 
 
                 string recipeId = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_RECIPEID);
-                var recipe = Registry.Get<ICompendium>().GetEntityById<Recipe>(recipeId);
+                var recipe = Registry.Get<Compendium>().GetEntityById<Recipe>(recipeId);
                 if (recipe == null)
                     recipe = NullRecipe.Create(situationVerb);
 

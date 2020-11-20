@@ -239,7 +239,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
 
         // Re-populate it with updated suggestions
         // Disable the suggestion box if there are no suggestions
-        ICompendium compendium = Registry.Get<ICompendium>();
+        Compendium compendium = Registry.Get<Compendium>();
         List<AutoCompletionSuggestion> suggestions = GetElementAutoCompletionSuggestions(compendium, value)
             .Concat(GetRecipeAutoCompletionSuggestions(compendium, value))
             .OrderBy(acs => acs.GetText())
@@ -259,19 +259,19 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
         autoCompletionBox.gameObject.SetActive(false);
     }
 
-    List<AutoCompletionSuggestion> GetElementAutoCompletionSuggestions(ICompendium compendium, string prompt)
+    List<AutoCompletionSuggestion> GetElementAutoCompletionSuggestions(Compendium compendium, string prompt)
     {
         return compendium.GetEntitiesAsList<Element>().
             Where(e => e.Id.StartsWith(prompt)).Select(e => MakeAutocompleteSuggestion(compendium, e.Id, true)).ToList();
     }
 
-    List<AutoCompletionSuggestion> GetRecipeAutoCompletionSuggestions(ICompendium compendium, string prompt)
+    List<AutoCompletionSuggestion> GetRecipeAutoCompletionSuggestions(Compendium compendium, string prompt)
     {
         return compendium.GetEntitiesAsList<Recipe>().
             Where(r => r.Id.StartsWith(prompt)).Select(r => MakeAutocompleteSuggestion(compendium, r.Id, false)).ToList();
     }
 
-    AutoCompletionSuggestion MakeAutocompleteSuggestion(ICompendium compendium, string suggestedId, bool isElement)
+    AutoCompletionSuggestion MakeAutocompleteSuggestion(Compendium compendium, string suggestedId, bool isElement)
     {
         AutoCompletionSuggestion suggestion = Instantiate(AutoCompletionSuggestionPrefab).GetComponent<AutoCompletionSuggestion>();
         suggestion.SetText(suggestedId);
@@ -289,7 +289,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
        
         var existingTokens = tabletop.GetElementTokens();
 
-        var element = Registry.Get<ICompendium>().GetEntityById<Element>(elementId);
+        var element = Registry.Get<Compendium>().GetEntityById<Element>(elementId);
 
         if (element == null) {
             Debug.LogWarning("No Element with ID " + elementId + " found!");
@@ -330,17 +330,17 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
 
     void BeginSituation(string recipeId)
     {
-        var compendium = Registry.Get<ICompendium>();
+        var compendium = Registry.Get<Compendium>();
         var recipe = compendium.GetEntityById<Recipe>(recipeId.Trim());
         if (recipe!=null)
         {
-            IVerb verbForNewSituation = Registry.Get<ICompendium>().GetDurableOrTransientVerbFromI(recipe);
+            IVerb verbForNewSituation = Registry.Get<Compendium>().GetVerbForRecipe(recipe);
 
 
             SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, StateEnum.Ongoing,
                 new TokenLocation(0f,0f,-100f,tabletop.GetPath()));
             scc.Open = false;
-        Registry.Get<SituationsCatalogue>().BeginNewSituation(scc,new List<Token>());
+        Registry.Get<SituationsCatalogue>().TryBeginNewSituation(scc,new List<Token>());
         }
         else
             NoonUtility.LogWarning("Tried to begin situation via debug, but couldn't find this recipe: " + recipeId);
@@ -365,7 +365,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
 
     void BeginLegacy(string legacyId)
     {
-        var l = Registry.Get<ICompendium>().GetEntityById<Legacy>(legacyId);
+        var l = Registry.Get<Compendium>().GetEntityById<Legacy>(legacyId);
         if (l == null)
             return;
 
@@ -392,7 +392,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
     {
         Registry.Get<ModManager>().CatalogueMods();
             
-           var existingCompendium = Registry.Get<ICompendium>();
+           var existingCompendium = Registry.Get<Compendium>();
            var compendiumLoader = new CompendiumLoader();
 
            var startImport = DateTime.Now;
@@ -409,7 +409,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
 
     public void WordCount()
     {
-        var compendium = Registry.Get<ICompendium>();
+        var compendium = Registry.Get<Compendium>();
         var log=new ContentImportLog();
         compendium.CountWords(log);
         foreach (var m in log.GetMessages())
@@ -419,7 +419,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
 
     public void FnordCount()
     {
-        var compendium = Registry.Get<ICompendium>();
+        var compendium = Registry.Get<Compendium>();
         var log = new ContentImportLog();
         compendium.LogFnords(log);
         foreach (var m in log.GetMessages())
@@ -430,7 +430,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
     public void ImageCheck()
     {
 
-        var compendium = Registry.Get<ICompendium>();
+        var compendium = Registry.Get<Compendium>();
         var log = new ContentImportLog();
         compendium.LogMissingImages(log);
         foreach (var m in log.GetMessages())
@@ -446,7 +446,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
     // to allow access from HotkeyWatcher
     public void EndGame(string endingId)
     {
-        var compendium = Registry.Get<ICompendium>();
+        var compendium = Registry.Get<Compendium>();
 
         var ending = compendium.GetEntityById<Ending>(endingId);
         if (ending == null)

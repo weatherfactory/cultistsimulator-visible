@@ -91,7 +91,7 @@ namespace Assets.Core.Entities
 
         
 
-        protected override void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium)
+        protected override void OnPostImportForSpecificEntity(ContentImportLog log, Compendium populatedCompendium)
         {
             //if a value for this Setting has been stored in config, set the value accordingly
             //otherwise, set it to the default value

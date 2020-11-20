@@ -483,7 +483,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
                 var notifier = Registry.Get<INotifier>();
 
-                var compendium = Registry.Get<ICompendium>();
+                var compendium = Registry.Get<Compendium>();
 
                 if (notifier != null)
                     notifier.ShowNotificationWindow(Registry.Get<ILocStringProvider>().Get("UI_CANTPUT"), match.GetProblemDescription(compendium), false);

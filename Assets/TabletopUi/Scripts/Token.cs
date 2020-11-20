@@ -393,7 +393,7 @@ namespace Assets.CS.TabletopUI {
             _currentlyBeingDragged = true;
 
             var enrouteContainer = Registry.Get<SphereCatalogue>().GetContainerByPath(
-                new SpherePath(Registry.Get<ICompendium>().GetSingleEntity<Dictum>().DefaultEnRouteSpherePath));
+                new SpherePath(Registry.Get<Compendium>().GetSingleEntity<Dictum>().DefaultEnRouteSpherePath));
 
             enrouteContainer.AcceptToken(this, new Context(Context.ActionSource.PlayerDrag));
             

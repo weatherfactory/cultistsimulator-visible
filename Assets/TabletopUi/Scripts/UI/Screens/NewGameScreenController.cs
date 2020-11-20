@@ -50,11 +50,11 @@ namespace Assets.CS.TabletopUI {
             registry.Register(modManager);
 
             var compendium = new Compendium();
-            registry.Register<ICompendium>(compendium);
+            registry.Register<Compendium>(compendium);
             var contentImporter = new CompendiumLoader();
             contentImporter.PopulateCompendium(compendium, Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
 
-            var ls = new LegacySelector(Registry.Get<ICompendium>());
+            var ls = new LegacySelector(Registry.Get<Compendium>());
             AvailableLegaciesForEnding = ls.DetermineLegacies(Registry.Get<Character>().EndingTriggered);
 
             InitLegacyButtons();

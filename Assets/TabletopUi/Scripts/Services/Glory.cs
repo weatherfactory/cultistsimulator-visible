@@ -142,7 +142,7 @@ namespace Assets.TabletopUi.Scripts.Services
                 registryAccess.Register(new ModManager());
 
                 //load Compendium content. We can't do anything with content files until this is in.
-                registryAccess.Register<ICompendium>(new Compendium());
+                registryAccess.Register<Compendium>(new Compendium());
                 var log=LoadCompendium(Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
 
                 if (log.ImportFailed())
@@ -154,7 +154,7 @@ namespace Assets.TabletopUi.Scripts.Services
                 //setting defaults are set as the compendium is loaded, but they may also need to be
                 //migrated from somewhere other than config (like PlayerPrefs)
                 //so we only run this now, allowing it to overwrite any default values
-                Registry.Get<Config>().MigrateAnySettingValuesInRegistry(Registry.Get<ICompendium>());
+                Registry.Get<Config>().MigrateAnySettingValuesInRegistry(Registry.Get<Compendium>());
 
 
                 //set up loc services
@@ -168,7 +168,7 @@ namespace Assets.TabletopUi.Scripts.Services
                 
                 RegisterSavedOrNewCharacter(registryAccess);
 
-                var chronicler = new Chronicler(Registry.Get<Character>(), Registry.Get<ICompendium>());
+                var chronicler = new Chronicler(Registry.Get<Character>(), Registry.Get<Compendium>());
                 registryAccess.Register(chronicler);
 
                 //set up the top-level adapters. We do this here in case we've diverted to the error scene on first load / content fail, in order to avoid spamming the log with messages.
@@ -202,7 +202,7 @@ namespace Assets.TabletopUi.Scripts.Services
             else
             {
                 NoonUtility.LogWarning("Setting a default legacy for character: shouldn't do this in the actual game");
-                Character.Reset(Registry.Get<ICompendium>().GetEntitiesAsList<Legacy>().First(),null);
+                Character.Reset(Registry.Get<Compendium>().GetEntitiesAsList<Legacy>().First(),null);
             }
             
 
@@ -213,7 +213,7 @@ namespace Assets.TabletopUi.Scripts.Services
         public ContentImportLog LoadCompendium(string cultureId)
         {
             var compendiumLoader = new CompendiumLoader();
-            var log = compendiumLoader.PopulateCompendium(Registry.Get<ICompendium>(),cultureId);
+            var log = compendiumLoader.PopulateCompendium(Registry.Get<Compendium>(),cultureId);
             foreach (var m in log.GetMessages())
                 NoonUtility.Log(m);
 

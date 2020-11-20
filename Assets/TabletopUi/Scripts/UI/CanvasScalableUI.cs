@@ -28,7 +28,7 @@ public class CanvasScalableUI : CanvasScaler,ISettingSubscriber {
     {
 		if(Application.isPlaying) //this is necessary because CanvasScalableUI inherits from CanvasScaler, which is ExecuteAlways.
         {
-            var uiScaleSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.SCREENCANVASSIZE);
+            var uiScaleSetting = Registry.Get<Compendium>().GetEntityById<Setting>(NoonConstants.SCREENCANVASSIZE);
             if (uiScaleSetting != null)
             {
                 uiScaleSetting.AddSubscriber(this);
