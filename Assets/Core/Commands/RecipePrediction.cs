@@ -16,6 +16,7 @@ namespace Assets.Core.Commands
         public string BurnImage => _actualRecipe.BurnImage;
         public EndingFlavour SignalEndingFlavour => _actualRecipe.SignalEndingFlavour;
         public bool Craftable => _actualRecipe.Craftable;
+        public bool HintOnly => _actualRecipe.HintOnly;
 
         public static RecipePrediction DefaultFromVerb(IVerb verb)
         {

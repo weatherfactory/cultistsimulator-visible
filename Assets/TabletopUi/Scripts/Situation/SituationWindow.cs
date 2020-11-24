@@ -187,15 +187,11 @@ namespace Assets.CS.TabletopUI {
         {
 
             Title = s.CurrentRecipePrediction.Title;
-            //Check for possible text refinements based on the aspects in context
-            var aspectsInSituation = s.GetAspectsAvailableToSituation(true);
-
-            TextRefiner tr = new TextRefiner(aspectsInSituation);
-
-            if(s.CurrentPrimaryRecipe.HintOnly)
-                PaginatedNotes.SetText("<i>" + tr.RefineString(s.CurrentRecipePrediction.DescriptiveText) + "</i>");
+            
+            if(s.CurrentRecipePrediction. HintOnly)
+                PaginatedNotes.SetText("<i>" + s.CurrentRecipePrediction.DescriptiveText + "</i>");
             else
-                PaginatedNotes.SetText(tr.RefineString(s.CurrentRecipePrediction.DescriptiveText));
+                PaginatedNotes.SetText(s.CurrentRecipePrediction.DescriptiveText);
 
 
             if(s.CurrentPrimaryRecipe.Craftable)
@@ -295,10 +291,10 @@ namespace Assets.CS.TabletopUI {
         public void SphereContentsUpdated(Situation s)
         {
             DisplayPredictedRecipe(s);
-
-
+            
             var allAspectsToDisplay =s.GetAspectsAvailableToSituation(false);
             aspectsDisplay.DisplayAspects(allAspectsToDisplay);
+            DisplayButtonState(s);
 
 
         }
