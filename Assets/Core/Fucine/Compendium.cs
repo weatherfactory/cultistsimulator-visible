@@ -221,8 +221,10 @@ public class Compendium
 
         if (verb == null)
         {
+            Type defaultTransientVerbType = Type.GetType(GetSingleEntity<Dictum>().DefaultTransientVerbType);
+
             IVerb transientVerb =
-                Activator.CreateInstance(Type.GetType(GetSingleEntity<Dictum>().DefaultTransientVerbType)) as IVerb;
+                Activator.CreateInstance(defaultTransientVerbType) as IVerb;
 
             transientVerb.SetId(recipe.ActionId);
             transientVerb.Label = recipe.Label;

@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Core.Fucine;
@@ -16,6 +17,7 @@ using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 using TMPro;
+using UnityEngine.Events;
 
 /// <summary>
 /// The contents of Output spheres can be picked up by the player, but not replaced. They become unavailable once empty.
@@ -25,6 +27,8 @@ public class Output : Sphere {
     public CanvasGroupFader canvasGroupFader;
     [SerializeField] SituationResultsPositioning outputPositioning;
     [SerializeField] TextMeshProUGUI dumpResultsButtonText;
+
+    [SerializeField] public UnityEvent AllTokenssCollected;
 
     public override SphereCategory SphereCategory => SphereCategory.Output;
 
@@ -98,6 +102,8 @@ public class Output : Sphere {
 
         if (cardsRemaining)
             outputPositioning.ArrangeTokens(stacks);
+        else
+        AllTokenssCollected.Invoke();
 
         base.RemoveToken(token);
     }

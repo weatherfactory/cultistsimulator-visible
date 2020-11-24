@@ -39,8 +39,11 @@ namespace Assets.Core.States
 
         public override void Continue(Situation situation)
         {
-            if(situation.CurrentInterrupts.Contains(SituationInterruptInput.AllOutputsCollected))
+            if (situation.CurrentInterrupts.Contains(SituationInterruptInput.AllOutputsCollected))
+            {
+                situation.CurrentInterrupts.Remove(SituationInterruptInput.AllOutputsCollected);
                 ChangeState(this, new UnstartedState(), situation);
+            }
         }
     }
 }

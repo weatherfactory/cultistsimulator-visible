@@ -771,8 +771,7 @@ namespace Assets.Core.Entities {
             foreach (var s in subscribers)
                 s.SphereContentsUpdated(this);
 
-            if (!GetAllStacksInSituation().Any())
-                CurrentInterrupts.Add(SituationInterruptInput.AllOutputsCollected);
+
         }
 
         public void OnTokenClicked(TokenEventArgs args)
