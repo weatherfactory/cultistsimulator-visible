@@ -32,7 +32,7 @@ namespace Assets.Core.NullObjects
           //
         }
 
-        public override void ElementStackStateUpdated(ElementStack stack)
+        public override void OnElementStackStateChanged(ElementStack stack)
         {
            //
         }

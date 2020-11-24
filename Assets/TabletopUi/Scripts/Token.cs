@@ -871,7 +871,7 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        public virtual void ElementStackStateUpdated(ElementStack stack)
+        public virtual void OnElementStackStateChanged(ElementStack stack)
         {
 
             _manifestation.UpdateVisuals(stack.Element,stack.Quantity);
@@ -884,9 +884,6 @@ namespace Assets.CS.TabletopUI {
     public void SphereContentsUpdated(Situation situation)
         {
             _manifestation.DisplaySpheres(situation.GetSpheresActiveForCurrentState());
-
-            int completionCount = situation.GetStacks(SphereCategory.Output).Select(s => s.Quantity).Sum();
-            _manifestation.SendNotification(new Notification(string.Empty, completionCount.ToString()));
         }
 
         public void ReceiveNotification(INotification n)

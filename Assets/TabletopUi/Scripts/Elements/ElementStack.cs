@@ -172,7 +172,7 @@ namespace Assets.CS.TabletopUI {
 			}
 			_aspectsDirtyInc = true;
 
-            _attachedToken.ElementStackStateUpdated(this);
+            _attachedToken.OnElementStackStateChanged(this);
             
         }
 

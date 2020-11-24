@@ -68,12 +68,6 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         private Coroutine animCoroutine;
 
 
-
-        public void Awake()
-        {
-            ongoingSlotImage.gameObject.SetActive(false);
-        }
-
         public void InitialiseVisuals(Element element)
         {
             NoonUtility.Log("Initialise Visuals for element on verb tokens: should look at this");
@@ -89,10 +83,9 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
                 tokenBody.overrideSprite = lightweightSprite;
                 
             }
-            SetTimerVisibility(false);
-            DisplayCompletionCount(-1);
-            ShowGlow(false, false);
-            ShowDumpButton(false);
+            DisplaySpheres(new List<Sphere>());
+            UpdateTimerVisuals(0f, 0f, 0f, false, EndingFlavour.None);
+
         }
 
         public void UpdateVisuals(Element element, int quantity)
@@ -145,19 +138,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
              shadow.DoMove(tokenRectTransform);
         }
 
-        public void DisplayCompletionCount(int newCount)
-        {
-            // count == -1 ? No badge
-            // count ==  0 ? badge, no text
-            // count >=  1 ? badge and text
-
-            completionBadge.gameObject.SetActive(newCount >= 0);
-            completionText.gameObject.SetActive(newCount > 0);
-            completionText.text = newCount.ToString();
-
-            ShowDumpButton(newCount >= 0);
-        }
-
+  
 
         public bool HandleClick(PointerEventData eventData, Token token)
         {
@@ -174,21 +155,42 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         {
             
             var activeThresholdSpheres = new List<Sphere>(spheres.Where(s => s.SphereCategory == SphereCategory.Threshold));
-            var outputSpheres = new List<Sphere>(spheres.Where(s => s.SphereCategory == SphereCategory.Output));
-            
             if (!activeThresholdSpheres.Any())
                 hideMiniSlot();
             else
             {
-                
                 var sphereToDisplayAsMiniSlot = activeThresholdSpheres.Single();
                 showMiniSlot(sphereToDisplayAsMiniSlot.GoverningSlotSpecification.Greedy);
                 displayStackInMiniSlot(sphereToDisplayAsMiniSlot.GetElementStacks());
             }
 
+            var outputSpheres = new List<Sphere>(spheres.Where(s => s.SphereCategory == SphereCategory.Output));
+            if (outputSpheres.Any())
+            {
 
-            int completionCount = outputSpheres.Select(s => s.GetTotalElementsCount()).Sum();
-            DisplayCompletionCount(completionCount);
+                int completionCount = outputSpheres.Select(s => s.GetTotalElementsCount()).Sum();
+                completionBadge.gameObject.SetActive(true);
+                if (completionCount > 0)
+                {
+                    completionText.text = completionCount.ToString();
+                    if(_transient)
+                        dumpButton.gameObject.SetActive(true);
+                    else
+                        dumpButton.gameObject.SetActive(false);
+                }
+                else
+                {
+                    completionText.text = string.Empty;
+                    dumpButton.gameObject.SetActive(false);
+                }
+
+            }
+            else
+            {
+                //no active output spheres: no collection badge, no dump button
+                completionBadge.gameObject.SetActive(false);
+                dumpButton.gameObject.SetActive(false);
+            }
 
         }
 
@@ -223,6 +225,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
                 NoonUtility.LogWarning("VerbManifestation implementation doessn't support >1 stack in minislot");
                 return;
             }
+            
 
             var stack = stacks.SingleOrDefault();
             if(stack==null)
@@ -265,11 +268,6 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(art);
             frames = ResourcesManager.GetAnimFramesForVerb(art);
             artwork.sprite = sprite;
-        }
-
-        private void ShowDumpButton(bool showButton)
-        {
-            dumpButton.gameObject.SetActive(showButton && _transient);
         }
 
 
