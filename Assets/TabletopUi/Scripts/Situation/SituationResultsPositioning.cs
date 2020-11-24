@@ -12,66 +12,51 @@ using Noon;
 namespace Assets.CS.TabletopUI {
     public class SituationResultsPositioning : MonoBehaviour {
 
-        [SerializeField] RectTransform rect;
+        [SerializeField] RectTransform rectTransform;
         [SerializeField] Vector2 margin = new Vector2(50f, 40f);
 
         //float moveDuration = 0.2f;
         float availableSpace;
-        float xStart;
+        float startingX;
         //IEnumerable<ElementStackToken> elements
 
         void SetAvailableSpace() {
-            availableSpace = rect.rect.width - margin.x - margin.x;
-            xStart = availableSpace / 2f;
+            availableSpace = rectTransform.rect.width - (margin.x*2);
+            startingX = availableSpace / 2f;
         }
 
-        /*
-        //commented out: for now, we're manually turning all cards.
-        private void OnEnable() {
-            //To turn over the first card automatically when the window opens, uncomment the code below.
-            // Delay is to wait for the end of the window transition anim
-            Invoke("DelayedFlip", 0.25f);
-        }
 
-        void DelayedFlip() {
-              var stacks = GetComponentsInChildren<ElementStackToken>();
-            if (stacks != null && stacks.Length > 0)
-               stacks[stacks.Length - 1].FlipToFaceUp();
-        }
-        */
-
-        public void ReorderCards(IEnumerable<Token> elementTokens) {
-            var sortedStacks = SortStacks(elementTokens);
+        public void ArrangeTokens(IEnumerable<Token> elementTokens) {
+            var sortedTokens = SortStacks(elementTokens);
 
             int i = 1; // index starts at 1 for positioning math reasons
-            int numberOfCards = 0;
-
+            
             SetAvailableSpace();
 
             string debugText = "Reorder Results: ";
 
-            foreach (var stack in sortedStacks)
-                if (stack)
-                    numberOfCards++;
 
-            foreach (var stack in sortedStacks) {
-             
+            foreach (var token in sortedTokens)
+            {
 
-                MoveToPosition(stack.transform as RectTransform, GetPositionForIndex(i, numberOfCards), 0f);
-                stack.transform.SetSiblingIndex(i-1); //each card is conceptually on top of the last. Set sibling index to make sure they appear that way.
+                var positionForThisToken = GetPositionForIndex(i, sortedTokens.Count);
+                token.TokenRectTransform.anchoredPosition = positionForThisToken;
+
+               // MoveToPosition(token.TokenRectTransform,positionForThisToken, 0f);
+                token.transform.SetSiblingIndex(i-1); //each card is conceptually on top of the last. Set sibling index to make sure they appear that way.
 
                 //if any stacks are fresh, flip them face down, otherwise face up
-                if (stack.ElementStack.StackSource.SourceType == SourceType.Fresh)
-                    stack.Shroud(true); // flip down instantly
+                if (token.ElementStack.StackSource.SourceType == SourceType.Fresh)
+                    token.Shroud(true); // flip down instantly
                 else
-                    stack.Unshroud(gameObject.activeInHierarchy); // flip up with anim, if we're visible 
+                    token.Unshroud(gameObject.activeInHierarchy); // flip up with anim, if we're visible 
 
-                debugText += stack.Element.Id + " (" + stack.ElementStack.StackSource.SourceType + ") ";
+                debugText += token.Element.Id + " (" + token.ElementStack.StackSource.SourceType + ") ";
 
                 i++;
             }
 
-            NoonUtility.Log(debugText);
+            NoonUtility.Log(debugText,0,VerbosityLevel.Trivia);
         }
 
         List<Token> SortStacks(IEnumerable<Token> elementStacks) {
@@ -98,39 +83,44 @@ namespace Assets.CS.TabletopUI {
             return hiddenStacks;
         }
 
-        Vector2 GetPositionForIndex(int i, int num) {
-            return new Vector2(xStart - availableSpace * (i / (float) num) * 0.5f, 0f); 
+        Vector2 GetPositionForIndex(int currentTokenIndex, float totalTokensCount) {
+
+            var interposition= currentTokenIndex / totalTokensCount;
+
+            return new Vector2(startingX - availableSpace * interposition * 0.5f, 0f); 
         }
 
-        public void MoveToPosition(RectTransform rectTrans, Vector2 pos, float duration) {
-            // If we're disabled or our token is, just set us there
-            if (rectTrans.gameObject.activeInHierarchy == false || gameObject.activeInHierarchy == false) {
-                rectTrans.anchoredPosition = pos;
-                return;
-            }
+        //public void MoveToPosition(RectTransform rectTrans, Vector2 pos, float duration) {
+        //    // If we're disabled or our token is, just set us there
+        //    if (rectTrans.gameObject.activeInHierarchy == false || gameObject.activeInHierarchy == false) {
+        //        rectTrans.anchoredPosition = pos;
+        //        return;
+        //    }
 
-            if (rectTrans.anchoredPosition == pos || Vector2.Distance(pos, rectTrans.anchoredPosition) < 0.2f)
-                return;
+        //    if (rectTrans.anchoredPosition == pos || Vector2.Distance(pos, rectTrans.anchoredPosition) < 0.2f)
+        //        return;
 
-            StartCoroutine(DoMove(rectTrans, pos, duration));
-        }
+        //    StartCoroutine(DoMove(rectTrans, pos, duration));
+        //}
 
-        IEnumerator DoMove(RectTransform rectTrans, Vector2 targetPos, float duration) {
-            float ease;
-            float lerp;
-            float time = 0f;
-            Vector2 lastPos = rectTrans.anchoredPosition;
 
-            while (time < duration) {
-                lerp = time / duration;
-                time += Time.deltaTime;
-                ease = Easing.Ease(Easing.EaseType.SinusoidalInOut, lerp);
-                rectTrans.anchoredPosition = Vector2.Lerp(lastPos, targetPos, ease);
-                yield return null;
-            }
+        
+        //IEnumerator DoMove(RectTransform rectTrans, Vector2 targetPos, float duration) {
+        //    float ease;
+        //    float lerp;
+        //    float time = 0f;
+        //    Vector2 lastPos = rectTrans.anchoredPosition;
 
-            rectTrans.anchoredPosition = targetPos;
-        }
+        //    while (time < duration) {
+        //        lerp = time / duration;
+        //        time += Time.deltaTime;
+        //        ease = Easing.Ease(Easing.EaseType.SinusoidalInOut, lerp);
+        //        rectTrans.anchoredPosition = Vector2.Lerp(lastPos, targetPos, ease);
+        //        yield return null;
+        //    }
+
+        //    rectTrans.anchoredPosition = targetPos;
+        //}
 
     }
 }

@@ -238,7 +238,8 @@ namespace Assets.CS.TabletopUI {
 
         public override void DisplayHere(Token token, Context context) {
             base.DisplayHere(token, context);
-            token.transform.localPosition = Vector3.zero;
+            token.TokenRectTransform.anchoredPosition3D = GetDefaultPosition(token);
+
             slotIconHolder.transform.SetAsLastSibling();
             
         }

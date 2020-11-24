@@ -36,7 +36,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
     public override bool AllowStackMerge { get { return true; } }
      public override  bool EnforceUniqueStacksInThisContainer => true;
 
-     protected override Vector3 GetDefaultPositionForProvisionedToken(Token token)
+     protected override Vector3 GetDefaultPosition(Token token)
      {
          return Registry.Get<Choreographer>().GetFreePosWithDebug(token, Vector3.zero);
      }

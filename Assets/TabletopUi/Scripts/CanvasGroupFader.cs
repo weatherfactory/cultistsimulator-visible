@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -13,17 +14,14 @@ namespace Assets.CS.TabletopUI
         public float durationTurnOff = 0.25f;
         private bool m_isFading;
 
-        private Coroutine transparencyChange;
+        private Coroutine _alphaChangeCoroutine;
 
         public bool IsVisible()
         {
-            return Group.alpha > 0f;
+            return Group.alpha >=1f;
         }
 
-        public bool IsChanging() {
-            return transparencyChange!=null;
-        }
-
+ 
         CanvasGroup group;
         CanvasGroup Group {
             get {
@@ -36,28 +34,30 @@ namespace Assets.CS.TabletopUI
 
         public void Hide()
         {
-            SetAlpha(0f);
-            
-            if (durationTurnOn <= 0f) {
+            if (!IsVisible())
+                return;
+  
+            if (durationTurnOff <= 0f) {
                 SetAlpha(0f);
             }
-            else if ( !IsChanging())
+            else if (_alphaChangeCoroutine==null)
             {
-                transparencyChange = StartCoroutine(DoTransparencyChange(0f, durationTurnOff));
+                _alphaChangeCoroutine = StartCoroutine(DoTransparencyChange(0f, durationTurnOff));
             }
         }
 
 
         public void Show()
         {
-            SetAlpha(1f);
-            return;
+            if (IsVisible())
+                return;
+            
             if (durationTurnOn <= 0f) {
                 SetAlpha(1f);
             }
-            else if (!IsChanging())
+            else if (_alphaChangeCoroutine == null)
             {
-               transparencyChange=StartCoroutine(DoTransparencyChange(1f, durationTurnOn));
+               _alphaChangeCoroutine=StartCoroutine(DoTransparencyChange(1f, durationTurnOn));
             }
         }
 
@@ -81,7 +81,11 @@ namespace Assets.CS.TabletopUI
         }
 
         public void SetAlpha(float alpha) {
-            transparencyChange = null;
+            if(_alphaChangeCoroutine!=null)
+            {
+                StopCoroutine(_alphaChangeCoroutine);
+                _alphaChangeCoroutine = null;
+            }
             Group.alpha = alpha;
 
             if (Mathf.Approximately(alpha, 0f))

@@ -23,7 +23,7 @@ using TMPro;
 public class Output : Sphere {
 
     public CanvasGroupFader canvasGroupFader;
-    [SerializeField] SituationResultsPositioning cardPos;
+    [SerializeField] SituationResultsPositioning outputPositioning;
     [SerializeField] TextMeshProUGUI dumpResultsButtonText;
 
     public override SphereCategory SphereCategory => SphereCategory.Output;
@@ -44,26 +44,15 @@ public class Output : Sphere {
     public void UpdateDisplay(Situation situation)
     {
         if(situation.CurrentState.IsActiveInThisState(this))
+        {
             canvasGroupFader.Show();
+            outputPositioning.ArrangeTokens(GetElementTokens());
+
+        }
         else
-                canvasGroupFader.Hide();
-                
-        
-
+            canvasGroupFader.Hide();
+         
     }
-
-
-    public void SetOutput(List<Token> allTokensToOutput) {
-        if (allTokensToOutput.Any() == false)
-            return;
-
-        AcceptTokens(allTokensToOutput, new Context(Context.ActionSource.SituationResults));
-
-        //currently, if the first stack is fresh, we'll turn it over anyway. I think that's OK for now.
-        //cardPos.ReorderCards(allStacksToOutput);
-        // we noew reorder on DisplayHere
-    }
-
 
 
     public override void AcceptToken(Token token, Context context)
@@ -73,9 +62,10 @@ public class Output : Sphere {
     }
         //stack.Shroud(true);)
 
-    public override void DisplayHere(Token stack, Context context) {
-        base.DisplayHere(stack, context);
-        cardPos.ReorderCards(GetElementTokens());
+    public override void DisplayHere(Token token, Context context) {
+        base.DisplayHere(token, context);
+
+       outputPositioning.ArrangeTokens(GetElementTokens());
     }
 
     public override void RemoveToken(Token token) {
@@ -85,7 +75,7 @@ public class Output : Sphere {
         UpdateDumpButtonText();
 
         bool cardsRemaining = false;
-        IEnumerable<Token> stacks = GetOutputTokens();
+        IEnumerable<Token> stacks = GetElementTokens();
 
         // Window is open? Check if it was the last card, then reset automatically
         if (gameObject.activeInHierarchy) {
@@ -107,14 +97,12 @@ public class Output : Sphere {
         //    cardPos.ReorderCards(stacks);
 
         if (cardsRemaining)
-            cardPos.ReorderCards(stacks);
+            outputPositioning.ArrangeTokens(stacks);
 
         base.RemoveToken(token);
     }
 
-    public IEnumerable<Token> GetOutputTokens() {
-        return GetElementTokens();
-    }
+
 
     public override SpherePath GetPath()
     {
@@ -125,7 +113,7 @@ public class Output : Sphere {
     }
 
     public void UpdateDumpButtonText() {
-        if (GetOutputTokens().Any())
+        if (GetElementTokens().Any())
             dumpResultsButtonText.GetComponent<Babelfish>().UpdateLocLabel(buttonClearResultsDefault);
         else
             dumpResultsButtonText.GetComponent<Babelfish>().UpdateLocLabel(buttonClearResultsNone);

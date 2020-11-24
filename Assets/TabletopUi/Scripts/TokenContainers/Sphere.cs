@@ -66,7 +66,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         [Tooltip("Use this to specify the SpherePath in the editor")] [SerializeField]
         protected string pathIdentifier;
         
-        protected virtual Vector3 GetDefaultPositionForProvisionedToken(Token token)
+        protected virtual Vector3 GetDefaultPosition(Token token)
         {
             return Vector3.zero;
         }
@@ -209,7 +209,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             if (context.TokenLocation == null)
             {
-                token.TokenRectTransform.anchoredPosition3D = GetDefaultPositionForProvisionedToken(token);
+                token.TokenRectTransform.anchoredPosition3D = GetDefaultPosition(token);
             }
             else
             {

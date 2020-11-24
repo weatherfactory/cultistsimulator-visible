@@ -929,6 +929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff770ac38cded940b153cb05a2bd041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathIdentifier: 
   canvasGroupFader: {fileID: 8454324788978835547}
 --- !u!225 &4521111748551047189
 CanvasGroup:
@@ -3123,8 +3124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c066b8af7bf9abc41be5083eddf07401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathIdentifier: 
   canvasGroupFader: {fileID: 114595233805244828}
-  cardPos: {fileID: 114962248236931796}
+  outputPositioning: {fileID: 114962248236931796}
   dumpResultsButtonText: {fileID: 114000013027545752}
 --- !u!225 &225624387322697970
 CanvasGroup:
@@ -3165,7 +3167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4c22b9545bf034fbd6f65bffe0746e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rect: {fileID: 224019201717418328}
+  rectTransform: {fileID: 224019201717418328}
   margin: {x: 50, y: 40}
 --- !u!1 &1670455518639650
 GameObject:
