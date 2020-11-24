@@ -85,7 +85,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 if (_catalogue == null)
                 {
                     _catalogue = Registry.Get<SphereCatalogue>();
-                    _catalogue.RegisterSphere(this);
                 }
 
                 return _catalogue;
@@ -103,16 +102,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
 
-        public virtual void OnEnable()
+        public virtual void Awake()
         {
             Catalogue.RegisterSphere(
                 this); //this is a double call - we already subscribe above. This should be fine because it's a hashset, and because we may want to disable then re-enable. But FYI, future AK.
         }
 
-        public virtual void OnDisable()
-        {
-            Catalogue.DeregisterSphere(this);
-        }
+
 
 
         public virtual bool Retire()

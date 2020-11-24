@@ -37,7 +37,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         public void InitialiseVisuals(IVerb verb)
         {
-            NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
+            NoonUtility.LogWarning(this.GetType().Name + " doesn't support InitialiseVisuals");
         }
 
         public void UpdateVisuals(Element element, int quantity)
@@ -49,12 +49,12 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         public void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate,
             EndingFlavour signalEndingFlavour)
         {
-            NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
+            NoonUtility.LogWarning(this.GetType().Name + " doesn't support UpdateTimerVisuals");
         }
 
         public void SendNotification(INotification notification)
         {
-            NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
+            NoonUtility.LogWarning(this.GetType().Name + " doesn't support SendNotification");
         }
 
         public bool HandleClick(PointerEventData eventData, Token token)
@@ -64,17 +64,17 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         public void DisplaySpheres(IEnumerable<Sphere> spheres)
         {
-            NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
+            NoonUtility.LogWarning(this.GetType().Name + " doesn't support DisplaySpheres");
         }
 
         public void OverrideIcon(string icon)
         {
-            NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
+            NoonUtility.LogWarning(this.GetType().Name + " doesn't support OverrideIcon");
         }
 
         public void SetParticleSimulationSpace(Transform transform)
         {
-            NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
+            NoonUtility.LogWarning(this.GetType().Name + " doesn't support SetParticleSimulationSpace");
         }
 
 

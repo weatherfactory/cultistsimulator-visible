@@ -269,11 +269,9 @@ namespace Assets.CS.TabletopUI {
       
                 startingSlots.UpdateDisplay(situation);
                 storage.UpdateDisplay(situation);
-             
-
                 ongoingDisplay.ShowDeckEffects(situation.CurrentPrimaryRecipe.DeckEffects);
-                ongoingDisplay.ClearOngoingSlots();
-                if (situation.CurrentBeginningEffectCommand != null)
+                
+                if (situation.CurrentBeginningEffectCommand != null && situation.CurrentBeginningEffectCommand.OngoingSlots.Any())
                 {
                     ongoingDisplay.PopulateOngoingSlots(situation.CurrentBeginningEffectCommand.OngoingSlots);
                 }
