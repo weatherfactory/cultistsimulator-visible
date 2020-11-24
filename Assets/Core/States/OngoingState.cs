@@ -26,7 +26,7 @@ namespace Assets.Core.States
             if (s.SphereCategory == SphereCategory.SituationStorage)
                 return true;
 
-            if (s.SphereCategory != SphereCategory.Threshold && s.GoverningSlotSpecification.IsActiveInState(StateEnum.Ongoing))
+            if (s.SphereCategory == SphereCategory.Threshold && s.GoverningSlotSpecification.IsActiveInState(StateEnum.Ongoing))
                 return true;
 
             return false;

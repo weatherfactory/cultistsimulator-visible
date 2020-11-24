@@ -42,7 +42,8 @@ namespace Assets.TabletopUi.Scripts.Services {
             newWindow.positioner.Initialise(newAnchor);
             situation.AttachWindow(newWindow,command);
 
-            
+
+
             if (command.Open)
                 situation.OpenAtCurrentLocation();
             else

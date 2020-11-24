@@ -87,8 +87,6 @@ namespace Assets.Core.Entities {
             OverrideTitle = command.OverrideTitle;
             Path = command.SituationPath;
             CurrentState = SituationState.Rehydrate(command.State,this);
-
-
         }
 
 
