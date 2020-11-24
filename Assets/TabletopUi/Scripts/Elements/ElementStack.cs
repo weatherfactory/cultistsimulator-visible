@@ -63,6 +63,7 @@ namespace Assets.CS.TabletopUI {
         private IlluminateLibrarian _illuminateLibrarian;
 
 
+
         public void Awake()
         {
             _attachedToken=new GameObject().AddComponent<NullToken>();
@@ -94,6 +95,23 @@ namespace Assets.CS.TabletopUI {
 				               .Select(m => $"{m}={mutations[m]}"));
 	        }
         }
+
+        public Type GetDefaultManifestationType()
+        {
+            return typeof(CardManifestation);
+        }
+
+        public Type GetManifestationType(SphereCategory forSphereCategory)
+        {
+            if (forSphereCategory == SphereCategory.SituationStorage)
+                return typeof(StoredManifestation);
+
+            if (forSphereCategory == SphereCategory.Dormant)
+                return typeof(MinimalManifestation);
+
+            return typeof(CardManifestation);
+        }
+
 
         virtual public bool Unique
         {

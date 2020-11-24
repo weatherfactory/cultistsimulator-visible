@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Core.Enums;
 using Assets.Core.Fucine;
 using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
@@ -22,11 +23,23 @@ namespace Assets.Core.Entities.Verbs
         [FucineValue]
         public string Art { get; set; }
 
+        public Type GetDefaultManifestationType()
+        {
+            return typeof(DropzoneManifestation);
+        }
+
+        public Type GetManifestationType(SphereCategory forSphereCategory)
+        {
+            return typeof(DropzoneManifestation);
+        }
+
         [FucineSubEntity(typeof(SlotSpecification), Localise = true)]
         public SlotSpecification Slot { get; set; }
 
         [FucineList(Localise = true)]
         public List<SlotSpecification> Slots { get; set; }
+
+        
 
         public DropzoneVerb(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
@@ -38,9 +51,7 @@ namespace Assets.Core.Entities.Verbs
            
         }
 
-
         public bool Transient => false;
-        public Type AnchorManifestationType => typeof(DropzoneManifestation);
         public bool Startable => false;
         public bool ExclusiveOpen => false;
         public bool CreationAllowedWhenAlreadyExists(Situation s)

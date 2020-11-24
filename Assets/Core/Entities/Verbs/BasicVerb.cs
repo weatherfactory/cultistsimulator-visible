@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
+using Assets.Core.Enums;
 using Assets.Core.Fucine;
 using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
@@ -26,6 +27,16 @@ namespace Assets.Core.Entities
         [FucineValue]
         public string Art { get; set; }
 
+        public Type GetDefaultManifestationType()
+        {
+            return typeof(VerbManifestation);
+        }
+
+        public Type GetManifestationType(SphereCategory forSphereCategory)
+        {
+            return typeof(VerbManifestation);
+        }
+
         [FucineSubEntity(typeof(SlotSpecification),Localise = true)]
         public SlotSpecification Slot { get; set; }
 
@@ -33,7 +44,6 @@ namespace Assets.Core.Entities
         public List<SlotSpecification> Slots { get; set; }
 
 
-        public Type AnchorManifestationType => typeof(VerbManifestation);
 
         public bool Transient
         {

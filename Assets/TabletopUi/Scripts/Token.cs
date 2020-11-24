@@ -173,8 +173,9 @@ namespace Assets.CS.TabletopUI {
             _attachedToElementStack = new GameObject(nameof(NullElementStack)).AddComponent<NullElementStack>();
 
             _attachedToSituation = situation;
-            _manifestation = Registry.Get<PrefabFactory>()
-                .CreateManifestationPrefab(situation.Verb.AnchorManifestationType, this.transform);
+            //commented this out so it happens in Manifest call
+  //          _manifestation = Registry.Get<PrefabFactory>()
+ //               .CreateManifestationPrefab(situation.Verb.GetDefaultManifestationType(), this.transform);
 
 
             if (Verb.Transient)
@@ -184,8 +185,9 @@ namespace Assets.CS.TabletopUI {
 
             name =  Verb.Id + "_verbtoken";
 
-            SituationStateChanged(situation);
-            TimerValuesChanged(situation);
+            //commented out when I commented the stuff above out
+  //          SituationStateChanged(situation);
+  //          TimerValuesChanged(situation);
 
             
         }
@@ -244,12 +246,12 @@ namespace Assets.CS.TabletopUI {
             if (ElementStack.IsValidElementStack())
             {
 
-                if (_manifestation.GetType() != Sphere.ElementManifestationType)
-                    Manifest(Sphere.ElementManifestationType);
+                if (_manifestation.GetType() != ElementStack.GetManifestationType(Sphere.SphereCategory))
+                    Manifest(ElementStack.GetManifestationType(Sphere.SphereCategory));
             }
             else
-            if(_manifestation.GetType()!=Sphere.SituationManifestationType)
-                Manifest(Sphere.SituationManifestationType);
+            if(_manifestation.GetType()!=Verb.GetManifestationType(Sphere.SphereCategory))
+                Manifest(Verb.GetManifestationType(Sphere.SphereCategory));
             
 
         }

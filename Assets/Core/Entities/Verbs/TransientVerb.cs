@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Elements.Manifestations;
@@ -28,9 +29,18 @@ namespace Assets.Core.Entities
         public  bool Transient => true;
 
         public string Art=>String.Empty;
+        public Type GetDefaultManifestationType()
+        {
+            return typeof(VerbManifestation);
 
-        public Type AnchorManifestationType => typeof(VerbManifestation);
+        }
 
+        public Type GetManifestationType(SphereCategory forSphereCategory)
+        {
+          return  typeof(VerbManifestation);
+        }
+
+        
 
         public string Id { get; private set; }
 

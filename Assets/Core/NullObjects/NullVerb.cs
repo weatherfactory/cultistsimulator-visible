@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Entities;
+using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.TabletopUi.Scripts.Elements.Manifestations;
 
@@ -19,9 +20,19 @@ namespace Assets.Core.NullObjects
 
         public string Label { get; set; }
         public string Description { get; set; }
-        public Type AnchorManifestationType => typeof(NullManifestation);
+        
         public bool Transient { get; }
         public string Art => string.Empty;
+        public Type GetDefaultManifestationType()
+        {
+            return typeof(NullManifestation);
+        }
+
+        public Type GetManifestationType(SphereCategory forSphereCategory)
+        {
+            return typeof(NullManifestation);
+        }
+
         public SlotSpecification Slot { get; set; }
         public List<SlotSpecification> Slots { get; set; }
         public bool Startable { get; }

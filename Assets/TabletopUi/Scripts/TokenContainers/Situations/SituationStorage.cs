@@ -16,7 +16,6 @@ using Noon;
 
 public class SituationStorage : Sphere
 {
-    public override Type ElementManifestationType => typeof(StoredManifestation);
 
     public override bool AllowDrag
     {

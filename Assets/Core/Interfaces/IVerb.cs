@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
+using Assets.Core.Enums;
 
 namespace Assets.Core.Interfaces
 {
@@ -15,7 +16,8 @@ namespace Assets.Core.Interfaces
        
         bool Transient { get; }
         string Art { get; }
-        Type AnchorManifestationType { get; }
+        Type GetDefaultManifestationType();
+        Type GetManifestationType(SphereCategory forSphereCategory);
       SlotSpecification Slot { get; set; }
       List<SlotSpecification> Slots { get; set; }
       bool Startable { get; }

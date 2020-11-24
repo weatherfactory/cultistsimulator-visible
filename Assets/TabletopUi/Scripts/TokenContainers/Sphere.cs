@@ -52,9 +52,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
     public abstract class Sphere : MonoBehaviour, ISphereEventSubscriber
     {
-        public virtual Type DropzoneType => typeof(DropzoneManifestation);
-        public virtual Type SituationManifestationType => typeof(VerbManifestation);
-        public virtual Type ElementManifestationType => typeof(CardManifestation);
 
         public virtual bool AllowDrag { get; private set; }
         public virtual bool AllowStackMerge => true;
@@ -218,7 +215,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             var token = Registry.Get<PrefabFactory>().CreateLocally<Token>(transform);
             stack.AttachToken(token);
 
-            token.Manifest(typeof(CardManifestation)); //temporary: this should be a default type for the element, probably
+            token.Manifest(stack.GetDefaultManifestationType());
 
             if (context.TokenLocation == null)
             {
