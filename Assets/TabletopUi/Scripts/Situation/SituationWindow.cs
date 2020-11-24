@@ -257,6 +257,13 @@ namespace Assets.CS.TabletopUI {
         }
 
 
+
+        //yeurch
+        public void AddOngoingSlot(SlotSpecification slotSpec)
+        {
+            ongoingDisplay.AddOngoingSlot(slotSpec);
+        }
+
         public void SituationStateChanged(Situation situation)
         {
       
@@ -265,6 +272,7 @@ namespace Assets.CS.TabletopUI {
              
 
                 ongoingDisplay.ShowDeckEffects(situation.CurrentPrimaryRecipe.DeckEffects);
+                ongoingDisplay.ClearOngoingSlots();
                 if (situation.CurrentBeginningEffectCommand != null)
                 {
                     ongoingDisplay.PopulateOngoingSlots(situation.CurrentBeginningEffectCommand.OngoingSlots);

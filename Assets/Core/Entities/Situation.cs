@@ -88,7 +88,8 @@ namespace Assets.Core.Entities {
             Path = command.SituationPath;
             CurrentState = SituationState.Rehydrate(command.State,this);
 
-  }
+
+        }
 
 
 
@@ -120,6 +121,12 @@ namespace Assets.Core.Entities {
             _window.OnContainerRemoved.AddListener(RemoveContainer);
 
             _window.Populate(this);
+
+            foreach (var os in command.OngoingSlots)
+                newWindow.AddOngoingSlot(os);  
+
+
+            
 
 
         }

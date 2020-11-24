@@ -53,7 +53,7 @@ namespace Assets.Core.States
             if(situation.CurrentInterrupts.Contains(SituationInterruptInput.Halt))
             {
                 situation.CurrentInterrupts.Remove(SituationInterruptInput.Halt);
-         ChangeState(this,new HaltingState(),situation);
+                   ChangeState(this,new HaltingState(),situation);
             }
 
             if (situation.TimeRemaining <= 0)

@@ -74,7 +74,7 @@ namespace Assets.Core.States
 
                 }
 
-                ChangeState(this, new UnstartedState(), situation);
+                ChangeState(this, new OngoingState(), situation);
 
             }
             else

@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Core.Commands;
 using Assets.Core.Enums;
 using Assets.Core.Fucine;
+using Assets.Core.NullObjects;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Noon;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.TokenContainers
@@ -30,6 +33,14 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
         {
             return new SpherePath("-");
         }
+
+        public override Token ProvisionStackFromCommand(StackCreationCommand stackCreationCommand)
+        {
+            NoonUtility.LogWarning("Trying to provision a stack in a null sphere, which is possibly a mistake: " + stackCreationCommand.ElementId);
+
+            return NullToken.Create();
+        }
+
 
     }
 }

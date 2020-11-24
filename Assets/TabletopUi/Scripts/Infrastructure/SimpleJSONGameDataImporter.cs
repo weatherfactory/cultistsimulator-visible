@@ -311,7 +311,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 var situation = Registry.Get<SituationBuilder>().CreateSituation(command);
                 
-                
                 ImportSlotContents(situation,htSituationValues,  SaveConstants.SAVE_STARTINGSLOTELEMENTS);
                 ImportSlotContents(situation, htSituationValues,  SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
                 ImportSituationStoredElements(htSituationValues, situation);

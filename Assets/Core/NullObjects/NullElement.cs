@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Core.Entities
 {
@@ -14,5 +15,6 @@ namespace Assets.Core.Entities
         {
             _id = NULL_ELEMENT_ID;
         }
+
     }
 }

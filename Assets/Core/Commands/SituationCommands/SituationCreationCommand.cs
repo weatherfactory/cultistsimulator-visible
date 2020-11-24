@@ -24,7 +24,7 @@ namespace Assets.Core.Commands
         public string OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
         public TokenLocation AnchorLocation { get; set; }
         public TokenLocation WindowLocation { get; set; }
-        public List<SlotSpecification> OngoingSlots { get; set; } //we might, eg, save when slots have been created by a recipe, but later move on to another recipe
+        public List<SlotSpecification> OngoingSlots { get; set; } =new List<SlotSpecification>();//we might, eg, save when slots have been created by a recipe, but later move on to another recipe
         public SituationPath SituationPath { get; set; }
         public bool Open { get; set; }
 
@@ -41,7 +41,7 @@ namespace Assets.Core.Commands
             SourceToken = sourceToken;
             State = state;
             SituationPath =new SituationPath(verb);
-            OngoingSlots = new List<SlotSpecification>();
+
         }
 
         public IVerb GetBasicOrCreatedVerb()

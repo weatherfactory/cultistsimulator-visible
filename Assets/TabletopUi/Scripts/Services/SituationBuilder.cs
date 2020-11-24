@@ -37,12 +37,12 @@ namespace Assets.TabletopUi.Scripts.Services {
             anchorSphere.AcceptToken(newAnchor, new Context(Context.ActionSource.Unknown));
             newAnchor.transform.localPosition = command.AnchorLocation.Position;
 
-            var newWindow = Instantiate(situationWindowPrefab);
+            SituationWindow newWindow = Instantiate(situationWindowPrefab);
             newWindow.transform.SetParent(windowSphere.transform);
             newWindow.positioner.Initialise(newAnchor);
             situation.AttachWindow(newWindow,command);
 
-
+            
             if (command.Open)
                 situation.OpenAtCurrentLocation();
             else

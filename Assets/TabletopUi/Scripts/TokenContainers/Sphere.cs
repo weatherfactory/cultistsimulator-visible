@@ -162,7 +162,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         }
 
-        public Token ProvisionStackFromCommand(StackCreationCommand stackCreationCommand)
+        public virtual Token ProvisionStackFromCommand(StackCreationCommand stackCreationCommand)
         {
             var token = ProvisionElementStackToken(stackCreationCommand.ElementId, stackCreationCommand.ElementQuantity,
                 stackCreationCommand.Context.StackSource, stackCreationCommand.Context, stackCreationCommand.Mutations);

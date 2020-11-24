@@ -7,6 +7,7 @@ using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
+using UnityEngine;
 
 namespace Assets.Core.NullObjects
 {
@@ -37,5 +38,10 @@ namespace Assets.Core.NullObjects
            //
         }
 
+        public static NullToken Create()
+        {
+           return new GameObject().AddComponent<NullToken>();
+
+        }
     }
 }

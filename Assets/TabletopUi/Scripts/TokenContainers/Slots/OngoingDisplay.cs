@@ -39,11 +39,24 @@ namespace Assets.CS.TabletopUI {
             _onSlotRemoved = onContainerRemoved;
             _situationPath = situation.Path;
             if(situation.CurrentBeginningEffectCommand!=null)
-            PopulateOngoingSlots((situation.CurrentBeginningEffectCommand.OngoingSlots));
+               PopulateOngoingSlots((situation.CurrentBeginningEffectCommand.OngoingSlots));
         }
 
 
-        public void PopulateOngoingSlots(List<SlotSpecification> ongoingSlots)
+        public void AddOngoingSlot(SlotSpecification spec)
+        {
+            var newSlot = Registry.Get<PrefabFactory>().CreateLocally<RecipeSlot>(slotHolder);
+            newSlot.name = spec.UniqueId;
+
+            spec.MakeActiveInState(StateEnum.Ongoing);
+
+            newSlot.Initialise(spec, _situationPath);
+
+            this.ongoingSlots.Add(newSlot);
+            _onSlotAdded.Invoke(newSlot);
+        }
+
+        public void ClearOngoingSlots()
         {
 
             foreach (var os in this.ongoingSlots)
@@ -53,20 +66,18 @@ namespace Assets.CS.TabletopUI {
             }
 
             this.ongoingSlots.Clear();
+        }
+
+        public void PopulateOngoingSlots(List<SlotSpecification> ongoingSlots)
+        {
+
+            ClearOngoingSlots();
 
 
             foreach (var spec in ongoingSlots)
             {
-                var newSlot = Registry.Get<PrefabFactory>().CreateLocally<RecipeSlot>(slotHolder);
-                newSlot.name = spec.UniqueId;
 
-                spec.MakeActiveInState(StateEnum.Ongoing);
-
-                newSlot.Initialise(spec, _situationPath);
-
-                this.ongoingSlots.Add(newSlot);
-                _onSlotAdded.Invoke(newSlot);
-
+                AddOngoingSlot(spec);
             }
         }
 
