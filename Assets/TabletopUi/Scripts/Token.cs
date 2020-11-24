@@ -207,6 +207,12 @@ namespace Assets.CS.TabletopUI {
             var manifestationToRetire = oldManifestation;
             _manifestation = newManifestation;
 
+            //This makes me nervous: I still only have a nebulous understanding of anchor positioning stuff
+            //but! I needed to set it because GridLayout overrides anchor positions, and there's a GridLayout in storage
+            TokenRectTransform.sizeDelta = new Vector2(_manifestation.RectTransform.sizeDelta.x, _manifestation.RectTransform.sizeDelta.y);
+            TokenRectTransform.anchorMin = _manifestation.RectTransform.anchorMax;
+            TokenRectTransform.anchorMax = _manifestation.RectTransform.anchorMax;
+
             manifestationToRetire.Retire(vfxForOldManifestation, OnSwappedOutManifestationRetired);
 
         }
@@ -227,16 +233,17 @@ namespace Assets.CS.TabletopUI {
                     SwapOutManifestation(_manifestation, newManifestation, RetirementVFX.None);
                 _manifestation.InitialiseVisuals(ElementStack.Element);
                 _manifestation.UpdateVisuals(ElementStack.Element, ElementStack.Quantity);
-            }
+                }
             else
             {
                     var newManifestation = Registry.Get<PrefabFactory>()
                         .CreateManifestationPrefab(manifestationType, this.transform);
                     SwapOutManifestation(_manifestation, newManifestation, RetirementVFX.None);
                     _manifestation.InitialiseVisuals(Verb);
+
+
             }
 
-            TokenRectTransform.sizeDelta=new Vector2(ManifestationRectTransform.sizeDelta.x,ManifestationRectTransform.sizeDelta.y);
 
         }
 
@@ -252,8 +259,6 @@ namespace Assets.CS.TabletopUI {
             else
             if(_manifestation.GetType()!=Verb.GetManifestationType(Sphere.SphereCategory))
                 Manifest(Verb.GetManifestationType(Sphere.SphereCategory));
-            
-
         }
 
         /// <summary>
