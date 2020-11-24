@@ -139,8 +139,6 @@ namespace Assets.CS.TabletopUI {
             return match.MatchType == SlotMatchForAspectsType.Okay;
         }
 
-        // IGlowableView implementation
-
         public virtual void OnPointerEnter(PointerEventData eventData) {
             if (GoverningSlotSpecification.Greedy) // never show glow for greedy slots
                 return;
@@ -241,6 +239,7 @@ namespace Assets.CS.TabletopUI {
 
         public override void DisplayHere(Token token, Context context) {
             base.DisplayHere(token, context);
+            token.transform.localPosition = Vector3.zero;
             slotIconHolder.transform.SetAsLastSibling();
             
         }

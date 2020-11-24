@@ -61,15 +61,22 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public virtual bool ContentsHidden => false;
         public virtual bool IsGreedy => false;
         public abstract SphereCategory SphereCategory { get; }
-        private SlotSpecification _governingSlotSpecification=new SlotSpecification();
-        public SlotSpecification GoverningSlotSpecification
-        {
-            get => _governingSlotSpecification;
-            set => _governingSlotSpecification = value;
-        }
+        public SlotSpecification GoverningSlotSpecification { get; set; } = new SlotSpecification();
 
         [Tooltip("Use this to specify the SpherePath in the editor")] [SerializeField]
         protected string pathIdentifier;
+        
+        protected virtual Vector3 GetDefaultPositionForProvisionedToken(Token token)
+        {
+            return Vector3.zero;
+        }
+
+        protected List<INotifier> _notifiersForContainer = new List<INotifier>();
+        public bool Defunct { get; protected set; }
+        protected HashSet<ContainerBlock> _currentContainerBlocks = new HashSet<ContainerBlock>();
+        private SphereCatalogue _catalogue;
+        private List<Token> _tokens = new List<Token>();
+        private readonly HashSet<ISphereEventSubscriber> _subscribers = new HashSet<ISphereEventSubscriber>();
 
         public SphereCatalogue Catalogue
         {
@@ -84,19 +91,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 return _catalogue;
             }
         }
-
-
-        protected virtual Vector3 GetDefaultPositionForProvisionedToken(Token token)
-        {
-            return Vector3.zero;
-        }
-
-        protected List<INotifier> _notifiersForContainer = new List<INotifier>();
-        public bool Defunct { get; protected set; }
-        protected HashSet<ContainerBlock> _currentContainerBlocks = new HashSet<ContainerBlock>();
-        private SphereCatalogue _catalogue;
-        private List<Token> _tokens = new List<Token>();
-        private readonly HashSet<ISphereEventSubscriber> _subscribers = new HashSet<ISphereEventSubscriber>();
 
         public void Subscribe(ISphereEventSubscriber subscriber)
         {
@@ -466,7 +460,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 while (token.ElementStack.Decays && token.ElementStack.Quantity > 1)
                 {
                     AcceptToken(token.CalveTokenAtSamePosition(1,context),context);
-
                 }
 
             }

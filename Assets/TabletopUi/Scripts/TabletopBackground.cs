@@ -53,12 +53,6 @@ namespace Assets.CS.TabletopUI
                 Edge.sprite = edgeImage;
             }
 
-
-            //if (characterActiveLegacy.Id.ToLower().Contains("exile"))
-            //{
-            //    var exileLeather = ResourcesManager.GetSprite("ui/", "table_leather_exile");
-            //    Cover.sprite = exileLeather;
-            //}
         }
 
     }

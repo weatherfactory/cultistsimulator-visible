@@ -53,7 +53,7 @@ public class SlotSpecification: AbstractEntity<SlotSpecification>
     [FucineValue(false)]
     public bool NoAnim { get; set; }
 
-    private HashSet<StateEnum> _activeInStates=new HashSet<StateEnum>();
+    private readonly HashSet<StateEnum> _activeInStates=new HashSet<StateEnum>();
 
     public bool IsActiveInState(StateEnum state)
     {
