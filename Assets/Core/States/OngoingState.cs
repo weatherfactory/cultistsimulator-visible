@@ -26,6 +26,7 @@ namespace Assets.Core.States
             if (s.SphereCategory == SphereCategory.SituationStorage)
                 return true;
 
+            //at time of writing, there's only a SlotSpecification if it's a Threshold
             if (s.SphereCategory == SphereCategory.Threshold && s.GoverningSlotSpecification.IsActiveInState(StateEnum.Ongoing))
                 return true;
 
