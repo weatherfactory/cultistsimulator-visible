@@ -15,6 +15,10 @@ namespace Assets.Core.NullObjects
             //
         }
 
+        public override bool IsValidSituation()
+        {
+            return false;
+        }
 
     }
 }

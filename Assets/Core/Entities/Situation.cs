@@ -56,9 +56,14 @@ namespace Assets.Core.Entities {
         
         public SituationPath Path { get; }
         public bool IsOpen { get; private set; }
-    
-        
-            public RecipeBeginningEffectCommand CurrentBeginningEffectCommand;
+
+        public virtual bool IsValidSituation()
+        {
+            return true;
+        }
+
+
+        public RecipeBeginningEffectCommand CurrentBeginningEffectCommand;
         public RecipeCompletionEffectCommand currentCompletionEffectCommand;
 
 

@@ -65,12 +65,7 @@ namespace Assets.CS.TabletopUI {
             get { return _attachedToSituation.Verb; }
         }
 
-        private ElementStack _attachedToElementStack;
-
-        public ElementStack ElementStack
-        {
-            get => _attachedToElementStack;
-        }
+        public ElementStack ElementStack { get; private set; } 
 
         public int ElementQuantity => ElementStack.Quantity;
 
@@ -119,7 +114,8 @@ namespace Assets.CS.TabletopUI {
             Sphere = Registry.Get<NullSphere>();
             Itinerary = TokenTravelItinerary.StayExactlyWhereYouAre(this);
             _manifestation = Registry.Get<NullManifestation>();
-
+            ElementStack= new GameObject(nameof(NullElementStack)).AddComponent<NullElementStack>();
+          _attachedToSituation    = new NullSituation();
 
         }
 
@@ -170,8 +166,6 @@ namespace Assets.CS.TabletopUI {
 
         public void Populate(Situation situation)
         {
-            _attachedToElementStack = new GameObject(nameof(NullElementStack)).AddComponent<NullElementStack>();
-
             _attachedToSituation = situation;
             //commented this out so it happens in Manifest call
   //          _manifestation = Registry.Get<PrefabFactory>()
@@ -195,9 +189,7 @@ namespace Assets.CS.TabletopUI {
         
         public void Populate(ElementStack elementStack)
         {
-            _attachedToSituation = new NullSituation();
-
-            _attachedToElementStack = elementStack;
+            ElementStack = elementStack;
             name = elementStack.Element.Id + "_stacktoken";
         }
 
@@ -233,15 +225,19 @@ namespace Assets.CS.TabletopUI {
                     SwapOutManifestation(_manifestation, newManifestation, RetirementVFX.None);
                 _manifestation.InitialiseVisuals(ElementStack.Element);
                 _manifestation.UpdateVisuals(ElementStack.Element, ElementStack.Quantity);
-                }
+            }
+            else if(_attachedToSituation.IsValidSituation())
+            {
+                var newManifestation = Registry.Get<PrefabFactory>()
+                    .CreateManifestationPrefab(manifestationType, this.transform);
+                SwapOutManifestation(_manifestation, newManifestation, RetirementVFX.None);
+                _manifestation.InitialiseVisuals(Verb);
+
+
+            }
             else
             {
-                    var newManifestation = Registry.Get<PrefabFactory>()
-                        .CreateManifestationPrefab(manifestationType, this.transform);
-                    SwapOutManifestation(_manifestation, newManifestation, RetirementVFX.None);
-                    _manifestation.InitialiseVisuals(Verb);
-
-
+                NoonUtility.LogWarning("Token with neither a valid situation nor a valid stack");
             }
 
 
@@ -256,9 +252,13 @@ namespace Assets.CS.TabletopUI {
                 if (_manifestation.GetType() != ElementStack.GetManifestationType(Sphere.SphereCategory))
                     Manifest(ElementStack.GetManifestationType(Sphere.SphereCategory));
             }
-            else
-            if(_manifestation.GetType()!=Verb.GetManifestationType(Sphere.SphereCategory))
+          else if(_attachedToSituation.IsValidSituation())
+            if (_manifestation.GetType()!=Verb.GetManifestationType(Sphere.SphereCategory))
                 Manifest(Verb.GetManifestationType(Sphere.SphereCategory));
+            else
+            {
+                NoonUtility.LogWarning("Token with neither a valid situation nor a valid stack");
+            }
         }
 
         /// <summary>

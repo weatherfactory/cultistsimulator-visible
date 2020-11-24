@@ -177,7 +177,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
 
-        public virtual Token ProvisionElementStackToken(string elementId, int quantity)
+        public Token ProvisionElementStackToken(string elementId, int quantity)
         {
             return ProvisionElementStackToken(elementId, quantity, Source.Existing(),
                 new Context(Context.ActionSource.Unknown), new Dictionary<string, int>());

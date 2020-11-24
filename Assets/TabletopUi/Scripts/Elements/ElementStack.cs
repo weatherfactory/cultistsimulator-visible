@@ -44,7 +44,7 @@ namespace Assets.CS.TabletopUI {
         public bool Defunct { get; protected set; }
 
 
-        public Element Element;
+        public virtual Element Element { get; set; }
         private Token _attachedToken;
         private int _quantity;
 
@@ -305,9 +305,8 @@ namespace Assets.CS.TabletopUI {
             Element = Registry.Get<Compendium>().GetEntityById<Element>(elementId);
             if (Element==null)
 			{
+                Element=new NullElement();
 				NoonUtility.Log("Trying to create nonexistent element! - '" + elementId + "'");
-                this.Retire();
-                return;
             }
 
             gameObject.name = Element.Id + "_stack";
@@ -363,9 +362,7 @@ namespace Assets.CS.TabletopUI {
             return Retire(RetirementVFX.CardBurn);
         }
 
-
-
-        
+       
         public bool Retire(RetirementVFX vfxName)
         {
 

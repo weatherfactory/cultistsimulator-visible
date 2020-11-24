@@ -60,6 +60,8 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
     public override void DisplayHere(Token token, Context context) {
 
         base.DisplayHere(token, context);
+        //does a dropzone token exist here?
+
 		token.SnapToGrid();
     }
 

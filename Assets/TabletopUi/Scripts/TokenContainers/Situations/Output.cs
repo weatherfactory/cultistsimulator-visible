@@ -103,7 +103,7 @@ public class Output : Sphere {
         if (cardsRemaining)
             outputPositioning.ArrangeTokens(stacks);
         else
-        AllTokenssCollected.Invoke();
+            AllTokenssCollected.Invoke();
 
         base.RemoveToken(token);
     }
