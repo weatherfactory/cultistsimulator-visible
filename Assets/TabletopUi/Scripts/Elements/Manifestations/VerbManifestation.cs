@@ -175,8 +175,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             
             var activeThresholdSpheres = new List<Sphere>(spheres.Where(s => s.SphereCategory == SphereCategory.Threshold));
             var outputSpheres = new List<Sphere>(spheres.Where(s => s.SphereCategory == SphereCategory.Output));
-
-
+            
             if (!activeThresholdSpheres.Any())
                 hideMiniSlot();
             else

@@ -883,11 +883,7 @@ namespace Assets.CS.TabletopUI {
 
     public void SphereContentsUpdated(Situation situation)
         {
-            var thresholdSpheresWithStacks = situation.GetSpheresByCategory(SphereCategory.Threshold)
-                .Where(sphere => sphere.GetElementTokens().Count() == 1);
-
-            _manifestation.DisplaySpheres(thresholdSpheresWithStacks);
-
+            _manifestation.DisplaySpheres(situation.GetSpheresActiveForCurrentState());
 
             int completionCount = situation.GetStacks(SphereCategory.Output).Select(s => s.Quantity).Sum();
             _manifestation.SendNotification(new Notification(string.Empty, completionCount.ToString()));
