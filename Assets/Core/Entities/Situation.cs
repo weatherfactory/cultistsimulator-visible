@@ -45,7 +45,7 @@ namespace Assets.Core.Entities {
             get { return CurrentPrimaryRecipe == null ? null : CurrentPrimaryRecipe.Id; }
         }
 
-        public readonly IVerb Verb;
+        public virtual IVerb Verb { get; set; }
         private readonly List<ISituationSubscriber> subscribers = new List<ISituationSubscriber>();
         public HashSet<SituationInterruptInput> CurrentInterrupts = new HashSet<SituationInterruptInput>();
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
