@@ -236,7 +236,7 @@ namespace Assets.CS.TabletopUI {
             }
             else
             {
-                NoonUtility.LogWarning("Token with neither a valid situation nor a valid stack");
+                NoonUtility.LogWarning("Token with neither a valid situation nor a valid stack: " + gameObject.name);
             }
 
 
@@ -256,7 +256,7 @@ namespace Assets.CS.TabletopUI {
                 Manifest(Verb.GetManifestationType(Sphere.SphereCategory));
             else
             {
-                NoonUtility.LogWarning("Token with neither a valid situation nor a valid stack");
+                NoonUtility.LogWarning("Token with neither a valid situation nor a valid stack: " + gameObject.name);
             }
         }
 
