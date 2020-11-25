@@ -5,15 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Elements;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
 using UnityEngine;
 
 namespace Assets.Core.NullObjects
 {
    public class NullToken:Token
-    {
-        public override void Manifest()
+   {
+       public override ElementStack ElementStack {
+           get => Registry.Get<NullElementStack>();
+           protected set {} }
+
+       public virtual IVerb Verb => NullVerb.Create();
+
+       public override void Manifest()
         {
           //
         }
@@ -38,10 +46,7 @@ namespace Assets.Core.NullObjects
            //
         }
 
-        public static NullToken Create()
-        {
-           return new GameObject().AddComponent<NullToken>();
+        
 
-        }
     }
 }

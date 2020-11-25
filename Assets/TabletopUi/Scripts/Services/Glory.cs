@@ -7,8 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Entities;
 using Assets.Core.Fucine;
+using Assets.Core.NullObjects;
 using Assets.Core.Services;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Elements;
 using Assets.TabletopUi.Scripts.Elements.Manifestations;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
@@ -34,10 +36,13 @@ namespace Assets.TabletopUi.Scripts.Services
         [SerializeField] private GraphicsSettingsAdapter graphicsSettingsAdapter;
         [SerializeField] private WindowSettingsAdapter windowSettingsAdapter;
         [SerializeField] private SoundManager soundManager;
+        public SituationBuilder situationBuilder;
         public Limbo limbo;
         public NullSphere NullSphere;
         public NullManifestation NullManifestation;
-        public SituationBuilder situationBuilder;
+        public NullToken NullToken;
+        public NullElementStack NullElementStack;
+        
 
 
 
@@ -55,7 +60,7 @@ namespace Assets.TabletopUi.Scripts.Services
                 initialisedAt = DateTime.Now.ToString();
             else
             {
-                NoonUtility.Log("Problem: looks like we're trying to load the master scene twice",2);
+                NoonUtility.LogWarning("Problem: looks like we're trying to load the master scene twice");
                 return;
             }
 
@@ -80,9 +85,7 @@ namespace Assets.TabletopUi.Scripts.Services
             NoonUtility.Log(info, 0);
 
         }
-
-
-
+        
         private void Initialise()
         {
             try
@@ -119,6 +122,10 @@ namespace Assets.TabletopUi.Scripts.Services
                 registryAccess.Register(limbo);
                 registryAccess.Register(NullSphere);
                 registryAccess.Register(NullManifestation);
+                registryAccess.Register(NullElementStack);
+
+                registryAccess.Register(NullToken);
+
                 registryAccess.Register(situationBuilder);
 
 

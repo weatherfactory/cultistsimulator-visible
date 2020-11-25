@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Commands;
+using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Core.Fucine;
 using Assets.Core.NullObjects;
@@ -16,6 +17,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
 {
     public class NullSphere:Sphere
     {
+        public NullToken NullToken;
         public override SphereCategory SphereCategory => SphereCategory.Null;
         public override bool PersistBetweenScenes => true;
         public override bool EnforceUniqueStacksInThisContainer =>false;
@@ -38,7 +40,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
         {
             NoonUtility.LogWarning("Trying to provision a stack in a null sphere, which is possibly a mistake: " + stackCreationCommand.ElementId);
 
-            return NullToken.Create();
+            return NullToken;
         }
 
 

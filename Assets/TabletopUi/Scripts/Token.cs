@@ -60,12 +60,12 @@ namespace Assets.CS.TabletopUI {
         protected bool shrouded = false;
         protected Situation _attachedToSituation;
 
-        public IVerb Verb
+        public virtual IVerb Verb
         {
             get { return _attachedToSituation.Verb; }
         }
 
-        public ElementStack ElementStack { get; private set; } 
+        public virtual ElementStack ElementStack { get; protected set; } 
 
         public int ElementQuantity => ElementStack.Quantity;
 
@@ -114,9 +114,8 @@ namespace Assets.CS.TabletopUI {
             Sphere = Registry.Get<NullSphere>();
             Itinerary = TokenTravelItinerary.StayExactlyWhereYouAre(this);
             _manifestation = Registry.Get<NullManifestation>();
-            ElementStack= new GameObject(nameof(NullElementStack)).AddComponent<NullElementStack>();
-          _attachedToSituation    = new NullSituation();
-
+            ElementStack=Registry.Get<NullElementStack>();
+            _attachedToSituation    = new NullSituation();
         }
 
         public void StartArtAnimation()
