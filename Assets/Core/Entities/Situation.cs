@@ -72,6 +72,11 @@ namespace Assets.Core.Entities {
             return _anchor.Location;
         }
 
+        public Token GetAnchor()
+        {
+            return _anchor;
+        }
+
         public Vector3 GetWindowLocation()
         {
             return _window.positioner.GetPosition();
@@ -111,7 +116,7 @@ namespace Assets.Core.Entities {
 
 
 
-        public void AttachWindow(SituationWindow newWindow,SituationCreationCommand command)
+        public void AttachWindow(SituationWindow newWindow,List<SlotSpecification> ongoingSlots)
         {
             _window = newWindow;
             AddSubscriber(_window);
@@ -125,7 +130,7 @@ namespace Assets.Core.Entities {
 
             _window.Populate(this);
 
-            foreach (var os in command.OngoingSlots)
+            foreach (var os in ongoingSlots)
                 newWindow.AddOngoingSlot(os);  
 
 
@@ -799,9 +804,19 @@ namespace Assets.Core.Entities {
         {
             }
 
+        public void OnTokenBeginDrag(TokenEventArgs args)
+        {
+           //
+        }
+
         public void OnTokenDragged(TokenEventArgs args)
         {
             //
+        }
+
+        public void OnTokenEndDrag(TokenEventArgs args)
+        {
+           //
         }
     }
 

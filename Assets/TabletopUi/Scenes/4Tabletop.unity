@@ -15678,7 +15678,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000012993813, y: -0.0007452052}
+  m_AnchoredPosition: {x: 0.000019490719, y: -0.0014677048}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &512707587
@@ -23013,8 +23013,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathIdentifier: 
   canvasGroupFader: {fileID: 0}
-  cardPos: {fileID: 0}
+  outputPositioning: {fileID: 0}
   dumpResultsButtonText: {fileID: 0}
+  AllTokenssCollected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &980569403
 GameObject:
   m_ObjectHideFlags: 0
@@ -24920,8 +24923,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathIdentifier: 
   canvasGroupFader: {fileID: 0}
-  cardPos: {fileID: 0}
+  outputPositioning: {fileID: 0}
   dumpResultsButtonText: {fileID: 0}
+  AllTokenssCollected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1065654872
 GameObject:
   m_ObjectHideFlags: 0
@@ -33513,7 +33519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4c22b9545bf034fbd6f65bffe0746e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rect: {fileID: 1584716457}
+  rectTransform: {fileID: 0}
   margin: {x: 50, y: 40}
 --- !u!114 &1584716459
 MonoBehaviour:
@@ -33559,8 +33565,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathIdentifier: 
   canvasGroupFader: {fileID: 1584716459}
-  cardPos: {fileID: 1584716458}
+  outputPositioning: {fileID: 0}
   dumpResultsButtonText: {fileID: 0}
+  AllTokenssCollected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1590194383
 GameObject:
   m_ObjectHideFlags: 0
@@ -37222,8 +37231,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 422685288}
   m_HandleRect: {fileID: 422685287}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -38080,8 +38089,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathIdentifier: 
   canvasGroupFader: {fileID: 0}
-  cardPos: {fileID: 0}
+  outputPositioning: {fileID: 0}
   dumpResultsButtonText: {fileID: 0}
+  AllTokenssCollected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2088849367
 GameObject:
   m_ObjectHideFlags: 0

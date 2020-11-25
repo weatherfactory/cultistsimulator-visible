@@ -32,7 +32,8 @@ namespace Assets.CS.TabletopUI {
             this.parentTrans = GetComponentInParent<RectTransform>();
             this.uiCamera = Camera.main; // there is only one camera in our scene so this works.
 
-            SetToTokenPos();
+            SetToWorldPosInScreenBounds(anchor.transform.position);
+
         }
 
         Vector2 GetScreenPosFromWorld(Vector3 worldPos) {
@@ -68,10 +69,6 @@ namespace Assets.CS.TabletopUI {
         }
 
         // GENERAL MOVE BEHAVIOR
-
-        public void SetToTokenPos() {
-            SetToWorldPosInScreenBounds(anchor.transform.position);
-        }
 
         void SetToWorldPosInScreenBounds(Vector3 worldPos) {
             SetPosition(GetBoundCorrectedWorldPos(worldPos));

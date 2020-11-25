@@ -18,6 +18,8 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void OnTokenPointerEntered(TokenEventArgs args);
         void OnTokenPointerExited(TokenEventArgs args);
         void OnTokenDoubleClicked(TokenEventArgs args);
+        void OnTokenBeginDrag(TokenEventArgs args);
         void OnTokenDragged(TokenEventArgs args);
+        void OnTokenEndDrag(TokenEventArgs args);
     }
 }

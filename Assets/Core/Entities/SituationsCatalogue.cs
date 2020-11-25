@@ -87,7 +87,7 @@ namespace Assets.Core.Entities
 
     
             var builder = Registry.Get<SituationBuilder>();
-            var situation =builder.CreateSituation(scc);
+            var situation =builder.CreateSituationWithAnchorAndWindow(scc);
 
             situation.ExecuteHeartbeat(0f);
 

@@ -58,7 +58,7 @@ namespace Assets.CS.TabletopUI {
         public OnContainerRemovedEvent OnContainerRemoved;
 
         protected bool shrouded = false;
-        protected Situation _attachedToSituation;
+        protected Situation _attachedToSituation=new NullSituation();
 
         public virtual IVerb Verb
         {
@@ -107,15 +107,20 @@ namespace Assets.CS.TabletopUI {
         protected Sphere OldSphere; // Used to tell OldContainsTokens that this thing was dropped successfully
 
 
-        public void Awake()
+        public virtual void Awake()
         {
+            if (Sphere == null)
+                Sphere = Registry.Get<NullSphere>();
+
             TokenRectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
-            Sphere = Registry.Get<NullSphere>();
+
             Itinerary = TokenTravelItinerary.StayExactlyWhereYouAre(this);
             _manifestation = Registry.Get<NullManifestation>();
             ElementStack=Registry.Get<NullElementStack>();
-            _attachedToSituation    = new NullSituation();
+            
+
+            SetXNess(TokenXNess.NoValidDestination);
         }
 
         public void StartArtAnimation()
@@ -142,8 +147,8 @@ namespace Assets.CS.TabletopUI {
         public bool Defunct { get; protected set; }
         public bool NoPush => _manifestation.NoPush;
         public bool _currentlyBeingDragged { get; protected set; }
-        
-        private TokenXNess TokenXNess { get; set; }
+
+        private TokenXNess TokenXNess { get; set; } = TokenXNess.NoValidDestination;
 
 
 
@@ -251,13 +256,13 @@ namespace Assets.CS.TabletopUI {
                 if (_manifestation.GetType() != ElementStack.GetManifestationType(Sphere.SphereCategory))
                     Manifest(ElementStack.GetManifestationType(Sphere.SphereCategory));
             }
-          else if(_attachedToSituation.IsValidSituation())
-            if (_manifestation.GetType()!=Verb.GetManifestationType(Sphere.SphereCategory))
-                Manifest(Verb.GetManifestationType(Sphere.SphereCategory));
-            else
-            {
-                NoonUtility.LogWarning("Token with neither a valid situation nor a valid stack: " + gameObject.name);
-            }
+            else if(_attachedToSituation.IsValidSituation())
+                if (_manifestation.GetType()!=Verb.GetManifestationType(Sphere.SphereCategory))
+                    Manifest(Verb.GetManifestationType(Sphere.SphereCategory));
+                else
+                {
+                    NoonUtility.LogWarning("Token with neither a valid situation nor a valid stack: " + gameObject.name);
+                }
         }
 
         /// <summary>
@@ -287,15 +292,6 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-
-        public void Start()
-        {
-            if (Sphere.GetType() != typeof(CardsPile))
-                Registry.Get<LocalNexus>().TokenInteractionEvent.AddListener(ReactToDraggedToken);
-
-            SetXNess(TokenXNess.NoValidDestination);
-
-        }
 
         public void SetXNess(TokenXNess xness)
         {
@@ -353,7 +349,7 @@ namespace Assets.CS.TabletopUI {
             if (CanDrag(eventData))
             {
                 _currentlyBeingDragged = true;
-                Registry.Get<LocalNexus>().SignalTokenBeginDrag(this, eventData);
+                Sphere.OnTokenBeginDrag(new TokenEventArgs { PointerEventData = eventData, Token = this, Sphere = Sphere });
                 StartDrag(eventData);
             }
 
@@ -469,8 +465,8 @@ namespace Assets.CS.TabletopUI {
         public  void OnEndDrag(PointerEventData eventData)
         {
             NoonUtility.Log("Ending drag for " + this.name, 0, VerbosityLevel.SystemChatter);
-
-            Registry.Get<LocalNexus>().SignalTokenEndDrag(this, eventData);
+            Sphere.OnTokenEndDrag(new TokenEventArgs { PointerEventData = eventData, Token = this, Sphere = Sphere });
+            
             FinishDrag();
         }
 

@@ -203,5 +203,12 @@ namespace Assets.CS.TabletopUI {
         {
             //
         }
+
+        public void OnTokenBeginDrag(TokenEventArgs args)
+        {
+        }
+        public void OnTokenEndDrag(TokenEventArgs args)
+        {
+        }
     }
 }

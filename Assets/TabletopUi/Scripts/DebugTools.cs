@@ -561,6 +561,13 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
     {
         //
     }
+
+    public void OnTokenBeginDrag(TokenEventArgs args)
+    {
+    }
+    public void OnTokenEndDrag(TokenEventArgs args)
+    {
+    }
 }
 
 

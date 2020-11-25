@@ -141,6 +141,13 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 	}
 
 
+    public void OnTokenBeginDrag(TokenEventArgs args)
+    {
+    }
+    public void OnTokenEndDrag(TokenEventArgs args)
+    {
+    }
+
     public void OnTokenDragged(TokenEventArgs args)
     {
 
@@ -150,6 +157,8 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
             mousePos = new Vector2(Pointer.current.position.x.ReadValue() / Screen.width - 0.5f, Pointer.current.position.y.ReadValue() / Screen.height - 0.5f);
             SetMagnitudeFromMouse();
     }
+
+
 
     void SetMagnitudeFromMouse() {
 		magnitude = 0f;

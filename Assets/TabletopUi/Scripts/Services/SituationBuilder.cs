@@ -20,28 +20,17 @@ namespace Assets.TabletopUi.Scripts.Services {
         [SerializeField] private SituationWindow situationWindowPrefab;
 
 
-        public Situation CreateSituation(SituationCreationCommand command)
+
+        public Situation CreateSituationWithAnchorAndWindow(SituationCreationCommand command)
         {
-            Situation situation = new Situation(command);
-            Registry.Get<SituationsCatalogue>().RegisterSituation(situation);
+            var situation = CreateSituationFromCommand(command);
 
             var sphereCatalogue = Registry.Get<SphereCatalogue>();
-
+            var anchorSphere = sphereCatalogue.GetContainerByPath(command.AnchorLocation.AtSpherePath);
             var windowSphere = sphereCatalogue.GetContainerByPath(new SpherePath(Registry.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath));
 
-            
-            var anchorSphere = sphereCatalogue.GetContainerByPath(command.AnchorLocation.AtSpherePath);
-
-            var newAnchor = Registry.Get<PrefabFactory>().Create<Token>();
-            situation.AttachAnchor(newAnchor);
-            anchorSphere.AcceptToken(newAnchor, new Context(Context.ActionSource.Unknown));
-            newAnchor.transform.localPosition = command.AnchorLocation.Position;
-
-            SituationWindow newWindow = Instantiate(situationWindowPrefab);
-            newWindow.transform.SetParent(windowSphere.transform);
-            newWindow.positioner.Initialise(newAnchor);
-            situation.AttachWindow(newWindow,command);
-
+            var newAnchor = AttachNewAnchor(command.AnchorLocation.Position, situation, anchorSphere);
+            var newWindow=AttachNewWindow(command.OngoingSlots, windowSphere, newAnchor, situation);
 
 
             if (command.Open)
@@ -70,5 +59,29 @@ namespace Assets.TabletopUi.Scripts.Services {
             return situation;
         }
 
+        public Situation CreateSituationFromCommand(SituationCreationCommand command)
+        {
+            Situation newSituation = new Situation(command);
+            Registry.Get<SituationsCatalogue>().RegisterSituation(newSituation);
+            return newSituation;
+        }
+
+        public Token AttachNewAnchor(Vector3 position, Situation situation, Sphere anchorSphere)
+        {
+            var newAnchor = Registry.Get<PrefabFactory>().Create<Token>();
+            situation.AttachAnchor(newAnchor);
+            anchorSphere.AcceptToken(newAnchor, new Context(Context.ActionSource.Unknown));
+            newAnchor.transform.localPosition = position;
+            return newAnchor;
+        }
+
+        public SituationWindow AttachNewWindow(List<SlotSpecification> ongoingSlots, Sphere windowSphere, Token newAnchor, Situation situation)
+        {
+            SituationWindow newWindow = Instantiate(situationWindowPrefab);
+            newWindow.transform.SetParent(windowSphere.transform);
+            newWindow.positioner.Initialise(newAnchor);
+            situation.AttachWindow(newWindow, ongoingSlots);
+            return newWindow;
+        }
     }
 }

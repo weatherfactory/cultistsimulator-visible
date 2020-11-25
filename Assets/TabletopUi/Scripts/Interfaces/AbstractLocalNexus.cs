@@ -30,7 +30,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
        [SerializeField] public TruckEvent TruckEvent;
        [SerializeField] public PedestalEvent PedestalEvent;
 
-       [SerializeField] public TokenInteractionEvent TokenInteractionEvent;
 
 
         public void Awake()
@@ -40,15 +39,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
         }
 
-        public void SignalTokenBeginDrag(Token token, PointerEventData pointerEventData)
-        {
-            TokenInteractionEvent.Invoke(new TokenInteractionEventArgs{Token=token,PointerEventData = pointerEventData,TokenInteractionType = TokenInteractionType.BeginDrag});
-        }
-
-        public void SignalTokenEndDrag(Token token, PointerEventData pointerEventData)
-        {
-            TokenInteractionEvent.Invoke(new TokenInteractionEventArgs { Token = token, PointerEventData = pointerEventData, TokenInteractionType = TokenInteractionType.EndDrag });
-        }
 
 
     }

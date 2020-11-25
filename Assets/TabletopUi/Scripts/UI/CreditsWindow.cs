@@ -85,5 +85,12 @@ namespace Assets.TabletopUi.Scripts.UI
         {
             
         }
+
+        public void OnTokenBeginDrag(TokenEventArgs args)
+        {
+        }
+        public void OnTokenEndDrag(TokenEventArgs args)
+        {
+        }
     }
 }

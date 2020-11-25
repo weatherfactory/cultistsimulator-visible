@@ -652,6 +652,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 s.OnTokenDoubleClicked(args);
         }
 
+        public virtual void OnTokenBeginDrag(TokenEventArgs args)
+        {
+            Catalogue.OnTokenBeginDrag(args);
+            foreach (var s in _subscribers)
+                s.OnTokenBeginDrag(args);
+        }
+
         public void OnTokenDragged(TokenEventArgs args)
         {
             Catalogue.OnTokenDragged(args);
@@ -659,7 +666,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 s.OnTokenDragged(args);
         }
 
-
+        public virtual void OnTokenEndDrag(TokenEventArgs args)
+        {
+            Catalogue.OnTokenEndDrag(args);
+            foreach (var s in _subscribers)
+                s.OnTokenEndDrag(args);
+        }
     }
 
 }

@@ -309,7 +309,7 @@ namespace Assets.CS.TabletopUI {
             IVerb v = Registry.Get<Compendium>().GetEntityById<BasicVerb>(_character.ActiveLegacy.StartingVerbId);
             SituationCreationCommand command = new SituationCreationCommand(v, NullRecipe.Create(), StateEnum.Unstarted,
                 new TokenLocation(0f,0f,-100f, _tabletop.GetPath()));
-            var situation = Registry.Get<SituationBuilder>().CreateSituation(command);
+            var situation = Registry.Get<SituationBuilder>().CreateSituationWithAnchorAndWindow(command);
             
             situation.ExecuteHeartbeat(0f);
 

@@ -77,7 +77,7 @@ namespace Assets.CS.TabletopUI {
 
         public void Start() {
             ShowGlow(false, false);
-            Registry.Get<LocalNexus>().TokenInteractionEvent.AddListener(ReactToDraggedToken);
+
             _notifiersForContainer.Add(Registry.Get<INotifier>());
             
         }
@@ -99,30 +99,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        void ReactToDraggedToken(TokenInteractionEventArgs args)
-        {
 
-            if (args.TokenInteractionType == TokenInteractionType.BeginDrag)
-            {
-
-                if (GetElementTokenInSlot() != null)
-                    return; // Slot is filled? Don't highlight it as interactive
-                if (IsBeingAnimated)
-                    return; // Slot is being animated? Don't highlight
-                if (IsGreedy)
-                    return; // Slot is greedy? It can never take anything.
-                
-
-                if (GetMatchForStack(args.Token.ElementStack).MatchType == SlotMatchForAspectsType.Okay)
-                    ShowGlow(true,false);
-            }
-
-
-            else if (args.TokenInteractionType == TokenInteractionType.EndDrag)
-                    ShowGlow(false, false);
-
-
-        }
 
         bool CanInteractWithDraggedObject(Token token) {
             if (lastGlowState == false || token == null)
@@ -321,7 +298,33 @@ namespace Assets.CS.TabletopUI {
 
         }
 
+
+        public override void OnTokenBeginDrag(TokenEventArgs args)
+        {
+            if (GetElementTokenInSlot() != null)
+                return; // Slot is filled? Don't highlight it as interactive
+            if (IsBeingAnimated)
+                return; // Slot is being animated? Don't highlight
+            if (IsGreedy)
+                return; // Slot is greedy? It can never take anything.
+
+
+            if (GetMatchForStack(args.Token.ElementStack).MatchType == SlotMatchForAspectsType.Okay)
+                ShowGlow(true, false);
+
+            base.OnTokenBeginDrag(args);
         }
+
+
+        public override void OnTokenEndDrag(TokenEventArgs args)
+        {
+            ShowGlow(false, false);
+
+            base.OnTokenEndDrag(args);
+
+        }
+
+    }
 
 
     

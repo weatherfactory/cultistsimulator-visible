@@ -8,20 +8,37 @@ using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Elements;
+using Assets.TabletopUi.Scripts.Elements.Manifestations;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
+using Assets.TabletopUi.Scripts.Interfaces;
+using Assets.TabletopUi.Scripts.TokenContainers;
 using UnityEngine;
 
 namespace Assets.Core.NullObjects
 {
    public class NullToken:Token
    {
-       public override ElementStack ElementStack {
-           get => Registry.Get<NullElementStack>();
-           protected set {} }
+       public NullManifestation NullManifestation;
+       public NullElementStack NullElementStack;
 
-       public virtual IVerb Verb => NullVerb.Create();
+       public override IVerb Verb => NullVerb.Create();
 
-       public override void Manifest()
+       public override void Awake()
+       {
+           TokenRectTransform = GetComponent<RectTransform>();
+           canvasGroup = GetComponent<CanvasGroup>();
+            _manifestation = NullManifestation;
+            ElementStack = NullElementStack;
+
+       }
+
+       public override void Manifest(Type manifestationType)
+       {
+            //
+       }
+
+
+        public override void Manifest()
         {
           //
         }

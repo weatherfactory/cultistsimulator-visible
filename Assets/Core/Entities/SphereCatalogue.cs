@@ -130,11 +130,24 @@ namespace Assets.Core.Entities {
                 s.OnTokenPointerExited(args);
         }
 
+        public void OnTokenBeginDrag(TokenEventArgs args)
+        {
+            foreach (var s in _subscribers)
+                s.OnTokenBeginDrag(args);
+        }
+
         public void OnTokenDragged(TokenEventArgs args)
         {
             foreach(var s in _subscribers)
                 s.OnTokenDragged(args);
         }
+
+        public void OnTokenEndDrag(TokenEventArgs args)
+        {
+            foreach (var s in _subscribers)
+                s.OnTokenEndDrag(args);
+        }
+
 
 
         public AspectsInContext GetAspectsInContext(IAspectsDictionary aspectsInSituation)
@@ -232,6 +245,7 @@ namespace Assets.Core.Entities {
         {
             _tabletopAspectsDirty = true;
         }
+
 
     }
 }

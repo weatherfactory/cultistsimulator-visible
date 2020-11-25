@@ -6,11 +6,13 @@ using System.Linq;
 using System.Reflection;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
+using Assets.Core.Entities.Verbs;
 using Assets.Core.Enums;
 using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
@@ -61,8 +63,22 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
 
         base.DisplayHere(token, context);
         //does a dropzone token exist here?
+        Token dropzoneToken = GetAllTokens().FirstOrDefault(t => t.Verb.GetType() == typeof(DropzoneVerb));
+        if (dropzoneToken == null)
+        {
+            //if not, create it
+            var dropzoneRecipe = Registry.Get<Compendium>().GetEntityById<Recipe>("dropzone.classic");
+            var dropzoneVerb = Registry.Get<Compendium>().GetVerbForRecipe(dropzoneRecipe);
+            var tokenLocation = new TokenLocation(Vector3.zero, this.GetPath());
 
-		token.SnapToGrid();
+            var cmd = new SituationCreationCommand(dropzoneVerb, dropzoneRecipe, StateEnum.Unstarted, tokenLocation,
+                null);
+           dropzoneToken = Registry.Get<SituationBuilder>().CreateSituationWithAnchorAndWindow(cmd).GetAnchor();
+        }
+
+        //align the incoming token with the dropzone
+
+        token.SnapToGrid();
     }
 
     public override void OnTokenDoubleClicked(TokenEventArgs args)

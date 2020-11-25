@@ -9336,7 +9336,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1744258937}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9373,7 +9373,9 @@ MonoBehaviour:
   TokenRectTransform: {fileID: 0}
   rotateOnDrag: 1
   PlacementAlreadyChronicled: 0
-  Sphere: {fileID: 0}
+  Sphere: {fileID: 1424725277}
+  NullManifestation: {fileID: 7189417231050622933}
+  NullElementStack: {fileID: 1325004344}
 --- !u!1 &405495827
 GameObject:
   m_ObjectHideFlags: 0
@@ -28558,7 +28560,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1744258937}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1325004344
 MonoBehaviour:
@@ -30723,6 +30725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathIdentifier: 
+  NullToken: {fileID: 376721909}
 --- !u!1 &1425316270
 GameObject:
   m_ObjectHideFlags: 0
@@ -36471,8 +36474,8 @@ Transform:
   - {fileID: 999615438}
   - {fileID: 1424725276}
   - {fileID: 8099843473072193949}
-  - {fileID: 376721908}
   - {fileID: 1325004343}
+  - {fileID: 376721908}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
