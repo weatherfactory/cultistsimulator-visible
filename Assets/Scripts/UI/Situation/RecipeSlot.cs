@@ -24,7 +24,7 @@ namespace Assets.CS.TabletopUI {
 
 
 
-    public class RecipeSlot : Sphere, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
+    public class RecipeSlot : Sphere, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
 
         public override SphereCategory SphereCategory => SphereCategory.Threshold;
 
@@ -191,22 +191,6 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-
-
-        public void OnDrop(PointerEventData eventData)
-        {
-
-            var stack = eventData.pointerDrag.GetComponent<Token>();
-
-            if (GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
-                return;
-
-            if (!eventData.dragging || stack==null)
-                return;
-
-            TryAcceptTokenAsThreshold(stack);
-
-        }
 
         
         

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 114972629330940566}
   - component: {fileID: 111265985691825676}
   - component: {fileID: 225443034359755438}
+  - component: {fileID: 4921537108124972761}
   m_Layer: 5
   m_Name: RecipeSlot
   m_TagString: Untagged
@@ -56,9 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a7f671d7b040e488f0ae7c5416a616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnStacksChanged:
-    m_PersistentCalls:
-      m_Calls: []
+  pathIdentifier: 
   viz: {fileID: 114972629330940566}
   SlotLabel: {fileID: 114961501245325788}
   border: {fileID: 114472044940795862}
@@ -112,6 +111,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &4921537108124972761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010408375514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a5c6b13c46627442a5a2c35c6c51c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sphere: {fileID: 114887034075387412}
 --- !u!1 &1052193299888978
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,7 +352,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -352,9 +364,9 @@ MonoBehaviour:
   m_fontSizeMin: 8
   m_fontSizeMax: 14
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 1026
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 1024
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
