@@ -7,9 +7,8 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI
 {
-    public class TabletopBackground : MonoBehaviour, IDropHandler, IPointerClickHandler {
+    public class TabletopBackground : MonoBehaviour, IPointerClickHandler {
 
-        public event System.Action<PointerEventData> onDropped;
         public event System.Action<PointerEventData> onClicked;
 
 #pragma warning disable 649
@@ -18,13 +17,6 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Image Edge;
 #pragma warning restore 649
 
-
-        public void OnDrop(PointerEventData eventData) {
-            if (!eventData.dragging)
-                return;
-
-            onDropped?.Invoke(eventData);
-        }
 
         public void OnPointerClick(PointerEventData eventData)
         {

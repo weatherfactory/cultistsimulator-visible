@@ -176,8 +176,6 @@ namespace Assets.CS.TabletopUI {
                 _endGameAnimController
             );
 
-            InitialiseListeners();
-
             _initialised = true;
 
 
@@ -253,15 +251,7 @@ namespace Assets.CS.TabletopUI {
             endGameAnimController.Initialise();
         }
 
-        private void InitialiseListeners() {
-            // Init Listeners to pre-existing DisplayHere Objects
-            mapBackground.onDropped += HandleOnMapBackgroundDropped;
-        }
 
-        private void OnDestroy() {
-            // Static event so make sure to de-init once this object is destroyed
-            mapBackground.onDropped -= HandleOnMapBackgroundDropped;
-        }
 
 
 

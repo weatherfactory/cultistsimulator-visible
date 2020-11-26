@@ -47,15 +47,13 @@ namespace Assets.CS.TabletopUI {
         
         bool lastGlowState;
 
-        public bool IsBeingAnimated { get; set; }
-
         public override bool AllowStackMerge { get { return false; } }
 
         private SituationPath _situationPath;
 
         public override bool AllowDrag {
             get {
-                return !GoverningSlotSpecification.Greedy || IsBeingAnimated;
+                return !GoverningSlotSpecification.Greedy;
             }
         }
 
@@ -203,7 +201,7 @@ namespace Assets.CS.TabletopUI {
             if (GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
                 return;
 
-            if (IsBeingAnimated || !eventData.dragging || stack==null)
+            if (!eventData.dragging || stack==null)
                 return;
 
             TryAcceptTokenAsThreshold(stack);
@@ -303,8 +301,6 @@ namespace Assets.CS.TabletopUI {
         {
             if (GetElementTokenInSlot() != null)
                 return; // Slot is filled? Don't highlight it as interactive
-            if (IsBeingAnimated)
-                return; // Slot is being animated? Don't highlight
             if (IsGreedy)
                 return; // Slot is greedy? It can never take anything.
 

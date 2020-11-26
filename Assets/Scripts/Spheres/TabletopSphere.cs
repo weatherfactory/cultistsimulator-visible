@@ -55,7 +55,6 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
 
     private void InitialiseListeners() {
         // Init Listeners to pre-existing DisplayHere Objects
-        _background.onDropped += HandleOnTableDropped;
         _background.onClicked += HandleOnTableClicked;
     }
 
