@@ -12,10 +12,6 @@ namespace Assets.Core.Entities
     public class Dictum: AbstractEntity<Dictum>
     {
 
-
-        [FucineValue]
-        public string DefaultTransientVerbType { get; set; }
-
         [FucineValue]
         public string DefaultWorldSpherePath { get; set; }
 
