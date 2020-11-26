@@ -423,6 +423,13 @@ namespace Assets.TabletopUi.Scripts.Elements
             backArtwork.overrideSprite = sprite;
         }
 
+        protected void OnDisable()
+        {
+            // this resets any animation frames so we don't get stuck when deactivating mid-anim
+            ResetIconAnimation();
+
+        }
+
         public void ResetIconAnimation()
         {
             artwork.overrideSprite = null;

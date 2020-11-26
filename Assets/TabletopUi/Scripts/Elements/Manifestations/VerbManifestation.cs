@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -113,6 +114,13 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             {
                 SetTimerVisibility(false);
             }
+        }
+
+        protected void OnDisable()
+        {
+            // this resets any animation frames so we don't get stuck when deactivating mid-anim
+            ResetIconAnimation();
+
         }
 
         public void SendNotification(INotification notification)

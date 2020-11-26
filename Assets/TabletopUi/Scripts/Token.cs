@@ -161,12 +161,6 @@ namespace Assets.CS.TabletopUI {
             get { return _durability; }
         }
 
-        protected void OnDisable()
-        {
-            // this resets any animation frames so we don't get stuck when deactivating mid-anim
-            _manifestation.ResetIconAnimation();
-
-        }
 
         public void Populate(Situation situation)
         {
