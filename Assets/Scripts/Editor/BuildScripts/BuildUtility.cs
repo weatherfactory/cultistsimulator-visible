@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Assets.Core.Entities;
-using Assets.Editor;
 using Assets.TabletopUi.Scripts.Editor.BuildScripts;
 using Galaxy;
 using Noon;

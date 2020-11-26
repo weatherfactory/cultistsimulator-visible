@@ -1,2 +1,0 @@
-ExtractCharactersUsed.py
-pause
