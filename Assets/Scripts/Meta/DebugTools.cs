@@ -526,48 +526,21 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
         return File.Exists(GetGameSaveLocation(index));
     }
 
-    public void NotifyTokensChangedForSphere(TokenEventArgs args)
+    public void NotifyTokensChangedForSphere(TokenInteractionEventArgs args)
     {
         //
     }
 
-    public void OnTokenClicked(TokenEventArgs args)
+    public void OnTokenInteraction(TokenInteractionEventArgs args)
     {
-    if(args.Token.ElementStack.IsValidElementStack())
-        SetInput(args.Token.Element.Id);
+     if(args.Interaction==Interaction.OnClicked)
+         if (args.Token.ElementStack.IsValidElementStack())
+             SetInput(args.Token.Element.Id);
     }
 
-    public void OnTokenReceivedADrop(TokenEventArgs args)
-    {
-      //
-    }
 
-    public void OnTokenPointerEntered(TokenEventArgs args)
-    {
-       //
-    }
 
-    public void OnTokenPointerExited(TokenEventArgs args)
-    {
-       //
-    }
 
-    public void OnTokenDoubleClicked(TokenEventArgs args)
-    {
-        //
-    }
-
-    public void OnTokenDragged(TokenEventArgs args)
-    {
-        //
-    }
-
-    public void OnTokenBeginDrag(TokenEventArgs args)
-    {
-    }
-    public void OnTokenEndDrag(TokenEventArgs args)
-    {
-    }
 }
 
 

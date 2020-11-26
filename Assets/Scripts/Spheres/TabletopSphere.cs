@@ -80,10 +80,12 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
         token.SnapToGrid();
     }
 
-    public override void OnTokenDoubleClicked(TokenEventArgs args)
+    public override void OnTokenInThisSphereInteracted(TokenInteractionEventArgs args)
     {
-        SendTokenToNearestValidDestination(args.Token);
-        base.OnTokenDoubleClicked(args);
+        if(args.Interaction==Interaction.OnDoubleClicked)
+            SendTokenToNearestValidDestination(args.Token);
+
+        base.OnTokenInThisSphereInteracted(args);
     }
 
     private bool SendTokenToNearestValidDestination(Token tokenToSend)

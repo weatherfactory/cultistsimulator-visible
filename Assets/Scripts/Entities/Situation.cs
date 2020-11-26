@@ -772,7 +772,7 @@ namespace Assets.Core.Entities {
             return rc.GetPredictionForFollowupRecipe(CurrentPrimaryRecipe, this);
         }
 
-        public void NotifyTokensChangedForSphere(TokenEventArgs args)
+        public void NotifyTokensChangedForSphere(TokenInteractionEventArgs args)
         {
 
             CurrentRecipePrediction = GetUpdatedRecipePrediction();
@@ -784,40 +784,12 @@ namespace Assets.Core.Entities {
 
         }
 
-        public void OnTokenClicked(TokenEventArgs args)
+        public void OnTokenInteraction(TokenInteractionEventArgs args)
         {
-            }
-
-        public void OnTokenReceivedADrop(TokenEventArgs args)
-        {
-            }
-
-        public void OnTokenPointerEntered(TokenEventArgs args)
-        {
-            }
-
-        public void OnTokenPointerExited(TokenEventArgs args)
-        {
-            }
-
-        public void OnTokenDoubleClicked(TokenEventArgs args)
-        {
-            }
-
-        public void OnTokenBeginDrag(TokenEventArgs args)
-        {
-           //
+//
         }
 
-        public void OnTokenDragged(TokenEventArgs args)
-        {
-            //
-        }
 
-        public void OnTokenEndDrag(TokenEventArgs args)
-        {
-           //
-        }
     }
 
 }

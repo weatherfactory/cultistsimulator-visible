@@ -12,14 +12,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 {
     public interface ISphereEventSubscriber
     {
-        void NotifyTokensChangedForSphere(TokenEventArgs args);
-        void OnTokenClicked(TokenEventArgs args);
-        void OnTokenReceivedADrop(TokenEventArgs args);
-        void OnTokenPointerEntered(TokenEventArgs args);
-        void OnTokenPointerExited(TokenEventArgs args);
-        void OnTokenDoubleClicked(TokenEventArgs args);
-        void OnTokenBeginDrag(TokenEventArgs args);
-        void OnTokenDragged(TokenEventArgs args);
-        void OnTokenEndDrag(TokenEventArgs args);
+        void NotifyTokensChangedForSphere(TokenInteractionEventArgs args);
+        void OnTokenInteraction(TokenInteractionEventArgs args);
     }
 }

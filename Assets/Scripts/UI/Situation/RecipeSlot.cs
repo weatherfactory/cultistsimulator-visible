@@ -32,7 +32,6 @@ namespace Assets.CS.TabletopUI {
 
         public IList<RecipeSlot> childSlots { get; set; }
         public RecipeSlot ParentSlot { get; set; }
-        public string AnimationTag { get; set; }
 
         // VISUAL ELEMENTS
         public RecipeSlotViz viz;
@@ -281,7 +280,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public override void OnTokenBeginDrag(TokenEventArgs args)
+        public void OnTokenBeginDrag(TokenInteractionEventArgs args)
         {
             if (GetElementTokenInSlot() != null)
                 return; // Slot is filled? Don't highlight it as interactive
@@ -292,15 +291,13 @@ namespace Assets.CS.TabletopUI {
             if (GetMatchForStack(args.Token.ElementStack).MatchType == SlotMatchForAspectsType.Okay)
                 ShowGlow(true, false);
 
-            base.OnTokenBeginDrag(args);
+           
         }
 
 
-        public override void OnTokenEndDrag(TokenEventArgs args)
+        public  void OnTokenEndDrag(TokenInteractionEventArgs args)
         {
             ShowGlow(false, false);
-
-            base.OnTokenEndDrag(args);
 
         }
 

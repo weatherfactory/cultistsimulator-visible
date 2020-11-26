@@ -23,49 +23,21 @@ public class DragDebug : MonoBehaviour,ISphereEventSubscriber
 
 
 
-    public void NotifyTokensChangedForSphere(TokenEventArgs args)
+    public void NotifyTokensChangedForSphere(TokenInteractionEventArgs args)
     {
      
     }
 
-    public void OnTokenClicked(TokenEventArgs args)
+    public void OnTokenInteraction(TokenInteractionEventArgs args)
     {
-        DisplayDetails(args);
-
+      if(args.Interaction==Interaction.OnClicked || args.Interaction==Interaction.OnDrag)
+          DisplayDetails(args);
     }
 
-    public void OnTokenReceivedADrop(TokenEventArgs args)
-    {
-       
-    }
 
-    public void OnTokenPointerEntered(TokenEventArgs args)
-    {
-    }
 
-    public void OnTokenPointerExited(TokenEventArgs args)
-    {
-    }
 
-    public void OnTokenDoubleClicked(TokenEventArgs args)
-    {
-    }
-
-    public void OnTokenBeginDrag(TokenEventArgs args)
-    {
-    }
-    public void OnTokenEndDrag(TokenEventArgs args)
-    {
-    }
-
-    public void OnTokenDragged(TokenEventArgs args)
-    {
-
-        DisplayDetails(args);
-
-    }
-
-    private void DisplayDetails(TokenEventArgs args)
+    private void DisplayDetails(TokenInteractionEventArgs args)
     {
         currentlyDragging.text = args.Token?.name;
         currentSphere.text = args.Sphere?.name;

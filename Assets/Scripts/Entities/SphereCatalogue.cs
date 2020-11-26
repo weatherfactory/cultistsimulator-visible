@@ -92,7 +92,7 @@ namespace Assets.Core.Entities {
         }
 
 
-        public void NotifyTokensChangedForSphere(TokenEventArgs args)
+        public void NotifyTokensChangedForSphere(TokenInteractionEventArgs args)
         {
             NotifyAspectsDirty();
 
@@ -100,53 +100,13 @@ namespace Assets.Core.Entities {
                 s.NotifyTokensChangedForSphere(args);
         }
 
-        public void OnTokenClicked(TokenEventArgs args)
+        public void OnTokenInteraction(TokenInteractionEventArgs args)
         {
             foreach (var s in _subscribers)
-                s.OnTokenClicked(args);
+                s.OnTokenInteraction(args);
         }
 
-        public void OnTokenReceivedADrop(TokenEventArgs args)
-        {
-            foreach (var s in _subscribers)
-                s.OnTokenReceivedADrop(args);
-        }
-
-        public void OnTokenPointerEntered(TokenEventArgs args)
-        {
-            foreach (var s in _subscribers)
-                s.OnTokenDoubleClicked(args);
-        }
-
-        public void OnTokenPointerExited(TokenEventArgs args)
-        {
-            foreach (var s in _subscribers)
-                s.OnTokenPointerEntered(args);
-        }
-
-        public void OnTokenDoubleClicked(TokenEventArgs args)
-        {
-            foreach (var s in _subscribers)
-                s.OnTokenPointerExited(args);
-        }
-
-        public void OnTokenBeginDrag(TokenEventArgs args)
-        {
-            foreach (var s in _subscribers)
-                s.OnTokenBeginDrag(args);
-        }
-
-        public void OnTokenDragged(TokenEventArgs args)
-        {
-            foreach(var s in _subscribers)
-                s.OnTokenDragged(args);
-        }
-
-        public void OnTokenEndDrag(TokenEventArgs args)
-        {
-            foreach (var s in _subscribers)
-                s.OnTokenEndDrag(args);
-        }
+        
 
 
 

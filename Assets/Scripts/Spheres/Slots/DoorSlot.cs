@@ -51,7 +51,7 @@ namespace Assets.CS.TabletopUI {
         void ReactToDraggedToken(TokenInteractionEventArgs args)
         {
 
-            if (args.TokenInteractionType == TokenInteractionType.BeginDrag)
+            if (args.Interaction == Interaction.OnDragBegin)
             {
 
                 var stack = args.Token;
@@ -62,7 +62,7 @@ namespace Assets.CS.TabletopUI {
             }
 
 
-            else if (args.TokenInteractionType == TokenInteractionType.EndDrag)
+            else if (args.Interaction == Interaction.OnDragEnd)
                 ShowGlow(false, false);
 
 

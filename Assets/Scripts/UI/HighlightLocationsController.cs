@@ -74,7 +74,7 @@ namespace Assets.TabletopUi.Scripts.UI
 
 
 
-      public void NotifyTokensChangedForSphere(TokenEventArgs args)
+      public void NotifyTokensChangedForSphere(TokenInteractionEventArgs args)
       {
           var tc = Registry.Get<SphereCatalogue>();
           var aspectsInContext = tc.GetAspectsInContext(new AspectsDictionary());
@@ -91,42 +91,18 @@ namespace Assets.TabletopUi.Scripts.UI
           }
       }
 
-      public void OnTokenClicked(TokenEventArgs args)
+      public void OnTokenInteraction(TokenInteractionEventArgs args)
       {
-      }
-
-      public void OnTokenReceivedADrop(TokenEventArgs args)
-      {
-      }
-
-      public void OnTokenPointerEntered(TokenEventArgs args)
-      {
-          if (!args.PointerEventData.dragging)
+          if(args.Interaction==Interaction.OnPointerEntered)
+            if (!args.PointerEventData.dragging)
               ActivateOnlyMatchingHighlightLocation(args.Element.Id);
 
+          if (args.Interaction == Interaction.OnPointerExited)
+              if (!args.PointerEventData.dragging)
+                  DeactivateMatchingHighlightLocation(args.Element.Id);
       }
 
-      public void OnTokenPointerExited(TokenEventArgs args)
-      { 
-          if(!args.PointerEventData.dragging)
-              DeactivateMatchingHighlightLocation(args.Element.Id);
 
-      }
 
-      public void OnTokenDoubleClicked(TokenEventArgs args)
-      {
-      }
-
-      public void OnTokenDragged(TokenEventArgs args)
-      {
-          //
-      }
-
-      public void OnTokenBeginDrag(TokenEventArgs args)
-      {
-      }
-      public void OnTokenEndDrag(TokenEventArgs args)
-      {
-      }
     }
 }

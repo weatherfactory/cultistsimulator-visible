@@ -169,46 +169,19 @@ namespace Assets.CS.TabletopUI {
             tabletopBurner.ShowImageBurn(spriteName, token, duration, scale, alignment);
         }
 
-        public void NotifyTokensChangedForSphere(TokenEventArgs args)
+        public void NotifyTokensChangedForSphere(TokenInteractionEventArgs args)
         {
             //
         }
 
-        public void OnTokenClicked(TokenEventArgs args)
+        public void OnTokenInteraction(TokenInteractionEventArgs args)
         {
-            ShowCardElementDetails(args.Element,args.Token.ElementStack);
+            if(args.Interaction==Interaction.OnClicked)
+              ShowCardElementDetails(args.Element, args.Token.ElementStack);
+
+            if (args.Interaction == Interaction.OnDoubleClicked)
+                HideDetails();
         }
 
-        public void OnTokenReceivedADrop(TokenEventArgs args)
-        {
-            //
-        }
-
-        public void OnTokenPointerEntered(TokenEventArgs args)
-        {
-            //
-        }
-
-        public void OnTokenPointerExited(TokenEventArgs args)
-        {
-            //
-        }
-
-        public void OnTokenDoubleClicked(TokenEventArgs args)
-        {
-            HideDetails();
-        }
-
-        public void OnTokenDragged(TokenEventArgs args)
-        {
-            //
-        }
-
-        public void OnTokenBeginDrag(TokenEventArgs args)
-        {
-        }
-        public void OnTokenEndDrag(TokenEventArgs args)
-        {
-        }
     }
 }

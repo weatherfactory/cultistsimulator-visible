@@ -141,22 +141,6 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 	}
 
 
-    public void OnTokenBeginDrag(TokenEventArgs args)
-    {
-    }
-    public void OnTokenEndDrag(TokenEventArgs args)
-    {
-    }
-
-    public void OnTokenDragged(TokenEventArgs args)
-    {
-
-        // if we're dragging a token, check if the mouse is in the scroll zone near the edge of the screen.
-
-            // point ranging from (-0.5, -0.5) to (0.5, 0.5)
-            mousePos = new Vector2(Pointer.current.position.x.ReadValue() / Screen.width - 0.5f, Pointer.current.position.y.ReadValue() / Screen.height - 0.5f);
-            SetMagnitudeFromMouse();
-    }
 
 
 
@@ -184,35 +168,24 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 	}
 
 
-    public void NotifyTokensChangedForSphere(TokenEventArgs args)
+    public void NotifyTokensChangedForSphere(TokenInteractionEventArgs args)
     {
         //
     }
 
-    public void OnTokenClicked(TokenEventArgs args)
+    public void OnTokenInteraction(TokenInteractionEventArgs args)
     {
-     //
+        if(args.Interaction==Interaction.OnDrag)
+        {
+            // if we're dragging a token, check if the mouse is in the scroll zone near the edge of the screen.
+
+            // point ranging from (-0.5, -0.5) to (0.5, 0.5)
+            mousePos = new Vector2(Pointer.current.position.x.ReadValue() / Screen.width - 0.5f, Pointer.current.position.y.ReadValue() / Screen.height - 0.5f);
+            SetMagnitudeFromMouse();
+        }
     }
 
-    public void OnTokenReceivedADrop(TokenEventArgs args)
-    {
-     //
-    }
-
-    public void OnTokenPointerEntered(TokenEventArgs args)
-    {
-     //
-    }
-
-    public void OnTokenPointerExited(TokenEventArgs args)
-    {
-      //
-    }
-
-    public void OnTokenDoubleClicked(TokenEventArgs args)
-    {
-      //
-    }
+  
 
 
 }

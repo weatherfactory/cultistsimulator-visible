@@ -50,7 +50,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
     }
 
-    public abstract class Sphere : MonoBehaviour, ISphereEventSubscriber
+    public abstract class Sphere : MonoBehaviour
     {
 
         public virtual bool AllowDrag { get; private set; }
@@ -465,7 +465,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 _tokens.Add(token);
 
             DisplayHere(token, context);
-            NotifyTokensChangedForSphere(new TokenEventArgs { Sphere = this });
+            NotifyTokensChangedForSphere(new TokenInteractionEventArgs { Sphere = this });
 
         }
 
@@ -565,7 +565,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public virtual void RemoveToken(Token token)
         {
             _tokens.Remove(token);
-            NotifyTokensChangedForSphere(new TokenEventArgs {Sphere = this});
+            NotifyTokensChangedForSphere(new TokenInteractionEventArgs {Sphere = this});
         }
 
         /// <summary>
@@ -610,68 +610,21 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 return GoverningSlotSpecification.GetSlotMatchForAspects(stack.GetAspects());
         }
 
-        public void NotifyTokensChangedForSphere(TokenEventArgs args)
+        public void NotifyTokensChangedForSphere(TokenInteractionEventArgs args)
         {
             Catalogue.NotifyTokensChangedForSphere(args);
             foreach(var s in _subscribers)
                 s.NotifyTokensChangedForSphere(args);
         }
 
-        public void OnTokenClicked(TokenEventArgs args)
+        public virtual void OnTokenInThisSphereInteracted(TokenInteractionEventArgs args)
         {
-            Catalogue.OnTokenClicked(args);
+            Catalogue.OnTokenInteraction(args);
             foreach (var s in _subscribers)
-                s.OnTokenClicked(args);
+                s.OnTokenInteraction(args);
         }
 
-        public void OnTokenReceivedADrop(TokenEventArgs args)
-        {
-            Catalogue.OnTokenReceivedADrop(args);
-            foreach (var s in _subscribers)
-                s.OnTokenReceivedADrop(args);
-        }
-
-        public void OnTokenPointerEntered(TokenEventArgs args)
-        {
-            Catalogue.OnTokenPointerEntered(args);
-            foreach (var s in _subscribers)
-                s.OnTokenPointerEntered(args);
-        }
-
-        public void OnTokenPointerExited(TokenEventArgs args)
-        {
-            Catalogue.OnTokenPointerExited(args);
-            foreach (var s in _subscribers)
-                s.OnTokenPointerExited(args);
-        }
-
-        public virtual void OnTokenDoubleClicked(TokenEventArgs args)
-        {
-            Catalogue.OnTokenDoubleClicked(args);
-            foreach (var s in _subscribers)
-                s.OnTokenDoubleClicked(args);
-        }
-
-        public virtual void OnTokenBeginDrag(TokenEventArgs args)
-        {
-            Catalogue.OnTokenBeginDrag(args);
-            foreach (var s in _subscribers)
-                s.OnTokenBeginDrag(args);
-        }
-
-        public void OnTokenDragged(TokenEventArgs args)
-        {
-            Catalogue.OnTokenDragged(args);
-            foreach(var s in _subscribers)
-                s.OnTokenDragged(args);
-        }
-
-        public virtual void OnTokenEndDrag(TokenEventArgs args)
-        {
-            Catalogue.OnTokenEndDrag(args);
-            foreach (var s in _subscribers)
-                s.OnTokenEndDrag(args);
-        }
+      
     }
 
 }

@@ -343,7 +343,7 @@ namespace Assets.CS.TabletopUI {
             if (CanDrag(eventData))
             {
                 _currentlyBeingDragged = true;
-                Sphere.OnTokenBeginDrag(new TokenEventArgs { PointerEventData = eventData, Token = this, Sphere = Sphere });
+                Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Token = this, Sphere = Sphere,Interaction = Interaction.OnDragBegin});
                 StartDrag(eventData);
             }
 
@@ -422,7 +422,7 @@ namespace Assets.CS.TabletopUI {
             MoveObject(eventData);
 
 
-            Sphere.OnTokenDragged(new TokenEventArgs {PointerEventData = eventData,Token=this,Sphere= Sphere});
+            Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs {PointerEventData = eventData,Token=this,Sphere= Sphere,Interaction = Interaction.OnDrag});
 
         }
 
@@ -459,7 +459,7 @@ namespace Assets.CS.TabletopUI {
         public  void OnEndDrag(PointerEventData eventData)
         {
             NoonUtility.Log("Ending drag for " + this.name, 0, VerbosityLevel.SystemChatter);
-            Sphere.OnTokenEndDrag(new TokenEventArgs { PointerEventData = eventData, Token = this, Sphere = Sphere });
+            Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Token = this, Sphere = Sphere,Interaction = Interaction.OnDragEnd});
             
             FinishDrag();
         }
@@ -546,11 +546,12 @@ namespace Assets.CS.TabletopUI {
 
         private void InteractWithIncomingToken(Token incomingToken, PointerEventData eventData)
         {
-            Sphere.OnTokenReceivedADrop(new TokenEventArgs
+            Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs
             {
                 Token = this,
                 Sphere = Sphere,
-                PointerEventData = eventData
+                PointerEventData = eventData,
+                Interaction = Interaction.OnReceivedADrop
             });
             if (ElementStack.IsValidElementStack() && incomingToken.ElementStack.IsValidElementStack())
             {
@@ -639,12 +640,13 @@ namespace Assets.CS.TabletopUI {
             {
                 // Double-click, so abort any pending single-clicks
                 singleClickPending = false;
-                Sphere.OnTokenDoubleClicked(new TokenEventArgs
+                Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs
                 {
                     Element = ElementStack.Element,
                     Token = this,
                     Sphere = Sphere,
-                    PointerEventData = eventData
+                    PointerEventData = eventData,
+                    Interaction = Interaction.OnDoubleClicked
                 });
 
             }
@@ -662,12 +664,13 @@ namespace Assets.CS.TabletopUI {
                 }
                 else
                 {
-                    Sphere.OnTokenClicked(new TokenEventArgs
+                    Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs
                     {
                         Element = ElementStack.Element,
                         Token = this,
                         Sphere = Sphere,
-                        PointerEventData = eventData
+                        PointerEventData = eventData,
+                        Interaction = Interaction.OnClicked
                     });
                 }
 
@@ -742,7 +745,7 @@ namespace Assets.CS.TabletopUI {
 
             _manifestation.Retire(vfx, OnManifestationRetired);
             ElementStack.Retire(vfx);
-            Sphere.NotifyTokensChangedForSphere(new TokenEventArgs { Element = Element, Token = this, Sphere = Sphere });  // Notify tabletop that aspects will need recompiling
+            Sphere.NotifyTokensChangedForSphere(new TokenInteractionEventArgs { Element = Element, Token = this, Sphere = Sphere });  // Notify tabletop that aspects will need recompiling
 
             SetSphere(Registry.Get<NullSphere>(), new Context(Context.ActionSource.Retire));
 
@@ -762,12 +765,12 @@ namespace Assets.CS.TabletopUI {
             if (Defunct)
                 return;
 
-            if (args.TokenInteractionType == TokenInteractionType.BeginDrag)
+            if (args.Interaction == Interaction.OnDragBegin)
             {
                 _manifestation.Highlight(HighlightType.CanInteractWithOtherToken);
             }
 
-            if (args.TokenInteractionType == TokenInteractionType.EndDrag)
+            if (args.Interaction == Interaction.OnDragEnd)
                 _manifestation.Unhighlight(HighlightType.CanInteractWithOtherToken);
 
         }
@@ -806,12 +809,13 @@ namespace Assets.CS.TabletopUI {
             if (!eventData.dragging)
                 _manifestation.Unhighlight(HighlightType.Hover);
 
-            Sphere.OnTokenPointerExited(new TokenEventArgs
+            Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs
             {
                 Element = Element,
                 Token = this,
                 Sphere = Sphere,
-                PointerEventData = eventData
+                PointerEventData = eventData,
+                Interaction = Interaction.OnPointerExited
             });
 
 
@@ -872,7 +876,7 @@ namespace Assets.CS.TabletopUI {
             _manifestation.UpdateTimerVisuals(stack.Element.Lifetime,stack.LifetimeRemaining,stack.IntervalForLastHeartbeat,Element.Resaturate,EndingFlavour.None);
             PlacementAlreadyChronicled = false; //should really only do this if the element has changed
 
-            Sphere.NotifyTokensChangedForSphere(new TokenEventArgs { Token = this, Element = Element, Sphere = Sphere });
+            Sphere.NotifyTokensChangedForSphere(new TokenInteractionEventArgs { Token = this, Element = Element, Sphere = Sphere });
         }
 
     public void SphereContentsUpdated(Situation situation)

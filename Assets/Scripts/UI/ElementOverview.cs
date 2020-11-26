@@ -90,47 +90,14 @@ public class ElementOverview : MonoBehaviour, ISphereEventSubscriber {
     }
 
     
-    public void NotifyTokensChangedForSphere(TokenEventArgs args)
+    public void NotifyTokensChangedForSphere(TokenInteractionEventArgs args)
     {
         UpdateDisplay();
 
     }
 
-    public void OnTokenClicked(TokenEventArgs args)
+    public void OnTokenInteraction(TokenInteractionEventArgs args)
     {
-        //could emphasise display element here
-    }
-
-    public void OnTokenReceivedADrop(TokenEventArgs args)
-    {
-        //
-    }
-
-    public void OnTokenPointerEntered(TokenEventArgs args)
-    {
-       //
-    }
-
-    public void OnTokenPointerExited(TokenEventArgs args)
-    {
-        //could emphasise display element here
-        }
-
-    public void OnTokenDoubleClicked(TokenEventArgs args)
-    {
-        //could emphasise display element here
-
-    }
-
-    public void OnTokenBeginDrag(TokenEventArgs args)
-    {
-    }
-    public void OnTokenEndDrag(TokenEventArgs args)
-    {
-    }
-
-    public void OnTokenDragged(TokenEventArgs args)
-    {
-        //
+    //
     }
 }

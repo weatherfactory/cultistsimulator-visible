@@ -45,52 +45,32 @@ namespace Assets.TabletopUi.Scripts.UI
 
         }
 
-
-
-        public void NotifyTokensChangedForSphere(TokenEventArgs args)
+        public void NotifyTokensChangedForSphere(TokenInteractionEventArgs args)
         {
         //
         }
 
-        public void OnTokenClicked(TokenEventArgs args)
+        public void OnTokenInteraction(TokenInteractionEventArgs args)
         {
-
-            CardsExhibit.HighlightCardWithId(args.Token.Element.Id);
-            Responsibilities.text = args.Token.Element.Label;
+           if(args.Interaction==Interaction.OnClicked || args.Interaction == Interaction.OnDoubleClicked)
+           {
+               CardsExhibit.HighlightCardWithId(args.Token.Element.Id);
+             Responsibilities.text = args.Token.Element.Label;
             Names.text = args.Element.Description;
+           }
+
+           if(args.Interaction==Interaction.OnPointerEntered)
+               args.Token.Emphasise();
+
+           if (args.Interaction == Interaction.OnPointerExited)
+           {
+               if (Responsibilities.text != args.Token.Element.Label) // don't remove the highlight if the card is currently selected
+                   args.Token.Understate();
+           }
         }
 
-        public void OnTokenReceivedADrop(TokenEventArgs args)
-        {
-            //
-        }
+    
 
-        public void OnTokenPointerEntered(TokenEventArgs args)
-        {
-            args.Token.Emphasise();
-        }
-
-        public void OnTokenPointerExited(TokenEventArgs args)
-        {
-            if (Responsibilities.text != args.Token.Element.Label) // don't remove the highlight if the card is currently selected
-                args.Token.Understate();
-        }
-
-        public void OnTokenDoubleClicked(TokenEventArgs args)
-        {
-            OnTokenClicked(args);
-        }
-
-        public void OnTokenDragged(TokenEventArgs args)
-        {
-            
-        }
-
-        public void OnTokenBeginDrag(TokenEventArgs args)
-        {
-        }
-        public void OnTokenEndDrag(TokenEventArgs args)
-        {
-        }
+        
     }
 }
