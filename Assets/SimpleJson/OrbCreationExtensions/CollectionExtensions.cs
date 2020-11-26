@@ -9,7 +9,6 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Noon;
 
 namespace OrbCreationExtensions
 {
@@ -64,7 +63,7 @@ namespace OrbCreationExtensions
                     string offendingLines=String.Empty;
                     foreach(var k in ((Hashtable)value).Keys)
                         offendingLines =offendingLines+ k + ":" + ((Hashtable)value)[k] + "||";
-                   NoonUtility.Log("Trying to parse a hashtable as a string, which probably means a missing comma. Offending lines: " + offendingLines,1);
+                   Debug.Log("Trying to parse a hashtable as a string, which probably means a missing comma. Offending lines: " + offendingLines);
                     return string.Empty;
                 }
                 
