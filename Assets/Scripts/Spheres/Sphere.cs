@@ -203,8 +203,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
 
             var token = Registry.Get<PrefabFactory>().CreateLocally<Token>(transform);
-            stack.AttachToken(token);
 
+            stack.AttachToken(token);
             token.Manifest(stack.GetDefaultManifestationType());
 
             if (context.TokenLocation == null)

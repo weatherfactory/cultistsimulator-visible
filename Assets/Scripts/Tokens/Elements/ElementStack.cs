@@ -319,7 +319,7 @@ namespace Assets.CS.TabletopUI {
 
             try
             {
-                SetQuantity(quantity, new Context(Context.ActionSource.Unknown)); // this also toggles badge visibility through second call
+                SetQuantity(quantity, new Context(Context.ActionSource.Unknown));
 
 
                 LifetimeRemaining = Element.Lifetime;

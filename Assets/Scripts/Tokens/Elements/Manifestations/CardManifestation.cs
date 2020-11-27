@@ -80,10 +80,6 @@ namespace Assets.TabletopUi.Scripts.Elements
             throw new NotImplementedException();
         }
 
-        public void UpdateTimerVisuals(float duration, float timeRemaining, EndingFlavour signalEndingFlavour)
-        {
-            throw new NotImplementedException();
-        }
 
         public void UpdateTimerVisuals(float originalDuration, float durationRemaining,float interval,bool resaturate,EndingFlavour signalEndingFlavour)
         {

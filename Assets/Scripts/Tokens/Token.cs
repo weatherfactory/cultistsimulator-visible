@@ -224,6 +224,8 @@ namespace Assets.CS.TabletopUI {
                     SwapOutManifestation(_manifestation, newManifestation, RetirementVFX.None);
                 _manifestation.InitialiseVisuals(ElementStack.Element);
                 _manifestation.UpdateVisuals(ElementStack.Element, ElementStack.Quantity);
+                _manifestation.UpdateTimerVisuals(Element.Lifetime,ElementStack.LifetimeRemaining,0f,Element.Resaturate,EndingFlavour.None);
+
             }
             else if(_attachedToSituation.IsValidSituation())
             {
@@ -892,7 +894,7 @@ namespace Assets.CS.TabletopUI {
             if (Defunct)
                 return false;
             //can we merge tokens?
-            if (incomingToken.ElementStack.CanMergeWith(incomingToken.ElementStack))
+            if (ElementStack.CanMergeWith(incomingToken.ElementStack))
                 return true;
 
             //can we put a stack in a threshold associated with this token?
