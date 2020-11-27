@@ -11,6 +11,7 @@ using Assets.Core.Interfaces;
 using Assets.Core.NullObjects;
 using Assets.Core.Services;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.Scripts.UI;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Elements;
 using Assets.TabletopUi.Scripts.Elements.Manifestations;
@@ -48,7 +49,7 @@ namespace Assets.CS.TabletopUI {
     [RequireComponent(typeof(RectTransform))]
     public class Token : MonoBehaviour,
         IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler,
-        IPointerExitHandler, ISituationSubscriber
+        IPointerExitHandler, ISituationSubscriber,IInteractsWithTokens
     {
         protected bool singleClickPending = false;
         public UnityEvent OnStart;
@@ -760,32 +761,6 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public virtual void ReactToDraggedToken(TokenInteractionEventArgs args)
-        {
-            if (Defunct)
-                return;
-
-            if (args.Interaction == Interaction.OnDragBegin)
-            {
-                _manifestation.Highlight(HighlightType.CanInteractWithOtherToken);
-            }
-
-            if (args.Interaction == Interaction.OnDragEnd)
-                _manifestation.Unhighlight(HighlightType.CanInteractWithOtherToken);
-
-        }
-
-        public  void HighlightPotentialInteractionWithToken(bool show)
-        {
-            if (show)
-                _manifestation.Highlight(HighlightType.CanInteractWithOtherToken);
-            else
-                _manifestation.Unhighlight(HighlightType.CanInteractWithOtherToken);
-
-
-        }
-
-
         public void OnPointerEnter(PointerEventData eventData)
         {
             if (!eventData.dragging)
@@ -924,6 +899,28 @@ namespace Assets.CS.TabletopUI {
             return shrouded;
         }
 
+
+        public bool CanInteractWithToken(Token token)
+        {
+            if (Defunct)
+                return false;
+            return CanInteractWithIncomingToken(token);
+        }
+
+        public void ShowPossibleInteractionWithToken(Token token)
+        {
+            if (Defunct)
+                return;
+
+            _manifestation.Highlight(HighlightType.CanInteractWithOtherToken);
+
+        }
+
+        public void StopShowingPossibleReactionToToken(Token token)
+        {
+            _manifestation.Unhighlight(HighlightType.CanInteractWithOtherToken);
+
+        }
 
     }
 }

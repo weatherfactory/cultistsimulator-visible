@@ -48,27 +48,6 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        void ReactToDraggedToken(TokenInteractionEventArgs args)
-        {
-
-            if (args.Interaction == Interaction.OnDragBegin)
-            {
-
-                var stack = args.Token;
-
-                if (stack == null)
-                    return;
-                ShowGlow(true, false);
-            }
-
-
-            else if (args.Interaction == Interaction.OnDragEnd)
-                ShowGlow(false, false);
-
-
-        }
-
-        
 
         public string GetDeckName(int cardPosition)
         {

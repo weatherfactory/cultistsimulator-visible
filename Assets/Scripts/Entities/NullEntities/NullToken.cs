@@ -48,10 +48,6 @@ namespace Assets.Core.NullObjects
         //
         }
 
-        public override void ReactToDraggedToken(TokenInteractionEventArgs args)
-        {
-        //
-        }
 
         public override void SituationStateChanged(Situation situation)
         {

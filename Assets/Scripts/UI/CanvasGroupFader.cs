@@ -12,7 +12,6 @@ namespace Assets.CS.TabletopUI
       //  public bool keepActiveOnHide = false;  // Only used if destroyOnHide is false
         public float durationTurnOn = 0.5f;
         public float durationTurnOff = 0.25f;
-        private bool m_isFading;
 
         private Coroutine _alphaChangeCoroutine;
 
@@ -65,7 +64,6 @@ namespace Assets.CS.TabletopUI
             float currentAlpha = Group.alpha;
             float currentTime = 0f;
 
-            m_isFading = true;
             SetInteractable(blockRaysDuringFade);
             duration = duration * Mathf.Abs(alpha - currentAlpha);
 
@@ -75,7 +73,6 @@ namespace Assets.CS.TabletopUI
                 yield return null;
             }
 
-            m_isFading = false;
             SetAlpha(alpha);
     
         }

@@ -45,7 +45,6 @@ namespace Assets.CS.TabletopUI {
         public GameObject GreedyIcon;
         public GameObject ConsumingIcon;
         
-        bool lastGlowState;
 
         public override bool AllowStackMerge { get { return false; } }
 
@@ -74,8 +73,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void Start() {
-            ShowGlow(false, false);
-
+            slotGlow.Hide();
             _notifiersForContainer.Add(Registry.Get<INotifier>());
             
         }
@@ -99,19 +97,6 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        bool CanInteractWithDraggedObject(Token token) {
-            if (lastGlowState == false || token == null)
-                return false;
-
-            
-            if (!token.ElementStack.IsValidElementStack())
-                return false; // we only accept stacks
-
-            //does the token match the slot? Check that first
-            ContainerMatchForStack match = GetMatchForStack(token.ElementStack);
-
-            return match.MatchType == SlotMatchForAspectsType.Okay;
-        }
 
         public virtual void OnPointerEnter(PointerEventData eventData) {
             if (GoverningSlotSpecification.Greedy) // never show glow for greedy slots
@@ -120,14 +105,18 @@ namespace Assets.CS.TabletopUI {
             //if we're not dragging anything, and the slot is empty, glow the slot.
             if (!eventData.dragging) {
                 if (GetTokenInSlot() == null)
-                    ShowHoverGlow(true);
+                    ShowHoverGlow();
             }
-            else if (CanInteractWithDraggedObject(eventData.pointerDrag.GetComponent<Token>())) {
-                if (lastGlowState)
-                    eventData.pointerDrag.GetComponent<Token>().HighlightPotentialInteractionWithToken(true);
+            else
+            {
+                var draggedToken = eventData.pointerDrag.GetComponent<Token>();
 
-                if (GetTokenInSlot() == null) // Only glow if the slot is empty
-                    ShowHoverGlow(true);
+                if (CanInteractWithToken(draggedToken)) {
+                    draggedToken.ShowPossibleInteractionWithToken(draggedToken);
+
+                    if (GetTokenInSlot() == null) // Only glow if the slot is empty
+                        ShowHoverGlow();
+                }
             }
         }
 
@@ -139,10 +128,11 @@ namespace Assets.CS.TabletopUI {
             {
                 var potentialDragToken = eventData.pointerDrag.GetComponent<Token>();
 
-                if (lastGlowState && potentialDragToken != null)
-                    potentialDragToken.HighlightPotentialInteractionWithToken(false);
+                if ( potentialDragToken != null)
+                    potentialDragToken.ShowPossibleInteractionWithToken(potentialDragToken);
             }
-            ShowHoverGlow(false);
+
+            HideHoverGlow();
         }
 
         public void SetGlowColor(UIStyle.TokenGlowColor colorType) {
@@ -153,35 +143,19 @@ namespace Assets.CS.TabletopUI {
             slotGlow.SetColor(color);
         }
 
-        public void ShowGlow(bool glowState, bool instant) {
-            lastGlowState = glowState;
 
-            if (glowState)
-                slotGlow.Show(instant);
-            else
-                slotGlow.Hide(instant);
-        }
+        private  void ShowHoverGlow() {
 
-        // Separate method from ShowGlow so we can restore the last state when unhovering
-        protected virtual void ShowHoverGlow(bool show) {
-            // We're NOT dragging something and our last state was not "this is a legal drop target" glow, then don't show
-            //if (AbstractToken.itemBeingDragged == null && !lastGlowState)
-            //    return;
-
-            if (show) {
                 SetGlowColor(UIStyle.TokenGlowColor.OnHover);
                 SoundManager.PlaySfx("TokenHover");
                 slotGlow.Show();
-            }
-            else {
-                SetGlowColor(UIStyle.TokenGlowColor.Default);
-                //SoundManager.PlaySfx("TokenHoverOff");
 
-                if (lastGlowState)
-                    slotGlow.Show();
-                else
-                    slotGlow.Hide();
-            }
+        }
+
+        private void HideHoverGlow()
+        {
+            SetGlowColor(UIStyle.TokenGlowColor.Default);
+                SoundManager.PlaySfx("TokenHoverOff");
         }
 
         public bool HasChildSlots() {
@@ -283,21 +257,31 @@ namespace Assets.CS.TabletopUI {
 
         public bool CanInteractWithToken(Token token)
         {
+
             if (GetElementTokenInSlot() != null)
                 return false; // Slot is filled? Don't highlight it as interactive
             if (IsGreedy)
                 return false; // Slot is greedy? It can never take anything.
-            return (GetMatchForStack(token.ElementStack).MatchType == SlotMatchForAspectsType.Okay);
+
+
+            if (!token.ElementStack.IsValidElementStack())
+                return false; // we only accept stacks
+
+            //does the token match the slot? Check that first
+            ContainerMatchForStack match = GetMatchForStack(token.ElementStack);
+
+            return match.MatchType == SlotMatchForAspectsType.Okay;
         }
 
         public void ShowPossibleInteractionWithToken(Token token)
         {
-            ShowGlow(true,false);
+            slotGlow.Show(false);
         }
 
         public void StopShowingPossibleReactionToToken(Token token)
         {
-            ShowGlow(false, false);
+            slotGlow.Hide(false);
+
         }
     }
 
