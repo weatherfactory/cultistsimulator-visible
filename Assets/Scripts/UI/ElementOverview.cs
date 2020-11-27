@@ -15,7 +15,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ElementOverview : MonoBehaviour, ISphereEventSubscriber {
+public class ElementOverview : MonoBehaviour, ISphereCatalogueEventSubscriber {
 
 
     [SerializeField] StatusBarElementCount[] elementCounts;
@@ -24,7 +24,9 @@ public class ElementOverview : MonoBehaviour, ISphereEventSubscriber {
     private const int MAX_ELEMENTS = 4;
 
     public void Initialise(Legacy activeLegacy, Compendium compendium) {
-        
+
+        Registry.Get<SphereCatalogue>().Subscribe(this);
+
         _activeLegacy = activeLegacy;
         _compendium = compendium;
 
@@ -90,7 +92,7 @@ public class ElementOverview : MonoBehaviour, ISphereEventSubscriber {
     }
 
     
-    public void NotifyTokensChangedForSphere(TokenInteractionEventArgs args)
+    public void NotifyTokensChanged(TokenInteractionEventArgs args)
     {
         UpdateDisplay();
 

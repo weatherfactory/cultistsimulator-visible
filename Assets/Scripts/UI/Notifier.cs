@@ -9,6 +9,7 @@ using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
 using Assets.Core.Entities;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
+using Assets.TabletopUi.Scripts.Interfaces;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
@@ -169,7 +170,7 @@ namespace Assets.CS.TabletopUI {
             tabletopBurner.ShowImageBurn(spriteName, token, duration, scale, alignment);
         }
 
-        public void NotifyTokensChangedForSphere(TokenInteractionEventArgs args)
+        public void NotifyTokensChanged(TokenInteractionEventArgs args)
         {
             //
         }

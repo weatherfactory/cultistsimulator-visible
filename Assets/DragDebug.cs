@@ -8,7 +8,7 @@ using Assets.TabletopUi.Scripts.Interfaces;
 using TMPro;
 using UnityEngine;
 
-public class DragDebug : MonoBehaviour,ISphereEventSubscriber
+public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
 {
     public TextMeshProUGUI currentlyDragging;
     public TextMeshProUGUI currentSphere;
@@ -23,7 +23,7 @@ public class DragDebug : MonoBehaviour,ISphereEventSubscriber
 
 
 
-    public void NotifyTokensChangedForSphere(TokenInteractionEventArgs args)
+    public void NotifyTokensChanged(TokenInteractionEventArgs args)
     {
      
     }

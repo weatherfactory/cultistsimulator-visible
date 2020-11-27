@@ -279,7 +279,6 @@ namespace Assets.CS.TabletopUI {
                 Registry.Get<StageHand>().EndingScreen();
 
             _elementOverview.Initialise(legacy,  Registry.Get<Compendium>());
-            Registry.Get<SphereCatalogue>().Subscribe(_elementOverview);
             tabletopBackground.ShowTabletopFor(legacy);
 
   

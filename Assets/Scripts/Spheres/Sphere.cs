@@ -619,9 +619,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public virtual void OnTokenInThisSphereInteracted(TokenInteractionEventArgs args)
         {
-            Catalogue.OnTokenInteraction(args);
+            Catalogue.OnTokenInteractionInSphere(args);
             foreach (var s in _subscribers)
-                s.OnTokenInteraction(args);
+                s.OnTokenInteractionInSphere(args);
         }
 
       

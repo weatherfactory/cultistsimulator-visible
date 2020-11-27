@@ -27,7 +27,7 @@ using UnityEngine.UI;
 using UnityEngine.VR;
 using static Noon.NoonUtility;
 
-public class DebugTools : MonoBehaviour,ISphereEventSubscriber
+public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 {
     private const int MaxAutoCompletionSuggestions = 50;
 
@@ -526,7 +526,7 @@ public class DebugTools : MonoBehaviour,ISphereEventSubscriber
         return File.Exists(GetGameSaveLocation(index));
     }
 
-    public void NotifyTokensChangedForSphere(TokenInteractionEventArgs args)
+    public void NotifyTokensChanged(TokenInteractionEventArgs args)
     {
         //
     }

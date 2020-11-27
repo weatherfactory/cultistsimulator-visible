@@ -784,7 +784,7 @@ namespace Assets.Core.Entities {
 
         }
 
-        public void OnTokenInteraction(TokenInteractionEventArgs args)
+        public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
         {
 //
         }

@@ -13,7 +13,7 @@ using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.UI
 {
-  public  class HighlightLocationsController:MonoBehaviour, ISphereEventSubscriber
+  public  class HighlightLocationsController:MonoBehaviour, ISphereCatalogueEventSubscriber
     {
 
  private HashSet<HighlightLocation> highlightLocations;
@@ -74,7 +74,7 @@ namespace Assets.TabletopUi.Scripts.UI
 
 
 
-      public void NotifyTokensChangedForSphere(TokenInteractionEventArgs args)
+      public void NotifyTokensChanged(TokenInteractionEventArgs args)
       {
           var tc = Registry.Get<SphereCatalogue>();
           var aspectsInContext = tc.GetAspectsInContext(new AspectsDictionary());

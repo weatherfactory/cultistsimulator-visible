@@ -20,8 +20,8 @@ namespace Assets.Core.Entities {
     public class SphereCatalogue:ISphereEventSubscriber {
 
         public bool EnableAspectCaching = true;
-        private readonly HashSet<Sphere> _spheres;
-        private readonly HashSet<ISphereEventSubscriber> _subscribers;
+        private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
+        private readonly HashSet<ISphereCatalogueEventSubscriber> _subscribers = new HashSet<ISphereCatalogueEventSubscriber>();
         private AspectsDictionary _tabletopAspects = null;
         private AspectsDictionary _allAspectsExtant = null;
         private bool _tabletopAspectsDirty = true;
@@ -31,11 +31,6 @@ namespace Assets.Core.Entities {
         
         public const string STORAGE_PATH = "storage";
 
-
-        public SphereCatalogue() {
-            _spheres = new HashSet<Sphere>();
-            _subscribers = new HashSet<ISphereEventSubscriber>();
-        }
 
         public HashSet<Sphere> GetSpheres() {
             return _spheres;
@@ -61,11 +56,11 @@ namespace Assets.Core.Entities {
         }
 
 
-        public void Subscribe(ISphereEventSubscriber subscriber) {
+        public void Subscribe(ISphereCatalogueEventSubscriber subscriber) {
             _subscribers.Add(subscriber);
          }
 
-        public void Unsubscribe(ISphereEventSubscriber subscriber)
+        public void Unsubscribe(ISphereCatalogueEventSubscriber subscriber)
         {
             _subscribers.Remove(subscriber);
         }
@@ -97,13 +92,13 @@ namespace Assets.Core.Entities {
             NotifyAspectsDirty();
 
             foreach(var s in _subscribers)
-                s.NotifyTokensChangedForSphere(args);
+                s.NotifyTokensChanged(args);
         }
 
-        public void OnTokenInteraction(TokenInteractionEventArgs args)
+        public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
         {
             foreach (var s in _subscribers)
-                s.OnTokenInteraction(args);
+                s.NotifyTokensChanged(args);
         }
 
         

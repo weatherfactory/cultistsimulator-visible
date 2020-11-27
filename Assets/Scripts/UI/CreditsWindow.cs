@@ -50,7 +50,7 @@ namespace Assets.TabletopUi.Scripts.UI
         //
         }
 
-        public void OnTokenInteraction(TokenInteractionEventArgs args)
+        public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
         {
            if(args.Interaction==Interaction.OnClicked || args.Interaction == Interaction.OnDoubleClicked)
            {
