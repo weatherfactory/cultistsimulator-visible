@@ -92,13 +92,19 @@ namespace Assets.Core.Entities {
             NotifyAspectsDirty();
 
             foreach(var s in _subscribers)
-                s.NotifyTokensChanged(args);
+                if(s.Equals(null))
+                    Unsubscribe(s);
+                else
+                    s.NotifyTokensChanged(args);
         }
 
         public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
         {
             foreach (var s in _subscribers)
-                s.NotifyTokensChanged(args);
+                if (s.Equals(null))
+                    Unsubscribe(s);
+                else
+                    s.OnTokenInteraction(args);
         }
 
         

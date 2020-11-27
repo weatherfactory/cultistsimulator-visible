@@ -7,6 +7,7 @@ using Assets.Core.Enums;
 using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.Scripts.UI;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
@@ -24,7 +25,7 @@ namespace Assets.CS.TabletopUI {
 
 
 
-    public class RecipeSlot : Sphere, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
+    public class RecipeSlot : Sphere, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IInteractsWithTokens {
 
         public override SphereCategory SphereCategory => SphereCategory.Threshold;
 
@@ -280,27 +281,24 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void OnTokenBeginDrag(TokenInteractionEventArgs args)
+        public bool CanInteractWithToken(Token token)
         {
             if (GetElementTokenInSlot() != null)
-                return; // Slot is filled? Don't highlight it as interactive
+                return false; // Slot is filled? Don't highlight it as interactive
             if (IsGreedy)
-                return; // Slot is greedy? It can never take anything.
-
-
-            if (GetMatchForStack(args.Token.ElementStack).MatchType == SlotMatchForAspectsType.Okay)
-                ShowGlow(true, false);
-
-           
+                return false; // Slot is greedy? It can never take anything.
+            return (GetMatchForStack(token.ElementStack).MatchType == SlotMatchForAspectsType.Okay);
         }
 
+        public void ShowPossibleInteractionWithToken(Token token)
+        {
+            ShowGlow(true,false);
+        }
 
-        public  void OnTokenEndDrag(TokenInteractionEventArgs args)
+        public void StopShowingPossibleReactionToToken(Token token)
         {
             ShowGlow(false, false);
-
         }
-
     }
 
 
