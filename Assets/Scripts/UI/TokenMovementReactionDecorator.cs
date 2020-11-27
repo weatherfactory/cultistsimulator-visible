@@ -13,13 +13,14 @@ using UnityEngine;
 namespace Assets.Scripts.UI
 {
     public class TokenMovementReactionDecorator : MonoBehaviour, ISphereCatalogueEventSubscriber
-    {
-        [SerializeField] public IInteractsWithTokens decorated;
+    { 
+        
+        private IInteractsWithTokens _decorated;
 
         public void Start()
         {
-            decorated = GetComponent<IInteractsWithTokens>();
-            if(decorated==null)
+            _decorated = GetComponent<IInteractsWithTokens>();
+            if(_decorated==null)
                 NoonUtility.LogWarning("Can't initialise a TokenMovementReactionDecorator: IInteractswithTokens component missing on " + gameObject.name);
             else
                 Registry.Get<SphereCatalogue>().Subscribe(this);
@@ -34,13 +35,13 @@ namespace Assets.Scripts.UI
         {
             if (args.Interaction == Interaction.OnDragBegin)
             {
-                if (decorated.CanInteractWithToken(args.Token))
-                    decorated.ShowPossibleInteractionWithToken(args.Token);
-                decorated.ShowPossibleInteractionWithToken(args.Token);
+                if (_decorated.CanInteractWithToken(args.Token))
+                    _decorated.ShowPossibleInteractionWithToken(args.Token);
+                _decorated.ShowPossibleInteractionWithToken(args.Token);
 
             }
             else if (args.Interaction == Interaction.OnDragEnd)
-                decorated.StopShowingPossibleReactionToToken(args.Token);
+                _decorated.StopShowingPossibleReactionToToken(args.Token);
 
 
         }
