@@ -6,6 +6,6 @@ namespace Assets.Scripts.UI
     {
         bool CanInteractWithToken(Token token);
         void ShowPossibleInteractionWithToken(Token token);
-        void StopShowingPossibleReactionToToken(Token token);
+        void StopShowingPossibleInteractionWithToken(Token token);
     }
 }

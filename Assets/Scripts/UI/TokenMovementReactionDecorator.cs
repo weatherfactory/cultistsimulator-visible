@@ -37,11 +37,10 @@ namespace Assets.Scripts.UI
             {
                 if (_decorated.CanInteractWithToken(args.Token))
                     _decorated.ShowPossibleInteractionWithToken(args.Token);
-                _decorated.ShowPossibleInteractionWithToken(args.Token);
 
             }
             else if (args.Interaction == Interaction.OnDragEnd)
-                _decorated.StopShowingPossibleReactionToToken(args.Token);
+                _decorated.StopShowingPossibleInteractionWithToken(args.Token);
 
 
         }

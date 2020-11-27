@@ -518,7 +518,7 @@ namespace Assets.CS.TabletopUI {
             if (incomingToken == null)
                 return;
 
-            if (CanInteractWithIncomingToken(incomingToken))
+            if (CanInteractWithToken(incomingToken))
                 InteractWithIncomingToken(incomingToken, eventData);
             else
             {
@@ -531,20 +531,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public bool CanInteractWithIncomingToken(Token incomingToken)
-        {
-            //can we merge tokens?
-            if (incomingToken.ElementStack.CanMergeWith(incomingToken.ElementStack))
-                return true;
-
-            //can we put a stack in a threshold associated with this token?
-            if (_attachedToSituation.GetFirstAvailableThresholdForStackPush(incomingToken.ElementStack).SphereCategory ==
-                SphereCategory.Threshold)
-                return true;
-
-            return false;
-        }
-
+ 
         private void InteractWithIncomingToken(Token incomingToken, PointerEventData eventData)
         {
             Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs
@@ -900,11 +887,20 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public bool CanInteractWithToken(Token token)
+        public bool CanInteractWithToken(Token incomingToken)
         {
             if (Defunct)
                 return false;
-            return CanInteractWithIncomingToken(token);
+            //can we merge tokens?
+            if (incomingToken.ElementStack.CanMergeWith(incomingToken.ElementStack))
+                return true;
+
+            //can we put a stack in a threshold associated with this token?
+            if (_attachedToSituation.GetFirstAvailableThresholdForStackPush(incomingToken.ElementStack).SphereCategory ==
+                SphereCategory.Threshold)
+                return true;
+
+            return false;
         }
 
         public void ShowPossibleInteractionWithToken(Token token)
@@ -916,7 +912,7 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        public void StopShowingPossibleReactionToToken(Token token)
+        public void StopShowingPossibleInteractionWithToken(Token token)
         {
             _manifestation.Unhighlight(HighlightType.CanInteractWithOtherToken);
 

@@ -278,7 +278,7 @@ namespace Assets.CS.TabletopUI {
             slotGlow.Show(false);
         }
 
-        public void StopShowingPossibleReactionToToken(Token token)
+        public void StopShowingPossibleInteractionWithToken(Token token)
         {
             slotGlow.Hide(false);
 
