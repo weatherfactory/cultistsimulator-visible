@@ -27,9 +27,9 @@ public class ExhibitCards : Sphere {
     public override SphereCategory SphereCategory => SphereCategory.Meta;
 
 
-    public override void DisplayHere(Token token, Context context)
+    public override void DisplayAndPositionHere(Token token, Context context)
     {
-        base.DisplayHere(token, context);
+        base.DisplayAndPositionHere(token, context);
         token.Understate();
     }
 

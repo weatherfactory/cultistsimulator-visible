@@ -73,10 +73,6 @@ namespace Assets.CS.TabletopUI {
         private bool _initialised;
 
 
-
-
-
-
         public enum NonSaveableType
         {
             Drag, // Cannot save because held card gets lost
@@ -88,13 +84,7 @@ namespace Assets.CS.TabletopUI {
 
         static private bool[] isInNonSaveableState = new bool[(int) NonSaveableType.NumNonSaveableTypes];
 
-        private Situation mansusSituation;
-        //private Vector2 preMansusTabletopPos; // Disabled cause it looks jerky -Martin
 
-        public static bool IsInMansus()
-        {
-            return isInNonSaveableState[(int) NonSaveableType.Mansus];
-        }
 
         private float
             housekeepingTimer = 0.0f; // Now a float so that we can time autosaves independent of Heart.Beat - CP
@@ -104,12 +94,6 @@ namespace Assets.CS.TabletopUI {
         private static bool highContrastMode = false;
         private static bool accessibleCards = false;
         private List<string> currentDoomTokens = new List<string>();
-
-        public void ForceAutosave() // Useful for forcing autosave to happen at tricky moments for debugging - CP
-        {
-            housekeepingTimer = AUTOSAVE_INTERVAL;
-        }
-
 
 
         public async void Update()
@@ -137,20 +121,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        private void AppealToConscience()
-        {
-            string appealToConscienceLocation = Application.streamingAssetsPath + "/edition/please_buy_our_game.txt";
-            if (File.Exists(appealToConscienceLocation))
-            {
-                var content = File.ReadLines(appealToConscienceLocation);
-                DateTime expiry = Convert.ToDateTime(content.First());
-                if (DateTime.Today > expiry)
-                {
-                    _notifier.ShowNotificationWindow("ERROR - PLEASE UPDATE GAME", @"CRITICAL UPDATE REQUIRED");
-                    return;
-                }
-            }
-        }
+
 
 
         void Awake()
@@ -195,6 +166,11 @@ namespace Assets.CS.TabletopUI {
 
         }
 
+
+
+
+
+
         /// <summary>
         /// if a game exists, load it; otherwise, create a fresh state and setup
         /// </summary>
@@ -219,8 +195,7 @@ namespace Assets.CS.TabletopUI {
 
             if (!shouldContinueGame || isSaveCorrupted)
             {
-                _notifier.ShowSaveError(true);
-                GameSaveManager.saveErrorWarningTriggered = true;
+
             }
 
 
@@ -258,10 +233,6 @@ namespace Assets.CS.TabletopUI {
 
         private void SetupServices(Registry registry)
         {
-
-
-            var choreographer = new Choreographer(_tabletop);
-            registry.Register(choreographer);
 
 
             registry.Register<INotifier>(_notifier);
@@ -332,7 +303,7 @@ namespace Assets.CS.TabletopUI {
                 var context = new Context(Context.ActionSource.Loading);
 
                 Token token = _tabletop.ProvisionElementStackToken(e.Key, e.Value, Source.Existing(),context,Element.EmptyMutationsDictionary());
-                Registry.Get<Choreographer>().PlaceTokenOnTableAtFreePosition(token, context);
+                    _tabletop.Choreographer.PlaceTokenAtFreePosition(token, context);
             }
         }
 
@@ -543,7 +514,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             }
             catch (Exception e)
             {
-	            _notifier.ShowSaveError(true);
+	         GameSaveManager.ShowSaveError();
 	            GameSaveManager.saveErrorWarningTriggered = true;
 	            Debug.LogError("Failed to save game (see exception for details)");
 	            Debug.LogException(e);
@@ -587,7 +558,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
                 // Save failed, need to let player know there's an issue
                 // Autosave would wait and retry in a few seconds, but player is expecting results NOW.
                 Registry.Get<LocalNexus>().ToggleOptionsEvent.Invoke();
-                Registry.Get<Assets.Core.Interfaces.INotifier>().ShowSaveError(true);
+                GameSaveManager.ShowSaveError();
             }
 
         }
@@ -747,7 +718,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             if (stack!=null) {
 
                 stack.SetXNess(TokenXNess.DroppedOnTableContainer);
-                MapSphere.DisplayHere(stack, new Context(Context.ActionSource.PlayerDrag));
+                MapSphere.DisplayAndPositionHere(stack, new Context(Context.ActionSource.PlayerDrag));
 
                 SoundManager.PlaySfx("CardDrop");
             }
@@ -925,31 +896,6 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 			obj.gameObject.SetActive(true);
 		}
 
-		private void OnGUI()
-		{
-#if UNITY_EDITOR
-			// Extra tools for debugging autosave.
-
-			// Toggle to simulate bad save
-			if (GUI.Button( new Rect(Screen.width * 0.5f - 300f, 10f, 180f, 20f), "Simulate bad save: " + (GameSaveManager.simulateBrokenSave?"ON":"OFF") ))
-			{
-				GameSaveManager.simulateBrokenSave = !GameSaveManager.simulateBrokenSave;		// Click
-			}
-
-			// Counter to show time to next autosave. Click it to reduce to a five second countdown
-			if (GUI.Button( new Rect(Screen.width * 0.5f - 100f, 10f, 150f, 20f), "Autosave in " + (int)(AUTOSAVE_INTERVAL-housekeepingTimer) ))
-			{
-				housekeepingTimer = AUTOSAVE_INTERVAL - 5f;		// Click
-			}
-
-			if (!IsSafeToAutosave())
-			{
-				GUI.TextArea( new Rect(Screen.width * 0.5f + 50f, 10f, 70f, 20f), "BLOCKED" );
-			}
-
-#endif
-
-		}
 
 
         public void WhenSettingUpdated(object newValue)

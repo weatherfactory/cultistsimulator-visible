@@ -84,7 +84,7 @@ namespace Assets.CS.TabletopUI {
 
         [SerializeField] protected bool rotateOnDrag = true;
 
-        [HideInInspector] public Vector2? LastTablePos = null; // if it was pulled from the table, save that position
+        [HideInInspector] public TokenLocation LocationBeforeDrag;
 
         protected IManifestation _manifestation;
 
@@ -284,8 +284,8 @@ namespace Assets.CS.TabletopUI {
 
         public void TryReturnToOriginalPosition()
         {
-            if (LastTablePos != null)
-                transform.localPosition = new Vector3(LastTablePos.Value.x, LastTablePos.Value.y);
+            if (LocationBeforeDrag != null)
+                transform.localPosition = new Vector3(LocationBeforeDrag.Position.x, LocationBeforeDrag.Position.y);
         }
 
 
@@ -311,12 +311,6 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-
-
-        public void SnapToGrid()
-        {
-            transform.localPosition = Registry.Get<Choreographer>().SnapToGrid(transform.localPosition);
-        }
 
         public void SetSphere(Sphere newSphere, Context context)
         {
@@ -375,6 +369,12 @@ namespace Assets.CS.TabletopUI {
 
             _currentlyBeingDragged = true;
 
+            if (TokenRectTransform.anchoredPosition.sqrMagnitude > 0.0f
+            ) // Never store 0,0 as that's a slot position and we never auto-return to slots - CP
+            {
+                LocationBeforeDrag = new TokenLocation(TokenRectTransform.anchoredPosition3D,Sphere.GetPath());
+            }
+
             var enrouteContainer = Registry.Get<SphereCatalogue>().GetContainerByPath(
                 new SpherePath(Registry.Get<Compendium>().GetSingleEntity<Dictum>().DefaultEnRouteSpherePath));
 
@@ -391,11 +391,7 @@ namespace Assets.CS.TabletopUI {
             startParent = TokenRectTransform.parent;
             startSiblingIndex = TokenRectTransform.GetSiblingIndex();
 
-            if (TokenRectTransform.anchoredPosition.sqrMagnitude > 0.0f
-            ) // Never store 0,0 as that's a slot position and we never auto-return to slots - CP
-            {
-                LastTablePos = TokenRectTransform.anchoredPosition3D;
-            }
+
 
 
             //commented out because I *might* not need it; but if I do, we can probably calculate it on the fly.
@@ -675,8 +671,7 @@ namespace Assets.CS.TabletopUI {
 
         public  void ReturnToTabletop(Context context)
         {
-            Registry.Get<Choreographer>().PlaceTokenOnTableAtFreePosition(this, context);
-
+            
 
             //if we have an origin stack and the origin stack is on the tabletop, merge it with that.
             //We might have changed the element that a stack is associated with... so check we can still merge it
@@ -688,6 +683,11 @@ namespace Assets.CS.TabletopUI {
             }
             else
             {
+                var originSphere = Registry.Get<SphereCatalogue>().GetContainerByPath(LocationBeforeDrag.AtSpherePath);
+
+                originSphere.Choreographer.PlaceTokenAtFreePosition(this, context);
+
+
                 var tabletop = Registry.Get<TabletopManager>()._tabletop;
                 var existingElementTokens = tabletop.GetElementTokens();
 
@@ -704,9 +704,12 @@ namespace Assets.CS.TabletopUI {
                 }
             }
 
-            if(LastTablePos!=null)
-                Registry.Get<Choreographer>()
-                .PlaceTokenAsCloseAsPossibleToSpecifiedPosition(this, context, LastTablePos.Value);
+            if(LocationBeforeDrag!=null)
+            {
+                var originSphere = Registry.Get<SphereCatalogue>().GetContainerByPath(LocationBeforeDrag.AtSpherePath);
+
+              originSphere.Choreographer.PlaceTokenAsCloseAsPossibleToSpecifiedPosition(this, context, LocationBeforeDrag.Position);
+            }
 
         }
 

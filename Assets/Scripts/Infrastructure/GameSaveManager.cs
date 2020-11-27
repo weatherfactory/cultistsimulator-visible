@@ -231,9 +231,25 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             Analytics.CustomEvent("autosave_corrupt_notified");
                 
             // Pop up warning message
-            Registry.Get<INotifier>().ShowSaveError(true);
+        ShowSaveError();
             saveErrorWarningTriggered = true;
        }
+        }
+
+        public static void ShowSaveError()
+        {
+            var saveCorruptedArgs = new NotificationArgs
+            {
+                Title = "UI_CORRUPTSAVE",
+                Description = "UI_CORRUPTDESC"
+            };
+            saveCorruptedArgs.Buttons.Add(new ButtonCommand { Caption = "UI_CORRUPTCONTINUE" });
+            saveCorruptedArgs.Buttons.Add(new ButtonCommand { Caption = "UI_CORRUPTRELOAD" });
+            saveCorruptedArgs.Buttons.Add(new ButtonCommand { Caption = "UI_CORRUPTABANDON" });
+
+            Registry.Get<Concursum>().ShowNotification(saveCorruptedArgs);
+
+            GameSaveManager.saveErrorWarningTriggered = true;
         }
 
         private async Task WriteSaveFile(string saveFilePath, Hashtable saveData)

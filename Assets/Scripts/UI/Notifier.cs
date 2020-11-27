@@ -22,8 +22,6 @@ namespace Assets.CS.TabletopUI {
         [Header("Notification")]
         [SerializeField] Transform notificationHolder;
         [SerializeField] NotificationLog notificationLog;
-		[SerializeField] NotificationWindow saveErrorWindow;
-		[SerializeField] NotificationWindow saveDeniedWindow;
 
         [Header("Token Details")]
         [SerializeField] TokenDetailsWindow tokenDetails;
@@ -37,8 +35,6 @@ namespace Assets.CS.TabletopUI {
         public void Start() {
             tokenDetails.gameObject.SetActive(false); // ensure this is turned off at the start
             aspectDetails.gameObject.SetActive(false);
-			saveErrorWindow.gameObject.SetActive(false);
-			saveDeniedWindow.gameObject.SetActive(false);
 
             Registry.Get<Concursum>().ShowNotificationEvent.AddListener(ShowNotificationWindow);
             
@@ -56,6 +52,7 @@ namespace Assets.CS.TabletopUI {
 
         public void ShowNotificationWindow(NotificationArgs args)
         {
+
             ShowNotificationWindow(args.Title,args.Description,args.DuplicatesAllowed);
         }
 
@@ -130,39 +127,6 @@ namespace Assets.CS.TabletopUI {
             tokenDetails.Hide();
             aspectDetails.Hide();
         }
-
-		public void ShowSaveError( bool on )
-		{
-			if (TabletopManager.IsInMansus())
-			{
-				if (saveDeniedWindow == null)
-					return;
-
-				if (on)
-				{
-					saveDeniedWindow.Show();
-				}
-				else
-				{
-					saveDeniedWindow.HideNoDestroy();
-				}
-			}
-			else
-			{
-				if (saveErrorWindow == null)
-					return;
-
-				if (on)
-				{
-					saveErrorWindow.Show();
-				}
-				else
-				{
-					saveErrorWindow.HideNoDestroy();
-				}
-			}
-		}
-
 
         // TabletopImageBurner
 

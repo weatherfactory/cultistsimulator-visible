@@ -8,6 +8,7 @@ using Assets.Core.Entities.Verbs;
 using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.Scripts.Spheres.Angels;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.Scripts.TokenContainers;
@@ -17,9 +18,9 @@ using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure {
     //places, arranges and displays things on the table
-    public class Choreographer:ISettingSubscriber {
+    public class TabletopChoreographer:MonoBehaviour, ISettingSubscriber,IChoreographer {
 
-        private Sphere _tabletop;
+        public TabletopSphere _tabletop;
         private Rect tableRect;
 
         const float checkPointPerArcLength = 100f;
@@ -34,10 +35,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         
 
-        public Choreographer(Sphere sphere) {
-            _tabletop = sphere;
-
-
+        public void Awake() {
+            
             tableRect = _tabletop.GetRect();
 
             var snapGridSetting = Registry.Get<Compendium>().GetEntityById<Setting>(NoonConstants.GRIDSNAPSIZE);
@@ -51,7 +50,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
 
-     public void PlaceTokenOnTableAtFreePosition(Token token, Context context)
+     public void PlaceTokenAtFreePosition(Token token, Context context)
      {
          var mergeableStacks =_tabletop.GetElementStacks().Where(existing => existing.CanMergeWith(token.ElementStack));
 
@@ -99,10 +98,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
 
             token.TokenRectTransform.anchoredPosition = pos;
-            token.LastTablePos = pos;
+            token.LocationBeforeDrag = new TokenLocation(pos, _tabletop.GetPath());
             token.transform.localRotation = Quaternion.identity;
-     
-			token.SnapToGrid();
+
+            SnapToGrid(token.transform.localPosition);
 
             MoveAllTokensOverlappingWith(token);
 
@@ -115,7 +114,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 pos)
 {
     token.TokenRectTransform.anchoredPosition = GetFreePosWithDebug(token, pos);
-    _tabletop.DisplayHere(token, context);
+    _tabletop.DisplayAndPositionHere(token, context);
 
         }
 

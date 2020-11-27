@@ -250,19 +250,6 @@ public class OptionsPanel : MonoBehaviour {
 
 
 
-	public void SaveErrorContinue()
-	{
-		// Just close window and resume play
-		Registry.Get<Assets.Core.Interfaces.INotifier>().ShowSaveError( false );
-	}
-
-	public void SaveErrorReload()
-	{
-		// Reload last good savegame
-		Registry.Get<Assets.Core.Interfaces.INotifier>().ShowSaveError(false);
-
-		Registry.Get<TabletopManager>().LoadGame(SourceForGameState.DefaultSave);
-	}
 
 
 

@@ -169,9 +169,9 @@ namespace Assets.CS.TabletopUI {
         
         
 
-        public override void DisplayHere(Token token, Context context) {
-            base.DisplayHere(token, context);
-            token.TokenRectTransform.anchoredPosition3D = GetDefaultPosition(token);
+        public override void DisplayAndPositionHere(Token token, Context context) {
+            base.DisplayAndPositionHere(token, context);
+            Choreographer.PlaceTokenAtFreePosition(token,context);
 
             slotIconHolder.transform.SetAsLastSibling();
             

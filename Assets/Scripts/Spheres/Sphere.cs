@@ -10,6 +10,7 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
+using Assets.Scripts.Spheres.Angels;
 using Assets.TabletopUi.Scripts.Elements;
 using Assets.TabletopUi.Scripts.Elements.Manifestations;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
@@ -62,14 +63,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public virtual bool IsGreedy => false;
         public abstract SphereCategory SphereCategory { get; }
         public SlotSpecification GoverningSlotSpecification { get; set; } = new SlotSpecification();
+        public virtual IChoreographer Choreographer { get; set; } = new SimpleChoreographer();
 
         [Tooltip("Use this to specify the SpherePath in the editor")] [SerializeField]
         protected string pathIdentifier;
         
-        protected virtual Vector3 GetDefaultPosition(Token token)
-        {
-            return Vector3.zero;
-        }
 
         protected List<INotifier> _notifiersForContainer = new List<INotifier>();
         public bool Defunct { get; protected set; }
@@ -209,7 +207,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             if (context.TokenLocation == null)
             {
-                token.TokenRectTransform.anchoredPosition3D = GetDefaultPosition(token);
+                Choreographer.PlaceTokenAtFreePosition(token, context);
             }
             else
             {
@@ -237,7 +235,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return rectTrans;
         }
 
-        public virtual void DisplayHere(Token token, Context context)
+        public virtual void DisplayAndPositionHere(Token token, Context context)
         {
             token.Manifest();
             token.transform.SetParent(transform,true); //this is the default: specifying for clarity in case I revisit
@@ -464,7 +462,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             if (!_tokens.Contains(token))
                 _tokens.Add(token);
 
-            DisplayHere(token, context);
+            DisplayAndPositionHere(token, context);
             NotifyTokensChangedForSphere(new TokenInteractionEventArgs { Sphere = this });
 
         }

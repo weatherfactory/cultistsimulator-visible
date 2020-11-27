@@ -12,6 +12,7 @@ using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.Scripts.Spheres.Angels;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
@@ -38,11 +39,13 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
     public override bool AllowStackMerge { get { return true; } }
      public override  bool EnforceUniqueStacksInThisContainer => true;
 
-     protected override Vector3 GetDefaultPosition(Token token)
-     {
-         return Registry.Get<Choreographer>().GetFreePosWithDebug(token, Vector3.zero);
-     }
-         
+    public override IChoreographer Choreographer
+    {
+        get { return _tabletopChoreographer; }
+    }
+
+    [SerializeField] private TabletopChoreographer _tabletopChoreographer;
+
 
     // This is used to determine if this component is the tabletop.
     // Needed because the MapTokenContainer inherits from TabletopTokenContainer but is not the Tabletop
@@ -58,9 +61,10 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
         _background.onClicked += HandleOnTableClicked;
     }
 
-    public override void DisplayHere(Token token, Context context) {
+    public override void DisplayAndPositionHere(Token token, Context context)
+    {
 
-        base.DisplayHere(token, context);
+        base.DisplayAndPositionHere(token, context);
         //does a dropzone token exist here?
         Token dropzoneToken = GetAllTokens().FirstOrDefault(t => t.Verb.GetType() == typeof(DropzoneVerb));
         if (dropzoneToken == null)
@@ -72,12 +76,12 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
 
             var cmd = new SituationCreationCommand(dropzoneVerb, dropzoneRecipe, StateEnum.Unstarted, tokenLocation,
                 null);
-           dropzoneToken = Registry.Get<SituationBuilder>().CreateSituationWithAnchorAndWindow(cmd).GetAnchor();
+            dropzoneToken = Registry.Get<SituationBuilder>().CreateSituationWithAnchorAndWindow(cmd).GetAnchor();
         }
 
         //align the incoming token with the dropzone
 
-        token.SnapToGrid();
+        _tabletopChoreographer.SnapToGrid(token.transform.localPosition);
     }
 
     public override void OnTokenInThisSphereInteracted(TokenInteractionEventArgs args)
@@ -151,7 +155,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
     // Tabletop specific
     public void CheckOverlappingTokens(Token token) {
         // Verify if we are overlapping with anything. If so: move it.
-        Registry.Get<Choreographer>().MoveAllTokensOverlappingWith(token);
+        _tabletopChoreographer.MoveAllTokensOverlappingWith(token);
     }
 
     public override void TryMoveAsideFor(Token potentialUsurper, Token incumbent, out bool incumbentMoved) {

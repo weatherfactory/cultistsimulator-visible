@@ -66,8 +66,8 @@ public class Output : Sphere {
     }
         //stack.Shroud(true);)
 
-    public override void DisplayHere(Token token, Context context) {
-        base.DisplayHere(token, context);
+    public override void DisplayAndPositionHere(Token token, Context context) {
+        base.DisplayAndPositionHere(token, context);
 
        outputPositioning.ArrangeTokens(GetElementTokens());
     }
