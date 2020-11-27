@@ -14,7 +14,7 @@ namespace Assets.Scripts.Meta
 
         public void Update()
         {
-            if(Keyboard.current.rightBracketKey.wasPressedThisFrame)
+            if(Keyboard.current.periodKey.wasPressedThisFrame)
                 SimulatedMouseUp();
         }
         public void SimulatedMouseUp()

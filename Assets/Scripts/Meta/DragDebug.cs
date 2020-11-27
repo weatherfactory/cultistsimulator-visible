@@ -30,7 +30,7 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
 
     public void OnTokenInteraction(TokenInteractionEventArgs args)
     {
-      if(args.Interaction==Interaction.OnClicked || args.Interaction==Interaction.OnDrag)
+      if(args.Interaction==Interaction.OnClicked || args.Interaction==Interaction.OnDrag || args.Interaction==Interaction.OnDragBegin || args.Interaction == Interaction.OnDragEnd)
           DisplayDetails(args);
     }
 

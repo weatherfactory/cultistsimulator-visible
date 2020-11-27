@@ -19,7 +19,7 @@ namespace Assets.Scripts.Meta
 
        public void Update()
        {
-           if (Keyboard.current.leftBracketKey.wasPressedThisFrame)
+           if (Keyboard.current.commaKey.wasPressedThisFrame)
                SimulateMouseDown();
        }
 

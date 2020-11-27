@@ -88,6 +88,9 @@ namespace Assets.TabletopUi.Scripts.Elements
         public void UpdateTimerVisuals(float originalDuration, float durationRemaining,float interval,bool resaturate,EndingFlavour signalEndingFlavour)
         {
 
+            if (originalDuration <= 0) //this card doesn't decay: never mind the rest
+                return;
+
             string cardDecayTime =
                 Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(durationRemaining);
             decayCountText.text = cardDecayTime;
