@@ -49,8 +49,27 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 NoonUtility.Log("Missing setting entity: " + NoonConstants.GRIDSNAPSIZE);
         }
 
+        public void GroupAllStacks()
+        {
+            var stackTokens = _tabletop.GetElementTokens();
+            var groups = stackTokens
+                .GroupBy(e => e.ElementStack.EntityWithMutationsId, e => e)
+                .Select(group => group.OrderByDescending(e => e.ElementStack.Quantity).ToList());
 
-     public void PlaceTokenAtFreePosition(Token token, Context context)
+            foreach (var group in groups)
+            {
+                var primaryStackToken = group.First();
+
+                foreach (var stackToken in group.Skip(1))
+                    if (primaryStackToken.ElementStack.CanMergeWith(stackToken.ElementStack))
+                    {
+                        primaryStackToken.ElementStack.AcceptIncomingStackForMerge(stackToken.ElementStack);
+                    }
+            }
+
+        }
+
+        public void PlaceTokenAtFreePosition(Token token, Context context)
      {
 
             //else

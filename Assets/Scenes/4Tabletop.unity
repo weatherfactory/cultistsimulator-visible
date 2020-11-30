@@ -23340,8 +23340,9 @@ MonoBehaviour:
   StackCardsEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 600}
-        m_TargetAssemblyTypeName: Assets.CS.TabletopUI.TabletopManager, Assembly-CSharp
+      - m_Target: {fileID: 150}
+        m_TargetAssemblyTypeName: Assets.TabletopUi.Scripts.Infrastructure.TabletopChoreographer,
+          Assembly-CSharp
         m_MethodName: GroupAllStacks
         m_Mode: 1
         m_Arguments:

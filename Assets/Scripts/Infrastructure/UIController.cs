@@ -48,8 +48,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-
-
         public void Input_Zoom_Key(InputAction.CallbackContext context)
         {
             if (IsEditingText())

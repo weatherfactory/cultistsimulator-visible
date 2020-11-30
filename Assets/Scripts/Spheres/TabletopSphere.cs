@@ -176,7 +176,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
             else
                 base.AcceptToken(token, context);
         }
-           else base.AcceptToken(token, context);
+        else base.AcceptToken(token, context);
 
     }
 

@@ -830,27 +830,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 			}
 		}
 
-      
-
-        public void GroupAllStacks()
-        {
-	        var stacks = _tabletop.GetElementTokens();
-	        var groups = stacks.OfType<ElementStack>()
-		        .GroupBy(e => e.EntityWithMutationsId, e => e)
-		        .Select(group => group.OrderByDescending(e => e.Quantity).ToList());
-	        
-	        foreach (var group in groups)
-	        {
-		        var primaryStack = group.First();
-		        
-		        foreach (var stack in group.Skip(1))
-			        if (primaryStack.CanMergeWith(stack))
-			        {
-				        primaryStack.AcceptIncomingStackForMerge(stack);
-			        }
-	        }
-   
-        }
+        
 
 		private List<Token> FindAllElementTokenssForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
 			var stackList = new List<Token>();
