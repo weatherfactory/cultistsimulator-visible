@@ -13,17 +13,84 @@ using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
+using Noon;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure
 {
     public class GameGateway:MonoBehaviour
     {
-
+        public void Awake()
+        {
+            var r = new Registry();
+            r.Register(this);
+        }
         public void Start()
         {
-            var r=new Registry();
-            r.Register(this);
+            try
+            {
+
+                if (Registry.Get<StageHand>().SourceForGameState == SourceForGameState.NewGame)
+                {
+                    Registry.Get<GameGateway>().BeginNewGame();
+                }
+                else
+                {
+                    LoadGame(Registry.Get<StageHand>().SourceForGameState);
+                }
+            }
+            catch (Exception e)
+            {
+                NoonUtility.LogException(e);
+            }
+        }
+
+
+        public void LoadGame(SourceForGameState gameStateSource)
+        {
+            Compendium compendium = Registry.Get<Compendium>();
+
+
+            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
+            { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false });
+            Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
+            try
+            {
+
+                Registry.Get<GameSaveManager>().LoadTabletopState(gameStateSource, 
+                    Registry.Get<SphereCatalogue>().GetDefaultWorldSphere());
+
+
+                var allSituationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
+                foreach (var s in allSituationControllers)
+                {
+                    if (s.IsOpen)
+                    {
+                        s.OpenAtCurrentLocation();
+                    }
+                }
+
+                Registry.Get<Concursum>().ShowNotification(
+                     new NotificationArgs(Registry.Get<ILocStringProvider>().Get("UI_LOADEDTITLE"), Registry.Get<ILocStringProvider>().Get("UI_LOADEDDESC")));
+      
+            }
+            catch (Exception e)
+            {
+                Registry.Get<Concursum>().ShowNotification(
+                    new NotificationArgs(Registry.Get<ILocStringProvider>().Get("UI_LOADFAILEDTITLE"), Registry.Get<ILocStringProvider>().Get("UI_LOADFAILEDDESC")));
+           
+                NoonUtility.LogException(e);
+            }
+
+            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
+            { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false });
+
+            Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
+
+            var activeLegacy = Registry.Get<Character>().ActiveLegacy;
+
+
+
         }
 
         private void ProvisionStartingVerb(Legacy activeLegacy, Sphere inSphere)
@@ -56,27 +123,20 @@ namespace Assets.Scripts.Infrastructure
 
         public void BeginNewGame()
         {
-            SetupNewBoard();
-            var populatedCharacter =
-                Registry.Get<Character>(); //should just have been set above, but let's keep this clean
-            populatedCharacter.Reset(populatedCharacter.ActiveLegacy, null);
-            Registry.Get<Compendium>().SupplyLevers(populatedCharacter);
-            Registry.Get<StageHand>().ClearRestartingGameFlag();
-        }
-
-
-        public void SetupNewBoard()
-        {
-
             Character character = Registry.Get<Character>();
             Sphere tabletopSphere = Registry.Get<SphereCatalogue>().GetDefaultWorldSphere();
 
 
-            ProvisionStartingVerb(character.ActiveLegacy,tabletopSphere);
+            ProvisionStartingVerb(character.ActiveLegacy, tabletopSphere);
             ProvisionStartingElements(character.ActiveLegacy, tabletopSphere);
 
-            Registry.Get<Concursum>().ShowNotification(new NotificationArgs(  character.ActiveLegacy.Label, character.ActiveLegacy.StartDescription));
+            Registry.Get<Concursum>().ShowNotification(new NotificationArgs(character.ActiveLegacy.Label, character.ActiveLegacy.StartDescription));
+
+            character.Reset(character.ActiveLegacy, null);
+            Registry.Get<Compendium>().SupplyLevers(character);
+            Registry.Get<StageHand>().ClearRestartingGameFlag();
         }
+
 
 
         public async void LeaveGame()

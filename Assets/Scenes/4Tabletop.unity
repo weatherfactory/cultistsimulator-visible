@@ -32134,7 +32134,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1706259581}
   m_HandleRect: {fileID: 1706259580}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -37785,7 +37785,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 422685288}
   m_HandleRect: {fileID: 422685287}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -40302,7 +40302,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1824408590499741221, guid: 84fe65b9f68047a42939ba2a4bcab9f8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 84fe65b9f68047a42939ba2a4bcab9f8, type: 3}
 --- !u!1001 &1948377805275483437
 PrefabInstance:

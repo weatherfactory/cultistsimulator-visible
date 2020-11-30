@@ -23,7 +23,7 @@ namespace Assets.TabletopUi.Scripts
             throw new NotImplementedException();
         }
 
-        public void ImportTableState(SourceForGameState source, TabletopSphere tabletop)
+        public void ImportTableState(SourceForGameState source, Sphere tabletop)
         {
             throw new NotImplementedException();
         }

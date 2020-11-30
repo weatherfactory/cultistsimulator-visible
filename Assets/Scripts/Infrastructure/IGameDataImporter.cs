@@ -7,7 +7,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     public interface IGameDataImporter
     {
         void ImportCharacter(SourceForGameState source, Character character);
-        void ImportTableState(SourceForGameState source,TabletopSphere tabletop);
+        void ImportTableState(SourceForGameState source,Sphere tabletop);
         bool IsSavedGameActive(SourceForGameState source, bool temp);
     }
 }

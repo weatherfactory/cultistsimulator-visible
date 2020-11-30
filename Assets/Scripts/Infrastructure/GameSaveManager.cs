@@ -198,7 +198,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 return true;
         }
 
-        public void LoadTabletopState(SourceForGameState source,TabletopSphere tabletop)
+        public void LoadTabletopState(SourceForGameState source,Sphere tabletop)
         {
 
             simpleJsonGameDataImporter.ImportTableState(source,tabletop);

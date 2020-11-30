@@ -52,12 +52,6 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
     public virtual bool IsTabletop { get { return true; } }
 
     public virtual void Start() {
-        InitialiseListeners();
-        _notifiersForContainer.Add(Registry.Get<INotifier>());
-        }
-
-    private void InitialiseListeners() {
-        // Init Listeners to pre-existing DisplayHere Objects
         _background.onClicked += HandleOnTableClicked;
     }
 

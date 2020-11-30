@@ -18,6 +18,11 @@ namespace Assets.CS.TabletopUI
 #pragma warning restore 649
 
 
+        public void Start()
+        {
+            ShowTabletopFor(Registry.Get<Character>().ActiveLegacy);
+        }
+
         public void OnPointerClick(PointerEventData eventData)
         {
             onClicked?.Invoke(eventData);

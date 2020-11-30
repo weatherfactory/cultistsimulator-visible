@@ -19,37 +19,36 @@ public class ElementOverview : MonoBehaviour, ISphereCatalogueEventSubscriber {
 
 
     [SerializeField] StatusBarElementCount[] elementCounts;
-    private Legacy _activeLegacy;
-    private Compendium _compendium;
     private const int MAX_ELEMENTS = 4;
 
-    public void Initialise(Legacy activeLegacy, Compendium compendium) {
+    public void Start() {
 
         Registry.Get<SphereCatalogue>().Subscribe(this);
 
-        _activeLegacy = activeLegacy;
-        _compendium = compendium;
+ 
+        Legacy activeLegacy = Registry.Get<Character>().ActiveLegacy;
+        List<string> statusBarElementIds = new List<string>(activeLegacy.StatusBarElements);
 
         for (int a = 0; a < MAX_ELEMENTS; a++)
         {
             elementCounts[a].gameObject.SetActive(false);
         }
-        if (_activeLegacy.StatusBarElements.Count == 0)
+        if (statusBarElementIds.Count == 0)
         {
-            activeLegacy.StatusBarElements.Add("health");
-            activeLegacy.StatusBarElements.Add("passion");
-            activeLegacy.StatusBarElements.Add("reason");
-            activeLegacy.StatusBarElements.Add("funds");
+            statusBarElementIds.Add("health");
+            statusBarElementIds.Add("passion");
+            statusBarElementIds.Add("reason");
+            statusBarElementIds.Add("funds");
         }
 
-        if(_activeLegacy.StatusBarElements.Count>MAX_ELEMENTS)
-            NoonUtility.Log("Too many status bar elements specified - not all will appear (" + _activeLegacy.StatusBarElements.Count + " elements specified)");
+        if(statusBarElementIds.Count>MAX_ELEMENTS)
+            NoonUtility.Log("Too many status bar elements specified - not all will appear (" + statusBarElementIds.Count + " elements specified)");
 
         int i = 0;
         
-        foreach (var e in _activeLegacy.StatusBarElements)
+        foreach (var e in statusBarElementIds)
         {
-            elementCounts[i].PopulateWithElement(compendium.GetEntityById<Element>(e));
+            elementCounts[i].PopulateWithElement(Registry.Get<Compendium>().GetEntityById<Element>(e));
             i++;
             if (i >= MAX_ELEMENTS)
                 break;
@@ -60,6 +59,7 @@ public class ElementOverview : MonoBehaviour, ISphereCatalogueEventSubscriber {
 
     public void UpdateDisplay()
     {
+
         var tc = Registry.Get<SphereCatalogue>();
         var aspectsInContext = tc.GetAspectsInContext(new AspectsDictionary());
   

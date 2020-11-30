@@ -27,7 +27,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 #pragma warning restore 649
         bool isEnding = false;
 
-        public void Initialise() {
+        public void Start() {
             fadeOverlay.gameObject.SetActive(false);
         }
 

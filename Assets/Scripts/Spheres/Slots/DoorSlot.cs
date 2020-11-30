@@ -43,9 +43,6 @@ namespace Assets.CS.TabletopUI {
         {
             ShowGlow(false, true);
             slotGlow.Hide(true);
-            
-            _notifiersForContainer.Add(Registry.Get<INotifier>());
-
         }
 
 

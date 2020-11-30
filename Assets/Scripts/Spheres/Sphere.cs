@@ -69,7 +69,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         protected string pathIdentifier;
         
 
-        protected List<INotifier> _notifiersForContainer = new List<INotifier>();
         public bool Defunct { get; protected set; }
         protected HashSet<ContainerBlock> _currentContainerBlocks = new HashSet<ContainerBlock>();
         private SphereCatalogue _catalogue;
