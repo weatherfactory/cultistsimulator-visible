@@ -444,8 +444,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
     public async void SaveGame()
     {
-        var saveTask = Registry.Get<TabletopManager>().SaveGameAsync(true,SourceForGameState.DefaultSave);
-        await saveTask;
+      NoonUtility.LogWarning("This doesn't work rn");
     }
 
     void ResetDecks()
@@ -495,12 +494,13 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
         TabletopManager tabletopManager = Registry.Get<TabletopManager>();
         var source = (SourceForGameState) index;
 
-        var task = tabletopManager.SaveGameAsync(true, source);
-        var success = await task;
+        NoonUtility.LogWarning("THis doesn't work rn");
+      //  var task = tabletopManager.SaveGameAsync(true, source);
+        //var success = await task;
 
         
-            loadButtons[index-1].interactable = success;
-            delButtons[index -1].interactable = success;
+        //    loadButtons[index-1].interactable = success;
+        //    delButtons[index -1].interactable = success;
         
     }
 

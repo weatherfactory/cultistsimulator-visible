@@ -11,6 +11,7 @@ using Assets.Core.Interfaces;
 using Assets.Core.NullObjects;
 using Assets.Core.Services;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.Scripts.Infrastructure;
 using Assets.Scripts.UI;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Elements;
@@ -400,7 +401,6 @@ namespace Assets.CS.TabletopUI {
             //  }
 
             SoundManager.PlaySfx("CardPickup");
-            TabletopManager.RequestNonSaveableState(TabletopManager.NonSaveableType.Drag, true);
 
         }
 
@@ -467,8 +467,6 @@ namespace Assets.CS.TabletopUI {
                 if (ShouldReturnToStart())
                     ReturnToStartPosition();
 
-                TabletopManager.RequestNonSaveableState(TabletopManager.NonSaveableType.Drag,
-                    false); // There is also a failsafe to catch unexpected aborts of Drag state - CP
 
             }
         }

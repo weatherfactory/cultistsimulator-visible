@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
@@ -34,9 +35,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public MetaInfo MetaInfo { get; }
 
 
-        public TableSaveState(IEnumerable<ElementStack> tableStacks, List<Situation> situations,MetaInfo metaInfo)
+        public TableSaveState(IEnumerable<Token> tableStacks, List<Situation> situations,MetaInfo metaInfo)
         {
-            TableStacks = tableStacks;
+            TableStacks = tableStacks.Select(s=>s.ElementStack);
             Situations = situations;
             MetaInfo = metaInfo;
         }

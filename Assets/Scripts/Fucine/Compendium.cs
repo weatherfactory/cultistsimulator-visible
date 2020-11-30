@@ -80,7 +80,6 @@ public class Compendium
     {
         EntityStore entityStore = entityStores[typeof(T)];
         return entityStore.GetSingleInstance<T>();
-
     }
 
     public bool TryAddEntity(IEntityWithId entityToAdd)

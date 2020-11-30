@@ -8,11 +8,13 @@ using Assets.Core.Interfaces;
 using Assets.Core.Services;
 using Assets.CS.TabletopUI;
 using Assets.Logic;
+using Assets.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using JetBrains.Annotations;
 using Noon;
 using OrbCreationExtensions;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum LegacyEventRecordId
 {
@@ -28,12 +30,24 @@ public enum LegacyEventRecordId
 
 }
 
+
 public class Character:MonoBehaviour
 {
+    private HashSet<ICharacterSubscriber> _subscribers=new HashSet<ICharacterSubscriber>();
     private string _name="[unnamed]";
 
     public Transform CurrentDecks;
     public DeckInstance DeckPrefab;
+
+    public void Subscribe(ICharacterSubscriber subscriber)
+    {
+        _subscribers.Add(subscriber);
+    }
+
+    public void Unsubscribe(ICharacterSubscriber subscriber)
+    {
+        _subscribers.Remove(subscriber);
+    }
 
     public CharacterState State
     {
@@ -46,17 +60,37 @@ public class Character:MonoBehaviour
 
             return CharacterState.Unformed;
         }
-
-
     }
 
     public string Name
     {
         get { return _name; }
-        set { _name = value; }
+        set
+        {
+
+            _name = value;
+
+            foreach (var s in new List<ICharacterSubscriber>(_subscribers))
+                if (s.Equals(null))
+                    Unsubscribe(s);
+                else
+                    s.CharacterNameUpdated(_name);
+        }
     }
 
-    public string Profession { get; set; }
+    public string Profession
+    {
+        get => _profession;
+        set
+        {
+
+            foreach (var s in new List<ICharacterSubscriber>(_subscribers))
+                if (s.Equals(null))
+                    Unsubscribe(s);
+                else
+                    s.CharacterProfessionUpdated(_name);
+        }
+    }
 
     public Dictionary<string, string> GetInProgressHistoryRecords()
     {
@@ -76,7 +110,7 @@ public class Character:MonoBehaviour
 
     private Dictionary<string, int> recipeExecutions;
     private Dictionary<string, DeckInstance> _deckInstances;
-
+    private string _profession;
 
 
     public void Reset(Legacy activeLegacy,Ending endingTriggered)
@@ -98,6 +132,10 @@ public class Character:MonoBehaviour
         recipeExecutions= new Dictionary<string, int>();
         _deckInstances=new Dictionary<string, DeckInstance>();
         ResetStartingDecks();
+
+        Name = Registry.Get<ILocStringProvider>().Get("UI_CLICK_TO_NAME");
+        // Registry.Retrieve<Chronicler>().CharacterNameChanged(NoonConstants.DEFAULT_CHARACTER_NAME);//so we never see a 'click to rename' in future history
+        Profession = ActiveLegacy.Label;
 
     }
 

@@ -179,6 +179,7 @@ namespace Assets.TabletopUi.Scripts.Services
                 RegisterSavedOrNewCharacter(registryAccess);
 
                 var chronicler = new Chronicler(Registry.Get<Character>(), Registry.Get<Compendium>());
+
                 registryAccess.Register(chronicler);
 
                 //set up the top-level adapters. We do this here in case we've diverted to the error scene on first load / content fail, in order to avoid spamming the log with messages.

@@ -11,6 +11,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using Assets.Core.Entities;
+using Assets.Core.Enums;
 using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Noon;
@@ -237,8 +238,37 @@ public class OptionsPanel : MonoBehaviour {
     }
 
 
-	// Leave game without saving
-	public void AbandonGame()
+    public async void LeaveGame()
+    {
+        Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Paused, WithSFX = false });
+
+
+        ITableSaveState tableSaveState = new TableSaveState(Registry.Get<SphereCatalogue>().GetSpheresOfCategory(SphereCategory.World).SelectMany(sphere=>sphere.GetAllTokens())
+            
+        , Registry.Get<SituationsCatalogue>().GetRegisteredSituations(), Registry.Get<MetaInfo>());
+
+        var saveTask = Registry.Get<GameSaveManager>()
+            .SaveActiveGameAsync(tableSaveState, Registry.Get<Character>(), SourceForGameState.DefaultSave);
+
+        var success = await saveTask;
+
+
+        if (success)
+        {
+            Registry.Get<StageHand>().MenuScreen();
+        }
+        else
+        {
+            // Save failed, need to let player know there's an issue
+            // Autosave would wait and retry in a few seconds, but player is expecting results NOW.
+            Registry.Get<LocalNexus>().ToggleOptionsEvent.Invoke();
+            GameSaveManager.ShowSaveError();
+        }
+    }
+
+
+    // Leave game without saving
+    public void AbandonGame()
 	{
         Registry.Get<StageHand>().MenuScreen();
     }

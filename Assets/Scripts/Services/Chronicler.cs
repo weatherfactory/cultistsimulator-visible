@@ -7,6 +7,7 @@ using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.Scripts.Interfaces;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Services;
@@ -20,9 +21,9 @@ namespace Assets.Core.Services
     /// </summary>
     
     
-    public class Chronicler
+    public class Chronicler:ICharacterSubscriber
     {
-        private Character _storage;
+        private Character _character;
         private Compendium _compendium;
         private const string BOOK_ASPECT = "text";
         private const string DESIRE_ASPECT = "desire";
@@ -52,16 +53,14 @@ namespace Assets.Core.Services
 
 
 
-        public Chronicler(Character storage,Compendium compendium)
+        public Chronicler(Character character,Compendium compendium)
         {
-            _storage = storage;
+            _character = character;
             _compendium = compendium;
+            _character.Subscribe(this);
+            
         }
 
-        public void CharacterNameChanged(string newName)
-        {
-            _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastcharactername.ToString(), newName);
-        }
 
         public void TokenPlacedOnTabletop(Token token)
         {
@@ -160,7 +159,7 @@ namespace Assets.Core.Services
 
             if(currentFollower!=null)
 
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastfollower.ToString(), currentFollower.Id);
+                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastfollower.ToString(), currentFollower.Id);
 
         }
 
@@ -226,7 +225,7 @@ namespace Assets.Core.Services
             if (tokenAspects.Keys.Contains(HQ_ASPECT))
 			{
 				Analytics.CustomEvent( "A_HQ_PLACED", new Dictionary<string,object>{ {"id",token.Element.Id } } );
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastheadquarters.ToString(), token.Element.Id);
+                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastheadquarters.ToString(), token.Element.Id);
 			}
         }
 
@@ -235,7 +234,7 @@ namespace Assets.Core.Services
             if (tokenAspects.Keys.Contains(CULT_ASPECT))
             {
 				Analytics.CustomEvent( "A_CULT_PLACED", new Dictionary<string,object>{ {"id",token.Element.Id} } );
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastcult.ToString(), token.Element.Id);
+                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastcult.ToString(), token.Element.Id);
 
                 if (tokenAspects.Keys.Contains("cultsecrethistories_1"))
 				{
@@ -281,7 +280,7 @@ namespace Assets.Core.Services
             if (tokenAspects.Keys.Contains(TOOL_ASPECT))
 			{
 				Analytics.CustomEvent( "A_TOOL_PLACED", new Dictionary<string,object>{ {"id",token.Element.Id } } );
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lasttool.ToString(), token.Element.Id);
+                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lasttool.ToString(), token.Element.Id);
 			}
         }
 
@@ -294,17 +293,17 @@ namespace Assets.Core.Services
                 if (tokenAspects.Keys.Contains(POWER_ASPECT))
 				{
 					Analytics.CustomEvent( "A_DESIRE_POWER" );
-                    _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastdesire.ToString(), "ascensionpowera");
+                    _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastdesire.ToString(), "ascensionpowera");
 				}
                 else if (tokenAspects.Keys.Contains(SENSATION_ASPECT))
                 {
 					Analytics.CustomEvent( "A_DESIRE_SENSATION" );
-				    _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastdesire.ToString(), "ascensionsensationa");
+				    _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastdesire.ToString(), "ascensionsensationa");
 				}
                 else if (tokenAspects.Keys.Contains(ENLIGHTENMENT_ASPECT))
 				{
 					Analytics.CustomEvent( "A_DESIRE_ENLIGHTENMENT" );
-                    _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastdesire.ToString(), "ascensionenlightenmenta");
+                    _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastdesire.ToString(), "ascensionenlightenmenta");
 				}
             }
         }
@@ -314,7 +313,7 @@ namespace Assets.Core.Services
             if (tokenAspects.Keys.Contains(BOOK_ASPECT))
 			{
 				Analytics.CustomEvent( "A_BOOK_PLACED", new Dictionary<string,object>{ {"id",token.Element.Id} } );
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastbook.ToString(), token.Element.Id);
+                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastbook.ToString(), token.Element.Id);
 			}
         }
 
@@ -343,6 +342,17 @@ namespace Assets.Core.Services
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_TRICUSPIDGATE", true);
                     break;
             }
+        }
+
+        public void CharacterNameUpdated(string newName)
+        {
+            _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastcharactername.ToString(), newName);
+
+        }
+
+        public void CharacterProfessionUpdated(string newProfession)
+        {
+       //
         }
     }
 }

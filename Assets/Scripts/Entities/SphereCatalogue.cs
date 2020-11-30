@@ -32,9 +32,24 @@ namespace Assets.Core.Entities {
         public const string STORAGE_PATH = "storage";
 
 
+        public Sphere GetDefaultWorldSphere()
+        {
+            var dictum = Registry.Get<Compendium>().GetSingleEntity<Dictum>();
+
+            var spherePath = new SpherePath(dictum.DefaultWorldSpherePath);
+            var defaultWorldSphere = GetContainerByPath(spherePath);
+            return defaultWorldSphere;
+        }
+
         public HashSet<Sphere> GetSpheres() {
             return _spheres;
         }
+
+        public IEnumerable<Sphere> GetSpheresOfCategory(SphereCategory category)
+        {
+            return _spheres.Where(c => c.SphereCategory == category);
+        }
+
 
         public void RegisterSphere(Sphere sphere) {
             
@@ -107,9 +122,6 @@ namespace Assets.Core.Entities {
                 else
                     s.OnTokenInteraction(args);
         }
-
-        
-
 
 
         public AspectsInContext GetAspectsInContext(IAspectsDictionary aspectsInSituation)

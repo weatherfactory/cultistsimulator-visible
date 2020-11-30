@@ -258,7 +258,6 @@ namespace Assets.Core.Entities {
 //            greedyAnimIsActive = true;
             slotAnim.onElementSlotAnimDone += HandleOnGreedySlotAnimDone;
 
-            TabletopManager.RequestNonSaveableState(TabletopManager.NonSaveableType.Greedy, true);
 
         }
 
@@ -266,7 +265,6 @@ namespace Assets.Core.Entities {
             Sphere destinatinoSlot)
         {
   //          greedyAnimIsActive = false;
-            TabletopManager.RequestNonSaveableState(TabletopManager.NonSaveableType.Greedy, false);
         }
 
 

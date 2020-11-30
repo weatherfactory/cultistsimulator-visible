@@ -49,7 +49,6 @@ namespace Assets.CS.TabletopUI {
 
         IEnumerator DoShowAnim(float duration, Vector3 targetPosition)
 		{
-			TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.WindowAnim, true );
             var time = 0f;
             var targetPos = GetBoundCorrectedWorldPos(targetPosition);
             var startPos = anchor.transform.position;
@@ -65,7 +64,6 @@ namespace Assets.CS.TabletopUI {
 
             transform.localScale = Vector3.one;
             SetPosition(targetPos);
-			TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.WindowAnim, false );
         }
 
         // GENERAL MOVE BEHAVIOR

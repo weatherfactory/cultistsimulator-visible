@@ -13,6 +13,7 @@ using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
 using Assets.Logic;
+using Assets.Scripts.Infrastructure;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
@@ -28,7 +29,7 @@ using UnityEngine.UI;
 using Random = System.Random;
 
 namespace Assets.CS.TabletopUI {
-    public class TabletopManager : MonoBehaviour,ISettingSubscriber
+    public class TabletopManager : MonoBehaviour
     {
 
         [SerializeField] private EndGameAnimController _endGameAnimController;
@@ -64,70 +65,29 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] private BackgroundMusic backgroundMusic;
 
         [SerializeField] private Notifier _notifier;
-        [SerializeField] private AutosaveWindow _autosaveNotifier;
         [SerializeField] private ElementOverview _elementOverview;
         
         
 
-        private bool disabled;
         private bool _initialised;
 
 
-        public enum NonSaveableType
-        {
-            Drag, // Cannot save because held card gets lost
-            Mansus, // Cannot save by design
-            Greedy, // Cannot save during Magnet grab (spec fix for #1253)
-            WindowAnim, // Cannot save during situation window open
-            NumNonSaveableTypes
-        };
-
-        static private bool[] isInNonSaveableState = new bool[(int) NonSaveableType.NumNonSaveableTypes];
-
-
-
-        private float
-            housekeepingTimer = 0.0f; // Now a float so that we can time autosaves independent of Heart.Beat - CP
-
-        private float AUTOSAVE_INTERVAL = 300.0f;
 
         private static bool highContrastMode = false;
         private static bool accessibleCards = false;
         private List<string> currentDoomTokens = new List<string>();
 
 
-        public async void Update()
-        {
-            if (disabled)
-                return; //we've had to shut down because of a critical error
-
-            if (!_initialised)
-                return; //still setting up
-
-
-            housekeepingTimer += Time.deltaTime;
-            if (housekeepingTimer >= AUTOSAVE_INTERVAL && IsSafeToAutosave()
-            ) // Hold off autsave until it's safe, rather than waiting for the next autosave - CP
-            {
-                housekeepingTimer = 0.0f;
-
-                var saveTask = SaveGameAsync(true, SourceForGameState.DefaultSave);
-                var success = await saveTask;
-
-                if (!success)
-                    housekeepingTimer = AUTOSAVE_INTERVAL - 5.0f;
-
-            }
-        }
-
-
-
-
-
         void Awake()
         {
             var registry = new Registry();
             registry.Register(this);
+        }
+
+        private void InitialiseSubControllers(EndGameAnimController endGameAnimController)
+        {
+
+            endGameAnimController.Initialise();
         }
 
         void Start()
@@ -152,7 +112,7 @@ namespace Assets.CS.TabletopUI {
 
             if (Registry.Get<StageHand>().SourceForGameState == SourceForGameState.NewGame)
             {
-                BeginNewGame();
+            Registry.Get<GameGateway>().BeginNewGame();
             }
             else
             {
@@ -211,20 +171,6 @@ namespace Assets.CS.TabletopUI {
 
 
 
-    private void BeginNewGame()
-        {
-            SetupNewBoard();
-            var populatedCharacter =
-                Registry.Get<Character>(); //should just have been set above, but let's keep this clean
-            populatedCharacter.Reset(populatedCharacter.ActiveLegacy,null);
-            Registry.Get<Compendium>().SupplyLevers(populatedCharacter);
-     Registry.Get<StageHand>().ClearRestartingGameFlag();
-        }
-
-        private void InitialiseSubControllers(EndGameAnimController endGameAnimController) {
-
-            endGameAnimController.Initialise();
-        }
 
 
 
@@ -258,54 +204,12 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public void SetupNewBoard() {
-
-
-     
-            Character _character = Registry.Get<Character>();
-            if(_character.ActiveLegacy==null)
-                throw new ApplicationException("Trying to set up a new board for a character with no chosen legacy. Even fresh characters should have a legacy when created, but this code has always been hinky.");
-
-            IVerb v = Registry.Get<Compendium>().GetEntityById<BasicVerb>(_character.ActiveLegacy.StartingVerbId);
-            SituationCreationCommand command = new SituationCreationCommand(v, NullRecipe.Create(), StateEnum.Unstarted,
-                new TokenLocation(0f,0f,-100f, _tabletop.GetPath()));
-            var situation = Registry.Get<SituationBuilder>().CreateSituationWithAnchorAndWindow(command);
-            
-            situation.ExecuteHeartbeat(0f);
-
-
-            SetStartingCharacterInfo(_character.ActiveLegacy);
-
-            ProvisionStartingElements(_character.ActiveLegacy);
-
-            StatusBar.UpdateCharacterDetailsView(Registry.Get<Character>());
-
-            
-            _notifier.ShowNotificationWindow(_character.ActiveLegacy.Label, _character.ActiveLegacy.StartDescription);
-        }
-
-        private void SetStartingCharacterInfo(Legacy chosenLegacy)
-		{
-            Character newCharacter = Registry.Get<Character>();
-            newCharacter.Name = Registry.Get<ILocStringProvider>().Get("UI_CLICK_TO_NAME");
-           // Registry.Retrieve<Chronicler>().CharacterNameChanged(NoonConstants.DEFAULT_CHARACTER_NAME);//so we never see a 'click to rename' in future history
-            newCharacter.Profession = chosenLegacy.Label;
-        }
 
 
 
-        public void ProvisionStartingElements(Legacy chosenLegacy) {
-            AspectsDictionary startingElements = new AspectsDictionary();
-            startingElements.CombineAspects(chosenLegacy.Effects);  //note: we don't reset the chosen legacy. We assume it remains the same until someone dies again.
 
-            foreach (var e in startingElements)
-            {
-                var context = new Context(Context.ActionSource.Loading);
 
-                Token token = _tabletop.ProvisionElementStackToken(e.Key, e.Value, Source.Existing(),context,Element.EmptyMutationsDictionary());
-                    _tabletop.Choreographer.PlaceTokenAtFreePosition(token, context);
-            }
-        }
+
 
 
         public int PurgeElement(string elementId, int maxToPurge)
@@ -416,8 +320,6 @@ namespace Assets.CS.TabletopUI {
 
             chronicler.ChronicleGameEnd(Registry.Get<SituationsCatalogue>().GetRegisteredSituations(), Registry.Get<SphereCatalogue>().GetSpheres(),ending);
             character.Reset(null,ending);
-            
-
 
             var saveTask = Registry.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Registry.Get<MetaInfo>()), Registry.Get<Character>(),SourceForGameState.DefaultSave);
             var result = await saveTask;
@@ -442,7 +344,6 @@ namespace Assets.CS.TabletopUI {
                 Registry.Get<GameSaveManager>().LoadTabletopState(gameStateSource, _tabletop);
                 //saveGameManager.ImportHashedSaveToState(_tabletop, null, htSave);
 
-                StatusBar.UpdateCharacterDetailsView(Registry.Get<Character>());
 
 				// Reopen any windows that were open at time of saving. I think there can only be one, but checking all for robustness - CP
 				var allSituationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
@@ -479,89 +380,6 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
         }
 
 
-
-        public async Task<bool> SaveGameAsync(bool withNotification, SourceForGameState source)
-        {
-            return false;
-            if (!IsSafeToAutosave())
-            {
-                NoonUtility.Log("Unsafe to autosave: returning", 0,VerbosityLevel.SystemChatter);
-                return false;
-            }
-
-            if (withNotification && _autosaveNotifier != null)
-            {
-                NoonUtility.Log("Displaying autosave notification", 0, VerbosityLevel.SystemChatter);
-
-                //_notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
-                _autosaveNotifier.SetDuration(3.0f);
-                _autosaveNotifier.Show();
-            }
-
-
-			Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 3,GameSpeed = GameSpeed.Paused,WithSFX = false});
-            NoonUtility.Log("Paused game for saving", 0,VerbosityLevel.SystemChatter);
-
-
-            try
-            {
-	            ITableSaveState tableSaveState=new TableSaveState(_tabletop.GetElementStacks(), Registry.Get<SituationsCatalogue>().GetRegisteredSituations(),Registry.Get<MetaInfo>());
-                 var   saveTask = Registry.Get<GameSaveManager>().SaveActiveGameAsync(tableSaveState,  Registry.Get<Character>(), source);
-                 NoonUtility.Log("Beginning save", 0,VerbosityLevel.SystemChatter);
-               bool    success = await saveTask;
-                NoonUtility.Log($"Save status: {success}", 0,VerbosityLevel.SystemChatter);
-
-            }
-            catch (Exception e)
-            {
-	         GameSaveManager.ShowSaveError();
-	            GameSaveManager.saveErrorWarningTriggered = true;
-	            Debug.LogError("Failed to save game (see exception for details)");
-	            Debug.LogException(e);
-            }
-
-            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.DeferToNextLowestCommand, WithSFX = false });
-            NoonUtility.Log("Unpausing game after saving",0,VerbosityLevel.SystemChatter);
-
-
-
-
-			if (GameSaveManager.saveErrorWarningTriggered)	// Do a full pause after resuming heartbeat (to update UI, SFX, etc)
-			{
-                NoonUtility.Log("Triggering save error warning", 0,VerbosityLevel.SystemChatter);
-
-                // only pause if we need to (since it triggers sfx)
-                Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
-                    {ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false});
-
-				GameSaveManager.saveErrorWarningTriggered = false;	// Clear after we've used it
-			}
-
-            return true;
-        }
-
-        public async void LeaveGame()
-        {
-
-            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Paused, WithSFX = false });
-            var saveTask = SaveGameAsync(true, SourceForGameState.DefaultSave);
-
-            var success = await saveTask;
-
-
-            if (success)
-            {
-                Registry.Get<StageHand>().MenuScreen();
-            }
-            else
-            {
-                // Save failed, need to let player know there's an issue
-                // Autosave would wait and retry in a few seconds, but player is expecting results NOW.
-                Registry.Get<LocalNexus>().ToggleOptionsEvent.Invoke();
-                GameSaveManager.ShowSaveError();
-            }
-
-        }
 
         
         public HashSet<AnchorAndSlot> FillTheseSlotsWithFreeStacks(HashSet<AnchorAndSlot> slotsToFill) {
@@ -732,41 +550,6 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
         }
 
-		static public void RequestNonSaveableState( NonSaveableType type, bool forbidden )
-		{
-			// This allows multiple systems to request overlapping NonSaveableStates - CP
-			// Removed the counter, as it kept creeping up (must be a loophole if a drag is aborted oddly)
-			// For safety I've changed it to array of separate flags (so you can drag in the Mansus without enabled autosave)
-			// and added a failsafe in the update, which flushes the Drag flag whenever nothing is held (rather than relying on catching all exit points)
-			Debug.Assert( type<NonSaveableType.NumNonSaveableTypes, "Bad nonsaveable type" );
-			isInNonSaveableState[(int)type] = forbidden;
-		}
-
-		static public void FlushNonSaveableState()	// For use when we absolutely, definitely want to restore autosave permission - CP
-		{
-			for (int i=0; i<(int)NonSaveableType.NumNonSaveableTypes; i++)
-			{
-				isInNonSaveableState[i] = false;
-			}
-		}
-
-		static public bool IsSafeToAutosave()
-		{
-			for (int i=0; i<(int)NonSaveableType.NumNonSaveableTypes; i++)
-			{
-				if (isInNonSaveableState[i])
-					return false;
-			}
-			return true;
-		}
-
-        
-
-		protected void SetAutosaveInterval( float minutes )
-		{
-			AUTOSAVE_INTERVAL = minutes * 60.0f;
-		}
-
 
 
 		public static void SetHighContrast( bool on )
@@ -864,11 +647,6 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 		}
 
 
-
-        public void WhenSettingUpdated(object newValue)
-        {
-            SetAutosaveInterval(newValue is float ? (float)newValue : 0);
-        }
 
     }
 
