@@ -100,6 +100,84 @@ namespace Assets.Core.Entities
 
         }
 
+     
+
+        public void HaltSituation(string toHaltId, int maxToHalt)
+        {
+            var situationsCatalogue = Registry.Get<SituationsCatalogue>();
+            int i = 0;
+            //Halt the verb if the actionId matches BEARING IN MIND WILDCARD
+
+            if (toHaltId.Contains('*'))
+            {
+                string wildcardToDelete = toHaltId.Remove(toHaltId.IndexOf('*'));
+
+                foreach (var s in situationsCatalogue.GetRegisteredSituations())
+                {
+                    if (s.Verb.Id.StartsWith(wildcardToDelete))
+                    {
+                        s.Halt();
+                        i++;
+                    }
+
+                    if (i >= maxToHalt)
+                        break;
+                }
+            }
+
+            else
+            {
+                foreach (var s in situationsCatalogue.GetRegisteredSituations())
+                {
+                    if (s.Verb.Id == toHaltId.Trim())
+                    {
+                        s.Halt();
+                        i++;
+                    }
+                    if (i >= maxToHalt)
+                        break;
+                }
+            }
+        }
+
+        public void DeleteSituation(string toDeleteId, int maxToDelete)
+        {
+            var situationsCatalogue = Registry.Get<SituationsCatalogue>();
+            int i = 0;
+            //Delete the verb if the actionId matches BEARING IN MIND WILDCARD
+
+            if (toDeleteId.Contains('*'))
+            {
+                string wildcardToDelete = toDeleteId.Remove(toDeleteId.IndexOf('*'));
+
+                foreach (var s in situationsCatalogue.GetRegisteredSituations())
+                {
+                    if (s.Verb.Id.StartsWith(wildcardToDelete))
+                    {
+                        s.Retire();
+                        i++;
+                    }
+
+                    if (i >= maxToDelete)
+                        break;
+                }
+            }
+
+            else
+            {
+                foreach (var s in situationsCatalogue.GetRegisteredSituations())
+                {
+                    if (s.Verb.Id == toDeleteId.Trim())
+                    {
+                        s.Retire();
+                        i++;
+                    }
+                    if (i >= maxToDelete)
+                        break;
+                }
+            }
+        }
+
         //public IEnumerable<Token> GetAnimatables()
         //{
         //    var situationTokens = GetRegisteredSituations().Select(s => s.situationAnchor as Token);

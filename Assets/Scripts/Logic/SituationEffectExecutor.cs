@@ -66,7 +66,7 @@ namespace Assets.Logic
             //NOTE: element purges trigger decayto transformation if the element itself is specified. If we filter by aspect and purge on that, its decayto is *not* triggered.
             foreach (var p in command.Recipe.Purge)
             {
-                ttm.PurgeElement(p.Key, p.Value);
+                Registry.Get<SphereCatalogue>().PurgeElement(p.Key, p.Value);
             }
         }
 
@@ -74,10 +74,10 @@ namespace Assets.Logic
         private void RunVerbManipulations(RecipeCompletionEffectCommand command, TabletopManager ttm)
         {
             foreach (var h in command.Recipe.HaltVerb)
-                ttm.HaltVerb(h.Key, h.Value);
+                Registry.Get<SituationsCatalogue>().HaltSituation(h.Key, h.Value);
 
             foreach (var d in command.Recipe.DeleteVerb)
-                ttm.DeleteVerb(d.Key, d.Value);
+                Registry.Get<SituationsCatalogue>().DeleteSituation(d.Key, d.Value);
         }
 
 

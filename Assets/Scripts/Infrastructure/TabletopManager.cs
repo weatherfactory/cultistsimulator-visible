@@ -86,105 +86,6 @@ namespace Assets.CS.TabletopUI {
 
 
 
-
-        public int PurgeElement(string elementId, int maxToPurge)
-        {
-            var compendium = Registry.Get<Compendium>();
-
-            Element elementToPurge = compendium.GetEntityById<Element>(elementId);
-            
-          maxToPurge-=_tabletop.TryPurgeStacks(elementToPurge, maxToPurge);
-
-           var situationsCatalogue = Registry.Get<SituationsCatalogue>();
-           foreach (var s in situationsCatalogue.GetRegisteredSituations())
-           {
-               if (maxToPurge <= 0)
-                   return maxToPurge;
-               else
-                    maxToPurge -= s.TryPurgeStacks(elementToPurge, maxToPurge);
-
-           }
-
-           return maxToPurge;
-        }
-
-        public void HaltVerb(string toHaltId, int maxToHalt)
-        {
-            var situationsCatalogue = Registry.Get<SituationsCatalogue>();
-            int i = 0;
-            //Halt the verb if the actionId matches BEARING IN MIND WILDCARD
-
-            if (toHaltId.Contains('*'))
-            {
-                string wildcardToDelete = toHaltId.Remove(toHaltId.IndexOf('*'));
-
-                foreach (var s in situationsCatalogue.GetRegisteredSituations())
-                {
-                    if (s.Verb.Id.StartsWith(wildcardToDelete))
-                    {
-                        s.Halt();
-                        i++;
-                    }
-
-                    if (i >= maxToHalt)
-                        break;
-                }
-            }
-
-            else
-            {
-                foreach (var s in situationsCatalogue.GetRegisteredSituations())
-                {
-                    if (s.Verb.Id == toHaltId.Trim())
-                    {
-                        s.Halt();
-                        i++;
-                    }
-                    if (i >= maxToHalt)
-                        break;
-                }
-            }
-        }
-
-        public void DeleteVerb(string toDeleteId, int maxToDelete)
-        {
-            var situationsCatalogue = Registry.Get<SituationsCatalogue>();
-            int i = 0;
-            //Delete the verb if the actionId matches BEARING IN MIND WILDCARD
-
-            if (toDeleteId.Contains('*'))
-            {
-                string wildcardToDelete = toDeleteId.Remove(toDeleteId.IndexOf('*'));
-
-                foreach (var s in situationsCatalogue.GetRegisteredSituations())
-                {
-                    if (s.Verb.Id.StartsWith(wildcardToDelete))
-                    {
-                        s.Retire();
-                        i++;
-                    }
-
-                    if (i >= maxToDelete)
-                        break;
-                }
-            }
-
-            else
-                {
-                    foreach (var s in situationsCatalogue.GetRegisteredSituations())
-                    {
-                 if (s.Verb.Id == toDeleteId.Trim())
-                        {
-                            s.Retire();
-                            i++;
-                        }
-                        if (i >= maxToDelete)
-                            break;
-                    }
-                }
-        }
-
-
         public async void EndGame(Ending ending, Token _anchor)
 		{
 			NoonUtility.Log("TabletopManager.EndGame()");
@@ -202,9 +103,6 @@ namespace Assets.CS.TabletopUI {
         
             _endGameAnimController.TriggerEnd(_anchor, ending);
         }
-
-
-
 
 
         

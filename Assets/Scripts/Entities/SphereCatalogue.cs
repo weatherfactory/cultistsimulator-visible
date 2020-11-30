@@ -215,6 +215,37 @@ namespace Assets.Core.Entities {
 
         }
 
+        public int PurgeElement(string elementId, int maxToPurge)
+        {
+            var compendium = Registry.Get<Compendium>();
+
+            Element elementToPurge = compendium.GetEntityById<Element>(elementId);
+
+            var worldSpheres = GetSpheresOfCategory(SphereCategory.World);
+            foreach (var worldSphere in worldSpheres)
+            {
+                if (maxToPurge <= 0)
+                    return maxToPurge;
+
+                maxToPurge -= worldSphere.TryPurgeStacks(elementToPurge, maxToPurge);
+
+            }
+
+   
+
+            var situationsCatalogue = Registry.Get<SituationsCatalogue>();
+            foreach (var s in situationsCatalogue.GetRegisteredSituations())
+            {
+                if (maxToPurge <= 0)
+                    return maxToPurge;
+           
+                maxToPurge -= s.TryPurgeStacks(elementToPurge, maxToPurge);
+
+            }
+
+            return maxToPurge;
+        }
+
         public void NotifyAspectsDirty()
         {
             _tabletopAspectsDirty = true;

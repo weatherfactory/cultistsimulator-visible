@@ -326,18 +326,18 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
     void HaltVerb(string verbId)
     {
-        Registry.Get<TabletopManager>().HaltVerb(verbId, 1);
+        Registry.Get<SituationsCatalogue>().HaltSituation(verbId, 1);
 
     }
 
     private void DeleteVerb(string verbId)
     {
-        Registry.Get<TabletopManager>().DeleteVerb(verbId,1);
+        Registry.Get<SituationsCatalogue>().DeleteSituation(verbId,1);
     }
 
     private void PurgeElement(string elementId)
     {
-        Registry.Get<TabletopManager>().PurgeElement(elementId, 1);
+        Registry.Get<SphereCatalogue>().PurgeElement(elementId, 1);
     }
 
 
