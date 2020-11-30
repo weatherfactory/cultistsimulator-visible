@@ -252,31 +252,9 @@ namespace Assets.CS.TabletopUI {
 	        cardHoverDetail.Populate(elementId, quantity);
 	        cardHoverDetail.Show();
         }
-        
-
-        public void DecayStacksOnTable(float interval) {
-            var decayingStacks = _tabletop.GetElementStacks().Where(s => s.Decays);
-
-            foreach (var d in decayingStacks)
-                d.Decay(interval);
-        }
 
 
-        public void DecayStacksInResults(float interval)
-        {
-            var situations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
-
-            foreach (var s in situations)
-            {
-                s.TryDecayOutputContents(interval);
-            }
-
-
-        }
-
-
-
-		public static void SetHighContrast( bool on )
+        public static void SetHighContrast( bool on )
 		{
 			highContrastMode = on;
    //         Registry.Retrieve<Concursum>().CultureChangedEvent.Invoke();

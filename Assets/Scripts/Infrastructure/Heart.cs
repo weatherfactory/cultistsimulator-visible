@@ -56,75 +56,30 @@ public class Heart : MonoBehaviour
 
     }
 
-    public void FastForward(float interval)
-    {
-        Beat(interval);
-    }
-
-
     public void RespondToSpeedControlCommand(SpeedControlEventArgs args)
     {
         gameSpeedState.SetGameSpeedCommand(args.ControlPriorityLevel,args.GameSpeed);
-
-        if (gameSpeedState.GetEffectiveGameSpeed() == GameSpeed.Paused)
-            StopBeating();
-        else
-           StartBeating();
-
     }
 
 
-    public void StopBeating()
-    {
-        //    CancelInvoke(METHODNAME_BEAT);
-        //do nothing, these days, actually.
-    }
-
-
-    public void StartBeating()
-	{
-        //CancelInvoke(METHODNAME_BEAT);
-        //InvokeRepeating(METHODNAME_BEAT,0, BEAT_INTERVAL_SECONDS);
-        beatCounter = HOUSEKEEPING_CYCLE_BEATS; // Force immediate housekeeping check on resume - CP
-
-    } 
-
-    
     public void Beat(float beatInterval)
     {
   
 
    beatCounter++;
 
+   DetermineOutstandingSlots(beatInterval);
 
-        DetermineOutstandingSlots(beatInterval);
-        DecayStacksOnTable(beatInterval);
-        DecayStacksInResults(beatInterval);
-        
-        if (beatCounter >= HOUSEKEEPING_CYCLE_BEATS)
-        {
-            beatCounter = 0;
-            TryToFillOutstandingSlots();
-        }
-
-    }
-
-    public void DecayStacksOnTable(float beatInterval)
-    {
-        var tabletopManager = Registry.Get<TabletopManager>();
-
-        tabletopManager.DecayStacksOnTable(beatInterval);
+   foreach(Sphere sphere in Registry.Get<SphereCatalogue>().GetSpheres())
+            sphere.TryDecayStacks(beatInterval);
+   
+   if (beatCounter >= HOUSEKEEPING_CYCLE_BEATS)
+   {
+       beatCounter = 0;
+       TryToFillOutstandingSlots();
+   }
 
     }
-
-    public void DecayStacksInResults(float beatInterval)
-    {
-        var tabletopManager = Registry.Get<TabletopManager>();
-
-        tabletopManager.DecayStacksInResults(beatInterval);
-
-    }
-
     private void DetermineOutstandingSlots(float beatInterval)
     {
         var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();

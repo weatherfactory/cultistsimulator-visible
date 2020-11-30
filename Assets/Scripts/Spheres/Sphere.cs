@@ -387,7 +387,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         }
 
+        public void TryDecayStacks(float interval)
+        {
+            if(SphereCategory==SphereCategory.World || SphereCategory==SphereCategory.Output)
+            {
+                var decayingStacks = GetElementStacks().Where(s => s.Decays);
+    
+               foreach (var d in decayingStacks)
+                      d.Decay(interval);
+            }
 
+        }
 
         public int TryPurgeStacks(Element element, int maxToPurge)
         {

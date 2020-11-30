@@ -363,7 +363,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
     void FastForward(float interval)
     {
-            heart.FastForward(interval);
+            heart.Beat(interval);
     }
 
     void UpdateCompendiumContent()
