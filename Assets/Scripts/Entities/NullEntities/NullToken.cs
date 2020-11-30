@@ -32,11 +32,6 @@ namespace Assets.Core.NullObjects
 
        }
 
-       public override void Manifest(Type manifestationType)
-       {
-            //
-       }
-
 
         public override void Manifest()
         {

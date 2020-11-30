@@ -64,9 +64,7 @@ public class Heart : MonoBehaviour
 
     public void Beat(float beatInterval)
     {
-  
-
-   beatCounter++;
+        beatCounter++;
 
    DetermineOutstandingSlots(beatInterval);
 

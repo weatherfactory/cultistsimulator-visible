@@ -193,7 +193,7 @@ namespace Assets.CS.TabletopUI {
             name = elementStack.Element.Id + "_stacktoken";
         }
 
-        private void SwapOutManifestation(IManifestation oldManifestation, IManifestation newManifestation,
+        private void ReplaceManifestation(IManifestation oldManifestation, IManifestation newManifestation,
             RetirementVFX vfxForOldManifestation)
         {
             var manifestationToRetire = oldManifestation;
@@ -205,44 +205,18 @@ namespace Assets.CS.TabletopUI {
             TokenRectTransform.anchorMin = _manifestation.RectTransform.anchorMax;
             TokenRectTransform.anchorMax = _manifestation.RectTransform.anchorMax;
 
-            manifestationToRetire.Retire(vfxForOldManifestation, OnSwappedOutManifestationRetired);
-
-        }
-
-        private void OnSwappedOutManifestationRetired()
-        {
-            //
-        }
-
-        public virtual void Manifest(Type manifestationType)
-        {
+            manifestationToRetire.Retire(vfxForOldManifestation, OnReplacedManifestationRetired);
 
             if(ElementStack.IsValidElementStack())
-            {
-
-                    var newManifestation = Registry.Get<PrefabFactory>()
-                        .CreateManifestationPrefab(manifestationType, this.transform);
-                    SwapOutManifestation(_manifestation, newManifestation, RetirementVFX.None);
-                _manifestation.InitialiseVisuals(ElementStack.Element);
-                _manifestation.UpdateVisuals(ElementStack.Element, ElementStack.Quantity);
-                _manifestation.UpdateTimerVisuals(Element.Lifetime,ElementStack.LifetimeRemaining,0f,Element.Resaturate,EndingFlavour.None);
-
-            }
-            else if(_attachedToSituation.IsValidSituation())
-            {
-                var newManifestation = Registry.Get<PrefabFactory>()
-                    .CreateManifestationPrefab(manifestationType, this.transform);
-                SwapOutManifestation(_manifestation, newManifestation, RetirementVFX.None);
-                _manifestation.InitialiseVisuals(Verb);
-
-
-            }
+                InitialiseElementManifestation();
             else
-            {
-                NoonUtility.LogWarning("Token with neither a valid situation nor a valid stack: " + gameObject.name);
-            }
+                InitialiseVerbManifestation();
 
+        }
 
+        private void OnReplacedManifestationRetired()
+        {
+      //
         }
 
         public virtual void Manifest()
@@ -252,11 +226,20 @@ namespace Assets.CS.TabletopUI {
             {
 
                 if (_manifestation.GetType() != ElementStack.GetManifestationType(Sphere.SphereCategory))
-                    Manifest(ElementStack.GetManifestationType(Sphere.SphereCategory));
+                {
+                    var newManifestation = Registry.Get<PrefabFactory>()
+                        .CreateManifestationPrefab(ElementStack.GetManifestationType(Sphere.SphereCategory), this.transform);
+                    ReplaceManifestation(_manifestation, newManifestation, RetirementVFX.None);
+                }
             }
             else if(_attachedToSituation.IsValidSituation())
                 if (_manifestation.GetType()!=Verb.GetManifestationType(Sphere.SphereCategory))
-                    Manifest(Verb.GetManifestationType(Sphere.SphereCategory));
+                {
+                    var newManifestation = Registry.Get<PrefabFactory>()
+                        .CreateManifestationPrefab(Verb.GetManifestationType(Sphere.SphereCategory), this.transform);
+                    ReplaceManifestation(_manifestation, newManifestation, RetirementVFX.None);
+                    InitialiseVerbManifestation();
+                }
                 else
                 {
                     NoonUtility.LogWarning("Token with neither a valid situation nor a valid stack: " + gameObject.name);
@@ -277,9 +260,21 @@ namespace Assets.CS.TabletopUI {
             // Put it behind the old card that we're about to destroy showily
             reManifestation.Transform.SetSiblingIndex(_manifestation.Transform.GetSiblingIndex() - 1);
 
-            SwapOutManifestation(_manifestation,reManifestation,vfx);
+            ReplaceManifestation(_manifestation,reManifestation,vfx);
 
            Manifest();
+        }
+
+        private void InitialiseVerbManifestation()
+        {
+            _manifestation.InitialiseVisuals(Verb);
+        }
+
+        private void InitialiseElementManifestation()
+        {
+            _manifestation.InitialiseVisuals(ElementStack.Element);
+            _manifestation.UpdateVisuals(ElementStack.Element, ElementStack.Quantity);
+            _manifestation.UpdateTimerVisuals(Element.Lifetime, ElementStack.LifetimeRemaining, 0f, Element.Resaturate, EndingFlavour.None);
         }
 
 

@@ -48,15 +48,18 @@ namespace Assets.TabletopUi.Scripts.Elements
         private float decayAlpha = 0.0f;
         private Coroutine animCoroutine;
         private List<Sprite> frames;
-        private FlipHelper flipHelper;
+        private FlipHelper _flipHelper;
 
-        public bool RequestingNoDrag => flipHelper.FlipInProgress;
+        public bool RequestingNoDrag => _flipHelper.FlipInProgress;
 
-
+        public void Awake()
+        {
+            _flipHelper = new FlipHelper(this);
+        }
         
         public void InitialiseVisuals(Element element)
         {
-            flipHelper = new FlipHelper(this);
+         
             Sprite sprite = ResourcesManager.GetSpriteForElement(element.Icon);
             artwork.sprite = sprite;
 
@@ -341,14 +344,14 @@ namespace Assets.TabletopUi.Scripts.Elements
             if (!instant)
                 SoundManager.PlaySfx("CardTurnOver");
 
-            flipHelper.Flip(FlipHelper.TargetOrientation.FaceUp,instant);
+            _flipHelper.Flip(FlipHelper.TargetOrientation.FaceUp,instant);
 
 
         }
 
         public void Shroud(bool instant)
         {
-            flipHelper.Flip(FlipHelper.TargetOrientation.FaceDown, instant);
+            _flipHelper.Flip(FlipHelper.TargetOrientation.FaceDown, instant);
         }
 
 
@@ -426,14 +429,13 @@ namespace Assets.TabletopUi.Scripts.Elements
         {
             // this resets any animation frames so we don't get stuck when deactivating mid-anim
             ResetIconAnimation();
-
         }
 
         public void ResetIconAnimation()
         {
             artwork.overrideSprite = null;
             // we're turning? Just set us to the target
-            flipHelper.FinishFlip();
+            _flipHelper.FinishFlip();
         }
 
         public bool CanAnimateIcon()
