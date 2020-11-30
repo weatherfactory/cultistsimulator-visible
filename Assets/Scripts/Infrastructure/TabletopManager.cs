@@ -711,18 +711,6 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 	        cardHoverDetail.Show();
         }
         
-        void HandleOnMapBackgroundDropped(PointerEventData eventData)
-        {
-            var stack = eventData.pointerDrag.GetComponent<Token>();
-
-            if (stack!=null) {
-
-                stack.SetXNess(TokenXNess.DroppedOnTableContainer);
-                MapSphere.DisplayAndPositionHere(stack, new Context(Context.ActionSource.PlayerDrag));
-
-                SoundManager.PlaySfx("CardDrop");
-            }
-        }
 
         public void DecayStacksOnTable(float interval) {
             var decayingStacks = _tabletop.GetElementStacks().Where(s => s.Decays);
@@ -743,7 +731,6 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
 
         }
-
 
 		static public void RequestNonSaveableState( NonSaveableType type, bool forbidden )
 		{

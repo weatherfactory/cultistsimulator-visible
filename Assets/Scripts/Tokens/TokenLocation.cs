@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Fucine;
+using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using UnityEngine;
 
@@ -32,6 +33,12 @@ namespace Assets.TabletopUi
         {
             Position = position;
             AtSpherePath = atSpherePath;
+        }
+
+        public TokenLocation(Token token)
+        {
+            Position = token.Location.Position;
+            AtSpherePath = token.Sphere.GetPath();
         }
 
 

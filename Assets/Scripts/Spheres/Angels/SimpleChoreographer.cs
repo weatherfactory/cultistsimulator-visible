@@ -11,7 +11,6 @@ namespace Assets.Scripts.Spheres.Angels
 {
     public class SimpleChoreographer:IChoreographer
     {
-        private readonly Sphere _sphere;
 
         public void PlaceTokenAtFreePosition(Token token, Context context)
         {

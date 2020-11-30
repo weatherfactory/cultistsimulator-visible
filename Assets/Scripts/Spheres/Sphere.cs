@@ -453,7 +453,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 // Decaying stacks should not be allowed
                 while (token.ElementStack.Decays && token.ElementStack.Quantity > 1)
                 {
-                    AcceptToken(token.CalveTokenAtSamePosition(1,context),context);
+                    AcceptToken(token.CalveToken(1,context),context);
                 }
 
             }
@@ -492,7 +492,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 // set main stack to be returned to start position
                 token.SetXNess(TokenXNess.ReturningSplitStack);
                 // And we split a new one that's 1 (leaving the returning card to be n-1)
-                var newStack = token.CalveTokenAtSamePosition( 1, new Context(Context.ActionSource.PlayerDrag));
+                var newStack = token.CalveToken( 1, new Context(Context.ActionSource.PlayerDrag));
                 // And we put that into the slot
                 AcceptToken(newStack, new Context(Context.ActionSource.PlayerDrag));
             }

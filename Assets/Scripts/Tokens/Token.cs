@@ -348,22 +348,16 @@ namespace Assets.CS.TabletopUI {
 
         bool CanDrag(PointerEventData eventData)
         {
-
-            if (!Sphere.AllowDrag || !AllowsDrag())
-                return false;
-
-
-            return true;
+            return (Sphere.AllowDrag && AllowsDrag());
         }
 
         protected void StartDrag(PointerEventData eventData)
         {
             
-
             if (!Keyboard.current.shiftKey.wasPressedThisFrame)
             {
                 if (ElementStack.IsValidElementStack() && ElementQuantity > 1)
-                    CalveTokenAtSamePosition(ElementQuantity - 1, new Context(Context.ActionSource.PlayerDrag));
+                    CalveToken(ElementQuantity - 1, new Context(Context.ActionSource.PlayerDrag));
                 
             }
 
@@ -390,7 +384,6 @@ namespace Assets.CS.TabletopUI {
 
             startParent = TokenRectTransform.parent;
             startSiblingIndex = TokenRectTransform.GetSiblingIndex();
-
 
 
 
@@ -573,11 +566,11 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        public Token CalveTokenAtSamePosition(int quantityToLeaveBehind, Context context)
+        public Token CalveToken(int quantityToLeaveBehind, Context context)
         {
 
             if (quantityToLeaveBehind <= 0) //for some reason we're trying to leave an empty stack behind..
-                return Sphere.ProvisionElementStackToken(NullElement.NULL_ELEMENT_ID, 0);
+                return Sphere.ProvisionElementStackToken(NullElement.NULL_ELEMENT_ID, 0,Source.Existing(),new Context(Context.ActionSource.CalvedStack,new TokenLocation(this)));
 
             if (ElementQuantity <= quantityToLeaveBehind
             ) //we're trying to leave everything behind. Abort the drag and return the original token, ie this token
@@ -588,11 +581,10 @@ namespace Assets.CS.TabletopUI {
 
 
             var calvedToken =
-                Sphere.ProvisionElementStackToken(Element.Id, ElementQuantity - 1, Source.Existing(),
-                    new Context(Context.ActionSource.PlayerDrag), ElementStack.GetCurrentMutations());
+                Sphere.ProvisionElementStackToken(Element.Id, ElementQuantity - 1, Source.Existing(), new Context(Context.ActionSource.CalvedStack, new TokenLocation(this)), ElementStack.GetCurrentMutations());
 
 
-            this.ElementStack.SetQuantity(ElementQuantity - quantityToLeaveBehind, context);
+            ElementStack.SetQuantity(ElementQuantity - quantityToLeaveBehind, context);
 
             // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
             calvedToken.transform.position = transform.position;
@@ -606,8 +598,6 @@ namespace Assets.CS.TabletopUI {
 
         public  void OnPointerClick(PointerEventData eventData)
         {
-
-
 
             if (!_manifestation.HandleClick(eventData, this))
             {

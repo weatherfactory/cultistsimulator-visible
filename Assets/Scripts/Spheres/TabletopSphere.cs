@@ -138,7 +138,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
 
                 var candidateAnchorLocation = candidateThresholds[selectedCandidate].GetAnchorLocation();
                 if (tokenToSend.ElementQuantity > 1)
-                   tokenToSend.CalveTokenAtSamePosition(tokenToSend.ElementQuantity - 1, new Context(Context.ActionSource.DoubleClickSend));
+                   tokenToSend.CalveToken(tokenToSend.ElementQuantity - 1, new Context(Context.ActionSource.DoubleClickSend));
                 SendViaContainer.PrepareElementForSendAnim(tokenToSend, candidateAnchorLocation); // this reparents the card so it can animate properly
                 SendViaContainer.MoveElementToSituationSlot(tokenToSend, candidateAnchorLocation, selectedCandidate, SEND_STACK_TO_SLOT_DURATION);
 
@@ -165,8 +165,21 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
         CheckOverlappingTokens(potentialUsurper);
     }
 
+    public override void AcceptToken(Token token, Context context)
+    {
+        if(context.actionSource==Context.ActionSource.PlayerDumpAll)
+        {
+            List<ElementStack> mergeableStacks = GetElementStacks().Where(existing => existing.CanMergeWith(token.ElementStack)).ToList();
 
-  
+            if (mergeableStacks.Count > 0)
+                mergeableStacks.First().AcceptIncomingStackForMerge(token.ElementStack);
+            else
+                base.AcceptToken(token, context);
+        }
+           else base.AcceptToken(token, context);
+
+    }
+
     void HandleOnTableDropped(PointerEventData eventData)
     {
         //if an anchor or element stack has been dropped on the background, we want to deal with it.

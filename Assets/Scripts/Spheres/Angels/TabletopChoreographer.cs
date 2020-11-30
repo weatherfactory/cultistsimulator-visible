@@ -52,38 +52,29 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
      public void PlaceTokenAtFreePosition(Token token, Context context)
      {
-         var mergeableStacks =_tabletop.GetElementStacks().Where(existing => existing.CanMergeWith(token.ElementStack));
 
-         if (mergeableStacks.Any())
-         {
-             mergeableStacks.First().AcceptIncomingStackForMerge(token.ElementStack);
-             return;
-         }
+            //else
+            //{
+            //    var freePosition = Registry.Get<Choreographer>().GetFreePosWithDebug(token, Vector2.zero);
 
+            //}
 
+            //   var dropzoneRecipe = Registry.Get<Compendium>().GetEntityById<Recipe>("dropzone.classic");
+            //       var dropzoneVerb = Registry.Get<Compendium>().GetVerbForRecipe(dropzoneRecipe);
 
-         //else
-         //{
-         //    var freePosition = Registry.Get<Choreographer>().GetFreePosWithDebug(token, Vector2.zero);
+            //       var dropzoneSituations =
+            //           Registry.Get<SituationsCatalogue>().GetSituationsWithVerbOfActionId(dropzoneVerb.Id);
 
-         //}
+            //       if (!dropzoneSituations.Any())
+            //       {
+            //           var dzTokenLocation= new TokenLocation(GetFreePosWithDebug(token, Vector2.zero),_tabletop.GetPath());
 
-         //   var dropzoneRecipe = Registry.Get<Compendium>().GetEntityById<Recipe>("dropzone.classic");
-         //       var dropzoneVerb = Registry.Get<Compendium>().GetVerbForRecipe(dropzoneRecipe);
+            //       SituationCreationCommand scc = new SituationCreationCommand(dropzoneVerb,dropzoneRecipe,StateEnum.Unstarted, dzTokenLocation);
+            //       Registry.Get<SituationBuilder>().CreateSituation(scc);
 
-         //       var dropzoneSituations =
-         //           Registry.Get<SituationsCatalogue>().GetSituationsWithVerbOfActionId(dropzoneVerb.Id);
+            //       }
 
-         //       if (!dropzoneSituations.Any())
-         //       {
-         //           var dzTokenLocation= new TokenLocation(GetFreePosWithDebug(token, Vector2.zero),_tabletop.GetPath());
-
-         //       SituationCreationCommand scc = new SituationCreationCommand(dropzoneVerb,dropzoneRecipe,StateEnum.Unstarted, dzTokenLocation);
-         //       Registry.Get<SituationBuilder>().CreateSituation(scc);
-
-         //       }
-
-                _tabletop.AcceptToken(token, context);
+            _tabletop.AcceptToken(token, context);
             token.TokenRectTransform.anchoredPosition = GetFreePosWithDebug(token, Vector2.zero);
             
         }

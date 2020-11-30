@@ -91,7 +91,7 @@ namespace Assets.Core.Entities {
         {
             NotifyAspectsDirty();
 
-            foreach(var s in _subscribers)
+            foreach(var s in new List<ISphereCatalogueEventSubscriber>(_subscribers))
                 if(s.Equals(null))
                     Unsubscribe(s);
                 else
@@ -100,7 +100,8 @@ namespace Assets.Core.Entities {
 
         public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
         {
-            foreach (var s in _subscribers)
+            foreach (var s in new List<ISphereCatalogueEventSubscriber>(_subscribers))
+
                 if (s.Equals(null))
                     Unsubscribe(s);
                 else

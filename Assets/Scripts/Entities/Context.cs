@@ -8,6 +8,7 @@ public class Context {
         Unknown,
         Loading,
         PlayerDrag,
+        CalvedStack,
         PlayerClick,
         PlayerDumpAll,
         SituationStoreStacks,
