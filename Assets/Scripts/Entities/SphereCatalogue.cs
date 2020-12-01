@@ -42,7 +42,7 @@ namespace Assets.Core.Entities {
         }
 
         public HashSet<Sphere> GetSpheres() {
-            return _spheres;
+            return new HashSet<Sphere>(_spheres);
         }
 
         public IEnumerable<Sphere> GetSpheresOfCategory(SphereCategory category)

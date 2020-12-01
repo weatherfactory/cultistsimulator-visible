@@ -386,7 +386,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         }
 
-        public void TryDecayStacks(float interval)
+        public void ExecuteHeartbeat(float interval)
         {
             if(SphereCategory==SphereCategory.World || SphereCategory==SphereCategory.Output)
             {

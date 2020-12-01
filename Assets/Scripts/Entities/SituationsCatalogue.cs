@@ -34,7 +34,7 @@ namespace Assets.Core.Entities
 
         public List<Situation> GetRegisteredSituations()
         {
-            return _currentSituations.ToList();
+            return  new List<Situation>(_currentSituations);
         }
 
 

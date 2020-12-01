@@ -18,7 +18,7 @@ public class Heart : MonoBehaviour
 {
     [SerializeField] private Transform allContent;
     private HashSet<AnchorAndSlot> outstandingSlotsToFill=new HashSet<AnchorAndSlot>();
-    private int beatCounter = 0;
+    private int beatsTowardsAngelry = 0;
     //do major housekeeping every n beats
     private const int HOUSEKEEPING_CYCLE_BEATS = 20; //usually, a second
 	// Autosave tracking is now done in TabletopManager.Update()
@@ -64,61 +64,37 @@ public class Heart : MonoBehaviour
 
     public void Beat(float beatInterval)
     {
-        beatCounter++;
+        beatsTowardsAngelry++;
 
-   DetermineOutstandingSlots(beatInterval);
+        foreach (Situation sc in Registry.Get<SituationsCatalogue>().GetRegisteredSituations())
+            sc.ExecuteHeartbeat(beatInterval);
 
-   foreach(Sphere sphere in Registry.Get<SphereCatalogue>().GetSpheres())
-            sphere.TryDecayStacks(beatInterval);
+        foreach(Sphere sphere in Registry.Get<SphereCatalogue>().GetSpheres())
+            sphere.ExecuteHeartbeat(beatInterval);
    
-   if (beatCounter >= HOUSEKEEPING_CYCLE_BEATS)
-   {
-       beatCounter = 0;
-       TryToFillOutstandingSlots();
-   }
+        if (beatsTowardsAngelry >= HOUSEKEEPING_CYCLE_BEATS)
+        {
+            beatsTowardsAngelry = 0;
+        }
 
     }
     private void DetermineOutstandingSlots(float beatInterval)
     {
+        //TODO: execute the heartbeat, which should nudge angels
+        //nudged angels (eg greedy angels) should then grab tokens
         var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 
         foreach (var sc in situationControllers)
         {
-            HeartbeatResponse response = sc.ExecuteHeartbeat(beatInterval);
+          sc.ExecuteHeartbeat(beatInterval);
 
-            foreach (var tokenAndSlot in response.SlotsToFill)
-            {
-                if (!OutstandingSlotAlreadySaved(tokenAndSlot))
-                    outstandingSlotsToFill.Add(tokenAndSlot);
-            }
+            //foreach (var tokenAndSlot in response.SlotsToFill)
+            //{
+            //    if (!OutstandingSlotAlreadySaved(tokenAndSlot))
+            //        outstandingSlotsToFill.Add(tokenAndSlot);
+            //}
         }
     }
 
-    private void TryToFillOutstandingSlots()
-    {
-        outstandingSlotsToFill = Registry.Get<TabletopManager>()
-            .FillTheseSlotsWithFreeStacks(outstandingSlotsToFill);
-    }
 
-
-    //public async void  OnApplicationQuit()
-    //{
-    //    var saveTask = Registry.Get<TabletopManager>().SaveGameAsync(true,SourceForGameState.DefaultSave);
-    //    await saveTask;
-    //}
-
-
-    bool OutstandingSlotAlreadySaved(AnchorAndSlot slot) {
-        foreach (var item in outstandingSlotsToFill)
-            if (item.Token == slot.Token && item.Threshold == slot.Threshold)
-                return true;
-
-        return false;
-    }
-
-    //remove any outstanding state when loading the game
-    public void Clear()
-    {
-        outstandingSlotsToFill.Clear();
-    }
 }

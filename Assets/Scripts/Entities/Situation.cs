@@ -268,42 +268,11 @@ namespace Assets.Core.Entities {
         }
 
 
-        public HeartbeatResponse ExecuteHeartbeat(float interval)
+        public void ExecuteHeartbeat(float interval)
         {
-            
             Continue(interval);
-
-            if(CurrentState.GetType()==typeof(OngoingState)) //ACK THUPT TEMPORARY PLEASE
-            
-                return GetResponseWithUnfilledGreedyThresholdsForThisSituation();
-
-            return new HeartbeatResponse();
-
         }
 
-
-        private HeartbeatResponse GetResponseWithUnfilledGreedyThresholdsForThisSituation()
-        {
-            var response = new HeartbeatResponse();
-
-            if (TimeRemaining > HOUSEKEEPING_CYCLE_BEATS)
-            {
-
-                var greedyThresholds =
-                    _spheres.Where(c =>
-                        c.SphereCategory == SphereCategory.Threshold && c.IsGreedy &&
-                        c.GetTotalStacksCount() == 0);
-
-                foreach (var g in greedyThresholds)
-                {
-                    var tokenAndSlot = new AnchorAndSlot {Token = _anchor, Threshold = g};
-                    response.SlotsToFill.Add(tokenAndSlot);
-
-                }
-            }
-
-            return response;
-        }
 
         public int TryPurgeStacks(Element elementToPurge, int maxToPurge)
         {
@@ -401,7 +370,7 @@ namespace Assets.Core.Entities {
 
         }
 
-        public SituationState Continue(float interval)
+        private SituationState Continue(float interval)
         {
             IntervalForLastHeartbeat = interval;
 
@@ -752,7 +721,7 @@ namespace Assets.Core.Entities {
                 //so immediately continue with a 0 interval - this won't advance time, but will update the visuals in the situation window
                 //(which among other things should make the starting slot unavailable
 
-                Continue(0);
+                Continue(0f);
             }
 
         }
