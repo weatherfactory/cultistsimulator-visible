@@ -15,18 +15,35 @@ namespace Assets.Scripts.Spheres.Angels
 {
     public class GreedyAngel:IAngel
     {
-        public void MinisterTo(Sphere sphere)
+        private const int BEATS_BETWEEN_ANGELRY = 20; 
+        private int _beatsTowardsAngelry = 0;
+
+        public void MinisterTo(Sphere sphere,float interval)
         {
+  
+
+            _beatsTowardsAngelry++;
+
+            if (_beatsTowardsAngelry >= BEATS_BETWEEN_ANGELRY)
+            {
+                TryGrabStack(sphere, interval);
+                _beatsTowardsAngelry = 0;
+            }
+        }
+
+        private void TryGrabStack(Sphere sphere, float interval)
+        {
+
             if (sphere.GetAllTokens().Any())
                 return;
 
             var worldSpheres = Registry.Get<SphereCatalogue>().GetSpheresOfCategory(SphereCategory.World);
             foreach (var worldSphereToSearch in worldSpheres)
             {
-                var matchingToken = FindStackForSlotSpecificationInSphere(sphere.GoverningSlotSpecification,worldSphereToSearch);
+                var matchingToken = FindStackForSlotSpecificationInSphere(sphere.GoverningSlotSpecification, worldSphereToSearch);
                 if (matchingToken != null)
                 {
-                    NoonUtility.Log("This is where the angel for " + sphere.GetPath() +" would pull " + matchingToken.name);
+                    NoonUtility.Log("This is where the angel for " + sphere.GetPath() + " would pull " + matchingToken.name);
 
                     if (matchingToken.CurrentlyBeingDragged)
                     {

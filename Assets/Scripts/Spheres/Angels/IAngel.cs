@@ -9,6 +9,6 @@ namespace Assets.Scripts.Spheres.Angels
 {
    public interface IAngel
    {
-       void MinisterTo(Sphere sphere);
+       void MinisterTo(Sphere sphere,float interval);
    }
 }

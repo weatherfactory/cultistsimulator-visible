@@ -397,9 +397,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                       d.Decay(interval);
             }
 
+
             foreach (var angel in _angels)
             {
-                angel.MinisterTo(this);
+                angel.MinisterTo(this,interval);
             }
 
         }

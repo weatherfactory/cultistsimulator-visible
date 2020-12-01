@@ -18,13 +18,11 @@ public class Heart : MonoBehaviour
 {
     [SerializeField] private Transform allContent;
     private HashSet<AnchorAndSlot> outstandingSlotsToFill=new HashSet<AnchorAndSlot>();
-    private int beatsTowardsAngelry = 0;
-    //do major housekeeping every n beats
-    private const int HOUSEKEEPING_CYCLE_BEATS = 20; //usually, a second
-	// Autosave tracking is now done in TabletopManager.Update()
+
+
+
     private const float BEAT_INTERVAL_SECONDS = 0.05f;
 
-    private const string METHODNAME_BEAT="Beat"; //so we don't get a tiny daft typo with the Invoke
     private GameSpeedState gameSpeedState=new GameSpeedState();
 
     private float timerBetweenBeats=0f;
@@ -33,6 +31,9 @@ public class Heart : MonoBehaviour
     {
         try
         {
+            if (gameSpeedState.GetEffectiveGameSpeed() == GameSpeed.Paused)
+                return;
+            
             timerBetweenBeats += Time.deltaTime;
 
         if (timerBetweenBeats > BEAT_INTERVAL_SECONDS)
@@ -42,8 +43,7 @@ public class Heart : MonoBehaviour
                 Beat(BEAT_INTERVAL_SECONDS * 3);
             else if (gameSpeedState.GetEffectiveGameSpeed()==GameSpeed.Normal)
                 Beat(BEAT_INTERVAL_SECONDS);
-            else if (gameSpeedState.GetEffectiveGameSpeed() == GameSpeed.Paused)
-                Beat(0f);
+
             else
                NoonUtility.Log("Unknown game speed state: " + gameSpeedState.GetEffectiveGameSpeed());
         }
@@ -64,18 +64,13 @@ public class Heart : MonoBehaviour
 
     public void Beat(float beatInterval)
     {
-        beatsTowardsAngelry++;
-
         foreach (Situation sc in Registry.Get<SituationsCatalogue>().GetRegisteredSituations())
             sc.ExecuteHeartbeat(beatInterval);
 
         foreach(Sphere sphere in Registry.Get<SphereCatalogue>().GetSpheres())
             sphere.ExecuteHeartbeat(beatInterval);
    
-        if (beatsTowardsAngelry >= HOUSEKEEPING_CYCLE_BEATS)
-        {
-            beatsTowardsAngelry = 0;
-        }
+
 
     }
     private void DetermineOutstandingSlots(float beatInterval)
