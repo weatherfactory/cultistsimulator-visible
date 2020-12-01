@@ -104,7 +104,7 @@ namespace Assets.CS.TabletopUI {
             artwork.sprite = sprite;
         }
          
-        public void Populate(Situation situation) {
+        public void Initialise(Situation situation) {
 			Verb = situation.Verb;
             _situationPath = situation.Path;
             name = "Window_" + Verb.Id;
@@ -115,7 +115,7 @@ namespace Assets.CS.TabletopUI {
             startButton.onClick.AddListener(OnStart.Invoke);
 
             startingSlots.Initialise(Verb, this,_situationPath);
-            ongoingDisplay.Initialise(OnContainerAdded, OnContainerRemoved, situation);
+            ongoingDisplay.Initialise(situation);
             results.Initialise();
 
             //this is an improvement - the situation doesn't need to know what to add - but better yet would be to tie together creation + container add, at runtime
@@ -252,25 +252,11 @@ namespace Assets.CS.TabletopUI {
             return PaginatedNotes.GetCurrentTexts();
         }
 
-
-
-        //yeurch
-        public void AddOngoingSlot(SlotSpecification slotSpec)
-        {
-            ongoingDisplay.AddOngoingSlot(slotSpec);
-        }
-
         public void SituationStateChanged(Situation situation)
         {
       
                 startingSlots.UpdateDisplay(situation);
                 storage.UpdateDisplay(situation);
-                ongoingDisplay.ShowDeckEffects(situation.CurrentPrimaryRecipe.DeckEffects);
-                
-                if (situation.CurrentBeginningEffectCommand != null && situation.CurrentBeginningEffectCommand.OngoingSlots.Any())
-                {
-                    ongoingDisplay.PopulateOngoingSlots(situation.CurrentBeginningEffectCommand.OngoingSlots);
-                }
 
 
                 results.UpdateDisplay(situation);
@@ -283,8 +269,7 @@ namespace Assets.CS.TabletopUI {
 
         public void TimerValuesChanged(Situation situation)
         {
-            ongoingDisplay.UpdateTimerVisuals(situation.Warmup, situation.TimeRemaining,
-                situation.IntervalForLastHeartbeat, false, situation.CurrentPrimaryRecipe.SignalEndingFlavour);
+  //
         }
 
 

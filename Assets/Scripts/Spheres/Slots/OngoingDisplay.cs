@@ -10,6 +10,8 @@ using Assets.Core.Entities;
 using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -18,7 +20,7 @@ using Noon;
 using UnityEngine.Events;
 
 namespace Assets.CS.TabletopUI {
-    public class OngoingDisplay:MonoBehaviour {
+    public class OngoingDisplay:MonoBehaviour,ISituationSubscriber {
 
         [SerializeField] Transform slotHolder; 
         [SerializeField] Image countdownBar;
@@ -26,24 +28,53 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] LayoutGroup storedCardsLayout;
         public CanvasGroupFader canvasGroupFader;
 
-        [SerializeField] DeckEffectView[] deckEffectViews; 
-        HashSet<RecipeSlot> ongoingSlots=new HashSet<RecipeSlot>();
+        [SerializeField] DeckEffectView[] deckEffectViews;
+        readonly HashSet<RecipeSlot> recipeSlots=new HashSet<RecipeSlot>();
 
-        private OnContainerAddedEvent _onSlotAdded;
-        private OnContainerRemovedEvent _onSlotRemoved;
+        private readonly OnContainerAddedEvent _onSlotAdded=new OnContainerAddedEvent();
+        private readonly OnContainerRemovedEvent _onSlotRemoved=new OnContainerRemovedEvent();
         private SituationPath _situationPath;
 
-        public void Initialise(OnContainerAddedEvent onContainerAdded, OnContainerRemovedEvent onContainerRemoved,Situation situation)
+        public void Initialise(Situation situation)
         {
-            _onSlotAdded = onContainerAdded;
-            _onSlotRemoved = onContainerRemoved;
+            situation.AddSubscriber(this);
+            _onSlotAdded.AddListener(situation.AddContainer);
+            _onSlotRemoved.AddListener(situation.RemoveContainer);
             _situationPath = situation.Path;
-            if(situation.CurrentBeginningEffectCommand!=null)
-               PopulateOngoingSlots((situation.CurrentBeginningEffectCommand.OngoingSlots));
+
+
+            if (situation.CurrentBeginningEffectCommand!=null)
+               PopulateRecipeSlots((situation.CurrentBeginningEffectCommand.OngoingSlots));
         }
 
 
-        public void AddOngoingSlot(SlotSpecification spec)
+        public void SituationStateChanged(Situation situation)
+        {
+            ShowDeckEffects(situation.CurrentPrimaryRecipe.DeckEffects);
+
+            if (situation.CurrentBeginningEffectCommand != null && situation.CurrentBeginningEffectCommand.OngoingSlots.Any())
+            {
+                PopulateRecipeSlots(situation.CurrentBeginningEffectCommand.OngoingSlots);
+            }
+        }
+
+        public void TimerValuesChanged(Situation situation)
+        {
+            UpdateTimerVisuals(situation.Warmup, situation.TimeRemaining,
+                situation.IntervalForLastHeartbeat, false, situation.CurrentPrimaryRecipe.SignalEndingFlavour);
+        }
+
+        public void SphereContentsUpdated(Situation s)
+        {
+         //
+        }
+
+        public void ReceiveNotification(INotification n)
+        {
+         //
+        }
+
+        public void AddRecipeSlot(SlotSpecification spec)
         {
             var newSlot = Registry.Get<PrefabFactory>().CreateLocally<RecipeSlot>(slotHolder);
             newSlot.name = spec.UniqueId;
@@ -52,33 +83,29 @@ namespace Assets.CS.TabletopUI {
 
             newSlot.Initialise(spec, _situationPath);
 
-            this.ongoingSlots.Add(newSlot);
+            this.recipeSlots.Add(newSlot);
             _onSlotAdded.Invoke(newSlot);
         }
 
         public void ClearOngoingSlots()
         {
 
-            foreach (var os in this.ongoingSlots)
+            foreach (var os in this.recipeSlots)
             {
                 _onSlotRemoved.Invoke(os);
                 os.Retire();
             }
 
-            this.ongoingSlots.Clear();
+            this.recipeSlots.Clear();
         }
 
-        public void PopulateOngoingSlots(List<SlotSpecification> ongoingSlots)
+        public void PopulateRecipeSlots(List<SlotSpecification> ongoingSlots)
         {
 
             ClearOngoingSlots();
-
-
             foreach (var spec in ongoingSlots)
-            {
-
-                AddOngoingSlot(spec);
-            }
+                AddRecipeSlot(spec);
+            
         }
 
 
@@ -110,7 +137,6 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-         
 
         public void ShowStoredAspects(IEnumerable<ElementStack> stacks) {
             int i = 0;

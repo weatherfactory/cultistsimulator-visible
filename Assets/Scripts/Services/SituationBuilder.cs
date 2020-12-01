@@ -30,7 +30,7 @@ namespace Assets.TabletopUi.Scripts.Services {
             var windowSphere = sphereCatalogue.GetContainerByPath(new SpherePath(Registry.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath));
 
             var newAnchor = AttachNewAnchor(command.AnchorLocation.Position, situation, anchorSphere);
-            var newWindow=AttachNewWindow(command.OngoingSlots, windowSphere, newAnchor, situation);
+            var newWindow=AttachNewWindow(windowSphere, newAnchor, situation);
 
 
             if (command.Open)
@@ -75,12 +75,12 @@ namespace Assets.TabletopUi.Scripts.Services {
             return newAnchor;
         }
 
-        public SituationWindow AttachNewWindow(List<SlotSpecification> ongoingSlots, Sphere windowSphere, Token newAnchor, Situation situation)
+        public SituationWindow AttachNewWindow(Sphere windowSphere, Token newAnchor, Situation situation)
         {
             SituationWindow newWindow = Instantiate(situationWindowPrefab);
             newWindow.transform.SetParent(windowSphere.transform);
             newWindow.positioner.Initialise(newAnchor);
-            situation.AttachWindow(newWindow, ongoingSlots);
+            situation.AttachWindow(newWindow);
             return newWindow;
         }
     }

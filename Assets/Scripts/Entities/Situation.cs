@@ -63,8 +63,8 @@ namespace Assets.Core.Entities {
         }
 
 
-        public RecipeBeginningEffectCommand CurrentBeginningEffectCommand;
-        public RecipeCompletionEffectCommand currentCompletionEffectCommand;
+        public RecipeBeginningEffectCommand CurrentBeginningEffectCommand= new RecipeBeginningEffectCommand();
+        public RecipeCompletionEffectCommand CurrentCompletionEffectCommand=new RecipeCompletionEffectCommand();
 
 
         public TokenLocation GetAnchorLocation()
@@ -96,6 +96,7 @@ namespace Assets.Core.Entities {
             CurrentPrimaryRecipe = command.Recipe;
             OverrideTitle = command.OverrideTitle;
             Path = command.SituationPath;
+            CurrentBeginningEffectCommand.OngoingSlots=new List<SlotSpecification>(command.OngoingSlots);
             CurrentState = SituationState.Rehydrate(command.State,this);
         }
 
@@ -116,7 +117,7 @@ namespace Assets.Core.Entities {
 
 
 
-        public void AttachWindow(SituationWindow newWindow,List<SlotSpecification> ongoingSlots)
+        public void AttachWindow(SituationWindow newWindow)
         {
             _window = newWindow;
             AddSubscriber(_window);
@@ -128,13 +129,7 @@ namespace Assets.Core.Entities {
             _window.OnContainerAdded.AddListener(AddContainer);
             _window.OnContainerRemoved.AddListener(RemoveContainer);
 
-            _window.Populate(this);
-
-            foreach (var os in ongoingSlots)
-                newWindow.AddOngoingSlot(os);  
-
-
-            
+            _window.Initialise(this);
 
 
         }
@@ -378,7 +373,7 @@ namespace Assets.Core.Entities {
 
 
             CurrentBeginningEffectCommand = new RecipeBeginningEffectCommand();
-            currentCompletionEffectCommand = new RecipeCompletionEffectCommand();
+            CurrentCompletionEffectCommand = new RecipeCompletionEffectCommand();
 
             return CurrentState;
         }
