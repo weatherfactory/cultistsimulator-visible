@@ -15,7 +15,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
     {
         void SituationStateChanged(Situation situation);
         void TimerValuesChanged(Situation s);
-        void SphereContentsUpdated(Situation s);
+        void SituationSphereContentsUpdated(Situation s);
         void ReceiveNotification(INotification n);
     }
 }

@@ -64,7 +64,7 @@ namespace Assets.CS.TabletopUI {
                 situation.IntervalForLastHeartbeat, false, situation.CurrentPrimaryRecipe.SignalEndingFlavour);
         }
 
-        public void SphereContentsUpdated(Situation s)
+        public void SituationSphereContentsUpdated(Situation s)
         {
          //
         }

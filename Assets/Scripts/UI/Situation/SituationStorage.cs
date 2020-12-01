@@ -11,10 +11,11 @@ using Assets.Core.Enums;
 using Assets.Core.Fucine;
 using Assets.TabletopUi.Scripts.Elements;
 using Assets.TabletopUi.Scripts.Elements.Manifestations;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 
-public class SituationStorage : Sphere
+public class SituationStorage : Sphere,ISituationSubscriber
 {
 
     public override bool AllowDrag
@@ -29,7 +30,11 @@ public class SituationStorage : Sphere
 
     [SerializeField] private CanvasGroupFader canvasGroupFader;
 
-
+    public void Initialise(Situation situation)
+    { 
+        situation.AddSubscriber(this);
+        situation.AddContainer(this);
+    }
 
 
     public override SpherePath GetPath()
@@ -50,6 +55,24 @@ public class SituationStorage : Sphere
             canvasGroupFader.Hide();
     }
 
-   
 
+    public void SituationStateChanged(Situation situation)
+    {
+        UpdateDisplay(situation);
+    }
+
+    public void TimerValuesChanged(Situation s)
+    {
+        //
+    }
+
+    public void SituationSphereContentsUpdated(Situation s)
+    {
+       //
+    }
+
+    public void ReceiveNotification(INotification n)
+    {
+        //
+    }
 }

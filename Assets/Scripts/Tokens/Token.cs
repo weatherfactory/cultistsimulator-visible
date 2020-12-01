@@ -829,7 +829,7 @@ namespace Assets.CS.TabletopUI {
             Sphere.NotifyTokensChangedForSphere(new TokenInteractionEventArgs { Token = this, Element = Element, Sphere = Sphere });
         }
 
-    public void SphereContentsUpdated(Situation situation)
+    public void SituationSphereContentsUpdated(Situation situation)
         {
             _manifestation.DisplaySpheres(situation.GetSpheresActiveForCurrentState());
         }

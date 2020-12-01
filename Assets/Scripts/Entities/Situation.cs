@@ -741,7 +741,7 @@ namespace Assets.Core.Entities {
             PossiblySignalImpendingDoom(CurrentRecipePrediction.SignalEndingFlavour);
 
             foreach (var s in subscribers)
-                s.SphereContentsUpdated(this);
+                s.SituationSphereContentsUpdated(this);
 
 
         }

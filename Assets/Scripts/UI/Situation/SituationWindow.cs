@@ -115,16 +115,16 @@ namespace Assets.CS.TabletopUI {
             startButton.onClick.AddListener(OnStart.Invoke);
 
             startingSlots.Initialise(Verb, this,_situationPath);
+           storage.Initialise(situation);
+
+
             ongoingDisplay.Initialise(situation);
-            results.Initialise();
+            results.Initialise(situation);
 
             //this is an improvement - the situation doesn't need to know what to add - but better yet would be to tie together creation + container add, at runtime
             foreach (var s in startingSlots.GetAllSlots())
                 OnContainerAdded.Invoke(s);
 
-            OnContainerAdded.Invoke(storage);
-            OnContainerAdded.Invoke(results);
-            
             if (Verb.Startable)
             {
                 startButton.gameObject.SetActive(true);
@@ -156,11 +156,8 @@ namespace Assets.CS.TabletopUI {
                 SituationStateChanged(situation);
             }
 
-            
             positioner.Show(canvasGroupFader.durationTurnOn, targetPosition); // Animates the window (position allows optional change is position)
 
-
-            results.UpdateDumpButtonText(); // ensures that we've updated the dump button accordingly
             startingSlots.ArrangeSlots(); //won't have been arranged if a card was dumped in while the window was closed
             PaginatedNotes.SetFinalPage();
 
@@ -256,15 +253,8 @@ namespace Assets.CS.TabletopUI {
         {
       
                 startingSlots.UpdateDisplay(situation);
-                storage.UpdateDisplay(situation);
-
-
-                results.UpdateDisplay(situation);
-                results.UpdateDumpButtonText();
 
                 DisplayButtonState(situation);
-            
-
         }
 
         public void TimerValuesChanged(Situation situation)
@@ -273,14 +263,13 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void SphereContentsUpdated(Situation s)
+        public void SituationSphereContentsUpdated(Situation s)
         {
             DisplayPredictedRecipe(s);
             
             var allAspectsToDisplay =s.GetAspectsAvailableToSituation(false);
             aspectsDisplay.DisplayAspects(allAspectsToDisplay);
             DisplayButtonState(s);
-
 
         }
 

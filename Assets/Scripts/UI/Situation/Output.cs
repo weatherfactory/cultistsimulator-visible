@@ -15,6 +15,7 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
 using TMPro;
 using UnityEngine.Events;
@@ -22,7 +23,7 @@ using UnityEngine.Events;
 /// <summary>
 /// The contents of Output spheres can be picked up by the player, but not replaced. They become unavailable once empty.
 /// </summary>
-public class Output : Sphere {
+public class Output : Sphere,ISituationSubscriber{
 
     public CanvasGroupFader canvasGroupFader;
     [SerializeField] SituationResultsPositioning outputPositioning;
@@ -40,22 +41,13 @@ public class Output : Sphere {
     public override bool AllowStackMerge { get { return false; } }
 
 
-    public void Initialise() {
+    public void Initialise(Situation s)
+    {
+
+        s.AddSubscriber(this);
+        s.AddContainer(this);
         buttonClearResultsDefault = "VERB_COLLECT";
         buttonClearResultsNone = "VERB_ACCEPT";
-    }
-
-    public void UpdateDisplay(Situation situation)
-    {
-        if(situation.CurrentState.IsActiveInThisState(this))
-        {
-            canvasGroupFader.Show();
-            outputPositioning.ArrangeTokens(GetElementTokens());
-
-        }
-        else
-            canvasGroupFader.Hide();
-         
     }
 
 
@@ -124,5 +116,29 @@ public class Output : Sphere {
         else
             dumpResultsButtonText.GetComponent<Babelfish>().UpdateLocLabel(buttonClearResultsNone);
     }
-    
+
+    public void SituationStateChanged(Situation situation)
+    {
+        if (situation.CurrentState.IsActiveInThisState(this))
+        {
+            canvasGroupFader.Show();
+            outputPositioning.ArrangeTokens(GetElementTokens());
+        }
+        else
+            canvasGroupFader.Hide();
+
+        UpdateDumpButtonText();
+    }
+
+    public void TimerValuesChanged(Situation s)
+    {
+    }
+
+    public void SituationSphereContentsUpdated(Situation s)
+    {
+    }
+
+    public void ReceiveNotification(INotification n)
+    {
+    }
 }
