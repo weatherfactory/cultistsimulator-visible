@@ -163,55 +163,6 @@ namespace Assets.CS.TabletopUI {
             return true;
         }
 
-        private Token FindStackForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
-
-            var rnd = new Random();
-            var tokens = _tabletop.GetElementTokens().OrderBy(x=>rnd.Next());
-
-            foreach (var token in tokens)
-                if (CanPullCardToGreedySlot(token, slotSpec))
-                {
-
-                    if (token._currentlyBeingDragged)
-                    {
-                        token.SetXNess(TokenXNess.DivertedByGreedySlot);
-                        token.FinishDrag();
-                    }
-                
-                    return token;
-                }
-
-            
-            return null;
-        }
-
-        private bool CanPullCardToGreedySlot(Token stackToken, SlotSpecification slotSpec)
-        {
-            if (slotSpec == null)
-                return false; //We were seeing NullReferenceExceptions in the Unity analytics from the bottom line; stack is referenced okay so it shouldn't be stack, so probably a null slotspec is being specified somewhere
-
-            if (stackToken == null) //..but just in case.
-                return false;
-
-            if (stackToken.Defunct)
-                return false; // don't pull defunct cards
-            else if (stackToken.IsInMotion)
-                return false; // don't pull animated cards
-
-
-            var allowExploits = Registry.Get<Config>().GetConfigValueAsInt(NoonConstants.BIRDWORMSLIDER);
-            if (allowExploits!=null || allowExploits > 0)
-            {
-                Debug.Log("exploits on");
-                if (stackToken._currentlyBeingDragged)
-                    return false; // don't pull cards being dragged if Worm is set On}
-            }
-            
-
-            return slotSpec.GetSlotMatchForAspects(stackToken.ElementStack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay;
-        }
-
-     
 
 
 		public void CloseAllDetailsWindows()
@@ -297,56 +248,8 @@ namespace Assets.CS.TabletopUI {
                 backgroundMusic.NoMoreImpendingDoom();
         }
 
-		static private float cardPingLastTriggered = 0.0f;
 
-		public void HighlightAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec)
-		{
-			float time = Time.realtimeSinceStartup;
-			if (time > cardPingLastTriggered + 1.0f)	// Don't want to trigger these within a second of the last trigger, otherwise they stack up too much
-			{
-				cardPingLastTriggered = time;
 
-                var stacks = FindAllElementTokenssForSlotSpecificationOnTabletop(slotSpec);
-
-				foreach (var stack in stacks)
-				{
-					ShowFXonToken("FX/CardPingEffect", stack.transform);
-				}
-			}
-		}
-
-        
-
-		private List<Token> FindAllElementTokenssForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
-			var stackList = new List<Token>();
-			var stackTokens = _tabletop.GetElementTokens();
-
-			foreach (var stackToken in stackTokens) {
-
-				if (CanPullCardToGreedySlot(stackToken, slotSpec))
-					stackList.Add(stackToken);
-			}
-
-			return stackList;
-		}
-
-		private void ShowFXonToken(string name, Transform parent) {
-			var prefab = Resources.Load(name);
-
-			if (prefab == null)
-				return;
-
-			var obj = Instantiate(prefab) as GameObject;
-
-			if (obj == null)
-				return;
-
-			obj.transform.SetParent(parent);
-			obj.transform.localScale = Vector3.one;
-			obj.transform.localPosition = Vector3.zero;
-			obj.transform.localRotation = Quaternion.identity;
-			obj.gameObject.SetActive(true);
-		}
 
 
 

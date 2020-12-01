@@ -10,6 +10,7 @@ using System.Collections;
 using System;
 using System.Linq;
 using Assets.Core.Entities;
+using Assets.Core.Enums;
 using TabletopUi.Scripts.Elements;
 
 namespace Assets.CS.TabletopUI {
@@ -316,9 +317,61 @@ namespace Assets.CS.TabletopUI {
 			if (slotSpec.Greedy) // Greedy slots get no possible cards
 				return;
 
-			var tabletop = Registry.Get<TabletopManager>();
-			tabletop.HighlightAllStacksForSlotSpecificationOnTabletop(slotSpec);
+            HighlightAllStacksForSlotSpecificationOnTabletop(slotSpec);
 		}
+
+        private float cardPingLastTriggered = 0.0f;
+
+        public void HighlightAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec)
+        {
+            float time = Time.realtimeSinceStartup;
+            if (time > cardPingLastTriggered + 1.0f)    // Don't want to trigger these within a second of the last trigger, otherwise they stack up too much
+            {
+                cardPingLastTriggered = time;
+
+                var stacks = FindAllElementTokenssForSlotSpecificationOnTabletop(slotSpec);
+
+                foreach (var stack in stacks)
+                
+                    ShowFXonToken("FX/CardPingEffect", stack.transform);
+            }
+        }
+
+
+
+        private List<Token> FindAllElementTokenssForSlotSpecificationOnTabletop(SlotSpecification slotSpec)
+        {
+            var stackList = new List<Token>();
+            var worldSpheres = Registry.Get<SphereCatalogue>().GetSpheresOfCategory(SphereCategory.World);
+            foreach (var worldSphere in worldSpheres)
+            {
+                var stackTokens = worldSphere.GetElementTokens();
+                foreach (var stackToken in stackTokens)
+                    if (slotSpec.GetSlotMatchForAspects(stackToken.ElementStack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay)
+                        stackList.Add(stackToken);
+            }
+
+            return stackList;
+        }
+
+        private void ShowFXonToken(string name, Transform parent)
+        {
+            var prefab = Resources.Load(name);
+
+            if (prefab == null)
+                return;
+
+            var obj = Instantiate(prefab) as GameObject;
+
+            if (obj == null)
+                return;
+
+            obj.transform.SetParent(parent);
+            obj.transform.localScale = Vector3.one;
+            obj.transform.localPosition = Vector3.zero;
+            obj.transform.localRotation = Quaternion.identity;
+            obj.gameObject.SetActive(true);
+        }
     }
 }
 

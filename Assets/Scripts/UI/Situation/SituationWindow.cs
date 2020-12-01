@@ -277,7 +277,7 @@ namespace Assets.CS.TabletopUI {
         {
             PaginatedNotes.AddText(n.Description);
         }
-
+         
 
         //public override void MoveObject(PointerEventData eventData) {
         //    Vector3 dragPos;

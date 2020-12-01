@@ -10,6 +10,7 @@ using Assets.Core.Fucine;
 using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.Scripts.Spheres.Angels;
 using Noon;
 
 
@@ -91,6 +92,7 @@ public class SlotSpecification: AbstractEntity<SlotSpecification>
     public SlotSpecification(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
     {
     }
+
 
 
     public ContainerMatchForStack GetSlotMatchForAspects(IAspectsDictionary aspects)

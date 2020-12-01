@@ -7,6 +7,7 @@ using Assets.Core.Enums;
 using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.Scripts.Spheres.Angels;
 using Assets.Scripts.UI;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
@@ -83,18 +84,19 @@ namespace Assets.CS.TabletopUI {
             GoverningSlotSpecification = slotSpecification;
             gameObject.name = GetPath().ToString();
 
-            if (slotSpecification == null)
+            if (GoverningSlotSpecification == null)
                 return;
 
             SlotLabel.text = slotSpecification.Label;
 
+            if (GoverningSlotSpecification.Greedy)
+            {
+                _angels.Add(new GreedyAngel());
+            }
+
             GreedyIcon.SetActive(slotSpecification.Greedy);
             ConsumingIcon.SetActive(slotSpecification.Consumes);
-
         }
-
-
-
 
 
         public virtual void OnPointerEnter(PointerEventData eventData) {

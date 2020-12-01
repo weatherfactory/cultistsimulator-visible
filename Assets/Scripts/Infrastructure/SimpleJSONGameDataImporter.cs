@@ -9,6 +9,7 @@ using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
+using Assets.Core.NullObjects;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
@@ -208,7 +209,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 string verbId = htSituationValues[SaveConstants.SAVE_VERBID].ToString();
 
                 IVerb situationVerb = Registry.Get<Compendium>().GetEntityById<BasicVerb>(verbId);
-
+                if (situationVerb == null)
+                    situationVerb = NullVerb.Create();
 
                 string recipeId = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_RECIPEID);
                 var recipe = Registry.Get<Compendium>().GetEntityById<Recipe>(recipeId);
@@ -216,10 +218,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     recipe = NullRecipe.Create(situationVerb);
 
                 
-
                 //This caters for the otherwise troublesome situation where a completed situation (no recipe) has been based on a created verb (no verb obj).
-                if (situationVerb == null && recipe==null)
-                    situationVerb = new TransientVerb(verbId, "","");
+                //except we're now just supplyying a NullVerb, above... so that *should* be enough
+                //if (situationVerb == null && recipe==null)
+                //    situationVerb = new TransientVerb(verbId, "","");
+
 
                 var situationState= (StateEnum)Enum.Parse(typeof(StateEnum), htSituationValues[SaveConstants.SAVE_SITUATIONSTATE].ToString());
 

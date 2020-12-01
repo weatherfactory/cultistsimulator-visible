@@ -148,7 +148,7 @@ namespace Assets.CS.TabletopUI {
         public bool IsInMotion { get; set; }
         public bool Defunct { get; protected set; }
         public bool NoPush => _manifestation.NoPush;
-        public bool _currentlyBeingDragged { get; protected set; }
+        public bool CurrentlyBeingDragged { get; protected set; }
 
         private TokenXNess TokenXNess { get; set; } = TokenXNess.NoValidDestination;
 
@@ -301,11 +301,6 @@ namespace Assets.CS.TabletopUI {
                    TokenXNess == TokenXNess.DroppedOnTokenWhichWontMoveAside;
         }
 
-        protected  bool AllowsDrag()
-        {
-            return !IsInMotion && !shrouded && !_manifestation.RequestingNoDrag;
-
-        }
 
 
         public void SetSphere(Sphere newSphere, Context context)
@@ -333,18 +328,50 @@ namespace Assets.CS.TabletopUI {
         {
             NoonUtility.Log("Beginning drag for " + this.name,0,VerbosityLevel.SystemChatter);
 
-            if (CanDrag(eventData))
+            if (CanDrag())
             {
-                _currentlyBeingDragged = true;
+                CurrentlyBeingDragged = true;
                 Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Token = this, Sphere = Sphere,Interaction = Interaction.OnDragBegin});
                 StartDrag(eventData);
             }
 
         }
-
-        bool CanDrag(PointerEventData eventData)
+        /// <summary>
+        /// can move manually
+        /// </summary>
+        /// <param name="eventData"></param>
+        /// <returns></returns>
+       public bool CanDrag()
         {
-            return (Sphere.AllowDrag && AllowsDrag());
+            return
+                Sphere.AllowDrag 
+                && !IsInMotion
+                && !Defunct
+                && !shrouded
+                && !_manifestation.RequestingNoDrag;
+        }
+
+
+        /// <summary>
+        /// can be grabbed by a greedy angel
+        /// </summary>
+        /// <returns></returns>
+      public bool CanPull()
+        {
+            if (Defunct)
+                return false;
+            if (IsInMotion)
+                return false;
+
+            var allowExploits = Registry.Get<Config>().GetConfigValueAsInt(NoonConstants.BIRDWORMSLIDER);
+            if (allowExploits != null || allowExploits > 0)
+            {
+                NoonUtility.Log("WORM enabled: dragging defeats pulling");
+                if (CurrentlyBeingDragged)
+                    return false; // don't pull cards being dragged if Worm is set On}
+            }
+
+            return true;
         }
 
         protected void StartDrag(PointerEventData eventData)
@@ -357,7 +384,7 @@ namespace Assets.CS.TabletopUI {
                 
             }
 
-            _currentlyBeingDragged = true;
+            CurrentlyBeingDragged = true;
 
             if (TokenRectTransform.anchoredPosition.sqrMagnitude > 0.0f
             ) // Never store 0,0 as that's a slot position and we never auto-return to slots - CP
@@ -403,7 +430,7 @@ namespace Assets.CS.TabletopUI {
 
         public void OnDrag(PointerEventData eventData)
         {
-            if (!_currentlyBeingDragged)
+            if (!CurrentlyBeingDragged)
                 return;
 
             MoveObject(eventData);
@@ -454,9 +481,9 @@ namespace Assets.CS.TabletopUI {
 
         public  void FinishDrag()
         {
-            if (_currentlyBeingDragged)
+            if (CurrentlyBeingDragged)
             {
-                _currentlyBeingDragged = false;
+                CurrentlyBeingDragged = false;
                 canvasGroup.blocksRaycasts = true;
 
                 if (ShouldReturnToStart())

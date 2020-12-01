@@ -72,7 +72,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public bool Defunct { get; protected set; }
         protected HashSet<ContainerBlock> _currentContainerBlocks = new HashSet<ContainerBlock>();
         private SphereCatalogue _catalogue;
-        private List<Token> _tokens = new List<Token>();
+        private readonly List<Token> _tokens = new List<Token>();
+        protected readonly List<IAngel> _angels=new List<IAngel>();
         private readonly HashSet<ISphereEventSubscriber> _subscribers = new HashSet<ISphereEventSubscriber>();
 
         public SphereCatalogue Catalogue
@@ -394,6 +395,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
     
                foreach (var d in decayingStacks)
                       d.Decay(interval);
+            }
+
+            foreach (var angel in _angels)
+            {
+                angel.MinisterTo(this);
             }
 
         }
