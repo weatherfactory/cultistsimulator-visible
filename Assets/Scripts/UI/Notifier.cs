@@ -30,6 +30,11 @@ namespace Assets.CS.TabletopUI {
         [Header("Image Burner")]
         [SerializeField] private TabletopImageBurner tabletopBurner;
 
+        public void Awake()
+        {
+            var r=new Registry();
+            r.Register<INotifier>(this);
+        }
 
 
         public void Start() {

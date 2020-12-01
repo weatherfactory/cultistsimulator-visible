@@ -21,9 +21,9 @@ namespace Assets.Scripts.Spheres.Angels
                 return;
 
             var worldSpheres = Registry.Get<SphereCatalogue>().GetSpheresOfCategory(SphereCategory.World);
-            foreach (var worldSphere in worldSpheres)
+            foreach (var worldSphereToSearch in worldSpheres)
             {
-                var matchingToken = FindStackForSlotSpecificationInSphere(sphere);
+                var matchingToken = FindStackForSlotSpecificationInSphere(sphere.GoverningSlotSpecification,worldSphereToSearch);
                 if (matchingToken != null)
                 {
                     NoonUtility.Log("This is where the angel for " + sphere.GetPath() +" would pull " + matchingToken.name);
@@ -40,16 +40,14 @@ namespace Assets.Scripts.Spheres.Angels
         }
 
 
-        private Token FindStackForSlotSpecificationInSphere(Sphere sphere)
+        private Token FindStackForSlotSpecificationInSphere(SlotSpecification slotSpec, Sphere sphereToSearch)
         {
             var rnd = new Random();
-            var tokens = sphere.GetElementTokens().OrderBy(x => rnd.Next());
+            var tokens = sphereToSearch.GetElementTokens().OrderBy(x => rnd.Next());
 
             foreach (var token in tokens)
-                if (token.CanPull() && sphere.GoverningSlotSpecification.GetSlotMatchForAspects(token.ElementStack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay)
-                {
+                if (token.CanBePulled() && slotSpec.GetSlotMatchForAspects(token.ElementStack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay)
                     return token;
-                }
 
             return null;
         }

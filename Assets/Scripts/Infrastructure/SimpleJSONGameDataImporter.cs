@@ -264,10 +264,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 float? posy = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_SITUATION_WINDOW_Y);
                 float? posz = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_SITUATION_WINDOW_Z);
 
-                
-
-           
-
 
                 if(posx!=null && posy!=null && posz!=null)
                 {
@@ -277,11 +273,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 command.Open = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
 
+                List<SlotSpecification> ongoingSlotSpecs = new List<SlotSpecification>();
 
                 if (htSituationValues.ContainsKey(SaveConstants.SAVE_ONGOINGSLOTELEMENTS))
                 {
                     var htOngoingSlots = htSituationValues.GetHashtable(SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
-                    List<SlotSpecification> ongoingSlotSpecs=new List<SlotSpecification>();
+             
                     foreach (string slotPath in htOngoingSlots.Keys)
                     {
 
@@ -289,13 +286,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                         var slotId = slotPath.Split(SpherePath.SEPARATOR)[0];
                         var slotSpec = new SlotSpecification(slotId);
                         ongoingSlotSpecs.Add(slotSpec);
-
                     }
-
-                    command.OngoingSlots = ongoingSlotSpecs;
-
                 }
 
+                else
+                {
+                    //we don't have any elements in ongoing slots - but we might still have an empty slot from the recipe, which isn't tracked in the save
+                    //so add the slot to the spec anyway
+                   foreach(var slot in recipe.Slots)
+                       ongoingSlotSpecs.Add(slot);
+
+                }
+                command.OngoingSlots = ongoingSlotSpecs;
 
                 //old code for this stuff below:
                 //SaveLocationInfo for slots are recorded with an appended Guid. Everything up until the last separator is the slotId

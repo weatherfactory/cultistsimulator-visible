@@ -328,7 +328,7 @@ namespace Assets.CS.TabletopUI {
         {
             NoonUtility.Log("Beginning drag for " + this.name,0,VerbosityLevel.SystemChatter);
 
-            if (CanDrag())
+            if (CanBeDragged())
             {
                 CurrentlyBeingDragged = true;
                 Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Token = this, Sphere = Sphere,Interaction = Interaction.OnDragBegin});
@@ -341,7 +341,7 @@ namespace Assets.CS.TabletopUI {
         /// </summary>
         /// <param name="eventData"></param>
         /// <returns></returns>
-       public bool CanDrag()
+       public bool CanBeDragged()
         {
             return
                 Sphere.AllowDrag 
@@ -356,7 +356,7 @@ namespace Assets.CS.TabletopUI {
         /// can be grabbed by a greedy angel
         /// </summary>
         /// <returns></returns>
-      public bool CanPull()
+      public bool CanBePulled()
         {
             if (Defunct)
                 return false;
@@ -366,9 +366,12 @@ namespace Assets.CS.TabletopUI {
             var allowExploits = Registry.Get<Config>().GetConfigValueAsInt(NoonConstants.BIRDWORMSLIDER);
             if (allowExploits != null || allowExploits > 0)
             {
-                NoonUtility.Log("WORM enabled: dragging defeats pulling");
+
                 if (CurrentlyBeingDragged)
-                    return false; // don't pull cards being dragged if Worm is set On}
+                {
+                    NoonUtility.Log("WORM enabled: dragging defeats pulling");
+                     return false; // don't pull cards being dragged if Worm is set On}
+                }
             }
 
             return true;
