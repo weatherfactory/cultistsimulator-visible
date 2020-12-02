@@ -164,11 +164,11 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             
             var activeThresholdSpheres = new List<Sphere>(spheres.Where(s => s.SphereCategory == SphereCategory.Threshold));
             if (!activeThresholdSpheres.Any())
-                hideMiniSlot();
+                HideMiniSlot();
             else
             {
                 var sphereToDisplayAsMiniSlot = activeThresholdSpheres.Single();
-                showMiniSlot(sphereToDisplayAsMiniSlot.GoverningSlotSpecification.Greedy);
+                ShowMiniSlot(sphereToDisplayAsMiniSlot.GoverningSlotSpecification.Greedy);
                 displayStackInMiniSlot(sphereToDisplayAsMiniSlot.GetElementStacks());
             }
 
@@ -203,14 +203,14 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         }
 
 
-        private void hideMiniSlot()
+        private void HideMiniSlot()
         {
             ongoingSlotImage.gameObject.SetActive(false);
             ongoingSlotGreedyIcon.gameObject.SetActive(false);
 
         }
 
-        private void showMiniSlot(bool greedy)
+        private void ShowMiniSlot(bool greedy)
         {
             
             if(!ongoingSlotImage.isActiveAndEnabled)
@@ -496,7 +496,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             tokenAnim.onAnimDone += travelComplete;
             tokenAnim.SetPositions(startPos, endPos);
             tokenAnim.SetScaling(startScale, endScale);
-            tokenAnim.StartAnim(token, duration);
+            tokenAnim.Begin(token, duration);
         }
    
     }

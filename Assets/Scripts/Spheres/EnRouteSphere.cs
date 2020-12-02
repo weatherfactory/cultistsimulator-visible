@@ -48,16 +48,16 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
             float distance = Vector3.Distance(startPos, endPos);
             float duration = durationOverride > 0.0f ? durationOverride : Mathf.Max(0.3f, distance * 0.001f);
 
-            var stackAnim = stack.gameObject.AddComponent<TokenAnimationToSlot>();
-            stackAnim.onElementSlotAnimDone += ElementSendAnimDone;
-            stackAnim.SetPositions(startPos, endPos);
-            stackAnim.SetScaling(1f, 0.35f);
-            stackAnim.SetDestination(destination, destinationSlot);
+            var tokenAnimation = stack.gameObject.AddComponent<TokenAnimationToSlot>();
+            tokenAnimation.onElementSlotAnimDone += ElementSendAnimDone;
+            tokenAnimation.SetPositions(startPos, endPos);
+            tokenAnimation.SetScaling(1f, 0.35f);
+            tokenAnimation.SetDestination(destination, destinationSlot);
 
             destinationSlot.AddBlock(new ContainerBlock(BlockDirection.Inward,
                 BlockReason.StackEnRouteToContainer));
 
-            stackAnim.StartAnim(stack ,duration);
+            tokenAnimation.Begin(stack ,duration);
         }
 
         public void ElementSendAnimDone(Token element, TokenLocation destination,Sphere destinationSlot)

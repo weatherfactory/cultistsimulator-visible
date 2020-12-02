@@ -111,8 +111,9 @@ namespace Assets.Core.Entities {
             _anchor.OnCollect.AddListener(CollectOutputStacks);
             _anchor.OnContainerAdded.AddListener(AddContainer);
             _anchor.OnContainerRemoved.AddListener(RemoveContainer);
-
             _anchor.Populate(this);
+            NotifySubscribersOfSituationStateChange();
+            NotifySubscribersOfTimerValueUpdate();
         }
 
 
@@ -130,8 +131,8 @@ namespace Assets.Core.Entities {
             _window.OnContainerRemoved.AddListener(RemoveContainer);
 
             _window.Initialise(this);
-
-
+            NotifySubscribersOfSituationStateChange();
+            NotifySubscribersOfTimerValueUpdate();
         }
 
 
@@ -252,7 +253,6 @@ namespace Assets.Core.Entities {
         {
 //            greedyAnimIsActive = true;
             slotAnim.onElementSlotAnimDone += HandleOnGreedySlotAnimDone;
-
 
         }
 

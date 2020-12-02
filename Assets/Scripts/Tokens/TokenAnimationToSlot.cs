@@ -13,7 +13,7 @@ public class TokenAnimationToSlot : TokenAnimation {
     private TokenLocation destinationLocation;
     private Sphere destinationSlot;
 
-    protected override Vector3 endPos {
+    protected override Vector3 EndPosition {
         get
         {
             //target token and/or slot might conceivably have been destroyed en route
@@ -25,8 +25,8 @@ public class TokenAnimationToSlot : TokenAnimation {
         }
     }
 
-    public override void StartAnim(Token token, float duration = 1) {
-        base.StartAnim(token, duration);
+    public override void Begin(Token token, float duration = 1) {
+        base.Begin(token, duration);
 
         transform.SetAsLastSibling();
     }

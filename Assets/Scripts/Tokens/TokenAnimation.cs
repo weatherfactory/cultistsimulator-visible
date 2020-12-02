@@ -10,8 +10,8 @@ public class TokenAnimation : MonoBehaviour {
 
 	protected Token _token;
 
-	private Vector3 startPosition;
-	private Vector3 endPosition;
+	private Vector3 _startPosition;
+	private Vector3 _endPosition;
 
 	private float zPos;
 
@@ -25,21 +25,13 @@ public class TokenAnimation : MonoBehaviour {
 
 	public bool IsRunning { private get; set; }
 
-    virtual protected Vector3 startPos {
-		get {
-			return startPosition;
-		}
-	}
+	protected virtual Vector3 StartPosition => _startPosition;
 
-    virtual protected Vector3 endPos {
-		get {
-			return endPosition;
-		}
-	}
+    protected virtual Vector3 EndPosition => _endPosition;
 
-	public void SetPositions(Vector3 startPos, Vector3 endPos, float zPos = 0f) {
-		this.startPosition = startPos;
-		this.endPosition = endPos;
+    public void SetPositions(Vector3 startPos, Vector3 endPos, float zPos = 0f) {
+		this._startPosition = startPos;
+		this._endPosition = endPos;
 		this.zPos = zPos;
 	}
 
@@ -49,7 +41,7 @@ public class TokenAnimation : MonoBehaviour {
 		this.scalePercentage = Mathf.Clamp01(scaleDuration) * ((scaleStart != 1f && scaleEnd != 1f) ? 0.5f : 1f); // may not be bigger than 0.5 for dual scaling
 	}
 
-	public virtual void StartAnim(Token token,float duration = 1f) {
+	public virtual void Begin(Token token,float duration = 1f) {
 		this.duration = duration;
 		this.timeSpent = 0f;
         
@@ -65,12 +57,12 @@ public class TokenAnimation : MonoBehaviour {
 		if (!IsRunning || duration < 0)
 			return;
 		else if (timeSpent < duration) 
-			DoAnim();
+			Continue();
 		else
-			CompleteAnim();
+			Complete();
 	}
 
-	void DoAnim() {
+	void Continue() {
 		timeSpent += Time.deltaTime;
 
 		float completion = timeSpent / duration;
@@ -86,12 +78,12 @@ public class TokenAnimation : MonoBehaviour {
 	}
 
     Vector3 GetPos(float lerp) {
-        return new Vector3(Mathf.Lerp(startPos.x, endPos.x, lerp), Mathf.Lerp(startPos.y, endPos.y, lerp), zPos);
+        return new Vector3(Mathf.Lerp(StartPosition.x, EndPosition.x, lerp), Mathf.Lerp(StartPosition.y, EndPosition.y, lerp), zPos);
     }
 
-	void CompleteAnim() {
+	void Complete() {
 		IsRunning = false;
-		_token.TokenRectTransform.anchoredPosition3D = new Vector3(endPos.x, endPos.y, zPos);
+		_token.TokenRectTransform.anchoredPosition3D = new Vector3(EndPosition.x, EndPosition.y, zPos);
 		_token.ManifestationRectTransform.localScale = Vector3.one * scaleEnd;
 		_token.enabled = true;
         _token.IsInMotion = false;
@@ -99,7 +91,5 @@ public class TokenAnimation : MonoBehaviour {
         onAnimDone?.Invoke();
 		Destroy(this);
 	}
-
-	
 
 }

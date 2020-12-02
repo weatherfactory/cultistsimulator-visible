@@ -187,24 +187,22 @@ namespace Assets.TabletopUi.Scripts.Elements
             Action animDoneMethod,
             float startScale = 1f, float endScale = 1f)
         {
-            var tokenAnim = gameObject.AddComponent<TokenAnimation>();
-            tokenAnim.onAnimDone += animDoneMethod;
-            tokenAnim.SetPositions(startPos, endPos);
-            tokenAnim.SetScaling(startScale, endScale);
-            tokenAnim.StartAnim(token,duration);
+            var tokenAanimation = gameObject.AddComponent<TokenAnimation>();
+            tokenAanimation.onAnimDone += animDoneMethod;
+            tokenAanimation.SetPositions(startPos, endPos);
+            tokenAanimation.SetScaling(startScale, endScale);
+            tokenAanimation.Begin(token,duration);
         }
 
         public void OnBeginDragVisuals()
         {
             ShowCardShadow(true); // Ensure we always have a shadow when dragging
-            
         }
 
 
         public void OnEndDragVisuals()
         {
             ShowCardShadow(false);
-
         }
 
         public void Highlight(HighlightType highlightType)

@@ -447,7 +447,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             tokenAnim.onAnimDone += travelComplete;
             tokenAnim.SetPositions(startPos, endPos);
             tokenAnim.SetScaling(startScale, endScale);
-            tokenAnim.StartAnim(token, duration);
+            tokenAnim.Begin(token, duration);
         }
 
     }

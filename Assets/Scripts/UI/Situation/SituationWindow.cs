@@ -134,7 +134,6 @@ namespace Assets.CS.TabletopUI {
                 startButton.gameObject.SetActive(false);
             }
 
-
             SituationStateChanged(situation);
             TimerValuesChanged(situation);
 
