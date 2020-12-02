@@ -65,13 +65,11 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         void SendNotification(INotification notification);
 
 
-        bool HandleClick(PointerEventData eventData, Token token);
+        bool HandlePointerDown(PointerEventData eventData, Token token);
 
         void DisplaySpheres(IEnumerable<Sphere> spheres);
         
         
-        
-
         /// <summary>
         /// needs to be set to initial token container
         /// </summary>

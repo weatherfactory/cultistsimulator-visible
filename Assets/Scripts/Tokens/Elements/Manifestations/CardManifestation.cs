@@ -162,7 +162,7 @@ namespace Assets.TabletopUi.Scripts.Elements
 
 
 
-        public bool HandleClick(PointerEventData eventData, Token token)
+        public bool HandlePointerDown(PointerEventData eventData, Token token)
         {
        return false;
         }

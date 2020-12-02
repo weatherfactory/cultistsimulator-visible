@@ -163,7 +163,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             //
         }
 
-        public bool HandleClick(PointerEventData eventData, Token token)
+        public bool HandlePointerDown(PointerEventData eventData, Token token)
         {
             return false;
         }

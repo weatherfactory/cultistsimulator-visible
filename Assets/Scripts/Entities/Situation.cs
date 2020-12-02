@@ -622,28 +622,47 @@ namespace Assets.Core.Entities {
 
 
 
-    public Sphere GetFirstAvailableThresholdForStackPush(ElementStack stack)
+    public List<Sphere> GetAvailableThresholdsForStackPush(ElementStack stack)
     {
+        List<Sphere> thresholdsAvailable=new List<Sphere>();
         var thresholds = GetSpheresByCategory(SphereCategory.Threshold);
         foreach (var t in thresholds)
 
-            if (!t.IsGreedy && !t.CurrentlyBlockedFor(BlockDirection.Inward) && t.GetMatchForStack(stack).MatchType ==SlotMatchForAspectsType.Okay)
-                return t;
+            if (!t.IsGreedy
+               && CurrentState.IsActiveInThisState(t)
+               && !t.CurrentlyBlockedFor(BlockDirection.Inward)
+               && t.GetMatchForStack(stack).MatchType ==SlotMatchForAspectsType.Okay)
 
-        return Registry.Get<NullSphere>();
+                thresholdsAvailable.Add(t);
+
+        return thresholdsAvailable;
+
     }
 
 
-        public bool PushDraggedStackIntoThreshold(Token token)
+        public bool TryPushDraggedStackIntoThreshold(Token token)
         {
-            var thresholdContainer = GetFirstAvailableThresholdForStackPush(token.ElementStack);
-            var possibleIncumbent = thresholdContainer.GetElementTokens().FirstOrDefault();
-            if (possibleIncumbent != null)
+            var thresholdSpheres = GetAvailableThresholdsForStackPush(token.ElementStack);
+            if (thresholdSpheres.Count <= 0)
+                return false;
+
+            Sphere emptyThresholdSphere = thresholdSpheres.FirstOrDefault(t => t.IsEmpty());
+
+            if(emptyThresholdSphere!=null)
+                return emptyThresholdSphere.TryAcceptTokenAsThreshold(token);
+
+            Sphere occupiedThresholdSphere = thresholdSpheres.FirstOrDefault();
+            if(occupiedThresholdSphere!=null)
             {
-                possibleIncumbent.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
+                var incumbent = occupiedThresholdSphere.GetElementTokens().FirstOrDefault();
+                if(incumbent!=null) //should never happen, but code might shift later
+                    incumbent.ReturnToTabletop(new Context(Context.ActionSource.PushToThresholddUsurpedThisStack));
+                 
+                return occupiedThresholdSphere.TryAcceptTokenAsThreshold(token);
             }
 
-            return  thresholdContainer.TryAcceptTokenAsThreshold(token);
+
+            return false;
 
         }
 

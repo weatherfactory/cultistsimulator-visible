@@ -31,6 +31,7 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
             return true;
         }
 
+
         public override SpherePath GetPath()
         {
             return new SpherePath("-");

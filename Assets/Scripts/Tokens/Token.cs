@@ -49,7 +49,7 @@ namespace Assets.CS.TabletopUI {
 
     [RequireComponent(typeof(RectTransform))]
     public class Token : MonoBehaviour,
-        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler,
+        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerDownHandler, IPointerEnterHandler,
         IPointerExitHandler, ISituationSubscriber,IInteractsWithTokens
     {
         protected bool singleClickPending = false;
@@ -573,7 +573,7 @@ namespace Assets.CS.TabletopUI {
             else if (incomingToken.ElementStack.IsValidElementStack())
             {
 
-                _attachedToSituation.PushDraggedStackIntoThreshold(incomingToken);
+                _attachedToSituation.TryPushDraggedStackIntoThreshold(incomingToken);
 
                 // Then we open the situation (cause this closes other situations and this may return the stack we try to move
                 // back onto the tabletop - if it was in its starting slots. - Martin
@@ -619,21 +619,19 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        public  void OnPointerClick(PointerEventData eventData)
+        public  void OnPointerDown(PointerEventData eventData)
         {
 
-            if (!_manifestation.HandleClick(eventData, this))
-            {
-                //Manifestation didn't handle click
-                Registry.Get<DebugTools>().SetInput(_attachedToSituation.RecipeId);
+            if (_manifestation.HandlePointerDown(eventData, this))
+                return;
 
-                if (!_attachedToSituation.IsOpen)
-                    _attachedToSituation.OpenAtCurrentLocation();
-                else
-                    _attachedToSituation.Close();
-            }
+            //Manifestation didn't handle click
+            Registry.Get<DebugTools>().SetInput(_attachedToSituation.RecipeId);
 
-
+            if (!_attachedToSituation.IsOpen)
+                _attachedToSituation.OpenAtCurrentLocation();
+            else
+                _attachedToSituation.Close();
 
             if (eventData.clickCount > 1)
             {
@@ -912,9 +910,8 @@ namespace Assets.CS.TabletopUI {
                 return true;
 
             //can we put a stack in a threshold associated with this token?
-            if (_attachedToSituation.GetFirstAvailableThresholdForStackPush(incomingToken.ElementStack).SphereCategory ==
-                SphereCategory.Threshold)
-                return true;
+            if (_attachedToSituation.GetAvailableThresholdsForStackPush(incomingToken.ElementStack).Count>0)
+             return true;
 
             return false;
         }

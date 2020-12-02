@@ -320,6 +320,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return quantityChange;
         }
 
+        public bool IsEmpty()
+        {
+            return _tokens.Count <= 0;
+        }
+
         public List<Token> GetAllTokens()
         {
             return new List<Token>(_tokens);

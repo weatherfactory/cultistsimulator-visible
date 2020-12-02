@@ -59,7 +59,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
             NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
         }
 
-        public bool HandleClick(PointerEventData eventData, Token token)
+        public bool HandlePointerDown(PointerEventData eventData, Token token)
         {
             return false;
         }

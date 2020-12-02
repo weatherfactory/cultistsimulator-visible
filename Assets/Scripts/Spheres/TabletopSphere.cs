@@ -93,52 +93,45 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
             return false;
 
 
-        Dictionary<Sphere, Situation> candidateThresholds = new Dictionary<Sphere, Situation>();
+        HashSet<Situation> candidateSituations = new HashSet<Situation>();
         var registeredSituations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
-        foreach (Situation situation in registeredSituations)
+        Sphere targetThreshold=null;
+        TokenLocation targetLocation = null;
+        Vector3 targetDistance = Vector3.positiveInfinity;;
+
+        foreach (Situation candidateSituation in registeredSituations)
         {
-            try
-            {
-                var candidateThreshold = situation.GetFirstAvailableThresholdForStackPush(tokenToSend.ElementStack);
-                candidateThresholds.Add(candidateThreshold, situation);
+            TokenLocation candidateLocation = candidateSituation.GetAnchorLocation();
+            Vector3 candidateDistance;
+            if (candidateSituation.IsOpen && candidateSituation.Verb.ExclusiveOpen)
+                candidateDistance=Vector3.zero;
+            else
+                candidateDistance = candidateLocation.Position - tokenToSend.Location.Position;
 
-            }
-            catch (Exception e)
+            if (candidateDistance.sqrMagnitude < targetDistance.sqrMagnitude)
             {
-                NoonUtility.LogWarning("Problem adding a candidate threshold to list of valid thresholds - does a valid threshold belong to more than one situation? - " + e.Message);
-            }
-        }
-
-        if (candidateThresholds.Any())
-        {
-            Sphere selectedCandidate = null;
-            float selectedSlotDist = float.MaxValue;
-
-            foreach (Sphere candidate in candidateThresholds.Keys)
-            {
-                Vector3 distance = candidateThresholds[candidate].GetAnchorLocation().Position - transform.position;
-                //Debug.Log("Dist to " + tokenpair.Token.EntityId + " = " + dist.magnitude );
-                if (candidateThresholds[candidate].IsOpen && candidateThresholds[candidate].Verb.ExclusiveOpen)
-                    distance = Vector3.zero;    // Prioritise open windows above all else
-                if (distance.sqrMagnitude < selectedSlotDist)
+                targetThreshold = candidateSituation.GetAvailableThresholdsForStackPush(tokenToSend.ElementStack).FirstOrDefault();
+                if (targetThreshold != null)
                 {
-                    selectedSlotDist = distance.sqrMagnitude;
-                    selectedCandidate = candidate;
+                    targetLocation = candidateLocation;
+                    targetDistance = candidateDistance;
+                    if (targetDistance == Vector3.zero) //we have a valid location, and nothing will be closer than this
+                        break;
                 }
             }
+        }
 
-            if (selectedCandidate != null)
-            {
+        if(targetThreshold!=null)
+        {
 
-                var candidateAnchorLocation = candidateThresholds[selectedCandidate].GetAnchorLocation();
                 if (tokenToSend.ElementQuantity > 1)
                    tokenToSend.CalveToken(tokenToSend.ElementQuantity - 1, new Context(Context.ActionSource.DoubleClickSend));
-                SendViaContainer.PrepareElementForSendAnim(tokenToSend, candidateAnchorLocation); // this reparents the card so it can animate properly
-                SendViaContainer.MoveElementToSituationSlot(tokenToSend, candidateAnchorLocation, selectedCandidate, SEND_STACK_TO_SLOT_DURATION);
+                SendViaContainer.PrepareElementForSendAnim(tokenToSend, targetLocation); // this reparents the card so it can animate properly
+                SendViaContainer.MoveElementToSituationSlot(tokenToSend, targetLocation, targetThreshold, SEND_STACK_TO_SLOT_DURATION);
 
                 return true;
-            }
         }
+        
 
         //final fallthrough - couldn't send it anywhere
         return false;

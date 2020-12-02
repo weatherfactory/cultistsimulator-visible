@@ -16,15 +16,10 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
     public class EnRouteSphere : Sphere
     {
 
-        public override SphereCategory SphereCategory { get; }
+        public override SphereCategory SphereCategory => SphereCategory.World;
 
         public TabletopSphere StartingContainer;
 
-
-        public RectTransform RectTransform
-        {
-            get { return GetComponent<RectTransform>(); }
-        }
 
         public void PrepareElementForSendAnim(Token token, TokenLocation destination) // "this reparents the card so it can animate properly" - okay, let's roll with that for now. But the line below is commented, so do we need it?
         {
@@ -42,15 +37,15 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
 
         public void MoveElementToSituationSlot(Token stack, TokenLocation destination, Sphere destinationSlot, float durationOverride = -1.0f)
         {
-            var startPos = stack.GetComponent<RectTransform>().anchoredPosition3D;
-            var endPos = destination.Position;
+            var startPosition = stack.GetComponent<RectTransform>().anchoredPosition3D;
+            var endPosition = destination.Position;
 
-            float distance = Vector3.Distance(startPos, endPos);
+            float distance = Vector3.Distance(startPosition, endPosition);
             float duration = durationOverride > 0.0f ? durationOverride : Mathf.Max(0.3f, distance * 0.001f);
 
             var tokenAnimation = stack.gameObject.AddComponent<TokenAnimationToSlot>();
             tokenAnimation.onElementSlotAnimDone += ElementSendAnimDone;
-            tokenAnimation.SetPositions(startPos, endPos);
+            tokenAnimation.SetPositions(startPosition, endPosition);
             tokenAnimation.SetScaling(1f, 0.35f);
             tokenAnimation.SetDestination(destination, destinationSlot);
 
