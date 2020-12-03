@@ -23,7 +23,7 @@ namespace Assets.Scripts.Spheres
             var token = eventData.pointerDrag.GetComponent<Token>();
 
             if (token != null)
-                Sphere.TryAcceptTokenAsThreshold(token);
+                Sphere.TryAcceptToken(token, new Context(Context.ActionSource.PlayerDrag));
 
         }
     }

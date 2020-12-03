@@ -635,7 +635,7 @@ namespace Assets.Core.Entities {
             Sphere emptyThresholdSphere = thresholdSpheres.FirstOrDefault(t => t.IsEmpty());
 
             if(emptyThresholdSphere!=null)
-                return emptyThresholdSphere.TryAcceptTokenAsThreshold(token);
+                return emptyThresholdSphere.TryAcceptToken(token,new Context(Context.ActionSource.PlayerDrag));
 
             Sphere occupiedThresholdSphere = thresholdSpheres.FirstOrDefault();
             if(occupiedThresholdSphere!=null)
@@ -644,7 +644,7 @@ namespace Assets.Core.Entities {
                 if(incumbent!=null) //should never happen, but code might shift later
                     incumbent.ReturnToTabletop(new Context(Context.ActionSource.PushToThresholddUsurpedThisStack));
                  
-                return occupiedThresholdSphere.TryAcceptTokenAsThreshold(token);
+                return occupiedThresholdSphere.TryAcceptToken(token, new Context(Context.ActionSource.PlayerDrag));
             }
 
 

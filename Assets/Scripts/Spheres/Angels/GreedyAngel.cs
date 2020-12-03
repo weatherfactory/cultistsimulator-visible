@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.CS.TabletopUI;
+using Assets.Scripts.States.TokenStates;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 using UnityEngine;
@@ -45,9 +46,9 @@ namespace Assets.Scripts.Spheres.Angels
                 {
                     NoonUtility.Log("This is where the angel for " + sphere.GetPath() + " would pull " + matchingToken.name);
 
-                    if (matchingToken.CurrentlyBeingDragged)
+                    if (matchingToken.CurrentlyBeingDragged())
                     {
-                        matchingToken.SetXNess(TokenXNess.DivertedByGreedySlot);
+                        matchingToken.SetState(new TravellingState());
                         matchingToken.FinishDrag();
                     }
 

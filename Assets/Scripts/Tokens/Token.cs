@@ -10,8 +10,10 @@ using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.Core.NullObjects;
 using Assets.Core.Services;
+using Assets.Core.States;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.Scripts.Infrastructure;
+using Assets.Scripts.States.TokenStates;
 using Assets.Scripts.UI;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Elements;
@@ -32,15 +34,13 @@ namespace Assets.CS.TabletopUI {
 
     public enum TokenXNess
     {
-        NoValidDestination,
-        ValidDestination,
+        BeingDragged,
         DivertedByGreedySlot,
         DoesntMatchSlotRequirements,
         DroppedOnTableContainer,
         ReturningSplitStack,
         ReturnedToStartingSlot,
         PlacedInSlot,
-        ElementDroppedOnTokenButCannotInteractWithIt,
         DroppedOnTokenWhichMovedAside,
         DroppedOnTokenWhichWontMoveAside,
         MergedIntoStack
@@ -50,7 +50,7 @@ namespace Assets.CS.TabletopUI {
     [RequireComponent(typeof(RectTransform))]
     public class Token : MonoBehaviour,
         IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerDownHandler, IPointerEnterHandler,
-        IPointerExitHandler, ISituationSubscriber,IInteractsWithTokens
+        IPointerExitHandler, ISituationSubscriber, IInteractsWithTokens
     {
         protected bool singleClickPending = false;
         public UnityEvent OnStart;
@@ -60,14 +60,14 @@ namespace Assets.CS.TabletopUI {
         public OnContainerRemovedEvent OnContainerRemoved;
 
         protected bool shrouded = false;
-        protected Situation _attachedToSituation=new NullSituation();
+        protected Situation _attachedToSituation = new NullSituation();
 
         public virtual IVerb Verb
         {
             get { return _attachedToSituation.Verb; }
         }
 
-        public virtual ElementStack ElementStack { get; protected set; } 
+        public virtual ElementStack ElementStack { get; protected set; }
 
         public int ElementQuantity => ElementStack.Quantity;
 
@@ -75,13 +75,13 @@ namespace Assets.CS.TabletopUI {
 
         public Token OriginToken { get; private set; }
 
-        public TokenTravelItinerary Itinerary { get; set;}
+        public TokenTravelItinerary Itinerary { get; set; }
 
 
-     [SerializeField] public RectTransform TokenRectTransform;
+        [SerializeField] public RectTransform TokenRectTransform;
 
-     public RectTransform ManifestationRectTransform => _manifestation.RectTransform;
-     public TokenLocation Location => new TokenLocation(TokenRectTransform.anchoredPosition3D, Sphere.GetPath());
+        public RectTransform ManifestationRectTransform => _manifestation.RectTransform;
+        public TokenLocation Location => new TokenLocation(TokenRectTransform.anchoredPosition3D, Sphere.GetPath());
 
         [SerializeField] protected bool rotateOnDrag = true;
 
@@ -119,10 +119,10 @@ namespace Assets.CS.TabletopUI {
 
             Itinerary = TokenTravelItinerary.StayExactlyWhereYouAre(this);
             _manifestation = Registry.Get<NullManifestation>();
-            ElementStack=Registry.Get<NullElementStack>();
-            
+            ElementStack = Registry.Get<NullElementStack>();
 
-            SetXNess(TokenXNess.NoValidDestination);
+            SetState(new DroppedInSphereState());
+
         }
 
         public void StartArtAnimation()
@@ -148,10 +148,8 @@ namespace Assets.CS.TabletopUI {
         public bool IsInMotion { get; set; }
         public bool Defunct { get; protected set; }
         public bool NoPush => _manifestation.NoPush;
-        public bool CurrentlyBeingDragged { get; protected set; }
 
-        private TokenXNess TokenXNess { get; set; } = TokenXNess.NoValidDestination;
-
+        private TokenState CurrentState;
 
 
         protected AnchorDurability _durability;
@@ -168,8 +166,8 @@ namespace Assets.CS.TabletopUI {
         {
             _attachedToSituation = situation;
             //commented this out so it happens in Manifest call
-  //          _manifestation = Registry.Get<PrefabFactory>()
- //               .CreateManifestationPrefab(situation.Verb.GetDefaultManifestationType(), this.transform);
+            //          _manifestation = Registry.Get<PrefabFactory>()
+            //               .CreateManifestationPrefab(situation.Verb.GetDefaultManifestationType(), this.transform);
 
 
             if (Verb.Transient)
@@ -177,16 +175,16 @@ namespace Assets.CS.TabletopUI {
             else
                 _durability = AnchorDurability.Enduring;
 
-            name =  Verb.Id + "_verbtoken";
+            name = Verb.Id + "_verbtoken";
 
             //commented out when I commented the stuff above out
-  //          SituationStateChanged(situation);
-  //          TimerValuesChanged(situation);
+            //          SituationStateChanged(situation);
+            //          TimerValuesChanged(situation);
 
-            
+
         }
 
-        
+
         public void Populate(ElementStack elementStack)
         {
             ElementStack = elementStack;
@@ -201,13 +199,14 @@ namespace Assets.CS.TabletopUI {
 
             //This makes me nervous: I still only have a nebulous understanding of anchor positioning stuff
             //but! I needed to set it because GridLayout overrides anchor positions, and there's a GridLayout in storage
-            TokenRectTransform.sizeDelta = new Vector2(_manifestation.RectTransform.sizeDelta.x, _manifestation.RectTransform.sizeDelta.y);
+            TokenRectTransform.sizeDelta = new Vector2(_manifestation.RectTransform.sizeDelta.x,
+                _manifestation.RectTransform.sizeDelta.y);
             TokenRectTransform.anchorMin = _manifestation.RectTransform.anchorMax;
             TokenRectTransform.anchorMax = _manifestation.RectTransform.anchorMax;
 
             manifestationToRetire.Retire(vfxForOldManifestation, OnReplacedManifestationRetired);
 
-            if(ElementStack.IsValidElementStack())
+            if (ElementStack.IsValidElementStack())
                 InitialiseElementManifestation();
             else
                 InitialiseVerbManifestation();
@@ -216,7 +215,7 @@ namespace Assets.CS.TabletopUI {
 
         private void OnReplacedManifestationRetired()
         {
-      //
+            //
         }
 
         public virtual void Manifest()
@@ -228,12 +227,13 @@ namespace Assets.CS.TabletopUI {
                 if (_manifestation.GetType() != ElementStack.GetManifestationType(Sphere.SphereCategory))
                 {
                     var newManifestation = Registry.Get<PrefabFactory>()
-                        .CreateManifestationPrefab(ElementStack.GetManifestationType(Sphere.SphereCategory), this.transform);
+                        .CreateManifestationPrefab(ElementStack.GetManifestationType(Sphere.SphereCategory),
+                            this.transform);
                     ReplaceManifestation(_manifestation, newManifestation, RetirementVFX.None);
                 }
             }
-            else if(_attachedToSituation.IsValidSituation())
-                if (_manifestation.GetType()!=Verb.GetManifestationType(Sphere.SphereCategory))
+            else if (_attachedToSituation.IsValidSituation())
+                if (_manifestation.GetType() != Verb.GetManifestationType(Sphere.SphereCategory))
                 {
                     var newManifestation = Registry.Get<PrefabFactory>()
                         .CreateManifestationPrefab(Verb.GetManifestationType(Sphere.SphereCategory), this.transform);
@@ -242,7 +242,8 @@ namespace Assets.CS.TabletopUI {
                 }
                 else
                 {
-                    NoonUtility.LogWarning("Token with neither a valid situation nor a valid stack: " + gameObject.name);
+                    NoonUtility.LogWarning("Token with neither a valid situation nor a valid stack: " +
+                                           gameObject.name);
                 }
         }
 
@@ -255,14 +256,14 @@ namespace Assets.CS.TabletopUI {
             var reManifestation = Registry.Get<PrefabFactory>()
                 .CreateManifestationPrefab(_manifestation.GetType(), this.transform);
 
-            reManifestation.Transform.position=_manifestation.Transform.position;
+            reManifestation.Transform.position = _manifestation.Transform.position;
 
             // Put it behind the old card that we're about to destroy showily
             reManifestation.Transform.SetSiblingIndex(_manifestation.Transform.GetSiblingIndex() - 1);
 
-            ReplaceManifestation(_manifestation,reManifestation,vfx);
+            ReplaceManifestation(_manifestation, reManifestation, vfx);
 
-           Manifest();
+            Manifest();
         }
 
         private void InitialiseVerbManifestation()
@@ -274,7 +275,8 @@ namespace Assets.CS.TabletopUI {
         {
             _manifestation.InitialiseVisuals(ElementStack.Element);
             _manifestation.UpdateVisuals(ElementStack.Element, ElementStack.Quantity);
-            _manifestation.UpdateTimerVisuals(Element.Lifetime, ElementStack.LifetimeRemaining, 0f, Element.Resaturate, EndingFlavour.None);
+            _manifestation.UpdateTimerVisuals(Element.Lifetime, ElementStack.LifetimeRemaining, 0f, Element.Resaturate,
+                EndingFlavour.None);
         }
 
 
@@ -284,26 +286,22 @@ namespace Assets.CS.TabletopUI {
                 transform.localPosition = new Vector3(LocationBeforeDrag.Position.x, LocationBeforeDrag.Position.y);
         }
 
-
-
-        public void SetXNess(TokenXNess xness)
+        public void SetState(TokenState state)
         {
-            TokenXNess = xness;
-        }
-
-
-        public bool ShouldReturnToStart()
-        {
-            return TokenXNess == TokenXNess.NoValidDestination ||
-                   TokenXNess == TokenXNess.DivertedByGreedySlot ||
-                   TokenXNess == TokenXNess.ReturningSplitStack ||
-                   TokenXNess == TokenXNess.ReturnedToStartingSlot ||
-                   TokenXNess == TokenXNess.DroppedOnTokenWhichWontMoveAside;
+            CurrentState = state;
         }
 
 
 
-        public void SetSphere(Sphere newSphere, Context context)
+
+        public bool CurrentlyBeingDragged()
+        {
+            return                CurrentState.InPlayerDrivenMotion(this);
+        }
+    
+
+
+    public void SetSphere(Sphere newSphere, Context context)
         {
             OldSphere = Sphere;
             Sphere = newSphere;
@@ -329,11 +327,8 @@ namespace Assets.CS.TabletopUI {
             NoonUtility.Log("Beginning drag for " + this.name,0,VerbosityLevel.SystemChatter);
 
             if (CanBeDragged())
-            {
-                CurrentlyBeingDragged = true;
-                Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Token = this, Sphere = Sphere,Interaction = Interaction.OnDragBegin});
                 StartDrag(eventData);
-            }
+            
 
         }
         /// <summary>
@@ -367,7 +362,7 @@ namespace Assets.CS.TabletopUI {
             if (allowExploits != null || allowExploits > 0)
             {
 
-                if (CurrentlyBeingDragged)
+                if (CurrentlyBeingDragged())
                 {
                     NoonUtility.Log("WORM enabled: dragging defeats pulling");
                      return false; // don't pull cards being dragged if Worm is set On}
@@ -379,7 +374,9 @@ namespace Assets.CS.TabletopUI {
 
         protected void StartDrag(PointerEventData eventData)
         {
-            
+            SetState(new BeingDraggedState());
+                
+            Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Token = this, Sphere = Sphere, Interaction = Interaction.OnDragBegin });
             if (!Keyboard.current.shiftKey.wasPressedThisFrame)
             {
                 if (ElementStack.IsValidElementStack() && ElementQuantity > 1)
@@ -387,7 +384,6 @@ namespace Assets.CS.TabletopUI {
                 
             }
 
-            CurrentlyBeingDragged = true;
 
             if (TokenRectTransform.anchoredPosition.sqrMagnitude > 0.0f
             ) // Never store 0,0 as that's a slot position and we never auto-return to slots - CP
@@ -403,7 +399,6 @@ namespace Assets.CS.TabletopUI {
             TokenRectTransform.SetAsLastSibling();
             _manifestation.OnBeginDragVisuals();
 
-            TokenXNess = TokenXNess.NoValidDestination;
             canvasGroup.blocksRaycasts = false;
 
             startPosition = TokenRectTransform.anchoredPosition3D;
@@ -433,7 +428,7 @@ namespace Assets.CS.TabletopUI {
 
         public void OnDrag(PointerEventData eventData)
         {
-            if (!CurrentlyBeingDragged)
+            if (!CurrentlyBeingDragged())
                 return;
 
             MoveObject(eventData);
@@ -475,7 +470,6 @@ namespace Assets.CS.TabletopUI {
 
         public  void OnEndDrag(PointerEventData eventData)
         {
-            NoonUtility.Log("Ending drag for " + this.name, 0, VerbosityLevel.SystemChatter);
             Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Token = this, Sphere = Sphere,Interaction = Interaction.OnDragEnd});
             
             FinishDrag();
@@ -484,16 +478,10 @@ namespace Assets.CS.TabletopUI {
 
         public  void FinishDrag()
         {
-            if (CurrentlyBeingDragged)
-            {
-                CurrentlyBeingDragged = false;
-                canvasGroup.blocksRaycasts = true;
-
-                if (ShouldReturnToStart())
+            canvasGroup.blocksRaycasts = true;
+            if (!CurrentState.Docked(this))
                     ReturnToStartPosition();
-
-
-            }
+            
         }
 
         public void ReturnToStartPosition()
@@ -505,6 +493,7 @@ namespace Assets.CS.TabletopUI {
                 return; // no sound on new token
             }
 
+            throw new NotImplementedException();
             SoundManager.PlaySfx("CardDragFail");
             var tabletopContainer = startParent.GetComponent<TabletopSphere>();
 
@@ -539,9 +528,9 @@ namespace Assets.CS.TabletopUI {
                 this.Sphere.TryMoveAsideFor(this, incomingToken, out bool moveAsideFor);
 
                 if (moveAsideFor)
-                    SetXNess(TokenXNess.DroppedOnTokenWhichMovedAside);
+                    SetState(new DroppedOnTokenWhichMovedAsideState());
                 else
-                    SetXNess(TokenXNess.DroppedOnTokenWhichWontMoveAside);
+                    SetState(new RejectedByTokenState());
             }
         }
 
@@ -560,14 +549,9 @@ namespace Assets.CS.TabletopUI {
                 if (incomingToken.ElementStack.CanMergeWith(incomingToken.ElementStack))
                     ElementStack.AcceptIncomingStackForMerge(incomingToken.ElementStack);
                 else
-                {
+                
                     ElementStack.ShowNoMergeMessage(incomingToken.ElementStack);
-
-                    incomingToken.Sphere.TryMoveAsideFor(this, incomingToken, out bool moveAsideFor);
-
-                    if (moveAsideFor)
-                        SetXNess(TokenXNess.DroppedOnTokenWhichMovedAside);
-                }
+                
             }
 
             else if (incomingToken.ElementStack.IsValidElementStack())
@@ -575,17 +559,17 @@ namespace Assets.CS.TabletopUI {
 
                 _attachedToSituation.TryPushDraggedStackIntoThreshold(incomingToken);
 
-                // Then we open the situation (cause this closes other situations and this may return the stack we try to move
+                // Then we open the situation (cause this closes other situations and this may returnreturn the stack we try to move
                 // back onto the tabletop - if it was in its starting slots. - Martin
                 if (!_attachedToSituation.IsOpen)
                     _attachedToSituation.OpenAtCurrentLocation();
-                return;
             }
             else
             {
-                // We can't interact? Then dump us on the tabletop
-                incomingToken.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
+                //something has gone awryy
+                SetState(new RejectedByTokenState());
             }
+     
 
         }
 

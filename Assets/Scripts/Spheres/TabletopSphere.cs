@@ -13,6 +13,7 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.Scripts.Spheres.Angels;
+using Assets.Scripts.States.TokenStates;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
@@ -182,7 +183,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
         var potentialToken = eventData.pointerDrag.GetComponent<Token>();
         if(potentialToken!=null)
         {
-            potentialToken.SetXNess(TokenXNess.DroppedOnTableContainer);
+            potentialToken.SetState(new DroppedInSphereState());
             AcceptToken(potentialToken,
                 new Context(Context.ActionSource.PlayerDrag));
 

@@ -8,6 +8,7 @@ using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.Scripts.Spheres.Angels;
+using Assets.Scripts.States.TokenStates;
 using Assets.Scripts.UI;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
@@ -213,7 +214,58 @@ namespace Assets.CS.TabletopUI {
                 incumbentMoved = false;
         }
 
+        public override bool TryAcceptToken(Token token,Context context)
+        {
 
+            //does the token match the slot? Check that first
+            ContainerMatchForStack match = GetMatchForStack(token.ElementStack);
+
+            if (match.MatchType != SlotMatchForAspectsType.Okay)
+            {
+                token.SetState(new RejectedBySphereState());
+                token.ReturnToStartPosition();
+
+                var notifier = Registry.Get<INotifier>();
+
+                var compendium = Registry.Get<Compendium>();
+
+                if (notifier != null)
+                    notifier.ShowNotificationWindow(Registry.Get<ILocStringProvider>().Get("UI_CANTPUT"), match.GetProblemDescription(compendium), false);
+            }
+            else if (token.ElementQuantity != 1)
+            {
+                // We're dropping a stack of >1?
+                // set main stack to be returned to start position
+                token.SetState(new RejectedViaSplit());
+                // And we split a new one that's 1 (leaving the returning card to be n-1)
+                var newStack = token.CalveToken(1, new Context(Context.ActionSource.PlayerDrag));
+                // And we put that into the slot
+                AcceptToken(newStack, context);
+            }
+            else
+            {
+                //it matches. Now we check if there's a token already there, and replace it if so:
+                var currentOccupant = GetElementTokens().FirstOrDefault();
+
+                // if we drop in the same slot where we came from, do nothing.
+                if (currentOccupant == token)
+                {
+                    token.SetState(new DroppedInSphereState());
+                    return false;
+                }
+
+                if (currentOccupant != null)
+                    NoonUtility.LogWarning("There's still a card in the slot when this reaches the slot; it wasn't intercepted by being dropped on the current occupant. Rework.");
+                //currentOccupant.ReturnToTabletop();
+
+                //now we put the token in the slot.
+                token.SetState(new DroppedInSphereState());
+                AcceptToken(token, context);
+                SoundManager.PlaySfx("CardPutInSlot");
+            }
+
+            return true;
+        }
 
         /// <summary>
         /// path to slot expressed in underscore-separated slot specification labels: eg "work_sacrifice"

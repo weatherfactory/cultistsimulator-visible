@@ -51,7 +51,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
     }
 
-    public abstract class Sphere : MonoBehaviour
+    public abstract class 
+        Sphere : MonoBehaviour
     {
 
         public virtual bool AllowDrag { get; private set; }
@@ -488,56 +489,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
 
-        public bool TryAcceptTokenAsThreshold(Token token)
+        public virtual bool TryAcceptToken(Token token,Context context)
         {
-
-            //does the token match the slot? Check that first
-            ContainerMatchForStack match = GetMatchForStack(token.ElementStack);
-
-            if (match.MatchType != SlotMatchForAspectsType.Okay)
-            {
-                token.SetXNess(TokenXNess.DoesntMatchSlotRequirements);
-                token.ReturnToStartPosition();
-
-                var notifier = Registry.Get<INotifier>();
-
-                var compendium = Registry.Get<Compendium>();
-
-                if (notifier != null)
-                    notifier.ShowNotificationWindow(Registry.Get<ILocStringProvider>().Get("UI_CANTPUT"), match.GetProblemDescription(compendium), false);
-            }
-            else if (token.ElementQuantity != 1)
-            {
-                // We're dropping more than one?
-                // set main stack to be returned to start position
-                token.SetXNess(TokenXNess.ReturningSplitStack);
-                // And we split a new one that's 1 (leaving the returning card to be n-1)
-                var newStack = token.CalveToken( 1, new Context(Context.ActionSource.PlayerDrag));
-                // And we put that into the slot
-                AcceptToken(newStack, new Context(Context.ActionSource.PlayerDrag));
-            }
-            else
-            {
-                //it matches. Now we check if there's a token already there, and replace it if so:
-                var currentOccupant = GetElementTokens().FirstOrDefault();
-
-                // if we drop in the same slot where we came from, do nothing.
-                if (currentOccupant == token)
-                {
-                    token.SetXNess(TokenXNess.ReturnedToStartingSlot);
-                    return false;
-                }
-
-                if (currentOccupant != null)
-                    NoonUtility.LogWarning("There's still a card in the slot when this reaches the slot; it wasn't intercepted by being dropped on the current occupant. Rework.");
-                //currentOccupant.ReturnToTabletop();
-
-                //now we put the token in the slot.
-                token.SetXNess(TokenXNess.PlacedInSlot);
-                AcceptToken(token, new Context(Context.ActionSource.PlayerDrag));
-                SoundManager.PlaySfx("CardPutInSlot");
-            }
-
+            AcceptToken(token,context);
             return true;
         }
 

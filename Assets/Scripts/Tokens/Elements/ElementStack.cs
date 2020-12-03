@@ -351,7 +351,6 @@ namespace Assets.CS.TabletopUI {
             SetQuantity(Quantity + stackMergedIntoThisOne.Quantity,new Context(Context.ActionSource.Merge));
             stackMergedIntoThisOne.Retire(RetirementVFX.None);
 
-          _attachedToken.SetXNess(TokenXNess.MergedIntoStack);
             SoundManager.PlaySfx("CardPutOnStack");
 
         }
