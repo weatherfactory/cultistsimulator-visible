@@ -249,20 +249,6 @@ namespace Assets.Core.Entities {
         }
 
 
-        public void NotifyGreedySlotAnim(TokenAnimationToSlot slotAnim)
-        {
-//            greedyAnimIsActive = true;
-            slotAnim.onElementSlotAnimDone += HandleOnGreedySlotAnimDone;
-
-        }
-
-        void HandleOnGreedySlotAnimDone(Token token, TokenLocation destination,
-            Sphere destinatinoSlot)
-        {
-  //          greedyAnimIsActive = false;
-        }
-
-
         public void ExecuteHeartbeat(float interval)
         {
             Continue(interval);

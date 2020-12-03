@@ -6,9 +6,8 @@ using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 
-public class TokenAnimationToSlot : TokenAnimation {
+public class TokenTravellingToSlot : TokenTravelAnimation {
 
-	public event System.Action<Token, TokenLocation, Sphere> onElementSlotAnimDone;
 
     private TokenLocation destinationLocation;
     private Sphere destinationSlot;
@@ -23,12 +22,6 @@ public class TokenAnimationToSlot : TokenAnimation {
             else
                 return destinationLocation.Position;
         }
-    }
-
-    public override void Begin(Token token, float duration = 1) {
-        base.Begin(token, duration);
-
-        transform.SetAsLastSibling();
     }
 
     public void SetDestination(TokenLocation destination,Sphere slot)

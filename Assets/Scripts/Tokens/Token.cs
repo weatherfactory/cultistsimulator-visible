@@ -815,12 +815,12 @@ namespace Assets.CS.TabletopUI {
         public void TravelTo(TokenTravelItinerary itinerary)
         {
             Itinerary = itinerary;
-            _manifestation.TravelTo(this, itinerary.Duration, itinerary.startPos, itinerary.endPos, TravelComplete, itinerary.startScale, itinerary.endScale);
+          itinerary.Depart(this);
         }
 
         private void TravelComplete()
         {
-            Itinerary.DestinationSphere.AcceptToken(this,new Context(Context.ActionSource.AnimEnd));
+            Itinerary.DestinationSphere.AcceptToken(this,new Context(Context.ActionSource.TravelArrived));
             //this will (at time of writing) call Sphere.DisplayHere->Token.Manifest, which also resets itinerary, so this *should* be the only line we need at the end of the animation
         }
 

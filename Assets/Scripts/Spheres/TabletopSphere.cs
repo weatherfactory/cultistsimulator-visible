@@ -126,10 +126,19 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
 
                 if (tokenToSend.ElementQuantity > 1)
                    tokenToSend.CalveToken(tokenToSend.ElementQuantity - 1, new Context(Context.ActionSource.DoubleClickSend));
-                SendViaContainer.PrepareElementForSendAnim(tokenToSend, targetLocation); // this reparents the card so it can animate properly
-                SendViaContainer.MoveElementToSituationSlot(tokenToSend, targetLocation, targetThreshold, SEND_STACK_TO_SLOT_DURATION);
-
-                return true;
+                
+                TokenTravelItinerary i=TokenTravelItinerary.CreateItineraryWithDuration(SendViaContainer,
+                    targetThreshold,
+                    SEND_STACK_TO_SLOT_DURATION,
+                    tokenToSend.Location.Position,
+                    targetLocation.Position,
+                    1f,
+                    0.35f
+                    );
+           
+            i.Depart(tokenToSend);
+            
+            return true;
         }
         
 

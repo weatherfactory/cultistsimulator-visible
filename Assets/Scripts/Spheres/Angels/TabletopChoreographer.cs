@@ -152,7 +152,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 				if (!pushedRect.Overlaps(targetRect))
                     continue;
 
-                TokenTravelItinerary itinerary=new TokenTravelItinerary(_tabletop,_tabletop,0.2f, token.TokenRectTransform.anchoredPosition3D, GetFreePosWithDebug(token, token.TokenRectTransform.anchoredPosition),1f,1f);
+                TokenTravelItinerary itinerary=TokenTravelItinerary.CreateItineraryWithDuration(_tabletop,_tabletop,0.2f, token.TokenRectTransform.anchoredPosition3D, GetFreePosWithDebug(token, token.TokenRectTransform.anchoredPosition),1f,1f);
 
                 token.TravelTo(itinerary);
             }

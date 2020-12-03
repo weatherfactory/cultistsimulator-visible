@@ -4,9 +4,9 @@ using Assets.Core.Entities;
 using UnityEngine;
 using Assets.CS.TabletopUI;
 
-public class TokenAnimation : MonoBehaviour {
+public class TokenTravelAnimation : MonoBehaviour {
 
-	public event System.Action onAnimDone;
+	public event System.Action<Token> OnTokenArrival;
 
 	protected Token _token;
 
@@ -41,7 +41,7 @@ public class TokenAnimation : MonoBehaviour {
 		this.scalePercentage = Mathf.Clamp01(scaleDuration) * ((scaleStart != 1f && scaleEnd != 1f) ? 0.5f : 1f); // may not be bigger than 0.5 for dual scaling
 	}
 
-	public virtual void Begin(Token token,float duration = 1f) {
+	public virtual void Begin(Token token,float duration) {
 		this.duration = duration;
 		this.timeSpent = 0f;
         
@@ -51,6 +51,7 @@ public class TokenAnimation : MonoBehaviour {
         _token.IsInMotion = true;
         _token.ManifestationRectTransform.localScale = Vector3.one * scaleStart;
 		IsRunning = true;
+        transform.SetAsLastSibling();
 	}
 
 	void Update () {
@@ -88,7 +89,7 @@ public class TokenAnimation : MonoBehaviour {
 		_token.enabled = true;
         _token.IsInMotion = false;
 
-        onAnimDone?.Invoke();
+        OnTokenArrival?.Invoke(_token);
 		Destroy(this);
 	}
 

@@ -434,7 +434,7 @@ namespace Assets.CS.TabletopUI {
 			    return;
             
 
-			var stackAnim = this.gameObject.GetComponent<TokenAnimationToSlot>();
+			var stackAnim = this.gameObject.GetComponent<TokenTravellingToSlot>();
 			if (stackAnim)
 			{
 				return;	// Do not decay while being dragged into greedy slot (#1335) - CP

@@ -46,10 +46,6 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         void OnBeginDragVisuals();
         void OnEndDragVisuals();
 
-        void TravelTo(Token token, float duration, Vector3 startPos, Vector3 endPos,
-            Action travelComplete, float startScale = 1f, float endScale = 1f);
-
-
         void Highlight(HighlightType highlightType);
         void Unhighlight(HighlightType highlightType);
         bool NoPush { get; }

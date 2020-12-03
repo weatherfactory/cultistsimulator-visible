@@ -25,7 +25,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
     public enum BlockReason
     {
-      StackEnRouteToContainer
+      InboundTravellingStack
     }
 
     public enum BlockDirection

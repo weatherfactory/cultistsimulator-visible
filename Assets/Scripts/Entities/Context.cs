@@ -16,7 +16,6 @@ public class Context {
         SituationEffect,
         SituationResults,
         GreedySlot,
-        AnimEnd,
         Retire,
         Debug,
         ChangeTo,
@@ -24,6 +23,8 @@ public class Context {
         Purge,
         Split,
         Merge,
+        TravelArrived,
+        TravelFailed,
         UI
     }
 
