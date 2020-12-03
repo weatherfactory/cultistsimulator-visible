@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.CS.TabletopUI;
+using Assets.Scripts.States.TokenStates;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -23,7 +24,11 @@ namespace Assets.Scripts.Spheres
             var token = eventData.pointerDrag.GetComponent<Token>();
 
             if (token != null)
-                Sphere.TryAcceptToken(token, new Context(Context.ActionSource.PlayerDrag));
+            {
+                if (Sphere.TryAcceptToken(token, new Context(Context.ActionSource.PlayerDrag)))
+                    token.SetState(new DroppedInSphereState());
+            }
+              
 
         }
     }
