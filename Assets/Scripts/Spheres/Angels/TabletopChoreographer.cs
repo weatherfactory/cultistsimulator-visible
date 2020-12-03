@@ -298,8 +298,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         bool CanTokenBeIgnored(Token token) {
             
-            if (token.IsInMotion)
-                return true;
             if (token.Defunct)
                 return true;
 			if (token.NoPush)

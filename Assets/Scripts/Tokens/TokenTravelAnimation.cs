@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Assets.Core.Entities;
 using UnityEngine;
 using Assets.CS.TabletopUI;
+using Assets.Scripts.States.TokenStates;
+using Noon;
 
 public class TokenTravelAnimation : MonoBehaviour {
 
@@ -20,7 +22,7 @@ public class TokenTravelAnimation : MonoBehaviour {
 
 	private float scalePercentage = 0.8f; // needs to be below 0.5 if both scales are active
 
-	private float duration = -1f; // do not animate while this is < 0
+	private float _duration = -1f; // do not animate while this is < 0
 	private float timeSpent = 0f;
 
 	public bool IsRunning { private get; set; }
@@ -42,22 +44,20 @@ public class TokenTravelAnimation : MonoBehaviour {
 	}
 
 	public virtual void Begin(Token token,float duration) {
-		this.duration = duration;
+		this._duration = duration;
 		this.timeSpent = 0f;
         
         _token = token;
 
-		_token.enabled = false;
-        _token.IsInMotion = true;
         _token.ManifestationRectTransform.localScale = Vector3.one * scaleStart;
 		IsRunning = true;
         transform.SetAsLastSibling();
 	}
 
 	void Update () {
-		if (!IsRunning || duration < 0)
+		if (!IsRunning || _duration < 0)
 			return;
-		else if (timeSpent < duration) 
+		else if (timeSpent < _duration) 
 			Continue();
 		else
 			Complete();
@@ -66,7 +66,7 @@ public class TokenTravelAnimation : MonoBehaviour {
 	void Continue() {
 		timeSpent += Time.deltaTime;
 
-		float completion = timeSpent / duration;
+		float completion = timeSpent / _duration;
 
 		_token.TokenRectTransform.anchoredPosition3D = GetPos(Easing.Circular.Out(completion));
 
@@ -86,8 +86,8 @@ public class TokenTravelAnimation : MonoBehaviour {
 		IsRunning = false;
 		_token.TokenRectTransform.anchoredPosition3D = new Vector3(EndPosition.x, EndPosition.y, zPos);
 		_token.ManifestationRectTransform.localScale = Vector3.one * scaleEnd;
-		_token.enabled = true;
-        _token.IsInMotion = false;
+        NoonUtility.LogWarning(
+            "we used to disable the token while it was travelling. We don't in fact want to do that, but we should probably disable raycasts");
 
         OnTokenArrival?.Invoke(_token);
 		Destroy(this);

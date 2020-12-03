@@ -1,4 +1,5 @@
 using System;
+using Assets.Scripts.States.TokenStates;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 using UnityEngine;
@@ -19,6 +20,7 @@ namespace Assets.CS.TabletopUI
         public void Depart(Token tokenToSend)
         {
             tokenToSend.Unshroud(true);
+            tokenToSend.SetState(new TravellingState());
 
             var tokenAnimation = tokenToSend.gameObject.AddComponent<TokenTravelAnimation>();
             tokenAnimation.OnTokenArrival += Arrive;
@@ -38,9 +40,11 @@ namespace Assets.CS.TabletopUI
                 if (DestinationSphere.Equals(null) || DestinationSphere.Defunct)
                     TravelFailed(token);
                 else
+                {
+                    token.SetState(new TravelledToSphere());
                     // Assign element to new slot
                     DestinationSphere.AcceptToken(token, new Context(Context.ActionSource.TravelArrived));
-
+                }
                 DestinationSphere.RemoveBlock(new ContainerBlock(BlockDirection.Inward,
                     BlockReason.InboundTravellingStack));
             }
@@ -56,6 +60,7 @@ namespace Assets.CS.TabletopUI
             DestinationSphere.RemoveBlock(new ContainerBlock(BlockDirection.Inward,
                 BlockReason.InboundTravellingStack));
 
+            token.SetState(new TravellingState() );
             token.ReturnToTabletop(new Context(Context.ActionSource.TravelFailed));
 
         }

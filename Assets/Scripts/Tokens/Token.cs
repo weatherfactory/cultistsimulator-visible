@@ -340,7 +340,7 @@ namespace Assets.CS.TabletopUI {
         {
             return
                 Sphere.AllowDrag 
-                && !IsInMotion
+                && !CurrentState.InSystemDrivenMotion(this)
                 && !Defunct
                 && !shrouded
                 && !_manifestation.RequestingNoDrag;
@@ -355,7 +355,7 @@ namespace Assets.CS.TabletopUI {
         {
             if (Defunct)
                 return false;
-            if (IsInMotion)
+            if (CurrentState.InSystemDrivenMotion(this))
                 return false;
 
             var allowExploits = Registry.Get<Config>().GetConfigValueAsInt(NoonConstants.BIRDWORMSLIDER);

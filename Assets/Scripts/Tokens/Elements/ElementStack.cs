@@ -400,7 +400,7 @@ namespace Assets.CS.TabletopUI {
 
         virtual public bool AllowsIncomingMerge()
         {
-            if (Decays || Element.Unique ||_attachedToken.IsInMotion)
+            if (Decays || Element.Unique)
                 return false;
             else
                 return _attachedToken.Sphere.AllowStackMerge;
@@ -408,7 +408,7 @@ namespace Assets.CS.TabletopUI {
 
         virtual public bool AllowsOutgoingMerge()
         {
-            if (Decays || Element.Unique || _attachedToken.IsInMotion)
+            if (Decays || Element.Unique)
                 return false;
             else
                 return true;	// If outgoing, it doesn't matter what its current container is - CP
