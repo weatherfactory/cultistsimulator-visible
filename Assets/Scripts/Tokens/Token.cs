@@ -49,10 +49,10 @@ namespace Assets.CS.TabletopUI {
 
     [RequireComponent(typeof(RectTransform))]
     public class Token : MonoBehaviour,
-        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerDownHandler, IPointerEnterHandler,
+        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler,
         IPointerExitHandler, ISituationSubscriber, IInteractsWithTokens
     {
-        protected bool singleClickPending = false;
+        private float previousClickTime = 0f;
         public UnityEvent OnStart;
         public UnityEvent OnCollect;
         public UnityEvent OnWindowClosed;
@@ -603,7 +603,7 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        public  void OnPointerDown(PointerEventData eventData)
+        public void OnPointerClick(PointerEventData eventData)
         {
 
             if (_manifestation.HandlePointerDown(eventData, this))
@@ -617,10 +617,15 @@ namespace Assets.CS.TabletopUI {
             else
                 _attachedToSituation.Close();
 
-            if (eventData.clickCount > 1)
+            float timeSincePreviousClick = eventData.clickTime - previousClickTime;
+
+            Debug.Log("interval: " + timeSincePreviousClick);
+
+            float doubleClickInterval = 0.5f;
+
+            if (timeSincePreviousClick<doubleClickInterval)
             {
-                // Double-click, so abort any pending single-clicks
-                singleClickPending = false;
+                previousClickTime = 0f;
                 Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs
                 {
                     Element = ElementStack.Element,
@@ -633,15 +638,9 @@ namespace Assets.CS.TabletopUI {
             }
             else
             {
-                // Single-click BUT might be first half of a double-click
-                // Most of these functions are OK to fire instantly - just the ShowCardDetails we want to wait and confirm it's not a double
-                singleClickPending = true;
-
-
                 if (shrouded)
                 {
                     Unshroud(false);
-
                 }
                 else
                 {
@@ -658,6 +657,8 @@ namespace Assets.CS.TabletopUI {
                 // this moves the clicked sibling on top of any other nearby cards.
                 if (Sphere.GetType() != typeof(RecipeSlot) && Sphere.GetType() != typeof(ExhibitCards))
                     transform.SetAsLastSibling();
+
+                previousClickTime = eventData.clickTime;
             }
 
         }
