@@ -27,8 +27,8 @@ namespace Assets.TabletopUi.Scripts.Services {
             var situation = CreateSituationFromCommand(command);
 
             var sphereCatalogue = Registry.Get<SphereCatalogue>();
-            var anchorSphere = sphereCatalogue.GetContainerByPath(command.AnchorLocation.AtSpherePath);
-            var windowSphere = sphereCatalogue.GetContainerByPath(new SpherePath(Registry.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath));
+            var anchorSphere = sphereCatalogue.GetSphereByPath(command.AnchorLocation.AtSpherePath);
+            var windowSphere = sphereCatalogue.GetSphereByPath(new SpherePath(Registry.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath));
 
             var newAnchor = AttachNewAnchor(command.AnchorLocation.Position, situation, anchorSphere);
             var newWindow=AttachNewWindow(windowSphere, newAnchor, situation);

@@ -21,9 +21,8 @@ public class ExhibitCards : Sphere {
 
     public override bool AllowDrag { get { return false; } }
     public override bool AllowStackMerge { get { return false; } }
-    public override bool AlwaysShowHoverGlow { get { return true; } }
 
-    
+
     public override SphereCategory SphereCategory => SphereCategory.Meta;
 
 

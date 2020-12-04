@@ -56,6 +56,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
         _background.onClicked += HandleOnTableClicked;
     }
 
+
     public override void DisplayAndPositionHere(Token token, Context context)
     {
 

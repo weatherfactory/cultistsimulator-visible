@@ -66,12 +66,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htElementStacks = htSave.GetHashtable(SaveConstants.SAVE_ELEMENTSTACKS);
             var htSituations = htSave.GetHashtable(SaveConstants.SAVE_SITUATIONS);
 
-            if (tabletop != null)
-            {
                 ImportTabletopElementStacks(tabletop, htElementStacks);
 
                 ImportSituations(tabletop, htSituations);
-            }
 
 
         }
@@ -343,9 +340,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                                                                                             //in that case we need to do it from the top down, or the slots won't be there
                 {
                     var slotPath = new SpherePath(situation.Path, ess.LocationInfo.Split(SpherePath.SEPARATOR)[0]);
-
-                    var slot = Registry.Get<SphereCatalogue>().GetContainerByPath(slotPath);
-
+                    var slot = Registry.Get<SphereCatalogue>().GetSphereByPath(slotPath);
                     slot.ProvisionStackFromCommand(ess);
 
                 }

@@ -44,8 +44,8 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
 
       public override SpherePath GetPath()
       {
-            if(!string.IsNullOrEmpty(pathIdentifier))
-                NoonUtility.Log($"We're trying to specify a spherepath ({pathIdentifier}) in cardpile for {_deckSpec?.Id}");
+            if(!string.IsNullOrEmpty(PathIdentifier))
+                NoonUtility.Log($"We're trying to specify a spherepath ({PathIdentifier}) in cardpile for {_deckSpec?.Id}");
             return new SpherePath(_deckSpec?.Id);
       }
 

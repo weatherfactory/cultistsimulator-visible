@@ -379,7 +379,7 @@ namespace Assets.CS.TabletopUI {
                 LocationBeforeDrag = new TokenLocation(TokenRectTransform.anchoredPosition3D,Sphere.GetPath());
             }
 
-            var enrouteContainer = Registry.Get<SphereCatalogue>().GetContainerByPath(
+            var enrouteContainer = Registry.Get<SphereCatalogue>().GetSphereByPath(
                 new SpherePath(Registry.Get<Compendium>().GetSingleEntity<Dictum>().DefaultEnRouteSpherePath));
 
             enrouteContainer.AcceptToken(this, new Context(Context.ActionSource.PlayerDrag));
@@ -667,7 +667,7 @@ namespace Assets.CS.TabletopUI {
             }
             else
             {
-                var originSphere = Registry.Get<SphereCatalogue>().GetContainerByPath(LocationBeforeDrag.AtSpherePath);
+                var originSphere = Registry.Get<SphereCatalogue>().GetSphereByPath(LocationBeforeDrag.AtSpherePath);
 
                 originSphere.Choreographer.PlaceTokenAtFreeLocalPosition(this, context);
 
@@ -690,7 +690,7 @@ namespace Assets.CS.TabletopUI {
 
             if(LocationBeforeDrag!=null)
             {
-                var originSphere = Registry.Get<SphereCatalogue>().GetContainerByPath(LocationBeforeDrag.AtSpherePath);
+                var originSphere = Registry.Get<SphereCatalogue>().GetSphereByPath(LocationBeforeDrag.AtSpherePath);
 
               originSphere.Choreographer.PlaceTokenAsCloseAsPossibleToSpecifiedPosition(this, context, LocationBeforeDrag.Position);
             }

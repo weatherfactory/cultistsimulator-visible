@@ -57,7 +57,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public virtual bool AllowDrag { get; private set; }
         public virtual bool AllowStackMerge => true;
-        public virtual bool AlwaysShowHoverGlow => true;
         public virtual bool PersistBetweenScenes => false;
         public virtual bool EnforceUniqueStacksInThisContainer => true;
         public virtual bool ContentsHidden => false;
@@ -67,7 +66,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public virtual IChoreographer Choreographer { get; set; } = new SimpleChoreographer();
 
         [Tooltip("Use this to specify the SpherePath in the editor")] [SerializeField]
-        protected string pathIdentifier;
+        protected string PathIdentifier;
         
 
         public bool Defunct { get; protected set; }
@@ -76,6 +75,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         private readonly List<Token> _tokens = new List<Token>();
         protected readonly List<IAngel> _angels=new List<IAngel>();
         private readonly HashSet<ISphereEventSubscriber> _subscribers = new HashSet<ISphereEventSubscriber>();
+
 
         public SphereCatalogue Catalogue
         {
@@ -251,10 +251,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             incumbentMoved = false;
         }
 
-
         public virtual SpherePath GetPath()
         {
-            return new SpherePath(pathIdentifier);
+            return new SpherePath(PathIdentifier);
         }
 
         public virtual void OnDestroy()

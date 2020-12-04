@@ -41,10 +41,6 @@ namespace Assets.CS.TabletopUI {
             _onSlotAdded.AddListener(situation.AddContainer);
             _onSlotRemoved.AddListener(situation.RemoveContainer);
             _situationPath = situation.Path;
-
-
-            if (situation.CurrentBeginningEffectCommand!=null)
-               PopulateRecipeSlots((situation.CurrentBeginningEffectCommand.OngoingSlots));
         }
 
 
@@ -77,11 +73,11 @@ namespace Assets.CS.TabletopUI {
         public void AddRecipeSlot(SlotSpecification spec)
         {
             var newSlot = Registry.Get<PrefabFactory>().CreateLocally<RecipeSlot>(slotHolder);
-            newSlot.name = spec.UniqueId;
+            newSlot.Initialise(spec, _situationPath);
+
 
             spec.MakeActiveInState(StateEnum.Ongoing);
 
-            newSlot.Initialise(spec, _situationPath);
 
             this.recipeSlots.Add(newSlot);
             _onSlotAdded.Invoke(newSlot);

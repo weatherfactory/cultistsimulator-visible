@@ -37,7 +37,7 @@ namespace Assets.Core.Entities {
             var dictum = Registry.Get<Compendium>().GetSingleEntity<Dictum>();
 
             var spherePath = new SpherePath(dictum.DefaultWorldSpherePath);
-            var defaultWorldSphere = GetContainerByPath(spherePath);
+            var defaultWorldSphere = GetSphereByPath(spherePath);
             return defaultWorldSphere;
         }
 
@@ -46,7 +46,7 @@ namespace Assets.Core.Entities {
             var dictum = Registry.Get<Compendium>().GetSingleEntity<Dictum>();
 
             var spherePath = new SpherePath(dictum.DefaultEnRouteSpherePath);
-            var defaultEnRouteSphere = GetContainerByPath(spherePath);
+            var defaultEnRouteSphere = GetSphereByPath(spherePath);
             return defaultEnRouteSphere;
         }
 
@@ -90,21 +90,21 @@ namespace Assets.Core.Entities {
         }
 
 
-        public Sphere GetContainerByPath(SpherePath containerPath)
+        public Sphere GetSphereByPath(SpherePath spherePath)
         {
 
             try
             {
-                var specifiedContainer = _spheres.SingleOrDefault(c => c.GetPath() == containerPath);
-                if (specifiedContainer == null)
+                var specifiedSphere = _spheres.SingleOrDefault(c => c.GetPath() == spherePath);
+                if (specifiedSphere == null)
                     return Registry.Get<NullSphere>();
 
-                return specifiedContainer;
+                return specifiedSphere;
 
             }
             catch (Exception e)
             {
-                NoonUtility.LogWarning($"Error retrieving container with path {containerPath}: {e.Message}");
+                NoonUtility.LogWarning($"Error retrieving container with path {spherePath}: {e.Message}");
                 return Registry.Get<NullSphere>();
             }
 

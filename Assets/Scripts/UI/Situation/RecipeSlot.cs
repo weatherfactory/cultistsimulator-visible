@@ -85,9 +85,6 @@ namespace Assets.CS.TabletopUI {
             GoverningSlotSpecification = slotSpecification;
             gameObject.name = GetPath().ToString();
 
-            if (GoverningSlotSpecification == null)
-                return;
-
             SlotLabel.text = slotSpecification.Label;
 
             if (GoverningSlotSpecification.Greedy)
@@ -280,8 +277,8 @@ namespace Assets.CS.TabletopUI {
                 path = new SpherePath(_situationPath,GoverningSlotSpecification.Id);
 
 
-            if (!string.IsNullOrEmpty(pathIdentifier))
-                NoonUtility.Log($"We're trying to specify a spherepath ({pathIdentifier}) in a recipe slot / threshold ({path})");
+            if (!string.IsNullOrEmpty(PathIdentifier))
+                NoonUtility.Log($"We're trying to specify a spherepath ({PathIdentifier}) in a recipe slot / threshold ({path})");
             return path;
         }
 
