@@ -173,7 +173,7 @@ namespace Assets.CS.TabletopUI {
 
         public override void DisplayAndPositionHere(Token token, Context context) {
             base.DisplayAndPositionHere(token, context);
-            Choreographer.PlaceTokenAtFreePosition(token,context);
+            Choreographer.PlaceTokenAtFreeLocalPosition(token,context);
 
             slotIconHolder.transform.SetAsLastSibling();
             

@@ -12,12 +12,13 @@ namespace Assets.Scripts.Spheres.Angels
     public class SimpleChoreographer:IChoreographer
     {
 
-        public void PlaceTokenAtFreePosition(Token token, Context context)
+
+        public void PlaceTokenAtFreeLocalPosition(Token token, Context context)
         {
             token.TokenRectTransform.anchoredPosition3D = Vector3.zero;
         }
 
-        public void PlaceTokenAssertivelyAtSpecifiedPosition(Token token, Context context, Vector2 pos)
+        public void PlaceTokenAssertivelyAtSpecifiedLocalPosition(Token token, Context context, Vector2 pos)
         {
             token.TokenRectTransform.anchoredPosition3D = pos;
 
@@ -28,7 +29,7 @@ namespace Assets.Scripts.Spheres.Angels
             token.TokenRectTransform.anchoredPosition3D = pos;
         }
 
-        public Vector2 GetFreePosWithDebug(Token token, Vector2 centerPos, int startIteration = -1)
+        public Vector2 GetFreeLocalPosition(Token token, Vector2 centerPos, int startIteration = -1)
         {
             return Vector3.zero;
         }

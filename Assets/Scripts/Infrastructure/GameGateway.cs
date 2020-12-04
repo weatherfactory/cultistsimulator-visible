@@ -116,7 +116,7 @@ namespace Assets.Scripts.Infrastructure
                 var context = new Context(Context.ActionSource.Loading);
 
                 Token token = inSphere.ProvisionElementStackToken(e.Key, e.Value, Source.Existing(), context, Element.EmptyMutationsDictionary());
-                inSphere.Choreographer.PlaceTokenAtFreePosition(token, context);
+                inSphere.Choreographer.PlaceTokenAtFreeLocalPosition(token, context);
             }
         }
 

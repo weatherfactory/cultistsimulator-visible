@@ -33,7 +33,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
     public override SphereCategory SphereCategory => SphereCategory.World;
 
     public EnRouteSphere SendViaContainer;
-    public const float SEND_STACK_TO_SLOT_DURATION = 0.2f;
+
 
 
     public override bool AllowDrag { get { return true; } }
@@ -130,7 +130,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
 
                 TokenTravelItinerary i = new TokenTravelItinerary(tokenToSend.Location.Position,
                         targetLocation.Position)
-                    .WithDuration(SEND_STACK_TO_SLOT_DURATION)
+                    .WithDuration(NoonConstants.SEND_STACK_TO_SLOT_DURATION)
                     .WithScaling(1f, 0.35f)
                     .WithSphereRoute(SendViaContainer, targetThreshold);
                 

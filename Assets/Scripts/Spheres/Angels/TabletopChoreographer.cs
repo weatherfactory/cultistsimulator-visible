@@ -69,7 +69,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         }
 
-        public void PlaceTokenAtFreePosition(Token token, Context context)
+        public void PlaceTokenAtFreeLocalPosition(Token token, Context context)
      {
 
             //else
@@ -94,7 +94,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             //       }
 
             _tabletop.AcceptToken(token, context);
-            token.TokenRectTransform.anchoredPosition = GetFreePosWithDebug(token, Vector2.zero);
+            token.TokenRectTransform.anchoredPosition = GetFreeLocalPosition(token, Vector2.zero);
             
         }
 
@@ -102,7 +102,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 /// <summary>
 /// Place at a specific position, pushing other tokens out of the way if necessary
 /// </summary>
-            public void PlaceTokenAssertivelyAtSpecifiedPosition(Token token, Context context, Vector2 pos)
+            public void PlaceTokenAssertivelyAtSpecifiedLocalPosition(Token token, Context context, Vector2 pos)
 		{
             _tabletop.AcceptToken(token, context);  // this does parenting. Needs to happen before we position
 
@@ -123,7 +123,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 /// </summary>
         public void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 pos)
 {
-    token.TokenRectTransform.anchoredPosition = GetFreePosWithDebug(token, pos);
+    token.TokenRectTransform.anchoredPosition = GetFreeLocalPosition(token, pos);
     _tabletop.DisplayAndPositionHere(token, context);
 
         }
@@ -152,7 +152,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 				if (!pushedRect.Overlaps(targetRect))
                     continue;
 
-                TokenTravelItinerary itinerary=new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, GetFreePosWithDebug(token, token.TokenRectTransform.anchoredPosition))
+                TokenTravelItinerary itinerary=new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, GetFreeLocalPosition(token, token.TokenRectTransform.anchoredPosition))
                     .WithDuration(0.2f)
                     .WithScaling(1f,1f);
 
@@ -173,7 +173,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         #region -- GET FREE POSITION ----------------------------
 
-        public Vector2 GetFreePosWithDebug(Token token, Vector2 centerPos, int startIteration = -1)
+        public Vector2 GetFreeLocalPosition(Token token, Vector2 centerPos, int startIteration = -1)
 		{
 #if DEBUG
 

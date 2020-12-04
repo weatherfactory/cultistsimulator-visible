@@ -207,7 +207,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             if (context.TokenLocation == null)
             {
-                Choreographer.PlaceTokenAtFreePosition(token, context);
+                Choreographer.PlaceTokenAtFreeLocalPosition(token, context);
             }
             else
             {

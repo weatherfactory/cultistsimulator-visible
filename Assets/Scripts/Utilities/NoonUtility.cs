@@ -116,7 +116,7 @@ namespace Noon
         public const string SITUATION_RUNNING="VERB_RUNNING";
 
     public const string ANCHOR_BOOKSHELF = "bookshelf";
-
+    public const float SEND_STACK_TO_SLOT_DURATION = 0.2f;
     }
 
     public enum VerbosityLevel

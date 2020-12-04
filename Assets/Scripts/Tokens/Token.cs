@@ -681,7 +681,7 @@ namespace Assets.CS.TabletopUI {
             {
                 var originSphere = Registry.Get<SphereCatalogue>().GetContainerByPath(LocationBeforeDrag.AtSpherePath);
 
-                originSphere.Choreographer.PlaceTokenAtFreePosition(this, context);
+                originSphere.Choreographer.PlaceTokenAtFreeLocalPosition(this, context);
 
 
                 var tabletop = Registry.Get<TabletopManager>()._tabletop;

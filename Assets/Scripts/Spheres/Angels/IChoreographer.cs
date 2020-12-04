@@ -12,20 +12,19 @@ namespace Assets.Scripts.Spheres.Angels
     {
 
 
-
-        void PlaceTokenAtFreePosition(Token token, Context context);
+        void PlaceTokenAtFreeLocalPosition(Token token, Context context);
 
         /// <summary>
         /// Place at a specific position, pushing other tokens out of the way if necessary
         /// </summary>
-        void PlaceTokenAssertivelyAtSpecifiedPosition(Token token, Context context, Vector2 pos);
+        void PlaceTokenAssertivelyAtSpecifiedLocalPosition(Token token, Context context, Vector2 pos);
 
         /// <summary>
         /// Place as close to a specific position as we can get
         /// </summary>
         void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 pos);
 
-        Vector2 GetFreePosWithDebug(Token token, Vector2 centerPos, int startIteration = -1);
+        Vector2 GetFreeLocalPosition(Token token, Vector2 centerPos, int startIteration = -1);
 
     }
 }

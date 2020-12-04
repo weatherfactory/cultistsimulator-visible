@@ -21,35 +21,46 @@ namespace Assets.Scripts.Spheres.Angels
 
         public void MinisterTo(Sphere sphere,float interval)
         {
+
             _beatsTowardsAngelry++;
 
             if (_beatsTowardsAngelry >= BEATS_BETWEEN_ANGELRY)
-            {
-                TryGrabStack(sphere, interval);
+           
                 _beatsTowardsAngelry = 0;
-            }
+
+            if (!sphere.CurrentlyBlockedFor(BlockDirection.Inward) && sphere.GetAllTokens().Count == 0)
+                TryGrabStack(sphere, interval);
+            
         }
 
-        private void TryGrabStack(Sphere sphere, float interval)
+        private void TryGrabStack(Sphere destinationThresholdSphere, float interval)
         {
-
-            if (sphere.GetAllTokens().Any())
-                return;
 
             var worldSpheres = Registry.Get<SphereCatalogue>().GetSpheresOfCategory(SphereCategory.World);
             foreach (var worldSphereToSearch in worldSpheres)
             {
-                var matchingToken = FindStackForSlotSpecificationInSphere(sphere.GoverningSlotSpecification, worldSphereToSearch);
+                var matchingToken = FindStackForSlotSpecificationInSphere(destinationThresholdSphere.GoverningSlotSpecification, worldSphereToSearch);
                 if (matchingToken != null)
                 {
                     
-                    NoonUtility.Log("This is where the angel for " + sphere.GetPath() + " would pull " + matchingToken.name);
+                    NoonUtility.Log("This is where the angel for " + destinationThresholdSphere.GetPath() + " would pull " + matchingToken.name);
+
 
                     if (matchingToken.CurrentlyBeingDragged())
-                    {
-                        matchingToken.SetState(new TravellingState());
                         matchingToken.FinishDrag();
-                    }
+
+                    var enRouteSphere = Registry.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
+
+                    TokenTravelItinerary itinerary = new TokenTravelItinerary(matchingToken.Location.Position,
+                            destinationThresholdSphere.GetRectTransform().anchoredPosition3D)
+                        .WithScaling(1f,1f)
+                        .WithDuration(NoonConstants.SEND_STACK_TO_SLOT_DURATION)
+                        .WithSphereRoute(enRouteSphere, destinationThresholdSphere);
+
+                    destinationThresholdSphere.AddBlock(new ContainerBlock(BlockDirection.Inward,
+                        BlockReason.InboundTravellingStack));
+
+                    itinerary.Depart(matchingToken);
 
                     return;
                 }
