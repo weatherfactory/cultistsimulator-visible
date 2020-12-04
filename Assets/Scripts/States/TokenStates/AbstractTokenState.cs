@@ -17,6 +17,7 @@ namespace Assets.Core.States
         public abstract bool Docked(Token token);
         public abstract bool InPlayerDrivenMotion(Token token);
         public abstract bool InSystemDrivenMotion(Token token);
+        public abstract bool CanDecay(Token token);
 
 
 

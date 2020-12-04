@@ -69,27 +69,8 @@ public class Heart : MonoBehaviour
 
         foreach(Sphere sphere in Registry.Get<SphereCatalogue>().GetSpheres())
             sphere.ExecuteHeartbeat(beatInterval);
-   
-
-
     }
-    private void DetermineOutstandingSlots(float beatInterval)
-    {
-        //TODO: execute the heartbeat, which should nudge angels
-        //nudged angels (eg greedy angels) should then grab tokens
-        var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 
-        foreach (var sc in situationControllers)
-        {
-          sc.ExecuteHeartbeat(beatInterval);
-
-            //foreach (var tokenAndSlot in response.SlotsToFill)
-            //{
-            //    if (!OutstandingSlotAlreadySaved(tokenAndSlot))
-            //        outstandingSlotsToFill.Add(tokenAndSlot);
-            //}
-        }
-    }
 
 
 }

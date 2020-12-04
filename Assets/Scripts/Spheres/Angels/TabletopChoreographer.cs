@@ -171,8 +171,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         #endregion
 
-        #region -- GET FREE POSITION ----------------------------
-
         public Vector2 GetFreeLocalPosition(Token token, Vector2 centerPos, int startIteration = -1)
 		{
 #if DEBUG
@@ -404,9 +402,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                                origin.y + radius * Mathf.Sin(angle));
         }
         */
-
-        #endregion
-
 
 
         public void SetGridSnapSize(float snapsize)

@@ -24,5 +24,10 @@ namespace Assets.Scripts.States.TokenStates
         {
             return false;
         }
+
+        public override bool CanDecay(Token token)
+        {
+            return true;
+        }
     }
 }

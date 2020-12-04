@@ -17,19 +17,5 @@ namespace Assets.TabletopUi.Scripts.TokenContainers
     {
 
         public override SphereCategory SphereCategory => SphereCategory.World;
-
-
-
-        public void ElementGreedyAnimDone(Token element, AnchorAndSlot anchorSlotPair)
-        {
-            if (anchorSlotPair.Threshold.Equals(null) || anchorSlotPair.Threshold.Defunct)
-                return;
-
-            anchorSlotPair.Threshold.AcceptToken(element, new Context(Context.ActionSource.TravelArrived));
-            anchorSlotPair.Threshold.RemoveBlock(new ContainerBlock(BlockDirection.Inward,
-                BlockReason.InboundTravellingStack));
-        }
-
-
     }
 }

@@ -52,14 +52,12 @@ namespace Assets.Scripts.Spheres.Angels
                     var enRouteSphere = Registry.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
 
                     TokenTravelItinerary itinerary = new TokenTravelItinerary(matchingToken.Location.Position,
-                            destinationThresholdSphere.GetRectTransform().anchoredPosition3D)
+                            destinationThresholdSphere.transform.position)
                         .WithScaling(1f,1f)
-                        .WithDuration(NoonConstants.SEND_STACK_TO_SLOT_DURATION)
+                        .WithDuration(2f)
                         .WithSphereRoute(enRouteSphere, destinationThresholdSphere);
 
-                    destinationThresholdSphere.AddBlock(new ContainerBlock(BlockDirection.Inward,
-                        BlockReason.InboundTravellingStack));
-
+                    
                     itinerary.Depart(matchingToken);
 
                     return;

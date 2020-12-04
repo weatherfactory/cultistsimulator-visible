@@ -32,21 +32,6 @@ using UnityEngine.InputSystem;
 
 namespace Assets.CS.TabletopUI {
 
-    public enum TokenXNess
-    {
-        BeingDragged,
-        DivertedByGreedySlot,
-        DoesntMatchSlotRequirements,
-        DroppedOnTableContainer,
-        ReturningSplitStack,
-        ReturnedToStartingSlot,
-        PlacedInSlot,
-        DroppedOnTokenWhichMovedAside,
-        DroppedOnTokenWhichWontMoveAside,
-        MergedIntoStack
-    }
-
-
     [RequireComponent(typeof(RectTransform))]
     public class Token : MonoBehaviour,
         IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler,
@@ -867,7 +852,7 @@ namespace Assets.CS.TabletopUI {
             _manifestation.Reveal(instant);
 
             //if a card has just been turned face up in a situation, it's now an existing, established card
-            if (ElementStack.StackSource.SourceType == SourceType.Fresh)
+            if (ElementStack.IsValidElementStack() && ElementStack.StackSource.SourceType == SourceType.Fresh)
                 ElementStack.StackSource = Source.Existing();
 
         }

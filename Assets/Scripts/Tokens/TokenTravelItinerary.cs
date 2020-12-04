@@ -26,8 +26,8 @@ namespace Assets.CS.TabletopUI
             var tokenAnimation = tokenToSend.gameObject.AddComponent<TokenTravelAnimation>();
             tokenAnimation.OnTokenArrival += Arrive;
 
-
             //this will cause hilarity if it's applied to a world sphere rather than a threshold
+            //future AK: you'll need a smart way to apply this differently for non-CS-recipe-slot situations
             DestinationSphere.AddBlock(new ContainerBlock(BlockDirection.Inward,
                 BlockReason.InboundTravellingStack));
 
