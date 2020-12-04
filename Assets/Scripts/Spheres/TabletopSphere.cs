@@ -93,8 +93,6 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
         if (!tokenToSend.ElementStack.IsValidElementStack())
             return false;
 
-
-        HashSet<Situation> candidateSituations = new HashSet<Situation>();
         var registeredSituations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
         Sphere targetThreshold=null;
         TokenLocation targetLocation = null;

@@ -66,6 +66,9 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] public RectTransform TokenRectTransform;
 
         public RectTransform ManifestationRectTransform => _manifestation.RectTransform;
+        /// <summary>
+        /// position *in current sphere* and path to that sphere
+        /// </summary>
         public TokenLocation Location => new TokenLocation(TokenRectTransform.anchoredPosition3D, Sphere.GetPath());
 
         [SerializeField] protected bool rotateOnDrag = true;

@@ -43,18 +43,16 @@ namespace Assets.Scripts.Spheres.Angels
                 if (matchingToken != null)
                 {
                     
-                    NoonUtility.Log("This is where the angel for " + destinationThresholdSphere.GetPath() + " would pull " + matchingToken.name);
-
-
                     if (matchingToken.CurrentlyBeingDragged())
                         matchingToken.FinishDrag();
 
                     var enRouteSphere = Registry.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
 
+                    var targetPosition = GetTargetPositionForDestinationSphere(destinationThresholdSphere);
+
                     TokenTravelItinerary itinerary = new TokenTravelItinerary(matchingToken.Location.Position,
-                            destinationThresholdSphere.transform.position)
-                        .WithScaling(1f,1f)
-                        .WithDuration(2f)
+                            targetPosition)
+                        .WithScaling(1f,0.35f)
                         .WithSphereRoute(enRouteSphere, destinationThresholdSphere);
 
                     
@@ -63,6 +61,16 @@ namespace Assets.Scripts.Spheres.Angels
                     return;
                 }
             }
+        }
+
+        private Vector3 GetTargetPositionForDestinationSphere(Sphere destinationThresholdSphere)
+        {
+            //if we're using this for non-classic-CS-recipe slots, we'll need to rewrite it. We'll also need not to hardcode the final scale
+            var targetPath = destinationThresholdSphere.GetPath();
+            var targetSituationPath = targetPath.SituationPath;
+            var targetSituation = Registry.Get<SituationsCatalogue>().GetSituationByPath(targetSituationPath);
+            var targetPosition = targetSituation.GetAnchorLocation().Position;
+            return targetPosition;
         }
 
 

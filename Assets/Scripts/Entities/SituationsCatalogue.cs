@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Commands;
 using Assets.Core.Enums;
+using Assets.Core.Fucine;
 using Assets.Core.NullObjects;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
@@ -59,9 +60,23 @@ namespace Assets.Core.Entities
         }
 
 
-        public Situation GetOpenSituation()
+        public Situation GetFirstOpenSituation()
         {
             return GetRegisteredSituations().FirstOrDefault(s => s.IsOpen);
+        }
+
+        public Situation GetSituationByPath(SituationPath path)
+        {
+            try
+            {
+                return _currentSituations.DefaultIfEmpty(new NullSituation()).SingleOrDefault(s => s.Path == path);
+
+            }
+            catch (Exception e)
+            {
+                NoonUtility.LogWarning("More than one situation with path " + path + "  - returning the first.");
+                return _currentSituations.First(s => s.Path == path);
+            }
         }
 
 
