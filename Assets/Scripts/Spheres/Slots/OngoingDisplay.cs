@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core;
 using Assets.Core.Commands;
 using Assets.TabletopUi;
 using Assets.Core.Entities;
@@ -20,7 +21,7 @@ using Noon;
 using UnityEngine.Events;
 
 namespace Assets.CS.TabletopUI {
-    public class OngoingDisplay:MonoBehaviour,ISituationSubscriber {
+    public class OngoingDisplay:MonoBehaviour,ISituationSubscriber,IRecipeSlotHolder {
 
         [SerializeField] Transform slotHolder; 
         [SerializeField] Image countdownBar;
@@ -41,6 +42,9 @@ namespace Assets.CS.TabletopUI {
             _onSlotAdded.AddListener(situation.AddContainer);
             _onSlotRemoved.AddListener(situation.RemoveContainer);
             _situationPath = situation.Path;
+
+            if (situation.CurrentBeginningEffectCommand != null)
+               situation.CurrentBeginningEffectCommand. PopulateRecipeSlots(this);
         }
 
 
@@ -48,9 +52,10 @@ namespace Assets.CS.TabletopUI {
         {
             ShowDeckEffects(situation.CurrentPrimaryRecipe.DeckEffects);
 
-            if (situation.CurrentBeginningEffectCommand != null && situation.CurrentBeginningEffectCommand.OngoingSlots.Any())
+            if (situation.CurrentBeginningEffectCommand != null) 
             {
-                PopulateRecipeSlots(situation.CurrentBeginningEffectCommand.OngoingSlots);
+                situation.CurrentBeginningEffectCommand.PopulateRecipeSlots(this);
+
             }
         }
 
@@ -70,7 +75,7 @@ namespace Assets.CS.TabletopUI {
          //
         }
 
-        public void AddRecipeSlot(SlotSpecification spec)
+        public void AddRecipeThreshold(SlotSpecification spec)
         {
             var newSlot = Registry.Get<PrefabFactory>().CreateLocally<RecipeSlot>(slotHolder);
             newSlot.Initialise(spec, _situationPath);
@@ -83,7 +88,7 @@ namespace Assets.CS.TabletopUI {
             _onSlotAdded.Invoke(newSlot);
         }
 
-        public void ClearOngoingSlots()
+        public void ClearRecipeThresholds()
         {
 
             foreach (var os in this.recipeSlots)
@@ -95,14 +100,6 @@ namespace Assets.CS.TabletopUI {
             this.recipeSlots.Clear();
         }
 
-        public void PopulateRecipeSlots(List<SlotSpecification> ongoingSlots)
-        {
-
-            ClearOngoingSlots();
-            foreach (var spec in ongoingSlots)
-                AddRecipeSlot(spec);
-            
-        }
 
 
         public void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate,
