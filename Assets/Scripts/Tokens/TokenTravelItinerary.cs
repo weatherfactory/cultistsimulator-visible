@@ -30,6 +30,9 @@ namespace Assets.CS.TabletopUI
             DestinationSphere.AddBlock(new ContainerBlock(BlockDirection.Inward,
                 BlockReason.InboundTravellingStack));
 
+            tokenAnimation.SetPositions(startPos,endPos);
+            tokenAnimation.SetScaling(startScale,endScale,1f); //1f was the originally set default. I'm not clear atm about the difference between Duration and ScaleDuration 
+            //is it if scaling ends before travel duration?
             tokenAnimation.Begin(tokenToSend, Duration);
         }
 
