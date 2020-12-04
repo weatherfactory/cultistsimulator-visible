@@ -1,4 +1,5 @@
 using System;
+using Assets.Core.Entities;
 using Assets.Scripts.States.TokenStates;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
@@ -11,10 +12,10 @@ namespace Assets.CS.TabletopUI
         public Sphere EnRouteSphere { get; set; }
         public Sphere DestinationSphere { get; set; }
         public float Duration { get; set; }
-        public Vector3 startPos { get; set; }
-        public Vector3 endPos { get; set; }
-        public float startScale { get; set; }
-        public float endScale { get; set; }
+        public Vector3 StartPosition { get; set; }
+        public Vector3 EndPosition { get; set; }
+        public float StartScale { get; set; }
+        public float EndScale { get; set; }
         //startscale   = 1f, float endScale = 1f)
 
         public void Depart(Token tokenToSend)
@@ -30,8 +31,8 @@ namespace Assets.CS.TabletopUI
             DestinationSphere.AddBlock(new ContainerBlock(BlockDirection.Inward,
                 BlockReason.InboundTravellingStack));
 
-            tokenAnimation.SetPositions(startPos,endPos);
-            tokenAnimation.SetScaling(startScale,endScale,1f); //1f was the originally set default. I'm not clear atm about the difference between Duration and ScaleDuration 
+            tokenAnimation.SetPositions(StartPosition,EndPosition);
+            tokenAnimation.SetScaling(StartScale,EndScale,1f); //1f was the originally set default. I'm not clear atm about the difference between Duration and ScaleDuration 
             //is it if scaling ends before travel duration?
             tokenAnimation.Begin(tokenToSend, Duration);
         }
@@ -68,35 +69,54 @@ namespace Assets.CS.TabletopUI
 
         }
 
-
         public static TokenTravelItinerary StayExactlyWhereYouAre(Token token)
         {
-            return CreateItineraryWithDuration(token.Sphere,token.Sphere,0f,token.Location.Position,token.Location.Position,1f,1f);
+           var i=new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, token.TokenRectTransform.anchoredPosition3D);
+           i.StartScale = token.TokenRectTransform.localScale.magnitude;
+           i.EndScale= token.TokenRectTransform.localScale.magnitude;
+           i.EnRouteSphere = token.Sphere;
+           i.DestinationSphere = token.Sphere;
+           return i;
         }
 
-        public static TokenTravelItinerary CreateItinerary(Sphere enRouteSphere, Sphere destinationSphere,Vector3 startPos, Vector3 endPos, float startScale, float endScale)
+
+        public TokenTravelItinerary(Vector3 startPosition, Vector3 endPosition)
         {
-            float distance = Vector3.Distance(startPos, endPos);
-           
-            float duration = Mathf.Max(0.3f, distance * 0.001f);
-            return CreateItineraryWithDuration(enRouteSphere, destinationSphere, duration, startPos, endPos, startScale,
-                endScale);
+            //the most basic itinerary: don't change sphere, move in current sphere from point to point,s et default duration based on distance, keep current scale
+            StartPosition = startPosition;
+            EndPosition = endPosition;
+            float distance = Vector3.Distance(StartPosition, EndPosition);
+            Duration = Mathf.Max(0.3f, distance * 0.001f);
+            EnRouteSphere = Registry.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
+            DestinationSphere = Registry.Get<SphereCatalogue>().GetDefaultWorldSphere();
         }
 
-
-        public static TokenTravelItinerary CreateItineraryWithDuration(Sphere enRouteSphere, Sphere destinationSphere, float duration, Vector3 startPos, Vector3 endPos, float startScale, float endScale)
+        /// <summary>
+        /// if we want to cmove to another sphere, set the sphere to travel through and the sphere to end in
+        /// </summary>
+        /// <param name="enRouteSphere"></param>
+        /// <param name="destinationSphere"></param>
+        public TokenTravelItinerary WithSphereRoute(Sphere enRouteSphere, Sphere destinationSphere)
         {
-            var i = new TokenTravelItinerary
-            {
-                EnRouteSphere = enRouteSphere,
-                DestinationSphere = destinationSphere,
-                Duration = duration,
-                startPos = startPos,
-                endPos = endPos,
-                startScale = startScale,
-                endScale = endScale
-            };
-            return i;
+            EnRouteSphere = enRouteSphere;
+            DestinationSphere = destinationSphere;
+            return this;
         }
+
+        public TokenTravelItinerary WithDuration(float duration)
+        {
+            Duration = duration;
+            return this;
+        }
+
+        public TokenTravelItinerary WithScaling(float startScale, float endScale)
+        {
+            StartScale = startScale;
+            EndScale = endScale;
+            return this;
+        }
+
+
+        
     }
 }

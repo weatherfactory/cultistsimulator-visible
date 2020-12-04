@@ -127,16 +127,13 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
 
                 if (tokenToSend.ElementQuantity > 1)
                    tokenToSend.CalveToken(tokenToSend.ElementQuantity - 1, new Context(Context.ActionSource.DoubleClickSend));
+
+                TokenTravelItinerary i = new TokenTravelItinerary(tokenToSend.Location.Position,
+                        targetLocation.Position)
+                    .WithDuration(SEND_STACK_TO_SLOT_DURATION)
+                    .WithScaling(1f, 0.35f)
+                    .WithSphereRoute(SendViaContainer, targetThreshold);
                 
-                TokenTravelItinerary i=TokenTravelItinerary.CreateItineraryWithDuration(SendViaContainer,
-                    targetThreshold,
-                    SEND_STACK_TO_SLOT_DURATION,
-                    tokenToSend.Location.Position,
-                    targetLocation.Position,
-                    1f,
-                    0.35f
-                    );
-           
             i.Depart(tokenToSend);
             
             return true;

@@ -21,8 +21,6 @@ namespace Assets.Scripts.Spheres.Angels
 
         public void MinisterTo(Sphere sphere,float interval)
         {
-  
-
             _beatsTowardsAngelry++;
 
             if (_beatsTowardsAngelry >= BEATS_BETWEEN_ANGELRY)
@@ -44,6 +42,7 @@ namespace Assets.Scripts.Spheres.Angels
                 var matchingToken = FindStackForSlotSpecificationInSphere(sphere.GoverningSlotSpecification, worldSphereToSearch);
                 if (matchingToken != null)
                 {
+                    
                     NoonUtility.Log("This is where the angel for " + sphere.GetPath() + " would pull " + matchingToken.name);
 
                     if (matchingToken.CurrentlyBeingDragged())

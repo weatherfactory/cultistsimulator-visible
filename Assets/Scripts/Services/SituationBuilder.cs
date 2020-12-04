@@ -51,8 +51,11 @@ namespace Assets.TabletopUi.Scripts.Services {
             {
                 SoundManager.PlaySfx("SituationTokenCreate");
 
-                var spawnedTravelItinerary= TokenTravelItinerary.CreateItineraryWithDuration(windowSphere, anchorSphere,1f, command.SourceToken.TokenRectTransform.anchoredPosition3D, anchorSphere.Choreographer.GetFreePosWithDebug(newAnchor, command.SourceToken.ManifestationRectTransform.anchoredPosition, 3),
-                    0f,1f);
+                var spawnedTravelItinerary=new TokenTravelItinerary(command.SourceToken.TokenRectTransform.anchoredPosition3D,
+                    anchorSphere.Choreographer.GetFreePosWithDebug(newAnchor, command.SourceToken.ManifestationRectTransform.anchoredPosition))
+                    .WithDuration(1f)
+                    .WithSphereRoute(windowSphere,anchorSphere)
+                    .WithScaling(0f,1f);
 
                 newAnchor.TravelTo(spawnedTravelItinerary);
             }

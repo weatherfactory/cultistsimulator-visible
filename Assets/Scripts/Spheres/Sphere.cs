@@ -239,7 +239,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         {
             token.Manifest();
             token.transform.SetParent(transform,true); //this is the default: specifying for clarity in case I revisit
-
             token.transform.localRotation = Quaternion.identity;
             token.transform.localScale = Vector3.one;
 

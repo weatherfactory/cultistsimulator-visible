@@ -41,6 +41,15 @@ namespace Assets.Core.Entities {
             return defaultWorldSphere;
         }
 
+        public Sphere GetDefaultEnRouteSphere()
+        {
+            var dictum = Registry.Get<Compendium>().GetSingleEntity<Dictum>();
+
+            var spherePath = new SpherePath(dictum.DefaultEnRouteSpherePath);
+            var defaultEnRouteSphere = GetContainerByPath(spherePath);
+            return defaultEnRouteSphere;
+        }
+
         public HashSet<Sphere> GetSpheres() {
             return new HashSet<Sphere>(_spheres);
         }
