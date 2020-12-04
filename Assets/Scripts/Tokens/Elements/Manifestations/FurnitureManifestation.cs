@@ -25,7 +25,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         public Transform Transform => gameObject.transform;
         public RectTransform RectTransform => gameObject.GetComponent <RectTransform>();
         [SerializeField] Image artwork;
-
+#pragma warning disable 649
         [Header("Token Body")]
         [SerializeField] Image tokenBody;
         [SerializeField] Sprite lightweightSprite;
@@ -49,7 +49,9 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         [Header("Completion")]
         [SerializeField]
+
         Image completionBadge;
+
 
         [SerializeField] TextMeshProUGUI completionText;
 
@@ -58,7 +60,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         SituationTokenDumpButton dumpButton;
 
         [SerializeField] public GraphicFader glowImage;
-
+#pragma warning restore 649
 
 
         private List<Sprite> frames;

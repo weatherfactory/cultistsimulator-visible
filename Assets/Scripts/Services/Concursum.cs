@@ -101,7 +101,9 @@ namespace Assets.TabletopUi.Scripts.Services
         public CultureChangedEvent AfterChangingCulture = new CultureChangedEvent();
 
 
+#pragma warning disable 649
         [SerializeField] private SecretHistory secretHistory;
+#pragma warning restore 649
 
 
         public void SetNewCulture(Culture culture)
