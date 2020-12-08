@@ -13,6 +13,9 @@ namespace Assets.Scripts.Entities
         [FucineValue]
         public string Choir { get; set; }
 
+        [FucineValue]
+        public string WatchOver { get; set; }
+
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, Compendium populatedCompendium)
         {
         }
