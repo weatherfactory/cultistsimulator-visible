@@ -27,14 +27,14 @@ namespace Assets.CS.TabletopUI {
 
 
 
-    public class RecipeSlot : Sphere, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IInteractsWithTokens {
+    public class Threshold : Sphere, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IInteractsWithTokens {
 
         public override SphereCategory SphereCategory => SphereCategory.Threshold;
 
         // DATA ACCESS
 
-        public IList<RecipeSlot> childSlots { get; set; }
-        public RecipeSlot ParentSlot { get; set; }
+        public IList<Threshold> childSlots { get; set; }
+        public Threshold ParentSlot { get; set; }
 
         // VISUAL ELEMENTS
         public RecipeSlotViz viz;
@@ -70,8 +70,8 @@ namespace Assets.CS.TabletopUI {
 
         public enum SlotModifier { Locked, Ongoing, Greedy, Consuming };
 
-        public RecipeSlot() {
-            childSlots = new List<RecipeSlot>();
+        public Threshold() {
+            childSlots = new List<Threshold>();
         }
 
         public void Start() {
@@ -167,10 +167,6 @@ namespace Assets.CS.TabletopUI {
             return childSlots.Count > 0;
         }
 
-
-
-        
-        
 
         public override void DisplayAndPositionHere(Token token, Context context) {
             base.DisplayAndPositionHere(token, context);

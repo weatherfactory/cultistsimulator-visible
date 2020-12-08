@@ -643,7 +643,7 @@ namespace Assets.CS.TabletopUI {
                 }
 
                 // this moves the clicked sibling on top of any other nearby cards.
-                if (Sphere.GetType() != typeof(RecipeSlot) && Sphere.GetType() != typeof(ExhibitCards))
+                if (Sphere.GetType() != typeof(Threshold) && Sphere.GetType() != typeof(ExhibitCards))
                     transform.SetAsLastSibling();
 
                 previousClickTime = eventData.clickTime;

@@ -20,7 +20,7 @@ namespace Assets.TabletopUi.SlotsContainers {
         [SerializeField] SlotGridManager gridManager;
         public CanvasGroupFader canvasGroupFader;
 
-        protected RecipeSlot primarySlot;
+        protected Threshold primarySlot;
         private IVerb _verb;
         private SituationWindow _window;
         private SituationPath _situationPath;
@@ -29,9 +29,9 @@ namespace Assets.TabletopUi.SlotsContainers {
         public void Initialise(IVerb verb,SituationWindow window,SituationPath situationPath) {
             
             
-            var children = GetComponentsInChildren<RecipeSlot>();
-            var allSlots = new List<RecipeSlot>(children);
-            validSlots = new List<RecipeSlot>(allSlots.Where(rs => rs.Defunct == false && rs.GoverningSlotSpecification != null));
+            var children = GetComponentsInChildren<Threshold>();
+            var allSlots = new List<Threshold>(children);
+            validSlots = new List<Threshold>(allSlots.Where(rs => rs.Defunct == false && rs.GoverningSlotSpecification != null));
 
             _verb = verb;
             _window= window;
@@ -62,7 +62,7 @@ namespace Assets.TabletopUi.SlotsContainers {
         }
 
         
-        public override void RespondToStackAdded(RecipeSlot slot, ElementStack stack, Context context) {
+        public override void RespondToStackAdded(Threshold slot, ElementStack stack, Context context) {
             //currently, nothing calls this - it used to be OnCardAdded. I hope we can feed it through the primary event flow
 
             _window.TryResizeWindow(GetAllSlots().Count);
@@ -76,7 +76,7 @@ namespace Assets.TabletopUi.SlotsContainers {
 
         }
 
-        protected void AddSlotsForStack(ElementStack stack, RecipeSlot parentSlot) {
+        protected void AddSlotsForStack(ElementStack stack, Threshold parentSlot) {
 
             foreach (var childSlotSpecification in stack.GetChildSlotSpecificationsForVerb(_verb.Id))
             {
@@ -101,14 +101,14 @@ namespace Assets.TabletopUi.SlotsContainers {
 
         public void RemoveAnyChildSlotsWithEmptyParent(Context context) {
             // We get a copy of the list, since it modifies itself when slots are removed
-            List<RecipeSlot> currentSlots = new List<RecipeSlot>(GetAllSlots());
+            List<Threshold> currentSlots = new List<Threshold>(GetAllSlots());
 
-            foreach (RecipeSlot s in currentSlots) {
+            foreach (Threshold s in currentSlots) {
                 if (s != null && s.GetElementTokenInSlot() == null && s.childSlots.Count > 0) {
-                    List<RecipeSlot> currentChildSlots = new List<RecipeSlot>(s.childSlots);
+                    List<Threshold> currentChildSlots = new List<Threshold>(s.childSlots);
                     s.childSlots.Clear();
 
-                    foreach (RecipeSlot cs in currentChildSlots)
+                    foreach (Threshold cs in currentChildSlots)
                         ClearAndDestroySlot(cs, context);
                 }
             }
@@ -116,9 +116,9 @@ namespace Assets.TabletopUi.SlotsContainers {
         }
 
 
-        protected virtual RecipeSlot BuildSlot(string slotName, SlotSpecification slotSpecification, RecipeSlot parentSlot, bool wideLabel = false)
+        protected virtual Threshold BuildSlot(string slotName, SlotSpecification slotSpecification, Threshold parentSlot, bool wideLabel = false)
         {
-            var slot = Registry.Get<PrefabFactory>().CreateLocally<RecipeSlot>(transform);
+            var slot = Registry.Get<PrefabFactory>().CreateLocally<Threshold>(transform);
 
             slot.name = slotName + (slotSpecification != null ? " - " + slotSpecification.Id : "");
             slot.ParentSlot = parentSlot;
@@ -140,7 +140,7 @@ namespace Assets.TabletopUi.SlotsContainers {
 
 
 
-        protected override void ClearAndDestroySlot(RecipeSlot slot, Context context) {
+        protected override void ClearAndDestroySlot(Threshold slot, Context context) {
             if (slot == null)
                 return;
             if (slot.Defunct)
@@ -150,7 +150,7 @@ namespace Assets.TabletopUi.SlotsContainers {
 
             // This is all copy & paste from the parent class except for the last line
             if (slot.childSlots.Count > 0) {
-                List<RecipeSlot> childSlots = new List<RecipeSlot>(slot.childSlots);
+                List<Threshold> childSlots = new List<Threshold>(slot.childSlots);
                 foreach (var cs in childSlots)
                     ClearAndDestroySlot(cs, context);
 

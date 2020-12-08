@@ -18,19 +18,19 @@ using UnityEditor.PackageManager.UI;
 public abstract class AbstractSlotsManager : MonoBehaviour {
 
     
-    protected List<RecipeSlot> validSlots;
+    protected List<Threshold> validSlots;
     
 
 
 
-    public virtual IList<RecipeSlot> GetAllSlots() {
+    public virtual IList<Threshold> GetAllSlots() {
 
         return validSlots;
     }
 
-    public RecipeSlot GetSlotBySaveLocationInfoPath(string saveLocationInfoPath) {
+    public Threshold GetSlotBySaveLocationInfoPath(string saveLocationInfoPath) {
         var candidateSlots = GetAllSlots();
-        RecipeSlot slotToReturn = candidateSlots.SingleOrDefault(s => s.GetPath().ToString() == saveLocationInfoPath);
+        Threshold slotToReturn = candidateSlots.SingleOrDefault(s => s.GetPath().ToString() == saveLocationInfoPath);
         return slotToReturn;
     }
 
@@ -38,7 +38,7 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
 
     public abstract void RespondToStackRemoved(ElementStack stack, Context context);
 
-    public abstract void RespondToStackAdded(RecipeSlot slot, ElementStack stack, Context context);
+    public abstract void RespondToStackAdded(Threshold slot, ElementStack stack, Context context);
 
 
     /// <summary>
@@ -50,7 +50,7 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         AspectsDictionary currentAspects = new AspectsDictionary();
         ElementStack stack;
 
-        foreach (RecipeSlot slot in GetAllSlots()) {
+        foreach (Threshold slot in GetAllSlots()) {
             stack = slot.GetElementTokenInSlot().ElementStack;
 
             if (stack != null)
@@ -64,7 +64,7 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         IList<ElementStack> stacks = new List<ElementStack>();
         ElementStack stack;
 
-        foreach (RecipeSlot slot in GetAllSlots()) {
+        foreach (Threshold slot in GetAllSlots()) {
             stack = slot.GetElementTokenInSlot().ElementStack;
 
             if (stack != null)
@@ -74,7 +74,7 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         return stacks;
     }
 
-    protected virtual void ClearAndDestroySlot(RecipeSlot slot, Context context) {
+    protected virtual void ClearAndDestroySlot(Threshold slot, Context context) {
         if (slot == null)
             return;
 
@@ -82,7 +82,7 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
 
         //if there are any child slots on this slot, recurse
         if (slot.childSlots.Count > 0) {
-            List<RecipeSlot> childSlots = new List<RecipeSlot>(slot.childSlots);
+            List<Threshold> childSlots = new List<Threshold>(slot.childSlots);
 
             foreach (var cs in childSlots)
                 ClearAndDestroySlot(cs, context);

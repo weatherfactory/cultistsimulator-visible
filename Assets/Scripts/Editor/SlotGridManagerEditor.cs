@@ -9,7 +9,7 @@ using Assets.TabletopUi.Scripts.Services;
 public class SlotGridManagerEditor : Editor {
 
     SlotGridManager manager;
-	[SerializeField] List<RecipeSlot> addedSlots = new List<RecipeSlot>();
+	[SerializeField] List<Threshold> addedSlots = new List<Threshold>();
 
 	public override void OnInspectorGUI() {
 		DrawDefaultInspector();
@@ -49,7 +49,7 @@ public class SlotGridManagerEditor : Editor {
         addedSlots.RemoveAt(i);
     }
 
-	public virtual RecipeSlot BuildSlot()
+	public virtual Threshold BuildSlot()
 	{
 		var slot = GameObject.Instantiate(manager.slotPrefab);
 		addedSlots.Add(slot);

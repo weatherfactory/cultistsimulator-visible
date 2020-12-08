@@ -7,7 +7,7 @@ namespace Assets.CS.TabletopUI {
     public class RecipeSlotViz : MonoBehaviour {
 
         public RectTransform rectTrans;
-        [SerializeField] RecipeSlot slot;
+        [SerializeField] Threshold slot;
         [SerializeField] Animation anim;
 
         bool isHidden;

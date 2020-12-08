@@ -34,7 +34,7 @@ namespace Assets.TabletopUi.Scripts.Services
         public VerbManifestation VerbManifestation = null;
         public PortalManifestation PortalManifestation = null;
         public PickupManifestation PickupManifestation = null;
-        public RecipeSlot RecipeSlot = null;
+        public Threshold Threshold = null;
         public NotificationWindow NotificationWindow = null;
         public SituationNote SituationNote = null;
 

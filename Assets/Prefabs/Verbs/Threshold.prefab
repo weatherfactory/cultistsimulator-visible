@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4921537108124972761}
   - component: {fileID: 3243761884941166812}
   m_Layer: 5
-  m_Name: RecipeSlot
+  m_Name: Threshold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,10 +55,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000010408375514}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37a7f671d7b040e488f0ae7c5416a616, type: 3}
+  m_Script: {fileID: 11500000, guid: d7d7ac980bf3e1849bd20bad4c38c308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathIdentifier: 
+  PathIdentifier: 
   viz: {fileID: 114972629330940566}
   SlotLabel: {fileID: 114961501245325788}
   border: {fileID: 114472044940795862}

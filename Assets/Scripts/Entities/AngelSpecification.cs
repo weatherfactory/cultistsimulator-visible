@@ -11,7 +11,7 @@ namespace Assets.Scripts.Entities
    public class AngelSpecification: AbstractEntity<AngelSpecification>
     {
         [FucineValue]
-        public string Type { get; set; }
+        public string Choir { get; set; }
 
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, Compendium populatedCompendium)
         {

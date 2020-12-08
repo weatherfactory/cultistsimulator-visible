@@ -10,7 +10,7 @@ namespace Assets.CS.TabletopUI {
     public class SlotGridManager : MonoBehaviour {
 
 #if UNITY_EDITOR
-        public RecipeSlot slotPrefab;
+        public Threshold slotPrefab;
 #endif
 
         [SerializeField] RectTransform rect;
@@ -23,7 +23,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] float sizeTransitionDuration = 0.2f;
         [SerializeField] float slotMoveTransitionDuration = 0.2f;
 
-        List<RecipeSlot> slots = new List<RecipeSlot>();
+        List<Threshold> slots = new List<Threshold>();
         int numPerRow = 1;
         int numRows = 1;
 		float slotSpacing;
@@ -35,11 +35,11 @@ namespace Assets.CS.TabletopUI {
             ToggleScrollOnSize(height);
         }
 
-        public List<RecipeSlot> GetAllSlots() {
+        public List<Threshold> GetAllSlots() {
             return slots;
         }
 
-        public void AddSlot(RecipeSlot slot) {
+        public void AddSlot(Threshold slot) {
 			if (slot == null)
 				return;
 
@@ -57,7 +57,7 @@ namespace Assets.CS.TabletopUI {
                 slot.viz.TriggerShowAnim();
         }
 
-        public void RetireSlot(RecipeSlot slot) {
+        public void RetireSlot(Threshold slot) {
 			if (slot == null)
 				return;
             slots.Remove(slot);

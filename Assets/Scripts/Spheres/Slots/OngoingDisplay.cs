@@ -30,7 +30,7 @@ namespace Assets.CS.TabletopUI {
         public CanvasGroupFader canvasGroupFader;
 
         [SerializeField] DeckEffectView[] deckEffectViews;
-        readonly HashSet<RecipeSlot> recipeSlots=new HashSet<RecipeSlot>();
+        readonly HashSet<Threshold> recipeSlots=new HashSet<Threshold>();
 
         private readonly OnContainerAddedEvent _onSlotAdded=new OnContainerAddedEvent();
         private readonly OnContainerRemovedEvent _onSlotRemoved=new OnContainerRemovedEvent();
@@ -77,7 +77,7 @@ namespace Assets.CS.TabletopUI {
 
         public void AddRecipeThreshold(SlotSpecification spec)
         {
-            var newSlot = Registry.Get<PrefabFactory>().CreateLocally<RecipeSlot>(slotHolder);
+            var newSlot = Registry.Get<PrefabFactory>().CreateLocally<Threshold>(slotHolder);
             newSlot.Initialise(spec, _situationPath);
 
 
