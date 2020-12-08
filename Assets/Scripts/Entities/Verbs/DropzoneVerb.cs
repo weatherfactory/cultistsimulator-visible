@@ -73,6 +73,7 @@ namespace Assets.Core.Entities.Verbs
             var cmd = new SituationCreationCommand(this, dropzoneRecipe, StateEnum.Unstarted, anchorLocation,
                 null);
            var dropzoneSituation= Registry.Get<SituationBuilder>().CreateSituationWithAnchorAndWindow(cmd);
+           
            return dropzoneSituation;
         }
     }

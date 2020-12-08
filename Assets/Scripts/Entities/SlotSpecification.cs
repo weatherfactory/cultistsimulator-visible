@@ -10,6 +10,7 @@ using Assets.Core.Fucine;
 using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.Scripts.Entities;
 using Assets.Scripts.Spheres.Angels;
 using Noon;
 
@@ -50,9 +51,8 @@ public class SlotSpecification: AbstractEntity<SlotSpecification>
     [FucineValue(false)]
     public bool Consumes { get; set; }
 
-    [Obsolete]
-    [FucineValue(false)]
-    public bool NoAnim { get; set; }
+    [FucineSubEntity(typeof(AngelSpecification))]
+    public AngelSpecification Angel { get; set; }
 
     private readonly HashSet<StateEnum> _activeInStates=new HashSet<StateEnum>();
 

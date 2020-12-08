@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 namespace Assets.Core.Entities
 {
-    public class LinkedRecipeDetails : AbstractEntity<LinkedRecipeDetails>, IEntityWithId
+    public class LinkedRecipeDetails : AbstractEntity<LinkedRecipeDetails>
     {
 
 

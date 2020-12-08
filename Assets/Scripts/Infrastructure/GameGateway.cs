@@ -9,6 +9,7 @@ using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.Scripts.Spheres.Angels;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
@@ -145,7 +146,6 @@ namespace Assets.Scripts.Infrastructure
             var dropzoneRecipe = Registry.Get<Compendium>().GetEntityById<Recipe>(NoonConstants.DROPZONE_RECIPE_ID);
             var dropzoneVerb = Registry.Get<Compendium>().GetVerbForRecipe(dropzoneRecipe);
             var dropzoneLocation = new TokenLocation(Vector3.zero, Registry.Get<SphereCatalogue>().GetDefaultWorldSphere());
-
             var dropzoneSituation = dropzoneVerb.CreateDefaultSituation(dropzoneLocation);
         
 
