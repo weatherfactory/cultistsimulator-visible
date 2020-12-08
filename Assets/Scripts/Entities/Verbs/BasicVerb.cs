@@ -9,6 +9,7 @@ using Assets.Core.Fucine;
 using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Elements.Manifestations;
 
 namespace Assets.Core.Entities
@@ -61,6 +62,11 @@ namespace Assets.Core.Entities
                 return false;
             return true;
 
+        }
+
+        public Situation CreateDefaultSituation(TokenLocation anchorLocation)
+        {
+            throw new NotImplementedException();
         }
 
         public BasicVerb(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)

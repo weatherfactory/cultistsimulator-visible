@@ -128,6 +128,8 @@ namespace Assets.Scripts.Infrastructure
 
 
             ProvisionStartingVerb(character.ActiveLegacy, tabletopSphere);
+            ProvisionDropzoneSituation();
+            
             ProvisionStartingElements(character.ActiveLegacy, tabletopSphere);
 
             Registry.Get<Concursum>().ShowNotification(new NotificationArgs(character.ActiveLegacy.Label, character.ActiveLegacy.StartDescription));
@@ -137,6 +139,18 @@ namespace Assets.Scripts.Infrastructure
             Registry.Get<StageHand>().ClearRestartingGameFlag();
         }
 
+        private Situation ProvisionDropzoneSituation()
+        {
+            //if not, create it
+            var dropzoneRecipe = Registry.Get<Compendium>().GetEntityById<Recipe>(NoonConstants.DROPZONE_RECIPE_ID);
+            var dropzoneVerb = Registry.Get<Compendium>().GetVerbForRecipe(dropzoneRecipe);
+            var dropzoneLocation = new TokenLocation(Vector3.zero, Registry.Get<SphereCatalogue>().GetDefaultWorldSphere());
+
+            var dropzoneSituation = dropzoneVerb.CreateDefaultSituation(dropzoneLocation);
+        
+
+            return dropzoneSituation;
+        }
 
 
         public async void LeaveGame()

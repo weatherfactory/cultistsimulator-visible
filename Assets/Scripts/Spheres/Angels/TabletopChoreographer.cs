@@ -92,9 +92,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             //       Registry.Get<SituationBuilder>().CreateSituation(scc);
 
             //       }
+            token.TokenRectTransform.anchoredPosition = GetFreeLocalPosition(token, Vector2.zero);
 
             _tabletop.AcceptToken(token, context);
-            token.TokenRectTransform.anchoredPosition = GetFreeLocalPosition(token, Vector2.zero);
             
         }
 

@@ -38,7 +38,6 @@ namespace Assets.TabletopUi.Scripts.Services
         [SerializeField] private SoundManager soundManager;
         public SituationBuilder situationBuilder;
         public Limbo limbo;
-        public NullSphere NullSphere;
         public NullManifestation NullManifestation;
         public NullToken NullToken;
         public NullElementStack NullElementStack;
@@ -120,7 +119,6 @@ namespace Assets.TabletopUi.Scripts.Services
 
 
                 registryAccess.Register(limbo);
-                registryAccess.Register(NullSphere);
                 registryAccess.Register(NullManifestation);
                 registryAccess.Register(NullElementStack);
 

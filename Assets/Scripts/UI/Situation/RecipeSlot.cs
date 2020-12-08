@@ -89,7 +89,11 @@ namespace Assets.CS.TabletopUI {
 
             if (GoverningSlotSpecification.Greedy)
             {
-                _angels.Add(new GreedyAngel());
+                IAngel greedyAngel=new GreedyAngel();
+                greedyAngel.WatchOver(Registry.Get<SphereCatalogue>().GetDefaultWorldSphere());
+                greedyAngel.WatchOver(Registry.Get<SphereCatalogue>().GetDefaultEnRouteSphere());
+                _angels.Add(greedyAngel);
+
             }
 
             GreedyIcon.SetActive(slotSpecification.Greedy);

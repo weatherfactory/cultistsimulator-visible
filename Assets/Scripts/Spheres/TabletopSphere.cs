@@ -61,21 +61,6 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
     {
 
         base.DisplayAndPositionHere(token, context);
-        //does a dropzone token exist here?
-        Token dropzoneToken = GetAllTokens().FirstOrDefault(t => t.Verb.GetType() == typeof(DropzoneVerb));
-        if (dropzoneToken == null)
-        {
-            //if not, create it
-            var dropzoneRecipe = Registry.Get<Compendium>().GetEntityById<Recipe>("dropzone.classic");
-            var dropzoneVerb = Registry.Get<Compendium>().GetVerbForRecipe(dropzoneRecipe);
-            var tokenLocation = new TokenLocation(Vector3.zero, this.GetPath());
-
-            var cmd = new SituationCreationCommand(dropzoneVerb, dropzoneRecipe, StateEnum.Unstarted, tokenLocation,
-                null);
-            dropzoneToken = Registry.Get<SituationBuilder>().CreateSituationWithAnchorAndWindow(cmd).GetAnchor();
-        }
-
-        //align the incoming token with the dropzone
 
         _tabletopChoreographer.SnapToGrid(token.transform.localPosition);
     }

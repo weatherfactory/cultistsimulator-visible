@@ -166,10 +166,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         private void ImportTabletopElementStacks(Sphere tabletop, Hashtable htElementStacks)
         {
-
             var elementStackSpecifications = PopulateElementStackSpecificationsList(htElementStacks);
 
-	
             foreach (var ess in elementStackSpecifications)
             {
                 tabletop.ProvisionStackFromCommand(ess);
@@ -197,7 +195,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         private void ImportSituations(Sphere tabletop, Hashtable htSituations)
         {
-
 
 
             foreach (var locationInfo in htSituations.Keys)
@@ -230,7 +227,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 //    situationState = StateEnum.ReadyToContinue;
                 //commented above out because the Enter() method on the new state classes *should* take care of it
 
-
+               
                 var command = new SituationCreationCommand(situationVerb, recipe, situationState,null);
                 command.TimeRemaining = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_TIMEREMAINING);
 
@@ -312,15 +309,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 //if this was an ongoing slot, we also need to tell the situation that the slot's filled, or it will grab another
 
                 var situation = Registry.Get<SituationBuilder>().CreateSituationWithAnchorAndWindow(command);
-                
                 ImportSlotContents(situation,htSituationValues,  SaveConstants.SAVE_STARTINGSLOTELEMENTS);
-                ImportSlotContents(situation, htSituationValues,  SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
-                ImportSituationStoredElements(htSituationValues, situation);
+               ImportSlotContents(situation, htSituationValues,  SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
+               ImportSituationStoredElements(htSituationValues, situation);
+
                 ImportOutputs(htSituationValues, situation, tabletop);
 
                 //this should happen last, because adding those stacks above can overwrite notes
                 ImportSituationNotes(htSituationValues, situation);
-
                 situation.ExecuteHeartbeat(0f); //flushes everything through and updates
 
             }

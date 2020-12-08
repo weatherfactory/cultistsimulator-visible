@@ -142,7 +142,6 @@ public class Character:MonoBehaviour
 
     public void ResetStartingDecks()
     {
-
         foreach (Transform deck in CurrentDecks)
             Destroy(deck.gameObject);
 
@@ -155,8 +154,6 @@ public class Character:MonoBehaviour
             di.Shuffle();
 
             _deckInstances.Add(di.Id,di);
- 
-
         }
     }
 
@@ -258,8 +255,6 @@ else
 
     public void UpdateDeckInstanceFromSave(DeckSpec ds,Hashtable htEachDeck)
     {
-      
-
         DeckInstance deckToUpdate;
             
         deckToUpdate= GetDeckInstanceById(ds.Id);

@@ -72,7 +72,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public bool Defunct { get; protected set; }
         protected HashSet<ContainerBlock> _currentContainerBlocks = new HashSet<ContainerBlock>();
         private SphereCatalogue _catalogue;
-        private readonly List<Token> _tokens = new List<Token>();
+        protected readonly List<Token> _tokens = new List<Token>();
         protected readonly List<IAngel> _angels=new List<IAngel>();
         private readonly HashSet<ISphereEventSubscriber> _subscribers = new HashSet<ISphereEventSubscriber>();
 
@@ -159,6 +159,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public virtual Token ProvisionStackFromCommand(StackCreationCommand stackCreationCommand)
         {
+
             var token = ProvisionElementStackToken(stackCreationCommand.ElementId, stackCreationCommand.ElementQuantity,
                 stackCreationCommand.Context.StackSource, stackCreationCommand.Context, stackCreationCommand.Mutations);
 
@@ -481,8 +482,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             if (!_tokens.Contains(token))
                 _tokens.Add(token);
 
-            DisplayAndPositionHere(token, context);
             NotifyTokensChangedForSphere(new TokenInteractionEventArgs { Sphere = this });
+            DisplayAndPositionHere(token, context);
 
         }
 
@@ -492,6 +493,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             AcceptToken(token,context);
             return true;
         }
+
 
 
         public void RemoveDuplicates(ElementStack incomingStack)

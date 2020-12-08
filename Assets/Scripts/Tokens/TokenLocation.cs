@@ -23,11 +23,12 @@ namespace Assets.TabletopUi
 
         }
 
-        public TokenLocation(Vector2 position, SpherePath atSpherePath)
+        public TokenLocation(Vector3 position, Sphere inSphere)
         {
             Position = position;
-            AtSpherePath = atSpherePath;
+            AtSpherePath = inSphere.GetPath();
         }
+
 
         public TokenLocation(Vector3 position,SpherePath atSpherePath)
         {

@@ -29,10 +29,21 @@ namespace Assets.Core.NullObjects
            canvasGroup = GetComponent<CanvasGroup>();
             _manifestation = NullManifestation;
             ElementStack = NullElementStack;
+            gameObject.name = nameof(NullToken);
 
        }
 
+       public override void Populate(ElementStack elementStack)
+       {
+           gameObject.name = "NullTokenForUnpopulatedElementStack";
+       }
 
+       public override bool Retire(RetirementVFX rvfx)
+       {
+           this.Defunct = true;
+           Destroy(gameObject);
+           return true;
+       }
         public override void Manifest()
         {
           //

@@ -13,15 +13,8 @@ namespace Assets.TabletopUi.Scripts.Elements
     {
         public override Element Element
         {
-            get
-            {
-                return new NullElement();
-            }
-            set
-            {
-                NoonUtility.LogWarning("Can't set an element for a NullElementStack, not even " + value.Id);
-            }
-
+            get => new NullElement();
+            set => NoonUtility.LogWarning("Can't set an element for a NullElementStack, not even " + value.Id);
         }
 
         public override bool CanMergeWith(ElementStack intoStack)

@@ -97,7 +97,7 @@ namespace Assets.Core.Entities {
             {
                 var specifiedSphere = _spheres.SingleOrDefault(c => c.GetPath() == spherePath);
                 if (specifiedSphere == null)
-                    return Registry.Get<NullSphere>();
+                    return Registry.Get<Limbo>();
 
                 return specifiedSphere;
 
@@ -105,7 +105,7 @@ namespace Assets.Core.Entities {
             catch (Exception e)
             {
                 NoonUtility.LogWarning($"Error retrieving container with path {spherePath}: {e.Message}");
-                return Registry.Get<NullSphere>();
+                return Registry.Get<Limbo>();
             }
 
         }

@@ -291,8 +291,8 @@ namespace Assets.Core.Entities {
         public void AcceptTokens(SphereCategory forSphereCategory, IEnumerable<Token> tokens,
             Context context)
         {
-            var acceptingContainer = GetSingleSphereByCategory(forSphereCategory);
-            acceptingContainer.AcceptTokens(tokens, context);
+            var acceptingSphere = GetSingleSphereByCategory(forSphereCategory);
+            acceptingSphere.AcceptTokens(tokens, context);
         }
 
         public void AcceptTokens(SphereCategory forSphereCategory, IEnumerable<Token> tokens)

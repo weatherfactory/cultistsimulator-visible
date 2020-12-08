@@ -13,14 +13,10 @@ using Random = System.Random;
 
 namespace Assets.Core.Entities
 {
-    public class DeckInstance : MonoBehaviour, ISaveable
-    {
-        private DeckSpec _deckSpec;
+    public class DeckInstance : MonoBehaviour
+    { private DeckSpec _deckSpec;
       [SerializeField]  private CardsPile _drawPile;
       [SerializeField] private CardsPile _forbiddenCards;
-        
-
-
       public string Id => _deckSpec?.Id;
 
 
@@ -115,26 +111,6 @@ namespace Assets.Core.Entities
             return new Dictionary<string, string>(_deckSpec.DrawMessages);
         }
 
-        public Hashtable GetSaveData()
-        {
-            var cardsHashtable = new Hashtable();
-       
-
-            foreach (var c in GetCurrentCardsAsList())
-            {
-                var indexForTable = (cardsHashtable.Count + 1).ToString();
-                cardsHashtable.Add(indexForTable, c);
-            }
-
-            var alEliminatedCards=new ArrayList();
-            foreach (var e in _forbiddenCards.GetUniqueStackElementIds())
-            {
-                alEliminatedCards.Add(e);
-            }
-            cardsHashtable.Add(SaveConstants.SAVE_ELIMINATEDCARDS,alEliminatedCards);
-
-            return cardsHashtable;
-        }
 
     }
 }

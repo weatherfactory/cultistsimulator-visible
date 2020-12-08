@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.TabletopUi;
 
 namespace Assets.Core.Interfaces
 {
@@ -23,6 +24,7 @@ namespace Assets.Core.Interfaces
       bool Startable { get; }
       bool ExclusiveOpen { get; }
       bool CreationAllowedWhenAlreadyExists(Situation s);
+      Situation CreateDefaultSituation(TokenLocation anchorLocation);
     }
 
 }

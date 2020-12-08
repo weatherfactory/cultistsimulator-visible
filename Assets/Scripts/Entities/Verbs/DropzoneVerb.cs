@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Core.Commands;
 using Assets.Core.Enums;
 using Assets.Core.Fucine;
 using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
+using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Elements.Manifestations;
+using Assets.TabletopUi.Scripts.Services;
+using UnityEngine;
 
 namespace Assets.Core.Entities.Verbs
 {
@@ -59,6 +64,16 @@ namespace Assets.Core.Entities.Verbs
             if (s.Verb.Id == this.Id)
                 return false;
             return true;
+        }
+
+        public Situation CreateDefaultSituation(TokenLocation anchorLocation)
+        {
+            var dropzoneRecipe = Registry.Get<Compendium>().GetEntityById<Recipe>("dropzone.classic");
+
+            var cmd = new SituationCreationCommand(this, dropzoneRecipe, StateEnum.Unstarted, anchorLocation,
+                null);
+           var dropzoneSituation= Registry.Get<SituationBuilder>().CreateSituationWithAnchorAndWindow(cmd);
+           return dropzoneSituation;
         }
     }
 }

@@ -8,6 +8,8 @@ using Assets.Core.Enums;
 using Assets.CS.TabletopUI;
 using Assets.Scripts.States.TokenStates;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Infrastructure.Events;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
 using UnityEngine;
 using Random = System.Random;
@@ -18,8 +20,9 @@ namespace Assets.Scripts.Spheres.Angels
     {
         private const int BEATS_BETWEEN_ANGELRY = 20; 
         private int _beatsTowardsAngelry = 0;
+        private readonly HashSet<Sphere> _spheresToGrabFrom=new HashSet<Sphere>();
 
-        public void MinisterTo(Sphere sphere,float interval)
+        public void MinisterTo(Sphere thresholdSphereToGrabTo,float interval)
         {
 
             _beatsTowardsAngelry++;
@@ -28,18 +31,22 @@ namespace Assets.Scripts.Spheres.Angels
            
                 _beatsTowardsAngelry = 0;
 
-            if (!sphere.CurrentlyBlockedFor(BlockDirection.Inward) && sphere.GetAllTokens().Count == 0)
-                TryGrabStack(sphere, interval);
+            if (!thresholdSphereToGrabTo.CurrentlyBlockedFor(BlockDirection.Inward) && thresholdSphereToGrabTo.GetAllTokens().Count == 0)
+                TryGrabStack(thresholdSphereToGrabTo, interval);
             
+        }
+
+        public void WatchOver(Sphere sphere)
+        {
+            _spheresToGrabFrom.Add(sphere);
         }
 
         private void TryGrabStack(Sphere destinationThresholdSphere, float interval)
         {
-
-            var worldSpheres = Registry.Get<SphereCatalogue>().GetSpheresOfCategory(SphereCategory.World);
-            foreach (var worldSphereToSearch in worldSpheres)
+  
+            foreach (var sphereToSearch in _spheresToGrabFrom)
             {
-                var matchingToken = FindStackForSlotSpecificationInSphere(destinationThresholdSphere.GoverningSlotSpecification, worldSphereToSearch);
+                var matchingToken = FindStackForSlotSpecificationInSphere(destinationThresholdSphere.GoverningSlotSpecification, sphereToSearch);
                 if (matchingToken != null)
                 {
                     

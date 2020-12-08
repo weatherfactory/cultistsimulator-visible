@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Core.Interfaces;
+using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Elements.Manifestations;
 
 namespace Assets.Core.NullObjects
@@ -41,6 +42,11 @@ namespace Assets.Core.NullObjects
         public bool CreationAllowedWhenAlreadyExists(Situation s)
         {
             return true;
+        }
+
+        public Situation CreateDefaultSituation(TokenLocation anchorLocation)
+        {
+            return new NullSituation();
         }
 
         public bool AllowMultipleInstances => true;

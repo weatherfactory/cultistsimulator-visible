@@ -5,6 +5,7 @@ using System.Text;
 using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Elements.Manifestations;
 using Assets.TabletopUi.Scripts.TokenContainers;
 
@@ -65,6 +66,11 @@ namespace Assets.Core.Entities
                     return false;
                 return true;
 
+        }
+
+        public Situation CreateDefaultSituation(TokenLocation anchorLocation)
+        {
+            throw new NotImplementedException();
         }
 
 

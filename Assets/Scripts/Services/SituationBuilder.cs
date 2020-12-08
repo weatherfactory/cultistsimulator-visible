@@ -72,7 +72,7 @@ namespace Assets.TabletopUi.Scripts.Services {
 
         public Token AttachNewAnchor(Vector3 position, Situation situation, Sphere anchorSphere)
         {
-            var newAnchor = Registry.Get<PrefabFactory>().Create<Token>();
+            var newAnchor = Registry.Get<PrefabFactory>().CreateLocally<Token>(anchorSphere.transform);
             situation.AttachAnchor(newAnchor);
             anchorSphere.AcceptToken(newAnchor, new Context(Context.ActionSource.Unknown));
             newAnchor.transform.localPosition = position;

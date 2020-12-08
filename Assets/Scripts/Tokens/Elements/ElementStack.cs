@@ -45,6 +45,7 @@ namespace Assets.CS.TabletopUI {
 
 
         public virtual Element Element { get; set; }
+
         private Token _attachedToken;
         private int _quantity;
 
@@ -66,7 +67,8 @@ namespace Assets.CS.TabletopUI {
 
         public void Awake()
         {
-            _attachedToken=new GameObject().AddComponent<NullToken>();
+            var nullToken = new GameObject().AddComponent<NullToken>();
+            AttachToken(nullToken);
         }
 
 
@@ -287,6 +289,9 @@ namespace Assets.CS.TabletopUI {
 
         public void AttachToken(Token token)
         {
+            if (_attachedToken != null)
+                _attachedToken.Retire(RetirementVFX.None);
+            gameObject.transform.SetParent(token.transform);
             _attachedToken = token;
             _attachedToken.Populate(this);
         }

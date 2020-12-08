@@ -25,6 +25,7 @@ namespace Assets.TabletopUi.Scripts.Services
         [Header("Prefabs")]
         
         public ElementFrame ElementFrame = null;
+
         public Token Token = null;
         public CardManifestation CardManifestation = null;
         public DropzoneManifestation DropzoneManifestation = null;
@@ -76,7 +77,6 @@ namespace Assets.TabletopUi.Scripts.Services
 
         public T GetPrefabObject<T>() where T : Component
         {
-
             string prefabFieldName = typeof(T).Name;
 
             FieldInfo field = GetType().GetField(prefabFieldName);

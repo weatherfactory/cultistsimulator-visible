@@ -99,8 +99,8 @@ namespace Assets.CS.TabletopUI {
 
         public virtual void Awake()
         {
-            if (Sphere == null)
-                Sphere = Registry.Get<NullSphere>();
+            //if (Sphere == null)
+            //    Sphere = Registry.Get<Limbo>();
 
             TokenRectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
@@ -173,7 +173,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void Populate(ElementStack elementStack)
+        public virtual void Populate(ElementStack elementStack)
         {
             ElementStack = elementStack;
             name = elementStack.Element.Id + "_stacktoken";
@@ -708,12 +708,12 @@ namespace Assets.CS.TabletopUI {
             Registry.Get<Chronicler>()?.TokenPlacedOnTabletop(this);
         }
 
-        public  bool Retire()
+        public bool Retire()
         {
             return Retire(RetirementVFX.None);
         }
 
-        public  bool Retire(RetirementVFX vfx)
+        public virtual bool Retire(RetirementVFX vfx)
         {
             if (Defunct)
                 return false;
@@ -724,7 +724,7 @@ namespace Assets.CS.TabletopUI {
             ElementStack.Retire(vfx);
             Sphere.NotifyTokensChangedForSphere(new TokenInteractionEventArgs { Element = Element, Token = this, Sphere = Sphere });  // Notify tabletop that aspects will need recompiling
 
-            SetSphere(Registry.Get<NullSphere>(), new Context(Context.ActionSource.Retire));
+            SetSphere(Registry.Get<Limbo>(), new Context(Context.ActionSource.Retire));
 
             return true;
         }
