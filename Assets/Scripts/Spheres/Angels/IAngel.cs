@@ -10,8 +10,10 @@ namespace Assets.Scripts.Spheres.Angels
 {
    public interface IAngel
    {
-       void MinisterTo(Sphere thresholdSphereToGrabTo,float interval);
+       void Act(float interval);
+
+       void SetMinisterTo(Sphere sphere);
        
-       void WatchOver(Sphere sphere);
+       void SetWatch(Sphere sphere);
    }
 }

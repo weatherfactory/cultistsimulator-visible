@@ -1,7 +1,9 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using Assets.Core.Fucine;
 using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
+using Assets.Scripts.Entities;
 
 namespace Assets.Core.Entities
 {
@@ -11,8 +13,6 @@ namespace Assets.Core.Entities
         {
             //do nothing, we're null
         }
-
-
 
         public static NullRecipe Create()
         {

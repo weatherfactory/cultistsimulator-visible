@@ -81,28 +81,7 @@ namespace Assets.CS.TabletopUI {
 
         private void EstablishAngels(SlotSpecification slotSpec)
         {
-            if (slotSpec.Greedy)
-            {
-                IAngel greedyAngel = new GreedyAngel();
-                greedyAngel.WatchOver(Registry.Get<SphereCatalogue>().GetDefaultWorldSphere());
-                greedyAngel.WatchOver(Registry.Get<SphereCatalogue>().GetDefaultEnRouteSphere());
-                _angels.Add(greedyAngel);
-
-            }
-
-            if (slotSpec.Angel != null)
-            {
-                if (slotSpec.Angel.Choir == "tidy")
-                {
-                    var angel=new TidyAngel();;
-                    var watchOverSpherePath = new SpherePath(slotSpec.Angel.WatchOver);
-                    var watchOverSphere = Registry.Get<SphereCatalogue>().GetSphereByPath(watchOverSpherePath);
-                    angel.WatchOver(watchOverSphere);
-                }
-            }
-
-            GreedyIcon.SetActive(slotSpec.Greedy);
-            ConsumingIcon.SetActive(slotSpec.Consumes);
+          
         }
 
         public void Initialise(SlotSpecification slotSpecification,SituationPath situationPath)
@@ -112,7 +91,20 @@ namespace Assets.CS.TabletopUI {
             gameObject.name = GetPath().ToString();
 
             SlotLabel.text = slotSpecification.Label;
+            if (slotSpecification.Greedy)
+            {
+                IAngel greedyAngel = new GreedyAngel();
+                greedyAngel.SetMinisterTo(this);
+                greedyAngel.SetWatch(Registry.Get<SphereCatalogue>().GetDefaultWorldSphere());
+                greedyAngel.SetWatch(Registry.Get<SphereCatalogue>().GetDefaultEnRouteSphere());
+                _angels.Add(greedyAngel);
 
+            }
+
+          _angels.AddRange(slotSpecification.MakeAngels());
+
+            GreedyIcon.SetActive(slotSpecification.Greedy);
+            ConsumingIcon.SetActive(slotSpecification.Consumes);
 
         }
 

@@ -405,7 +405,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             foreach (var angel in _angels)
             {
-                angel.MinisterTo(this,interval);
+                angel.SetMinisterTo(this);
             }
 
         }

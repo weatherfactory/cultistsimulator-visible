@@ -5,8 +5,9 @@
       "label": "Dropzone",
       "description": "Attach to choreographer and place things here if they don't have an origin",
       "slots": [
-        { "id": "1", angel: {id:"tabletoptidy1",choir:"tidy",watchover:"tabletop"}},
-        { "id": "2", angel: {id:"tabletoptidy1",choir:"tidy",watchover:"tabletop"}}
+        { "id": "1", angels: [{id:"tabletoptidy1",choir:"tidy",watchover:"tabletop"}]},
+        { "id": "2", angels: [{id:"tabletoptidy1",choir:"tidy",watchover:"tabletop"}]},
+          { "id": "3"}
 
       ]
     }

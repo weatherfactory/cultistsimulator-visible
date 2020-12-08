@@ -44,11 +44,9 @@ namespace Assets.Core.Entities.Verbs
         [FucineList(Localise = true)]
         public List<SlotSpecification> Slots { get; set; }
 
-        
-
         public DropzoneVerb(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
-
+       
         }
 
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, Compendium populatedCompendium)

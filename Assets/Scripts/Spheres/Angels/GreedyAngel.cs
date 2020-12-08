@@ -20,23 +20,28 @@ namespace Assets.Scripts.Spheres.Angels
     {
         private const int BEATS_BETWEEN_ANGELRY = 20; 
         private int _beatsTowardsAngelry = 0;
+        private Sphere _thresholdSphereToGrabTo;
         private readonly HashSet<Sphere> _spheresToGrabFrom=new HashSet<Sphere>();
 
-        public void MinisterTo(Sphere thresholdSphereToGrabTo,float interval)
+        public void SetMinisterTo(Sphere thresholdSphereToGrabTo)
         {
 
+        }
+
+        public void Act(float interval)
+        {
             _beatsTowardsAngelry++;
 
             if (_beatsTowardsAngelry >= BEATS_BETWEEN_ANGELRY)
            
                 _beatsTowardsAngelry = 0;
 
-            if (!thresholdSphereToGrabTo.CurrentlyBlockedFor(BlockDirection.Inward) && thresholdSphereToGrabTo.GetAllTokens().Count == 0)
-                TryGrabStack(thresholdSphereToGrabTo, interval);
+            if (!_thresholdSphereToGrabTo.CurrentlyBlockedFor(BlockDirection.Inward) && _thresholdSphereToGrabTo.GetAllTokens().Count == 0)
+                TryGrabStack(_thresholdSphereToGrabTo, interval);
             
         }
 
-        public void WatchOver(Sphere sphere)
+        public void SetWatch(Sphere sphere)
         {
             _spheresToGrabFrom.Add(sphere);
         }

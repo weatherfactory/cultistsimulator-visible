@@ -12,13 +12,17 @@ namespace Assets.Scripts.Spheres.Angels
 {
     public class TidyAngel: IAngel,ISphereEventSubscriber
     {
+        public void Act(float interval)
+        {
 
-        public void MinisterTo(Sphere thresholdSphereToGrabTo, float interval)
+        }
+
+        public void SetMinisterTo(Sphere sphere)
         {
           //
         }
 
-        public void WatchOver(Sphere sphere)
+        public void SetWatch(Sphere sphere)
         {
              sphere.Subscribe(this);
         }

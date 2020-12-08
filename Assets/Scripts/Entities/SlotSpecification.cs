@@ -51,8 +51,8 @@ public class SlotSpecification: AbstractEntity<SlotSpecification>
     [FucineValue(false)]
     public bool Consumes { get; set; }
 
-    [FucineSubEntity(typeof(AngelSpecification))]
-    public AngelSpecification Angel { get; set; }
+    [FucineList]
+   public List<AngelSpecification> Angels { get; set; }
 
     private readonly HashSet<StateEnum> _activeInStates=new HashSet<StateEnum>();
 
@@ -78,6 +78,7 @@ public class SlotSpecification: AbstractEntity<SlotSpecification>
         Required = new AspectsDictionary();
         Forbidden = new AspectsDictionary();
         ActionId = string.Empty;
+        Angels=new List<AngelSpecification>();
     }
 
     public SlotSpecification(string id)
@@ -87,13 +88,23 @@ public class SlotSpecification: AbstractEntity<SlotSpecification>
         Required = new AspectsDictionary();
         Forbidden = new AspectsDictionary();
         ActionId = string.Empty;
+        Angels = new List<AngelSpecification>();
+
     }
 
     public SlotSpecification(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
     {
     }
 
+    public List<IAngel> MakeAngels()
+    {
+        List<IAngel> angels=new List<IAngel>();
 
+        foreach(var a in Angels)
+            angels.Add(a.MakeAngel());
+
+        return angels;
+    }
 
     public ContainerMatchForStack GetSlotMatchForAspects(IAspectsDictionary aspects)
     {
