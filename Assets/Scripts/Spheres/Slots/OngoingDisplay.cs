@@ -50,8 +50,6 @@ namespace Assets.CS.TabletopUI {
         public void SituationStateChanged(Situation situation)
         {
             ShowDeckEffects(situation.CurrentPrimaryRecipe.DeckEffects);
-
-
         }
 
         public void TimerValuesChanged(Situation situation)

@@ -17,6 +17,8 @@ using Noon;
 
 public class SituationStorage : Sphere,ISituationSubscriber
 {
+    //because this is just a sphere, I don't think it needs to be an ISituationAttachment
+    public override SphereCategory SphereCategory => SphereCategory.SituationStorage;
 
     public override bool AllowDrag
     {
@@ -45,7 +47,6 @@ public class SituationStorage : Sphere,ISituationSubscriber
         return new SpherePath("storage");
     }
 
-    public override SphereCategory SphereCategory => SphereCategory.SituationStorage;
 
     public void UpdateDisplay(Situation situation)
     {

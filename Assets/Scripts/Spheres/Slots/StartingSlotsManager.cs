@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
@@ -15,15 +16,69 @@ using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
 
 namespace Assets.TabletopUi.SlotsContainers {
-    public class StartingSlotsManager : AbstractSlotsManager {
+    public class StartingSlotsManager : MonoBehaviour {
 
         [SerializeField] SlotGridManager gridManager;
         public CanvasGroupFader canvasGroupFader;
+        protected List<Threshold> validSlots;
 
         protected Threshold primarySlot;
         private IVerb _verb;
         private SituationWindow _window;
         private SituationPath _situationPath;
+
+
+
+
+        public IEnumerable<ElementStack> GetStacksInSlots()
+        {
+            IList<ElementStack> stacks = new List<ElementStack>();
+            ElementStack stack;
+
+            foreach (Threshold slot in GetAllSlots())
+            {
+                stack = slot.GetElementTokenInSlot().ElementStack;
+
+                if (stack != null)
+                    stacks.Add(stack);
+            }
+
+            return stacks;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="includeElementAspects">true to return aspects for the elements themselves as well; false to include only their aspects</param>
+        /// <returns></returns>
+        public AspectsDictionary GetAspectsFromSlottedCards(bool includeElementAspects)
+        {
+            AspectsDictionary currentAspects = new AspectsDictionary();
+            ElementStack stack;
+
+            foreach (Threshold slot in GetAllSlots())
+            {
+                stack = slot.GetElementTokenInSlot().ElementStack;
+
+                if (stack != null)
+                    currentAspects.CombineAspects(stack.GetAspects(includeElementAspects));
+            }
+
+            return currentAspects;
+        }
+
+        public virtual IList<Threshold> GetAllSlots()
+        {
+
+            return validSlots;
+        }
+
+        public Threshold GetSlotBySaveLocationInfoPath(string saveLocationInfoPath)
+        {
+            var candidateSlots = GetAllSlots();
+            Threshold slotToReturn = candidateSlots.SingleOrDefault(s => s.GetPath().ToString() == saveLocationInfoPath);
+            return slotToReturn;
+        }
 
 
         public void Initialise(IVerb verb,SituationWindow window,SituationPath situationPath) {
@@ -62,7 +117,7 @@ namespace Assets.TabletopUi.SlotsContainers {
         }
 
         
-        public override void RespondToStackAdded(Threshold slot, ElementStack stack, Context context) {
+        public void RespondToStackAdded(Threshold slot, ElementStack stack, Context context) {
             //currently, nothing calls this - it used to be OnCardAdded. I hope we can feed it through the primary event flow
 
             _window.TryResizeWindow(GetAllSlots().Count);
@@ -85,7 +140,7 @@ namespace Assets.TabletopUi.SlotsContainers {
             }
         }
 
-        public override void RespondToStackRemoved(ElementStack stack, Context context) {
+        public void RespondToStackRemoved(ElementStack stack, Context context) {
             //currently, nothing calls this - it used to be OnCardAdded. I hope we can feed it through the primary event flow
             // startingSlots updated may resize window
 
@@ -139,8 +194,7 @@ namespace Assets.TabletopUi.SlotsContainers {
         }
 
 
-
-        protected override void ClearAndDestroySlot(Threshold slot, Context context) {
+        protected  void ClearAndDestroySlot(Threshold slot, Context context) {
             if (slot == null)
                 return;
             if (slot.Defunct)

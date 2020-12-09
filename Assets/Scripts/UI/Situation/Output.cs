@@ -24,7 +24,7 @@ using UnityEngine.Events;
 /// The contents of Output spheres can be picked up by the player, but not replaced. They become unavailable once empty.
 /// </summary>
 public class Output : Sphere,ISituationSubscriber{
-
+    //becaause this is just a sphere, I don't think it needs to be an ISituationAttachment
     public CanvasGroupFader canvasGroupFader;
     [SerializeField] SituationResultsPositioning outputPositioning;
     [SerializeField] TextMeshProUGUI dumpResultsButtonText;
