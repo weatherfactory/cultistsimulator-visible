@@ -13,7 +13,6 @@ namespace Assets.Core.States
         public override void Enter(Situation situation)
         {
             situation.Reset();
-         
         }
 
         public override void Exit(Situation situation)

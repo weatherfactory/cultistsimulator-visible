@@ -665,11 +665,17 @@ namespace Assets.CS.TabletopUI {
                 originToken.ElementStack.AcceptIncomingStackForMerge(this.ElementStack);
                 return;
             }
-            else
+            else if (LocationBeforeDrag != null)
             {
                 var originSphere = Registry.Get<SphereCatalogue>().GetSphereByPath(LocationBeforeDrag.AtSpherePath);
 
-                originSphere.Choreographer.PlaceTokenAtFreeLocalPosition(this, context);
+                originSphere.Choreographer.PlaceTokenAsCloseAsPossibleToSpecifiedPosition(this, context, LocationBeforeDrag.Position);
+            }
+            else
+            {
+                var plausibleOriginSphere = Registry.Get<SphereCatalogue>().GetDefaultWorldSphere();
+
+                plausibleOriginSphere.Choreographer.PlaceTokenAtFreeLocalPosition(this, context);
 
 
                 var tabletop = Registry.Get<TabletopManager>()._tabletop;
@@ -688,12 +694,7 @@ namespace Assets.CS.TabletopUI {
                 }
             }
 
-            if(LocationBeforeDrag!=null)
-            {
-                var originSphere = Registry.Get<SphereCatalogue>().GetSphereByPath(LocationBeforeDrag.AtSpherePath);
-
-              originSphere.Choreographer.PlaceTokenAsCloseAsPossibleToSpecifiedPosition(this, context, LocationBeforeDrag.Position);
-            }
+           
 
         }
 

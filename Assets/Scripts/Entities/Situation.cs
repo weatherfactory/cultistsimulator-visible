@@ -119,7 +119,7 @@ namespace Assets.Core.Entities {
             AddSubscriber(_anchor);
             _anchor.OnWindowClosed.AddListener(Close);
             _anchor.OnStart.AddListener(TryStart);
-            _anchor.OnCollect.AddListener(CollectOutputStacks);
+            _anchor.OnCollect.AddListener(Conclude);
             _anchor.OnContainerAdded.AddListener(AttachSphere);
             _anchor.OnContainerRemoved.AddListener(RemoveContainer);
             _anchor.Populate(this);
@@ -137,7 +137,7 @@ namespace Assets.Core.Entities {
 
             _window.OnWindowClosed.AddListener(Close);
             _window.OnStart.AddListener(TryStart);
-            _window.OnCollect.AddListener(CollectOutputStacks);
+            _window.OnCollect.AddListener(Conclude);
             _window.OnContainerAdded.AddListener(AttachSphere);
             _window.OnContainerRemoved.AddListener(RemoveContainer);
 
@@ -209,7 +209,8 @@ namespace Assets.Core.Entities {
             CurrentPrimaryRecipe = NullRecipe.Create(Verb);
             CurrentRecipePrediction = RecipePrediction.DefaultFromVerb(Verb);
             TimeRemaining = 0;
-            }
+            NotifySubscribersOfStateAndTimerChange();
+        }
 
 
         public List<Sphere> GetSpheres()
@@ -690,24 +691,14 @@ namespace Assets.Core.Entities {
 
 
         }
-
-        public void CollectOutputStacks()
+        
+        /// <summary>
+        /// collects output stacks, retires transient verbs (or should)
+        /// </summary>
+        public void Conclude()
         {
-            var results = GetElementTokens(SphereCategory.Output);
-            foreach (var item in results)
-                item.ReturnToTabletop(new Context(Context.ActionSource.PlayerDumpAll));
-
+           CommandQueue.AddCommand(new ConcludeCommand());
             Continue(0f);
-
-            // Only play collect all if there's actually something to collect 
-            // Only play collect all if it's not transient - cause that will retire it and play the retire sound
-            // Note: If we collect all from the window we also get the default button sound in any case.
-            if (results.Any())
-                SoundManager.PlaySfx("SituationCollectAll");
-            else if (_anchor.Durability == AnchorDurability.Transient)
-                SoundManager.PlaySfx("SituationTokenRetire");
-            else
-                SoundManager.PlaySfx("UIButtonClick");
         }
 
         public void TryDecayOutputContents( float interval)
@@ -756,7 +747,7 @@ namespace Assets.Core.Entities {
             return rc.GetPredictionForFollowupRecipe(CurrentPrimaryRecipe, this);
         }
 
-        public void NotifyTokensChangedForSphere(TokenInteractionEventArgs args)
+        public void OnTokensChangedForSphere(TokenInteractionEventArgs args)
         {
 
             CurrentRecipePrediction = GetUpdatedRecipePrediction();
@@ -764,8 +755,6 @@ namespace Assets.Core.Entities {
 
             foreach (var s in _subscribers)
                 s.SituationSphereContentsUpdated(this);
-
-
         }
 
         public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)

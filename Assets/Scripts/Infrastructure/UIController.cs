@@ -202,7 +202,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             {
                 if (s.IsOpen)
                 {
-                    s.CollectOutputStacks();
+                    s.Conclude();
                     break;
                 }
             }

@@ -27,7 +27,7 @@ namespace Assets.Scripts.Spheres.Angels
              sphere.Subscribe(this);
         }
 
-        public void NotifyTokensChangedForSphere(TokenInteractionEventArgs args)
+        public void OnTokensChangedForSphere(TokenInteractionEventArgs args)
         {
            NoonUtility.Log("Token spotted: " + args.Token.name);
         }

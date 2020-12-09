@@ -584,9 +584,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public void NotifyTokensChangedForSphere(TokenInteractionEventArgs args)
         {
-            Catalogue.NotifyTokensChangedForSphere(args);
+            Catalogue.OnTokensChangedForSphere(args);
             foreach(var s in _subscribers)
-                s.NotifyTokensChangedForSphere(args);
+                s.OnTokensChangedForSphere(args);
         }
 
         public virtual void OnTokenInThisSphereInteracted(TokenInteractionEventArgs args)

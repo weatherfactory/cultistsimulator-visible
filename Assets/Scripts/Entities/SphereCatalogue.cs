@@ -111,7 +111,7 @@ namespace Assets.Core.Entities {
         }
 
 
-        public void NotifyTokensChangedForSphere(TokenInteractionEventArgs args)
+        public void OnTokensChangedForSphere(TokenInteractionEventArgs args)
         {
             NotifyAspectsDirty();
 

@@ -12,7 +12,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 {
     public interface ISphereEventSubscriber
     {
-        void NotifyTokensChangedForSphere(TokenInteractionEventArgs args);
+        void OnTokensChangedForSphere(TokenInteractionEventArgs args);
         void OnTokenInteractionInSphere(TokenInteractionEventArgs args);
     }
 }
