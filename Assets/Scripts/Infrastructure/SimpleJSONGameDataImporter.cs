@@ -197,7 +197,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private void ImportSituations(Sphere tabletop, Hashtable htSituations)
         {
 
-
             foreach (var locationInfo in htSituations.Keys)
             {
                 var htSituationValues =htSituations.GetHashtable(locationInfo);
@@ -320,6 +319,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 //this should happen last, because adding those stacks above can overwrite notes
                 ImportSituationNotes(htSituationValues, situation);
                 situation.ExecuteHeartbeat(0f); //flushes everything through and updates
+
+                situation.NotifySubscribersOfSituationStateChange();
+                situation.NotifySubscribersOfTimerValueUpdate();
 
             }
         }

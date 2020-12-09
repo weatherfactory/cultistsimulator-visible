@@ -107,7 +107,7 @@ namespace Assets.Core.Entities {
 
 
 
-        public void AttachAnchor(Token newAnchor)
+    public void AttachAnchor(Token newAnchor)
         {
             _anchor = newAnchor;
             AddSubscriber(_anchor);
