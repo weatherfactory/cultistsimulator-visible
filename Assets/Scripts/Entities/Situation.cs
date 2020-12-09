@@ -13,6 +13,7 @@ using Assets.Core.States;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
+using Assets.Scripts.Commands.SituationCommands;
 using Assets.Scripts.Interfaces;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
@@ -51,7 +52,6 @@ namespace Assets.Core.Entities {
         private readonly List<ISituationSubscriber> _subscribers = new List<ISituationSubscriber>();
         private readonly List<ISituationAttachment> _registeredAttachments = new List<ISituationAttachment>();
 
-        public HashSet<SituationInterruptInput> CurrentInterrupts = new HashSet<SituationInterruptInput>();
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
         public string OverrideTitle { get; set; }
 
@@ -67,7 +67,7 @@ namespace Assets.Core.Entities {
         }
 
 
-        public SituationCommandQueue SituationCommandQueue= new SituationCommandQueue();
+        public SituationCommandQueue CommandQueue= new SituationCommandQueue();
         public RecipeCompletionEffectCommand CurrentCompletionEffectCommand=new RecipeCompletionEffectCommand();
 
 
@@ -101,13 +101,19 @@ namespace Assets.Core.Entities {
             OverrideTitle = command.OverrideTitle;
             Path = command.SituationPath;
             foreach(var c in command.Commands)
-                SituationCommandQueue.AddCommand(c);
+                CommandQueue.AddCommand(c);
             CurrentState = SituationState.Rehydrate(command.State,this);
         }
 
+        public void TransitionToState(SituationState newState)
+        {
+            CurrentState.Exit(this);
+            newState.Enter(this);
+            CurrentState = newState;
+            NotifySubscribersOfSituationStateChange();
+        }
 
-
-    public void AttachAnchor(Token newAnchor)
+        public void AttachAnchor(Token newAnchor)
         {
             _anchor = newAnchor;
             AddSubscriber(_anchor);
@@ -205,10 +211,6 @@ namespace Assets.Core.Entities {
             TimeRemaining = 0;
             }
 
-        public void Halt()
-        {
-            CurrentInterrupts.Add(SituationInterruptInput.Halt);
-        }
 
         public List<Sphere> GetSpheres()
         {
@@ -729,15 +731,11 @@ namespace Assets.Core.Entities {
             if (recipe != null)
 
             {
-            
-                CurrentInterrupts.Add(SituationInterruptInput.Start);
-
-                CurrentPrimaryRecipe = recipe;
-                TimeRemaining = CurrentPrimaryRecipe.Warmup;
+               var activateRecipeCommand=new TryActivateRecipeCommand(recipe);
+                CommandQueue.AddCommand(activateRecipeCommand);
 
                 //The game might be paused! or the player might just be incredibly quick off the mark
-                //so immediately continue with a 0 interval - this won't advance time, but will update the visuals in the situation window
-                //(which among other things should make the starting slot unavailable
+                //so immediately continue with a 0 interval
 
                 Continue(0f);
             }

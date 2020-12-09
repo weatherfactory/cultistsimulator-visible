@@ -11,12 +11,12 @@ namespace Assets.Core.States
 
         public override bool Extinct => false;
 
-        protected override void Enter(Situation situation)
+        public override void Enter(Situation situation)
         {
 
         }
 
-        protected override void Exit(Situation situation)
+        public override void Exit(Situation situation)
         {
             
         }
@@ -52,17 +52,12 @@ namespace Assets.Core.States
 
         public override void Continue(Situation situation)
         {
-            situation.SituationCommandQueue.ExecuteCommandsFor(CommandCategory.Anchor, situation);
-            situation.SituationCommandQueue.ExecuteCommandsFor(CommandCategory.RecipeSlots, situation);
-
-            if (situation.CurrentInterrupts.Contains(SituationInterruptInput.Halt))
-            {
-                situation.CurrentInterrupts.Remove(SituationInterruptInput.Halt);
-                   ChangeState(this,new HaltingState(),situation);
-            }
+            situation.CommandQueue.ExecuteCommandsFor(CommandCategory.Anchor, situation);
+            situation.CommandQueue.ExecuteCommandsFor(CommandCategory.RecipeSlots, situation);
+            situation.CommandQueue.ExecuteCommandsFor(CommandCategory.Timer, situation);
 
             if (situation.TimeRemaining <= 0)
-                ChangeState(this,new RequiresExecutionState(), situation);
+             situation.TransitionToState(new RequiresExecutionState());
             else
             {
                 situation.TimeRemaining -= situation.IntervalForLastHeartbeat;

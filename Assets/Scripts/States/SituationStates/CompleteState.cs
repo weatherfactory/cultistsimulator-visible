@@ -9,7 +9,7 @@ namespace Assets.Core.States
     public class CompleteState : SituationState
     {
         public override bool Extinct => false;
-        protected override void Enter(Situation situation)
+        public override void Enter(Situation situation)
         {
          
             var outputTokens = situation.GetTokens(SphereCategory.SituationStorage);
@@ -19,7 +19,7 @@ namespace Assets.Core.States
             SoundManager.PlaySfx("SituationComplete"); //this could run through that Echo obj
         }
 
-        protected override void Exit(Situation situation)
+        public override void Exit(Situation situation)
         {
        
         }
@@ -39,11 +39,7 @@ namespace Assets.Core.States
 
         public override void Continue(Situation situation)
         {
-            if (situation.CurrentInterrupts.Contains(SituationInterruptInput.AllOutputsCollected))
-            {
-                situation.CurrentInterrupts.Remove(SituationInterruptInput.AllOutputsCollected);
-                ChangeState(this, new UnstartedState(), situation);
-            }
+            situation.CommandQueue.ExecuteCommandsFor(CommandCategory.Output, situation);
         }
     }
 }

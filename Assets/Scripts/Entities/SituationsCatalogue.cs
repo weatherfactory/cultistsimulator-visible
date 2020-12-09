@@ -7,6 +7,7 @@ using Assets.Core.Enums;
 using Assets.Core.Fucine;
 using Assets.Core.NullObjects;
 using Assets.CS.TabletopUI;
+using Assets.Scripts.Commands.SituationCommands;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
@@ -131,7 +132,7 @@ namespace Assets.Core.Entities
                 {
                     if (s.Verb.Id.StartsWith(wildcardToDelete))
                     {
-                        s.Halt();
+                        s.CommandQueue.AddCommand(new TryHaltSituationCommand());
                         i++;
                     }
 
@@ -146,7 +147,7 @@ namespace Assets.Core.Entities
                 {
                     if (s.Verb.Id == toHaltId.Trim())
                     {
-                        s.Halt();
+                        s.CommandQueue.AddCommand(new TryHaltSituationCommand());
                         i++;
                     }
                     if (i >= maxToHalt)

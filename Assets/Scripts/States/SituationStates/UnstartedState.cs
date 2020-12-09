@@ -10,13 +10,13 @@ namespace Assets.Core.States
     public class UnstartedState : SituationState
     {
 
-        protected override void Enter(Situation situation)
+        public override void Enter(Situation situation)
         {
             situation.Reset();
          
         }
 
-        protected override void Exit(Situation situation)
+        public override void Exit(Situation situation)
         {
        situation.CurrentRecipePrediction = situation.GetUpdatedRecipePrediction();
 
@@ -63,35 +63,7 @@ namespace Assets.Core.States
 
         public override void Continue (Situation situation)
         {
-            if (situation.CurrentInterrupts.Contains(SituationInterruptInput.Start))
-            {
-                situation.CurrentInterrupts.Remove(SituationInterruptInput.Start);
-                var aspects =situation.GetAspectsAvailableToSituation(true);
-                var tc = Registry.Get<SphereCatalogue>();
-                var aspectsInContext = tc.GetAspectsInContext(aspects);
-
-
-                var recipe = Registry.Get<Compendium>().GetFirstMatchingRecipe(aspectsInContext, situation.Verb.Id, Registry.Get<Character>(), false);
-
-                //no recipe found? get outta here
-                if (recipe != null)
-                    
-                situation.CurrentPrimaryRecipe = recipe;
-                situation.TimeRemaining = situation.CurrentPrimaryRecipe.Warmup;
-
-                SoundManager.PlaySfx("SituationBegin");
-
-                //called here in case starting slots trigger consumption
-                foreach (var t in situation.GetSpheresByCategory(SphereCategory.Threshold))
-                    t.ActivatePreRecipeExecutionBehaviour();
-
-                //now move the stacks out of the starting slots into storage
-                situation.AcceptTokens(SphereCategory.SituationStorage, situation.GetElementTokens(SphereCategory.Threshold));
-
-               ChangeState(this,new OngoingState(), situation);
-
-            }
-
+            situation.CommandQueue.ExecuteCommandsFor(CommandCategory.VerbSlots,situation);
         }
     }
 }

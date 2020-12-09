@@ -16,13 +16,13 @@ namespace Assets.Core.States
 
         public override bool Extinct => false;
 
-        protected override void Enter(Situation situation)
+        public override void Enter(Situation situation)
         {
 
             situation.ExecuteCurrentRecipe();
         }
 
-        protected override void Exit(Situation situation)
+        public override void Exit(Situation situation)
         {
             
         }
@@ -43,11 +43,6 @@ namespace Assets.Core.States
 
         public override void Continue(Situation situation)
         {
-            if (situation.CurrentInterrupts.Contains(SituationInterruptInput.Halt))
-            {
-                situation.CurrentInterrupts.Remove(SituationInterruptInput.Halt);
-                ChangeState(this,new HaltingState(), situation);
-            }
 
             var tc = Registry.Get<SphereCatalogue>();
             var aspectsInContext = tc.GetAspectsInContext(situation.GetAspectsAvailableToSituation(true));
@@ -74,12 +69,12 @@ namespace Assets.Core.States
 
                 }
 
-                ChangeState(this, new OngoingState(), situation);
+                situation.TransitionToState( new OngoingState());
 
             }
             else
             {
-                ChangeState(this, new CompleteState(), situation);
+                situation.TransitionToState( new CompleteState());
 
             }
 

@@ -13,8 +13,8 @@ namespace Assets.Core.States
 {
    public abstract class SituationState
    {
-       protected abstract void Enter(Situation situation);
-       protected abstract void Exit(Situation situation);
+       public abstract void Enter(Situation situation);
+       public abstract void Exit(Situation situation);
        public abstract bool IsActiveInThisState(Sphere sphereToCheck);
        public abstract bool IsValidPredictionForState(Recipe recipeToCheck, Situation s);
        public abstract bool Extinct { get; }
@@ -60,13 +60,7 @@ namespace Assets.Core.States
 
         public abstract void Continue(Situation situation);
 
-        protected void ChangeState(SituationState oldState, SituationState newState, Situation situation)
-        {
-            oldState.Exit(situation);
-            newState.Enter(situation);
-            situation.CurrentState = newState;
-            situation.NotifySubscribersOfSituationStateChange();
-        }
+
 
 
    }
