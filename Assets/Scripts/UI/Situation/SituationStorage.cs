@@ -33,7 +33,7 @@ public class SituationStorage : Sphere,ISituationSubscriber
     public void Initialise(Situation situation)
     { 
         situation.AddSubscriber(this);
-        situation.AddContainer(this);
+        situation.AttachSphere(this);
     }
 
 

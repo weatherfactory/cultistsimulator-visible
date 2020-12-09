@@ -104,7 +104,7 @@ namespace Assets.CS.TabletopUI {
             artwork.sprite = sprite;
         }
          
-        public void Initialise(Situation situation) {
+        public void  Initialise(Situation situation) {
 			Verb = situation.Verb;
             _situationPath = situation.Path;
             name = "Window_" + Verb.Id;

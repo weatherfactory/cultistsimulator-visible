@@ -72,7 +72,7 @@ namespace Assets.Core.Entities
                 return _currentSituations.DefaultIfEmpty(new NullSituation()).SingleOrDefault(s => s.Path == path);
 
             }
-            catch (Exception e)
+            catch (InvalidOperationException)
             {
                 NoonUtility.LogWarning("More than one situation with path " + path + "  - returning the first.");
                 return _currentSituations.First(s => s.Path == path);

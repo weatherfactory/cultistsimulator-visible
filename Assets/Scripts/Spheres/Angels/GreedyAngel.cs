@@ -25,7 +25,7 @@ namespace Assets.Scripts.Spheres.Angels
 
         public void SetMinisterTo(Sphere thresholdSphereToGrabTo)
         {
-
+            _thresholdSphereToGrabTo = thresholdSphereToGrabTo;
         }
 
         public void Act(float interval)

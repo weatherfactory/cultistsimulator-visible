@@ -45,7 +45,7 @@ public class Output : Sphere,ISituationSubscriber{
     {
 
         s.AddSubscriber(this);
-        s.AddContainer(this);
+        s.AttachSphere(this);
         buttonClearResultsDefault = "VERB_COLLECT";
         buttonClearResultsNone = "VERB_ACCEPT";
     }

@@ -13,13 +13,14 @@ namespace Assets.Core.States
 
         protected override void Enter(Situation situation)
         {
-         situation.CurrentBeginningEffectCommand = new RecipeBeginningEffectCommand(situation.CurrentPrimaryRecipe.Slots, situation.CurrentRecipePrediction?.BurnImage);
+
         }
 
         protected override void Exit(Situation situation)
         {
             
         }
+
 
         public override bool IsActiveInThisState(Sphere s)
         {
@@ -51,7 +52,10 @@ namespace Assets.Core.States
 
         public override void Continue(Situation situation)
         {
-            if(situation.CurrentInterrupts.Contains(SituationInterruptInput.Halt))
+            situation.SituationCommandQueue.ExecuteCommandsFor(CommandCategory.Anchor, situation);
+            situation.SituationCommandQueue.ExecuteCommandsFor(CommandCategory.RecipeSlots, situation);
+
+            if (situation.CurrentInterrupts.Contains(SituationInterruptInput.Halt))
             {
                 situation.CurrentInterrupts.Remove(SituationInterruptInput.Halt);
                    ChangeState(this,new HaltingState(),situation);

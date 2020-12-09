@@ -800,12 +800,11 @@ namespace Assets.CS.TabletopUI {
 
         public virtual void SituationStateChanged(Situation situation)
         {
-            if (situation.CurrentBeginningEffectCommand != null)
+            if (situation.SituationCommandQueue != null)
             {
                 //if (situation.CurrentBeginningEffectCommand.OngoingSlots.Any())
                 //    _manifestation.DisplaySpheres(situation.CurrentBeginningEffectCommand.OngoingSlots[0].Greedy);
-                if (!string.IsNullOrEmpty(situation.CurrentBeginningEffectCommand.BurnImage))
-                    BurnImageUnderToken(situation.CurrentBeginningEffectCommand.BurnImage);
+    
             }
 
             _manifestation.DisplaySpheres(situation.GetSpheresActiveForCurrentState());

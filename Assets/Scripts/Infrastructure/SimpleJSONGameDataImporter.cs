@@ -11,6 +11,7 @@ using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.Core.NullObjects;
 using Assets.CS.TabletopUI;
+using Assets.Scripts.Commands.SituationCommands;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
 using OrbCreationExtensions;
@@ -291,7 +292,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                        ongoingSlotSpecs.Add(slot);
 
                 }
-                command.OngoingSlots = ongoingSlotSpecs;
+                var slotsCommand=new PopulateRecipeSlotsCommand(ongoingSlotSpecs);
+                command.Commands.Add(slotsCommand);
 
                 //old code for this stuff below:
                 //SaveLocationInfo for slots are recorded with an appended Guid. Everything up until the last separator is the slotId

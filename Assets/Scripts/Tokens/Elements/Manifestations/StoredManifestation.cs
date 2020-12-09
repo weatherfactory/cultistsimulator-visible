@@ -18,6 +18,8 @@ using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 {
+
+#pragma warning disable 649
     [RequireComponent(typeof(RectTransform))]
     public class StoredManifestation: MonoBehaviour, IManifestation
     {
@@ -26,9 +28,11 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
 
         [SerializeField] private CanvasGroup canvasGroup;
+
         
         [SerializeField] private ElementFrame elementFrame;
 
+#pragma warning restore 649
         public void InitialiseVisuals(Element element)
         {
             name = "StoredManifestation_" + element.Id;

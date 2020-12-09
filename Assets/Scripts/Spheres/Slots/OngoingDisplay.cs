@@ -12,6 +12,7 @@ using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,7 +22,7 @@ using Noon;
 using UnityEngine.Events;
 
 namespace Assets.CS.TabletopUI {
-    public class OngoingDisplay:MonoBehaviour,ISituationSubscriber,IRecipeSlotHolder {
+    public class OngoingDisplay:MonoBehaviour,ISituationSubscriber,ISituationAttachment {
 
         [SerializeField] Transform slotHolder; 
         [SerializeField] Image countdownBar;
@@ -39,12 +40,10 @@ namespace Assets.CS.TabletopUI {
         public void Initialise(Situation situation)
         {
             situation.AddSubscriber(this);
-            _onSlotAdded.AddListener(situation.AddContainer);
+            situation.RegisterAttachment(this);
+            _onSlotAdded.AddListener(situation.AttachSphere);
             _onSlotRemoved.AddListener(situation.RemoveContainer);
             _situationPath = situation.Path;
-
-            if (situation.CurrentBeginningEffectCommand != null)
-               situation.CurrentBeginningEffectCommand. PopulateRecipeSlots(this);
         }
 
 
@@ -52,11 +51,7 @@ namespace Assets.CS.TabletopUI {
         {
             ShowDeckEffects(situation.CurrentPrimaryRecipe.DeckEffects);
 
-            if (situation.CurrentBeginningEffectCommand != null) 
-            {
-                situation.CurrentBeginningEffectCommand.PopulateRecipeSlots(this);
 
-            }
         }
 
         public void TimerValuesChanged(Situation situation)
@@ -75,7 +70,7 @@ namespace Assets.CS.TabletopUI {
          //
         }
 
-        public void AddRecipeThreshold(SlotSpecification spec)
+        public void CreateThreshold(SlotSpecification spec)
         {
             var newSlot = Registry.Get<PrefabFactory>().CreateLocally<Threshold>(slotHolder);
             newSlot.Initialise(spec, _situationPath);
@@ -88,7 +83,13 @@ namespace Assets.CS.TabletopUI {
             _onSlotAdded.Invoke(newSlot);
         }
 
-        public void ClearRecipeThresholds()
+        public bool MatchesCommandCategory(CommandCategory category)
+        {
+
+            return category == CommandCategory.RecipeSlots;
+        }
+
+        public void ClearThresholds()
         {
 
             foreach (var os in this.recipeSlots)

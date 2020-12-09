@@ -24,6 +24,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
     [RequireComponent(typeof(RectTransform))]
     public class VerbManifestation: MonoBehaviour, IManifestation
     {
+#pragma warning disable 649
         [SerializeField] Image artwork;
 
         [Header("Token Body")]
@@ -60,6 +61,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
 
         [SerializeField] public GraphicFader glowImage;
 
+
         public Transform Transform => gameObject.transform;
         public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
 
@@ -68,6 +70,7 @@ namespace Assets.TabletopUi.Scripts.Elements.Manifestations
         private bool _transient;
         private Coroutine animCoroutine;
 
+#pragma warning restore 649
 
         public void InitialiseVisuals(Element element)
         {

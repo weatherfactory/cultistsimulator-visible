@@ -14,12 +14,14 @@ using Random = System.Random;
 namespace Assets.Core.Entities
 {
     public class DeckInstance : MonoBehaviour
-    { private DeckSpec _deckSpec;
+    {
+#pragma warning disable 649
+        private DeckSpec _deckSpec;
       [SerializeField]  private CardsPile _drawPile;
       [SerializeField] private CardsPile _forbiddenCards;
       public string Id => _deckSpec?.Id;
 
-
+#pragma warning restore 649
         /// <summary>
         /// Resets with a deckspec, but *does* not yet populate the cards list
         /// </summary>

@@ -23,6 +23,7 @@ namespace Assets.TabletopUi.Scripts.Services
 {
     public class Glory: MonoBehaviour
     {
+#pragma warning disable 649
         public LanguageManager languageManager;
         public StageHand stageHand;
         public PrefabFactory prefabFactory;
@@ -41,11 +42,9 @@ namespace Assets.TabletopUi.Scripts.Services
         public NullManifestation NullManifestation;
         public NullToken NullToken;
         public NullElementStack NullElementStack;
-        
 
-
-
-        private string initialisedAt = null;
+        private string _initialisedAt;
+#pragma warning restore 649
 
         public Glory(ScreenResolutionAdapter screenResolutionAdapter)
         {
@@ -55,8 +54,8 @@ namespace Assets.TabletopUi.Scripts.Services
 
         public void Awake()
         {
-            if (initialisedAt == null)
-                initialisedAt = DateTime.Now.ToString();
+            if (_initialisedAt == null)
+                _initialisedAt = DateTime.Now.ToString();
             else
             {
                 NoonUtility.LogWarning("Problem: looks like we're trying to load the master scene twice");

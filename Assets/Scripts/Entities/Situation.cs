@@ -13,6 +13,7 @@ using Assets.Core.States;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
+using Assets.Scripts.Interfaces;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Events;
@@ -25,7 +26,8 @@ using UnityEngine.Assertions;
 
 namespace Assets.Core.Entities {
 
-    public class Situation: ISphereEventSubscriber
+    public class 
+        Situation: ISphereEventSubscriber
     {
         public SituationState CurrentState { get; set; }
         public Recipe CurrentPrimaryRecipe { get; set; }
@@ -46,7 +48,9 @@ namespace Assets.Core.Entities {
         }
 
         public virtual IVerb Verb { get; set; }
-        private readonly List<ISituationSubscriber> subscribers = new List<ISituationSubscriber>();
+        private readonly List<ISituationSubscriber> _subscribers = new List<ISituationSubscriber>();
+        private readonly List<ISituationAttachment> _registeredAttachments = new List<ISituationAttachment>();
+
         public HashSet<SituationInterruptInput> CurrentInterrupts = new HashSet<SituationInterruptInput>();
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
         public string OverrideTitle { get; set; }
@@ -63,7 +67,7 @@ namespace Assets.Core.Entities {
         }
 
 
-        public RecipeBeginningEffectCommand CurrentBeginningEffectCommand= new RecipeBeginningEffectCommand();
+        public SituationCommandQueue SituationCommandQueue= new SituationCommandQueue();
         public RecipeCompletionEffectCommand CurrentCompletionEffectCommand=new RecipeCompletionEffectCommand();
 
 
@@ -96,7 +100,8 @@ namespace Assets.Core.Entities {
             CurrentPrimaryRecipe = command.Recipe;
             OverrideTitle = command.OverrideTitle;
             Path = command.SituationPath;
-            CurrentBeginningEffectCommand.OngoingSlots=new List<SlotSpecification>(command.OngoingSlots);
+            foreach(var c in command.Commands)
+                SituationCommandQueue.AddCommand(c);
             CurrentState = SituationState.Rehydrate(command.State,this);
         }
 
@@ -109,7 +114,7 @@ namespace Assets.Core.Entities {
             _anchor.OnWindowClosed.AddListener(Close);
             _anchor.OnStart.AddListener(TryStart);
             _anchor.OnCollect.AddListener(CollectOutputStacks);
-            _anchor.OnContainerAdded.AddListener(AddContainer);
+            _anchor.OnContainerAdded.AddListener(AttachSphere);
             _anchor.OnContainerRemoved.AddListener(RemoveContainer);
             _anchor.Populate(this);
             NotifySubscribersOfSituationStateChange();
@@ -127,7 +132,7 @@ namespace Assets.Core.Entities {
             _window.OnWindowClosed.AddListener(Close);
             _window.OnStart.AddListener(TryStart);
             _window.OnCollect.AddListener(CollectOutputStacks);
-            _window.OnContainerAdded.AddListener(AddContainer);
+            _window.OnContainerAdded.AddListener(AttachSphere);
             _window.OnContainerRemoved.AddListener(RemoveContainer);
 
             _window.Initialise(this);
@@ -135,37 +140,46 @@ namespace Assets.Core.Entities {
             NotifySubscribersOfTimerValueUpdate();
         }
 
+        public bool RegisterAttachment(ISituationAttachment attachmentToRegister)
+        {
+
+            if (_registeredAttachments.Contains(attachmentToRegister))
+                return false;
+
+            _registeredAttachments.Add(attachmentToRegister);
+            return true;
+        }
 
         public bool AddSubscriber(ISituationSubscriber subscriber)
         {
 
-            if (subscribers.Contains(subscriber))
+            if (_subscribers.Contains(subscriber))
                 return false;
 
-            subscribers.Add(subscriber);
+            _subscribers.Add(subscriber);
             return true;
         }
 
         public bool RemoveSubscriber(ISituationSubscriber subscriber)
         {
-            if (!subscribers.Contains(subscriber))
+            if (!_subscribers.Contains(subscriber))
                 return false;
 
-            subscribers.Remove(subscriber);
+            _subscribers.Remove(subscriber);
             return true;
         }
 
 
-        public void AddContainer(Sphere container)
+        public void AttachSphere(Sphere container)
         {
             container.Subscribe(this);
             _spheres.Add(container);
         }
 
-        public void AddContainers(IEnumerable<Sphere> containers)
+        public void AttachSpheres(IEnumerable<Sphere> containers)
         {
             foreach (var c in containers)
-                AddContainer(c);
+                AttachSphere(c);
         }
 
         public void RemoveContainer(Sphere c)
@@ -358,7 +372,6 @@ namespace Assets.Core.Entities {
             CurrentState.Continue(this);
 
 
-            CurrentBeginningEffectCommand = new RecipeBeginningEffectCommand();
             CurrentCompletionEffectCommand = new RecipeCompletionEffectCommand();
 
             return CurrentState;
@@ -367,7 +380,7 @@ namespace Assets.Core.Entities {
 
         public void NotifySubscribersOfSituationStateChange()
         {
-            foreach (var subscriber in subscribers)
+            foreach (var subscriber in _subscribers)
             {
                 subscriber.SituationStateChanged(this);
             }
@@ -375,7 +388,7 @@ namespace Assets.Core.Entities {
 
         public void NotifySubscribersOfTimerValueUpdate()
         {
-            foreach (var subscriber in subscribers)
+            foreach (var subscriber in _subscribers)
                 subscriber.TimerValuesChanged(this);
         }
 
@@ -511,7 +524,7 @@ namespace Assets.Core.Entities {
         Notification refinedNotification = new Notification(notification.Title,
             tr.RefineString(notification.Description));
         
-            foreach (var subscriber in subscribers)
+            foreach (var subscriber in _subscribers)
                 subscriber.ReceiveNotification(refinedNotification);
 
         }
@@ -607,6 +620,11 @@ namespace Assets.Core.Entities {
     }
 
 
+
+    public List<ISituationAttachment> GetSituationAttachmentsForCommandCategory(CommandCategory commandCategory)
+    {
+            return new List<ISituationAttachment>(_registeredAttachments.Where(a=>a.MatchesCommandCategory(commandCategory)));
+    }
 
     public List<Sphere> GetAvailableThresholdsForStackPush(ElementStack stack)
     {
@@ -745,7 +763,7 @@ namespace Assets.Core.Entities {
             CurrentRecipePrediction = GetUpdatedRecipePrediction();
             PossiblySignalImpendingDoom(CurrentRecipePrediction.SignalEndingFlavour);
 
-            foreach (var s in subscribers)
+            foreach (var s in _subscribers)
                 s.SituationSphereContentsUpdated(this);
 
 
