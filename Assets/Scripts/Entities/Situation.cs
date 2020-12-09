@@ -110,7 +110,7 @@ namespace Assets.Core.Entities {
             CurrentState.Exit(this);
             newState.Enter(this);
             CurrentState = newState;
-            NotifySubscribersOfSituationStateChange();
+            NotifySubscribersOfStateAndTimerChange();
         }
 
         public void AttachAnchor(Token newAnchor)
@@ -123,7 +123,7 @@ namespace Assets.Core.Entities {
             _anchor.OnContainerAdded.AddListener(AttachSphere);
             _anchor.OnContainerRemoved.AddListener(RemoveContainer);
             _anchor.Populate(this);
-            NotifySubscribersOfSituationStateChange();
+            NotifySubscribersOfStateAndTimerChange();
             NotifySubscribersOfTimerValueUpdate();
         }
 
@@ -142,7 +142,7 @@ namespace Assets.Core.Entities {
             _window.OnContainerRemoved.AddListener(RemoveContainer);
 
             _window.Initialise(this);
-            NotifySubscribersOfSituationStateChange();
+            NotifySubscribersOfStateAndTimerChange();
             NotifySubscribersOfTimerValueUpdate();
         }
 
@@ -380,11 +380,12 @@ namespace Assets.Core.Entities {
         }
 
 
-        public void NotifySubscribersOfSituationStateChange()
+        public void NotifySubscribersOfStateAndTimerChange()
         {
             foreach (var subscriber in _subscribers)
             {
                 subscriber.SituationStateChanged(this);
+                subscriber.TimerValuesChanged(this);
             }
         }
 

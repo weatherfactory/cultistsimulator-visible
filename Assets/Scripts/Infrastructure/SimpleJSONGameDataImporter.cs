@@ -320,8 +320,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 ImportSituationNotes(htSituationValues, situation);
                 situation.ExecuteHeartbeat(0f); //flushes everything through and updates
 
-                situation.NotifySubscribersOfSituationStateChange();
-                situation.NotifySubscribersOfTimerValueUpdate();
+                situation.NotifySubscribersOfStateAndTimerChange();
 
             }
         }

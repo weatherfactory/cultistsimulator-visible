@@ -133,6 +133,7 @@ namespace Assets.Core.Entities
                     if (s.Verb.Id.StartsWith(wildcardToDelete))
                     {
                         s.CommandQueue.AddCommand(new TryHaltSituationCommand());
+                        s.ExecuteHeartbeat(0f);
                         i++;
                     }
 
@@ -148,6 +149,7 @@ namespace Assets.Core.Entities
                     if (s.Verb.Id == toHaltId.Trim())
                     {
                         s.CommandQueue.AddCommand(new TryHaltSituationCommand());
+                        s.ExecuteHeartbeat(0f);
                         i++;
                     }
                     if (i >= maxToHalt)

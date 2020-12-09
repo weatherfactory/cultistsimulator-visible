@@ -13,6 +13,7 @@ namespace Assets.Core.States
         {
             //If we leave anything in the ongoing slot, it's lost, so let's rescue it to SituationStorage
             situation.AcceptTokens(SphereCategory.SituationStorage, situation.GetTokens(SphereCategory.Threshold));
+            situation.Reset();
         }
 
         public override void Exit(Situation situation)

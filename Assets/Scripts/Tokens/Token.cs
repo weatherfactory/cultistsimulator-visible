@@ -800,13 +800,6 @@ namespace Assets.CS.TabletopUI {
 
         public virtual void SituationStateChanged(Situation situation)
         {
-            if (situation.CommandQueue != null)
-            {
-                //if (situation.CurrentBeginningEffectCommand.OngoingSlots.Any())
-                //    _manifestation.DisplaySpheres(situation.CurrentBeginningEffectCommand.OngoingSlots[0].Greedy);
-    
-            }
-
             _manifestation.DisplaySpheres(situation.GetSpheresActiveForCurrentState());
         }
 

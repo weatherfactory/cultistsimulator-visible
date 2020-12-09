@@ -112,9 +112,6 @@ namespace Assets.CS.TabletopUI {
             {
                 canvasGroupFader.Show();
 
-
-    
-
                 Color barColor =
                     UIStyle.GetColorForCountdownBar(signalEndingFlavour, durationRemaining);
 

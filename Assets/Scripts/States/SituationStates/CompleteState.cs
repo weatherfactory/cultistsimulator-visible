@@ -11,12 +11,7 @@ namespace Assets.Core.States
         public override bool Extinct => false;
         public override void Enter(Situation situation)
         {
-         
-            var outputTokens = situation.GetTokens(SphereCategory.SituationStorage);
-            situation.AcceptTokens(SphereCategory.Output, outputTokens, new Context(Context.ActionSource.SituationResults));
-
-            situation.AttemptAspectInductions(situation.CurrentPrimaryRecipe, outputTokens);
-            SoundManager.PlaySfx("SituationComplete"); //this could run through that Echo obj
+            
         }
 
         public override void Exit(Situation situation)
