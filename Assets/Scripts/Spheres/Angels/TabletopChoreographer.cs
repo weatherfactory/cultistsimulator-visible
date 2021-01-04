@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Core.Commands;
-using Assets.Core.Entities;
-using Assets.Core.Entities.Verbs;
-using Assets.Core.Enums;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
-using Assets.Scripts.Spheres.Angels;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Assets.TabletopUi.Scripts.Services;
-using Assets.TabletopUi.Scripts.TokenContainers;
+using SecretHistories.Commands;
+using SecretHistories.Entities;
+using SecretHistories.Entities.Verbs;
+using SecretHistories.Enums;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
+using SecretHistories.Spheres.Angels;
+using SecretHistories.Interfaces;
+using SecretHistories.Services;
+using SecretHistories.TokenContainers;
 using Microsoft.Unity.VisualStudio.Editor;
-using Noon;
+
 using UnityEngine;
 
-namespace Assets.TabletopUi.Scripts.Infrastructure {
+namespace SecretHistories.Infrastructure {
     //places, arranges and displays things on the table
     public class TabletopChoreographer:MonoBehaviour, ISettingSubscriber,IChoreographer {
 

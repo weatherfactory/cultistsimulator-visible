@@ -2,7 +2,7 @@
 using System.Reflection;
 using UnityEngine;
 
-namespace Assets.Core.Fucine
+namespace SecretHistories.Fucine
 {
     public class CachedFucineProperty<TTarget> where TTarget : AbstractEntity<TTarget>
     {

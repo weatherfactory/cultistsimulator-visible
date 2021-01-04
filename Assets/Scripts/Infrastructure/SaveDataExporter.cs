@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
-using Assets.Core.Entities;
-using Assets.TabletopUi.Scripts.Infrastructure;
+using SecretHistories.Entities;
+using SecretHistories.Infrastructure;
 
 namespace Assets.TabletopUi.Scripts
 {

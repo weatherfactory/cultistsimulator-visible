@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Assets.CS.TabletopUI;
+using SecretHistories.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Interfaces;
+using SecretHistories.Infrastructure;
+using SecretHistories.Interfaces;
 
 [RequireComponent(typeof(Camera))]
 public class CameraZoom : MonoBehaviour {

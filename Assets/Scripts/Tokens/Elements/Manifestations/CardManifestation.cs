@@ -5,21 +5,21 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
-using Assets.CS.TabletopUI.Interfaces;
-using Assets.TabletopUi.Scripts.Elements.Manifestations;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Noon;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
+using SecretHistories.Interfaces;
+using SecretHistories.Elements.Manifestations;
+using SecretHistories.Infrastructure;
+using SecretHistories.Interfaces;
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Assets.TabletopUi.Scripts.Elements
+namespace SecretHistories.Elements
 {
     [RequireComponent(typeof(RectTransform))]
     public class CardManifestation : MonoBehaviour, IManifestation

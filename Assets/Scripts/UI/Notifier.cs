@@ -3,17 +3,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Core;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI.Interfaces;
-using Assets.TabletopUi.Scripts.Services;
+using SecretHistories.Interfaces;
+using SecretHistories.Interfaces;
+using SecretHistories.Services;
 using UnityEngine;
-using Assets.Core.Entities;
-using Assets.TabletopUi.Scripts.Infrastructure.Events;
-using Assets.TabletopUi.Scripts.Interfaces;
+using SecretHistories.Entities;
+using SecretHistories.Infrastructure.Events;
+using SecretHistories.Interfaces;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
 
 
 

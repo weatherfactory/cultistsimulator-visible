@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Assets.TabletopUi.Scripts.Elements
+namespace SecretHistories.Elements
 {
     public class FlipHelper
     {

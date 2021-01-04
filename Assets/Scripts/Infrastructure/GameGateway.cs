@@ -4,20 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Core;
-using Assets.Core.Commands;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
-using Assets.Scripts.Spheres.Angels;
+using SecretHistories.Commands;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
+using SecretHistories.Spheres.Angels;
 using Assets.TabletopUi;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Assets.TabletopUi.Scripts.Services;
-using Noon;
+using SecretHistories.Infrastructure;
+using SecretHistories.Interfaces;
+using SecretHistories.Services;
+
 using UnityEngine;
 
-namespace Assets.Scripts.Infrastructure
+namespace SecretHistories.Infrastructure
 {
     public class GameGateway:MonoBehaviour
     {

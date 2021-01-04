@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Core.Commands;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
-using Assets.CS.TabletopUI;
-using Assets.CS.TabletopUI.Interfaces;
+using SecretHistories.Commands;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
+using SecretHistories.UI;
+using SecretHistories.Interfaces;
 using Assets.Logic;
-using Assets.TabletopUi.Scripts.Infrastructure;
+using SecretHistories.Infrastructure;
 
-namespace Assets.Core.States
+namespace SecretHistories.States
 {
     public class RequiresExecutionState : SituationState
     {

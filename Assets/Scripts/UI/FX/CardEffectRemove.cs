@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
     public abstract class CardEffectRemove : CardEffect {
         
         [SerializeField] string sfx = "CardBurn";

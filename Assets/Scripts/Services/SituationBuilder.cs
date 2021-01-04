@@ -3,18 +3,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Core.Commands;
-using Assets.Core.Entities;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
-using Assets.CS.TabletopUI.Interfaces;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Assets.Core.Enums;
-using Assets.Core.Fucine;
+using SecretHistories.Commands;
+using SecretHistories.Entities;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
+using SecretHistories.Interfaces;
+using SecretHistories.Infrastructure;
+using SecretHistories.Interfaces;
+using SecretHistories.Enums;
+using SecretHistories.Fucine;
 using UnityEngine;
 
-namespace Assets.TabletopUi.Scripts.Services {
+namespace SecretHistories.Services {
     public class SituationBuilder:MonoBehaviour
     {
 

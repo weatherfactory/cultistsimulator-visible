@@ -2,10 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using Assets.Core.Interfaces;
-using Assets.Core.Services;
-using Assets.CS.TabletopUI;
-using Assets.Scripts.Interfaces;
+using SecretHistories.Interfaces;
+using SecretHistories.Services;
+using SecretHistories.UI;
+using SecretHistories.Interfaces;
 using TMPro;
 using UnityEngine;
 

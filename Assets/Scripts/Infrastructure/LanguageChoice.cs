@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
-namespace Assets.TabletopUi.Scripts.Infrastructure
+namespace SecretHistories.Infrastructure
 {
     public class LanguageChoice:MonoBehaviour
     {

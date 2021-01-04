@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Noon;
 
-namespace Assets.TabletopUi.Scripts.Infrastructure
+
+namespace SecretHistories.Infrastructure
 {
     public class GameSpeedState
     {

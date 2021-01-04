@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.CS.TabletopUI;
-using Assets.Scripts.States.TokenStates;
-using Assets.TabletopUi.Scripts.Infrastructure;
+using SecretHistories.UI;
+using SecretHistories.States.TokenStates;
+using SecretHistories.Infrastructure;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Assets.Scripts.Spheres
+namespace SecretHistories.Spheres
 {
     public class SphereDropCatcher: MonoBehaviour,IDropHandler
     {

@@ -1,6 +1,6 @@
 ﻿
-using Assets.Core.Entities;
-using Assets.CS.TabletopUI;
+using SecretHistories.Entities;
+using SecretHistories.UI;
 using Assets.TabletopUi;
 
 public class Context {

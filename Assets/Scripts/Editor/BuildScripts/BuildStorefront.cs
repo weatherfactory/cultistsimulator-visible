@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TabletopUi.Scripts.Services;
 
-namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
+namespace SecretHistories.Editor.BuildScripts
 {
     public class BuildStorefront
     {

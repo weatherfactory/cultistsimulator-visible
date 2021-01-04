@@ -1,10 +1,10 @@
 ﻿using System;
-using Assets.Core.Commands;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
-using Assets.TabletopUi.Scripts.Infrastructure;
+using SecretHistories.Commands;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
+using SecretHistories.Infrastructure;
 
-namespace Assets.Core.States
+namespace SecretHistories.States
 {
     public class CompleteState : SituationState
     {

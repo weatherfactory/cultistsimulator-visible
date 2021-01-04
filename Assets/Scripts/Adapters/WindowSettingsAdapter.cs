@@ -1,10 +1,10 @@
-﻿using Assets.Core.Entities;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Noon;
+﻿using SecretHistories.Entities;
+using SecretHistories.UI;
+using SecretHistories.Interfaces;
+
 using UnityEngine;
 
-namespace Assets.TabletopUi.Scripts.Services
+namespace SecretHistories.Services
 {
     public class WindowSettingsAdapter: MonoBehaviour,ISettingSubscriber
     {

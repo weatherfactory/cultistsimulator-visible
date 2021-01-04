@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Fucine;
-using Assets.Core.Fucine.DataImport;
+using SecretHistories.Fucine;
+using SecretHistories.Fucine.DataImport;
 
-namespace Assets.Core.Entities
+namespace SecretHistories.Entities
 {
     [FucineImportable("dicta")]
     public class Dictum: AbstractEntity<Dictum>

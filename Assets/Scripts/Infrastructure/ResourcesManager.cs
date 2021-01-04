@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Assets.Core.Entities;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Infrastructure.Modding;
-using Assets.TabletopUi.Scripts.Services;
-using Noon;
+using SecretHistories.Entities;
+using SecretHistories.UI;
+using SecretHistories.Infrastructure.Modding;
+using SecretHistories.Services;
+
 using UnityEngine;
 
 public class ResourcesManager: MonoBehaviour

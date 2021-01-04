@@ -2,13 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
-using Assets.CS.TabletopUI.Interfaces;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
+using SecretHistories.Interfaces;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Noon;
+using SecretHistories.Infrastructure;
+
 using TMPro;
 using UnityEngine.EventSystems;
 

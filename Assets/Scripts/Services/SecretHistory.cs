@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Assets.CS.TabletopUI;
-using Noon;
+using SecretHistories.UI;
+
 using UnityEngine;
 
-namespace Assets.TabletopUi.Scripts.Services
+namespace SecretHistories.Services
 {
     //max lines
     //enforce max lines

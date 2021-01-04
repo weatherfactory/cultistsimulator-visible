@@ -9,10 +9,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Galaxy.Api;
-using Noon;
+
 using TabletopUi.Scripts.Services;
 
-namespace Assets.TabletopUi.Scripts.Infrastructure
+namespace SecretHistories.Infrastructure
 {
     public class GOGStorefrontProvider : IStoreFrontClientProvider
     {

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Noon;
+
 using TMPro;
 using UnityEngine;
 
-namespace Assets.TabletopUi.Scripts.Services
+namespace SecretHistories.Services
 {
     public class SecretHistoryLogMessageEntry:MonoBehaviour
     {

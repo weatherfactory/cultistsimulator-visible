@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.Core.Interfaces;
-using Noon;
+using SecretHistories.Interfaces;
+
 
 public class EntityStore
 {

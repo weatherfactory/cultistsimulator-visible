@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.CS.TabletopUI;
+using SecretHistories.UI;
 using UnityEngine;
 
-namespace Assets.Scripts.Spheres.Angels
+namespace SecretHistories.Spheres.Angels
 {
     public interface IChoreographer
     {

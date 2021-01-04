@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Assets.Core.Fucine;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Services;
-using Noon;
+using SecretHistories.Fucine;
+using SecretHistories.UI;
+using SecretHistories.Services;
+
 using UnityEngine;
 
-namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
+namespace SecretHistories.Infrastructure.Modding
 {
     /// <summary>
     /// Handles location, enablement and manifest verification of mods

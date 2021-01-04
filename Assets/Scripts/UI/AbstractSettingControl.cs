@@ -1,10 +1,9 @@
-﻿using Assets.Core.Entities;
-using Noon;
+﻿using SecretHistories.Entities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.TabletopUi.Scripts.UI
+namespace SecretHistories.UI
 {
     public abstract class AbstractSettingControl : MonoBehaviour
     {

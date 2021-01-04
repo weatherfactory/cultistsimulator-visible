@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Entities;
-using Assets.Core.Fucine;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Infrastructure.Modding;
-using Noon;
+using SecretHistories.Entities;
+using SecretHistories.Fucine;
+using SecretHistories.UI;
+using SecretHistories.Infrastructure;
+using SecretHistories.Infrastructure.Modding;
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Assets.TabletopUi.Scripts.Services
+namespace SecretHistories.Services
 {
     public class ButtonCommand
     {

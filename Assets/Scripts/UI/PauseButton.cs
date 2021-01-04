@@ -4,8 +4,8 @@ using System.Collections;
 using OrbCreationExtensions;
 using TMPro;
 using UnityEngine.UI;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Services;
+using SecretHistories.UI;
+using SecretHistories.Services;
 
 public class PauseButton : MonoBehaviour
 {

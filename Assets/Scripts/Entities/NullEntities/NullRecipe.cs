@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Assets.Core.Fucine;
-using Assets.Core.Fucine.DataImport;
-using Assets.Core.Interfaces;
-using Assets.Scripts.Entities;
+using SecretHistories.Fucine;
+using SecretHistories.Fucine.DataImport;
+using SecretHistories.Interfaces;
+using SecretHistories.Entities;
 
-namespace Assets.Core.Entities
+namespace SecretHistories.Entities
 {
     public class NullRecipe : Recipe
     {

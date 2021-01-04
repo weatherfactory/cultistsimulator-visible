@@ -1,9 +1,9 @@
-﻿using Assets.CS.TabletopUI;
+﻿using SecretHistories.UI;
 using System.Collections;
 using System.Collections.Generic;
-using Noon;
-using Assets.TabletopUi.Scripts.Infrastructure.Modding;
-using Assets.TabletopUi.Scripts.Services;
+
+using SecretHistories.Infrastructure.Modding;
+using SecretHistories.Services;
 using UnityEngine;
 
 public class DebugLoadCompendium : MonoBehaviour

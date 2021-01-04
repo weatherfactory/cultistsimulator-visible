@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Commands;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
-using Assets.Core.States;
+using SecretHistories.Commands;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
+using SecretHistories.States;
 
-namespace Assets.Scripts.Commands.SituationCommands
+namespace SecretHistories.Commands.SituationCommands
 {
    public class ConcludeCommand: ISituationCommand
    {

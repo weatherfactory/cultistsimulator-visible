@@ -5,9 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Fucine;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Services;
+using SecretHistories.Fucine;
+using SecretHistories.Infrastructure;
+using SecretHistories.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Assets.Core.Entities;
-using Assets.TabletopUi.Scripts.Editor.BuildScripts;
+using SecretHistories.Entities;
+using SecretHistories.Editor.BuildScripts;
 using Galaxy;
-using Noon;
+
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
@@ -13,7 +13,7 @@ using UnityEngine.WSA;
 using Application = UnityEngine.Application;
 using Storefront = TabletopUi.Scripts.Services.Storefront;
 
-namespace Assets.Core.Utility
+namespace SecretHistories.Utility
 {
 
     public static class BuildUtility

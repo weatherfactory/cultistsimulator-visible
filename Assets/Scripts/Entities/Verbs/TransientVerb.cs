@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Core.Enums;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
+using SecretHistories.Enums;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
 using Assets.TabletopUi;
-using Assets.TabletopUi.Scripts.Elements.Manifestations;
-using Assets.TabletopUi.Scripts.TokenContainers;
+using SecretHistories.Elements.Manifestations;
+using SecretHistories.TokenContainers;
 
-namespace Assets.Core.Entities
+namespace SecretHistories.Entities
 {
    public class TransientVerb: IVerb
     {

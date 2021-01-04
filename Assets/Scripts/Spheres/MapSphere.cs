@@ -1,14 +1,14 @@
 ﻿using System;
-using Assets.Core.Interfaces;
+using SecretHistories.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
-using Assets.Core.Enums;
-using Assets.Core.Fucine;
-using Assets.TabletopUi.Scripts.Infrastructure;
+using SecretHistories.Enums;
+using SecretHistories.Fucine;
+using SecretHistories.Infrastructure;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
     public class MapSphere : Sphere {
 
         DoorSlot[] allSlots;

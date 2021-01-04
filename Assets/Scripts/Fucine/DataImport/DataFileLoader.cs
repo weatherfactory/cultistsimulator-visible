@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Assets.Core.Fucine;
+using SecretHistories.Fucine;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

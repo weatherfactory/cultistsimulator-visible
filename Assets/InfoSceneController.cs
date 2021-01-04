@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Assets.CS.TabletopUI;
+using SecretHistories.UI;
 using UnityEngine;
 
 public class InfoSceneController : MonoBehaviour

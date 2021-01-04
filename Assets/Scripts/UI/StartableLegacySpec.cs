@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Assets.Core.Entities;
+using SecretHistories.Entities;
 using TabletopUi.Scripts.Services;
 
 namespace TabletopUi.Scripts.UI

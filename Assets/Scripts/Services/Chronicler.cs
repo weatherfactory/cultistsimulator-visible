@@ -2,19 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
-using Assets.CS.TabletopUI.Interfaces;
-using Assets.Scripts.Interfaces;
-using Assets.TabletopUi;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Services;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
+using SecretHistories.Interfaces;
+using SecretHistories.Interfaces;
+using SecretHistories.Infrastructure;
+using SecretHistories.Services;
 using UnityEngine.Analytics;
-using Noon;
 
-namespace Assets.Core.Services
+
+namespace SecretHistories.Services
 {
     /// <summary>
     /// meta responses to significant in game events

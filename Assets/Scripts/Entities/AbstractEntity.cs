@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
-using Assets.Core.Fucine.DataImport;
-using Assets.Core.Interfaces;
+using SecretHistories.Fucine.DataImport;
+using SecretHistories.Interfaces;
 using UnityEngine;
 
-namespace Assets.Core.Fucine
+namespace SecretHistories.Fucine
 {
 
     public abstract class AbstractEntity<T>: IEntityWithId where T : AbstractEntity<T>

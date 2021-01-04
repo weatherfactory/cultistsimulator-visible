@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Noon;
+using SecretHistories.UI;
+using SecretHistories.Interfaces;
+
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.TabletopUi.Scripts.Infrastructure
+namespace SecretHistories.Infrastructure
 {
     public class SpeedControlUI:MonoBehaviour
     {

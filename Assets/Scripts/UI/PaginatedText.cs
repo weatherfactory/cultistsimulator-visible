@@ -1,12 +1,12 @@
 ﻿#pragma warning disable 0649
 using System.Collections;
 using System.Collections.Generic;
-using Noon;
+
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
     public class PaginatedText : AnimatedNoteBase {
 
         enum AnimDirection { MoveRight, MoveLeft, Switch }

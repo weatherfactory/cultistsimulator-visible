@@ -5,9 +5,9 @@ using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
-using Noon;
 
-namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
+
+namespace SecretHistories.Editor.BuildScripts
 {
     public class BuildProduct
     {

@@ -1,15 +1,15 @@
 ﻿#pragma warning disable 0649
 using System.Collections;
 using System.Collections.Generic;
-using Assets.Core.Enums;
+using SecretHistories.Enums;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using Assets.Core.Interfaces;
-using Noon;
+using SecretHistories.Interfaces;
 
-namespace Assets.CS.TabletopUI {
+
+namespace SecretHistories.UI {
     public class SituationResultsPositioning : MonoBehaviour {
 
         [SerializeField] RectTransform rectTransform;

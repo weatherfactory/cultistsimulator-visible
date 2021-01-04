@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Assets.TabletopUi.Scripts.UI
+namespace SecretHistories.UI
 {
     public class ButtonWithLabel: MonoBehaviour
     {

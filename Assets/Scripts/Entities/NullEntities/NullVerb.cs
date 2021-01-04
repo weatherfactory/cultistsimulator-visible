@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
-using Assets.Core.Interfaces;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
+using SecretHistories.Interfaces;
 using Assets.TabletopUi;
-using Assets.TabletopUi.Scripts.Elements.Manifestations;
+using SecretHistories.Elements.Manifestations;
 
-namespace Assets.Core.NullObjects
+namespace SecretHistories.NullObjects
 {
     public class NullVerb:IVerb
     {

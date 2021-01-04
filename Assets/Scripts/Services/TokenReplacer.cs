@@ -1,10 +1,10 @@
 ﻿using System;
-using Assets.Core.Entities;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
-using Noon;
+using SecretHistories.Entities;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
 
-namespace Assets.Core.Services
+
+namespace SecretHistories.Services
 {
     /// <summary>
     /// tokens as in arbitrary

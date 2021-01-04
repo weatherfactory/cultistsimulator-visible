@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine.Events;
 
-namespace Assets.TabletopUi.Scripts.Infrastructure.Events
+namespace SecretHistories.Infrastructure.Events
 {
     
     [Serializable]

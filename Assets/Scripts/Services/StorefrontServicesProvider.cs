@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Infrastructure.Modding;
-using Noon;
+using SecretHistories.Infrastructure;
+using SecretHistories.Infrastructure.Modding;
+
 using UnityEngine;
 
-namespace Assets.TabletopUi.Scripts.Services
+namespace SecretHistories.Services
 {
    public class StorefrontServicesProvider
    {

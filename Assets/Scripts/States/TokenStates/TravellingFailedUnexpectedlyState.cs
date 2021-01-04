@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.States;
-using Assets.CS.TabletopUI;
+using SecretHistories.States;
+using SecretHistories.UI;
 
-namespace Assets.Scripts.States.TokenStates
+namespace SecretHistories.States.TokenStates
 {
     public class TravellingFailedUnexpectedlyState : TokenState
     {

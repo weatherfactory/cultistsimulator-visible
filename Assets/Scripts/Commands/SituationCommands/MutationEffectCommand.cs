@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.Commands.SituationCommands
+namespace SecretHistories.Commands.SituationCommands
 {
    public class MutationEffectCommand
     {

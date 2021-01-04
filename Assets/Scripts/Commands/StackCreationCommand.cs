@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Core.Fucine;
+using SecretHistories.Fucine;
 using Assets.TabletopUi;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Noon;
+using SecretHistories.Infrastructure;
+
 using UnityEngine;
 
-namespace Assets.Core.Commands
+namespace SecretHistories.Commands
 {
     /// <summary>
     /// Used when saving/loading games, just to tidy up the code around wrangling these values

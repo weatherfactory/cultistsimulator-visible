@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
     [RequireComponent(typeof(CanvasGroup))]
     public abstract class CardEffectCreate : CardEffect {
 

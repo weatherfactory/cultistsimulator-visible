@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Core.Entities;
+using SecretHistories.Entities;
 
-namespace Assets.TabletopUi.Scripts.Infrastructure
+namespace SecretHistories.Infrastructure
 {
     /// <summary>
     /// POCO for passing saved extragame state around

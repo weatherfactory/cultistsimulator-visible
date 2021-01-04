@@ -5,13 +5,13 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Enums;
-using Assets.Core.Fucine;
-using Assets.Core.Fucine.DataImport;
-using Assets.Core.Interfaces;
+using SecretHistories.Enums;
+using SecretHistories.Fucine;
+using SecretHistories.Fucine.DataImport;
+using SecretHistories.Interfaces;
 using JetBrains.Annotations;
 
-namespace Assets.Core.Entities
+namespace SecretHistories.Entities
 {
 
     public class MorphDetails : AbstractEntity<MorphDetails>, IEntityWithId,IQuickSpecEntity

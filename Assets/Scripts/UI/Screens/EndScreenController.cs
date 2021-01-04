@@ -1,17 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Core.Entities;
-using Assets.Core.Interfaces;
+using SecretHistories.Entities;
+using SecretHistories.Interfaces;
 using Assets.TabletopUi;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Services;
+using SecretHistories.Infrastructure;
+using SecretHistories.Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Assets.CS.TabletopUI
+namespace SecretHistories.UI
 {
     public class EndScreenController : MonoBehaviour
 	{

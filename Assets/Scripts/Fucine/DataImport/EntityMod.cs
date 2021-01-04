@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Core.Fucine.DataImport;
-using Noon;
+using SecretHistories.Fucine.DataImport;
+
 using OrbCreationExtensions;
 
-namespace Assets.Core.Fucine
+namespace SecretHistories.Fucine
 {
     public class EntityMod
     {

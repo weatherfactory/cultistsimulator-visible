@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
     public class RecipeSlotViz : MonoBehaviour {
 
         public RectTransform rectTrans;

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.CS.TabletopUI
+namespace SecretHistories.UI
 {
     [AddComponentMenu("UI/Effects/Gradient")]
     public class Gradient4Way : BaseMeshEffect {

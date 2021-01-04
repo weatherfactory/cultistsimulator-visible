@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
 using UnityEngine;
-using Assets.TabletopUi.Scripts.Services;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
+using SecretHistories.Services;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
 using Assets.Logic;
 
-namespace Assets.TabletopUi.Scripts.Infrastructure
+namespace SecretHistories.Infrastructure
 {
     public class MapController: MonoBehaviour
     {

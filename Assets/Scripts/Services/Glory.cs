@@ -5,21 +5,21 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Entities;
-using Assets.Core.Fucine;
-using Assets.Core.NullObjects;
-using Assets.Core.Services;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Elements;
-using Assets.TabletopUi.Scripts.Elements.Manifestations;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Infrastructure.Modding;
-using Assets.TabletopUi.Scripts.TokenContainers;
-using Noon;
+using SecretHistories.Entities;
+using SecretHistories.Fucine;
+using SecretHistories.NullObjects;
+using SecretHistories.Services;
+using SecretHistories.UI;
+using SecretHistories.Elements;
+using SecretHistories.Elements.Manifestations;
+using SecretHistories.Infrastructure;
+using SecretHistories.Infrastructure.Modding;
+using SecretHistories.TokenContainers;
+
 using TabletopUi.Scripts.Services;
 using UnityEngine;
 
-namespace Assets.TabletopUi.Scripts.Services
+namespace SecretHistories.Services
 {
     public class Glory: MonoBehaviour
     {

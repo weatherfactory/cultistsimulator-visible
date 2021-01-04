@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using Assets.Core.Entities;
+using SecretHistories.Entities;
 
-namespace Assets.Core.Fucine
+namespace SecretHistories.Fucine
 {
     //Credit Florian Doyon: using a generic in a static class means that a different static instance is created (with the private constructor each time) for each distinct type
     //argument used when the class is referenced

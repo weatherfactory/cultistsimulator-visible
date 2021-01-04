@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Assets.CS.TabletopUI
+namespace SecretHistories.UI
 {
     [RequireComponent(typeof(CanvasGroup))]
     public class CanvasGroupFader : MonoBehaviour {

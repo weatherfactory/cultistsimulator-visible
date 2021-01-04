@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Interfaces;
+using SecretHistories.UI;
+using SecretHistories.Interfaces;
 using UnityEngine;
 
 public class OptionsButton : MonoBehaviour

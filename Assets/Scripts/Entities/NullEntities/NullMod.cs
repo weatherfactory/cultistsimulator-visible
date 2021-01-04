@@ -1,4 +1,4 @@
-namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
+namespace SecretHistories.Infrastructure.Modding
 {
     public class NullMod : Mod
     {

@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Entities;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Infrastructure.Events;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Assets.TabletopUi.Scripts.Services;
-using Noon;
+using SecretHistories.Entities;
+using SecretHistories.UI;
+using SecretHistories.Infrastructure;
+using SecretHistories.Infrastructure.Events;
+using SecretHistories.Interfaces;
+using SecretHistories.Services;
+
 using UnityEngine;
 
-namespace Assets.Scripts.Infrastructure
+namespace SecretHistories.Infrastructure
 {
 
     public enum NonSaveableType

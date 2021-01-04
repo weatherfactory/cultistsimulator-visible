@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.Core.Commands;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
-using Assets.Core.Fucine;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI.Interfaces;
+using SecretHistories.Commands;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
+using SecretHistories.Fucine;
+using SecretHistories.Interfaces;
+using SecretHistories.Interfaces;
 using Assets.TabletopUi.Scripts;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Infrastructure.Events;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Noon;
+using SecretHistories.Infrastructure;
+using SecretHistories.Infrastructure.Events;
+using SecretHistories.Interfaces;
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
     [ExecuteInEditMode]
     public class DoorSlot : Sphere, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
 

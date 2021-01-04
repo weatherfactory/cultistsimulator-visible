@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Core.Entities;
-using Assets.Core.Fucine;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI.Interfaces;
+using SecretHistories.Entities;
+using SecretHistories.Fucine;
+using SecretHistories.Interfaces;
+using SecretHistories.Interfaces;
 
 namespace Assets.Core
 {

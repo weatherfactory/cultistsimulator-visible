@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Fucine;
-using Assets.Core.Fucine.DataImport;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Assets.TabletopUi.Scripts.Services;
-using Noon;
+using SecretHistories.Fucine;
+using SecretHistories.Fucine.DataImport;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
+using SecretHistories.Interfaces;
+using SecretHistories.Services;
+
 using UnityEngine;
 
-namespace Assets.Core.Entities
+namespace SecretHistories.Entities
 {
     [FucineImportable("settings")]
     public class Setting : AbstractEntity<Setting>

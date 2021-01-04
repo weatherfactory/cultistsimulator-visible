@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Core.Entities;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
-using Noon;
+using SecretHistories.Entities;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
+
 using UnityEngine;
 using Random = UnityEngine.Random;
 

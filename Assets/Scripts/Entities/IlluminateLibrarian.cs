@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Assets.Core.Entities
+namespace SecretHistories.Entities
 {
     /// <summary>
     /// Illuminations are text annotations added to stacks to allow for unique alerts and messages.

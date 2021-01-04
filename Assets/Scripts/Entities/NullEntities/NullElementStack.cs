@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Entities;
-using Assets.CS.TabletopUI;
-using Noon;
+using SecretHistories.Entities;
+using SecretHistories.UI;
 
-namespace Assets.TabletopUi.Scripts.Elements
+
+namespace SecretHistories.Elements
 {
     public class NullElementStack: ElementStack
     {

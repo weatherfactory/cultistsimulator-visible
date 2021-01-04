@@ -10,7 +10,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Layouts;
 using UnityEngine.InputSystem.OnScreen;
 
-namespace Assets.Scripts.Meta
+namespace SecretHistories.Meta
 {
    public class MouseDownSimulator: OnScreenControl
    {

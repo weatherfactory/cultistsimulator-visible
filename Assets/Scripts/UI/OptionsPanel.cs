@@ -1,7 +1,7 @@
 ﻿#pragma warning disable 0649
 using UnityEngine;
 using System.Collections;
-using Assets.CS.TabletopUI;
+using SecretHistories.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -10,17 +10,17 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
-using Assets.Core.Fucine;
-using Assets.Core.Interfaces;
-using Noon;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
+using SecretHistories.Fucine;
+using SecretHistories.Interfaces;
+
 using UnityEngine.Audio;
 using TMPro;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Assets.TabletopUi.Scripts.Services;
-using Assets.TabletopUi.Scripts.UI;
+using SecretHistories.Infrastructure;
+using SecretHistories.Interfaces;
+using SecretHistories.Services;
+using SecretHistories.UI;
 using UIWidgets;
 using UnityEngine.Analytics;
 using UnityEngine.InputSystem;

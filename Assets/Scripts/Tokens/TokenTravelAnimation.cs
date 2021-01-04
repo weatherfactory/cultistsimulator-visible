@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Assets.Core.Entities;
+using SecretHistories.Entities;
 using UnityEngine;
-using Assets.CS.TabletopUI;
-using Assets.Scripts.States.TokenStates;
-using Noon;
+using SecretHistories.UI;
+using SecretHistories.States.TokenStates;
+
 
 public class TokenTravelAnimation : MonoBehaviour {
 

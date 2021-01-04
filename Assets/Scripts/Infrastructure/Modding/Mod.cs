@@ -1,5 +1,5 @@
 
-using Noon;
+
 using OrbCreationExtensions;
 using System;
 using System.Collections;
@@ -8,7 +8,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
+namespace SecretHistories.Infrastructure.Modding
 {
     public class SubscribedStorefrontMod
     {

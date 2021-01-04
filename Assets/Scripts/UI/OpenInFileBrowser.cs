@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Diagnostics;
-namespace Assets.CS.TabletopUI
+namespace SecretHistories.UI
 {
     public static class OpenInFileBrowser
     {

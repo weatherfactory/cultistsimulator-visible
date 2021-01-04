@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Threading.Tasks;
-using Assets.Core.Entities;
-using Assets.CS.TabletopUI;
-using Noon;
+using SecretHistories.Entities;
+using SecretHistories.UI;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Assets.TabletopUi.Scripts.Services
+namespace SecretHistories.Services
 {
 
     public enum SourceForGameState

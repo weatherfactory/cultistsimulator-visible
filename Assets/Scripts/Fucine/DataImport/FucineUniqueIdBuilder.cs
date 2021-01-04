@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
-using Noon;
 
-namespace Assets.Core.Fucine.DataImport
+
+namespace SecretHistories.Fucine.DataImport
 {
     /// <summary>
     /// determines the unique ID for an entity or property based on its position in the original data hierarchy at import.

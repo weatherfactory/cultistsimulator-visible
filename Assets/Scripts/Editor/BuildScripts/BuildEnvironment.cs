@@ -4,12 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Utility;
+using SecretHistories.Utility;
 using JetBrains.Annotations;
-using Noon;
+
 using UnityEditor;
 
-namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
+namespace SecretHistories.Editor.BuildScripts
 {
     public class BuildEnvironment
     {

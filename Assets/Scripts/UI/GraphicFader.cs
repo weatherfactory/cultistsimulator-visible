@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
     [ExecuteInEditMode]
     [RequireComponent(typeof(Graphic))]
     public class GraphicFader : MonoBehaviour {

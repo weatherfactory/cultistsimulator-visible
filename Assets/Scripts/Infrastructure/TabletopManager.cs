@@ -6,29 +6,29 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Assets.Core;
-using Assets.Core.Commands;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
-using Assets.Core.Fucine;
-using Assets.Core.Interfaces;
-using Assets.Core.Services;
+using SecretHistories.Commands;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
+using SecretHistories.Fucine;
+using SecretHistories.Interfaces;
+using SecretHistories.Services;
 using Assets.Logic;
-using Assets.Scripts.Infrastructure;
+using SecretHistories.Infrastructure;
 using Assets.TabletopUi;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Infrastructure.Events;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Assets.TabletopUi.Scripts.Services;
-using Assets.TabletopUi.Scripts.TokenContainers;
-using Assets.TabletopUi.Scripts.UI;
-using Noon;
+using SecretHistories.Infrastructure;
+using SecretHistories.Infrastructure.Events;
+using SecretHistories.Interfaces;
+using SecretHistories.Services;
+using SecretHistories.TokenContainers;
+using SecretHistories.UI;
+
 using TabletopUi.Scripts.Elements;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Random = System.Random;
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
     public class TabletopManager : MonoBehaviour
     {
 

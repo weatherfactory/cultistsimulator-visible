@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
-using Assets.Core.Entities;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Noon;
+using SecretHistories.Entities;
+using SecretHistories.Interfaces;
+
 using Random = UnityEngine.Random;
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
     public abstract class BaseDetailsWindow : 
         AnimatedNoteBase, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,ISettingSubscriber {
 

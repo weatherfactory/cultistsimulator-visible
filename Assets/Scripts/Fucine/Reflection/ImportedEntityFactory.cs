@@ -5,10 +5,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Fucine.DataImport;
-using Assets.Core.Interfaces;
+using SecretHistories.Fucine.DataImport;
+using SecretHistories.Interfaces;
 
-namespace Assets.Core.Fucine
+namespace SecretHistories.Fucine
 {
     public interface IImportedEntityFactory
     {

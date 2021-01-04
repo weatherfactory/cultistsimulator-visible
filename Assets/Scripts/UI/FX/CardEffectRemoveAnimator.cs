@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
     public class CardEffectRemoveAnimator : CardEffectRemove {
 
         [SerializeField] float fadeDuration = 0.2f;

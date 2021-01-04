@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
-using Assets.CS.TabletopUI;
-using Assets.Scripts.States.TokenStates;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Infrastructure.Events;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Noon;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
+using SecretHistories.UI;
+using SecretHistories.States.TokenStates;
+using SecretHistories.Infrastructure;
+using SecretHistories.Infrastructure.Events;
+using SecretHistories.Interfaces;
+
 using UnityEngine;
 using Random = System.Random;
 
-namespace Assets.Scripts.Spheres.Angels
+namespace SecretHistories.Spheres.Angels
 {
     public class GreedyAngel:IAngel
     {

@@ -3,29 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Core.Commands;
-using Assets.Core.Enums;
-using Assets.Core.Fucine;
-using Assets.Core.Interfaces;
-using Assets.Core.NullObjects;
-using Assets.Core.Services;
-using Assets.Core.States;
-using Assets.CS.TabletopUI;
-using Assets.CS.TabletopUI.Interfaces;
+using SecretHistories.Commands;
+using SecretHistories.Enums;
+using SecretHistories.Fucine;
+using SecretHistories.Interfaces;
+using SecretHistories.NullObjects;
+using SecretHistories.Services;
+using SecretHistories.States;
+using SecretHistories.UI;
+using SecretHistories.Interfaces;
 using Assets.Logic;
-using Assets.Scripts.Commands.SituationCommands;
-using Assets.Scripts.Interfaces;
+using SecretHistories.Commands.SituationCommands;
+using SecretHistories.Interfaces;
 using Assets.TabletopUi;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Infrastructure.Events;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Assets.TabletopUi.Scripts.TokenContainers;
+using SecretHistories.Infrastructure;
+using SecretHistories.Infrastructure.Events;
+using SecretHistories.Interfaces;
+using SecretHistories.TokenContainers;
 using JetBrains.Annotations;
-using Noon;
+
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace Assets.Core.Entities {
+namespace SecretHistories.Entities {
 
     public class 
         Situation: ISphereEventSubscriber

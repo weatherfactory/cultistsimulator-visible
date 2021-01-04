@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Text;
-using Assets.CS.TabletopUI;
+using SecretHistories.UI;
 
 namespace Assets.Core
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
     public class MapAnimation : MonoBehaviour {
 
         public event System.Action<bool> onAnimDone;

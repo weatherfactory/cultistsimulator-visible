@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Commands;
-using Assets.Core.Entities;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Noon;
+using SecretHistories.Commands;
+using SecretHistories.Entities;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
+using SecretHistories.Infrastructure;
 
-namespace Assets.Core.States
+
+namespace SecretHistories.States
 {
     public abstract class TokenState
     {

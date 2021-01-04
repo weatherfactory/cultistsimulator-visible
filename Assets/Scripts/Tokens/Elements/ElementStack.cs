@@ -3,10 +3,10 @@
 using System;
 using System.Collections.Generic;
 using Assets.Core;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI.Interfaces;
+using SecretHistories.Interfaces;
+using SecretHistories.Interfaces;
 using Assets.TabletopUi.Scripts;
-using Assets.TabletopUi.Scripts.Services;
+using SecretHistories.Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -14,26 +14,26 @@ using UnityEngine.UI;
 using System.Collections;
 using System.ComponentModel;
 using System.Linq;
-using Assets.Core.Commands;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
-using Assets.Core.Fucine;
-using Assets.Core.NullObjects;
-using Assets.Core.Services;
+using SecretHistories.Commands;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
+using SecretHistories.Fucine;
+using SecretHistories.NullObjects;
+using SecretHistories.Services;
 using Assets.Logic;
-using Assets.TabletopUi.Scripts.Elements;
-using Assets.TabletopUi.Scripts.Elements.Manifestations;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Infrastructure.Events;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Assets.TabletopUi.Scripts.TokenContainers;
-using Assets.TabletopUi.Scripts.UI;
-using Noon;
+using SecretHistories.Elements;
+using SecretHistories.Elements.Manifestations;
+using SecretHistories.Infrastructure;
+using SecretHistories.Infrastructure.Events;
+using SecretHistories.Interfaces;
+using SecretHistories.TokenContainers;
+using SecretHistories.UI;
+
 using UnityEngine.InputSystem;
 
 // Should inherit from a "TabletopToken" base class same as VerbBox
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
 
 
 

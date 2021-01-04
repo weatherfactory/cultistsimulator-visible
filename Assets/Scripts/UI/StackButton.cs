@@ -1,5 +1,5 @@
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Interfaces;
+using SecretHistories.UI;
+using SecretHistories.Interfaces;
 using UnityEngine;
 
 namespace TabletopUi.Scripts.UI

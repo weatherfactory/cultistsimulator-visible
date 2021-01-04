@@ -1,19 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
-using Assets.CS.TabletopUI.Interfaces;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
+using SecretHistories.Interfaces;
 using Assets.TabletopUi.Scripts;
-using Assets.TabletopUi.Scripts.Infrastructure;
+using SecretHistories.Infrastructure;
 using System;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
-using Assets.Core.Fucine;
-using Assets.TabletopUi.Scripts.Elements;
-using Assets.TabletopUi.Scripts.Elements.Manifestations;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Assets.TabletopUi.Scripts.Services;
-using Noon;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
+using SecretHistories.Fucine;
+using SecretHistories.Elements;
+using SecretHistories.Elements.Manifestations;
+using SecretHistories.Interfaces;
+using SecretHistories.Services;
+
 
 public class SituationStorage : Sphere,ISituationSubscriber
 {

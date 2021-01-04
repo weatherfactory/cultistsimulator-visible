@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Core.Commands;
-using Assets.Core.Entities;
-using Assets.Core.Fucine;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
+using SecretHistories.Commands;
+using SecretHistories.Entities;
+using SecretHistories.Fucine;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
 using Assets.Logic;
-using Noon;
+
 using UnityEngine;
 
 namespace Assets.Core

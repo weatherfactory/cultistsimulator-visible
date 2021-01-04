@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Entities;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Infrastructure.Events;
-using Assets.TabletopUi.Scripts.Interfaces;
+using SecretHistories.Entities;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
+using SecretHistories.Infrastructure.Events;
+using SecretHistories.Interfaces;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Assets.TabletopUi.Scripts.UI
+namespace SecretHistories.UI
 {
     public class CreditsWindow: MonoBehaviour,ISphereEventSubscriber
     {

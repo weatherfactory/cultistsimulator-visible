@@ -1,11 +1,11 @@
 ﻿#pragma warning disable 0649
 using System.Collections;
 using System.Collections.Generic;
-using Noon;
+
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
     public class TabletopImageBurner : MonoBehaviour {
 
         public enum ImageLayoutConfig { CenterOnToken, LowerLeftCorner }

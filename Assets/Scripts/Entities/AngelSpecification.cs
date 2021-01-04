@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Entities;
-using Assets.Core.Fucine;
-using Assets.Core.Fucine.DataImport;
-using Assets.CS.TabletopUI;
-using Assets.Scripts.Spheres.Angels;
-using Assets.TabletopUi.Scripts.Infrastructure;
+using SecretHistories.Entities;
+using SecretHistories.Fucine;
+using SecretHistories.Fucine.DataImport;
+using SecretHistories.UI;
+using SecretHistories.Spheres.Angels;
+using SecretHistories.Infrastructure;
 
-namespace Assets.Scripts.Entities
+namespace SecretHistories.Entities
 {
    public class AngelSpecification: AbstractEntity<AngelSpecification>
     {

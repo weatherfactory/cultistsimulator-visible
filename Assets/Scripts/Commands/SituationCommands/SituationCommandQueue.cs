@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Assets.Core.Commands;
-using Assets.Core.Entities;
-using Assets.Core.States;
+using SecretHistories.Commands;
+using SecretHistories.Entities;
+using SecretHistories.States;
 using NUnit.Framework;
 
 namespace Assets.Core

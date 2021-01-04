@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Core.Entities;
-using Assets.Core.Fucine;
+using SecretHistories.Entities;
+using SecretHistories.Fucine;
 
-namespace Assets.Core.Commands
+namespace SecretHistories.Commands
 {
     public class RecipeExecutionCommand
     {

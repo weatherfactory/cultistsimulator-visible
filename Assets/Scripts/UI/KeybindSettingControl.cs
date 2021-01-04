@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Assets.Core.Entities;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.UI;
-using Noon;
+using SecretHistories.Entities;
+using SecretHistories.UI;
+using SecretHistories.UI;
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;

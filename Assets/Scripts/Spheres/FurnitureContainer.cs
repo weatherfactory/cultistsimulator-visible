@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Enums;
-using Assets.Core.Fucine;
-using Assets.TabletopUi.Scripts.Infrastructure;
+using SecretHistories.Enums;
+using SecretHistories.Fucine;
+using SecretHistories.Infrastructure;
 
-namespace Assets.TabletopUi.Scripts.TokenContainers
+namespace SecretHistories.TokenContainers
 {
    public class FurnitureContainer: Sphere
    {

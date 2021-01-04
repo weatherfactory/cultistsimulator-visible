@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.States;
-using Assets.CS.TabletopUI;
+using SecretHistories.States;
+using SecretHistories.UI;
 
-namespace Assets.Scripts.States.TokenStates
+namespace SecretHistories.States.TokenStates
 {
     /// <summary>
     ///eg: we dropped a stack of >1 elements on a sphere which can only accept one of them. This state applies to the stack remainder that's returned

@@ -1,4 +1,4 @@
-﻿using Assets.Core.Entities;
+﻿using SecretHistories.Entities;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;

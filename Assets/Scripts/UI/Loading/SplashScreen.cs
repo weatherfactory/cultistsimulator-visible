@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Services;
+using SecretHistories.UI;
+using SecretHistories.Services;
 
 public class SplashScreen : MonoBehaviour, IPointerClickHandler {
 

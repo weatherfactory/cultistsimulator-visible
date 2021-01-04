@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Interfaces;
+using SecretHistories.UI;
+using SecretHistories.Infrastructure;
+using SecretHistories.Interfaces;
 
 namespace Assets.TabletopUi
 {

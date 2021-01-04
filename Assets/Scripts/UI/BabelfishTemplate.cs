@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Services;
+using SecretHistories.UI;
+using SecretHistories.Services;
 using UnityEngine;
 
 namespace TabletopUi.Scripts.UI

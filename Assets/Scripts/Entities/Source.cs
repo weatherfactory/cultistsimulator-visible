@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Core.Enums;
+using SecretHistories.Enums;
 
-namespace Assets.Core.Entities
+namespace SecretHistories.Entities
 {
     public class Source
     {

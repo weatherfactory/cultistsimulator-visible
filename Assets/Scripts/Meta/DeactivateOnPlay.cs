@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.CS.TabletopUI
+namespace SecretHistories.UI
 {
     public class DeactivateOnPlay : MonoBehaviour {
 

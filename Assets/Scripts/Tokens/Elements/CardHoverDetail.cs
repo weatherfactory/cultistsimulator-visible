@@ -1,4 +1,4 @@
-using Assets.CS.TabletopUI;
+using SecretHistories.UI;
 using UnityEngine;
 
 namespace TabletopUi.Scripts.Elements

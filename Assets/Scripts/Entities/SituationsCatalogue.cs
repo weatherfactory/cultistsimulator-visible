@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Core.Commands;
-using Assets.Core.Enums;
-using Assets.Core.Fucine;
-using Assets.Core.NullObjects;
-using Assets.CS.TabletopUI;
-using Assets.Scripts.Commands.SituationCommands;
+using SecretHistories.Commands;
+using SecretHistories.Enums;
+using SecretHistories.Fucine;
+using SecretHistories.NullObjects;
+using SecretHistories.UI;
+using SecretHistories.Commands.SituationCommands;
 using Assets.TabletopUi;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Assets.TabletopUi.Scripts.Services;
-using Noon;
+using SecretHistories.Interfaces;
+using SecretHistories.Services;
 
-namespace Assets.Core.Entities
+
+namespace SecretHistories.Entities
 {
     public class SituationsCatalogue
     {

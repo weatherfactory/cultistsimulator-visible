@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Assets.Core.Entities;
-using Assets.CS.TabletopUI;
+using SecretHistories.Entities;
+using SecretHistories.UI;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Infrastructure.Events;
-using Assets.TabletopUi.Scripts.Interfaces;
+using SecretHistories.Infrastructure;
+using SecretHistories.Infrastructure.Events;
+using SecretHistories.Interfaces;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(ScrollRect))]

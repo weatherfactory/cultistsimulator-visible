@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Entities;
-using Assets.Core.States;
+using SecretHistories.Entities;
+using SecretHistories.States;
 
-namespace Assets.Core.Commands
+namespace SecretHistories.Commands
 {
 
 

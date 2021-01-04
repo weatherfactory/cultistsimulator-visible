@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Core.Entities
+namespace SecretHistories.Entities
 {
     public class NullElement: Element
     {

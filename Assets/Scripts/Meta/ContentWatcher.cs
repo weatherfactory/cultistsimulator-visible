@@ -5,9 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Assets.Core;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Infrastructure.Modding;
-using Noon;
+using SecretHistories.UI;
+using SecretHistories.Infrastructure.Modding;
+
 using TMPro;
 using UnityEngine;
 

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Services;
+using SecretHistories.UI;
+using SecretHistories.Services;
 
 [CustomEditor(typeof(SlotGridManager))]
 public class SlotGridManagerEditor : Editor {

@@ -1,6 +1,6 @@
 ﻿using UnityEditor;
 
-namespace Assets.Core.Utility
+namespace SecretHistories.Utility
 {
     public class CopySteamLibraries
     {

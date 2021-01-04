@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Infrastructure;
+using SecretHistories.UI;
+using SecretHistories.Infrastructure;
 using UnityEngine;
 
-namespace Assets.Scripts.Spheres.Angels
+namespace SecretHistories.Spheres.Angels
 {
     public class SimpleChoreographer:IChoreographer
     {

@@ -1,16 +1,16 @@
-﻿using Assets.Core.Fucine.DataImport;
+﻿using SecretHistories.Fucine.DataImport;
 using Newtonsoft.Json.Linq;
-using Noon;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Assets.TabletopUi.Scripts.Infrastructure.Modding;
+using SecretHistories.Infrastructure.Modding;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace Assets.Core.Fucine
+namespace SecretHistories.Fucine
 
 {
     public class EntityTypeDataLoader

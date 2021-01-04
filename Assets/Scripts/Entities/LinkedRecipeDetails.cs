@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using Assets.Core.Fucine;
-using Assets.Core.Fucine.DataImport;
-using Assets.Core.Interfaces;
+using SecretHistories.Fucine;
+using SecretHistories.Fucine.DataImport;
+using SecretHistories.Interfaces;
 using UnityEngine.UIElements;
 
-namespace Assets.Core.Entities
+namespace SecretHistories.Entities
 {
     public class LinkedRecipeDetails : AbstractEntity<LinkedRecipeDetails>
     {

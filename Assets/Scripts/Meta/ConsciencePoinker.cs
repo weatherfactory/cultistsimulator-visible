@@ -4,11 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Services;
+using SecretHistories.UI;
+using SecretHistories.Services;
 using UnityEngine;
 
-namespace Assets.Scripts.Meta
+namespace SecretHistories.Meta
 {
     public class ConsciencePoinker
     {

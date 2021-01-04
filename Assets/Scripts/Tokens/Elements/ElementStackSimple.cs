@@ -2,11 +2,11 @@
 using System;
 using System.Collections.Generic;
 using Assets.Core;
-using Assets.Core.Entities;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI.Interfaces;
+using SecretHistories.Entities;
+using SecretHistories.Interfaces;
+using SecretHistories.Interfaces;
 using Assets.TabletopUi.Scripts;
-using Assets.TabletopUi.Scripts.Services;
+using SecretHistories.Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -14,7 +14,7 @@ using UnityEngine.UI;
 
 // Should inherit from a "TabletopToken" base class same as VerbBox
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
     public class ElementStackSimple : MonoBehaviour {
 
         [SerializeField]

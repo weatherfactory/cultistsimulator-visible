@@ -1,11 +1,11 @@
-﻿using Assets.Core.Entities;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Noon;
+﻿using SecretHistories.Entities;
+using SecretHistories.Infrastructure;
+
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Assets.CS.TabletopUI
+namespace SecretHistories.UI
 {
     public class TabletopBackground : MonoBehaviour, IPointerClickHandler {
 

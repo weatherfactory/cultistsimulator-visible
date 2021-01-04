@@ -1,19 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Assets.Core.Entities;
-using Assets.Core.Interfaces;
+using SecretHistories.Entities;
+using SecretHistories.Interfaces;
 using Assets.Logic;
 using Assets.TabletopUi;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Infrastructure.Modding;
-using Assets.TabletopUi.Scripts.Services;
-using Noon;
+using SecretHistories.Infrastructure;
+using SecretHistories.Infrastructure.Modding;
+using SecretHistories.Services;
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
     public class NewGameScreenController : MonoBehaviour {
 
 

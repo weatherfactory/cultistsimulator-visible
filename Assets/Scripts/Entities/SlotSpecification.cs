@@ -5,14 +5,14 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using Assets.Core;
-using Assets.Core.Entities;
-using Assets.Core.Fucine;
-using Assets.Core.Fucine.DataImport;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
-using Assets.Scripts.Entities;
-using Assets.Scripts.Spheres.Angels;
-using Noon;
+using SecretHistories.Entities;
+using SecretHistories.Fucine;
+using SecretHistories.Fucine.DataImport;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
+using SecretHistories.Entities;
+using SecretHistories.Spheres.Angels;
+
 
 
 public class SlotSpecification: AbstractEntity<SlotSpecification>

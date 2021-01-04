@@ -1,12 +1,12 @@
-﻿using Assets.CS.TabletopUI;
+﻿using SecretHistories.UI;
 using System.Collections;
 using System.Collections.Generic;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Interfaces;
+using SecretHistories.Infrastructure;
+using SecretHistories.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Assets.CS.TabletopUI { 
+namespace SecretHistories.UI { 
     /// <summary>
     /// Class that manages the movement of the situation Window. Tries to stick to token, stay on screen and remain draggable
     /// </summary>

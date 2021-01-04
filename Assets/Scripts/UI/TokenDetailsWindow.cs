@@ -9,11 +9,11 @@ using UnityEngine.UI;
 using System.Collections;
 using System;
 using System.Linq;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
 using TabletopUi.Scripts.Elements;
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
     public class TokenDetailsWindow : BaseDetailsWindow {
 
         // coming in with header "Image" from BaseDetailsWindow

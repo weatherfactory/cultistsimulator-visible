@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.CS.TabletopUI.Interfaces;
+using SecretHistories.Interfaces;
 
-namespace Assets.Core.Commands
+namespace SecretHistories.Commands
 {
    public class Notification: INotification
     {

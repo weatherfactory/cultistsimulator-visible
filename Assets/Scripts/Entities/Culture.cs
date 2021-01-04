@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Fucine;
-using Assets.Core.Fucine.DataImport;
-using Assets.Core.Interfaces;
+using SecretHistories.Fucine;
+using SecretHistories.Fucine.DataImport;
+using SecretHistories.Interfaces;
 
-namespace Assets.Core.Entities
+namespace SecretHistories.Entities
 {
     [FucineImportable("cultures")]
     public class Culture : AbstractEntity<Culture>

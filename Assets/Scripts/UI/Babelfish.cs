@@ -1,10 +1,10 @@
-﻿using Assets.Core.Entities;
+﻿using SecretHistories.Entities;
 using TMPro;
 using UnityEngine;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Assets.TabletopUi.Scripts.Services;
-using Noon;
+using SecretHistories.UI;
+using SecretHistories.Interfaces;
+using SecretHistories.Services;
+
 using TabletopUi.Scripts.UI;
 using UnityEngine.UI; // For accessing high contrast mode
 

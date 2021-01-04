@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
     public class CardEffectRemoveColorAnim : CardEffectRemove {
 
         [SerializeField] Graphic cardBurnOverlay;

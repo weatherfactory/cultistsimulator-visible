@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Linq.Expressions;
 using System.Reflection;
-using Assets.Core.Fucine.DataImport;
+using SecretHistories.Fucine.DataImport;
 
-namespace Assets.Core.Fucine
+namespace SecretHistories.Fucine
 {
     public static class PrecompiledInvoke
     {

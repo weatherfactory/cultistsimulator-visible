@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Assets.TabletopUi.Scripts.Services;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
+using SecretHistories.UI;
+using SecretHistories.Interfaces;
+using SecretHistories.Services;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-namespace Assets.TabletopUi.Scripts.Infrastructure {
+namespace SecretHistories.Infrastructure {
     public class EndGameAnimController : MonoBehaviour {
 #pragma warning disable 649
         [SerializeField] Vector2 targetPosOffset = new Vector2(0f, -150f);

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Core;
-using Assets.Core.Entities;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Services;
+using SecretHistories.Entities;
+using SecretHistories.UI;
+using SecretHistories.Services;
 using TMPro;
 using UnityEngine;
 
-namespace Assets.TabletopUi.Scripts
+namespace SecretHistories.
 {
     public class AspectsDisplay : MonoBehaviour {
 

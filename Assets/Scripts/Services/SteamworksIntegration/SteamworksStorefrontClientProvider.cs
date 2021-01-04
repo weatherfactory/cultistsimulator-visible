@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Infrastructure.Modding;
-using Assets.TabletopUi.Scripts.Services;
-using Noon;
+using SecretHistories.UI;
+using SecretHistories.Infrastructure.Modding;
+using SecretHistories.Services;
+
 using Steamworks;
 using TabletopUi.Scripts.Services;
 using UnityEngine;
 
-namespace Assets.TabletopUi.Scripts.Infrastructure
+namespace SecretHistories.Infrastructure
 {
     public class SteamworksStorefrontClientProvider : IStoreFrontClientProvider
     {

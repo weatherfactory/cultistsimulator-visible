@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Core.Entities;
-using Assets.Core.Interfaces;
-using Assets.Core.Services;
+using SecretHistories.Entities;
+using SecretHistories.Interfaces;
+using SecretHistories.Services;
 
-namespace Assets.Core.Commands
+namespace SecretHistories.Commands
 {
    public class RecipePrediction
    {

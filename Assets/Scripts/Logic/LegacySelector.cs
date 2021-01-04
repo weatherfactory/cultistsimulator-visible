@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using Assets.Core;
-using Assets.Core.Entities;
-using Assets.Core.Interfaces;
-using Noon;
+using SecretHistories.Entities;
+using SecretHistories.Interfaces;
+
 
 namespace Assets.Logic
 {

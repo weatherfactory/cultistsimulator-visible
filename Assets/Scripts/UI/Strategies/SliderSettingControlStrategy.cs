@@ -1,8 +1,8 @@
-﻿using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Services;
+﻿using SecretHistories.UI;
+using SecretHistories.Services;
 using UnityEngine.UI;
 
-namespace Assets.TabletopUi.Scripts.UI
+namespace SecretHistories.UI
 {
     public abstract class SliderSettingControlStrategy:SettingControlStrategy
     {

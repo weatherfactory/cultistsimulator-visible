@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.CS.TabletopUI;
+using SecretHistories.UI;
 
-namespace Assets.Core.Entities
+namespace SecretHistories.Entities
 {
     public class ContainerMatchForStack
     {

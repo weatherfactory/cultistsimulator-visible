@@ -5,15 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core;
-using Assets.Core.Entities;
-using Assets.Core.Fucine;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
-using Assets.CS.TabletopUI.Interfaces;
+using SecretHistories.Entities;
+using SecretHistories.Fucine;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
+using SecretHistories.Interfaces;
 using UnityEngine;
-using Assets.TabletopUi.Scripts.Services;
+using SecretHistories.Services;
 using Assets.TabletopUi.Scripts;
-using Assets.TabletopUi.Scripts.Infrastructure;
+using SecretHistories.Infrastructure;
 
 namespace Assets.TabletopUi.SlotsContainers {
     public class StartingSlotsManager : MonoBehaviour {

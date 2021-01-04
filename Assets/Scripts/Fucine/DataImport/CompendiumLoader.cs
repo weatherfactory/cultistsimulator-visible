@@ -2,7 +2,7 @@
 
 using UnityEngine;
 using System;
-using Noon;
+
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
@@ -12,14 +12,14 @@ using System.Reflection;
 using System.Reflection.Emit;
 using System.Text.RegularExpressions;
 using Assets.Core;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
-using Assets.Core.Fucine;
-using Assets.Core.Fucine.DataImport;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Infrastructure.Modding;
-using Assets.TabletopUi.Scripts.Services;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
+using SecretHistories.Fucine;
+using SecretHistories.Fucine.DataImport;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
+using SecretHistories.Infrastructure.Modding;
+using SecretHistories.Services;
 using OrbCreationExtensions;
 using Unity.Profiling;
 using UnityEngine.Profiling;

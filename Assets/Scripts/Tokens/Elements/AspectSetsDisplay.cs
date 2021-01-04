@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using Assets.Core;
-using Assets.Core.Entities;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Services;
+using SecretHistories.Entities;
+using SecretHistories.UI;
+using SecretHistories.Services;
 using UnityEngine;
 
 namespace TabletopUi.Scripts.Elements

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using TabletopUi.Scripts.Services;
 
-namespace Assets.Core.Entities
+namespace SecretHistories.Entities
 {
     public class MetaInfo
     {

@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Core.Entities;
-using Assets.Core.Fucine;
-using Assets.Core.Interfaces;
-using Assets.TabletopUi.Scripts.Interfaces;
+using SecretHistories.Entities;
+using SecretHistories.Fucine;
+using SecretHistories.Interfaces;
+using SecretHistories.Interfaces;
 using Assets.TabletopUi;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Infrastructure;
+using SecretHistories.UI;
+using SecretHistories.Infrastructure;
 
-namespace Assets.Core.Commands
+namespace SecretHistories.Commands
 {
     public class SituationCreationCommand
     {

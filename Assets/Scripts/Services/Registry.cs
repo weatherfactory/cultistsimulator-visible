@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Assets.Core;
-using Assets.Core.Entities;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Assets.TabletopUi.Scripts.Services;
-using Noon;
+using SecretHistories.Entities;
+using SecretHistories.Interfaces;
+using SecretHistories.Services;
+
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace Assets.CS.TabletopUI
+namespace SecretHistories.UI
 {
     //public interface IRegisterable
     //{

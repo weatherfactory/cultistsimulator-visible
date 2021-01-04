@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Services;
-using Noon;
+using SecretHistories.UI;
+using SecretHistories.Services;
+
 using TabletopUi.Scripts.Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
+namespace SecretHistories.Infrastructure.Modding
 {
 
 

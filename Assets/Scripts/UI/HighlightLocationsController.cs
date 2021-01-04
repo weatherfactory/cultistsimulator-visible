@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Core;
-using Assets.Core.Entities;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Infrastructure.Events;
-using Assets.TabletopUi.Scripts.Interfaces;
+using SecretHistories.Entities;
+using SecretHistories.UI;
+using SecretHistories.Infrastructure.Events;
+using SecretHistories.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.TabletopUi.Scripts.UI
+namespace SecretHistories.UI
 {
   public  class HighlightLocationsController:MonoBehaviour, ISphereCatalogueEventSubscriber
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Assets.CS.TabletopUI;
+using SecretHistories.UI;
 
 public class FXTestController : MonoBehaviour {
 

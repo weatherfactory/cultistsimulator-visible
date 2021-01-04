@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Assets.CS.TabletopUI;
+using SecretHistories.UI;
 using Assets.TabletopUi;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Interfaces;
+using SecretHistories.Infrastructure;
+using SecretHistories.Interfaces;
 
 public class TokenTravellingToSlot : TokenTravelAnimation {
 

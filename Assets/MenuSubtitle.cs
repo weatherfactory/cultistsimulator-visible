@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Assets.Core.Entities;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Services;
-using Noon;
+using SecretHistories.Entities;
+using SecretHistories.UI;
+using SecretHistories.Services;
+
 using TMPro;
 using UnityEngine;
 

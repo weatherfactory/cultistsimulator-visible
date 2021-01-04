@@ -4,21 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
-using Assets.CS.TabletopUI.Interfaces;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
+using SecretHistories.Interfaces;
 using UnityEngine;
 using Assets.TabletopUi.Scripts;
-using Assets.TabletopUi.Scripts.Elements;
-using Assets.TabletopUi.Scripts.Elements.Manifestations;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Assets.TabletopUi.Scripts.TokenContainers;
-using Noon;
+using SecretHistories.Elements;
+using SecretHistories.Elements.Manifestations;
+using SecretHistories.Infrastructure;
+using SecretHistories.Interfaces;
+using SecretHistories.TokenContainers;
+
 using Object = UnityEngine.Object;
 
 
-namespace Assets.TabletopUi.Scripts.Services
+namespace SecretHistories.Services
 {
    public class PrefabFactory : MonoBehaviour
     {

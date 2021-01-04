@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Noon;
+
 using Hashtable = System.Collections.Hashtable;
 
-namespace Assets.Core.Fucine.DataImport
+namespace SecretHistories.Fucine.DataImport
 {
    public class EntityData
     {

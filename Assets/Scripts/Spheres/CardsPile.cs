@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
-using Assets.Core.Fucine;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Elements;
-using Assets.TabletopUi.Scripts.Elements.Manifestations;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Services;
-using Noon;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
+using SecretHistories.Fucine;
+using SecretHistories.UI;
+using SecretHistories.Elements;
+using SecretHistories.Elements.Manifestations;
+using SecretHistories.Infrastructure;
+using SecretHistories.Services;
 
-namespace Assets.TabletopUi.Scripts.TokenContainers
+
+namespace SecretHistories.TokenContainers
 {
   public class CardsPile: Sphere
   {

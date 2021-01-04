@@ -1,11 +1,11 @@
 using System;
-using Assets.Core.Entities;
-using Assets.Scripts.States.TokenStates;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Noon;
+using SecretHistories.Entities;
+using SecretHistories.States.TokenStates;
+using SecretHistories.Infrastructure;
+
 using UnityEngine;
 
-namespace Assets.CS.TabletopUI
+namespace SecretHistories.UI
 {
     public class TokenTravelItinerary
     {

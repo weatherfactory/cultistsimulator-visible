@@ -2,10 +2,10 @@
 using System.Collections;
 using System.ComponentModel;
 using System.Reflection;
-using Assets.Core.Fucine.DataImport;
-using Assets.Core.Interfaces;
+using SecretHistories.Fucine.DataImport;
+using SecretHistories.Interfaces;
 
-namespace Assets.Core.Fucine
+namespace SecretHistories.Fucine
 {
     public class ValueImporter : AbstractImporter
     {

@@ -5,12 +5,12 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using Assets.Core;
-using Assets.Core.Fucine;
-using Assets.Core.Fucine.DataImport;
-using Assets.Core.Interfaces;
+using SecretHistories.Fucine;
+using SecretHistories.Fucine.DataImport;
+using SecretHistories.Interfaces;
 using UnityEngine;
 
-namespace Assets.Core.Entities
+namespace SecretHistories.Entities
 {
     [FucineImportable("elements")]
     public class Element: AbstractEntity<Element>

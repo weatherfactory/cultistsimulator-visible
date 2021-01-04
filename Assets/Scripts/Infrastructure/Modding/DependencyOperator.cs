@@ -1,5 +1,5 @@
 
-namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
+namespace SecretHistories.Infrastructure.Modding
 {
     public enum DependencyOperator
     {

@@ -2,13 +2,13 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using Assets.Core.Commands;
-using Assets.Core.Entities;
-using Assets.CS.TabletopUI;
+using SecretHistories.Commands;
+using SecretHistories.Entities;
+using SecretHistories.UI;
 using Assets.TabletopUi;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Services;
-using Noon;
+using SecretHistories.Infrastructure;
+using SecretHistories.Services;
+
 
 
 /// <summary>

@@ -4,13 +4,13 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using Assets.Core;
-using Assets.Core.Enums;
-using Assets.Core.Fucine;
-using Assets.Core.Fucine.DataImport;
-using Assets.Core.Interfaces;
-using Assets.Core.States;
+using SecretHistories.Enums;
+using SecretHistories.Fucine;
+using SecretHistories.Fucine.DataImport;
+using SecretHistories.Interfaces;
+using SecretHistories.States;
 
-namespace Assets.Core.Entities
+namespace SecretHistories.Entities
 {
     [FucineImportable("recipes")]
     public class Recipe : AbstractEntity<Recipe>

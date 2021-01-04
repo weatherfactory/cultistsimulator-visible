@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Commands;
-using Assets.Core.Entities;
-using Assets.Core.Interfaces;
+using SecretHistories.Commands;
+using SecretHistories.Entities;
+using SecretHistories.Interfaces;
 
-namespace Assets.Core.NullObjects
+namespace SecretHistories.NullObjects
 {
     public class NullSituation: Situation
     {

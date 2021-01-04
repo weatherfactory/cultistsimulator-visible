@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using Assets.CS.TabletopUI.Interfaces;
+using SecretHistories.Interfaces;
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
     public class SituationTokenDumpButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 #pragma warning disable 649
         [SerializeField] Image buttonImg;

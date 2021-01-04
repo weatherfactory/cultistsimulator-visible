@@ -1,10 +1,10 @@
-﻿using Assets.Core.Commands;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
-using Assets.Core.States;
-using Assets.CS.TabletopUI;
+﻿using SecretHistories.Commands;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
+using SecretHistories.States;
+using SecretHistories.UI;
 
-namespace Assets.Scripts.Commands.SituationCommands
+namespace SecretHistories.Commands.SituationCommands
 {
     public class TryActivateRecipeCommand: ISituationCommand
     {

@@ -5,11 +5,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Interfaces;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Noon;
+using SecretHistories.Interfaces;
+using SecretHistories.Infrastructure;
 
-namespace Assets.Core.Fucine
+
+namespace SecretHistories.Fucine
 {
    public class SpherePath:IEquatable<SpherePath>
    {

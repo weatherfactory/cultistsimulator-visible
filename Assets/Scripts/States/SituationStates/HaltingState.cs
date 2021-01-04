@@ -1,9 +1,9 @@
 ﻿using System;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
-using Assets.TabletopUi.Scripts.Infrastructure;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
+using SecretHistories.Infrastructure;
 
-namespace Assets.Core.States
+namespace SecretHistories.States
 {
     public class HaltingState : SituationState
     {

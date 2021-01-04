@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Services;
-using Noon;
+using SecretHistories.UI;
+using SecretHistories.Services;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;

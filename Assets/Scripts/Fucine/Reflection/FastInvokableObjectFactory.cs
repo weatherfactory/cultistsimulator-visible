@@ -1,7 +1,7 @@
 ﻿using System;
-using Noon;
 
-namespace Assets.Core.Fucine
+
+namespace SecretHistories.Fucine
 {
     public interface IFastInvokableObjectFactory
     {

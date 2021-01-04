@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Assets.Core.Entities;
+using SecretHistories.Entities;
 using UnityEngine;
 
 public static class UIStyle {

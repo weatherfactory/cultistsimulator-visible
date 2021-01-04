@@ -1,4 +1,4 @@
-using Assets.CS.TabletopUI;
+using SecretHistories.UI;
 using TabletopUi.Scripts.Services;
 using TMPro;
 using UnityEngine;

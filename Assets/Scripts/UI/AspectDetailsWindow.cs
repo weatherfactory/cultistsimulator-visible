@@ -1,16 +1,16 @@
 ﻿#pragma warning disable 0649
 using System.Collections.Generic;
 using Assets.Core;
-using Assets.TabletopUi.Scripts;
+using SecretHistories.;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
-using Assets.Core.Entities;
+using SecretHistories.Entities;
 using TabletopUi.Scripts.UI;
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
     public class AspectDetailsWindow : BaseDetailsWindow {
 
 		[SerializeField] RectTransform tokenDetailsHeight;

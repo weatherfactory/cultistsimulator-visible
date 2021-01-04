@@ -2,13 +2,13 @@
 using UnityEngine;
 using System.Collections;
 using System.Linq;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
-using Assets.Core.Entities;
+using SecretHistories.Entities;
 
 public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {

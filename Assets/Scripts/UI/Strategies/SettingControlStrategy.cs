@@ -1,6 +1,6 @@
-﻿using Assets.Core.Entities;
+﻿using SecretHistories.Entities;
 
-namespace Assets.TabletopUi.Scripts.UI
+namespace SecretHistories.UI
 {
     public abstract class SettingControlStrategy
     {

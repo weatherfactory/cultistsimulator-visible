@@ -5,23 +5,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core;
-using Assets.Core.Commands;
+using SecretHistories.Commands;
 using Assets.TabletopUi;
-using Assets.Core.Entities;
-using Assets.Core.Fucine;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
-using Assets.CS.TabletopUI.Interfaces;
-using Assets.Scripts.Interfaces;
-using Assets.TabletopUi.Scripts.Interfaces;
+using SecretHistories.Entities;
+using SecretHistories.Fucine;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
+using SecretHistories.Interfaces;
+using SecretHistories.Interfaces;
+using SecretHistories.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Assets.TabletopUi.Scripts.Services;
-using Noon;
+using SecretHistories.Services;
+
 using UnityEngine.Events;
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
     public class OngoingDisplay:MonoBehaviour,ISituationSubscriber,ISituationAttachment {
 
         [SerializeField] Transform slotHolder; 

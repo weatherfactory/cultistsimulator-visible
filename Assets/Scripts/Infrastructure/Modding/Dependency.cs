@@ -1,6 +1,6 @@
 using System;
 
-namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
+namespace SecretHistories.Infrastructure.Modding
 {
     public class Dependency
     {

@@ -4,17 +4,17 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
-using Assets.Core.Fucine;
-using Assets.Core.Interfaces;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
+using SecretHistories.Fucine;
+using SecretHistories.Interfaces;
 using Assets.TabletopUi;
-using Assets.CS.TabletopUI;
-using Assets.CS.TabletopUI.Interfaces;
+using SecretHistories.UI;
+using SecretHistories.Interfaces;
 using Assets.TabletopUi.Scripts;
-using Assets.TabletopUi.Scripts.Services;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Noon;
+using SecretHistories.Services;
+using SecretHistories.Infrastructure;
+
 using TMPro;
 
 public class ExhibitCards : Sphere {

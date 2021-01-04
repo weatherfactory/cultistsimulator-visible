@@ -4,22 +4,22 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Assets.Core.Commands;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
-using Assets.Core.Fucine;
-using Assets.Core.Interfaces;
-using Assets.Core.NullObjects;
-using Assets.CS.TabletopUI;
-using Assets.Scripts.Commands.SituationCommands;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Noon;
+using SecretHistories.Commands;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
+using SecretHistories.Fucine;
+using SecretHistories.Interfaces;
+using SecretHistories.NullObjects;
+using SecretHistories.UI;
+using SecretHistories.Commands.SituationCommands;
+using SecretHistories.Interfaces;
+
 using OrbCreationExtensions;
 using UnityEngine;
 using UnityEngine.Assertions;
-using Assets.TabletopUi.Scripts.Services;
+using SecretHistories.Services;
 
-namespace Assets.TabletopUi.Scripts.Infrastructure
+namespace SecretHistories.Infrastructure
 {
     public class SimpleJSONGameDataImporter : IGameDataImporter
     {

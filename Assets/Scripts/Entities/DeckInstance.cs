@@ -3,15 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.TokenContainers;
-using Noon;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
+using SecretHistories.Infrastructure;
+using SecretHistories.TokenContainers;
+
 using UnityEngine;
 using Random = System.Random;
 
-namespace Assets.Core.Entities
+namespace SecretHistories.Entities
 {
     public class DeckInstance : MonoBehaviour
     {

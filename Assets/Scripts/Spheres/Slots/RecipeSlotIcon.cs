@@ -1,12 +1,12 @@
 ﻿#pragma warning disable 0649
-using Assets.TabletopUi.Scripts.Infrastructure;
+using SecretHistories.Infrastructure;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 // Should inherit from a "TabletopToken" base class same as VerbBox
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
     public class RecipeSlotIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 
         [SerializeField] Image image;

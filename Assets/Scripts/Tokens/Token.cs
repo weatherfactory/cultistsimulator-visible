@@ -3,34 +3,34 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Core.Commands;
-using Assets.Core.Entities;
-using Assets.Core.Enums;
-using Assets.Core.Fucine;
-using Assets.Core.Interfaces;
-using Assets.Core.NullObjects;
-using Assets.Core.Services;
-using Assets.Core.States;
-using Assets.CS.TabletopUI.Interfaces;
-using Assets.Scripts.Infrastructure;
-using Assets.Scripts.States.TokenStates;
-using Assets.Scripts.UI;
+using SecretHistories.Commands;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
+using SecretHistories.Fucine;
+using SecretHistories.Interfaces;
+using SecretHistories.NullObjects;
+using SecretHistories.Services;
+using SecretHistories.States;
+using SecretHistories.Interfaces;
+using SecretHistories.Infrastructure;
+using SecretHistories.States.TokenStates;
+using SecretHistories.UI;
 using Assets.TabletopUi;
-using Assets.TabletopUi.Scripts.Elements;
-using Assets.TabletopUi.Scripts.Elements.Manifestations;
-using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Infrastructure.Events;
-using Assets.TabletopUi.Scripts.Interfaces;
-using Assets.TabletopUi.Scripts.Services;
-using Assets.TabletopUi.Scripts.TokenContainers;
-using Assets.TabletopUi.Scripts.UI;
-using Noon;
+using SecretHistories.Elements;
+using SecretHistories.Elements.Manifestations;
+using SecretHistories.Infrastructure;
+using SecretHistories.Infrastructure.Events;
+using SecretHistories.Interfaces;
+using SecretHistories.Services;
+using SecretHistories.TokenContainers;
+using SecretHistories.UI;
+
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-namespace Assets.CS.TabletopUI {
+namespace SecretHistories.UI {
 
     [RequireComponent(typeof(RectTransform))]
     public class Token : MonoBehaviour,

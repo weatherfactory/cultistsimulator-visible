@@ -1,10 +1,10 @@
 ﻿using System;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Services;
-using Noon;
+using SecretHistories.UI;
+using SecretHistories.Services;
+
 using UnityEngine.UI;
 
-namespace Assets.TabletopUi.Scripts.UI
+namespace SecretHistories.UI
 {
     public class FucineSliderSettingControlStrategy : SliderSettingControlStrategy
     {

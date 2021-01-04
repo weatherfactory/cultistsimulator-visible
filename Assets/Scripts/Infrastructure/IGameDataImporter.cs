@@ -1,8 +1,8 @@
 ﻿using System.Collections;
-using Assets.Core.Entities;
-using Assets.TabletopUi.Scripts.Services;
+using SecretHistories.Entities;
+using SecretHistories.Services;
 
-namespace Assets.TabletopUi.Scripts.Infrastructure
+namespace SecretHistories.Infrastructure
 {
     public interface IGameDataImporter
     {

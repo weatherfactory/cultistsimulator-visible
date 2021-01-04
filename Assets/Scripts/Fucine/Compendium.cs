@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Core;
-using Assets.Core.Entities;
-using Assets.Core.Entities.Verbs;
-using Assets.Core.Fucine;
-using Assets.Core.Interfaces;
-using Assets.Core.Services;
-using Assets.CS.TabletopUI;
-using Noon;
+using SecretHistories.Entities;
+using SecretHistories.Entities.Verbs;
+using SecretHistories.Fucine;
+using SecretHistories.Interfaces;
+using SecretHistories.Services;
+using SecretHistories.UI;
+
 using UnityEngine.Analytics;
 using static Noon.NoonUtility;
 

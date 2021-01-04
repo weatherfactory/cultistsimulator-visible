@@ -4,9 +4,9 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core.Interfaces;
+using SecretHistories.Interfaces;
 
-namespace Assets.Core.Fucine
+namespace SecretHistories.Fucine
 {
     public class SituationPath: IEquatable<SituationPath>
     {
