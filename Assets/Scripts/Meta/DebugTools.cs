@@ -24,7 +24,6 @@ using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using UnityEngine.VR;
 using static Noon.NoonUtility;
 
 public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
