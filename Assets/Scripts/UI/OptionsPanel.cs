@@ -17,7 +17,6 @@ using SecretHistories.Interfaces;
 using TMPro;
 using SecretHistories.Infrastructure;
 using SecretHistories.Services;
-using UIWidgets;
 
 public class WindowedSettingObserverForOptionsPanel:ISettingSubscriber
 {

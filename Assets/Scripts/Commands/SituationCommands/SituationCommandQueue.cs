@@ -2,7 +2,6 @@
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.States;
-using NUnit.Framework;
 
 namespace SecretHistories.Core
 {
