@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using SecretHistories.Entities;
 
-namespace Assets.Core
+namespace SecretHistories.Core
 {
     /// <summary>
     /// the DefaultDice always rolls 100; in other words, it will always fail non-100% recipe chances

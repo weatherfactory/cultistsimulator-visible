@@ -11,7 +11,7 @@ using SecretHistories.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Assets.TabletopUi.Scripts
+namespace SecretHistories.UI.Scripts
 {
 
 

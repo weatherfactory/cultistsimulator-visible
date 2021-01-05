@@ -8,10 +8,8 @@ using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
-using Assets.TabletopUi;
 using SecretHistories.UI;
-using SecretHistories.Interfaces;
-using Assets.TabletopUi.Scripts;
+using SecretHistories.UI.Scripts;
 using SecretHistories.Services;
 using SecretHistories.Infrastructure;
 

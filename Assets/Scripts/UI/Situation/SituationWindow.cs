@@ -1,27 +1,14 @@
 ﻿#pragma warning disable 0649
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Assets.Core;
-using SecretHistories.Commands;
 using SecretHistories.Interfaces;
-using SecretHistories.Interfaces;
-using SecretHistories.UI;
-using Assets.TabletopUi;
-using Assets.TabletopUi.Scripts;
-using SecretHistories.Interfaces;
-using Assets.TabletopUi.SlotsContainers;
+using SecretHistories.UI.SlotsContainers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
 using SecretHistories.Entities;
-using SecretHistories.Enums;
 using SecretHistories.Fucine;
-using SecretHistories.NullObjects;
-using SecretHistories.Services;
 using SecretHistories.Infrastructure;
-using SecretHistories.Infrastructure.Events;
 
 using UnityEngine.Events;
 using UnityEngine.EventSystems;

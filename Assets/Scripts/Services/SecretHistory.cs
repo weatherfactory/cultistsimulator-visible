@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SecretHistories.Interfaces;
 using SecretHistories.UI;
 
 using UnityEngine;
@@ -11,7 +12,7 @@ namespace SecretHistories.Services
     //control to hide
     //we probably want multiple text lines
     //and there's likely an asset store thing
-    public class SecretHistory:MonoBehaviour,ILogSubscriber
+    public class SecretHistory:MonoBehaviour, ILogSubscriber
     {
 #pragma warning disable 649
         [SerializeField] private GameObject LogMessageEntryPrefab;
@@ -33,7 +34,7 @@ namespace SecretHistories.Services
         }
 
         
-        public void AddMessage(NoonLogMessage message)
+        public void AddMessage(ILogMessage message)
         {
             
             foreach(var e in entries)

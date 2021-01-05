@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SecretHistories.Commands;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
-using Assets.TabletopUi;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Services;
-using UnityEngine;
 
 namespace SecretHistories.Entities.Verbs
 {

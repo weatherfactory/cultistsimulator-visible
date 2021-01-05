@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core;
+using SecretHistories.Core;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.States;

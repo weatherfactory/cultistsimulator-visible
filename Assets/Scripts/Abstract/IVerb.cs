@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
-using Assets.TabletopUi;
+using SecretHistories.UI;
 
 namespace SecretHistories.Interfaces
 {

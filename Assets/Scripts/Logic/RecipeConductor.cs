@@ -11,7 +11,7 @@ using Assets.Logic;
 
 using UnityEngine;
 
-namespace Assets.Core
+namespace SecretHistories.Core
 {
     public class RecipeConductor
     {

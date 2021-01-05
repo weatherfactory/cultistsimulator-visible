@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Core;
+using SecretHistories.Core;
 using SecretHistories.Entities;
 
 namespace Assets.Logic

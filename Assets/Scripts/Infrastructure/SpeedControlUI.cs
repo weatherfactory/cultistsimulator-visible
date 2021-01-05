@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
+using SecretHistories.Enums;
 using SecretHistories.UI;
 using SecretHistories.Interfaces;
 

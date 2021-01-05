@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Core;
+using SecretHistories.Core;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.Spheres.Angels;
-using Assets.TabletopUi;
 using SecretHistories.Infrastructure;
-using SecretHistories.Interfaces;
 using SecretHistories.Services;
 
 using UnityEngine;

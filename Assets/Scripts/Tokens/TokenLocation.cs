@@ -8,7 +8,7 @@ using SecretHistories.UI;
 using SecretHistories.Infrastructure;
 using UnityEngine;
 
-namespace Assets.TabletopUi
+namespace SecretHistories.UI
 {
   public  class TokenLocation
   {

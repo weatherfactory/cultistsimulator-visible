@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
-using Assets.Core;
+using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
-using SecretHistories.Entities;
+using SecretHistories.Enums;
 using SecretHistories.Spheres.Angels;
 
 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Assets.Core;
+using SecretHistories.Core;
 using SecretHistories.UI;
 using SecretHistories.Infrastructure.Modding;
 

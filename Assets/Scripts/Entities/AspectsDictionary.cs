@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using SecretHistories.UI;
 
-namespace Assets.Core
+namespace SecretHistories.Core
 {
     public interface IAspectsDictionary: IDictionary<string,int>
     {

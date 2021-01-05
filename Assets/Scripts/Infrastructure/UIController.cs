@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SecretHistories.Entities;
+using SecretHistories.Enums;
 using SecretHistories.UI;
 using SecretHistories.Interfaces;
 using SecretHistories.Services;

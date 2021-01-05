@@ -3,7 +3,7 @@ using System.Collections;
 using SecretHistories.Entities;
 using SecretHistories.Infrastructure;
 
-namespace Assets.TabletopUi.Scripts
+namespace SecretHistories.UI.Scripts
 {
     public class SaveDataExporter
     {

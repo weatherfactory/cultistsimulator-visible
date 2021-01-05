@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using SecretHistories.Interfaces;
 using TMPro;
 using UnityEngine;
 
@@ -15,10 +15,10 @@ namespace SecretHistories.Services
         [SerializeField] private TextMeshProUGUI TextComponent;
 #pragma warning restore 649
 
-        private NoonLogMessage _message;
+        private ILogMessage _message;
         public int Count { get; private set; }
 
-        public bool TryMatchMessage(NoonLogMessage messageToCheck)
+        public bool TryMatchMessage(ILogMessage messageToCheck)
         {
             if (_message.Description == messageToCheck.Description)
             {
@@ -30,15 +30,15 @@ namespace SecretHistories.Services
             return false;
         }
 
-        public void DisplayMessage(NoonLogMessage message)
+        public void DisplayMessage(ILogMessage message)
         {
             
             _message = message;
 
             if (Count > 0)
                 TextComponent.text = $"({Count}) {message.Description}";
-           else
-                    TextComponent.text = message.Description;
+            else
+                TextComponent.text = message.Description;
 
             if (message.MessageLevel == 0)
                 TextComponent.color = AspectColor.Knock();

@@ -28,12 +28,12 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 #pragma warning restore 649
 #pragma warning disable 414
 	bool pointerInRect;
-#pragma warning restore 414
-	float pointerEnterEdgeTime = 0f;
+    float pointerEnterEdgeTime = 0f;
 	bool ManualScrollRectDragIsActive;
 	bool blockScrolling;
+#pragma warning restore 414
 
-	Vector2 mousePos;
+    Vector2 mousePos;
 	Vector4 innerBounds;
 	Vector2 marginVect;
 	float magnitude;

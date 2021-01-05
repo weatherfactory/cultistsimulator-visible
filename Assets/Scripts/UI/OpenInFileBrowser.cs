@@ -110,7 +110,7 @@ namespace SecretHistories.UI
                 linuxPath = dirPath; // open the directory if it exists
             }
             linuxPath = '"'+linuxPath.Replace("\"","\\\"")+'"';// replace any quotes, wrap path in quotes
-            Noon.NoonUtility.Log("Linux open path: "+linuxPath);
+            NoonUtility.Log("Linux open path: "+linuxPath);
             try
             {
                 ProcessStartInfo info = new ProcessStartInfo();
@@ -121,7 +121,7 @@ namespace SecretHistories.UI
             }
             catch ( System.Exception e )
             {
-                  Noon.NoonUtility.Log(e.ToString());
+                  NoonUtility.Log(e.ToString());
                 // tried to open linux explorer not on linux
                 // just silently skip error
                 // we currently have no platform define for the current OS we are in, so we resort to this

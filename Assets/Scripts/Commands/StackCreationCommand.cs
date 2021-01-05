@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SecretHistories.Fucine;
-using Assets.TabletopUi;
+using SecretHistories.UI;
 using SecretHistories.Infrastructure;
 
 using UnityEngine;

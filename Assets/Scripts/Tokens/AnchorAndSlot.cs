@@ -6,7 +6,7 @@ using SecretHistories.UI;
 using SecretHistories.Infrastructure;
 using SecretHistories.Interfaces;
 
-namespace Assets.TabletopUi
+namespace SecretHistories.UI
 {
     public class AnchorAndSlot
     {

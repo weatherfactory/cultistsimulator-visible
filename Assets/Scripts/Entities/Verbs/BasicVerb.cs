@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
-using Assets.TabletopUi;
 using SecretHistories.Elements.Manifestations;
 
 namespace SecretHistories.Entities

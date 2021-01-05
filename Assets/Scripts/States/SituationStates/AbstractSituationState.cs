@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
+using SecretHistories.Enums;
 using SecretHistories.Interfaces;
 using SecretHistories.Infrastructure;
 

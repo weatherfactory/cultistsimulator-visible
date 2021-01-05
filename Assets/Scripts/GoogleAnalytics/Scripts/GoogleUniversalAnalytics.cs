@@ -3652,7 +3652,9 @@ public sealed class GoogleUniversalAnalytics
     private byte[] gwrGet_bytes(GUAWebRequest gwr)
     {
         #if GUA_USE_WEBREQUEST
+#pragma warning disable 618
         if (gwr.isNetworkError || gwr.downloadHandler == null)
+#pragma warning restore 618
             return new byte[0];
         return gwr.downloadHandler.data;
         #else
@@ -3663,8 +3665,10 @@ public sealed class GoogleUniversalAnalytics
     private bool gwrGet_isError(GUAWebRequest gwr)
     {
         #if GUA_USE_WEBREQUEST
+#pragma warning disable 618
         return gwr.isNetworkError || gwr.responseCode >= 400;
-        #else
+#pragma warning restore 618
+#else
         return gwr.error != null && gwr.error.Length > 0;
         #endif
     }
@@ -3672,7 +3676,9 @@ public sealed class GoogleUniversalAnalytics
     private string gwrGet_errorString(GUAWebRequest gwr)
     {
         #if GUA_USE_WEBREQUEST
+#pragma warning disable 618
         if (gwr.isNetworkError)
+#pragma warning restore 618
             return gwr.error;
         else if (gwr.responseCode >= 400)
             return gwr.responseCode.ToString();

@@ -9,10 +9,8 @@ using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
-using SecretHistories.Interfaces;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Infrastructure;
-using SecretHistories.Interfaces;
 
 using TMPro;
 using UnityEngine;

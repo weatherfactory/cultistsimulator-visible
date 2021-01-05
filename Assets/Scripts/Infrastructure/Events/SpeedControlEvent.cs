@@ -1,4 +1,5 @@
 ﻿using System;
+using SecretHistories.Enums;
 using UnityEngine.Events;
 
 namespace SecretHistories.Infrastructure

@@ -5,11 +5,9 @@ using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
-using SecretHistories.Interfaces;
-using Assets.TabletopUi.Scripts;
+using SecretHistories.UI.Scripts;
 using SecretHistories.Infrastructure;
 using SecretHistories.Infrastructure.Events;
-using SecretHistories.Interfaces;
 
 using TMPro;
 using UnityEngine;

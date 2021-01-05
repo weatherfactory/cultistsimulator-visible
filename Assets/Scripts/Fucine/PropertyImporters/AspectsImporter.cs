@@ -6,6 +6,8 @@ using System.Reflection;
 using SecretHistories.Fucine.DataImport;
 using SecretHistories.Interfaces;
 using OrbCreationExtensions;
+using SecretHistories.Core;
+
 namespace SecretHistories.Fucine
 {
     public class AspectsImporter : AbstractImporter

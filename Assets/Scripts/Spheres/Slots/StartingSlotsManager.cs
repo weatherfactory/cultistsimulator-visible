@@ -4,18 +4,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Core;
+using SecretHistories.Core;
 using SecretHistories.Entities;
+using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
-using SecretHistories.Interfaces;
 using UnityEngine;
 using SecretHistories.Services;
-using Assets.TabletopUi.Scripts;
+using SecretHistories.UI.Scripts;
 using SecretHistories.Infrastructure;
 
-namespace Assets.TabletopUi.SlotsContainers {
+namespace SecretHistories.UI.SlotsContainers {
     public class StartingSlotsManager : MonoBehaviour {
 
         [SerializeField] SlotGridManager gridManager;

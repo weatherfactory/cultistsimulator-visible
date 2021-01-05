@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Interfaces;
 using SecretHistories.Services;

@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Core;
+using SecretHistories.Core;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
-using SecretHistories.Interfaces;
 using Assets.Logic;
 using SecretHistories.Spheres.Angels;
 using SecretHistories.Elements;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Infrastructure.Events;
-using SecretHistories.Interfaces;
 using SecretHistories.Services;
 
 using UnityEngine;

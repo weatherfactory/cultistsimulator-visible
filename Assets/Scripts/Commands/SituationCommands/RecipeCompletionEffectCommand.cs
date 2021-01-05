@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
-using SecretHistories.Interfaces;
-using SecretHistories.Interfaces;
 
-namespace Assets.Core
+namespace SecretHistories.Core
 {
     public class RecipeCompletionEffectCommand
     {

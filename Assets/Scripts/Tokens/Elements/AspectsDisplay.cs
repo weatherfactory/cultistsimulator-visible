@@ -1,14 +1,13 @@
 ﻿#pragma warning disable 0649
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Core;
+using SecretHistories.Core;
 using SecretHistories.Entities;
-using SecretHistories.UI;
 using SecretHistories.Services;
 using TMPro;
 using UnityEngine;
 
-namespace SecretHistories.
+namespace SecretHistories.UI
 {
     public class AspectsDisplay : MonoBehaviour {
 

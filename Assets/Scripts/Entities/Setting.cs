@@ -7,7 +7,6 @@ using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
-using SecretHistories.Interfaces;
 using SecretHistories.Services;
 
 using UnityEngine;

@@ -7,6 +7,7 @@ using SecretHistories.Enums;
 using SecretHistories.UI;
 using SecretHistories.Interfaces;
 using Assets.Logic;
+using SecretHistories.Core;
 using SecretHistories.Infrastructure;
 
 namespace SecretHistories.States

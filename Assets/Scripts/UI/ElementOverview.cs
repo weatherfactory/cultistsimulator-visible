@@ -3,13 +3,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Core;
+using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
-using Assets.TabletopUi;
 using SecretHistories.Infrastructure.Events;
-using SecretHistories.Interfaces;
 
 using TMPro;
 using UnityEngine;

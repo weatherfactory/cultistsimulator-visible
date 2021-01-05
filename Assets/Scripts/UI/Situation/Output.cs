@@ -4,18 +4,12 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
-using Assets.TabletopUi;
 using SecretHistories.UI;
-using SecretHistories.Interfaces;
-using Assets.TabletopUi.Scripts;
-using SecretHistories.Services;
 using SecretHistories.Infrastructure;
-using SecretHistories.Interfaces;
 
 using TMPro;
 using UnityEngine.Events;

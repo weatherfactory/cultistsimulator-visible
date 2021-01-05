@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using SecretHistories.Commands;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.NullObjects;
 using SecretHistories.UI;
 using SecretHistories.Commands.SituationCommands;
-using Assets.TabletopUi;
-using SecretHistories.Interfaces;
 using SecretHistories.Services;
 
 

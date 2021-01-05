@@ -12,18 +12,12 @@ using System.IO;
 using System.Linq;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
-using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
 
-using UnityEngine.Audio;
 using TMPro;
 using SecretHistories.Infrastructure;
-using SecretHistories.Interfaces;
 using SecretHistories.Services;
-using SecretHistories.UI;
 using UIWidgets;
-using UnityEngine.Analytics;
-using UnityEngine.InputSystem;
 
 public class WindowedSettingObserverForOptionsPanel:ISettingSubscriber
 {

@@ -1,7 +1,6 @@
 ﻿#pragma warning disable 0649
 using System.Collections.Generic;
-using Assets.Core;
-using SecretHistories.;
+using SecretHistories.Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;

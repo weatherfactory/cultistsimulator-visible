@@ -5,18 +5,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Assets.Core;
+using SecretHistories.Core;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
+using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
-using Assets.TabletopUi;
-using Assets.TabletopUi.Scripts;
+using SecretHistories.UI.Scripts;
 using SecretHistories.Infrastructure;
 using SecretHistories.Infrastructure.Events;
 using SecretHistories.Infrastructure.Modding;
-using SecretHistories.Interfaces;
 using SecretHistories.Services;
 
 using Steamworks;
@@ -24,7 +23,6 @@ using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using static Noon.NoonUtility;
 
 public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 {
@@ -375,9 +373,9 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
            var startImport = DateTime.Now;
            var log=compendiumLoader.PopulateCompendium(existingCompendium, Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
         foreach(var m in log.GetMessages())
-            Log(m.Description,m.MessageLevel);
+            NoonUtility.Log(m.Description,m.MessageLevel);
 
-        Log("Total time to import: " + (DateTime.Now-startImport));
+        NoonUtility.Log("Total time to import: " + (DateTime.Now-startImport));
 
         // Populate current decks with new cards (this will shuffle the deck)
         Registry.Get<Character>().ResetStartingDecks();
@@ -390,7 +388,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
         var log=new ContentImportLog();
         compendium.CountWords(log);
         foreach (var m in log.GetMessages())
-            Log(m.Description, m.MessageLevel);
+            NoonUtility.Log(m.Description, m.MessageLevel);
 
     }
 
@@ -400,7 +398,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
         var log = new ContentImportLog();
         compendium.LogFnords(log);
         foreach (var m in log.GetMessages())
-            Log(m.Description, m.MessageLevel);
+            NoonUtility.Log(m.Description, m.MessageLevel);
 
     }
 
@@ -411,7 +409,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
         var log = new ContentImportLog();
         compendium.LogMissingImages(log);
         foreach (var m in log.GetMessages())
-            Log(m.Description, m.MessageLevel);
+            NoonUtility.Log(m.Description, m.MessageLevel);
     }
 
 
@@ -515,14 +513,14 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
     {
         if (!CheckDebugSaveExists(index))
             return;
-        File.Delete(GetGameSaveLocation(index));
+        File.Delete(NoonUtility.GetGameSaveLocation(index));
         loadButtons[index-1].interactable = false;
         delButtons[index-1].interactable = false;
     }
 
     private bool CheckDebugSaveExists(int index)
     {
-        return File.Exists(GetGameSaveLocation(index));
+        return File.Exists(NoonUtility.GetGameSaveLocation(index));
     }
 
     public void NotifyTokensChanged(TokenInteractionEventArgs args)

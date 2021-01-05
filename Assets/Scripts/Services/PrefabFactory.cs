@@ -6,13 +6,11 @@ using System.Runtime.InteropServices;
 using System.Text;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
-using SecretHistories.Interfaces;
 using UnityEngine;
-using Assets.TabletopUi.Scripts;
+using SecretHistories.UI.Scripts;
 using SecretHistories.Elements;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Infrastructure;
-using SecretHistories.Interfaces;
 using SecretHistories.TokenContainers;
 
 using Object = UnityEngine.Object;

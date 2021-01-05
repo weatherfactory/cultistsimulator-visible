@@ -6,14 +6,12 @@ using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
-using SecretHistories.Interfaces;
 using SecretHistories.Spheres.Angels;
 using SecretHistories.States.TokenStates;
 using SecretHistories.UI;
-using Assets.TabletopUi.Scripts;
+using SecretHistories.UI.Scripts;
 using SecretHistories.Infrastructure;
 using SecretHistories.Infrastructure.Events;
-using SecretHistories.Interfaces;
 
 using TMPro;
 using UnityEditor;

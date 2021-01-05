@@ -4,9 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
-using SecretHistories.Interfaces;
-using Assets.TabletopUi;
-using Assets.TabletopUi.Scripts;
+using SecretHistories.UI.Scripts;
 using SecretHistories.Infrastructure;
 
 using TMPro;

@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using SecretHistories.Entities;
 using SecretHistories.UI;
-using SecretHistories.Services;
 
 using TMPro;
 using UnityEngine;

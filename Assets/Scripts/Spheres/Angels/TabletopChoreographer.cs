@@ -9,7 +9,6 @@ using SecretHistories.Enums;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.Spheres.Angels;
-using SecretHistories.Interfaces;
 using SecretHistories.Services;
 using SecretHistories.TokenContainers;
 using Microsoft.Unity.VisualStudio.Editor;

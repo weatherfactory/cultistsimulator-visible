@@ -1,7 +1,7 @@
 ﻿#pragma warning disable 0649
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Core;
+using SecretHistories.Core;
 using SecretHistories.UI;
 using SecretHistories.Services;
 using TMPro;
@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Assets.TabletopUi.Scripts
+namespace SecretHistories.UI.Scripts
 {
     /// <summary>
     /// displays a summary of aspects; used for the workspace display, and in the recipe book

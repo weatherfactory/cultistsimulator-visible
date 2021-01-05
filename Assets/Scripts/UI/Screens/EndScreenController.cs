@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using SecretHistories.Entities;
 using SecretHistories.Interfaces;
-using Assets.TabletopUi;
+using SecretHistories.UI;
 using SecretHistories.Infrastructure;
 using SecretHistories.Services;
 using TMPro;

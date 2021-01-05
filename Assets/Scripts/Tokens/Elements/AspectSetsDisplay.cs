@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Assets.Core;
+using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.UI;
 using SecretHistories.Services;

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SecretHistories.Enums;
 
 
 namespace SecretHistories.Infrastructure

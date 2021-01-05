@@ -2,14 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Core;
-using SecretHistories.Interfaces;
+using SecretHistories.Core;
 using SecretHistories.Interfaces;
 using SecretHistories.Services;
 using UnityEngine;
 using SecretHistories.Entities;
 using SecretHistories.Infrastructure.Events;
-using SecretHistories.Interfaces;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Assets.Core;
+using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Interfaces;
 using SecretHistories.Services;

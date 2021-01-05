@@ -4,7 +4,7 @@ using SecretHistories.Entities;
 using SecretHistories.States;
 using NUnit.Framework;
 
-namespace Assets.Core
+namespace SecretHistories.Core
 {
 
     public class SituationCommandQueue

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using SecretHistories.UI;
-using Assets.TabletopUi;
 using SecretHistories.Infrastructure;
 using SecretHistories.Interfaces;
 

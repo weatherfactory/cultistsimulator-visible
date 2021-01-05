@@ -7,7 +7,8 @@ using System.Text;
 using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
 using SecretHistories.Interfaces;
-using Assets.TabletopUi.SlotsContainers;
+using SecretHistories.UI.SlotsContainers;
+using SecretHistories.Core;
 
 
 namespace SecretHistories.Entities

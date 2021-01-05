@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Noon
+namespace SecretHistories.Utilities.Exetensions
 {
     public static class DictionaryExtensions
     {

@@ -5,11 +5,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using  SecretHistories.Interfaces;
 
 
-namespace Noon
-{
-    public class NoonLogMessage
+
+    public class NoonLogMessage : ILogMessage
     {
         private string _description;
 
@@ -130,7 +130,7 @@ namespace Noon
 
     public interface ILogSubscriber
     {
-        void AddMessage(NoonLogMessage message);
+        void AddMessage(ILogMessage message);
     }
 
     public class NoonUtility
@@ -150,7 +150,7 @@ namespace Noon
             subscribers.Add(subscriber);
         }
         
-        public static void Log(NoonLogMessage message)
+        public static void Log(ILogMessage message)
         {
             if (message == null)
                 message=new NoonLogMessage("Null log message supplied");
@@ -185,14 +185,14 @@ namespace Noon
 
         public static void Log(string description, int messageLevel=0, VerbosityLevel verbosityNeeded=VerbosityLevel.Trivia)
         {
-            NoonLogMessage message = new NoonLogMessage(description, messageLevel, Convert.ToInt32(verbosityNeeded));
+            ILogMessage message = new NoonLogMessage(description, messageLevel, Convert.ToInt32(verbosityNeeded));
 
             Log(message);
         }
 
         public static void LogWarning(string description)
         {
-            NoonLogMessage message = new NoonLogMessage(description, 1, Convert.ToInt32(VerbosityLevel.Essential));
+            ILogMessage message = new NoonLogMessage(description, 1, Convert.ToInt32(VerbosityLevel.Essential));
 
             Log(message);
         }
@@ -284,7 +284,7 @@ namespace Noon
         public static void LogException(Exception exception)
         {
             string description = $"{exception.Message}: \n {exception.StackTrace}";
-            NoonLogMessage logMessage=new NoonLogMessage(description ,2,0);
+            ILogMessage logMessage=new NoonLogMessage(description ,2,0);
             logMessage.LoggedException = exception;
             Log(logMessage);
         }
@@ -330,5 +330,5 @@ namespace Noon
             return new Color32(190, 238, 255, 255);
         }
     }
-}
+
 

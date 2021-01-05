@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Interfaces;
 
 
 namespace SecretHistories.Fucine
 {
     public class ContentImportLog
     {
-        private List<NoonLogMessage> _contentImportMessages= new List<NoonLogMessage>();
+        private List<ILogMessage> _contentImportMessages= new List<ILogMessage>();
 
         public bool ImportFailed()
         {
@@ -31,9 +32,9 @@ namespace SecretHistories.Fucine
             _contentImportMessages.Add(new NoonLogMessage(desc,0));
         }
 
-        public IList<NoonLogMessage> GetMessages()
+        public IList<ILogMessage> GetMessages()
         {
-            return new List<NoonLogMessage>(_contentImportMessages);
+            return new List<ILogMessage>(_contentImportMessages);
 
         }
     }

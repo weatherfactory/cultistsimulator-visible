@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Core;
+using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Entities.Verbs;
 using SecretHistories.Fucine;
@@ -11,7 +11,6 @@ using SecretHistories.Services;
 using SecretHistories.UI;
 
 using UnityEngine.Analytics;
-using static Noon.NoonUtility;
 
 
 
@@ -171,14 +170,14 @@ public class Compendium
                     return null; //no infinite loops pls
                 else
                 {
-                    Log(
+                    NoonUtility.Log(
                         $"Can't find culture with id {entityId}. Reverting to the default culture: sorry for the ethnocentrism!");
                     return defaultCultureEntity;
                 }
             }
             else
             {
-                Log("Can't find entity id '" + entityId + "' of type " + typeof(T));
+                NoonUtility.Log("Can't find entity id '" + entityId + "' of type " + typeof(T));
             }
 
 
