@@ -6,17 +6,10 @@ using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Text;
 using SecretHistories.UI;
+using SecretHistories.Interfaces;
 
 namespace SecretHistories.Core
 {
-    public interface IAspectsDictionary: IDictionary<string,int>
-    {
-        int AspectValue(string aspectId);
-        List<string> KeysAsList();
-        void CombineAspects(IAspectsDictionary additionalAspects);
-        void ApplyMutations(Dictionary<string, int> mutations);
-        
-    }
 
     public class AspectsDictionary: Dictionary<string, int>, IAspectsDictionary
     {

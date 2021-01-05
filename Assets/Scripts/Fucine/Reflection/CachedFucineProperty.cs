@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using SecretHistories.Core;
+using SecretHistories.Interfaces;
 using UnityEngine;
 
 namespace SecretHistories.Fucine

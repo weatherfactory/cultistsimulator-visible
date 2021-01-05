@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using SecretHistories.Core;
 using SecretHistories.Entities;
+using SecretHistories.Interfaces;
 using SecretHistories.Services;
 using TMPro;
 using UnityEngine;
