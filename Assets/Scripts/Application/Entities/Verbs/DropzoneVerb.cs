@@ -53,12 +53,6 @@ namespace SecretHistories.Entities.Verbs
         public bool Transient => false;
         public bool Startable => false;
         public bool ExclusiveOpen => false;
-        public bool CreationAllowedWhenAlreadyExists(Situation s)
-        {
-            if (s.Verb.Id == this.Id)
-                return false;
-            return true;
-        }
 
         public Situation CreateDefaultSituation(TokenLocation anchorLocation)
         {

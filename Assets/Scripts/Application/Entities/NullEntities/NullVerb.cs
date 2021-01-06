@@ -39,7 +39,7 @@ namespace SecretHistories.NullObjects
         public bool Startable { get; }
         public bool ExclusiveOpen => false;
 
-        public bool CreationAllowedWhenAlreadyExists(Situation s)
+        public bool ExclusiveCreation(Situation s)
         {
             return true;
         }

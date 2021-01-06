@@ -91,7 +91,7 @@ namespace SecretHistories.Entities
 
             var registeredSituations = GetRegisteredSituations();
 
-            if (registeredSituations.Exists(rs => !scc.Verb.CreationAllowedWhenAlreadyExists(rs)))
+            if (registeredSituations.Exists(rs => rs.ForbidCreation(scc)))
             {
                 NoonUtility.Log("Tried to create " + scc.Recipe.Id + " for verb " + scc.Recipe.ActionId + " but that verb is already active.");
                 //end execution here

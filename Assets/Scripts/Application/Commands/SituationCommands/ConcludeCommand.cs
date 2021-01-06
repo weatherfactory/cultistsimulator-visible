@@ -29,8 +29,12 @@ namespace SecretHistories.Commands.SituationCommands
                 SoundManager.PlaySfx("SituationTokenRetire");
             else
                 SoundManager.PlaySfx("UIButtonClick");
+            
+            if(situation.Verb.Transient)
+                situation.Retire();
+            else
+                situation.TransitionToState(new UnstartedState());
 
-            situation.TransitionToState(new UnstartedState());
             return true;
         }
     }

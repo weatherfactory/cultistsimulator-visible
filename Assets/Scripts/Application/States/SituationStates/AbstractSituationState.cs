@@ -18,10 +18,10 @@ namespace SecretHistories.States
        public abstract void Exit(Situation situation);
        public abstract bool IsActiveInThisState(Sphere sphereToCheck);
        public abstract bool IsValidPredictionForState(Recipe recipeToCheck, Situation s);
-       public abstract bool Extinct { get; }
+       public abstract bool AllowDuplicateVerbIfTransient { get; }
 
 
-        public static SituationState Rehydrate(StateEnum stateEnum,Situation situation)
+       public static SituationState Rehydrate(StateEnum stateEnum,Situation situation)
        {
            SituationState rehydratedState;
 
@@ -60,9 +60,6 @@ namespace SecretHistories.States
 
 
         public abstract void Continue(Situation situation);
-
-
-
 
    }
 }

@@ -7,7 +7,7 @@ namespace SecretHistories.States
 {
     public class HaltingState : SituationState
     {
-        public override bool Extinct => true;
+        public override bool AllowDuplicateVerbIfTransient => true;
 
         public override void Enter(Situation situation)
         {

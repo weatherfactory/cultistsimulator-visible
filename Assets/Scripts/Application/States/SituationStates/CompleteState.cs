@@ -8,7 +8,7 @@ namespace SecretHistories.States
 {
     public class CompleteState : SituationState
     {
-        public override bool Extinct => false;
+        public override bool AllowDuplicateVerbIfTransient => true;
         public override void Enter(Situation situation)
         {
             
@@ -35,6 +35,7 @@ namespace SecretHistories.States
         public override void Continue(Situation situation)
         {
             situation.CommandQueue.ExecuteCommandsFor(CommandCategory.Output, situation);
+
         }
     }
 }

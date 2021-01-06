@@ -9,7 +9,7 @@ namespace SecretHistories.States
     public class OngoingState : SituationState
     {
 
-        public override bool Extinct => false;
+        public override bool AllowDuplicateVerbIfTransient => false;
 
         public override void Enter(Situation situation)
         {

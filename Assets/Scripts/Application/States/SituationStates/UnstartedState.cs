@@ -57,7 +57,7 @@ namespace SecretHistories.States
             return false;
         }
 
-        public override bool Extinct => false;
+        public override bool AllowDuplicateVerbIfTransient => false;
 
 
         public override void Continue (Situation situation)

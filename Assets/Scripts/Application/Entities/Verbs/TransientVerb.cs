@@ -58,15 +58,6 @@ namespace SecretHistories.Entities
         public bool Startable { get; set; }
         public bool ExclusiveOpen => true;
 
-        public bool CreationAllowedWhenAlreadyExists(Situation s)
-        {
-            
-                if (s.Verb.Id == this.Id && !s.CurrentState.Extinct)
-                    return false;
-                return true;
-
-        }
-
         public Situation CreateDefaultSituation(TokenLocation anchorLocation)
         {
             throw new NotImplementedException();

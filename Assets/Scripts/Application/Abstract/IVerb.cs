@@ -23,7 +23,6 @@ namespace SecretHistories.Interfaces
       List<SlotSpecification> Slots { get; set; }
       bool Startable { get; }
       bool ExclusiveOpen { get; }
-      bool CreationAllowedWhenAlreadyExists(Situation s);
       Situation CreateDefaultSituation(TokenLocation anchorLocation);
     }
 

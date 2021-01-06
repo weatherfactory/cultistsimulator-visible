@@ -370,7 +370,6 @@ namespace SecretHistories.Entities {
 
             CurrentState.Continue(this);
 
-
             CurrentCompletionEffectCommand = new RecipeCompletionEffectCommand();
 
             return CurrentState;
@@ -758,6 +757,16 @@ namespace SecretHistories.Entities {
 //
         }
 
+        public bool ForbidCreation(SituationCreationCommand scc)
+        {
+            if (scc.Verb.Id != Verb.Id)
+                return false;
+
+            if (scc.Verb.Transient && CurrentState.AllowDuplicateVerbIfTransient) //doesn't matter whether ID matches or not
+                return false;
+
+            return true;
+        }
 
     }
 
