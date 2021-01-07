@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SecretHistories.Core;
 using SecretHistories.UI;
-using SecretHistories.Infrastructure.Modding;
+using SecretHistories.Constants.Modding;
 
 using TMPro;
 using UnityEngine;

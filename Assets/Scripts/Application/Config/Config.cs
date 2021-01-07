@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using SecretHistories.Entities;
 using SecretHistories.UI;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 using SecretHistories.Interfaces;
 using SecretHistories.Services;
 using UnityEngine;

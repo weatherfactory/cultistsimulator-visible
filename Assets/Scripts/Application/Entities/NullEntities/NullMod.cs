@@ -1,4 +1,4 @@
-namespace SecretHistories.Infrastructure.Modding
+namespace SecretHistories.Constants.Modding
 {
     public class NullMod : Mod
     {

@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 
 // Should inherit from a "TabletopToken" base class same as VerbBox
 

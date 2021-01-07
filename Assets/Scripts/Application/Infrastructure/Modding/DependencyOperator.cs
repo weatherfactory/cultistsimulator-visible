@@ -1,5 +1,5 @@
 
-namespace SecretHistories.Infrastructure.Modding
+namespace SecretHistories.Constants.Modding
 {
     public enum DependencyOperator
     {

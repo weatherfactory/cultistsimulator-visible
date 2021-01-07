@@ -13,9 +13,9 @@ using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.UI.Scripts;
-using SecretHistories.Infrastructure;
-using SecretHistories.Infrastructure.Events;
-using SecretHistories.Infrastructure.Modding;
+using SecretHistories.Constants;
+using SecretHistories.Constants.Events;
+using SecretHistories.Constants.Modding;
 using SecretHistories.Services;
 
 using Steamworks;

@@ -7,7 +7,7 @@ using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using UnityEngine;

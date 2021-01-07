@@ -10,7 +10,7 @@ using UnityEngine;
 using SecretHistories.UI.Scripts;
 using SecretHistories.Elements;
 using SecretHistories.Elements.Manifestations;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 using SecretHistories.TokenContainers;
 
 using Object = UnityEngine.Object;

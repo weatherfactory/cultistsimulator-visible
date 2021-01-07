@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using SecretHistories.Entities;
+using SecretHistories.Enums;
 using SecretHistories.Services;
 
-namespace SecretHistories.Infrastructure
+namespace SecretHistories.Constants
 {
     public interface IGameDataImporter
     {

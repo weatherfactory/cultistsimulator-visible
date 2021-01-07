@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
-using SecretHistories.Infrastructure;
-using SecretHistories.Infrastructure.Modding;
+using SecretHistories.Constants;
+using SecretHistories.Constants.Modding;
 
 using TMPro;
 using UnityEngine;

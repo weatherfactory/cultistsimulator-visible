@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Constants.Events;
 using SecretHistories.Entities;
 using SecretHistories.UI;
-using SecretHistories.Infrastructure;
-using SecretHistories.Infrastructure.Events;
+using SecretHistories.Constants;
+using SecretHistories.Enums;
 using SecretHistories.Interfaces;
 using SecretHistories.Services;
 
 using UnityEngine;
 
-namespace SecretHistories.Infrastructure
+namespace SecretHistories.Constants
 {
 
     public enum NonSaveableType

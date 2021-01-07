@@ -9,7 +9,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace SecretHistories.Infrastructure
+namespace SecretHistories.Constants
 {
     public class SpeedControlUI:MonoBehaviour
     {

@@ -1,4 +1,4 @@
-﻿using SecretHistories.Infrastructure.Events;
+﻿using SecretHistories.Constants.Events;
 
 namespace SecretHistories.Interfaces
 {

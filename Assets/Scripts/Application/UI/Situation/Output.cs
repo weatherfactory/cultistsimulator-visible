@@ -9,7 +9,7 @@ using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 
 using TMPro;
 using UnityEngine.Events;

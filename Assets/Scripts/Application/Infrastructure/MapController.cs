@@ -10,7 +10,7 @@ using SecretHistories.Entities;
 using SecretHistories.Enums;
 using Assets.Logic;
 
-namespace SecretHistories.Infrastructure
+namespace SecretHistories.Constants
 {
     public class MapController: MonoBehaviour
     {

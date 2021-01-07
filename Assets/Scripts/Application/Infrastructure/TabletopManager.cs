@@ -13,12 +13,13 @@ using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
 using SecretHistories.Services;
 using Assets.Logic;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 using SecretHistories.UI;
-using SecretHistories.Infrastructure.Events;
+using SecretHistories.Constants.Events;
 using SecretHistories.TokenContainers;
 
 using SecretHistories.Enums.Elements;
+using SecretHistories.Infrastructure;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;

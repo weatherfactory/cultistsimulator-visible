@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 
 using UnityEngine.Events;
 using UnityEngine.EventSystems;

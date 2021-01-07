@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-using SecretHistories.Infrastructure.Modding;
+using SecretHistories.Constants.Modding;
 using SecretHistories.Services;
 using UnityEngine;
 

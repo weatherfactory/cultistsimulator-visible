@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 
 namespace SecretHistories.TokenContainers
 {

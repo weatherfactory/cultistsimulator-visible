@@ -10,7 +10,7 @@ using SecretHistories.Enums;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.Elements.Manifestations;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 
 using TMPro;
 using UnityEngine;

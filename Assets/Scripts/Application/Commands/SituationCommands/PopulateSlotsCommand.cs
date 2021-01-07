@@ -10,12 +10,12 @@ using SecretHistories.States;
 
 namespace SecretHistories.Commands.SituationCommands
 {
-  public  class PopulateRecipeSlotsCommand: ISituationCommand
+  public  class PopulateSlotsCommand: ISituationCommand
     {
         private List<SlotSpecification> _populateWithSlots = new List<SlotSpecification>();
 
         public CommandCategory CommandCategory => CommandCategory.RecipeSlots;
-        public PopulateRecipeSlotsCommand(List<SlotSpecification> populateWithSlots)
+        public PopulateSlotsCommand(List<SlotSpecification> populateWithSlots)
         {
             _populateWithSlots.AddRange(populateWithSlots);
         }

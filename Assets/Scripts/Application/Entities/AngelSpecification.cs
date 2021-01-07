@@ -8,7 +8,7 @@ using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
 using SecretHistories.UI;
 using SecretHistories.Spheres.Angels;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 
 namespace SecretHistories.Entities
 {

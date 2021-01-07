@@ -5,7 +5,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using OrbCreationExtensions;
 
-namespace SecretHistories.Infrastructure.Modding
+namespace SecretHistories.Constants.Modding
 {
     public static class HashtableExtensions
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using SecretHistories.Entities;
 
-namespace SecretHistories.Infrastructure
+namespace SecretHistories.Constants
 {
     /// <summary>
     /// POCO for passing saved extragame state around

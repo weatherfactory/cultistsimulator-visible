@@ -12,11 +12,12 @@ using SecretHistories.Services;
 using SecretHistories.UI;
 using SecretHistories.Elements;
 using SecretHistories.Elements.Manifestations;
-using SecretHistories.Infrastructure;
-using SecretHistories.Infrastructure.Modding;
+using SecretHistories.Constants;
+using SecretHistories.Constants.Modding;
 using SecretHistories.TokenContainers;
 
 using SecretHistories.Enums;
+using SecretHistories.Infrastructure;
 using UnityEngine;
 
 namespace SecretHistories.Services

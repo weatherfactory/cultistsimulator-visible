@@ -5,7 +5,7 @@ using System.Linq;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.UI.Scripts;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 
 using TMPro;
 using UnityEngine.EventSystems;

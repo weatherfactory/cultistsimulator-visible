@@ -1,5 +1,5 @@
 ﻿#pragma warning disable 0649
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;

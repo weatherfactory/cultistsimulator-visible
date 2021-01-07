@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
-namespace SecretHistories.Infrastructure
+namespace SecretHistories.Constants
 {
     public class LanguageChoice:MonoBehaviour
     {

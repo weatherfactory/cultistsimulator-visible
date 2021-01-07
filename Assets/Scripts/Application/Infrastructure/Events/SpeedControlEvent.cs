@@ -2,7 +2,7 @@
 using SecretHistories.Enums;
 using UnityEngine.Events;
 
-namespace SecretHistories.Infrastructure
+namespace SecretHistories.Constants
 {
     public class SpeedControlEventArgs
     {

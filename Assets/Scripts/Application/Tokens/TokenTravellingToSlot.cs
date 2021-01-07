@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using SecretHistories.UI;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 using SecretHistories.Interfaces;
 
 public class TokenTravellingToSlot : TokenTravelAnimation {

@@ -4,7 +4,7 @@ using SecretHistories.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 using SecretHistories.Interfaces;
 
 [RequireComponent(typeof(Camera))]

@@ -11,18 +11,14 @@ using SecretHistories.UI;
 using SecretHistories.Services;
 
 using OrbCreationExtensions;
+using SecretHistories.Abstract;
+using SecretHistories.Constants;
+using SecretHistories.Enums;
 using UnityEngine;	// added for debug asserts - CP
 using UnityEngine.Analytics;
 
 namespace SecretHistories.Infrastructure
 {
-    public interface ITableSaveState
-    {
-        IEnumerable<ElementStack> TableStacks { get; }
-        List<Situation> Situations { get; }
-        bool IsTableActive();
-        MetaInfo MetaInfo { get; }
-    }
 
     public class TableSaveState : ITableSaveState
     {

@@ -10,8 +10,8 @@ using SecretHistories.Spheres.Angels;
 using SecretHistories.States.TokenStates;
 using SecretHistories.UI;
 using SecretHistories.UI.Scripts;
-using SecretHistories.Infrastructure;
-using SecretHistories.Infrastructure.Events;
+using SecretHistories.Constants;
+using SecretHistories.Constants.Events;
 
 using TMPro;
 using UnityEditor;

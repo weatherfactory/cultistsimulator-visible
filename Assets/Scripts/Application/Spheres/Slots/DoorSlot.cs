@@ -6,8 +6,8 @@ using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
 using SecretHistories.UI.Scripts;
-using SecretHistories.Infrastructure;
-using SecretHistories.Infrastructure.Events;
+using SecretHistories.Constants;
+using SecretHistories.Constants.Events;
 
 using TMPro;
 using UnityEngine;

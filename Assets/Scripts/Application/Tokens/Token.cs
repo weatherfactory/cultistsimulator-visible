@@ -11,12 +11,12 @@ using SecretHistories.Interfaces;
 using SecretHistories.NullObjects;
 using SecretHistories.Services;
 using SecretHistories.States;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 using SecretHistories.States.TokenStates;
 using SecretHistories.UI;
 using SecretHistories.Elements;
 using SecretHistories.Elements.Manifestations;
-using SecretHistories.Infrastructure.Events;
+using SecretHistories.Constants.Events;
 using SecretHistories.TokenContainers;
 
 using UnityEngine;

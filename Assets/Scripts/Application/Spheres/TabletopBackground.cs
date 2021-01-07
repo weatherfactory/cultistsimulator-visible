@@ -1,5 +1,5 @@
 ﻿using SecretHistories.Entities;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 
 using UnityEngine;
 using UnityEngine.EventSystems;

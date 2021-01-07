@@ -8,7 +8,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-namespace SecretHistories.Infrastructure.Modding
+namespace SecretHistories.Constants.Modding
 {
     public class SubscribedStorefrontMod
     {

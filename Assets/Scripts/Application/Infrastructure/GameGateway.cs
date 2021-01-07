@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Abstract;
 using SecretHistories.Core;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
@@ -10,12 +11,13 @@ using SecretHistories.Enums;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.Spheres.Angels;
+using SecretHistories.Constants;
 using SecretHistories.Infrastructure;
 using SecretHistories.Services;
 
 using UnityEngine;
 
-namespace SecretHistories.Infrastructure
+namespace SecretHistories.Constants
 {
     public class GameGateway:MonoBehaviour
     {

@@ -8,7 +8,7 @@ using SecretHistories.UI;
 
 using UnityEngine;
 
-namespace SecretHistories.Infrastructure
+namespace SecretHistories.Constants
 {
     public class IntermittentAnimatableController: MonoBehaviour
     {

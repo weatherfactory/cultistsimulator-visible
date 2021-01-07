@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using SecretHistories.Infrastructure.Modding;
+using SecretHistories.Constants.Modding;
 using Newtonsoft.Json;
 using UnityEngine;
 

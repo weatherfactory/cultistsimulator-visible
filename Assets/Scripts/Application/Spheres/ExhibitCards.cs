@@ -11,7 +11,7 @@ using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.UI.Scripts;
 using SecretHistories.Services;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 
 using TMPro;
 

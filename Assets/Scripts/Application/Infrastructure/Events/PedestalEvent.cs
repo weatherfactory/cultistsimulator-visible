@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine.Events;
 
-namespace SecretHistories.Infrastructure
+namespace SecretHistories.Constants
 {
     public class PedestalEventArgs
     {

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using SecretHistories.Infrastructure;
-using SecretHistories.Infrastructure.Modding;
+using SecretHistories.Constants;
+using SecretHistories.Constants.Modding;
 
 using UnityEngine;
 

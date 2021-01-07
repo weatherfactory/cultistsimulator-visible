@@ -2,7 +2,7 @@
 using SecretHistories.Enums;
 
 
-namespace SecretHistories.Infrastructure
+namespace SecretHistories.Constants
 {
     public class GameSpeedState
     {

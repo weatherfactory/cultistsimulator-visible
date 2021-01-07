@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections;
+using SecretHistories.Abstract;
 using SecretHistories.Entities;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 
 namespace SecretHistories.UI.Scripts
 {

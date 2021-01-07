@@ -7,8 +7,8 @@ using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.UI;
 using SecretHistories.States.TokenStates;
-using SecretHistories.Infrastructure;
-using SecretHistories.Infrastructure.Events;
+using SecretHistories.Constants;
+using SecretHistories.Constants.Events;
 using SecretHistories.Interfaces;
 
 using UnityEngine;

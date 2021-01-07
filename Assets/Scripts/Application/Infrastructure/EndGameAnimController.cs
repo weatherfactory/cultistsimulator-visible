@@ -8,7 +8,7 @@ using SecretHistories.Services;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-namespace SecretHistories.Infrastructure {
+namespace SecretHistories.Constants {
     public class EndGameAnimController : MonoBehaviour {
 #pragma warning disable 649
         [SerializeField] Vector2 targetPosOffset = new Vector2(0f, -150f);

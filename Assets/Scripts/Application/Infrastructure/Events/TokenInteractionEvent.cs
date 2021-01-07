@@ -8,7 +8,7 @@ using SecretHistories.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-namespace SecretHistories.Infrastructure.Events
+namespace SecretHistories.Constants.Events
 {
     public enum Interaction { OnClicked, OnReceivedADrop,OnPointerEntered,OnPointerExited,OnDoubleClicked,OnDragBegin,OnDrag,OnDragEnd}
 

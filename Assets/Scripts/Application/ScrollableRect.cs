@@ -5,8 +5,8 @@ using SecretHistories.UI;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using SecretHistories.Infrastructure;
-using SecretHistories.Infrastructure.Events;
+using SecretHistories.Constants;
+using SecretHistories.Constants.Events;
 using SecretHistories.Interfaces;
 using UnityEngine.InputSystem;
 

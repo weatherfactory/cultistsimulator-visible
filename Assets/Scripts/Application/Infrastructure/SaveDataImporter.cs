@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Fucine;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 using SecretHistories.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using SecretHistories.Enums;
 
 namespace SecretHistories.UI.Scripts
 {

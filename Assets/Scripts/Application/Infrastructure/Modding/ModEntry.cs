@@ -11,7 +11,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace SecretHistories.Infrastructure.Modding
+namespace SecretHistories.Constants.Modding
 {
 
 

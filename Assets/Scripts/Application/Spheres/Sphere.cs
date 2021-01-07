@@ -9,16 +9,16 @@ using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using Assets.Logic;
+using SecretHistories.Constants.Events;
 using SecretHistories.Spheres.Angels;
 using SecretHistories.Elements;
 using SecretHistories.Elements.Manifestations;
-using SecretHistories.Infrastructure.Events;
 using SecretHistories.Services;
 
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace SecretHistories.Infrastructure {
+namespace SecretHistories.Constants {
 
 
     public enum BlockReason

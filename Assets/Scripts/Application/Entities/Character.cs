@@ -7,7 +7,7 @@ using SecretHistories.Entities;
 using SecretHistories.Interfaces;
 using SecretHistories.Services;
 using SecretHistories.UI;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 using JetBrains.Annotations;
 using OrbCreationExtensions;
 using SecretHistories.Enums;

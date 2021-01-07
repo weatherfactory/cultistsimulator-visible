@@ -8,7 +8,7 @@ using SecretHistories.UI;
 using SecretHistories.Interfaces;
 using Assets.Logic;
 using SecretHistories.Core;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 
 namespace SecretHistories.States
 {

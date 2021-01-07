@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.UI;
 using SecretHistories.States.TokenStates;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 using UnityEngine;
 using UnityEngine.EventSystems;
 

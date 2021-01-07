@@ -7,7 +7,7 @@ using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Interfaces;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 
 
 namespace SecretHistories.States

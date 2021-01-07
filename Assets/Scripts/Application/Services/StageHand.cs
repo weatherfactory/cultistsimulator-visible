@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Threading.Tasks;
 using SecretHistories.Entities;
+using SecretHistories.Enums;
 using SecretHistories.UI;
 
 using UnityEngine;
@@ -10,21 +11,7 @@ using UnityEngine.UI;
 namespace SecretHistories.Services
 {
 
-    public enum SourceForGameState
-    {
-        NewGame=-1,
-        DefaultSave=0,
-        DevSlot1=1,
-        DevSlot2=2,
-        DevSlot3=3,
-        DevSlot4=5,
-        DevSlot5=5,
-        DevSlot6=6,
-        DevSlot7=7,
-        DevSlot8=8,
-        DevSlot9=9,
-        DevSlot10=10
-    }
+ 
 
     
     public class StageHand:MonoBehaviour

@@ -18,7 +18,7 @@ using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
-using SecretHistories.Infrastructure.Modding;
+using SecretHistories.Constants.Modding;
 using SecretHistories.Services;
 using OrbCreationExtensions;
 using Unity.Profiling;

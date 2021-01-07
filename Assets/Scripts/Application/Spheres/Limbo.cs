@@ -5,7 +5,7 @@ using SecretHistories.UI;
 using SecretHistories.Interfaces;
 using UnityEngine;
 
-namespace SecretHistories.Infrastructure
+namespace SecretHistories.Constants
 {
     public class Limbo : Sphere {
 

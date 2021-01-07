@@ -1,7 +1,7 @@
 ﻿using System;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 
 namespace SecretHistories.States
 {

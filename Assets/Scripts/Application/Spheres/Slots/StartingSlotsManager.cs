@@ -13,7 +13,7 @@ using SecretHistories.UI;
 using UnityEngine;
 using SecretHistories.Services;
 using SecretHistories.UI.Scripts;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 
 namespace SecretHistories.UI.SlotsContainers {
     public class StartingSlotsManager : MonoBehaviour {

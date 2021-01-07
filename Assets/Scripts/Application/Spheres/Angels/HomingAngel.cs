@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 using SecretHistories.Spheres.Angels;
 
 namespace Assets.Scripts.Application.Spheres.Angels

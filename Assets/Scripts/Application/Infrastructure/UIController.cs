@@ -14,12 +14,14 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-namespace SecretHistories.Infrastructure
+namespace SecretHistories.Constants
 {
     public class UIController: LocalNexus
     {
         
+#pragma warning disable 649
         [SerializeField] private PlayerInput playerInput;
+#pragma warning restore 649
         public DebugTools _debugTools;
 
 

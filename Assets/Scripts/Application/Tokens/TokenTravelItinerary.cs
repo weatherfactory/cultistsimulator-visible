@@ -1,7 +1,7 @@
 using System;
 using SecretHistories.Entities;
 using SecretHistories.States.TokenStates;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 
 using UnityEngine;
 

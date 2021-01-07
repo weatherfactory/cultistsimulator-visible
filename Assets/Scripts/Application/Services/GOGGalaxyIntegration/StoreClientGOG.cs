@@ -12,7 +12,7 @@ using Galaxy.Api;
 
 using SecretHistories.Enums;
 
-namespace SecretHistories.Infrastructure
+namespace SecretHistories.Constants
 {
     public class GOGStorefrontProvider : IStoreFrontClientProvider
     {

@@ -15,7 +15,7 @@ using SecretHistories.TokenContainers;
 
 using UnityEngine;
 
-namespace SecretHistories.Infrastructure {
+namespace SecretHistories.Constants {
     //places, arranges and displays things on the table
     public class TabletopChoreographer:MonoBehaviour, ISettingSubscriber,IChoreographer {
 

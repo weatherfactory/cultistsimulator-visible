@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 using UnityEngine;
 
 namespace SecretHistories.UI

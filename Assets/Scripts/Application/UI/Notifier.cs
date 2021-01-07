@@ -7,7 +7,7 @@ using SecretHistories.Interfaces;
 using SecretHistories.Services;
 using UnityEngine;
 using SecretHistories.Entities;
-using SecretHistories.Infrastructure.Events;
+using SecretHistories.Constants.Events;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 

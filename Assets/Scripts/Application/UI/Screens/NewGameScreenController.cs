@@ -4,8 +4,10 @@ using SecretHistories.Entities;
 using SecretHistories.Interfaces;
 using Assets.Logic;
 using SecretHistories.UI;
+using SecretHistories.Constants;
+using SecretHistories.Constants.Modding;
+using SecretHistories.Enums;
 using SecretHistories.Infrastructure;
-using SecretHistories.Infrastructure.Modding;
 using SecretHistories.Services;
 
 using TMPro;

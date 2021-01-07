@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
-using SecretHistories.Infrastructure;
+using SecretHistories.Constants;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

@@ -10,7 +10,7 @@ using SecretHistories.Services;
 
 using UnityEngine;
 
-namespace SecretHistories.Infrastructure.Modding
+namespace SecretHistories.Constants.Modding
 {
     /// <summary>
     /// Handles location, enablement and manifest verification of mods

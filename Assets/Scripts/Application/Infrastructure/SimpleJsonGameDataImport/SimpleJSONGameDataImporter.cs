@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport;
 using SecretHistories.Commands;
-using SecretHistories.Entities;
+using SecretHistories.Entities; //Recipe,SlotSpecification
 using SecretHistories.Enums;
-using SecretHistories.Fucine;
+using SecretHistories.Fucine;//SpherePath
 using SecretHistories.Interfaces;
 using SecretHistories.NullObjects;
 using SecretHistories.UI;
@@ -18,14 +19,14 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using SecretHistories.Services;
 
-namespace SecretHistories.Infrastructure
+namespace SecretHistories.Constants
 {
-    public class SimpleJSONGameDataImporter : IGameDataImporter
+    public class SimpleJSONGameDataImporter
     {
         private  SpherePath windowSpherePath;
         private  SpherePath tabletopSpherePath;
 
-        private Hashtable RetrieveHashedSaveFromFile(SourceForGameState source, bool temp = false)
+        public Hashtable RetrieveHashedSaveFromFile(SourceForGameState source, bool temp = false)
         {
             var index = (int)source;
 
@@ -158,7 +159,7 @@ namespace SecretHistories.Infrastructure
 
             var htDecks = htSave.GetHashtable(SaveConstants.SAVE_DECKS);
 
-            ImportDecks(character, htDecks);
+           ImportDecks(character, htDecks);
 
 
         }
@@ -199,129 +200,100 @@ namespace SecretHistories.Infrastructure
             foreach (var locationInfo in htSituations.Keys)
             {
                 var htSituationValues =htSituations.GetHashtable(locationInfo);
-                string verbId = htSituationValues[SaveConstants.SAVE_VERBID].ToString();
-
-                IVerb situationVerb = Registry.Get<Compendium>().GetEntityById<BasicVerb>(verbId);
-                if (situationVerb == null)
-                    situationVerb = NullVerb.Create();
-
-                string recipeId = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_RECIPEID);
-                var recipe = Registry.Get<Compendium>().GetEntityById<Recipe>(recipeId);
-                if (recipe == null)
-                    recipe = NullRecipe.Create(situationVerb);
-
                 
-                //This caters for the otherwise troublesome situation where a completed situation (no recipe) has been based on a created verb (no verb obj).
-                //except we're now just supplyying a NullVerb, above... so that *should* be enough
-                //if (situationVerb == null && recipe==null)
-                //    situationVerb = new TransientVerb(verbId, "","");
+                var verb = GetSituationVerb(htSituationValues);
+                var recipe = GetSituationRecipe(htSituationValues, verb);
+                var situationState= GetSituationState(htSituationValues);
 
+                var command = SetupSituationCreationCommand(verb, recipe, situationState, htSituationValues, locationInfo);
 
-                var situationState= (StateEnum)Enum.Parse(typeof(StateEnum), htSituationValues[SaveConstants.SAVE_SITUATIONSTATE].ToString());
+                var situation = Registry.Get<SituationBuilder>().CreateSituationWithAnchorAndWindow(command); 
+                situation.ExecuteHeartbeat(0f); //flushes everything through and updates
 
-                //if (situationState == StateEnum.Unstarted)
-                //    situationState = StateEnum.ReadyToReset; //this state didn't exist in the old save format. We need to set ReadyToReset, or the situation window will remain in its primordial condition
-
-                //if (situationState == StateEnum.Ongoing)
-                //    situationState = StateEnum.ReadyToContinue;
-                //commented above out because the Enter() method on the new state classes *should* take care of it
-
-               
-                var command = new SituationCreationCommand(situationVerb, recipe, situationState,null);
-                command.TimeRemaining = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_TIMEREMAINING);
-
-                command.OverrideTitle = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_TITLE);
-
-                string simplifiedSituationPath;
-
-                string[] simplifiedSituationPathParts = locationInfo.ToString().Split(SpherePath.SEPARATOR);
-                if(simplifiedSituationPathParts.Length!=3)
-                {
-                    NoonUtility.LogWarning($"We can't parse a situation locationinfo: {locationInfo}. So we're just picking the beginning of it to use as the situation path.");
-                    simplifiedSituationPath = simplifiedSituationPathParts[0];
-                    command.AnchorLocation = new TokenLocation(0, 0, 0, tabletopSpherePath);
-                }
-                else
-                {
-                    simplifiedSituationPath = simplifiedSituationPathParts[2];
-                    float.TryParse(simplifiedSituationPathParts[0], out float anchorPosX);
-                    float.TryParse(simplifiedSituationPathParts[1], out float anchorPosY);
-                    command.AnchorLocation = new TokenLocation(anchorPosX, anchorPosY, 0, tabletopSpherePath);
-
-
-                }
-
-                command.SituationPath = new SituationPath(simplifiedSituationPath);
-
-                float? posx = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_SITUATION_WINDOW_X);
-                float? posy = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_SITUATION_WINDOW_Y);
-                float? posz = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_SITUATION_WINDOW_Z);
-
-
-                if(posx!=null && posy!=null && posz!=null)
-                {
-                    var windowPosition=new Vector3((float) posx,(float)posy,(float)posz);
-                    command.WindowLocation=new TokenLocation(windowPosition, windowSpherePath);
-                }
-
-                command.Open = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
-
-                List<SlotSpecification> ongoingSlotSpecs = new List<SlotSpecification>();
-
-                if (htSituationValues.ContainsKey(SaveConstants.SAVE_ONGOINGSLOTELEMENTS))
-                {
-                    var htOngoingSlots = htSituationValues.GetHashtable(SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
-             
-                    foreach (string slotPath in htOngoingSlots.Keys)
-                    {
-
-                        //shit a fuck. We only store the slot label, not the required / forbidden elements of the specification!
-                        var slotId = slotPath.Split(SpherePath.SEPARATOR)[0];
-                        var slotSpec = new SlotSpecification(slotId);
-                        ongoingSlotSpecs.Add(slotSpec);
-                    }
-                }
-
-                else
-                {
-                    //we don't have any elements in ongoing slots - but we might still have an empty slot from the recipe, which isn't tracked in the save
-                    //so add the slot to the spec anyway
-                   foreach(var slot in recipe.Slots)
-                       ongoingSlotSpecs.Add(slot);
-
-                }
-                var slotsCommand=new PopulateRecipeSlotsCommand(ongoingSlotSpecs);
-                command.Commands.Add(slotsCommand);
-
-                //old code for this stuff below:
-                //SaveLocationInfo for slots are recorded with an appended Guid. Everything up until the last separator is the slotId
-                //var slotId = ess.LocationInfo.Split(SaveConstants.SEPARATOR)[0];
-
-                //int lastSeparatorPosition = ess.LocationInfo.LastIndexOf(SaveConstants.SEPARATOR);
-                //    var slotId = ess.LocationInfo.Substring(0, lastSeparatorPosition); //if lastseparatorposition zero-indexed is 4, length before separator - 1-indexed - is also 4
-                //    if (slotTypeKey == SaveConstants.SAVE_STARTINGSLOTELEMENTS)
-
-                //    var slotToFill = situation.GetSlotBySaveLocationInfoPath(slotId, slotTypeKey);
-                //if (slotToFill != null) //a little bit robust if a higher level element slot spec has changed between saves
-                //    //if the game can't find a matching slot, it'll just leave it on the desktop
-                //    slotToFill.AcceptToken(stackToPutInSlot, new Context(Context.ActionSource.Loading));
-
-                //if this was an ongoing slot, we also need to tell the situation that the slot's filled, or it will grab another
-
-                var situation = Registry.Get<SituationBuilder>().CreateSituationWithAnchorAndWindow(command);
                 ImportSlotContents(situation,htSituationValues,  SaveConstants.SAVE_STARTINGSLOTELEMENTS);
-               ImportSlotContents(situation, htSituationValues,  SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
-               ImportSituationStoredElements(htSituationValues, situation);
+                ImportSlotContents(situation, htSituationValues,  SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
+                ImportSituationStoredElements(htSituationValues, situation);
 
                 ImportOutputs(htSituationValues, situation, tabletop);
 
                 //this should happen last, because adding those stacks above can overwrite notes
                 ImportSituationNotes(htSituationValues, situation);
-                situation.ExecuteHeartbeat(0f); //flushes everything through and updates
+               
 
                 situation.NotifySubscribersOfStateAndTimerChange();
 
             }
+        }
+
+        private SituationCreationCommand SetupSituationCreationCommand(IVerb verb, Recipe recipe, StateEnum situationState,
+            Hashtable htSituationValues, object locationInfo)
+        {
+            var command = new SituationCreationCommand(verb, recipe, situationState, null);
+
+            command.TimeRemaining = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_TIMEREMAINING);
+            command.OverrideTitle = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_TITLE);
+
+            string simplifiedSituationPath;
+
+            string[] simplifiedSituationPathParts = locationInfo.ToString().Split(SpherePath.SEPARATOR);
+            if (simplifiedSituationPathParts.Length != 3)
+            {
+                NoonUtility.LogWarning(
+                    $"We can't parse a situation locationinfo: {locationInfo}. So we're just picking the beginning of it to use as the situation path.");
+                simplifiedSituationPath = simplifiedSituationPathParts[0];
+                command.AnchorLocation = new TokenLocation(0, 0, 0, tabletopSpherePath);
+            }
+            else
+            {
+                simplifiedSituationPath = simplifiedSituationPathParts[2];
+                float.TryParse(simplifiedSituationPathParts[0], out float anchorPosX);
+                float.TryParse(simplifiedSituationPathParts[1], out float anchorPosY);
+                command.AnchorLocation = new TokenLocation(anchorPosX, anchorPosY, 0, tabletopSpherePath);
+            }
+
+            command.SituationPath = new SituationPath(simplifiedSituationPath);
+
+            float? posx = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_SITUATION_WINDOW_X);
+            float? posy = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_SITUATION_WINDOW_Y);
+            float? posz = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_SITUATION_WINDOW_Z);
+
+
+            if (posx != null && posy != null && posz != null)
+            {
+                var windowPosition = new Vector3((float) posx, (float) posy, (float) posz);
+                command.WindowLocation = new TokenLocation(windowPosition, windowSpherePath);
+            }
+
+            command.Open = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
+
+            var ongoingSlotSpecs = SimpleJsonSlotImporter.ImportSituationOngoingSlotSpecs(htSituationValues, recipe.Slots);
+            var slotsCommand = new PopulateSlotsCommand(ongoingSlotSpecs);
+            command.Commands.Add(slotsCommand);
+            return command;
+        }
+
+
+        private static StateEnum GetSituationState(Hashtable htSituationValues)
+        {
+            return (StateEnum)Enum.Parse(typeof(StateEnum), htSituationValues[SaveConstants.SAVE_SITUATIONSTATE].ToString());
+        }
+
+        private static IVerb GetSituationVerb(Hashtable htSituationValues)
+        {
+            string verbId = htSituationValues[SaveConstants.SAVE_VERBID].ToString();
+            IVerb situationVerb = Registry.Get<Compendium>().GetEntityById<BasicVerb>(verbId);
+            if (situationVerb == null)
+                situationVerb = NullVerb.Create();
+            return situationVerb;
+        }
+
+        private Recipe GetSituationRecipe(Hashtable htSituationValues, IVerb situationVerb)
+        {
+            string recipeId = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_RECIPEID);
+            var recipe = Registry.Get<Compendium>().GetEntityById<Recipe>(recipeId);
+            if (recipe == null)
+                recipe = NullRecipe.Create(situationVerb);
+            return recipe;
         }
 
         private void ImportSlotContents(Situation situation,Hashtable htSituationValues, string slotTypeKey)

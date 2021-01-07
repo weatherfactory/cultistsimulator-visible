@@ -4,6 +4,8 @@ using System.Linq;
 using SecretHistories.Entities;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
+using SecretHistories.Constants;
+using SecretHistories.Enums;
 using SecretHistories.Infrastructure;
 using SecretHistories.Services;
 using TMPro;

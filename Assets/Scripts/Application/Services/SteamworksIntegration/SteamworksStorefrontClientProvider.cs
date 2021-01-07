@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SecretHistories.Constants.Modding;
 using SecretHistories.UI;
-using SecretHistories.Infrastructure.Modding;
 using SecretHistories.Services;
 
 using Steamworks;
 using SecretHistories.Enums;
 using UnityEngine;
 
-namespace SecretHistories.Infrastructure
+namespace SecretHistories.Constants
 {
     public class SteamworksStorefrontClientProvider : IStoreFrontClientProvider
     {
