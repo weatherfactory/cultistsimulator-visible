@@ -650,7 +650,6 @@ namespace SecretHistories.UI {
         public  void ReturnToTabletop(Context context)
         {
             
-
             //if we have an origin stack and the origin stack is on the tabletop, merge it with that.
             //We might have changed the element that a stack is associated with... so check we can still merge it
             if (originToken != null && originToken.Sphere.SphereCategory == SphereCategory.World &&

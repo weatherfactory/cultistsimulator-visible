@@ -403,7 +403,7 @@ namespace SecretHistories.Infrastructure {
 
             foreach (var angel in _angels)
             {
-                angel.SetMinisterTo(this);
+                angel.Act(interval);
             }
 
         }

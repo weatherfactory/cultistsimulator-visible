@@ -18,8 +18,10 @@ namespace SecretHistories.Commands.SituationCommands
         {
             var results = situation.GetElementTokens(SphereCategory.Output);
             foreach (var item in results)
+            {
+                item.Unshroud(true);
                 item.ReturnToTabletop(new Context(Context.ActionSource.PlayerDumpAll));
-
+            }
             // Only play collect all if there's actually something to collect 
             // Only play collect all if it's not transient - cause that will retire it and play the retire sound
             // Note: If we collect all from the window we also get the default button sound in any case.
