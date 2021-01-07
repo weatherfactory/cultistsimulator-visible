@@ -17,11 +17,6 @@ namespace SecretHistories.Spheres.Angels
 
         }
 
-        public void SetMinisterTo(Sphere sphere)
-        {
-          //
-        }
-
         public void SetWatch(Sphere sphere)
         {
              sphere.Subscribe(this);

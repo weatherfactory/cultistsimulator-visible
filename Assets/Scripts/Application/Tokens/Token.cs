@@ -54,7 +54,7 @@ namespace SecretHistories.UI {
 
         public Token OriginToken { get; private set; }
 
-        public TokenTravelItinerary Itinerary { get; set; }
+        public TokenTravelItinerary CurrentItinerary { get; set; }
 
 
         [SerializeField] public RectTransform TokenRectTransform;
@@ -67,12 +67,11 @@ namespace SecretHistories.UI {
 
         [SerializeField] protected bool rotateOnDrag = true;
 
-        [HideInInspector] public TokenLocation LocationBeforeDrag;
 
         protected IManifestation _manifestation;
 
-        protected Transform startParent;
-        protected Vector3 startPosition;
+        
+        protected TokenLocation HomeLocation;
         protected int startSiblingIndex;
         protected Vector3 dragOffset;
         protected CanvasGroup canvasGroup;
@@ -99,7 +98,7 @@ namespace SecretHistories.UI {
             TokenRectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
 
-            Itinerary = TokenTravelItinerary.StayExactlyWhereYouAre(this);
+            CurrentItinerary = TokenTravelItinerary.StayExactlyWhereYouAre(this);
             _manifestation = Registry.Get<NullManifestation>();
             ElementStack = Registry.Get<NullElementStack>();
 
@@ -115,6 +114,11 @@ namespace SecretHistories.UI {
 
         }
 
+        public void SetCurrentLocationAsHomeLocation()
+        {
+            HomeLocation = new TokenLocation(TokenRectTransform.anchoredPosition3D, Sphere.GetPath());
+        }
+        
         public bool CanAnimateArt()
         {
             if (gameObject == null)
@@ -262,11 +266,6 @@ namespace SecretHistories.UI {
         }
 
 
-        public void TryReturnToOriginalPosition()
-        {
-            if (LocationBeforeDrag != null)
-                transform.localPosition = new Vector3(LocationBeforeDrag.Position.x, LocationBeforeDrag.Position.y);
-        }
 
         public void SetState(TokenState state)
         {
@@ -370,7 +369,7 @@ namespace SecretHistories.UI {
             if (TokenRectTransform.anchoredPosition.sqrMagnitude > 0.0f
             ) // Never store 0,0 as that's a slot position and we never auto-return to slots - CP
             {
-                LocationBeforeDrag = new TokenLocation(TokenRectTransform.anchoredPosition3D,Sphere.GetPath());
+                SetCurrentLocationAsHomeLocation();
             }
 
             var enrouteContainer = Registry.Get<SphereCatalogue>().GetSphereByPath(
@@ -383,9 +382,8 @@ namespace SecretHistories.UI {
 
             canvasGroup.blocksRaycasts = false;
 
-            startPosition = TokenRectTransform.anchoredPosition3D;
-
-            startParent = TokenRectTransform.parent;
+            HomeLocation = new TokenLocation(this);
+            
             startSiblingIndex = TokenRectTransform.GetSiblingIndex();
 
 
@@ -462,38 +460,15 @@ namespace SecretHistories.UI {
         {
             canvasGroup.blocksRaycasts = true;
             if (!CurrentState.Docked(this))
-                    ReturnToStartPosition();
+                    ReturnToHomeLocation();
             
         }
 
-        public void ReturnToStartPosition()
+        public void ReturnToHomeLocation()
         {
-            if (startParent == null)
-            {
-                //newly created token! If we try to set it to startposition, it'll disappear into strange places
-                ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
-                return; // no sound on new token
-            }
 
-            throw new NotImplementedException();
-            SoundManager.PlaySfx("CardDragFail");
-            var tabletopContainer = startParent.GetComponent<TabletopSphere>();
-
-            // Token was from tabletop - return it there. This auto-merges it back in case of ElementStacks
-            // The map is not the tabletop but inherits from it, so we do the IsTabletop check
-            if (tabletopContainer != null && tabletopContainer.IsTabletop)
-            {
-                ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
-            }
-            else
-            {
-                TokenRectTransform.anchoredPosition3D = startPosition;
-
-                TokenRectTransform.localRotation = Quaternion.identity;
-                TokenRectTransform.SetParent(startParent);
-                TokenRectTransform.SetSiblingIndex(startSiblingIndex);
-                
-            }
+            var returnToHomeItinerary = new TokenTravelItinerary(Location, HomeLocation);
+            returnToHomeItinerary.Depart(this);
         }
 
         public  void OnDrop(PointerEventData eventData)
@@ -658,11 +633,9 @@ namespace SecretHistories.UI {
                 originToken.ElementStack.AcceptIncomingStackForMerge(this.ElementStack);
                 return;
             }
-            else if (LocationBeforeDrag != null)
+            else if (HomeLocation != null)
             {
-                var originSphere = Registry.Get<SphereCatalogue>().GetSphereByPath(LocationBeforeDrag.AtSpherePath);
-
-                originSphere.Choreographer.PlaceTokenAsCloseAsPossibleToSpecifiedPosition(this, context, LocationBeforeDrag.Position);
+                ReturnToHomeLocation();
             }
             else
             {
@@ -781,13 +754,13 @@ namespace SecretHistories.UI {
 
         public void TravelTo(TokenTravelItinerary itinerary)
         {
-            Itinerary = itinerary;
+            CurrentItinerary = itinerary;
           itinerary.Depart(this);
         }
 
         private void TravelComplete()
         {
-            Itinerary.DestinationSphere.AcceptToken(this,new Context(Context.ActionSource.TravelArrived));
+            CurrentItinerary.DestinationSphere.AcceptToken(this,new Context(Context.ActionSource.TravelArrived));
             //this will (at time of writing) call Sphere.DisplayHere->Token.Manifest, which also resets itinerary, so this *should* be the only line we need at the end of the animation
         }
 

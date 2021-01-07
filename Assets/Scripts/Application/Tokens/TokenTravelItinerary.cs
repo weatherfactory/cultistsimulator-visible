@@ -26,6 +26,8 @@ namespace SecretHistories.UI
             var tokenAnimation = tokenToSend.gameObject.AddComponent<TokenTravelAnimation>();
             tokenAnimation.OnTokenArrival += Arrive;
 
+
+
             //this will cause hilarity if it's applied to a world sphere rather than a threshold
             //future AK: you'll need a smart way to apply this differently for non-CS-recipe-slot situations
             DestinationSphere.AddBlock(new ContainerBlock(BlockDirection.Inward,
@@ -33,7 +35,13 @@ namespace SecretHistories.UI
 
             tokenAnimation.SetPositions(StartPosition,EndPosition);
             tokenAnimation.SetScaling(StartScale,EndScale,1f); //1f was the originally set default. I'm not clear atm about the difference between Duration and ScaleDuration 
-            //is it if scaling ends before travel duration?
+                                                               //is it if scaling ends before travel duration?
+//set a default duraation if we don't have a valid one
+           if (Duration <= 0)
+           {
+               float distance = Vector3.Distance(StartPosition, EndPosition);
+               Duration = Mathf.Max(0.3f, distance * 0.001f);
+           }
             tokenAnimation.Begin(tokenToSend, Duration);
         }
 
@@ -79,14 +87,20 @@ namespace SecretHistories.UI
            return i;
         }
 
+        public TokenTravelItinerary(TokenLocation startLocation, TokenLocation endLocation)
+        {
+            StartPosition = startLocation.Position;
+            EndPosition = endLocation.Position;
+            EnRouteSphere = Registry.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
+            DestinationSphere = Registry.Get<SphereCatalogue>().GetSphereByPath(endLocation.AtSpherePath);
+        }
 
         public TokenTravelItinerary(Vector3 startPosition, Vector3 endPosition)
         {
             //the most basic itinerary: don't change sphere, move in current sphere from point to point,s et default duration based on distance, keep current scale
             StartPosition = startPosition;
             EndPosition = endPosition;
-            float distance = Vector3.Distance(StartPosition, EndPosition);
-            Duration = Mathf.Max(0.3f, distance * 0.001f);
+   
             EnRouteSphere = Registry.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
             DestinationSphere = Registry.Get<SphereCatalogue>().GetDefaultWorldSphere();
         }

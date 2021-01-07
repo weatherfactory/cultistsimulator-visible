@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Constants;
+using SecretHistories.Entities;
 using UnityEngine;
 
 namespace SecretHistories.UI
@@ -35,13 +36,14 @@ namespace SecretHistories.UI
             Position = position;
             AtSpherePath = atSpherePath;
         }
+        
 
-        public TokenLocation(Token token)
+        public TokenLocation(Token forToken)
         {
-            Position = token.Location.Position;
-            AtSpherePath = token.Sphere.GetPath();
+            Position = forToken.Location.Position;
+            AtSpherePath = forToken.Sphere.GetPath();
         }
 
 
-    }
+  }
 }

@@ -91,15 +91,15 @@ namespace SecretHistories.UI {
             SlotLabel.text = slotSpecification.Label;
             if (slotSpecification.Greedy)
             {
-                IAngel greedyAngel = new GreedyAngel();
-                greedyAngel.SetMinisterTo(this);
+                GreedyAngel greedyAngel = new GreedyAngel();
+                greedyAngel.SetThresholdToGrabTo(this);
                 greedyAngel.SetWatch(Registry.Get<SphereCatalogue>().GetDefaultWorldSphere());
                 greedyAngel.SetWatch(Registry.Get<SphereCatalogue>().GetDefaultEnRouteSphere());
                 _angels.Add(greedyAngel);
 
             }
 
-          _angels.AddRange(slotSpecification.MakeAngels());
+            _angels.AddRange(slotSpecification.MakeAngels());
 
             GreedyIcon.SetActive(slotSpecification.Greedy);
             ConsumingIcon.SetActive(slotSpecification.Consumes);
@@ -226,7 +226,7 @@ namespace SecretHistories.UI {
             if (match.MatchType != SlotMatchForAspectsType.Okay)
             {
                 token.SetState(new RejectedBySphereState());
-                token.ReturnToStartPosition();
+                token.ReturnToHomeLocation();
 
                 var notifier = Registry.Get<INotifier>();
 

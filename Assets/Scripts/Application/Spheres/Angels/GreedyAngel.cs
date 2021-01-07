@@ -23,7 +23,7 @@ namespace SecretHistories.Spheres.Angels
         private Sphere _thresholdSphereToGrabTo;
         private readonly HashSet<Sphere> _spheresToGrabFrom=new HashSet<Sphere>();
 
-        public void SetMinisterTo(Sphere thresholdSphereToGrabTo)
+        public void SetThresholdToGrabTo(Sphere thresholdSphereToGrabTo)
         {
             _thresholdSphereToGrabTo = thresholdSphereToGrabTo;
         }

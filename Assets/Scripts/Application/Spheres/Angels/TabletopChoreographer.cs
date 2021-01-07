@@ -107,7 +107,6 @@ namespace SecretHistories.Constants {
 
 
             token.TokenRectTransform.anchoredPosition = pos;
-            token.LocationBeforeDrag = new TokenLocation(pos, _tabletop.GetPath());
             token.transform.localRotation = Quaternion.identity;
 
             SnapToGrid(token.transform.localPosition);

@@ -12,8 +12,6 @@ namespace SecretHistories.Spheres.Angels
    {
        void Act(float interval);
 
-       void SetMinisterTo(Sphere sphere);
-       
        void SetWatch(Sphere sphere);
    }
 }
