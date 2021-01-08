@@ -147,7 +147,6 @@ namespace SecretHistories.Constants
             var dropzoneVerb = Registry.Get<Compendium>().GetVerbForRecipe(dropzoneRecipe);
             var dropzoneLocation = new TokenLocation(Vector3.zero, Registry.Get<SphereCatalogue>().GetDefaultWorldSphere());
             var dropzoneSituation = dropzoneVerb.CreateDefaultSituation(dropzoneLocation);
-        
 
             return dropzoneSituation;
         }

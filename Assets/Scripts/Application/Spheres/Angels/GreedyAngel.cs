@@ -28,6 +28,8 @@ namespace SecretHistories.Spheres.Angels
             _thresholdSphereToGrabTo = thresholdSphereToGrabTo;
         }
 
+        public int Authority => 10;
+
         public void Act(float interval)
         {
             _beatsTowardsAngelry++;

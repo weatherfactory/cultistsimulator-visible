@@ -32,7 +32,7 @@ namespace SecretHistories.Spheres.Angels
 
         public bool MinisterToEvictedToken(Token token, Context context)
         {
-            foreach (var a in _angels)
+            foreach (var a in _angels.OrderByDescending(angel=>angel.Authority))
                 if (a.MinisterToEvictedToken(token, context))
                     return true;
 

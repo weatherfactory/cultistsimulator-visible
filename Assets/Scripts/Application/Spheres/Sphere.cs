@@ -63,7 +63,12 @@ namespace SecretHistories.Constants {
         public SlotSpecification GoverningSlotSpecification { get; set; } = new SlotSpecification();
         public virtual IChoreographer Choreographer { get; set; } = new SimpleChoreographer();
 
-        [Tooltip("Use this to specify the SpherePath in the editor")] [SerializeField]
+        public virtual bool IsInRangeOf(Sphere otherSphere)
+        {
+            return true;
+        }
+
+[Tooltip("Use this to specify the SpherePath in the editor")] [SerializeField]
         protected string PathIdentifier;
         
 

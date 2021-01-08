@@ -98,12 +98,7 @@ public class SlotSpecification: AbstractEntity<SlotSpecification>
 
     public List<IAngel> MakeAngels()
     {
-        List<IAngel> angels=new List<IAngel>();
-
-        foreach(var a in Angels)
-            angels.Add(a.MakeAngel());
-
-        return angels;
+        return new List<IAngel>();
     }
 
     public ContainerMatchForStack GetSlotMatchForAspects(IAspectsDictionary aspects)

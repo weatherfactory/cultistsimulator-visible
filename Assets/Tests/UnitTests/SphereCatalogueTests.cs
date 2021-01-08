@@ -8,10 +8,10 @@ using NUnit.Framework;
 namespace Assets.Tests.UnitTests
 {
     [TestFixture]
-    public class PlacementBehaviour
+    public class SphereCatalogueTests
     {
         [Test]
-        public void SphereCanOverrideTokenReturnToHomeIfOccupied()
+        public void SphereCatalogueTreatsCurrentSphereAsRoot()
         {
            // var originSphere = Registry.Get<SphereCatalogue>().GetSphereByPath(LocationBeforeDrag.AtSpherePath);
 

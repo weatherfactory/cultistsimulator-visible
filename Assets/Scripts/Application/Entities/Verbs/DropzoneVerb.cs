@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using SecretHistories.Commands;
+using SecretHistories.Constants;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
@@ -56,7 +57,7 @@ namespace SecretHistories.Entities.Verbs
 
         public Situation CreateDefaultSituation(TokenLocation anchorLocation)
         {
-            var dropzoneRecipe = Registry.Get<Compendium>().GetEntityById<Recipe>("dropzone.classic");
+            var dropzoneRecipe = Registry.Get<Compendium>().GetEntityById<Recipe>(NoonConstants.DROPZONE_RECIPE_ID);
 
             var cmd = new SituationCreationCommand(this, dropzoneRecipe, StateEnum.Unstarted, anchorLocation,
                 null);

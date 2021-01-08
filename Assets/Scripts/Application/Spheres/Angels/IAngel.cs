@@ -10,6 +10,11 @@ namespace SecretHistories.Spheres.Angels
 {
    public interface IAngel
    {
+       /// <summary>
+       /// highest authorityangels act first
+       /// </summary>
+       int Authority { get; }
+       
        void Act(float interval);
 
        void SetWatch(Sphere sphere);

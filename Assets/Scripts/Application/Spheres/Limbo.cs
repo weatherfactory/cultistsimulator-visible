@@ -14,6 +14,10 @@ namespace SecretHistories.Constants
         public override bool EnforceUniqueStacksInThisContainer => false;
         public override bool ContentsHidden => true;
 
+        public override bool IsInRangeOf(Sphere otherSphere)
+        {
+            return false;
+        }
 
     }
 }

@@ -18,6 +18,9 @@ namespace SecretHistories.Entities
         public string Choir { get; set; }
 
         [FucineValue]
+        public string LiveIn{ get; set; }
+
+        [FucineValue]
         public string WatchOver { get; set; }
 
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, Compendium populatedCompendium)
@@ -32,23 +35,6 @@ namespace SecretHistories.Entities
 
         }
 
-        public IAngel MakeAngel()
-        {
-
-            if (Choir == "tidy")
-            {
-                var angel = new TidyAngel(); ;
-                var watchOverSpherePath = new SpherePath(WatchOver);
-                var watchOverSphere = Registry.Get<SphereCatalogue>().GetSphereByPath(watchOverSpherePath);
-                angel.SetWatch(watchOverSphere);
-                return angel;
-            }
-
-            else
-            {
-                throw new ApplicationException("Unknown angel choir: " + Choir);
-            }
-        }
 
 
     }

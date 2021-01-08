@@ -25,6 +25,8 @@ namespace SecretHistories.Spheres.Angels
             TokenToBringHome = tokenToBringHome;
         }
 
+        public int Authority => 10;
+
         public void Act(float interval)
         {
             //could put something here to remove this angel from the watched sphere if it's got stale
