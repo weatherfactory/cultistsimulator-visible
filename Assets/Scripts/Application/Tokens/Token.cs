@@ -32,62 +32,56 @@ namespace SecretHistories.UI {
         IPointerExitHandler, ISituationSubscriber, IInteractsWithTokens
     {
         private float previousClickTime = 0f;
+
+
+
+        [Header("Location")]
+        [SerializeField] public RectTransform TokenRectTransform;
+        public RectTransform ManifestationRectTransform => _manifestation.RectTransform;
+        public TokenLocation Location => new TokenLocation(TokenRectTransform.anchoredPosition3D, Sphere.GetPath());
+        public Sphere Sphere;
+        protected Sphere OldSphere; // Used to tell OldContainsTokens that this thing was dropped successfully
+
+
+        [Header("Movement")]
+        [SerializeField]
+        protected TokenLocation HomeLocation;
+        [SerializeField]
+        private Token originToken = null; // if it was pulled from a stack, save that stack!
+        public bool PauseAnimations;
+        protected float
+            dragHeight = -8f; // Draggables all drag on a specifc height and have a specific "default height"
+
+
+        public TokenTravelItinerary CurrentItinerary { get; set; }
+
+        [Header("Display")]
+        [SerializeField] protected bool shrouded;
+        [SerializeField] protected bool rotateOnDrag = true;
+        protected float perlinRotationPoint = 0f;
+        protected int startSiblingIndex;
+        protected Vector3 dragOffset;
+        protected CanvasGroup canvasGroup;
+        [SerializeField] protected IManifestation _manifestation;
+
+        [Header("Logic")]
+        protected Situation _attachedToSituation = new NullSituation();
+        //set true when the Chronicler notices it's been placed on the desktop. This ensures we don't keep spamming achievements / Lever requests. It isn't persisted in saves! which is probably fine.
+
+        public bool PlacementAlreadyChronicled = false;
+
+        public virtual IVerb Verb => _attachedToSituation.Verb;
+        public virtual ElementStack ElementStack { get; protected set; }
+        public int ElementQuantity => ElementStack.Quantity;
+        public Element Element => ElementStack.Element;
+
+
+
         public UnityEvent OnStart;
         public UnityEvent OnCollect;
         public UnityEvent OnWindowClosed;
         public OnContainerAddedEvent OnContainerAdded;
         public OnContainerRemovedEvent OnContainerRemoved;
-
-        protected bool shrouded = false;
-        protected Situation _attachedToSituation = new NullSituation();
-
-        public virtual IVerb Verb
-        {
-            get { return _attachedToSituation.Verb; }
-        }
-
-        public virtual ElementStack ElementStack { get; protected set; }
-
-        public int ElementQuantity => ElementStack.Quantity;
-
-        public Element Element => ElementStack.Element;
-
-        public Token OriginToken { get; private set; }
-
-        public TokenTravelItinerary CurrentItinerary { get; set; }
-
-
-        [SerializeField] public RectTransform TokenRectTransform;
-
-        public RectTransform ManifestationRectTransform => _manifestation.RectTransform;
-        /// <summary>
-        /// position *in current sphere* and path to that sphere
-        /// </summary>
-        public TokenLocation Location => new TokenLocation(TokenRectTransform.anchoredPosition3D, Sphere.GetPath());
-
-        [SerializeField] protected bool rotateOnDrag = true;
-
-
-        protected IManifestation _manifestation;
-
-        
-        protected TokenLocation HomeLocation;
-        protected int startSiblingIndex;
-        protected Vector3 dragOffset;
-        protected CanvasGroup canvasGroup;
-        private Token originToken = null; // if it was pulled from a stack, save that stack!
-
-
-        //set true when the Chronicler notices it's been placed on the desktop. This ensures we don't keep spamming achievements / Lever requests. It isn't persisted in saves! which is probably fine.
-        public bool PlacementAlreadyChronicled = false;
-
-        protected float perlinRotationPoint = 0f;
-
-        protected float
-            dragHeight = -8f; // Draggables all drag on a specifc height and have a specific "default height"
-
-        public Sphere Sphere;
-        protected Sphere OldSphere; // Used to tell OldContainsTokens that this thing was dropped successfully
 
 
         public virtual void Awake()

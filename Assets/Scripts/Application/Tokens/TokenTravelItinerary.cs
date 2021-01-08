@@ -17,6 +17,34 @@ namespace SecretHistories.UI
         public float StartScale { get; set; }
         public float EndScale { get; set; }
         //startscale   = 1f, float endScale = 1f)
+        private const float DefaultStartScale = 1f;
+        private const float DefaultEndScale = 1f;
+
+
+
+        public TokenTravelItinerary(TokenLocation startLocation, TokenLocation endLocation)
+        {
+            StartPosition = startLocation.Position;
+            EndPosition = endLocation.Position;
+            EnRouteSphere = Registry.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
+            DestinationSphere = Registry.Get<SphereCatalogue>().GetSphereByPath(endLocation.AtSpherePath);
+            StartScale = DefaultStartScale;
+            EndScale = DefaultEndScale;
+
+
+        }
+
+        public TokenTravelItinerary(Vector3 startPosition, Vector3 endPosition)
+        {
+            //the most basic itinerary: don't change sphere, move in current sphere from point to point,s et default duration based on distance, keep current scale
+            StartPosition = startPosition;
+            EndPosition = endPosition;
+
+            EnRouteSphere = Registry.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
+            DestinationSphere = Registry.Get<SphereCatalogue>().GetDefaultWorldSphere();
+            StartScale = DefaultStartScale;
+            EndScale = DefaultEndScale;
+        }
 
         public void Depart(Token tokenToSend)
         {
@@ -25,7 +53,6 @@ namespace SecretHistories.UI
 
             var tokenAnimation = tokenToSend.gameObject.AddComponent<TokenTravelAnimation>();
             tokenAnimation.OnTokenArrival += Arrive;
-
 
 
             //this will cause hilarity if it's applied to a world sphere rather than a threshold
@@ -87,26 +114,10 @@ namespace SecretHistories.UI
            return i;
         }
 
-        public TokenTravelItinerary(TokenLocation startLocation, TokenLocation endLocation)
-        {
-            StartPosition = startLocation.Position;
-            EndPosition = endLocation.Position;
-            EnRouteSphere = Registry.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
-            DestinationSphere = Registry.Get<SphereCatalogue>().GetSphereByPath(endLocation.AtSpherePath);
-        }
-
-        public TokenTravelItinerary(Vector3 startPosition, Vector3 endPosition)
-        {
-            //the most basic itinerary: don't change sphere, move in current sphere from point to point,s et default duration based on distance, keep current scale
-            StartPosition = startPosition;
-            EndPosition = endPosition;
-   
-            EnRouteSphere = Registry.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
-            DestinationSphere = Registry.Get<SphereCatalogue>().GetDefaultWorldSphere();
-        }
+      
 
         /// <summary>
-        /// if we want to cmove to another sphere, set the sphere to travel through and the sphere to end in
+        /// if we want to move to another sphere, set the sphere to travel through and the sphere to end in
         /// </summary>
         /// <param name="enRouteSphere"></param>
         /// <param name="destinationSphere"></param>

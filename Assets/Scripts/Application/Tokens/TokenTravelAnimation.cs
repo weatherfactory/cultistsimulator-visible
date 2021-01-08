@@ -12,17 +12,25 @@ public class TokenTravelAnimation : MonoBehaviour {
 
 	protected Token _token;
 
+    [SerializeField]
 	private Vector3 _startPosition;
-	private Vector3 _endPosition;
+    [SerializeField]
+    private Vector3 _endPosition;
 
+    [SerializeField]
+    private float _scaleStart = 1f;
+    
+    [SerializeField]
+    private float _scaleEnd = 1f;
 
-	private float _scaleStart = 1f;
-	private float _scaleEnd = 1f;
+    [SerializeField]
+    private float _scalePercentage = 0.8f; // needs to be below 0.5 if both scales are active
 
-	private float _scalePercentage = 0.8f; // needs to be below 0.5 if both scales are active
-
-	private float _travelDuration = -1f; // do not animate while this is < 0
-	private float _travelTimeElapsed = 0f;
+    [SerializeField]
+    private float _travelDuration = -1f; // do not animate while this is < 0
+    
+    [SerializeField]
+    private float _travelTimeElapsed = 0f;
 
 
 	protected virtual Vector3 StartPosition => _startPosition;
@@ -61,7 +69,10 @@ public class TokenTravelAnimation : MonoBehaviour {
         transform.SetAsLastSibling();
 	}
 
-	void Update () {
+	void Update ()
+    {
+        if (_token.PauseAnimations)
+            return;
 		if (_travelDuration < 0)
 			return;
 		else if (_travelTimeElapsed < _travelDuration) 
