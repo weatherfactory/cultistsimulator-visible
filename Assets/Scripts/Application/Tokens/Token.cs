@@ -45,10 +45,6 @@ namespace SecretHistories.UI {
 
 
         [Header("Movement")]
-        [SerializeField]
-        protected TokenLocation HomeLocation;
-        [SerializeField]
-        private Token originToken = null; // if it was pulled from a stack, save that stack!
         public bool PauseAnimations;
         protected float
             dragHeight = -8f; // Draggables all drag on a specifc height and have a specific "default height"
@@ -343,20 +339,21 @@ namespace SecretHistories.UI {
 
         protected void StartDrag(PointerEventData eventData)
         {
-            SetState(new BeingDraggedState());
-                
-            Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Token = this, Sphere = Sphere, Interaction = Interaction.OnDragBegin });
-            if (!Keyboard.current.shiftKey.wasPressedThisFrame)
-            {
-                if (ElementStack.IsValidElementStack() && ElementQuantity > 1)
-                    CalveToken(ElementQuantity - 1, new Context(Context.ActionSource.PlayerDrag));
-                
-            }
-
             //remember the original location in case the token gets evicted later
             var homingAngel = new HomingAngel(this);
             homingAngel.SetWatch(Sphere);
             Sphere.AddAngel(homingAngel);
+
+            SetState(new BeingDraggedState());
+            
+            
+            Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Token = this, Sphere = Sphere, Interaction = Interaction.OnDragBegin });
+            if (!Keyboard.current.shiftKey.wasPressedThisFrame)
+            {
+                if (ElementStack.IsValidElementStack() && ElementQuantity > 1)
+                  homingAngel.SetOriginToken(CalveToken(ElementQuantity - 1, new Context(Context.ActionSource.PlayerDrag)));
+
+            }
 
 
             var enrouteContainer = Registry.Get<SphereCatalogue>().GetSphereByPath(
@@ -449,12 +446,6 @@ namespace SecretHistories.UI {
             
         }
 
-        public void ReturnHome()
-        {
-            var returnToHomeItinerary = new TokenTravelItinerary(Location, HomeLocation);
-            returnToHomeItinerary.Depart(this);
-        }
-
         public  void OnDrop(PointerEventData eventData)
         {
 
@@ -539,7 +530,6 @@ namespace SecretHistories.UI {
 
             // Accepting stack may put it to pos Vector3.zero, so this is last
             calvedToken.transform.position = transform.position;
-            originToken = calvedToken;
             return calvedToken;
 
         }
@@ -607,48 +597,6 @@ namespace SecretHistories.UI {
         public void GoAway(Context context)
         {
             Sphere.EvictToken(this,context);
-        }
-
-        public  void renamedReturnToTabletop(Context context)
-        {
-            
-            //if we have an origin stack and the origin stack is on the tabletop, merge it with that.
-            //We might have changed the element that a stack is associated with... so check we can still merge it
-            if (originToken != null && originToken.Sphere.SphereCategory == SphereCategory.World &&
-                ElementStack.CanMergeWith(originToken.ElementStack))
-            {
-                originToken.ElementStack.AcceptIncomingStackForMerge(this.ElementStack);
-                return;
-            }
-            else if (HomeLocation != null)
-            {
-                ReturnHome();
-            }
-            else
-            {
-                var plausibleOriginSphere = Registry.Get<SphereCatalogue>().GetDefaultWorldSphere();
-                plausibleOriginSphere.AcceptToken(this,context);
-                plausibleOriginSphere.Choreographer.PlaceTokenAtFreeLocalPosition(this, context);
-
-
-                var tabletop = Registry.Get<TabletopManager>()._tabletop;
-                var existingElementTokens = tabletop.GetElementTokens();
-
-                //check if there's an existing stack of that type to merge with
-                foreach (var elementToken in existingElementTokens)
-                {
-                    if (this.ElementStack.CanMergeWith(elementToken.ElementStack))
-                    {
-                        elementToken.ElementStack.AcceptIncomingStackForMerge(this.ElementStack);
-
-                        _manifestation.Highlight(HighlightType.AttentionPls);
-                        return;
-                    }
-                }
-            }
-
-           
-
         }
 
 
