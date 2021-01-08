@@ -221,7 +221,7 @@ namespace SecretHistories.UI.SlotsContainers {
             Token tokenContained = slot.GetTokenInSlot();
 
             if (tokenContained != null)
-                tokenContained.ReturnToTabletop(context);
+                tokenContained.GoAway(context);
         }
 
         public void ArrangeSlots() {

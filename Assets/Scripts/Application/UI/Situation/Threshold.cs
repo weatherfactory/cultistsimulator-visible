@@ -99,8 +99,10 @@ namespace SecretHistories.UI {
 
             }
 
-            _angels.AddRange(slotSpecification.MakeAngels());
-
+            var angelsToAdd = slotSpecification.MakeAngels();
+            foreach(var a in angelsToAdd)
+                AddAngel(a);
+            
             GreedyIcon.SetActive(slotSpecification.Greedy);
             ConsumingIcon.SetActive(slotSpecification.Consumes);
 
@@ -210,7 +212,7 @@ namespace SecretHistories.UI {
             if (GetMatchForStack(potentialUsurper.ElementStack).MatchType==SlotMatchForAspectsType.Okay && potentialUsurper.ElementQuantity == 1)
             {
                 incumbentMoved = true;
-                incumbent.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag)); //do this first; AcceptToken will trigger an update on the displayed aspects
+                incumbent.GoAway(new Context(Context.ActionSource.PlayerDrag)); //do this first; AcceptToken will trigger an update on the displayed aspects
                 AcceptToken(potentialUsurper, new Context(Context.ActionSource.PlayerDrag));
             }
             else
@@ -226,7 +228,7 @@ namespace SecretHistories.UI {
             if (match.MatchType != SlotMatchForAspectsType.Okay)
             {
                 token.SetState(new RejectedBySphereState());
-                token.ReturnToHomeLocation();
+                token.GoAway(context);
 
                 var notifier = Registry.Get<INotifier>();
 

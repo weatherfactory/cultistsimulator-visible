@@ -107,7 +107,7 @@ namespace SecretHistories.UI
                 BlockReason.InboundTravellingStack));
 
             token.SetState(new TravellingState() );
-            token.ReturnToTabletop(new Context(Context.ActionSource.TravelFailed));
+            token.GoAway(new Context(Context.ActionSource.TravelFailed));
 
         }
 

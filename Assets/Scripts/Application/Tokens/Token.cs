@@ -17,6 +17,7 @@ using SecretHistories.UI;
 using SecretHistories.Elements;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Constants.Events;
+using SecretHistories.Spheres.Angels;
 using SecretHistories.TokenContainers;
 
 using UnityEngine;
@@ -108,10 +109,6 @@ namespace SecretHistories.UI {
 
         }
 
-        public void SetCurrentLocationAsHomeLocation()
-        {
-            HomeLocation = new TokenLocation(TokenRectTransform.anchoredPosition3D, Sphere.GetPath());
-        }
         
         public bool CanAnimateArt()
         {
@@ -131,10 +128,7 @@ namespace SecretHistories.UI {
 
         private TokenState CurrentState;
 
-
         protected AnchorDurability _durability;
-
-
 
         public AnchorDurability Durability
         {
@@ -359,12 +353,11 @@ namespace SecretHistories.UI {
                 
             }
 
+            //remember the original location in case the token gets evicted later
+            var homingAngel = new HomingAngel(this);
+            homingAngel.SetWatch(Sphere);
+            Sphere.AddAngel(homingAngel);
 
-            if (TokenRectTransform.anchoredPosition.sqrMagnitude > 0.0f
-            ) // Never store 0,0 as that's a slot position and we never auto-return to slots - CP
-            {
-                SetCurrentLocationAsHomeLocation();
-            }
 
             var enrouteContainer = Registry.Get<SphereCatalogue>().GetSphereByPath(
                 new SpherePath(Registry.Get<Compendium>().GetSingleEntity<Dictum>().DefaultEnRouteSpherePath));
@@ -452,13 +445,12 @@ namespace SecretHistories.UI {
         {
             canvasGroup.blocksRaycasts = true;
             if (!CurrentState.Docked(this))
-                    ReturnToHomeLocation();
+                   this.Sphere.EvictToken(this,new Context(Context.ActionSource.Unknown));
             
         }
 
-        public void ReturnToHomeLocation()
+        public void ReturnHome()
         {
-
             var returnToHomeItinerary = new TokenTravelItinerary(Location, HomeLocation);
             returnToHomeItinerary.Depart(this);
         }
@@ -612,9 +604,12 @@ namespace SecretHistories.UI {
 
         }
 
+        public void GoAway(Context context)
+        {
+            Sphere.EvictToken(this,context);
+        }
 
-
-        public  void ReturnToTabletop(Context context)
+        public  void renamedReturnToTabletop(Context context)
         {
             
             //if we have an origin stack and the origin stack is on the tabletop, merge it with that.
@@ -627,12 +622,12 @@ namespace SecretHistories.UI {
             }
             else if (HomeLocation != null)
             {
-                ReturnToHomeLocation();
+                ReturnHome();
             }
             else
             {
                 var plausibleOriginSphere = Registry.Get<SphereCatalogue>().GetDefaultWorldSphere();
-
+                plausibleOriginSphere.AcceptToken(this,context);
                 plausibleOriginSphere.Choreographer.PlaceTokenAtFreeLocalPosition(this, context);
 
 

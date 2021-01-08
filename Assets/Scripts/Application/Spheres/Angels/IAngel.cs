@@ -13,5 +13,8 @@ namespace SecretHistories.Spheres.Angels
        void Act(float interval);
 
        void SetWatch(Sphere sphere);
-   }
+       
+       bool MinisterToEvictedToken(Token token, Context context);
+
+    }
 }

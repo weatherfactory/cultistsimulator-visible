@@ -71,7 +71,7 @@ namespace SecretHistories.Constants {
         protected HashSet<ContainerBlock> _currentContainerBlocks = new HashSet<ContainerBlock>();
         private SphereCatalogue _catalogue;
         protected readonly List<Token> _tokens = new List<Token>();
-        protected readonly List<IAngel> _angels=new List<IAngel>();
+        protected readonly HashSet<IAngel> _angels=new HashSet<IAngel>();
         private readonly HashSet<ISphereEventSubscriber> _subscribers = new HashSet<ISphereEventSubscriber>();
 
 
@@ -96,6 +96,16 @@ namespace SecretHistories.Constants {
         public void Unsubscribe(ISphereEventSubscriber subscriber)
         {
             _subscribers.Remove(subscriber);
+        }
+
+        public void AddAngel(IAngel angel)
+        {
+            _angels.Add(angel);
+        }
+
+        public void RemoveAngel(IAngel angel)
+        {
+            _angels.Remove(angel);
         }
 
 
@@ -204,13 +214,13 @@ namespace SecretHistories.Constants {
 
             stack.AttachToken(token);
 
-            if (context.TokenLocation == null)
+            if (context.TokenDestination == null)
             {
                 Choreographer.PlaceTokenAtFreeLocalPosition(token, context);
             }
             else
             {
-                token.TokenRectTransform.anchoredPosition3D = context.TokenLocation.Anchored3DPosition;
+                token.TokenRectTransform.anchoredPosition3D = context.TokenDestination.Anchored3DPosition;
             }
 
             AcceptToken(token, context);
@@ -445,7 +455,6 @@ namespace SecretHistories.Constants {
         }
 
 
-
     public virtual void AcceptToken(Token token, Context context)
         {
             
@@ -492,6 +501,45 @@ namespace SecretHistories.Constants {
             return true;
         }
 
+        /// <summary>
+        /// 'Send token away. Find somewhere suitable. Not my problem.'
+        /// </summary>
+        public virtual void EvictToken(Token token, Context context)
+        {
+            var exitSphere = Registry.Get<SphereCatalogue>().GetDefaultWorldSphere();
+            exitSphere.ProcessEvictedToken(token,context);
+       
+        }
+
+        /// <summary>
+        /// 'What do we do with this homeless token? either accept it, or move it on.'
+        /// </summary>
+        public virtual bool ProcessEvictedToken(Token token, Context context)
+        {
+            //ask all the  homingangels in that sphere to minister to the token
+            foreach(var a in _angels)
+                if (a.MinisterToEvictedToken(token, context))
+                    return true;
+
+            var existingElementTokens = GetElementTokens();
+
+            //check if there's an existing stack of that type to merge with
+            foreach (var elementToken in existingElementTokens)
+            {
+                if (token.ElementStack.CanMergeWith(elementToken.ElementStack))
+                {
+                    elementToken.ElementStack.AcceptIncomingStackForMerge(token.ElementStack);
+                    return true;
+                }
+            }
+
+
+            //default: just place the token somewhere free
+            Choreographer.PlaceTokenAtFreeLocalPosition(token,context);
+
+            return true;
+
+        }
 
 
         public void RemoveDuplicates(ElementStack incomingStack)

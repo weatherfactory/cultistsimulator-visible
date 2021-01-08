@@ -20,7 +20,7 @@ namespace SecretHistories.Commands.SituationCommands
             foreach (var item in results)
             {
                 item.Unshroud(true);
-                item.ReturnToTabletop(new Context(Context.ActionSource.PlayerDumpAll));
+                item.GoAway(new Context(Context.ActionSource.PlayerDumpAll));
             }
             // Only play collect all if there's actually something to collect 
             // Only play collect all if it's not transient - cause that will retire it and play the retire sound

@@ -46,6 +46,11 @@ namespace SecretHistories.Spheres.Angels
             _spheresToGrabFrom.Add(sphere);
         }
 
+        public bool MinisterToEvictedToken(Token token,Context context)
+        {
+            return false; // if  we want to grab evicted tokens, this would be a good place
+        }
+
         private void TryGrabStack(Sphere destinationThresholdSphere, float interval)
         {
   

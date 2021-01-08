@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Interfaces;
+using SecretHistories.UI;
 
 
 namespace SecretHistories.Spheres.Angels
@@ -21,6 +22,12 @@ namespace SecretHistories.Spheres.Angels
         {
              sphere.Subscribe(this);
         }
+
+        public bool MinisterToEvictedToken(Token token,Context context)
+        {
+            return false;
+        }
+
 
         public void OnTokensChangedForSphere(TokenInteractionEventArgs args)
         {

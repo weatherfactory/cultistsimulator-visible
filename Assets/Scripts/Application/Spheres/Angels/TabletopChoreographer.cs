@@ -70,32 +70,8 @@ namespace SecretHistories.Constants {
 
         public void PlaceTokenAtFreeLocalPosition(Token token, Context context)
      {
-
-            //else
-            //{
-            //    var freePosition = Registry.Get<Choreographer>().GetFreePosWithDebug(token, Vector2.zero);
-
-            //}
-
-            //   var dropzoneRecipe = Registry.Get<Compendium>().GetEntityById<Recipe>("dropzone.classic");
-            //       var dropzoneVerb = Registry.Get<Compendium>().GetVerbForRecipe(dropzoneRecipe);
-
-            //       var dropzoneSituations =
-            //           Registry.Get<SituationsCatalogue>().GetSituationsWithVerbOfActionId(dropzoneVerb.Id);
-
-            //       if (!dropzoneSituations.Any())
-            //       {
-            //           var dzTokenLocation= new TokenLocation(GetFreePosWithDebug(token, Vector2.zero),_tabletop.GetPath());
-
-            //       SituationCreationCommand scc = new SituationCreationCommand(dropzoneVerb,dropzoneRecipe,StateEnum.Unstarted, dzTokenLocation);
-            //       Registry.Get<SituationBuilder>().CreateSituation(scc);
-
-            //       }
-            token.TokenRectTransform.anchoredPosition = GetFreeLocalPosition(token, Vector2.zero);
-
-            _tabletop.AcceptToken(token, context);
-            
-        }
+         token.TokenRectTransform.anchoredPosition = GetFreeLocalPosition(token, Vector2.zero);
+     }
 
 
 /// <summary>
@@ -103,9 +79,6 @@ namespace SecretHistories.Constants {
 /// </summary>
             public void PlaceTokenAssertivelyAtSpecifiedLocalPosition(Token token, Context context, Vector2 pos)
 		{
-            _tabletop.AcceptToken(token, context);  // this does parenting. Needs to happen before we position
-
-
             token.TokenRectTransform.anchoredPosition = pos;
             token.transform.localRotation = Quaternion.identity;
 
@@ -126,9 +99,7 @@ namespace SecretHistories.Constants {
 
         }
 
-        #region -- POSITIONING HELP METHODS ----------------------------
-
-        public void MoveAllTokensOverlappingWith(Token pushingToken)
+public void MoveAllTokensOverlappingWith(Token pushingToken)
 		{
 			if (pushingToken.NoPush)
 			{
@@ -167,20 +138,11 @@ namespace SecretHistories.Constants {
             return localPoint;
         }
 
-        #endregion
-
         public Vector2 GetFreeLocalPosition(Token token, Vector2 centerPos, int startIteration = -1)
 		{
-#if DEBUG
-
-
             var pos = GetFreeTokenPosition(token, centerPos, startIteration);
 
-
             return pos;
-#else
-            return GetFreeTokenPosition(token, centerPos, startIteration);
-#endif
         }
 
         Vector2 GetFreeTokenPosition(Token token, Vector2 centerPos, int startIteration = -1)
