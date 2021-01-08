@@ -28,7 +28,7 @@ namespace SecretHistories.Services {
             var anchorSphere = sphereCatalogue.GetSphereByPath(command.AnchorLocation.AtSpherePath);
             var windowSphere = sphereCatalogue.GetSphereByPath(new SpherePath(Registry.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath));
 
-            var newAnchor = AttachNewAnchor(command.AnchorLocation.Position, situation, anchorSphere);
+            var newAnchor = AttachNewAnchor(command.AnchorLocation.Anchored3DPosition, situation, anchorSphere);
             var newWindow=AttachNewWindow(windowSphere, newAnchor, situation);
 
 

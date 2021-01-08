@@ -1,9 +1,11 @@
 using System;
+using System.Numerics;
 using SecretHistories.Entities;
 using SecretHistories.States.TokenStates;
 using SecretHistories.Constants;
 
 using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 namespace SecretHistories.UI
 {
@@ -12,8 +14,8 @@ namespace SecretHistories.UI
         public Sphere EnRouteSphere { get; set; }
         public Sphere DestinationSphere { get; set; }
         public float Duration { get; set; }
-        public Vector3 StartPosition { get; set; }
-        public Vector3 EndPosition { get; set; }
+        public Vector3 Anchored3DStartPosition { get; set; }
+        public Vector3 Anchored3DEndPosition { get; set; }
         public float StartScale { get; set; }
         public float EndScale { get; set; }
         //startscale   = 1f, float endScale = 1f)
@@ -24,27 +26,26 @@ namespace SecretHistories.UI
 
         public TokenTravelItinerary(TokenLocation startLocation, TokenLocation endLocation)
         {
-            StartPosition = startLocation.Position;
-            EndPosition = endLocation.Position;
+            Anchored3DStartPosition = startLocation.Anchored3DPosition;
+            Anchored3DEndPosition = endLocation.Anchored3DPosition;
             EnRouteSphere = Registry.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
             DestinationSphere = Registry.Get<SphereCatalogue>().GetSphereByPath(endLocation.AtSpherePath);
             StartScale = DefaultStartScale;
             EndScale = DefaultEndScale;
-
-
         }
 
-        public TokenTravelItinerary(Vector3 startPosition, Vector3 endPosition)
+        public TokenTravelItinerary(Vector3 anchored3DStartPosition, Vector3 anchored3DEndPosition)
         {
             //the most basic itinerary: don't change sphere, move in current sphere from point to point,s et default duration based on distance, keep current scale
-            StartPosition = startPosition;
-            EndPosition = endPosition;
+            Anchored3DStartPosition = anchored3DStartPosition;
+            Anchored3DEndPosition = anchored3DEndPosition;
 
             EnRouteSphere = Registry.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
             DestinationSphere = Registry.Get<SphereCatalogue>().GetDefaultWorldSphere();
             StartScale = DefaultStartScale;
             EndScale = DefaultEndScale;
         }
+
 
         public void Depart(Token tokenToSend)
         {
@@ -60,13 +61,19 @@ namespace SecretHistories.UI
             DestinationSphere.AddBlock(new ContainerBlock(BlockDirection.Inward,
                 BlockReason.InboundTravellingStack));
 
-            tokenAnimation.SetPositions(StartPosition,EndPosition);
+            
+            //We convert to world positions before sending, because we'll be animating through an EnRouteSphere to a DestinationSphere,
+            //and the local positions in those are unlikely to match.
+            Vector3 startPositioninWorldSpace = tokenToSend.Sphere.GetRectTransform().TransformPoint(Anchored3DStartPosition);
+            Vector3 endPositionInWorldSpace = DestinationSphere.GetRectTransform().TransformPoint(Anchored3DEndPosition);
+            
+            tokenAnimation.SetPositions(startPositioninWorldSpace, endPositionInWorldSpace);
             tokenAnimation.SetScaling(StartScale,EndScale,1f); //1f was the originally set default. I'm not clear atm about the difference between Duration and ScaleDuration 
                                                                //is it if scaling ends before travel duration?
 //set a default duraation if we don't have a valid one
            if (Duration <= 0)
            {
-               float distance = Vector3.Distance(StartPosition, EndPosition);
+               float distance = Vector3.Distance(Anchored3DStartPosition, Anchored3DEndPosition);
                Duration = Mathf.Max(0.3f, distance * 0.001f);
            }
             tokenAnimation.Begin(tokenToSend, Duration);

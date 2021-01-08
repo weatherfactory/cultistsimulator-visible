@@ -376,8 +376,6 @@ namespace SecretHistories.UI {
 
             canvasGroup.blocksRaycasts = false;
 
-            HomeLocation = new TokenLocation(this);
-            
             startSiblingIndex = TokenRectTransform.GetSiblingIndex();
 
 

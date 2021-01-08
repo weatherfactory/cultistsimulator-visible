@@ -604,7 +604,7 @@ namespace SecretHistories.Entities {
     public void OpenAt(TokenLocation location)
     {
         IsOpen = true;
-        _window.Show(location.Position,this);
+        _window.Show(location.Anchored3DPosition,this);
             
         Registry.Get<TabletopManager>().CloseAllSituationWindowsExcept(_anchor.Verb.Id);
     }

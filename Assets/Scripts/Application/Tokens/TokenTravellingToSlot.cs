@@ -19,7 +19,7 @@ public class TokenTravellingToSlot : TokenTravelAnimation {
             if (destinationSlot == null || destinationSlot.Defunct)
                 return transform.localPosition;
             else
-                return destinationLocation.Position;
+                return destinationLocation.Anchored3DPosition;
         }
     }
 

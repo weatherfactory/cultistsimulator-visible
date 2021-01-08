@@ -88,7 +88,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
             if (candidateSituation.IsOpen && candidateSituation.Verb.ExclusiveOpen)
                 candidateDistance=Vector3.zero;
             else
-                candidateDistance = candidateLocation.Position - tokenToSend.Location.Position;
+                candidateDistance = candidateLocation.Anchored3DPosition - tokenToSend.Location.Anchored3DPosition;
 
             if (candidateDistance.sqrMagnitude < targetDistance.sqrMagnitude)
             {
@@ -109,8 +109,8 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
                 if (tokenToSend.ElementQuantity > 1)
                    tokenToSend.CalveToken(tokenToSend.ElementQuantity - 1, new Context(Context.ActionSource.DoubleClickSend));
 
-                TokenTravelItinerary i = new TokenTravelItinerary(tokenToSend.Location.Position,
-                        targetLocation.Position)
+                TokenTravelItinerary i = new TokenTravelItinerary(tokenToSend.Location,
+                        targetLocation)
                     .WithDuration(NoonConstants.SEND_STACK_TO_SLOT_DURATION)
                     .WithScaling(1f, 0.35f)
                     .WithSphereRoute(SendViaContainer, targetThreshold);

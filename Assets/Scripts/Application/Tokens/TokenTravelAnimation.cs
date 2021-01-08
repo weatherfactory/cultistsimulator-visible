@@ -88,7 +88,7 @@ public class TokenTravelAnimation : MonoBehaviour {
 
 		float completion = _travelTimeElapsed / _travelDuration;
 
-		_token.TokenRectTransform.anchoredPosition3D = GetPos(Easing.Circular.Out(completion));
+		_token.TokenRectTransform.position = GetPos(Easing.Circular.Out(completion));
 
 		if (_scaleStart != 1f && completion < _scalePercentage)
 			_token.TokenRectTransform.localScale = Vector3.Lerp(Vector3.one * _scaleStart, Vector3.one, Easing.Quartic.Out(completion / _scalePercentage));
@@ -103,7 +103,7 @@ public class TokenTravelAnimation : MonoBehaviour {
     }
 
 	void Complete() {;
-		_token.TokenRectTransform.anchoredPosition3D = new Vector3(EndPosition.x, EndPosition.y, EndPosition.z);
+		_token.TokenRectTransform.position = new Vector3(EndPosition.x, EndPosition.y, EndPosition.z);
 		_token.TokenRectTransform.localScale = Vector3.one * _scaleEnd;
         NoonUtility.LogWarning(
             "we used to disable the token while it was travelling. We don't in fact want to do that, but we should probably disable raycasts");

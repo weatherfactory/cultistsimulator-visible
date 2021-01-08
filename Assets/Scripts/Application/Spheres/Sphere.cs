@@ -210,7 +210,7 @@ namespace SecretHistories.Constants {
             }
             else
             {
-                token.TokenRectTransform.anchoredPosition3D = context.TokenLocation.Position;
+                token.TokenRectTransform.anchoredPosition3D = context.TokenLocation.Anchored3DPosition;
             }
 
             AcceptToken(token, context);

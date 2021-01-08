@@ -62,7 +62,7 @@ namespace SecretHistories.Spheres.Angels
 
                     var targetPosition = GetTargetPositionForDestinationSphere(destinationThresholdSphere);
 
-                    TokenTravelItinerary itinerary = new TokenTravelItinerary(matchingToken.Location.Position,
+                    TokenTravelItinerary itinerary = new TokenTravelItinerary(matchingToken.Location.Anchored3DPosition,
                             targetPosition)
                         .WithScaling(1f,0.35f)
                         .WithSphereRoute(enRouteSphere, destinationThresholdSphere);
@@ -81,7 +81,7 @@ namespace SecretHistories.Spheres.Angels
             var targetPath = destinationThresholdSphere.GetPath();
             var targetSituationPath = targetPath.SituationPath;
             var targetSituation = Registry.Get<SituationsCatalogue>().GetSituationByPath(targetSituationPath);
-            var targetPosition = targetSituation.GetAnchorLocation().Position;
+            var targetPosition = targetSituation.GetAnchorLocation().Anchored3DPosition;
             return targetPosition;
         }
 
