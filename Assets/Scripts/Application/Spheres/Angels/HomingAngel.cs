@@ -72,7 +72,7 @@ namespace SecretHistories.Spheres.Angels
         {
             TokenTravelItinerary travellingHome =
                 new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, destination)
-                    .WithDuration(0.25f);
+                    .WithDuration(NoonConstants.MOMENT_TIME_INTERVAL);
 
             travellingHome.Depart(token);
         }

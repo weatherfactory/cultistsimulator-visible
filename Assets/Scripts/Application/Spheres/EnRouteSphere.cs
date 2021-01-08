@@ -17,5 +17,16 @@ namespace SecretHistories.TokenContainers
     {
 
         public override SphereCategory SphereCategory => SphereCategory.World;
+
+        public override bool ProcessEvictedToken(Token token, Context context)
+        {
+            //accept it before moving it on: the place it's come from may just have been destroyed, so we want it out of harm's way
+            AcceptToken(token,context);
+
+            var nextStop = Registry.Get<SphereCatalogue>().GetDefaultWorldSphere();
+            nextStop.ProcessEvictedToken(token, context);
+            return true;
+            
+        }
     }
 }

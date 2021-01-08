@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using SecretHistories.Constants;
 using SecretHistories.Enums;
 
 namespace SecretHistories.Editor.BuildScripts

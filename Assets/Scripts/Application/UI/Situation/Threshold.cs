@@ -95,7 +95,7 @@ namespace SecretHistories.UI {
                 greedyAngel.SetThresholdToGrabTo(this);
                 greedyAngel.SetWatch(Registry.Get<SphereCatalogue>().GetDefaultWorldSphere());
                 greedyAngel.SetWatch(Registry.Get<SphereCatalogue>().GetDefaultEnRouteSphere());
-                _angels.Add(greedyAngel);
+                flock.AddAngel(greedyAngel);
 
             }
 

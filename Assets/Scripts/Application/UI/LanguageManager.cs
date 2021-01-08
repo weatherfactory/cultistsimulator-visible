@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading;
+using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.UI;
 using SecretHistories.Services;

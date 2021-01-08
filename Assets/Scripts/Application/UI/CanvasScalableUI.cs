@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.UI;
 using SecretHistories.Interfaces;

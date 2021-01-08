@@ -1,4 +1,5 @@
-﻿using SecretHistories.Entities;
+﻿using SecretHistories.Constants;
+using SecretHistories.Entities;
 using TMPro;
 using UnityEngine;
 using SecretHistories.UI;

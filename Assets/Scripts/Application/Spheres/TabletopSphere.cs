@@ -140,20 +140,6 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
         CheckOverlappingTokens(potentialUsurper);
     }
 
-    public override void AcceptToken(Token token, Context context)
-    {
-        if(context.actionSource==Context.ActionSource.PlayerDumpAll)
-        {
-            List<ElementStack> mergeableStacks = GetElementStacks().Where(existing => existing.CanMergeWith(token.ElementStack)).ToList();
-
-            if (mergeableStacks.Count > 0)
-                mergeableStacks.First().AcceptIncomingStackForMerge(token.ElementStack);
-            else
-                base.AcceptToken(token, context);
-        }
-        else base.AcceptToken(token, context);
-
-    }
 
     void HandleOnTableDropped(PointerEventData eventData)
     {

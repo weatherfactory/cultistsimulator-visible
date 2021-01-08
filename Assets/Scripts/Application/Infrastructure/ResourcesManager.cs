@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.UI;
 using SecretHistories.Constants.Modding;

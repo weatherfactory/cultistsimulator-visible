@@ -71,7 +71,8 @@ namespace SecretHistories.Constants {
         protected HashSet<ContainerBlock> _currentContainerBlocks = new HashSet<ContainerBlock>();
         private SphereCatalogue _catalogue;
         protected readonly List<Token> _tokens = new List<Token>();
-        protected readonly HashSet<IAngel> _angels=new HashSet<IAngel>();
+        protected AngelFlock flock = new AngelFlock();
+
         private readonly HashSet<ISphereEventSubscriber> _subscribers = new HashSet<ISphereEventSubscriber>();
 
 
@@ -100,12 +101,12 @@ namespace SecretHistories.Constants {
 
         public void AddAngel(IAngel angel)
         {
-            _angels.Add(angel);
+            flock.AddAngel(angel);
         }
 
         public void RemoveAngel(IAngel angel)
         {
-            _angels.Remove(angel);
+            flock.RemoveAngel(angel);
         }
 
 
@@ -410,12 +411,7 @@ namespace SecretHistories.Constants {
                       d.Decay(interval);
             }
 
-
-            foreach (var angel in _angels)
-            {
-                angel.Act(interval);
-            }
-
+            flock.Act(interval);
         }
 
         public int TryPurgeStacks(Element element, int maxToPurge)
@@ -506,7 +502,7 @@ namespace SecretHistories.Constants {
         /// </summary>
         public virtual void EvictToken(Token token, Context context)
         {
-            var exitSphere = Registry.Get<SphereCatalogue>().GetDefaultWorldSphere();
+            var exitSphere = Registry.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
             exitSphere.ProcessEvictedToken(token,context);
        
         }
@@ -516,10 +512,8 @@ namespace SecretHistories.Constants {
         /// </summary>
         public virtual bool ProcessEvictedToken(Token token, Context context)
         {
-            //ask all the  homingangels in that sphere to minister to the token
-            foreach(var a in _angels)
-                if (a.MinisterToEvictedToken(token, context))
-                    return true;
+            if (flock.MinisterToEvictedToken(token, context))
+                return true;
 
             var existingElementTokens = GetElementTokens();
 
@@ -533,12 +527,15 @@ namespace SecretHistories.Constants {
                 }
             }
 
+            var targetFreePosition= Choreographer.GetFreeLocalPosition(token, token.TokenRectTransform.anchoredPosition3D);
 
-            //default: just place the token somewhere free
-            Choreographer.PlaceTokenAtFreeLocalPosition(token,context);
-
+            TokenTravelItinerary journeyToFreePosition =
+                new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, targetFreePosition)
+                    .WithSphereRoute(token.Sphere,this).
+                    WithDuration(NoonConstants.MOMENT_TIME_INTERVAL);
+            journeyToFreePosition.DestinationSphere = this;
+            journeyToFreePosition.Depart(token);
             return true;
-
         }
 
 

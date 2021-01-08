@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using SecretHistories.Constants.Modding;
 using Newtonsoft.Json;
+using SecretHistories.Constants;
 using UnityEngine;
 
 namespace SecretHistories.Fucine
