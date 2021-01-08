@@ -478,7 +478,7 @@ namespace SecretHistories.UI {
             });
             if (ElementStack.IsValidElementStack() && incomingToken.ElementStack.IsValidElementStack())
             {
-                if (incomingToken.ElementStack.CanMergeWith(incomingToken.ElementStack))
+                if (ElementStack.CanMergeWith(incomingToken.ElementStack))
                     ElementStack.AcceptIncomingStackForMerge(incomingToken.ElementStack);
                 else
                 
