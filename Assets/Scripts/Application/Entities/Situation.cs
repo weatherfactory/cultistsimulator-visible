@@ -649,10 +649,6 @@ namespace SecretHistories.Entities {
         if (incomingToken.ElementStack.IsValidElementStack())
         {
             TryPushDraggedStackIntoThreshold(incomingToken);
-
-
-            if (!IsOpen)
-                OpenAtCurrentLocation();
         }
         else
         {
@@ -776,7 +772,8 @@ namespace SecretHistories.Entities {
 
         public void OnTokensChangedForSphere(TokenInteractionEventArgs args)
         {
-            //if tokens have just been added to a threshold sphere for this situation by player action, open the window if it's not already 
+            if(args.Context.IsManualAction() &&  !IsOpen)
+                OpenAtCurrentLocation();
             
             
             CurrentRecipePrediction = GetUpdatedRecipePrediction();

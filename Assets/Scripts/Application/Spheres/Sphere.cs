@@ -490,7 +490,7 @@ namespace SecretHistories.Constants {
             if (!_tokens.Contains(token))
                 _tokens.Add(token);
 
-            NotifyTokensChangedForSphere(new TokenInteractionEventArgs { Sphere = this });
+            NotifyTokensChangedForSphere(new TokenInteractionEventArgs { Sphere = this,Context = context,Token=token});
             DisplayAndPositionHere(token, context);
 
         }

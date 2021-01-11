@@ -18,10 +18,21 @@ namespace SecretHistories.Constants.Events
         public Element Element { get; set; }
         public Token Token { get; set; }
         public PointerEventData PointerEventData { get; set; }
+        public Context Context { get; set; }
         public Interaction Interaction { get; set; }
 
-        //room for eg a diff or the nature of the change
+        public TokenInteractionEventArgs()
+        {
+            Context = new Context(Context.ActionSource.Unknown);
+        }
+
+        public TokenInteractionEventArgs(Context context)
+        {
+            Context = context;
+        }
     }
+    
+   
 
     [Serializable]
     public class TokenInteractionEvent : UnityEvent<TokenInteractionEventArgs>
